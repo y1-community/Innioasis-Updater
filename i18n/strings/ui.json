@@ -3962,6 +3962,43 @@
    "firmware-guide_zh-tw.html",
    "firmware-guide_zh.html"
   ],
+  "Choose your model and firmware": [
+   "sp-flash-tool.html",
+   "sp-flash-tool_ar.html",
+   "sp-flash-tool_cs.html",
+   "sp-flash-tool_da.html",
+   "sp-flash-tool_de.html",
+   "sp-flash-tool_el.html",
+   "sp-flash-tool_es.html",
+   "sp-flash-tool_fa.html",
+   "sp-flash-tool_fi.html",
+   "sp-flash-tool_fr.html",
+   "sp-flash-tool_he.html",
+   "sp-flash-tool_hi.html",
+   "sp-flash-tool_hu.html",
+   "sp-flash-tool_id.html",
+   "sp-flash-tool_it.html",
+   "sp-flash-tool_ja.html",
+   "sp-flash-tool_jp.html",
+   "sp-flash-tool_ko.html",
+   "sp-flash-tool_kr.html",
+   "sp-flash-tool_nl.html",
+   "sp-flash-tool_no.html",
+   "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-br.html",
+   "sp-flash-tool_pt-pt.html",
+   "sp-flash-tool_pt.html",
+   "sp-flash-tool_ro.html",
+   "sp-flash-tool_ru.html",
+   "sp-flash-tool_sv.html",
+   "sp-flash-tool_th.html",
+   "sp-flash-tool_tr.html",
+   "sp-flash-tool_uk.html",
+   "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-cn.html",
+   "sp-flash-tool_zh-tw.html",
+   "sp-flash-tool_zh.html"
+  ],
   "Choose your model and software": [
    "guide.html",
    "guide_ar.html",
@@ -4005,6 +4042,23 @@
    "guide_zh-cn.html",
    "guide_zh-tw.html",
    "guide_zh.html"
+  ],
+  "Classy build for the Innioasis Y2, formerly Inniclassic for Y2.": [
+   "firmware-catalog.js"
+  ],
+  "Classy for Innioasis Y1": [
+   "firmware-list.html",
+   "firmware.html"
+  ],
+  "Classy for Innioasis Y2": [
+   "firmware-list.html",
+   "firmware.html"
+  ],
+  "Classy on Innioasis Y1": [
+   "firmware-list.html"
+  ],
+  "Classy on Innioasis Y2": [
+   "firmware-list.html"
   ],
   "Click": [
    "lumen-site.js"
@@ -4380,48 +4434,13 @@
    "firmware-guide_zh.html"
   ],
   "Computer with Innioasis Updater installed": [
-   "sp-flash-tool.html",
-   "sp-flash-tool_ar.html",
    "sp-flash-tool_bn.html",
-   "sp-flash-tool_cs.html",
-   "sp-flash-tool_da.html",
-   "sp-flash-tool_de.html",
-   "sp-flash-tool_el.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_es.html",
-   "sp-flash-tool_fa.html",
-   "sp-flash-tool_fi.html",
-   "sp-flash-tool_fr.html",
-   "sp-flash-tool_he.html",
-   "sp-flash-tool_hi.html",
-   "sp-flash-tool_hu.html",
-   "sp-flash-tool_id.html",
-   "sp-flash-tool_it.html",
-   "sp-flash-tool_ja.html",
-   "sp-flash-tool_jp.html",
-   "sp-flash-tool_ko.html",
-   "sp-flash-tool_kr.html",
    "sp-flash-tool_ms.html",
-   "sp-flash-tool_nl.html",
-   "sp-flash-tool_no.html",
-   "sp-flash-tool_pl.html",
    "sp-flash-tool_pt-BR.html",
    "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_pt-br.html",
-   "sp-flash-tool_pt-pt.html",
-   "sp-flash-tool_pt.html",
-   "sp-flash-tool_ro.html",
-   "sp-flash-tool_ru.html",
-   "sp-flash-tool_sv.html",
-   "sp-flash-tool_th.html",
-   "sp-flash-tool_tr.html",
-   "sp-flash-tool_uk.html",
-   "sp-flash-tool_vi.html",
    "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html",
-   "sp-flash-tool_zh-cn.html",
-   "sp-flash-tool_zh-tw.html",
-   "sp-flash-tool_zh.html"
+   "sp-flash-tool_zh-TW.html"
   ],
   "Confirm and wait": [
    "guides/factory-reset-g1.html",
@@ -5050,7 +5069,7 @@
   "Custom Firmware": [
    "lumen-site.js"
   ],
-  "Custom Firmware Downloads": [
+  "Custom software": [
    "nav.js"
   ],
   "Daily Running Costs": [
@@ -5775,6 +5794,10 @@
   "Download anyway": [
    "lumen-site.js"
   ],
+  "Download finished": [
+   "lumen-site.js",
+   "portable-zip-links.js"
+  ],
   "Download for Linux": [
    "slidia.html",
    "slidia_ar.html",
@@ -5916,6 +5939,9 @@
   "Download the ROM ZIP to your computer.": [
    "rockbox-y1/portable-zip.html",
    "rockbox-y2/portable-zip.html"
+  ],
+  "Downloads": [
+   "nav.js"
   ],
   "Draft": [
    "release_notes.html",
@@ -6176,48 +6202,13 @@
    "support_toolbar_zh-TW.html"
   ],
   "Extract the firmware ZIP": [
-   "sp-flash-tool.html",
-   "sp-flash-tool_ar.html",
    "sp-flash-tool_bn.html",
-   "sp-flash-tool_cs.html",
-   "sp-flash-tool_da.html",
-   "sp-flash-tool_de.html",
-   "sp-flash-tool_el.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_es.html",
-   "sp-flash-tool_fa.html",
-   "sp-flash-tool_fi.html",
-   "sp-flash-tool_fr.html",
-   "sp-flash-tool_he.html",
-   "sp-flash-tool_hi.html",
-   "sp-flash-tool_hu.html",
-   "sp-flash-tool_id.html",
-   "sp-flash-tool_it.html",
-   "sp-flash-tool_ja.html",
-   "sp-flash-tool_jp.html",
-   "sp-flash-tool_ko.html",
-   "sp-flash-tool_kr.html",
    "sp-flash-tool_ms.html",
-   "sp-flash-tool_nl.html",
-   "sp-flash-tool_no.html",
-   "sp-flash-tool_pl.html",
    "sp-flash-tool_pt-BR.html",
    "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_pt-br.html",
-   "sp-flash-tool_pt-pt.html",
-   "sp-flash-tool_pt.html",
-   "sp-flash-tool_ro.html",
-   "sp-flash-tool_ru.html",
-   "sp-flash-tool_sv.html",
-   "sp-flash-tool_th.html",
-   "sp-flash-tool_tr.html",
-   "sp-flash-tool_uk.html",
-   "sp-flash-tool_vi.html",
    "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html",
-   "sp-flash-tool_zh-cn.html",
-   "sp-flash-tool_zh-tw.html",
-   "sp-flash-tool_zh.html"
+   "sp-flash-tool_zh-TW.html"
   ],
   "FM radio uses the headphone cable as its antenna. Plug in a pair, scan once, then save the stations you like.": [
    "manuals/fm-radio.html"
@@ -6654,11 +6645,7 @@
    "install/y2player-y2-mac.html",
    "install/y2player-y2-windows.html"
   ],
-  "Firmware Archive": [
-   "nav.js"
-  ],
   "Firmware Downloads": [
-   "nav.js",
    "release_notes.html",
    "release_notes_ar.html",
    "release_notes_bn.html",
@@ -7010,7 +6997,8 @@
    "firmware-list_zh-TW.html",
    "firmware-list_zh-cn.html",
    "firmware-list_zh-tw.html",
-   "firmware-list_zh.html"
+   "firmware-list_zh.html",
+   "nav.js"
   ],
   "Firmware downloads for the Innioasis Y1, including stock software and custom builds.": [
    "firmware-y1.html",
@@ -7326,10 +7314,6 @@
   "Firmware releases - Innioasis Updater": [
    "release_view.html"
   ],
-  "Firmware zip downloaded": [
-   "lumen-site.js",
-   "portable-zip-links.js"
-  ],
   "First start: charge, power on and pick a language": [
    "manuals/first-start.html"
   ],
@@ -7343,92 +7327,22 @@
    "firmware-catalog.js"
   ],
   "Flash an Innioasis Y1 or Y2 with SP Flash Tool": [
-   "sp-flash-tool.html",
-   "sp-flash-tool_ar.html",
    "sp-flash-tool_bn.html",
-   "sp-flash-tool_cs.html",
-   "sp-flash-tool_da.html",
-   "sp-flash-tool_de.html",
-   "sp-flash-tool_el.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_es.html",
-   "sp-flash-tool_fa.html",
-   "sp-flash-tool_fi.html",
-   "sp-flash-tool_fr.html",
-   "sp-flash-tool_he.html",
-   "sp-flash-tool_hi.html",
-   "sp-flash-tool_hu.html",
-   "sp-flash-tool_id.html",
-   "sp-flash-tool_it.html",
-   "sp-flash-tool_ja.html",
-   "sp-flash-tool_jp.html",
-   "sp-flash-tool_ko.html",
-   "sp-flash-tool_kr.html",
    "sp-flash-tool_ms.html",
-   "sp-flash-tool_nl.html",
-   "sp-flash-tool_no.html",
-   "sp-flash-tool_pl.html",
    "sp-flash-tool_pt-BR.html",
    "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_pt-br.html",
-   "sp-flash-tool_pt-pt.html",
-   "sp-flash-tool_pt.html",
-   "sp-flash-tool_ro.html",
-   "sp-flash-tool_ru.html",
-   "sp-flash-tool_sv.html",
-   "sp-flash-tool_th.html",
-   "sp-flash-tool_tr.html",
-   "sp-flash-tool_uk.html",
-   "sp-flash-tool_vi.html",
    "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html",
-   "sp-flash-tool_zh-cn.html",
-   "sp-flash-tool_zh-tw.html",
-   "sp-flash-tool_zh.html"
+   "sp-flash-tool_zh-TW.html"
   ],
   "Flash the player": [
-   "sp-flash-tool.html",
-   "sp-flash-tool_ar.html",
    "sp-flash-tool_bn.html",
-   "sp-flash-tool_cs.html",
-   "sp-flash-tool_da.html",
-   "sp-flash-tool_de.html",
-   "sp-flash-tool_el.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_es.html",
-   "sp-flash-tool_fa.html",
-   "sp-flash-tool_fi.html",
-   "sp-flash-tool_fr.html",
-   "sp-flash-tool_he.html",
-   "sp-flash-tool_hi.html",
-   "sp-flash-tool_hu.html",
-   "sp-flash-tool_id.html",
-   "sp-flash-tool_it.html",
-   "sp-flash-tool_ja.html",
-   "sp-flash-tool_jp.html",
-   "sp-flash-tool_ko.html",
-   "sp-flash-tool_kr.html",
    "sp-flash-tool_ms.html",
-   "sp-flash-tool_nl.html",
-   "sp-flash-tool_no.html",
-   "sp-flash-tool_pl.html",
    "sp-flash-tool_pt-BR.html",
    "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_pt-br.html",
-   "sp-flash-tool_pt-pt.html",
-   "sp-flash-tool_pt.html",
-   "sp-flash-tool_ro.html",
-   "sp-flash-tool_ru.html",
-   "sp-flash-tool_sv.html",
-   "sp-flash-tool_th.html",
-   "sp-flash-tool_tr.html",
-   "sp-flash-tool_uk.html",
-   "sp-flash-tool_vi.html",
    "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html",
-   "sp-flash-tool_zh-cn.html",
-   "sp-flash-tool_zh-tw.html",
-   "sp-flash-tool_zh.html"
+   "sp-flash-tool_zh-TW.html"
   ],
   "Folders starting with a dot are hidden by default on Windows, macOS, and Linux. Enable hidden files in your file manager.": [
    "rockbox-y1/sd-card.html",
@@ -9486,8 +9400,8 @@
    "firmware-guide_zh-tw.html",
    "firmware-guide_zh.html"
   ],
-  "Inniclassic build for the Innioasis Y2.": [
-   "firmware-catalog.js"
+  "Include older and test versions": [
+   "lumen-site.js"
   ],
   "Inniclassic firmware for Innioasis Y1": [
    "inniclassic-y1-software.html",
@@ -9664,7 +9578,6 @@
    "firmware_zh.html"
   ],
   "Inniclassic for Innioasis Y2": [
-   "firmware-list.html",
    "firmware-list_ar.html",
    "firmware-list_bn.html",
    "firmware-list_cs.html",
@@ -9706,7 +9619,6 @@
    "firmware-list_zh-cn.html",
    "firmware-list_zh-tw.html",
    "firmware-list_zh.html",
-   "firmware.html",
    "firmware_ar.html",
    "firmware_bn.html",
    "firmware_cs.html",
@@ -9807,7 +9719,6 @@
    "install/inniclassic-mac.html"
   ],
   "Inniclassic on Innioasis Y2": [
-   "firmware-list.html",
    "firmware-list_ar.html",
    "firmware-list_bn.html",
    "firmware-list_cs.html",
@@ -10331,6 +10242,9 @@
    "rockbox_zh-tw.html",
    "rockbox_zh.html"
   ],
+  "Innioasis Community Sites": [
+   "nav.js"
+  ],
   "Innioasis D1 software and firmware install guides": [
    "install/d1.html"
   ],
@@ -10503,7 +10417,6 @@
    "index_zh-cn.html",
    "index_zh-tw.html",
    "index_zh.html",
-   "nav.js",
    "support_devs.html",
    "support_devs_ar.html",
    "support_devs_bn.html",
@@ -10915,9 +10828,6 @@
   ],
   "Innioasis SR1 software and firmware install guides": [
    "install/sr1.html"
-  ],
-  "Innioasis Sites": [
-   "nav.js"
   ],
   "Innioasis Software Updates": [
    "index.html",
@@ -12803,6 +12713,43 @@
   "Install custom software or restore the factory system on the Innioasis Y2. Guides for every supported project on Windows, macOS and Linux, with model checks, drivers and recovery.": [
    "install/y2.html"
   ],
+  "Install firmware with the SP Flash Tool install method in Innioasis Updater CE": [
+   "sp-flash-tool.html",
+   "sp-flash-tool_ar.html",
+   "sp-flash-tool_cs.html",
+   "sp-flash-tool_da.html",
+   "sp-flash-tool_de.html",
+   "sp-flash-tool_el.html",
+   "sp-flash-tool_es.html",
+   "sp-flash-tool_fa.html",
+   "sp-flash-tool_fi.html",
+   "sp-flash-tool_fr.html",
+   "sp-flash-tool_he.html",
+   "sp-flash-tool_hi.html",
+   "sp-flash-tool_hu.html",
+   "sp-flash-tool_id.html",
+   "sp-flash-tool_it.html",
+   "sp-flash-tool_ja.html",
+   "sp-flash-tool_jp.html",
+   "sp-flash-tool_ko.html",
+   "sp-flash-tool_kr.html",
+   "sp-flash-tool_nl.html",
+   "sp-flash-tool_no.html",
+   "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-br.html",
+   "sp-flash-tool_pt-pt.html",
+   "sp-flash-tool_pt.html",
+   "sp-flash-tool_ro.html",
+   "sp-flash-tool_ru.html",
+   "sp-flash-tool_sv.html",
+   "sp-flash-tool_th.html",
+   "sp-flash-tool_tr.html",
+   "sp-flash-tool_uk.html",
+   "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-cn.html",
+   "sp-flash-tool_zh-tw.html",
+   "sp-flash-tool_zh.html"
+  ],
   "Install guide": [
    "post_install.html",
    "post_install_ar.html",
@@ -14584,48 +14531,13 @@
    "rockbox-y2/portable-zip.html"
   ],
   "Load the matching scatter file": [
-   "sp-flash-tool.html",
-   "sp-flash-tool_ar.html",
    "sp-flash-tool_bn.html",
-   "sp-flash-tool_cs.html",
-   "sp-flash-tool_da.html",
-   "sp-flash-tool_de.html",
-   "sp-flash-tool_el.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_es.html",
-   "sp-flash-tool_fa.html",
-   "sp-flash-tool_fi.html",
-   "sp-flash-tool_fr.html",
-   "sp-flash-tool_he.html",
-   "sp-flash-tool_hi.html",
-   "sp-flash-tool_hu.html",
-   "sp-flash-tool_id.html",
-   "sp-flash-tool_it.html",
-   "sp-flash-tool_ja.html",
-   "sp-flash-tool_jp.html",
-   "sp-flash-tool_ko.html",
-   "sp-flash-tool_kr.html",
    "sp-flash-tool_ms.html",
-   "sp-flash-tool_nl.html",
-   "sp-flash-tool_no.html",
-   "sp-flash-tool_pl.html",
    "sp-flash-tool_pt-BR.html",
    "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_pt-br.html",
-   "sp-flash-tool_pt-pt.html",
-   "sp-flash-tool_pt.html",
-   "sp-flash-tool_ro.html",
-   "sp-flash-tool_ru.html",
-   "sp-flash-tool_sv.html",
-   "sp-flash-tool_th.html",
-   "sp-flash-tool_tr.html",
-   "sp-flash-tool_uk.html",
-   "sp-flash-tool_vi.html",
    "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html",
-   "sp-flash-tool_zh-cn.html",
-   "sp-flash-tool_zh-tw.html",
-   "sp-flash-tool_zh.html"
+   "sp-flash-tool_zh-TW.html"
   ],
   "Loading notices": [
    "nav.js"
@@ -15493,6 +15405,9 @@
   "Not available right now": [
    "lumen-site.js"
   ],
+  "Nothing to report for what you have selected right now.": [
+   "nav.js"
+  ],
   "Notices": [
    "nav.js"
   ],
@@ -15680,18 +15595,13 @@
    "guides/restore-original-g5_zh-CN.html",
    "guides/restore-original-g5_zh-TW.html"
   ],
-  "Open Rockbox-Y1 for Type B": [
-   "lumen-site.js"
-  ],
-  "Open SP Flash Tool from the Updater install": [
+  "Open Innioasis Updater CE, select the model printed on the player, then choose the software and release you want to install.": [
    "sp-flash-tool.html",
    "sp-flash-tool_ar.html",
-   "sp-flash-tool_bn.html",
    "sp-flash-tool_cs.html",
    "sp-flash-tool_da.html",
    "sp-flash-tool_de.html",
    "sp-flash-tool_el.html",
-   "sp-flash-tool_es-419.html",
    "sp-flash-tool_es.html",
    "sp-flash-tool_fa.html",
    "sp-flash-tool_fi.html",
@@ -15705,12 +15615,9 @@
    "sp-flash-tool_jp.html",
    "sp-flash-tool_ko.html",
    "sp-flash-tool_kr.html",
-   "sp-flash-tool_ms.html",
    "sp-flash-tool_nl.html",
    "sp-flash-tool_no.html",
    "sp-flash-tool_pl.html",
-   "sp-flash-tool_pt-BR.html",
-   "sp-flash-tool_pt-PT.html",
    "sp-flash-tool_pt-br.html",
    "sp-flash-tool_pt-pt.html",
    "sp-flash-tool_pt.html",
@@ -15721,11 +15628,21 @@
    "sp-flash-tool_tr.html",
    "sp-flash-tool_uk.html",
    "sp-flash-tool_vi.html",
-   "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html",
    "sp-flash-tool_zh-cn.html",
    "sp-flash-tool_zh-tw.html",
    "sp-flash-tool_zh.html"
+  ],
+  "Open Rockbox-Y1 for Type B": [
+   "lumen-site.js"
+  ],
+  "Open SP Flash Tool from the Updater install": [
+   "sp-flash-tool_bn.html",
+   "sp-flash-tool_es-419.html",
+   "sp-flash-tool_ms.html",
+   "sp-flash-tool_pt-BR.html",
+   "sp-flash-tool_pt-PT.html",
+   "sp-flash-tool_zh-CN.html",
+   "sp-flash-tool_zh-TW.html"
   ],
   "Open Settings": [
    "guides/factory-reset-g1.html",
@@ -15898,6 +15815,43 @@
    "guides/factory-reset-y2_uk.html",
    "guides/factory-reset-y2_zh-CN.html",
    "guides/factory-reset-y2_zh-TW.html"
+  ],
+  "Open Settings in Updater CE and enable Show Advanced Settings. This needs a Windows x64 or Linux x86-64 computer.": [
+   "sp-flash-tool.html",
+   "sp-flash-tool_ar.html",
+   "sp-flash-tool_cs.html",
+   "sp-flash-tool_da.html",
+   "sp-flash-tool_de.html",
+   "sp-flash-tool_el.html",
+   "sp-flash-tool_es.html",
+   "sp-flash-tool_fa.html",
+   "sp-flash-tool_fi.html",
+   "sp-flash-tool_fr.html",
+   "sp-flash-tool_he.html",
+   "sp-flash-tool_hi.html",
+   "sp-flash-tool_hu.html",
+   "sp-flash-tool_id.html",
+   "sp-flash-tool_it.html",
+   "sp-flash-tool_ja.html",
+   "sp-flash-tool_jp.html",
+   "sp-flash-tool_ko.html",
+   "sp-flash-tool_kr.html",
+   "sp-flash-tool_nl.html",
+   "sp-flash-tool_no.html",
+   "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-br.html",
+   "sp-flash-tool_pt-pt.html",
+   "sp-flash-tool_pt.html",
+   "sp-flash-tool_ro.html",
+   "sp-flash-tool_ru.html",
+   "sp-flash-tool_sv.html",
+   "sp-flash-tool_th.html",
+   "sp-flash-tool_tr.html",
+   "sp-flash-tool_uk.html",
+   "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-cn.html",
+   "sp-flash-tool_zh-tw.html",
+   "sp-flash-tool_zh.html"
   ],
   "Open Settings on the Innioasis G1 and choose Factory reset.": [
    "guides/factory-reset-g1.html",
@@ -17819,9 +17773,6 @@
    "firmware-list_zh-tw.html",
    "firmware-list_zh.html"
   ],
-  "Original Software, custom ROMs & guides": [
-   "nav.js"
-  ],
   "Original System Software 3.1.2 for Innioasis Y1": [
    "firmware-catalog.js"
   ],
@@ -18066,9 +18017,6 @@
    "release_notes_zh-cn.html",
    "release_notes_zh-tw.html",
    "release_notes_zh.html"
-  ],
-  "Player Updates and Firmware": [
-   "nav.js"
   ],
   "Player manuals": [
    "guides/factory-reset-g1.html",
@@ -18379,6 +18327,9 @@
    "manuals/transfer-music.html",
    "manuals/y1.html",
    "manuals/y2.html",
+   "nav.js"
+  ],
+  "Player updates": [
    "nav.js"
   ],
   "Portable build for your computer": [
@@ -18769,48 +18720,13 @@
    "rockbox-y2/install.html"
   ],
   "Power the player off, connect USB when the tool is ready, and wait for the green check.": [
-   "sp-flash-tool.html",
-   "sp-flash-tool_ar.html",
    "sp-flash-tool_bn.html",
-   "sp-flash-tool_cs.html",
-   "sp-flash-tool_da.html",
-   "sp-flash-tool_de.html",
-   "sp-flash-tool_el.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_es.html",
-   "sp-flash-tool_fa.html",
-   "sp-flash-tool_fi.html",
-   "sp-flash-tool_fr.html",
-   "sp-flash-tool_he.html",
-   "sp-flash-tool_hi.html",
-   "sp-flash-tool_hu.html",
-   "sp-flash-tool_id.html",
-   "sp-flash-tool_it.html",
-   "sp-flash-tool_ja.html",
-   "sp-flash-tool_jp.html",
-   "sp-flash-tool_ko.html",
-   "sp-flash-tool_kr.html",
    "sp-flash-tool_ms.html",
-   "sp-flash-tool_nl.html",
-   "sp-flash-tool_no.html",
-   "sp-flash-tool_pl.html",
    "sp-flash-tool_pt-BR.html",
    "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_pt-br.html",
-   "sp-flash-tool_pt-pt.html",
-   "sp-flash-tool_pt.html",
-   "sp-flash-tool_ro.html",
-   "sp-flash-tool_ru.html",
-   "sp-flash-tool_sv.html",
-   "sp-flash-tool_th.html",
-   "sp-flash-tool_tr.html",
-   "sp-flash-tool_uk.html",
-   "sp-flash-tool_vi.html",
    "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html",
-   "sp-flash-tool_zh-cn.html",
-   "sp-flash-tool_zh-tw.html",
-   "sp-flash-tool_zh.html"
+   "sp-flash-tool_zh-TW.html"
   ],
   "Preparing your download…": [
    "lumen-site.js",
@@ -22168,6 +22084,43 @@
    "y2player-y2-software_zh-tw.html",
    "y2player-y2-software_zh.html"
   ],
+  "Set Install method to SP Flash Tool": [
+   "sp-flash-tool.html",
+   "sp-flash-tool_ar.html",
+   "sp-flash-tool_cs.html",
+   "sp-flash-tool_da.html",
+   "sp-flash-tool_de.html",
+   "sp-flash-tool_el.html",
+   "sp-flash-tool_es.html",
+   "sp-flash-tool_fa.html",
+   "sp-flash-tool_fi.html",
+   "sp-flash-tool_fr.html",
+   "sp-flash-tool_he.html",
+   "sp-flash-tool_hi.html",
+   "sp-flash-tool_hu.html",
+   "sp-flash-tool_id.html",
+   "sp-flash-tool_it.html",
+   "sp-flash-tool_ja.html",
+   "sp-flash-tool_jp.html",
+   "sp-flash-tool_ko.html",
+   "sp-flash-tool_kr.html",
+   "sp-flash-tool_nl.html",
+   "sp-flash-tool_no.html",
+   "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-br.html",
+   "sp-flash-tool_pt-pt.html",
+   "sp-flash-tool_pt.html",
+   "sp-flash-tool_ro.html",
+   "sp-flash-tool_ru.html",
+   "sp-flash-tool_sv.html",
+   "sp-flash-tool_th.html",
+   "sp-flash-tool_tr.html",
+   "sp-flash-tool_uk.html",
+   "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-cn.html",
+   "sp-flash-tool_zh-tw.html",
+   "sp-flash-tool_zh.html"
+  ],
   "Set a GitHub repository URL and icon path to build the public icon URL.": [
    "developers.html",
    "developers_ar.html",
@@ -22216,48 +22169,13 @@
    "lumen-site.js"
   ],
   "Set up the SP Flash Tool bundled with Innioasis Updater, extract the firmware ZIP, load the scatter file, and flash a Y1 or Y2.": [
-   "sp-flash-tool.html",
-   "sp-flash-tool_ar.html",
    "sp-flash-tool_bn.html",
-   "sp-flash-tool_cs.html",
-   "sp-flash-tool_da.html",
-   "sp-flash-tool_de.html",
-   "sp-flash-tool_el.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_es.html",
-   "sp-flash-tool_fa.html",
-   "sp-flash-tool_fi.html",
-   "sp-flash-tool_fr.html",
-   "sp-flash-tool_he.html",
-   "sp-flash-tool_hi.html",
-   "sp-flash-tool_hu.html",
-   "sp-flash-tool_id.html",
-   "sp-flash-tool_it.html",
-   "sp-flash-tool_ja.html",
-   "sp-flash-tool_jp.html",
-   "sp-flash-tool_ko.html",
-   "sp-flash-tool_kr.html",
    "sp-flash-tool_ms.html",
-   "sp-flash-tool_nl.html",
-   "sp-flash-tool_no.html",
-   "sp-flash-tool_pl.html",
    "sp-flash-tool_pt-BR.html",
    "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_pt-br.html",
-   "sp-flash-tool_pt-pt.html",
-   "sp-flash-tool_pt.html",
-   "sp-flash-tool_ro.html",
-   "sp-flash-tool_ru.html",
-   "sp-flash-tool_sv.html",
-   "sp-flash-tool_th.html",
-   "sp-flash-tool_tr.html",
-   "sp-flash-tool_uk.html",
-   "sp-flash-tool_vi.html",
    "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html",
-   "sp-flash-tool_zh-cn.html",
-   "sp-flash-tool_zh-tw.html",
-   "sp-flash-tool_zh.html"
+   "sp-flash-tool_zh-TW.html"
   ],
   "Settings": [
    "lumen-site.js"
@@ -22334,9 +22252,6 @@
    "support_toolbar_zh-CN.html",
    "support_toolbar_zh-TW.html"
   ],
-  "Show nightly builds": [
-   "lumen-site.js"
-  ],
   "Show preview and nightly builds alongside stable releases.": [
    "lumen-site.js"
   ],
@@ -22369,6 +22284,9 @@
   ],
   "Software Updates and Firmware": [
    "lumen-site.js"
+  ],
+  "Software and updates for your player": [
+   "nav.js"
   ],
   "Software guides by model": [
    "lumen-site.js"
@@ -24655,6 +24573,9 @@
   "Tick the nightly-builds option to see previews": [
    "lumen-site.js"
   ],
+  "Tick this to include older releases and nightly builds.": [
+   "lumen-site.js"
+  ],
   "Timmkoo Q3 factory reset": [
    "guides/factory-reset-q3.html",
    "guides/factory-reset-q3_ar.html",
@@ -24828,6 +24749,9 @@
   ],
   "Timmkoo SR1 player manual": [
    "manuals/sr1.html"
+  ],
+  "Timmkoo firmware": [
+   "nav.js"
   ],
   "Today's costs are covered - thank you!": [
    "credits.html",
@@ -25183,6 +25107,43 @@
    "privacy_zh-tw.html",
    "privacy_zh.html"
   ],
+  "Turn on Show Advanced Settings": [
+   "sp-flash-tool.html",
+   "sp-flash-tool_ar.html",
+   "sp-flash-tool_cs.html",
+   "sp-flash-tool_da.html",
+   "sp-flash-tool_de.html",
+   "sp-flash-tool_el.html",
+   "sp-flash-tool_es.html",
+   "sp-flash-tool_fa.html",
+   "sp-flash-tool_fi.html",
+   "sp-flash-tool_fr.html",
+   "sp-flash-tool_he.html",
+   "sp-flash-tool_hi.html",
+   "sp-flash-tool_hu.html",
+   "sp-flash-tool_id.html",
+   "sp-flash-tool_it.html",
+   "sp-flash-tool_ja.html",
+   "sp-flash-tool_jp.html",
+   "sp-flash-tool_ko.html",
+   "sp-flash-tool_kr.html",
+   "sp-flash-tool_nl.html",
+   "sp-flash-tool_no.html",
+   "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-br.html",
+   "sp-flash-tool_pt-pt.html",
+   "sp-flash-tool_pt.html",
+   "sp-flash-tool_ro.html",
+   "sp-flash-tool_ru.html",
+   "sp-flash-tool_sv.html",
+   "sp-flash-tool_th.html",
+   "sp-flash-tool_tr.html",
+   "sp-flash-tool_uk.html",
+   "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-cn.html",
+   "sp-flash-tool_zh-tw.html",
+   "sp-flash-tool_zh.html"
+  ],
   "Type B Rockbox guide": [
    "lumen-site.js"
   ],
@@ -25316,6 +25277,43 @@
   ],
   "Under": [
    "lumen-site.js"
+  ],
+  "Under Install method, choose SP Flash Tool instead of Auto, then return to the install screen.": [
+   "sp-flash-tool.html",
+   "sp-flash-tool_ar.html",
+   "sp-flash-tool_cs.html",
+   "sp-flash-tool_da.html",
+   "sp-flash-tool_de.html",
+   "sp-flash-tool_el.html",
+   "sp-flash-tool_es.html",
+   "sp-flash-tool_fa.html",
+   "sp-flash-tool_fi.html",
+   "sp-flash-tool_fr.html",
+   "sp-flash-tool_he.html",
+   "sp-flash-tool_hi.html",
+   "sp-flash-tool_hu.html",
+   "sp-flash-tool_id.html",
+   "sp-flash-tool_it.html",
+   "sp-flash-tool_ja.html",
+   "sp-flash-tool_jp.html",
+   "sp-flash-tool_ko.html",
+   "sp-flash-tool_kr.html",
+   "sp-flash-tool_nl.html",
+   "sp-flash-tool_no.html",
+   "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-br.html",
+   "sp-flash-tool_pt-pt.html",
+   "sp-flash-tool_pt.html",
+   "sp-flash-tool_ro.html",
+   "sp-flash-tool_ru.html",
+   "sp-flash-tool_sv.html",
+   "sp-flash-tool_th.html",
+   "sp-flash-tool_tr.html",
+   "sp-flash-tool_uk.html",
+   "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-cn.html",
+   "sp-flash-tool_zh-tw.html",
+   "sp-flash-tool_zh.html"
   ],
   "Understanding 240p and 360p Rockbox-Y1 builds on the Innioasis Y1 and how to choose the right build for your themes.": [
    "rockbox-y1/resolution.html"
@@ -27193,6 +27191,43 @@
    "lumen-site.js",
    "portable-zip-links.js",
    "site-locale.js"
+  ],
+  "Windows x64 or Linux x86-64 computer with Innioasis Updater CE": [
+   "sp-flash-tool.html",
+   "sp-flash-tool_ar.html",
+   "sp-flash-tool_cs.html",
+   "sp-flash-tool_da.html",
+   "sp-flash-tool_de.html",
+   "sp-flash-tool_el.html",
+   "sp-flash-tool_es.html",
+   "sp-flash-tool_fa.html",
+   "sp-flash-tool_fi.html",
+   "sp-flash-tool_fr.html",
+   "sp-flash-tool_he.html",
+   "sp-flash-tool_hi.html",
+   "sp-flash-tool_hu.html",
+   "sp-flash-tool_id.html",
+   "sp-flash-tool_it.html",
+   "sp-flash-tool_ja.html",
+   "sp-flash-tool_jp.html",
+   "sp-flash-tool_ko.html",
+   "sp-flash-tool_kr.html",
+   "sp-flash-tool_nl.html",
+   "sp-flash-tool_no.html",
+   "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-br.html",
+   "sp-flash-tool_pt-pt.html",
+   "sp-flash-tool_pt.html",
+   "sp-flash-tool_ro.html",
+   "sp-flash-tool_ru.html",
+   "sp-flash-tool_sv.html",
+   "sp-flash-tool_th.html",
+   "sp-flash-tool_tr.html",
+   "sp-flash-tool_uk.html",
+   "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-cn.html",
+   "sp-flash-tool_zh-tw.html",
+   "sp-flash-tool_zh.html"
   ],
   "XML parse error": [
    "developers.html",
