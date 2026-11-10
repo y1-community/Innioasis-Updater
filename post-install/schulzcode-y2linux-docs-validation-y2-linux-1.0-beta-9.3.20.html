@@ -38,13 +38,13 @@
   <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.20: audiobooks keep your place, albums play in order, steadier Wi-Fi after waking - Innioasis Updater">
   <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.20: audiobooks keep your place, albums play in order, steadier Wi-Fi after waking Release 1.0.0-beta.9.3.20 , Y2Reborn 1.0.0-beta.9.3.20 , kernel 6.1">
   <link rel="icon" href="../y1_illustration.png">
-  <link rel="stylesheet" href="../site-theme.css?v=20260803">
-  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261110rows2">
   <link rel="stylesheet" href="../site-pages.css?v=20260818">
   <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20260803" defer></script>
+  <script src="../site-init.js?v=20261110warn" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -67,8 +67,8 @@
 <ul><li>Reborn <code>5c6e769</code>: <code>reborn-core::books</code> <code>Listening::button_step</code> (<code>BUTTON_REACH_MS</code> 10 min, <code>BUTTON_SKIP_MS</code> 30 s,<p>backward continues into the previous part), <code>chapter_step</code> for the menu, <code>Shelf::record</code> keeps a place that existed; Now Playing book rows Previous/Next Chapter → <code>Effect::PlayBook(key, BookStart::Chapter(n))</code>; <code>queue::one_album</code> (album tag, album artist, <code>album_folder</code> folding CD/Disc folders) makes <code>play_members</code> use <code>ShuffleMode::Off</code>; <code>Canvas::flow_caption</code> + <code>skin/draw.rs::flow_glide</code>; <code>reborn-platform::wifi</code> <code>PendingJoin::absent()</code> (STATUS not associating/handshaking and SCAN_RESULTS without the SSID) before NotFound or the deadline restart; <code>media.c</code> checks EFBIG before the demuxer error; <code>components::left_out_note</code>; <code>PlatformTask::SbcAbr</code> → <code>codec-settings --sbc-abr</code>. Architecture guard skips every <code>tests.rs</code> host module.</p></li><li>Linux <code>588c7789</code>: y2-radiod <code>links::Trigger::Wake</code> (limit 1) when <code>asleep_alone</code> (no connected audio at quiesce);<p>cleared on an interrupted sleep and on <code>set_power</code>. Code-quality baseline exception for the SBC plumbing (glue lines in files already over the ceilings). Bump <code>f6ba913</code>, <code>d5403d04</code>.</p></li><li>F56 (silent cold restarts) has no code change: the PMIC keeps no brown-out record.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261106direct" defer></script>
-<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../portable-zip-links.js?v=20261110warn" defer></script>
+<script src="../nav.js?v=20261110warn" defer></script>
 <script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 

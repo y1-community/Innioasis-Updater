@@ -96,12 +96,12 @@ def page_title(title: str, description: str, canonical: str, keywords: list[str]
 <meta name="twitter:image" content="{SITE}/assets/og-image.png">
 <meta property="og:site_name" content="Innioasis Software Updates">
 <link rel="icon" href="../y1_illustration.png">
-<link rel="stylesheet" href="../site-theme.css?v=20260803">
+<link rel="stylesheet" href="../site-theme.css?v=20261109theme">
 <link rel="stylesheet" href="../lumen.css?v=20261114video">
 <link rel="stylesheet" href="../site-pages.css?v=20260818">
 <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
 <link rel="stylesheet" href="../install.css?v=20261106">
-<script src="../site-init.js?v=20260803" defer></script>
+<script src="../site-init.js?v=20261110warn" defer></script>
 {blocks}
 </head>
 <body class="{classes}"><a class="lumen-skip-link" href="#main">Skip to content</a>

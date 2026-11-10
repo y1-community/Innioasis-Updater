@@ -38,13 +38,13 @@
   <meta name="twitter:title" content="Y2 Platform 1.0 — final deep-sleep investigation - Innioasis Updater">
   <meta name="twitter:description" content="Y2 Platform 1.0 — final deep-sleep investigation Investigation opened 2026-10-07; IN PROGRESS, no readiness promotion . Latest, morning 2026-10-08: DEEPSLEEP-FINAL-03 fai">
   <link rel="icon" href="../y1_illustration.png">
-  <link rel="stylesheet" href="../site-theme.css?v=20260803">
-  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261110rows2">
   <link rel="stylesheet" href="../site-pages.css?v=20260818">
   <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20260803" defer></script>
+  <script src="../site-init.js?v=20261110warn" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -295,8 +295,8 @@
 <ul><li><strong>Baseline recomputed from raw journals</strong> (archives 72–73): 3805.25 s suspended in 3824.6 s (99.49%); 603.0 s cycle = 600 s SPM timer + ~3.0 s awake (~2.5 s awake after resume).</li><li><strong>Measurement:</strong> no on-device battery current sensor (current/charge counter null, ISENSE voltage-only); pack capacity unknown. Allowed average current for 1% in 8 h is 0.5/0.75/1.0/1.25/1.88 mA for<p>400/600/800/1000/1500 mAh. A USB tester cannot see battery-only suspend current; a top-up (recharge) measurement could give a coarse overnight figure.</p></li><li><strong>Vendor comparison</strong> (MediaTek <code>d53dd75c</code>, <code>mt_spm_sleep.c</code>, <code>mt_sleep.c</code>, <code>pmic_mt6323.c</code>, <code>mt_power_gs_*</code>): vendor suspend = <code>pcm_suspend</code> (597 words) with CPU shutdown, INFRA/DDRPHY power-down and 26 MHz<p>off; Y2Linux = <code>pcm_dpidle</code> (480 words), INFRA retained. Vendor PMIC init sets LP_SEL on the always-on LDOs, VPROC/VSYS sleep voltages, and removes eMMC/SD/connectivity power in suspend.</p></li><li><strong>Measured PMIC state</strong> (full regmap dump, 2079 registers) and <strong>before/after-sleep probe</strong>: radios off at entry; SD rails off across suspend; eMMC VCC/VUSB/VGP2/VIO28/VA/VM/VIO18 on; LP_SEL only VTCXO on 04.</li><li><strong>05 change:</strong> LP_SEL on VA/VIO28/VUSB/VM/VIO18 (see handoff). Validation: container 560 PASS, native 10+27, Reborn 335, QEMU, ELF 384/1411, package/privacy PASS; installed and probed (archives 82–87).</li><li><strong>Not implemented and why:</strong> storage-rail LP_SEL switch (blocked by the safety classifier), VUSB disable (vendor leaves it on), VGP2 off in suspend, VPROC/VSYS sleep voltage (conflicts with DVFS),<p>eMMC supply removal, <code>pcm_suspend</code> port.</p></li><li><strong>Limits:</strong> no current or drain result yet; overnight, Power/RTC wake and early-boot on 05 outstanding.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261106direct" defer></script>
-<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../portable-zip-links.js?v=20261110warn" defer></script>
+<script src="../nav.js?v=20261110warn" defer></script>
 <script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 

@@ -38,13 +38,13 @@
   <meta name="twitter:title" content="Internal storage and removable media (POWER-FINAL-08) - Innioasis Updater">
   <meta name="twitter:description" content="Internal storage and removable media POWER-FINAL-08 <!-- knowledge-base-scope: current-production-policy -- 2026-10-10 provisioning run on the owner's player that day. Si">
   <link rel="icon" href="../y1_illustration.png">
-  <link rel="stylesheet" href="../site-theme.css?v=20260803">
-  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261110rows2">
   <link rel="stylesheet" href="../site-pages.css?v=20260818">
   <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20260803" defer></script>
+  <script src="../site-init.js?v=20261110warn" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -77,8 +77,8 @@ y2-media grow                        # e2fsck + resize2fs for an undersized ext4
 <ul><li>Format and grow are explicit owner operations; a card with a foreign or undersized filesystem is only reported.</li><li>An ext4 card is not readable by a PC when pulled out; MTP is the transfer path. exFAT remains mountable.</li><li>No endurance measurement of ext4 on this eMMC; no physical power-loss test of Y2Media yet.</li><li>No physical power cut during the automatic setup yet (resume is host-tested at every phase); case 3 (large old library,<p>Old Storage, Set Up Now) is host-tested only.</p></li><li>ext4&#x27;s background inode-table initialisation asks the eMMC for WRITE_ZEROES inside p8 at start; the eMMC write guard<p>refuses erase-class commands (<code>mmc_erase: group start error -30</code>, one I/O error line). Harmless (unused inodes are tracked by the group descriptors), but log noise to clean up (allow zeroing inside p8, or format without lazy init).</p></li><li>Going back to stock leaves p8 as ext4, which stock Android cannot read; it has to format it (untested).</li><li>MTP keeps 96 MiB and 128 inodes free per storage (<code>tools/usb/mtp-safe.c</code>); uploads are PIO-bound at ≈9–10 MB/s<p>(<a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fplanning%2FUSB-RX-DMA-MODE1-PLAN.md">receive DMA plan</a>).</p></li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261106direct" defer></script>
-<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../portable-zip-links.js?v=20261110warn" defer></script>
+<script src="../nav.js?v=20261110warn" defer></script>
 <script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
