@@ -190,7 +190,7 @@
         /* Y1 stock firmware keeps its pre-3.0.7 archive behind the same switch. */
         ["Include older and test versions", "Include older and test versions"],
         ["Y1 stock firmware older than 3.0.7 and nightly builds are hidden by default. Tick to include them.", "Y1 stock drops older than 3.0.7 and nightly drops are hidden by default. Tick to bring them back."],
-        ["Tick this to include older releases and nightly builds.", "Tick the pre-3.0.7 stock firmware / nightly-builds option to see older drops"],
+        ["Tick this to include older releases and nightly builds.", "Tick this to include older releases and nightly builds."],
         ["Not available right now", "Off the board right now"],
         ["Held back from this list.", "Pulled from this list."],
         ["No stable release yet", "No stable drop yet"],
