@@ -959,18 +959,187 @@
         document.body.removeChild(area);
     }
 
-    /* Download links with data-download-confirm swap their label for the
-       confirm phrase once the browser starts the download (e.g. the Windows
-       installer button reads "Download started"). The label is translated
-       for the Night City theme when that theme is active. */
+    /* Download buttons report the transfer itself instead of flipping to a
+       dead "Download started" label: percent, bytes, speed and time left sit
+       under the button, and "Saved" appears once the file is on disk. The
+       page streams through the site's download proxy, which is the one path
+       that offers CORS and a real Content-Length. An unreadable or oversized
+       transfer falls back to the browser's own download, never a dead click. */
+    var liveDownloads = 0;
+    /* Buffered in memory only for sizes a desktop browser can hold; bigger
+       files go straight to the browser's downloader instead. */
+    var LIVE_LIMIT = 512 * 1024 * 1024;
+
+    function liveBytes(value) {
+        var n = Number(value) || 0;
+        if (n < 1024) return n + " B";
+        if (n < 1048576) return (n / 1024).toFixed(n < 10240 ? 1 : 0) + " KB";
+        if (n < 1073741824) return (n / 1048576).toFixed(1) + " MB";
+        return (n / 1073741824).toFixed(2) + " GB";
+    }
+
+    function liveWording(english) {
+        try {
+            if (window.INNIOASIS_I18N && window.INNIOASIS_I18N.isActive && window.INNIOASIS_I18N.isActive()) {
+                var translated = window.INNIOASIS_I18N.translate(english);
+                if (translated) return translated;
+            }
+        } catch (_) {}
+        return english;
+    }
+
+    function livePanel(link) {
+        var panel = document.createElement("span");
+        panel.className = "lumen-dl-live";
+        panel.setAttribute("role", "status");
+        panel.setAttribute("aria-live", "polite");
+        panel.style.cssText = "display:block;max-width:380px;margin:.45rem 0 0;font:600 12px/1.45 var(--lumen-body,system-ui,sans-serif);color:var(--lumen-muted,#9aa3b5);font-variant-numeric:tabular-nums;";
+        var track = document.createElement("span");
+        track.style.cssText = "display:block;height:5px;border-radius:99px;background:color-mix(in oklab,currentColor 20%,transparent);overflow:hidden;margin-bottom:.3rem;";
+        var fill = document.createElement("span");
+        fill.style.cssText = "display:block;height:100%;width:0;background:var(--lumen-accent,#6b9fff);transition:width .18s linear;";
+        track.appendChild(fill);
+        var line = document.createElement("span");
+        line.textContent = liveWording("Downloading…");
+        panel.appendChild(track);
+        panel.appendChild(line);
+        var host = link.closest(".lumen-actions") || link;
+        if (host.parentNode) host.parentNode.insertBefore(panel, host.nextSibling);
+        return { panel: panel, fill: fill, line: line };
+    }
+
+    function startLiveDownload(link, url) {
+        if (liveDownloads >= 2) return false;
+        liveDownloads += 1;
+        var ui = livePanel(link);
+        var name = "download";
+        try {
+            name = decodeURIComponent(String(url).split(/[?#]/)[0].split("/").pop() || "download");
+        } catch (_) {}
+        var proxy = downloadProxyUrl();
+        var streamUrl = proxy && /^https:\/\/github\.com\//i.test(url) ? downloadHref(url, name) : url;
+        var loaded = 0;
+        var total = 0;
+        var samples = [];
+        var finished = false;
+
+        function finish() {
+            if (finished) return;
+            finished = true;
+            liveDownloads -= 1;
+        }
+
+        /* Whatever stops the stream, the reader still gets the file: the same
+           URL goes to the browser's downloader, which shows it in its own
+           list and writes it to Downloads. */
+        function handOff(note) {
+            finish();
+            ui.fill.style.width = "100%";
+            ui.line.textContent = note || liveWording("Download started — check your browser downloads");
+            var out = document.createElement("a");
+            out.href = url;
+            out.download = name;
+            out.rel = "noopener";
+            out.setAttribute("data-direct-download", "");
+            out.style.display = "none";
+            document.body.appendChild(out);
+            out.click();
+            setTimeout(function () {
+                if (out.parentNode) out.parentNode.removeChild(out);
+                if (ui.panel.parentNode) ui.panel.parentNode.removeChild(ui.panel);
+            }, 8000);
+        }
+
+        function paint(state) {
+            var now = Date.now();
+            var recent = samples.filter(function (s) { return now - s.at <= 4000; });
+            var speed = 0;
+            if (recent.length > 1) {
+                var first = recent[0];
+                var last = recent[recent.length - 1];
+                var span = (last.at - first.at) / 1000;
+                if (span > 0.25) speed = (last.bytes - first.bytes) / span;
+            }
+            var bits = [];
+            if (total) bits.push(Math.round((loaded / total) * 100) + "%");
+            bits.push(liveBytes(loaded) + (total ? " / " + liveBytes(total) : ""));
+            if (speed > 512) bits.push(liveBytes(speed) + "/s");
+            if (total && speed > 1024) {
+                var left = Math.max(0, Math.round((total - loaded) / speed));
+                bits.push(left >= 60 ? Math.floor(left / 60) + "m " + (left % 60) + "s" : left + "s");
+            }
+            ui.line.textContent = (state ? state + " · " : "") + bits.join(" · ");
+            if (total) ui.fill.style.width = Math.min(100, (loaded / total) * 100) + "%";
+        }
+
+        paint(liveWording("Downloading…"));
+        fetch(streamUrl, { credentials: "omit", redirect: "follow" }).then(function (response) {
+            if (!response || !response.ok || !response.body) {
+                handOff();
+                return;
+            }
+            total = Number(response.headers.get("content-length") || 0);
+            if (!total || total > LIVE_LIMIT) {
+                try { response.body.cancel(); } catch (_) {}
+                handOff();
+                return;
+            }
+            var reader = response.body.getReader();
+            var chunks = [];
+            function step() {
+                return reader.read().then(function (chunk) {
+                    if (finished) return;
+                    if (chunk.done) {
+                        var blob = new Blob(chunks, { type: response.headers.get("content-type") || "application/octet-stream" });
+                        chunks = null;
+                        finish();
+                        paint(liveWording("Saved"));
+                        var href = URL.createObjectURL(blob);
+                        var save = document.createElement("a");
+                        save.href = href;
+                        save.download = name;
+                        save.rel = "noopener";
+                        save.setAttribute("data-direct-download", "");
+                        save.style.display = "none";
+                        document.body.appendChild(save);
+                        save.click();
+                        setTimeout(function () {
+                            if (save.parentNode) save.parentNode.removeChild(save);
+                            URL.revokeObjectURL(href);
+                        }, 30000);
+                        setTimeout(function () {
+                            if (ui.panel.parentNode) ui.panel.parentNode.removeChild(ui.panel);
+                        }, 12000);
+                        return;
+                    }
+                    chunks.push(chunk.value);
+                    loaded += chunk.value.byteLength;
+                    var now = Date.now();
+                    if (!samples.length || now - samples[samples.length - 1].at > 400) {
+                        samples.push({ at: now, bytes: loaded });
+                    }
+                    paint(liveWording("Downloading…"));
+                    return step();
+                });
+            }
+            return step();
+        }).catch(function () { handOff(); });
+        return true;
+    }
+
     function initDownloadConfirm() {
         document.querySelectorAll("[data-download-confirm]").forEach(function (link) {
-            link.addEventListener("click", function () {
-                var label = link.getAttribute("data-download-confirm");
-                if (window.INNIOASIS_I18N && window.INNIOASIS_I18N.isActive && window.INNIOASIS_I18N.isActive()) {
-                    label = window.INNIOASIS_I18N.translate(label);
-                }
-                link.textContent = label;
+            if (link.getAttribute("data-download-live") === "1") return;
+            link.setAttribute("data-download-live", "1");
+            link.addEventListener("click", function (event) {
+                if (event.defaultPrevented || event.button !== 0) return;
+                if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                /* A scripted click is this module handing the file over. */
+                if (event.isTrusted === false) return;
+                var url = link.href || link.getAttribute("href") || "";
+                if (!/^https?:/i.test(url)) return;
+                if (!startLiveDownload(link, url)) return;
+                event.preventDefault();
             });
         });
     }
