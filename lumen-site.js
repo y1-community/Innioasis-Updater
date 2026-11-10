@@ -2620,6 +2620,15 @@
             var href = btn.getAttribute("href") || "";
             var zipUrl = btn.getAttribute("data-zip-url") || href;
             if (!zipUrl || !/\.zip/i.test(zipUrl)) return;
+            /* The catalog's control is a button, so the inline module cannot
+               see it through its anchor handler. Give it the button itself:
+               it paints percent, speed and time left straight onto it. If the
+               module is not on this page, the browser downloads as before. */
+            var downloads = window.InnioasisDownloads;
+            if (downloads && typeof downloads.start === "function") {
+                downloads.start(zipUrl, btn, btn.getAttribute("data-zip-name") || "");
+                return;
+            }
             if (!href) startBrowserDownload(zipUrl);
         }
 
