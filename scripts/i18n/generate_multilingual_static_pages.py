@@ -107,8 +107,8 @@ DEFAULT_STATIC_LOCALES = [
     "hi", "cs", "el", "sv", "fa", "da", "fi", "hu", "no", "ro"
 ]
 
-# Aliases to duplicate for convenience and search engine compatibility
-# e.g. "jp" is universally recognized for Japanese alongside "ja"
+# Extra filenames kept so an old link such as index_jp.html still opens.
+# They are not language codes, so they must not appear as hreflang.
 LOCALE_ALIASES = {
     "ja": ["jp"],
     "zh-CN": ["zh", "zh-cn"],
@@ -178,24 +178,34 @@ def set_html_language_attrs(markup: str, code: str, direction: str) -> str:
     return markup[: match.start()] + "<html" + attrs + ">" + markup[match.end():]
 
 
+def english_href(stem: str, origin: str) -> str:
+    return f"{origin}/" if stem == "index" else f"{origin}/{stem}.html"
+
+
 def build_hreflang_block(stem: str, origin: str, target_codes: List[str]) -> str:
+    en_href = english_href(stem, origin)
     lines = [
         "<!-- i18n-hreflang-start -->",
-        f'  <link rel="alternate" hreflang="x-default" href="{origin}/{stem}.html">',
-        f'  <link rel="alternate" hreflang="en" href="{origin}/{stem}.html">',
+        f'  <link rel="alternate" hreflang="x-default" href="{en_href}">',
+        f'  <link rel="alternate" hreflang="en" href="{en_href}">',
     ]
+    seen = {"en", "x-default"}
     for code in target_codes:
+        key = code.lower()
+        if key in seen:
+            continue
+        seen.add(key)
         lines.append(f'  <link rel="alternate" hreflang="{code}" href="{origin}/{stem}_{code}.html">')
-        # Add alias hreflangs
-        for alias in LOCALE_ALIASES.get(code, []):
-            lines.append(f'  <link rel="alternate" hreflang="{alias}" href="{origin}/{stem}_{alias}.html">')
     lines.append("  <!-- i18n-hreflang-end -->")
     return "\n".join(lines)
 
 
 def inject_seo_tags(markup: str, stem: str, code: str, origin: str, target_codes: List[str]) -> str:
     # 1. Canonical and OG URL
-    canonical_url = f"{origin}/{stem}_{code}.html" if code != "en" else f"{origin}/{stem}.html"
+    if code == "en":
+        canonical_url = english_href(stem, origin)
+    else:
+        canonical_url = f"{origin}/{stem}_{code}.html"
     if CANONICAL_RE.search(markup):
         markup = CANONICAL_RE.sub(
             lambda m: m.group(1) + m.group(2) + canonical_url + m.group(2), markup, count=1
@@ -281,17 +291,25 @@ def write_sitemaps(root_dir: str, pages_generated: List[Tuple[str, str]], target
         lines.append(f"    <lastmod>{today}</lastmod>")
         lines.append("    <changefreq>weekly</changefreq>")
         lines.append(f"    <priority>{priority}</priority>")
-        lines.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{xml_escape(origin + "/" + stem + ".html")}"/>')
-        lines.append(f'    <xhtml:link rel="alternate" hreflang="en" href="{xml_escape(origin + "/" + stem + ".html")}"/>')
+        en_href = loc
+        lines.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{xml_escape(en_href)}"/>')
+        lines.append(f'    <xhtml:link rel="alternate" hreflang="en" href="{xml_escape(en_href)}"/>')
+        seen_codes = {"en", "x-default"}
         for code in target_codes:
+            key = code.lower()
+            if key in seen_codes:
+                continue
+            seen_codes.add(key)
             lines.append(f'    <xhtml:link rel="alternate" hreflang="{code}" href="{xml_escape(origin + "/" + stem + "_" + code + ".html")}"/>')
-            for alias in LOCALE_ALIASES.get(code, []):
-                lines.append(f'    <xhtml:link rel="alternate" hreflang="{alias}" href="{xml_escape(origin + "/" + stem + "_" + alias + ".html")}"/>')
         lines.append("  </url>")
 
-    # 2. Literal static language pages
+    # 2. Literal static language pages. Alias filenames (index_jp.html and
+    # the lower-case copy of a code already listed) are the same document.
+    alias_codes = {alias.lower() for aliases in LOCALE_ALIASES.values() for alias in aliases}
     for stem, code in pages_generated:
         if stem == "404" or stem.startswith("404_"):
+            continue
+        if code.lower() in alias_codes:
             continue
         loc = f"{origin}/{stem}_{code}.html"
         priority = "0.9" if stem in ("index", "firmware", "guide") else "0.7"
@@ -305,11 +323,38 @@ def write_sitemaps(root_dir: str, pages_generated: List[Tuple[str, str]], target
     lines.append("</urlset>")
     content = "\n".join(lines) + "\n"
 
-    for sitemap_name in ("sitemap.xml", "sitemap-i18n.xml"):
+    # scripts/generate_sitemap.py writes sitemap.xml and the locale chunks.
+    # Writing sitemap-i18n.xml here used to replace that index with a partial list.
+    print("sitemap: owned by scripts/generate_sitemap.py")
+    return
+    for sitemap_name in ("sitemap-i18n.xml",):
         out_path = os.path.join(root_dir, sitemap_name)
         with open(out_path, "w", encoding="utf-8", newline="\n") as handle:
             handle.write(content)
         print(f"Updated {sitemap_name} ({len(pages_generated) + len(stems)} entries)")
+
+
+def rebuild_sitemaps(root_dir: str) -> None:
+    """Regenerate every sitemap from the files that exist.
+
+    The old writer built one urlset per language scheme and wrote the same
+    content into both sitemap.xml and sitemap-i18n.xml. That produced a
+    90,000-URL file (over the protocol limit, so Google discarded it), with
+    duplicates and a 404.html in every locale. Building from disk is the only
+    version that cannot drift.
+    """
+    import importlib.util
+
+    script = os.path.join(root_dir, "scripts", "generate_sitemap.py")
+    spec = importlib.util.spec_from_file_location("generate_sitemap", script)
+    if spec is None or spec.loader is None:
+        print("warning: scripts/generate_sitemap.py not found; sitemaps not rebuilt")
+        return
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    for path, content in module.build().items():
+        path.write_text(content, encoding="utf-8")
+    print(f"Rebuilt sitemaps ({len(module.build())} files)")
 
 
 def main() -> int:
@@ -413,8 +458,10 @@ def main() -> int:
 
         print(f"[{idx}/{len(available_codes)}] {code:<6} generated {len(valid_stems)} pages (+ {len(aliases)} aliases)")
 
-    # Write unified sitemaps
-    write_sitemaps(ROOT, pages_generated, available_codes, origin)
+    # Sitemaps are derived from the pages on disk by scripts/generate_sitemap.py,
+    # which keeps each file under Google's 50,000-URL limit and publishes an
+    # index. Rebuild them here so translating pages never leaves them stale.
+    rebuild_sitemaps(ROOT)
 
     # Write manifest for client-side router
     manifest = {

@@ -1,0 +1,72 @@
+name: Generate Sitemaps
+
+# sitemap.xml and the localized chunks are derived from the pages on disk, so
+# they must be rebuilt whenever a page is added, renamed or removed — otherwise
+# Google keeps discovering 404s and never hears about new pages.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/*.html"
+      - "scripts/generate_sitemap.py"
+      - "scripts/i18n/generate_multilingual_static_pages.py"
+      - ".github/workflows/generate-sitemap.yml"
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sitemap-main
+  cancel-in-progress: false
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild sitemaps
+        run: python scripts/generate_sitemap.py
+
+      - name: Verify the result
+        run: |
+          python scripts/generate_sitemap.py --check
+          python - <<'PY'
+          import pathlib, xml.etree.ElementTree as ET
+          for path in sorted(pathlib.Path(".").glob("sitemap*.xml")):
+              tree = ET.parse(path)
+              urls = len(tree.getroot().findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}url"))
+              print(f"{path.name}: {urls} URLs")
+              assert urls <= 50000, f"{path.name} exceeds the 50,000 URL limit"
+          PY
+
+      - name: Commit and push
+        run: |
+          set -e
+          if [ -z "$(git status --porcelain -- sitemap*.xml)" ]; then
+            echo "Sitemaps already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml sitemap-index.xml sitemap-i18n*.xml
+          git commit -m "chore(sitemaps): refresh from published pages"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if git pull --rebase --autostash origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 10))
+          done
+          echo "ERROR: could not push refreshed sitemaps." >&2
+          exit 1

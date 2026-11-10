@@ -11,7 +11,7 @@ Allow: /
 Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid&yclid&_openstat&from /
 
 # Sitemap location
-Sitemap: https://innioasis.app/sitemap.xml
+Sitemap: https://innioasis.app/sitemap-index.xml
 
 # AI / LLM crawlers (llmstxt.org standard)
 # https://innioasis.app/llms.txt
