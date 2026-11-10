@@ -113,10 +113,17 @@ body.site-themes-app:has(#support-toolbar-container.y1-toolbar-hidden) #footer-r
     }
 }
 body.site-themes-app *, body.site-themes-app *::before, body.site-themes-app *::after { box-sizing: border-box; }
-body.site-themes-app a { color: var(--lumen-accent); text-underline-offset: .18em; }
-body.site-themes-app a:hover { color: var(--lumen-paper); }
+body.site-themes-app a:not(.btn):not(.lumen-button):not(.guide-action-btn) { color: var(--lumen-accent); text-underline-offset: .18em; }
+body.site-themes-app a:not(.btn):not(.lumen-button):not(.guide-action-btn):hover { color: var(--lumen-paper); }
+body.site-themes-app a.btn,
+body.site-themes-app button.btn,
+body.site-themes-app .lumen-button--primary,
+body.site-themes-app .btn-primary { color: var(--lumen-on-accent, var(--lumen-ink)) !important; }
 body.site-themes-app :where(button, a, select, summary, input, textarea):focus-visible { outline: 3px solid var(--lumen-accent); outline-offset: 3px; }
-body.site-themes-app :where(h1, h2, h3, h4) { min-width: 0; overflow-wrap: break-word; font-style: normal; text-wrap: balance; }
+body.site-themes-app :where(h1, h2, h3, .site-display, .section-display) { min-width: 0; overflow-wrap: break-word; font-style: normal; text-wrap: balance; color: var(--lumen-accent); }
+body.site-themes-app :where(h4) { min-width: 0; overflow-wrap: break-word; font-style: normal; text-wrap: balance; }
+#support-toolbar-container .y1-dock-icon,
+.y1-dock-reopen-icon { color: var(--lumen-accent) !important; }
 
 body.site-themes-app #footer-root {
     position: relative;
@@ -150,7 +157,7 @@ body.site-themes-app .logo > a:first-child,
 body.site-themes-app .lumen-brand-home,
 .lumen-brand-home { display: flex; align-items: center; color: var(--lumen-text) !important; font-weight: 700; text-decoration: none; letter-spacing: -.02em; white-space: nowrap !important; }
 body.site-themes-app .lumen-brand-title,
-.lumen-brand-title { color: var(--lumen-text) !important; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; white-space: nowrap !important; word-break: keep-all !important; flex-shrink: 0 !important; }
+.lumen-brand-title { color: var(--lumen-accent) !important; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; white-space: nowrap !important; word-break: keep-all !important; flex-shrink: 0 !important; }
 :root[data-theme="light"] body.site-themes-app .lumen-brand-title,
 :root[data-theme="light"] body.site-themes-app .lumen-brand-home,
 :root[data-theme="light"] .lumen-brand-title,
@@ -158,7 +165,7 @@ body.site-themes-app .lumen-brand-title,
 :root[data-lumen-theme="light"] body.site-themes-app .lumen-brand-title,
 :root[data-lumen-theme="light"] body.site-themes-app .lumen-brand-home,
 :root[data-lumen-theme="light"] .lumen-brand-title,
-:root[data-lumen-theme="light"] .lumen-brand-home { color: var(--lumen-text) !important; }
+:root[data-lumen-theme="light"] .lumen-brand-home { color: var(--lumen-accent) !important; }
 :root[data-theme="2077"] body.site-themes-app .lumen-brand-title,
 :root[data-theme="2077"] body.site-themes-app .lumen-brand-home,
 :root[data-theme="2077"] .lumen-brand-title,
@@ -212,6 +219,48 @@ body.site-themes-app .lumen-secondary-action:hover { transform: translateY(-1px)
 .lumen-carousel-slide[aria-hidden="true"],
 .js-carousel .lumen-carousel-slide:not([aria-hidden="false"]):not(:first-child) { opacity: 0; pointer-events: none; }
 .lumen-carousel-controls { display: contents; }
+.lumen-carousel [data-carousel-previous],
+.lumen-carousel [data-carousel-next] {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    min-height: 46px;
+    padding: 0;
+    border: 1px solid var(--lumen-line-strong);
+    border-radius: 50%;
+    background: var(--lumen-panel);
+    color: var(--lumen-text);
+    font-size: 0;
+    line-height: 0;
+    display: inline-grid;
+    place-items: center;
+    cursor: pointer;
+}
+.lumen-carousel [data-carousel-previous] { grid-area: prev; }
+.lumen-carousel [data-carousel-next] { grid-area: next; }
+.lumen-carousel [data-carousel-previous]::before,
+.lumen-carousel [data-carousel-next]::before {
+    font-size: 1.45rem;
+    line-height: 1;
+    color: var(--lumen-accent);
+}
+.lumen-carousel [data-carousel-previous]::before { content: "‹"; }
+.lumen-carousel [data-carousel-next]::before { content: "›"; }
+.lumen-carousel [data-carousel-previous]:hover,
+.lumen-carousel [data-carousel-next]:hover,
+.lumen-carousel [data-carousel-previous]:focus-visible,
+.lumen-carousel [data-carousel-next]:focus-visible {
+    background: var(--lumen-accent);
+    border-color: var(--lumen-accent);
+    color: var(--lumen-on-accent, #fff);
+    outline: none;
+}
+.lumen-carousel [data-carousel-previous]:hover::before,
+.lumen-carousel [data-carousel-next]:hover::before,
+.lumen-carousel [data-carousel-previous]:focus-visible::before,
+.lumen-carousel [data-carousel-next]:focus-visible::before {
+    color: var(--lumen-on-accent, #fff);
+}
 .lumen-video-embed { width: 100%; max-width: 760px; aspect-ratio: 16 / 9; margin: var(--lumen-space-5) auto 0; overflow: hidden; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-ink); }
 .lumen-video-embed iframe { display: block; width: 100%; height: 100%; border: 0; }
 .lumen-carousel-video { width: 100%; max-width: none; height: 100%; margin: 0; border: 0; border-radius: 0; }
@@ -1211,3 +1260,26 @@ body.site-themes-app #nav-root nav { position: sticky; top: 0; width: 100%; }
 .lumen-accent-reset[disabled] { opacity: .55; cursor: default; }
 @media (max-width: 640px) { .lumen-accent-tray { right: auto; left: 0; } }
 @media (prefers-reduced-motion: reduce) { .lumen-accent-toggle { transition: none; } }
+
+/* Video carousel on phones: the side columns squeeze the player, so the two
+   round controls sit in a centred row under the stage and keep their shape. */
+@media (max-width: 720px) {
+    .lumen-carousel {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-areas: "stage stage" "prev next" "credit credit";
+        column-gap: .75rem;
+        row-gap: .5rem;
+        padding-bottom: .6rem;
+    }
+    .lumen-carousel [data-carousel-previous] { grid-area: prev; justify-self: end; }
+    .lumen-carousel [data-carousel-next] { grid-area: next; justify-self: start; }
+    .lumen-carousel [data-carousel-previous],
+    .lumen-carousel [data-carousel-next] {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        border-radius: 50%;
+    }
+    .lumen-carousel-credit { padding-inline: .75rem; }
+}

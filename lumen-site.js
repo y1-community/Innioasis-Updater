@@ -611,7 +611,13 @@
        multi-language audio track when the creator has published one, and
        plays the original audio when there is none. */
     function preferredLanguage() {
-        var raw = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
+        var raw = "";
+        try {
+            if (window.InnioasisLocale && window.InnioasisLocale.locale) raw = window.InnioasisLocale.locale;
+            else raw = localStorage.getItem("innioasis-locale") || "";
+        } catch (_) {}
+        if (!raw && document.documentElement) raw = document.documentElement.getAttribute("lang") || "";
+        if (!raw) raw = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
         var short = String(raw).toLowerCase().split("-")[0];
         return short || "en";
     }
@@ -629,8 +635,6 @@
         return url.toString();
     }
 
-    /* Player language for every embed; the Spanish walkthrough stays the
-       final slide of the carousel. */
     function applyEmbedLanguage() {
         var lang = preferredLanguage();
         document.querySelectorAll("iframe[src*='youtube']").forEach(function (frame) {
@@ -642,13 +646,6 @@
     }
 
     function initCarousel(root) {
-        /* The Cristian Plaza walkthrough is Spanish: only Spanish readers see
-           it, and it is never part of an English reader's slide order. */
-        if (preferredLanguage() !== "es") {
-            root.querySelectorAll("[data-video-lang='es']").forEach(function (slide) {
-                if (slide.parentNode) slide.parentNode.removeChild(slide);
-            });
-        }
         var slides = Array.from(root.querySelectorAll(".lumen-carousel-slide"));
         var stage = root.querySelector(".lumen-carousel-stage");
         var previous = root.querySelector("[data-carousel-previous]");
@@ -681,13 +678,28 @@
                 if (macFirst > 0) rotating.unshift(rotating.splice(macFirst, 1)[0]);
             }
             slides = fixed.concat(rotating);
-            /* A slide marked as last always closes the carousel: the Spanish
-               walkthrough is the final pick for non-Spanish visitors. */
-            var tail = slides.filter(function (slide) {
-                return slide.getAttribute("data-carousel-last") === "true";
+            /* A localized page wins over a stale stored locale, so opening
+               /index_es.html still leads with Spanish. */
+            var viewerLanguage = preferredLanguage();
+            if (viewerLanguage === "en") {
+                var documentLanguage = (document.documentElement.getAttribute("lang") || "").toLowerCase().split("-")[0];
+                if (documentLanguage && documentLanguage !== "en") viewerLanguage = documentLanguage;
+            }
+            var languageLead = slides.filter(function (slide) {
+                var videoLanguage = (slide.getAttribute("data-video-lang") || "").toLowerCase().split("-")[0];
+                return videoLanguage && videoLanguage === viewerLanguage;
             });
-            if (tail.length) {
-                slides = slides.filter(function (slide) { return tail.indexOf(slide) === -1; }).concat(tail);
+            if (viewerLanguage !== "en" && languageLead.length) {
+                slides = languageLead.concat(slides.filter(function (slide) {
+                    return languageLead.indexOf(slide) === -1;
+                }));
+            } else {
+                var tail = slides.filter(function (slide) {
+                    return slide.getAttribute("data-carousel-last") === "true";
+                });
+                if (tail.length) {
+                    slides = slides.filter(function (slide) { return tail.indexOf(slide) === -1; }).concat(tail);
+                }
             }
             slides.forEach(function (slide, index) {
                 slide.setAttribute("aria-label", "Video " + (index + 1) + " of " + slides.length);
@@ -730,6 +742,13 @@
             if (event.key === "ArrowLeft") { event.preventDefault(); setSlide(current - 1); }
             if (event.key === "ArrowRight") { event.preventDefault(); setSlide(current + 1); }
         });
+        function reorderForLanguage() {
+            arrangeSlides();
+            setSlide(0);
+            applyEmbedLanguage();
+        }
+        window.addEventListener("site-locale-change", reorderForLanguage);
+        window.addEventListener("y1-locale-change", reorderForLanguage);
         arrangeSlides();
         setSlide(0);
     }
