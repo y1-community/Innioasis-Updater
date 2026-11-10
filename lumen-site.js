@@ -44,6 +44,35 @@
         return "";
     }
 
+    /* Maintenance detail stays off the public page. Two presses of D within a
+       second turn diagnostics on for the session, so a maintainer can read why
+       a project is missing without leaking repository names to everyone else.
+       Developer documentation keeps its repository examples regardless. */
+    var DEBUG_KEY = "innioasis-debug";
+    function isDebugMode() {
+        try { return window.sessionStorage.getItem(DEBUG_KEY) === "1"; } catch (_) { return false; }
+    }
+    function applyDebugMode() {
+        if (document.documentElement) {
+            document.documentElement.setAttribute("data-debug", isDebugMode() ? "1" : "0");
+        }
+    }
+    var lastDebugKey = 0;
+    document.addEventListener("keydown", function (event) {
+        if (event.key !== "d" && event.key !== "D") return;
+        var target = event.target;
+        var tag = (target && target.tagName) || "";
+        if (/^(INPUT|TEXTAREA|SELECT)$/.test(tag) || (target && target.isContentEditable)) return;
+        var now = Date.now();
+        if (now - lastDebugKey > 1200) { lastDebugKey = now; return; }
+        lastDebugKey = 0;
+        var next = !isDebugMode();
+        try { window.sessionStorage.setItem(DEBUG_KEY, next ? "1" : "0"); } catch (_) {}
+        applyDebugMode();
+        window.dispatchEvent(new CustomEvent("innioasis:debug", { detail: { on: next } }));
+    });
+    applyDebugMode();
+
     function zipAssets(release, model) {
         if (!release || !Array.isArray(release.assets)) return [];
         var wanted = String(model || "").toUpperCase();
@@ -2322,10 +2351,28 @@
 
         /* A manifest entry can have nothing to install: the repository is new,
            or its releases carry no ROM ZIP. The picker hides those projects,
-           so the page names them and the reason, rather than leaving a reader
-           to wonder where a listed project went. */
+           which is all a visitor needs; with diagnostics on (D twice) the page
+           also names why, including the repository, for whoever is debugging. */
+        window.addEventListener("innioasis:debug", function () {
+            if (!isDebugMode() && unavailableSlot) {
+                unavailableSlot.hidden = true;
+                unavailableSlot.innerHTML = "";
+                return;
+            }
+            renderUnavailable();
+        });
         var unavailableSlot = null;
         function renderUnavailable() {
+            /* The picker already leaves out projects that cannot install on
+               this model, type and brand, so the table simply does not list
+               them. This panel is maintenance detail, not public copy. */
+            if (!isDebugMode()) {
+                if (unavailableSlot) {
+                    unavailableSlot.hidden = true;
+                    unavailableSlot.innerHTML = "";
+                }
+                return;
+            }
             if (!table || !table.parentNode || !table.parentNode.parentNode) return;
             if (!unavailableSlot) {
                 unavailableSlot = document.createElement("div");
