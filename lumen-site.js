@@ -1916,6 +1916,17 @@
             });
             typeSelect.value = wanted;
         }
+        /* ?type=A|B preselects the hardware type on a model that has more than
+           one, so a shared Type B link lands on the Type B list instead of
+           quietly keeping Type A. */
+        function applyTypeParam() {
+            if (!typeSelect || !typeParam) return;
+            var types = typesForModel(model ? model.value : "");
+            if (types.indexOf(typeParam) === -1) return;
+            if (typeSelect.value === typeParam) return;
+            typeSelect.value = typeParam;
+            syncTypeField();
+        }
         syncTypeField();
 
         var availableModels = Array.prototype.map.call(model ? model.options : [], function (option) { return option.value; });
@@ -1937,6 +1948,7 @@
                 if (filterSection && !wantedModel) window.setTimeout(function () { filterSection.scrollIntoView({ block: "start" }); }, 0);
             }
         }
+        applyTypeParam();
         /* Original Software is the default software filter for the page. */
         function originalSlug() {
             var curModel = model ? model.value : "Y1";
