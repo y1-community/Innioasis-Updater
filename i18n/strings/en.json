@@ -1,16 +1,16 @@
 {
- "generated": "2026-11-10T18:38:11+00:00",
+ "generated": "2026-11-10T19:24:17+00:00",
  "tiers": [
   "core",
   "full"
  ],
- "pages": 1629,
- "occurrences": 183003,
- "count": 84053,
+ "pages": 1634,
+ "occurrences": 183108,
+ "count": 84125,
  "strings": {
   "Skip to content": {
-   "n": 1387,
-   "pages": 1387
+   "n": 1388,
+   "pages": 1388
   },
   "Innioasis Updater": {
    "n": 1121,
@@ -106,8 +106,8 @@
    "script": true
   },
   "and": {
-   "n": 724,
-   "pages": 285
+   "n": 727,
+   "pages": 286
   },
   "Y1": {
    "n": 287,
@@ -140,7 +140,7 @@
    "pages": 197
   },
   "Original Software": {
-   "n": 310,
+   "n": 311,
    "pages": 196,
    "script": true
   },
@@ -264,12 +264,12 @@
    "pages": 127,
    "script": true
   },
-  "Solar": {
-   "n": 135,
-   "pages": 120
-  },
   "recovery guide": {
-   "n": 120,
+   "n": 122,
+   "pages": 122
+  },
+  "Solar": {
+   "n": 136,
    "pages": 120
   },
   "> **Historical record.** The dates, candidate identity, \"current\" claims, > next steps and permissions below belong to this recorded boundary. See > [current state](../CURRENT_PLATFORM_STATE.md) for the latest physically observed result.": {
@@ -346,6 +346,10 @@
    "n": 99,
    "pages": 98
   },
+  "Recovery guide": {
+   "n": 98,
+   "pages": 98
+  },
   "Y2Linux 1.0 Beta 9.3.15": {
    "n": 98,
    "pages": 98
@@ -358,17 +362,13 @@
    "n": 98,
    "pages": 98
   },
-  "thesolarproject/solar": {
-   "n": 193,
-   "pages": 97
-  },
-  "Recovery guide": {
-   "n": 97,
-   "pages": 97
-  },
   "and the": {
    "n": 97,
    "pages": 97
+  },
+  "thesolarproject/solar": {
+   "n": 192,
+   "pages": 96
   },
   "Firmware release notes · Reborn (Y2Linux) · Y2": {
    "n": 96,
@@ -959,10 +959,6 @@
    "n": 192,
    "pages": 64
   },
-  "ismileblue/y1_launcher": {
-   "n": 128,
-   "pages": 64
-  },
   "Headphone output": {
    "n": 65,
    "pages": 64
@@ -1006,6 +1002,10 @@
   "from Innioasis (only this version works; it is also your way back to stock).": {
    "n": 64,
    "pages": 64
+  },
+  "ismileblue/y1_launcher": {
+   "n": 127,
+   "pages": 63
   },
   "JJ Launcher ROM v0.10.1": {
    "n": 64,
@@ -1515,7 +1515,7 @@
    "pages": 40
   },
   "Rockbox": {
-   "n": 54,
+   "n": 55,
    "pages": 39
   },
   "Why": {
@@ -1724,7 +1724,7 @@
    "pages": 32
   },
   "JJ Launcher": {
-   "n": 46,
+   "n": 47,
    "pages": 31
   },
   ", Y2Reborn": {
@@ -1851,7 +1851,7 @@
    "pages": 29
   },
   "Inniclassic": {
-   "n": 41,
+   "n": 42,
    "pages": 29
   },
   "Validation": {
@@ -1960,7 +1960,7 @@
    "pages": 27
   },
   "Rondo": {
-   "n": 35,
+   "n": 36,
    "pages": 27
   },
   "Bytes": {
@@ -2364,12 +2364,20 @@
    "n": 24,
    "pages": 24
   },
+  "G1": {
+   "n": 35,
+   "pages": 23
+  },
+  "G3": {
+   "n": 35,
+   "pages": 23
+  },
   "Use": {
    "n": 33,
    "pages": 23
   },
   "Y2Player": {
-   "n": 31,
+   "n": 32,
    "pages": 23
   },
   "Q5": {
@@ -2405,24 +2413,16 @@
    "n": 35,
    "pages": 22
   },
-  "G1": {
-   "n": 34,
-   "pages": 22
-  },
-  "G3": {
-   "n": 34,
-   "pages": 22
-  },
   "Field": {
    "n": 32,
    "pages": 22
   },
   "Better-Y": {
-   "n": 30,
+   "n": 31,
    "pages": 22
   },
   "Koensayr": {
-   "n": 30,
+   "n": 31,
    "pages": 22
   },
   "A Y1 custom Software maintained by the community.": {
@@ -2500,7 +2500,7 @@
    "pages": 21
   },
   "Reborn (Y2Linux)": {
-   "n": 28,
+   "n": 29,
    "pages": 21
   },
   ", then": {
@@ -2595,6 +2595,10 @@
   },
   "Now Playing": {
    "n": 27,
+   "pages": 20
+  },
+  ". The": {
+   "n": 23,
    "pages": 20
   },
   "Music": {
@@ -2722,11 +2726,7 @@
    "pages": 19
   },
   "Linux for Y1 (Dev)": {
-   "n": 26,
-   "pages": 19
-  },
-  ". The": {
-   "n": 22,
+   "n": 27,
    "pages": 19
   },
   "Play/Pause": {
@@ -2918,10 +2918,6 @@
    "pages": 16
   },
   "Value": {
-   "n": 26,
-   "pages": 16
-  },
-  "schulzcode/Y2Player": {
    "n": 26,
    "pages": 16
   },
@@ -3142,10 +3138,6 @@
    "n": 16,
    "pages": 16
   },
-  "Source:": {
-   "n": 16,
-   "pages": 16
-  },
   "The fast copy path has not yet been tested with the cable pulled mid-copy, across sleep, or with Windows Explorer.": {
    "n": 16,
    "pages": 16
@@ -3184,6 +3176,10 @@
   },
   "Sleep timer": {
    "n": 26,
+   "pages": 15
+  },
+  "schulzcode/Y2Player": {
+   "n": 25,
    "pages": 15
   },
   "Q3": {
@@ -3242,11 +3238,11 @@
    "n": 18,
    "pages": 15
   },
-  "jarvissax/rondo": {
-   "n": 18,
+  "Build": {
+   "n": 17,
    "pages": 15
   },
-  "Build": {
+  "R1": {
    "n": 17,
    "pages": 15
   },
@@ -3315,8 +3311,8 @@
    "n": 18,
    "pages": 14
   },
-  "R1": {
-   "n": 16,
+  "jarvissax/rondo": {
+   "n": 17,
    "pages": 14
   },
   "shows": {
@@ -3462,6 +3458,14 @@
    "n": 23,
    "pages": 13
   },
+  "Innioasis / Timmkoo Q3": {
+   "n": 20,
+   "pages": 13
+  },
+  "Innioasis / Timmkoo Q5": {
+   "n": 20,
+   "pages": 13
+  },
   "MX2-ES_Q5-WV5.02-20250619": {
    "n": 20,
    "pages": 13
@@ -3491,6 +3495,10 @@
    "n": 15,
    "pages": 13,
    "script": true
+  },
+  "G5": {
+   "n": 15,
+   "pages": 13
   },
   "Linux development build for Innioasis Y1.": {
    "n": 15,
@@ -3651,14 +3659,6 @@
    "n": 19,
    "pages": 12
   },
-  "Innioasis / Timmkoo Q3": {
-   "n": 19,
-   "pages": 12
-  },
-  "Innioasis / Timmkoo Q5": {
-   "n": 19,
-   "pages": 12
-  },
   "Innioasis SR1": {
    "n": 19,
    "pages": 12
@@ -3687,10 +3687,6 @@
    "n": 14,
    "pages": 12
   },
-  "G5": {
-   "n": 14,
-   "pages": 12
-  },
   "Lithium 5 Kernel Beta v0.06.04.25": {
    "n": 14,
    "pages": 12
@@ -3699,7 +3695,15 @@
    "n": 14,
    "pages": 12
   },
+  "PR1": {
+   "n": 14,
+   "pages": 12
+  },
   "Playlists": {
+   "n": 14,
+   "pages": 12
+  },
+  "SR1": {
    "n": 14,
    "pages": 12
   },
@@ -3825,6 +3829,10 @@
    "pages": 12
   },
   "Identity": {
+   "n": 12,
+   "pages": 12
+  },
+  "In Updater CE and the firmware archive:": {
    "n": 12,
    "pages": 12
   },
@@ -3995,18 +4003,6 @@
    "n": 16,
    "pages": 11
   },
-  "ryan-specter/koensayr-auto": {
-   "n": 14,
-   "pages": 11
-  },
-  "PR1": {
-   "n": 13,
-   "pages": 11
-  },
-  "SR1": {
-   "n": 13,
-   "pages": 11
-  },
   "A headphone profile still uses some extra processor time while it plays; its effect on battery life has not been measured yet.": {
    "n": 11,
    "pages": 11
@@ -4156,6 +4152,14 @@
    "pages": 10
   },
   "Reborn:": {
+   "n": 13,
+   "pages": 10
+  },
+  "Updater CE": {
+   "n": 13,
+   "pages": 10
+  },
+  "ryan-specter/koensayr-auto": {
    "n": 13,
    "pages": 10
   },
@@ -4593,6 +4597,10 @@
    "n": 10,
    "pages": 10
   },
+  "Q3E": {
+   "n": 10,
+   "pages": 10
+  },
   "Recording": {
    "n": 10,
    "pages": 10
@@ -4966,10 +4974,6 @@
    "n": 13,
    "pages": 9
   },
-  "Updater CE": {
-   "n": 12,
-   "pages": 9
-  },
   "Community firmware package for the Q3E.": {
    "n": 11,
    "pages": 9
@@ -5043,10 +5047,6 @@
    "pages": 9
   },
   "Owner checks after the flash": {
-   "n": 9,
-   "pages": 9
-  },
-  "Q3E": {
    "n": 9,
    "pages": 9
   },
@@ -5393,6 +5393,10 @@
    "n": 8,
    "pages": 8
   },
+  "Use the": {
+   "n": 8,
+   "pages": 8
+  },
   "Your model's manual": {
    "n": 8,
    "pages": 8
@@ -5653,7 +5657,15 @@
    "n": 7,
    "pages": 7
   },
+  "A5": {
+   "n": 7,
+   "pages": 7
+  },
   "After the restore": {
+   "n": 7,
+   "pages": 7
+  },
+  "Android 4.2 (Dev)": {
    "n": 7,
    "pages": 7
   },
@@ -5870,10 +5882,6 @@
    "pages": 7
   },
   "Updater never sees the player": {
-   "n": 7,
-   "pages": 7
-  },
-  "Use the": {
    "n": 7,
    "pages": 7
   },
@@ -6305,10 +6313,6 @@
    "n": 6,
    "pages": 6
   },
-  "A5": {
-   "n": 6,
-   "pages": 6
-  },
   "Acceptance criteria": {
    "n": 6,
    "pages": 6
@@ -6338,10 +6342,6 @@
    "pages": 6
   },
   "All Solar platforms": {
-   "n": 6,
-   "pages": 6
-  },
-  "Android 4.2 (Dev)": {
    "n": 6,
    "pages": 6
   },
@@ -6468,6 +6468,10 @@
    "pages": 6
   },
   "Firmware release notes · Original Software · Q5": {
+   "n": 6,
+   "pages": 6
+  },
+  "For developers": {
    "n": 6,
    "pages": 6
   },
@@ -7572,6 +7576,11 @@
    "pages": 5,
    "script": true
   },
+  "Themes Gallery": {
+   "n": 6,
+   "pages": 5,
+   "script": true
+  },
   "USB:": {
    "n": 6,
    "pages": 5
@@ -8011,10 +8020,6 @@
    "pages": 5
   },
   "Fixed four Bluetooth issues on the Y2:": {
-   "n": 5,
-   "pages": 5
-  },
-  "For developers": {
    "n": 5,
    "pages": 5
   },
@@ -9171,11 +9176,6 @@
   "TARGET:": {
    "n": 5,
    "pages": 4
-  },
-  "Themes Gallery": {
-   "n": 5,
-   "pages": 4,
-   "script": true
   },
   "Using Rondo": {
    "n": 5,
@@ -10460,6 +10460,10 @@
    "n": 4,
    "pages": 4
   },
+  "Models": {
+   "n": 4,
+   "pages": 4
+  },
   "Multi-language Support:": {
    "n": 4,
    "pages": 4
@@ -10897,6 +10901,10 @@
    "pages": 4
   },
   "Sound": {
+   "n": 4,
+   "pages": 4
+  },
+  "Source:": {
    "n": 4,
    "pages": 4
   },
@@ -12163,10 +12171,6 @@
    "pages": 3
   },
   "Implementation": {
-   "n": 5,
-   "pages": 3
-  },
-  "Leska1337/better-Y": {
    "n": 5,
    "pages": 3
   },
@@ -14561,10 +14565,6 @@
    "pages": 3
   },
   "Method 1: Innioasis Updater (recommended)": {
-   "n": 3,
-   "pages": 3
-  },
-  "Models": {
    "n": 3,
    "pages": 3
   },
@@ -18250,6 +18250,10 @@
    "n": 4,
    "pages": 2
   },
+  "Leska1337/better-Y": {
+   "n": 4,
+   "pages": 2
+  },
   "Linux 6.18 boot-fundamentals audit <!-- knowledge-base-scope: retained-research-/-scoped-evidence -- Historical record. The dates, candidate identity,": {
    "n": 4,
    "pages": 2
@@ -20810,10 +20814,6 @@
    "pages": 2
   },
   "worktrees. Read-only device admission under": {
-   "n": 3,
-   "pages": 2
-  },
-  "y1-community/y1-linux-rom": {
    "n": 3,
    "pages": 2
   },
@@ -25038,6 +25038,10 @@
    "n": 2,
    "pages": 2
   },
+  "D1": {
+   "n": 2,
+   "pages": 2
+  },
   "D13": {
    "n": 2,
    "pages": 2
@@ -26696,6 +26700,10 @@
    "pages": 2
   },
   "Install themes using Updater CE or copy them to the": {
+   "n": 2,
+   "pages": 2
+  },
+  "Install with": {
    "n": 2,
    "pages": 2
   },
@@ -29104,6 +29112,10 @@
    "pages": 2
   },
   "Q5 manual": {
+   "n": 2,
+   "pages": 2
+  },
+  "Q8": {
    "n": 2,
    "pages": 2
   },
@@ -32017,6 +32029,10 @@
    "n": 2,
    "pages": 2
   },
+  "Y1 firmware": {
+   "n": 2,
+   "pages": 2
+  },
   "Y1 restore": {
    "n": 2,
    "pages": 2
@@ -32030,6 +32046,10 @@
    "pages": 2
   },
   "Y1:": {
+   "n": 2,
+   "pages": 2
+  },
+  "Y2 firmware": {
    "n": 2,
    "pages": 2
   },
@@ -34819,6 +34839,10 @@
    "pages": 2
   },
   "type-b-base": {
+   "n": 2,
+   "pages": 2
+  },
+  "unbrick page": {
    "n": 2,
    "pages": 2
   },
@@ -49205,7 +49229,15 @@
    "n": 2,
    "pages": 1
   },
+  "Innioasis Y1 firmware, update and Rockbox": {
+   "n": 2,
+   "pages": 1
+  },
   "Innioasis Y1 manual: controls, music, Bluetooth and reset": {
+   "n": 2,
+   "pages": 1
+  },
+  "Innioasis Y2 firmware, update and themes": {
    "n": 2,
    "pages": 1
   },
@@ -50656,6 +50688,11 @@
    "n": 2,
    "pages": 1
   },
+  "Unbrick an Innioasis Y1 or Y2": {
+   "n": 2,
+   "pages": 1,
+   "script": true
+  },
   "Unsealed candidate directory; no manifest source/image identity or physical acceptance inferred.": {
    "n": 2,
    "pages": 1
@@ -50845,6 +50882,10 @@
    "pages": 1
   },
   "Y2 suspend power optimization (POWER-FINAL-05 campaign)": {
+   "n": 2,
+   "pages": 1
+  },
+  "Y2 themes": {
    "n": 2,
    "pages": 1
   },
@@ -51949,6 +51990,10 @@
    "pages": 1
   },
   "y1-community/y1-ata-rom": {
+   "n": 2,
+   "pages": 1
+  },
+  "y1-community/y1-linux-rom": {
    "n": 2,
    "pages": 1
   },
@@ -67704,6 +67749,10 @@
    "n": 1,
    "pages": 1
   },
+  ") instead of the Qt SP Flash Tool window. SP Flash Tool remains the Linux x86_64 tool.": {
+   "n": 1,
+   "pages": 1
+  },
   ") into": {
    "n": 1,
    "pages": 1
@@ -77252,6 +77301,10 @@
    "n": 1,
    "pages": 1
   },
+  ", also served at": {
+   "n": 1,
+   "pages": 1
+  },
   ", also taint 0. Retained SRAM stops at DEVICES_RESUMING, wake 0x20, full PCM 596 and reset stamp 0x59325253, with no complete/exit mark:": {
    "n": 1,
    "pages": 1
@@ -80521,6 +80574,10 @@
    "pages": 1
   },
   ", is packaged at": {
+   "n": 1,
+   "pages": 1
+  },
+  ", is the Linux text session for a headless machine or a 32-bit Intel or ARM board. It does not install the Qt window. On those machines, and whenever there is no display, the session says so and uses MTKclient (": {
    "n": 1,
    "pages": 1
   },
@@ -89656,6 +89713,10 @@
    "n": 1,
    "pages": 1
   },
+  ". Choose the model first, then the software, then a stable release.": {
+   "n": 1,
+   "pages": 1
+  },
   ". Clean acquisition also still requires the FFmpeg archive preseeded before the adapter runs.": {
    "n": 1,
    "pages": 1
@@ -93588,6 +93649,10 @@
    "n": 1,
    "pages": 1
   },
+  ". Owners often call that an unbrick. The": {
+   "n": 1,
+   "pages": 1
+  },
   ". Owning subsystem: platform CLI dispatch. This is independent of physical sensor health.": {
    "n": 1,
    "pages": 1
@@ -93669,6 +93734,10 @@
    "pages": 1
   },
   ". Pending hardware validation on a subscription-class CT.": {
+   "n": 1,
+   "pages": 1
+  },
+  ". People also call them Y1 skins. Rockbox themes are": {
    "n": 1,
    "pages": 1
   },
@@ -96457,6 +96526,10 @@
    "pages": 1
   },
   ". Their results are summarised in the table above and in": {
+   "n": 1,
+   "pages": 1
+  },
+  ". Their themes are a different download, on": {
    "n": 1,
    "pages": 1
   },
@@ -118436,6 +118509,10 @@
    "n": 1,
    "pages": 1
   },
+  "A component that is already inside the AppImage, the tarball, the portable zip, or the user tool cache is not downloaded again. On a measured link above 60 Mbps the session prefetches the tools that session will need before the menu. At 60 Mbps or below, or if the probe fails, each file is fetched at the step that needs it, with progress. adb is fetched for a Rockbox step. On Linux x86_64 with a display, SP Flash Tool is fetched before the first install that needs it, then run with the same console arguments the window uses.": {
+   "n": 1,
+   "pages": 1
+  },
   "A comprehensive comparison between Innioasis Updater CE and the Innioasis Universal Flash Tool (Shared Flash Tool). Discover why creators recommend Innioasis Updater CE.": {
    "n": 1,
    "pages": 1
@@ -125857,6 +125934,10 @@
    "n": 1,
    "pages": 1
   },
+  "An unbrick is a restore. You put the Original Software for that exact model back on the player.": {
+   "n": 1,
+   "pages": 1
+  },
   "An unchanged 9,178-file library fell from 42.106 to 19.070 seconds.": {
    "n": 1,
    "pages": 1
@@ -129498,6 +129579,10 @@
    "n": 1,
    "pages": 1
   },
+  "Back to the developer guide": {
+   "n": 1,
+   "pages": 1
+  },
   "Back up any important files from the Y2.": {
    "n": 1,
    "pages": 1
@@ -130563,6 +130648,10 @@
    "pages": 1
   },
   "Before the first session": {
+   "n": 1,
+   "pages": 1
+  },
+  "Before the restore": {
    "n": 1,
    "pages": 1
   },
@@ -139627,6 +139716,10 @@
    "n": 1,
    "pages": 1
   },
+  "Charge it, then try the steps in the": {
+   "n": 1,
+   "pages": 1
+  },
   "Charge it.": {
    "n": 1,
    "pages": 1
@@ -139660,6 +139753,10 @@
    "pages": 1
   },
   "Charge the player for 30 minutes with a known data cable.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Charge the player for half an hour with a cable you know can carry data. Hold the power button for about 15 seconds. If a computer then sees the player, Updater CE can install the stock package.": {
    "n": 1,
    "pages": 1
   },
@@ -146205,10 +146302,6 @@
    "n": 1,
    "pages": 1
   },
-  "D1": {
-   "n": 1,
-   "pages": 1
-  },
   "D1 / D1-CAVE": {
    "n": 1,
    "pages": 1
@@ -148702,6 +148795,10 @@
    "pages": 1
   },
   "Developer host logs / USB": {
+   "n": 1,
+   "pages": 1
+  },
+  "Developer notes for the Updater CE text session: --tui, --cli, and the streamed Linux lite installer. This is not a promoted download path.": {
    "n": 1,
    "pages": 1
   },
@@ -159018,10 +159115,6 @@
    "n": 1,
    "pages": 1
   },
-  "FabianZettl/inniclassic and ClassyPlayer/Classy": {
-   "n": 1,
-   "pages": 1
-  },
   "Fable analysis": {
    "n": 1,
    "pages": 1
@@ -160410,6 +160503,18 @@
    "n": 1,
    "pages": 1
   },
+  "Firmware and updates for Timmkoo and Innioasis players other than the theme gallery: Q3, Q5, Q8, G1, G3, G5, A5, D1, R1, PR1 and SR1. Install the matching package with Updater CE.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Firmware and updates for the Innioasis Y1, installed with Updater CE.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Firmware and updates for the Innioasis Y2, installed with Updater CE.": {
+   "n": 1,
+   "pages": 1
+  },
   "Firmware backed up": {
    "n": 1,
    "pages": 1
@@ -160447,6 +160552,10 @@
    "pages": 1
   },
   "Firmware for Innioasis Y2, Innioasis Y2 firmware, Y2 ROM download, Reborn Y2Linux, Y2Reborn, Y2 Rockbox, Y2 stock restore, Innioasis Updater CE, Firmware Archive": {
+   "n": 1,
+   "pages": 1
+  },
+  "Firmware for Timmkoo and the other Innioasis models, installed with Updater CE.": {
    "n": 1,
    "pages": 1
   },
@@ -169094,6 +169203,10 @@
    "n": 1,
    "pages": 1
   },
+  "How to open it": {
+   "n": 1,
+   "pages": 1
+  },
   "How to reset a broken theme": {
    "n": 1,
    "pages": 1
@@ -170602,7 +170715,15 @@
    "n": 1,
    "pages": 1
   },
+  "If the Y1 will not start": {
+   "n": 1,
+   "pages": 1
+  },
   "If the Y2 line is missing, Y2 users will not get a model-matched entry even when": {
+   "n": 1,
+   "pages": 1
+  },
+  "If the Y2 will not start": {
    "n": 1,
    "pages": 1
   },
@@ -173123,7 +173244,20 @@
    "n": 1,
    "pages": 1
   },
+  "Innioasis Y1 firmware": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Innioasis Y1 firmware and updates: Original Software, Better-Y, Koensayr, Solar and Rockbox. Install them with Updater CE. Themes and skins are in the gallery.": {
+   "n": 1,
+   "pages": 1
+  },
   "Innioasis Y1 firmware patcher & research toolkit (MT6572 / Android 4.2.2)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Innioasis Y1 firmware, Innioasis Y1 update, Y1 firmware download, Innioasis Y1 Rockbox, Y1 original software, Y1 stock firmware": {
    "n": 1,
    "pages": 1
   },
@@ -173253,6 +173387,19 @@
    "pages": 1
   },
   "Innioasis Y2 factory reset guide": {
+   "n": 1,
+   "pages": 1
+  },
+  "Innioasis Y2 firmware": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Innioasis Y2 firmware and updates, including Original Software, Solar and Rockbox. Install them with Updater CE. Y2 themes use the same files as the Y1 gallery.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Innioasis Y2 firmware, Innioasis Y2 update, Y2 firmware download, Innioasis Y2 Rockbox, Y2 themes, Y2 stock firmware": {
    "n": 1,
    "pages": 1
   },
@@ -174797,10 +174944,6 @@
    "pages": 1
   },
   "Install whatever you prefer (within the appropriate range):": {
-   "n": 1,
-   "pages": 1
-  },
-  "Install with": {
    "n": 1,
    "pages": 1
   },
@@ -194853,6 +194996,14 @@
    "n": 1,
    "pages": 1
   },
+  "Open the Y1 archive": {
+   "n": 1,
+   "pages": 1
+  },
+  "Open the Y2 archive": {
+   "n": 1,
+   "pages": 1
+  },
   "Open the Y2Player guide": {
    "n": 1,
    "pages": 1
@@ -208702,10 +208853,6 @@
    "n": 1,
    "pages": 1
   },
-  "Q8": {
-   "n": 1,
-   "pages": 1
-  },
   "QEMU Cortex-A7 S24 bytes matching the live result.": {
    "n": 1,
    "pages": 1
@@ -215007,6 +215154,10 @@
    "pages": 1
   },
   "Recovery service support": {
+   "n": 1,
+   "pages": 1
+  },
+  "Recovery steps when an Innioasis Y1 or Y2 will not start.": {
    "n": 1,
    "pages": 1
   },
@@ -224047,10 +224198,6 @@
    "pages": 1
   },
   "Schema/user_version 1 preserved; additive metadata_revision=0 migration and revision 2 reuse policy compose into TEMP scanner.": {
-   "n": 1,
-   "pages": 1
-  },
-  "SchulzCode/Y2Linux": {
    "n": 1,
    "pages": 1
   },
@@ -233373,6 +233520,10 @@
    "n": 1,
    "pages": 1
   },
+  "Streamed Linux installer": {
+   "n": 1,
+   "pages": 1
+  },
   "Streaming / network demux / DRM media / video playback": {
    "n": 1,
    "pages": 1
@@ -235482,6 +235633,10 @@
    "n": 1,
    "pages": 1
   },
+  "Terminal session for developers | Innioasis Updater CE": {
+   "n": 1,
+   "pages": 1
+  },
   "Terminal, Winamp and Paper showed cut corners inside their square frames. In a skin the cover is now square, and a skin that wants round corners rounds it itself (Bunny Bow). Winamp's cover is centred in its panel.": {
    "n": 1,
    "pages": 1
@@ -236834,6 +236989,10 @@
    "n": 1,
    "pages": 1
   },
+  "The Original Software is the stock system. A newer build of that is the usual update. Better-Y and Koensayr stay close to that system and keep its themes. Solar adds Wi-Fi and on-player downloads. Rockbox is a different system, with its own themes.": {
+   "n": 1,
+   "pages": 1
+  },
   "The PMIC write policy admits exactly these bits. A field already at stock is not written; a failed write undoes everything already written and sleep continues unchanged. The PMIC golden capture now runs after the VPROC and PMIC steps, so": {
    "n": 1,
    "pages": 1
@@ -237206,6 +237365,10 @@
    "n": 1,
    "pages": 1
   },
+  "The Y1 is the 4-inch touchscreen player. Updater CE installs the firmware. Pick the package that matches the model printed on the player.": {
+   "n": 1,
+   "pages": 1
+  },
   "The Y1 is too old to talk to YouTube directly: Android 4.2 can't handle today's YouTube pages, video formats or encryption. So a small server does that part. You run it with Docker at home or on a VPS, set it up from its admin page in the browser, connect your Y1 with a six-digit code, and optionally sign it in to your YouTube account. It keeps yt-dlp up to date by itself, its admin page tells you when something needs attention, and a new version of the server installs with one click there. One server serves one Y1. See": {
    "n": 1,
    "pages": 1
@@ -237279,6 +237442,10 @@
    "pages": 1
   },
   "The Y2 hosts use exactly 32 taps. SD tuning writes only its own field per sweep (no": {
+   "n": 1,
+   "pages": 1
+  },
+  "The Y2 is the compact player with buttons and a touchscreen. Updater CE installs the firmware that matches the model printed on the player.": {
    "n": 1,
    "pages": 1
   },
@@ -237527,6 +237694,10 @@
    "pages": 1
   },
   "The archive contains only the Y2 scatter, UBOOT, BOOTIMG, RECOVERY, LOGO, ANDROID, its signed update contract, and internal checksums. PRELOADER, partition-table images, SEC_RO, CACHE, USRDATA, and protected/runtime partitions are absent.": {
+   "n": 1,
+   "pages": 1
+  },
+  "The archive lists the Original Software, Solar, Rockbox and the other systems published for the Y2. An update is a newer build of the system you already run. Rockbox on the Y2 replaces that system and brings its own themes.": {
    "n": 1,
    "pages": 1
   },
@@ -240635,6 +240806,10 @@
    "pages": 1
   },
   "The model is the UI/session authority, but not yet the sole playback authority: the decode worker owns a copied upcoming-track list. This is actual architectural drift, not a second intentional queue service. UI navigation mutates AppModel directly while returning effects; this is not a fully pure reducer architecture, and need not become one. The useful boundary is that presentation does not own device/DB/decoder handles.": {
+   "n": 1,
+   "pages": 1
+  },
+  "The model printed on the player decides the file. A Y1 package will not restore a Y2, and a Timmkoo package will not restore either of them.": {
    "n": 1,
    "pages": 1
   },
@@ -243843,6 +244018,10 @@
    "n": 1,
    "pages": 1
   },
+  "The text session.": {
+   "n": 1,
+   "pages": 1
+  },
   "The third run uses this corrected host helper and the original owner observations bound to the unchanged boot. Natural parking is awaited through the real kernel coordinator; no secondary power, clock, frequency or topology guard is bypassed.": {
    "n": 1,
    "pages": 1
@@ -244383,6 +244562,14 @@
    "n": 1,
    "pages": 1
   },
+  "Themes for the Original Software and Solar are the same files as the Y1 themes. Browse them in the": {
+   "n": 1,
+   "pages": 1
+  },
+  "Themes for the Original Software, Better-Y, Koensayr and Solar are in the": {
+   "n": 1,
+   "pages": 1
+  },
   "Themes have been updated, see here:": {
    "n": 1,
    "pages": 1
@@ -244852,6 +245039,10 @@
    "pages": 1
   },
   "These paths work in this boot. Physical action order/label mapping and repeat/hold behavior are not separately qualified.": {
+   "n": 1,
+   "pages": 1
+  },
+  "These players do not use the Y1 and Y2 theme gallery. Their system updates are here, and the package has to match the model printed on the player.": {
    "n": 1,
    "pages": 1
   },
@@ -245551,6 +245742,10 @@
    "n": 1,
    "pages": 1
   },
+  "This page is for people working on Updater CE. It is not a promoted way to install the app. The AppImage, the tarball and the zip still open the window when they are started with no flag. The window's flashing path is unchanged.": {
+   "n": 1,
+   "pages": 1
+  },
   "This page prepares the single owner-controlled acceptance run of the": {
    "n": 1,
    "pages": 1
@@ -245869,6 +246064,10 @@
    "pages": 1
   },
   "Those are exactly the set bits of0xe07800. BTIF bit20 is retained in the eligibility mask; it was absent in this observation. USB, AFE, CONSYS, display and UART are not silently removed from an applicable mask/domain check. Clock status remains authoritative. Busy unowned engines retain their inherited gate and blocker; no DMA engine is reset to improve idle counters. Gate operations now share the bus transition lock. Exact bus value is restored on both entry failure and wake; readback failure disables SLIDLE and falls back to WFI.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Those two have their own pages:": {
    "n": 1,
    "pages": 1
   },
@@ -246409,6 +246608,23 @@
    "pages": 1
   },
   "Timmkoo and Innioasis Hardware Compatibility": {
+   "n": 1,
+   "pages": 1
+  },
+  "Timmkoo and Innioasis firmware": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Timmkoo and Innioasis firmware for Q3, Q5, G1 and the other models": {
+   "n": 1,
+   "pages": 1
+  },
+  "Timmkoo and other Innioasis firmware": {
+   "n": 1,
+   "pages": 1
+  },
+  "Timmkoo firmware, Timmkoo Q5 firmware, Timmkoo Q3 update, Innioasis G1 firmware, Innioasis A5 firmware, Innioasis Q5 firmware, Timmkoo Q8 update": {
    "n": 1,
    "pages": 1
   },
@@ -250094,6 +250310,14 @@
    "n": 1,
    "pages": 1
   },
+  "Unbrick a Y1 or Y2": {
+   "n": 1,
+   "pages": 1
+  },
+  "Unbrick an Innioasis Y1 or Y2 that will not start. Charge it, then restore the model-matched Original Software with Updater CE, or follow the recovery guide.": {
+   "n": 1,
+   "pages": 1
+  },
   "Unbuilt sleep-only retained breadcrumbs now bracket regcache map locking/sync and I2C clock, DMA, transfer and completion boundaries. Target is exact Y2 CS43131/controller; no new timeout, MMIO write, wake mask or polling. Root cause inside cache replay is still unknown. Next kernel must prove rails, playback restart, complete EXIT/restoration, actual residency and same-boot RTC/Power separately. Automatic sleep remains gated until those product checks pass.": {
    "n": 1,
    "pages": 1
@@ -251130,6 +251354,10 @@
    "n": 1,
    "pages": 1,
    "script": true
+  },
+  "Updater CE includes the manual recovery tools for that case. The recovery guide walks through them, including the driver on Windows and SP Flash Tool when the normal install cannot start.": {
+   "n": 1,
+   "pages": 1
   },
   "Updater CE install": {
    "n": 1,
@@ -255959,6 +256187,10 @@
    "n": 1,
    "pages": 1
   },
+  "When the computer does not see it": {
+   "n": 1,
+   "pages": 1
+  },
   "When the crystal needs the codec's power-off-and-on recovery, Reborn now waits for it (up to 5 s) instead of giving up after 2 s while the second attempt was still running.": {
    "n": 1,
    "pages": 1
@@ -256012,6 +256244,10 @@
    "pages": 1
   },
   "When those dependencies are resolved, build one integrated production candidate and provide all 26 owner-requested deployment fields: commit, controller/revision, firmware/license/hash/order, calibration/addresses, kernel/userspace/BlueZ/audio choices, capabilities/EDR/BLE/coexistence/PM, changed components, exact images and fallback hashes, preserving install steps and one-session acceptance plan. Then stop for the owner's manual SPFT/deployment. Assistant flashing remains prohibited. After the owner reports it running, execute one coherent session:": {
+   "n": 1,
+   "pages": 1
+  },
+  "When tools are downloaded": {
    "n": 1,
    "pages": 1
   },
@@ -256459,6 +256695,10 @@
    "pages": 1
   },
   "Which network is the player on?": {
+   "n": 1,
+   "pages": 1
+  },
+  "Which package": {
    "n": 1,
    "pages": 1
   },
@@ -258924,6 +259164,10 @@
    "n": 1,
    "pages": 1
   },
+  "Y1 and Y2": {
+   "n": 1,
+   "pages": 1
+  },
   "Y1 and Y2 packages are not interchangeable": {
    "n": 1,
    "pages": 1
@@ -259069,6 +259313,14 @@
    "pages": 1
   },
   "Y1 theme support — apply themes from the original Y1 software": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y1 themes and skins": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y1 update and stock firmware": {
    "n": 1,
    "pages": 1
   },
@@ -259577,6 +259829,10 @@
    "pages": 1
   },
   "Y2 theme guide": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2 update": {
    "n": 1,
    "pages": 1
   },
@@ -265557,6 +265813,10 @@
    "pages": 1
   },
   "a screen that stayed dark from power-on (seen once on an ST7701S player) is restarted by itself.": {
+   "n": 1,
+   "pages": 1
+  },
+  "a separate pack": {
    "n": 1,
    "pages": 1
   },
@@ -277436,6 +277696,10 @@
    "n": 1,
    "pages": 1
   },
+  "collects the same path for people searching for an unbrick.": {
+   "n": 1,
+   "pages": 1
+  },
   "collects the same sections for every topic). Reborn screen flow only; no kernel, platform code, hardware, memory or packaging scope change.": {
    "n": 1,
    "pages": 1
@@ -288308,6 +288572,10 @@
    "n": 1,
    "pages": 1
   },
+  "gallery. Rockbox themes stay with the Rockbox install.": {
+   "n": 1,
+   "pages": 1
+  },
   "gap": {
    "n": 1,
    "pages": 1
@@ -295449,6 +295717,10 @@
    "pages": 1
   },
   "is the next read-only MAC, digital PHY and DMA-control observation. USB initialization/logging remains blocked; earlier pending-clock statements describe historical checkpoints.": {
+   "n": 1,
+   "pages": 1
+  },
+  "is the non-interactive command path. Windows, macOS and Linux use the same entry. Windows has no curses in the standard library, so it uses numbered prompts; a terminal that reports mouse clicks still selects a row.": {
    "n": 1,
    "pages": 1
   },
@@ -304724,6 +304996,10 @@
    "n": 1,
    "pages": 1
   },
+  "opens Select Software in the terminal: Brand, Model, Type, Software, the release list, notes, Install, Install from a file, Settings, Support, Language and Credits. A mouse click and the keyboard both complete that journey.": {
+   "n": 1,
+   "pages": 1
+  },
   "opens every path directly.": {
    "n": 1,
    "pages": 1
@@ -308197,6 +308473,10 @@
    "pages": 1
   },
   "points at the per-channel stash struct and": {
+   "n": 1,
+   "pages": 1
+  },
+  "points at the same recovery files for the Y1.": {
    "n": 1,
    "pages": 1
   },
@@ -314617,10 +314897,6 @@
    "pages": 1
   },
   "rockbox-y1": {
-   "n": 1,
-   "pages": 1
-  },
-  "rockbox-y1/rockbox and spycemagic/y2-rockbox": {
    "n": 1,
    "pages": 1
   },
@@ -322848,6 +323124,10 @@
    "n": 1,
    "pages": 1
   },
+  "themes.innioasis.app": {
+   "n": 1,
+   "pages": 1
+  },
   "themselves after the restart. The listening checks with AirPods (skips, seeks, song ends, pauses, radio) are next; if anything sounds wrong on your headphones, please send an error report right after it happens.": {
    "n": 1,
    "pages": 1
@@ -324794,6 +325074,10 @@
    "pages": 1
   },
   "unavailable; prior zero sentinel normalized to null, never a NAND wear or zero-write claim.": {
+   "n": 1,
+   "pages": 1
+  },
+  "unbrick Innioasis Y1, unbrick Innioasis Y2, Y1 recovery, Y2 recovery, Innioasis Y1 won't turn on, Innioasis stuck on logo": {
    "n": 1,
    "pages": 1
   },
@@ -329326,14 +329610,6 @@
    "pages": 1
   },
   "y 40, 20 px": {
-   "n": 1,
-   "pages": 1
-  },
-  "y1-community ATA ROM projects": {
-   "n": 1,
-   "pages": 1
-  },
-  "y1-community stock firmware archive": {
    "n": 1,
    "pages": 1
   },
@@ -334813,6 +335089,16 @@
    "pages": 78,
    "script": true
   },
+  "Firmware and updates for the Innioasis Y1.": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Firmware and updates for the Innioasis Y2.": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Firmware downloads for the Innioasis Y1, including stock software and custom builds.": {
    "n": 1,
    "pages": 42,
@@ -334821,6 +335107,11 @@
   "Firmware downloads for the Innioasis Y2, including stock software and custom builds.": {
    "n": 1,
    "pages": 42,
+   "script": true
+  },
+  "Firmware for Timmkoo and the other Innioasis models.": {
+   "n": 1,
+   "pages": 1,
    "script": true
   },
   "Firmware list - every Innioasis and Timmkoo release": {
@@ -336576,6 +336867,11 @@
   "Restore Timmkoo SR1": {
    "n": 1,
    "pages": 17,
+   "script": true
+  },
+  "Restore a Y1 or Y2 that will not start.": {
+   "n": 1,
+   "pages": 1,
    "script": true
   },
   "Restore with Original Software for Y1 if needed.": {

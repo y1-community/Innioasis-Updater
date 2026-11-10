@@ -7209,6 +7209,12 @@
    "rockbox-y2/update.html",
    "rockbox-y2/vs-stock.html"
   ],
+  "Firmware and updates for the Innioasis Y1.": [
+   "y1-firmware.html"
+  ],
+  "Firmware and updates for the Innioasis Y2.": [
+   "y2-firmware.html"
+  ],
   "Firmware archive": [
    "firmware-list.html",
    "firmware-list_ar.html",
@@ -7341,6 +7347,9 @@
    "firmware-y2_zh-cn.html",
    "firmware-y2_zh-tw.html",
    "firmware-y2_zh.html"
+  ],
+  "Firmware for Timmkoo and the other Innioasis models.": [
+   "timmkoo-firmware.html"
   ],
   "Firmware list": [
    "firmware-list.html",
@@ -11492,6 +11501,9 @@
    "guides/factory-reset-y1_zh-CN.html",
    "guides/factory-reset-y1_zh-TW.html"
   ],
+  "Innioasis Y1 firmware": [
+   "y1-firmware.html"
+  ],
   "Innioasis Y1 manual": [
    "guides/factory-reset-y1.html",
    "guides/factory-reset-y1_ar.html",
@@ -11630,6 +11642,9 @@
    "guides/factory-reset-y2_uk.html",
    "guides/factory-reset-y2_zh-CN.html",
    "guides/factory-reset-y2_zh-TW.html"
+  ],
+  "Innioasis Y2 firmware": [
+   "y2-firmware.html"
   ],
   "Innioasis Y2 manual": [
    "guides/factory-reset-y2.html",
@@ -19932,6 +19947,9 @@
    "guides/restore-original-sr1_zh-CN.html",
    "guides/restore-original-sr1_zh-TW.html"
   ],
+  "Restore a Y1 or Y2 that will not start.": [
+   "unbrick.html"
+  ],
   "Restore with Original Software for Y1 if needed.": [
    "guides/jj-launcher-y1.html",
    "guides/jj-launcher-y1_ar.html",
@@ -24934,6 +24952,9 @@
   "Timmkoo SR1 player manual": [
    "manuals/sr1.html"
   ],
+  "Timmkoo and Innioasis firmware": [
+   "timmkoo-firmware.html"
+  ],
   "Timmkoo firmware": [
    "nav.js"
   ],
@@ -25463,6 +25484,9 @@
    "sp-flash-tool_zh-tw.html",
    "sp-flash-tool_zh.html",
    "windows-legacy.html"
+  ],
+  "Unbrick an Innioasis Y1 or Y2": [
+   "unbrick.html"
   ],
   "Under": [
    "lumen-site.js"
