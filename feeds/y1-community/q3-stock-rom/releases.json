@@ -34,7 +34,9 @@
         "updated_at": "2026-11-05T06:33:26Z",
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom/releases/assets/712346082"
       }
-    ]
+    ],
+    "mirror_downloads": 13,
+    "downloads": 26
   },
   {
     "id": 434855358,
@@ -71,7 +73,9 @@
         "updated_at": "2026-11-05T06:32:54Z",
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom/releases/assets/712344894"
       }
-    ]
+    ],
+    "mirror_downloads": 9,
+    "downloads": 17
   },
   {
     "id": 434855021,
@@ -91,7 +95,7 @@
         "name": "rom_q3.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom/releases/download/MX2-ES-WV4.01-20250619/rom_q3.zip",
         "size": 282112139,
-        "download_count": 10,
+        "download_count": 11,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T06:31:55Z",
         "updated_at": "2026-11-05T06:32:23Z",
@@ -108,6 +112,8 @@
         "updated_at": "2026-11-05T06:32:24Z",
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom/releases/assets/712344035"
       }
-    ]
+    ],
+    "mirror_downloads": 5,
+    "downloads": 16
   }
 ]

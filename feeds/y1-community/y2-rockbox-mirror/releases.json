@@ -3,7 +3,7 @@
     "id": 432886780,
     "tag_name": "v0.2.5-beta",
     "name": "Portable Flashing Package: V2.5",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=spycemagic%2Fy2-rockbox&amp;tag=v0.2.5-beta#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y2 \u00b7 Stock - portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# Rockbox Y2 V2.5\n\nV2.5 updates the Y2 dual-boot firmware to the official Innioasis **Stock 3.2FM**\nbaseline while retaining Rockbox and Stock boot routes.\n\n## What changed from V2\n\n- Stock mode is updated to version `3.2` from the 3.2FM firmware release.\n- Clean installs default to MacClassic-Dark with a black Rockbox title screen.\n- Boot presentation and route handoff were requalified to prevent persistent\n  upper-screen artifacts.\n- The Community Updater asset is now a complete 3.2FM-based full-ROM package,\n  compatible with the public updater's clean-install route.\n\n## Qualified V2.5 behavior\n\nThe five V2.5 firmware images have passed the full hands-on matrix on macOS and\nWindows:\n\n- Clean, responsive Rockbox root in about 28 seconds on normal cold boots.\n- Clean dark Rockbox title with no persistent upper artifacts.\n- Automatic screen timeout, centre wake, and power-button sleep/wake.\n- USB-storage mount, safe eject, clean return, and foreground retention.\n- Boot Settings switching between Rockbox and Stock.\n- Responsive Stock root reporting version `3.2` from Stock 3.2FM.\n- No microSD card required for installation or normal boot testing.\n\nThe exact public full-ROM archive passed clean Stock 3.2FM installation and the\ncomplete functional matrix on both macOS and Windows.\n\n## Exact public candidate\n\n| Asset | Bytes | SHA-256 |\n|---|---:|---|\n| `rom_y2.zip` | 361,644,736 | `bbdd139a9a52f90570ef04dec4aeb143a361a1d28a90f7be6d37d44c554bee9a` |\n\nThis archive contains the complete official Stock 3.2FM support set. UBOOT,\nBOOTIMG, RECOVERY, LOGO, and ANDROID are the exact V2.5 images already qualified\non both platforms. MBR, EBR1, EBR2, preloader, SEC_RO, cache, userdata, and the\nscatter remain byte-identical to the official 3.2FM baseline.\n\n## Important installation behavior\n\nV2.5 performs a clean full installation and erases internal user data. Back up\nfirst. On macOS, public Updater CE hands the install to the Innioasis Y2 Install\nTool. On Windows, Updater CE uses its full Y2 installation route. Follow every\nconnection prompt and wait for an explicit completion message.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"rom_y2-linux.zip\",\"platform\":\"linux\",\"sha256\":\"50f08ff4d77926edcf7a078595752cf3ec4ece04bc6660dd37bf225c5b6314c2\",\"size\":721510064,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"b433bec6451c322a1d33b75b4bb154a16a3062f1b3e080d98f18ea319da2ce34\",\"size\":546415006,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-macos.zip\",\"platform\":\"macos\",\"sha256\":\"7bbf97d0e44a174d9168703ca37183ec61099e9dd4afc707df7686fc1db868a1\",\"size\":481360883,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-windows.zip\",\"platform\":\"windows\",\"sha256\":\"73d47800faacf45375ac09605fe2aba90e6dddd5be127097771ff44cdec275ae\",\"size\":597638548,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-11T01:45:52Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"dcf5e8f1375b670f279c051843f29b9c3831e75a8cb728f58d028649a01298b1\",\"original_asset_sizes\":{\"INSTALL-GUIDE.md\":4237,\"LICENSE.txt\":15127,\"NOTICE.txt\":1010,\"README-FIRST.md\":1061,\"RELEASE-NOTES.md\":2108,\"SHA256SUMS.txt\":674,\"Y2-Rockbox-V2.5-Source.zip\":72256082,\"rockbox-y2-v2.5-release-square.png\":1585171,\"rom_y2.zip\":361644736},\"original_assets\":[\"INSTALL-GUIDE.md\",\"LICENSE.txt\",\"NOTICE.txt\",\"README-FIRST.md\",\"RELEASE-NOTES.md\",\"rockbox-y2-v2.5-release-square.png\",\"rom_y2.zip\",\"SHA256SUMS.txt\",\"Y2-Rockbox-V2.5-Source.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"INSTALL-GUIDE.md\":24,\"LICENSE.txt\":24,\"NOTICE.txt\":24,\"README-FIRST.md\":24,\"RELEASE-NOTES.md\":24,\"SHA256SUMS.txt\":12,\"Y2-Rockbox-V2.5-Source.zip\":12,\"rockbox-y2-v2.5-release-square.png\":0,\"rom_y2-linux-arm64.zip\":0,\"rom_y2-linux.zip\":5,\"rom_y2-macos.zip\":3,\"rom_y2-windows.zip\":5,\"rom_y2.zip\":19},\"generated_at\":\"2026-11-11T01:45:52Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"}},\"v\":13} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=spycemagic%2Fy2-rockbox&amp;tag=v0.2.5-beta#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y2 \u00b7 Stock - portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# Rockbox Y2 V2.5\n\nV2.5 updates the Y2 dual-boot firmware to the official Innioasis **Stock 3.2FM**\nbaseline while retaining Rockbox and Stock boot routes.\n\n## What changed from V2\n\n- Stock mode is updated to version `3.2` from the 3.2FM firmware release.\n- Clean installs default to MacClassic-Dark with a black Rockbox title screen.\n- Boot presentation and route handoff were requalified to prevent persistent\n  upper-screen artifacts.\n- The Community Updater asset is now a complete 3.2FM-based full-ROM package,\n  compatible with the public updater's clean-install route.\n\n## Qualified V2.5 behavior\n\nThe five V2.5 firmware images have passed the full hands-on matrix on macOS and\nWindows:\n\n- Clean, responsive Rockbox root in about 28 seconds on normal cold boots.\n- Clean dark Rockbox title with no persistent upper artifacts.\n- Automatic screen timeout, centre wake, and power-button sleep/wake.\n- USB-storage mount, safe eject, clean return, and foreground retention.\n- Boot Settings switching between Rockbox and Stock.\n- Responsive Stock root reporting version `3.2` from Stock 3.2FM.\n- No microSD card required for installation or normal boot testing.\n\nThe exact public full-ROM archive passed clean Stock 3.2FM installation and the\ncomplete functional matrix on both macOS and Windows.\n\n## Exact public candidate\n\n| Asset | Bytes | SHA-256 |\n|---|---:|---|\n| `rom_y2.zip` | 361,644,736 | `bbdd139a9a52f90570ef04dec4aeb143a361a1d28a90f7be6d37d44c554bee9a` |\n\nThis archive contains the complete official Stock 3.2FM support set. UBOOT,\nBOOTIMG, RECOVERY, LOGO, and ANDROID are the exact V2.5 images already qualified\non both platforms. MBR, EBR1, EBR2, preloader, SEC_RO, cache, userdata, and the\nscatter remain byte-identical to the official 3.2FM baseline.\n\n## Important installation behavior\n\nV2.5 performs a clean full installation and erases internal user data. Back up\nfirst. On macOS, public Updater CE hands the install to the Innioasis Y2 Install\nTool. On Windows, Updater CE uses its full Y2 installation route. Follow every\nconnection prompt and wait for an explicit completion message.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"rom_y2-windows.zip\",\"platform\":\"windows\",\"sha256\":\"b5281adfa3fa6db128244f3878cfd5ab7d9f19ac487a99f765e373c5042a77d6\",\"size\":597638548,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux.zip\",\"platform\":\"linux\",\"sha256\":\"372b8faa62a2af1507deb617b31dc80c73b0f9359d799104f9dd9bdcebf191ef\",\"size\":721510064,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"5a2e887508d905401068dfa509fd449fd0949a5a26de436d51e8148a62634afb\",\"size\":546415006,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-macos.zip\",\"platform\":\"macos\",\"sha256\":\"56bab12a08fea4ffd85c84867e7bd72269f19d35706e20874bc6073b77b2dc75\",\"size\":481360883,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-11T14:27:00Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"be5950d0da8ecb4334691fe4f37e1efe0687d72a4ddc20c9d39bdaa93379969d\",\"original_asset_sizes\":{\"INSTALL-GUIDE.md\":4237,\"LICENSE.txt\":15127,\"NOTICE.txt\":1010,\"README-FIRST.md\":1061,\"RELEASE-NOTES.md\":2108,\"SHA256SUMS.txt\":674,\"Y2-Rockbox-V2.5-Source.zip\":72256082,\"rockbox-y2-v2.5-release-square.png\":1585171,\"rom_y2.zip\":361644736},\"original_assets\":[\"INSTALL-GUIDE.md\",\"LICENSE.txt\",\"NOTICE.txt\",\"README-FIRST.md\",\"RELEASE-NOTES.md\",\"rockbox-y2-v2.5-release-square.png\",\"rom_y2.zip\",\"SHA256SUMS.txt\",\"Y2-Rockbox-V2.5-Source.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"INSTALL-GUIDE.md\":26,\"LICENSE.txt\":26,\"NOTICE.txt\":26,\"README-FIRST.md\":26,\"RELEASE-NOTES.md\":26,\"SHA256SUMS.txt\":13,\"Y2-Rockbox-V2.5-Source.zip\":13,\"rockbox-y2-v2.5-release-square.png\":0,\"rom_y2-linux-arm64.zip\":0,\"rom_y2-linux.zip\":5,\"rom_y2-macos.zip\":3,\"rom_y2-windows.zip\":5,\"rom_y2.zip\":22},\"generated_at\":\"2026-11-11T14:27:00Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"}},\"v\":13} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:20:47Z",
@@ -79,48 +79,48 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706116544"
       },
       {
-        "id": 733704826,
+        "id": 735801770,
         "name": "rom_y2-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-linux-arm64.zip",
         "size": 546415006,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:45:56Z",
-        "updated_at": "2026-11-11T01:46:44Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733704826"
+        "created_at": "2026-11-11T14:27:05Z",
+        "updated_at": "2026-11-11T14:27:57Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735801770"
       },
       {
-        "id": 733704807,
+        "id": 735801785,
         "name": "rom_y2-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-linux.zip",
         "size": 721510064,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:45:56Z",
-        "updated_at": "2026-11-11T01:46:58Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733704807"
+        "created_at": "2026-11-11T14:27:05Z",
+        "updated_at": "2026-11-11T14:27:37Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735801785"
       },
       {
-        "id": 733704823,
+        "id": 735801782,
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-macos.zip",
         "size": 481360883,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:45:56Z",
-        "updated_at": "2026-11-11T01:46:46Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733704823"
+        "created_at": "2026-11-11T14:27:05Z",
+        "updated_at": "2026-11-11T14:27:47Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735801782"
       },
       {
-        "id": 733704818,
+        "id": 735801765,
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-windows.zip",
         "size": 597638548,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:45:56Z",
-        "updated_at": "2026-11-11T01:46:45Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733704818"
+        "created_at": "2026-11-11T14:27:05Z",
+        "updated_at": "2026-11-11T14:27:53Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735801765"
       },
       {
         "id": 706116537,
@@ -145,15 +145,15 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706116543"
       },
       {
-        "id": 733704825,
+        "id": 735801783,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/stats.txt",
-        "size": 3209,
+        "size": 3306,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-11T01:45:56Z",
-        "updated_at": "2026-11-11T01:45:56Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733704825"
+        "created_at": "2026-11-11T14:27:05Z",
+        "updated_at": "2026-11-11T14:27:05Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735801783"
       },
       {
         "id": 706114042,
@@ -188,13 +188,15 @@
         "updated_at": "2026-11-03T15:37:18Z",
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706116542"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 4
   },
   {
     "id": 432927832,
     "tag_name": "v0.2.0-beta",
     "name": "Portable Flashing Package: Rockbox Y2 Beta V2",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=spycemagic%2Fy2-rockbox&amp;tag=v0.2.0-beta#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y2 \u00b7 Stock - portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# Y2 Rockbox Beta V2\n\nBeta V2 is a state-preserving update for Innioasis Y2 players on the official\nStock 3.1.7 lineage. This corrected release has passed separate end-to-end\nmacOS and Windows updater qualifications, complete readback verification, and\nthe full physical functional matrix.\n\n> **Manual-download release:** the files below are public for users who want to\n> download and verify them manually. Direct installation through the public\n> Updater CE catalogue is still pending\n> [Updater CE PR #45](https://github.com/y1-community/Innioasis-Updater/pull/45).\n> Downloading a ZIP manually does not make an old or generic updater safe; use\n> only an updater explicitly carrying the guarded Y2 Class A route.\n\n## Download the exact platform asset\n\n| Platform | Asset | Size | SHA-256 |\n|---|---|---:|---|\n| macOS | `Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip` | 361,774,260 | `409DDB4D2D18111FB8C3AB619F10F04B916B6B2A3FC04D1D38011324563F326A` |\n| Windows | `Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip` | 361,774,260 | `409DDB4D2D18111FB8C3AB619F10F04B916B6B2A3FC04D1D38011324563F326A` |\n\nDo not rename either archive to `rom_y2.zip`. Do not use the withdrawn Beta V2\narchives, the old `InnioasisUpdater_Setup_1.1.2.exe`, or a generic full-format\nroute. Follow `INSTALL-GUIDE.md` and use only an updater explicitly carrying the\nguarded Y2 Class A update path.\n\n## Highlights since Beta V1\n\n- Bluetooth access, pairing and A2DP playback from Rockbox and Stock.\n- Hold Previous/Next to seek; optional held-Volume track skipping.\n- Persistent time/date and independently adjustable Rockbox wheel vibration.\n- Stable Rockbox and Stock USB-storage lifecycle.\n- Cleaner boot presentation and reliable saved Rockbox/Stock routing.\n- Centre wake, long-Centre Now Playing context menu, and improved Back/Database navigation.\n- PictureFlow recovery and functional album carousel.\n\n## Physical acceptance\n\nBoth platform routes began from freshly restored official Stock 3.1.7, wrote\nonly UBOOT, BOOTIMG, RECOVERY, LOGO, and ANDROID, and completed mandatory\nreadback verification. After the required complete unplug and one unplugged\npinhole reset, Rockbox reached a clean responsive root in 28 seconds with no\nupper artifacts. Playback, controls, sleep/wake, USB, Stock, Boot Settings,\nsaved routes, and shutdown passed.\n\n## Known limitation and Beta V3\n\nThe final power-down animation can look imperfect; shutdown itself works. Beta\nV3 is expected to cover that presentation polish plus lyrics/theme diagnostics,\nhigh-resolution FLAC stability, DAC/wired-audio qualification, PictureFlow\npolish, and database/playlist presentation controls.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux.zip\",\"platform\":\"linux\",\"sha256\":\"796d7f0d639584ce09ed22d152d6a7c0f8a4eba57fdf77595a6fdd9187680b11\",\"size\":721637460,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"984c0f78ce89833d81bcba1bfe7df60b04c93372f412056c0ccbc328c57f97f8\",\"size\":546542402,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip\",\"platform\":\"macos\",\"sha256\":\"577670c4d718ca4dc133ce37cf3e3f53969c821c674f9af78288a99e1a22b108\",\"size\":481488362,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-windows.zip\",\"platform\":\"windows\",\"sha256\":\"11784b0f11fea9f1d575cc1914a46b196a38a81165dc0ad5b18f7e15a186ffa2\",\"size\":597765944,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux.zip\",\"platform\":\"linux\",\"sha256\":\"e1a95324d6780aa541cca030e4c39296c98d2027cf1255eba6a880a58e7d07c1\",\"size\":721637460,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"aecaab7250beec77703022271d92ba5dc3bb0c7a7b39474b87288588238de0a0\",\"size\":546542402,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-macos.zip\",\"platform\":\"macos\",\"sha256\":\"1f3def1a37c2a3a8e72bfee41a9996a010e6613e36766bf68b71e219fd88d31d\",\"size\":481488368,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-windows.zip\",\"platform\":\"windows\",\"sha256\":\"c7edd7510dc0f918ddfe0fdd270c2eebfa03901eb8d6f4e86a654af6a03b240b\",\"size\":597765944,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-11T01:40:51Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"f94d993e59bead428695ad5ef1ae788479111530723573e3b56ac58bd5a2354b\",\"original_asset_sizes\":{\"INSTALL-GUIDE.md\":2008,\"LICENSE.txt\":15127,\"NOTICE.txt\":1010,\"README-FIRST.txt\":925,\"RELEASE-NOTES.md\":1345,\"SHA256SUMS.txt\":1109,\"UPDATE-ONLY-MANIFEST.json\":1304,\"UPDATER-FORMATS.md\":1095,\"Y2-Rockbox-Beta-v0.2.0-Source.zip\":71659189,\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\":361774260,\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\":361774260,\"rockbox-y2-beta-v2-release-portrait.png\":2135412,\"rockbox-y2-beta-v2-release-square.png\":1758566},\"original_assets\":[\"INSTALL-GUIDE.md\",\"LICENSE.txt\",\"NOTICE.txt\",\"README-FIRST.txt\",\"RELEASE-NOTES.md\",\"rockbox-y2-beta-v2-release-portrait.png\",\"rockbox-y2-beta-v2-release-square.png\",\"SHA256SUMS.txt\",\"UPDATE-ONLY-MANIFEST.json\",\"UPDATER-FORMATS.md\",\"Y2-Rockbox-Beta-v0.2.0-Source.zip\",\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\",\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"INSTALL-GUIDE.md\":13,\"LICENSE.txt\":0,\"NOTICE.txt\":0,\"README-FIRST.txt\":13,\"RELEASE-NOTES.md\":13,\"SHA256SUMS.txt\":13,\"UPDATE-ONLY-MANIFEST.json\":13,\"UPDATER-FORMATS.md\":13,\"Y2-Rockbox-Beta-v0.2.0-Source.zip\":11,\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux-arm64.zip\":0,\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux.zip\":1,\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip\":3,\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-windows.zip\":1,\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\":13,\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux-arm64.zip\":0,\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux.zip\":1,\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-macos.zip\":4,\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-windows.zip\":1,\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\":0,\"rockbox-y2-beta-v2-release-portrait.png\":13,\"rockbox-y2-beta-v2-release-square.png\":13},\"generated_at\":\"2026-11-11T01:40:51Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"}},\"v\":13} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=spycemagic%2Fy2-rockbox&amp;tag=v0.2.0-beta#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y2 \u00b7 Stock - portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# Y2 Rockbox Beta V2\n\nBeta V2 is a state-preserving update for Innioasis Y2 players on the official\nStock 3.1.7 lineage. This corrected release has passed separate end-to-end\nmacOS and Windows updater qualifications, complete readback verification, and\nthe full physical functional matrix.\n\n> **Manual-download release:** the files below are public for users who want to\n> download and verify them manually. Direct installation through the public\n> Updater CE catalogue is still pending\n> [Updater CE PR #45](https://github.com/y1-community/Innioasis-Updater/pull/45).\n> Downloading a ZIP manually does not make an old or generic updater safe; use\n> only an updater explicitly carrying the guarded Y2 Class A route.\n\n## Download the exact platform asset\n\n| Platform | Asset | Size | SHA-256 |\n|---|---|---:|---|\n| macOS | `Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip` | 361,774,260 | `409DDB4D2D18111FB8C3AB619F10F04B916B6B2A3FC04D1D38011324563F326A` |\n| Windows | `Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip` | 361,774,260 | `409DDB4D2D18111FB8C3AB619F10F04B916B6B2A3FC04D1D38011324563F326A` |\n\nDo not rename either archive to `rom_y2.zip`. Do not use the withdrawn Beta V2\narchives, the old `InnioasisUpdater_Setup_1.1.2.exe`, or a generic full-format\nroute. Follow `INSTALL-GUIDE.md` and use only an updater explicitly carrying the\nguarded Y2 Class A update path.\n\n## Highlights since Beta V1\n\n- Bluetooth access, pairing and A2DP playback from Rockbox and Stock.\n- Hold Previous/Next to seek; optional held-Volume track skipping.\n- Persistent time/date and independently adjustable Rockbox wheel vibration.\n- Stable Rockbox and Stock USB-storage lifecycle.\n- Cleaner boot presentation and reliable saved Rockbox/Stock routing.\n- Centre wake, long-Centre Now Playing context menu, and improved Back/Database navigation.\n- PictureFlow recovery and functional album carousel.\n\n## Physical acceptance\n\nBoth platform routes began from freshly restored official Stock 3.1.7, wrote\nonly UBOOT, BOOTIMG, RECOVERY, LOGO, and ANDROID, and completed mandatory\nreadback verification. After the required complete unplug and one unplugged\npinhole reset, Rockbox reached a clean responsive root in 28 seconds with no\nupper artifacts. Playback, controls, sleep/wake, USB, Stock, Boot Settings,\nsaved routes, and shutdown passed.\n\n## Known limitation and Beta V3\n\nThe final power-down animation can look imperfect; shutdown itself works. Beta\nV3 is expected to cover that presentation polish plus lyrics/theme diagnostics,\nhigh-resolution FLAC stability, DAC/wired-audio qualification, PictureFlow\npolish, and database/playlist presentation controls.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-windows.zip\",\"platform\":\"windows\",\"sha256\":\"fd550fecfb43ed5bf68e390b0f583b9f53c0f790488204dad03451c16e8a54a7\",\"size\":597765944,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux.zip\",\"platform\":\"linux\",\"sha256\":\"e01619df7ccbbfbaea3ed5a48c688ba8eaa52f29516e84bc814557fe92168aac\",\"size\":721637460,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"5822adae2ec11e44bde2c80dd7db0fd25a7bdaf7a4a4576c999574dfa3de9ed8\",\"size\":546542402,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip\",\"platform\":\"macos\",\"sha256\":\"43eb7017cb754238e29942e11afaba90a41edbde7bad7dd5420ec438c86bf280\",\"size\":481488362,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-windows.zip\",\"platform\":\"windows\",\"sha256\":\"dd39df1ec27a9563d132493da2ad77bc19e5c904910606b2f353907d2fa4240f\",\"size\":597765944,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux.zip\",\"platform\":\"linux\",\"sha256\":\"241bf8936ee9f24ccacc31bb2f59e2d19340c426fe02cb217e01b6a4561c6078\",\"size\":721637460,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"b5ef69290361cb68bc4fbfdf4fa9db532f470376dca50eba96a209638093506d\",\"size\":546542402,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-macos.zip\",\"platform\":\"macos\",\"sha256\":\"7de15123c525bf0bb54faf1d6e900afadb784b413ec7c42c1e25115a923a28fd\",\"size\":481488368,\"source_asset\":\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-11T14:22:27Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"9af9923b5a913419faec8efacad62fff2b10db16c2da480ae1b9c2cc267a641d\",\"original_asset_sizes\":{\"INSTALL-GUIDE.md\":2008,\"LICENSE.txt\":15127,\"NOTICE.txt\":1010,\"README-FIRST.txt\":925,\"RELEASE-NOTES.md\":1345,\"SHA256SUMS.txt\":1109,\"UPDATE-ONLY-MANIFEST.json\":1304,\"UPDATER-FORMATS.md\":1095,\"Y2-Rockbox-Beta-v0.2.0-Source.zip\":71659189,\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\":361774260,\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\":361774260,\"rockbox-y2-beta-v2-release-portrait.png\":2135412,\"rockbox-y2-beta-v2-release-square.png\":1758566},\"original_assets\":[\"INSTALL-GUIDE.md\",\"LICENSE.txt\",\"NOTICE.txt\",\"README-FIRST.txt\",\"RELEASE-NOTES.md\",\"rockbox-y2-beta-v2-release-portrait.png\",\"rockbox-y2-beta-v2-release-square.png\",\"SHA256SUMS.txt\",\"UPDATE-ONLY-MANIFEST.json\",\"UPDATER-FORMATS.md\",\"Y2-Rockbox-Beta-v0.2.0-Source.zip\",\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\",\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"INSTALL-GUIDE.md\":14,\"LICENSE.txt\":0,\"NOTICE.txt\":0,\"README-FIRST.txt\":14,\"RELEASE-NOTES.md\":14,\"SHA256SUMS.txt\":14,\"UPDATE-ONLY-MANIFEST.json\":14,\"UPDATER-FORMATS.md\":14,\"Y2-Rockbox-Beta-v0.2.0-Source.zip\":11,\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux-arm64.zip\":0,\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux.zip\":1,\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip\":3,\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-windows.zip\":1,\"Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip\":14,\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux-arm64.zip\":0,\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux.zip\":1,\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-macos.zip\":4,\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-windows.zip\":1,\"Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip\":0,\"rockbox-y2-beta-v2-release-portrait.png\":14,\"rockbox-y2-beta-v2-release-square.png\":14},\"generated_at\":\"2026-11-11T14:22:27Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"}},\"v\":13} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:27Z",
@@ -292,15 +294,15 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706230074"
       },
       {
-        "id": 733694999,
+        "id": 735790569,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/stats.txt",
-        "size": 3975,
+        "size": 4072,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-11T01:42:31Z",
-        "updated_at": "2026-11-11T01:42:31Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733694999"
+        "created_at": "2026-11-11T14:23:29Z",
+        "updated_at": "2026-11-11T14:23:29Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735790569"
       },
       {
         "id": 706230077,
@@ -358,48 +360,48 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733044166"
       },
       {
-        "id": 733690234,
+        "id": 735787850,
         "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux-arm64.zip",
         "size": 546542402,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:40:56Z",
-        "updated_at": "2026-11-11T01:41:57Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733690234"
+        "created_at": "2026-11-11T14:22:33Z",
+        "updated_at": "2026-11-11T14:23:20Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735787850"
       },
       {
-        "id": 733690238,
+        "id": 735787843,
         "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux.zip",
         "size": 721637460,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:40:56Z",
-        "updated_at": "2026-11-11T01:42:46Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733690238"
+        "created_at": "2026-11-11T14:22:33Z",
+        "updated_at": "2026-11-11T14:23:30Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735787843"
       },
       {
-        "id": 733690239,
+        "id": 735787855,
         "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip",
         "size": 481488362,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:40:56Z",
-        "updated_at": "2026-11-11T01:41:48Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733690239"
+        "created_at": "2026-11-11T14:22:33Z",
+        "updated_at": "2026-11-11T14:23:19Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735787855"
       },
       {
-        "id": 733690242,
+        "id": 735787856,
         "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-windows.zip",
         "size": 597765944,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:40:56Z",
-        "updated_at": "2026-11-11T01:42:08Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733690242"
+        "created_at": "2026-11-11T14:22:33Z",
+        "updated_at": "2026-11-11T14:23:28Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735787856"
       },
       {
         "id": 706230305,
@@ -413,48 +415,48 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706230305"
       },
       {
-        "id": 733692879,
+        "id": 735790234,
         "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux-arm64.zip",
         "size": 546542402,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:41:49Z",
-        "updated_at": "2026-11-11T01:42:30Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733692879"
+        "created_at": "2026-11-11T14:23:21Z",
+        "updated_at": "2026-11-11T14:23:54Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735790234"
       },
       {
-        "id": 733690233,
+        "id": 735790191,
         "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux.zip",
         "size": 721637460,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:40:56Z",
-        "updated_at": "2026-11-11T01:42:46Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733690233"
+        "created_at": "2026-11-11T14:23:20Z",
+        "updated_at": "2026-11-11T14:24:04Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735790191"
       },
       {
-        "id": 733693343,
+        "id": 735790413,
         "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-macos.zip",
         "size": 481488368,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:41:58Z",
-        "updated_at": "2026-11-11T01:42:39Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733693343"
+        "created_at": "2026-11-11T14:23:25Z",
+        "updated_at": "2026-11-11T14:23:54Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735790413"
       },
       {
-        "id": 733693868,
+        "id": 735787848,
         "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-windows.zip",
         "size": 597765944,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:42:08Z",
-        "updated_at": "2026-11-11T01:42:47Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733693868"
+        "created_at": "2026-11-11T14:22:33Z",
+        "updated_at": "2026-11-11T14:23:24Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735787848"
       },
       {
         "id": 706230306,
@@ -467,13 +469,15 @@
         "updated_at": "2026-11-03T16:12:39Z",
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706230306"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3
   },
   {
     "id": 432922255,
     "tag_name": "v0.1.0-beta",
     "name": "Portable Flashing Package: Y2 Rockbox Beta v0.1.0",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=spycemagic%2Fy2-rockbox&amp;tag=v0.1.0-beta#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y2 \u00b7 Stock - portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nY2 Rockbox Beta v0.1.0 for the Innioasis Y2.\n\nThis beta uses the physically tested V88 firmware base. The release filename is new, but the firmware ZIP is byte-for-byte identical to the tested V88 package.\n\n## Important\n\nFlashing uses InnioasisUpdater 1.1.2 in full format-download mode and erases the complete player. Back up internal storage, microSD content, settings, playlists, and the complete `.rockbox` folder before flashing. Keep the official Y2 stock-recovery package available.\n\nRead `README-FIRST.txt` and the illustrated PDF guide before starting. Verify every download against `SHA256SUMS.txt`.\n\n## Physically tested\n\n- Rockbox and Stock cold-boot routes\n- Boot Settings save, verification, restart, and repeated cold boots\n- 15-minute audio playback and hardware controls\n- Sleep and wake\n- Theme selection and persistence\n- Internal-storage and microSD playback\n- USB storage transfer, safe eject, and automatic Rockbox return\n- Normal power off\n- Official-stock rollback\n\n## Beta limitations\n\n- Bluetooth playback is untested.\n- The both-volume fastboot chord did not open fastboot; do not rely on it.\n- Date/time changes did not persist during testing; the relationship to stock firmware is unresolved.\n- SNAZZ3 deliberately uses visible 30-pixel margins. This is theme layout, not display scaling.\n- The Windows updater executable is unsigned; verify its SHA-256 before running it.\n\n## Firmware SHA-256\n\n`40636D86943F6F0A1461B6D8C9285A1A50252253447B3DC7D11743533A88E4DE`\n\nThe release includes the complete corresponding source, GPL license, and project notice. Innioasis updater and firmware components remain third-party materials.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux.zip\",\"platform\":\"linux\",\"sha256\":\"650cec72b1a41c7dfc9185c60d8ca73bf046dfc4bfa2904028c038940c57b46b\",\"size\":721706540,\"source_asset\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"3148aa29ff49a6c3d4d0243128b0ed20896abced07979effd3c45c247c98acd6\",\"size\":546611482,\"source_asset\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-macos.zip\",\"platform\":\"macos\",\"sha256\":\"3248dea78c90c8c0f34e8240c6c1f5849fc7d40b7ccbe9b095089d226c7aa4b0\",\"size\":481557370,\"source_asset\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip\",\"platform\":\"windows\",\"sha256\":\"baf2638b77d93c9bcf61f37c2a091a7c9750515a7c96120539daf7cd19d20f7f\",\"size\":597835024,\"source_asset\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux.zip\",\"platform\":\"linux\",\"sha256\":\"dbccd058f0537a29644593bac37e513714a5db074486be290710711442e7bb21\",\"size\":721706540,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"7f4b0201841fdb2ca75d2111b1326fc0f710d92da7fc84dcc5fa3c98c3b16b75\",\"size\":546611482,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-macos.zip\",\"platform\":\"macos\",\"sha256\":\"a226da108e8941f81624290afe23de9e31446b1d91a78ba6a73a51ab2ca47c33\",\"size\":481557348,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-windows.zip\",\"platform\":\"windows\",\"sha256\":\"4a6f9892c43b9d5dc2309331cf191c180250c8946c56a135dede8820eb7caa32\",\"size\":597835024,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-11T01:34:02Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"c8f04dc6f8cc2905455d45182b1703ec84ce18a74adc043c0a58a04fd3ce5a43\",\"original_asset_sizes\":{\"InnioasisUpdater_Setup_1.1.2.exe\":76812094,\"LICENSE.txt\":15407,\"NOTICE.txt\":1010,\"README-FIRST.txt\":3453,\"SHA256SUMS.txt\":650,\"Y2-Rockbox-Beta-v0.1.0-Guide.pdf\":1061516,\"Y2-Rockbox-Beta-v0.1.0-Source.zip\":66739112,\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\":361843605,\"rom_y2.zip\":361843605},\"original_assets\":[\"InnioasisUpdater_Setup_1.1.2.exe\",\"LICENSE.txt\",\"NOTICE.txt\",\"README-FIRST.txt\",\"rom_y2.zip\",\"SHA256SUMS.txt\",\"Y2-Rockbox-Beta-v0.1.0-Guide.pdf\",\"Y2-Rockbox-Beta-v0.1.0-Source.zip\",\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"InnioasisUpdater_Setup_1.1.2.exe\":12,\"LICENSE.txt\":12,\"NOTICE.txt\":0,\"README-FIRST.txt\":12,\"SHA256SUMS.txt\":12,\"Y2-Rockbox-Beta-v0.1.0-Guide.pdf\":12,\"Y2-Rockbox-Beta-v0.1.0-Source.zip\":10,\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux-arm64.zip\":0,\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux.zip\":1,\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-macos.zip\":3,\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip\":3,\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\":0,\"rom_y2-linux-arm64.zip\":0,\"rom_y2-linux.zip\":2,\"rom_y2-macos.zip\":4,\"rom_y2-windows.zip\":6,\"rom_y2.zip\":10},\"generated_at\":\"2026-11-11T01:34:02Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"}},\"v\":13} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=spycemagic%2Fy2-rockbox&amp;tag=v0.1.0-beta#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y2 \u00b7 Stock - portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nY2 Rockbox Beta v0.1.0 for the Innioasis Y2.\n\nThis beta uses the physically tested V88 firmware base. The release filename is new, but the firmware ZIP is byte-for-byte identical to the tested V88 package.\n\n## Important\n\nFlashing uses InnioasisUpdater 1.1.2 in full format-download mode and erases the complete player. Back up internal storage, microSD content, settings, playlists, and the complete `.rockbox` folder before flashing. Keep the official Y2 stock-recovery package available.\n\nRead `README-FIRST.txt` and the illustrated PDF guide before starting. Verify every download against `SHA256SUMS.txt`.\n\n## Physically tested\n\n- Rockbox and Stock cold-boot routes\n- Boot Settings save, verification, restart, and repeated cold boots\n- 15-minute audio playback and hardware controls\n- Sleep and wake\n- Theme selection and persistence\n- Internal-storage and microSD playback\n- USB storage transfer, safe eject, and automatic Rockbox return\n- Normal power off\n- Official-stock rollback\n\n## Beta limitations\n\n- Bluetooth playback is untested.\n- The both-volume fastboot chord did not open fastboot; do not rely on it.\n- Date/time changes did not persist during testing; the relationship to stock firmware is unresolved.\n- SNAZZ3 deliberately uses visible 30-pixel margins. This is theme layout, not display scaling.\n- The Windows updater executable is unsigned; verify its SHA-256 before running it.\n\n## Firmware SHA-256\n\n`40636D86943F6F0A1461B6D8C9285A1A50252253447B3DC7D11743533A88E4DE`\n\nThe release includes the complete corresponding source, GPL license, and project notice. Innioasis updater and firmware components remain third-party materials.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip\",\"platform\":\"windows\",\"sha256\":\"dc64b24369a0efab8fafaeb8bcb4c65824cbff63e02fe130e90a139a612599dd\",\"size\":597835024,\"source_asset\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux.zip\",\"platform\":\"linux\",\"sha256\":\"0e212f305ca788d4149d221fe9d137d61f090235ce1d72007aacb5c484427cff\",\"size\":721706540,\"source_asset\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"a8099ab83ee995043f56d4a6ffda26c52678efdb5027ce88caaf51a939e14d50\",\"size\":546611482,\"source_asset\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-macos.zip\",\"platform\":\"macos\",\"sha256\":\"5afd5e80881b184daed651a0fc32bfe78c80b214e9bf3df00b34ae3af2305592\",\"size\":481557370,\"source_asset\":\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-windows.zip\",\"platform\":\"windows\",\"sha256\":\"e9c54c9fd634751b4311b209fa7c1cec4ec07e0bdeed3933f90c015a6dbdc74b\",\"size\":597835024,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux.zip\",\"platform\":\"linux\",\"sha256\":\"96a28df605b94610b877d96c45abb82c39adfb47218328f9c2e4f3e1c103f7f2\",\"size\":721706540,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"853e79d3e124986a44f6dd399e0014afe9543668f48919447c522970fd8656f2\",\"size\":546611482,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-macos.zip\",\"platform\":\"macos\",\"sha256\":\"5f9cb0ed107bd573f50d22e94eeb0636649d59bd3603c5d35f32b16e2ea4415d\",\"size\":481557348,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-11T14:15:24Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"29eb7a34fe046df959bc645c8ffaf9ce4ab1ff61141df06a19b943d43c9530c3\",\"original_asset_sizes\":{\"InnioasisUpdater_Setup_1.1.2.exe\":76812094,\"LICENSE.txt\":15407,\"NOTICE.txt\":1010,\"README-FIRST.txt\":3453,\"SHA256SUMS.txt\":650,\"Y2-Rockbox-Beta-v0.1.0-Guide.pdf\":1061516,\"Y2-Rockbox-Beta-v0.1.0-Source.zip\":66739112,\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\":361843605,\"rom_y2.zip\":361843605},\"original_assets\":[\"InnioasisUpdater_Setup_1.1.2.exe\",\"LICENSE.txt\",\"NOTICE.txt\",\"README-FIRST.txt\",\"rom_y2.zip\",\"SHA256SUMS.txt\",\"Y2-Rockbox-Beta-v0.1.0-Guide.pdf\",\"Y2-Rockbox-Beta-v0.1.0-Source.zip\",\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"InnioasisUpdater_Setup_1.1.2.exe\":13,\"LICENSE.txt\":13,\"NOTICE.txt\":0,\"README-FIRST.txt\":13,\"SHA256SUMS.txt\":13,\"Y2-Rockbox-Beta-v0.1.0-Guide.pdf\":13,\"Y2-Rockbox-Beta-v0.1.0-Source.zip\":10,\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux-arm64.zip\":0,\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux.zip\":1,\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-macos.zip\":3,\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip\":3,\"Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip\":0,\"rom_y2-linux-arm64.zip\":0,\"rom_y2-linux.zip\":2,\"rom_y2-macos.zip\":4,\"rom_y2-windows.zip\":6,\"rom_y2.zip\":10},\"generated_at\":\"2026-11-11T14:15:24Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"}},\"v\":13} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:27Z",
@@ -527,48 +531,48 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706214358"
       },
       {
-        "id": 733676031,
+        "id": 735771231,
         "name": "rom_y2-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-linux-arm64.zip",
         "size": 546611482,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:34:55Z",
-        "updated_at": "2026-11-11T01:35:27Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733676031"
+        "created_at": "2026-11-11T14:16:24Z",
+        "updated_at": "2026-11-11T14:17:02Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735771231"
       },
       {
-        "id": 733673870,
+        "id": 735770782,
         "name": "rom_y2-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-linux.zip",
         "size": 721706540,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:34:07Z",
-        "updated_at": "2026-11-11T01:35:08Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733673870"
+        "created_at": "2026-11-11T14:16:14Z",
+        "updated_at": "2026-11-11T14:16:50Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735770782"
       },
       {
-        "id": 733676124,
+        "id": 735771449,
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-macos.zip",
         "size": 481557348,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:34:58Z",
-        "updated_at": "2026-11-11T01:35:25Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733676124"
+        "created_at": "2026-11-11T14:16:29Z",
+        "updated_at": "2026-11-11T14:16:55Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735771449"
       },
       {
-        "id": 733676126,
+        "id": 735768768,
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-windows.zip",
         "size": 597835024,
-        "download_count": 0,
+        "download_count": 4,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:34:58Z",
-        "updated_at": "2026-11-11T01:35:29Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733676126"
+        "created_at": "2026-11-11T14:15:30Z",
+        "updated_at": "2026-11-11T14:16:32Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735768768"
       },
       {
         "id": 733022738,
@@ -593,15 +597,15 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706215317"
       },
       {
-        "id": 733676565,
+        "id": 735771567,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/stats.txt",
-        "size": 3367,
+        "size": 3465,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-11T01:35:08Z",
-        "updated_at": "2026-11-11T01:35:09Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733676565"
+        "created_at": "2026-11-11T14:16:31Z",
+        "updated_at": "2026-11-11T14:16:32Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735771567"
       },
       {
         "id": 706215320,
@@ -626,48 +630,48 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733022840"
       },
       {
-        "id": 733673862,
+        "id": 735768762,
         "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux-arm64.zip",
         "size": 546611482,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:34:07Z",
-        "updated_at": "2026-11-11T01:34:57Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733673862"
+        "created_at": "2026-11-11T14:15:30Z",
+        "updated_at": "2026-11-11T14:16:28Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735768762"
       },
       {
-        "id": 733673871,
+        "id": 735768767,
         "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux.zip",
         "size": 721706540,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:34:07Z",
-        "updated_at": "2026-11-11T01:35:12Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733673871"
+        "created_at": "2026-11-11T14:15:30Z",
+        "updated_at": "2026-11-11T14:16:13Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735768767"
       },
       {
-        "id": 733673865,
+        "id": 735768765,
         "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-macos.zip",
         "size": 481557370,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:34:07Z",
-        "updated_at": "2026-11-11T01:34:54Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733673865"
+        "created_at": "2026-11-11T14:15:30Z",
+        "updated_at": "2026-11-11T14:16:23Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735768765"
       },
       {
-        "id": 733673868,
+        "id": 735768760,
         "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
         "size": 597835024,
-        "download_count": 0,
+        "download_count": 4,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T01:34:07Z",
-        "updated_at": "2026-11-11T01:34:57Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733673868"
+        "created_at": "2026-11-11T14:15:30Z",
+        "updated_at": "2026-11-11T14:16:30Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/735768760"
       },
       {
         "id": 733024063,
@@ -680,6 +684,8 @@
         "updated_at": "2026-11-10T21:31:58Z",
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/733024063"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 10
   }
 ]

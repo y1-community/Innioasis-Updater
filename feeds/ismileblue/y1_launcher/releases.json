@@ -23,7 +23,9 @@
         "updated_at": "2026-09-02T13:12:11Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541196320"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 381336792,
@@ -43,7 +45,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6hotfix4/rom.zip",
         "size": 456284202,
-        "download_count": 61,
+        "download_count": 63,
         "content_type": "application/zip",
         "created_at": "2026-09-02T14:37:00Z",
         "updated_at": "2026-09-02T14:37:16Z",
@@ -54,7 +56,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6hotfix4/rom_type_b.zip",
         "size": 399793497,
-        "download_count": 20,
+        "download_count": 21,
         "content_type": "application/zip",
         "created_at": "2026-09-02T14:37:00Z",
         "updated_at": "2026-09-02T14:37:15Z",
@@ -65,13 +67,15 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6hotfix4/rom_y2.zip",
         "size": 443402625,
-        "download_count": 109,
+        "download_count": 110,
         "content_type": "application/zip",
         "created_at": "2026-09-02T14:37:00Z",
         "updated_at": "2026-09-02T14:37:14Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541305498"
       }
-    ]
+    ],
+    "mirror_downloads": 45,
+    "downloads": 239
   },
   {
     "id": 372288278,
@@ -97,7 +101,9 @@
         "updated_at": "2026-08-18T11:16:54Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/519354135"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 372295540,
@@ -117,7 +123,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom.zip",
         "size": 456271826,
-        "download_count": 521,
+        "download_count": 523,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:31Z",
         "updated_at": "2026-09-02T13:15:45Z",
@@ -128,7 +134,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom_type_b.zip",
         "size": 399777849,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:31Z",
         "updated_at": "2026-09-02T13:15:45Z",
@@ -139,13 +145,15 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom_y2.zip",
         "size": 443395091,
-        "download_count": 459,
+        "download_count": 467,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:31Z",
         "updated_at": "2026-09-02T13:15:48Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200520"
       }
-    ]
+    ],
+    "mirror_downloads": 50,
+    "downloads": 1059
   },
   {
     "id": 367198910,
@@ -171,7 +179,9 @@
         "updated_at": "2026-08-08T12:37:32Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/506369627"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 367208168,
@@ -191,7 +201,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.5/rom.zip",
         "size": 456271507,
-        "download_count": 35,
+        "download_count": 36,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:34Z",
         "updated_at": "2026-09-02T13:15:48Z",
@@ -202,7 +212,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.5/rom_type_b.zip",
         "size": 399797081,
-        "download_count": 14,
+        "download_count": 15,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:34Z",
         "updated_at": "2026-09-02T13:15:46Z",
@@ -213,13 +223,15 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.5/rom_y2.zip",
         "size": 443389547,
-        "download_count": 38,
+        "download_count": 39,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:34Z",
         "updated_at": "2026-09-02T13:15:51Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200576"
       }
-    ]
+    ],
+    "mirror_downloads": 45,
+    "downloads": 135
   },
   {
     "id": 363520899,
@@ -239,7 +251,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.9/rom.zip",
         "size": 456604912,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:10Z",
         "updated_at": "2026-09-02T13:15:25Z",
@@ -250,13 +262,15 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.9/rom_type_b.zip",
         "size": 399539309,
-        "download_count": 13,
+        "download_count": 15,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:10Z",
         "updated_at": "2026-09-02T13:15:24Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200058"
       }
-    ]
+    ],
+    "mirror_downloads": 44,
+    "downloads": 76
   },
   {
     "id": 363520898,
@@ -276,7 +290,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.8/rom.zip",
         "size": 456604601,
-        "download_count": 15,
+        "download_count": 16,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:06Z",
         "updated_at": "2026-09-02T13:15:23Z",
@@ -287,13 +301,15 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.8/rom_type_b.zip",
         "size": 399538066,
-        "download_count": 13,
+        "download_count": 14,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:06Z",
         "updated_at": "2026-09-02T13:15:21Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541199927"
       }
-    ]
+    ],
+    "mirror_downloads": 33,
+    "downloads": 63
   },
   {
     "id": 363520929,
@@ -313,7 +329,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.6/rom.zip",
         "size": 456567803,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:11Z",
         "updated_at": "2026-09-02T13:15:27Z",
@@ -324,13 +340,15 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.6/rom_type_b.zip",
         "size": 399667887,
-        "download_count": 14,
+        "download_count": 15,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:12Z",
         "updated_at": "2026-09-02T13:15:25Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200083"
       }
-    ]
+    ],
+    "mirror_downloads": 33,
+    "downloads": 65
   },
   {
     "id": 363520738,
@@ -350,7 +368,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.5/rom.zip",
         "size": 456603017,
-        "download_count": 15,
+        "download_count": 16,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:02Z",
         "updated_at": "2026-09-02T13:15:16Z",
@@ -361,13 +379,15 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.5/rom_type_b.zip",
         "size": 399658877,
-        "download_count": 12,
+        "download_count": 13,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:02Z",
         "updated_at": "2026-09-02T13:15:14Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541199798"
       }
-    ]
+    ],
+    "mirror_downloads": 34,
+    "downloads": 63
   },
   {
     "id": 363520911,
@@ -387,7 +407,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.3/rom.zip",
         "size": 456569905,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:04Z",
         "updated_at": "2026-09-02T13:15:24Z",
@@ -398,13 +418,15 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.3/rom_type_b.zip",
         "size": 399645569,
-        "download_count": 15,
+        "download_count": 16,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:04Z",
         "updated_at": "2026-09-02T13:15:18Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541199868"
       }
-    ]
+    ],
+    "mirror_downloads": 34,
+    "downloads": 67
   },
   {
     "id": 363520661,
@@ -424,7 +446,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.4/rom.zip",
         "size": 456287678,
-        "download_count": 26,
+        "download_count": 27,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:07Z",
         "updated_at": "2026-09-02T13:15:25Z",
@@ -435,7 +457,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.4/rom_type_b.zip",
         "size": 399771390,
-        "download_count": 14,
+        "download_count": 15,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:07Z",
         "updated_at": "2026-09-02T13:15:22Z",
@@ -446,13 +468,15 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.4/rom_y2.zip",
         "size": 443266446,
-        "download_count": 25,
+        "download_count": 26,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:07Z",
         "updated_at": "2026-09-02T13:15:24Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541199940"
       }
-    ]
+    ],
+    "mirror_downloads": 51,
+    "downloads": 119
   },
   {
     "id": 363520632,
@@ -472,7 +496,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.1/rom.zip",
         "size": 457073002,
-        "download_count": 21,
+        "download_count": 22,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:07Z",
         "updated_at": "2026-09-02T13:15:22Z",
@@ -483,13 +507,15 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.1/rom_type_b.zip",
         "size": 404526855,
-        "download_count": 14,
+        "download_count": 15,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:08Z",
         "updated_at": "2026-09-02T13:15:21Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541199982"
       }
-    ]
+    ],
+    "mirror_downloads": 34,
+    "downloads": 71
   },
   {
     "id": 363520809,
@@ -509,7 +535,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11/rom.zip",
         "size": 457083507,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:09Z",
         "updated_at": "2026-09-02T13:15:26Z",
@@ -520,13 +546,15 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11/rom_type_b.zip",
         "size": 404522629,
-        "download_count": 15,
+        "download_count": 16,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:09Z",
         "updated_at": "2026-09-02T13:15:24Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200031"
       }
-    ]
+    ],
+    "mirror_downloads": 34,
+    "downloads": 67
   },
   {
     "id": 363520965,
@@ -546,7 +574,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.10.1/rom.zip",
         "size": 457535838,
-        "download_count": 14,
+        "download_count": 16,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:14Z",
         "updated_at": "2026-09-02T13:15:42Z",
@@ -557,13 +585,15 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.10.1/rom_type_b.zip",
         "size": 399512608,
-        "download_count": 14,
+        "download_count": 15,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:14Z",
         "updated_at": "2026-09-02T13:15:28Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200122"
       }
-    ]
+    ],
+    "mirror_downloads": 34,
+    "downloads": 65
   },
   {
     "id": 363520674,
@@ -583,7 +613,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.10/rom.zip",
         "size": 457534242,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:09Z",
         "updated_at": "2026-09-02T13:15:29Z",
@@ -594,13 +624,15 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.10/rom_type_b.zip",
         "size": 399499884,
-        "download_count": 14,
+        "download_count": 15,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:09Z",
         "updated_at": "2026-09-02T13:15:25Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200023"
       }
-    ]
+    ],
+    "mirror_downloads": 34,
+    "downloads": 69
   },
   {
     "id": 363520628,
@@ -620,7 +652,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.1/rom.zip",
         "size": 456596207,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:19Z",
         "updated_at": "2026-09-02T13:15:33Z",
@@ -631,13 +663,15 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.1/rom_type_b.zip",
         "size": 399646396,
-        "download_count": 14,
+        "download_count": 15,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:19Z",
         "updated_at": "2026-09-02T13:15:32Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200230"
       }
-    ]
+    ],
+    "mirror_downloads": 40,
+    "downloads": 74
   },
   {
     "id": 363076077,
@@ -663,7 +697,9 @@
         "updated_at": "2026-07-31T13:14:46Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/496713032"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 355707312,
@@ -689,7 +725,9 @@
         "updated_at": "2026-07-17T13:42:52Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/480421842"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 354220343,
@@ -715,7 +753,9 @@
         "updated_at": "2026-07-15T05:27:52Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/477557874"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 350124073,
@@ -729,7 +769,9 @@
     "html_url": "https://github.com/ismileblue/y1_launcher/releases/tag/v0.10.4",
     "icon_url": "",
     "icon_dark_url": "",
-    "assets": []
+    "assets": [],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 349196400,
@@ -755,7 +797,9 @@
         "updated_at": "2026-07-05T15:59:44Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/467251689"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 349173045,
@@ -781,7 +825,9 @@
         "updated_at": "2026-07-05T13:49:33Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/467175244"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 345692375,
@@ -807,7 +853,9 @@
         "updated_at": "2026-06-27T12:46:57Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/459481021"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 344010098,
@@ -838,13 +886,15 @@
         "name": "Y1_Themes.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/v0.8/Y1_Themes.zip",
         "size": 819854,
-        "download_count": 6,
+        "download_count": 7,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-06-24T13:57:26Z",
         "updated_at": "2026-06-24T13:57:27Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/456683120"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 7
   },
   {
     "id": 340529586,
@@ -870,7 +920,9 @@
         "updated_at": "2026-06-17T04:48:37Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/449890131"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 339417469,
@@ -901,13 +953,15 @@
         "name": "Y1_Themes.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/v0.5/Y1_Themes.zip",
         "size": 339264,
-        "download_count": 6,
+        "download_count": 7,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-06-15T09:09:30Z",
         "updated_at": "2026-06-15T09:09:31Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/448009809"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 7
   },
   {
     "id": 339528377,
@@ -944,7 +998,9 @@
         "updated_at": "2026-06-15T14:57:48Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/448277135"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 338441603,
@@ -970,7 +1026,9 @@
         "updated_at": "2026-06-12T07:48:30Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/445466905"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 337317116,
@@ -996,6 +1054,8 @@
         "updated_at": "2026-06-10T15:30:09Z",
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/443818992"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   }
 ]
