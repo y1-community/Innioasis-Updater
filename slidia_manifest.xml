@@ -82,5 +82,4 @@
 <package name="Solar" brand="Innioasis" repo="thesolarproject/solar" portable_zips="y1-community/solar-mirror" device="Y1" url="https://github.com/thesolarproject/solar" type="img" icon="https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png" handler="Custom Firmware" />
 
 <package name="Solar" brand="Innioasis" repo="thesolarproject/solar" portable_zips="y1-community/solar-mirror" device="Y2" url="https://github.com/thesolarproject/solar" type="img" icon="https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png" handler="Custom Firmware" />
-  <package name="Watcher Manifest Trigger" repo="y1-community/y1-stock-rom" portable_zips="y1-community/y1-stock-rom-mirror" device="Y1" type="img" package_name="rom_y1.zip" />
 </slidia>
