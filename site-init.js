@@ -4,6 +4,21 @@
 (function (global) {
     "use strict";
 
+    /* A shared guide link can request the portable route on a computer that
+       can otherwise run Updater CE. Mark it before site-platform.js decides
+       which OS copy to insert, so the portable guide is not mixed with the
+       Updater download panel. */
+    (function markPortableGuideRequest() {
+        try {
+            var requested = String(new URLSearchParams(global.location.search).get("platform") || "").trim().toLowerCase();
+            if (requested !== "windows-legacy") return;
+            if (document.documentElement) {
+                document.documentElement.setAttribute("data-windows-legacy", "true");
+                document.documentElement.setAttribute("data-os", "windows-legacy");
+            }
+        } catch (_) {}
+    })();
+
     /* ---- Appearance -------------------------------------------------------
        One choice, four palettes. The preference is kept locally, mirrored to
        the shared .innioasis.app cookie so it follows the visitor between
@@ -1482,6 +1497,11 @@
            rendered after this script runs. */
         function handBack(link) {
             if (!link || !link.getAttribute) return false;
+            /* A portable row carries the mirror metadata while its visible
+               href is still the project's source zip. Marking it direct here
+               made the browser follow that source zip before lumen-site.js
+               could resolve the platform build for this computer. */
+            if (link.hasAttribute("data-portable-zips") || link.hasAttribute("data-release-tag") || link.hasAttribute("data-zip-url")) return false;
             var href = link.getAttribute("href") || "";
             if (!href || /^(#|mailto:|tel:|javascript:)/i.test(href)) return false;
             var url = unwrap(href);
@@ -1567,6 +1587,34 @@
     if (/^themes\./i.test(global.location.hostname || "")) loadSiteDownloads();
     else installDirectDownloads();
 
+    /* The resolver turns a release's original ZIP metadata into the portable
+       package for this computer. firmware-list.html already loads it; the
+       dynamic firmware table needs it before site-legacy.js can swap its
+       Updater buttons to Get Zip. */
+    function loadSitePortable() {
+        if (global.InnioasisPortableZip || document.getElementById("site-portable-script") ||
+            document.querySelector('script[src*="portable-zip-links.js"]')) return;
+        var base = "";
+        try {
+            var scripts = document.getElementsByTagName("script");
+            for (var i = 0; i < scripts.length; i++) {
+                var src = scripts[i].src || "";
+                if (src.indexOf("site-init.js") === -1) continue;
+                base = src.replace(/[?#].*$/, "").replace(/[^/]*$/, "");
+                break;
+            }
+        } catch (_) {}
+        var node = document.createElement("script");
+        node.id = "site-portable-script";
+        node.src = base + "portable-zip-links.js?v=20261113legacyguide";
+        node.defer = true;
+        document.head.appendChild(node);
+    }
+    if (/\/firmware(?:-list)?(?:_[a-zA-Z0-9_-]+)?\.html$/i.test(global.location.pathname || "") ||
+        document.querySelector("[data-firmware-page]") || document.getElementById("lumen-firmware-table")) {
+        loadSitePortable();
+    }
+
     /* Windows XP/Vista/7/8/8.1 and 32-bit Windows cannot run Updater CE, so
        that visit gets the portable SP Flash Tool route instead of install
        links it cannot use. Same pattern as site-downloads.js: no page needs an
@@ -1585,7 +1633,7 @@
         } catch (_) {}
         var node = document.createElement("script");
         node.id = "site-legacy-script";
-        node.src = base + "site-legacy.js?v=20261110legacy";
+        node.src = base + "site-legacy.js?v=20261113legacynav2";
         node.defer = true;
         document.head.appendChild(node);
     }

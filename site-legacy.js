@@ -10,10 +10,12 @@
  *
  *   - "Get Updater CE" becomes "Browse firmwares" on the home page, because an
  *     install link they cannot run is worse than no link;
- *   - every other Updater CE call to action becomes "Install with Windows
- *     XP/7/8 32/64-bit portable zip" and points at windows-legacy.html;
- *   - a short notice names the detected Windows version and links to the
- *     legacy install guide.
+ *   - every other Updater CE call to action becomes "Get Zip" and resolves
+ *     the same release's Windows XP/7/8 portable package, keeping the button
+ *     markup and styling; the programmatic firmware list is the fallback;
+ *   - guide links carry platform=windows-legacy, and the shared guide page
+ *     swaps its Updater CE sections for the portable package steps, so the
+ *     visit reads the same guide as everyone else instead of a warning panel.
  *
  * Detection is deliberately conservative. Windows NT 5.x-6.3 (XP through 8.1)
  * is legacy; Windows 10 and 11 are always treated as supported, because the
@@ -34,8 +36,8 @@
 
     var PLATFORM_KEY = "windows-legacy";
     var BIG_LABEL = "Windows XP/7/8 32/64-bit";
-    var GUIDE = "windows-legacy.html";
     var LIST = "firmware-list.html";
+    var ZIP_LABEL = "Get Zip";
     /* Declared above the early return below: refresh() is callable on any
        visit through the published API, and a var initialised further down
        would be undefined there. */
@@ -85,14 +87,29 @@
     var state = detect();
 
     function publish(current) {
-        global.INNIOASIS_LEGACY = current && current.isLegacy ? {
+        if (current && current.isLegacy) {
+            global.INNIOASIS_LEGACY = {
+                isLegacy: true,
+                platformKey: PLATFORM_KEY,
+                label: BIG_LABEL,
+                version: current.name,
+                nt: current.nt,
+                bits: current.bits,
+                reason: current.reason
+            };
+            return;
+        }
+        /* An explicit ?platform=windows-legacy link uses the portable route
+           on any computer. Publish the same marker so the table buttons, the
+           guide and every lookup make one shared choice. */
+        global.INNIOASIS_LEGACY = requestedPlatform() === PLATFORM_KEY ? {
             isLegacy: true,
             platformKey: PLATFORM_KEY,
             label: BIG_LABEL,
-            version: current.name,
-            nt: current.nt,
-            bits: current.bits,
-            reason: current.reason
+            version: "requested",
+            nt: "",
+            bits: 0,
+            reason: "query"
         } : null;
     }
 
@@ -132,8 +149,24 @@
         refresh: refresh
     };
 
+    /* A shared link can name the portable route directly, so a supported
+       machine opening ?platform=windows-legacy still reads that guide. */
+    function requestedPlatform() {
+        try {
+            return String(new URLSearchParams(global.location.search).get("platform") || "").trim().toLowerCase();
+        } catch (_) {
+            return "";
+        }
+    }
+
     if (!state || !state.isLegacy) {
-        upgradeFromUserAgentData();
+        if (requestedPlatform() === PLATFORM_KEY) {
+            /* root and the helper declarations finish below; run after this
+               script has finished executing. */
+            global.setTimeout(init, 0);
+        } else {
+            upgradeFromUserAgentData();
+        }
         return;
     }
 
@@ -156,11 +189,6 @@
 
     function absolute(path) {
         return root ? root + path : path;
-    }
-
-    function pageName() {
-        var path = String(global.location && global.location.pathname || "");
-        return path.split("/").pop() || "index.html";
     }
 
     function each(selector, callback) {
@@ -192,6 +220,7 @@
         each("main a, main button", function (node) {
             if (node.getAttribute("data-legacy-browse") === "1") return;
             if (node.getAttribute("data-legacy-cta") === "1") return;
+            if (node.classList && node.classList.contains("lumen-updater-button")) return;
             if (inChrome(node)) return;
             var text = String(node.textContent || "").replace(/\s+/g, " ").trim();
             if (!UPDATER_TEXT.test(text)) return;
@@ -200,11 +229,85 @@
             if (/windows-legacy\.html/i.test(href)) return;
             node.setAttribute("data-legacy-cta", "1");
             node.setAttribute("data-legacy-original-label", text);
-            node.textContent = "Install with " + BIG_LABEL + " portable zip";
-            node.setAttribute("href", absolute(GUIDE));
+            node.textContent = ZIP_LABEL;
+            node.setAttribute("href", absolute(LIST));
             node.removeAttribute("download");
             node.removeAttribute("target");
         });
+    }
+
+    /* Updater CE cannot run here, so its header link is not a useful first
+       stop. Put the firmware catalogue in that slot instead, without changing
+       the rest of the navigation or the labels the i18n pass already built. */
+    function adjustHeaderCta() {
+        var cta = doc.getElementById("lumen-nav-install-cta");
+        if (cta) {
+            cta.hidden = true;
+            cta.style.display = "none";
+            cta.setAttribute("aria-hidden", "true");
+            cta.setAttribute("tabindex", "-1");
+        }
+        each('#navLinks a[href*="view=software"]', function (link) {
+            if (link.getAttribute("data-legacy-primary") === "1") return;
+            link.setAttribute("data-legacy-primary", "1");
+            link.classList.add("lumen-nav-install-cta", "lumen-nav-install-cta--legacy");
+            link.style.color = "var(--lumen-accent)";
+            link.style.background = "var(--lumen-accent-wash)";
+        });
+    }
+
+    /* The table's Updater column is the same promise as its buttons. Keep the
+       original label so a supported visitor never sees the swap. */
+    function swapTableHeadings() {
+        each("th", function (heading) {
+            if (heading.getAttribute("data-legacy-heading") === "1") return;
+            var text = String(heading.textContent || "").replace(/\s+/g, " ").trim();
+            if (!/Updater CE/i.test(text)) return;
+            heading.setAttribute("data-legacy-heading", "1");
+            heading.setAttribute("data-legacy-original-label", text);
+            heading.textContent = ZIP_LABEL;
+        });
+    }
+
+    /* The firmware table renders after this module starts. The button keeps
+       its icon and layout; only the label changes. The actual package is the
+       same release's windows-legacy mirror asset, resolved from the metadata
+       lumen-site.js puts on the anchor. */
+    function relabelUpdaterButtons() {
+        each("a.lumen-updater-button", function (link) {
+            if (link.getAttribute("data-legacy-zip") === "1") return;
+            link.setAttribute("data-legacy-zip", "1");
+            link.setAttribute("data-legacy-original-label", String(link.textContent || "").replace(/\s+/g, " ").trim());
+            var strong = link.querySelector("strong");
+            var small = link.querySelector("small");
+            if (strong) strong.textContent = ZIP_LABEL;
+            else link.textContent = ZIP_LABEL;
+            if (small) small.textContent = "portable package";
+            link.setAttribute("href", absolute(LIST));
+            link.removeAttribute("target");
+            resolveLegacyZip(link);
+        });
+    }
+
+    function resolveLegacyZip(link) {
+        if (!link || link.getAttribute("data-legacy-zip-resolved") === "1") return;
+        var source = link.getAttribute("data-zip-url") || "";
+        var resolver = global.InnioasisPortable && global.InnioasisPortable.resolve;
+        if (!source || typeof resolver !== "function") return;
+        try {
+            Promise.resolve(resolver(
+                source,
+                link.getAttribute("data-portable-zips") || "",
+                link.getAttribute("data-release-tag") || "",
+                link.getAttribute("data-zip-name") || ""
+            )).then(function (target) {
+                if (!target || !target.url) return;
+                link.setAttribute("href", target.url);
+                link.setAttribute("download", "");
+                link.setAttribute("data-legacy-zip-resolved", "1");
+                link.setAttribute("title", "Download the " + BIG_LABEL + " portable zip");
+            }).catch(function () {});
+        } catch (_) {}
     }
 
     /* The firmware rows carry one button per desktop OS. On this computer the
@@ -222,41 +325,32 @@
         });
     }
 
-    function noticeHtml() {
-        var bits = state.bits === 32 ? "32-bit" : "";
-        var detected = (state.name + (bits ? ", " + bits : "")).replace(/^\s+|\s+$/g, "");
-        return '' +
-            '<div class="lumen-callout lumen-legacy-notice">' +
-            '<h2>This PC cannot run Updater CE</h2>' +
-            '<p>Updater CE needs 64-bit Windows 10 (1809 or newer). We detected <strong>' + detected +
-            '</strong>, so the install link is hidden on this visit. Your player can still be updated: ' +
-            'every firmware package has a <strong>' + BIG_LABEL + '</strong> zip that carries SP Flash Tool ' +
-            'beside the rom, and SP Flash Tool runs on Windows XP and later.</p>' +
-            '<p class="lumen-meta">Installing software, firmware, updates or a stock package this way takes ' +
-            'a few manual steps: unpack the package, choose its scatter file, press Download, then connect ' +
-            'the powered-off player.</p>' +
-            '<div class="lumen-actions">' +
-            '<a class="lumen-button lumen-button--primary" href="' + absolute(GUIDE) + '">How to install with SP Flash Tool</a>' +
-            '<a class="lumen-button" href="' + absolute(LIST) + '">Browse firmwares</a>' +
-            '</div>' +
-            '</div>';
+    /* The shared guide page accepts URL parameters. Marking guide links keeps
+       a legacy visit on the same page as everyone else; the guide itself shows
+       the portable steps when that parameter is present. */
+    function rewriteGuideLinks() {
+        each("a[href]", function (link) {
+            if (link.getAttribute("data-legacy-guide-link") === "1") return;
+            var href = link.getAttribute("href") || "";
+            if (!href || /^(#|mailto:|tel:|javascript:)/i.test(href)) return;
+            var url;
+            try {
+                url = new URL(href, global.location.href);
+            } catch (_) {
+                return;
+            }
+            if (url.origin !== global.location.origin) return;
+            if (!/(^|\/)(?:guide|firmware-guide)\.html$/i.test(url.pathname)) return;
+            url.searchParams.set("platform", PLATFORM_KEY);
+            link.setAttribute("href", url.pathname + url.search + url.hash);
+            link.setAttribute("data-legacy-guide-link", "1");
+        });
     }
 
-    function injectNotice() {
-        if (pageName() === GUIDE) return;
-        var main = doc.getElementById("main") || doc.querySelector("main");
-        if (!main || main.querySelector("[data-windows-legacy-notice]")) return;
-        var section = doc.createElement("section");
-        section.className = "lumen-section lumen-legacy-section";
-        section.setAttribute("data-windows-legacy-notice", "1");
-        section.setAttribute("data-i18n-english", "");
-        section.innerHTML = noticeHtml();
-        var hero = main.querySelector(".lumen-hero");
-        if (hero && hero.parentNode === main) {
-            main.insertBefore(section, hero.nextSibling);
-        } else {
-            main.insertBefore(section, main.firstChild);
-        }
+    function notifyPortableReady() {
+        try {
+            global.dispatchEvent(new CustomEvent("innioasis-portable-ready"));
+        } catch (_) {}
     }
 
     function stamp() {
@@ -268,7 +362,11 @@
     function refresh() {
         swapUpdaterAvailability();
         swapUpdaterCtas();
+        adjustHeaderCta();
+        swapTableHeadings();
+        relabelUpdaterButtons();
         relabelPortableButtons();
+        rewriteGuideLinks();
     }
 
     function observe() {
@@ -292,8 +390,12 @@
         stamp();
         swapUpdaterAvailability();
         swapUpdaterCtas();
+        adjustHeaderCta();
+        swapTableHeadings();
+        relabelUpdaterButtons();
         relabelPortableButtons();
-        injectNotice();
+        rewriteGuideLinks();
+        notifyPortableReady();
         observe();
     }
 
