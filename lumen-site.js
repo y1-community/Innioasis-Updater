@@ -2275,7 +2275,12 @@
                 }
             });
             var assetLinks = links.length ? links.join("") : '<li>No ZIP asset was found in this release.</li>';
-            var versionsHref = deepLinkVersionsPage(item);
+            /* This row is already a specific release. Send its "Other
+               versions" control to that release's download page, not to the
+               software's version picker where the user has to choose again. */
+            var versionsHref = staticReleaseNotesHref(
+                item, release.tag_name || release.name || ""
+            ) || deepLinkVersionsPage(item);
             var versionsLink = versionsHref
                 ? '<p class="lumen-meta lumen-release-versions"><a href="' + escapeHtml(versionsHref) + '" title="See every published version of ' + escapeHtml(item.name || "this software") + '">Other versions</a></p>'
                 : "";
