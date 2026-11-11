@@ -13,9 +13,9 @@
     <link rel="alternate" type="text/html" href="https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.5"/>
     <innioasis:tag_name>v1.4.5</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>595</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/InniClassic-1.4.5.apk" title="InniClassic-1.4.5.apk" length="30017796" type="application/vnd.android.package-archive" innioasis:download_count="75" innioasis:asset_id="598138137"/>
-    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip" title="rom.zip" length="463531481" type="application/zip" innioasis:download_count="566" innioasis:asset_id="598138138"/>
+    <innioasis:downloads>592</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/InniClassic-1.4.5.apk" title="InniClassic-1.4.5.apk" length="30017796" type="application/vnd.android.package-archive" innioasis:download_count="76" innioasis:asset_id="598138137"/>
+    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip" title="rom.zip" length="463531481" type="application/zip" innioasis:download_count="567" innioasis:asset_id="598138138"/>
     <content type="text">### Fixed
 - **Theme could silently revert to the default after connecting the device as USB Mass Storage** — the selected theme was persisted only as a numeric index into the SD card&#x27;s theme folder listing, and that listing&#x27;s order isn&#x27;t guaranteed stable across a mount/unmount cycle (common FAT32 behavior). The saved index could end up pointing at a completely different theme once the card was reconnected. The theme&#x27;s name is now saved alongside the index and resolved by name on startup — independent of scan order — with the old index kept only as a fallback for upgrades.
 - **`.scrobbler.log` declared its timestamps as `#TZ/UNKNOWN`** even though they&#x27;re genuinely UTC (`System.currentTimeMillis()` is always UTC epoch time, regardless of the device&#x27;s local timezone setting). Now correctly declared as `#TZ/UTC`, so any tool that imports the log trusts the timestamps instead of asking or guessing. Only affects newly created log files — an existing `.scrobbler.log`&#x27;s header isn&#x27;t rewritten.
@@ -36,9 +36,9 @@ Full changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG
     <link rel="alternate" type="text/html" href="https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.4"/>
     <innioasis:tag_name>v1.4.4</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>54</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/InniClassic-1.4.4.apk" title="InniClassic-1.4.4.apk" length="30000629" type="application/vnd.android.package-archive" innioasis:download_count="16" innioasis:asset_id="598101369"/>
-    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/rom.zip" title="rom.zip" length="463523953" type="application/zip" innioasis:download_count="30" innioasis:asset_id="598101368"/>
+    <innioasis:downloads>55</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/InniClassic-1.4.4.apk" title="InniClassic-1.4.4.apk" length="30000629" type="application/vnd.android.package-archive" innioasis:download_count="17" innioasis:asset_id="598101369"/>
+    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/rom.zip" title="rom.zip" length="463523953" type="application/zip" innioasis:download_count="31" innioasis:asset_id="598101368"/>
     <content type="text">A hardware-input overhaul: a real Hold/lock switch, a proper video/music handoff, and a round of Now Playing and Videos polish.
 
 ### Added

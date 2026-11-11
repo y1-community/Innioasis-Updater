@@ -105,7 +105,7 @@
         "name": "UpdaterCE-Linux-Portable.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/UpdaterCE-Linux-Portable.zip",
         "size": 363859936,
-        "download_count": 125,
+        "download_count": 132,
         "content_type": "application/zip",
         "created_at": "2026-11-10T18:54:48Z",
         "updated_at": "2026-11-10T18:56:09Z",
@@ -127,7 +127,7 @@
         "name": "UpdaterCE-Linux-Portable-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/UpdaterCE-Linux-Portable-arm64.zip",
         "size": 187878034,
-        "download_count": 121,
+        "download_count": 129,
         "content_type": "application/zip",
         "created_at": "2026-11-10T18:55:32Z",
         "updated_at": "2026-11-10T18:56:12Z",
@@ -193,7 +193,7 @@
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/Innioasis.Updater.for.Mac.dmg",
         "size": 119710372,
-        "download_count": 11,
+        "download_count": 12,
         "content_type": "application/x-diskcopy",
         "created_at": "2026-11-11T00:22:19Z",
         "updated_at": "2026-11-11T00:22:43Z",
@@ -215,7 +215,7 @@
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/installer.exe",
         "size": 218598693,
-        "download_count": 83,
+        "download_count": 84,
         "content_type": "application/x-msdownload",
         "created_at": "2026-11-11T00:54:42Z",
         "updated_at": "2026-11-11T01:13:18Z",
@@ -223,7 +223,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 247
+    "downloads": 262
   },
   {
     "id": 427803579,
@@ -265,7 +265,7 @@
         "name": "UpdaterCE-Windows-Portable.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.1/UpdaterCE-Windows-Portable.zip",
         "size": 236551244,
-        "download_count": 153,
+        "download_count": 159,
         "content_type": "application/zip",
         "created_at": "2026-10-29T15:00:46Z",
         "updated_at": "2026-10-29T15:03:17Z",
@@ -306,7 +306,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 440
+    "downloads": 446
   },
   {
     "id": 421255536,
