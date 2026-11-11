@@ -4059,86 +4059,11 @@
    "guide_zh-tw.html",
    "guide_zh.html"
   ],
+  "Choose your package": [
+   "lumen-site.js"
+  ],
   "Classy build for the Innioasis Y2, formerly Inniclassic for Y2.": [
    "firmware-catalog.js"
-  ],
-  "Classy for Innioasis Y1": [
-   "firmware-list_ar.html",
-   "firmware-list_cs.html",
-   "firmware-list_da.html",
-   "firmware-list_de.html",
-   "firmware-list_el.html",
-   "firmware-list_es.html",
-   "firmware-list_fa.html",
-   "firmware-list_fi.html",
-   "firmware-list_fr.html",
-   "firmware-list_he.html",
-   "firmware-list_hi.html",
-   "firmware-list_hu.html",
-   "firmware-list_id.html",
-   "firmware-list_it.html",
-   "firmware-list_ja.html",
-   "firmware-list_jp.html",
-   "firmware-list_ko.html",
-   "firmware-list_kr.html",
-   "firmware-list_nl.html",
-   "firmware-list_no.html",
-   "firmware-list_pl.html",
-   "firmware-list_pt-BR.html",
-   "firmware-list_pt-PT.html",
-   "firmware-list_pt-br.html",
-   "firmware-list_pt-pt.html",
-   "firmware-list_pt.html",
-   "firmware-list_ro.html",
-   "firmware-list_ru.html",
-   "firmware-list_sv.html",
-   "firmware-list_th.html",
-   "firmware-list_tr.html",
-   "firmware-list_uk.html",
-   "firmware-list_vi.html",
-   "firmware-list_zh-CN.html",
-   "firmware-list_zh-TW.html",
-   "firmware-list_zh-cn.html",
-   "firmware-list_zh-tw.html",
-   "firmware-list_zh.html",
-   "firmware_ar.html",
-   "firmware_cs.html",
-   "firmware_da.html",
-   "firmware_de.html",
-   "firmware_el.html",
-   "firmware_es.html",
-   "firmware_fa.html",
-   "firmware_fi.html",
-   "firmware_fr.html",
-   "firmware_he.html",
-   "firmware_hi.html",
-   "firmware_hu.html",
-   "firmware_id.html",
-   "firmware_it.html",
-   "firmware_ja.html",
-   "firmware_jp.html",
-   "firmware_ko.html",
-   "firmware_kr.html",
-   "firmware_nl.html",
-   "firmware_no.html",
-   "firmware_pl.html",
-   "firmware_pt-BR.html",
-   "firmware_pt-PT.html",
-   "firmware_pt-br.html",
-   "firmware_pt-pt.html",
-   "firmware_pt.html",
-   "firmware_ro.html",
-   "firmware_ru.html",
-   "firmware_sv.html",
-   "firmware_th.html",
-   "firmware_tr.html",
-   "firmware_uk.html",
-   "firmware_vi.html",
-   "firmware_zh-CN.html",
-   "firmware_zh-TW.html",
-   "firmware_zh-cn.html",
-   "firmware_zh-tw.html",
-   "firmware_zh.html"
   ],
   "Classy for Innioasis Y2": [
    "firmware-list.html",
@@ -4219,46 +4144,6 @@
    "firmware_zh-cn.html",
    "firmware_zh-tw.html",
    "firmware_zh.html"
-  ],
-  "Classy on Innioasis Y1": [
-   "firmware-list_ar.html",
-   "firmware-list_cs.html",
-   "firmware-list_da.html",
-   "firmware-list_de.html",
-   "firmware-list_el.html",
-   "firmware-list_es.html",
-   "firmware-list_fa.html",
-   "firmware-list_fi.html",
-   "firmware-list_fr.html",
-   "firmware-list_he.html",
-   "firmware-list_hi.html",
-   "firmware-list_hu.html",
-   "firmware-list_id.html",
-   "firmware-list_it.html",
-   "firmware-list_ja.html",
-   "firmware-list_jp.html",
-   "firmware-list_ko.html",
-   "firmware-list_kr.html",
-   "firmware-list_nl.html",
-   "firmware-list_no.html",
-   "firmware-list_pl.html",
-   "firmware-list_pt-BR.html",
-   "firmware-list_pt-PT.html",
-   "firmware-list_pt-br.html",
-   "firmware-list_pt-pt.html",
-   "firmware-list_pt.html",
-   "firmware-list_ro.html",
-   "firmware-list_ru.html",
-   "firmware-list_sv.html",
-   "firmware-list_th.html",
-   "firmware-list_tr.html",
-   "firmware-list_uk.html",
-   "firmware-list_vi.html",
-   "firmware-list_zh-CN.html",
-   "firmware-list_zh-TW.html",
-   "firmware-list_zh-cn.html",
-   "firmware-list_zh-tw.html",
-   "firmware-list_zh.html"
   ],
   "Classy on Innioasis Y2": [
    "firmware-list.html",
@@ -7612,10 +7497,16 @@
    "rockbox-y1/faq.html",
    "rockbox-y2/faq.html"
   ],
+  "Follow these steps for": [
+   "lumen-site.js"
+  ],
   "Follow these steps in Updater. The player you want to restore is the": [
    "lumen-site.js"
   ],
   "Follow these steps in Updater. You have the": [
+   "lumen-site.js"
+  ],
+  "Follow these steps with the": [
    "lumen-site.js"
   ],
   "Frawgeeys · Updater and Rockbox": [
@@ -7687,6 +7578,9 @@
   "Full Credits & Ledger →": [
    "support_toolbar.html"
   ],
+  "Full portable package guide": [
+   "lumen-site.js"
+  ],
   "General performance and stability improvements": [
    "firmware-catalog.js"
   ],
@@ -7738,6 +7632,7 @@
    "nav.js"
   ],
   "Get Updater CE": [
+   "lumen-site.js",
    "nav.js"
   ],
   "Get Updater CE ready": [
@@ -7822,6 +7717,9 @@
   ],
   "Get Updater for macOS": [
    "nav.js"
+  ],
+  "Get Zip": [
+   "lumen-site.js"
   ],
   "Get and use Innioasis Updater CE to discover, install, or restore firmware on an Innioasis Y1 or Y2.": [
    "guide.html",
@@ -7913,6 +7811,9 @@
    "release_notes_zh-cn.html",
    "release_notes_zh-tw.html",
    "release_notes_zh.html"
+  ],
+  "Get it on Updater": [
+   "lumen-site.js"
   ],
   "Get to Know Innioasis Updater videos": [
    "index.html",
@@ -12906,6 +12807,9 @@
    "sp-flash-tool_zh-tw.html",
    "sp-flash-tool_zh.html"
   ],
+  "Install firmware with the portable package": [
+   "lumen-site.js"
+  ],
   "Install guide": [
    "post_install.html",
    "post_install_ar.html",
@@ -14532,6 +14436,9 @@
   ],
   "Lead Maintainer & Systems Architect": [
    "about.html"
+  ],
+  "Leave Download Only selected, click Download, then power the player fully off and connect the USB cable. Use a data cable and a port on the PC itself.": [
+   "lumen-site.js"
   ],
   "Leave the player and cable alone until Updater CE shows success. Boot may take longer. Reinstall Original Software when you finish testing.": [
    "install/android-4-2-y1-linux.html",
@@ -16370,6 +16277,9 @@
   "Open the": [
    "lumen-site.js"
   ],
+  "Open the firmware list and choose": [
+   "lumen-site.js"
+  ],
   "Open the firmware list, choose the model printed on the player, then choose the release. Download the zip whose name ends in -windows-legacy.zip.": [
    "install/legacy-windows.html"
   ],
@@ -18049,6 +17959,9 @@
    "original-software-y2_zh-tw.html",
    "original-software-y2_zh.html"
   ],
+  "Other versions": [
+   "lumen-site.js"
+  ],
   "Our projects rely on donations": [
    "support_toolbar.html"
   ],
@@ -18562,7 +18475,45 @@
    "firmware-list_zh.html"
   ],
   "Portable package for Linux on ARM": [
-   "firmware-list.html"
+   "firmware-list.html",
+   "firmware-list_ar.html",
+   "firmware-list_cs.html",
+   "firmware-list_da.html",
+   "firmware-list_de.html",
+   "firmware-list_el.html",
+   "firmware-list_es.html",
+   "firmware-list_fa.html",
+   "firmware-list_fi.html",
+   "firmware-list_fr.html",
+   "firmware-list_he.html",
+   "firmware-list_hi.html",
+   "firmware-list_hu.html",
+   "firmware-list_id.html",
+   "firmware-list_it.html",
+   "firmware-list_ja.html",
+   "firmware-list_jp.html",
+   "firmware-list_ko.html",
+   "firmware-list_kr.html",
+   "firmware-list_nl.html",
+   "firmware-list_no.html",
+   "firmware-list_pl.html",
+   "firmware-list_pt-BR.html",
+   "firmware-list_pt-PT.html",
+   "firmware-list_pt-br.html",
+   "firmware-list_pt-pt.html",
+   "firmware-list_pt.html",
+   "firmware-list_ro.html",
+   "firmware-list_ru.html",
+   "firmware-list_sv.html",
+   "firmware-list_th.html",
+   "firmware-list_tr.html",
+   "firmware-list_uk.html",
+   "firmware-list_vi.html",
+   "firmware-list_zh-CN.html",
+   "firmware-list_zh-TW.html",
+   "firmware-list_zh-cn.html",
+   "firmware-list_zh-tw.html",
+   "firmware-list_zh.html"
   ],
   "Portable package for Windows": [
    "firmware-list.html",
@@ -18608,6 +18559,9 @@
    "firmware-list_zh-tw.html",
    "firmware-list_zh.html"
   ],
+  "Portable package for linux-legacy": [
+   "firmware-list.html"
+  ],
   "Portable package for macOS": [
    "firmware-list.html",
    "firmware-list_ar.html",
@@ -18651,6 +18605,9 @@
    "firmware-list_zh-cn.html",
    "firmware-list_zh-tw.html",
    "firmware-list_zh.html"
+  ],
+  "Portable package ·": [
+   "lumen-site.js"
   ],
   "Post-install setup": [
    "post_install.html",
@@ -21110,6 +21067,9 @@
   ],
   "Run the driver installer from the SP Flash Tool folder, then restart the PC.": [
    "windows-legacy.html"
+  ],
+  "Run the driver installer from the package's Driver folder, then restart the PC so the MediaTek driver is active.": [
+   "lumen-site.js"
   ],
   "Running Costs": [
    "support_toolbar.html"
@@ -23686,6 +23646,9 @@
    "release_notes_zh-tw.html",
    "release_notes_zh.html"
   ],
+  "The portable package writes the system partition, so copy anything you cannot replace off the player first. If the player does not start afterwards, flash again with Preloader ticked.": [
+   "lumen-site.js"
+  ],
   "The price of a coffee or two keeps our download servers online this month.": [
    "support_toolbar.html",
    "support_toolbar_ar.html",
@@ -25559,6 +25522,9 @@
   "Unpack the package and run the driver installer from the Driver folder. Restart the PC afterwards.": [
    "install/legacy-windows.html"
   ],
+  "Unpack the package with the built-in zip support, 7-Zip or WinRAR. Keep the rom files and the scatter file in one folder.": [
+   "lumen-site.js"
+  ],
   "Unusable FX payload": [
    "support_toolbar.html",
    "support_toolbar_ar.html",
@@ -26010,6 +25976,9 @@
   "Wait for the completion message before unplugging and turning on your player.": [
    "rockbox-y1/install.html",
    "rockbox-y2/install.html"
+  ],
+  "Wait for the green success box before unplugging. When the flash finishes, disconnect the player and start it.": [
+   "lumen-site.js"
   ],
   "Wait for the success message, then disconnect and start the player.": [
    "lumen-site.js"
