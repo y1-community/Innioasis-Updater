@@ -1301,41 +1301,70 @@ def release_icon_html(item: dict, release: dict) -> str:
     return '<img class="lumen-release-icon" src="%s" alt="" loading="lazy">' % esc(src)
 
 
-def source_citations(item: dict, tag: str = "") -> str:
-    """Quiet numbered references to the project that publishes the firmware.
+_SOFTWARE_NAMES: dict = {}
+_SOFTWARE_NAMES_LOADED = False
 
-    [1] the project README on our site, [2] the release notes on our site,
-    [3] the catalogue pull requests that project has opened.
+
+def software_name_for(item: dict, repo: str, model: str) -> str:
+    """The software's own name from ``slidia_manifest.xml`` for this row."""
+    global _SOFTWARE_NAMES_LOADED
+    if not _SOFTWARE_NAMES_LOADED:
+        for pkg in load_manifest():
+            key = (str(pkg.get("repo") or "").lower(), str(pkg.get("device") or "").upper())
+            _SOFTWARE_NAMES.setdefault(key, str(pkg.get("name") or "").strip())
+        _SOFTWARE_NAMES_LOADED = True
+    manifest_name = _SOFTWARE_NAMES.get((repo.lower(), model.upper()), "")
+    return manifest_name or str(item.get("name") or "").strip() or repo.split("/")[-1]
+
+
+def source_citations(item: dict, tag: str = "") -> str:
+    """Who publishes this firmware, as the Firmware Archive presents it.
+
+    The name is the author's plus the software's own name from
+    ``slidia_manifest.xml``, and the link opens firmware.html filtered to that
+    software on the model it is listed for. A project listed for two players
+    lands on the first and the model dropdown on that page switches to the
+    other, so a reader never has to work out which repository is which.
+
+    Nothing here points at GitHub: [1] is the archive's project page and [2]
+    the archive's release notes for this build.
     """
     repo = str(item.get("repo") or "").strip()
     if "/" not in repo:
         return ""
-    owner = repo.split("/")[0]
+    author = repo.split("/")[0]
+    model = str(item.get("model") or "").strip().upper()
     slug = str(item.get("slug") or SLUG_BY_REPO.get(repo.lower(), "") or "").strip()
+    software = software_name_for(item, repo, model)
+
+    archive_url = ""
+    archive_params = {}
+    if model:
+        archive_params["model"] = model
+    if slug:
+        archive_params["software"] = slug
+    if archive_params:
+        archive_url = SITE + "/firmware.html?" + urllib.parse.urlencode(archive_params)
+    else:
+        archive_url = firmware_page_for(repo) or (SITE + "/firmware.html")
+
     readme_params = {"repo": repo}
     if slug:
         readme_params["software"] = slug
     readme_url = SITE + "/firmware_info.html?" + urllib.parse.urlencode(readme_params)
-    project_url = firmware_page_for(repo) or readme_url
+
     parts = [
-        '<p class="lumen-doc-sources">Published by the '
-        '<a href="%s">%s</a> project '
-        '<a class="lumen-cite" href="%s" title="Project README">[1]</a>'
-        % (esc(project_url), esc(repo), esc(readme_url))
+        '<p class="lumen-doc-sources">Published by '
+        '<a href="%s">%s\'s <em>%s</em></a> project '
+        '<a class="lumen-cite" href="%s" title="Firmware Archive page">[1]</a>'
+        % (esc(archive_url), esc(author), esc(software), esc(readme_url))
     ]
     if tag:
-        notes_url = release_notes_href(repo, str(tag))
         parts.append(
             ' <a class="lumen-cite" href="%s" title="Release notes">[2]</a>'
-            % esc(notes_url)
+            % esc(release_notes_href(repo, str(tag)))
         )
-    pulls = "https://github.com/y1-community/Innioasis-Updater/pulls?q=" + urllib.parse.quote(
-        "is:pr author:%s" % owner, safe=""
-    )
-    parts.append(
-        ' <a class="lumen-cite" href="%s" rel="noopener" title="Catalogue pull requests">[3]</a></p>'
-        % esc(pulls)
-    )
+    parts.append("</p>")
     return "".join(parts)
 
 
