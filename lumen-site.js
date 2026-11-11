@@ -1266,6 +1266,13 @@
         return { url: published.browser_download_url, size: Number(published.size) || 0 };
     }
 
+    /* Mirrors do not always copy a project's tag spelling: rondo-mirror tags
+       a release v1.0.2 where the project used 1.0.2. Compare the number, not
+       the prefix. */
+    function tagKey(value) {
+        return String(value || "").trim().toLowerCase().replace(/^v(?=\d)/, "");
+    }
+
     /* The file name a mirror gives the package it built for one platform. */
     function portableSuffix(platformKey) {
         return platformKey === "macos" ? "-macos.zip" :
@@ -1283,20 +1290,24 @@
     async function findConventionalAsset(repo, tag, sourceAsset, platformKey) {
         var suffix = portableSuffix(platformKey);
         if (!suffix || !tag || !sourceAsset) return null;
-        var release = await fetchMirrorRelease(repo, tag);
-        if (!release || !Array.isArray(release.assets)) return null;
+        var candidates = [String(tag)];
+        if (!/^v/i.test(candidates[0])) candidates.push("v" + candidates[0]);
         var wanted = String(sourceAsset).replace(/\.zip$/i, "") + suffix;
-        var published = release.assets.find(function (entry) {
-            return entry && String(entry.name) === wanted && Number(entry.size) > 0;
-        });
-        if (!published) return null;
-        return { name: published.name, url: published.browser_download_url, size: Number(published.size) || 0 };
+        for (var i = 0; i < candidates.length; i++) {
+            var release = await fetchMirrorRelease(repo, candidates[i]);
+            if (!release || !Array.isArray(release.assets)) continue;
+            var published = release.assets.find(function (entry) {
+                return entry && String(entry.name) === wanted && Number(entry.size) > 0;
+            });
+            if (published) return { name: published.name, url: published.browser_download_url, size: Number(published.size) || 0 };
+        }
+        return null;
     }
 
     function findPortableAsset(index, tag, sourceAsset, platformKey) {
         if (!index || Number(index.schema) !== 1 || !Array.isArray(index.releases)) return null;
         var release = index.releases.find(function (candidate) {
-            return candidate && String(candidate.tag || "").toLowerCase() === String(tag).toLowerCase();
+            return candidate && tagKey(candidate.tag) === tagKey(tag);
         });
         if (!release || !Array.isArray(release.assets)) return null;
         var base = String(sourceAsset).replace(/\.zip$/i, "");
@@ -2100,7 +2111,7 @@
                     var entry = MODEL_ZIPS.find(function (candidate) { return candidate.name === aName; });
                     var label = entry ? entry.label : (assetType ? item.model + " · Type " + assetType : item.model + " package");
                     var title = entry ? entry.title : ("For " + item.model + " players" + (assetType ? " · Type " + assetType : ""));
-                    links.push('<li><a class="lumen-download-link lumen-zip-text-link" href="' + escapeHtml(asset.browser_download_url) + '" download="' + escapeHtml(asset.name) + '" data-zip-url="' + escapeHtml(asset.browser_download_url) + '" data-zip-name="' + escapeHtml(asset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "") + '" data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '" data-item-name="' + escapeHtml(item.name || "") + '" data-item-model="' + escapeHtml(item.model || "") + '" title="' + escapeHtml(title) + '">' + escapeHtml(asset.name) + ' <span class="lumen-meta">' + escapeHtml(label) + '</span></a></li>');
+                    links.push('<li><a class="lumen-download-link lumen-zip-text-link" href="' + escapeHtml(asset.browser_download_url) + '" download="' + escapeHtml(asset.name) + '" data-zip-url="' + escapeHtml(asset.browser_download_url) + '" data-zip-name="' + escapeHtml(asset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "") + '" data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '" data-item-name="' + escapeHtml(item.name || "") + '" data-item-model="' + escapeHtml(item.model || "") + '" title="' + escapeHtml(title) + '"><span class="lumen-zip-file">' + escapeHtml(asset.name) + '</span> <span class="lumen-meta">' + escapeHtml(label) + '</span></a></li>');
                 }
             });
             var assetLinks = links.length ? links.join("") : '<li>No ZIP asset was found in this release.</li>';
@@ -2686,12 +2697,16 @@
                        nothing better to offer. The old fallback used
                        data-zip-url (the original release asset), which threw
                        the portable href away on a blocked API lookup. */
-                    downloads.start(portableUrl || href || zipUrl, btn, btn.getAttribute("data-zip-name") || "rom.zip");
+                    downloads.start(portableUrl || href || zipUrl, btn, btn._portableName || btn.getAttribute("data-zip-name") || "rom.zip");
                 });
                 return;
             }
             preparePortableZip(btn, zipUrl).then(function (portableUrl) {
-                startBrowserDownload(portableUrl || href || zipUrl);
+                if (!portableUrl) { startBrowserDownload(href || zipUrl); return; }
+                /* The proxy's Content-Disposition writes the mirror's own name,
+                   so a Safari download is not called rom.zip either. */
+                proxyHrefIfUsable(portableUrl, btn._portableName || btn.getAttribute("data-zip-name") || "rom.zip")
+                    .then(function (target) { startBrowserDownload(target || portableUrl); });
             });
         }
 
@@ -2699,6 +2714,19 @@
            with no portable build keeps its own rom.zip. One lookup per
            control, shared by the hover warm-up and the click, so the click
            never repeats a request the pointer already started. */
+        /* The mirror names its package rom-macos.zip; the link and the file in
+           Downloads carry that name, so the two agree and the reader can see
+           which platform build they are getting. */
+        function applyPortableName(control, name) {
+            if (!control || !name) return;
+            control.setAttribute("data-portable-name", name);
+            control.setAttribute("download", name);
+            var holder = control.querySelector(".lumen-zip-file");
+            if (holder) holder.textContent = name;
+            var note = control.querySelector("small");
+            if (note && /standalone package|ZIP/i.test(note.textContent || "")) note.textContent = name;
+        }
+
         function preparePortableZip(btn, zipUrl) {
             if (btn._portableZip) return btn._portableZip;
             var portableZips = btn.getAttribute("data-portable-zips") || "";
@@ -2720,8 +2748,9 @@
             }
             if (!portableZips || !releaseTag) return Promise.resolve("");
             btn._portableZip = resolvePortableZip(portableZips, releaseTag, assetName).then(function (portable) {
-                if (!portable) btn._portableZip = null;
-                return portable ? portable.url : "";
+                if (!portable) { btn._portableZip = null; return ""; }
+                applyPortableName(btn, portable.name);
+                return portable.url;
             }, function () {
                 btn._portableZip = null;
                 return "";
