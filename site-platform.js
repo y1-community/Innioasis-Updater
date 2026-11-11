@@ -38,13 +38,14 @@
         },
         linux: {
             heading: "Install Updater CE on Linux",
-            lead: "The AppImage is for Intel/AMD x86_64 Linux. USB access needs a udev rule.",
+            lead: "The AppImage comes in Intel/AMD and ARM64 builds, and the same application ships as a tar.gz and a zip. USB access needs a udev rule.",
             steps: [
-                "Download <code>UpdaterCE.AppImage</code> and run <code>chmod +x UpdaterCE.AppImage</code>.",
+                "Take the file for your processor from the guide, then run <code>chmod +x UpdaterCE.appimage</code> or <code>chmod +x UpdaterCE-arm64.appimage</code> and start it.",
+                "Prefer no manual download? Run <code>curl -fsSL https://innioasis.app/run_linux.sh | bash</code> and it picks the build for your machine.",
                 "If it does not start, install <code>libfuse2</code> (or <code>libfuse2t64</code> on Ubuntu 24.04). Do not run it as root.",
                 "Add the MediaTek udev rule for vendor ID <code>0e8d</code>, reload udev, and connect the player only at the prompt."
             ],
-            note: "Add your user to <code>plugdev</code> if the player is still permission-denied."
+            note: "Add your user to <code>plugdev</code> if the player is still permission-denied. The terminal interface opens with <code>--tui</code>."
         }
     };
 
