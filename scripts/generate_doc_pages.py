@@ -2025,6 +2025,46 @@ def render_discovered_markdown_pages(
 # ---------------------------------------------------------------- build
 
 
+def refresh_stale_citations(software: list[dict]) -> int:
+    """Rewrite attribution blocks left behind when a release fetch came back empty.
+
+    A project whose releases cannot be fetched keeps its previous static pages,
+    so the old repository/GitHub citation would survive there forever. The
+    release tag is recoverable from that old block, so the archive wording can
+    be rebuilt without the network.
+    """
+    by_slug = {str(item.get("slug") or ""): item for item in software}
+    release_root = ROOT / "release-notes"
+    if not release_root.exists():
+        return 0
+    changed = 0
+    for path in sorted(release_root.glob("*/*.html")):
+        html = path.read_text(encoding="utf-8")
+        match = re.search(r'<p class="lumen-doc-sources">.*?</p>', html, flags=re.S)
+        if not match:
+            continue
+        block = match.group(0)
+        if "github.com" not in block and "Firmware Archive page" in block:
+            continue
+
+        def param(name: str) -> str:
+            found = re.search(r"[?&]" + name + r"=([^&\"']+)", block)
+            return urllib.parse.unquote(found.group(1)) if found else ""
+
+        item = by_slug.get(path.parent.name) or {
+            "repo": param("repo"),
+            "model": param("model"),
+            "slug": param("software") or path.parent.name,
+            "name": "",
+        }
+        replacement = source_citations(item, param("version"))
+        if not replacement or replacement == block:
+            continue
+        path.write_text(html[: match.start()] + replacement + html[match.end():], encoding="utf-8")
+        changed += 1
+    return changed
+
+
 def build(refresh: bool = False) -> None:
     DISCOVERED_MD_SOURCES.clear()
     catalog = load_catalog()
@@ -2096,6 +2136,9 @@ def build(refresh: bool = False) -> None:
     (post_root / "index.html").write_text(
         post_install_index_page(post_install_cards, manifest, software), encoding="utf-8"
     )
+    refreshed = refresh_stale_citations(software)
+    if refreshed:
+        print("  refreshed %d stale citations" % refreshed)
     update_sitemap(sitemap_urls)
     print(
         "done: %d release pages, %d post-install pages, %d linked doc pages"
