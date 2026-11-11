@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-11T23:15:30Z",
+  "generated_at": "2026-11-11T23:24:27Z",
   "repos": {
     "y1-community/y1-stock-rom": {
       "repo": "y1-community/y1-stock-rom",
       "icon": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg",
       "icon_dark": "",
       "stats": {
-        "downloads": 53570,
+        "downloads": 53580,
         "release_count": 9,
         "stars": 6,
         "forks": 0,
@@ -182,7 +182,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
               "size": 30612,
-              "download_count": 4589,
+              "download_count": 4595,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:19:27Z",
               "updated_at": "2026-10-10T09:19:27Z",
@@ -221,7 +221,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
               "size": 30612,
-              "download_count": 4251,
+              "download_count": 4255,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:18:17Z",
               "updated_at": "2026-10-10T09:18:17Z",
@@ -1504,7 +1504,7 @@
       "icon": "",
       "icon_dark": "",
       "stats": {
-        "downloads": 27555,
+        "downloads": 27562,
         "release_count": 98,
         "stars": 24,
         "forks": 8,
@@ -1541,7 +1541,7 @@
               "name": "bootimg.img.gz",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/bootimg.img.gz",
               "size": 7539486,
-              "download_count": 39,
+              "download_count": 40,
               "content_type": "application/gzip",
               "created_at": "2026-11-11T18:03:50Z",
               "updated_at": "2026-11-11T18:03:57Z",
@@ -1552,7 +1552,7 @@
               "name": "manifest.json",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/manifest.json",
               "size": 4240,
-              "download_count": 74,
+              "download_count": 76,
               "content_type": "application/json",
               "created_at": "2026-11-11T18:03:50Z",
               "updated_at": "2026-11-11T18:03:51Z",
@@ -1563,7 +1563,7 @@
               "name": "manifest.sig",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/manifest.sig",
               "size": 64,
-              "download_count": 73,
+              "download_count": 75,
               "content_type": "application/pgp-signature",
               "created_at": "2026-11-11T18:03:51Z",
               "updated_at": "2026-11-11T18:03:52Z",
@@ -1574,7 +1574,7 @@
               "name": "recovery.img.gz",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/recovery.img.gz",
               "size": 7539501,
-              "download_count": 39,
+              "download_count": 40,
               "content_type": "application/gzip",
               "created_at": "2026-11-11T18:03:51Z",
               "updated_at": "2026-11-11T18:03:58Z",
@@ -1585,7 +1585,7 @@
               "name": "rootfs.ext4.gz",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/rootfs.ext4.gz",
               "size": 51670872,
-              "download_count": 39,
+              "download_count": 40,
               "content_type": "application/gzip",
               "created_at": "2026-11-11T18:03:53Z",
               "updated_at": "2026-11-11T18:04:15Z",
@@ -2371,8 +2371,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/724214132"
             }
           ],
-          "mirror_downloads": 34,
-          "downloads": 57
+          "mirror_downloads": 36,
+          "downloads": 59
         },
         {
           "id": 436747393,
@@ -2487,8 +2487,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/717812207"
             }
           ],
-          "mirror_downloads": 49,
-          "downloads": 149
+          "mirror_downloads": 53,
+          "downloads": 153
         },
         {
           "id": 435462665,
@@ -2592,8 +2592,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/714087378"
             }
           ],
-          "mirror_downloads": 37,
-          "downloads": 88
+          "mirror_downloads": 41,
+          "downloads": 92
         },
         {
           "id": 435340687,
@@ -2697,8 +2697,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/713766497"
             }
           ],
-          "mirror_downloads": 40,
-          "downloads": 57
+          "mirror_downloads": 44,
+          "downloads": 61
         },
         {
           "id": 434509700,
@@ -2813,8 +2813,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/711110435"
             }
           ],
-          "mirror_downloads": 44,
-          "downloads": 68
+          "mirror_downloads": 48,
+          "downloads": 72
         },
         {
           "id": 433285377,
@@ -2929,8 +2929,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/707316992"
             }
           ],
-          "mirror_downloads": 57,
-          "downloads": 100
+          "mirror_downloads": 61,
+          "downloads": 104
         },
         {
           "id": 430942355,
@@ -3675,8 +3675,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/696439505"
             }
           ],
-          "mirror_downloads": 50,
-          "downloads": 71
+          "mirror_downloads": 54,
+          "downloads": 75
         },
         {
           "id": 430134707,
@@ -8350,8 +8350,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/654328305"
             }
           ],
-          "mirror_downloads": 51,
-          "downloads": 69
+          "mirror_downloads": 55,
+          "downloads": 73
         },
         {
           "id": 416623239,
@@ -8455,8 +8455,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/654165746"
             }
           ],
-          "mirror_downloads": 53,
-          "downloads": 72
+          "mirror_downloads": 57,
+          "downloads": 76
         },
         {
           "id": 416577475,
@@ -8560,8 +8560,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/653976768"
             }
           ],
-          "mirror_downloads": 45,
-          "downloads": 63
+          "mirror_downloads": 51,
+          "downloads": 69
         },
         {
           "id": 416495995,
@@ -8665,8 +8665,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/653669481"
             }
           ],
-          "mirror_downloads": 42,
-          "downloads": 60
+          "mirror_downloads": 48,
+          "downloads": 66
         },
         {
           "id": 416483734,
@@ -18375,8 +18375,8 @@
               "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/736395416"
             }
           ],
-          "mirror_downloads": 4,
-          "downloads": 10
+          "mirror_downloads": 14,
+          "downloads": 20
         },
         {
           "id": 441426882,
@@ -19071,8 +19071,8 @@
               "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/713717407"
             }
           ],
-          "mirror_downloads": 89,
-          "downloads": 159
+          "mirror_downloads": 96,
+          "downloads": 166
         },
         {
           "id": 434408829,
@@ -24365,7 +24365,7 @@
       "icon": "",
       "icon_dark": "",
       "stats": {
-        "downloads": 1590,
+        "downloads": 1645,
         "release_count": 95,
         "stars": 0,
         "forks": 0,
@@ -25643,7 +25643,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.17-first-install-linux.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/Y2Linux-1.0.0-beta.9.3.17-first-install-linux.zip",
               "size": 427202909,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T18:02:13Z",
               "updated_at": "2026-11-11T18:02:31Z",
@@ -25665,7 +25665,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.17-first-install-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/Y2Linux-1.0.0-beta.9.3.17-first-install-windows.zip",
               "size": 303331346,
-              "download_count": 3,
+              "download_count": 4,
               "content_type": "application/zip",
               "created_at": "2026-11-11T18:02:13Z",
               "updated_at": "2026-11-11T18:02:24Z",
@@ -25695,7 +25695,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 11
+          "downloads": 13
         },
         {
           "id": 437040038,
@@ -25781,7 +25781,7 @@
               "name": "stats.txt",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-224/stats.txt",
               "size": 3220,
-              "download_count": 2,
+              "download_count": 3,
               "content_type": "text/plain; charset=utf-8",
               "created_at": "2026-11-11T17:59:41Z",
               "updated_at": "2026-11-11T17:59:41Z",
@@ -25792,7 +25792,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.16-first-install-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-224/Y2Linux-1.0.0-beta.9.3.16-first-install-linux-arm64.zip",
               "size": 251951324,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:59:41Z",
               "updated_at": "2026-11-11T17:59:53Z",
@@ -25803,7 +25803,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.16-first-install-linux.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-224/Y2Linux-1.0.0-beta.9.3.16-first-install-linux.zip",
               "size": 427046382,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:59:41Z",
               "updated_at": "2026-11-11T17:59:59Z",
@@ -25814,7 +25814,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.16-first-install-macos.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-224/Y2Linux-1.0.0-beta.9.3.16-first-install-macos.zip",
               "size": 186897292,
-              "download_count": 5,
+              "download_count": 6,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:59:41Z",
               "updated_at": "2026-11-11T17:59:52Z",
@@ -25825,7 +25825,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.16-first-install-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-224/Y2Linux-1.0.0-beta.9.3.16-first-install-windows.zip",
               "size": 303174819,
-              "download_count": 3,
+              "download_count": 4,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:59:41Z",
               "updated_at": "2026-11-11T17:59:54Z",
@@ -25866,7 +25866,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 9
+          "downloads": 13
         },
         {
           "id": 435774499,
@@ -25952,7 +25952,7 @@
               "name": "stats.txt",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-223/stats.txt",
               "size": 3096,
-              "download_count": 2,
+              "download_count": 3,
               "content_type": "text/plain; charset=utf-8",
               "created_at": "2026-11-11T17:56:59Z",
               "updated_at": "2026-11-11T17:56:59Z",
@@ -25963,7 +25963,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.15-first-install-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-223/Y2Linux-1.0.0-beta.9.3.15-first-install-linux-arm64.zip",
               "size": 251952309,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:56:58Z",
               "updated_at": "2026-11-11T17:57:11Z",
@@ -25974,7 +25974,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.15-first-install-linux.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-223/Y2Linux-1.0.0-beta.9.3.15-first-install-linux.zip",
               "size": 427047367,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:56:58Z",
               "updated_at": "2026-11-11T17:57:16Z",
@@ -25985,7 +25985,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.15-first-install-macos.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-223/Y2Linux-1.0.0-beta.9.3.15-first-install-macos.zip",
               "size": 186898277,
-              "download_count": 5,
+              "download_count": 6,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:56:58Z",
               "updated_at": "2026-11-11T17:57:09Z",
@@ -25996,7 +25996,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.15-first-install-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-223/Y2Linux-1.0.0-beta.9.3.15-first-install-windows.zip",
               "size": 303175804,
-              "download_count": 3,
+              "download_count": 4,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:56:58Z",
               "updated_at": "2026-11-11T17:57:09Z",
@@ -26026,7 +26026,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 9
+          "downloads": 13
         },
         {
           "id": 435773402,
@@ -26112,7 +26112,7 @@
               "name": "stats.txt",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-221/stats.txt",
               "size": 3096,
-              "download_count": 2,
+              "download_count": 3,
               "content_type": "text/plain; charset=utf-8",
               "created_at": "2026-11-11T17:54:24Z",
               "updated_at": "2026-11-11T17:54:25Z",
@@ -26123,7 +26123,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.13-first-install-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-221/Y2Linux-1.0.0-beta.9.3.13-first-install-linux-arm64.zip",
               "size": 251939507,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:54:24Z",
               "updated_at": "2026-11-11T17:54:38Z",
@@ -26134,7 +26134,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.13-first-install-linux.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-221/Y2Linux-1.0.0-beta.9.3.13-first-install-linux.zip",
               "size": 427034565,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:54:24Z",
               "updated_at": "2026-11-11T17:54:47Z",
@@ -26145,7 +26145,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.13-first-install-macos.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-221/Y2Linux-1.0.0-beta.9.3.13-first-install-macos.zip",
               "size": 186885476,
-              "download_count": 5,
+              "download_count": 6,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:54:24Z",
               "updated_at": "2026-11-11T17:54:33Z",
@@ -26156,7 +26156,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.13-first-install-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-221/Y2Linux-1.0.0-beta.9.3.13-first-install-windows.zip",
               "size": 303163002,
-              "download_count": 3,
+              "download_count": 4,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:54:24Z",
               "updated_at": "2026-11-11T17:54:37Z",
@@ -26186,7 +26186,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 9
+          "downloads": 13
         },
         {
           "id": 434674067,
@@ -26272,7 +26272,7 @@
               "name": "stats.txt",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-220/stats.txt",
               "size": 3220,
-              "download_count": 2,
+              "download_count": 3,
               "content_type": "text/plain; charset=utf-8",
               "created_at": "2026-11-11T17:51:56Z",
               "updated_at": "2026-11-11T17:51:56Z",
@@ -26283,7 +26283,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.12-first-install-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-220/Y2Linux-1.0.0-beta.9.3.12-first-install-linux-arm64.zip",
               "size": 251936162,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:51:56Z",
               "updated_at": "2026-11-11T17:52:11Z",
@@ -26294,7 +26294,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.12-first-install-linux.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-220/Y2Linux-1.0.0-beta.9.3.12-first-install-linux.zip",
               "size": 427031220,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:51:56Z",
               "updated_at": "2026-11-11T17:52:12Z",
@@ -26305,7 +26305,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.12-first-install-macos.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-220/Y2Linux-1.0.0-beta.9.3.12-first-install-macos.zip",
               "size": 186882131,
-              "download_count": 5,
+              "download_count": 6,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:51:56Z",
               "updated_at": "2026-11-11T17:52:08Z",
@@ -26316,7 +26316,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.12-first-install-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-220/Y2Linux-1.0.0-beta.9.3.12-first-install-windows.zip",
               "size": 303159657,
-              "download_count": 3,
+              "download_count": 4,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:51:56Z",
               "updated_at": "2026-11-11T17:52:12Z",
@@ -26357,7 +26357,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 9
+          "downloads": 13
         },
         {
           "id": 433417477,
@@ -26443,7 +26443,7 @@
               "name": "stats.txt",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-215/stats.txt",
               "size": 3216,
-              "download_count": 2,
+              "download_count": 3,
               "content_type": "text/plain; charset=utf-8",
               "created_at": "2026-11-11T17:49:14Z",
               "updated_at": "2026-11-11T17:49:15Z",
@@ -26454,7 +26454,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.7-first-install-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-215/Y2Linux-1.0.0-beta.9.3.7-first-install-linux-arm64.zip",
               "size": 251931169,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:49:14Z",
               "updated_at": "2026-11-11T17:49:26Z",
@@ -26465,7 +26465,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.7-first-install-linux.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-215/Y2Linux-1.0.0-beta.9.3.7-first-install-linux.zip",
               "size": 427026227,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:49:14Z",
               "updated_at": "2026-11-11T17:49:30Z",
@@ -26476,7 +26476,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.7-first-install-macos.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-215/Y2Linux-1.0.0-beta.9.3.7-first-install-macos.zip",
               "size": 186877137,
-              "download_count": 5,
+              "download_count": 6,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:49:14Z",
               "updated_at": "2026-11-11T17:49:25Z",
@@ -26487,7 +26487,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.7-first-install-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-215/Y2Linux-1.0.0-beta.9.3.7-first-install-windows.zip",
               "size": 303154664,
-              "download_count": 3,
+              "download_count": 4,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:49:14Z",
               "updated_at": "2026-11-11T17:49:30Z",
@@ -26528,7 +26528,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 9
+          "downloads": 13
         },
         {
           "id": 433416448,
@@ -26614,7 +26614,7 @@
               "name": "stats.txt",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-201/stats.txt",
               "size": 3099,
-              "download_count": 2,
+              "download_count": 3,
               "content_type": "text/plain; charset=utf-8",
               "created_at": "2026-11-11T17:30:44Z",
               "updated_at": "2026-11-11T17:30:44Z",
@@ -26625,7 +26625,7 @@
               "name": "Y2Linux-1.0.0-beta.9.2.10-first-install-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-201/Y2Linux-1.0.0-beta.9.2.10-first-install-linux-arm64.zip",
               "size": 251364947,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:30:44Z",
               "updated_at": "2026-11-11T17:30:54Z",
@@ -26636,7 +26636,7 @@
               "name": "Y2Linux-1.0.0-beta.9.2.10-first-install-linux.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-201/Y2Linux-1.0.0-beta.9.2.10-first-install-linux.zip",
               "size": 426460005,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:30:44Z",
               "updated_at": "2026-11-11T17:30:59Z",
@@ -26647,7 +26647,7 @@
               "name": "Y2Linux-1.0.0-beta.9.2.10-first-install-macos.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-201/Y2Linux-1.0.0-beta.9.2.10-first-install-macos.zip",
               "size": 186310916,
-              "download_count": 5,
+              "download_count": 6,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:30:44Z",
               "updated_at": "2026-11-11T17:30:54Z",
@@ -26658,7 +26658,7 @@
               "name": "Y2Linux-1.0.0-beta.9.2.10-first-install-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-201/Y2Linux-1.0.0-beta.9.2.10-first-install-windows.zip",
               "size": 302588442,
-              "download_count": 3,
+              "download_count": 4,
               "content_type": "application/zip",
               "created_at": "2026-11-11T17:30:44Z",
               "updated_at": "2026-11-11T17:30:55Z",
@@ -26688,7 +26688,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 9
+          "downloads": 13
         },
         {
           "id": 432976892,
@@ -26774,7 +26774,7 @@
               "name": "stats.txt",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-95/stats.txt",
               "size": 3079,
-              "download_count": 2,
+              "download_count": 3,
               "content_type": "text/plain; charset=utf-8",
               "created_at": "2026-11-11T15:35:35Z",
               "updated_at": "2026-11-11T15:35:35Z",
@@ -26785,7 +26785,7 @@
               "name": "Y2Linux-1.0.0-beta.8.7-first-install-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-95/Y2Linux-1.0.0-beta.8.7-first-install-linux-arm64.zip",
               "size": 242523749,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T15:35:35Z",
               "updated_at": "2026-11-11T15:35:45Z",
@@ -26796,7 +26796,7 @@
               "name": "Y2Linux-1.0.0-beta.8.7-first-install-linux.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-95/Y2Linux-1.0.0-beta.8.7-first-install-linux.zip",
               "size": 417618807,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T15:35:35Z",
               "updated_at": "2026-11-11T15:35:50Z",
@@ -26807,7 +26807,7 @@
               "name": "Y2Linux-1.0.0-beta.8.7-first-install-macos.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-95/Y2Linux-1.0.0-beta.8.7-first-install-macos.zip",
               "size": 177469718,
-              "download_count": 5,
+              "download_count": 6,
               "content_type": "application/zip",
               "created_at": "2026-11-11T15:35:35Z",
               "updated_at": "2026-11-11T15:35:45Z",
@@ -26818,7 +26818,7 @@
               "name": "Y2Linux-1.0.0-beta.8.7-first-install-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-95/Y2Linux-1.0.0-beta.8.7-first-install-windows.zip",
               "size": 293747244,
-              "download_count": 5,
+              "download_count": 6,
               "content_type": "application/zip",
               "created_at": "2026-11-11T15:35:34Z",
               "updated_at": "2026-11-11T15:35:50Z",
@@ -26848,7 +26848,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 11
+          "downloads": 15
         },
         {
           "id": 432975376,
@@ -26934,7 +26934,7 @@
               "name": "stats.txt",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-94/stats.txt",
               "size": 3079,
-              "download_count": 2,
+              "download_count": 3,
               "content_type": "text/plain; charset=utf-8",
               "created_at": "2026-11-11T15:33:05Z",
               "updated_at": "2026-11-11T15:33:05Z",
@@ -26945,7 +26945,7 @@
               "name": "Y2Linux-1.0.0-beta.8.6-first-install-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-94/Y2Linux-1.0.0-beta.8.6-first-install-linux-arm64.zip",
               "size": 242523970,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T15:33:04Z",
               "updated_at": "2026-11-11T15:33:18Z",
@@ -26956,7 +26956,7 @@
               "name": "Y2Linux-1.0.0-beta.8.6-first-install-linux.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-94/Y2Linux-1.0.0-beta.8.6-first-install-linux.zip",
               "size": 417619028,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T15:33:04Z",
               "updated_at": "2026-11-11T15:33:20Z",
@@ -26967,7 +26967,7 @@
               "name": "Y2Linux-1.0.0-beta.8.6-first-install-macos.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-94/Y2Linux-1.0.0-beta.8.6-first-install-macos.zip",
               "size": 177469939,
-              "download_count": 5,
+              "download_count": 6,
               "content_type": "application/zip",
               "created_at": "2026-11-11T15:33:04Z",
               "updated_at": "2026-11-11T15:33:15Z",
@@ -26978,7 +26978,7 @@
               "name": "Y2Linux-1.0.0-beta.8.6-first-install-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-94/Y2Linux-1.0.0-beta.8.6-first-install-windows.zip",
               "size": 293747465,
-              "download_count": 5,
+              "download_count": 6,
               "content_type": "application/zip",
               "created_at": "2026-11-11T15:33:04Z",
               "updated_at": "2026-11-11T15:33:16Z",
@@ -27008,7 +27008,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 11
+          "downloads": 15
         },
         {
           "id": 432973750,
@@ -27094,7 +27094,7 @@
               "name": "stats.txt",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/stats.txt",
               "size": 4504,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "text/plain; charset=utf-8",
               "created_at": "2026-11-11T22:46:42Z",
               "updated_at": "2026-11-11T22:46:42Z",
@@ -27105,7 +27105,7 @@
               "name": "Y2Linux-1.0.0-beta.8.5-first-install-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install-linux-arm64.zip",
               "size": 242386547,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:46:29Z",
               "updated_at": "2026-11-11T22:46:41Z",
@@ -27116,7 +27116,7 @@
               "name": "Y2Linux-1.0.0-beta.8.5-first-install-linux-legacy.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install-linux-legacy.zip",
               "size": 130874007,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:46:28Z",
               "updated_at": "2026-11-11T22:46:41Z",
@@ -27127,7 +27127,7 @@
               "name": "Y2Linux-1.0.0-beta.8.5-first-install-linux.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install-linux.zip",
               "size": 417481605,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:46:29Z",
               "updated_at": "2026-11-11T22:46:47Z",
@@ -27138,7 +27138,7 @@
               "name": "Y2Linux-1.0.0-beta.8.5-first-install-macos.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install-macos.zip",
               "size": 177332516,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:46:41Z",
               "updated_at": "2026-11-11T22:46:49Z",
@@ -27149,7 +27149,7 @@
               "name": "Y2Linux-1.0.0-beta.8.5-first-install-windows-legacy.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install-windows-legacy.zip",
               "size": 132459683,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:46:28Z",
               "updated_at": "2026-11-11T22:46:41Z",
@@ -27160,7 +27160,7 @@
               "name": "Y2Linux-1.0.0-beta.8.5-first-install-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install-windows.zip",
               "size": 293610042,
-              "download_count": 1,
+              "download_count": 2,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:46:29Z",
               "updated_at": "2026-11-11T22:46:41Z",
@@ -27190,7 +27190,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 2
+          "downloads": 8
         },
         {
           "id": 432971435,
@@ -27287,7 +27287,7 @@
               "name": "Y2Linux-1.0.0-beta.8.4-first-install-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-linux-arm64.zip",
               "size": 242346248,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:44:08Z",
               "updated_at": "2026-11-11T22:44:18Z",
@@ -27298,7 +27298,7 @@
               "name": "Y2Linux-1.0.0-beta.8.4-first-install-linux-legacy.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-linux-legacy.zip",
               "size": 130833708,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:44:08Z",
               "updated_at": "2026-11-11T22:44:21Z",
@@ -27309,7 +27309,7 @@
               "name": "Y2Linux-1.0.0-beta.8.4-first-install-linux.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-linux.zip",
               "size": 417441306,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:44:08Z",
               "updated_at": "2026-11-11T22:44:28Z",
@@ -27320,7 +27320,7 @@
               "name": "Y2Linux-1.0.0-beta.8.4-first-install-macos.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-macos.zip",
               "size": 177292217,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:44:19Z",
               "updated_at": "2026-11-11T22:44:25Z",
@@ -27331,7 +27331,7 @@
               "name": "Y2Linux-1.0.0-beta.8.4-first-install-windows-legacy.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-windows-legacy.zip",
               "size": 132419384,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:44:08Z",
               "updated_at": "2026-11-11T22:44:20Z",
@@ -27342,7 +27342,7 @@
               "name": "Y2Linux-1.0.0-beta.8.4-first-install-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-windows.zip",
               "size": 293569743,
-              "download_count": 1,
+              "download_count": 2,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:44:08Z",
               "updated_at": "2026-11-11T22:44:23Z",
@@ -27372,7 +27372,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 2
+          "downloads": 8
         },
         {
           "id": 432969704,
@@ -50314,7 +50314,7 @@
       "icon": "",
       "icon_dark": "",
       "stats": {
-        "downloads": 272,
+        "downloads": 294,
         "release_count": 20,
         "stars": 0,
         "forks": 0,
@@ -50698,7 +50698,7 @@
               "name": "Classy-20261111-exp.1-y1.apk",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/Classy-20261111-exp.1-y1.apk",
               "size": 25233203,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/vnd.android.package-archive",
               "created_at": "2026-11-11T22:57:02Z",
               "updated_at": "2026-11-11T22:57:04Z",
@@ -50742,7 +50742,7 @@
               "name": "rom_y1_type_a-macos.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-macos.zip",
               "size": 564707706,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:56:24Z",
               "updated_at": "2026-11-11T22:56:48Z",
@@ -50753,7 +50753,7 @@
               "name": "rom_y1_type_a-windows-legacy.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-windows-legacy.zip",
               "size": 519834932,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:55:58Z",
               "updated_at": "2026-11-11T22:56:24Z",
@@ -50775,7 +50775,7 @@
               "name": "rom_y1_type_a.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a.zip",
               "size": 444991543,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:57:03Z",
               "updated_at": "2026-11-11T22:57:25Z",
@@ -50786,7 +50786,7 @@
               "name": "rom_y1_type_b-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-linux-arm64.zip",
               "size": 620955524,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:56:34Z",
               "updated_at": "2026-11-11T22:56:56Z",
@@ -50797,7 +50797,7 @@
               "name": "rom_y1_type_b-linux-legacy.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-linux-legacy.zip",
               "size": 509442900,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:57:03Z",
               "updated_at": "2026-11-11T22:57:29Z",
@@ -50808,7 +50808,7 @@
               "name": "rom_y1_type_b-linux.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-linux.zip",
               "size": 796050582,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:56:33Z",
               "updated_at": "2026-11-11T22:57:02Z",
@@ -50819,7 +50819,7 @@
               "name": "rom_y1_type_b-macos.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-macos.zip",
               "size": 555901392,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:57:02Z",
               "updated_at": "2026-11-11T22:57:27Z",
@@ -50830,7 +50830,7 @@
               "name": "rom_y1_type_b-windows-legacy.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-windows-legacy.zip",
               "size": 511028619,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:56:32Z",
               "updated_at": "2026-11-11T22:56:59Z",
@@ -50841,7 +50841,7 @@
               "name": "rom_y1_type_b-windows.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-windows.zip",
               "size": 672179066,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:56:28Z",
               "updated_at": "2026-11-11T22:56:45Z",
@@ -50852,7 +50852,7 @@
               "name": "rom_y1_type_b.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b.zip",
               "size": 436185228,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T22:57:03Z",
               "updated_at": "2026-11-11T22:57:24Z",
@@ -50863,7 +50863,7 @@
               "name": "SHA256SUMS.txt",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/SHA256SUMS.txt",
               "size": 418,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "text/plain; charset=utf-8",
               "created_at": "2026-11-11T22:57:05Z",
               "updated_at": "2026-11-11T22:57:05Z",
@@ -50874,7 +50874,7 @@
               "name": "stats.txt",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/stats.txt",
               "size": 2908,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "text/plain; charset=utf-8",
               "created_at": "2026-11-11T22:57:06Z",
               "updated_at": "2026-11-11T22:57:06Z",
@@ -50885,7 +50885,7 @@
               "name": "y1-logs.bat",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/y1-logs.bat",
               "size": 1878,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/x-bat",
               "created_at": "2026-11-11T22:57:05Z",
               "updated_at": "2026-11-11T22:57:05Z",
@@ -50896,7 +50896,7 @@
               "name": "y1-logs.sh",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/y1-logs.sh",
               "size": 1694,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/x-shellscript",
               "created_at": "2026-11-11T22:57:06Z",
               "updated_at": "2026-11-11T22:57:06Z",
@@ -50904,7 +50904,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 4
+          "downloads": 14
         },
         {
           "id": 441101976,
@@ -51987,7 +51987,7 @@
               "name": "rom-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-linux-arm64.zip",
               "size": 639566458,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T19:51:04Z",
               "updated_at": "2026-11-11T19:51:21Z",
@@ -51998,7 +51998,7 @@
               "name": "rom-linux.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-linux.zip",
               "size": 814661516,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T19:51:04Z",
               "updated_at": "2026-11-11T19:51:34Z",
@@ -52009,7 +52009,7 @@
               "name": "rom-macos.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-macos.zip",
               "size": 574512331,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T19:51:04Z",
               "updated_at": "2026-11-11T19:51:27Z",
@@ -52020,7 +52020,7 @@
               "name": "rom-windows.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-windows.zip",
               "size": 690790000,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T19:51:04Z",
               "updated_at": "2026-11-11T19:51:25Z",
@@ -52042,7 +52042,7 @@
               "name": "rom_type_b-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b-linux-arm64.zip",
               "size": 606726529,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T19:51:26Z",
               "updated_at": "2026-11-11T19:51:42Z",
@@ -52053,7 +52053,7 @@
               "name": "rom_type_b-linux.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b-linux.zip",
               "size": 781821587,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T19:51:21Z",
               "updated_at": "2026-11-11T19:51:38Z",
@@ -52075,7 +52075,7 @@
               "name": "rom_type_b-windows.zip",
               "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b-windows.zip",
               "size": 657950071,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-11T19:51:04Z",
               "updated_at": "2026-11-11T19:51:29Z",
@@ -52292,7 +52292,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 3
+          "downloads": 10
         },
         {
           "id": 437918208,
@@ -66006,7 +66006,7 @@
       "icon": "",
       "icon_dark": "",
       "stats": {
-        "downloads": 68858,
+        "downloads": 68859,
         "release_count": 74,
         "stars": 55,
         "forks": 13,
@@ -66021,7 +66021,7 @@
         "forks_count": 13,
         "open_issues_count": 3,
         "updated_at": "2026-11-11T22:39:32Z",
-        "pushed_at": "2026-11-11T23:15:10Z",
+        "pushed_at": "2026-11-11T23:24:06Z",
         "license": "GPL-3.0"
       },
       "releases": [
@@ -66043,7 +66043,7 @@
               "name": "Innioasis.Updater.for.Mac.dmg",
               "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg",
               "size": 119710372,
-              "download_count": 134,
+              "download_count": 135,
               "content_type": "application/x-diskcopy",
               "created_at": "2026-11-11T00:21:08Z",
               "updated_at": "2026-11-11T00:21:31Z",
