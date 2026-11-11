@@ -1222,7 +1222,7 @@ HEAD = """<!doctype html>
   <link rel="stylesheet" href="{up}site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="{up}docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="{up}site-init.js?v=20261110warn" defer></script>
+  <script src="{up}site-init.js?v=20261112once" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
