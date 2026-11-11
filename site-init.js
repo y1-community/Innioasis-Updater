@@ -1502,8 +1502,30 @@
 
         /* Pages and scripts that ask for a download by URL get the same
            browser download, so no caller is left without its file. */
+        /* Something must happen where the reader clicked, on any screen size.
+           Nothing is measured or streamed here: the badge only says the
+           browser has taken the file. */
+        function badge(anchorNode, text) {
+            if (!anchorNode || !anchorNode.parentNode) return null;
+            var previous = document.getElementById("site-dl-badge");
+            if (previous && previous.parentNode) previous.parentNode.removeChild(previous);
+            var span = document.createElement("span");
+            span.id = "site-dl-badge";
+            span.setAttribute("role", "status");
+            span.setAttribute("aria-live", "polite");
+            span.textContent = text;
+            span.style.cssText = "display:inline-flex;align-items:center;margin:6px 8px;padding:5px 10px;border-radius:999px;" +
+                "font:600 12px/1.35 system-ui,sans-serif;color:#dfe7f7;background:rgba(107,159,255,.18);" +
+                "border:1px solid rgba(107,159,255,.45);max-width:min(100%,340px);white-space:normal;";
+            anchorNode.parentNode.insertBefore(span, anchorNode.nextSibling);
+            setTimeout(function () {
+                if (span.parentNode) span.parentNode.removeChild(span);
+            }, 12000);
+            return span;
+        }
+
         global.InnioasisDownloads = {
-            version: "20261110direct",
+            version: "20261113badge2",
             start: function (url, anchor, name) {
                 var link = document.createElement("a");
                 link.href = unwrap(url);
@@ -1522,7 +1544,8 @@
 
         document.addEventListener("click", function (event) {
             if (event.defaultPrevented || event.button !== 0) return;
-            handBack(anchorOf(event.target));
+            var link = anchorOf(event.target);
+            if (handBack(link)) badge(link, "Download started - check your Downloads folder");
         }, true);
     }
 
@@ -1538,8 +1561,11 @@
     /* In-page progress for rom packages is on by default; installer links
        are excluded inside site-downloads.js itself, so app and driver
        buttons always stay plain browser downloads. */
-    if (global.InnioasisInlineDownloads === false) installDirectDownloads();
-    else loadSiteDownloads();
+    /* The firmware archive and Updater CE hand every package to the browser's
+       own downloader: no proxy streaming, nothing that can truncate a 1.7 GB
+       rom zip. The Themes Gallery keeps its in-page design. */
+    if (/^themes\./i.test(global.location.hostname || "")) loadSiteDownloads();
+    else installDirectDownloads();
 
     /* Windows XP/Vista/7/8/8.1 and 32-bit Windows cannot run Updater CE, so
        that visit gets the portable SP Flash Tool route instead of install
