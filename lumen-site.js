@@ -2873,8 +2873,16 @@
                 warmPortableRows();
             }, 0);
         }
+        /* Only row insertion is watched: watching the subtree would also fire
+           on the label this sweep just wrote, and every write would schedule
+           another sweep. */
         if (window.MutationObserver) {
-            new MutationObserver(schedulePortableSweep).observe(table, { childList: true, subtree: true });
+            var sweepTargets = [table];
+            var tableBody = table.querySelector("tbody");
+            if (tableBody) sweepTargets.push(tableBody);
+            sweepTargets.forEach(function (target) {
+                new MutationObserver(schedulePortableSweep).observe(target, { childList: true });
+            });
         }
         schedulePortableSweep();
 
