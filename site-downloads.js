@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261111portable1";
+    var VERSION = "20261111portable2";
     /* Only archive packages get the in-page treatment. Installers and app
        images always go to the browser's own downloader: a page must never
        stand between a reader and the app they are installing. */
@@ -541,6 +541,10 @@
         link.download = name;
         link.rel = "noopener";
         link.setAttribute("data-site-download-direct", "1");
+        /* lumen-site.js re-claims any anchor whose href contains "rom.zip",
+           and the proxy URL carries the package name: without this mark the
+           handoff click started the same transfer again, forever. */
+        link.setAttribute("data-direct-download", "1");
         doc.body.appendChild(link);
         link.click();
         setTimeout(function () {
@@ -587,6 +591,10 @@
         if (name) link.download = name;
         link.rel = "noopener";
         link.setAttribute("data-site-download-direct", "1");
+        /* lumen-site.js re-claims any anchor whose href contains "rom.zip",
+           and the proxy URL carries the package name: without this mark the
+           handoff click started the same transfer again, forever. */
+        link.setAttribute("data-direct-download", "1");
         link.setAttribute("data-direct-download", "1");
         link.style.display = "none";
         doc.body.appendChild(link);
