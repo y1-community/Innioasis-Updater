@@ -1,5 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<notices updated="2026-11-10">
+<notices updated="2026-11-11">
+
+  <notice id="2026-11-11-original-software-3-2-0-before-reborn" persistent="false" severity="info" from="2026-11-11" until="2026-12-31">
+    <title>Install Original Software 3.2.0 before installing Reborn</title>
+    <content>Original Software 3.2.0 is the latest release for Y2. Install it first, then choose Reborn, select Refresh to see whether any new Reborn versions have become available, and select Install to be guided through the install.</content>
+    <full_content>**Original Software 3.2.0** is the latest Original Software release for the Y2. Install it before you install Reborn (Y2Linux).
+
+### In Updater CE
+1. Choose **Y2**, then **Original Software**, pick the **3.2.0** release and select **Install**. Follow the guided steps through to the end.
+2. Choose **Reborn (Y2Linux)** and select **Refresh** to see whether any new Reborn versions have become available.
+3. Select **Install** and Updater CE guides you through the rest of the install.
+
+### Updates after the install
+Once Reborn starts on the player, enable **Wi-Fi** there. From then on Reborn updates itself over the internet on the Y2 itself, so no computer or Updater CE run is needed for later versions.</full_content>
+    <url>https://innioasis.app/guides/reborn-y2linux-y2.html</url>
+  </notice>
 
   <notice id="2026-11-07-codesigning" persistent="false" severity="info" from="2026-10-25" until="2026-12-31" platform="windows" models="Y1,Y2">
     <title>Windows 10/11 app launch issues &amp; Smart App Control workaround</title>
