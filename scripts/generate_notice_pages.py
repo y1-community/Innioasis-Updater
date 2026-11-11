@@ -124,7 +124,7 @@ HEAD = """<!doctype html>
   <link rel="stylesheet" href="{up}lumen.css?v=20261105hero">
   <link rel="stylesheet" href="{up}site-pages.css?v=20260818">
   <link rel="stylesheet" href="{up}site-toolbar.css?v=20261108hero">
-  <script src="{up}site-init.js?v=20261113plain" defer></script>
+  <script src="{up}site-init.js?v=20261113badge2" defer></script>
 </head>
 <body class="site-themes-app"><a class="lumen-skip-link" href="#main">Skip to content</a><div id="nav-root"></div>
 """
