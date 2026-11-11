@@ -2630,6 +2630,11 @@
                package twice, so only the first listener may start a job. */
             if (event.__innioasisZipClaimed) return;
             event.__innioasisZipClaimed = true;
+            /* Resolution is asynchronous, so stop the browser following the
+               anchor's original href while the portable build is looked up.
+               The module no longer claims portable rows in its capture
+               handler, which leaves the default action to this listener. */
+            if (event.preventDefault) event.preventDefault();
             /* The catalog's control is a button, so the inline module cannot
                see it through its anchor handler. Give it the button itself:
                it paints percent, speed and time left straight onto it. If the
@@ -2640,13 +2645,17 @@
                    module streams anything: handing it the release's own
                    rom.zip would skip the OS/arch build every time. */
                 preparePortableZip(btn, zipUrl).then(function (portableUrl) {
-                    downloads.start(portableUrl || zipUrl, btn, btn.getAttribute("data-zip-name") || "rom.zip");
+                    /* A portable button's own href is already the mirror build
+                       for the platform it names; keep it when resolution had
+                       nothing better to offer. The old fallback used
+                       data-zip-url (the original release asset), which threw
+                       the portable href away on a blocked API lookup. */
+                    downloads.start(portableUrl || href || zipUrl, btn, btn.getAttribute("data-zip-name") || "rom.zip");
                 });
                 return;
             }
             preparePortableZip(btn, zipUrl).then(function (portableUrl) {
-                if (portableUrl) startBrowserDownload(portableUrl);
-                else if (!href) startBrowserDownload(zipUrl);
+                startBrowserDownload(portableUrl || href || zipUrl);
             });
         }
 
@@ -2658,11 +2667,25 @@
             if (btn._portableZip) return btn._portableZip;
             var portableZips = btn.getAttribute("data-portable-zips") || "";
             var releaseTag = btn.getAttribute("data-release-tag") || "";
+            var href = btn.getAttribute("href") || "";
+            var explicitPlatform = btn.getAttribute("data-platform") || "";
             var assetName = btn.getAttribute("data-zip-name") || String(zipUrl || "").split("/").pop() || "rom.zip";
             if (!portableZips || !releaseTag) return Promise.resolve("");
+            /* A generated per-OS button already points at the exact mirror
+               asset named on its face. Resolving by the visiting computer
+               instead replaced a deliberately chosen Windows or Linux build
+               with the host's platform, or with the original when the lookup
+               failed. */
+            if (explicitPlatform && href && href !== zipUrl && /^https:\/\/github\.com\//i.test(href)) {
+                return Promise.resolve(href);
+            }
             btn._portableZip = resolvePortableZip(portableZips, releaseTag, assetName).then(function (portable) {
+                if (!portable) btn._portableZip = null;
                 return portable ? portable.url : "";
-            }, function () { return ""; });
+            }, function () {
+                btn._portableZip = null;
+                return "";
+            });
             return btn._portableZip;
         }
 
