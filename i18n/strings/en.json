@@ -1,100 +1,100 @@
 {
- "generated": "2026-11-10T21:51:14+00:00",
+ "generated": "2026-11-11T14:29:24+00:00",
  "tiers": [
   "core",
   "full"
  ],
- "pages": 1634,
- "occurrences": 182109,
- "count": 84259,
+ "pages": 1638,
+ "occurrences": 183519,
+ "count": 84567,
  "strings": {
   "Skip to content": {
-   "n": 1388,
-   "pages": 1388
+   "n": 1392,
+   "pages": 1392
   },
   "Innioasis Updater": {
-   "n": 1121,
-   "pages": 1096,
+   "n": 1125,
+   "pages": 1100,
    "script": true
   },
   "Project README": {
-   "n": 995,
-   "pages": 995
+   "n": 997,
+   "pages": 997
   },
   "← Firmware Downloads": {
-   "n": 971,
-   "pages": 971
+   "n": 974,
+   "pages": 974
   },
   "Published by the": {
-   "n": 962,
-   "pages": 961
+   "n": 964,
+   "pages": 963
   },
   "Catalogue pull requests": {
-   "n": 958,
-   "pages": 958
+   "n": 960,
+   "pages": 960
   },
   "project": {
-   "n": 958,
-   "pages": 958
+   "n": 960,
+   "pages": 960
   },
   "Install guide": {
-   "n": 836,
-   "pages": 810,
+   "n": 837,
+   "pages": 812,
    "script": true
   },
   "Get it in Updater CE": {
-   "n": 554,
-   "pages": 550,
+   "n": 555,
+   "pages": 551,
    "script": true
   },
   "Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.": {
-   "n": 496,
-   "pages": 494,
+   "n": 498,
+   "pages": 496,
    "script": true
   },
   "Firmware Downloads": {
-   "n": 489,
-   "pages": 485,
+   "n": 490,
+   "pages": 486,
    "script": true
   },
   "schulzcode/y2linux": {
-   "n": 578,
-   "pages": 482
+   "n": 581,
+   "pages": 484
   },
   "Instructions published by the project, shown here word for word.": {
-   "n": 481,
-   "pages": 481,
+   "n": 482,
+   "pages": 482,
    "script": true
   },
   "Release notes": {
-   "n": 874,
-   "pages": 480,
+   "n": 858,
+   "pages": 481,
    "script": true
   },
   "Also useful": {
-   "n": 472,
-   "pages": 472,
+   "n": 473,
+   "pages": 473,
    "script": true
   },
   "Firmware Downloads →": {
-   "n": 420,
-   "pages": 420
+   "n": 421,
+   "pages": 421
   },
   "Post-install setup · Reborn (Y2Linux) · Y2": {
-   "n": 386,
-   "pages": 386
+   "n": 387,
+   "pages": 387
   },
   "These are Reborn (Y2Linux)'s own instructions, shown here word for word.": {
-   "n": 386,
-   "pages": 386
+   "n": 387,
+   "pages": 387
   },
   "Download this release": {
-   "n": 380,
-   "pages": 380
+   "n": 381,
+   "pages": 381
   },
   "Y2": {
-   "n": 756,
-   "pages": 317
+   "n": 760,
+   "pages": 319
   },
   "Innioasis Software Updates": {
    "n": 292,
@@ -102,16 +102,16 @@
    "script": true
   },
   "and": {
-   "n": 727,
-   "pages": 286
+   "n": 731,
+   "pages": 288
   },
   "Y1": {
    "n": 287,
    "pages": 250
   },
   "Linux": {
-   "n": 494,
-   "pages": 239,
+   "n": 495,
+   "pages": 240,
    "script": true
   },
   "Original Software": {
@@ -203,8 +203,8 @@
    "script": true
   },
   "File": {
-   "n": 160,
-   "pages": 156
+   "n": 161,
+   "pages": 157
   },
   "All platforms": {
    "n": 156,
@@ -215,7 +215,7 @@
    "pages": 156
   },
   "Download": {
-   "n": 196,
+   "n": 195,
    "pages": 155
   },
   "or": {
@@ -231,6 +231,10 @@
    "pages": 143,
    "script": true
   },
+  ", kernel": {
+   "n": 189,
+   "pages": 140
+  },
   "Device Model": {
    "n": 143,
    "pages": 140
@@ -239,16 +243,12 @@
    "n": 141,
    "pages": 140
   },
-  ", kernel": {
-   "n": 188,
-   "pages": 139
-  },
   "Solar": {
    "n": 231,
    "pages": 128
   },
   "434 MB": {
-   "n": 261,
+   "n": 239,
    "pages": 127
   },
   "Innioasis Updater CE": {
@@ -265,12 +265,16 @@
    "pages": 117
   },
   "Reborn (Y2Linux)": {
-   "n": 122,
-   "pages": 114
+   "n": 123,
+   "pages": 115
   },
   "Rockbox-Y1": {
    "n": 220,
    "pages": 113
+  },
+  ", Reborn": {
+   "n": 420,
+   "pages": 111
   },
   "Open": {
    "n": 113,
@@ -281,13 +285,9 @@
    "n": 111,
    "pages": 111
   },
-  ", Reborn": {
-   "n": 418,
-   "pages": 110
-  },
   "Update Now": {
-   "n": 120,
-   "pages": 105
+   "n": 121,
+   "pages": 106
   },
   "Firmware": {
    "n": 107,
@@ -314,45 +314,57 @@
    "pages": 99,
    "script": true
   },
-  "Notes": {
-   "n": 128,
-   "pages": 98
-  },
   "Y2Linux 1.0 Beta 9.3.18": {
-   "n": 99,
-   "pages": 98
+   "n": 100,
+   "pages": 99
   },
   "Y2Linux 1.0 Beta 9.3.19": {
-   "n": 99,
-   "pages": 98
+   "n": 100,
+   "pages": 99
   },
   "Y2Linux 1.0 Beta 9.3.20": {
-   "n": 99,
-   "pages": 98
+   "n": 100,
+   "pages": 99
   },
   "Y2Linux 1.0 Beta 9.3.21": {
-   "n": 99,
-   "pages": 98
+   "n": 100,
+   "pages": 99
   },
   "Y2Linux 1.0 Beta 9.3.22": {
+   "n": 100,
+   "pages": 99
+  },
+  "Y2Linux 1.0 Beta 9.3.23": {
+   "n": 100,
+   "pages": 99
+  },
+  "Y2Linux 1.0 Beta 9.3.16": {
    "n": 99,
+   "pages": 99
+  },
+  "Y2Linux 1.0 Beta 9.3.17": {
+   "n": 99,
+   "pages": 99
+  },
+  "Notes": {
+   "n": 127,
    "pages": 98
   },
   "Recovery guide": {
    "n": 98,
    "pages": 98
   },
-  "Y2Linux 1.0 Beta 9.3.15": {
-   "n": 98,
-   "pages": 98
+  "Firmware release notes · Reborn (Y2Linux) · Y2": {
+   "n": 97,
+   "pages": 97
   },
-  "Y2Linux 1.0 Beta 9.3.16": {
-   "n": 98,
-   "pages": 98
+  "Notes as published by the Reborn (Y2Linux) project. Install it with Updater CE, or download it from the firmware directory.": {
+   "n": 97,
+   "pages": 97
   },
-  "Y2Linux 1.0 Beta 9.3.17": {
-   "n": 98,
-   "pages": 98
+  "Step-by-step install for Reborn (Y2Linux)": {
+   "n": 97,
+   "pages": 97
   },
   "and the": {
    "n": 97,
@@ -362,19 +374,7 @@
    "n": 192,
    "pages": 96
   },
-  "Firmware release notes · Reborn (Y2Linux) · Y2": {
-   "n": 96,
-   "pages": 96
-  },
-  "Notes as published by the Reborn (Y2Linux) project. Install it with Updater CE, or download it from the firmware directory.": {
-   "n": 96,
-   "pages": 96
-  },
   "Notes as published by the Solar project. Install it with Updater CE, or download it from the firmware directory.": {
-   "n": 96,
-   "pages": 96
-  },
-  "Step-by-step install for Reborn (Y2Linux)": {
    "n": 96,
    "pages": 96
   },
@@ -382,37 +382,37 @@
    "n": 96,
    "pages": 96
   },
-  "baseline-223 · 2026-11-05": {
-   "n": 95,
-   "pages": 95
-  },
   "baseline-224 · 2026-11-06": {
-   "n": 95,
-   "pages": 95
+   "n": 96,
+   "pages": 96
   },
   "baseline-225 · 2026-11-08": {
-   "n": 95,
-   "pages": 95
+   "n": 96,
+   "pages": 96
   },
   "baseline-227 · 2026-11-08": {
-   "n": 95,
-   "pages": 95
+   "n": 96,
+   "pages": 96
   },
   "baseline-228 · 2026-11-08": {
-   "n": 95,
-   "pages": 95
+   "n": 96,
+   "pages": 96
   },
   "baseline-229 · 2026-11-10": {
-   "n": 95,
-   "pages": 95
+   "n": 96,
+   "pages": 96
   },
   "baseline-232 · 2026-11-10": {
-   "n": 95,
-   "pages": 95
+   "n": 96,
+   "pages": 96
   },
   "baseline-233 · 2026-11-10": {
-   "n": 95,
-   "pages": 95
+   "n": 96,
+   "pages": 96
+  },
+  "baseline-234 · 2026-11-10": {
+   "n": 96,
+   "pages": 96
   },
   "INSTALL": {
    "n": 95,
@@ -451,16 +451,16 @@
    "n": 93,
    "pages": 92
   },
+  "The": {
+   "n": 148,
+   "pages": 91
+  },
   "Before you start": {
    "n": 92,
    "pages": 91
   },
   "Innioasis Y2": {
    "n": 177,
-   "pages": 90
-  },
-  "The": {
-   "n": 147,
    "pages": 90
   },
   "Podcasts": {
@@ -476,15 +476,15 @@
    "pages": 90
   },
   "InniClassic 20261013": {
-   "n": 90,
+   "n": 89,
    "pages": 89
   },
   "InniClassic 20261017": {
-   "n": 90,
+   "n": 89,
    "pages": 89
   },
   "InniClassic 20261104": {
-   "n": 90,
+   "n": 89,
    "pages": 89
   },
   ". Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.": {
@@ -810,31 +810,31 @@
    "n": 78,
    "pages": 78
   },
+  "to": {
+   "n": 107,
+   "pages": 77
+  },
   "Internal Storage": {
    "n": 82,
    "pages": 77
   },
-  "to": {
-   "n": 106,
+  "(Deezer + Soulseek), Y1 theme support, and": {
+   "n": 76,
    "pages": 76
   },
   "Classy 20261106": {
-   "n": 77,
+   "n": 76,
    "pages": 76
   },
   "Classy 20261107": {
-   "n": 77,
+   "n": 76,
    "pages": 76
   },
   "Classy 20261107 (v2)": {
-   "n": 77,
+   "n": 76,
    "pages": 76
   },
   "InniClassic 20261105": {
-   "n": 77,
-   "pages": 76
-  },
-  "(Deezer + Soulseek), Y1 theme support, and": {
    "n": 76,
    "pages": 76
   },
@@ -846,15 +846,19 @@
    "n": 75,
    "pages": 75
   },
-  "portable · 630 MB": {
-   "n": 75,
-   "pages": 75
+  "portable · 547 MB": {
+   "n": 74,
+   "pages": 74
   },
-  "portable · 803 MB": {
-   "n": 75,
-   "pages": 75
+  "portable · 609 MB": {
+   "n": 74,
+   "pages": 74
   },
-  "portable · 548 MB": {
+  "portable · 629 MB": {
+   "n": 74,
+   "pages": 74
+  },
+  "portable · 776 MB": {
    "n": 74,
    "pages": 74
   },
@@ -920,8 +924,8 @@
    "pages": 67
   },
   "Reborn": {
-   "n": 190,
-   "pages": 65
+   "n": 191,
+   "pages": 66
   },
   "Choose": {
    "n": 69,
@@ -1061,6 +1065,10 @@
    "n": 64,
    "pages": 60
   },
+  "Restore Previous System": {
+   "n": 63,
+   "pages": 60
+  },
   "A Y1 custom Software with network features, including YouTube support.": {
    "n": 62,
    "pages": 60,
@@ -1102,12 +1110,8 @@
    "n": 59,
    "pages": 59
   },
-  "Restore Previous System": {
-   "n": 61,
-   "pages": 58
-  },
   "Classy 20261110": {
-   "n": 59,
+   "n": 58,
    "pages": 58
   },
   "launcher-v0.10.1 · 2026-08-01": {
@@ -1398,6 +1402,10 @@
    "n": 136,
    "pages": 46
   },
+  "portable · 631 MB": {
+   "n": 52,
+   "pages": 46
+  },
   "Select": {
    "n": 51,
    "pages": 46
@@ -1432,7 +1440,7 @@
    "pages": 44
   },
   ", Linux": {
-   "n": 152,
+   "n": 153,
    "pages": 43
   },
   ". BOOTIMG": {
@@ -1444,11 +1452,15 @@
    "pages": 43
   },
   "rom.zip": {
-   "n": 257,
+   "n": 239,
+   "pages": 42
+  },
+  "Release": {
+   "n": 190,
    "pages": 42
   },
   "Classy": {
-   "n": 62,
+   "n": 60,
    "pages": 42
   },
   "A launcher Software for Y1.": {
@@ -1482,8 +1494,8 @@
    "pages": 42,
    "script": true
   },
-  "Release": {
-   "n": 189,
+  "portable · 549 MB": {
+   "n": 48,
    "pages": 41
   },
   "Known gaps": {
@@ -1539,7 +1551,7 @@
    "pages": 38
   },
   "435 MB": {
-   "n": 70,
+   "n": 68,
    "pages": 38
   },
   "Check": {
@@ -1547,10 +1559,14 @@
    "pages": 38
   },
   "InniClassic 20261012": {
-   "n": 39,
+   "n": 38,
    "pages": 38
   },
   "The player cannot detect wired headphones yet; the jack plays whenever no Bluetooth headphones are connected.": {
+   "n": 38,
+   "pages": 38
+  },
+  "portable · 231 MB": {
    "n": 38,
    "pages": 38
   },
@@ -1562,12 +1578,28 @@
    "n": 67,
    "pages": 37
   },
+  "portable · 611 MB": {
+   "n": 39,
+   "pages": 37
+  },
+  "portable · 778 MB": {
+   "n": 39,
+   "pages": 37
+  },
+  "What changed": {
+   "n": 37,
+   "pages": 37
+  },
   "Model guides": {
    "n": 78,
    "pages": 36
   },
   "55 MB": {
    "n": 70,
+   "pages": 36
+  },
+  "Known issues": {
+   "n": 37,
    "pages": 36
   },
   "Part": {
@@ -1617,7 +1649,7 @@
    "n": 36,
    "pages": 36
   },
-  "What changed": {
+  "portable · 398 MB": {
    "n": 36,
    "pages": 36
   },
@@ -1641,20 +1673,8 @@
    "n": 35,
    "pages": 35
   },
-  "portable · 632 MB": {
-   "n": 35,
-   "pages": 35
-  },
-  "portable · 805 MB": {
-   "n": 35,
-   "pages": 35
-  },
   "Full written tutorial": {
    "n": 38,
-   "pages": 34
-  },
-  "Known issues": {
-   "n": 35,
    "pages": 34
   },
   "): container suite": {
@@ -1671,6 +1691,10 @@
    "script": true
   },
   "The restart fix of Beta 8.4 is not yet confirmed over many restarts. If the screen ever stays dark, hold Power for 10 s and start again.": {
+   "n": 34,
+   "pages": 34
+  },
+  "portable · 169 MB": {
    "n": 34,
    "pages": 34
   },
@@ -1697,6 +1721,10 @@
   },
   "Innioasis R1": {
    "n": 40,
+   "pages": 32
+  },
+  ", Y2Reborn": {
+   "n": 34,
    "pages": 32
   },
   "Choose Original Software:": {
@@ -1727,13 +1755,13 @@
    "n": 32,
    "pages": 32
   },
-  "portable · 169 MB": {
+  "Tests": {
    "n": 32,
    "pages": 32
   },
-  ", Y2Reborn": {
-   "n": 33,
-   "pages": 31
+  "portable · 564 MB": {
+   "n": 32,
+   "pages": 32
   },
   "Rockbox-Y1 Nightly-10-11-2026": {
    "n": 31,
@@ -1743,7 +1771,7 @@
    "n": 31,
    "pages": 31
   },
-  "Tests": {
+  "portable · 280 MB": {
    "n": 31,
    "pages": 31
   },
@@ -1757,6 +1785,11 @@
   },
   "Full Changelog": {
    "n": 34,
+   "pages": 30,
+   "script": true
+  },
+  "Classy build for the Innioasis Y2, formerly Inniclassic for Y2.": {
+   "n": 32,
    "pages": 30,
    "script": true
   },
@@ -1826,6 +1859,10 @@
    "n": 30,
    "pages": 30
   },
+  "Settings → System → Software Update →": {
+   "n": 30,
+   "pages": 30
+  },
   "Step-by-step install for Rockbox-Y1": {
    "n": 30,
    "pages": 30
@@ -1835,6 +1872,10 @@
    "pages": 30
   },
   "This is the restore path itself: choose Original Software for the model and run Install / Restore. The stock package is always available from the": {
+   "n": 30,
+   "pages": 30
+  },
+  "Updating": {
    "n": 30,
    "pages": 30
   },
@@ -1858,11 +1899,19 @@
    "n": 30,
    "pages": 29
   },
-  "Settings → System → Software Update →": {
+  ". Published as GitHub release": {
    "n": 29,
    "pages": 29
   },
-  "Updating": {
+  "In one paragraph": {
+   "n": 29,
+   "pages": 29
+  },
+  "Technical appendix": {
+   "n": 29,
+   "pages": 29
+  },
+  "This report is written for people who use the player. A short technical appendix is at the end.": {
    "n": 29,
    "pages": 29
   },
@@ -1894,10 +1943,6 @@
    "n": 109,
    "pages": 28
   },
-  "438 MB": {
-   "n": 58,
-   "pages": 28
-  },
   "Linux install guides": {
    "n": 42,
    "pages": 28
@@ -1906,20 +1951,19 @@
    "n": 42,
    "pages": 28
   },
-  ". Published as GitHub release": {
-   "n": 28,
+  "438 MB": {
+   "n": 36,
    "pages": 28
   },
   "Battery life in sleep is not yet stock-like (about 8 mA vs stock 1.3 mA; some players draw more,": {
    "n": 28,
    "pages": 28
   },
-  "Classy build for the Innioasis Y2, formerly Inniclassic for Y2.": {
+  "Everything listed for": {
    "n": 28,
-   "pages": 28,
-   "script": true
+   "pages": 28
   },
-  "In one paragraph": {
+  "How it was tested": {
    "n": 28,
    "pages": 28
   },
@@ -1927,15 +1971,7 @@
    "n": 28,
    "pages": 28
   },
-  "Technical appendix": {
-   "n": 28,
-   "pages": 28
-  },
   "This release has no published notes yet. Install it with Updater CE, or from the firmware directory.": {
-   "n": 28,
-   "pages": 28
-  },
-  "This report is written for people who use the player. A short technical appendix is at the end.": {
    "n": 28,
    "pages": 28
   },
@@ -1943,11 +1979,7 @@
    "n": 28,
    "pages": 28
   },
-  "portable · 425 MB": {
-   "n": 28,
-   "pages": 28
-  },
-  "portable · 550 MB": {
+  "portable · 289 MB": {
    "n": 28,
    "pages": 28
   },
@@ -1992,10 +2024,6 @@
    "n": 27,
    "pages": 27
   },
-  "Everything listed for": {
-   "n": 27,
-   "pages": 27
-  },
   "Get Updater CE for Linux": {
    "n": 27,
    "pages": 27
@@ -2005,10 +2033,6 @@
    "pages": 27
   },
   "Get Updater CE for macOS": {
-   "n": 27,
-   "pages": 27
-  },
-  "How it was tested": {
    "n": 27,
    "pages": 27
   },
@@ -2029,10 +2053,6 @@
    "pages": 27
   },
   "macOS setup notes": {
-   "n": 27,
-   "pages": 27
-  },
-  "portable · 183 MB": {
    "n": 27,
    "pages": 27
   },
@@ -2292,7 +2312,7 @@
    "n": 25,
    "pages": 25
   },
-  "portable · 265 MB": {
+  "portable · 412 MB": {
    "n": 25,
    "pages": 25
   },
@@ -2310,6 +2330,10 @@
   },
   "is": {
    "n": 39,
+   "pages": 24
+  },
+  "portable · 548 MB": {
+   "n": 36,
    "pages": 24
   },
   "Better-Y": {
@@ -2360,7 +2384,15 @@
    "n": 24,
    "pages": 24
   },
-  "portable · 252 MB": {
+  "portable · 183 MB": {
+   "n": 24,
+   "pages": 24
+  },
+  "portable · 245 MB": {
+   "n": 24,
+   "pages": 24
+  },
+  "portable · 294 MB": {
    "n": 24,
    "pages": 24
   },
@@ -2397,6 +2429,14 @@
    "n": 23,
    "pages": 23
   },
+  "portable · 240 MB": {
+   "n": 23,
+   "pages": 23
+  },
+  "portable · 407 MB": {
+   "n": 23,
+   "pages": 23
+  },
   "skin guide": {
    "n": 23,
    "pages": 23
@@ -2418,24 +2458,8 @@
    "pages": 22,
    "script": true
   },
-  "Community firmware package for the Y1.": {
+  "portable · 584 MB": {
    "n": 24,
-   "pages": 22
-  },
-  "InniClassic 20261006": {
-   "n": 23,
-   "pages": 22
-  },
-  "InniClassic 20261007": {
-   "n": 23,
-   "pages": 22
-  },
-  "InniClassic 20261008": {
-   "n": 23,
-   "pages": 22
-  },
-  "InniClassic 20261011": {
-   "n": 23,
    "pages": 22
   },
   "Innioasis G1": {
@@ -2459,6 +2483,22 @@
    "pages": 22,
    "script": true
   },
+  "InniClassic 20261006": {
+   "n": 22,
+   "pages": 22
+  },
+  "InniClassic 20261007": {
+   "n": 22,
+   "pages": 22
+  },
+  "InniClassic 20261008": {
+   "n": 22,
+   "pages": 22
+  },
+  "InniClassic 20261011": {
+   "n": 22,
+   "pages": 22
+  },
   "Install with Updater CE": {
    "n": 22,
    "pages": 22
@@ -2472,10 +2512,6 @@
    "pages": 22
   },
   "portable · 178 MB": {
-   "n": 22,
-   "pages": 22
-  },
-  "portable · 438 MB": {
    "n": 22,
    "pages": 22
   },
@@ -2560,7 +2596,7 @@
    "n": 21,
    "pages": 21
   },
-  "portable · 549 MB": {
+  "portable · 502 MB": {
    "n": 21,
    "pages": 21
   },
@@ -2697,6 +2733,10 @@
    "n": 20,
    "pages": 20
   },
+  "portable · 731 MB": {
+   "n": 20,
+   "pages": 20
+  },
   "restore guide": {
    "n": 20,
    "pages": 20
@@ -2715,6 +2755,10 @@
   },
   "Original Software release notes - Innioasis Updater": {
    "n": 57,
+   "pages": 19
+  },
+  "portable · 610 MB": {
+   "n": 28,
    "pages": 19
   },
   "Play/Pause": {
@@ -2759,15 +2803,7 @@
    "n": 19,
    "pages": 19
   },
-  "portable · 503 MB": {
-   "n": 19,
-   "pages": 19
-  },
-  "portable · 585 MB": {
-   "n": 19,
-   "pages": 19
-  },
-  "portable · 758 MB": {
+  "still applies.": {
    "n": 19,
    "pages": 19
   },
@@ -2791,6 +2827,14 @@
    "n": 28,
    "pages": 18
   },
+  "portable · 630 MB": {
+   "n": 27,
+   "pages": 18
+  },
+  "portable · 777 MB": {
+   "n": 27,
+   "pages": 18
+  },
   "The stock Software path for restoring a Innioasis G1.": {
    "n": 20,
    "pages": 18,
@@ -2802,6 +2846,10 @@
    "script": true
   },
   ". Kernel": {
+   "n": 18,
+   "pages": 18
+  },
+  ". Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay.": {
    "n": 18,
    "pages": 18
   },
@@ -2833,6 +2881,10 @@
    "n": 18,
    "pages": 18
   },
+  "Community firmware package for the Y1.": {
+   "n": 18,
+   "pages": 18
+  },
   "Device results": {
    "n": 18,
    "pages": 18
@@ -2853,10 +2905,6 @@
    "n": 18,
    "pages": 18
   },
-  "still applies.": {
-   "n": 18,
-   "pages": 18
-  },
   "PASS": {
    "n": 95,
    "pages": 17
@@ -2867,6 +2915,10 @@
   },
   "FabianZettl/inniclassic": {
    "n": 31,
+   "pages": 17
+  },
+  "Platform": {
+   "n": 27,
    "pages": 17
   },
   "Power": {
@@ -2882,10 +2934,6 @@
    "pages": 17
   },
   "(Timmkoo)": {
-   "n": 17,
-   "pages": 17
-  },
-  ". Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay.": {
    "n": 17,
    "pages": 17
   },
@@ -2925,20 +2973,12 @@
    "n": 17,
    "pages": 17
   },
-  "portable · 260 MB": {
-   "n": 17,
-   "pages": 17
-  },
-  "portable · 433 MB": {
-   "n": 17,
-   "pages": 17
-  },
   "same": {
    "n": 76,
    "pages": 16
   },
-  "Platform": {
-   "n": 26,
+  "Changed": {
+   "n": 40,
    "pages": 16
   },
   "Value": {
@@ -3174,6 +3214,10 @@
    "n": 16,
    "pages": 16
   },
+  "portable · 557 MB": {
+   "n": 16,
+   "pages": 16
+  },
   "type-b-1.7.6 · 2025-10-08": {
    "n": 16,
    "pages": 16
@@ -3188,10 +3232,6 @@
   },
   "Y2Reborn": {
    "n": 43,
-   "pages": 15
-  },
-  "Changed": {
-   "n": 39,
    "pages": 15
   },
   "after": {
@@ -3327,6 +3367,10 @@
    "n": 15,
    "pages": 15
   },
+  "portable · 495 MB": {
+   "n": 15,
+   "pages": 15
+  },
   "FM radio": {
    "n": 40,
    "pages": 14
@@ -3454,19 +3498,27 @@
    "n": 14,
    "pages": 14
   },
-  "portable · 251 MB": {
+  "portable · 501 MB": {
    "n": 14,
    "pages": 14
   },
-  "portable · 495 MB": {
+  "portable · 563 MB": {
    "n": 14,
    "pages": 14
   },
-  "portable · 584 MB": {
+  "portable · 577 MB": {
    "n": 14,
    "pages": 14
   },
-  "portable · 757 MB": {
+  "portable · 583 MB": {
+   "n": 14,
+   "pages": 14
+  },
+  "portable · 724 MB": {
+   "n": 14,
+   "pages": 14
+  },
+  "portable · 730 MB": {
    "n": 14,
    "pages": 14
   },
@@ -3495,6 +3547,10 @@
    "pages": 13
   },
   "Diagnostics": {
+   "n": 25,
+   "pages": 13
+  },
+  "portable · 599 MB": {
    "n": 25,
    "pages": 13
   },
@@ -3643,11 +3699,7 @@
    "n": 13,
    "pages": 13
   },
-  "portable · 502 MB": {
-   "n": 13,
-   "pages": 13
-  },
-  "portable · 751 MB": {
+  "portable · 618 MB": {
    "n": 13,
    "pages": 13
   },
@@ -3667,6 +3719,10 @@
    "n": 26,
    "pages": 12
   },
+  "portable · 517 MB": {
+   "n": 24,
+   "pages": 12
+  },
   "y1-community/g1-stock-rom": {
    "n": 24,
    "pages": 12
@@ -3681,10 +3737,6 @@
   },
   "System": {
    "n": 23,
-   "pages": 12
-  },
-  "420 MB": {
-   "n": 22,
    "pages": 12
   },
   "436 MB": {
@@ -4011,6 +4063,10 @@
    "n": 12,
    "pages": 12
   },
+  "portable · 1.64 GB": {
+   "n": 12,
+   "pages": 12
+  },
   "to check for a stock restore package, and read the": {
    "n": 12,
    "pages": 12
@@ -4027,12 +4083,20 @@
    "n": 21,
    "pages": 11
   },
+  "420 MB": {
+   "n": 19,
+   "pages": 11
+  },
   "ID": {
    "n": 18,
    "pages": 11
   },
   "Y2ROOT.img": {
    "n": 16,
+   "pages": 11
+  },
+  "portable · 616 MB": {
+   "n": 13,
    "pages": 11
   },
   "A headphone profile still uses some extra processor time while it plays; its effect on battery life has not been measured yet.": {
@@ -4095,7 +4159,7 @@
    "n": 11,
    "pages": 11
   },
-  "portable · 424 MB": {
+  "portable · 550 MB": {
    "n": 11,
    "pages": 11
   },
@@ -4136,7 +4200,7 @@
    "pages": 10
   },
   "Package": {
-   "n": 47,
+   "n": 46,
    "pages": 10
   },
   "no": {
@@ -4151,12 +4215,16 @@
    "n": 28,
    "pages": 10
   },
-  "442 MB": {
-   "n": 22,
-   "pages": 10
-  },
   "NoahDomingues/Lithium": {
    "n": 20,
+   "pages": 10
+  },
+  "portable · 579 MB": {
+   "n": 19,
+   "pages": 10
+  },
+  "442 MB": {
+   "n": 18,
    "pages": 10
   },
   "Update": {
@@ -4232,26 +4300,6 @@
    "pages": 10
   },
   "BOOTIMG only": {
-   "n": 11,
-   "pages": 10
-  },
-  "InniClassic 20260927": {
-   "n": 11,
-   "pages": 10
-  },
-  "InniClassic 20260928": {
-   "n": 11,
-   "pages": 10
-  },
-  "InniClassic 20260928 (Build 6)": {
-   "n": 11,
-   "pages": 10
-  },
-  "InniClassic 20260929": {
-   "n": 11,
-   "pages": 10
-  },
-  "InniClassic 20261001": {
    "n": 11,
    "pages": 10
   },
@@ -4481,6 +4529,26 @@
    "pages": 10
   },
   "If you want a clean start": {
+   "n": 10,
+   "pages": 10
+  },
+  "InniClassic 20260927": {
+   "n": 10,
+   "pages": 10
+  },
+  "InniClassic 20260928": {
+   "n": 10,
+   "pages": 10
+  },
+  "InniClassic 20260928 (Build 6)": {
+   "n": 10,
+   "pages": 10
+  },
+  "InniClassic 20260929": {
+   "n": 10,
+   "pages": 10
+  },
+  "InniClassic 20261001": {
    "n": 10,
    "pages": 10
   },
@@ -4905,11 +4973,15 @@
    "n": 10,
    "pages": 10
   },
-  "portable · 633 MB": {
+  "portable · 483 MB": {
    "n": 10,
    "pages": 10
   },
-  "portable · 806 MB": {
+  "portable · 553 MB": {
+   "n": 10,
+   "pages": 10
+  },
+  "portable · 612 MB": {
    "n": 10,
    "pages": 10
   },
@@ -4962,6 +5034,10 @@
    "pages": 9
   },
   "403 MB": {
+   "n": 18,
+   "pages": 9
+  },
+  "portable · 746 MB": {
    "n": 18,
    "pages": 9
   },
@@ -5018,12 +5094,16 @@
    "n": 13,
    "pages": 9
   },
-  "460 MB": {
+  "Path": {
    "n": 13,
    "pages": 9
   },
-  "Path": {
-   "n": 13,
+  "387 MB": {
+   "n": 12,
+   "pages": 9
+  },
+  "460 MB": {
+   "n": 11,
    "pages": 9
   },
   "Community firmware package for the Q3E.": {
@@ -5036,10 +5116,6 @@
   },
   "plus": {
    "n": 11,
-   "pages": 9
-  },
-  "387 MB": {
-   "n": 10,
    "pages": 9
   },
   "ANDROID": {
@@ -5059,6 +5135,10 @@
    "pages": 9
   },
   "(2026-10-13). Package": {
+   "n": 9,
+   "pages": 9
+  },
+  "(Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.": {
    "n": 9,
    "pages": 9
   },
@@ -5176,19 +5256,23 @@
    "n": 9,
    "pages": 9
   },
-  "portable · 261 MB": {
+  "portable · 632 MB": {
    "n": 9,
    "pages": 9
   },
-  "portable · 434 MB": {
+  "portable · 705 MB": {
    "n": 9,
    "pages": 9
   },
-  "portable · 556 MB": {
+  "portable · 720 MB": {
    "n": 9,
    "pages": 9
   },
-  "portable · 578 MB": {
+  "portable · 779 MB": {
+   "n": 9,
+   "pages": 9
+  },
+  "portable · 785 MB": {
    "n": 9,
    "pages": 9
   },
@@ -5218,6 +5302,10 @@
   },
   "into": {
    "n": 13,
+   "pages": 8
+  },
+  "portable · 804 MB": {
+   "n": 12,
    "pages": 8
   },
   "Back": {
@@ -5261,10 +5349,6 @@
    "pages": 8
   },
   "(Deezer + Soulseek), Y1 theme support and a Stem Player clone.": {
-   "n": 8,
-   "pages": 8
-  },
-  "(Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.": {
    "n": 8,
    "pages": 8
   },
@@ -5473,23 +5557,23 @@
    "n": 8,
    "pages": 8
   },
-  "portable · 1.65 GB": {
+  "portable · 1.72 GB": {
    "n": 8,
    "pages": 8
   },
-  "portable · 1.73 GB": {
+  "portable · 1.87 GB": {
    "n": 8,
    "pages": 8
   },
-  "portable · 1.90 GB": {
+  "portable · 408 MB": {
    "n": 8,
    "pages": 8
   },
-  "portable · 624 MB": {
+  "portable · 556 MB": {
    "n": 8,
    "pages": 8
   },
-  "portable · 812 MB": {
+  "portable · 638 MB": {
    "n": 8,
    "pages": 8
   },
@@ -5525,10 +5609,6 @@
    "n": 19,
    "pages": 7
   },
-  "424 MB": {
-   "n": 19,
-   "pages": 7
-  },
   "After": {
    "n": 19,
    "pages": 7
@@ -5547,6 +5627,10 @@
   },
   "SBC": {
    "n": 13,
+   "pages": 7
+  },
+  "65 MB": {
+   "n": 12,
    "pages": 7
   },
   "Battery": {
@@ -5613,6 +5697,10 @@
    "n": 9,
    "pages": 7
   },
+  "portable · 522 MB": {
+   "n": 9,
+   "pages": 7
+  },
   "returns": {
    "n": 9,
    "pages": 7
@@ -5622,6 +5710,10 @@
    "pages": 7
   },
   ". See the": {
+   "n": 8,
+   "pages": 7
+  },
+  "424 MB": {
    "n": 8,
    "pages": 7
   },
@@ -5658,6 +5750,10 @@
    "pages": 7
   },
   ", then connect the cable.": {
+   "n": 7,
+   "pages": 7
+  },
+  ", with": {
    "n": 7,
    "pages": 7
   },
@@ -6045,6 +6141,18 @@
    "n": 7,
    "pages": 7
   },
+  "portable · 279 MB": {
+   "n": 7,
+   "pages": 7
+  },
+  "portable · 411 MB": {
+   "n": 7,
+   "pages": 7
+  },
+  "portable · 469 MB": {
+   "n": 7,
+   "pages": 7
+  },
   "reports": {
    "n": 7,
    "pages": 7
@@ -6108,10 +6216,6 @@
    "n": 14,
    "pages": 6
   },
-  "20260928-build.6": {
-   "n": 12,
-   "pages": 6
-  },
   "417 MB": {
    "n": 12,
    "pages": 6
@@ -6124,12 +6228,12 @@
    "n": 12,
    "pages": 6
   },
-  "Function": {
+  "20260928-build.6": {
    "n": 11,
    "pages": 6
   },
-  "65 MB": {
-   "n": 10,
+  "Function": {
+   "n": 11,
    "pages": 6
   },
   "Changelog": {
@@ -6201,6 +6305,10 @@
    "n": 8,
    "pages": 6
   },
+  "portable · 534 MB": {
+   "n": 8,
+   "pages": 6
+  },
   ". Boot": {
    "n": 7,
    "pages": 6
@@ -6265,15 +6373,15 @@
    "n": 6,
    "pages": 6
   },
+  "(Settings → System → About, tap Version seven times, then Diagnostics) takes you back to the version you had, with your data kept.": {
+   "n": 6,
+   "pages": 6
+  },
   "(built), Reborn": {
    "n": 6,
    "pages": 6
   },
   ", all seal checks PASS. Signed OTA (release key):": {
-   "n": 6,
-   "pages": 6
-  },
-  ", with": {
    "n": 6,
    "pages": 6
   },
@@ -6357,11 +6465,19 @@
    "n": 6,
    "pages": 6
   },
+  "A charge-only USB cable only charges. If your computer doesn't see the player, try a cable that transfers data with a phone.": {
+   "n": 6,
+   "pages": 6
+  },
   "Acceptance criteria": {
    "n": 6,
    "pages": 6
   },
   "Address": {
+   "n": 6,
+   "pages": 6
+  },
+  "After a sleep, Bluetooth headphones reconnect within a few seconds of waking. Headphones that went back to a phone meanwhile must be picked again in Settings → Bluetooth.": {
    "n": 6,
    "pages": 6
   },
@@ -6503,6 +6619,10 @@
    "n": 6,
    "pages": 6
   },
+  "Firmware README · Y2": {
+   "n": 6,
+   "pages": 6
+  },
   "Firmware release notes · Original Software · Q3": {
    "n": 6,
    "pages": 6
@@ -6601,6 +6721,10 @@
    "pages": 6
   },
   "MX2D_Q5D-WV3.28-20250619 · 2026-11-05": {
+   "n": 6,
+   "pages": 6
+  },
+  "More details in plain words:": {
    "n": 6,
    "pages": 6
   },
@@ -6769,6 +6893,10 @@
    "n": 6,
    "pages": 6
   },
+  "Skins with their own fonts (Luna XP, Winamp and others) show boxes instead of Chinese, Japanese and Korean titles.": {
+   "n": 6,
+   "pages": 6
+  },
   "Solar on Innioasis Y1": {
    "n": 6,
    "pages": 6,
@@ -6778,6 +6906,14 @@
    "n": 6,
    "pages": 6,
    "script": true
+  },
+  "Some players turned off by themselves during playback; the cause isn't found yet.": {
+   "n": 6,
+   "pages": 6
+  },
+  "Something wrong? Send an error report (Settings → System → Error Reports).": {
+   "n": 6,
+   "pages": 6
   },
   "Status bar": {
    "n": 6,
@@ -6839,6 +6975,10 @@
    "pages": 6
   },
   "Use the guided route": {
+   "n": 6,
+   "pages": 6
+  },
+  "WPA3-only Wi-Fi networks can't be joined; a \"WPA2/WPA3 mixed\" setting on the router works.": {
    "n": 6,
    "pages": 6
   },
@@ -6956,15 +7096,31 @@
    "n": 6,
    "pages": 6
   },
-  "portable · 170 MB": {
+  "portable · 1.70 GB": {
    "n": 6,
    "pages": 6
   },
-  "portable · 505 MB": {
+  "portable · 179 MB": {
    "n": 6,
    "pages": 6
   },
-  "portable · 639 MB": {
+  "portable · 241 MB": {
+   "n": 6,
+   "pages": 6
+  },
+  "portable · 397 MB": {
+   "n": 6,
+   "pages": 6
+  },
+  "portable · 538 MB": {
+   "n": 6,
+   "pages": 6
+  },
+  "portable · 567 MB": {
+   "n": 6,
+   "pages": 6
+  },
+  "portable · 706 MB": {
    "n": 6,
    "pages": 6
   },
@@ -7153,10 +7309,6 @@
    "n": 10,
    "pages": 5
   },
-  "20261107-v2": {
-   "n": 10,
-   "pages": 5
-  },
   "Qualification": {
    "n": 10,
    "pages": 5
@@ -7179,6 +7331,10 @@
   },
   "v0.11.4": {
    "n": 10,
+   "pages": 5
+  },
+  "20261107-v2": {
+   "n": 9,
    "pages": 5
   },
   "MX4_EN-V1.11-20260727": {
@@ -7249,10 +7405,6 @@
    "n": 8,
    "pages": 5
   },
-  "Y1 · Y2": {
-   "n": 8,
-   "pages": 5
-  },
   "audio": {
    "n": 8,
    "pages": 5
@@ -7302,6 +7454,10 @@
    "pages": 5
   },
   "Upstream": {
+   "n": 7,
+   "pages": 5
+  },
+  "portable · 604 MB": {
    "n": 7,
    "pages": 5
   },
@@ -7415,6 +7571,10 @@
    "script": true
   },
   "M2-USBGUARD-01": {
+   "n": 6,
+   "pages": 5
+  },
+  "Name": {
    "n": 6,
    "pages": 5
   },
@@ -7690,10 +7850,6 @@
    "n": 5,
    "pages": 5
   },
-  "(Settings → System → About, tap Version seven times, then Diagnostics) takes you back to the version you had, with your data kept.": {
-   "n": 5,
-   "pages": 5
-  },
   "(and": {
    "n": 5,
    "pages": 5
@@ -7806,10 +7962,6 @@
    "n": 5,
    "pages": 5
   },
-  "A charge-only USB cable only charges. If your computer doesn't see the player, try a cable that transfers data with a phone.": {
-   "n": 5,
-   "pages": 5
-  },
   "A full QWERTY on-screen keyboard is now available in Settings alongside the original grid layout. It includes a symbol layer, column memory when moving vertically across the spacebar, lighter 10ms key vibration, and full punctuation (": {
    "n": 5,
    "pages": 5
@@ -7843,10 +7995,6 @@
    "pages": 5
   },
   "After a sleep (a pause longer than 15 minutes, or the Power button) the Bluetooth link ends; the player reconnects within a few seconds of waking. Buds that have gone back to a phone meanwhile must be picked again in Settings → Bluetooth.": {
-   "n": 5,
-   "pages": 5
-  },
-  "After a sleep, Bluetooth headphones reconnect within a few seconds of waking. Headphones that went back to a phone meanwhile must be picked again in Settings → Bluetooth.": {
    "n": 5,
    "pages": 5
   },
@@ -8027,10 +8175,6 @@
    "n": 5,
    "pages": 5
   },
-  "Firmware README · Y2": {
-   "n": 5,
-   "pages": 5
-  },
   "Firmware release notes · Lithium · Q3E": {
    "n": 5,
    "pages": 5
@@ -8120,6 +8264,10 @@
    "n": 5,
    "pages": 5
   },
+  "Linux:": {
+   "n": 5,
+   "pages": 5
+  },
   "Low: host documentation/offline analysis and explicitly bounded non-root observations only.": {
    "n": 5,
    "pages": 5
@@ -8133,10 +8281,6 @@
    "pages": 5
   },
   "Metric": {
-   "n": 5,
-   "pages": 5
-  },
-  "More details in plain words:": {
    "n": 5,
    "pages": 5
   },
@@ -8330,18 +8474,6 @@
    "n": 5,
    "pages": 5
   },
-  "Skins with their own fonts (Luna XP, Winamp and others) show boxes instead of Chinese, Japanese and Korean titles.": {
-   "n": 5,
-   "pages": 5
-  },
-  "Some players turned off by themselves during playback; the cause isn't found yet.": {
-   "n": 5,
-   "pages": 5
-  },
-  "Something wrong? Send an error report (Settings → System → Error Reports).": {
-   "n": 5,
-   "pages": 5
-  },
   "Songs": {
    "n": 5,
    "pages": 5
@@ -8456,10 +8588,6 @@
    "pages": 5
   },
   "Volume now uses a 30-step virtual scale with an iPod-style overlay across all screens instead of the stock Android popup. It works across music, video playback, FM radio, and Music Quiz, and includes six extra-quiet digital sub-steps at the bottom of the scale (down to -28 dBFS) for sensitive earphones.": {
-   "n": 5,
-   "pages": 5
-  },
-  "WPA3-only Wi-Fi networks can't be joined; a \"WPA2/WPA3 mixed\" setting on the router works.": {
    "n": 5,
    "pages": 5
   },
@@ -8623,15 +8751,31 @@
    "n": 5,
    "pages": 5
   },
-  "portable · 439 MB": {
+  "portable · 395 MB": {
    "n": 5,
    "pages": 5
   },
-  "portable · 469 MB": {
+  "portable · 505 MB": {
    "n": 5,
    "pages": 5
   },
-  "portable · 577 MB": {
+  "portable · 551 MB": {
+   "n": 5,
+   "pages": 5
+  },
+  "portable · 587 MB": {
+   "n": 5,
+   "pages": 5
+  },
+  "portable · 598 MB": {
+   "n": 5,
+   "pages": 5
+  },
+  "portable · 624 MB": {
+   "n": 5,
+   "pages": 5
+  },
+  "portable · 734 MB": {
    "n": 5,
    "pages": 5
   },
@@ -8787,12 +8931,20 @@
    "n": 11,
    "pages": 4
   },
-  "439 MB": {
+  "Receipt": {
    "n": 11,
    "pages": 4
   },
-  "Receipt": {
-   "n": 11,
+  "397 MB": {
+   "n": 10,
+   "pages": 4
+  },
+  "405 MB": {
+   "n": 10,
+   "pages": 4
+  },
+  "408 MB": {
+   "n": 10,
    "pages": 4
   },
   "Adds Spanish language support.": {
@@ -8886,6 +9038,14 @@
    "n": 7,
    "pages": 4
   },
+  "441 MB": {
+   "n": 7,
+   "pages": 4
+  },
+  "504 MB": {
+   "n": 7,
+   "pages": 4
+  },
   "Capability": {
    "n": 7,
    "pages": 4
@@ -8903,6 +9063,10 @@
    "pages": 4
   },
   "physical receipt": {
+   "n": 7,
+   "pages": 4
+  },
+  "portable · 772 MB": {
    "n": 7,
    "pages": 4
   },
@@ -8926,11 +9090,7 @@
    "n": 6,
    "pages": 4
   },
-  "441 MB": {
-   "n": 6,
-   "pages": 4
-  },
-  "504 MB": {
+  "439 MB": {
    "n": 6,
    "pages": 4
   },
@@ -8970,6 +9130,10 @@
    "n": 6,
    "pages": 4
   },
+  "Y1 · Y2": {
+   "n": 6,
+   "pages": 4
+  },
   "Y2-CPU-C3-UART-PHYSICAL.md": {
    "n": 6,
    "pages": 4
@@ -8982,7 +9146,11 @@
    "n": 6,
    "pages": 4
   },
-  "portable · 542 MB": {
+  "portable · 688 MB": {
+   "n": 6,
+   "pages": 4
+  },
+  "portable · 789 MB": {
    "n": 6,
    "pages": 4
   },
@@ -9132,10 +9300,6 @@
    "pages": 4
   },
   "Keep": {
-   "n": 5,
-   "pages": 4
-  },
-  "Name": {
    "n": 5,
    "pages": 4
   },
@@ -9806,7 +9970,7 @@
    "n": 4,
    "pages": 4
   },
-  "Beta 9.3.22 report": {
+  "Beta 9.3.23 report": {
    "n": 4,
    "pages": 4
   },
@@ -10114,6 +10278,10 @@
    "n": 4,
    "pages": 4
   },
+  "Far from the headphones the music still pauses when the signal is lost; it no longer rushes afterwards.": {
+   "n": 4,
+   "pages": 4
+  },
   "Faster Lossless Playback:": {
    "n": 4,
    "pages": 4
@@ -10135,10 +10303,6 @@
    "pages": 4
   },
   "Final read-only SSH receipt:": {
-   "n": 4,
-   "pages": 4
-  },
-  "Firmware README · Y1 · Y2": {
    "n": 4,
    "pages": 4
   },
@@ -10345,10 +10509,6 @@
    "pages": 4
   },
   "Limit": {
-   "n": 4,
-   "pages": 4
-  },
-  "Linux:": {
    "n": 4,
    "pages": 4
   },
@@ -11561,11 +11721,15 @@
    "n": 4,
    "pages": 4
   },
+  "portable · 1.03 GB": {
+   "n": 4,
+   "pages": 4
+  },
   "portable · 1.04 GB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 1.21 GB": {
+  "portable · 1.19 GB": {
    "n": 4,
    "pages": 4
   },
@@ -11577,11 +11741,11 @@
    "n": 4,
    "pages": 4
   },
-  "portable · 1.83 GB": {
+  "portable · 1.80 GB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 179 MB": {
+  "portable · 168 MB": {
    "n": 4,
    "pages": 4
   },
@@ -11589,23 +11753,43 @@
    "n": 4,
    "pages": 4
   },
-  "portable · 296 MB": {
+  "portable · 295 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 367 MB": {
+  "portable · 342 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 376 MB": {
+  "portable · 355 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 537 MB": {
+  "portable · 365 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 540 MB": {
+  "portable · 387 MB": {
+   "n": 4,
+   "pages": 4
+  },
+  "portable · 405 MB": {
+   "n": 4,
+   "pages": 4
+  },
+  "portable · 451 MB": {
+   "n": 4,
+   "pages": 4
+  },
+  "portable · 506 MB": {
+   "n": 4,
+   "pages": 4
+  },
+  "portable · 532 MB": {
+   "n": 4,
+   "pages": 4
+  },
+  "portable · 536 MB": {
    "n": 4,
    "pages": 4
   },
@@ -11613,55 +11797,47 @@
    "n": 4,
    "pages": 4
   },
+  "portable · 578 MB": {
+   "n": 4,
+   "pages": 4
+  },
   "portable · 582 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 588 MB": {
+  "portable · 617 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 619 MB": {
+  "portable · 623 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 627 MB": {
+  "portable · 626 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 637 MB": {
+  "portable · 685 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 706 MB": {
+  "portable · 686 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 707 MB": {
+  "portable · 765 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 723 MB": {
+  "portable · 852 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 761 MB": {
+  "portable · 853 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 792 MB": {
-   "n": 4,
-   "pages": 4
-  },
-  "portable · 879 MB": {
-   "n": 4,
-   "pages": 4
-  },
-  "portable · 880 MB": {
-   "n": 4,
-   "pages": 4
-  },
-  "portable · 984 MB": {
+  "portable · 983 MB": {
    "n": 4,
    "pages": 4
   },
@@ -11849,6 +12025,10 @@
    "n": 42,
    "pages": 3
   },
+  "280 MB": {
+   "n": 33,
+   "pages": 3
+  },
   "at file": {
    "n": 32,
    "pages": 3
@@ -12030,11 +12210,11 @@
    "n": 6,
    "pages": 3
   },
-  "397 MB": {
+  "508 MB": {
    "n": 6,
    "pages": 3
   },
-  "405 MB": {
+  "606 MB": {
    "n": 6,
    "pages": 3
   },
@@ -12150,7 +12330,7 @@
    "n": 5,
    "pages": 3
   },
-  "606 MB": {
+  "Add": {
    "n": 5,
    "pages": 3
   },
@@ -12202,6 +12382,10 @@
    "n": 5,
    "pages": 3
   },
+  "Windows:": {
+   "n": 5,
+   "pages": 3
+  },
   "airpods-2-fix": {
    "n": 5,
    "pages": 3
@@ -12218,11 +12402,23 @@
    "n": 5,
    "pages": 3
   },
-  "portable · 460 MB": {
+  "portable · 459 MB": {
    "n": 5,
    "pages": 3
   },
-  "portable · 715 MB": {
+  "portable · 521 MB": {
+   "n": 5,
+   "pages": 3
+  },
+  "portable · 570 MB": {
+   "n": 5,
+   "pages": 3
+  },
+  "portable · 593 MB": {
+   "n": 5,
+   "pages": 3
+  },
+  "portable · 751 MB": {
    "n": 5,
    "pages": 3
   },
@@ -12314,14 +12510,6 @@
    "n": 4,
    "pages": 3
   },
-  "408 MB": {
-   "n": 4,
-   "pages": 3
-  },
-  "508 MB": {
-   "n": 4,
-   "pages": 3
-  },
   "509 MB": {
    "n": 4,
    "pages": 3
@@ -12363,6 +12551,10 @@
    "pages": 3
   },
   "Beta 9.3.15 report": {
+   "n": 4,
+   "pages": 3
+  },
+  "Beta 9.3.21": {
    "n": 4,
    "pages": 3
   },
@@ -12655,6 +12847,10 @@
    "n": 4,
    "pages": 3
   },
+  "macOS:": {
+   "n": 4,
+   "pages": 3
+  },
   "nightly-20260627-0209": {
    "n": 4,
    "pages": 3
@@ -12756,14 +12952,6 @@
    "pages": 3
   },
   "policy": {
-   "n": 4,
-   "pages": 3
-  },
-  "portable · 522 MB": {
-   "n": 4,
-   "pages": 3
-  },
-  "portable · 616 MB": {
    "n": 4,
    "pages": 3
   },
@@ -13147,10 +13335,6 @@
    "n": 3,
    "pages": 3
   },
-  "476 MB": {
-   "n": 3,
-   "pages": 3
-  },
   "480×360": {
    "n": 3,
    "pages": 3
@@ -13268,6 +13452,10 @@
    "pages": 3
   },
   "A hardware-input overhaul: a real Hold/lock switch, a proper video/music handoff, and a round of Now Playing and Videos polish.": {
+   "n": 3,
+   "pages": 3
+  },
+  "A network on channel 12 or 13 may need a second scan to appear.": {
    "n": 3,
    "pages": 3
   },
@@ -13406,6 +13594,10 @@
    "n": 3,
    "pages": 3
   },
+  "Any": {
+   "n": 3,
+   "pages": 3
+  },
   "Artwork": {
    "n": 3,
    "pages": 3
@@ -13472,6 +13664,10 @@
    "pages": 3
   },
   "Beta 9.3.21 report": {
+   "n": 3,
+   "pages": 3
+  },
+  "Beta 9.3.22 report": {
    "n": 3,
    "pages": 3
   },
@@ -13733,6 +13929,10 @@
    "n": 3,
    "pages": 3
   },
+  "Copy command": {
+   "n": 3,
+   "pages": 3
+  },
   "Copy your recordings to a computer first. Recordings in internal storage are erased.": {
    "n": 3,
    "pages": 3
@@ -13937,6 +14137,10 @@
    "n": 3,
    "pages": 3
   },
+  "Everything from": {
+   "n": 3,
+   "pages": 3
+  },
   "Exact": {
    "n": 3,
    "pages": 3
@@ -14033,10 +14237,6 @@
    "n": 3,
    "pages": 3
   },
-  "Far from the headphones the music still pauses when the signal is lost; it no longer rushes afterwards.": {
-   "n": 3,
-   "pages": 3
-  },
   "Fast-scroll letter jump": {
    "n": 3,
    "pages": 3
@@ -14054,6 +14254,10 @@
    "pages": 3
   },
   "Findings": {
+   "n": 3,
+   "pages": 3
+  },
+  "Firmware README · Y1 · Y2": {
    "n": 3,
    "pages": 3
   },
@@ -14496,6 +14700,10 @@
    "n": 3,
    "pages": 3
   },
+  "Linux setup notes": {
+   "n": 3,
+   "pages": 3
+  },
   "Local": {
    "n": 3,
    "pages": 3
@@ -14653,6 +14861,10 @@
    "pages": 3
   },
   "On-screen keyboard's selected character was unreadable on the light theme": {
+   "n": 3,
+   "pages": 3
+  },
+  "One audiobook file longer than about 36 hours may not play or not show up; split it into parts of up to 30 hours.": {
    "n": 3,
    "pages": 3
   },
@@ -16159,6 +16371,10 @@
    "n": 3,
    "pages": 3
   },
+  "Y2Linux 1.0 Beta 9.3.15": {
+   "n": 3,
+   "pages": 3
+  },
   "Y2Linux 1.0 Beta 9.3.7": {
    "n": 3,
    "pages": 3
@@ -16686,6 +16902,10 @@
    "n": 3,
    "pages": 3
   },
+  "passes": {
+   "n": 3,
+   "pages": 3
+  },
   "platform": {
    "n": 3,
    "pages": 3
@@ -16694,23 +16914,23 @@
    "n": 3,
    "pages": 3
   },
-  "portable · 359 MB": {
+  "portable · 182 MB": {
    "n": 3,
    "pages": 3
   },
-  "portable · 523 MB": {
+  "portable · 244 MB": {
    "n": 3,
    "pages": 3
   },
-  "portable · 529 MB": {
+  "portable · 293 MB": {
    "n": 3,
    "pages": 3
   },
-  "portable · 536 MB": {
+  "portable · 490 MB": {
    "n": 3,
    "pages": 3
   },
-  "portable · 543 MB": {
+  "portable · 503 MB": {
    "n": 3,
    "pages": 3
   },
@@ -16718,11 +16938,7 @@
    "n": 3,
    "pages": 3
   },
-  "portable · 551 MB": {
-   "n": 3,
-   "pages": 3
-  },
-  "portable · 555 MB": {
+  "portable · 554 MB": {
    "n": 3,
    "pages": 3
   },
@@ -16730,35 +16946,79 @@
    "n": 3,
    "pages": 3
   },
-  "portable · 604 MB": {
+  "portable · 571 MB": {
    "n": 3,
    "pages": 3
   },
-  "portable · 618 MB": {
+  "portable · 586 MB": {
    "n": 3,
    "pages": 3
   },
-  "portable · 638 MB": {
+  "portable · 588 MB": {
    "n": 3,
    "pages": 3
   },
-  "portable · 702 MB": {
+  "portable · 606 MB": {
    "n": 3,
    "pages": 3
   },
-  "portable · 705 MB": {
+  "portable · 615 MB": {
    "n": 3,
    "pages": 3
   },
-  "portable · 800 MB": {
+  "portable · 621 MB": {
    "n": 3,
    "pages": 3
   },
-  "portable · 810 MB": {
+  "portable · 622 MB": {
    "n": 3,
    "pages": 3
   },
-  "portable · 878 MB": {
+  "portable · 635 MB": {
+   "n": 3,
+   "pages": 3
+  },
+  "portable · 636 MB": {
+   "n": 3,
+   "pages": 3
+  },
+  "portable · 661 MB": {
+   "n": 3,
+   "pages": 3
+  },
+  "portable · 670 MB": {
+   "n": 3,
+   "pages": 3
+  },
+  "portable · 684 MB": {
+   "n": 3,
+   "pages": 3
+  },
+  "portable · 704 MB": {
+   "n": 3,
+   "pages": 3
+  },
+  "portable · 733 MB": {
+   "n": 3,
+   "pages": 3
+  },
+  "portable · 744 MB": {
+   "n": 3,
+   "pages": 3
+  },
+  "portable · 759 MB": {
+   "n": 3,
+   "pages": 3
+  },
+  "portable · 773 MB": {
+   "n": 3,
+   "pages": 3
+  },
+  "portable · 788 MB": {
+   "n": 3,
+   "pages": 3
+  },
+  "portable · 851 MB": {
    "n": 3,
    "pages": 3
   },
@@ -16967,7 +17227,7 @@
    "pages": 2
   },
   ", tag": {
-   "n": 80,
+   "n": 81,
    "pages": 2
   },
   "HIGH": {
@@ -16986,20 +17246,16 @@
    "n": 36,
    "pages": 2
   },
-  "632 MB": {
-   "n": 33,
-   "pages": 2
-  },
-  "425 MB": {
-   "n": 29,
-   "pages": 2
-  },
   "KEEP": {
    "n": 28,
    "pages": 2
   },
   "Project page": {
-   "n": 28,
+   "n": 27,
+   "pages": 2
+  },
+  "407 MB": {
+   "n": 24,
    "pages": 2
   },
   ": compiled Linux": {
@@ -17106,6 +17362,10 @@
    "n": 9,
    "pages": 2
   },
+  "503 MB": {
+   "n": 8,
+   "pages": 2
+  },
   "ACCEPTABLE_BETA_LIMITATION": {
    "n": 8,
    "pages": 2
@@ -17132,6 +17392,10 @@
    "pages": 2
   },
   "1104 B": {
+   "n": 7,
+   "pages": 2
+  },
+  "168 MB": {
    "n": 7,
    "pages": 2
   },
@@ -17200,6 +17464,10 @@
    "pages": 2
   },
   "20260819-0956 - Innioasis Updater": {
+   "n": 6,
+   "pages": 2
+  },
+  "295 MB": {
    "n": 6,
    "pages": 2
   },
@@ -18098,10 +18366,6 @@
    "n": 4,
    "pages": 2
   },
-  "Add": {
-   "n": 4,
-   "pages": 2
-  },
   "Adds seamless switching between Rockbox and better-Y without reboot": {
    "n": 4,
    "pages": 2,
@@ -18367,10 +18631,6 @@
    "n": 4,
    "pages": 2
   },
-  "Windows:": {
-   "n": 4,
-   "pages": 2
-  },
   "Y2A-300 — M3 current state, 2026-09-10 <!-- knowledge-base-scope: historical-issue-specification -- Historical record. The dates, candidate identity,": {
    "n": 4,
    "pages": 2
@@ -18417,6 +18677,18 @@
    "pages": 2
   },
   "old": {
+   "n": 4,
+   "pages": 2
+  },
+  "portable · 531 MB": {
+   "n": 4,
+   "pages": 2
+  },
+  "portable · 613 MB": {
+   "n": 4,
+   "pages": 2
+  },
+  "portable · 786 MB": {
    "n": 4,
    "pages": 2
   },
@@ -18580,10 +18852,6 @@
    "n": 3,
    "pages": 2
   },
-  "168 MB": {
-   "n": 3,
-   "pages": 2
-  },
   "1k": {
    "n": 3,
    "pages": 2
@@ -18612,6 +18880,10 @@
    "n": 3,
    "pages": 2
   },
+  "452 MB": {
+   "n": 3,
+   "pages": 2
+  },
   "469.27 s": {
    "n": 3,
    "pages": 2
@@ -18625,6 +18897,10 @@
    "pages": 2
   },
   "58 MB": {
+   "n": 3,
+   "pages": 2
+  },
+  "719 MB": {
    "n": 3,
    "pages": 2
   },
@@ -18676,6 +18952,10 @@
    "n": 3,
    "pages": 2
   },
+  "AppImages, tarballs and portable builds": {
+   "n": 3,
+   "pages": 2
+  },
   "Audio, FFmpeg, precision and playback audit": {
    "n": 3,
    "pages": 2
@@ -18696,7 +18976,7 @@
    "n": 3,
    "pages": 2
   },
-  "Beta 9.3.21": {
+  "Beta 9.3.22": {
    "n": 3,
    "pages": 2
   },
@@ -19493,6 +19773,10 @@
    "pages": 2
   },
   "Platform v1 telemetry repair — 2026-09-25": {
+   "n": 3,
+   "pages": 2
+  },
+  "Portable ROM packages": {
    "n": 3,
    "pages": 2
   },
@@ -20329,10 +20613,6 @@
    "n": 3,
    "pages": 2
   },
-  "macOS:": {
-   "n": 3,
-   "pages": 2
-  },
   "name": {
    "n": 3,
    "pages": 2
@@ -20369,7 +20649,11 @@
    "n": 3,
    "pages": 2
   },
-  "portable · 778 MB": {
+  "portable · 600 MB": {
+   "n": 3,
+   "pages": 2
+  },
+  "portable · 766 MB": {
    "n": 3,
    "pages": 2
   },
@@ -21102,6 +21386,10 @@
    "pages": 2
   },
   ", not physically qualified. No main merge, flash, push or milestone closure. Source/software CONFIRMED; integrated hardware/endurance/public distribution remain open.": {
+   "n": 2,
+   "pages": 2
+  },
+  ", on the": {
    "n": 2,
    "pages": 2
   },
@@ -21973,19 +22261,11 @@
    "n": 2,
    "pages": 2
   },
-  "280 MB": {
-   "n": 2,
-   "pages": 2
-  },
   "2895fe1 Adds toggles for online music services so they can be excluded from search results.": {
    "n": 2,
    "pages": 2
   },
   "29.6 MB/s": {
-   "n": 2,
-   "pages": 2
-  },
-  "295 MB": {
    "n": 2,
    "pages": 2
   },
@@ -22077,11 +22357,15 @@
    "n": 2,
    "pages": 2
   },
+  "421 MB": {
+   "n": 2,
+   "pages": 2
+  },
   "429 MB": {
    "n": 2,
    "pages": 2
   },
-  "452 MB": {
+  "476 MB": {
    "n": 2,
    "pages": 2
   },
@@ -22118,10 +22402,6 @@
    "pages": 2
   },
   "500.5 MHz": {
-   "n": 2,
-   "pages": 2
-  },
-  "503 MB": {
    "n": 2,
    "pages": 2
   },
@@ -22189,6 +22469,10 @@
    "n": 2,
    "pages": 2
   },
+  "632 MB": {
+   "n": 2,
+   "pages": 2
+  },
   "63a4857 Merge pull request #75 from thesolarproject/optimize-fm-presets-db-3443063346962454810": {
    "n": 2,
    "pages": 2
@@ -22214,10 +22498,6 @@
    "pages": 2
   },
   "713 OK": {
-   "n": 2,
-   "pages": 2
-  },
-  "719 MB": {
    "n": 2,
    "pages": 2
   },
@@ -22589,10 +22869,6 @@
    "n": 2,
    "pages": 2
   },
-  "A network on channel 12 or 13 may need a second scan to appear.": {
-   "n": 2,
-   "pages": 2
-  },
   "A network the player can't join says why": {
    "n": 2,
    "pages": 2
@@ -22889,6 +23165,10 @@
    "n": 2,
    "pages": 2
   },
+  "An AppImage needs": {
+   "n": 2,
+   "pages": 2
+  },
   "An Innioasis": {
    "n": 2,
    "pages": 2
@@ -22941,11 +23221,15 @@
    "n": 2,
    "pages": 2
   },
-  "Any": {
+  "Any platform": {
    "n": 2,
    "pages": 2
   },
-  "Any platform": {
+  "AppImage for ARM64": {
+   "n": 2,
+   "pages": 2
+  },
+  "AppImage for Intel/AMD": {
    "n": 2,
    "pages": 2
   },
@@ -23712,6 +23996,10 @@
    "pages": 2
   },
   "Built-in factory themes": {
+   "n": 2,
+   "pages": 2
+  },
+  "Bumps": {
    "n": 2,
    "pages": 2
   },
@@ -24894,10 +25182,6 @@
    "n": 2,
    "pages": 2
   },
-  "Download AppImage for Intel/AMD": {
-   "n": 2,
-   "pages": 2
-  },
   "Download PNG pack (.zip)": {
    "n": 2,
    "pages": 2
@@ -24907,10 +25191,6 @@
    "pages": 2
   },
   "Download Windows Installer": {
-   "n": 2,
-   "pages": 2
-  },
-  "Download the AppImage for Intel and AMD systems, make it executable, and run it.": {
    "n": 2,
    "pages": 2
   },
@@ -25064,10 +25344,6 @@
    "pages": 2
   },
   "Every standing coverage row retains the preceding software-sealing admission: CONFIRMED bounded UART01 boot/core/display/input/storage/audio/CPU/C1/C2/C3; CONFIRMED retained Baseline02 installed identity only, boot27e6d684…/taint0; PARTIAL new-image/cold-boot/full-suspend/endurance, USB/radio/desktop/performance, power/thermal/electrical/firmware/calibration/backlight/watchdog/wake and RAM/ recovery/update/security/services/time/identity/privacy/release gates (#27/#28/#29/#31/#32/#33/#34); UART crash capture UNKNOWN, host/VBUS PHYSICAL_GATE, FM excluded. MTP adds no block export or protected/memory/charging policy change. USB platform remains MORE_WORK_REQUIRED; all issues stay OPEN remotely.": {
-   "n": 2,
-   "pages": 2
-  },
-  "Everything from": {
    "n": 2,
    "pages": 2
   },
@@ -25467,6 +25743,10 @@
    "pages": 2
   },
   "For now this means the removal of very specific and rarely used features like the Apps menu. It also means simpler merges of new upstream features. 360p only, there won't be any future 240p releases.": {
+   "n": 2,
+   "pages": 2
+  },
+  "For people who report issues": {
    "n": 2,
    "pages": 2
   },
@@ -25902,6 +26182,10 @@
    "pages": 2
   },
   "How the Y1 and Y2 Rockbox builds differ.": {
+   "n": 2,
+   "pages": 2
+  },
+  "How the packages are built": {
    "n": 2,
    "pages": 2
   },
@@ -26769,10 +27053,6 @@
    "n": 2,
    "pages": 2
   },
-  "Linux setup notes": {
-   "n": 2,
-   "pages": 2
-  },
   "Linux x86_64 or Windows x64 PC": {
    "n": 2,
    "pages": 2
@@ -27467,6 +27747,10 @@
    "n": 2,
    "pages": 2
   },
+  "Not tried:": {
+   "n": 2,
+   "pages": 2
+  },
   "Not yet on a player:": {
    "n": 2,
    "pages": 2
@@ -27539,6 +27823,10 @@
    "n": 2,
    "pages": 2
   },
+  "Now Playing's progress wave wears the cover's colour": {
+   "n": 2,
+   "pages": 2
+  },
   "OGG Vorbis playback and library scanning, with automatic detection of Opus-encoded files mislabeled with an": {
    "n": 2,
    "pages": 2
@@ -27605,10 +27893,6 @@
    "script": true
   },
   "Once the flashing process completes and the player restarts, Classy starts automatically.": {
-   "n": 2,
-   "pages": 2
-  },
-  "One audiobook file longer than about 36 hours may not play or not show up; split it into parts of up to 30 hours.": {
    "n": 2,
    "pages": 2
   },
@@ -29679,6 +29963,10 @@
    "n": 2,
    "pages": 2
   },
+  "Script": {
+   "n": 2,
+   "pages": 2
+  },
   "Scrobble": {
    "n": 2,
    "pages": 2
@@ -30311,6 +30599,10 @@
    "n": 2,
    "pages": 2
   },
+  "Take the file that matches your processor. Intel and AMD PCs use the x86_64 builds; ARM boards and ARM laptops, including Raspberry Pi and Snapdragon machines, use the arm64 builds.": {
+   "n": 2,
+   "pages": 2
+  },
   "Tango": {
    "n": 2,
    "pages": 2
@@ -30492,6 +30784,10 @@
    "pages": 2
   },
   "The installed UART01 regression pass now proves four-core C1, natural parking, C2 +6,971 entries/+50,654,676us over60.0549s with zero restore failures, all five OPPs, hotplug, timers, eMMC/inserted SD, screen/workload/playback and USB/Wi-Fi integrity. Same boot/taint0, no filesystem/IRQ faults. Its first C3 window stopped at legitimate MSDC0 bit12 (0x1000), not UART1: the harness fsynced its durable arm receipt after the clean preflight, waking eMMC. Actual UART requests/ACK attempts, CIRQ transactions, CPU context entries and returns all remain0. Therefore this is an observer sequencing defect, not a failed deep-idle experiment. Preserve the kernel/storage guard. Targeted harness fix saves before a read-only two-second stable admission window, checking the real MMC gates, all exposed prerequisites and owned physical CPU0 topology; no storage writes occur between that window and enabling C3. A C3-only continuation requires the exact clean same-boot regression receipt and zero actual UART/CPU entries both in that receipt and on-device immediately before mutation. Any real UART/context refusal stops repeats; first checked entry must still precede 20 further cycles. Thirty targeted harness/CPU/UART tests pass. Scope remains unchanged; dependencies stay open pending real hardware ACK/context results.": {
+   "n": 2,
+   "pages": 2
+  },
+  "The launcher's menu has a run-once option for the terminal, which is the one to use over SSH or on a machine with no desktop.": {
    "n": 2,
    "pages": 2
   },
@@ -30804,6 +31100,10 @@
    "pages": 2
   },
   "To flash via the updater:": {
+   "n": 2,
+   "pages": 2
+  },
+  "To skip the downloads and let the launcher choose, copy this into a terminal. It reads your processor, fetches the matching build, and asks whether to install or run once:": {
    "n": 2,
    "pages": 2
   },
@@ -31448,6 +31748,10 @@
    "pages": 2
   },
   "What is inside the ROM package": {
+   "n": 2,
+   "pages": 2
+  },
+  "What it is": {
    "n": 2,
    "pages": 2
   },
@@ -32350,6 +32654,10 @@
    "n": 2,
    "pages": 2
   },
+  "baseline-234": {
+   "n": 2,
+   "pages": 2
+  },
   "baseline-46": {
    "n": 2,
    "pages": 2
@@ -32495,6 +32803,10 @@
    "pages": 2
   },
   "before closing this review; no broader release/milestone acceptance is inferred.": {
+   "n": 2,
+   "pages": 2
+  },
+  "before it runs. The tar.gz and the zip are folders to unpack, not installers. Every one of these files carries the terminal interface, so": {
    "n": 2,
    "pages": 2
   },
@@ -33710,6 +34022,10 @@
    "n": 2,
    "pages": 2
   },
+  "opens the same app without a window.": {
+   "n": 2,
+   "pages": 2
+  },
   "optimization report": {
    "n": 2,
    "pages": 2
@@ -33782,10 +34098,6 @@
    "n": 2,
    "pages": 2
   },
-  "passes": {
-   "n": 2,
-   "pages": 2
-  },
   "patch manifest": {
    "n": 2,
    "pages": 2
@@ -33830,7 +34142,7 @@
    "n": 2,
    "pages": 2
   },
-  "portable · 266 MB": {
+  "portable · 1.71 GB": {
    "n": 2,
    "pages": 2
   },
@@ -33846,11 +34158,15 @@
    "n": 2,
    "pages": 2
   },
-  "portable · 387 MB": {
+  "portable · 347 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 408 MB": {
+  "portable · 349 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 440 MB": {
    "n": 2,
    "pages": 2
   },
@@ -33858,67 +34174,75 @@
    "n": 2,
    "pages": 2
   },
-  "portable · 442 MB": {
-   "n": 2,
-   "pages": 2
-  },
   "portable · 446 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 470 MB": {
+  "portable · 449 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 500 MB": {
+  "portable · 498 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 506 MB": {
+  "portable · 499 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 524 MB": {
+  "portable · 504 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 532 MB": {
+  "portable · 508 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 534 MB": {
+  "portable · 514 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 553 MB": {
+  "portable · 516 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 587 MB": {
+  "portable · 535 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 589 MB": {
+  "portable · 539 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 605 MB": {
+  "portable · 562 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 617 MB": {
+  "portable · 568 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 622 MB": {
+  "portable · 596 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 635 MB": {
+  "portable · 597 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 643 MB": {
+  "portable · 614 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 634 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 637 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 646 MB": {
    "n": 2,
    "pages": 2
   },
@@ -33926,63 +34250,55 @@
    "n": 2,
    "pages": 2
   },
-  "portable · 648 MB": {
+  "portable · 652 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 653 MB": {
+  "portable · 675 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 696 MB": {
+  "portable · 722 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 697 MB": {
+  "portable · 729 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 734 MB": {
+  "portable · 735 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 755 MB": {
+  "portable · 749 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 760 MB": {
+  "portable · 763 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 762 MB": {
+  "portable · 764 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 777 MB": {
+  "portable · 781 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 790 MB": {
+  "portable · 783 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 791 MB": {
+  "portable · 784 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 808 MB": {
+  "portable · 802 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 820 MB": {
-   "n": 2,
-   "pages": 2
-  },
-  "portable · 821 MB": {
-   "n": 2,
-   "pages": 2
-  },
-  "portable · 907 MB": {
+  "portable · 889 MB": {
    "n": 2,
    "pages": 2
   },
@@ -34367,6 +34683,14 @@
    "pages": 2
   },
   "system.img": {
+   "n": 2,
+   "pages": 2
+  },
+  "tar.gz for ARM64": {
+   "n": 2,
+   "pages": 2
+  },
+  "tar.gz for Intel/AMD": {
    "n": 2,
    "pages": 2
   },
@@ -34798,6 +35122,14 @@
    "n": 2,
    "pages": 2
   },
+  "zip for ARM64": {
+   "n": 2,
+   "pages": 2
+  },
+  "zip for Intel/AMD": {
+   "n": 2,
+   "pages": 2
+  },
   "— FLAC playback was supposed to fall back to a dedicated engine on devices where ExoPlayer's FLAC support hangs, but the switch that was supposed to enable it was never actually turned on. It's wired up correctly now.": {
    "n": 2,
    "pages": 2
@@ -34987,11 +35319,11 @@
    "pages": 2
   },
   "Open in the site reader": {
-   "n": 495,
+   "n": 496,
    "pages": 1
   },
   "Portable packages:": {
-   "n": 295,
+   "n": 319,
    "pages": 1
   },
   "NOT_SEPARATELY_ASSESSED": {
@@ -35007,7 +35339,7 @@
    "pages": 1
   },
   "Previous entry:": {
-   "n": 154,
+   "n": 155,
    "pages": 1
   },
   "Boundary:": {
@@ -35030,20 +35362,24 @@
    "n": 95,
    "pages": 1
   },
-  "630 MB": {
-   "n": 75,
+  "547 MB": {
+   "n": 74,
    "pages": 1
   },
-  "803 MB": {
-   "n": 75,
+  "609 MB": {
+   "n": 74,
    "pages": 1
   },
-  "548 MB": {
+  "776 MB": {
    "n": 74,
    "pages": 1
   },
   "Retained research / scoped evidence": {
    "n": 74,
+   "pages": 1
+  },
+  "629 MB": {
+   "n": 72,
    "pages": 1
   },
   "Y2Linux userspace": {
@@ -35110,8 +35446,20 @@
    "n": 39,
    "pages": 1
   },
+  "231 MB": {
+   "n": 38,
+   "pages": 1
+  },
   "; inactive retained build/history snapshot; no live completion inferred": {
    "n": 38,
+   "pages": 1
+  },
+  "398 MB": {
+   "n": 36,
+   "pages": 1
+  },
+  "169 MB": {
+   "n": 34,
    "pages": 1
   },
   "docs/validation/PLATFORM-V1-PHYSICAL-BRINGUP.md": {
@@ -35126,7 +35474,7 @@
    "n": 33,
    "pages": 1
   },
-  "169 MB": {
+  "549 MB": {
    "n": 32,
    "pages": 1
   },
@@ -35150,12 +35498,16 @@
    "n": 32,
    "pages": 1
   },
-  "805 MB": {
+  "published at the owner's word as": {
    "n": 31,
    "pages": 1
   },
-  "published at the owner's word as": {
-   "n": 31,
+  "611 MB": {
+   "n": 29,
+   "pages": 1
+  },
+  "778 MB": {
+   "n": 29,
    "pages": 1
   },
   "Y2Reborn:crates/reborn-ui/src/lib.rs": {
@@ -35174,7 +35526,7 @@
    "n": 29,
    "pages": 1
   },
-  "550 MB": {
+  "289 MB": {
    "n": 28,
    "pages": 1
   },
@@ -35194,14 +35546,6 @@
    "n": 28,
    "pages": 1
   },
-  "183 MB": {
-   "n": 27,
-   "pages": 1
-  },
-  "By": {
-   "n": 27,
-   "pages": 1
-  },
   "212-test Product v2 retained software validation and previews; no complete v2 physical UX sign-off": {
    "n": 26,
    "pages": 1
@@ -35211,6 +35555,10 @@
    "pages": 1
   },
   "Back restores focus; hold Back Home; actionable retry": {
+   "n": 26,
+   "pages": 1
+  },
+  "By": {
    "n": 26,
    "pages": 1
   },
@@ -35234,11 +35582,19 @@
    "n": 26,
    "pages": 1
   },
-  "265 MB": {
+  "412 MB": {
    "n": 25,
    "pages": 1
   },
-  "252 MB": {
+  "183 MB": {
+   "n": 24,
+   "pages": 1
+  },
+  "245 MB": {
+   "n": 24,
+   "pages": 1
+  },
+  "294 MB": {
    "n": 24,
    "pages": 1
   },
@@ -35256,6 +35612,14 @@
   },
   "docs/validation/Y2-SD-SDR104-DIAG.md": {
    "n": 24,
+   "pages": 1
+  },
+  "240 MB": {
+   "n": 23,
+   "pages": 1
+  },
+  "660 MB": {
+   "n": 23,
    "pages": 1
   },
   "Y2Reborn:crates/reborn-media/src/native.rs": {
@@ -35374,10 +35738,6 @@
    "n": 19,
    "pages": 1
   },
-  "549 MB": {
-   "n": 18,
-   "pages": 1
-  },
   "initramfs/production/storage.sh": {
    "n": 18,
    "pages": 1
@@ -35392,14 +35752,6 @@
   },
   "tests/test_system_update_fallback.py": {
    "n": 18,
-   "pages": 1
-  },
-  "260 MB": {
-   "n": 17,
-   "pages": 1
-  },
-  "433 MB": {
-   "n": 17,
    "pages": 1
   },
   "IMPROVE": {
@@ -35510,10 +35862,6 @@
    "n": 15,
    "pages": 1
   },
-  "251 MB": {
-   "n": 14,
-   "pages": 1
-  },
   "Platform status/health and Storage source-specific counters/logs; see subsystem section": {
    "n": 14,
    "pages": 1
@@ -35603,6 +35951,10 @@
    "pages": 1
   },
   ". Selected source SOFTWARE_VALIDATED after independent qualification. INTEGRATED_PHYSICAL_NOT_RUN; inherited measurements remain attached to original image/binary. Above limitations remain open.": {
+   "n": 12,
+   "pages": 1
+  },
+  "1.64 GB": {
    "n": 12,
    "pages": 1
   },
@@ -35814,11 +36166,31 @@
    "n": 10,
    "pages": 1
   },
-  "633 MB": {
+  "483 MB": {
    "n": 10,
    "pages": 1
   },
-  "806 MB": {
+  "553 MB": {
+   "n": 10,
+   "pages": 1
+  },
+  "578 MB": {
+   "n": 10,
+   "pages": 1
+  },
+  "618 MB": {
+   "n": 10,
+   "pages": 1
+  },
+  "661 MB": {
+   "n": 10,
+   "pages": 1
+  },
+  "705 MB": {
+   "n": 10,
+   "pages": 1
+  },
+  "785 MB": {
    "n": 10,
    "pages": 1
   },
@@ -35946,7 +36318,7 @@
    "n": 10,
    "pages": 1
   },
-  "261 MB": {
+  "550 MB": {
    "n": 9,
    "pages": 1
   },
@@ -35954,7 +36326,19 @@
    "n": 9,
    "pages": 1
   },
-  "812 MB": {
+  "612 MB": {
+   "n": 9,
+   "pages": 1
+  },
+  "631 MB": {
+   "n": 9,
+   "pages": 1
+  },
+  "720 MB": {
+   "n": 9,
+   "pages": 1
+  },
+  "779 MB": {
    "n": 9,
    "pages": 1
   },
@@ -36074,19 +36458,15 @@
    "n": 9,
    "pages": 1
   },
-  "1.65 GB": {
+  "1.75 GB": {
    "n": 8,
    "pages": 1
   },
-  "1.73 GB": {
+  "1.87 GB": {
    "n": 8,
    "pages": 1
   },
-  "1.90 GB": {
-   "n": 8,
-   "pages": 1
-  },
-  "624 MB": {
+  "667 MB": {
    "n": 8,
    "pages": 1
   },
@@ -36202,7 +36582,15 @@
    "n": 7,
    "pages": 1
   },
-  "639 MB": {
+  "279 MB": {
+   "n": 7,
+   "pages": 1
+  },
+  "411 MB": {
+   "n": 7,
+   "pages": 1
+  },
+  "469 MB": {
    "n": 7,
    "pages": 1
   },
@@ -36374,7 +36762,15 @@
    "n": 6,
    "pages": 1
   },
-  "170 MB": {
+  "1.70 GB": {
+   "n": 6,
+   "pages": 1
+  },
+  "179 MB": {
+   "n": 6,
+   "pages": 1
+  },
+  "241 MB": {
    "n": 6,
    "pages": 1
   },
@@ -36382,7 +36778,27 @@
    "n": 6,
    "pages": 1
   },
-  "469 MB": {
+  "538 MB": {
+   "n": 6,
+   "pages": 1
+  },
+  "551 MB": {
+   "n": 6,
+   "pages": 1
+  },
+  "552 MB": {
+   "n": 6,
+   "pages": 1
+  },
+  "593 MB": {
+   "n": 6,
+   "pages": 1
+  },
+  "670 MB": {
+   "n": 6,
+   "pages": 1
+  },
+  "706 MB": {
    "n": 6,
    "pages": 1
   },
@@ -36587,78 +37003,6 @@
    "pages": 1
   },
   "Release notes for 20260819-0956": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20260927": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20260928": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20260928-build.6": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20260929": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261001": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261006": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261007": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261008": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261011": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261012": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261013": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261017": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261104": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261105": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261106": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261107": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261107-v2": {
-   "n": 6,
-   "pages": 1
-  },
-  "Release notes for 20261110": {
    "n": 6,
    "pages": 1
   },
@@ -37054,6 +37398,14 @@
    "n": 5,
    "pages": 1
   },
+  "395 MB": {
+   "n": 5,
+   "pages": 1
+  },
+  "570 MB": {
+   "n": 5,
+   "pages": 1
+  },
   ": OUTPUT_MD5": {
    "n": 5,
    "pages": 1
@@ -37414,11 +37766,15 @@
    "n": 4,
    "pages": 1
   },
+  "1.03 GB": {
+   "n": 4,
+   "pages": 1
+  },
   "1.04 GB": {
    "n": 4,
    "pages": 1
   },
-  "1.21 GB": {
+  "1.19 GB": {
    "n": 4,
    "pages": 1
   },
@@ -37430,15 +37786,7 @@
    "n": 4,
    "pages": 1
   },
-  "1.66 GB": {
-   "n": 4,
-   "pages": 1
-  },
-  "1.83 GB": {
-   "n": 4,
-   "pages": 1
-  },
-  "179 MB": {
+  "1.80 GB": {
    "n": 4,
    "pages": 1
   },
@@ -37458,63 +37806,63 @@
    "n": 4,
    "pages": 1
   },
-  "296 MB": {
-   "n": 4,
-   "pages": 1
-  },
   "3 releases": {
    "n": 4,
    "pages": 1
   },
-  "367 MB": {
+  "342 MB": {
    "n": 4,
    "pages": 1
   },
-  "376 MB": {
+  "355 MB": {
    "n": 4,
    "pages": 1
   },
-  "524 MB": {
+  "365 MB": {
    "n": 4,
    "pages": 1
   },
-  "529 MB": {
+  "451 MB": {
    "n": 4,
    "pages": 1
   },
-  "540 MB": {
+  "522 MB": {
    "n": 4,
    "pages": 1
   },
-  "552 MB": {
+  "532 MB": {
    "n": 4,
    "pages": 1
   },
-  "697 MB": {
+  "592 MB": {
    "n": 4,
    "pages": 1
   },
-  "706 MB": {
+  "623 MB": {
    "n": 4,
    "pages": 1
   },
-  "707 MB": {
+  "624 MB": {
    "n": 4,
    "pages": 1
   },
-  "723 MB": {
+  "685 MB": {
    "n": 4,
    "pages": 1
   },
-  "879 MB": {
+  "686 MB": {
    "n": 4,
    "pages": 1
   },
-  "880 MB": {
+  "852 MB": {
    "n": 4,
    "pages": 1
   },
-  "984 MB": {
+  "853 MB": {
+   "n": 4,
+   "pages": 1
+  },
+  "983 MB": {
    "n": 4,
    "pages": 1
   },
@@ -38138,6 +38486,10 @@
    "n": 3,
    "pages": 1
   },
+  "182 MB": {
+   "n": 3,
+   "pages": 1
+  },
   "2.2.2 backup, artwork, and playback reliability - Added a versioned Backup & Restore screen for settings, favorites, Y2Player-created playlists, audiobook progress, recent plays, t": {
    "n": 3,
    "pages": 1
@@ -38166,11 +38518,15 @@
    "n": 3,
    "pages": 1
   },
-  "30 releases": {
+  "244 MB": {
    "n": 3,
    "pages": 1
   },
-  "359 MB": {
+  "293 MB": {
+   "n": 3,
+   "pages": 1
+  },
+  "30 releases": {
    "n": 3,
    "pages": 1
   },
@@ -38182,19 +38538,23 @@
    "n": 3,
    "pages": 1
   },
+  "440 MB": {
+   "n": 3,
+   "pages": 1
+  },
+  "490 MB": {
+   "n": 3,
+   "pages": 1
+  },
+  "502 MB": {
+   "n": 3,
+   "pages": 1
+  },
   "52 / 54 — CS43131 crystal does not start on Y2Linux handoff, 2026-10-23 Everything below was verified by reading reports, source and the stock kernel binary. Do not re-de": {
    "n": 3,
    "pages": 1
   },
-  "523 MB": {
-   "n": 3,
-   "pages": 1
-  },
-  "542 MB": {
-   "n": 3,
-   "pages": 1
-  },
-  "551 MB": {
+  "557 MB": {
    "n": 3,
    "pages": 1
   },
@@ -38206,31 +38566,55 @@
    "n": 3,
    "pages": 1
   },
-  "653 MB": {
+  "621 MB": {
    "n": 3,
    "pages": 1
   },
-  "696 MB": {
+  "622 MB": {
    "n": 3,
    "pages": 1
   },
-  "702 MB": {
+  "652 MB": {
    "n": 3,
    "pages": 1
   },
-  "705 MB": {
+  "658 MB": {
    "n": 3,
    "pages": 1
   },
-  "734 MB": {
+  "684 MB": {
    "n": 3,
    "pages": 1
   },
-  "878 MB": {
+  "688 MB": {
    "n": 3,
    "pages": 1
   },
-  "907 MB": {
+  "704 MB": {
+   "n": 3,
+   "pages": 1
+  },
+  "722 MB": {
+   "n": 3,
+   "pages": 1
+  },
+  "726 MB": {
+   "n": 3,
+   "pages": 1
+  },
+  "733 MB": {
+   "n": 3,
+   "pages": 1
+  },
+  "788 MB": {
+   "n": 3,
+   "pages": 1
+  },
+  "851 MB": {
+   "n": 3,
+   "pages": 1
+  },
+  "889 MB": {
    "n": 3,
    "pages": 1
   },
@@ -38247,6 +38631,10 @@
    "pages": 1
   },
   "A theme-consistency pass plus a round of real correctness/security fixes underneath, including a Last.fm crash and a Wireless PC Upload path-traversal issue. Changed - Classic them": {
+   "n": 3,
+   "pages": 1
+  },
+  "ARM64": {
    "n": 3,
    "pages": 1
   },
@@ -38886,7 +39274,7 @@
    "n": 3,
    "pages": 1
   },
-  "Current Y2Linux platform state Y2Linux 1.0 Beta 9.3.22, Baseline 233 — 2026-11-10 latest, published Release 1.0.0-beta.9.3.22 , tag baseline-233 , Linux bc043e92 , Reborn": {
+  "Current Y2Linux platform state Y2Linux 1.0 Beta 9.3.23, Baseline 234 — 2026-11-10 latest, published Release 1.0.0-beta.9.3.23 , tag baseline-234 , Linux 8f357e92 , Reborn": {
    "n": 3,
    "pages": 1
   },
@@ -40852,6 +41240,10 @@
    "n": 3,
    "pages": 1
   },
+  "Intel / AMD": {
+   "n": 3,
+   "pages": 1
+  },
   "Internal Storage for every player — plan (2026-10-16) - Innioasis Updater": {
    "n": 3,
    "pages": 1
@@ -41368,7 +41760,7 @@
    "n": 3,
    "pages": 1
   },
-  "Next-session handoff — Y2Linux 1.0 Beta 8.4 candidate latest entry first; started 2026-10-09 as the deep-sleep continuation START HERE 2026-11-10: BETA 9.3.22 BASELINE 23": {
+  "Next-session handoff — Y2Linux 1.0 Beta 8.4 candidate latest entry first; started 2026-10-09 as the deep-sleep continuation START HERE 2026-11-10: BETA 9.3.23 BASELINE 23": {
    "n": 3,
    "pages": 1
   },
@@ -42464,6 +42856,78 @@
    "n": 3,
    "pages": 1
   },
+  "Release notes for 20260927": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20260928": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20260928-build.6": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20260929": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261001": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261006": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261007": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261008": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261011": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261012": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261013": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261017": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261104": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261105": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261106": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261107": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261107-v2": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for 20261110": {
+   "n": 3,
+   "pages": 1
+  },
   "Release notes for 240p-16483614697": {
    "n": 3,
    "pages": 1
@@ -42845,6 +43309,10 @@
    "pages": 1
   },
   "Release notes for baseline-233": {
+   "n": 3,
+   "pages": 1
+  },
+  "Release notes for baseline-234": {
    "n": 3,
    "pages": 1
   },
@@ -46576,6 +47044,22 @@
    "n": 3,
    "pages": 1
   },
+  "Y2Linux 1.0 Beta 9.3.23 - Innioasis Updater": {
+   "n": 3,
+   "pages": 1
+  },
+  "Y2Linux 1.0 Beta 9.3.23 : the progress wave on Now Playing takes the colour of the album cover. Changed - Now Playing's progress wave wears the cover's colour , as the small player": {
+   "n": 3,
+   "pages": 1
+  },
+  "Y2Linux 1.0 Beta 9.3.23: the progress wave takes the cover's colour - Innioasis Updater": {
+   "n": 3,
+   "pages": 1
+  },
+  "Y2Linux 1.0 Beta 9.3.23: the progress wave takes the cover's colour Release 1.0.0-beta.9.3.23 , Y2Reborn 1.0.0-beta.9.3.23 , kernel 6.18.56-y2linux-1.0.0-beta.9.3.23 , up": {
+   "n": 3,
+   "pages": 1
+  },
   "Y2Linux 1.0 Beta 9.3.7 - Innioasis Updater": {
    "n": 3,
    "pages": 1
@@ -47456,6 +47940,18 @@
    "n": 2,
    "pages": 1
   },
+  "1.68 GB": {
+   "n": 2,
+   "pages": 1
+  },
+  "1.69 GB": {
+   "n": 2,
+   "pages": 1
+  },
+  "1.71 GB": {
+   "n": 2,
+   "pages": 1
+  },
   "1.73 FS, Master 0 → 1.73 V": {
    "n": 2,
    "pages": 1
@@ -47473,10 +47969,6 @@
    "pages": 1
   },
   "102,400 bytes": {
-   "n": 2,
-   "pages": 1
-  },
-  "18 releases": {
    "n": 2,
    "pages": 1
   },
@@ -47524,10 +48016,6 @@
    "n": 2,
    "pages": 1
   },
-  "266 MB": {
-   "n": 2,
-   "pages": 1
-  },
   "278 MB": {
    "n": 2,
    "pages": 1
@@ -47540,7 +48028,19 @@
    "n": 2,
    "pages": 1
   },
-  "356 MB": {
+  "335 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "347 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "349 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "384 MB": {
    "n": 2,
    "pages": 1
   },
@@ -47556,11 +48056,19 @@
    "n": 2,
    "pages": 1
   },
+  "449 MB": {
+   "n": 2,
+   "pages": 1
+  },
   "450 mA": {
    "n": 2,
    "pages": 1
   },
-  "470 MB": {
+  "459 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "468 MB": {
    "n": 2,
    "pages": 1
   },
@@ -47568,19 +48076,39 @@
    "n": 2,
    "pages": 1
   },
+  "498 MB": {
+   "n": 2,
+   "pages": 1
+  },
   "5. CPU / POWER": {
    "n": 2,
    "pages": 1
   },
-  "532 MB": {
+  "505 MB": {
    "n": 2,
    "pages": 1
   },
-  "553 MB": {
+  "514 MB": {
    "n": 2,
    "pages": 1
   },
-  "566 MB": {
+  "516 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "521 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "539 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "585 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "588 MB": {
    "n": 2,
    "pages": 1
   },
@@ -47588,7 +48116,11 @@
    "n": 2,
    "pages": 1
   },
-  "622 MB": {
+  "614 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "615 MB": {
    "n": 2,
    "pages": 1
   },
@@ -47596,11 +48128,7 @@
    "n": 2,
    "pages": 1
   },
-  "638 MB": {
-   "n": 2,
-   "pages": 1
-  },
-  "643 MB": {
+  "675 MB": {
    "n": 2,
    "pages": 1
   },
@@ -47608,15 +48136,11 @@
    "n": 2,
    "pages": 1
   },
-  "715 MB": {
+  "741 MB": {
    "n": 2,
    "pages": 1
   },
-  "722 MB": {
-   "n": 2,
-   "pages": 1
-  },
-  "808 MB": {
+  "781 MB": {
    "n": 2,
    "pages": 1
   },
@@ -47784,7 +48308,7 @@
    "n": 2,
    "pages": 1
   },
-  "About Classy (Y1, Y2) - README.md - Innioasis Updater": {
+  "About Classy (Y2) - README.md - Innioasis Updater": {
    "n": 2,
    "pages": 1
   },
@@ -48129,10 +48653,6 @@
    "pages": 1
   },
   "Classification at this boundary": {
-   "n": 2,
-   "pages": 1
-  },
-  "ClassyPlayer": {
    "n": 2,
    "pages": 1
   },
@@ -50949,6 +51469,10 @@
    "n": 2,
    "pages": 1
   },
+  "Y2Linux 1.0 Beta 9.3.23: the progress wave takes the cover's colour": {
+   "n": 2,
+   "pages": 1
+  },
   "Y2Linux 1.0 Beta 9.3.7: Bluetooth rebuilt for reliability": {
    "n": 2,
    "pages": 1
@@ -51457,6 +51981,38 @@
    "n": 2,
    "pages": 1
   },
+  "portable · 510 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "portable · 511 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "portable · 518 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "portable · 573 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "portable · 580 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "portable · 619 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "portable · 740 MB": {
+   "n": 2,
+   "pages": 1
+  },
+  "portable · 747 MB": {
+   "n": 2,
+   "pages": 1
+  },
   "pre-fix)": {
    "n": 2,
    "pages": 1
@@ -51946,6 +52502,10 @@
    "pages": 1
   },
   "\"If NumAttributes is set to zero, all attribute information shall be returned, else attribute information for the specified attribute IDs shall be returned by the TG.\"": {
+   "n": 1,
+   "pages": 1
+  },
+  "\"Install, start or": {
    "n": 1,
    "pages": 1
   },
@@ -58769,6 +59329,10 @@
    "n": 1,
    "pages": 1
   },
+  "(build 234). Previous release:": {
+   "n": 1,
+   "pages": 1
+  },
   "(build commit": {
    "n": 1,
    "pages": 1
@@ -60365,6 +60929,10 @@
    "n": 1,
    "pages": 1
   },
+  "(first-look facts per error report).": {
+   "n": 1,
+   "pages": 1
+  },
   "(five reports) with 4 workers; parent and workers at nice 10": {
    "n": 1,
    "pages": 1
@@ -61194,6 +61762,10 @@
    "pages": 1
   },
   "(label 169, version 1.0.0-beta.8.44, sequence 11140) is installed on the owner's player by": {
+   "n": 1,
+   "pages": 1
+  },
+  "(label off on the author's reply, one reminder after 14 days),": {
    "n": 1,
    "pages": 1
   },
@@ -71957,6 +72529,10 @@
    "n": 1,
    "pages": 1
   },
+  "). Skins with a fixed accent colour use that colour instead. The knob stays white.": {
+   "n": 1,
+   "pages": 1
+  },
   "). Skips the L2CAP state check; channel can be in any state passed by L1. Risk: medium — if channel is in state 6 (disconnect-pending), forcing a send onto a soon-to-be-closed channel could trigger unexpected behaviour in": {
    "n": 1,
    "pages": 1
@@ -72342,6 +72918,10 @@
    "pages": 1
   },
   "). There is no amp node and no amp driver.": {
+   "n": 1,
+   "pages": 1
+  },
+  "). There is no setting for it: it simply follows the cover.": {
    "n": 1,
    "pages": 1
   },
@@ -73894,6 +74474,10 @@
    "pages": 1
   },
   "); probably not on the msg=544 path but a candidate for future investigation if D2 indicates Path B isn't even running.": {
+   "n": 1,
+   "pages": 1
+  },
+  "); radio keeps": {
    "n": 1,
    "pages": 1
   },
@@ -77041,6 +77625,10 @@
    "n": 1,
    "pages": 1
   },
+  ", an executable script that starts the tool with the ROM beside it:": {
+   "n": 1,
+   "pages": 1
+  },
   ", an in-flight": {
    "n": 1,
    "pages": 1
@@ -77758,6 +78346,14 @@
    "pages": 1
   },
   ", as the connectivity daemon": {
+   "n": 1,
+   "pages": 1
+  },
+  ", as the small player on Home already did (": {
+   "n": 1,
+   "pages": 1
+  },
+  ", as the small player on Home already had (": {
    "n": 1,
    "pages": 1
   },
@@ -80777,6 +81373,10 @@
    "n": 1,
    "pages": 1
   },
+  ", looks for the same release tag and the same ROM file inside it, and keeps only the entry built for your operating system and processor. The mirror's own GitHub release is then checked to confirm the file exists and is not an empty placeholder. If any of that fails, the click keeps the project's original zip, which is always a real file.": {
+   "n": 1,
+   "pages": 1
+  },
   ", loop-mounts it, applies the patches in-place, unmounts, and flashes via MTKClient. Subdirectory build outputs and": {
    "n": 1,
    "pages": 1
@@ -81810,10 +82410,6 @@
    "pages": 1
   },
   ", on every screen (it used to appear only while you were in Settings, and sometimes not at all), and it lights the screen if it was off. While a computer has the player's drives, the screen stays until you unplug the cable; music, volume and Power keep working.": {
-   "n": 1,
-   "pages": 1
-  },
-  ", on the": {
    "n": 1,
    "pages": 1
   },
@@ -83985,6 +84581,10 @@
    "n": 1,
    "pages": 1
   },
+  ", sequence 15900, root v1.257. Now Playing's progress wave takes the cover's colour, as Home's card does (#108; owner: no toggle). Issue forms ask the install method and whether Wi-Fi and Bluetooth work; the install form covers \"Couldn't Start\"; a": {
+   "n": 1,
+   "pages": 1
+  },
   ", sequence 3500": {
    "n": 1,
    "pages": 1
@@ -84890,6 +85490,10 @@
    "pages": 1
   },
   ", so the error was already there 20 ms after power-up": {
+   "n": 1,
+   "pages": 1
+  },
+  ", so the exact set can differ between mirrors. Where a platform is missing, the original ROM is served instead.": {
    "n": 1,
    "pages": 1
   },
@@ -86625,6 +87229,10 @@
    "n": 1,
    "pages": 1
   },
+  ", update sequence 15900, root": {
+   "n": 1,
+   "pages": 1
+  },
   ", update sequence 3500; Linux": {
    "n": 1,
    "pages": 1
@@ -87341,6 +87949,10 @@
    "n": 1,
    "pages": 1
   },
+  ", which lists a portable build per platform next to the original file.": {
+   "n": 1,
+   "pages": 1
+  },
   ", which lists the ways to support the people who keep these players usable. Nothing in the package is limited by whether you donate.": {
    "n": 1,
    "pages": 1
@@ -87782,6 +88394,10 @@
    "pages": 1
   },
   ", with the same installed source/image identity. Temporary process, helpers, libraries and music were removed; PCM is closed, Master restored to -60dB and headphones off. Taint512 existed before these audio tests, rose to4608 for the out-of-tree modules, and returned to512 after reboot. No new audio fault is attributed to that preexisting bit. The observer README now requires the unload preflight. The device lease was released after cleanup verification.": {
+   "n": 1,
+   "pages": 1
+  },
+  ", with the same pattern for the zips.": {
    "n": 1,
    "pages": 1
   },
@@ -89374,6 +89990,10 @@
    "pages": 1
   },
   ". Checked from the PC: with the key and a broken body 400": {
+   "n": 1,
+   "pages": 1
+  },
+  ". Checked in the host preview only, not on a player. Details:": {
    "n": 1,
    "pages": 1
   },
@@ -92833,6 +93453,10 @@
    "n": 1,
    "pages": 1
   },
+  ". Not on a player yet. Waiting for answers: Y2Reborn #120 (fresh install, Couldn't Start), #116 (overnight). Next free label 235, sequence above 15900, next version 9.3.24 (": {
+   "n": 1,
+   "pages": 1
+  },
   ". Not possible — no Linux keycode in the stock AVRCP.kl maps to discrete": {
    "n": 1,
    "pages": 1
@@ -93274,6 +93898,10 @@
    "pages": 1
   },
   ". Owner confirms the SD128 ext4 card is a different known-good card; PHY-010's original suspect FAT medium remains isolated. PHY-008 is not resolved by a replacement card with a valid UUID. Historical evidence above remains retained.": {
+   "n": 1,
+   "pages": 1
+  },
+  ". Owner decision: no toggle.": {
    "n": 1,
    "pages": 1
   },
@@ -94993,6 +95621,10 @@
    "n": 1,
    "pages": 1
   },
+  ". The app repository's": {
+   "n": 1,
+   "pages": 1
+  },
   ". The archive and PDF hashes are pinned in sources.json; the PDF was extracted, text-searched and the route table visually inspected. Only audio chapter 53 was used for this conclusion.": {
    "n": 1,
    "pages": 1
@@ -95146,6 +95778,10 @@
    "pages": 1
   },
   ". The descriptor bytes for": {
+   "n": 1,
+   "pages": 1
+  },
+  ". The desktop entry and the icon live at the top of that folder, and": {
    "n": 1,
    "pages": 1
   },
@@ -95990,6 +96626,10 @@
    "pages": 1
   },
   ". The screenshots identify the build, but do not independently confirm selected or flashed/readback SHA-256. Host elapsed time, cable state, reset history and restoration outcome have not been supplied. Do not infer them from the folder name or photographs. M1 remains complete; #23, #27 and M2 stay open.": {
+   "n": 1,
+   "pages": 1
+  },
+  ". The script downloads": {
    "n": 1,
    "pages": 1
   },
@@ -97222,6 +97862,10 @@
    "pages": 1
   },
   ". You can change it any time under Settings →": {
+   "n": 1,
+   "pages": 1
+  },
+  ". You can see the same choice without clicking anything by hovering the link, or from the release page at": {
    "n": 1,
    "pages": 1
   },
@@ -100265,7 +100909,7 @@
    "n": 1,
    "pages": 1
   },
-  "1.0 Beta 9.3.22 (Baseline 233)": {
+  "1.0 Beta 9.3.23 (Baseline 234)": {
    "n": 1,
    "pages": 1
   },
@@ -102345,6 +102989,10 @@
    "n": 1,
    "pages": 1
   },
+  "177 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "178 (seq 11230) and 179 (seq 11240, Reborn 68af9ac) Acknowledged, device checks OK; 179's health-ack went": {
    "n": 1,
    "pages": 1
@@ -102374,6 +103022,10 @@
    "pages": 1
   },
   "18 plan:": {
+   "n": 1,
+   "pages": 1
+  },
+  "18 releases": {
    "n": 1,
    "pages": 1
   },
@@ -104485,6 +105137,10 @@
    "n": 1,
    "pages": 1
   },
+  "288 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "28: Kernel/storage/audio warnings": {
    "n": 1,
    "pages": 1
@@ -105429,6 +106085,10 @@
    "n": 1,
    "pages": 1
   },
+  "359 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "36 Test gaps": {
    "n": 1,
    "pages": 1
@@ -105466,10 +106126,6 @@
    "pages": 1
   },
   "364 cases": {
-   "n": 1,
-   "pages": 1
-  },
-  "369 MB": {
    "n": 1,
    "pages": 1
   },
@@ -105514,10 +106170,6 @@
    "pages": 1
   },
   "37.950378418 seconds": {
-   "n": 1,
-   "pages": 1
-  },
-  "370 MB": {
    "n": 1,
    "pages": 1
   },
@@ -105630,10 +106282,6 @@
    "pages": 1
   },
   "391 cases: 386 passed and 5 dependency skips": {
-   "n": 1,
-   "pages": 1
-  },
-  "395 MB": {
    "n": 1,
    "pages": 1
   },
@@ -106149,10 +106797,6 @@
    "n": 1,
    "pages": 1
   },
-  "407 MB": {
-   "n": 1,
-   "pages": 1
-  },
   "409 MB": {
    "n": 1,
    "pages": 1
@@ -106237,7 +106881,7 @@
    "n": 1,
    "pages": 1
   },
-  "421 MB": {
+  "425 MB": {
    "n": 1,
    "pages": 1
   },
@@ -106254,6 +106898,10 @@
    "pages": 1
   },
   "43008 sectors /21 MiB": {
+   "n": 1,
+   "pages": 1
+  },
+  "431 MB": {
    "n": 1,
    "pages": 1
   },
@@ -106346,10 +106994,6 @@
    "pages": 1
   },
   "44.451 MB/s": {
-   "n": 1,
-   "pages": 1
-  },
-  "440 MB": {
    "n": 1,
    "pages": 1
   },
@@ -106482,6 +107126,10 @@
    "pages": 1
   },
   "47-min sleep (archive": {
+   "n": 1,
+   "pages": 1
+  },
+  "471 MB": {
    "n": 1,
    "pages": 1
   },
@@ -106622,6 +107270,10 @@
    "pages": 1
   },
   "491.569 ms": {
+   "n": 1,
+   "pages": 1
+  },
+  "492 MB": {
    "n": 1,
    "pages": 1
   },
@@ -107125,7 +107777,7 @@
    "n": 1,
    "pages": 1
   },
-  "527 MB": {
+  "526 MB": {
    "n": 1,
    "pages": 1
   },
@@ -107173,10 +107825,6 @@
    "n": 1,
    "pages": 1
   },
-  "543 MB": {
-   "n": 1,
-   "pages": 1
-  },
   "543 unique production cases": {
    "n": 1,
    "pages": 1
@@ -107217,6 +107865,14 @@
    "n": 1,
    "pages": 1
   },
+  "565 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "566 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "568 → 1036 in 45 s). Reborn's main thread used 5.5 % CPU, the CPU stayed at 598–747 MHz. Cause: the main loop computed its wait before the animation marked the frame dirty, so between wheel events it slept its idle 250 ms (50 ms while playing); dirty frames were also capped at one per 34 ms.": {
    "n": 1,
    "pages": 1
@@ -107233,10 +107889,6 @@
    "n": 1,
    "pages": 1
   },
-  "577 MB": {
-   "n": 1,
-   "pages": 1
-  },
   "577 OK (1:40, was 7:43 with the Python comparison),": {
    "n": 1,
    "pages": 1
@@ -107246,6 +107898,10 @@
    "pages": 1
   },
   "578 unique platform cases PASS": {
+   "n": 1,
+   "pages": 1
+  },
+  "579 MB": {
    "n": 1,
    "pages": 1
   },
@@ -107301,10 +107957,6 @@
    "n": 1,
    "pages": 1
   },
-  "597 MB": {
-   "n": 1,
-   "pages": 1
-  },
   "597-word": {
    "n": 1,
    "pages": 1
@@ -107314,6 +107966,10 @@
    "pages": 1
   },
   "598 / 747.5 / 1040 MHz at the stock-proven 1.15 V; normal schedutil, offline powersave. No evidenced lower active voltage exists in retained Y2 tables": {
+   "n": 1,
+   "pages": 1
+  },
+  "598 MB": {
    "n": 1,
    "pages": 1
   },
@@ -107709,10 +108365,6 @@
    "n": 1,
    "pages": 1
   },
-  "609 MB": {
-   "n": 1,
-   "pages": 1
-  },
   "60bea96 (rules, queue,": {
    "n": 1,
    "pages": 1
@@ -107721,11 +108373,15 @@
    "n": 1,
    "pages": 1
   },
+  "610 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "614 s (MP3 320k, 10-band EQ + limiter, wired headphones, Wi-Fi on and online). Python platform vs the rest, CPU seconds per hour:": {
    "n": 1,
    "pages": 1
   },
-  "615 MB": {
+  "619 MB": {
    "n": 1,
    "pages": 1
   },
@@ -107745,11 +108401,7 @@
    "n": 1,
    "pages": 1
   },
-  "620 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "623 MB": {
+  "626 MB": {
    "n": 1,
    "pages": 1
   },
@@ -107761,11 +108413,11 @@
    "n": 1,
    "pages": 1
   },
-  "6352 → 6400 acknowledged at ≈67 s;": {
+  "634 MB": {
    "n": 1,
    "pages": 1
   },
-  "636 MB": {
+  "6352 → 6400 acknowledged at ≈67 s;": {
    "n": 1,
    "pages": 1
   },
@@ -107837,15 +108489,11 @@
    "n": 1,
    "pages": 1
   },
+  "646 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "647 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "648 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "649 MB": {
    "n": 1,
    "pages": 1
   },
@@ -107885,11 +108533,31 @@
    "n": 1,
    "pages": 1
   },
+  "663 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "666 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "669 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "67 s (power-daemon 38 s, service-daemon 23 s)": {
    "n": 1,
    "pages": 1
   },
   "67 tests": {
+   "n": 1,
+   "pages": 1
+  },
+  "677 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "678 MB": {
    "n": 1,
    "pages": 1
   },
@@ -107917,6 +108585,10 @@
    "n": 1,
    "pages": 1
   },
+  "681 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "685c003a, 09cabe08, dbe84d46": {
    "n": 1,
    "pages": 1
@@ -107929,15 +108601,15 @@
    "n": 1,
    "pages": 1
   },
+  "697 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "6971 entries and50,654,676us in60.054880715s: 84.35% residency": {
    "n": 1,
    "pages": 1
   },
   "698 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "699 MB": {
    "n": 1,
    "pages": 1
   },
@@ -108221,6 +108893,10 @@
    "n": 1,
    "pages": 1
   },
+  "701 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "701 OK": {
    "n": 1,
    "pages": 1
@@ -108233,11 +108909,11 @@
    "n": 1,
    "pages": 1
   },
-  "708 OK": {
+  "708 MB": {
    "n": 1,
    "pages": 1
   },
-  "709 MB": {
+  "708 OK": {
    "n": 1,
    "pages": 1
   },
@@ -108270,6 +108946,10 @@
    "pages": 1
   },
   "715 OK": {
+   "n": 1,
+   "pages": 1
+  },
+  "724 MB": {
    "n": 1,
    "pages": 1
   },
@@ -108325,7 +109005,7 @@
    "n": 1,
    "pages": 1
   },
-  "750 MB": {
+  "755 MB": {
    "n": 1,
    "pages": 1
   },
@@ -108386,6 +109066,10 @@
    "pages": 1
   },
   "792 host tests incl. resume/refusals (mutation-checked), real mkfs layout; files verified inside Y2ROOT.": {
+   "n": 1,
+   "pages": 1
+  },
+  "794 MB": {
    "n": 1,
    "pages": 1
   },
@@ -108681,7 +109365,7 @@
    "n": 1,
    "pages": 1
   },
-  "809 MB": {
+  "802 MB": {
    "n": 1,
    "pages": 1
   },
@@ -108713,15 +109397,7 @@
    "n": 1,
    "pages": 1
   },
-  "820 MB": {
-   "n": 1,
-   "pages": 1
-  },
   "820 → 824 (4-B align for 24-byte state buf);": {
-   "n": 1,
-   "pages": 1
-  },
-  "821 MB": {
    "n": 1,
    "pages": 1
   },
@@ -108753,7 +109429,23 @@
    "n": 1,
    "pages": 1
   },
+  "844 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "845 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "848 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "85 build checks / 14 package rejection cases": {
+   "n": 1,
+   "pages": 1
+  },
+  "855 MB": {
    "n": 1,
    "pages": 1
   },
@@ -108789,19 +109481,7 @@
    "n": 1,
    "pages": 1
   },
-  "871 MB": {
-   "n": 1,
-   "pages": 1
-  },
   "871 OK": {
-   "n": 1,
-   "pages": 1
-  },
-  "872 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "875 MB": {
    "n": 1,
    "pages": 1
   },
@@ -108818,10 +109498,6 @@
    "pages": 1
   },
   "88.2→44.1; 96→48; 44.1 ultimate fallback": {
-   "n": 1,
-   "pages": 1
-  },
-  "882 MB": {
    "n": 1,
    "pages": 1
   },
@@ -109181,11 +109857,11 @@
    "n": 1,
    "pages": 1
   },
-  "96 releases": {
+  "96ce4df086c149620f81cdd206b419f507f6e107 / ccdb794cf22791270041665c68b0aef971f2cbf2 (USB),5317b7c1a5f5b291a5680289e52d2d5e64716a15 (Wi-Fi)": {
    "n": 1,
    "pages": 1
   },
-  "96ce4df086c149620f81cdd206b419f507f6e107 / ccdb794cf22791270041665c68b0aef971f2cbf2 (USB),5317b7c1a5f5b291a5680289e52d2d5e64716a15 (Wi-Fi)": {
+  "97 releases": {
    "n": 1,
    "pages": 1
   },
@@ -109997,6 +110673,10 @@
    "n": 1,
    "pages": 1
   },
+  ": Reborn's interface tests, the platform's full check and the tests of the release images passed.": {
+   "n": 1,
+   "pages": 1
+  },
   ": Reborn/Buildroot/native media integration.": {
    "n": 1,
    "pages": 1
@@ -110421,6 +111101,10 @@
    "n": 1,
    "pages": 1
   },
+  ": all 204 screens were drawn on a computer. On Now Playing, playing and paused, the wave has the cover's": {
+   "n": 1,
+   "pages": 1
+  },
   ": all five stages and real RTC wake return on boot": {
    "n": 1,
    "pages": 1
@@ -110825,6 +111509,10 @@
    "n": 1,
    "pages": 1
   },
+  ": every issue form now asks how you installed Y2Linux (SP Flash Tool or the": {
+   "n": 1,
+   "pages": 1
+  },
   ": every issue form now asks you to search first, and there is a page of": {
    "n": 1,
    "pages": 1
@@ -111165,6 +111853,10 @@
    "n": 1,
    "pages": 1
   },
+  ": issue forms (": {
+   "n": 1,
+   "pages": 1
+  },
   ": issue forms with a required \"searched\" box,": {
    "n": 1,
    "pages": 1
@@ -111190,6 +111882,10 @@
    "pages": 1
   },
   ": it turns off and Power starts the recovery.": {
+   "n": 1,
+   "pages": 1
+  },
+  ": it used to be white. The colour is the same one Home's": {
    "n": 1,
    "pages": 1
   },
@@ -112314,6 +113010,10 @@
    "pages": 1
   },
   ": the progress wave on Now Playing is drawn with soft edges, and it now follows what you hear: taller when it gets loud, calmer when it's quiet, swelling with the bass and rippling with the highs. Home's now-playing card shows it too.": {
+   "n": 1,
+   "pages": 1
+  },
+  ": the progress wave on Now Playing takes the colour of the album cover.": {
    "n": 1,
    "pages": 1
   },
@@ -117981,6 +118681,10 @@
    "n": 1,
    "pages": 1
   },
+  "A ROM that is listed in the feeds but not in the manifest has no mirror at all. Its row downloads the project's own zip, which is the only file that exists for it.": {
+   "n": 1,
+   "pages": 1
+  },
   "A SR1 needs a SR1 package. Mixing models is how players end up needing a manual recovery.": {
    "n": 1,
    "pages": 1
@@ -118869,6 +119573,10 @@
    "n": 1,
    "pages": 1
   },
+  "A mirror builds after the project publishes, so a release that appeared minutes ago may not have its packages yet. The archive serves the project's original zip in that case, and the portable build appears once the mirror has published it.": {
+   "n": 1,
+   "pages": 1
+  },
   "A missing comma, quote or bracket near that line. A code editor or a JSON checker website shows where.": {
    "n": 1,
    "pages": 1
@@ -119058,6 +119766,10 @@
    "n": 1,
    "pages": 1
   },
+  "A pass or fail on a bundle that would not run on older distributions. Run it before you publish anything.": {
+   "n": 1,
+   "pages": 1
+  },
   "A pause longer than about 20 seconds drops the Bluetooth connection once": {
    "n": 1,
    "pages": 1
@@ -119219,6 +119931,14 @@
    "pages": 1
   },
   "A project being available for Y1 does not make its Y1 package safe for Y2.": {
+   "n": 1,
+   "pages": 1
+  },
+  "A project names its mirror in": {
+   "n": 1,
+   "pages": 1
+  },
+  "A project publishes one ROM zip. A mirror repackages that same ROM for each desktop, with the flashing tool for that desktop beside it. This page explains what is in those files and how a download from the firmware archive lands on the right one.": {
    "n": 1,
    "pages": 1
   },
@@ -119554,6 +120274,10 @@
    "n": 1,
    "pages": 1
   },
+  "A small look change.": {
+   "n": 1,
+   "pages": 1
+  },
   "A small policy service remembers a successfully connected, paired, trusted A2DP sink. Device1.ConnectProfile performs retries with bounded timeout/backoff; a passive Linux management socket distinguishes local disconnect/authentication failure from a disappearing peer. Local disconnect is respected until explicit connection or radio re-enable. Optional profiles are not auto-connected.": {
    "n": 1,
    "pages": 1
@@ -119731,6 +120455,10 @@
    "pages": 1
   },
   "A system status request takes about a third of a second while charging.": {
+   "n": 1,
+   "pages": 1
+  },
+  "A tarball or a zip is a folder. Unpack it and run the launcher in it, keeping the folder together, because the application looks for its own files beside itself:": {
    "n": 1,
    "pages": 1
   },
@@ -122782,6 +123510,10 @@
    "n": 1,
    "pages": 1
   },
+  "Add a desktop entry at": {
+   "n": 1,
+   "pages": 1
+  },
   "Add a hard": {
    "n": 1,
    "pages": 1
@@ -124842,6 +125574,10 @@
    "n": 1,
    "pages": 1
   },
+  "All of the files above carry the terminal interface, so": {
+   "n": 1,
+   "pages": 1
+  },
   "All offline checks pass. Physical correction of the SIGILL and wheel regression, pattern visibility, persistent USB reconnect, Ethernet and SSH remain unproved until this deployment is observed. Internal eMMC stays disabled.": {
    "n": 1,
    "pages": 1
@@ -125379,6 +126115,18 @@
    "pages": 1
   },
   "Amplifier kept down during the start": {
+   "n": 1,
+   "pages": 1
+  },
+  "An AppImage is a single executable:": {
+   "n": 1,
+   "pages": 1
+  },
+  "An AppImage is an AppDir in a squashfs wrapper, so the way back to one is to unpack a working AppImage and pack it again.": {
+   "n": 1,
+   "pages": 1
+  },
+  "An AppImage is an AppDir packed into one file, and an AppDir is a folder with an": {
    "n": 1,
    "pages": 1
   },
@@ -126162,6 +126910,10 @@
    "pages": 1
   },
   "App:": {
+   "n": 1,
+   "pages": 1
+  },
+  "AppImages, tarballs and portable builds - Innioasis Updater": {
    "n": 1,
    "pages": 1
   },
@@ -130455,6 +131207,10 @@
    "n": 1,
    "pages": 1
   },
+  "Behind the scenes": {
+   "n": 1,
+   "pages": 1
+  },
   "Below 3.2 V: at most 70 mA; up to 3.4 V: at most 450 mA; retain factory UVLO/ULC and presence protections": {
    "n": 1,
    "pages": 1
@@ -131068,6 +131824,10 @@
    "pages": 1
   },
   "Beta 9.3.22 (Baseline 233): a sleep that fails before the kernel is entered leaves the screen dark (Y2Player #132, Y2Reborn #116); issue forms and the list of declined ideas": {
+   "n": 1,
+   "pages": 1
+  },
+  "Beta 9.3.23 (Baseline 234): Now Playing's progress wave in the cover's colour (#108); issue forms ask the install method and radio state, needs-info workflow, report summary tool": {
    "n": 1,
    "pages": 1
   },
@@ -133480,6 +134240,10 @@
    "n": 1,
    "pages": 1
   },
+  "Both wrappers are the AppDir contents and nothing else. Keep the executable bit, which both": {
+   "n": 1,
+   "pages": 1
+  },
   "Bottom line": {
    "n": 1,
    "pages": 1
@@ -134241,6 +135005,10 @@
    "n": 1,
    "pages": 1
   },
+  "Build an AppImage": {
+   "n": 1,
+   "pages": 1
+  },
   "Build an Innioasis Updater release": {
    "n": 1,
    "pages": 1
@@ -134446,6 +135214,22 @@
    "pages": 1
   },
   "Building a player correction": {
+   "n": 1,
+   "pages": 1
+  },
+  "Building a tarball or a zip from the same folder": {
+   "n": 1,
+   "pages": 1
+  },
+  "Building an AppImage from an unpacked package": {
+   "n": 1,
+   "pages": 1
+  },
+  "Building from the source tree": {
+   "n": 1,
+   "pages": 1
+  },
+  "Building the application itself, rather than wrapping a package, is covered on": {
    "n": 1,
    "pages": 1
   },
@@ -134738,10 +135522,6 @@
    "pages": 1
   },
   "Bumping the pinned cmdline-tools build: edit": {
-   "n": 1,
-   "pages": 1
-  },
-  "Bumps": {
    "n": 1,
    "pages": 1
   },
@@ -139988,6 +140768,10 @@
    "n": 1,
    "pages": 1
   },
+  "Checking a download": {
+   "n": 1,
+   "pages": 1
+  },
   "Checking for Updates…": {
    "n": 1,
    "pages": 1
@@ -140424,11 +141208,11 @@
    "n": 1,
    "pages": 1
   },
-  "Classy releases for the Innioasis Y1": {
+  "Classy releases for the Innioasis Y2": {
    "n": 1,
    "pages": 1
   },
-  "Classy releases for the Innioasis Y2": {
+  "ClassyPlayer": {
    "n": 1,
    "pages": 1
   },
@@ -144842,7 +145626,7 @@
    "n": 1,
    "pages": 1
   },
-  "Current Y2Linux platform state Y2Linux 1.0 Beta 9.3.22, Baseline 233 — 2026-11-10 latest, published Release 1.0.0-beta.9.3.22 , tag baseline-233 , Lin": {
+  "Current Y2Linux platform state Y2Linux 1.0 Beta 9.3.23, Baseline 234 — 2026-11-10 latest, published Release 1.0.0-beta.9.3.23 , tag baseline-234 , Lin": {
    "n": 1,
    "pages": 1
   },
@@ -145610,7 +146394,7 @@
    "n": 1,
    "pages": 1
   },
-  "Current version: Y2Linux 1.0 Beta 9.3.22": {
+  "Current version: Y2Linux 1.0 Beta 9.3.23": {
    "n": 1,
    "pages": 1
   },
@@ -150378,6 +151162,10 @@
    "n": 1,
    "pages": 1
   },
+  "Do this on the processor you are packaging for. An AppImage built on an ARM64 machine runs on ARM64 machines, and the Intel and AMD package has to be built on an Intel or AMD machine.": {
+   "n": 1,
+   "pages": 1
+  },
   "Do what the Updater asks: switch the Y1 completely off, then plug it in. The Updater installs": {
    "n": 1,
    "pages": 1
@@ -151850,6 +152638,10 @@
    "n": 1,
    "pages": 1
   },
+  "Each file is published beside a": {
+   "n": 1,
+   "pages": 1
+  },
   "Each install and restore records its phases in milliseconds in the journal (": {
    "n": 1,
    "pages": 1
@@ -151871,6 +152663,10 @@
    "pages": 1
   },
   "Each marker is matched as a complete word. It intentionally ignores characters like": {
+   "n": 1,
+   "pages": 1
+  },
+  "Each mirror publishes the list of platforms it builds for in its own": {
    "n": 1,
    "pages": 1
   },
@@ -153238,6 +154034,10 @@
    "n": 1,
    "pages": 1
   },
+  "Every Linux release ships the same application in four wrappers. This page says which file to take, how to run it, and how to rebuild any of the wrappers from an unpacked package or from the source tree.": {
+   "n": 1,
+   "pages": 1
+  },
   "Every Original Software install by model": {
    "n": 1,
    "pages": 1
@@ -153464,6 +154264,10 @@
    "pages": 1
   },
   "Every outbound AV/C frame": {
+   "n": 1,
+   "pages": 1
+  },
+  "Every package holds the same ROM. What changes is the tool beside it, which is why the archive for your computer is the one to download rather than the project's original zip.": {
    "n": 1,
    "pages": 1
   },
@@ -161777,6 +162581,10 @@
    "n": 1,
    "pages": 1
   },
+  "Flashing a ROM needs a tool that can talk to the player over USB. The tool is different on Windows, macOS, Intel Linux and ARM64 Linux, and a single ROM zip cannot carry all four. A mirror repository takes each release of a project, unpacks the ROM, and publishes one archive per platform with the matching tool inside.": {
+   "n": 1,
+   "pages": 1
+  },
   "Flashing embedded firmware carries inherent risks if done incorrectly. We clearly disclose battery requirements (minimum 50% charge), USB cable prerequisites, and provide comprehensive emergency unbricking procedures on every installation guide.": {
    "n": 1,
    "pages": 1
@@ -162313,10 +163121,6 @@
    "n": 1,
    "pages": 1
   },
-  "For people who report issues": {
-   "n": 1,
-   "pages": 1
-  },
   "For rollback, load": {
    "n": 1,
    "pages": 1
@@ -162394,6 +163198,10 @@
    "pages": 1
   },
   "For the system-only method, use SP Flash Tool in Download Only mode with only the ANDROID partition selected, pointing to the supplied": {
+   "n": 1,
+   "pages": 1
+  },
+  "For the terminal interface instead of a window, add": {
    "n": 1,
    "pages": 1
   },
@@ -168787,6 +169595,10 @@
    "n": 1,
    "pages": 1
   },
+  "How the archive picks one for you": {
+   "n": 1,
+   "pages": 1
+  },
   "How the connection works": {
    "n": 1,
    "pages": 1
@@ -170207,6 +171019,10 @@
    "n": 1,
    "pages": 1
   },
+  "If a file arrives without its executable bit after unpacking, restore it by hand:": {
+   "n": 1,
+   "pages": 1
+  },
   "If a flash stops before the USB prompt, check the cable, platform setup, and model first. See": {
    "n": 1,
    "pages": 1
@@ -170300,6 +171116,10 @@
    "pages": 1
   },
   "If it still does not start": {
+   "n": 1,
+   "pages": 1
+  },
+  "If it stops with a FUSE message, either install": {
    "n": 1,
    "pages": 1
   },
@@ -172944,6 +173764,10 @@
    "n": 1,
    "pages": 1
   },
+  "Innioasis Updater) and whether Wi-Fi and Bluetooth work. The install form is now \"Install, start or update\" and covers \"Couldn't Start\": which tool, which computer, whether stock was flashed first, and the SD card.": {
+   "n": 1,
+   "pages": 1
+  },
   "Innioasis Y1 and Y2 recovery guide": {
    "n": 1,
    "pages": 1
@@ -173007,10 +173831,6 @@
    "pages": 1
   },
   "Innioasis Y1 · Better-Y": {
-   "n": 1,
-   "pages": 1
-  },
-  "Innioasis Y1 · Classy": {
    "n": 1,
    "pages": 1
   },
@@ -174066,6 +174886,10 @@
    "pages": 1
   },
   "Install Solar on your Y2.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Install Updater CE": {
    "n": 1,
    "pages": 1
   },
@@ -175963,6 +176787,10 @@
    "n": 1,
    "pages": 1
   },
+  "Issue forms": {
+   "n": 1,
+   "pages": 1
+  },
   "Issue state from the retained read-only2026-10-04 refresh: #16/#27/#28/#29/#31/ #32/#33/#34 OPEN; historical#30 CLOSED since2026-09-15. No external epic/status change is warranted at this source activation boundary; historical#30 closure cannot qualify the later failed physical full resume. No new bookmark is needed. No external issue/comment mutation is performed. The integration phase is PARTIALLY READY for software work; physical/endurance/distribution remain gates. This audit itself builds/flashes nothing and does not repeat unchanged source, ROM or recovery provenance. A fresh broad build/package qualification is required after the selected source pair is integrated, before sealing one RC.": {
    "n": 1,
    "pages": 1
@@ -176136,6 +176964,10 @@
    "pages": 1
   },
   "It programs only a 15 second alarm through the RTC API and tests a second s2idle entry. Do not press Power during this test. If the RTC was uninitialized, first record its original state, then deliberately set time using the host's UTC epoch and the normal API (no raw RTC/PMIC write):": {
+   "n": 1,
+   "pages": 1
+  },
+  "It reads your processor, fetches the matching build, and offers install, a window session, or a terminal session. To skip the menu, pass the choice through:": {
    "n": 1,
    "pages": 1
   },
@@ -180271,6 +181103,14 @@
    "n": 1,
    "pages": 1
   },
+  "Linux on ARM64, including Raspberry Pi and ARM laptops": {
+   "n": 1,
+   "pages": 1
+  },
+  "Linux on Intel or AMD": {
+   "n": 1,
+   "pages": 1
+  },
   "Linux owner (LK leaves its clock on; the idle path only defers it); stock gates it in every scenario checklist (idle, deep idle and suspend). Next candidate.": {
    "n": 1,
    "pages": 1
@@ -180280,6 +181120,10 @@
    "pages": 1
   },
   "Linux owns the block devices before, during and after transfer. The host owns an MTP session and never mounts the filesystem block device. Consequently there is no block handoff, live dual writable mount, filesystem remount or post-host fsck. The existing platform refuses checks on mounted media and uses non-destructive checks on unmounted SD; a dirty/failed mount is not promoted by USB.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Linux packages": {
    "n": 1,
    "pages": 1
   },
@@ -183700,6 +184544,10 @@
    "n": 1,
    "pages": 1
   },
+  "Make the changes you want inside": {
+   "n": 1,
+   "pages": 1
+  },
   "Make the computer ready before the player.": {
    "n": 1,
    "pages": 1
@@ -183721,6 +184569,10 @@
    "pages": 1
   },
   "Making a release": {
+   "n": 1,
+   "pages": 1
+  },
+  "Making an AppImage from a portable package": {
    "n": 1,
    "pages": 1
   },
@@ -185093,6 +185945,14 @@
    "pages": 1
   },
   "Minor fixes (scrobble upload)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Mirror packages": {
+   "n": 1,
+   "pages": 1
+  },
+  "Mirrors follow one naming pattern, with the release's own file name at the front and the platform at the end:": {
    "n": 1,
    "pages": 1
   },
@@ -186717,6 +187577,10 @@
    "pages": 1
   },
   "Name it by what it does, show its value.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Name the file after the processor it was built for, so nobody has to guess later. The published names are": {
    "n": 1,
    "pages": 1
   },
@@ -191074,10 +191938,6 @@
    "n": 1,
    "pages": 1
   },
-  "Not tried:": {
-   "n": 1,
-   "pages": 1
-  },
   "Not user-visible in this capture (Bolt did eventually refetch), but it's a startup race worth tracking — a CT that keys metadata-pane render on the": {
    "n": 1,
    "pages": 1
@@ -191488,6 +192348,10 @@
    "pages": 1
   },
   "Now Playing's progress ticker and the clock/widget refresh loop kept doing full work every 0.5-1s even when not visible (or during virtual screen-off) - both now sit idle unless actually needed. Should help battery life.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Now Playing's wave in the cover's colour (#108), issue forms (install method, radio state, \"Install, start or update\"),": {
    "n": 1,
    "pages": 1
   },
@@ -193596,6 +194460,10 @@
    "n": 1,
    "pages": 1
   },
+  "One file that runs on its own. Needs": {
+   "n": 1,
+   "pages": 1
+  },
   "One filmed boot with timestamps": {
    "n": 1,
    "pages": 1
@@ -194732,6 +195600,10 @@
    "n": 1,
    "pages": 1
   },
+  "Open the firmware archive": {
+   "n": 1,
+   "pages": 1
+  },
   "Open the full Android 4.2 (Dev) guide": {
    "n": 1,
    "pages": 1
@@ -195719,6 +196591,10 @@
    "pages": 1
   },
   "Other pad cells": {
+   "n": 1,
+   "pages": 1
+  },
+  "Other platforms and other payloads use their own scripts in the same repository:": {
    "n": 1,
    "pages": 1
   },
@@ -200746,7 +201622,19 @@
    "n": 1,
    "pages": 1
   },
+  "Pack for the architecture you are on. An AppImage built on an ARM64 machine runs on ARM64 machines, and an x86_64 build runs on Intel and AMD. To build the other one, run the same steps on that processor, or build from source as described below.": {
+   "n": 1,
+   "pages": 1
+  },
   "Pack rating / capacity": {
+   "n": 1,
+   "pages": 1
+  },
+  "Pack the folder again with": {
+   "n": 1,
+   "pages": 1
+  },
+  "Pack the folder:": {
    "n": 1,
    "pages": 1
   },
@@ -205115,6 +206003,10 @@
    "n": 1,
    "pages": 1
   },
+  "Portable ROM packages - Innioasis Updater": {
+   "n": 1,
+   "pages": 1
+  },
   "Portable source, no Y2 package/build yet": {
    "n": 1,
    "pages": 1
@@ -206729,6 +207621,10 @@
    "n": 1,
    "pages": 1
   },
+  "Preview": {
+   "n": 1,
+   "pages": 1
+  },
   "Preview fixtures select Home items by key (": {
    "n": 1,
    "pages": 1
@@ -207305,6 +208201,10 @@
    "n": 1,
    "pages": 1
   },
+  "Processor": {
+   "n": 1,
+   "pages": 1
+  },
   "Produce a candidate through the existing production packaging workflow, with": {
    "n": 1,
    "pages": 1
@@ -207338,6 +208238,10 @@
    "pages": 1
   },
   "Producers write a milestone name to": {
+   "n": 1,
+   "pages": 1
+  },
+  "Produces": {
    "n": 1,
    "pages": 1
   },
@@ -210661,6 +211565,10 @@
    "n": 1,
    "pages": 1
   },
+  "Read run_linux.sh": {
+   "n": 1,
+   "pages": 1
+  },
   "Read the CE Installation Guide": {
    "n": 1,
    "pages": 1
@@ -211834,6 +212742,10 @@
    "pages": 1
   },
   "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.3.22-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.3.23-first-install.zip)": {
    "n": 1,
    "pages": 1
   },
@@ -213334,6 +214246,10 @@
    "pages": 1
   },
   "Reborn (Y2Linux) · docs/validation/Y2-LINUX-1.0-BETA-9.3.22.md": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) · docs/validation/Y2-LINUX-1.0-BETA-9.3.23.md": {
    "n": 1,
    "pages": 1
   },
@@ -220898,7 +221814,15 @@
    "n": 1,
    "pages": 1
   },
+  "Running the executable inside a package": {
+   "n": 1,
+   "pages": 1
+  },
   "Running value": {
+   "n": 1,
+   "pages": 1
+  },
+  "Running what you downloaded": {
    "n": 1,
    "pages": 1
   },
@@ -223247,6 +224171,10 @@
    "n": 1,
    "pages": 1
   },
+  "START HERE (2026-11-10): BETA 9.3.23 (BASELINE 234) RELEASE.": {
+   "n": 1,
+   "pages": 1
+  },
   "START — first fragment of a multi-fragment AV/C body; byte 1 = num_packets": {
    "n": 1,
    "pages": 1
@@ -224642,10 +225570,6 @@
    "pages": 1
   },
   "Screenshot_20260729_005123": {
-   "n": 1,
-   "pages": 1
-  },
-  "Script": {
    "n": 1,
    "pages": 1
   },
@@ -236677,6 +237601,14 @@
    "n": 1,
    "pages": 1
   },
+  "The ARM64 folder as a zip.": {
+   "n": 1,
+   "pages": 1
+  },
+  "The ARM64 folder in a tarball.": {
+   "n": 1,
+   "pages": 1
+  },
   "The AV/C command parser at": {
    "n": 1,
    "pages": 1
@@ -236706,6 +237638,10 @@
    "pages": 1
   },
   "The Android player is an API-19 HOME launcher with a custom drawn, wheel-oriented 480 × 360 interface. Its": {
+   "n": 1,
+   "pages": 1
+  },
+  "The AppImage lands in": {
    "n": 1,
    "pages": 1
   },
@@ -237437,6 +238373,10 @@
    "n": 1,
    "pages": 1
   },
+  "The Windows executable, the portable folder, and an Inno Setup installer when Inno Setup 6 is installed.": {
+   "n": 1,
+   "pages": 1
+  },
   "The Windows updater executable is unsigned; verify its SHA-256 before running it.": {
    "n": 1,
    "pages": 1
@@ -237794,6 +238734,10 @@
    "pages": 1
   },
   "The app's key and shared secret come from the owner's file outside git (0600, exact format) into the image as": {
+   "n": 1,
+   "pages": 1
+  },
+  "The application folder in a tarball. Unpack it and run the launcher inside.": {
    "n": 1,
    "pages": 1
   },
@@ -239125,6 +240069,10 @@
    "n": 1,
    "pages": 1
   },
+  "The executable's own name varies between mirrors. List the folder first, and run the program in it rather than a name taken from this page.": {
+   "n": 1,
+   "pages": 1
+  },
   "The existing": {
    "n": 1,
    "pages": 1
@@ -239410,6 +240358,10 @@
    "pages": 1
   },
   "The file has the standard AOSP copyright header — this is stock AOSP content, not a Y1 vendor remap. The": {
+   "n": 1,
+   "pages": 1
+  },
+  "The file is saved under the release's own name, so the mirror's": {
    "n": 1,
    "pages": 1
   },
@@ -240590,6 +241542,10 @@
    "pages": 1
   },
   "The latest validation completed successfully with more than 930 unit tests covering navigation, Search, FM state, playback, queue behavior, sleep timers, input routing, artwork, preferences, and backup compatibility.": {
+   "n": 1,
+   "pages": 1
+  },
+  "The launcher script does the same work without a manual download. Copy this into a terminal:": {
    "n": 1,
    "pages": 1
   },
@@ -242105,6 +243061,10 @@
    "n": 1,
    "pages": 1
   },
+  "The package names": {
+   "n": 1,
+   "pages": 1
+  },
   "The package policy is intentionally conservative. Provisioning, Settings, SystemUI, Keyguard, storage/media providers, Bluetooth, input, package-management, thermal/battery, and underlying framework services remain in the image. Both the integrator and independent verifier use the same policy: optional APK/ODEX files must be absent, critical APKs must be present, and freed ext4 blocks must be zero before sparse repacking.": {
    "n": 1,
    "pages": 1
@@ -242725,6 +243685,10 @@
    "n": 1,
    "pages": 1
   },
+  "The progress wave on Now Playing now has the colour of the album cover": {
+   "n": 1,
+   "pages": 1
+  },
   "The project": {
    "n": 1,
    "pages": 1
@@ -243038,6 +244002,10 @@
    "pages": 1
   },
   "The released build itself was not installed on the player before publishing; the owner installs it by OTA.": {
+   "n": 1,
+   "pages": 1
+  },
+  "The releases are produced by scripts in the application repository, and the same scripts run on your machine. They need Python 3.10 or newer, and on Linux also": {
    "n": 1,
    "pages": 1
   },
@@ -243389,6 +244357,10 @@
    "n": 1,
    "pages": 1
   },
+  "The same folder as a zip, for machines where zip tools are more familiar.": {
+   "n": 1,
+   "pages": 1
+  },
   "The same generated configuration has no PSI, perf events, ftrace, schedstats, cgroups or swap. Basic proc/sysfs CPU, task, VM, disk and idle/frequency counters can support an initial baseline. Record absent counters as unavailable; add a small diagnostic profile only if needed. Reborn's 15 ms main-loop sleep, two- second service polling, and other background timers are sources to investigate; their power/wakeup impact has not been measured. Sampling also perturbs idle.": {
    "n": 1,
    "pages": 1
@@ -243410,6 +244382,10 @@
    "pages": 1
   },
   "The same settings as on the Y1 (see": {
+   "n": 1,
+   "pages": 1
+  },
+  "The same single file for ARM boards and ARM laptops.": {
    "n": 1,
    "pages": 1
   },
@@ -244130,6 +245106,14 @@
    "n": 1,
    "pages": 1
   },
+  "The terminal-only payload that": {
+   "n": 1,
+   "pages": 1
+  },
+  "The terminal-only payload, about 17 KB of Python. Flashing tools are fetched when a task needs one.": {
+   "n": 1,
+   "pages": 1
+  },
   "The test songs were 1 s long; playback was not listened to by ear. Holds were sent with": {
    "n": 1,
    "pages": 1
@@ -244286,6 +245270,10 @@
    "n": 1,
    "pages": 1
   },
+  "The udev rule for the MediaTek USB vendor ID and the FUSE packages are covered in the setup notes.": {
+   "n": 1,
+   "pages": 1
+  },
   "The ultimate audiophile firmware ported to the Innioasis Y2. Parametric equalization, custom fonts, crossfeed, and extensive plugin library support.": {
    "n": 1,
    "pages": 1
@@ -244435,6 +245423,10 @@
    "pages": 1
   },
   "The verified write site": {
+   "n": 1,
+   "pages": 1
+  },
+  "The verifier rejects a bundle that needs glibc newer than 2.35, bundles a Python newer than 3.12, is missing an xcb client library, or contains instructions (SSE4.2, POPCNT, AVX) that older processors do not have. A build that fails it may run on your machine and nowhere else.": {
    "n": 1,
    "pages": 1
   },
@@ -244622,6 +245614,10 @@
    "n": 1,
    "pages": 1
   },
+  "The x86_64 AppImage, and the AppDir the tarball and zip are made from.": {
+   "n": 1,
+   "pages": 1
+  },
   "The zip now carries the current install guide as": {
    "n": 1,
    "pages": 1
@@ -244787,6 +245783,10 @@
    "pages": 1
   },
   "Then use the names:": {
+   "n": 1,
+   "pages": 1
+  },
+  "Then:": {
    "n": 1,
    "pages": 1
   },
@@ -248594,6 +249594,10 @@
    "n": 1,
    "pages": 1
   },
+  "Two processors are published: Intel and AMD (x86_64), and ARM64. Take the file that matches the machine you will flash from, not the player.": {
+   "n": 1,
+   "pages": 1
+  },
   "Two remaining traces violate the wider F05 contract:": {
    "n": 1,
    "pages": 1
@@ -250826,7 +251830,19 @@
    "n": 1,
    "pages": 1
   },
+  "Unpack the AppImage you already have. It writes an AppDir named": {
+   "n": 1,
+   "pages": 1
+  },
   "Unpack the Y2Linux zip and the Innioasis package.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Unpack the archive into a folder, for example": {
+   "n": 1,
+   "pages": 1
+  },
+  "Unpack the archive into its own folder and keep the folder together. The tool reads files beside itself, so a lone executable moved out of the folder will not find its scatter file or its payload.": {
    "n": 1,
    "pages": 1
   },
@@ -251378,7 +252394,7 @@
    "n": 1,
    "pages": 1
   },
-  "Updated 2026-11-10 · 27 software options · 394 releases": {
+  "Updated 2026-11-11 · 26 software options · 377 releases": {
    "n": 1,
    "pages": 1
   },
@@ -255164,6 +256180,14 @@
    "n": 1,
    "pages": 1
   },
+  "What a mirror package contains, how the site chooses the one for your computer, and how to run it.": {
+   "n": 1,
+   "pages": 1
+  },
+  "What a mirror package is": {
+   "n": 1,
+   "pages": 1
+  },
   "What a port must not miss (collected from the entries)": {
    "n": 1,
    "pages": 1
@@ -255389,6 +256413,14 @@
    "n": 1,
    "pages": 1
   },
+  "What each Innioasis Updater CE Linux file contains, how to run it, and how to build an AppImage, a tarball or a zip from an unpacked package or from the source tree.": {
+   "n": 1,
+   "pages": 1
+  },
+  "What each Linux package contains, how to run it, and how to rebuild an AppImage, tarball or zip.": {
+   "n": 1,
+   "pages": 1
+  },
   "What each element does:": {
    "n": 1,
    "pages": 1
@@ -255608,10 +256640,6 @@
    "n": 1,
    "pages": 1
   },
-  "What it is": {
-   "n": 1,
-   "pages": 1
-  },
   "What it is:": {
    "n": 1,
    "pages": 1
@@ -255763,6 +256791,10 @@
    "pages": 1
   },
   "What the plugin provides": {
+   "n": 1,
+   "pages": 1
+  },
+  "What the portable ROM packages on the Innioasis mirrors contain, how this site picks the one for your computer, and how to run the executable inside one.": {
    "n": 1,
    "pages": 1
   },
@@ -256207,6 +257239,10 @@
    "n": 1,
    "pages": 1
   },
+  "When a package does not appear": {
+   "n": 1,
+   "pages": 1
+  },
   "When a report is made": {
    "n": 1,
    "pages": 1
@@ -256367,6 +257403,10 @@
    "n": 1,
    "pages": 1
   },
+  "When you click a ROM zip on the firmware page, the page reads that mirror's": {
+   "n": 1,
+   "pages": 1
+  },
   "When you connect a computer, a short message says \"Connected to a computer\" and a USB symbol appears in the status bar next to Bluetooth and Wi-Fi (blue while files are copied). Everything keeps working while connected; copied music appears when the scan finishes. Settings → Storage → From a Computer still shows the connection while the cable is in.": {
    "n": 1,
    "pages": 1
@@ -256508,6 +257548,10 @@
    "pages": 1
   },
   "Where things stand": {
+   "n": 1,
+   "pages": 1
+  },
+  "Where to go next": {
    "n": 1,
    "pages": 1
   },
@@ -256789,6 +257833,10 @@
    "n": 1,
    "pages": 1
   },
+  "Which file to take": {
+   "n": 1,
+   "pages": 1
+  },
   "Which guide do you need?": {
    "n": 1,
    "pages": 1
@@ -257032,6 +258080,10 @@
    "pages": 1
   },
   "Why Choose Updater CE?": {
+   "n": 1,
+   "pages": 1
+  },
+  "Why Classy?": {
    "n": 1,
    "pages": 1
   },
@@ -258088,6 +259140,10 @@
    "n": 1,
    "pages": 1
   },
+  "Windows 10 and 11 on Intel or AMD": {
+   "n": 1,
+   "pages": 1
+  },
   "Windows 10 or 11 on an Intel or AMD processor. The": {
    "n": 1,
    "pages": 1
@@ -258120,6 +259176,10 @@
    "n": 1,
    "pages": 1
   },
+  "Windows XP through 8.1, and 32-bit Windows, where the current application cannot run": {
+   "n": 1,
+   "pages": 1
+  },
   "Windows XP, Vista, 7, 8 or 8.1, 32-bit or 64-bit. Windows 10 and 11 can use Updater CE from the": {
    "n": 1,
    "pages": 1
@@ -258147,6 +259207,11 @@
   "Windows filename": {
    "n": 1,
    "pages": 1
+  },
+  "Windows on ARM": {
+   "n": 1,
+   "pages": 1,
+   "script": true
   },
   "Windows portable-device drivers": {
    "n": 1,
@@ -259445,10 +260510,6 @@
    "pages": 1
   },
   "Y1 · Better-Y": {
-   "n": 1,
-   "pages": 1
-  },
-  "Y1 · Classy": {
    "n": 1,
    "pages": 1
   },
@@ -262432,11 +263493,27 @@
    "n": 1,
    "pages": 1
   },
-  "Y2Linux 1.0 Beta 9.3.22, Baseline 233 — 2026-11-10 (latest, published)": {
+  "Y2Linux 1.0 Beta 9.3.22, Baseline 233 — 2026-11-10 (published)": {
    "n": 1,
    "pages": 1
   },
   "Y2Linux 1.0 Beta 9.3.22: the screen no longer comes on by itself after a sleep that didn't work Release 1.0.0-beta.9.3.22 , Y2Reborn 1.0.0-beta.9.3.22": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux 1.0 Beta 9.3.23 : the progress wave on Now Playing takes the colour of the album cover. Changed - Now Playing's progress wave wears the cover'": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux 1.0 Beta 9.3.23 report": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux 1.0 Beta 9.3.23, Baseline 234 — 2026-11-10 (latest, published)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux 1.0 Beta 9.3.23: the progress wave takes the cover's colour Release 1.0.0-beta.9.3.23 , Y2Reborn 1.0.0-beta.9.3.23 , kernel 6.18.56-y2linux-1.": {
    "n": 1,
    "pages": 1
   },
@@ -263344,6 +264421,10 @@
    "n": 1,
    "pages": 1
   },
+  "Y2Linux-1.0.0-beta.9.3.23-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
   "Y2Linux-1.0.0-beta.9.3.7-first-install.zip": {
    "n": 1,
    "pages": 1
@@ -263749,7 +264830,7 @@
    "n": 1,
    "pages": 1
   },
-  "Y2Reborn 1.0.0-beta.9.3.22 (Rust 1.99, OpenGL ES on the Mali-400 GPU through DRM + Lima, FFmpeg, SQLite)": {
+  "Y2Reborn 1.0.0-beta.9.3.23 (Rust 1.99, OpenGL ES on the Mali-400 GPU through DRM + Lima, FFmpeg, SQLite)": {
    "n": 1,
    "pages": 1
   },
@@ -269060,6 +270141,10 @@
    "n": 1,
    "pages": 1
   },
+  "and an icon beside it, so the file has a name and a picture in a file manager.": {
+   "n": 1,
+   "pages": 1
+  },
   "and an install without Power presses. Possible further speed-up: back up only the chunks that change (backup is now 31 of 52 s).": {
    "n": 1,
    "pages": 1
@@ -272180,6 +273265,10 @@
    "n": 1,
    "pages": 1
   },
+  "arrives in your Downloads folder as": {
+   "n": 1,
+   "pages": 1
+  },
   "arrives is the candidate drop site. Dump the inbound packet bytes from r0 / r1 / stack at that point and confirm they're a real AVRCP COMMAND PDU (op_code 0x4 = GetCapabilities is the most likely first command).": {
    "n": 1,
    "pages": 1
@@ -273341,6 +274430,10 @@
    "pages": 1
   },
   "attribute on the SPM device: 34 stock golden rows (TOPCKGEN, INFRA/PERI clock gates, DRAMC, APMIXED PLLs) captured at every suspend entry. Decides the next step (PLL hardware control, DIS/MMSYS, clock gates) from evidence.": {
+   "n": 1,
+   "pages": 1
+  },
+  "attribute, written as": {
    "n": 1,
    "pages": 1
   },
@@ -275716,6 +276809,10 @@
    "n": 1,
    "pages": 1
   },
+  "bundle and an optional": {
+   "n": 1,
+   "pages": 1
+  },
   "bundled candidate": {
    "n": 1,
    "pages": 1
@@ -276960,6 +278057,10 @@
    "n": 1,
    "pages": 1
   },
+  "card, the format badge and the glow behind the cover already take from the cover. A skin with a fixed accent colour uses that colour instead. The knob stays white, and a radio station keeps its softer tint.": {
+   "n": 1,
+   "pages": 1
+  },
   "card.": {
    "n": 1,
    "pages": 1
@@ -277077,6 +278178,10 @@
    "pages": 1
   },
   "carries your SSH public key, so it is personal: don't share it.": {
+   "n": 1,
+   "pages": 1
+  },
+  "carries.": {
    "n": 1,
    "pages": 1
   },
@@ -278193,6 +279298,10 @@
    "pages": 1
   },
   "colors the selection bar and highlights in the iPod-style menus; the YouTube and YouTube Music screens keep their own dark look.": {
+   "n": 1,
+   "pages": 1
+  },
+  "colour and matches Home.": {
    "n": 1,
    "pages": 1
   },
@@ -282076,6 +283185,10 @@
    "n": 1,
    "pages": 1
   },
+  "downloads the tool when it is missing, so a copy may already be in your build cache:": {
+   "n": 1,
+   "pages": 1
+  },
   "downstream of": {
    "n": 1,
    "pages": 1
@@ -283277,6 +284390,10 @@
    "pages": 1
   },
   "entry is disabled and its start trigger requires": {
+   "n": 1,
+   "pages": 1
+  },
+  "entry point, a desktop entry and an icon. A portable package already holds the program, so it can be wrapped.": {
    "n": 1,
    "pages": 1
   },
@@ -285384,6 +286501,10 @@
    "n": 1,
    "pages": 1
   },
+  "file with the same name plus the extension, and the value covers the archive itself:": {
+   "n": 1,
+   "pages": 1
+  },
   "file works.": {
    "n": 1,
    "pages": 1
@@ -285461,6 +286582,10 @@
    "pages": 1
   },
   "files make one book": {
+   "n": 1,
+   "pages": 1
+  },
+  "files name the archive they belong to, so": {
    "n": 1,
    "pages": 1
   },
@@ -287132,6 +288257,10 @@
    "n": 1,
    "pages": 1
   },
+  "for both Mac processor families.": {
+   "n": 1,
+   "pages": 1
+  },
   "for bounded software operation: output state/rate observed, decoded frames advance, zero XRUNs, FFmpeg decode/filter errors and corrupt packets. Fixtures were silent; no perceptual listening or analog fidelity was certified. Configured crossfade exercises heavy policy, not an end-of-track blend or independent EQ test.": {
    "n": 1,
    "pages": 1
@@ -287589,6 +288718,10 @@
    "pages": 1
   },
   "for some memory location, and resolve which load addresses correspond to the function-pointer tables we've identified. This builds an indirect call graph.": {
+   "n": 1,
+   "pages": 1
+  },
+  "for songs (was": {
    "n": 1,
    "pages": 1
   },
@@ -292444,6 +293577,10 @@
    "n": 1,
    "pages": 1
   },
+  "in it. Windows may warn about an unsigned program the first time.": {
+   "n": 1,
+   "pages": 1
+  },
   "in its environment turns that off.": {
    "n": 1,
    "pages": 1
@@ -295188,6 +296325,10 @@
    "n": 1,
    "pages": 1
   },
+  "is included: the screen stays dark after a sleep that didn't work, steadier Bluetooth on a weak signal, Wi-Fi on channels 12 and 13, the battery fix for players without Wi-Fi and Bluetooth, and the SD card fix.": {
+   "n": 1,
+   "pages": 1
+  },
   "is inconclusive, not proof of a power-on reset.": {
    "n": 1,
    "pages": 1
@@ -296060,6 +297201,10 @@
    "n": 1,
    "pages": 1
   },
+  "is the entry point.": {
+   "n": 1,
+   "pages": 1
+  },
   "is the exact": {
    "n": 1,
    "pages": 1
@@ -296893,6 +298038,10 @@
    "pages": 1
   },
   "itself starts 4 helpers per call (": {
+   "n": 1,
+   "pages": 1
+  },
+  "itself when it is not already present, and it accepts": {
    "n": 1,
    "pages": 1
   },
@@ -299152,6 +300301,10 @@
    "n": 1,
    "pages": 1
   },
+  "looks for it in the same folder.": {
+   "n": 1,
+   "pages": 1
+  },
   "lookup in the newer reuse-only staging tree failed because that tree does not contain a full installed player. That is recorded as an inspection-path miss, not a target image validation failure. The retained full tree above was the appropriate input for this check.": {
    "n": 1,
    "pages": 1
@@ -299269,6 +300422,10 @@
    "pages": 1
   },
   "macOS does not speak MTP on its own. Install a small helper such as": {
+   "n": 1,
+   "pages": 1
+  },
+  "macOS on Intel and Apple silicon": {
    "n": 1,
    "pages": 1
   },
@@ -301708,6 +302865,10 @@
    "n": 1,
    "pages": 1
   },
+  "next to you:": {
+   "n": 1,
+   "pages": 1
+  },
   "next track": {
    "n": 1,
    "pages": 1
@@ -302864,6 +304025,10 @@
    "n": 1,
    "pages": 1
   },
+  "now ask how you installed Y2Linux and whether Wi-Fi and Bluetooth work, and the install form covers \"Couldn't Start\". Fewer questions back and forth before a problem can be fixed.": {
+   "n": 1,
+   "pages": 1
+  },
   "now begin with Play Next and Add to Queue instead of Browse Track and Track Details.": {
    "n": 1,
    "pages": 1
@@ -303801,6 +304966,10 @@
    "pages": 1
   },
   "on SchulzCode/Y2Linux (tags in both repositories; release key": {
+   "n": 1,
+   "pages": 1
+  },
+  "on Ubuntu 24.04) or run it unpacked:": {
    "n": 1,
    "pages": 1
   },
@@ -305513,6 +306682,10 @@
    "pages": 1
   },
   "opens the local file with FFmpeg 9.0.2": {
+   "n": 1,
+   "pages": 1
+  },
+  "opens the same application without a window.": {
    "n": 1,
    "pages": 1
   },
@@ -308940,6 +310113,10 @@
    "n": 1,
    "pages": 1
   },
+  "point the tool at the ROM in the same folder, choose Firmware Upgrade or Download Only, power the player off, and connect it only when the tool asks.": {
+   "n": 1,
+   "pages": 1
+  },
   "pointer to per-transaction state struct (call it": {
    "n": 1,
    "pages": 1
@@ -309052,7 +310229,19 @@
    "n": 1,
    "pages": 1
   },
+  "portable · 177 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "portable · 273 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 288 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 335 MB": {
    "n": 1,
    "pages": 1
   },
@@ -309060,7 +310249,7 @@
    "n": 1,
    "pages": 1
   },
-  "portable · 356 MB": {
+  "portable · 359 MB": {
    "n": 1,
    "pages": 1
   },
@@ -309068,23 +310257,19 @@
    "n": 1,
    "pages": 1
   },
-  "portable · 369 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "portable · 370 MB": {
-   "n": 1,
-   "pages": 1
-  },
   "portable · 381 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 395 MB": {
+  "portable · 384 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 440 MB": {
+  "portable · 421 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 431 MB": {
    "n": 1,
    "pages": 1
   },
@@ -309092,23 +310277,31 @@
    "n": 1,
    "pages": 1
   },
+  "portable · 452 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "portable · 464 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 476 MB": {
+  "portable · 468 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 496 MB": {
+  "portable · 471 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 501 MB": {
+  "portable · 492 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 514 MB": {
+  "portable · 513 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 519 MB": {
    "n": 1,
    "pages": 1
   },
@@ -309116,35 +310309,47 @@
    "n": 1,
    "pages": 1
   },
-  "portable · 521 MB": {
-   "n": 1,
-   "pages": 1
-  },
   "portable · 530 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 535 MB": {
+  "portable · 533 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 539 MB": {
+  "portable · 537 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 567 MB": {
+  "portable · 542 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 576 MB": {
+  "portable · 543 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 594 MB": {
+  "portable · 555 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 597 MB": {
+  "portable · 565 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 581 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 592 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 595 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 601 MB": {
    "n": 1,
    "pages": 1
   },
@@ -309152,15 +310357,7 @@
    "n": 1,
    "pages": 1
   },
-  "portable · 603 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "portable · 613 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "portable · 615 MB": {
+  "portable · 605 MB": {
    "n": 1,
    "pages": 1
   },
@@ -309168,27 +310365,35 @@
    "n": 1,
    "pages": 1
   },
-  "portable · 621 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "portable · 623 MB": {
-   "n": 1,
-   "pages": 1
-  },
   "portable · 625 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 626 MB": {
+  "portable · 627 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 636 MB": {
+  "portable · 658 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 649 MB": {
+  "portable · 669 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 677 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 678 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 681 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 697 MB": {
    "n": 1,
    "pages": 1
   },
@@ -309196,23 +310401,23 @@
    "n": 1,
    "pages": 1
   },
-  "portable · 699 MB": {
+  "portable · 701 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 709 MB": {
+  "portable · 708 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 722 MB": {
+  "portable · 737 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 749 MB": {
+  "portable · 748 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 750 MB": {
+  "portable · 762 MB": {
    "n": 1,
    "pages": 1
   },
@@ -309220,23 +310425,11 @@
    "n": 1,
    "pages": 1
   },
-  "portable · 775 MB": {
+  "portable · 771 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 776 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "portable · 786 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "portable · 789 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "portable · 793 MB": {
+  "portable · 782 MB": {
    "n": 1,
    "pages": 1
   },
@@ -309244,35 +310437,23 @@
    "n": 1,
    "pages": 1
   },
-  "portable · 798 MB": {
+  "portable · 803 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 799 MB": {
+  "portable · 844 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 809 MB": {
+  "portable · 845 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 811 MB": {
+  "portable · 848 MB": {
    "n": 1,
    "pages": 1
   },
-  "portable · 871 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "portable · 872 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "portable · 875 MB": {
-   "n": 1,
-   "pages": 1
-  },
-  "portable · 882 MB": {
+  "portable · 855 MB": {
    "n": 1,
    "pages": 1
   },
@@ -311888,6 +313069,10 @@
    "n": 1,
    "pages": 1
   },
+  "record, and keep the folder layout unchanged.": {
+   "n": 1,
+   "pages": 1
+  },
   "recorded after the switch; a failure returns to RCO and fails": {
    "n": 1,
    "pages": 1
@@ -313097,6 +314282,10 @@
    "pages": 1
   },
   "release: track the full feature-completion campaign and tester workflows": {
+   "n": 1,
+   "pages": 1
+  },
+  "release_view.html": {
    "n": 1,
    "pages": 1
   },
@@ -323868,6 +325057,10 @@
    "n": 1,
    "pages": 1
   },
+  "this release on a player.": {
+   "n": 1,
+   "pages": 1
+  },
   "this repo’s release tag": {
    "n": 1,
    "pages": 1
@@ -325917,6 +327110,10 @@
    "n": 1,
    "pages": 1
   },
+  "unpack the archive, then make the tool executable and run it:": {
+   "n": 1,
+   "pages": 1
+  },
   "unpatched": {
    "n": 1,
    "pages": 1
@@ -326133,6 +327330,14 @@
    "n": 1,
    "pages": 1
   },
+  "unzip the archive and open the tool in it. If macOS blocks the first launch, approve it in System Settings, Privacy & Security, with Open Anyway.": {
+   "n": 1,
+   "pages": 1
+  },
+  "unzip the archive, open the folder, and run the tool's": {
+   "n": 1,
+   "pages": 1
+  },
   "up to 23 ms CPU, at most a few per second, never during motion": {
    "n": 1,
    "pages": 1
@@ -326230,6 +327435,10 @@
    "pages": 1
   },
   "update unit/golden cases": {
+   "n": 1,
+   "pages": 1
+  },
+  "update\"),": {
    "n": 1,
    "pages": 1
   },
@@ -328137,6 +329346,10 @@
    "n": 1,
    "pages": 1
   },
+  "when you want the build cache thrown away first.": {
+   "n": 1,
+   "pages": 1
+  },
   "when you're done,": {
    "n": 1,
    "pages": 1
@@ -329585,7 +330798,15 @@
    "n": 1,
    "pages": 1
   },
+  "workflow,": {
+   "n": 1,
+   "pages": 1
+  },
   "workflow. Codec work should not require preloader/LK, partition-table, NVRAM, protected-data or calibration updates. If it appears to, stop and re-audit the scope rather than improvise flashing commands.": {
+   "n": 1,
+   "pages": 1
+  },
+  "workflow;": {
    "n": 1,
    "pages": 1
   },
@@ -333361,6 +334582,10 @@
    "n": 1,
    "pages": 1
   },
+  "← Install Updater CE": {
+   "n": 1,
+   "pages": 1
+  },
   "← U1 target": {
    "n": 1,
    "pages": 1
@@ -335206,7 +336431,7 @@
   },
   "Classy for Innioasis Y1": {
    "n": 1,
-   "pages": 78,
+   "pages": 76,
    "script": true
   },
   "Classy for Innioasis Y2": {
@@ -335216,7 +336441,7 @@
   },
   "Classy on Innioasis Y1": {
    "n": 1,
-   "pages": 39,
+   "pages": 38,
    "script": true
   },
   "Click Download, then connect the switched-off player. Wait for the green success box before unplugging.": {
@@ -335465,6 +336690,11 @@
    "script": true
   },
   "Download preparation failed, using the original release:": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Download started - check your Downloads folder": {
    "n": 1,
    "pages": 1,
    "script": true
@@ -337119,6 +338349,11 @@
    "pages": 1,
    "script": true
   },
+  "Portable ZIP": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Portable build for your computer": {
    "n": 1,
    "pages": 1,
@@ -337127,6 +338362,11 @@
   "Portable package for Linux": {
    "n": 1,
    "pages": 42,
+   "script": true
+  },
+  "Portable package for Linux on ARM": {
+   "n": 1,
+   "pages": 1,
    "script": true
   },
   "Portable package for Windows": {
@@ -338332,11 +339572,6 @@
   "Win": {
    "n": 1,
    "pages": 1,
-   "script": true
-  },
-  "Windows on ARM": {
-   "n": 1,
-   "pages": 3,
    "script": true
   },
   "Windows x64 or Linux x86-64 computer with Innioasis Updater CE": {

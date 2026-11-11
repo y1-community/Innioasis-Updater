@@ -4063,7 +4063,6 @@
    "firmware-catalog.js"
   ],
   "Classy for Innioasis Y1": [
-   "firmware-list.html",
    "firmware-list_ar.html",
    "firmware-list_cs.html",
    "firmware-list_da.html",
@@ -4102,7 +4101,6 @@
    "firmware-list_zh-cn.html",
    "firmware-list_zh-tw.html",
    "firmware-list_zh.html",
-   "firmware.html",
    "firmware_ar.html",
    "firmware_cs.html",
    "firmware_da.html",
@@ -4223,7 +4221,6 @@
    "firmware_zh.html"
   ],
   "Classy on Innioasis Y1": [
-   "firmware-list.html",
    "firmware-list_ar.html",
    "firmware-list_cs.html",
    "firmware-list_da.html",
@@ -6181,6 +6178,9 @@
   ],
   "Download preparation failed, using the original release:": [
    "lumen-site.js"
+  ],
+  "Download started - check your Downloads folder": [
+   "site-init.js"
   ],
   "Download the ROM ZIP to your computer.": [
    "rockbox-y1/portable-zip.html",
@@ -18511,6 +18511,9 @@
   "Player updates": [
    "nav.js"
   ],
+  "Portable ZIP": [
+   "lumen-site.js"
+  ],
   "Portable build for your computer": [
    "release_view.html"
   ],
@@ -18557,6 +18560,9 @@
    "firmware-list_zh-cn.html",
    "firmware-list_zh-tw.html",
    "firmware-list_zh.html"
+  ],
+  "Portable package for Linux on ARM": [
+   "firmware-list.html"
   ],
   "Portable package for Windows": [
    "firmware-list.html",
