@@ -89,7 +89,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/rom.zip",
         "size": 588795445,
-        "download_count": 713,
+        "download_count": 720,
         "content_type": "application/zip",
         "created_at": "2026-10-29T00:50:36Z",
         "updated_at": "2026-10-29T00:50:56Z",
@@ -118,8 +118,8 @@
         "url": "https://api.github.com/repos/rockbox-y1/rockbox/releases/assets/686875658"
       }
     ],
-    "mirror_downloads": 34,
-    "downloads": 844
+    "mirror_downloads": 43,
+    "downloads": 860
   },
   {
     "id": 423118446,
@@ -860,7 +860,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/rom.zip",
         "size": 534484127,
-        "download_count": 12669,
+        "download_count": 12672,
         "content_type": "application/zip",
         "created_at": "2026-05-16T00:19:17Z",
         "updated_at": "2026-05-16T00:19:32Z",
@@ -889,8 +889,8 @@
         "url": "https://api.github.com/repos/rockbox-y1/rockbox/releases/assets/421443283"
       }
     ],
-    "mirror_downloads": 67,
-    "downloads": 14236
+    "mirror_downloads": 75,
+    "downloads": 14247
   },
   {
     "id": 319287198,
@@ -1480,7 +1480,7 @@
         "name": "libs_240p.tar.gz",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/libs_240p.tar.gz",
         "size": 4595114,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/gzip",
         "created_at": "2026-02-28T02:26:25Z",
         "updated_at": "2026-02-28T02:26:27Z",
@@ -1491,7 +1491,7 @@
         "name": "libs_360p.tar.gz",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/libs_360p.tar.gz",
         "size": 4657244,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-02-28T02:26:27Z",
         "updated_at": "2026-02-28T02:26:28Z",
@@ -1502,7 +1502,7 @@
         "name": "rockbox_240p.apk",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rockbox_240p.apk",
         "size": 4790581,
-        "download_count": 22,
+        "download_count": 23,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-02-28T02:26:28Z",
         "updated_at": "2026-02-28T02:26:30Z",
@@ -1513,7 +1513,7 @@
         "name": "rockbox_360p.apk",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rockbox_360p.apk",
         "size": 4856117,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-02-28T02:26:30Z",
         "updated_at": "2026-02-28T02:26:31Z",
@@ -1524,7 +1524,7 @@
         "name": "rom_240p.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_240p.zip",
         "size": 432580131,
-        "download_count": 1450,
+        "download_count": 1451,
         "content_type": "application/zip",
         "created_at": "2026-02-28T02:26:31Z",
         "updated_at": "2026-02-28T02:27:58Z",
@@ -1535,7 +1535,7 @@
         "name": "rom_240p_type_b.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_240p_type_b.zip",
         "size": 400796233,
-        "download_count": 52,
+        "download_count": 53,
         "content_type": "application/zip",
         "created_at": "2026-02-28T02:31:51Z",
         "updated_at": "2026-02-28T02:33:01Z",
@@ -1546,7 +1546,7 @@
         "name": "rom_360p.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_360p.zip",
         "size": 434614251,
-        "download_count": 1076,
+        "download_count": 1077,
         "content_type": "application/zip",
         "created_at": "2026-02-28T02:33:01Z",
         "updated_at": "2026-02-28T02:34:13Z",
@@ -1557,7 +1557,7 @@
         "name": "rom_360p_type_b.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_360p_type_b.zip",
         "size": 401143742,
-        "download_count": 38,
+        "download_count": 39,
         "content_type": "application/zip",
         "created_at": "2026-02-28T02:34:13Z",
         "updated_at": "2026-02-28T02:35:22Z",
@@ -1565,7 +1565,7 @@
       }
     ],
     "mirror_downloads": 101,
-    "downloads": 2717
+    "downloads": 2721
   },
   {
     "id": 253411921,
@@ -1585,7 +1585,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/type-a-base/rom.zip",
         "size": 456613744,
-        "download_count": 8378,
+        "download_count": 8379,
         "content_type": "application/zip",
         "created_at": "2026-05-06T22:34:59Z",
         "updated_at": "2026-05-06T22:36:18Z",
@@ -1593,7 +1593,7 @@
       }
     ],
     "mirror_downloads": 14,
-    "downloads": 8392
+    "downloads": 8393
   },
   {
     "id": 253419009,
@@ -1613,7 +1613,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/type-b-base/rom.zip",
         "size": 399460715,
-        "download_count": 8137,
+        "download_count": 8138,
         "content_type": "application/zip",
         "created_at": "2025-11-17T00:20:24Z",
         "updated_at": "2025-11-17T00:46:58Z",
@@ -1621,7 +1621,7 @@
       }
     ],
     "mirror_downloads": 26,
-    "downloads": 8163
+    "downloads": 8164
   },
   {
     "id": 252796204,
@@ -1691,7 +1691,7 @@
         "name": "libs.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/16761617720/libs.zip",
         "size": 3996666,
-        "download_count": 62,
+        "download_count": 63,
         "content_type": "application/zip",
         "created_at": "2025-08-05T21:26:14Z",
         "updated_at": "2025-08-05T21:26:15Z",
@@ -1710,7 +1710,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 62
+    "downloads": 63
   },
   {
     "id": 237487045,
@@ -1730,7 +1730,7 @@
         "name": "voices.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/016733367579/voices.zip",
         "size": 76155485,
-        "download_count": 132,
+        "download_count": 133,
         "content_type": "application/zip",
         "created_at": "2025-08-04T20:57:06Z",
         "updated_at": "2025-08-04T20:57:08Z",
@@ -1738,7 +1738,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 132
+    "downloads": 133
   },
   {
     "id": 234716051,

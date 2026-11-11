@@ -39,15 +39,15 @@
         "name": "updater.png",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png",
         "size": 12952,
-        "download_count": 17,
+        "download_count": 20,
         "content_type": "image/png",
         "created_at": "2026-11-11T12:35:04Z",
         "updated_at": "2026-11-11T12:35:04Z",
         "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/735470143"
       }
     ],
-    "mirror_downloads": 5,
-    "downloads": 16
+    "mirror_downloads": 7,
+    "downloads": 18
   },
   {
     "id": 432440033,
@@ -89,15 +89,15 @@
         "name": "updater.png",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.2/updater.png",
         "size": 12952,
-        "download_count": 199,
+        "download_count": 201,
         "content_type": "image/png",
         "created_at": "2026-11-03T08:52:51Z",
         "updated_at": "2026-11-03T08:52:51Z",
         "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/704945379"
       }
     ],
-    "mirror_downloads": 50,
-    "downloads": 111
+    "mirror_downloads": 46,
+    "downloads": 107
   },
   {
     "id": 432404909,
@@ -117,7 +117,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/rom.zip",
         "size": 528031354,
-        "download_count": 20,
+        "download_count": 21,
         "content_type": "application/zip",
         "created_at": "2026-11-03T07:54:15Z",
         "updated_at": "2026-11-03T07:54:38Z",
@@ -128,7 +128,7 @@
         "name": "rondo-1.0.1.apk",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/rondo-1.0.1.apk",
         "size": 6423015,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-11-03T07:52:23Z",
         "updated_at": "2026-11-03T07:52:26Z",
@@ -139,15 +139,15 @@
         "name": "updater.png",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/updater.png",
         "size": 12952,
-        "download_count": 106,
+        "download_count": 110,
         "content_type": "image/png",
         "created_at": "2026-11-03T07:54:15Z",
         "updated_at": "2026-11-03T07:54:16Z",
         "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/704788606"
       }
     ],
-    "mirror_downloads": 24,
-    "downloads": 44
+    "mirror_downloads": 19,
+    "downloads": 40
   },
   {
     "id": 431423072,
@@ -167,7 +167,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/rom.zip",
         "size": 528038771,
-        "download_count": 22,
+        "download_count": 23,
         "content_type": "application/zip",
         "created_at": "2026-11-02T12:15:31Z",
         "updated_at": "2026-11-02T12:19:13Z",
@@ -178,7 +178,7 @@
         "name": "rondo-1.0.0.apk",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/rondo-1.0.0.apk",
         "size": 6421197,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-11-02T12:14:48Z",
         "updated_at": "2026-11-02T12:14:53Z",
@@ -189,14 +189,14 @@
         "name": "updater.png",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png",
         "size": 12952,
-        "download_count": 141,
+        "download_count": 144,
         "content_type": "image/png",
         "created_at": "2026-11-02T12:15:19Z",
         "updated_at": "2026-11-02T12:15:19Z",
         "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/701647593"
       }
     ],
-    "mirror_downloads": 23,
-    "downloads": 45
+    "mirror_downloads": 18,
+    "downloads": 41
   }
 ]

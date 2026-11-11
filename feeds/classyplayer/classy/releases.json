@@ -100,7 +100,7 @@
         "name": "Classy-20261111.apk",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261111/Classy-20261111.apk",
         "size": 24677789,
-        "download_count": 10,
+        "download_count": 12,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-11-11T08:47:00Z",
         "updated_at": "2026-11-11T08:47:01Z",
@@ -188,7 +188,7 @@
         "name": "update.json",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261111/update.json",
         "size": 271,
-        "download_count": 6,
+        "download_count": 10,
         "content_type": "application/json",
         "created_at": "2026-11-11T08:47:00Z",
         "updated_at": "2026-11-11T08:47:00Z",
@@ -398,7 +398,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y2.zip",
         "size": 482216428,
-        "download_count": 59,
+        "download_count": 61,
         "content_type": "application/zip",
         "created_at": "2026-11-07T13:56:50Z",
         "updated_at": "2026-11-07T13:57:10Z",
@@ -428,7 +428,7 @@
       }
     ],
     "mirror_downloads": 86,
-    "downloads": 178
+    "downloads": 180
   },
   {
     "id": 437477353,
@@ -564,7 +564,7 @@
         "name": "Classy-20261106.apk",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/Classy-20261106.apk",
         "size": 24606606,
-        "download_count": 7,
+        "download_count": 8,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-11-06T15:58:24Z",
         "updated_at": "2026-11-06T15:58:25Z",
@@ -575,7 +575,7 @@
         "name": "index.html",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/index.html",
         "size": 35988,
-        "download_count": 6,
+        "download_count": 7,
         "content_type": "text/html",
         "created_at": "2026-11-06T15:58:24Z",
         "updated_at": "2026-11-06T15:58:24Z",
@@ -586,7 +586,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom.zip",
         "size": 455546831,
-        "download_count": 6,
+        "download_count": 7,
         "content_type": "application/zip",
         "created_at": "2026-11-06T15:58:24Z",
         "updated_at": "2026-11-06T15:58:49Z",
@@ -597,7 +597,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_type_b.zip",
         "size": 415427715,
-        "download_count": 7,
+        "download_count": 8,
         "content_type": "application/zip",
         "created_at": "2026-11-06T15:58:24Z",
         "updated_at": "2026-11-06T15:58:46Z",
@@ -608,7 +608,7 @@
         "name": "rom_y1_type_a.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_y1_type_a.zip",
         "size": 455546831,
-        "download_count": 8,
+        "download_count": 9,
         "content_type": "application/zip",
         "created_at": "2026-11-06T15:58:24Z",
         "updated_at": "2026-11-06T15:58:47Z",
@@ -619,7 +619,7 @@
         "name": "rom_y1_type_b.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_y1_type_b.zip",
         "size": 415427715,
-        "download_count": 7,
+        "download_count": 8,
         "content_type": "application/zip",
         "created_at": "2026-11-06T15:58:24Z",
         "updated_at": "2026-11-06T15:58:46Z",
@@ -630,7 +630,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_y2.zip",
         "size": 465983256,
-        "download_count": 9,
+        "download_count": 10,
         "content_type": "application/zip",
         "created_at": "2026-11-06T15:58:24Z",
         "updated_at": "2026-11-06T15:58:44Z",
@@ -641,7 +641,7 @@
         "name": "SHA256SUMS.txt",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/SHA256SUMS.txt",
         "size": 486,
-        "download_count": 6,
+        "download_count": 7,
         "content_type": "text/plain",
         "created_at": "2026-11-06T15:58:24Z",
         "updated_at": "2026-11-06T15:58:24Z",
@@ -652,7 +652,7 @@
         "name": "update.json",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/update.json",
         "size": 269,
-        "download_count": 6,
+        "download_count": 7,
         "content_type": "application/json",
         "created_at": "2026-11-06T15:58:24Z",
         "updated_at": "2026-11-06T15:58:24Z",
@@ -660,7 +660,7 @@
       }
     ],
     "mirror_downloads": 86,
-    "downloads": 123
+    "downloads": 128
   },
   {
     "id": 435320574,
@@ -1217,8 +1217,8 @@
         "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/635077113"
       }
     ],
-    "mirror_downloads": 127,
-    "downloads": 208
+    "mirror_downloads": 128,
+    "downloads": 209
   },
   {
     "id": 409907549,
@@ -2078,7 +2078,7 @@
         "name": "InniClassic-20260927.apk",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/InniClassic-20260927.apk",
         "size": 25186490,
-        "download_count": 14,
+        "download_count": 15,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-09-27T18:17:20Z",
         "updated_at": "2026-09-27T18:17:22Z",
@@ -2089,7 +2089,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom.zip",
         "size": 456599763,
-        "download_count": 13,
+        "download_count": 14,
         "content_type": "application/zip",
         "created_at": "2026-09-27T18:17:21Z",
         "updated_at": "2026-09-27T18:17:39Z",
@@ -2100,7 +2100,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_type_b.zip",
         "size": 424305181,
-        "download_count": 12,
+        "download_count": 13,
         "content_type": "application/zip",
         "created_at": "2026-09-27T18:17:21Z",
         "updated_at": "2026-09-27T18:17:38Z",
@@ -2111,7 +2111,7 @@
         "name": "rom_y1_type_a.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_y1_type_a.zip",
         "size": 456599763,
-        "download_count": 14,
+        "download_count": 15,
         "content_type": "application/zip",
         "created_at": "2026-09-27T18:17:20Z",
         "updated_at": "2026-09-27T18:17:35Z",
@@ -2122,7 +2122,7 @@
         "name": "rom_y1_type_b.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_y1_type_b.zip",
         "size": 424305181,
-        "download_count": 14,
+        "download_count": 15,
         "content_type": "application/zip",
         "created_at": "2026-09-27T18:17:20Z",
         "updated_at": "2026-09-27T18:17:38Z",
@@ -2133,7 +2133,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_y2.zip",
         "size": 444712441,
-        "download_count": 15,
+        "download_count": 16,
         "content_type": "application/zip",
         "created_at": "2026-09-27T18:17:21Z",
         "updated_at": "2026-09-27T18:17:39Z",
@@ -2144,7 +2144,7 @@
         "name": "SHA256SUMS.txt",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/SHA256SUMS.txt",
         "size": 491,
-        "download_count": 15,
+        "download_count": 16,
         "content_type": "text/plain",
         "created_at": "2026-09-27T18:17:20Z",
         "updated_at": "2026-09-27T18:17:21Z",
@@ -2152,6 +2152,6 @@
       }
     ],
     "mirror_downloads": 86,
-    "downloads": 154
+    "downloads": 159
   }
 ]

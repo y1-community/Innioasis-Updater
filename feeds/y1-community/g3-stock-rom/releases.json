@@ -212,7 +212,7 @@
         "name": "rom_g3.zip",
         "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3.zip",
         "size": 1645637673,
-        "download_count": 8,
+        "download_count": 9,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:12:29Z",
         "updated_at": "2026-11-05T05:15:02Z",
@@ -223,14 +223,14 @@
         "name": "SHA256SUMS.MX3-9_EN_G3-V2.03-20260709",
         "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.03-20260709/SHA256SUMS.MX3-9_EN_G3-V2.03-20260709",
         "size": 78,
-        "download_count": 9,
+        "download_count": 10,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:15:03Z",
         "updated_at": "2026-11-05T05:15:03Z",
         "url": "https://api.github.com/repos/y1-community/g3-stock-rom/releases/assets/712167034"
       }
     ],
-    "mirror_downloads": 12,
-    "downloads": 20
+    "mirror_downloads": 10,
+    "downloads": 19
   }
 ]
