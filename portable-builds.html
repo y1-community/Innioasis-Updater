@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AppImages, tarballs and portable builds - Innioasis Updater</title>
+  <meta name="description" content="What each Innioasis Updater CE Linux file contains, how to run it, and how to build an AppImage, a tarball or a zip from an unpacked package or from the source tree.">
+  <link rel="canonical" href="https://innioasis.app/portable-builds.html">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="lumen.css?v=20261110picker">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
+  <script src="site-init.js?v=20261110inline2" defer></script>
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="AppImages, tarballs and portable builds">
+  <meta property="og:description" content="What each Linux package contains, how to run it, and how to rebuild an AppImage, tarball or zip.">
+  <meta property="og:url" content="https://innioasis.app/portable-builds.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    .pb-table { width: 100%; border-collapse: collapse; margin: 0.9rem 0 1.2rem; }
+    .pb-table th, .pb-table td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(127,127,127,.25); vertical-align: top; }
+    .pb-table code { white-space: nowrap; }
+    .pb-code { background: rgba(127,127,127,.12); padding: 0.7rem 0.85rem; border-radius: 8px; overflow-x: auto; font-size: 0.86rem; }
+  </style>
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">Skip to content</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide lumen-doc-page">
+    <p class="lumen-doc-back"><a href="guide.html#platform">← Install Updater CE</a></p>
+
+    <header class="lumen-doc-head">
+      <p class="lumen-kicker">Linux packages</p>
+      <h1>AppImages, tarballs and portable builds</h1>
+      <p class="lumen-lead">Every Linux release ships the same application in four wrappers. This page says which file to take, how to run it, and how to rebuild any of the wrappers from an unpacked package or from the source tree.</p>
+    </header>
+
+    <section class="lumen-guide-section">
+      <h2>Which file to take</h2>
+      <p>Two processors are published: Intel and AMD (x86_64), and ARM64. Take the file that matches the machine you will flash from, not the player.</p>
+      <table class="pb-table">
+        <thead><tr><th scope="col">File</th><th scope="col">Processor</th><th scope="col">What it is</th></tr></thead>
+        <tbody>
+          <tr><td><code>UpdaterCE.appimage</code></td><td>Intel / AMD</td><td>One file that runs on its own. Needs <code>chmod +x</code>.</td></tr>
+          <tr><td><code>UpdaterCE-arm64.appimage</code></td><td>ARM64</td><td>The same single file for ARM boards and ARM laptops.</td></tr>
+          <tr><td><code>UpdaterCE-Linux-Portable.tar.gz</code></td><td>Intel / AMD</td><td>The application folder in a tarball. Unpack it and run the launcher inside.</td></tr>
+          <tr><td><code>UpdaterCE-Linux-Portable-arm64.tar.gz</code></td><td>ARM64</td><td>The ARM64 folder in a tarball.</td></tr>
+          <tr><td><code>UpdaterCE-Linux-Portable.zip</code></td><td>Intel / AMD</td><td>The same folder as a zip, for machines where zip tools are more familiar.</td></tr>
+          <tr><td><code>UpdaterCE-Linux-Portable-arm64.zip</code></td><td>ARM64</td><td>The ARM64 folder as a zip.</td></tr>
+          <tr><td><code>UpdaterCE-Lite.tar.gz</code></td><td>Any</td><td>The terminal-only payload, about 17 KB of Python. Flashing tools are fetched when a task needs one.</td></tr>
+        </tbody>
+      </table>
+      <p>All of the files above carry the terminal interface, so <code>--tui</code> opens the same application without a window.</p>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Running what you downloaded</h2>
+      <p>An AppImage is a single executable:</p>
+      <pre class="pb-code">chmod +x UpdaterCE.appimage
+./UpdaterCE.appimage</pre>
+      <p>If it stops with a FUSE message, either install <code>libfuse2</code> (<code>libfuse2t64</code> on Ubuntu 24.04) or run it unpacked:</p>
+      <pre class="pb-code">./UpdaterCE.appimage --appimage-extract-and-run</pre>
+      <p>A tarball or a zip is a folder. Unpack it and run the launcher in it, keeping the folder together, because the application looks for its own files beside itself:</p>
+      <pre class="pb-code">tar -xzf UpdaterCE-Linux-Portable.tar.gz
+cd InnioasisUpdater &amp;&amp; ./Innioasis-Updater</pre>
+      <p>For the terminal interface instead of a window, add <code>--tui</code>:</p>
+      <pre class="pb-code">./UpdaterCE.appimage --tui</pre>
+      <p>The launcher script does the same work without a manual download. Copy this into a terminal:</p>
+      <pre class="pb-code" id="launcher-command">curl -fsSL https://innioasis.app/run_linux.sh | bash</pre>
+      <div class="lumen-actions">
+        <button type="button" class="lumen-button" data-copy-target="launcher-command">Copy command</button>
+        <a class="lumen-button" href="run_linux.sh">Read run_linux.sh</a>
+      </div>
+      <p>It reads your processor, fetches the matching build, and offers install, a window session, or a terminal session. To skip the menu, pass the choice through: <code>curl -fsSL https://innioasis.app/run_linux.sh | bash -s -- tui</code>.</p>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Building an AppImage from an unpacked package</h2>
+      <p>An AppImage is an AppDir in a squashfs wrapper, so the way back to one is to unpack a working AppImage and pack it again.</p>
+      <ol class="lumen-steps">
+        <li>Unpack the AppImage you already have. It writes an AppDir named <code>squashfs-root</code> next to you:
+          <pre class="pb-code">./UpdaterCE.appimage --appimage-extract</pre></li>
+        <li>Make the changes you want inside <code>squashfs-root</code>. The desktop entry and the icon live at the top of that folder, and <code>AppRun</code> is the entry point.</li>
+        <li>Pack the folder again with <code>appimagetool</code>. The app repository's <code>build_appimage.sh</code> downloads the tool when it is missing, so a copy may already be in your build cache:
+          <pre class="pb-code">appimagetool squashfs-root UpdaterCE.AppImage</pre></li>
+      </ol>
+      <p>Pack for the architecture you are on. An AppImage built on an ARM64 machine runs on ARM64 machines, and an x86_64 build runs on Intel and AMD. To build the other one, run the same steps on that processor, or build from source as described below.</p>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Building a tarball or a zip from the same folder</h2>
+      <p>Both wrappers are the AppDir contents and nothing else. Keep the executable bit, which both <code>tar</code> and <code>zip</code> record, and keep the folder layout unchanged.</p>
+      <pre class="pb-code">tar -C squashfs-root -czf UpdaterCE-Linux-Portable.tar.gz .
+cd squashfs-root &amp;&amp; zip -r ../UpdaterCE-Linux-Portable.zip .</pre>
+      <p>If a file arrives without its executable bit after unpacking, restore it by hand:</p>
+      <pre class="pb-code">chmod +x Innioasis-Updater</pre>
+      <p>Name the file after the processor it was built for, so nobody has to guess later. The published names are <code>UpdaterCE-Linux-Portable.tar.gz</code> and <code>UpdaterCE-Linux-Portable-arm64.tar.gz</code>, with the same pattern for the zips.</p>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Building from the source tree</h2>
+      <p>The releases are produced by scripts in the application repository, and the same scripts run on your machine. They need Python 3.10 or newer, and on Linux also <code>curl</code>, <code>file</code> and <code>desktop-file-utils</code>.</p>
+      <pre class="pb-code">git clone https://github.com/y1-community/updater-ce-neo
+cd updater-ce-neo
+./build_appimage.sh --brand updater_ce</pre>
+      <p>The AppImage lands in <code>dist/</code>. The script downloads <code>appimagetool</code> itself when it is not already present, and it accepts <code>--clean</code> when you want the build cache thrown away first.</p>
+      <p>Other platforms and other payloads use their own scripts in the same repository:</p>
+      <table class="pb-table">
+        <thead><tr><th scope="col">Script</th><th scope="col">Produces</th></tr></thead>
+        <tbody>
+          <tr><td><code>build_appimage.sh</code></td><td>The x86_64 AppImage, and the AppDir the tarball and zip are made from.</td></tr>
+          <tr><td><code>build_macos.sh</code></td><td>A <code>.app</code> bundle and an optional <code>.dmg</code>, with <code>--arch universal2</code> for both Mac processor families.</td></tr>
+          <tr><td><code>build_windows.ps1</code></td><td>The Windows executable, the portable folder, and an Inno Setup installer when Inno Setup 6 is installed.</td></tr>
+          <tr><td><code>scripts/build_lite_payload.py</code></td><td>The terminal-only payload that <code>UpdaterCE-Lite.tar.gz</code> carries.</td></tr>
+          <tr><td><code>scripts/verify_linux_runtime.py</code></td><td>A pass or fail on a bundle that would not run on older distributions. Run it before you publish anything.</td></tr>
+        </tbody>
+      </table>
+      <p>The verifier rejects a bundle that needs glibc newer than 2.35, bundles a Python newer than 3.12, is missing an xcb client library, or contains instructions (SSE4.2, POPCNT, AVX) that older processors do not have. A build that fails it may run on your machine and nowhere else.</p>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Checking a download</h2>
+      <p>Each file is published beside a <code>.sha256</code> file with the same name plus the extension, and the value covers the archive itself:</p>
+      <pre class="pb-code">curl -fsSLO https://github.com/y1-community/innioasis-updater/releases/latest/download/UpdaterCE-Linux-Portable.zip
+curl -fsSLO https://github.com/y1-community/innioasis-updater/releases/latest/download/UpdaterCE-Linux-Portable.zip.sha256
+sha256sum -c UpdaterCE-Linux-Portable.zip.sha256</pre>
+      <p>The <code>.sha256</code> files name the archive they belong to, so <code>sha256sum -c</code> looks for it in the same folder.</p>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Where to go next</h2>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="guide.html#platform">Install Updater CE</a>
+        <a class="lumen-button" href="portable-rom-packages.html">Portable ROM packages</a>
+        <a class="lumen-button" href="drivers.html#linux">Linux setup notes</a>
+      </div>
+      <p class="lumen-meta">The udev rule for the MediaTek USB vendor ID and the FUSE packages are covered in the setup notes.</p>
+    </section>
+
+    <div id="footer-root"></div>
+    <div id="support-toolbar-slot"></div>
+  </main>
+  <script src="nav.js?v=20261110sale" defer></script>
+  <script src="lumen-site.js?v=20261111portable4" defer></script>
+  <script src="site-i18n.js?v=20261113blocklist" defer></script>
+  <script src="site-locale.js?v=20261109stack" defer></script>
+</body>
+</html>

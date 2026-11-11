@@ -1266,6 +1266,33 @@
         return { url: published.browser_download_url, size: Number(published.size) || 0 };
     }
 
+    /* The file name a mirror gives the package it built for one platform. */
+    function portableSuffix(platformKey) {
+        return platformKey === "macos" ? "-macos.zip" :
+            platformKey === "windows" ? "-windows.zip" :
+            platformKey === "windows-arm64" ? "-windows-arm64.zip" :
+            platformKey === "windows-legacy" ? "-windows-legacy.zip" :
+            platformKey === "linux" ? "-linux.zip" :
+            platformKey === "linux-arm64" ? "-linux-arm64.zip" : "";
+    }
+
+    /* A mirror can publish a release before its own index.json catches up. The
+       release's assets still follow the <rom>-<platform>.zip name, so the
+       package is found from the release itself during that window instead of
+       falling back to the project's plain rom.zip. */
+    async function findConventionalAsset(repo, tag, sourceAsset, platformKey) {
+        var suffix = portableSuffix(platformKey);
+        if (!suffix || !tag || !sourceAsset) return null;
+        var release = await fetchMirrorRelease(repo, tag);
+        if (!release || !Array.isArray(release.assets)) return null;
+        var wanted = String(sourceAsset).replace(/\.zip$/i, "") + suffix;
+        var published = release.assets.find(function (entry) {
+            return entry && String(entry.name) === wanted && Number(entry.size) > 0;
+        });
+        if (!published) return null;
+        return { name: published.name, url: published.browser_download_url, size: Number(published.size) || 0 };
+    }
+
     function findPortableAsset(index, tag, sourceAsset, platformKey) {
         if (!index || Number(index.schema) !== 1 || !Array.isArray(index.releases)) return null;
         var release = index.releases.find(function (candidate) {
@@ -1273,12 +1300,7 @@
         });
         if (!release || !Array.isArray(release.assets)) return null;
         var base = String(sourceAsset).replace(/\.zip$/i, "");
-        var suffix = platformKey === "macos" ? "-macos.zip" :
-            platformKey === "windows" ? "-windows.zip" :
-            platformKey === "windows-arm64" ? "-windows-arm64.zip" :
-            platformKey === "windows-legacy" ? "-windows-legacy.zip" :
-            platformKey === "linux" ? "-linux.zip" :
-            platformKey === "linux-arm64" ? "-linux-arm64.zip" : "";
+        var suffix = portableSuffix(platformKey);
         return release.assets.find(function (asset) {
             if (!asset || !asset.name || String(asset.platform || "") !== platformKey) return false;
             var declared = String(asset.source_asset || "");
@@ -1300,6 +1322,9 @@
         for (var i = 0; i < repos.length; i++) {
             var index = await fetchPortableIndex(repos[i]);
             var asset = findPortableAsset(index, releaseTag, sourceAsset, key);
+            if (!asset || !asset.name) {
+                asset = await findConventionalAsset(repos[i], releaseTag, sourceAsset, key);
+            }
             if (!asset || !asset.name) continue;
             var candidate = /^https:\/\/github\.com\//i.test(String(asset.url || ""))
                 ? String(asset.url)
