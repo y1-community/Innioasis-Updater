@@ -249,20 +249,26 @@
         if (sourceNote) {
           var repo = state.repo || "";
           if (repo) {
-            var projectUrl = D.firmwarePageFor(repo) || D.firmwareInfoHref(repo, state.software);
+            var catalog = window.INNIOASIS_FIRMWARE_CATALOG || [];
+            var item = state.software ? catalog.find(function (entry) { return entry.slug === state.software; }) : null;
+            var author = String(repo).split("/")[0];
+            var softwareName = (item && item.name) || state.name || String(repo).split("/")[1];
+            var model = (item && item.model) || state.model || "";
+            var archiveParams = [];
+            if (model) archiveParams.push("model=" + encodeURIComponent(model));
+            if (state.software) archiveParams.push("software=" + encodeURIComponent(state.software));
+            var projectUrl = "https://innioasis.app/firmware.html" +
+              (archiveParams.length ? "?" + archiveParams.join("&") : "");
             var readmeUrl = D.firmwareInfoHref(repo, state.software);
-            var pulls = "https://github.com/y1-community/Innioasis-Updater/pulls?q=" +
-              encodeURIComponent("is:pr author:" + String(repo).split("/")[0]);
             var notesUrl = state.tag ? ("https://innioasis.app/" + D.releaseNotesHref({
               repo: repo, tag: state.tag, model: state.model,
               software: state.software, name: state.name
             })) : "";
-            sourceNote.innerHTML = 'Instructions published by the <a href="' + escapeHtml(projectUrl) +
-              '">' + escapeHtml(repo) + '</a> project, shown here word for word ' +
-              '<a class="lumen-cite" href="' + escapeHtml(readmeUrl) + '" title="Project README">[1]</a>' +
+            sourceNote.innerHTML = 'Instructions published by <a href="' + escapeHtml(projectUrl) +
+              '">' + escapeHtml(author) + "&#39;s <em>" + escapeHtml(softwareName) + "</em></a> project, shown here word for word " +
+              '<a class="lumen-cite" href="' + escapeHtml(readmeUrl) + '" title="Firmware Archive page">[1]</a>' +
               (notesUrl ? ' <a class="lumen-cite" href="' + escapeHtml(notesUrl) +
-                '" title="Release notes">[2]</a>' : "") +
-              ' <a class="lumen-cite" href="' + escapeHtml(pulls) + '" rel="noopener" title="Catalogue pull requests">[3]</a>';
+                '" title="Release notes">[2]</a>' : "");
           } else {
             sourceNote.textContent = "Instructions published by the project, shown here word for word.";
           }
