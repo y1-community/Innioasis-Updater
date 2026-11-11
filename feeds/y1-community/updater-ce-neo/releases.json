@@ -17,33 +17,11 @@
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/installer.exe",
         "size": 148283609,
-        "download_count": 112,
+        "download_count": 115,
         "content_type": "application/x-msdownload",
         "created_at": "2026-11-07T21:49:50Z",
         "updated_at": "2026-11-07T21:50:33Z",
         "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/722045299"
-      },
-      {
-        "id": 722052315,
-        "name": "UpdaterCE-Windows-Portable.zip",
-        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Windows-Portable.zip",
-        "size": 205854850,
-        "download_count": 100,
-        "content_type": "application/x-zip-compressed",
-        "created_at": "2026-11-07T21:52:57Z",
-        "updated_at": "2026-11-07T21:54:04Z",
-        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/722052315"
-      },
-      {
-        "id": 724630592,
-        "name": "Innioasis.Updater.for.Mac.dmg",
-        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg",
-        "size": 119787348,
-        "download_count": 18,
-        "content_type": "application/x-diskcopy",
-        "created_at": "2026-11-08T17:15:56Z",
-        "updated_at": "2026-11-08T17:16:33Z",
-        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/724630592"
       },
       {
         "id": 732571892,
@@ -138,7 +116,7 @@
         "name": "UpdaterCE-Linux-Portable.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable.zip",
         "size": 363859936,
-        "download_count": 31,
+        "download_count": 60,
         "content_type": "application/zip",
         "created_at": "2026-11-10T18:54:48Z",
         "updated_at": "2026-11-10T18:56:09Z",
@@ -160,7 +138,7 @@
         "name": "UpdaterCE-Linux-Portable-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable-arm64.zip",
         "size": 187878034,
-        "download_count": 29,
+        "download_count": 59,
         "content_type": "application/zip",
         "created_at": "2026-11-10T18:55:32Z",
         "updated_at": "2026-11-10T18:56:12Z",
@@ -220,6 +198,28 @@
         "created_at": "2026-11-10T18:59:49Z",
         "updated_at": "2026-11-10T19:00:12Z",
         "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/732585341"
+      },
+      {
+        "id": 733493482,
+        "name": "Innioasis.Updater.for.Mac.dmg",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg",
+        "size": 119710372,
+        "download_count": 0,
+        "content_type": "application/x-diskcopy",
+        "created_at": "2026-11-11T00:22:19Z",
+        "updated_at": "2026-11-11T00:22:43Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/733493482"
+      },
+      {
+        "id": 733559566,
+        "name": "UpdaterCE-Windows-Portable.zip.zip",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Windows-Portable.zip.zip",
+        "size": 313278741,
+        "download_count": 0,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-11-11T00:48:29Z",
+        "updated_at": "2026-11-11T00:49:42Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/733559566"
       }
     ]
   },

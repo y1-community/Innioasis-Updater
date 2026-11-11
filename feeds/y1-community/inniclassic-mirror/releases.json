@@ -35,15 +35,15 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733154575"
       },
       {
-        "id": 733154604,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux.zip",
-        "size": 822759575,
+        "id": 733154599,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom.zip",
+        "size": 462894253,
         "download_count": 0,
         "content_type": "application/zip",
         "created_at": "2026-11-10T22:11:30Z",
-        "updated_at": "2026-11-10T22:11:56Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733154604"
+        "updated_at": "2026-11-10T22:11:53Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733154599"
       },
       {
         "id": 733154602,
@@ -68,15 +68,15 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733154603"
       },
       {
-        "id": 733154599,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom.zip",
-        "size": 462894253,
+        "id": 733154604,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux.zip",
+        "size": 822759575,
         "download_count": 0,
         "content_type": "application/zip",
         "created_at": "2026-11-10T22:11:30Z",
-        "updated_at": "2026-11-10T22:11:53Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733154599"
+        "updated_at": "2026-11-10T22:11:56Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733154604"
       },
       {
         "id": 733156007,
@@ -127,6 +127,17 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733139003"
       },
       {
+        "id": 733139051,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows.zip",
+        "size": 668630354,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T22:07:18Z",
+        "updated_at": "2026-11-10T22:07:48Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733139051"
+      },
+      {
         "id": 733139056,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux.zip",
@@ -147,17 +158,6 @@
         "created_at": "2026-11-10T22:07:18Z",
         "updated_at": "2026-11-10T22:07:47Z",
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733139062"
-      },
-      {
-        "id": 733139051,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows.zip",
-        "size": 668630354,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T22:07:18Z",
-        "updated_at": "2026-11-10T22:07:48Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733139051"
       },
       {
         "id": 733139078,
@@ -219,15 +219,15 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733124090"
       },
       {
-        "id": 733124117,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux.zip",
-        "size": 822756841,
+        "id": 733124104,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom.zip",
+        "size": 462891519,
         "download_count": 0,
         "content_type": "application/zip",
         "created_at": "2026-11-10T22:02:59Z",
-        "updated_at": "2026-11-10T22:03:33Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733124117"
+        "updated_at": "2026-11-10T22:03:16Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733124104"
       },
       {
         "id": 733124109,
@@ -252,15 +252,15 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733124114"
       },
       {
-        "id": 733124104,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom.zip",
-        "size": 462891519,
+        "id": 733124117,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux.zip",
+        "size": 822756841,
         "download_count": 0,
         "content_type": "application/zip",
         "created_at": "2026-11-10T22:02:59Z",
-        "updated_at": "2026-11-10T22:03:16Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733124104"
+        "updated_at": "2026-11-10T22:03:33Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733124117"
       },
       {
         "id": 733125135,
@@ -311,17 +311,6 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733108741"
       },
       {
-        "id": 733108763,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux.zip",
-        "size": 822895505,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:58:36Z",
-        "updated_at": "2026-11-10T21:59:02Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733108763"
-      },
-      {
         "id": 733108750,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-macos.zip",
@@ -353,6 +342,17 @@
         "created_at": "2026-11-10T21:58:36Z",
         "updated_at": "2026-11-10T21:58:55Z",
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733108756"
+      },
+      {
+        "id": 733108763,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux.zip",
+        "size": 822895505,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T21:58:36Z",
+        "updated_at": "2026-11-10T21:59:02Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733108763"
       },
       {
         "id": 733109836,
@@ -403,17 +403,6 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733094917"
       },
       {
-        "id": 733094951,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-linux.zip",
-        "size": 822895031,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:54:19Z",
-        "updated_at": "2026-11-10T21:54:54Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733094951"
-      },
-      {
         "id": 733094949,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-macos.zip",
@@ -434,6 +423,17 @@
         "created_at": "2026-11-10T21:54:19Z",
         "updated_at": "2026-11-10T21:54:43Z",
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733094950"
+      },
+      {
+        "id": 733094951,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-linux.zip",
+        "size": 822895031,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T21:54:19Z",
+        "updated_at": "2026-11-10T21:54:54Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733094951"
       },
       {
         "id": 733094971,
@@ -495,15 +495,15 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733081670"
       },
       {
-        "id": 733081699,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-linux.zip",
-        "size": 822989418,
+        "id": 733081696,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom.zip",
+        "size": 463124096,
         "download_count": 0,
         "content_type": "application/zip",
         "created_at": "2026-11-10T21:50:01Z",
-        "updated_at": "2026-11-10T21:50:32Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733081699"
+        "updated_at": "2026-11-10T21:50:18Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733081696"
       },
       {
         "id": 733081697,
@@ -517,6 +517,17 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733081697"
       },
       {
+        "id": 733081699,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-linux.zip",
+        "size": 822989418,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T21:50:01Z",
+        "updated_at": "2026-11-10T21:50:32Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733081699"
+      },
+      {
         "id": 733081701,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-windows.zip",
@@ -526,17 +537,6 @@
         "created_at": "2026-11-10T21:50:01Z",
         "updated_at": "2026-11-10T21:50:27Z",
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733081701"
-      },
-      {
-        "id": 733081696,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom.zip",
-        "size": 463124096,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:50:01Z",
-        "updated_at": "2026-11-10T21:50:18Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733081696"
       },
       {
         "id": 733082814,
@@ -587,6 +587,17 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733066844"
       },
       {
+        "id": 733066859,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom.zip",
+        "size": 463124033,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T21:45:48Z",
+        "updated_at": "2026-11-10T21:46:06Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733066859"
+      },
+      {
         "id": 733066860,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-linux.zip",
@@ -620,17 +631,6 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733066866"
       },
       {
-        "id": 733066859,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom.zip",
-        "size": 463124033,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:45:48Z",
-        "updated_at": "2026-11-10T21:46:06Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733066859"
-      },
-      {
         "id": 733067711,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/stats.txt",
@@ -647,7 +647,7 @@
     "id": 432930635,
     "tag_name": "v1.3.0",
     "name": "Portable Flashing Package: InniClassic 1.3.0",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.3.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nA Music Quiz overhaul, a Now Playing polish pass, and another batch of Reddit-reported bugs \u2014 mostly sleep/wake and audio.\n\n### Added\n- **Music Quiz: five new question types** \u2014 alongside \"What song is playing?\", it can now ask which artist released a track, which album it's from, what year it came out, and what genre it is (each only offered when your library actually has enough distinct values to make a fair question). Also new: a visual question type showing 3 album covers side by side to pick from instead of text answers.\n- **Music Quiz: all 4 answers now fit on screen at once**, no more scrolling to see the other options.\n\n### Changed\n- **Now Playing**: the album cover sits slightly lower, spacing between Title/Artist/Album is now perfectly consistent, the star rating moved between Album and the track counter, and the \"X of Y\" track counter is bold at the same size as the rest of the info block.\n- Documented the existing (but easy-to-miss) **synced lyrics** support: drop a `.lrc` file next to a song (same filename) or embed lyrics in ID3/FLAC/ALAC tags, then long-press Center on Now Playing \u2192 Toggle Visualizer to see them scroll in sync with playback.\n\n### Fixed\n- **Screen never came back on after the backlight timer put it to sleep** \u2014 two separate bugs:\n  - The \"virtual\" sleep used while FM Radio or the web server is running (so the CPU stays alive) never had any code path that turned it back off. Once triggered, the screen stayed black forever (vibration/click feedback still worked) until a full reboot.\n  - The \"real\" sleep used during ordinary music playback simulates a power-button press to turn the display off, but nothing ever simulated a second press to turn it back on.\n- **Full device lockup (required a paperclip reset) playing FM Radio through wired headphones for a few minutes** \u2014 the backlight timer's \"virtual sleep\" path was also toggling Wi-Fi off while the FM tuner was active. On this chipset, FM/Wi-Fi/Bluetooth share the same combo radio hardware; killing Wi-Fi mid-session could wedge it badly enough to need a hard reset. Wi-Fi is now left alone whenever the radio is on.\n- **Screen dimming during active use** \u2014 the default Backlight Timer was 10 seconds. Now 1 minute (still adjustable down to 10s in Settings).\n- **Bluetooth headphones (reported with AirPods) noticeably quiet** \u2014 a known AVRCP \"absolute volume\" quirk. Absolute volume is now disabled on connect, so headphones use their own physical volume control.\n- **Some FLAC files failed with \"Legacy Player Error: 262\"** \u2014 failing files now automatically retry once through ExoPlayer's FLAC extension instead of giving up outright.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.3.0.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.3.0.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"f98cddc9143a60d646db8c17829d4237f72a0acd2cd4c66073e539960305c747\",\"size\":822994673,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"775a308388c2fc27766d49eb1454bce9e3a6b4d7cf9c888b2882324ae5a1cfec\",\"size\":647899615,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"f9e89daac0be8907dd6606505e38f94121c24f0762da1ee013d270f1e1a13306\",\"size\":582921650,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"442a8ff9a01152515ddb455b92ae579dd6cb8082fe47f4de479d84c1186f0089\",\"size\":668874319,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-10T21:41:21Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"6ecd6af13538df48461d7f342a389a52a7613c66a11fbc65b3aff5fc1787f4d4\",\"original_asset_sizes\":{\"InniClassic-1.3.0.apk\":27221900,\"rom.zip\":463129351},\"original_assets\":[\"InniClassic-1.3.0.apk\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"InniClassic-1.3.0.apk\":10,\"rom-linux.zip\":3,\"rom-macos.zip\":4,\"rom-windows.zip\":2,\"rom.zip\":10},\"generated_at\":\"2026-11-10T21:41:21Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.3\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.3\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":13} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.3.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nA Music Quiz overhaul, a Now Playing polish pass, and another batch of Reddit-reported bugs \u2014 mostly sleep/wake and audio.\n\n### Added\n- **Music Quiz: five new question types** \u2014 alongside \"What song is playing?\", it can now ask which artist released a track, which album it's from, what year it came out, and what genre it is (each only offered when your library actually has enough distinct values to make a fair question). Also new: a visual question type showing 3 album covers side by side to pick from instead of text answers.\n- **Music Quiz: all 4 answers now fit on screen at once**, no more scrolling to see the other options.\n\n### Changed\n- **Now Playing**: the album cover sits slightly lower, spacing between Title/Artist/Album is now perfectly consistent, the star rating moved between Album and the track counter, and the \"X of Y\" track counter is bold at the same size as the rest of the info block.\n- Documented the existing (but easy-to-miss) **synced lyrics** support: drop a `.lrc` file next to a song (same filename) or embed lyrics in ID3/FLAC/ALAC tags, then long-press Center on Now Playing \u2192 Toggle Visualizer to see them scroll in sync with playback.\n\n### Fixed\n- **Screen never came back on after the backlight timer put it to sleep** \u2014 two separate bugs:\n  - The \"virtual\" sleep used while FM Radio or the web server is running (so the CPU stays alive) never had any code path that turned it back off. Once triggered, the screen stayed black forever (vibration/click feedback still worked) until a full reboot.\n  - The \"real\" sleep used during ordinary music playback simulates a power-button press to turn the display off, but nothing ever simulated a second press to turn it back on.\n- **Full device lockup (required a paperclip reset) playing FM Radio through wired headphones for a few minutes** \u2014 the backlight timer's \"virtual sleep\" path was also toggling Wi-Fi off while the FM tuner was active. On this chipset, FM/Wi-Fi/Bluetooth share the same combo radio hardware; killing Wi-Fi mid-session could wedge it badly enough to need a hard reset. Wi-Fi is now left alone whenever the radio is on.\n- **Screen dimming during active use** \u2014 the default Backlight Timer was 10 seconds. Now 1 minute (still adjustable down to 10s in Settings).\n- **Bluetooth headphones (reported with AirPods) noticeably quiet** \u2014 a known AVRCP \"absolute volume\" quirk. Absolute volume is now disabled on connect, so headphones use their own physical volume control.\n- **Some FLAC files failed with \"Legacy Player Error: 262\"** \u2014 failing files now automatically retry once through ExoPlayer's FLAC extension instead of giving up outright.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.3.0.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.3.0.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"1d93afc5933bdb48db6034a6e13715da0cdff724654fd4b5c4557878c4be7ee6\",\"size\":822994673,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"d9e0c49965123148b0b76363a28c774b244421b5431bce3572dda2e8ab143381\",\"size\":647899615,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"90e23b0d1510f788cf2e460443b7ff29709988bf48b7d9c8543e4198d76a643d\",\"size\":582845493,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"5ead34b76a3aa8a7036bb2083061d306367f0578bd65a3e8d059ba993a1c3f96\",\"size\":668874319,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-11T00:51:20Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"aad692733b3ee5b4ffb0ddb514a264e3facd9d78f62ac6f56ee31b75cc88ca58\",\"original_asset_sizes\":{\"InniClassic-1.3.0.apk\":27221900,\"rom.zip\":463129351},\"original_assets\":[\"InniClassic-1.3.0.apk\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"InniClassic-1.3.0.apk\":11,\"rom-linux-arm64.zip\":0,\"rom-linux.zip\":3,\"rom-macos.zip\":4,\"rom-windows.zip\":2,\"rom.zip\":10},\"generated_at\":\"2026-11-11T00:51:20Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.3\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.3\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":13} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:12Z",
@@ -668,50 +668,6 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706235542"
       },
       {
-        "id": 733053474,
-        "name": "rom-linux-arm64.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux-arm64.zip",
-        "size": 647899615,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:41:23Z",
-        "updated_at": "2026-11-10T21:42:08Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733053474"
-      },
-      {
-        "id": 733053485,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux.zip",
-        "size": 822994673,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:41:24Z",
-        "updated_at": "2026-11-10T21:42:00Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733053485"
-      },
-      {
-        "id": 733053489,
-        "name": "rom-macos.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-macos.zip",
-        "size": 582921650,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:41:24Z",
-        "updated_at": "2026-11-10T21:41:54Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733053489"
-      },
-      {
-        "id": 733053486,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows.zip",
-        "size": 668874319,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:41:24Z",
-        "updated_at": "2026-11-10T21:42:04Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733053486"
-      },
-      {
         "id": 733053514,
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom.zip",
@@ -723,15 +679,26 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733053514"
       },
       {
-        "id": 733054870,
+        "id": 733565820,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/stats.txt",
-        "size": 2165,
+        "size": 2226,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T21:41:54Z",
-        "updated_at": "2026-11-10T21:41:54Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733054870"
+        "created_at": "2026-11-11T00:51:24Z",
+        "updated_at": "2026-11-11T00:51:24Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733565820"
+      },
+      {
+        "id": 733565826,
+        "name": "rom-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-macos.zip",
+        "size": 582845493,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-11T00:51:24Z",
+        "updated_at": "2026-11-11T00:52:02Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733565826"
       }
     ]
   },
@@ -739,7 +706,7 @@
     "id": 432927914,
     "tag_name": "v1.2.0",
     "name": "Portable Flashing Package: InniClassic 1.2.0",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.2.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nVideo playback, gapless playback, and a full visual consistency pass across every screen.\n\n### Added\n- **Video playback** - new \"Videos\" entry in the Main Menu, its own folder on the SD card (`/storage/sdcard0/Videos`), full-screen player with wheel-driven volume/seek. **Now powered by libVLC instead of ExoPlayer** - ExoPlayer's precise frame-timing API only exists from Android API 21 onward, and its fallback for older devices turned out to be broken on the Y1's API 17 (audio and the position clock stayed correct, but picture played back several times faster than real time). libVLC brings its own native AV-sync engine independent of that Android API, giving stable, correctly-synced playback. Audio-only playback is untouched and still runs on ExoPlayer. Thumbnails in the video list and resume-position are still unaddressed for now - see `tools/handbrake_y1_preset.json` for a ready-to-import HandBrake preset tuned for smooth playback on the Y1's chip.\n- **Gapless playback** - automatically kicks in for albums/playlists of 15 tracks or fewer, with shuffle off and no FLAC in the queue. Track transitions inside a gapless queue no longer stop and reload.\n- **Favorites are always visible now** on Now Playing - hollow heart normally, filled red heart when favorited, instead of nothing at all unless already a favorite.\n\n### Changed\n- Unified font sizes, left alignment, and row spacing across every menu (Main Menu, Music menu, Artists, Albums, Songs, Settings/Bluetooth/Wi-Fi).\n- Right-arrow indicator now only shows on the focused row, everywhere.\n- Thinner status bar matching real iPod proportions; narrows to the left column on both Main Menu and Music menu so the album cover bleeds behind it.\n- Main Menu and Music menu covers now share the exact same slow \"Ken Burns\" panning animation.\n- Bigger Now Playing album cover, bolder track counter, marquee-scrolling long titles, glass-look progress bar.\n- Larger album cover thumbnails in the Albums list.\n\n### Fixed\n- Focus arrow color was theme-dependent instead of fixed white.\n- A recycled list row's blue focused background could get incorrectly reset regardless of actual focus state.\n- Now Playing's progress ticker and the clock/widget refresh loop kept doing full work every 0.5-1s even when not visible (or during virtual screen-off) - both now sit idle unless actually needed. Should help battery life.\n\n### Install\n- **`rom.zip`** - flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.2.0.apk`** - install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.2.0.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"5871611df4cf776f919e7c9e19fada0e855f51ae80030d26193ae8c36d2def18\",\"size\":822734916,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"f1ee492fca93af654c866f1b03f23b007502cdb262e7e1628b434f3b44688ae9\",\"size\":647639858,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"6cea79a000358e33ee30ad23e7d878a48ff2bba57840d527fa2d3a0ea8552590\",\"size\":582661893,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"468f59cb1145ca54972d25bb9c3d51966f1e2f0f90c9d096117c1d4918a9157b\",\"size\":668614562,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-10T21:37:02Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"c1305f8bfd2a3613400e9204978dc3824614e5cf08e0bffe0cf315a7a3dee1bd\",\"original_asset_sizes\":{\"InniClassic-1.2.0.apk\":31349729,\"rom.zip\":462869594},\"original_assets\":[\"InniClassic-1.2.0.apk\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"InniClassic-1.2.0.apk\":10,\"rom-linux.zip\":3,\"rom-macos.zip\":5,\"rom-windows.zip\":3,\"rom.zip\":10},\"generated_at\":\"2026-11-10T21:37:02Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.3\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.3\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":13} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.2.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nVideo playback, gapless playback, and a full visual consistency pass across every screen.\n\n### Added\n- **Video playback** - new \"Videos\" entry in the Main Menu, its own folder on the SD card (`/storage/sdcard0/Videos`), full-screen player with wheel-driven volume/seek. **Now powered by libVLC instead of ExoPlayer** - ExoPlayer's precise frame-timing API only exists from Android API 21 onward, and its fallback for older devices turned out to be broken on the Y1's API 17 (audio and the position clock stayed correct, but picture played back several times faster than real time). libVLC brings its own native AV-sync engine independent of that Android API, giving stable, correctly-synced playback. Audio-only playback is untouched and still runs on ExoPlayer. Thumbnails in the video list and resume-position are still unaddressed for now - see `tools/handbrake_y1_preset.json` for a ready-to-import HandBrake preset tuned for smooth playback on the Y1's chip.\n- **Gapless playback** - automatically kicks in for albums/playlists of 15 tracks or fewer, with shuffle off and no FLAC in the queue. Track transitions inside a gapless queue no longer stop and reload.\n- **Favorites are always visible now** on Now Playing - hollow heart normally, filled red heart when favorited, instead of nothing at all unless already a favorite.\n\n### Changed\n- Unified font sizes, left alignment, and row spacing across every menu (Main Menu, Music menu, Artists, Albums, Songs, Settings/Bluetooth/Wi-Fi).\n- Right-arrow indicator now only shows on the focused row, everywhere.\n- Thinner status bar matching real iPod proportions; narrows to the left column on both Main Menu and Music menu so the album cover bleeds behind it.\n- Main Menu and Music menu covers now share the exact same slow \"Ken Burns\" panning animation.\n- Bigger Now Playing album cover, bolder track counter, marquee-scrolling long titles, glass-look progress bar.\n- Larger album cover thumbnails in the Albums list.\n\n### Fixed\n- Focus arrow color was theme-dependent instead of fixed white.\n- A recycled list row's blue focused background could get incorrectly reset regardless of actual focus state.\n- Now Playing's progress ticker and the clock/widget refresh loop kept doing full work every 0.5-1s even when not visible (or during virtual screen-off) - both now sit idle unless actually needed. Should help battery life.\n\n### Install\n- **`rom.zip`** - flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.2.0.apk`** - install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.2.0.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"52d77bd8073516921757d3a9365858da01cebfff1b4274ea5fe7c4ff37873ce6\",\"size\":822734916,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"defd5eff58cf74d00b437c07c397595d29e93dcd1be497fb0ce3ccd2c4ccccb0\",\"size\":647639858,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"43f019f85be980b13a2033f2371c7a239bdcbd50eb65d81744ce92201288093e\",\"size\":582585736,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"da2c9bc83b4341724cff160d1a68201f730f41c5713b48e9c157b2d5cb680747\",\"size\":668614562,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-11T00:45:39Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"29888e7cb34f22ea79e8184c76e53af2ac81a5d92faa9345c93624279662fc0b\",\"original_asset_sizes\":{\"InniClassic-1.2.0.apk\":31349729,\"rom.zip\":462869594},\"original_assets\":[\"InniClassic-1.2.0.apk\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"InniClassic-1.2.0.apk\":11,\"rom-linux-arm64.zip\":0,\"rom-linux.zip\":3,\"rom-macos.zip\":5,\"rom-windows.zip\":3,\"rom.zip\":10},\"generated_at\":\"2026-11-11T00:45:39Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.3\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.3\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":13} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:12Z",
@@ -760,50 +727,6 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706227512"
       },
       {
-        "id": 733040108,
-        "name": "rom-linux-arm64.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-arm64.zip",
-        "size": 647639858,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:37:04Z",
-        "updated_at": "2026-11-10T21:37:42Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733040108"
-      },
-      {
-        "id": 733040141,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux.zip",
-        "size": 822734916,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:37:05Z",
-        "updated_at": "2026-11-10T21:37:36Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733040141"
-      },
-      {
-        "id": 733040137,
-        "name": "rom-macos.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-macos.zip",
-        "size": 582661893,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:37:05Z",
-        "updated_at": "2026-11-10T21:37:29Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733040137"
-      },
-      {
-        "id": 733040139,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows.zip",
-        "size": 668614562,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:37:05Z",
-        "updated_at": "2026-11-10T21:37:27Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733040139"
-      },
-      {
         "id": 733040134,
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom.zip",
@@ -815,15 +738,59 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733040134"
       },
       {
-        "id": 733041198,
+        "id": 733552607,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-arm64.zip",
+        "size": 647639858,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-11T00:45:43Z",
+        "updated_at": "2026-11-11T00:46:52Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733552607"
+      },
+      {
+        "id": 733552611,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/stats.txt",
-        "size": 2166,
+        "size": 2227,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T21:37:21Z",
-        "updated_at": "2026-11-10T21:37:21Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733041198"
+        "created_at": "2026-11-11T00:45:43Z",
+        "updated_at": "2026-11-11T00:45:44Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733552611"
+      },
+      {
+        "id": 733552612,
+        "name": "rom-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-macos.zip",
+        "size": 582585736,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-11T00:45:43Z",
+        "updated_at": "2026-11-11T00:46:41Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733552612"
+      },
+      {
+        "id": 733552613,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux.zip",
+        "size": 822734916,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-11T00:45:43Z",
+        "updated_at": "2026-11-11T00:46:45Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733552613"
+      },
+      {
+        "id": 733552614,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows.zip",
+        "size": 668614562,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-11T00:45:43Z",
+        "updated_at": "2026-11-11T00:46:43Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733552614"
       }
     ]
   },
@@ -831,7 +798,7 @@
     "id": 432924721,
     "tag_name": "v1.1.2",
     "name": "Portable Flashing Package: InniClassic 1.1.2",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.1.2#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nBug-fix release based on more Reddit feedback from multiple users.\n\n### Fixed\n- **Crash browsing Artists, Album Artists, Albums, Songs, or Genres** - songs with a missing artist/album tag could carry a `null` value that crashed the launcher wherever it was later compared. Every song now always gets a safe \"Unknown Artist\"/\"Unknown Album\" fallback.\n- **FLAC files stuck at 0:00** - the fallback engine that FLAC was supposed to use was never actually being switched on.\n- **Screen turning off during active use** - spinning the wheel now correctly resets the auto-lock timer.\n- **Charging indicator** - the battery icon now actually draws a lightning bolt while charging (the code for it existed but was never enabled).\n- Long album/track names no longer overlap the battery/Bluetooth icons in the status bar.\n\n### Added\n- **Shuffle** row at the top of All Songs, matching the stock Y1 firmware.\n- **FM Radio** is back in the Main Menu (it had quietly disappeared from the theme config).\n\n### Install\n- **rom.zip** - flash via the Innioasis Updater, no ADB required. Must keep the filename exactly rom.zip. Ships the latest Y1 Firmware 3.1.2 with InniClassic pre-installed.\n- **InniClassic-1.1.2.apk** - install over an existing JJ Launcher / InniClassic install via adb install InniClassic-1.1.2.apk.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"6b0ca769ba23d63339a43cc9421c7ff961075707ec4ce7085c4f4f63646eea67\",\"size\":817003348,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"607ebd6613a12c38d543aecb4c35eb1d4552e261ad1379faa050b5f67cf30988\",\"size\":641908290,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"0c750edc9b926d5e4737da3bb6cc56c281f5514e51d054c3b20a300b55b27ef6\",\"size\":576930325,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"ff600afef03c63921714b4e7b762eb5bba3974e5add6fe2e37ae6532ff491c08\",\"size\":662882994,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-10T21:32:46Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"f11ff799bccdd3dfff01bbccb8fb31a11c2920ad4b00d2b8ddac378575c1f414\",\"original_asset_sizes\":{\"InniClassic-1.1.2.apk\":7020639,\"rom.zip\":457138028},\"original_assets\":[\"InniClassic-1.1.2.apk\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"InniClassic-1.1.2.apk\":10,\"rom-linux.zip\":4,\"rom-macos.zip\":6,\"rom-windows.zip\":4,\"rom.zip\":10},\"generated_at\":\"2026-11-10T21:32:46Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.3\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.3\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":13} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.1.2#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nBug-fix release based on more Reddit feedback from multiple users.\n\n### Fixed\n- **Crash browsing Artists, Album Artists, Albums, Songs, or Genres** - songs with a missing artist/album tag could carry a `null` value that crashed the launcher wherever it was later compared. Every song now always gets a safe \"Unknown Artist\"/\"Unknown Album\" fallback.\n- **FLAC files stuck at 0:00** - the fallback engine that FLAC was supposed to use was never actually being switched on.\n- **Screen turning off during active use** - spinning the wheel now correctly resets the auto-lock timer.\n- **Charging indicator** - the battery icon now actually draws a lightning bolt while charging (the code for it existed but was never enabled).\n- Long album/track names no longer overlap the battery/Bluetooth icons in the status bar.\n\n### Added\n- **Shuffle** row at the top of All Songs, matching the stock Y1 firmware.\n- **FM Radio** is back in the Main Menu (it had quietly disappeared from the theme config).\n\n### Install\n- **rom.zip** - flash via the Innioasis Updater, no ADB required. Must keep the filename exactly rom.zip. Ships the latest Y1 Firmware 3.1.2 with InniClassic pre-installed.\n- **InniClassic-1.1.2.apk** - install over an existing JJ Launcher / InniClassic install via adb install InniClassic-1.1.2.apk.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"5f0ca793191f8cd8f543326ff975422fb759513791ec7062bec25bb03023f459\",\"size\":817003348,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"00294bb2f7cce58e8453c8d783a174aef9fc7ef9337f6aeca0dacd882ee8ce1a\",\"size\":641908290,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"9b5f30ffa249157f43961a2ac70137b2049bc1a001d60a36b97db99765665d0f\",\"size\":576854168,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"1be43a3fe325f86720f000a7d150fef26668c80735d9930e47b9803a94a9d5de\",\"size\":662882994,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-11T00:40:19Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"51a34586da32c86f4ffc1db4c2a824f612cac2bb942c036d0f80daa74b78b149\",\"original_asset_sizes\":{\"InniClassic-1.1.2.apk\":7020639,\"rom.zip\":457138028},\"original_assets\":[\"InniClassic-1.1.2.apk\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"InniClassic-1.1.2.apk\":11,\"rom-linux-arm64.zip\":0,\"rom-linux.zip\":4,\"rom-macos.zip\":6,\"rom-windows.zip\":4,\"rom.zip\":10},\"generated_at\":\"2026-11-11T00:40:19Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.3\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.3\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":13} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:12Z",
@@ -852,50 +819,6 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706218788"
       },
       {
-        "id": 733027707,
-        "name": "rom-linux-arm64.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-arm64.zip",
-        "size": 641908290,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:32:49Z",
-        "updated_at": "2026-11-10T21:33:22Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733027707"
-      },
-      {
-        "id": 733027747,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux.zip",
-        "size": 817003348,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:32:49Z",
-        "updated_at": "2026-11-10T21:33:21Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733027747"
-      },
-      {
-        "id": 733027742,
-        "name": "rom-macos.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-macos.zip",
-        "size": 576930325,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:32:49Z",
-        "updated_at": "2026-11-10T21:33:08Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733027742"
-      },
-      {
-        "id": 733027744,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows.zip",
-        "size": 662882994,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:32:49Z",
-        "updated_at": "2026-11-10T21:33:16Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733027744"
-      },
-      {
         "id": 733027759,
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom.zip",
@@ -907,15 +830,59 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733027759"
       },
       {
-        "id": 733028717,
+        "id": 733538795,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux.zip",
+        "size": 817003348,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-11T00:40:23Z",
+        "updated_at": "2026-11-11T00:41:12Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733538795"
+      },
+      {
+        "id": 733538796,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/stats.txt",
-        "size": 2163,
+        "size": 2224,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T21:33:08Z",
-        "updated_at": "2026-11-10T21:33:08Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733028717"
+        "created_at": "2026-11-11T00:40:23Z",
+        "updated_at": "2026-11-11T00:40:23Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733538796"
+      },
+      {
+        "id": 733538797,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows.zip",
+        "size": 662882994,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-11T00:40:23Z",
+        "updated_at": "2026-11-11T00:41:11Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733538797"
+      },
+      {
+        "id": 733538798,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-arm64.zip",
+        "size": 641908290,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-11T00:40:23Z",
+        "updated_at": "2026-11-11T00:41:12Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733538798"
+      },
+      {
+        "id": 733538801,
+        "name": "rom-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-macos.zip",
+        "size": 576854168,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-11T00:40:23Z",
+        "updated_at": "2026-11-11T00:41:05Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733538801"
       }
     ]
   },
@@ -923,7 +890,7 @@
     "id": 432921540,
     "tag_name": "v1.1.1",
     "name": "Portable Flashing Package: v1.1.1 - InniClassic: now flashable via Innioasis Updater",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.1.1#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nThe project is now named **InniClassic** (still based on and credited to [JJ Launcher](https://github.com/ismileblue/y1_launcher) \u2014 see README). Same 1.1.1 build as before, no functional version bump for the rename itself.\n\n### \ud83c\udd95 Now installable as a full ROM\n`rom.zip` flashes directly via the [Innioasis Updater](https://www.innioasis.com/pages/download) \u2014 no ADB, no manual uninstall step. It ships the latest **Y1 Firmware 3.1.2** with InniClassic pre-installed as the system launcher. Just select the zip in the Updater and follow the prompts (the Updater expects this exact filename, so don't rename it after downloading).\n\nThe APK (`InniClassic-1.1.1.apk`) is still available too, for updating an existing JJ Launcher-based install via ADB \u2014 see the README's Method 2.\n\n### Also in this build\n- New **iPod Classic (Dark)** theme\n- iPod Classic is now the true first-launch default theme\n- Fixed Bluetooth A2DP `connect()` failing on some speakers (missing `BLUETOOTH_PRIVILEGED`/`WRITE_SECURE_SETTINGS`, now self-granted at startup)\n- New **Album Cover Tilt** setting to turn off the Now Playing 3D tilt\n- Fixed track titles sometimes showing their file extension (`.ogg`, `.wav`, etc.)\n- Music menu: split \"Artists\" into **Artists** (track artist) and **Album Artists** (album artist), matching real iPod Classic\n- Music Quiz restructured into 5 rounds of 8 questions, with round-complete and victory screens\n- A PC-side script ([`tools/build_library_cache.py`](https://github.com/FabianZettl/inniclassic/blob/master/tools/build_library_cache.py)) to pre-build the library scan cache for large libraries, so the device doesn't have to re-tag everything on next boot\n- Plus the two Reddit-reported fixes from the original 1.1.1 (invisible web server text, wheel active while locked) \u2014 see below\n\n### Fixed (original 1.1.1 fixes)\n- Wireless PC Upload (web server) status text was hardcoded white, invisible against the iPod Classic theme's white background. Same issue fixed on the Bluetooth/Wi-Fi/Brightness/Storage/Settings screen titles.\n- The wheel stayed active while the device was locked (screen off) and could still change the volume \u2014 the guard for this existed but lived in a method that never actually ran on this device; moved to where it's effective.\n\nFull changelog: [CHANGELOG.md](https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md)\n\n> [!WARNING]\n> Updating from an older APK install? Uninstall it first (`adb uninstall com.themoon.y1` or `adb shell pm uninstall --user 0 com.themoon.y1`) \u2014 see the README's Installation section. The ROM method doesn't need this.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"da64f8a7a5fad56e8084363a81f260fcc59e3fdc70fbbd247efa4d217671dce0\",\"size\":816897842,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"dc368b6052805fdca018abe77791c06e2a26632787796083333c94415540cf27\",\"size\":641802784,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"e41bd305eeddeb5e663a0d00cb2daa340d1e2cc947861a32de6e1b78e177ca63\",\"size\":576824794,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"0f216439102803d6ad08471a3e2aea333273d5d916d17f1a8eba09a1552eddcf\",\"size\":662777488,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-10T21:28:18Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"e0701bb9efa6bf9508240d4404ab74b7fb06d838d7101c42342bc72fa78297ea\",\"original_asset_sizes\":{\"InniClassic-1.1.1.apk\":8795490,\"rom.zip\":457032472},\"original_assets\":[\"InniClassic-1.1.1.apk\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"InniClassic-1.1.1.apk\":10,\"rom-linux.zip\":4,\"rom-macos.zip\":6,\"rom-windows.zip\":4,\"rom.zip\":10},\"generated_at\":\"2026-11-10T21:28:18Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.3\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.3\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":13} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.1.1#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n  <a href=\"https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nThe project is now named **InniClassic** (still based on and credited to [JJ Launcher](https://github.com/ismileblue/y1_launcher) \u2014 see README). Same 1.1.1 build as before, no functional version bump for the rename itself.\n\n### \ud83c\udd95 Now installable as a full ROM\n`rom.zip` flashes directly via the [Innioasis Updater](https://www.innioasis.com/pages/download) \u2014 no ADB, no manual uninstall step. It ships the latest **Y1 Firmware 3.1.2** with InniClassic pre-installed as the system launcher. Just select the zip in the Updater and follow the prompts (the Updater expects this exact filename, so don't rename it after downloading).\n\nThe APK (`InniClassic-1.1.1.apk`) is still available too, for updating an existing JJ Launcher-based install via ADB \u2014 see the README's Method 2.\n\n### Also in this build\n- New **iPod Classic (Dark)** theme\n- iPod Classic is now the true first-launch default theme\n- Fixed Bluetooth A2DP `connect()` failing on some speakers (missing `BLUETOOTH_PRIVILEGED`/`WRITE_SECURE_SETTINGS`, now self-granted at startup)\n- New **Album Cover Tilt** setting to turn off the Now Playing 3D tilt\n- Fixed track titles sometimes showing their file extension (`.ogg`, `.wav`, etc.)\n- Music menu: split \"Artists\" into **Artists** (track artist) and **Album Artists** (album artist), matching real iPod Classic\n- Music Quiz restructured into 5 rounds of 8 questions, with round-complete and victory screens\n- A PC-side script ([`tools/build_library_cache.py`](https://github.com/FabianZettl/inniclassic/blob/master/tools/build_library_cache.py)) to pre-build the library scan cache for large libraries, so the device doesn't have to re-tag everything on next boot\n- Plus the two Reddit-reported fixes from the original 1.1.1 (invisible web server text, wheel active while locked) \u2014 see below\n\n### Fixed (original 1.1.1 fixes)\n- Wireless PC Upload (web server) status text was hardcoded white, invisible against the iPod Classic theme's white background. Same issue fixed on the Bluetooth/Wi-Fi/Brightness/Storage/Settings screen titles.\n- The wheel stayed active while the device was locked (screen off) and could still change the volume \u2014 the guard for this existed but lived in a method that never actually ran on this device; moved to where it's effective.\n\nFull changelog: [CHANGELOG.md](https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md)\n\n> [!WARNING]\n> Updating from an older APK install? Uninstall it first (`adb uninstall com.themoon.y1` or `adb shell pm uninstall --user 0 com.themoon.y1`) \u2014 see the README's Installation section. The ROM method doesn't need this.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"98f7dab422dfaff4cc4a8339f5934cae91512d25336f8220785943ff9b92fcc8\",\"size\":816897842,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"8d78874fa2d14944619a63d72810d371be7d90df636747b116c995fa4ab5d418\",\"size\":641802784,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"5fd2c7e0b869e033427d97949d42da12b7792721e22ddb62cbed353da9dbfb96\",\"size\":576748637,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"db554ed0b15869d767c2dfc790130c9d8abdb3d04de68c01479bb389ce87c2b9\",\"size\":662777488,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-11T00:34:55Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"dcc0370bd987c98a9d939544ef3e1372d60a1af1e696c27e22b45b7b9c230255\",\"original_asset_sizes\":{\"InniClassic-1.1.1.apk\":8795490,\"rom.zip\":457032472},\"original_assets\":[\"InniClassic-1.1.1.apk\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"InniClassic-1.1.1.apk\":11,\"rom-linux-arm64.zip\":0,\"rom-linux.zip\":4,\"rom-macos.zip\":6,\"rom-windows.zip\":4,\"rom.zip\":10},\"generated_at\":\"2026-11-11T00:34:55Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.3\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.3\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":13} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:12Z",
@@ -944,50 +911,6 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706209922"
       },
       {
-        "id": 733012918,
-        "name": "rom-linux-arm64.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux-arm64.zip",
-        "size": 641802784,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:28:20Z",
-        "updated_at": "2026-11-10T21:29:02Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733012918"
-      },
-      {
-        "id": 733012968,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux.zip",
-        "size": 816897842,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:28:21Z",
-        "updated_at": "2026-11-10T21:29:03Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733012968"
-      },
-      {
-        "id": 733012963,
-        "name": "rom-macos.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-macos.zip",
-        "size": 576824794,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:28:21Z",
-        "updated_at": "2026-11-10T21:28:51Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733012963"
-      },
-      {
-        "id": 733012964,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-windows.zip",
-        "size": 662777488,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:28:21Z",
-        "updated_at": "2026-11-10T21:28:50Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733012964"
-      },
-      {
         "id": 733012967,
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom.zip",
@@ -999,15 +922,59 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733012967"
       },
       {
-        "id": 733014291,
+        "id": 733526902,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/stats.txt",
-        "size": 2163,
+        "size": 2224,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T21:28:40Z",
-        "updated_at": "2026-11-10T21:28:40Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733014291"
+        "created_at": "2026-11-11T00:35:00Z",
+        "updated_at": "2026-11-11T00:35:00Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733526902"
+      },
+      {
+        "id": 733526903,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux-arm64.zip",
+        "size": 641802784,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-11T00:35:00Z",
+        "updated_at": "2026-11-11T00:35:51Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733526903"
+      },
+      {
+        "id": 733526905,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux.zip",
+        "size": 816897842,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-11T00:35:00Z",
+        "updated_at": "2026-11-11T00:35:49Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733526905"
+      },
+      {
+        "id": 733526906,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-windows.zip",
+        "size": 662777488,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-11T00:35:00Z",
+        "updated_at": "2026-11-11T00:35:45Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733526906"
+      },
+      {
+        "id": 733526907,
+        "name": "rom-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-macos.zip",
+        "size": 576748637,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-11T00:35:00Z",
+        "updated_at": "2026-11-11T00:35:41Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733526907"
       }
     ]
   }
