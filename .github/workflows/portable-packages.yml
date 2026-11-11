@@ -113,16 +113,18 @@ jobs:
             ${{ inputs.refresh && '--refresh' || '' }} \
             ${{ (github.event_name == 'workflow_dispatch' && inputs.strict) && '--strict' || '' }}
 
-      # A dispatch needs write access to every mirror repository, which the
-      # workflow's own token does not have. MIRROR_TOKEN is the same secret the
-      # packager uses; without it the run still reports the gaps.
+      # A dispatch needs write access to every mirror repository, which this
+      # repository's own token does not have: a repository_dispatch from it is
+      # refused with "Resource not accessible by integration". MIRROR_TOKEN is
+      # the secret the packager uses; without it the run reports the gaps and
+      # the packager's watcher still picks them up within 15 minutes.
       - name: Ask the mirrors that are behind to rebuild
         if: ${{ github.event_name != 'workflow_dispatch' || inputs.dispatch }}
         env:
-          GH_TOKEN: ${{ secrets.MIRROR_TOKEN || secrets.PORTABLE_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.MIRROR_TOKEN || secrets.PORTABLE_TOKEN }}
         run: |
           if [ -z "$GH_TOKEN" ]; then
-            echo "::warning::No MIRROR_TOKEN or PORTABLE_TOKEN secret: reporting the gaps only."
+            echo "::warning::No MIRROR_TOKEN secret: the gaps are reported above and the packager's watcher will rebuild them within 15 minutes. Add MIRROR_TOKEN to dispatch immediately."
             exit 0
           fi
           python scripts/portable_audit.py \

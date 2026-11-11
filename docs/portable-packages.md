@@ -72,6 +72,16 @@ A ZIP that is not a firmware package is ignored: `sources`, `legal-info`,
 checksums and the mirror's own `-windows.zip`-style names. A release with no
 firmware ZIP (an APK-only or notes-only release) is not a gap.
 
+## The dispatch token
+
+Asking a mirror to rebuild is a `repository_dispatch` to that mirror, and the
+workflow's own token cannot write there: GitHub answers *Resource not
+accessible by integration*. Add a repository secret named `MIRROR_TOKEN` — a
+token with `contents: write` on the `y1-community` mirrors, the same one the
+packager uses — and the half-hourly run dispatches immediately. Without it the
+run reports what is behind and the packager's own 15-minute watcher does the
+work; nothing is lost, only delayed.
+
 ## Running it locally
 
 ```bash
