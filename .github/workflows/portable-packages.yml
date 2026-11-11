@@ -1,0 +1,153 @@
+name: Portable packages for every listed firmware
+
+# Enrolling a firmware is meant to be one line in slidia_manifest.xml. This
+# workflow keeps the two halves of that promise:
+#
+#   1. It writes the `portable_zips` attribute the row is missing, so the site
+#      knows which mirror repackages it and can offer the build for the
+#      reader's operating system instead of the project's own rom.zip.
+#   2. It compares every listed project's releases with its mirror's
+#      index.json and asks that mirror to rebuild when a release, a ZIP inside
+#      a release, a platform package, or the flash-tool seed is missing.
+#
+# The mirrors listen for `repository_dispatch` of `firmware-release` and
+# `portable-seed`, so a new arrival is packaged now rather than at the next
+# scheduled pass. When no dispatch token is configured the audit still reports
+# exactly what is behind, and the central packager watcher picks it up on its
+# own schedule.
+
+on:
+  push:
+    paths:
+      - slidia_manifest.xml
+      - scripts/portable_manifest.py
+      - scripts/portable_audit.py
+      - .github/workflows/portable-packages.yml
+  # A project or the seed repository can ask for the check immediately.
+  repository_dispatch:
+    types: [firmware-release, portable-seed]
+  workflow_dispatch:
+    inputs:
+      dispatch:
+        description: "Ask behind mirrors to rebuild now"
+        type: boolean
+        default: true
+      refresh:
+        description: "Read the GitHub API instead of the committed feeds"
+        type: boolean
+        default: false
+      strict:
+        description: "Fail when any firmware is still behind"
+        type: boolean
+        default: false
+      only:
+        description: "Optional comma-separated source repositories"
+        type: string
+        default: ""
+  # Every half hour: a new release, an added asset or a fresh flash tool is
+  # packaged without anyone running anything.
+  schedule:
+    - cron: "*/30 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: portable-packages
+  cancel-in-progress: false
+
+jobs:
+  packages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The commit below pushes back to main, so the checkout must not be
+          # shallow or detached by a tag.
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Name the portable mirror on every new firmware row
+        id: manifest
+        run: |
+          python scripts/portable_manifest.py --apply --json portable-manifest.json
+          python - <<'PY'
+          import json, os
+          data = json.load(open("portable-manifest.json", encoding="utf-8"))
+          rows = ", ".join(sorted({row["repo"] for row in data["rows"]}))
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
+              handle.write("changed=%s\n" % ("true" if data["changed"] else "false"))
+              handle.write("rows=%s\n" % rows.replace("\n", " "))
+          PY
+
+      - name: Commit the rows that were only half written
+        if: steps.manifest.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add slidia_manifest.xml
+          git commit -m "feat(manifest): name the portable mirror for ${{ steps.manifest.outputs.rows }}"
+          # The hourly generators commit to the same branch, so retry the push
+          # on a moved ref instead of failing the run.
+          for attempt in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            git pull --rebase=merges --autostash origin main
+          done
+          echo "::error::could not push the manifest update after three attempts"
+          exit 1
+
+      - name: Audit portable packages against the sources
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/portable_audit.py \
+            --report portable-audit.json \
+            --summary "$GITHUB_STEP_SUMMARY" \
+            --only "${{ inputs.only }}" \
+            ${{ inputs.refresh && '--refresh' || '' }} \
+            ${{ (github.event_name == 'workflow_dispatch' && inputs.strict) && '--strict' || '' }}
+
+      # A dispatch needs write access to every mirror repository, which the
+      # workflow's own token does not have. MIRROR_TOKEN is the same secret the
+      # packager uses; without it the run still reports the gaps.
+      - name: Ask the mirrors that are behind to rebuild
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.dispatch }}
+        env:
+          GH_TOKEN: ${{ secrets.MIRROR_TOKEN || secrets.PORTABLE_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::warning::No MIRROR_TOKEN or PORTABLE_TOKEN secret: reporting the gaps only."
+            exit 0
+          fi
+          python scripts/portable_audit.py \
+            --report portable-audit.json \
+            --summary "$GITHUB_STEP_SUMMARY" \
+            --only "${{ inputs.only }}" \
+            --dispatch \
+            ${{ inputs.refresh && '--refresh' || '' }}
+          python - <<'PY'
+          import json
+          report = json.load(open("portable-audit.json", encoding="utf-8"))
+          log = report.get("dispatched") or []
+          for entry in log:
+              if entry.get("result") != "dispatched":
+                  print("::warning::%s did not accept the %s dispatch: %s" % (
+                      entry["mirror"], entry["event"],
+                      entry.get("error") or entry["result"]))
+          if not log:
+              print("Every mirror was already current.")
+          PY
+
+      - name: Keep the audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portable-audit
+          path: portable-audit.json
+          if-no-files-found: warn
