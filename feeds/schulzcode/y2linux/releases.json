@@ -17,7 +17,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/bootimg.img.gz",
         "size": 7539486,
-        "download_count": 27,
+        "download_count": 37,
         "content_type": "application/gzip",
         "created_at": "2026-11-11T18:03:50Z",
         "updated_at": "2026-11-11T18:03:57Z",
@@ -28,7 +28,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/manifest.json",
         "size": 4240,
-        "download_count": 58,
+        "download_count": 69,
         "content_type": "application/json",
         "created_at": "2026-11-11T18:03:50Z",
         "updated_at": "2026-11-11T18:03:51Z",
@@ -39,7 +39,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/manifest.sig",
         "size": 64,
-        "download_count": 57,
+        "download_count": 68,
         "content_type": "application/pgp-signature",
         "created_at": "2026-11-11T18:03:51Z",
         "updated_at": "2026-11-11T18:03:52Z",
@@ -50,7 +50,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/recovery.img.gz",
         "size": 7539501,
-        "download_count": 27,
+        "download_count": 37,
         "content_type": "application/gzip",
         "created_at": "2026-11-11T18:03:51Z",
         "updated_at": "2026-11-11T18:03:58Z",
@@ -61,7 +61,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/rootfs.ext4.gz",
         "size": 51670872,
-        "download_count": 27,
+        "download_count": 37,
         "content_type": "application/gzip",
         "created_at": "2026-11-11T18:03:53Z",
         "updated_at": "2026-11-11T18:04:15Z",
@@ -83,7 +83,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.24-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install.zip",
         "size": 67744720,
-        "download_count": 23,
+        "download_count": 28,
         "content_type": "application/zip",
         "created_at": "2026-11-11T18:03:50Z",
         "updated_at": "2026-11-11T18:04:22Z",
@@ -102,7 +102,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 23
+    "downloads": 28
   },
   {
     "id": 440939176,
@@ -206,8 +206,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/733032544"
       }
     ],
-    "mirror_downloads": 15,
-    "downloads": 73
+    "mirror_downloads": 18,
+    "downloads": 76
   },
   {
     "id": 440552517,
@@ -311,8 +311,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/731952018"
       }
     ],
-    "mirror_downloads": 19,
-    "downloads": 61
+    "mirror_downloads": 22,
+    "downloads": 64
   },
   {
     "id": 440434491,
@@ -427,8 +427,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/731641397"
       }
     ],
-    "mirror_downloads": 19,
-    "downloads": 27
+    "mirror_downloads": 22,
+    "downloads": 30
   },
   {
     "id": 439788416,
@@ -532,8 +532,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/729463069"
       }
     ],
-    "mirror_downloads": 23,
-    "downloads": 54
+    "mirror_downloads": 26,
+    "downloads": 57
   },
   {
     "id": 438576249,
@@ -619,7 +619,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.19-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install.zip",
         "size": 67734753,
-        "download_count": 55,
+        "download_count": 56,
         "content_type": "application/zip",
         "created_at": "2026-11-08T22:49:34Z",
         "updated_at": "2026-11-08T22:50:03Z",
@@ -637,8 +637,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/725447739"
       }
     ],
-    "mirror_downloads": 29,
-    "downloads": 84
+    "mirror_downloads": 32,
+    "downloads": 88
   },
   {
     "id": 438512662,
@@ -742,8 +742,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/725157334"
       }
     ],
-    "mirror_downloads": 28,
-    "downloads": 46
+    "mirror_downloads": 31,
+    "downloads": 49
   },
   {
     "id": 438306009,
@@ -847,8 +847,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/724214132"
       }
     ],
-    "mirror_downloads": 28,
-    "downloads": 51
+    "mirror_downloads": 31,
+    "downloads": 54
   },
   {
     "id": 436747393,
@@ -963,8 +963,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/717812207"
       }
     ],
-    "mirror_downloads": 45,
-    "downloads": 145
+    "mirror_downloads": 48,
+    "downloads": 148
   },
   {
     "id": 435462665,
@@ -1068,8 +1068,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/714087378"
       }
     ],
-    "mirror_downloads": 33,
-    "downloads": 84
+    "mirror_downloads": 36,
+    "downloads": 87
   },
   {
     "id": 435340687,
@@ -1173,8 +1173,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/713766497"
       }
     ],
-    "mirror_downloads": 36,
-    "downloads": 53
+    "mirror_downloads": 39,
+    "downloads": 56
   },
   {
     "id": 434509700,
@@ -1289,8 +1289,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/711110435"
       }
     ],
-    "mirror_downloads": 40,
-    "downloads": 64
+    "mirror_downloads": 43,
+    "downloads": 67
   },
   {
     "id": 433285377,
@@ -1405,8 +1405,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/707316992"
       }
     ],
-    "mirror_downloads": 53,
-    "downloads": 96
+    "mirror_downloads": 56,
+    "downloads": 99
   },
   {
     "id": 430942355,
@@ -1521,8 +1521,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/699902186"
       }
     ],
-    "mirror_downloads": 61,
-    "downloads": 146
+    "mirror_downloads": 64,
+    "downloads": 149
   },
   {
     "id": 430793839,
@@ -1626,8 +1626,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/699244013"
       }
     ],
-    "mirror_downloads": 50,
-    "downloads": 75
+    "mirror_downloads": 53,
+    "downloads": 78
   },
   {
     "id": 430776362,
@@ -1731,8 +1731,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/699169170"
       }
     ],
-    "mirror_downloads": 51,
-    "downloads": 71
+    "mirror_downloads": 54,
+    "downloads": 74
   },
   {
     "id": 430526388,
@@ -1836,8 +1836,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/698092244"
       }
     ],
-    "mirror_downloads": 53,
-    "downloads": 78
+    "mirror_downloads": 56,
+    "downloads": 81
   },
   {
     "id": 430243427,
@@ -1941,8 +1941,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/696735560"
       }
     ],
-    "mirror_downloads": 46,
-    "downloads": 71
+    "mirror_downloads": 49,
+    "downloads": 74
   },
   {
     "id": 430191191,
@@ -2046,8 +2046,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/696503410"
       }
     ],
-    "mirror_downloads": 46,
-    "downloads": 65
+    "mirror_downloads": 49,
+    "downloads": 68
   },
   {
     "id": 430175913,
@@ -2151,8 +2151,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/696439505"
       }
     ],
-    "mirror_downloads": 46,
-    "downloads": 67
+    "mirror_downloads": 49,
+    "downloads": 70
   },
   {
     "id": 430134707,
@@ -2256,8 +2256,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/696258713"
       }
     ],
-    "mirror_downloads": 47,
-    "downloads": 66
+    "mirror_downloads": 50,
+    "downloads": 69
   },
   {
     "id": 430123175,
@@ -2361,8 +2361,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/696204203"
       }
     ],
-    "mirror_downloads": 44,
-    "downloads": 61
+    "mirror_downloads": 47,
+    "downloads": 64
   },
   {
     "id": 430103694,
@@ -2466,8 +2466,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/696114880"
       }
     ],
-    "mirror_downloads": 43,
-    "downloads": 62
+    "mirror_downloads": 46,
+    "downloads": 65
   },
   {
     "id": 430094670,
@@ -2571,8 +2571,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/696074757"
       }
     ],
-    "mirror_downloads": 44,
-    "downloads": 61
+    "mirror_downloads": 47,
+    "downloads": 64
   },
   {
     "id": 430057135,
@@ -2676,8 +2676,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/695910813"
       }
     ],
-    "mirror_downloads": 44,
-    "downloads": 63
+    "mirror_downloads": 47,
+    "downloads": 66
   },
   {
     "id": 430011040,
@@ -2781,8 +2781,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/695706136"
       }
     ],
-    "mirror_downloads": 44,
-    "downloads": 62
+    "mirror_downloads": 47,
+    "downloads": 65
   },
   {
     "id": 429962293,
@@ -2886,8 +2886,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/695493706"
       }
     ],
-    "mirror_downloads": 44,
-    "downloads": 64
+    "mirror_downloads": 47,
+    "downloads": 67
   },
   {
     "id": 429629049,
@@ -2991,8 +2991,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/693934511"
       }
     ],
-    "mirror_downloads": 43,
-    "downloads": 68
+    "mirror_downloads": 46,
+    "downloads": 71
   },
   {
     "id": 429560023,
@@ -3096,8 +3096,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/693654455"
       }
     ],
-    "mirror_downloads": 42,
-    "downloads": 62
+    "mirror_downloads": 45,
+    "downloads": 65
   },
   {
     "id": 429383025,
@@ -3212,8 +3212,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/693091164"
       }
     ],
-    "mirror_downloads": 43,
-    "downloads": 64
+    "mirror_downloads": 46,
+    "downloads": 67
   },
   {
     "id": 426946921,
@@ -3317,8 +3317,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/685696172"
       }
     ],
-    "mirror_downloads": 43,
-    "downloads": 83
+    "mirror_downloads": 46,
+    "downloads": 86
   },
   {
     "id": 426892004,
@@ -3422,8 +3422,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/685539883"
       }
     ],
-    "mirror_downloads": 43,
-    "downloads": 61
+    "mirror_downloads": 46,
+    "downloads": 64
   },
   {
     "id": 425613384,
@@ -3527,8 +3527,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/681942709"
       }
     ],
-    "mirror_downloads": 41,
-    "downloads": 77
+    "mirror_downloads": 44,
+    "downloads": 80
   },
   {
     "id": 424863848,
@@ -3632,8 +3632,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/679770052"
       }
     ],
-    "mirror_downloads": 41,
-    "downloads": 61
+    "mirror_downloads": 44,
+    "downloads": 64
   },
   {
     "id": 424689874,
@@ -3737,8 +3737,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/679269159"
       }
     ],
-    "mirror_downloads": 41,
-    "downloads": 57
+    "mirror_downloads": 44,
+    "downloads": 60
   },
   {
     "id": 423483940,
@@ -3842,8 +3842,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/675375557"
       }
     ],
-    "mirror_downloads": 41,
-    "downloads": 62
+    "mirror_downloads": 44,
+    "downloads": 65
   },
   {
     "id": 423459149,
@@ -3947,8 +3947,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/675276719"
       }
     ],
-    "mirror_downloads": 40,
-    "downloads": 55
+    "mirror_downloads": 43,
+    "downloads": 58
   },
   {
     "id": 423404095,
@@ -4052,8 +4052,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/675050707"
       }
     ],
-    "mirror_downloads": 38,
-    "downloads": 54
+    "mirror_downloads": 41,
+    "downloads": 57
   },
   {
     "id": 423041070,
@@ -4157,8 +4157,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/673574041"
       }
     ],
-    "mirror_downloads": 41,
-    "downloads": 62
+    "mirror_downloads": 44,
+    "downloads": 65
   },
   {
     "id": 422929828,
@@ -4262,8 +4262,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/673080425"
       }
     ],
-    "mirror_downloads": 41,
-    "downloads": 58
+    "mirror_downloads": 44,
+    "downloads": 61
   },
   {
     "id": 422910536,
@@ -4367,8 +4367,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/672999773"
       }
     ],
-    "mirror_downloads": 44,
-    "downloads": 62
+    "mirror_downloads": 47,
+    "downloads": 65
   },
   {
     "id": 422687147,
@@ -4472,8 +4472,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/672077976"
       }
     ],
-    "mirror_downloads": 47,
-    "downloads": 65
+    "mirror_downloads": 50,
+    "downloads": 68
   },
   {
     "id": 422672413,
@@ -4577,8 +4577,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/672008968"
       }
     ],
-    "mirror_downloads": 43,
-    "downloads": 60
+    "mirror_downloads": 46,
+    "downloads": 63
   },
   {
     "id": 422393428,
@@ -4682,8 +4682,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/670702990"
       }
     ],
-    "mirror_downloads": 43,
-    "downloads": 64
+    "mirror_downloads": 46,
+    "downloads": 67
   },
   {
     "id": 422176656,
@@ -4787,8 +4787,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/670001142"
       }
     ],
-    "mirror_downloads": 43,
-    "downloads": 67
+    "mirror_downloads": 46,
+    "downloads": 70
   },
   {
     "id": 422140803,
@@ -4892,8 +4892,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/669901498"
       }
     ],
-    "mirror_downloads": 44,
-    "downloads": 60
+    "mirror_downloads": 47,
+    "downloads": 63
   },
   {
     "id": 422000868,
@@ -4997,8 +4997,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/669529704"
       }
     ],
-    "mirror_downloads": 44,
-    "downloads": 61
+    "mirror_downloads": 47,
+    "downloads": 64
   },
   {
     "id": 421323857,
@@ -5102,8 +5102,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/667477332"
       }
     ],
-    "mirror_downloads": 45,
-    "downloads": 70
+    "mirror_downloads": 48,
+    "downloads": 73
   },
   {
     "id": 421274273,
@@ -5207,8 +5207,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/667300352"
       }
     ],
-    "mirror_downloads": 43,
-    "downloads": 62
+    "mirror_downloads": 46,
+    "downloads": 65
   },
   {
     "id": 421236416,
@@ -5312,8 +5312,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/667182148"
       }
     ],
-    "mirror_downloads": 44,
-    "downloads": 62
+    "mirror_downloads": 47,
+    "downloads": 65
   },
   {
     "id": 421110687,
@@ -5417,8 +5417,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/666843011"
       }
     ],
-    "mirror_downloads": 45,
-    "downloads": 68
+    "mirror_downloads": 48,
+    "downloads": 71
   },
   {
     "id": 420967075,
@@ -5555,8 +5555,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/666460208"
       }
     ],
-    "mirror_downloads": 44,
-    "downloads": 66
+    "mirror_downloads": 47,
+    "downloads": 69
   },
   {
     "id": 420102331,
@@ -5660,8 +5660,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/663924168"
       }
     ],
-    "mirror_downloads": 45,
-    "downloads": 71
+    "mirror_downloads": 48,
+    "downloads": 74
   },
   {
     "id": 420043102,
@@ -5765,8 +5765,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/663755490"
       }
     ],
-    "mirror_downloads": 44,
-    "downloads": 71
+    "mirror_downloads": 47,
+    "downloads": 74
   },
   {
     "id": 419321403,
@@ -5881,8 +5881,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/661855791"
       }
     ],
-    "mirror_downloads": 39,
-    "downloads": 60
+    "mirror_downloads": 42,
+    "downloads": 63
   },
   {
     "id": 418829918,
@@ -5986,8 +5986,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/660372719"
       }
     ],
-    "mirror_downloads": 39,
-    "downloads": 60
+    "mirror_downloads": 42,
+    "downloads": 63
   },
   {
     "id": 418792978,
@@ -6091,8 +6091,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/660280708"
       }
     ],
-    "mirror_downloads": 38,
-    "downloads": 56
+    "mirror_downloads": 41,
+    "downloads": 59
   },
   {
     "id": 418747435,
@@ -6196,8 +6196,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/660175694"
       }
     ],
-    "mirror_downloads": 39,
-    "downloads": 58
+    "mirror_downloads": 42,
+    "downloads": 61
   },
   {
     "id": 418594086,
@@ -6301,8 +6301,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/659785995"
       }
     ],
-    "mirror_downloads": 42,
-    "downloads": 58
+    "mirror_downloads": 45,
+    "downloads": 61
   },
   {
     "id": 418166865,
@@ -6406,8 +6406,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/658742136"
       }
     ],
-    "mirror_downloads": 42,
-    "downloads": 64
+    "mirror_downloads": 45,
+    "downloads": 67
   },
   {
     "id": 417810877,
@@ -6511,8 +6511,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/657586984"
       }
     ],
-    "mirror_downloads": 46,
-    "downloads": 67
+    "mirror_downloads": 49,
+    "downloads": 70
   },
   {
     "id": 417486806,
@@ -6616,8 +6616,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/656741879"
       }
     ],
-    "mirror_downloads": 46,
-    "downloads": 128
+    "mirror_downloads": 49,
+    "downloads": 131
   },
   {
     "id": 417056449,
@@ -6721,8 +6721,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/655675450"
       }
     ],
-    "mirror_downloads": 46,
-    "downloads": 64
+    "mirror_downloads": 49,
+    "downloads": 67
   },
   {
     "id": 416667037,
@@ -6826,8 +6826,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/654328305"
       }
     ],
-    "mirror_downloads": 47,
-    "downloads": 65
+    "mirror_downloads": 50,
+    "downloads": 68
   },
   {
     "id": 416623239,
@@ -6931,8 +6931,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/654165746"
       }
     ],
-    "mirror_downloads": 49,
-    "downloads": 67
+    "mirror_downloads": 52,
+    "downloads": 70
   },
   {
     "id": 416577475,
@@ -7036,8 +7036,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/653976768"
       }
     ],
-    "mirror_downloads": 50,
-    "downloads": 67
+    "mirror_downloads": 44,
+    "downloads": 61
   },
   {
     "id": 416495995,
@@ -7141,8 +7141,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/653669481"
       }
     ],
-    "mirror_downloads": 47,
-    "downloads": 64
+    "mirror_downloads": 41,
+    "downloads": 58
   },
   {
     "id": 416483734,
@@ -7162,7 +7162,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/bootimg.img.gz",
         "size": 7522110,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-18T14:02:41Z",
         "updated_at": "2026-10-18T14:02:48Z",
@@ -7173,7 +7173,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/manifest.json",
         "size": 4227,
-        "download_count": 20,
+        "download_count": 21,
         "content_type": "application/json",
         "created_at": "2026-10-18T14:02:41Z",
         "updated_at": "2026-10-18T14:02:42Z",
@@ -7184,7 +7184,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/manifest.sig",
         "size": 64,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-18T14:02:42Z",
         "updated_at": "2026-10-18T14:02:42Z",
@@ -7195,7 +7195,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/recovery.img.gz",
         "size": 7522133,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-18T14:02:42Z",
         "updated_at": "2026-10-18T14:02:49Z",
@@ -7206,7 +7206,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/rootfs.ext4.gz",
         "size": 41844042,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-18T14:02:43Z",
         "updated_at": "2026-10-18T14:03:07Z",
@@ -7217,7 +7217,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/SHA256SUMS",
         "size": 939,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-18T14:02:41Z",
         "updated_at": "2026-10-18T14:02:42Z",
@@ -7228,7 +7228,7 @@
         "name": "Y2Linux-1.0.0-beta.8.3-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-first-install.zip",
         "size": 57842641,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/zip",
         "created_at": "2026-10-18T14:02:41Z",
         "updated_at": "2026-10-18T14:03:08Z",
@@ -7239,15 +7239,15 @@
         "name": "Y2Linux-1.0.0-beta.8.3-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-sources-buildroot-legal-info.tar",
         "size": 2867200,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-18T14:02:41Z",
         "updated_at": "2026-10-18T14:02:44Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/653620661"
       }
     ],
-    "mirror_downloads": 47,
-    "downloads": 65
+    "mirror_downloads": 41,
+    "downloads": 60
   },
   {
     "id": 416469947,
@@ -7267,7 +7267,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/bootimg.img.gz",
         "size": 7519121,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/gzip",
         "created_at": "2026-10-18T13:35:18Z",
         "updated_at": "2026-10-18T13:35:24Z",
@@ -7278,7 +7278,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/manifest.json",
         "size": 4225,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/json",
         "created_at": "2026-10-18T13:35:18Z",
         "updated_at": "2026-10-18T13:35:19Z",
@@ -7289,7 +7289,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/manifest.sig",
         "size": 64,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-18T13:35:19Z",
         "updated_at": "2026-10-18T13:35:20Z",
@@ -7300,7 +7300,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/recovery.img.gz",
         "size": 7519130,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/gzip",
         "created_at": "2026-10-18T13:35:20Z",
         "updated_at": "2026-10-18T13:35:27Z",
@@ -7311,7 +7311,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/rootfs.ext4.gz",
         "size": 41826989,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/gzip",
         "created_at": "2026-10-18T13:35:21Z",
         "updated_at": "2026-10-18T13:35:43Z",
@@ -7322,7 +7322,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/SHA256SUMS",
         "size": 939,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-18T13:35:18Z",
         "updated_at": "2026-10-18T13:35:19Z",
@@ -7333,7 +7333,7 @@
         "name": "Y2Linux-1.0.0-beta.8.2-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-first-install.zip",
         "size": 57834676,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-10-18T13:35:18Z",
         "updated_at": "2026-10-18T13:35:44Z",
@@ -7344,15 +7344,15 @@
         "name": "Y2Linux-1.0.0-beta.8.2-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-sources-buildroot-legal-info.tar",
         "size": 2867200,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-18T13:35:18Z",
         "updated_at": "2026-10-18T13:35:20Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/653567690"
       }
     ],
-    "mirror_downloads": 48,
-    "downloads": 65
+    "mirror_downloads": 42,
+    "downloads": 60
   },
   {
     "id": 416445254,
@@ -7372,7 +7372,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/bootimg.img.gz",
         "size": 7513212,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-18T12:44:57Z",
         "updated_at": "2026-10-18T12:45:03Z",
@@ -7383,7 +7383,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/manifest.json",
         "size": 1397,
-        "download_count": 20,
+        "download_count": 21,
         "content_type": "application/json",
         "created_at": "2026-10-18T12:44:57Z",
         "updated_at": "2026-10-18T12:44:57Z",
@@ -7394,7 +7394,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/manifest.sig",
         "size": 64,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-18T12:44:58Z",
         "updated_at": "2026-10-18T12:44:58Z",
@@ -7405,7 +7405,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/recovery.img.gz",
         "size": 7513218,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/gzip",
         "created_at": "2026-10-18T12:44:58Z",
         "updated_at": "2026-10-18T12:45:06Z",
@@ -7416,7 +7416,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/rootfs.ext4.gz",
         "size": 41624239,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-18T12:44:59Z",
         "updated_at": "2026-10-18T12:45:22Z",
@@ -7427,7 +7427,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/SHA256SUMS",
         "size": 939,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-18T12:44:57Z",
         "updated_at": "2026-10-18T12:44:57Z",
@@ -7438,7 +7438,7 @@
         "name": "Y2Linux-1.0.0-beta.8.1-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-first-install.zip",
         "size": 57818670,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-10-18T12:44:57Z",
         "updated_at": "2026-10-18T12:45:22Z",
@@ -7449,15 +7449,15 @@
         "name": "Y2Linux-1.0.0-beta.8.1-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-sources-buildroot-legal-info.tar",
         "size": 2856960,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-18T12:44:57Z",
         "updated_at": "2026-10-18T12:44:59Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/653473812"
       }
     ],
-    "mirror_downloads": 47,
-    "downloads": 64
+    "mirror_downloads": 41,
+    "downloads": 59
   },
   {
     "id": 416385177,
@@ -7477,7 +7477,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/bootimg.img.gz",
         "size": 7509162,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/gzip",
         "created_at": "2026-10-18T10:33:55Z",
         "updated_at": "2026-10-18T10:34:00Z",
@@ -7488,7 +7488,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/manifest.json",
         "size": 1397,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/json",
         "created_at": "2026-10-18T10:33:56Z",
         "updated_at": "2026-10-18T10:33:56Z",
@@ -7499,7 +7499,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/manifest.sig",
         "size": 64,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-18T10:33:57Z",
         "updated_at": "2026-10-18T10:33:58Z",
@@ -7510,7 +7510,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/recovery.img.gz",
         "size": 7509168,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/gzip",
         "created_at": "2026-10-18T10:33:58Z",
         "updated_at": "2026-10-18T10:34:05Z",
@@ -7521,7 +7521,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/rootfs.ext4.gz",
         "size": 41624008,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/gzip",
         "created_at": "2026-10-18T10:33:59Z",
         "updated_at": "2026-10-18T10:34:24Z",
@@ -7532,7 +7532,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/SHA256SUMS",
         "size": 939,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-18T10:33:55Z",
         "updated_at": "2026-10-18T10:33:55Z",
@@ -7543,7 +7543,7 @@
         "name": "Y2Linux-1.0.0-beta.8.0-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-first-install.zip",
         "size": 57809446,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-10-18T10:33:55Z",
         "updated_at": "2026-10-18T10:34:32Z",
@@ -7554,7 +7554,7 @@
         "name": "Y2Linux-1.0.0-beta.8.0-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-sources-buildroot-legal-info.tar",
         "size": 2856960,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-18T10:33:55Z",
         "updated_at": "2026-10-18T10:33:58Z",
@@ -7565,15 +7565,15 @@
         "name": "Y2Linux-sources-toolchain-f7cda4c7d213.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/Y2Linux-sources-toolchain-f7cda4c7d213.tar",
         "size": 142807040,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/x-tar",
         "created_at": "2026-10-18T10:33:55Z",
         "updated_at": "2026-10-18T10:34:52Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/653209565"
       }
     ],
-    "mirror_downloads": 47,
-    "downloads": 64
+    "mirror_downloads": 41,
+    "downloads": 59
   },
   {
     "id": 415944461,
@@ -7593,7 +7593,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/bootimg.img.gz",
         "size": 7509150,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/gzip",
         "created_at": "2026-10-17T17:02:43Z",
         "updated_at": "2026-10-17T17:02:51Z",
@@ -7604,7 +7604,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/manifest.json",
         "size": 1400,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/json",
         "created_at": "2026-10-17T17:02:43Z",
         "updated_at": "2026-10-17T17:02:43Z",
@@ -7615,7 +7615,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/manifest.sig",
         "size": 64,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-17T17:02:44Z",
         "updated_at": "2026-10-17T17:02:44Z",
@@ -7626,7 +7626,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/recovery.img.gz",
         "size": 7509174,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/gzip",
         "created_at": "2026-10-17T17:02:44Z",
         "updated_at": "2026-10-17T17:02:48Z",
@@ -7637,7 +7637,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/rootfs.ext4.gz",
         "size": 41597396,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/gzip",
         "created_at": "2026-10-17T17:02:44Z",
         "updated_at": "2026-10-17T17:03:02Z",
@@ -7648,7 +7648,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/SHA256SUMS",
         "size": 832,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-17T17:02:43Z",
         "updated_at": "2026-10-17T17:02:43Z",
@@ -7659,7 +7659,7 @@
         "name": "Y2Linux-1.0.0-beta.7.11-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/Y2Linux-1.0.0-beta.7.11-first-install.zip",
         "size": 57783491,
-        "download_count": 20,
+        "download_count": 21,
         "content_type": "application/zip",
         "created_at": "2026-10-17T17:02:43Z",
         "updated_at": "2026-10-17T17:03:09Z",
@@ -7670,15 +7670,15 @@
         "name": "Y2Linux-1.0.0-beta.7.11-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/Y2Linux-1.0.0-beta.7.11-sources-buildroot-legal-info.tar",
         "size": 2856960,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-17T17:02:43Z",
         "updated_at": "2026-10-17T17:02:45Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/651043566"
       }
     ],
-    "mirror_downloads": 47,
-    "downloads": 67
+    "mirror_downloads": 41,
+    "downloads": 62
   },
   {
     "id": 415435103,
@@ -7698,7 +7698,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/bootimg.img.gz",
         "size": 7507077,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T22:36:12Z",
         "updated_at": "2026-10-16T22:36:19Z",
@@ -7709,7 +7709,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/manifest.json",
         "size": 1400,
-        "download_count": 22,
+        "download_count": 23,
         "content_type": "application/json",
         "created_at": "2026-10-16T22:36:12Z",
         "updated_at": "2026-10-16T22:36:12Z",
@@ -7720,7 +7720,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/manifest.sig",
         "size": 64,
-        "download_count": 22,
+        "download_count": 23,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-16T22:36:13Z",
         "updated_at": "2026-10-16T22:36:13Z",
@@ -7731,7 +7731,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/recovery.img.gz",
         "size": 7507093,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T22:36:13Z",
         "updated_at": "2026-10-16T22:36:19Z",
@@ -7742,7 +7742,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/rootfs.ext4.gz",
         "size": 41595986,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T22:36:14Z",
         "updated_at": "2026-10-16T22:36:34Z",
@@ -7753,7 +7753,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/SHA256SUMS",
         "size": 832,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-16T22:36:12Z",
         "updated_at": "2026-10-16T22:36:12Z",
@@ -7764,7 +7764,7 @@
         "name": "Y2Linux-1.0.0-beta.7.10-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/Y2Linux-1.0.0-beta.7.10-first-install.zip",
         "size": 57780565,
-        "download_count": 21,
+        "download_count": 22,
         "content_type": "application/zip",
         "created_at": "2026-10-16T22:36:12Z",
         "updated_at": "2026-10-16T22:36:39Z",
@@ -7775,15 +7775,15 @@
         "name": "Y2Linux-1.0.0-beta.7.10-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/Y2Linux-1.0.0-beta.7.10-sources-buildroot-legal-info.tar",
         "size": 2856960,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/x-tar",
         "created_at": "2026-10-16T22:36:12Z",
         "updated_at": "2026-10-16T22:36:16Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/648828621"
       }
     ],
-    "mirror_downloads": 52,
-    "downloads": 73
+    "mirror_downloads": 46,
+    "downloads": 68
   },
   {
     "id": 415416595,
@@ -7803,7 +7803,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/bootimg.img.gz",
         "size": 7507447,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T22:02:14Z",
         "updated_at": "2026-10-16T22:02:20Z",
@@ -7814,7 +7814,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/manifest.json",
         "size": 1397,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/json",
         "created_at": "2026-10-16T22:02:14Z",
         "updated_at": "2026-10-16T22:02:15Z",
@@ -7825,7 +7825,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/manifest.sig",
         "size": 64,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-16T22:02:15Z",
         "updated_at": "2026-10-16T22:02:15Z",
@@ -7836,7 +7836,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/recovery.img.gz",
         "size": 7507469,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T22:02:15Z",
         "updated_at": "2026-10-16T22:02:21Z",
@@ -7847,7 +7847,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/rootfs.ext4.gz",
         "size": 41594700,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T22:02:17Z",
         "updated_at": "2026-10-16T22:02:36Z",
@@ -7858,7 +7858,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/SHA256SUMS",
         "size": 830,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-16T22:02:14Z",
         "updated_at": "2026-10-16T22:02:15Z",
@@ -7869,7 +7869,7 @@
         "name": "Y2Linux-1.0.0-beta.7.9-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/Y2Linux-1.0.0-beta.7.9-first-install.zip",
         "size": 57781135,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/zip",
         "created_at": "2026-10-16T22:02:14Z",
         "updated_at": "2026-10-16T22:02:40Z",
@@ -7880,15 +7880,15 @@
         "name": "Y2Linux-1.0.0-beta.7.9-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/Y2Linux-1.0.0-beta.7.9-sources-buildroot-legal-info.tar",
         "size": 2836480,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/x-tar",
         "created_at": "2026-10-16T22:02:14Z",
         "updated_at": "2026-10-16T22:02:17Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/648753934"
       }
     ],
-    "mirror_downloads": 49,
-    "downloads": 65
+    "mirror_downloads": 43,
+    "downloads": 60
   },
   {
     "id": 415374445,
@@ -7908,7 +7908,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/bootimg.img.gz",
         "size": 7506039,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T20:57:54Z",
         "updated_at": "2026-10-16T20:58:01Z",
@@ -7919,7 +7919,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/manifest.json",
         "size": 1396,
-        "download_count": 21,
+        "download_count": 22,
         "content_type": "application/json",
         "created_at": "2026-10-16T20:57:54Z",
         "updated_at": "2026-10-16T20:57:54Z",
@@ -7930,7 +7930,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/manifest.sig",
         "size": 64,
-        "download_count": 20,
+        "download_count": 21,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-16T20:57:55Z",
         "updated_at": "2026-10-16T20:57:55Z",
@@ -7941,7 +7941,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/recovery.img.gz",
         "size": 7506066,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T20:57:55Z",
         "updated_at": "2026-10-16T20:58:00Z",
@@ -7952,7 +7952,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/rootfs.ext4.gz",
         "size": 41586591,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T20:57:55Z",
         "updated_at": "2026-10-16T20:58:14Z",
@@ -7963,7 +7963,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/SHA256SUMS",
         "size": 830,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-16T20:57:54Z",
         "updated_at": "2026-10-16T20:57:54Z",
@@ -7974,7 +7974,7 @@
         "name": "Y2Linux-1.0.0-beta.7.8-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/Y2Linux-1.0.0-beta.7.8-first-install.zip",
         "size": 57761921,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/zip",
         "created_at": "2026-10-16T20:57:54Z",
         "updated_at": "2026-10-16T20:58:20Z",
@@ -7985,15 +7985,15 @@
         "name": "Y2Linux-1.0.0-beta.7.8-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/Y2Linux-1.0.0-beta.7.8-sources-buildroot-legal-info.tar",
         "size": 2836480,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-16T20:57:54Z",
         "updated_at": "2026-10-16T20:57:56Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/648598920"
       }
     ],
-    "mirror_downloads": 48,
-    "downloads": 66
+    "mirror_downloads": 42,
+    "downloads": 61
   },
   {
     "id": 415347778,
@@ -8013,7 +8013,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/bootimg.img.gz",
         "size": 7505962,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T20:20:38Z",
         "updated_at": "2026-10-16T20:20:43Z",
@@ -8024,7 +8024,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/manifest.json",
         "size": 1508,
-        "download_count": 22,
+        "download_count": 23,
         "content_type": "application/json",
         "created_at": "2026-10-16T20:20:38Z",
         "updated_at": "2026-10-16T20:20:38Z",
@@ -8035,7 +8035,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/manifest.sig",
         "size": 64,
-        "download_count": 21,
+        "download_count": 22,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-16T20:20:39Z",
         "updated_at": "2026-10-16T20:20:39Z",
@@ -8046,7 +8046,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/recovery.img.gz",
         "size": 7505984,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T20:20:39Z",
         "updated_at": "2026-10-16T20:20:44Z",
@@ -8057,7 +8057,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/rootfs.ext4.gz",
         "size": 41584433,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T20:20:40Z",
         "updated_at": "2026-10-16T20:21:03Z",
@@ -8068,7 +8068,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/SHA256SUMS",
         "size": 830,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-16T20:20:38Z",
         "updated_at": "2026-10-16T20:20:38Z",
@@ -8079,7 +8079,7 @@
         "name": "Y2Linux-1.0.0-beta.7.7-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-first-install.zip",
         "size": 57765360,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-10-16T20:20:38Z",
         "updated_at": "2026-10-16T20:21:04Z",
@@ -8090,15 +8090,15 @@
         "name": "Y2Linux-1.0.0-beta.7.7-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-sources-buildroot-legal-info.tar",
         "size": 2836480,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-16T20:20:38Z",
         "updated_at": "2026-10-16T20:20:40Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/648508403"
       }
     ],
-    "mirror_downloads": 48,
-    "downloads": 65
+    "mirror_downloads": 42,
+    "downloads": 60
   },
   {
     "id": 415185097,
@@ -8118,7 +8118,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/bootimg.img.gz",
         "size": 7505721,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T16:57:39Z",
         "updated_at": "2026-10-16T16:57:45Z",
@@ -8129,7 +8129,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/manifest.json",
         "size": 1396,
-        "download_count": 23,
+        "download_count": 24,
         "content_type": "application/json",
         "created_at": "2026-10-16T16:57:39Z",
         "updated_at": "2026-10-16T16:57:40Z",
@@ -8140,7 +8140,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/manifest.sig",
         "size": 64,
-        "download_count": 22,
+        "download_count": 23,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-16T16:57:40Z",
         "updated_at": "2026-10-16T16:57:41Z",
@@ -8151,7 +8151,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/recovery.img.gz",
         "size": 7505733,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T16:57:41Z",
         "updated_at": "2026-10-16T16:57:47Z",
@@ -8162,7 +8162,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/rootfs.ext4.gz",
         "size": 41513158,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T16:57:42Z",
         "updated_at": "2026-10-16T16:58:00Z",
@@ -8173,7 +8173,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/SHA256SUMS",
         "size": 830,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-16T16:57:39Z",
         "updated_at": "2026-10-16T16:57:40Z",
@@ -8184,7 +8184,7 @@
         "name": "Y2Linux-1.0.0-beta.7.6-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/Y2Linux-1.0.0-beta.7.6-first-install.zip",
         "size": 57702525,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/zip",
         "created_at": "2026-10-16T16:57:39Z",
         "updated_at": "2026-10-16T16:58:05Z",
@@ -8195,15 +8195,15 @@
         "name": "Y2Linux-1.0.0-beta.7.6-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/Y2Linux-1.0.0-beta.7.6-sources-buildroot-legal-info.tar",
         "size": 2836480,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-16T16:57:39Z",
         "updated_at": "2026-10-16T16:57:42Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/647981797"
       }
     ],
-    "mirror_downloads": 50,
-    "downloads": 68
+    "mirror_downloads": 44,
+    "downloads": 63
   },
   {
     "id": 415173840,
@@ -8223,7 +8223,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/bootimg.img.gz",
         "size": 7505713,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T16:43:35Z",
         "updated_at": "2026-10-16T16:43:41Z",
@@ -8234,7 +8234,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/manifest.json",
         "size": 1396,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/json",
         "created_at": "2026-10-16T16:43:35Z",
         "updated_at": "2026-10-16T16:43:35Z",
@@ -8245,7 +8245,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/manifest.sig",
         "size": 64,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-16T16:43:36Z",
         "updated_at": "2026-10-16T16:43:36Z",
@@ -8256,7 +8256,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/recovery.img.gz",
         "size": 7505734,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T16:43:36Z",
         "updated_at": "2026-10-16T16:43:44Z",
@@ -8267,7 +8267,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/rootfs.ext4.gz",
         "size": 41512708,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T16:43:37Z",
         "updated_at": "2026-10-16T16:43:59Z",
@@ -8278,7 +8278,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/SHA256SUMS",
         "size": 830,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-16T16:43:35Z",
         "updated_at": "2026-10-16T16:43:35Z",
@@ -8289,7 +8289,7 @@
         "name": "Y2Linux-1.0.0-beta.7.5-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/Y2Linux-1.0.0-beta.7.5-first-install.zip",
         "size": 57702359,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/zip",
         "created_at": "2026-10-16T16:43:35Z",
         "updated_at": "2026-10-16T16:44:01Z",
@@ -8300,15 +8300,15 @@
         "name": "Y2Linux-1.0.0-beta.7.5-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/Y2Linux-1.0.0-beta.7.5-sources-buildroot-legal-info.tar",
         "size": 2836480,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-16T16:43:35Z",
         "updated_at": "2026-10-16T16:43:38Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/647942937"
       }
     ],
-    "mirror_downloads": 51,
-    "downloads": 69
+    "mirror_downloads": 45,
+    "downloads": 64
   },
   {
     "id": 415147661,
@@ -8328,7 +8328,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/bootimg.img.gz",
         "size": 7505239,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T16:11:24Z",
         "updated_at": "2026-10-16T16:11:31Z",
@@ -8339,7 +8339,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/manifest.json",
         "size": 1396,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/json",
         "created_at": "2026-10-16T16:11:23Z",
         "updated_at": "2026-10-16T16:11:24Z",
@@ -8350,7 +8350,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/manifest.sig",
         "size": 64,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-16T16:11:24Z",
         "updated_at": "2026-10-16T16:11:25Z",
@@ -8361,7 +8361,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/recovery.img.gz",
         "size": 7505287,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T16:11:24Z",
         "updated_at": "2026-10-16T16:11:29Z",
@@ -8372,7 +8372,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/rootfs.ext4.gz",
         "size": 41513008,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T16:11:26Z",
         "updated_at": "2026-10-16T16:11:44Z",
@@ -8383,7 +8383,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/SHA256SUMS",
         "size": 830,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-16T16:11:23Z",
         "updated_at": "2026-10-16T16:11:24Z",
@@ -8394,7 +8394,7 @@
         "name": "Y2Linux-1.0.0-beta.7.4-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/Y2Linux-1.0.0-beta.7.4-first-install.zip",
         "size": 57698632,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/zip",
         "created_at": "2026-10-16T16:11:23Z",
         "updated_at": "2026-10-16T16:11:50Z",
@@ -8405,15 +8405,15 @@
         "name": "Y2Linux-1.0.0-beta.7.4-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/Y2Linux-1.0.0-beta.7.4-sources-buildroot-legal-info.tar",
         "size": 2836480,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-16T16:11:24Z",
         "updated_at": "2026-10-16T16:11:26Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/647863307"
       }
     ],
-    "mirror_downloads": 48,
-    "downloads": 64
+    "mirror_downloads": 42,
+    "downloads": 59
   },
   {
     "id": 415127089,
@@ -8433,7 +8433,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/bootimg.img.gz",
         "size": 7505951,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T15:47:32Z",
         "updated_at": "2026-10-16T15:47:37Z",
@@ -8444,7 +8444,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/manifest.json",
         "size": 1396,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/json",
         "created_at": "2026-10-16T15:47:32Z",
         "updated_at": "2026-10-16T15:47:32Z",
@@ -8455,7 +8455,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/manifest.sig",
         "size": 64,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-16T15:47:33Z",
         "updated_at": "2026-10-16T15:47:33Z",
@@ -8466,7 +8466,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/recovery.img.gz",
         "size": 7505973,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T15:47:33Z",
         "updated_at": "2026-10-16T15:47:39Z",
@@ -8477,7 +8477,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/rootfs.ext4.gz",
         "size": 41515281,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T15:47:34Z",
         "updated_at": "2026-10-16T15:47:54Z",
@@ -8488,7 +8488,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/SHA256SUMS",
         "size": 830,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-16T15:47:32Z",
         "updated_at": "2026-10-16T15:47:32Z",
@@ -8499,7 +8499,7 @@
         "name": "Y2Linux-1.0.0-beta.7.3-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/Y2Linux-1.0.0-beta.7.3-first-install.zip",
         "size": 57699968,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/zip",
         "created_at": "2026-10-16T15:47:32Z",
         "updated_at": "2026-10-16T15:47:58Z",
@@ -8510,15 +8510,15 @@
         "name": "Y2Linux-1.0.0-beta.7.3-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/Y2Linux-1.0.0-beta.7.3-sources-buildroot-legal-info.tar",
         "size": 2836480,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/x-tar",
         "created_at": "2026-10-16T15:47:32Z",
         "updated_at": "2026-10-16T15:47:34Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/647798970"
       }
     ],
-    "mirror_downloads": 47,
-    "downloads": 63
+    "mirror_downloads": 41,
+    "downloads": 58
   },
   {
     "id": 415111844,
@@ -8538,7 +8538,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/bootimg.img.gz",
         "size": 7505624,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T15:30:21Z",
         "updated_at": "2026-10-16T15:30:27Z",
@@ -8549,7 +8549,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/manifest.json",
         "size": 1396,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/json",
         "created_at": "2026-10-16T15:30:21Z",
         "updated_at": "2026-10-16T15:30:21Z",
@@ -8560,7 +8560,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/manifest.sig",
         "size": 64,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-16T15:30:21Z",
         "updated_at": "2026-10-16T15:30:22Z",
@@ -8571,7 +8571,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/recovery.img.gz",
         "size": 7505649,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T15:30:21Z",
         "updated_at": "2026-10-16T15:30:29Z",
@@ -8582,7 +8582,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/rootfs.ext4.gz",
         "size": 41512543,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T15:30:22Z",
         "updated_at": "2026-10-16T15:30:41Z",
@@ -8593,7 +8593,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/SHA256SUMS",
         "size": 830,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-16T15:30:21Z",
         "updated_at": "2026-10-16T15:30:21Z",
@@ -8604,7 +8604,7 @@
         "name": "Y2Linux-1.0.0-beta.7.2-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/Y2Linux-1.0.0-beta.7.2-first-install.zip",
         "size": 57698498,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-10-16T15:30:21Z",
         "updated_at": "2026-10-16T15:30:47Z",
@@ -8615,15 +8615,15 @@
         "name": "Y2Linux-1.0.0-beta.7.2-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/Y2Linux-1.0.0-beta.7.2-sources-buildroot-legal-info.tar",
         "size": 2836480,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-16T15:30:21Z",
         "updated_at": "2026-10-16T15:30:22Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/647751088"
       }
     ],
-    "mirror_downloads": 46,
-    "downloads": 63
+    "mirror_downloads": 40,
+    "downloads": 58
   },
   {
     "id": 415091310,
@@ -8643,7 +8643,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/bootimg.img.gz",
         "size": 7505999,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T15:07:56Z",
         "updated_at": "2026-10-16T15:08:02Z",
@@ -8654,7 +8654,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/manifest.json",
         "size": 1396,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/json",
         "created_at": "2026-10-16T15:07:55Z",
         "updated_at": "2026-10-16T15:07:56Z",
@@ -8665,7 +8665,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/manifest.sig",
         "size": 64,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-16T15:07:56Z",
         "updated_at": "2026-10-16T15:07:57Z",
@@ -8676,7 +8676,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/recovery.img.gz",
         "size": 7506007,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T15:07:57Z",
         "updated_at": "2026-10-16T15:08:03Z",
@@ -8687,7 +8687,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/rootfs.ext4.gz",
         "size": 41489971,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T15:07:58Z",
         "updated_at": "2026-10-16T15:08:18Z",
@@ -8698,7 +8698,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/SHA256SUMS",
         "size": 830,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-16T15:07:56Z",
         "updated_at": "2026-10-16T15:07:56Z",
@@ -8709,7 +8709,7 @@
         "name": "Y2Linux-1.0.0-beta.7.1-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/Y2Linux-1.0.0-beta.7.1-first-install.zip",
         "size": 57675732,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-10-16T15:07:55Z",
         "updated_at": "2026-10-16T15:08:21Z",
@@ -8720,15 +8720,15 @@
         "name": "Y2Linux-1.0.0-beta.7.1-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/Y2Linux-1.0.0-beta.7.1-sources-buildroot-legal-info.tar",
         "size": 2836480,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-16T15:07:55Z",
         "updated_at": "2026-10-16T15:07:58Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/647692618"
       }
     ],
-    "mirror_downloads": 47,
-    "downloads": 64
+    "mirror_downloads": 41,
+    "downloads": 59
   },
   {
     "id": 415060848,
@@ -8748,7 +8748,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/bootimg.img.gz",
         "size": 7505777,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T14:35:26Z",
         "updated_at": "2026-10-16T14:35:31Z",
@@ -8759,7 +8759,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/manifest.json",
         "size": 1390,
-        "download_count": 20,
+        "download_count": 21,
         "content_type": "application/json",
         "created_at": "2026-10-16T14:35:26Z",
         "updated_at": "2026-10-16T14:35:27Z",
@@ -8770,7 +8770,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/manifest.sig",
         "size": 64,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-16T14:35:27Z",
         "updated_at": "2026-10-16T14:35:28Z",
@@ -8781,7 +8781,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/recovery.img.gz",
         "size": 7505799,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T14:35:27Z",
         "updated_at": "2026-10-16T14:35:35Z",
@@ -8792,7 +8792,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/rootfs.ext4.gz",
         "size": 41447699,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-16T14:35:29Z",
         "updated_at": "2026-10-16T14:35:46Z",
@@ -8803,7 +8803,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/SHA256SUMS",
         "size": 826,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-16T14:35:26Z",
         "updated_at": "2026-10-16T14:35:27Z",
@@ -8814,7 +8814,7 @@
         "name": "Y2Linux-1.0.0-beta.7-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/Y2Linux-1.0.0-beta.7-first-install.zip",
         "size": 57627297,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-10-16T14:35:26Z",
         "updated_at": "2026-10-16T14:35:52Z",
@@ -8825,15 +8825,15 @@
         "name": "Y2Linux-1.0.0-beta.7-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/Y2Linux-1.0.0-beta.7-sources-buildroot-legal-info.tar",
         "size": 2836480,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-16T14:35:26Z",
         "updated_at": "2026-10-16T14:35:28Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/647603548"
       }
     ],
-    "mirror_downloads": 42,
-    "downloads": 59
+    "mirror_downloads": 37,
+    "downloads": 55
   },
   {
     "id": 414357976,
@@ -8853,7 +8853,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/bootimg.img.gz",
         "size": 7505005,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T23:07:08Z",
         "updated_at": "2026-10-15T23:07:15Z",
@@ -8864,7 +8864,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/manifest.json",
         "size": 1396,
-        "download_count": 22,
+        "download_count": 23,
         "content_type": "application/json",
         "created_at": "2026-10-15T23:07:08Z",
         "updated_at": "2026-10-15T23:07:09Z",
@@ -8875,7 +8875,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/manifest.sig",
         "size": 64,
-        "download_count": 20,
+        "download_count": 21,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-15T23:07:09Z",
         "updated_at": "2026-10-15T23:07:10Z",
@@ -8886,7 +8886,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/recovery.img.gz",
         "size": 7505023,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T23:07:10Z",
         "updated_at": "2026-10-15T23:07:17Z",
@@ -8897,7 +8897,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/rootfs.ext4.gz",
         "size": 41444718,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T23:07:11Z",
         "updated_at": "2026-10-15T23:07:35Z",
@@ -8908,7 +8908,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/SHA256SUMS",
         "size": 830,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-15T23:07:08Z",
         "updated_at": "2026-10-15T23:07:09Z",
@@ -8919,7 +8919,7 @@
         "name": "Y2Linux-1.0.0-beta.6.3-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/Y2Linux-1.0.0-beta.6.3-first-install.zip",
         "size": 57619094,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-10-15T23:07:08Z",
         "updated_at": "2026-10-15T23:07:38Z",
@@ -8930,15 +8930,15 @@
         "name": "Y2Linux-1.0.0-beta.6.3-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/Y2Linux-1.0.0-beta.6.3-sources-buildroot-legal-info.tar",
         "size": 2836480,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-15T23:07:08Z",
         "updated_at": "2026-10-15T23:07:11Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/645454283"
       }
     ],
-    "mirror_downloads": 42,
-    "downloads": 59
+    "mirror_downloads": 38,
+    "downloads": 56
   },
   {
     "id": 414345760,
@@ -8958,7 +8958,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/bootimg.img.gz",
         "size": 7505163,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T22:47:10Z",
         "updated_at": "2026-10-15T22:47:17Z",
@@ -8969,7 +8969,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/manifest.json",
         "size": 1396,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/json",
         "created_at": "2026-10-15T22:47:10Z",
         "updated_at": "2026-10-15T22:47:10Z",
@@ -8980,7 +8980,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/manifest.sig",
         "size": 64,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-15T22:47:11Z",
         "updated_at": "2026-10-15T22:47:11Z",
@@ -8991,7 +8991,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/recovery.img.gz",
         "size": 7505170,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T22:47:11Z",
         "updated_at": "2026-10-15T22:47:22Z",
@@ -9002,7 +9002,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/rootfs.ext4.gz",
         "size": 41442052,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T22:47:12Z",
         "updated_at": "2026-10-15T22:47:40Z",
@@ -9013,7 +9013,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/SHA256SUMS",
         "size": 830,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-15T22:47:10Z",
         "updated_at": "2026-10-15T22:47:10Z",
@@ -9024,7 +9024,7 @@
         "name": "Y2Linux-1.0.0-beta.6.2-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/Y2Linux-1.0.0-beta.6.2-first-install.zip",
         "size": 57619098,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-10-15T22:47:10Z",
         "updated_at": "2026-10-15T22:47:45Z",
@@ -9035,15 +9035,15 @@
         "name": "Y2Linux-1.0.0-beta.6.2-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/Y2Linux-1.0.0-beta.6.2-sources-buildroot-legal-info.tar",
         "size": 2836480,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-15T22:47:10Z",
         "updated_at": "2026-10-15T22:47:13Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/645409831"
       }
     ],
-    "mirror_downloads": 43,
-    "downloads": 60
+    "mirror_downloads": 39,
+    "downloads": 57
   },
   {
     "id": 414320047,
@@ -9063,7 +9063,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/bootimg.img.gz",
         "size": 7505053,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T22:07:32Z",
         "updated_at": "2026-10-15T22:07:39Z",
@@ -9074,7 +9074,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/manifest.json",
         "size": 1396,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/json",
         "created_at": "2026-10-15T22:07:32Z",
         "updated_at": "2026-10-15T22:07:32Z",
@@ -9085,7 +9085,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/manifest.sig",
         "size": 64,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-15T22:07:33Z",
         "updated_at": "2026-10-15T22:07:33Z",
@@ -9096,7 +9096,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/recovery.img.gz",
         "size": 7505079,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T22:07:33Z",
         "updated_at": "2026-10-15T22:07:42Z",
@@ -9107,7 +9107,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/rootfs.ext4.gz",
         "size": 41309976,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T22:07:34Z",
         "updated_at": "2026-10-15T22:07:59Z",
@@ -9118,7 +9118,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/SHA256SUMS",
         "size": 830,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-15T22:07:32Z",
         "updated_at": "2026-10-15T22:07:32Z",
@@ -9129,7 +9129,7 @@
         "name": "Y2Linux-1.0.0-beta.6.1-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-first-install.zip",
         "size": 57490578,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-10-15T22:07:32Z",
         "updated_at": "2026-10-15T22:08:04Z",
@@ -9140,15 +9140,15 @@
         "name": "Y2Linux-1.0.0-beta.6.1-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-sources-buildroot-legal-info.tar",
         "size": 2826240,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-15T22:07:32Z",
         "updated_at": "2026-10-15T22:07:35Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/645316302"
       }
     ],
-    "mirror_downloads": 40,
-    "downloads": 57
+    "mirror_downloads": 42,
+    "downloads": 60
   },
   {
     "id": 414297663,
@@ -9168,7 +9168,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/bootimg.img.gz",
         "size": 7504965,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T21:35:25Z",
         "updated_at": "2026-10-15T21:35:44Z",
@@ -9179,7 +9179,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/manifest.json",
         "size": 1390,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/json",
         "created_at": "2026-10-15T21:35:25Z",
         "updated_at": "2026-10-15T21:35:26Z",
@@ -9190,7 +9190,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/manifest.sig",
         "size": 64,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-15T21:35:27Z",
         "updated_at": "2026-10-15T21:35:27Z",
@@ -9201,7 +9201,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/recovery.img.gz",
         "size": 7505000,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T21:35:27Z",
         "updated_at": "2026-10-15T21:35:35Z",
@@ -9212,7 +9212,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/rootfs.ext4.gz",
         "size": 41310413,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T21:35:28Z",
         "updated_at": "2026-10-15T21:36:00Z",
@@ -9223,7 +9223,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/SHA256SUMS",
         "size": 826,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-15T21:35:25Z",
         "updated_at": "2026-10-15T21:35:26Z",
@@ -9234,7 +9234,7 @@
         "name": "Y2Linux-1.0.0-beta.6-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/Y2Linux-1.0.0-beta.6-first-install.zip",
         "size": 57485396,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/zip",
         "created_at": "2026-10-15T21:35:25Z",
         "updated_at": "2026-10-15T21:36:04Z",
@@ -9245,15 +9245,15 @@
         "name": "Y2Linux-1.0.0-beta.6-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/Y2Linux-1.0.0-beta.6-sources-buildroot-legal-info.tar",
         "size": 2826240,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-15T21:35:25Z",
         "updated_at": "2026-10-15T21:35:29Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/645239488"
       }
     ],
-    "mirror_downloads": 41,
-    "downloads": 59
+    "mirror_downloads": 44,
+    "downloads": 63
   },
   {
     "id": 414262317,
@@ -9273,7 +9273,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/bootimg.img.gz",
         "size": 7505227,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T20:51:26Z",
         "updated_at": "2026-10-15T20:51:33Z",
@@ -9284,7 +9284,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/manifest.json",
         "size": 1396,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/json",
         "created_at": "2026-10-15T20:51:25Z",
         "updated_at": "2026-10-15T20:51:26Z",
@@ -9295,7 +9295,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/manifest.sig",
         "size": 64,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-15T20:51:26Z",
         "updated_at": "2026-10-15T20:51:26Z",
@@ -9306,7 +9306,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/recovery.img.gz",
         "size": 7505244,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T20:51:26Z",
         "updated_at": "2026-10-15T20:51:33Z",
@@ -9317,7 +9317,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/rootfs.ext4.gz",
         "size": 41199442,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T20:51:27Z",
         "updated_at": "2026-10-15T20:51:49Z",
@@ -9328,7 +9328,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/SHA256SUMS",
         "size": 830,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-15T20:51:25Z",
         "updated_at": "2026-10-15T20:51:26Z",
@@ -9339,7 +9339,7 @@
         "name": "Y2Linux-1.0.0-beta.5.1-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/Y2Linux-1.0.0-beta.5.1-first-install.zip",
         "size": 57376311,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-10-15T20:51:25Z",
         "updated_at": "2026-10-15T20:51:52Z",
@@ -9350,15 +9350,15 @@
         "name": "Y2Linux-1.0.0-beta.5.1-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/Y2Linux-1.0.0-beta.5.1-sources-buildroot-legal-info.tar",
         "size": 2826240,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-tar",
         "created_at": "2026-10-15T20:51:25Z",
         "updated_at": "2026-10-15T20:51:28Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/645135801"
       }
     ],
-    "mirror_downloads": 41,
-    "downloads": 58
+    "mirror_downloads": 44,
+    "downloads": 62
   },
   {
     "id": 414224425,
@@ -9378,7 +9378,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/bootimg.img.gz",
         "size": 7504910,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T20:05:47Z",
         "updated_at": "2026-10-15T20:05:54Z",
@@ -9389,7 +9389,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/manifest.json",
         "size": 1390,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/json",
         "created_at": "2026-10-15T20:05:47Z",
         "updated_at": "2026-10-15T20:05:47Z",
@@ -9400,7 +9400,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/manifest.sig",
         "size": 64,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/pgp-signature",
         "created_at": "2026-10-15T20:05:48Z",
         "updated_at": "2026-10-15T20:05:48Z",
@@ -9411,7 +9411,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/recovery.img.gz",
         "size": 7504930,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T20:05:48Z",
         "updated_at": "2026-10-15T20:05:53Z",
@@ -9422,7 +9422,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/rootfs.ext4.gz",
         "size": 41130541,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/gzip",
         "created_at": "2026-10-15T20:05:49Z",
         "updated_at": "2026-10-15T20:06:12Z",
@@ -9433,7 +9433,7 @@
         "name": "SHA256SUMS",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/SHA256SUMS",
         "size": 826,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/octet-stream",
         "created_at": "2026-10-15T20:05:47Z",
         "updated_at": "2026-10-15T20:05:47Z",
@@ -9444,7 +9444,7 @@
         "name": "Y2Linux-1.0.0-beta.5-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/Y2Linux-1.0.0-beta.5-first-install.zip",
         "size": 57309186,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-10-15T20:05:47Z",
         "updated_at": "2026-10-15T20:06:13Z",
@@ -9455,15 +9455,15 @@
         "name": "Y2Linux-1.0.0-beta.5-sources-buildroot-legal-info.tar",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/Y2Linux-1.0.0-beta.5-sources-buildroot-legal-info.tar",
         "size": 2826240,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/x-tar",
         "created_at": "2026-10-15T20:05:47Z",
         "updated_at": "2026-10-15T20:05:49Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/645023502"
       }
     ],
-    "mirror_downloads": 74,
-    "downloads": 91
+    "mirror_downloads": 77,
+    "downloads": 95
   },
   {
     "id": 414190059,
@@ -9567,8 +9567,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/644923086"
       }
     ],
-    "mirror_downloads": 40,
-    "downloads": 59
+    "mirror_downloads": 43,
+    "downloads": 62
   },
   {
     "id": 414141273,
@@ -9672,8 +9672,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/644786019"
       }
     ],
-    "mirror_downloads": 41,
-    "downloads": 59
+    "mirror_downloads": 44,
+    "downloads": 62
   },
   {
     "id": 414096642,
@@ -9799,8 +9799,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/644656938"
       }
     ],
-    "mirror_downloads": 40,
-    "downloads": 58
+    "mirror_downloads": 43,
+    "downloads": 61
   },
   {
     "id": 414000039,
@@ -9915,8 +9915,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/644371139"
       }
     ],
-    "mirror_downloads": 41,
-    "downloads": 59
+    "mirror_downloads": 44,
+    "downloads": 62
   },
   {
     "id": 413220548,
@@ -10031,8 +10031,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/641798340"
       }
     ],
-    "mirror_downloads": 41,
-    "downloads": 64
+    "mirror_downloads": 44,
+    "downloads": 67
   },
   {
     "id": 413198901,
@@ -10147,8 +10147,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/641719848"
       }
     ],
-    "mirror_downloads": 41,
-    "downloads": 62
+    "mirror_downloads": 44,
+    "downloads": 65
   },
   {
     "id": 413120325,
