@@ -2727,6 +2727,64 @@
             if (note && /standalone package|ZIP/i.test(note.textContent || "")) note.textContent = name;
         }
 
+        /* A release with a mirror must never offer the project's plain rom.zip
+           while the mirror lookup is still running: rom.zip and the package
+           built for this computer look identical on the page, and a reader in
+           a hurry takes the wrong one. The row starts as a portable link with
+           no name yet, the name lands as soon as the mirror answers, and the
+           plain file only comes back when the mirror really has no build for
+           this computer. */
+        function portableNameKey(mirrors, tag, assetName) {
+            return "innioasis-portable-name:" + String(mirrors || "").toLowerCase() + "|" + tagKey(tag) + "|" + String(assetName || "").toLowerCase();
+        }
+        /* A resolved name is remembered, so the next visit paints the exact
+           file name instead of the placeholder. */
+        function cachedPortableName(mirrors, tag, assetName) {
+            try {
+                var stored = window.localStorage.getItem(portableNameKey(mirrors, tag, assetName)) || "";
+                return /\.zip$/i.test(stored) ? stored : "";
+            } catch (_) { return ""; }
+        }
+        function rememberPortableName(mirrors, tag, assetName, name) {
+            try {
+                if (name) window.localStorage.setItem(portableNameKey(mirrors, tag, assetName), name);
+                else window.localStorage.removeItem(portableNameKey(mirrors, tag, assetName));
+            } catch (_) {}
+        }
+        function showPortablePending(control) {
+            if (!control || control.getAttribute("data-platform")) return;
+            if (!control.getAttribute("data-portable-zips")) return;
+            if (control.getAttribute("data-portable-name")) return;
+            if (control.getAttribute("data-portable-pending") === "1") return;
+            if (control.getAttribute("data-portable-none") === "1") return;
+            control.setAttribute("data-portable-pending", "1");
+            control.setAttribute("aria-busy", "true");
+            control.setAttribute("data-plain-name", control.getAttribute("data-zip-name") || "rom.zip");
+            var holder = control.querySelector(".lumen-zip-file");
+            if (holder) holder.textContent = "Portable ZIP";
+            var note = control.querySelector("small");
+            if (note && /standalone package|ZIP/i.test(note.textContent || "")) note.textContent = "Matching this computer…";
+        }
+        function showPortableName(control, name) {
+            if (!control || !name) return;
+            control.removeAttribute("data-portable-pending");
+            control.removeAttribute("data-portable-none");
+            control.removeAttribute("aria-busy");
+            applyPortableName(control, name);
+        }
+        function showPlainZip(control) {
+            if (!control) return;
+            control.removeAttribute("data-portable-pending");
+            control.removeAttribute("aria-busy");
+            control.setAttribute("data-portable-none", "1");
+            var plain = control.getAttribute("data-plain-name") || control.getAttribute("data-zip-name") || "rom.zip";
+            control.setAttribute("download", plain);
+            var holder = control.querySelector(".lumen-zip-file");
+            if (holder) holder.textContent = plain;
+            var note = control.querySelector("small");
+            if (note && /standalone package|ZIP/i.test(note.textContent || "")) note.textContent = "No portable build for this computer";
+        }
+
         function preparePortableZip(btn, zipUrl) {
             if (btn._portableZip) return btn._portableZip;
             var portableZips = btn.getAttribute("data-portable-zips") || "";
@@ -2747,12 +2805,22 @@
                 return Promise.resolve(href);
             }
             if (!portableZips || !releaseTag) return Promise.resolve("");
+            var mirrors = portableZips;
             btn._portableZip = resolvePortableZip(portableZips, releaseTag, assetName).then(function (portable) {
-                if (!portable) { btn._portableZip = null; return ""; }
-                applyPortableName(btn, portable.name);
+                if (!portable) {
+                    /* The mirror has no package for this computer, so this row
+                       is the project's own file and now says so. */
+                    btn._portableZip = null;
+                    rememberPortableName(mirrors, releaseTag, assetName, "");
+                    showPlainZip(btn);
+                    return "";
+                }
+                rememberPortableName(mirrors, releaseTag, assetName, portable.name);
+                showPortableName(btn, portable.name);
                 return portable.url;
             }, function () {
                 btn._portableZip = null;
+                showPlainZip(btn);
                 return "";
             });
             return btn._portableZip;
@@ -2770,6 +2838,45 @@
         document.addEventListener("click", handleZipDownloadClick);
         table.addEventListener("pointerover", warmPortableZip);
         table.addEventListener("focusin", warmPortableZip);
+
+        /* Every mirror row is claimed and asked for as soon as it is drawn,
+           not when a pointer reaches it, so the platform name is on the page
+           before the reader has finished reading the row. */
+        function sweepPortableRows() {
+            var controls = table.querySelectorAll("[data-portable-zips]");
+            Array.prototype.forEach.call(controls, function (btn) {
+                var mirrors = btn.getAttribute("data-portable-zips") || "";
+                if (!mirrors) return;
+                var tag = btn.getAttribute("data-release-tag") || "";
+                var assetName = btn.getAttribute("data-zip-name") || "";
+                showPortablePending(btn);
+                var known = cachedPortableName(mirrors, tag, assetName);
+                if (known) showPortableName(btn, known);
+            });
+        }
+        function warmPortableRows() {
+            var controls = table.querySelectorAll("[data-portable-zips]");
+            Array.prototype.forEach.call(controls, function (btn, index) {
+                if (!btn.getAttribute("data-portable-zips") || btn._portableZip) return;
+                window.setTimeout(function () {
+                    if (!document.documentElement.contains(btn)) return;
+                    preparePortableZip(btn, btn.getAttribute("data-zip-url") || btn.getAttribute("href") || "");
+                }, Math.min(index * 80, 1600));
+            });
+        }
+        var portableSweepTimer = 0;
+        function schedulePortableSweep() {
+            if (portableSweepTimer) return;
+            portableSweepTimer = window.setTimeout(function () {
+                portableSweepTimer = 0;
+                sweepPortableRows();
+                warmPortableRows();
+            }, 0);
+        }
+        if (window.MutationObserver) {
+            new MutationObserver(schedulePortableSweep).observe(table, { childList: true, subtree: true });
+        }
+        schedulePortableSweep();
 
         /* Opening a release's details means the visitor is reading about that
            exact version, so version-targeted notices apply from then on. */
