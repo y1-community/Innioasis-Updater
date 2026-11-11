@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261112portable5";
+    var VERSION = "20261112portable6";
     /* Only archive packages get the in-page treatment. Installers and app
        images always go to the browser's own downloader: a page must never
        stand between a reader and the app they are installing. */
@@ -823,7 +823,7 @@
            metadata and then calls start() with the resolved URL. Claiming the
            click here streamed the project's original rom.zip instead, because
            the visible href is the source release asset. */
-        if (link.hasAttribute("data-portable-zips")) return false;
+        if (link.hasAttribute("data-portable-zips") || link.hasAttribute("data-release-tag") || link.hasAttribute("data-zip-url")) return false;
         var href = link.getAttribute("href") || "";
         if (!href || href.charAt(0) === "#" || /^(mailto|tel|javascript):/i.test(href)) return false;
         /* Installers and app images belong to the browser, always. */

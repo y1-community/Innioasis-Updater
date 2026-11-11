@@ -573,6 +573,10 @@
        invent one; typed release asset names fill this in for such projects. */
     var manifestTypesByModel = {};
 
+    /* repo -> portable mirror repositories. The manifest is the source of
+       truth when a rendered row did not carry data-portable-zips itself. */
+    var manifestPortableByRepo = {};
+
     /* Updater CE only installs a project the manifest lists. A firmware that
        lives in the feeds alone has releases worth reading, but no install route
        and no portable package, so its rows download the project's own rom.zip. */
@@ -583,7 +587,11 @@
     }
 
     function manifestPortableZips(item) {
-        return manifestRepoListed(item) ? String((item && item.portable_zips) || "") : "";
+        if (!manifestRepoListed(item)) return "";
+        var declared = String((item && item.portable_zips) || "").trim();
+        if (declared) return declared;
+        var key = repoKey(item && item.repo);
+        return (key && manifestPortableByRepo[key]) || "";
     }
 
     /* One identity per release, so the cached catalogue, the per-repo feed
@@ -1107,6 +1115,9 @@
             arch = "arm64";
         } else if (/riscv64|riscv/i.test(ua)) {
             arch = "riscv";
+        } else if (/i686|i386|win32;|x86;/i.test(ua)) {
+            /* A 32-bit browser must not be handed an x86-64 desktop bundle. */
+            arch = "x86";
         }
         return { os: os, arch: arch };
     }
@@ -1115,11 +1126,11 @@
         var p = detectSystemArchitecture();
         if (navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === "function") {
             try {
-                var data = await navigator.userAgentData.getHighEntropyValues(["architecture"]);
+                var data = await navigator.userAgentData.getHighEntropyValues(["architecture", "bitness"]);
                 if (data && data.architecture) {
                     var a = data.architecture.toLowerCase();
                     if (a.includes("arm")) p.arch = "arm64";
-                    else if (a.includes("x86")) p.arch = "x86-64";
+                    else if (a.includes("x86")) p.arch = String(data.bitness) === "32" ? "x86" : "x86-64";
                     else if (a.includes("riscv")) p.arch = "riscv";
                 }
             } catch (_) {}
@@ -2666,11 +2677,14 @@
         function preparePortableZip(btn, zipUrl) {
             if (btn._portableZip) return btn._portableZip;
             var portableZips = btn.getAttribute("data-portable-zips") || "";
-            var releaseTag = btn.getAttribute("data-release-tag") || "";
             var href = btn.getAttribute("href") || "";
             var explicitPlatform = btn.getAttribute("data-platform") || "";
+            var sourceParts = githubReleaseAssetParts(zipUrl || href || "");
+            if (!portableZips && sourceParts) {
+                portableZips = manifestPortableByRepo[repoKey(sourceParts.repo)] || "";
+            }
+            var releaseTag = btn.getAttribute("data-release-tag") || (sourceParts ? sourceParts.tag : "");
             var assetName = btn.getAttribute("data-zip-name") || String(zipUrl || "").split("/").pop() || "rom.zip";
-            if (!portableZips || !releaseTag) return Promise.resolve("");
             /* A generated per-OS button already points at the exact mirror
                asset named on its face. Resolving by the visiting computer
                instead replaced a deliberately chosen Windows or Linux build
@@ -2679,6 +2693,7 @@
             if (explicitPlatform && href && href !== zipUrl && /^https:\/\/github\.com\//i.test(href)) {
                 return Promise.resolve(href);
             }
+            if (!portableZips || !releaseTag) return Promise.resolve("");
             btn._portableZip = resolvePortableZip(portableZips, releaseTag, assetName).then(function (portable) {
                 if (!portable) btn._portableZip = null;
                 return portable ? portable.url : "";
@@ -3276,6 +3291,13 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
                     if (listedRepo) listed[listedRepo] = true;
                 });
                 manifestListedRepos = listed;
+                var portableByRepo = {};
+                packages.forEach(function (pkg) {
+                    var declaredRepo = repoKey(pkg.getAttribute("repo"));
+                    var declaredPortable = (pkg.getAttribute("portable_zips") || "").trim();
+                    if (declaredRepo && declaredPortable) portableByRepo[declaredRepo] = declaredPortable;
+                });
+                manifestPortableByRepo = portableByRepo;
                 if (!Array.isArray(window.INNIOASIS_FIRMWARE_CATALOG)) return;
                 var catalog = window.INNIOASIS_FIRMWARE_CATALOG;
                 packages.forEach(function (pkg) {
