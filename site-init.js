@@ -1502,8 +1502,33 @@
 
         /* Pages and scripts that ask for a download by URL get the same
            browser download, so no caller is left without its file. */
+        /* A reader should see something happen where they clicked, on any
+           screen. Nothing is measured or streamed: the badge only reports that
+           the browser has taken the file, because a large zip must never be
+           read or rewritten by this page. */
+        function badge(anchor, text) {
+            if (!anchor || !anchor.parentNode) return null;
+            var id = "site-dl-badge";
+            var old = document.getElementById(id);
+            if (old && old.parentNode) old.parentNode.removeChild(old);
+            var span = document.createElement("span");
+            span.id = id;
+            span.setAttribute("role", "status");
+            span.setAttribute("aria-live", "polite");
+            span.textContent = text;
+            span.style.cssText = "display:inline-flex;align-items:center;gap:6px;margin:6px 8px;padding:5px 10px;" +
+                "border-radius:999px;font:600 12px/1.3 system-ui,sans-serif;color:#dfe7f7;background:rgba(107,159,255,.18);" +
+                "border:1px solid rgba(107,159,255,.45);max-width:min(100%,320px);white-space:normal;";
+            anchor.parentNode.insertBefore(span, anchor.nextSibling);
+            clearTimeout(span._t);
+            span._t = setTimeout(function () {
+                if (span.parentNode) span.parentNode.removeChild(span);
+            }, 12000);
+            return span;
+        }
+
         global.InnioasisDownloads = {
-            version: "20261110direct",
+            version: "20261113direct",
             start: function (url, anchor, name) {
                 var link = document.createElement("a");
                 link.href = unwrap(url);
@@ -1515,9 +1540,15 @@
                 setTimeout(function () {
                     if (link.parentNode) link.parentNode.removeChild(link);
                 }, 3000);
+                badge(anchor, "Download started - check your Downloads folder");
                 return true;
             },
-            jobs: function () { return []; }
+            jobs: function () { return []; },
+            name: function (value) { return value; },
+            proxy: function (value) { return value; },
+            /* Nothing is streamed in-page here, so every caller falls back to
+               handing its own URL to the browser. */
+            eligible: function () { return false; }
         };
 
         document.addEventListener("click", function (event) {
@@ -1535,11 +1566,13 @@
         document.head.appendChild(node);
     }
 
-    /* In-page progress for rom packages is on by default; installer links
-       are excluded inside site-downloads.js itself, so app and driver
-       buttons always stay plain browser downloads. */
-    if (global.InnioasisInlineDownloads === false) installDirectDownloads();
-    else loadSiteDownloads();
+    /* The firmware archive and Updater CE hand every package to the browser's
+       own downloader. Streaming a 1.7 GB rom zip through this page is what
+       produced truncated archives; the browser's downloader resumes, verifies
+       and saves without the page ever holding the bytes. The Themes Gallery
+       keeps its in-page design, which is intentional there. */
+    if (/^themes\./i.test(global.location.hostname || "")) loadSiteDownloads();
+    else installDirectDownloads();
 
     /* Windows XP/Vista/7/8/8.1 and 32-bit Windows cannot run Updater CE, so
        that visit gets the portable SP Flash Tool route instead of install
