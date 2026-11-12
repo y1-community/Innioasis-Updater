@@ -15,7 +15,7 @@
     do_not_keep_data accepts true, 1 or yes. Legacy aliases still read:
     model, package, portable_zip, post_install_2, min_app_version, image_dark.
   -->
-
+https://github.com/NoahDomingues/Lithium/releases
   <!-- App Market: APKs -->
  <!-- <package name="Stock Menu 2.1.9 Update for Type B Y1's" repo="rockbox-y1/rockbox" url="https://github.com/y1-community/com.innioasis.y1/releases/latest" android_package="org.rockbox" device="y1" type="apk" handler="App" /> -->
   <!-- Custom Firmware: Project Gallagher -->
@@ -42,7 +42,11 @@
 
 <package name="Original Software" brand="Timmkoo" repo="y1-community/q3-stock-rom" device="Q3" url="https://github.com/y1-community/q3-stock-rom" type="img" handler="Custom Firmware" package_name="rom_q3.zip" portable_zips="y1-community/q3-stock-rom-mirror" />
 
-<package name="Original Software" brand="Timmkoo" repo="y1-community/q5-stock-rom" device="Q5" url="https://github.com/y1-community/q5-stock-rom" type="img" handler="Custom Firmware" package_name="rom_q5.zip" portable_zips="y1-community/q5-stock-rom-mirror" />
+<package name="Lithium" brand="Timmkoo" repo="NoahDomingues/Lithium" device="Q3" url="https://github.com/NoahDomingues/Lithium" type="img" handler="Custom Firmware" install_first="y1-community/q3-stock-rom"/>
+
+
+  <package name="Original Software" brand="Timmkoo" repo="y1-community/q5-stock-rom" device="Q5" url="https://github.com/y1-community/q3-stock-rom" type="img" handler="Custom Firmware" package_name="rom_q5.zip" portable_zips="y1-community/q5-stock-rom-mirror" />
+<package name="Lithium" brand="Timmkoo" repo="NoahDomingues/Lithium" device="Q5" url="https://github.com/NoahDomingues/Lithium" type="img" handler="Custom Firmware" install_first="y1-community/q3-stock-rom"/>
 
 <!-- <package name="Original Software" brand="Timmkoo" repo="y1-community/q5-stock-rom" device="Q3e" url="https://github.com/y1-community/q5-stock-rom" type="img" handler="Custom Firmware" package_name="rom_q5.zip" portable_zips="y1-community/q5-stock-rom-mirror" /> -->
 
