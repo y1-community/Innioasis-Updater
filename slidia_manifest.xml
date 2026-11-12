@@ -40,7 +40,7 @@ https://github.com/NoahDomingues/Lithium/releases
 
 <!-- <package name="Original Software" brand="Timmkoo" repo="y1-community/sr1-stock-rom" device="SR1" url="https://github.com/y1-community/sr1-stock-rom" type="img" handler="Custom Firmware" package_name="rom_sr1.zip" portable_zips="y1-community/sr1-stock-rom-mirror" /> -->
 
-<package name="Original Software" brand="Timmkoo" repo="y1-community/q3-stock-rom" device="Q3" url="https://github.com/y1-community/q3-stock-rom" type="img" handler="Custom Firmware" package_name="rom_q3.zip" portable_zips="y1-community/q3-stock-rom-mirror" />
+<package name="Original Software" brand="Timmkoo" repo="y1-community/q3-stock-rom" device="Q3" url="https://github.com/y1-community/q3-stock-rom" type="img" handler="Custom Firmware" portable_zips="y1-community/q3-stock-rom-mirror" />
 
 <package name="Lithium" brand="Timmkoo" repo="NoahDomingues/Lithium" portable_zips="y1-community/Lithium-mirror" device="Q3" url="https://github.com/NoahDomingues/Lithium" type="img" handler="Custom Firmware" install_first="y1-community/q3-stock-rom"/>
 
