@@ -2,9 +2,9 @@
 <notices updated="2026-11-11">
 
   <notice id="2026-11-11-original-software-3-2-0-before-reborn" persistent="false" severity="info" from="2026-11-11" until="2026-12-31">
-    <title>Install Original Software 3.2.0 before installing Reborn</title>
-    <content>Original Software 3.2.0 is needed on your Y2 to install Reborn. Install it first, then choose Reborn, select Refresh to see whether any new Reborn versions have become available, and select Install to be guided through the install.</content>
-    <full_content>**Original Software 3.2.0** is the latest Original Software release for the Y2. Install it before you install Reborn (Y2Linux).
+    <title>Install Original Software 3.2.0 or later before installing Reborn</title>
+    <content>Original Software 3.2.0 or later is needed on your Y2 to install Reborn. Install it first, then choose Reborn, select Refresh to see whether any new Reborn versions have become available, and select Install to be guided through the install.</content>
+    <full_content>**Original Software 3.2.0** is the recommended Original Software release for the Y2. Install it before you install Reborn (Y2Linux).
 
 ### In Updater CE
 1. Choose **Y2**, then **Original Software**, pick the **3.2.0** release and select **Install**. Follow the guided steps through to the end.
