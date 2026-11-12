@@ -13,16 +13,16 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/better-y-mirror/releases/tag/v1.1.0"/>
     <innioasis:tag_name>v1.1.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>2</innioasis:downloads>
+    <innioasis:downloads>12</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/better-Y_3.1.2_v1.1.0.apk" title="better-Y_3.1.2_v1.1.0.apk" length="60200797" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706111759"/>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="366014215" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737011991"/>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="254501563" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737011968"/>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux.zip" title="rom-linux.zip" length="541109273" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737011980"/>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-macos.zip" title="rom-macos.zip" length="300960097" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737012421"/>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="256087282" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737011969"/>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows.zip" title="rom-windows.zip" length="417237757" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737011982"/>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="366014215" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737011991"/>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="254501563" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737011968"/>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux.zip" title="rom-linux.zip" length="541109273" type="application/zip" innioasis:download_count="4" innioasis:asset_id="737011980"/>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-macos.zip" title="rom-macos.zip" length="300960097" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737012421"/>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="256087282" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737011969"/>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows.zip" title="rom-windows.zip" length="417237757" type="application/zip" innioasis:download_count="3" innioasis:asset_id="737011982"/>
     <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom.zip" title="rom.zip" length="181243963" type="application/zip" innioasis:download_count="1" innioasis:asset_id="706111766"/>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/stats.txt" title="stats.txt" length="4028" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="737852364"/>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/stats.txt" title="stats.txt" length="4028" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="739226895"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=Leska1337%2Fbetter-Y&amp;amp;tag=v1.1.0#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -245,15 +245,15 @@ it re-reads every MP3 whose tag is over the limit, even if the file has not chan
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/better-y-mirror/releases/tag/v1.0.0"/>
     <innioasis:tag_name>v1.0.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>1</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="365595112" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737000420"/>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="254082460" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737000408"/>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux.zip" title="rom-linux.zip" length="540690170" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737000439"/>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-macos.zip" title="rom-macos.zip" length="300540980" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737001048"/>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="255668179" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737000404"/>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-windows.zip" title="rom-windows.zip" length="416818654" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737000436"/>
+    <innioasis:downloads>11</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="365595112" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737000420"/>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="254082460" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737000408"/>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux.zip" title="rom-linux.zip" length="540690170" type="application/zip" innioasis:download_count="4" innioasis:asset_id="737000439"/>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-macos.zip" title="rom-macos.zip" length="300540980" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737001048"/>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="255668179" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737000404"/>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-windows.zip" title="rom-windows.zip" length="416818654" type="application/zip" innioasis:download_count="3" innioasis:asset_id="737000436"/>
     <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom.zip" title="rom.zip" length="180824832" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733008365"/>
-    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/stats.txt" title="stats.txt" length="3781" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="737852319"/>
+    <link rel="enclosure" href="https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/stats.txt" title="stats.txt" length="3783" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="739226775"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=Leska1337%2Fbetter-Y&amp;amp;tag=v1.0.0#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;

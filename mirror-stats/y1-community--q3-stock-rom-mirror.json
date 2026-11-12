@@ -2,20 +2,24 @@
  "repo": "y1-community/q3-stock-rom-mirror",
  "generatedAt": "2026-11-11T21:52:42Z",
  "aggregate": {
-  "total": 59,
-  "originalTotal": 45,
-  "portableTotal": 14,
+  "total": 83,
+  "originalTotal": 51,
+  "portableTotal": 32,
   "originals": [
    {
     "name": "rom_q3.zip",
-    "count": 45
+    "count": 48
+   },
+   {
+    "name": "rom_q3-linux-legacy.zip",
+    "count": 3
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 6
+    "count": 9
    },
    {
     "key": "windows-arm64",
@@ -25,27 +29,27 @@
    {
     "key": "windows-legacy",
     "label": "Portable zip for Windows 32-bit (legacy)",
-    "count": 0
+    "count": 3
    },
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 2
+    "count": 5
    },
    {
     "key": "linux-arm64",
     "label": "Portable zip for Linux arm64",
-    "count": 0
+    "count": 3
    },
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 6
+    "count": 9
    },
    {
     "key": "linux-legacy",
     "label": "Portable zip for linux legacy",
-    "count": 0
+    "count": 3
    }
   ],
   "releases": 3,

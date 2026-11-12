@@ -2,20 +2,24 @@
  "repo": "y1-community/koensayr-auto-mirror",
  "generatedAt": "2026-11-11T21:44:30Z",
  "aggregate": {
-  "total": 1112,
-  "originalTotal": 1102,
-  "portableTotal": 10,
+  "total": 1131,
+  "originalTotal": 1109,
+  "portableTotal": 22,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 1102
+    "count": 1107
+   },
+   {
+    "name": "rom-linux-legacy.zip",
+    "count": 2
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 2
+    "count": 4
    },
    {
     "key": "windows-arm64",
@@ -25,27 +29,27 @@
    {
     "key": "windows-legacy",
     "label": "Portable zip for Windows 32-bit (legacy)",
-    "count": 0
+    "count": 2
    },
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 2
+    "count": 4
    },
    {
     "key": "linux-arm64",
     "label": "Portable zip for Linux arm64",
-    "count": 0
+    "count": 2
    },
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 6
+    "count": 8
    },
    {
     "key": "linux-legacy",
     "label": "Portable zip for linux legacy",
-    "count": 0
+    "count": 2
    }
   ],
   "releases": 2,

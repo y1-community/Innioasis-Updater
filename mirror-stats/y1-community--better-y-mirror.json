@@ -2,20 +2,24 @@
  "repo": "y1-community/better-y-mirror",
  "generatedAt": "2026-11-11T21:44:31Z",
  "aggregate": {
-  "total": 644,
-  "originalTotal": 624,
-  "portableTotal": 20,
+  "total": 669,
+  "originalTotal": 633,
+  "portableTotal": 36,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 624
+    "count": 631
+   },
+   {
+    "name": "rom-linux-legacy.zip",
+    "count": 2
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 6
+    "count": 10
    },
    {
     "key": "windows-arm64",
@@ -25,27 +29,27 @@
    {
     "key": "windows-legacy",
     "label": "Portable zip for Windows 32-bit (legacy)",
-    "count": 0
+    "count": 2
    },
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 6
+    "count": 10
    },
    {
     "key": "linux-arm64",
     "label": "Portable zip for Linux arm64",
-    "count": 0
+    "count": 2
    },
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 8
+    "count": 10
    },
    {
     "key": "linux-legacy",
     "label": "Portable zip for linux legacy",
-    "count": 0
+    "count": 2
    }
   ],
   "releases": 2,

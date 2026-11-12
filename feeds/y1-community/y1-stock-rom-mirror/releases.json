@@ -17,7 +17,7 @@
         "name": "rom_y2-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-linux-arm64.zip",
         "size": 527774015,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T22:10:46Z",
         "updated_at": "2026-11-11T22:11:03Z",
@@ -28,7 +28,7 @@
         "name": "rom_y2-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-linux-legacy.zip",
         "size": 416261393,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T22:10:46Z",
         "updated_at": "2026-11-11T22:11:00Z",
@@ -39,7 +39,7 @@
         "name": "rom_y2-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-linux.zip",
         "size": 702869073,
-        "download_count": 1,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-11T22:10:46Z",
         "updated_at": "2026-11-11T22:11:13Z",
@@ -50,7 +50,7 @@
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-macos.zip",
         "size": 462719869,
-        "download_count": 5,
+        "download_count": 9,
         "content_type": "application/zip",
         "created_at": "2026-11-11T22:11:01Z",
         "updated_at": "2026-11-11T22:11:16Z",
@@ -61,7 +61,7 @@
         "name": "rom_y2-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-windows-legacy.zip",
         "size": 417847108,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T22:10:46Z",
         "updated_at": "2026-11-11T22:11:00Z",
@@ -72,7 +72,7 @@
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-windows.zip",
         "size": 578997557,
-        "download_count": 7,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-11-11T22:10:47Z",
         "updated_at": "2026-11-11T22:11:18Z",
@@ -90,15 +90,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733117227"
       },
       {
-        "id": 737827303,
+        "id": 739157439,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/stats.txt",
         "size": 4072,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T02:59:34Z",
-        "updated_at": "2026-11-12T02:59:34Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/737827303"
+        "created_at": "2026-11-12T11:05:47Z",
+        "updated_at": "2026-11-12T11:05:47Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/739157439"
       },
       {
         "id": 705968796,
@@ -113,7 +113,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 13
+    "downloads": 34
   },
   {
     "id": 432934228,
@@ -133,7 +133,7 @@
         "name": "rom_y2-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux-arm64.zip",
         "size": 527774074,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T22:05:33Z",
         "updated_at": "2026-11-11T22:06:02Z",
@@ -144,7 +144,7 @@
         "name": "rom_y2-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux-legacy.zip",
         "size": 416261452,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T22:05:33Z",
         "updated_at": "2026-11-11T22:05:47Z",
@@ -155,7 +155,7 @@
         "name": "rom_y2-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux.zip",
         "size": 702869132,
-        "download_count": 1,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-11T22:05:33Z",
         "updated_at": "2026-11-11T22:05:54Z",
@@ -166,7 +166,7 @@
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-macos.zip",
         "size": 462719916,
-        "download_count": 6,
+        "download_count": 10,
         "content_type": "application/zip",
         "created_at": "2026-11-11T22:05:47Z",
         "updated_at": "2026-11-11T22:06:01Z",
@@ -177,7 +177,7 @@
         "name": "rom_y2-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows-legacy.zip",
         "size": 417847167,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T22:05:33Z",
         "updated_at": "2026-11-11T22:05:47Z",
@@ -188,7 +188,7 @@
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows.zip",
         "size": 578997616,
-        "download_count": 7,
+        "download_count": 19,
         "content_type": "application/zip",
         "created_at": "2026-11-11T22:05:33Z",
         "updated_at": "2026-11-11T22:05:53Z",
@@ -206,15 +206,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733100021"
       },
       {
-        "id": 737827206,
+        "id": 739157308,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/stats.txt",
         "size": 4192,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T02:59:32Z",
-        "updated_at": "2026-11-12T02:59:32Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/737827206"
+        "created_at": "2026-11-12T11:05:44Z",
+        "updated_at": "2026-11-12T11:05:44Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/739157308"
       },
       {
         "id": 706246494,
@@ -240,7 +240,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 14
+    "downloads": 36
   },
   {
     "id": 432931145,
@@ -260,7 +260,7 @@
         "name": "rom_y2-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.7/rom_y2-linux-arm64.zip",
         "size": 526932126,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T01:54:46Z",
         "updated_at": "2026-11-11T01:55:10Z",
@@ -271,7 +271,7 @@
         "name": "rom_y2-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.7/rom_y2-linux.zip",
         "size": 702027184,
-        "download_count": 2,
+        "download_count": 5,
         "content_type": "application/zip",
         "created_at": "2026-11-11T01:54:46Z",
         "updated_at": "2026-11-11T01:55:16Z",
@@ -282,7 +282,7 @@
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.7/rom_y2-macos.zip",
         "size": 461877977,
-        "download_count": 20,
+        "download_count": 24,
         "content_type": "application/zip",
         "created_at": "2026-11-11T01:54:46Z",
         "updated_at": "2026-11-11T01:55:09Z",
@@ -293,7 +293,7 @@
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.7/rom_y2-windows.zip",
         "size": 578155668,
-        "download_count": 26,
+        "download_count": 37,
         "content_type": "application/zip",
         "created_at": "2026-11-11T01:54:46Z",
         "updated_at": "2026-11-11T01:55:18Z",
@@ -315,7 +315,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.7/stats.txt",
         "size": 2230,
-        "download_count": 7,
+        "download_count": 8,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T11:58:33Z",
         "updated_at": "2026-11-11T11:58:33Z",
@@ -334,7 +334,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 48
+    "downloads": 67
   },
   {
     "id": 432839324,
@@ -354,7 +354,7 @@
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux-arm64.zip",
         "size": 372733936,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:59:34Z",
         "updated_at": "2026-11-11T21:59:49Z",
@@ -365,7 +365,7 @@
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux-legacy.zip",
         "size": 251713026,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:59:33Z",
         "updated_at": "2026-11-11T21:59:45Z",
@@ -376,7 +376,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux.zip",
         "size": 547828994,
-        "download_count": 6,
+        "download_count": 13,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:59:34Z",
         "updated_at": "2026-11-11T21:59:53Z",
@@ -387,7 +387,7 @@
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-macos.zip",
         "size": 299975151,
-        "download_count": 12,
+        "download_count": 24,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:59:43Z",
         "updated_at": "2026-11-11T21:59:54Z",
@@ -398,7 +398,7 @@
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows-legacy.zip",
         "size": 253298741,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:59:33Z",
         "updated_at": "2026-11-11T21:59:43Z",
@@ -409,7 +409,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip",
         "size": 414449198,
-        "download_count": 53,
+        "download_count": 87,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:59:34Z",
         "updated_at": "2026-11-11T21:59:45Z",
@@ -427,15 +427,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733067856"
       },
       {
-        "id": 737824239,
+        "id": 739153930,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/stats.txt",
-        "size": 3991,
+        "size": 3993,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T02:58:14Z",
-        "updated_at": "2026-11-12T02:58:14Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/737824239"
+        "created_at": "2026-11-12T11:04:42Z",
+        "updated_at": "2026-11-12T11:04:42Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/739153930"
       },
       {
         "id": 705987295,
@@ -450,7 +450,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 71
+    "downloads": 127
   },
   {
     "id": 432928533,
@@ -470,7 +470,7 @@
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-linux-arm64.zip",
         "size": 372603878,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:55:21Z",
         "updated_at": "2026-11-11T21:55:47Z",
@@ -481,7 +481,7 @@
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-linux-legacy.zip",
         "size": 251582972,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:55:21Z",
         "updated_at": "2026-11-11T21:55:32Z",
@@ -492,7 +492,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-linux.zip",
         "size": 547698936,
-        "download_count": 5,
+        "download_count": 12,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:55:21Z",
         "updated_at": "2026-11-11T21:55:38Z",
@@ -503,7 +503,7 @@
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-macos.zip",
         "size": 299845094,
-        "download_count": 17,
+        "download_count": 27,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:55:31Z",
         "updated_at": "2026-11-11T21:55:39Z",
@@ -514,7 +514,7 @@
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-windows-legacy.zip",
         "size": 253168689,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:55:21Z",
         "updated_at": "2026-11-11T21:55:30Z",
@@ -525,7 +525,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-windows.zip",
         "size": 414319140,
-        "download_count": 50,
+        "download_count": 82,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:55:21Z",
         "updated_at": "2026-11-11T21:55:36Z",
@@ -543,15 +543,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733055812"
       },
       {
-        "id": 737824163,
+        "id": 739153827,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/stats.txt",
-        "size": 3990,
+        "size": 3991,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T02:58:12Z",
-        "updated_at": "2026-11-12T02:58:12Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/737824163"
+        "created_at": "2026-11-12T11:04:40Z",
+        "updated_at": "2026-11-12T11:04:40Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/739153827"
       },
       {
         "id": 706229285,
@@ -566,7 +566,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 72
+    "downloads": 124
   },
   {
     "id": 432926851,
@@ -586,7 +586,7 @@
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-linux-arm64.zip",
         "size": 382563933,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:51:12Z",
         "updated_at": "2026-11-11T21:51:26Z",
@@ -597,7 +597,7 @@
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-linux-legacy.zip",
         "size": 261543023,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:51:12Z",
         "updated_at": "2026-11-11T21:51:23Z",
@@ -608,7 +608,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-linux.zip",
         "size": 557658991,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:51:12Z",
         "updated_at": "2026-11-11T21:51:31Z",
@@ -619,7 +619,7 @@
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-macos.zip",
         "size": 309805163,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:51:24Z",
         "updated_at": "2026-11-11T21:51:35Z",
@@ -630,7 +630,7 @@
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-windows-legacy.zip",
         "size": 263128740,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:51:12Z",
         "updated_at": "2026-11-11T21:51:25Z",
@@ -641,7 +641,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-windows.zip",
         "size": 424279195,
-        "download_count": 1,
+        "download_count": 7,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:51:12Z",
         "updated_at": "2026-11-11T21:51:30Z",
@@ -659,15 +659,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733045698"
       },
       {
-        "id": 737824073,
+        "id": 739153716,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/stats.txt",
-        "size": 3987,
+        "size": 3988,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T02:58:09Z",
-        "updated_at": "2026-11-12T02:58:10Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/737824073"
+        "created_at": "2026-11-12T11:04:37Z",
+        "updated_at": "2026-11-12T11:04:38Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/739153716"
       },
       {
         "id": 706224595,
@@ -682,7 +682,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1
+    "downloads": 12
   },
   {
     "id": 432924400,
@@ -702,7 +702,7 @@
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-linux-arm64.zip",
         "size": 382527424,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:47:06Z",
         "updated_at": "2026-11-11T21:47:20Z",
@@ -713,7 +713,7 @@
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-linux-legacy.zip",
         "size": 261506516,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:47:06Z",
         "updated_at": "2026-11-11T21:47:17Z",
@@ -724,7 +724,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-linux.zip",
         "size": 557622482,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:47:06Z",
         "updated_at": "2026-11-11T21:47:25Z",
@@ -735,7 +735,7 @@
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-macos.zip",
         "size": 309768647,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:47:16Z",
         "updated_at": "2026-11-11T21:47:25Z",
@@ -746,7 +746,7 @@
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-windows-legacy.zip",
         "size": 263092231,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:47:06Z",
         "updated_at": "2026-11-11T21:47:15Z",
@@ -757,7 +757,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-windows.zip",
         "size": 424242686,
-        "download_count": 1,
+        "download_count": 7,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:47:06Z",
         "updated_at": "2026-11-11T21:47:18Z",
@@ -775,15 +775,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733034161"
       },
       {
-        "id": 737824009,
+        "id": 739153568,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/stats.txt",
-        "size": 3981,
+        "size": 3982,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T02:58:07Z",
-        "updated_at": "2026-11-12T02:58:07Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/737824009"
+        "created_at": "2026-11-12T11:04:35Z",
+        "updated_at": "2026-11-12T11:04:35Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/739153568"
       },
       {
         "id": 706217904,
@@ -798,7 +798,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1
+    "downloads": 12
   },
   {
     "id": 432922607,
@@ -818,7 +818,7 @@
         "name": "rom_type_b-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-linux-arm64.zip",
         "size": 351215335,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:42:58Z",
         "updated_at": "2026-11-11T21:43:09Z",
@@ -829,7 +829,7 @@
         "name": "rom_type_b-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-linux-legacy.zip",
         "size": 239702725,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:42:58Z",
         "updated_at": "2026-11-11T21:43:11Z",
@@ -840,7 +840,7 @@
         "name": "rom_type_b-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-linux.zip",
         "size": 526310393,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:42:58Z",
         "updated_at": "2026-11-11T21:43:22Z",
@@ -851,7 +851,7 @@
         "name": "rom_type_b-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-macos.zip",
         "size": 286161195,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:43:09Z",
         "updated_at": "2026-11-11T21:43:15Z",
@@ -862,7 +862,7 @@
         "name": "rom_type_b-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-windows-legacy.zip",
         "size": 241288440,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:42:58Z",
         "updated_at": "2026-11-11T21:43:10Z",
@@ -873,7 +873,7 @@
         "name": "rom_type_b-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-windows.zip",
         "size": 402438877,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:42:58Z",
         "updated_at": "2026-11-11T21:43:12Z",
@@ -891,15 +891,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733023028"
       },
       {
-        "id": 737823934,
+        "id": 739153432,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/stats.txt",
         "size": 4047,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T02:58:05Z",
-        "updated_at": "2026-11-12T02:58:05Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/737823934"
+        "created_at": "2026-11-12T11:04:33Z",
+        "updated_at": "2026-11-12T11:04:33Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/739153432"
       },
       {
         "id": 706212939,
@@ -914,7 +914,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1
+    "downloads": 8
   },
   {
     "id": 432920856,
@@ -945,7 +945,7 @@
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-linux-arm64.zip",
         "size": 363861072,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:39:14Z",
         "updated_at": "2026-11-11T21:39:26Z",
@@ -956,7 +956,7 @@
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-linux-legacy.zip",
         "size": 242840162,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:39:14Z",
         "updated_at": "2026-11-11T21:39:24Z",
@@ -967,7 +967,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-linux.zip",
         "size": 538956130,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:39:14Z",
         "updated_at": "2026-11-11T21:39:27Z",
@@ -978,7 +978,7 @@
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-macos.zip",
         "size": 291102295,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:39:25Z",
         "updated_at": "2026-11-11T21:39:33Z",
@@ -989,7 +989,7 @@
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-windows-legacy.zip",
         "size": 244425879,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:39:14Z",
         "updated_at": "2026-11-11T21:39:25Z",
@@ -1000,7 +1000,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-windows.zip",
         "size": 405576334,
-        "download_count": 1,
+        "download_count": 7,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:39:14Z",
         "updated_at": "2026-11-11T21:39:25Z",
@@ -1018,15 +1018,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733012535"
       },
       {
-        "id": 737823830,
+        "id": 739153260,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/stats.txt",
-        "size": 4169,
+        "size": 4170,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T02:58:02Z",
-        "updated_at": "2026-11-12T02:58:03Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/737823830"
+        "created_at": "2026-11-12T11:04:31Z",
+        "updated_at": "2026-11-12T11:04:31Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/739153260"
       },
       {
         "id": 706208356,
@@ -1041,6 +1041,6 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1
+    "downloads": 12
   }
 ]

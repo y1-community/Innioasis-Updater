@@ -2,28 +2,40 @@
  "repo": "y1-community/y1-stock-rom-mirror",
  "generatedAt": "2026-11-11T22:11:18Z",
  "aggregate": {
-  "total": 39310,
-  "originalTotal": 38955,
-  "portableTotal": 355,
+  "total": 39557,
+  "originalTotal": 39033,
+  "portableTotal": 524,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 33741
+    "count": 33777
    },
    {
     "name": "rom_y2.zip",
-    "count": 4134
+    "count": 4163
    },
    {
     "name": "rom_type_b.zip",
-    "count": 1080
+    "count": 1085
+   },
+   {
+    "name": "rom-linux-legacy.zip",
+    "count": 5
+   },
+   {
+    "name": "rom_y2-linux-legacy.zip",
+    "count": 2
+   },
+   {
+    "name": "rom_type_b-linux-legacy.zip",
+    "count": 1
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 190
+    "count": 283
    },
    {
     "key": "windows-arm64",
@@ -33,27 +45,27 @@
    {
     "key": "windows-legacy",
     "label": "Portable zip for Windows 32-bit (legacy)",
-    "count": 0
+    "count": 8
    },
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 39
+    "count": 59
    },
    {
     "key": "linux-arm64",
     "label": "Portable zip for Linux arm64",
-    "count": 0
+    "count": 8
    },
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 126
+    "count": 158
    },
    {
     "key": "linux-legacy",
     "label": "Portable zip for linux legacy",
-    "count": 0
+    "count": 8
    }
   ],
   "releases": 9,

@@ -2,20 +2,20 @@
  "repo": "y1-community/inniclassic-mirror",
  "generatedAt": "2026-11-12T03:08:19Z",
  "aggregate": {
-  "total": 2298,
-  "originalTotal": 2152,
-  "portableTotal": 146,
+  "total": 2341,
+  "originalTotal": 2173,
+  "portableTotal": 168,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 2152
+    "count": 2173
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 40
+    "count": 51
    },
    {
     "key": "windows-arm64",
@@ -30,7 +30,7 @@
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 37
+    "count": 48
    },
    {
     "key": "linux-arm64",

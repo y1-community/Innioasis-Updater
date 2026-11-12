@@ -2,28 +2,32 @@
  "repo": "y1-community/y2player-mirror",
  "generatedAt": "2026-11-11T22:02:14Z",
  "aggregate": {
-  "total": 1774,
-  "originalTotal": 1743,
-  "portableTotal": 31,
+  "total": 1819,
+  "originalTotal": 1760,
+  "portableTotal": 59,
   "originals": [
    {
     "name": "rom_y2.zip",
-    "count": 1644
+    "count": 1655
    },
    {
     "name": "system.img.zip",
-    "count": 52
+    "count": 53
    },
    {
     "name": "system.zip",
-    "count": 47
+    "count": 48
+   },
+   {
+    "name": "rom_y2-linux-legacy.zip",
+    "count": 4
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 13
+    "count": 21
    },
    {
     "key": "windows-arm64",
@@ -33,27 +37,27 @@
    {
     "key": "windows-legacy",
     "label": "Portable zip for Windows 32-bit (legacy)",
-    "count": 0
+    "count": 4
    },
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 7
+    "count": 11
    },
    {
     "key": "linux-arm64",
     "label": "Portable zip for Linux arm64",
-    "count": 0
+    "count": 4
    },
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 11
+    "count": 15
    },
    {
     "key": "linux-legacy",
     "label": "Portable zip for linux legacy",
-    "count": 0
+    "count": 4
    }
   ],
   "releases": 4,

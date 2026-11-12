@@ -2,24 +2,32 @@
  "repo": "y1-community/y1-ata-rom-mirror",
  "generatedAt": "2026-11-11T21:49:56Z",
  "aggregate": {
-  "total": 730,
-  "originalTotal": 706,
-  "portableTotal": 24,
+  "total": 758,
+  "originalTotal": 720,
+  "portableTotal": 38,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 434
+    "count": 441
    },
    {
     "name": "rom_type_b.zip",
-    "count": 272
+    "count": 277
+   },
+   {
+    "name": "rom_type_b-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "rom-linux-legacy.zip",
+    "count": 1
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 14
+    "count": 17
    },
    {
     "key": "windows-arm64",
@@ -29,27 +37,27 @@
    {
     "key": "windows-legacy",
     "label": "Portable zip for Windows 32-bit (legacy)",
-    "count": 0
+    "count": 2
    },
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 3
+    "count": 6
    },
    {
     "key": "linux-arm64",
     "label": "Portable zip for Linux arm64",
-    "count": 0
+    "count": 2
    },
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 7
+    "count": 9
    },
    {
     "key": "linux-legacy",
     "label": "Portable zip for linux legacy",
-    "count": 0
+    "count": 2
    }
   ],
   "releases": 1,

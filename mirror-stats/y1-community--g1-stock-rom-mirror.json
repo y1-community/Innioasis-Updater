@@ -2,20 +2,24 @@
  "repo": "y1-community/g1-stock-rom-mirror",
  "generatedAt": "2026-11-12T03:50:48Z",
  "aggregate": {
-  "total": 224,
-  "originalTotal": 170,
-  "portableTotal": 54,
+  "total": 277,
+  "originalTotal": 187,
+  "portableTotal": 90,
   "originals": [
    {
     "name": "rom_g1.zip",
-    "count": 170
+    "count": 181
+   },
+   {
+    "name": "rom_g1-linux-legacy.zip",
+    "count": 6
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 27
+    "count": 33
    },
    {
     "key": "windows-arm64",
@@ -25,27 +29,27 @@
    {
     "key": "windows-legacy",
     "label": "Portable zip for Windows 32-bit (legacy)",
-    "count": 0
+    "count": 6
    },
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 9
+    "count": 15
    },
    {
     "key": "linux-arm64",
     "label": "Portable zip for Linux arm64",
-    "count": 3
+    "count": 9
    },
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 15
+    "count": 21
    },
    {
     "key": "linux-legacy",
     "label": "Portable zip for linux legacy",
-    "count": 0
+    "count": 6
    }
   ],
   "releases": 6,

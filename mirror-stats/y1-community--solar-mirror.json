@@ -1,33 +1,33 @@
 {
  "repo": "y1-community/solar-mirror",
- "generatedAt": "2026-11-11T22:53:46Z",
+ "generatedAt": "2026-11-12T13:01:34Z",
  "aggregate": {
-  "total": 5383,
-  "originalTotal": 4634,
-  "portableTotal": 749,
+  "total": 5555,
+  "originalTotal": 4773,
+  "portableTotal": 782,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 3400
+    "count": 3467
    },
    {
     "name": "rom_type_b.zip",
-    "count": 894
+    "count": 957
    },
    {
     "name": "rom_y2.zip",
-    "count": 314
+    "count": 322
    },
    {
     "name": "rom_a5.zip",
-    "count": 26
+    "count": 27
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 255
+    "count": 271
    },
    {
     "key": "windows-arm64",
@@ -42,7 +42,7 @@
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 255
+    "count": 271
    },
    {
     "key": "linux-arm64",
@@ -52,7 +52,7 @@
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 239
+    "count": 240
    },
    {
     "key": "linux-legacy",

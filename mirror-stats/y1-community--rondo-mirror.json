@@ -1,21 +1,25 @@
 {
  "repo": "y1-community/rondo-mirror",
- "generatedAt": "2026-11-11T22:05:06Z",
+ "generatedAt": "2026-11-12T10:03:09Z",
  "aggregate": {
-  "total": 221,
-  "originalTotal": 172,
-  "portableTotal": 49,
+  "total": 350,
+  "originalTotal": 209,
+  "portableTotal": 141,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 172
+    "count": 195
+   },
+   {
+    "name": "rom-linux-legacy.zip",
+    "count": 14
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 14
+    "count": 36
    },
    {
     "key": "windows-arm64",
@@ -25,30 +29,30 @@
    {
     "key": "windows-legacy",
     "label": "Portable zip for Windows 32-bit (legacy)",
-    "count": 0
+    "count": 14
    },
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 6
+    "count": 20
    },
    {
     "key": "linux-arm64",
     "label": "Portable zip for Linux arm64",
-    "count": 1
+    "count": 15
    },
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 28
+    "count": 42
    },
    {
     "key": "linux-legacy",
     "label": "Portable zip for linux legacy",
-    "count": 0
+    "count": 14
    }
   ],
-  "releases": 4,
+  "releases": 7,
   "hasStats": true
  }
 }

@@ -2,20 +2,24 @@
  "repo": "y1-community/g3-stock-rom-mirror",
  "generatedAt": "2026-11-12T03:43:56Z",
  "aggregate": {
-  "total": 113,
-  "originalTotal": 92,
-  "portableTotal": 21,
+  "total": 173,
+  "originalTotal": 112,
+  "portableTotal": 61,
   "originals": [
    {
     "name": "rom_g3.zip",
-    "count": 92
+    "count": 106
+   },
+   {
+    "name": "rom_g3-linux-legacy.zip",
+    "count": 6
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 6
+    "count": 16
    },
    {
     "key": "windows-arm64",
@@ -25,27 +29,27 @@
    {
     "key": "windows-legacy",
     "label": "Portable zip for Windows 32-bit (legacy)",
-    "count": 0
+    "count": 6
    },
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 5
+    "count": 11
    },
    {
     "key": "linux-arm64",
     "label": "Portable zip for Linux arm64",
-    "count": 0
+    "count": 6
    },
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 10
+    "count": 16
    },
    {
     "key": "linux-legacy",
     "label": "Portable zip for linux legacy",
-    "count": 0
+    "count": 6
    }
   ],
   "releases": 6,

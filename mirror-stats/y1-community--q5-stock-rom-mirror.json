@@ -2,20 +2,24 @@
  "repo": "y1-community/q5-stock-rom-mirror",
  "generatedAt": "2026-11-11T21:52:20Z",
  "aggregate": {
-  "total": 52,
-  "originalTotal": 40,
-  "portableTotal": 12,
+  "total": 77,
+  "originalTotal": 47,
+  "portableTotal": 30,
   "originals": [
    {
     "name": "rom_q5.zip",
-    "count": 40
+    "count": 44
+   },
+   {
+    "name": "rom_q5-linux-legacy.zip",
+    "count": 3
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 8
+    "count": 11
    },
    {
     "key": "windows-arm64",
@@ -25,27 +29,27 @@
    {
     "key": "windows-legacy",
     "label": "Portable zip for Windows 32-bit (legacy)",
-    "count": 0
+    "count": 3
    },
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 2
+    "count": 5
    },
    {
     "key": "linux-arm64",
     "label": "Portable zip for Linux arm64",
-    "count": 0
+    "count": 3
    },
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 2
+    "count": 5
    },
    {
     "key": "linux-legacy",
     "label": "Portable zip for linux legacy",
-    "count": 0
+    "count": 3
    }
   ],
   "releases": 3,
