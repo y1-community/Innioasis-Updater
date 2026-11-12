@@ -3,7 +3,8 @@ main = "download-proxy-worker.js"
 compatibility_date = "2026-11-03"
 
 routes = [
-  { pattern = "innioasis.app/download-proxy*", zone_name = "innioasis.app" }
+  { pattern = "innioasis.app/download-proxy*", zone_name = "innioasis.app" },
+  { pattern = "innioasis.app/mirror-stats*", zone_name = "innioasis.app" }
 ]
 
 [vars]
