@@ -1588,3 +1588,136 @@ body.site-themes-app #footer-root {
     .lumen-download-progress-wrap,
     .lumen-download-progress-cell { min-width: 0; }
 }
+
+/* —— Firmware download breakdown ————————————————————————————————————————
+   The number is the control and the small i is the discoverable duplicate. —— */
+.lumen-stat-breakdown {
+    cursor: pointer;
+    text-decoration: underline dotted;
+    text-underline-offset: .18em;
+}
+.lumen-stat-breakdown:hover,
+.lumen-stat-breakdown:focus-visible {
+    color: var(--lumen-accent);
+    outline: none;
+}
+.lumen-stat-info {
+    display: inline-grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-inline-start: .35rem;
+    padding: 0;
+    border: 1px solid var(--lumen-line);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--lumen-muted);
+    font: inherit;
+    font-size: .72rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+.lumen-stat-info:hover,
+.lumen-stat-info:focus-visible {
+    border-color: var(--lumen-accent);
+    color: var(--lumen-accent);
+    outline: none;
+}
+html.lumen-stats-modal-open { overflow: hidden; }
+.lumen-stats-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+}
+.lumen-stats-modal[hidden] { display: none; }
+.lumen-stats-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(3, 7, 14, .78);
+    backdrop-filter: blur(6px);
+}
+.lumen-stats-dialog {
+    position: relative;
+    width: min(42rem, 100%);
+    max-height: min(86vh, 48rem);
+    overflow: auto;
+    padding: 1.5rem;
+    border: 1px solid var(--lumen-line);
+    border-radius: 1rem;
+    background: var(--lumen-surface, var(--lumen-panel, #101827));
+    color: var(--lumen-text);
+    box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, .5);
+}
+.lumen-stats-close {
+    position: absolute;
+    top: .85rem;
+    right: .85rem;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid var(--lumen-line);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--lumen-muted);
+    font: inherit;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+}
+.lumen-stats-close:hover,
+.lumen-stats-close:focus-visible {
+    border-color: var(--lumen-accent);
+    color: var(--lumen-accent);
+    outline: none;
+}
+.lumen-stats-total {
+    margin: .2rem 0 .35rem;
+    font-family: var(--lumen-display, inherit);
+    font-size: clamp(2.1rem, 6vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1;
+}
+.lumen-stats-desc,
+.lumen-stats-sub,
+.lumen-stats-note {
+    color: var(--lumen-muted);
+    line-height: 1.5;
+}
+.lumen-stats-desc { max-width: 34rem; }
+.lumen-stats-sub { margin: -.35rem 0 .65rem; font-size: .86rem; }
+.lumen-stats-note { margin: 1.1rem 0 0; font-size: .8rem; }
+.lumen-stats-dialog h3 {
+    margin: 1.45rem 0 .3rem;
+    font-size: .95rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+.lumen-stats-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--lumen-line);
+}
+.lumen-stats-list li {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .55rem 0;
+    border-bottom: 1px solid var(--lumen-line);
+}
+.lumen-stats-list li span { min-width: 0; overflow-wrap: anywhere; }
+.lumen-stats-list li strong { flex: 0 0 auto; font-variant-numeric: tabular-nums; }
+.lumen-stats-list li.is-zero { opacity: .55; }
+.lumen-stats-list li.lumen-stats-empty {
+    justify-content: flex-start;
+    color: var(--lumen-muted);
+    font-size: .9rem;
+}
+@media (max-width: 560px) {
+    .lumen-stats-dialog { padding: 1.15rem; max-height: 90vh; }
+    .lumen-stats-list li { gap: .5rem; }
+}

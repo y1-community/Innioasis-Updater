@@ -7,10 +7,10 @@
  *
  * The Markdown parser is docs-viewer.js (window.InnioasisDocs), so a README
  * renders with the same link rewriting, images, tables and code blocks as the
- * release notes. The only figure shown is the archive download total, read
- * from the repository API: a token from config.ini first, then the next
- * token, then an anonymous call, so the page keeps working when the tokens
- * are missing or rate-limited.
+ * release notes. The archive download total is read from the repository API:
+ * a token from config.ini first, then the next token, then an anonymous call,
+ * so the page keeps working when the tokens are missing or rate-limited. The
+ * mirror ledgers replace that fallback and open a ZIP-by-ZIP breakdown.
  */
 (function () {
   "use strict";
@@ -20,6 +20,10 @@
   var item = null;
   var repo = "";
   var params = new URLSearchParams(window.location.search);
+  var latestReleases = [];
+  var breakdownState = null;
+  var breakdownRequested = false;
+  var lastBreakdownFocus = null;
 
   /* Updater CE installs only what slidia_manifest.xml lists. A project that is
      present in the feeds but has no manifest entry keeps its README, its guide
@@ -285,17 +289,22 @@
     if (el && value !== undefined && value !== null && value !== "") el.textContent = value;
   }
 
-  /* Downloads from Firmware Archive: every asset download across the
-     project's public releases. Nothing else is counted or shown. */
+  /* Downloads from Firmware Archive: firmware ZIP downloads across the
+     project's public releases. The mirror stats replace this with the
+     combined source + portable total when they arrive; this remains the
+     fallback while GitHub is loading or rate-limited. */
   function paintDownloads(releases) {
+    latestReleases = releases || [];
     var downloads = 0;
-    (releases || []).forEach(function (release) {
+    latestReleases.forEach(function (release) {
       if (!release || release.draft) return;
       (release.assets || []).forEach(function (asset) {
+        if (!/\.zip$/i.test(String(asset.name || ""))) return;
         downloads += Number(asset.download_count) || 0;
       });
     });
     setStat("downloads", number(downloads));
+    loadDownloadBreakdown();
   }
 
   function fallbackStatsFromBackup() {
@@ -303,6 +312,7 @@
     var statsMap = window.INNIOASIS_REPO_STATS || {};
     if (statsMap[lower] && typeof statsMap[lower].downloads === "number") {
       setStat("downloads", number(statsMap[lower].downloads));
+      loadDownloadBreakdown();
       return;
     }
     var hardcoded = window.INNIOASIS_HARDCODED_RELEASES || {};
@@ -349,6 +359,172 @@
         });
     }
     page(1);
+  }
+
+  /* ---------------------------------------------------------- download modal */
+
+  /* A project's catalog entry names the portable mirror it publishes to. */
+  function mirrorRepoFor(entries) {
+    var list = entries || [];
+    for (var i = 0; i < list.length; i++) {
+      var value = String(list[i] && list[i].portable_zips || "").trim();
+      if (value) return value.split(/[\s,]+/)[0];
+    }
+    return "";
+  }
+
+  function fallbackBreakdown() {
+    if (!window.InnioasisMirrorStats) return null;
+    return window.InnioasisMirrorStats.aggregate([], { sourceReleases: latestReleases });
+  }
+
+  /* Fetch every release ledger once, sum it, and let the modal explain the
+     total. A failed request still leaves the source-release fallback usable. */
+  function loadDownloadBreakdown() {
+    if (breakdownRequested) return;
+    breakdownRequested = true;
+    var entries = itemsForRepo(repo);
+    if (!entries.length && item) entries = [item];
+    var mirror = mirrorRepoFor(entries);
+
+    function finish(data) {
+      var docs = data && Array.isArray(data.releases) ? data.releases : [];
+      var aggregate = null;
+      if (window.InnioasisMirrorStats) {
+        aggregate = window.InnioasisMirrorStats.aggregate(docs, { sourceReleases: latestReleases });
+        if ((!aggregate || !aggregate.total) && docs.length) aggregate = fallbackBreakdown();
+      }
+      if (!aggregate) return;
+      breakdownState = aggregate;
+      if (aggregate.total > 0) setStat("downloads", number(aggregate.total));
+      attachDownloadBreakdown();
+    }
+
+    if (!mirror || !window.InnioasisMirrorStats) {
+      finish(null);
+      return;
+    }
+    fetch("/mirror-stats?repo=" + encodeURIComponent(mirror), { cache: "no-store" })
+      .then(function (response) { return response.ok ? response.json() : null; })
+      .then(finish)
+      .catch(function () { finish(null); });
+  }
+
+  function attachDownloadBreakdown() {
+    if (!root) return;
+    var el = root.querySelector('[data-stat="downloads"]');
+    if (!el) return;
+    el.classList.add("lumen-stat-breakdown");
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    el.setAttribute("aria-haspopup", "dialog");
+    el.setAttribute("aria-label", "See the download breakdown");
+    el.title = "See the download breakdown";
+    if (!el.getAttribute("data-breakdown-bound")) {
+      el.setAttribute("data-breakdown-bound", "1");
+      el.addEventListener("click", openDownloadBreakdown);
+      el.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openDownloadBreakdown();
+        }
+      });
+    }
+
+    var stat = el.closest(".lumen-stat");
+    if (stat && !stat.querySelector(".lumen-stat-info")) {
+      var info = document.createElement("button");
+      info.type = "button";
+      info.className = "lumen-stat-info";
+      info.textContent = "i";
+      info.setAttribute("aria-label", "See the download breakdown");
+      info.title = "See the download breakdown";
+      info.addEventListener("click", openDownloadBreakdown);
+      stat.appendChild(info);
+    }
+  }
+
+  function ensureBreakdownModal() {
+    var modal = document.getElementById("lumen-download-breakdown");
+    if (modal) return modal;
+    modal = document.createElement("div");
+    modal.id = "lumen-download-breakdown";
+    modal.className = "lumen-stats-modal";
+    modal.setAttribute("data-i18n-skip", "1");
+    modal.setAttribute("translate", "no");
+    modal.hidden = true;
+    modal.innerHTML =
+      '<div class="lumen-stats-backdrop" data-stats-close></div>' +
+      '<div class="lumen-stats-dialog" role="dialog" aria-modal="true" ' +
+        'aria-labelledby="lumen-stats-title" aria-describedby="lumen-stats-desc">' +
+        '<button type="button" class="lumen-stats-close" data-stats-close ' +
+          'aria-label="Close download breakdown">×</button>' +
+        '<div class="lumen-stats-body"></div>' +
+      '</div>';
+    document.body.appendChild(modal);
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal || event.target.closest("[data-stats-close]")) closeDownloadBreakdown();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && !modal.hidden) closeDownloadBreakdown();
+    });
+    return modal;
+  }
+
+  function breakdownRows(rows, emptyText) {
+    if (!rows || !rows.length) return '<li class="lumen-stats-empty">' + escapeHtml(emptyText) + '</li>';
+    return rows.map(function (row) {
+      return '<li' + (row.count ? '' : ' class="is-zero"') + '>' +
+        '<span>' + escapeHtml(row.label || row.name) + '</span>' +
+        '<strong>' + number(row.count) + '</strong>' +
+      '</li>';
+    }).join("");
+  }
+
+  function openDownloadBreakdown() {
+    var aggregate = breakdownState || fallbackBreakdown();
+    if (!aggregate) return;
+    var modal = ensureBreakdownModal();
+    var body = modal.querySelector(".lumen-stats-body");
+    if (!body) return;
+    var heading = root ? root.querySelector(".lumen-release-titles h1") : null;
+    var title = heading ? heading.textContent.trim() : "Firmware downloads";
+    var originals = (aggregate.originals || []).slice();
+    var sourceNote = aggregate.hasStats
+      ? "Combined source and mirror downloads for each original ZIP."
+      : "Live mirror statistics could not be loaded; this is the source archive count.";
+
+    body.innerHTML =
+      '<p class="lumen-kicker">Download breakdown</p>' +
+      '<h2 id="lumen-stats-title">' + escapeHtml(title) + '</h2>' +
+      '<p class="lumen-stats-total">' + number(aggregate.total) + '</p>' +
+      '<p class="lumen-stats-desc" id="lumen-stats-desc">' +
+        'Total GitHub download events for firmware ZIPs and portable packages. ' +
+        'These are downloads, not unique people.' +
+      '</p>' +
+      '<h3>Original firmware ZIPs</h3>' +
+      '<p class="lumen-stats-sub">' + escapeHtml(sourceNote) + '</p>' +
+      '<ul class="lumen-stats-list">' + breakdownRows(originals, "No original ZIP downloads recorded yet.") + '</ul>' +
+      '<h3>Portable packages</h3>' +
+      '<p class="lumen-stats-sub">Repackaged builds published by the portable mirror.</p>' +
+      '<ul class="lumen-stats-list">' + breakdownRows(aggregate.portable, "No portable package downloads recorded yet.") + '</ul>' +
+      '<p class="lumen-stats-note">Totals count firmware ZIPs and portable packages only. ' +
+        'README images, manifests, checksums and other mirrored files are excluded.</p>';
+
+    lastBreakdownFocus = document.activeElement;
+    modal.hidden = false;
+    document.documentElement.classList.add("lumen-stats-modal-open");
+    var close = modal.querySelector(".lumen-stats-close");
+    if (close) close.focus();
+  }
+
+  function closeDownloadBreakdown() {
+    var modal = document.getElementById("lumen-download-breakdown");
+    if (!modal) return;
+    modal.hidden = true;
+    document.documentElement.classList.remove("lumen-stats-modal-open");
+    if (lastBreakdownFocus && typeof lastBreakdownFocus.focus === "function") lastBreakdownFocus.focus();
+    lastBreakdownFocus = null;
   }
 
   /* ------------------------------------------------------------------- readme */
