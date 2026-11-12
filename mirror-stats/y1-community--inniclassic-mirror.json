@@ -1,14 +1,14 @@
 {
  "repo": "y1-community/inniclassic-mirror",
- "generatedAt": "2026-11-11T22:54:21Z",
+ "generatedAt": "2026-11-12T03:08:19Z",
  "aggregate": {
-  "total": 2275,
-  "originalTotal": 2138,
-  "portableTotal": 137,
+  "total": 2298,
+  "originalTotal": 2152,
+  "portableTotal": 146,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 2138
+    "count": 2152
    }
   ],
   "portable": [
@@ -40,7 +40,7 @@
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 60
+    "count": 69
    },
    {
     "key": "linux-legacy",

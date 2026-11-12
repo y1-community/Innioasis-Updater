@@ -182,7 +182,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/stats.txt",
         "size": 5351,
-        "download_count": 2,
+        "download_count": 4,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T23:02:48Z",
         "updated_at": "2026-11-11T23:02:48Z",
@@ -243,7 +243,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-linux.zip",
         "size": 889138785,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T19:24:38Z",
         "updated_at": "2026-11-11T19:25:16Z",
@@ -265,7 +265,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-windows.zip",
         "size": 765267269,
-        "download_count": 16,
+        "download_count": 21,
         "content_type": "application/zip",
         "created_at": "2026-11-11T19:24:38Z",
         "updated_at": "2026-11-11T19:25:10Z",
@@ -342,7 +342,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/stats.txt",
         "size": 2809,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T19:25:11Z",
         "updated_at": "2026-11-11T19:25:11Z",
@@ -361,7 +361,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 21
+    "downloads": 27
   },
   {
     "id": 432921057,
@@ -454,15 +454,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733036746"
       },
       {
-        "id": 737006196,
+        "id": 737846995,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/stats.txt",
-        "size": 3371,
-        "download_count": 3,
+        "size": 3854,
+        "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-11T21:42:14Z",
-        "updated_at": "2026-11-11T21:42:14Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737006196"
+        "created_at": "2026-11-12T03:06:11Z",
+        "updated_at": "2026-11-12T03:06:12Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737846995"
       }
     ],
     "mirror_downloads": 0,
@@ -559,15 +559,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733055840"
       },
       {
-        "id": 737023446,
+        "id": 737847089,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/stats.txt",
-        "size": 3310,
-        "download_count": 3,
+        "size": 3793,
+        "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-11T21:48:50Z",
-        "updated_at": "2026-11-11T21:48:50Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737023446"
+        "created_at": "2026-11-12T03:06:14Z",
+        "updated_at": "2026-11-12T03:06:14Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737847089"
       }
     ],
     "mirror_downloads": 0,
@@ -613,7 +613,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-linux.zip",
         "size": 893469960,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-11T16:52:37Z",
         "updated_at": "2026-11-11T16:54:31Z",
@@ -635,7 +635,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-windows.zip",
         "size": 769598444,
-        "download_count": 17,
+        "download_count": 21,
         "content_type": "application/zip",
         "created_at": "2026-11-11T16:52:38Z",
         "updated_at": "2026-11-11T16:54:31Z",
@@ -712,7 +712,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/stats.txt",
         "size": 2816,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T16:54:24Z",
         "updated_at": "2026-11-11T16:54:24Z",
@@ -731,7 +731,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 25
+    "downloads": 30
   },
   {
     "id": 432966160,
@@ -993,7 +993,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/stats.txt",
         "size": 3916,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T16:18:37Z",
         "updated_at": "2026-11-11T16:18:37Z",
@@ -1402,15 +1402,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733140194"
       },
       {
-        "id": 737086566,
+        "id": 737847205,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/stats.txt",
-        "size": 8099,
-        "download_count": 2,
+        "size": 10099,
+        "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-11T22:13:03Z",
-        "updated_at": "2026-11-11T22:13:04Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737086566"
+        "created_at": "2026-11-12T03:06:17Z",
+        "updated_at": "2026-11-12T03:06:17Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737847205"
       }
     ],
     "mirror_downloads": 0,
@@ -1555,7 +1555,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/stats.txt",
         "size": 2845,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T18:00:08Z",
         "updated_at": "2026-11-11T18:00:08Z",
@@ -1715,7 +1715,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/stats.txt",
         "size": 2845,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T17:46:36Z",
         "updated_at": "2026-11-11T17:46:36Z",
@@ -1875,7 +1875,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/stats.txt",
         "size": 2845,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T18:12:40Z",
         "updated_at": "2026-11-11T18:12:40Z",
@@ -2035,7 +2035,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/stats.txt",
         "size": 2845,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T18:36:38Z",
         "updated_at": "2026-11-11T18:36:38Z",
@@ -2195,7 +2195,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/stats.txt",
         "size": 2727,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T16:29:54Z",
         "updated_at": "2026-11-11T16:29:54Z",
@@ -2344,7 +2344,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/stats.txt",
         "size": 2845,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T17:06:23Z",
         "updated_at": "2026-11-11T17:06:23Z",
@@ -2504,7 +2504,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/stats.txt",
         "size": 2843,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T19:13:21Z",
         "updated_at": "2026-11-11T19:13:22Z",
@@ -2664,7 +2664,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/stats.txt",
         "size": 2844,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T18:48:20Z",
         "updated_at": "2026-11-11T18:48:21Z",
@@ -2945,7 +2945,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/stats.txt",
         "size": 3826,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T15:54:10Z",
         "updated_at": "2026-11-11T15:54:10Z",
@@ -3321,15 +3321,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733213332"
       },
       {
-        "id": 737157615,
+        "id": 737847419,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/stats.txt",
-        "size": 8732,
-        "download_count": 2,
+        "size": 10732,
+        "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-11T22:38:56Z",
-        "updated_at": "2026-11-11T22:38:56Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737157615"
+        "created_at": "2026-11-12T03:06:22Z",
+        "updated_at": "2026-11-12T03:06:22Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737847419"
       },
       {
         "id": 733214550,
@@ -3496,7 +3496,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/stats.txt",
         "size": 2845,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T17:18:51Z",
         "updated_at": "2026-11-11T17:18:52Z",
@@ -3656,7 +3656,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/stats.txt",
         "size": 2845,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T17:32:34Z",
         "updated_at": "2026-11-11T17:32:34Z",
@@ -3816,7 +3816,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/stats.txt",
         "size": 2842,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T19:01:24Z",
         "updated_at": "2026-11-11T19:01:24Z",
@@ -3976,7 +3976,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/stats.txt",
         "size": 2845,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T18:24:58Z",
         "updated_at": "2026-11-11T18:24:58Z",
@@ -4114,7 +4114,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0936ff79cff7ee5e47c6278b648d478824e709fa/stats.txt",
         "size": 2624,
-        "download_count": 3,
+        "download_count": 5,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-05T21:35:39Z",
         "updated_at": "2026-11-05T21:35:39Z",
@@ -4274,7 +4274,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/stats.txt",
         "size": 2848,
-        "download_count": 4,
+        "download_count": 6,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T16:41:46Z",
         "updated_at": "2026-11-11T16:41:47Z",
@@ -4299,7 +4299,7 @@
     "id": 432948734,
     "tag_name": "nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d",
     "name": "Portable Flashing Package: Rockbox-Y1 Nightly-05-03-2026",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 240p\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 240p - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 240p - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 240p - portable package\"></a>\n  <a href=\"https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 240p - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 360p\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 360p - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 360p - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 360p - portable package\"></a>\n  <a href=\"https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 360p - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom_240p-windows.zip\",\"platform\":\"windows\",\"sha256\":\"cbd7d6fa09af9a74fd0c5b6c75f162f609c0e44005063de941f8c559aa055334\",\"size\":694945489,\"source_asset\":\"rom_240p.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p-linux.zip\",\"platform\":\"linux\",\"sha256\":\"39be662903da117866d07a140736910628f0c3ea50d51ab0c90e3fdb4f35955e\",\"size\":818817005,\"source_asset\":\"rom_240p.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"3d7300da70716e93425bf32d9d7e5bcb6fde8275d0b0d017b8e5906a1f2f0ecb\",\"size\":643721947,\"source_asset\":\"rom_240p.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p-macos.zip\",\"platform\":\"macos\",\"sha256\":\"8196a72412abc9c51ae8efbf479ccbb819c483bf9958ef2b0ea94b27d45146c0\",\"size\":578667827,\"source_asset\":\"rom_240p.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"beac1f1ccb27d5306b720dd0e26528b49c8fefec27d9c9a01a464aff1f4e7ab7\",\"size\":661989687,\"source_asset\":\"rom_240p_type_b.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"8a39699f2aa0ec06842afd2e74cd0fdac653f43bacbbb49eccdc5d4b2e308c06\",\"size\":785861203,\"source_asset\":\"rom_240p_type_b.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p_type_b-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"a61608b0bc932c31207b2bc20f67cdca7750e70f2651898983a1dbb9afb6c694\",\"size\":610766145,\"source_asset\":\"rom_240p_type_b.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"d4c2f2b3dfa6dc262524ee6bc2a6d21f3fbcc69a85d9b2554dce17d808233713\",\"size\":545712030,\"source_asset\":\"rom_240p_type_b.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_360p-windows.zip\",\"platform\":\"windows\",\"sha256\":\"506c602923a3be7869320e86bef0e0002292205c8e82e079ed6429df53c9109b\",\"size\":697210085,\"source_asset\":\"rom_360p.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p-linux.zip\",\"platform\":\"linux\",\"sha256\":\"f4aae7f2612c46a2cc50f5bdf28be21f969461f1008ad9133d9583c1d8f92d52\",\"size\":821081601,\"source_asset\":\"rom_360p.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"9ee8fa07d749430ca2ecaf817e641ca3ff901ac70936e3cecaa6f08b7a83357f\",\"size\":645986543,\"source_asset\":\"rom_360p.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p-macos.zip\",\"platform\":\"macos\",\"sha256\":\"76ca558c03b38fb035d7ecdb5d2be7ca48c50bd1cebc6c02b250e401779d0f19\",\"size\":580932423,\"source_asset\":\"rom_360p.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"cb9c901bfb01cc5057e1ed0c7ed1c4cb03a129e74ae20ad7ef309011d98dcb48\",\"size\":671749161,\"source_asset\":\"rom_360p_type_b.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"374e9a63a4ff4e537372e41f715ea8401b3c6d1ed3a1766656d2d9dc614c1b28\",\"size\":795620677,\"source_asset\":\"rom_360p_type_b.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p_type_b-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"12c0cea2c815b60e73571f2ec872a4528ec2f4a28a8af36194ba04476ee1415c\",\"size\":620525619,\"source_asset\":\"rom_360p_type_b.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"fab2e26f74fca0c4c8094c53779b4ab9d535e3c984af0f61de0ef8996f783569\",\"size\":555471504,\"source_asset\":\"rom_360p_type_b.zip\",\"type\":\"360p\"}],\"built_at\":\"2026-11-11T15:25:52Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"52cea2cbfa4964e2d41fafb474958a219e4a67b4c6a0bfb84b10f9f70135a5d9\",\"original_asset_sizes\":{\"rockbox_240p.apk\":8124725,\"rockbox_360p.apk\":8489269,\"rom_240p.zip\":459080190,\"rom_240p_type_b.zip\":426124388,\"rom_360p.zip\":461344786,\"rom_360p_type_b.zip\":435883862,\"update_240p.zip\":91372074,\"update_360p.zip\":92097701},\"original_assets\":[\"rockbox_240p.apk\",\"rockbox_360p.apk\",\"rom_240p.zip\",\"rom_240p_type_b.zip\",\"rom_360p.zip\",\"rom_360p_type_b.zip\",\"update_240p.zip\",\"update_360p.zip\"],\"skipped\":[{\"name\":\"update_240p.zip\",\"reason\":\"no scatter file\"},{\"name\":\"update_360p.zip\",\"reason\":\"no scatter file\"}],\"stats\":{\"baseline\":{\"rockbox_240p.apk\":13,\"rockbox_360p.apk\":13,\"rom_240p-linux-arm64.zip\":0,\"rom_240p-linux.zip\":5,\"rom_240p-macos.zip\":5,\"rom_240p-windows.zip\":5,\"rom_240p.zip\":10,\"rom_240p_type_b-linux-arm64.zip\":0,\"rom_240p_type_b-linux.zip\":5,\"rom_240p_type_b-macos.zip\":5,\"rom_240p_type_b-windows.zip\":5,\"rom_240p_type_b.zip\":10,\"rom_360p-linux-arm64.zip\":0,\"rom_360p-linux.zip\":5,\"rom_360p-macos.zip\":5,\"rom_360p-windows.zip\":5,\"rom_360p.zip\":10,\"rom_360p_type_b-linux-arm64.zip\":0,\"rom_360p_type_b-linux.zip\":5,\"rom_360p_type_b-macos.zip\":5,\"rom_360p_type_b-windows.zip\":5,\"rom_360p_type_b.zip\":10,\"update_240p.zip\":10,\"update_360p.zip\":10},\"generated_at\":\"2026-11-11T15:25:52Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"}},\"v\":13} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 240p\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d&amp;asset=rom_240p.zip&amp;platform=windows&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 240p - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d&amp;asset=rom_240p.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 240p - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d&amp;asset=rom_240p.zip&amp;platform=linux&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 240p - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d&amp;asset=rom_240p.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 240p - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d&amp;asset=rom_240p.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 240p - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d&amp;asset=rom_240p.zip&amp;platform=macos&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 240p - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 360p\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d&amp;asset=rom_360p.zip&amp;platform=windows&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 360p - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d&amp;asset=rom_360p.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 360p - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d&amp;asset=rom_360p.zip&amp;platform=linux&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 360p - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d&amp;asset=rom_360p.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 360p - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d&amp;asset=rom_360p.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 360p - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d&amp;asset=rom_360p.zip&amp;platform=macos&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 360p - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom_240p-windows.zip\",\"platform\":\"windows\",\"sha256\":\"b21e3be9dda31468477afd707f6be98caf870ae757e86094496b520aecf5e3e5\",\"size\":694945489,\"source_asset\":\"rom_240p.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"9f8d1ab0ff9af9a0d08d23e27dade336557edb6c2bf2e40f0c659e5dfe043f8f\",\"size\":533795172,\"source_asset\":\"rom_240p.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p-linux.zip\",\"platform\":\"linux\",\"sha256\":\"0f860d6923ecf42f21a13a63935960bba63e5c7808bc2777876f774f18262294\",\"size\":818817005,\"source_asset\":\"rom_240p.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"3ea6d96f72a342da22f1624f0707a83dd6b1e4cfefd70f7392ad6cf076d9362c\",\"size\":643721947,\"source_asset\":\"rom_240p.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"a22123b58ebc42a62cad42a532b629f30574a0ac2796f7d56e317a635e9aa089\",\"size\":532209457,\"source_asset\":\"rom_240p.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p-macos.zip\",\"platform\":\"macos\",\"sha256\":\"e909f5eca960b7cf7396f7614ff6607f70441215117360a36d12cf4782d2930c\",\"size\":578667827,\"source_asset\":\"rom_240p.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"94042c76a772d3143cd8ab9cf0034c7cac7dcd281e0a9ac4d8d48f74a479c34c\",\"size\":661989687,\"source_asset\":\"rom_240p_type_b.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p_type_b-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"3379371b0a02d775ca8e569655b4429b81477b0bf5877d487ca8eda5d1a442c6\",\"size\":500839390,\"source_asset\":\"rom_240p_type_b.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"460ade385120a4d4d34847ba831e60921537c509c75ebe93ffb6f6776c943dc1\",\"size\":785861203,\"source_asset\":\"rom_240p_type_b.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p_type_b-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"60886d92ca4d870c4362355317e870a4e918fc37280d6b7b982445686b33a6b6\",\"size\":610766145,\"source_asset\":\"rom_240p_type_b.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p_type_b-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"40ed93533b4300ec98c13ec54043cd88907b328113daf81029d448b409661499\",\"size\":499253675,\"source_asset\":\"rom_240p_type_b.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_240p_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"d06716e0a2c0ffdd1ac58e7f0e68a45bc8f634ad749d222756a558fb93091e15\",\"size\":545712030,\"source_asset\":\"rom_240p_type_b.zip\",\"type\":\"240p\"},{\"model\":\"Y1\",\"name\":\"rom_360p-windows.zip\",\"platform\":\"windows\",\"sha256\":\"e5388c7a7b5dfdbdd679e25af09c49b78d868d95e2fe08a8265fcd12588daee2\",\"size\":697210085,\"source_asset\":\"rom_360p.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"a149e96440e19933b5acd8e912b6b1f21df83fa09c3ec85f17a3267d37bd2569\",\"size\":536059768,\"source_asset\":\"rom_360p.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p-linux.zip\",\"platform\":\"linux\",\"sha256\":\"222bc1458ac7109a3b6030ec0b78361278573de993a3cfe36425776b8227f8df\",\"size\":821081601,\"source_asset\":\"rom_360p.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"f23d8257ff95cf203536b056be47d9c9e5c671f83512d62ce6303d3dec99d04c\",\"size\":645986543,\"source_asset\":\"rom_360p.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"160ce1280cee7f1332400aadbbd09fa0ef4ca7463c3507b66c0f50cb6a5e4f70\",\"size\":534474053,\"source_asset\":\"rom_360p.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p-macos.zip\",\"platform\":\"macos\",\"sha256\":\"91feae1fdc882b78d107fd61cd74533af8294c47a0cd743fa72d9c1c35b4babf\",\"size\":580932423,\"source_asset\":\"rom_360p.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"db5eac43fbff8a4333a3c2e7c16a25ace33c7424071ada59bdf7b896dac1e456\",\"size\":671749161,\"source_asset\":\"rom_360p_type_b.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p_type_b-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"b559b7907064f85a8fee42e757bcd179ee97ac6e8cadf44729b0c2d63886c9cf\",\"size\":510598864,\"source_asset\":\"rom_360p_type_b.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"fbf75a0e76840cb0349e9f716fa5edfd8901d988a24f1e83bf3fa201f6de5137\",\"size\":795620677,\"source_asset\":\"rom_360p_type_b.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p_type_b-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"fc6302e6335b33ec8cadbf13b466dcf7be550974b7044ca58856ac933be615ab\",\"size\":620525619,\"source_asset\":\"rom_360p_type_b.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p_type_b-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"bffbb6822cb57bd25e9d1e12aaf17effc6c377dca3c450f60400a15ffc4fc727\",\"size\":509013149,\"source_asset\":\"rom_360p_type_b.zip\",\"type\":\"360p\"},{\"model\":\"Y1\",\"name\":\"rom_360p_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"b645d5de8369ff176f78ad15293006586419d954bbaeecd9fcb079c132efbae6\",\"size\":555471504,\"source_asset\":\"rom_360p_type_b.zip\",\"type\":\"360p\"}],\"built_at\":\"2026-11-12T03:29:15Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"0a3890179a133410b5e3ce4e0b5be8001912d746012ecf6868ebe0558318dbf2\",\"original_asset_sizes\":{\"rockbox_240p.apk\":8124725,\"rockbox_360p.apk\":8489269,\"rom_240p.zip\":459080190,\"rom_240p_type_b.zip\":426124388,\"rom_360p.zip\":461344786,\"rom_360p_type_b.zip\":435883862,\"update_240p.zip\":91372074,\"update_360p.zip\":92097701},\"original_assets\":[\"rockbox_240p.apk\",\"rockbox_360p.apk\",\"rom_240p.zip\",\"rom_240p_type_b.zip\",\"rom_360p.zip\",\"rom_360p_type_b.zip\",\"update_240p.zip\",\"update_360p.zip\"],\"skipped\":[{\"name\":\"update_240p.zip\",\"reason\":\"no scatter file\"},{\"name\":\"update_360p.zip\",\"reason\":\"no scatter file\"}],\"stats\":{\"baseline\":{\"rockbox_240p.apk\":13,\"rockbox_360p.apk\":13,\"rom_240p-linux-arm64.zip\":0,\"rom_240p-linux.zip\":5,\"rom_240p-macos.zip\":5,\"rom_240p-windows.zip\":5,\"rom_240p.zip\":10,\"rom_240p_type_b-linux-arm64.zip\":0,\"rom_240p_type_b-linux.zip\":5,\"rom_240p_type_b-macos.zip\":5,\"rom_240p_type_b-windows.zip\":5,\"rom_240p_type_b.zip\":10,\"rom_360p-linux-arm64.zip\":0,\"rom_360p-linux.zip\":5,\"rom_360p-macos.zip\":5,\"rom_360p-windows.zip\":5,\"rom_360p.zip\":10,\"rom_360p_type_b-linux-arm64.zip\":0,\"rom_360p_type_b-linux.zip\":5,\"rom_360p_type_b-macos.zip\":5,\"rom_360p_type_b-windows.zip\":5,\"rom_360p_type_b.zip\":10,\"update_240p.zip\":10,\"update_360p.zip\":10},\"generated_at\":\"2026-11-12T03:29:15Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":15} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:39:43Z",
@@ -4331,48 +4331,70 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/706296235"
       },
       {
-        "id": 735961016,
+        "id": 737910866,
         "name": "rom_240p-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-linux-arm64.zip",
         "size": 643721947,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:26:08Z",
-        "updated_at": "2026-11-11T15:26:35Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735961016"
+        "created_at": "2026-11-12T03:29:39Z",
+        "updated_at": "2026-11-12T03:30:23Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737910866"
       },
       {
-        "id": 735961008,
+        "id": 737910853,
+        "name": "rom_240p-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-linux-legacy.zip",
+        "size": 532209457,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T03:29:38Z",
+        "updated_at": "2026-11-12T03:30:39Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737910853"
+      },
+      {
+        "id": 737910871,
         "name": "rom_240p-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-linux.zip",
         "size": 818817005,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:26:08Z",
-        "updated_at": "2026-11-11T15:26:47Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735961008"
+        "created_at": "2026-11-12T03:29:39Z",
+        "updated_at": "2026-11-12T03:30:31Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737910871"
       },
       {
-        "id": 735961027,
+        "id": 737912655,
         "name": "rom_240p-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-macos.zip",
         "size": 578667827,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:26:08Z",
-        "updated_at": "2026-11-11T15:26:34Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735961027"
+        "created_at": "2026-11-12T03:30:24Z",
+        "updated_at": "2026-11-12T03:30:57Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737912655"
       },
       {
-        "id": 735961014,
+        "id": 737910852,
+        "name": "rom_240p-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-windows-legacy.zip",
+        "size": 533795172,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T03:29:38Z",
+        "updated_at": "2026-11-12T03:30:31Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737910852"
+      },
+      {
+        "id": 737910867,
         "name": "rom_240p-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-windows.zip",
         "size": 694945489,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:26:08Z",
-        "updated_at": "2026-11-11T15:26:42Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735961014"
+        "created_at": "2026-11-12T03:29:39Z",
+        "updated_at": "2026-11-12T03:30:29Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737910867"
       },
       {
         "id": 733274629,
@@ -4386,48 +4408,70 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733274629"
       },
       {
-        "id": 735962425,
+        "id": 737913290,
         "name": "rom_240p_type_b-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-linux-arm64.zip",
         "size": 610766145,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:26:35Z",
-        "updated_at": "2026-11-11T15:27:09Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735962425"
+        "created_at": "2026-11-12T03:30:40Z",
+        "updated_at": "2026-11-12T03:31:16Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737913290"
       },
       {
-        "id": 735962345,
+        "id": 737915534,
+        "name": "rom_240p_type_b-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-linux-legacy.zip",
+        "size": 499253675,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T03:31:24Z",
+        "updated_at": "2026-11-12T03:32:26Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737915534"
+      },
+      {
+        "id": 737912950,
         "name": "rom_240p_type_b-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-linux.zip",
         "size": 785861203,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:26:34Z",
-        "updated_at": "2026-11-11T15:27:12Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735962345"
+        "created_at": "2026-11-12T03:30:32Z",
+        "updated_at": "2026-11-12T03:31:22Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737912950"
       },
       {
-        "id": 735962493,
+        "id": 737915538,
         "name": "rom_240p_type_b-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-macos.zip",
         "size": 545712030,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:26:37Z",
-        "updated_at": "2026-11-11T15:27:13Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735962493"
+        "created_at": "2026-11-12T03:31:24Z",
+        "updated_at": "2026-11-12T03:32:17Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737915538"
       },
       {
-        "id": 735961018,
+        "id": 737912932,
+        "name": "rom_240p_type_b-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-windows-legacy.zip",
+        "size": 500839390,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T03:30:31Z",
+        "updated_at": "2026-11-12T03:31:18Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737912932"
+      },
+      {
+        "id": 737912877,
         "name": "rom_240p_type_b-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-windows.zip",
         "size": 661989687,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:26:08Z",
-        "updated_at": "2026-11-11T15:26:33Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735961018"
+        "created_at": "2026-11-12T03:30:30Z",
+        "updated_at": "2026-11-12T03:31:21Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737912877"
       },
       {
         "id": 733274711,
@@ -4441,48 +4485,70 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733274711"
       },
       {
-        "id": 735965126,
+        "id": 737917587,
         "name": "rom_360p-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-linux-arm64.zip",
         "size": 645986543,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:27:30Z",
-        "updated_at": "2026-11-11T15:28:17Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735965126"
+        "created_at": "2026-11-12T03:32:14Z",
+        "updated_at": "2026-11-12T03:33:01Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737917587"
       },
       {
-        "id": 735963182,
+        "id": 737917735,
+        "name": "rom_360p-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-linux-legacy.zip",
+        "size": 534474053,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T03:32:18Z",
+        "updated_at": "2026-11-12T03:33:05Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737917735"
+      },
+      {
+        "id": 737915541,
         "name": "rom_360p-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-linux.zip",
         "size": 821081601,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:26:48Z",
-        "updated_at": "2026-11-11T15:27:28Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735963182"
+        "created_at": "2026-11-12T03:31:24Z",
+        "updated_at": "2026-11-12T03:32:28Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737915541"
       },
       {
-        "id": 735965062,
+        "id": 737918135,
         "name": "rom_360p-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-macos.zip",
         "size": 580932423,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:27:29Z",
-        "updated_at": "2026-11-11T15:28:06Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735965062"
+        "created_at": "2026-11-12T03:32:27Z",
+        "updated_at": "2026-11-12T03:33:13Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737918135"
       },
       {
-        "id": 735962886,
+        "id": 737915529,
+        "name": "rom_360p-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-windows-legacy.zip",
+        "size": 536059768,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T03:31:23Z",
+        "updated_at": "2026-11-12T03:32:26Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737915529"
+      },
+      {
+        "id": 737915542,
         "name": "rom_360p-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-windows.zip",
         "size": 697210085,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:26:43Z",
-        "updated_at": "2026-11-11T15:27:20Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735962886"
+        "created_at": "2026-11-12T03:31:24Z",
+        "updated_at": "2026-11-12T03:32:13Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737915542"
       },
       {
         "id": 733275171,
@@ -4496,48 +4562,70 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733275171"
       },
       {
-        "id": 735965055,
+        "id": 737920375,
         "name": "rom_360p_type_b-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-linux-arm64.zip",
         "size": 620525619,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:27:29Z",
-        "updated_at": "2026-11-11T15:29:28Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735965055"
+        "created_at": "2026-11-12T03:33:18Z",
+        "updated_at": "2026-11-12T03:33:58Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737920375"
       },
       {
-        "id": 735965054,
+        "id": 737920345,
+        "name": "rom_360p_type_b-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-linux-legacy.zip",
+        "size": 509013149,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T03:33:18Z",
+        "updated_at": "2026-11-12T03:34:02Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737920345"
+      },
+      {
+        "id": 737920366,
         "name": "rom_360p_type_b-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-linux.zip",
         "size": 795620677,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:27:29Z",
-        "updated_at": "2026-11-11T15:29:32Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735965054"
+        "created_at": "2026-11-12T03:33:18Z",
+        "updated_at": "2026-11-12T03:34:10Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737920366"
       },
       {
-        "id": 735966718,
+        "id": 737920370,
         "name": "rom_360p_type_b-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-macos.zip",
         "size": 555471504,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:28:07Z",
-        "updated_at": "2026-11-11T15:28:49Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735966718"
+        "created_at": "2026-11-12T03:33:18Z",
+        "updated_at": "2026-11-12T03:33:59Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737920370"
       },
       {
-        "id": 735965056,
+        "id": 737918215,
+        "name": "rom_360p_type_b-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-windows-legacy.zip",
+        "size": 510598864,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T03:32:29Z",
+        "updated_at": "2026-11-12T03:33:09Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737918215"
+      },
+      {
+        "id": 737918141,
         "name": "rom_360p_type_b-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-windows.zip",
         "size": 671749161,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T15:27:29Z",
-        "updated_at": "2026-11-11T15:29:41Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735965056"
+        "created_at": "2026-11-12T03:32:27Z",
+        "updated_at": "2026-11-12T03:33:17Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737918141"
       },
       {
         "id": 733275195,
@@ -4551,15 +4639,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733275195"
       },
       {
-        "id": 735967200,
+        "id": 737920369,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/stats.txt",
-        "size": 3825,
-        "download_count": 4,
+        "size": 8732,
+        "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-11T15:28:18Z",
-        "updated_at": "2026-11-11T15:28:19Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/735967200"
+        "created_at": "2026-11-12T03:33:18Z",
+        "updated_at": "2026-11-12T03:33:18Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/737920369"
       },
       {
         "id": 733276643,
@@ -4585,6 +4673,6 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 2
+    "downloads": 0
   }
 ]

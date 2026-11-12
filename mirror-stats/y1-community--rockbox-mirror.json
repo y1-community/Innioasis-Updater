@@ -2,21 +2,21 @@
  "repo": "y1-community/rockbox-mirror",
  "generatedAt": "2026-11-11T23:03:11Z",
  "aggregate": {
-  "total": 52002,
-  "originalTotal": 51269,
-  "portableTotal": 733,
+  "total": 52038,
+  "originalTotal": 51299,
+  "portableTotal": 739,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 33715
+    "count": 33717
    },
    {
     "name": "rom_240p.zip",
-    "count": 9307
+    "count": 9311
    },
    {
     "name": "rom_360p.zip",
-    "count": 4727
+    "count": 4731
    },
    {
     "name": "update.zip",
@@ -28,19 +28,19 @@
    },
    {
     "name": "rom_240p_type_b.zip",
-    "count": 255
+    "count": 259
    },
    {
     "name": "update_360p.zip",
-    "count": 236
+    "count": 242
    },
    {
     "name": "rom_360p_type_b.zip",
-    "count": 226
+    "count": 230
    },
    {
     "name": "update_240p.zip",
-    "count": 145
+    "count": 151
    },
    {
     "name": "voices.zip",
@@ -51,7 +51,7 @@
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 255
+    "count": 261
    },
    {
     "key": "windows-arm64",

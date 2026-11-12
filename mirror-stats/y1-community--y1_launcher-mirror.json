@@ -2,28 +2,28 @@
  "repo": "y1-community/y1_launcher-mirror",
  "generatedAt": "2026-11-11T22:47:40Z",
  "aggregate": {
-  "total": 2203,
-  "originalTotal": 1978,
-  "portableTotal": 225,
+  "total": 2221,
+  "originalTotal": 1995,
+  "portableTotal": 226,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 955
+    "count": 963
    },
    {
     "name": "rom_y2.zip",
-    "count": 674
+    "count": 675
    },
    {
     "name": "rom_type_b.zip",
-    "count": 349
+    "count": 357
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 38
+    "count": 39
    },
    {
     "key": "windows-arm64",

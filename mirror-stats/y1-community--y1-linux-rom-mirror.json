@@ -2,9 +2,9 @@
  "repo": "y1-community/y1-linux-rom-mirror",
  "generatedAt": "2026-11-11T21:41:43Z",
  "aggregate": {
-  "total": 66,
+  "total": 67,
   "originalTotal": 58,
-  "portableTotal": 8,
+  "portableTotal": 9,
   "originals": [
    {
     "name": "rom.zip",
@@ -15,7 +15,7 @@
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 2
+    "count": 3
    },
    {
     "key": "windows-arm64",

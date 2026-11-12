@@ -2,13 +2,13 @@
  "repo": "y1-community/y1-ata-rom-mirror",
  "generatedAt": "2026-11-11T21:49:56Z",
  "aggregate": {
-  "total": 726,
-  "originalTotal": 703,
-  "portableTotal": 23,
+  "total": 730,
+  "originalTotal": 706,
+  "portableTotal": 24,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 431
+    "count": 434
    },
    {
     "name": "rom_type_b.zip",
@@ -44,7 +44,7 @@
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 6
+    "count": 7
    },
    {
     "key": "linux-legacy",

@@ -2,13 +2,13 @@
  "repo": "y1-community/y2player-mirror",
  "generatedAt": "2026-11-11T22:02:14Z",
  "aggregate": {
-  "total": 1765,
-  "originalTotal": 1738,
-  "portableTotal": 27,
+  "total": 1774,
+  "originalTotal": 1743,
+  "portableTotal": 31,
   "originals": [
    {
     "name": "rom_y2.zip",
-    "count": 1639
+    "count": 1644
    },
    {
     "name": "system.img.zip",
@@ -23,7 +23,7 @@
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 9
+    "count": 13
    },
    {
     "key": "windows-arm64",

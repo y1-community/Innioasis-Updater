@@ -2,13 +2,13 @@
  "repo": "y1-community/better-y-mirror",
  "generatedAt": "2026-11-11T21:44:31Z",
  "aggregate": {
-  "total": 635,
-  "originalTotal": 617,
-  "portableTotal": 18,
+  "total": 644,
+  "originalTotal": 624,
+  "portableTotal": 20,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 617
+    "count": 624
    }
   ],
   "portable": [
@@ -30,7 +30,7 @@
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 4
+    "count": 6
    },
    {
     "key": "linux-arm64",

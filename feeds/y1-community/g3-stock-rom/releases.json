@@ -56,7 +56,7 @@
         "name": "rom_g3.zip",
         "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3.zip",
         "size": 1646115909,
-        "download_count": 8,
+        "download_count": 9,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:39:20Z",
         "updated_at": "2026-11-05T05:41:55Z",
@@ -67,15 +67,15 @@
         "name": "SHA256SUMS.MX3-G3-EN-WM-V6.00-20260722",
         "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.00-20260722/SHA256SUMS.MX3-G3-EN-WM-V6.00-20260722",
         "size": 78,
-        "download_count": 9,
+        "download_count": 10,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:41:56Z",
         "updated_at": "2026-11-05T05:41:56Z",
         "url": "https://api.github.com/repos/y1-community/g3-stock-rom/releases/assets/712226791"
       }
     ],
-    "mirror_downloads": 4,
-    "downloads": 12
+    "mirror_downloads": 1,
+    "downloads": 10
   },
   {
     "id": 434818491,
@@ -95,7 +95,7 @@
         "name": "rom_g3.zip",
         "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3.zip",
         "size": 1573503257,
-        "download_count": 10,
+        "download_count": 11,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:32:32Z",
         "updated_at": "2026-11-05T05:35:12Z",
@@ -106,7 +106,7 @@
         "name": "SHA256SUMS.MX3-9_G3_MULTI-V4.03-20260826",
         "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.03-20260826/SHA256SUMS.MX3-9_G3_MULTI-V4.03-20260826",
         "size": 78,
-        "download_count": 11,
+        "download_count": 12,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:35:13Z",
         "updated_at": "2026-11-05T05:35:13Z",
@@ -114,7 +114,7 @@
       }
     ],
     "mirror_downloads": 12,
-    "downloads": 22
+    "downloads": 23
   },
   {
     "id": 434814853,

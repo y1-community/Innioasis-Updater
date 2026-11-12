@@ -1,14 +1,14 @@
 {
  "repo": "y1-community/g3-stock-rom-mirror",
- "generatedAt": "2026-11-11T23:13:57Z",
+ "generatedAt": "2026-11-12T03:43:56Z",
  "aggregate": {
-  "total": 105,
-  "originalTotal": 85,
-  "portableTotal": 20,
+  "total": 113,
+  "originalTotal": 92,
+  "portableTotal": 21,
   "originals": [
    {
     "name": "rom_g3.zip",
-    "count": 85
+    "count": 92
    }
   ],
   "portable": [
@@ -40,7 +40,7 @@
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 9
+    "count": 10
    },
    {
     "key": "linux-legacy",

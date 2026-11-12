@@ -2,9 +2,9 @@
  "repo": "y1-community/y2linux-mirror",
  "generatedAt": "2026-11-11T22:51:08Z",
  "aggregate": {
-  "total": 5658,
-  "originalTotal": 3340,
-  "portableTotal": 2318,
+  "total": 6014,
+  "originalTotal": 3449,
+  "portableTotal": 2565,
   "originals": [
    {
     "name": "Y2Linux-1.0.0-beta.9.3.16-first-install.zip",
@@ -16,7 +16,7 @@
    },
    {
     "name": "Y2Linux-1.0.0-beta.8.10-first-install.zip",
-    "count": 94
+    "count": 95
    },
    {
     "name": "Y2Linux-1.0.0-beta.9.3.19-first-install.zip",
@@ -28,7 +28,7 @@
    },
    {
     "name": "Y2Linux-1.0.0-beta.5-first-install.zip",
-    "count": 54
+    "count": 56
    },
    {
     "name": "Y2Linux-1.0.0-beta.8.43-first-install.zip",
@@ -51,11 +51,15 @@
     "count": 43
    },
    {
+    "name": "Y2Linux-1.0.0-beta.8.19-first-install.zip",
+    "count": 40
+   },
+   {
     "name": "Y2Linux-1.0.0-beta.9.2.15-first-install.zip",
     "count": 40
    },
    {
-    "name": "Y2Linux-1.0.0-beta.8.19-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.8.20-first-install.zip",
     "count": 39
    },
    {
@@ -63,11 +67,19 @@
     "count": 39
    },
    {
-    "name": "Y2Linux-1.0.0-beta.8.20-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.8.25-first-install.zip",
     "count": 38
    },
    {
-    "name": "Y2Linux-1.0.0-beta.8.25-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.1-first-install.zip",
+    "count": 37
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.10-first-install.zip",
+    "count": 37
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.22-first-install.zip",
     "count": 37
    },
    {
@@ -75,7 +87,7 @@
     "count": 37
    },
    {
-    "name": "Y2Linux-1.0.0-beta.8.22-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.7.11-first-install.zip",
     "count": 36
    },
    {
@@ -91,11 +103,7 @@
     "count": 36
    },
    {
-    "name": "Y2Linux-1.0.0-beta.1-first-install.zip",
-    "count": 35
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.7.10-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.8.21-first-install.zip",
     "count": 35
    },
    {
@@ -103,11 +111,31 @@
     "count": 35
    },
    {
-    "name": "Y2Linux-1.0.0-beta.7.11-first-install.zip",
+    "name": "Y2Linux-49-first-install.zip",
+    "count": 35
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.5-first-install.zip",
     "count": 34
    },
    {
-    "name": "Y2Linux-1.0.0-beta.8.21-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.7.6-first-install.zip",
+    "count": 34
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.8-first-install.zip",
+    "count": 34
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.11-first-install.zip",
+    "count": 34
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.12-first-install.zip",
+    "count": 34
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.3-first-install.zip",
     "count": 34
    },
    {
@@ -115,15 +143,55 @@
     "count": 34
    },
    {
-    "name": "Y2Linux-1.0.0-beta.8.11-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.4.1-first-install.zip",
     "count": 33
    },
    {
-    "name": "Y2Linux-1.0.0-beta.8.12-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.6-first-install.zip",
+    "count": 33
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.1-first-install.zip",
+    "count": 33
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.7-first-install.zip",
+    "count": 33
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.0-first-install.zip",
+    "count": 33
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.1-first-install.zip",
+    "count": 33
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.16-first-install.zip",
+    "count": 33
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.17-first-install.zip",
+    "count": 33
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.2-first-install.zip",
     "count": 33
    },
    {
     "name": "Y2Linux-1.0.0-beta.8.29-first-install.zip",
+    "count": 33
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.4-first-install.zip",
+    "count": 33
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.5-first-install.zip",
+    "count": 33
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.6-first-install.zip",
     "count": 33
    },
    {
@@ -139,31 +207,55 @@
     "count": 33
    },
    {
-    "name": "Y2Linux-49-first-install.zip",
-    "count": 33
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.7.5-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.2-first-install.zip",
     "count": 32
    },
    {
-    "name": "Y2Linux-1.0.0-beta.7.6-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.3-first-install.zip",
     "count": 32
    },
    {
-    "name": "Y2Linux-1.0.0-beta.7.8-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.4-first-install.zip",
     "count": 32
    },
    {
-    "name": "Y2Linux-1.0.0-beta.8.16-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.5.1-first-install.zip",
     "count": 32
    },
    {
-    "name": "Y2Linux-1.0.0-beta.8.17-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.6.1-first-install.zip",
     "count": 32
    },
    {
-    "name": "Y2Linux-1.0.0-beta.8.3-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.6.2-first-install.zip",
+    "count": 32
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.6.3-first-install.zip",
+    "count": 32
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7-first-install.zip",
+    "count": 32
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.2-first-install.zip",
+    "count": 32
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.3-first-install.zip",
+    "count": 32
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.4-first-install.zip",
+    "count": 32
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.9-first-install.zip",
+    "count": 32
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.24-first-install.zip",
     "count": 32
    },
    {
@@ -175,6 +267,10 @@
     "count": 32
    },
    {
+    "name": "Y2Linux-1.0.0-beta.8.7-first-install.zip",
+    "count": 32
+   },
+   {
     "name": "Y2Linux-1.0.0-beta.9.0-first-install.zip",
     "count": 32
    },
@@ -183,35 +279,11 @@
     "count": 32
    },
    {
-    "name": "Y2Linux-1.0.0-beta.4.1-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.8.14-first-install.zip",
     "count": 31
    },
    {
-    "name": "Y2Linux-1.0.0-beta.6-first-install.zip",
-    "count": 31
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.7.1-first-install.zip",
-    "count": 31
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.7.7-first-install.zip",
-    "count": 31
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.8.0-first-install.zip",
-    "count": 31
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.8.1-first-install.zip",
-    "count": 31
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.8.2-first-install.zip",
-    "count": 31
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.8.24-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.8.23-first-install.zip",
     "count": 31
    },
    {
@@ -219,23 +291,11 @@
     "count": 31
    },
    {
-    "name": "Y2Linux-1.0.0-beta.8.4-first-install.zip",
-    "count": 31
-   },
-   {
     "name": "Y2Linux-1.0.0-beta.8.40-first-install.zip",
     "count": 31
    },
    {
-    "name": "Y2Linux-1.0.0-beta.8.5-first-install.zip",
-    "count": 31
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.8.6-first-install.zip",
-    "count": 31
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.8.7-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.8.8-first-install.zip",
     "count": 31
    },
    {
@@ -251,59 +311,7 @@
     "count": 31
    },
    {
-    "name": "Y2Linux-1.0.0-beta.2-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.3-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.4-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.5.1-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.6.1-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.6.2-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.6.3-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.7-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.7.2-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.7.3-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.7.4-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.7.9-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.8.14-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.8.23-first-install.zip",
+    "name": "Y2Linux-1.0.0-beta.8.15-first-install.zip",
     "count": 30
    },
    {
@@ -312,10 +320,6 @@
    },
    {
     "name": "Y2Linux-1.0.0-beta.8.42-first-install.zip",
-    "count": 30
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.8.8-first-install.zip",
     "count": 30
    },
    {
@@ -331,16 +335,16 @@
     "count": 30
    },
    {
-    "name": "Y2Linux-1.0.0-beta.8.15-first-install.zip",
-    "count": 29
-   },
-   {
     "name": "Y2Linux-1.0.0-beta.8.26-first-install.zip",
     "count": 29
    },
    {
     "name": "Y2Linux-1.0.0-beta.8.30-first-install.zip",
     "count": 29
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.13-first-install.zip",
+    "count": 28
    },
    {
     "name": "Y2Linux-1.0.0-beta.8.27-first-install.zip",
@@ -353,10 +357,6 @@
    {
     "name": "Y2Linux-1.0.0-beta.9.3.24-first-install.zip",
     "count": 28
-   },
-   {
-    "name": "Y2Linux-1.0.0-beta.8.13-first-install.zip",
-    "count": 27
    },
    {
     "name": "Y2Linux-1.0.0-beta.8.36-first-install.zip",
@@ -385,13 +385,133 @@
    {
     "name": "Y2Linux-1.0.0-beta.9.3.21-first-install.zip",
     "count": 9
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.1-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.2-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.4-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.4.1-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.5-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.5.1-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.6-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.6.1-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.6.2-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.6.3-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.1-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.10-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.11-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.2-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.3-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.4-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.5-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.6-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.7-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.8-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.7.9-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.0-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.1-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.2-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.3-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.4-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-1.0.0-beta.8.5-first-install-linux-legacy.zip",
+    "count": 1
+   },
+   {
+    "name": "Y2Linux-49-first-install-linux-legacy.zip",
+    "count": 1
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 779
+    "count": 842
    },
    {
     "key": "windows-arm64",
@@ -401,27 +521,27 @@
    {
     "key": "windows-legacy",
     "label": "Portable zip for Windows 32-bit (legacy)",
-    "count": 0
+    "count": 30
    },
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 667
+    "count": 697
    },
    {
     "key": "linux-arm64",
     "label": "Portable zip for Linux arm64",
-    "count": 180
+    "count": 210
    },
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 692
+    "count": 756
    },
    {
     "key": "linux-legacy",
     "label": "Portable zip for linux legacy",
-    "count": 0
+    "count": 30
    }
   ],
   "releases": 95,

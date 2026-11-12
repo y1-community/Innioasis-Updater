@@ -13,15 +13,15 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y2player-mirror/releases/tag/ReleaseV2.3"/>
     <innioasis:tag_name>ReleaseV2.3</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>1</innioasis:downloads>
+    <innioasis:downloads>2</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="431042536" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737039778"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux-legacy.zip" title="rom_y2-linux-legacy.zip" length="310021598" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737039763"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux.zip" title="rom_y2-linux.zip" length="606137594" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737039779"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-macos.zip" title="rom_y2-macos.zip" length="358283771" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737041208"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="311607315" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737039765"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-windows.zip" title="rom_y2-windows.zip" length="472757798" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737039777"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-windows.zip" title="rom_y2-windows.zip" length="472757798" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737039777"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2.zip" title="rom_y2.zip" length="296556198" type="application/zip" innioasis:download_count="1" innioasis:asset_id="706225308"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/stats.txt" title="stats.txt" length="4057" type="text/plain; charset=utf-8" innioasis:download_count="2" innioasis:asset_id="737074005"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/stats.txt" title="stats.txt" length="4057" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="737838454"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/system.img" title="system.img" length="369211292" type="application/vnd.efi.img" innioasis:download_count="1" innioasis:asset_id="706225314"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=schulzcode%2FY2Player&amp;amp;tag=ReleaseV2.3#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y2player-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -196,15 +196,15 @@ Thank you to everyone who reported the queue, metadata, audiobook, browsing, and
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y2player-mirror/releases/tag/ReleaseV2.2.1"/>
     <innioasis:tag_name>ReleaseV2.2.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>2</innioasis:downloads>
+    <innioasis:downloads>3</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="430992980" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737009973"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux-legacy.zip" title="rom_y2-linux-legacy.zip" length="309972048" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737009965"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux.zip" title="rom_y2-linux.zip" length="606088038" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737009982"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-macos.zip" title="rom_y2-macos.zip" length="358234215" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737011239"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="311557765" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737009962"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-windows.zip" title="rom_y2-windows.zip" length="472708242" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737009989"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-windows.zip" title="rom_y2-windows.zip" length="472708242" type="application/zip" innioasis:download_count="2" innioasis:asset_id="737009989"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2.zip" title="rom_y2.zip" length="296506638" type="application/zip" innioasis:download_count="1" innioasis:asset_id="706211320"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/stats.txt" title="stats.txt" length="4297" type="text/plain; charset=utf-8" innioasis:download_count="2" innioasis:asset_id="737073855"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/stats.txt" title="stats.txt" length="4297" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="737838192"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/system.img.zip" title="system.img.zip" length="225119024" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733016720"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=schulzcode%2FY2Player&amp;amp;tag=ReleaseV2.2.1#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y2player-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -391,15 +391,15 @@ Thank you to everyone who reported the queue, metadata, audiobook, browsing, and
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y2player-mirror/releases/tag/Release2.5"/>
     <innioasis:tag_name>Release2.5</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>1</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="431073116" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737055999"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-linux-legacy.zip" title="rom_y2-linux-legacy.zip" length="310052182" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737055983"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-linux.zip" title="rom_y2-linux.zip" length="606168174" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737056001"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-macos.zip" title="rom_y2-macos.zip" length="358314351" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737056780"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="311637897" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737055972"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-windows.zip" title="rom_y2-windows.zip" length="472788378" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737056000"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-windows.zip" title="rom_y2-windows.zip" length="472788378" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737056000"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2.zip" title="rom_y2.zip" length="296586778" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733058408"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/stats.txt" title="stats.txt" length="4062" type="text/plain; charset=utf-8" innioasis:download_count="2" innioasis:asset_id="737074066"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/stats.txt" title="stats.txt" length="4062" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="737838577"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/system.img" title="system.img" length="369235868" type="application/vnd.efi.img" innioasis:download_count="1" innioasis:asset_id="706112700"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=schulzcode%2FY2Player&amp;amp;tag=Release2.5#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y2player-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -750,15 +750,15 @@ Thank you to everyone who submitted issues, tested builds, provided diagnostics,
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y2player-mirror/releases/tag/RealeaseV2.2.2"/>
     <innioasis:tag_name>RealeaseV2.2.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>1</innioasis:downloads>
+    <innioasis:downloads>2</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="431025067" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737025947"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-linux-legacy.zip" title="rom_y2-linux-legacy.zip" length="310004133" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737025936"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-linux.zip" title="rom_y2-linux.zip" length="606120125" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737025946"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-macos.zip" title="rom_y2-macos.zip" length="358266302" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737026740"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="311589848" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737025937"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-windows.zip" title="rom_y2-windows.zip" length="472740329" type="application/zip" innioasis:download_count="0" innioasis:asset_id="737025942"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-windows.zip" title="rom_y2-windows.zip" length="472740329" type="application/zip" innioasis:download_count="1" innioasis:asset_id="737025942"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2.zip" title="rom_y2.zip" length="296538727" type="application/zip" innioasis:download_count="1" innioasis:asset_id="706217855"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/stats.txt" title="stats.txt" length="4290" type="text/plain; charset=utf-8" innioasis:download_count="2" innioasis:asset_id="737073948"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/stats.txt" title="stats.txt" length="4290" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="737838300"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/system.zip" title="system.zip" length="225153790" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733031811"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=schulzcode%2FY2Player&amp;amp;tag=RealeaseV2.2.2#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y2player-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;

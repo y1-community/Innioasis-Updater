@@ -2,13 +2,13 @@
  "repo": "y1-community/y2-rockbox-mirror",
  "generatedAt": "2026-11-11T21:59:50Z",
  "aggregate": {
-  "total": 2408,
-  "originalTotal": 2359,
-  "portableTotal": 49,
+  "total": 2454,
+  "originalTotal": 2378,
+  "portableTotal": 76,
   "originals": [
    {
     "name": "rom_y2.zip",
-    "count": 1659
+    "count": 1678
    },
    {
     "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip",
@@ -39,7 +39,7 @@
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 20
+    "count": 43
    },
    {
     "key": "windows-arm64",
@@ -54,7 +54,7 @@
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 12
+    "count": 16
    },
    {
     "key": "linux-arm64",

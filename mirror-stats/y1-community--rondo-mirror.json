@@ -2,20 +2,20 @@
  "repo": "y1-community/rondo-mirror",
  "generatedAt": "2026-11-11T22:05:06Z",
  "aggregate": {
-  "total": 208,
-  "originalTotal": 166,
-  "portableTotal": 42,
+  "total": 221,
+  "originalTotal": 172,
+  "portableTotal": 49,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 166
+    "count": 172
    }
   ],
   "portable": [
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 10
+    "count": 14
    },
    {
     "key": "windows-arm64",
@@ -40,7 +40,7 @@
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 25
+    "count": 28
    },
    {
     "key": "linux-legacy",

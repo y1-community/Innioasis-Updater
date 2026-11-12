@@ -2,17 +2,17 @@
  "repo": "y1-community/y1-stock-rom-mirror",
  "generatedAt": "2026-11-11T22:11:18Z",
  "aggregate": {
-  "total": 39107,
-  "originalTotal": 38911,
-  "portableTotal": 196,
+  "total": 39310,
+  "originalTotal": 38955,
+  "portableTotal": 355,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 33721
+    "count": 33741
    },
    {
     "name": "rom_y2.zip",
-    "count": 4110
+    "count": 4134
    },
    {
     "name": "rom_type_b.zip",
@@ -23,7 +23,7 @@
    {
     "key": "windows",
     "label": "Portable zip for Windows",
-    "count": 83
+    "count": 190
    },
    {
     "key": "windows-arm64",
@@ -38,7 +38,7 @@
    {
     "key": "linux",
     "label": "Portable zip for Linux",
-    "count": 26
+    "count": 39
    },
    {
     "key": "linux-arm64",
@@ -48,7 +48,7 @@
    {
     "key": "macos",
     "label": "Portable zip for macOS",
-    "count": 87
+    "count": 126
    },
    {
     "key": "linux-legacy",
