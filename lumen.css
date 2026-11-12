@@ -156,7 +156,7 @@ body.site-themes-app #nav-root:empty { display: block; min-height: 58px; }
 /* One header on the updater, the archive and the gallery. Page styles that
    set display:none on #nav-root lose to this. */
 body.site-themes-app #nav-root { display: block !important; }
-body.site-themes-app .nav-tools { display: flex; align-items: center; gap: .55rem; min-width: 0; flex-wrap: nowrap; }
+body.site-themes-app .nav-tools { display: flex; align-items: center; gap: .55rem; min-width: 0; flex-wrap: nowrap; flex: 0 0 auto; }
 body.site-themes-app .lumen-theme-control--fallback { position: fixed; top: .75rem; right: 1rem; z-index: 10000; padding: .3rem .45rem .3rem .6rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel); color: var(--lumen-text); box-shadow: 0 4px 18px color-mix(in oklab, var(--lumen-ink) 25%, transparent); }
 body.site-themes-app .lumen-theme-control--fallback select { min-height: 36px; padding: .35rem 1.7rem .35rem .55rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel-soft); color: var(--lumen-text); font: 600 .78rem var(--lumen-body); }
 body.site-themes-app .lumen-theme-control { display: inline-flex; align-items: center; gap: .35rem; color: var(--lumen-muted); font-size: .72rem; font-weight: 700; }
@@ -172,7 +172,7 @@ body.site-themes-app .logo > a:first-child,
 body.site-themes-app .lumen-brand-home,
 .lumen-brand-home { display: flex; align-items: center; color: var(--lumen-text) !important; font-weight: 700; text-decoration: none; letter-spacing: -.02em; white-space: nowrap !important; }
 body.site-themes-app .lumen-brand-title,
-.lumen-brand-title { color: var(--lumen-accent-ink, var(--lumen-accent)) !important; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; white-space: nowrap !important; word-break: keep-all !important; flex-shrink: 0 !important; }
+.lumen-brand-title { color: var(--lumen-accent-ink, var(--lumen-accent)) !important; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; white-space: nowrap !important; word-break: keep-all !important; flex: 0 1 auto !important; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 :root[data-theme="light"] body.site-themes-app .lumen-brand-title,
 :root[data-theme="light"] body.site-themes-app .lumen-brand-home,
 :root[data-theme="light"] .lumen-brand-title,
@@ -909,8 +909,16 @@ body.site-themes-app .lumen-brand-icon,
 .lumen-brand-icon { margin-right: .5rem; }
 .lumen-app-icon img { display: block; width: 34px; height: 34px; max-width: none; margin: -4px; }
 
-body.site-themes-app .lumen-site-switcher-wrap { position: relative; display: inline-flex; align-items: center; min-width: 0; }
-body.site-themes-app .lumen-brand-bar { display: inline-flex; align-items: center; min-width: 0; }
+body.site-themes-app .lumen-site-switcher-wrap,
+.lumen-brand-switcher-wrap { position: relative; display: inline-flex; align-items: center; min-width: 0; }
+/* The brand and the switcher chevron are one unit. The title gives way first:
+   it ellipsizes as a translation grows, so the chevron stays at the visible
+   end of the title instead of being pushed into the notices or theme control
+   (or clipped outright on the gallery top bar, which has no compact menu). */
+body.site-themes-app .lumen-brand-bar,
+.lumen-brand-bar { display: flex; align-items: center; min-width: 0; max-width: 100%; flex-wrap: nowrap; }
+body.site-themes-app .lumen-brand-bar > .lumen-brand-home,
+.lumen-brand-bar > .lumen-brand-home { min-width: 0; }
 
 .lumen-site-switcher-toggle {
     display: inline-flex;
@@ -918,7 +926,7 @@ body.site-themes-app .lumen-brand-bar { display: inline-flex; align-items: cente
     justify-content: center;
     width: 24px;
     height: 24px;
-    margin-left: .4rem;
+    margin-inline-start: .4rem;
     padding: 0;
     border: 1px solid var(--lumen-line);
     border-radius: 6px;
@@ -1061,7 +1069,7 @@ body.site-themes-app > .gallery-topbar .gallery-tabs {
 .nav-container.nav-compact .lumen-brand-switcher-wrap { flex: 1 1 auto; min-width: 0; }
 .nav-container.nav-compact .lumen-brand-home { min-width: 0; overflow: hidden; }
 .nav-container.nav-compact .lumen-brand-title { min-width: 0; flex-shrink: 1 !important; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.nav-container.nav-compact .nav-tools { flex: 0 1 auto; min-width: 0; flex-wrap: nowrap; }
+.nav-container.nav-compact .nav-tools { flex: 0 0 auto; min-width: 0; flex-wrap: nowrap; }
 .nav-container.nav-compact .lumen-theme-control span { display: none; }
 .nav-container.nav-compact .lumen-theme-control select { max-width: 92px; padding-left: .4rem; }
 .nav-container.nav-compact .nav-links { display: none; position: fixed; top: 72px; right: .75rem; margin: 0; padding: .5rem; list-style: none; flex-flow: row wrap; align-items: stretch; gap: .15rem; width: min(300px, calc(100% - 1.5rem)); max-height: min(72vh, 520px); overflow-y: auto; overscroll-behavior: contain; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); box-shadow: var(--lumen-shadow); z-index: 10002; box-sizing: border-box; }

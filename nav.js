@@ -1615,8 +1615,16 @@
     var gaps = (parseFloat(styles.columnGap) || 0) * 2;
     /* scrollWidth measures the intrinsic label widths even while the flex
        row is squeezing the anchors, so translated strings that no longer fit
-       are caught instead of wrapping silently. */
-    var needed = brand.scrollWidth + tools.scrollWidth + links.scrollWidth + gaps;
+       are caught instead of wrapping silently. The switcher wrap itself
+       stretches to fill the bar while compact, so its width says nothing
+       about how much room the title truly needs; measure the title link plus
+       the chevron instead, or a long translated title would keep the header
+       compact at widths where the links fit. */
+    var brandHome = brand.querySelector(".lumen-brand-home");
+    var brandToggle = brand.querySelector(".lumen-site-switcher-toggle");
+    var brandWidth = (brandHome ? brandHome.scrollWidth : brand.scrollWidth) +
+        (brandToggle ? brandToggle.getBoundingClientRect().width + 7 : 0);
+    var needed = brandWidth + tools.scrollWidth + links.scrollWidth + gaps;
     return needed <= space + 1;
   }
   function syncNavCompact() {
