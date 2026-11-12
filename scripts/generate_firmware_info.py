@@ -370,7 +370,7 @@ def page_document(title: str, description: str, canonical: str, main: str, slug:
         '<script src="../firmware-catalog.js?v=20261106mirror" defer></script>\n'
         '<script src="../docs-viewer.js?v=20261104cite" defer></script>\n'
         '<script src="../mirror-stats.js?v=20261111stats" defer></script>\n'
-        '<script src="../firmware-info.js?v=20261111stats" defer></script>\n'
+        '<script src="../firmware-info.js?v=20261112stats" defer></script>\n'
         '<script src="../nav.js?v=20261113noticefilter" defer></script>\n'
         '<script src="../site-locale.js?v=20261108c" defer></script>\n'
         '<script src="../site-i18n.js?v=20261113blocklist" defer></script>\n'
