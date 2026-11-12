@@ -72,7 +72,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-windows.zip",
         "size": 694556599,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T22:04:11Z",
         "updated_at": "2026-11-11T22:04:45Z",
@@ -105,7 +105,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/stats.txt",
         "size": 4134,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T22:07:55Z",
         "updated_at": "2026-11-11T22:07:55Z",
@@ -124,7 +124,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1
+    "downloads": 2
   },
   {
     "id": 432881639,
@@ -199,7 +199,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-windows.zip",
         "size": 692712914,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:57:13Z",
         "updated_at": "2026-11-11T21:57:47Z",
@@ -232,7 +232,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/stats.txt",
         "size": 4144,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T22:07:53Z",
         "updated_at": "2026-11-11T22:07:53Z",
@@ -251,7 +251,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 2
+    "downloads": 3
   },
   {
     "id": 432908504,
@@ -326,7 +326,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-windows.zip",
         "size": 692713291,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:49:30Z",
         "updated_at": "2026-11-11T21:50:36Z",
@@ -359,7 +359,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/stats.txt",
         "size": 4138,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T22:07:51Z",
         "updated_at": "2026-11-11T22:07:52Z",
@@ -378,7 +378,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 2
+    "downloads": 3
   },
   {
     "id": 432900931,
@@ -453,7 +453,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-windows.zip",
         "size": 692714208,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-11T21:42:32Z",
         "updated_at": "2026-11-11T21:43:00Z",
@@ -486,7 +486,7 @@
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/stats.txt",
         "size": 4137,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-11T22:07:50Z",
         "updated_at": "2026-11-11T22:07:50Z",
@@ -505,6 +505,6 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 3
+    "downloads": 4
   }
 ]
