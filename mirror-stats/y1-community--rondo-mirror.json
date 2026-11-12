@@ -1,14 +1,14 @@
 {
  "repo": "y1-community/rondo-mirror",
- "generatedAt": "2026-11-12T10:03:09Z",
+ "generatedAt": "2026-11-12T14:19:21Z",
  "aggregate": {
-  "total": 350,
-  "originalTotal": 209,
+  "total": 353,
+  "originalTotal": 212,
   "portableTotal": 141,
   "originals": [
    {
     "name": "rom.zip",
-    "count": 195
+    "count": 198
    },
    {
     "name": "rom-linux-legacy.zip",
@@ -52,7 +52,7 @@
     "count": 14
    }
   ],
-  "releases": 7,
+  "releases": 8,
   "hasStats": true
  }
 }

@@ -17,7 +17,7 @@
         "name": "build-manifest.json",
         "browser_download_url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.7/build-manifest.json",
         "size": 545,
-        "download_count": 26,
+        "download_count": 27,
         "content_type": "application/json",
         "created_at": "2026-05-22T23:50:28Z",
         "updated_at": "2026-05-22T23:50:28Z",
@@ -28,7 +28,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.7/rom.zip",
         "size": 309074505,
-        "download_count": 902,
+        "download_count": 903,
         "content_type": "application/zip",
         "created_at": "2026-05-22T23:50:28Z",
         "updated_at": "2026-05-22T23:50:36Z",
@@ -36,7 +36,7 @@
       }
     ],
     "mirror_downloads": 21,
-    "downloads": 923
+    "downloads": 924
   },
   {
     "id": 328185161,
@@ -56,7 +56,7 @@
         "name": "build-manifest.json",
         "browser_download_url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.2/build-manifest.json",
         "size": 538,
-        "download_count": 26,
+        "download_count": 27,
         "content_type": "application/json",
         "created_at": "2026-05-22T23:50:43Z",
         "updated_at": "2026-05-22T23:50:43Z",
@@ -67,7 +67,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.2/rom.zip",
         "size": 329013283,
-        "download_count": 185,
+        "download_count": 186,
         "content_type": "application/zip",
         "created_at": "2026-05-22T23:50:43Z",
         "updated_at": "2026-05-22T23:50:52Z",
@@ -75,6 +75,6 @@
       }
     ],
     "mirror_downloads": 21,
-    "downloads": 206
+    "downloads": 207
   }
 ]

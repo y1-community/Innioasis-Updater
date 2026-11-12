@@ -2,7 +2,7 @@
   {
     "id": 442769634,
     "tag_name": "2.5.5",
-    "name": "Updater CE 2.5.5 for Windows ",
+    "name": "Updater CE 2.5.5 for Windows and Linux",
     "body": "Enforces that original software or Reborn is installed first to prevent user error from rendering device non-operational. Y2 Reborn requires you to be running the original firmware on your Y2 before installing, or it won't boot. \r\n\r\nThis update ensures that you always install the correct software before installing Y2reborn to prevent these issues, when installs are applied via either the SP Flash Tool (Windows/Linux) or MTKclient (Mac/Linux) engines the tool will ensure the user first answers a firmware sanity-check question before guiding the user through the install of Y2Reborn from the start, all the way up to enabling Wi-Fi and Bluetooth on the device.",
     "draft": false,
     "prerelease": false,
@@ -13,19 +13,195 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 738985040,
+        "id": 739615441,
+        "name": "run_linux.sh",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/run_linux.sh",
+        "size": 53935,
+        "download_count": 1,
+        "content_type": "application/x-sh",
+        "created_at": "2026-11-12T13:35:13Z",
+        "updated_at": "2026-11-12T13:35:14Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739615441"
+      },
+      {
+        "id": 739615484,
+        "name": "run_linux.sh.sha256",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/run_linux.sh.sha256",
+        "size": 79,
+        "download_count": 2,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-12T13:35:14Z",
+        "updated_at": "2026-11-12T13:35:15Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739615484"
+      },
+      {
+        "id": 739615515,
+        "name": "UpdaterCE-Lite.tar.gz",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE-Lite.tar.gz",
+        "size": 228632671,
+        "download_count": 1,
+        "content_type": "application/x-gtar",
+        "created_at": "2026-11-12T13:35:15Z",
+        "updated_at": "2026-11-12T13:35:54Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739615515"
+      },
+      {
+        "id": 739653748,
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/installer.exe",
-        "size": 158839687,
-        "download_count": 13,
+        "size": 157464426,
+        "download_count": 8,
         "content_type": "application/x-msdownload",
-        "created_at": "2026-11-12T10:08:14Z",
-        "updated_at": "2026-11-12T10:10:47Z",
-        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/738985040"
+        "created_at": "2026-11-12T13:46:26Z",
+        "updated_at": "2026-11-12T13:47:04Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739653748"
+      },
+      {
+        "id": 739679022,
+        "name": "UpdaterCE-Linux-Portable.tar.gz",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE-Linux-Portable.tar.gz",
+        "size": 361117380,
+        "download_count": 0,
+        "content_type": "application/x-gtar",
+        "created_at": "2026-11-12T13:54:07Z",
+        "updated_at": "2026-11-12T13:56:34Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739679022"
+      },
+      {
+        "id": 739679025,
+        "name": "UpdaterCE-Linux-Portable.tar.gz.sha256",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE-Linux-Portable.tar.gz.sha256",
+        "size": 98,
+        "download_count": 2,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-12T13:54:07Z",
+        "updated_at": "2026-11-12T13:54:07Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739679025"
+      },
+      {
+        "id": 739679031,
+        "name": "UpdaterCE.appimage",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE.appimage",
+        "size": 306530808,
+        "download_count": 2,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-12T13:54:07Z",
+        "updated_at": "2026-11-12T13:56:22Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739679031"
+      },
+      {
+        "id": 739679033,
+        "name": "UpdaterCE-Linux-Portable.zip",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE-Linux-Portable.zip",
+        "size": 364426302,
+        "download_count": 12,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T13:54:07Z",
+        "updated_at": "2026-11-12T13:56:38Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739679033"
+      },
+      {
+        "id": 739679043,
+        "name": "UpdaterCE.appimage.sha256",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE.appimage.sha256",
+        "size": 85,
+        "download_count": 1,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-12T13:54:07Z",
+        "updated_at": "2026-11-12T13:54:07Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739679043"
+      },
+      {
+        "id": 739679090,
+        "name": "UpdaterCE-Linux-Portable.zip.sha256",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE-Linux-Portable.zip.sha256",
+        "size": 95,
+        "download_count": 2,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-12T13:54:08Z",
+        "updated_at": "2026-11-12T13:54:09Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739679090"
+      },
+      {
+        "id": 739679095,
+        "name": "UpdaterCE-arm64.appimage",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE-arm64.appimage",
+        "size": 173320712,
+        "download_count": 0,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-12T13:54:09Z",
+        "updated_at": "2026-11-12T13:54:54Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739679095"
+      },
+      {
+        "id": 739679132,
+        "name": "UpdaterCE-arm64.appimage.sha256",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE-arm64.appimage.sha256",
+        "size": 91,
+        "download_count": 1,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-12T13:54:10Z",
+        "updated_at": "2026-11-12T13:54:10Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739679132"
+      },
+      {
+        "id": 739679232,
+        "name": "UpdaterCE-Linux-Portable-arm64.tar.gz",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE-Linux-Portable-arm64.tar.gz",
+        "size": 185149007,
+        "download_count": 0,
+        "content_type": "application/x-gtar",
+        "created_at": "2026-11-12T13:54:11Z",
+        "updated_at": "2026-11-12T13:54:59Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739679232"
+      },
+      {
+        "id": 739681270,
+        "name": "UpdaterCE-Linux-Portable-arm64.tar.gz.sha256",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE-Linux-Portable-arm64.tar.gz.sha256",
+        "size": 104,
+        "download_count": 1,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-12T13:54:55Z",
+        "updated_at": "2026-11-12T13:54:55Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739681270"
+      },
+      {
+        "id": 739681327,
+        "name": "UpdaterCE-Linux-Portable-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE-Linux-Portable-arm64.zip",
+        "size": 188443285,
+        "download_count": 12,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T13:54:56Z",
+        "updated_at": "2026-11-12T13:55:30Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739681327"
+      },
+      {
+        "id": 739681541,
+        "name": "UpdaterCE-Linux-Portable-arm64.zip.sha256",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE-Linux-Portable-arm64.zip.sha256",
+        "size": 101,
+        "download_count": 1,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-12T13:55:00Z",
+        "updated_at": "2026-11-12T13:55:00Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739681541"
+      },
+      {
+        "id": 739681607,
+        "name": "UpdaterCE-Lite.tar.gz.sha256",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/UpdaterCE-Lite.tar.gz.sha256",
+        "size": 88,
+        "download_count": 1,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-12T13:55:01Z",
+        "updated_at": "2026-11-12T13:55:01Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/739681607"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0
+    "downloads": 24
   },
   {
     "id": 434899583,
@@ -133,7 +309,7 @@
         "name": "UpdaterCE-Linux-Portable.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/UpdaterCE-Linux-Portable.zip",
         "size": 363859936,
-        "download_count": 146,
+        "download_count": 149,
         "content_type": "application/zip",
         "created_at": "2026-11-10T18:54:48Z",
         "updated_at": "2026-11-10T18:56:09Z",
@@ -155,7 +331,7 @@
         "name": "UpdaterCE-Linux-Portable-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/UpdaterCE-Linux-Portable-arm64.zip",
         "size": 187878034,
-        "download_count": 145,
+        "download_count": 152,
         "content_type": "application/zip",
         "created_at": "2026-11-10T18:55:32Z",
         "updated_at": "2026-11-10T18:56:12Z",
@@ -232,7 +408,7 @@
         "name": "UpdaterCE-Windows-Portable.zip.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/UpdaterCE-Windows-Portable.zip.zip",
         "size": 313278741,
-        "download_count": 1,
+        "download_count": 22,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-11T00:48:29Z",
         "updated_at": "2026-11-11T00:49:42Z",
@@ -243,7 +419,7 @@
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/installer.exe",
         "size": 158839687,
-        "download_count": 3,
+        "download_count": 5,
         "content_type": "application/x-msdownload",
         "created_at": "2026-11-12T09:56:56Z",
         "updated_at": "2026-11-12T09:57:34Z",
@@ -251,7 +427,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 292
+    "downloads": 323
   },
   {
     "id": 427803579,

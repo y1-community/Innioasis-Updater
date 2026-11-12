@@ -17,13 +17,15 @@
         "name": "Lithium.Beta.v7.1.06.13.25.zip",
         "browser_download_url": "https://github.com/NoahDomingues/Lithium/releases/download/v7.1.06.13.25/Lithium.Beta.v7.1.06.13.25.zip",
         "size": 307094451,
-        "download_count": 1078,
+        "download_count": 1100,
         "content_type": "application/x-zip-compressed",
         "created_at": "2025-06-13T12:52:32Z",
         "updated_at": "2025-06-13T12:54:48Z",
         "url": "https://api.github.com/repos/NoahDomingues/Lithium/releases/assets/263633229"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 1100
   },
   {
     "id": 224055014,
@@ -43,13 +45,15 @@
         "name": "Lithium.7.v7.1.06.09.25.zip",
         "browser_download_url": "https://github.com/NoahDomingues/Lithium/releases/download/v7.1.06.09.25/Lithium.7.v7.1.06.09.25.zip",
         "size": 328910851,
-        "download_count": 95,
+        "download_count": 96,
         "content_type": "application/x-zip-compressed",
         "created_at": "2025-06-09T14:37:57Z",
         "updated_at": "2025-06-09T14:45:20Z",
         "url": "https://api.github.com/repos/NoahDomingues/Lithium/releases/assets/262341064"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 96
   },
   {
     "id": 224527513,
@@ -69,13 +73,15 @@
         "name": "MT6582_Android_scatter.txt",
         "browser_download_url": "https://github.com/NoahDomingues/Lithium/releases/download/Scatter-v7.1.06.11.25/MT6582_Android_scatter.txt",
         "size": 6876,
-        "download_count": 120,
+        "download_count": 123,
         "content_type": "text/plain",
         "created_at": "2025-06-11T08:19:23Z",
         "updated_at": "2025-06-11T08:19:25Z",
         "url": "https://api.github.com/repos/NoahDomingues/Lithium/releases/assets/262868441"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 224062420,
@@ -95,13 +101,15 @@
         "name": "boot.img",
         "browser_download_url": "https://github.com/NoahDomingues/Lithium/releases/download/Kernel-v7.1.06.09.25/boot.img",
         "size": 5208064,
-        "download_count": 41,
+        "download_count": 42,
         "content_type": "application/octet-stream",
         "created_at": "2025-06-09T14:53:45Z",
         "updated_at": "2025-06-09T14:54:02Z",
         "url": "https://api.github.com/repos/NoahDomingues/Lithium/releases/assets/262344908"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   },
   {
     "id": 223022623,
@@ -127,6 +135,8 @@
         "updated_at": "2025-06-04T10:20:55Z",
         "url": "https://api.github.com/repos/NoahDomingues/Lithium/releases/assets/260861043"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0
   }
 ]

@@ -3,7 +3,7 @@
     "id": 436677486,
     "tag_name": "MX2E-WVGA_TM-WV3.23-20250528",
     "name": "Portable Flashing Package: MX2E-WVGA_TM-WV3.23-20250528",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Q3 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528&amp;asset=rom_q3.zip&amp;platform=windows&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Q3 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528&amp;asset=rom_q3.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Q3 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528&amp;asset=rom_q3.zip&amp;platform=linux&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Q3 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528&amp;asset=rom_q3.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Q3 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528&amp;asset=rom_q3.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Q3 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528&amp;asset=rom_q3.zip&amp;platform=macos&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Q3 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Timmkoo Q3 software **MX2E-WVGA_TM-WV3.23-20250528**.\n\n- Model: **Q3** (Timmkoo)\n- Package: `rom_q3.zip`\n- Build tag: `MX2E-WVGA_TM-WV3.23-20250528`\n- Build date: 2025-05-28\n\n## Install\n\n1. Download `rom_q3.zip` (every numbered volume if the release has more than one, then `cat rom_q3.zip.* > rom_q3.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_q3.zip` | 272.9 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=Q3>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Q3\",\"name\":\"rom_q3-windows.zip\",\"platform\":\"windows\",\"sha256\":\"0693a4c3ea44938695dd7dd5f4e5aeeb826a29b94646cdfac9beb43b4414dc86\",\"size\":521725744,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"fe7e06f1c3a0ea0ac46d3aed52f0cdbc5c05107dc39833dcd78e25810f1656dd\",\"size\":360575295,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux.zip\",\"platform\":\"linux\",\"sha256\":\"0e872285afb62fa059a29cd07b56d680f28ffc6417ea0ac965bf29a195e9bce0\",\"size\":645597260,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"489d19023219aa92b72bd7731dfd92447bd6e40bd812756dd09b70da5285be4e\",\"size\":470502202,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"fb5794065dceef442eae6c8ba8b8ba1f79c9fa4e3fb5ba251c4837ec83856dce\",\"size\":358989578,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-macos.zip\",\"platform\":\"macos\",\"sha256\":\"24af3bf4d72affca4087255cb8b327d38f3566f30f08f6a615a3a69394f7150f\",\"size\":405448060,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-11T21:51:27Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"d3ec4ca3707b3e222d3751ad52107a523803a767659d58492fe3199affa5077a\",\"original_asset_sizes\":{\"SHA256SUMS.MX2E-WVGA_TM-WV3.23-20250528\":78,\"rom_q3.zip\":285731902},\"original_assets\":[\"rom_q3.zip\",\"SHA256SUMS.MX2E-WVGA_TM-WV3.23-20250528\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX2E-WVGA_TM-WV3.23-20250528\":0,\"rom_q3-linux-arm64.zip\":0,\"rom_q3-linux.zip\":1,\"rom_q3-macos.zip\":3,\"rom_q3-windows.zip\":3,\"rom_q3.zip\":5},\"generated_at\":\"2026-11-11T21:51:27Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":15} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Q3 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528&amp;asset=rom_q3.zip&amp;platform=windows&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Q3 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528&amp;asset=rom_q3.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Q3 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528&amp;asset=rom_q3.zip&amp;platform=linux&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Q3 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528&amp;asset=rom_q3.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Q3 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528&amp;asset=rom_q3.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Q3 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2E-WVGA_TM-WV3.23-20250528&amp;asset=rom_q3.zip&amp;platform=macos&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Q3 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Timmkoo Q3 software **MX2E-WVGA_TM-WV3.23-20250528**.\n\n- Model: **Q3** (Timmkoo)\n- Package: `rom_q3.zip`\n- Build tag: `MX2E-WVGA_TM-WV3.23-20250528`\n- Build date: 2025-05-28\n\n## Install\n\n1. Download `rom_q3.zip` (every numbered volume if the release has more than one, then `cat rom_q3.zip.* > rom_q3.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_q3.zip` | 272.9 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=Q3>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Q3\",\"name\":\"rom_q3-windows.zip\",\"platform\":\"windows\",\"sha256\":\"2c52577ec588dbf80085c83c203a8509a2f84254730f329991d23a1653b08593\",\"size\":598814110,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"8a1eed237b017958d5dc4ae10a261ddae61be854240faa7cfd26415dcc94eb47\",\"size\":360575295,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux.zip\",\"platform\":\"linux\",\"sha256\":\"d8b0859a4feea795de5d70d485a46bdf063da04e3e0f153421cb4da2814ff0c3\",\"size\":646137641,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"8c12b12d7c0da8ae78e9c355a698594f16c74bafaaa52e0381997081322c0d77\",\"size\":470502202,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"8c179e97a656738f698e0d56e1ba8e54e9536852eb33c4f0fa22fa6a621e4d43\",\"size\":358989578,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-macos.zip\",\"platform\":\"macos\",\"sha256\":\"885544e3fc7f4fd7591d1743c61f3868884743de0228eff730429159de6617cf\",\"size\":405448060,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-12T13:51:41Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"6021febc6925af9cad163a763db5bb3d7b8c24212943fdd8fcefb192f37b03a2\",\"original_asset_sizes\":{\"SHA256SUMS.MX2E-WVGA_TM-WV3.23-20250528\":78,\"rom_q3.zip\":285731902},\"original_assets\":[\"rom_q3.zip\",\"SHA256SUMS.MX2E-WVGA_TM-WV3.23-20250528\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX2E-WVGA_TM-WV3.23-20250528\":0,\"rom_q3-linux-arm64.zip\":1,\"rom_q3-linux-legacy.zip\":1,\"rom_q3-linux.zip\":2,\"rom_q3-macos.zip\":4,\"rom_q3-windows-legacy.zip\":1,\"rom_q3-windows.zip\":4,\"rom_q3.zip\":5},\"generated_at\":\"2026-11-12T13:51:41Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364428308,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-06T15:35:33Z",
@@ -13,70 +13,70 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 737030265,
+        "id": 739671632,
         "name": "rom_q3-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-linux-arm64.zip",
         "size": 470502202,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:51:31Z",
-        "updated_at": "2026-11-11T21:52:17Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737030265"
+        "created_at": "2026-11-12T13:51:45Z",
+        "updated_at": "2026-11-12T13:52:28Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739671632"
       },
       {
-        "id": 737030256,
+        "id": 739671638,
         "name": "rom_q3-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-linux-legacy.zip",
         "size": 358989578,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:51:30Z",
-        "updated_at": "2026-11-11T21:52:41Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737030256"
+        "created_at": "2026-11-12T13:51:45Z",
+        "updated_at": "2026-11-12T13:52:13Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739671638"
       },
       {
-        "id": 737030263,
+        "id": 739671635,
         "name": "rom_q3-linux.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-linux.zip",
-        "size": 645597260,
-        "download_count": 1,
+        "size": 646137641,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:51:31Z",
-        "updated_at": "2026-11-11T21:52:37Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737030263"
+        "created_at": "2026-11-12T13:51:45Z",
+        "updated_at": "2026-11-12T13:52:38Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739671635"
       },
       {
-        "id": 737032145,
+        "id": 739673058,
         "name": "rom_q3-macos.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-macos.zip",
         "size": 405448060,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:52:18Z",
-        "updated_at": "2026-11-11T21:52:38Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737032145"
+        "created_at": "2026-11-12T13:52:12Z",
+        "updated_at": "2026-11-12T13:52:31Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739673058"
       },
       {
-        "id": 737030255,
+        "id": 739671640,
         "name": "rom_q3-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-windows-legacy.zip",
         "size": 360575295,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:51:30Z",
-        "updated_at": "2026-11-11T21:52:39Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737030255"
+        "created_at": "2026-11-12T13:51:45Z",
+        "updated_at": "2026-11-12T13:52:11Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739671640"
       },
       {
-        "id": 737030273,
+        "id": 739671637,
         "name": "rom_q3-windows.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-windows.zip",
-        "size": 521725744,
-        "download_count": 1,
+        "size": 598814110,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:51:31Z",
-        "updated_at": "2026-11-11T21:52:21Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737030273"
+        "created_at": "2026-11-12T13:51:45Z",
+        "updated_at": "2026-11-12T13:52:35Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739671637"
       },
       {
         "id": 733048127,
@@ -101,25 +101,25 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/717630694"
       },
       {
-        "id": 739216981,
+        "id": 739673156,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/stats.txt",
         "size": 4015,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T11:25:38Z",
-        "updated_at": "2026-11-12T11:25:38Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739216981"
+        "created_at": "2026-11-12T13:52:14Z",
+        "updated_at": "2026-11-12T13:52:14Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739673156"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 6
+    "downloads": 0
   },
   {
     "id": 436674382,
     "tag_name": "MX2D-WVGA_TM-WV3.20-20250618",
     "name": "Portable Flashing Package: MX2D-WVGA_TM-WV3.20-20250618",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Q3 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618&amp;asset=rom_q3.zip&amp;platform=windows&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Q3 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618&amp;asset=rom_q3.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Q3 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618&amp;asset=rom_q3.zip&amp;platform=linux&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Q3 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618&amp;asset=rom_q3.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Q3 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618&amp;asset=rom_q3.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Q3 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618&amp;asset=rom_q3.zip&amp;platform=macos&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Q3 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Timmkoo Q3 software **MX2D-WVGA_TM-WV3.20-20250618**.\n\n- Model: **Q3** (Timmkoo)\n- Package: `rom_q3.zip`\n- Build tag: `MX2D-WVGA_TM-WV3.20-20250618`\n- Build date: 2025-06-18\n\n## Install\n\n1. Download `rom_q3.zip` (every numbered volume if the release has more than one, then `cat rom_q3.zip.* > rom_q3.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_q3.zip` | 267.2 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=Q3>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Q3\",\"name\":\"rom_q3-windows.zip\",\"platform\":\"windows\",\"sha256\":\"3d8c834d5ec1fea3ac6d82b8204ba9997a54d4baf7834cfc834e6fbd2ce54b1f\",\"size\":515757784,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"3e06f28f148517a32002a1a93e80139777e1dfb53bf9aaf225b11c4100d246d7\",\"size\":354607335,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux.zip\",\"platform\":\"linux\",\"sha256\":\"d677bb4a38cd98ccf36ca7b560195290fcaf2bfa978a067fdd2e06ccc1752fb1\",\"size\":639629300,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"bac67e801d446fb55957a6a33b73af50b07d76edab67888fdd06d66ca2103613\",\"size\":464534242,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"12638e1a4bc0f7616a25c6a84233a0bb3b92cad290128bb657b96ed4bb524e0f\",\"size\":353021620,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-macos.zip\",\"platform\":\"macos\",\"sha256\":\"63d9daa645e8a7d2a8718deb571f86783778b740abe385676eb414b89dbfa599\",\"size\":399480100,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-11T21:46:02Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"6acb16a8f525a0fb6d09cfdb5905b888904fc40a8811ec7dd3038f9e6cb3b336\",\"original_asset_sizes\":{\"SHA256SUMS.MX2D-WVGA_TM-WV3.20-20250618\":78,\"rom_q3.zip\":279763940},\"original_assets\":[\"rom_q3.zip\",\"SHA256SUMS.MX2D-WVGA_TM-WV3.20-20250618\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX2D-WVGA_TM-WV3.20-20250618\":8,\"rom_q3-linux-arm64.zip\":0,\"rom_q3-linux.zip\":1,\"rom_q3-macos.zip\":1,\"rom_q3-windows.zip\":1,\"rom_q3.zip\":5},\"generated_at\":\"2026-11-11T21:46:02Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":15} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Q3 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618&amp;asset=rom_q3.zip&amp;platform=windows&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Q3 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618&amp;asset=rom_q3.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Q3 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618&amp;asset=rom_q3.zip&amp;platform=linux&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Q3 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618&amp;asset=rom_q3.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Q3 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618&amp;asset=rom_q3.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Q3 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2D-WVGA_TM-WV3.20-20250618&amp;asset=rom_q3.zip&amp;platform=macos&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Q3 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Timmkoo Q3 software **MX2D-WVGA_TM-WV3.20-20250618**.\n\n- Model: **Q3** (Timmkoo)\n- Package: `rom_q3.zip`\n- Build tag: `MX2D-WVGA_TM-WV3.20-20250618`\n- Build date: 2025-06-18\n\n## Install\n\n1. Download `rom_q3.zip` (every numbered volume if the release has more than one, then `cat rom_q3.zip.* > rom_q3.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_q3.zip` | 267.2 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=Q3>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Q3\",\"name\":\"rom_q3-windows.zip\",\"platform\":\"windows\",\"sha256\":\"4e0d59a3652785b3058605098370851c35028014968890daa02074c787149452\",\"size\":592846150,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"51d5025a5a3df71227821ada6cbd5116dd21764c66adaedb022483d4049b7265\",\"size\":354607335,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux.zip\",\"platform\":\"linux\",\"sha256\":\"a2877d14c00b86e6e9d188d22de45b32f1a25841c2f6b360be33b0f253f583aa\",\"size\":640169681,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"159c2418ba2796bbb6473ff72e869dc2d15b148f4cf59b0d89ca27eff1f52559\",\"size\":464534242,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"a1d6239dc2a913420501fcc0a4aec1444540ac5d7bf9e1b622daca8076b605d0\",\"size\":353021620,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-macos.zip\",\"platform\":\"macos\",\"sha256\":\"4abdee4d969c9e53fc7532e9e392ad5db0f44125d2b980265a88470ba6cdb5ec\",\"size\":399480100,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-12T13:45:44Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"4066a83508457ddd8087724dc32f7bbe7628155edeefa1635518d345bc985fea\",\"original_asset_sizes\":{\"SHA256SUMS.MX2D-WVGA_TM-WV3.20-20250618\":78,\"rom_q3.zip\":279763940},\"original_assets\":[\"rom_q3.zip\",\"SHA256SUMS.MX2D-WVGA_TM-WV3.20-20250618\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX2D-WVGA_TM-WV3.20-20250618\":9,\"rom_q3-linux-arm64.zip\":1,\"rom_q3-linux-legacy.zip\":1,\"rom_q3-linux.zip\":2,\"rom_q3-macos.zip\":2,\"rom_q3-windows-legacy.zip\":1,\"rom_q3-windows.zip\":2,\"rom_q3.zip\":5},\"generated_at\":\"2026-11-12T13:45:44Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364428308,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-06T15:35:33Z",
@@ -129,70 +129,70 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 737016799,
+        "id": 739651522,
         "name": "rom_q3-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-linux-arm64.zip",
         "size": 464534242,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:46:07Z",
-        "updated_at": "2026-11-11T21:46:30Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737016799"
+        "created_at": "2026-11-12T13:45:48Z",
+        "updated_at": "2026-11-12T13:46:46Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739651522"
       },
       {
-        "id": 737016784,
+        "id": 739651521,
         "name": "rom_q3-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-linux-legacy.zip",
         "size": 353021620,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:46:06Z",
-        "updated_at": "2026-11-11T21:46:31Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737016784"
+        "created_at": "2026-11-12T13:45:48Z",
+        "updated_at": "2026-11-12T13:46:38Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739651521"
       },
       {
-        "id": 737016796,
+        "id": 739651515,
         "name": "rom_q3-linux.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-linux.zip",
-        "size": 639629300,
-        "download_count": 1,
+        "size": 640169681,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:46:07Z",
-        "updated_at": "2026-11-11T21:46:31Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737016796"
+        "created_at": "2026-11-12T13:45:48Z",
+        "updated_at": "2026-11-12T13:46:58Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739651515"
       },
       {
-        "id": 737017992,
+        "id": 739653259,
         "name": "rom_q3-macos.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-macos.zip",
         "size": 399480100,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:46:30Z",
-        "updated_at": "2026-11-11T21:46:43Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737017992"
+        "created_at": "2026-11-12T13:46:17Z",
+        "updated_at": "2026-11-12T13:46:37Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739653259"
       },
       {
-        "id": 737016786,
+        "id": 739651524,
         "name": "rom_q3-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-windows-legacy.zip",
         "size": 354607335,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:46:06Z",
-        "updated_at": "2026-11-11T21:46:29Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737016786"
+        "created_at": "2026-11-12T13:45:48Z",
+        "updated_at": "2026-11-12T13:46:16Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739651524"
       },
       {
-        "id": 737016807,
+        "id": 739651520,
         "name": "rom_q3-windows.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-windows.zip",
-        "size": 515757784,
-        "download_count": 1,
+        "size": 592846150,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:46:07Z",
-        "updated_at": "2026-11-11T21:46:29Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737016807"
+        "created_at": "2026-11-12T13:45:48Z",
+        "updated_at": "2026-11-12T13:46:52Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739651520"
       },
       {
         "id": 733031679,
@@ -217,25 +217,25 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/717626003"
       },
       {
-        "id": 739216887,
+        "id": 739654448,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/stats.txt",
         "size": 4076,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T11:25:36Z",
-        "updated_at": "2026-11-12T11:25:37Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739216887"
+        "created_at": "2026-11-12T13:46:37Z",
+        "updated_at": "2026-11-12T13:46:38Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739654448"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 6
+    "downloads": 0
   },
   {
     "id": 436671534,
     "tag_name": "MX2-ES-WV4.01-20250619",
     "name": "Portable Flashing Package: MX2-ES-WV4.01-20250619",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Q3 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619&amp;asset=rom_q3.zip&amp;platform=windows&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Q3 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619&amp;asset=rom_q3.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Q3 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619&amp;asset=rom_q3.zip&amp;platform=linux&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Q3 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619&amp;asset=rom_q3.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Q3 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619&amp;asset=rom_q3.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Q3 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619&amp;asset=rom_q3.zip&amp;platform=macos&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Q3 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Timmkoo Q3 software **MX2-ES-WV4.01-20250619**.\n\n- Model: **Q3** (Timmkoo)\n- Package: `rom_q3.zip`\n- Build tag: `MX2-ES-WV4.01-20250619`\n- Build date: 2025-06-19\n\n## Install\n\n1. Download `rom_q3.zip` (every numbered volume if the release has more than one, then `cat rom_q3.zip.* > rom_q3.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_q3.zip` | 269.0 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=Q3>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Q3\",\"name\":\"rom_q3-windows.zip\",\"platform\":\"windows\",\"sha256\":\"61350d12c13e0f29698444a3e659557a7d8de9e01815843c6dd6e991c0656488\",\"size\":521712315,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"b9dce71c08370e89e58cf786e10125fac234c4b3825744a1c84628630221c3f4\",\"size\":360561868,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux.zip\",\"platform\":\"linux\",\"sha256\":\"8e169a87f90ced518d04c90595e95335d8a2c1f7290b3b8c5f0bb0b5df2eae79\",\"size\":645583831,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"e58fe8040848800fd8009a433d7744c4bbd89125b0c1c40dd2616f8a601b794b\",\"size\":470488773,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"941849e273c21616a1ec38655d1ba77d67bbb231680955d1442c231ca34b44de\",\"size\":358976153,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-macos.zip\",\"platform\":\"macos\",\"sha256\":\"38212e5d607256cff3f545ef490a521c3d6de349224a77050525c6cecb1b8839\",\"size\":405434636,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-11T21:40:34Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"50fa223ac09b29c4ef13e1dfe8d7be00d87169c9d62502867a150e5486ed40a9\",\"original_asset_sizes\":{\"SHA256SUMS.MX2-ES-WV4.01-20250619\":78,\"rom_q3.zip\":285719155},\"original_assets\":[\"rom_q3.zip\",\"SHA256SUMS.MX2-ES-WV4.01-20250619\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX2-ES-WV4.01-20250619\":8,\"rom_q3-linux-arm64.zip\":0,\"rom_q3-linux.zip\":0,\"rom_q3-macos.zip\":2,\"rom_q3-windows.zip\":2,\"rom_q3.zip\":0},\"generated_at\":\"2026-11-11T21:40:34Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":15} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Q3 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619&amp;asset=rom_q3.zip&amp;platform=windows&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Q3 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619&amp;asset=rom_q3.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Q3 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619&amp;asset=rom_q3.zip&amp;platform=linux&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Q3 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619&amp;asset=rom_q3.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Q3 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619&amp;asset=rom_q3.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Q3 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq3-stock-rom&amp;tag=MX2-ES-WV4.01-20250619&amp;asset=rom_q3.zip&amp;platform=macos&amp;mirror=y1-community%2Fq3-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q3-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Q3 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Timmkoo Q3 software **MX2-ES-WV4.01-20250619**.\n\n- Model: **Q3** (Timmkoo)\n- Package: `rom_q3.zip`\n- Build tag: `MX2-ES-WV4.01-20250619`\n- Build date: 2025-06-19\n\n## Install\n\n1. Download `rom_q3.zip` (every numbered volume if the release has more than one, then `cat rom_q3.zip.* > rom_q3.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_q3.zip` | 269.0 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=Q3>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Q3\",\"name\":\"rom_q3-windows.zip\",\"platform\":\"windows\",\"sha256\":\"1332eb49973a1177fdbdc4cfefcfc994fef292eaedf49db6e61eeba06d9ca3d4\",\"size\":598800681,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"200cc95959999775258ac5080b5b6191337d594dbb311e30137f9a2b90f1486c\",\"size\":360561868,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux.zip\",\"platform\":\"linux\",\"sha256\":\"9e27620b9e55f289216eb3b04b21643c074bc17d096a5073ed634dad38a9d0e1\",\"size\":646124212,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"c8634754745957128fc7b5173d198b52fcdba95e298a95f3e8d9a1d877ae11ce\",\"size\":470488773,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"fe631da27937aa51bae4e7857d24523a6deb55b7879c6edf5aeba901402fffcc\",\"size\":358976153,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"},{\"model\":\"Q3\",\"name\":\"rom_q3-macos.zip\",\"platform\":\"macos\",\"sha256\":\"70b3bb73d68af778058857b1145288804d48ab5797878cc4677636eed562f25e\",\"size\":405434636,\"source_asset\":\"rom_q3.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-12T13:40:17Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"731e19e6908d9499b8db06d16d869dff19f3eba164e70cb9f4279909d0abee9a\",\"original_asset_sizes\":{\"SHA256SUMS.MX2-ES-WV4.01-20250619\":78,\"rom_q3.zip\":285719155},\"original_assets\":[\"rom_q3.zip\",\"SHA256SUMS.MX2-ES-WV4.01-20250619\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX2-ES-WV4.01-20250619\":9,\"rom_q3-linux-arm64.zip\":1,\"rom_q3-linux-legacy.zip\":1,\"rom_q3-linux.zip\":1,\"rom_q3-macos.zip\":3,\"rom_q3-windows-legacy.zip\":1,\"rom_q3-windows.zip\":3,\"rom_q3.zip\":0},\"generated_at\":\"2026-11-12T13:40:17Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364428308,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-06T15:35:33Z",
@@ -245,70 +245,70 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 737001643,
+        "id": 739631913,
         "name": "rom_q3-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-linux-arm64.zip",
         "size": 470488773,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:40:41Z",
-        "updated_at": "2026-11-11T21:41:02Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737001643"
+        "created_at": "2026-11-12T13:40:23Z",
+        "updated_at": "2026-11-12T13:40:49Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739631913"
       },
       {
-        "id": 737001627,
+        "id": 739631921,
         "name": "rom_q3-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-linux-legacy.zip",
         "size": 358976153,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:40:40Z",
-        "updated_at": "2026-11-11T21:41:04Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737001627"
+        "created_at": "2026-11-12T13:40:23Z",
+        "updated_at": "2026-11-12T13:40:51Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739631921"
       },
       {
-        "id": 737001640,
+        "id": 739631919,
         "name": "rom_q3-linux.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-linux.zip",
-        "size": 645583831,
-        "download_count": 1,
+        "size": 646124212,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:40:40Z",
-        "updated_at": "2026-11-11T21:41:06Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737001640"
+        "created_at": "2026-11-12T13:40:23Z",
+        "updated_at": "2026-11-12T13:41:01Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739631919"
       },
       {
-        "id": 737002716,
+        "id": 739633347,
         "name": "rom_q3-macos.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-macos.zip",
         "size": 405434636,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:41:03Z",
-        "updated_at": "2026-11-11T21:41:19Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737002716"
+        "created_at": "2026-11-12T13:40:46Z",
+        "updated_at": "2026-11-12T13:41:01Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739633347"
       },
       {
-        "id": 737001626,
+        "id": 739631917,
         "name": "rom_q3-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-windows-legacy.zip",
         "size": 360561868,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:40:40Z",
-        "updated_at": "2026-11-11T21:41:05Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737001626"
+        "created_at": "2026-11-12T13:40:23Z",
+        "updated_at": "2026-11-12T13:40:53Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739631917"
       },
       {
-        "id": 737001642,
+        "id": 739631934,
         "name": "rom_q3-windows.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-windows.zip",
-        "size": 521712315,
-        "download_count": 1,
+        "size": 598800681,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:40:41Z",
-        "updated_at": "2026-11-11T21:41:06Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/737001642"
+        "created_at": "2026-11-12T13:40:23Z",
+        "updated_at": "2026-11-12T13:40:45Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739631934"
       },
       {
         "id": 733015597,
@@ -333,18 +333,18 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/717621424"
       },
       {
-        "id": 739216819,
+        "id": 739633661,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/stats.txt",
         "size": 4011,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T11:25:35Z",
-        "updated_at": "2026-11-12T11:25:35Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739216819"
+        "created_at": "2026-11-12T13:40:50Z",
+        "updated_at": "2026-11-12T13:40:50Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/739633661"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 6
+    "downloads": 0
   }
 ]

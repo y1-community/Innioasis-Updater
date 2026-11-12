@@ -1,9 +1,136 @@
 [
   {
+    "id": 443046417,
+    "tag_name": "v3.0.2",
+    "name": "Portable Flashing Package: Rondo 3.0.2",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v3.0.2#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.2&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.2&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.2&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.2&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.2&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.2&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it once to [Rondo server 3.1.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.1.0) (its admin page offers it); from then on, Rondo and the server update apart.\n\n- **Downloads are about three times faster.** A YouTube download now comes in four parts at once: a 10-minute 720p video took 50 seconds instead of 145, a two-hour episode about 8 minutes.\n- **A download survives a dropout.** When the Wi-Fi or the internet goes away for a while, the download waits and carries on where it stopped, instead of failing or starting over (Software update's download too).\n- **The Y1 stays awake while a download runs,** unplugged with the screen off too.\n- **YouTube's pictures are back** in search, the feeds and on a download's row.\n- **A download's row says what it's doing:** Downloading video, Downloading sound, Getting subtitles, Saving.\n- **Rondo and the server have their own version numbers now.** Most releases change only the Y1, so they no longer ask you to update your server. This Rondo works with Rondo server 3.1.0 or newer; with an older one, Settings \u203a YouTube \u203a Connection, the dashboard and the YouTube screens say **Server needs an update**.\n\n**How to get it**\n- **On Rondo 3.0.x:** Settings \u203a System \u203a Software update, the dashboard's Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.\n- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.2), with **Keep my settings** turned on.\n\nFiles: `rondo-3.0.2.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#302-november-12-2026).\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"27199885b9e700f1107041fb0a8710f5b8694b0970348b64a302e603113ff47d\",\"size\":771651598,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"0b79a8d7181a583ccb74d3a43e905513bafbb1e726aea8b192f7daf7e27cab39\",\"size\":533412745,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"b2e6447d430ed0b80e6d15ffd6780ec62f5aacbce7c130b21bd75442f80345c6\",\"size\":828483409,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"ed890cdd64e98174120a4ec434b953b80e223a00f80e22abd6c82aa5b62e78a1\",\"size\":653388139,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"3689b4f3a53c2362b30857cc884291180706dcea31475d1758998c356891aa67\",\"size\":531827030,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"9e680bec0ca726b005d5fb9355830685cc806998c2ad73663f69729f7cb6f955\",\"size\":580089200,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T14:18:19Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"e868932e8e618217b2f7ba71c548a9d9f67b9222ab85b3bbdba63f9872aed8e7\",\"original_asset_sizes\":{\"rom.zip\":529776985,\"rondo-3.0.2.rondo\":17034596,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-3.0.2.rondo\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{},\"generated_at\":\"2026-11-12T14:18:19Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364428308,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188445269,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-12T13:35:26Z",
+    "published_at": "2026-11-12T14:18:21Z",
+    "html_url": "https://github.com/y1-community/rondo-mirror/releases/tag/v3.0.2",
+    "icon_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/updater.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 739760522,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-linux-arm64.zip",
+        "size": 653388139,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T14:18:22Z",
+        "updated_at": "2026-11-12T14:19:05Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739760522"
+      },
+      {
+        "id": 739760516,
+        "name": "rom-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-linux-legacy.zip",
+        "size": 531827030,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T14:18:22Z",
+        "updated_at": "2026-11-12T14:18:56Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739760516"
+      },
+      {
+        "id": 739760520,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-linux.zip",
+        "size": 828483409,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T14:18:22Z",
+        "updated_at": "2026-11-12T14:19:05Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739760520"
+      },
+      {
+        "id": 739762076,
+        "name": "rom-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-macos.zip",
+        "size": 580089200,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T14:18:54Z",
+        "updated_at": "2026-11-12T14:19:20Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739762076"
+      },
+      {
+        "id": 739760519,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-windows-legacy.zip",
+        "size": 533412745,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T14:18:22Z",
+        "updated_at": "2026-11-12T14:18:54Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739760519"
+      },
+      {
+        "id": 739760521,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-windows.zip",
+        "size": 771651598,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T14:18:22Z",
+        "updated_at": "2026-11-12T14:19:10Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739760521"
+      },
+      {
+        "id": 739762165,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom.zip",
+        "size": 529776985,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T14:18:57Z",
+        "updated_at": "2026-11-12T14:19:21Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739762165"
+      },
+      {
+        "id": 739762516,
+        "name": "rondo-3.0.2.rondo",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rondo-3.0.2.rondo",
+        "size": 17034596,
+        "download_count": 1,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-12T14:19:05Z",
+        "updated_at": "2026-11-12T14:19:06Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739762516"
+      },
+      {
+        "id": 739762571,
+        "name": "stats.txt",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/stats.txt",
+        "size": 2453,
+        "download_count": 1,
+        "content_type": "text/plain; charset=utf-8",
+        "created_at": "2026-11-12T14:19:06Z",
+        "updated_at": "2026-11-12T14:19:06Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739762571"
+      },
+      {
+        "id": 739762530,
+        "name": "updater.png",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/updater.png",
+        "size": 12952,
+        "download_count": 0,
+        "content_type": "image/png",
+        "created_at": "2026-11-12T14:19:05Z",
+        "updated_at": "2026-11-12T14:19:06Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739762530"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 7
+  },
+  {
     "id": 442763532,
     "tag_name": "v3.0.1",
     "name": "Portable Flashing Package: Rondo 3.0.1",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi.\n\n- **Charging shows on the battery.** On a charger or a computer, a green bolt shows next to the battery in the status bar and the YouTube headers, and the charge turns green.\n- **YouTube and YouTube Music without internet.** With Wi-Fi off they now say \"No Wi-Fi connection\" at once instead of \"Loading\u2026\", and load by themselves when Wi-Fi is back. On a Wi-Fi network without internet they give up after 30 seconds at most and say they couldn't reach YouTube.\n- **Sharper subtitles.** Their lines sat between two rows of pixels, which blurred every letter.\n- **The rest of SPWall is gone too:** its packet filter, code injector and renamed iptables, which nothing started, and the stock firmware's distribution tag. Rondo removes them itself when it updates, and the firmware leaves them out.\n\n**How to get it**\n- **On Rondo 3.0.0:** Settings \u203a System \u203a Software update, the dashboard's Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.\n- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.1), with **Keep my settings** turned on.\n\nFiles: `rondo-3.0.1.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#301-november-12-2026).\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"3c34f9703eec35d4a2d6546fd68709d17ff6ffa4c48f72b9e1e851d78906fc2d\",\"size\":694558183,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"19994e419924c6c351c1bc5e62192f3bdba5ceedc01e34279cb71c19a1d88241\",\"size\":533407696,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"0c90e5271b5b0d0b24e0fed186d6e700b9e60030911245fd2913a0978d2f4598\",\"size\":827937979,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"f9d71ec78779158491a87c8084204afc77389d76a4712cd1e30cd2d6456ac4d5\",\"size\":652842921,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"f64111a98c952f74c7f2b9cd901d1a1094368011865f1c67440599ee8825e300\",\"size\":531821981,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"b1f9a46f96d493de75f0f4fb24cee91c911f0cc4fba1db000c632875fdbb319b\",\"size\":580084152,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T10:02:14Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"1dcd28e017b72b74dd8a12e527f83d09f1eddbc46b17f79fcb782c0604bb6b46\",\"original_asset_sizes\":{\"rom.zip\":529771938,\"rondo-3.0.1.rondo\":17032563,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-3.0.1.rondo\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{},\"generated_at\":\"2026-11-12T10:02:14Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":15} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.1&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi.\n\n- **Charging shows on the battery.** On a charger or a computer, a green bolt shows next to the battery in the status bar and the YouTube headers, and the charge turns green.\n- **YouTube and YouTube Music without internet.** With Wi-Fi off they now say \"No Wi-Fi connection\" at once instead of \"Loading\u2026\", and load by themselves when Wi-Fi is back. On a Wi-Fi network without internet they give up after 30 seconds at most and say they couldn't reach YouTube.\n- **Sharper subtitles.** Their lines sat between two rows of pixels, which blurred every letter.\n- **The rest of SPWall is gone too:** its packet filter, code injector and renamed iptables, which nothing started, and the stock firmware's distribution tag. Rondo removes them itself when it updates, and the firmware leaves them out.\n\n**How to get it**\n- **On Rondo 3.0.0:** Settings \u203a System \u203a Software update, the dashboard's Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.\n- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.1), with **Keep my settings** turned on.\n\nFiles: `rondo-3.0.1.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#301-november-12-2026).\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"2d9e8ed48f965fbc39def68d17f410d3d826fdcfe7a18d212fb4fa25e2ee0d55\",\"size\":771646549,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"236f60cc0f79f2b92ea7de85f5c6709f9869da596b70ee934be0943eb8ec77e1\",\"size\":533407696,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"35e57ab47d9c5f1dc374be5e5fcbcf93e1f2c317adf7eee23dc24822e11f3baf\",\"size\":828478360,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"924d7bbe35d9eca954b1c22547825e56dcf272bda3ed316e320a24ec2c652b4b\",\"size\":653383090,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"fc5637f917ece2e8e1b06e9e75890ca814f968c3c3285d533cb854a232588473\",\"size\":531821981,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"5e1e9aad3f50166f97e6fae5129c2789493a52ee36f4e9240492d865475d40ba\",\"size\":580084152,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T14:12:28Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"37e283cc8243ffe8b9bed7d0694602d2591d1578b95c1d221eb4cab30d254fde\",\"original_asset_sizes\":{\"rom.zip\":529771938,\"rondo-3.0.1.rondo\":17032563,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-3.0.1.rondo\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":2,\"rom-linux-legacy.zip\":2,\"rom-linux.zip\":2,\"rom-macos.zip\":2,\"rom-windows-legacy.zip\":2,\"rom-windows.zip\":4,\"rom.zip\":1,\"rondo-3.0.1.rondo\":1,\"updater.png\":0},\"generated_at\":\"2026-11-12T14:12:28Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364428308,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188445269,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-12T09:44:40Z",
@@ -13,70 +140,70 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 738966171,
+        "id": 739741420,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-linux-arm64.zip",
-        "size": 652842921,
-        "download_count": 2,
+        "size": 653383090,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T10:02:16Z",
-        "updated_at": "2026-11-12T10:02:43Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738966171"
+        "created_at": "2026-11-12T14:12:31Z",
+        "updated_at": "2026-11-12T14:14:01Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739741420"
       },
       {
-        "id": 738966183,
+        "id": 739741416,
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-linux-legacy.zip",
         "size": 531821981,
-        "download_count": 2,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T10:02:16Z",
-        "updated_at": "2026-11-12T10:02:37Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738966183"
+        "created_at": "2026-11-12T14:12:31Z",
+        "updated_at": "2026-11-12T14:14:03Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739741416"
       },
       {
-        "id": 738966175,
+        "id": 739741411,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-linux.zip",
-        "size": 827937979,
-        "download_count": 5,
+        "size": 828478360,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T10:02:16Z",
-        "updated_at": "2026-11-12T10:02:49Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738966175"
+        "created_at": "2026-11-12T14:12:31Z",
+        "updated_at": "2026-11-12T14:14:07Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739741411"
       },
       {
-        "id": 738967288,
+        "id": 739746479,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-macos.zip",
         "size": 580084152,
-        "download_count": 2,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T10:02:37Z",
-        "updated_at": "2026-11-12T10:03:09Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738967288"
+        "created_at": "2026-11-12T14:14:00Z",
+        "updated_at": "2026-11-12T14:14:15Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739746479"
       },
       {
-        "id": 738966176,
+        "id": 739741418,
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-windows-legacy.zip",
         "size": 533407696,
-        "download_count": 2,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T10:02:16Z",
-        "updated_at": "2026-11-12T10:02:39Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738966176"
+        "created_at": "2026-11-12T14:12:31Z",
+        "updated_at": "2026-11-12T14:13:59Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739741418"
       },
       {
-        "id": 738966174,
+        "id": 739741415,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-windows.zip",
-        "size": 694558183,
-        "download_count": 4,
+        "size": 771646549,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T10:02:16Z",
-        "updated_at": "2026-11-12T10:02:45Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738966174"
+        "created_at": "2026-11-12T14:12:31Z",
+        "updated_at": "2026-11-12T14:14:10Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739741415"
       },
       {
         "id": 738967387,
@@ -101,15 +228,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738967693"
       },
       {
-        "id": 739139146,
+        "id": 739746596,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/stats.txt",
         "size": 4133,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T10:59:52Z",
-        "updated_at": "2026-11-12T10:59:53Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739139146"
+        "created_at": "2026-11-12T14:14:02Z",
+        "updated_at": "2026-11-12T14:14:02Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739746596"
       },
       {
         "id": 738967809,
@@ -124,13 +251,13 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 18
+    "downloads": 7
   },
   {
     "id": 442757422,
     "tag_name": "v3.0.0",
     "name": "Portable Flashing Package: Rondo 3.0.0",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**For the Innioasis Y1, Type A.** A new firmware without the stock firmware's root backdoors.\n\n- **The root backdoors are gone.** Innioasis's own firmware, and so every Rondo firmware before this one, ran three programs as root that nothing on the Y1 needs:\n  - `aggdll`, an app pusher's agent: a hidden `su` and a silent app installer;\n  - `wifi_init`, a downloader it starts, which checks in with a server and runs what it downloads as root. That server doesn't answer today;\n  - SPWall (`libsp.so`), which runs commands as root for other programs.\n\n  This firmware leaves all three out, with what they left behind, and puts Android's own `am` back.\n- **A Y1 installed again runs the firmware's own Rondo**, not an older update it took over Wi-Fi before.\n\n**How to get it**\n- **Innioasis Updater CE**: Y1, Type A, **Rondo**, 3.0.0. Turn on **Keep my settings** so your settings, Wi-Fi networks, server connection and paired headphones stay. Your music on the card is never touched.\n- Software update on 2.0 shows 3.0.0 but can't install it, because the firmware itself has to change.\n\nFiles: `rondo-3.0.0.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#300-november-12-2026).\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"b6f44a2183408adb5d3a38039c0c8a4d49bfd946d57d6d3cb1e3c7333fab78db\",\"size\":694557883,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"aecae60b06641e6bc4daf271dbd8004cb34e031598507fa2d8d7f1eb3a4843bf\",\"size\":533407396,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"ba795676435def534173465fb8aa003644b05a4870dfc702c8e08988c0b83bca\",\"size\":827937679,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"e902672cf7d3ebf1903680a81ab71fb5a2a303359c5123b51f4bf07a90dd9886\",\"size\":652842621,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"810d58337fdad1fc27cb9fee0ecdd5fdc1557cd183a6a22546cced0a5524a842\",\"size\":531821681,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"e25d23fe86b353dc74c8e1c67e08f974b4a1e240b5c00e0b5a297bb1f5e765e0\",\"size\":580083851,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T09:56:13Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"4d587a969cdf0e50764311635bba215e7d368ed40b77c9e542ea5dfd6d08e4ed\",\"original_asset_sizes\":{\"rom.zip\":529771636,\"rondo-3.0.0.rondo\":17027331,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-3.0.0.rondo\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{},\"generated_at\":\"2026-11-12T09:56:13Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":15} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.0&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**For the Innioasis Y1, Type A.** A new firmware without the stock firmware's root backdoors.\n\n- **The root backdoors are gone.** Innioasis's own firmware, and so every Rondo firmware before this one, ran three programs as root that nothing on the Y1 needs:\n  - `aggdll`, an app pusher's agent: a hidden `su` and a silent app installer;\n  - `wifi_init`, a downloader it starts, which checks in with a server and runs what it downloads as root. That server doesn't answer today;\n  - SPWall (`libsp.so`), which runs commands as root for other programs.\n\n  This firmware leaves all three out, with what they left behind, and puts Android's own `am` back.\n- **A Y1 installed again runs the firmware's own Rondo**, not an older update it took over Wi-Fi before.\n\n**How to get it**\n- **Innioasis Updater CE**: Y1, Type A, **Rondo**, 3.0.0. Turn on **Keep my settings** so your settings, Wi-Fi networks, server connection and paired headphones stay. Your music on the card is never touched.\n- Software update on 2.0 shows 3.0.0 but can't install it, because the firmware itself has to change.\n\nFiles: `rondo-3.0.0.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#300-november-12-2026).\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"44e663f28bfd702e88413a6a89fa3090c51ff6e320808b26b0cfab12529c2e78\",\"size\":771646249,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"e14629a377d795260025debae0079956a5ec13af9f124237380b0302e2ab5eb3\",\"size\":533407396,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"26da770202a6ff37e517a242386bd94e1ecea1cd34bbe7c73d4e543922d4bd6d\",\"size\":828478060,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"36afa8d58c0b02e2b5d2ef9a4388f220568393c40c03e5eb9254dabebfed62b7\",\"size\":653382790,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"9e44daa8d32f733f2a97e4699f7fd97c91abc354c29d92d1d95b392be89dbf24\",\"size\":531821681,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"4aaa4622f2c1ff40fce8da1ddd50b642345d0559d4b71025b5bc794f144f7829\",\"size\":580083851,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T14:07:13Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"288229ee6e70f2959a02b75bf26db1159b1dcd7f7fa291b8fd8871359dcc5555\",\"original_asset_sizes\":{\"rom.zip\":529771636,\"rondo-3.0.0.rondo\":17027331,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-3.0.0.rondo\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":2,\"rom-linux-legacy.zip\":2,\"rom-linux.zip\":2,\"rom-macos.zip\":2,\"rom-windows-legacy.zip\":2,\"rom-windows.zip\":3,\"rom.zip\":1,\"rondo-3.0.0.rondo\":1,\"updater.png\":0},\"generated_at\":\"2026-11-12T14:07:13Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364428308,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188445269,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-12T09:44:40Z",
@@ -140,70 +267,70 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 738947329,
+        "id": 739723942,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-linux-arm64.zip",
-        "size": 652842621,
-        "download_count": 2,
+        "size": 653382790,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T09:56:15Z",
-        "updated_at": "2026-11-12T09:56:40Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738947329"
+        "created_at": "2026-11-12T14:07:17Z",
+        "updated_at": "2026-11-12T14:08:17Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739723942"
       },
       {
-        "id": 738947328,
+        "id": 739723939,
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-linux-legacy.zip",
         "size": 531821681,
-        "download_count": 2,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T09:56:15Z",
-        "updated_at": "2026-11-12T09:56:45Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738947328"
+        "created_at": "2026-11-12T14:07:17Z",
+        "updated_at": "2026-11-12T14:08:07Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739723939"
       },
       {
-        "id": 738947326,
+        "id": 739723935,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-linux.zip",
-        "size": 827937679,
-        "download_count": 5,
+        "size": 828478060,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T09:56:15Z",
-        "updated_at": "2026-11-12T09:56:50Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738947326"
+        "created_at": "2026-11-12T14:07:17Z",
+        "updated_at": "2026-11-12T14:08:24Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739723935"
       },
       {
-        "id": 738948425,
+        "id": 739726824,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-macos.zip",
         "size": 580083851,
-        "download_count": 2,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T09:56:37Z",
-        "updated_at": "2026-11-12T09:57:04Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738948425"
+        "created_at": "2026-11-12T14:08:08Z",
+        "updated_at": "2026-11-12T14:08:29Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739726824"
       },
       {
-        "id": 738947331,
+        "id": 739723938,
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-windows-legacy.zip",
         "size": 533407396,
-        "download_count": 2,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T09:56:15Z",
-        "updated_at": "2026-11-12T09:56:37Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738947331"
+        "created_at": "2026-11-12T14:07:17Z",
+        "updated_at": "2026-11-12T14:08:12Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739723938"
       },
       {
-        "id": 738947330,
+        "id": 739723936,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-windows.zip",
-        "size": 694557883,
-        "download_count": 3,
+        "size": 771646249,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T09:56:15Z",
-        "updated_at": "2026-11-12T09:56:46Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738947330"
+        "created_at": "2026-11-12T14:07:17Z",
+        "updated_at": "2026-11-12T14:08:20Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739723936"
       },
       {
         "id": 738948527,
@@ -228,15 +355,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738948746"
       },
       {
-        "id": 739138997,
+        "id": 739727067,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/stats.txt",
         "size": 4133,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T10:59:50Z",
-        "updated_at": "2026-11-12T10:59:50Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739138997"
+        "created_at": "2026-11-12T14:08:13Z",
+        "updated_at": "2026-11-12T14:08:14Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739727067"
       },
       {
         "id": 738948779,
@@ -251,13 +378,13 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 17
+    "downloads": 7
   },
   {
     "id": 442751285,
     "tag_name": "v2.0.1",
     "name": "Portable Flashing Package: Rondo 2.0.1",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**For the Innioasis Y1, Type A.** A fix release for Rondo 2.0.\n\n- **Wi-Fi works after a fresh install.** On a Y1 that installed 2.0.0 without keeping its data, Wi-Fi never came on (\"Wi-Fi didn't start\"): Rondo powered the Wi-Fi chip on while its driver was still loading, and the chip stayed stuck until the next restart. Rondo now waits for the driver first (#3).\n- **Next and Previous in Now Playing slide smoothly:** the slide starts on the press, and the covers of the songs before and after are ready before you press.\n\n**How to get it**\n- **Wi-Fi not working on 2.0.0?** Install with **Innioasis Updater CE** (Y1, Type A, Rondo 2.0.1), or over USB from the [update page](https://jarvissax.github.io/rondo/) in Chrome or Edge.\n- **Wi-Fi working:** Settings \u203a System \u203a Software update, or the dashboard's Overview.\n- **Coming from 1.0:** Innioasis Updater CE, with **Keep Data** to keep your settings.\n\nFiles: `rondo-2.0.1.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#201-november-12-2026).\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"1c3c6058585d318819b1cf2ebe939502b78219325988dc64e123d943406dc7bd\",\"size\":694556621,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"a11ccb1d03d35b2253794fed1fb168163218516692ff46bb9badcdbe976feaf2\",\"size\":533406132,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"615bebceb477311ebaf1ac9417725baedb29ad391a9d2b65c758d68f327da882\",\"size\":827936417,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"3f45e88a7a7744e4beee7b36c318dcd0a8c8b9c50ea6b3a9957f20e18e45837a\",\"size\":652841359,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"bf32764057cc1c5e233df1854f827d0e0b792b1c3d79c4e618345c992ae758c1\",\"size\":531820417,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"e4fb7f70c405a9a5989bfd78df6dd36d2ccb14adaae345c9fe4a5d3fb5592730\",\"size\":580082590,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T09:50:14Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"02bee38dd39f8c4c5958f8baf898f467e1aa7c10c4b1b392ba14495fab64a6c1\",\"original_asset_sizes\":{\"rom.zip\":529770376,\"rondo-2.0.1.rondo\":17020017,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-2.0.1.rondo\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{},\"generated_at\":\"2026-11-12T09:50:14Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":15} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.1&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**For the Innioasis Y1, Type A.** A fix release for Rondo 2.0.\n\n- **Wi-Fi works after a fresh install.** On a Y1 that installed 2.0.0 without keeping its data, Wi-Fi never came on (\"Wi-Fi didn't start\"): Rondo powered the Wi-Fi chip on while its driver was still loading, and the chip stayed stuck until the next restart. Rondo now waits for the driver first (#3).\n- **Next and Previous in Now Playing slide smoothly:** the slide starts on the press, and the covers of the songs before and after are ready before you press.\n\n**How to get it**\n- **Wi-Fi not working on 2.0.0?** Install with **Innioasis Updater CE** (Y1, Type A, Rondo 2.0.1), or over USB from the [update page](https://jarvissax.github.io/rondo/) in Chrome or Edge.\n- **Wi-Fi working:** Settings \u203a System \u203a Software update, or the dashboard's Overview.\n- **Coming from 1.0:** Innioasis Updater CE, with **Keep Data** to keep your settings.\n\nFiles: `rondo-2.0.1.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#201-november-12-2026).\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"3c2fbe082184201574d101ffebdc087dc10c8c7cfac32f5546b4e8b5e3ffed52\",\"size\":771644987,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"1df82a4668c4428ecbbc4844bd03ccb3ba59c1dd47922549ec66c253c4ddfdb4\",\"size\":533406132,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"f52ba74cfc5c06f23bc13cc4dcdbb81173702a412fef0c7d1c45997fa89df5a2\",\"size\":828476798,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"acb0d43871dc8a3979041aa7cef1589564caa7be3b4a336b50fb1d55931fbc65\",\"size\":653381528,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"c4c1492d7696a49dcc4cec30e2497d32b069742e5633708d125da3e47b9e960c\",\"size\":531820417,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"c9843ee93f5ca281e7dc90197750d187067472bf33dac3ed1040b86e0db298d6\",\"size\":580082590,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T14:01:48Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"def0208147d75652ebf38c8e17c92aa1789fe7f862a00ab44558ea4a9e346b5c\",\"original_asset_sizes\":{\"rom.zip\":529770376,\"rondo-2.0.1.rondo\":17020017,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-2.0.1.rondo\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":2,\"rom-linux-legacy.zip\":2,\"rom-linux.zip\":2,\"rom-macos.zip\":2,\"rom-windows-legacy.zip\":2,\"rom-windows.zip\":3,\"rom.zip\":1,\"rondo-2.0.1.rondo\":1,\"updater.png\":0},\"generated_at\":\"2026-11-12T14:01:48Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364428308,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188445269,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-12T09:44:40Z",
@@ -267,70 +394,70 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 738929215,
+        "id": 739705154,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-linux-arm64.zip",
-        "size": 652841359,
-        "download_count": 2,
+        "size": 653381528,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T09:50:16Z",
-        "updated_at": "2026-11-12T09:50:46Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738929215"
+        "created_at": "2026-11-12T14:01:52Z",
+        "updated_at": "2026-11-12T14:02:54Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739705154"
       },
       {
-        "id": 738929216,
+        "id": 739705145,
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-linux-legacy.zip",
         "size": 531820417,
-        "download_count": 2,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T09:50:16Z",
-        "updated_at": "2026-11-12T09:50:39Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738929216"
+        "created_at": "2026-11-12T14:01:52Z",
+        "updated_at": "2026-11-12T14:02:41Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739705145"
       },
       {
-        "id": 738929214,
+        "id": 739705151,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-linux.zip",
-        "size": 827936417,
-        "download_count": 5,
+        "size": 828476798,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T09:50:16Z",
-        "updated_at": "2026-11-12T09:50:47Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738929214"
+        "created_at": "2026-11-12T14:01:52Z",
+        "updated_at": "2026-11-12T14:03:03Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739705151"
       },
       {
-        "id": 738930003,
+        "id": 739706091,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-macos.zip",
         "size": 580082590,
-        "download_count": 2,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T09:50:34Z",
-        "updated_at": "2026-11-12T09:50:55Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738930003"
+        "created_at": "2026-11-12T14:02:10Z",
+        "updated_at": "2026-11-12T14:02:42Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739706091"
       },
       {
-        "id": 738929217,
+        "id": 739705155,
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-windows-legacy.zip",
         "size": 533406132,
-        "download_count": 2,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T09:50:16Z",
-        "updated_at": "2026-11-12T09:50:34Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738929217"
+        "created_at": "2026-11-12T14:01:52Z",
+        "updated_at": "2026-11-12T14:02:09Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739705155"
       },
       {
-        "id": 738929213,
+        "id": 739705150,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-windows.zip",
-        "size": 694556621,
-        "download_count": 3,
+        "size": 771644987,
+        "download_count": 1,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T09:50:16Z",
-        "updated_at": "2026-11-12T09:50:45Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738929213"
+        "created_at": "2026-11-12T14:01:52Z",
+        "updated_at": "2026-11-12T14:02:50Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739705150"
       },
       {
         "id": 738930335,
@@ -355,15 +482,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738930607"
       },
       {
-        "id": 739138861,
+        "id": 739707919,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/stats.txt",
         "size": 4133,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T10:59:47Z",
-        "updated_at": "2026-11-12T10:59:48Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739138861"
+        "created_at": "2026-11-12T14:02:42Z",
+        "updated_at": "2026-11-12T14:02:42Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739707919"
       },
       {
         "id": 738930637,
@@ -378,13 +505,13 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 17
+    "downloads": 4
   },
   {
     "id": 441806910,
     "tag_name": "v2.0.0",
     "name": "Portable Flashing Package: Rondo 2.0.0",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**For the Innioasis Y1, Type A.** A new firmware: install `rom.zip` with **Innioasis Updater CE** (choose **Keep Data** to keep your settings when coming from 1.0). After that, Rondo updates itself over Wi-Fi from GitHub.\n\nRondo 2.0 is rebuilt as a program of its own: Android's app layer is gone, the Y1 starts straight into Rondo, and everything runs smoother at 60 frames a second.\n\n- **YouTube and YouTube Music straight from the Y1**, no server needed (your own server is optional and still works). Sign in with a code, like a smart TV.\n- **Subtitles** on YouTube videos and on the videos on the card, in a look of your own (YouTube's by default).\n- **Download YouTube videos** at 720p, 480p or 360p, with their subtitles, to watch offline.\n- **Library in four:** Music (with Cover Flow, album artists, genres, smart playlists), Videos, Photos and Files.\n- **Sound:** an equalizer for each output, Headphone match (with a server), loudness boost, volume leveling, the amplifier and a volume limit.\n- **Software update from GitHub**, with or without a server; the dashboard has every setting too.\n\nEverything else is in the [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#200-november-11-2026).\n\nFiles: `rondo-2.0.0.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"b41ca89b77424986c6385d2172ce4ee8cb2617f17f52a84e942f2e767c295cb8\",\"size\":694556599,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"b95dd6f2bbabaadb58b6a06fc8dbf5ff29f064a1bed7481a979aab65c6b240f5\",\"size\":533406110,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"408ca9ede4853fa0589c357f0f99e2e4113c055565c5ba517fb0be1c52fd4294\",\"size\":827936395,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"6df46dc52f11352f997bef511d895b49a102758c1e8098a998826a2a82de930f\",\"size\":652841337,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"165dff3f2bcf899e66caa5c3b30addca863d00b64afcee45780c981b4f5388f9\",\"size\":531820395,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"49284cf6de074e117d593d71ce2fd0232ac408bca38153940fb152c7759289ce\",\"size\":580082567,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-11T22:04:07Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"b9f41841ed1dd5ec465574e0ba9cd1e910597f732a3fd8baeba5f93ed6563784\",\"original_asset_sizes\":{\"rom.zip\":529770467,\"rondo-2.0.0.rondo\":17019301,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-2.0.0.rondo\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":1,\"rom-linux.zip\":1,\"rom-macos.zip\":2,\"rom-windows.zip\":2,\"rom.zip\":1,\"rondo-2.0.0.rondo\":1,\"updater.png\":0},\"generated_at\":\"2026-11-11T22:04:07Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":15} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v2.0.0&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**For the Innioasis Y1, Type A.** A new firmware: install `rom.zip` with **Innioasis Updater CE** (choose **Keep Data** to keep your settings when coming from 1.0). After that, Rondo updates itself over Wi-Fi from GitHub.\n\nRondo 2.0 is rebuilt as a program of its own: Android's app layer is gone, the Y1 starts straight into Rondo, and everything runs smoother at 60 frames a second.\n\n- **YouTube and YouTube Music straight from the Y1**, no server needed (your own server is optional and still works). Sign in with a code, like a smart TV.\n- **Subtitles** on YouTube videos and on the videos on the card, in a look of your own (YouTube's by default).\n- **Download YouTube videos** at 720p, 480p or 360p, with their subtitles, to watch offline.\n- **Library in four:** Music (with Cover Flow, album artists, genres, smart playlists), Videos, Photos and Files.\n- **Sound:** an equalizer for each output, Headphone match (with a server), loudness boost, volume leveling, the amplifier and a volume limit.\n- **Software update from GitHub**, with or without a server; the dashboard has every setting too.\n\nEverything else is in the [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#200-november-11-2026).\n\nFiles: `rondo-2.0.0.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"56deca20ccf5caa4f83cc61ce15c2f659402956ff7ed0da1fc6737fdd629e4d7\",\"size\":771645080,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"36be48dc3f802035768e0024593978a1de36897c02d94f818200dcbc3c1ad3aa\",\"size\":533406225,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"44189af21c9d39b5280cc662a0f32510215bd6a9a9ebca0cf97666001b44dc48\",\"size\":828476891,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"e11cfcdfe21e80da7be149dc02a14bb058feaf541145a8c8ea696c24cb71105a\",\"size\":653381621,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"7430d6199cc94c6851ba51ab17095d5ebaadaee04ba25d231e334613707a0795\",\"size\":531820510,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"9412af3e12626e7a63a032896de722c75b05c0b6ea16862958798ea8343b65bc\",\"size\":580082682,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T13:56:19Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"717bdbdd678df262a156d67f1e5b7252b917657da5376a1863fc2dc805834590\",\"original_asset_sizes\":{\"rom.zip\":529770467,\"rondo-2.0.0.rondo\":17019301,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-2.0.0.rondo\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":3,\"rom-linux-legacy.zip\":2,\"rom-linux.zip\":3,\"rom-macos.zip\":4,\"rom-windows-legacy.zip\":2,\"rom-windows.zip\":6,\"rom.zip\":2,\"rondo-2.0.0.rondo\":2,\"updater.png\":0},\"generated_at\":\"2026-11-12T13:56:19Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364428308,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188445269,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-11T14:09:52Z",
@@ -394,70 +521,70 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 737063231,
+        "id": 739685607,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-linux-arm64.zip",
-        "size": 652841337,
-        "download_count": 2,
+        "size": 653381621,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T22:04:11Z",
-        "updated_at": "2026-11-11T22:04:44Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737063231"
+        "created_at": "2026-11-12T13:56:23Z",
+        "updated_at": "2026-11-12T13:57:26Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739685607"
       },
       {
-        "id": 737063218,
+        "id": 739685616,
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-linux-legacy.zip",
-        "size": 531820395,
-        "download_count": 2,
+        "size": 531820510,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T22:04:11Z",
-        "updated_at": "2026-11-11T22:04:56Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737063218"
+        "created_at": "2026-11-12T13:56:23Z",
+        "updated_at": "2026-11-12T13:57:23Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739685616"
       },
       {
-        "id": 737063243,
+        "id": 739685609,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-linux.zip",
-        "size": 827936395,
-        "download_count": 5,
+        "size": 828476891,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T22:04:11Z",
-        "updated_at": "2026-11-11T22:05:05Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737063243"
+        "created_at": "2026-11-12T13:56:23Z",
+        "updated_at": "2026-11-12T13:57:35Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739685609"
       },
       {
-        "id": 737064712,
+        "id": 739689082,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-macos.zip",
-        "size": 580082567,
-        "download_count": 2,
+        "size": 580082682,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T22:04:45Z",
-        "updated_at": "2026-11-11T22:05:05Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737064712"
+        "created_at": "2026-11-12T13:57:24Z",
+        "updated_at": "2026-11-12T13:57:42Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739689082"
       },
       {
-        "id": 737063217,
+        "id": 739685610,
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-windows-legacy.zip",
-        "size": 533406110,
-        "download_count": 2,
+        "size": 533406225,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T22:04:11Z",
-        "updated_at": "2026-11-11T22:04:50Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737063217"
+        "created_at": "2026-11-12T13:56:23Z",
+        "updated_at": "2026-11-12T13:57:25Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739685610"
       },
       {
-        "id": 737063233,
+        "id": 739685619,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-windows.zip",
-        "size": 694556599,
-        "download_count": 4,
+        "size": 771645080,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T22:04:11Z",
-        "updated_at": "2026-11-11T22:04:45Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737063233"
+        "created_at": "2026-11-12T13:56:23Z",
+        "updated_at": "2026-11-12T13:57:29Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739685619"
       },
       {
         "id": 735814584,
@@ -482,15 +609,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/735815538"
       },
       {
-        "id": 739138738,
+        "id": 739689173,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/stats.txt",
         "size": 4135,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T10:59:45Z",
-        "updated_at": "2026-11-12T10:59:45Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739138738"
+        "created_at": "2026-11-12T13:57:25Z",
+        "updated_at": "2026-11-12T13:57:26Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739689173"
       },
       {
         "id": 735815578,
@@ -505,13 +632,13 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 18
+    "downloads": 1
   },
   {
     "id": 432881639,
     "tag_name": "v1.0.2",
     "name": "Portable Flashing Package: Rondo 1.0.2",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nRondo 1.0.2 is about the server: it now updates itself with one click from its admin page. **Nothing changes on the Y1 itself**; it still offers this version as an update so the Y1 and the server stay on the same number.\n\n## What's new\n\n- **Update the server with one click.** When a newer Rondo is out, the server's admin page offers **Update**: the server downloads the new version and restarts on it in a minute or two, keeping your settings, YouTube account and connected Y1. A small companion container, `rondo-updater`, does the work; it only ever touches the Rondo server's own container, and if the new version doesn't start, the old one comes back by itself.\n- **Ready-made server images.** Installing the server now downloads it instead of building it on your machine, for regular PCs and 64-bit ARM (Raspberry Pi 4 and 5, many NAS boxes). The first start is much quicker on small machines.\n\nThe full list is in [CHANGELOG.md](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md).\n\n## Moving your server over\n\nA server set up before 1.0.2 built itself and has no updater yet. Update it by hand once, and **Update** on the admin page does it from then on:\n\n```bash\ncd rondo\ngit pull\ndocker compose -f infra/compose.home.yaml pull      # or compose.vps.yaml\ndocker compose -f infra/compose.home.yaml up -d\n```\n\nYour admin password, YouTube account and connected Y1 stay. Details: [Keeping it running](https://github.com/jarvissax/rondo/blob/main/docs/server.md#keeping-it-running).\n\n## The Y1\n\nIf your Y1 runs Rondo 1.0.1, **Settings \u203a Software update**, **Install** in the dashboard or [the update page](https://jarvissax.github.io/rondo/) bring it to 1.0.2 in a minute; nothing else changes. New to Rondo: choose **Rondo** in [Innioasis Updater CE](https://innioasis.app) (Y1, then Type A), or install `rom.zip` below with the Updater's **Settings \u203a Install from a file\u2026**. Only for the **Y1 Type A**.\n\n## Files\n\n- `rom.zip`: the firmware, for Innioasis Updater CE (Y1 Type A), built from `rondo-1.0.2.apk` by the release workflow.\n- `rondo-1.0.2.apk`: the update, for a Y1 that already runs the Rondo firmware.\n- `updater.png`: the picture Innioasis Updater CE shows for this release.\n- The server images: `ghcr.io/jarvissax/rondo-server:1.0.2` and `ghcr.io/jarvissax/rondo-updater:1.0.2` (also `latest`).\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"601b5806a32b36cc8436ebef976d9612d7a6f92a21cbcb2073b8dc3a99265048\",\"size\":692712914,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"d7ff3aa25fb67ba377c7db45d4a6eeedd3155416887ab263d7def3841fce4c66\",\"size\":531562423,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"133f61e2798afe12b5c0cfb1d60258cb79d39371677fa022c18f7eacde18b892\",\"size\":826092710,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"184c6720f2d9b00ffa150256c1f5a831a657da96f9caa062db6e57ebb733794d\",\"size\":650997652,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"9fc80c302a90a6915ba45e0f9b5d1d6071595318854e5b90082ca625ffe00370\",\"size\":529976708,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"7f944092a77f3573596ec3bb48b800f7df9b2346e16dbe31789da6ad7f5e379a\",\"size\":578238882,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-11T21:57:08Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"f9407472e68bd6691c341f82c91447741ecd6e6e1c49a2e237d43ee6d8ade3de\",\"original_asset_sizes\":{\"rom.zip\":527926760,\"rondo-1.0.2.apk\":6423022,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-1.0.2.apk\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":0,\"rom-linux.zip\":3,\"rom-macos.zip\":13,\"rom-windows.zip\":5,\"rom.zip\":24,\"rondo-1.0.2.apk\":15,\"updater.png\":15},\"generated_at\":\"2026-11-11T21:57:08Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":15} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.2&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nRondo 1.0.2 is about the server: it now updates itself with one click from its admin page. **Nothing changes on the Y1 itself**; it still offers this version as an update so the Y1 and the server stay on the same number.\n\n## What's new\n\n- **Update the server with one click.** When a newer Rondo is out, the server's admin page offers **Update**: the server downloads the new version and restarts on it in a minute or two, keeping your settings, YouTube account and connected Y1. A small companion container, `rondo-updater`, does the work; it only ever touches the Rondo server's own container, and if the new version doesn't start, the old one comes back by itself.\n- **Ready-made server images.** Installing the server now downloads it instead of building it on your machine, for regular PCs and 64-bit ARM (Raspberry Pi 4 and 5, many NAS boxes). The first start is much quicker on small machines.\n\nThe full list is in [CHANGELOG.md](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md).\n\n## Moving your server over\n\nA server set up before 1.0.2 built itself and has no updater yet. Update it by hand once, and **Update** on the admin page does it from then on:\n\n```bash\ncd rondo\ngit pull\ndocker compose -f infra/compose.home.yaml pull      # or compose.vps.yaml\ndocker compose -f infra/compose.home.yaml up -d\n```\n\nYour admin password, YouTube account and connected Y1 stay. Details: [Keeping it running](https://github.com/jarvissax/rondo/blob/main/docs/server.md#keeping-it-running).\n\n## The Y1\n\nIf your Y1 runs Rondo 1.0.1, **Settings \u203a Software update**, **Install** in the dashboard or [the update page](https://jarvissax.github.io/rondo/) bring it to 1.0.2 in a minute; nothing else changes. New to Rondo: choose **Rondo** in [Innioasis Updater CE](https://innioasis.app) (Y1, then Type A), or install `rom.zip` below with the Updater's **Settings \u203a Install from a file\u2026**. Only for the **Y1 Type A**.\n\n## Files\n\n- `rom.zip`: the firmware, for Innioasis Updater CE (Y1 Type A), built from `rondo-1.0.2.apk` by the release workflow.\n- `rondo-1.0.2.apk`: the update, for a Y1 that already runs the Rondo firmware.\n- `updater.png`: the picture Innioasis Updater CE shows for this release.\n- The server images: `ghcr.io/jarvissax/rondo-server:1.0.2` and `ghcr.io/jarvissax/rondo-updater:1.0.2` (also `latest`).\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"8c7592123ec559efbecaca4879922d58b12caeef0e8cc34b8933e16daf3d3420\",\"size\":769801395,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"935a4b9b341d7b51f9af06617bafd6b10375422adcef0a5f17cd6f4ded09bb82\",\"size\":531562538,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"e79825d140bb73c5f842d0653a45200920a0778e78fc0f01e5878f288a928dbe\",\"size\":826633206,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"98114c5d2719be1141a0d001994ca874cf8e6d439032761315530cf5bf89e439\",\"size\":651537936,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"1dce08801a9776fbc7b0b59095cf2f786486f3411b98213d9c2bbc85660e4887\",\"size\":529976823,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"7ec36568dca0e872f4036adaddb15a49a4f5da2d8a0bdcde46aecd92f9f7cc05\",\"size\":578238997,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T13:50:47Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"d5d9dcddfadb15ef9a802c6066d775204c6c7caee11c4ebb0ec137a96ae91117\",\"original_asset_sizes\":{\"rom.zip\":527926760,\"rondo-1.0.2.apk\":6423022,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-1.0.2.apk\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":2,\"rom-linux-legacy.zip\":2,\"rom-linux.zip\":5,\"rom-macos.zip\":16,\"rom-windows-legacy.zip\":2,\"rom-windows.zip\":9,\"rom.zip\":25,\"rondo-1.0.2.apk\":16,\"updater.png\":16},\"generated_at\":\"2026-11-12T13:50:47Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364428308,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188445269,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:18:44Z",
@@ -521,70 +648,70 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 737043797,
+        "id": 739668645,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-linux-arm64.zip",
-        "size": 650997652,
-        "download_count": 2,
+        "size": 651537936,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:57:13Z",
-        "updated_at": "2026-11-11T21:57:43Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737043797"
+        "created_at": "2026-11-12T13:50:50Z",
+        "updated_at": "2026-11-12T13:52:05Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739668645"
       },
       {
-        "id": 737043777,
+        "id": 739668643,
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-linux-legacy.zip",
-        "size": 529976708,
-        "download_count": 2,
+        "size": 529976823,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:57:13Z",
-        "updated_at": "2026-11-11T21:57:45Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737043777"
+        "created_at": "2026-11-12T13:50:50Z",
+        "updated_at": "2026-11-12T13:51:58Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739668643"
       },
       {
-        "id": 737043795,
+        "id": 739668644,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-linux.zip",
-        "size": 826092710,
-        "download_count": 5,
+        "size": 826633206,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:57:13Z",
-        "updated_at": "2026-11-11T21:57:46Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737043795"
+        "created_at": "2026-11-12T13:50:50Z",
+        "updated_at": "2026-11-12T13:52:16Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739668644"
       },
       {
-        "id": 737045135,
+        "id": 739672145,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-macos.zip",
-        "size": 578238882,
-        "download_count": 3,
+        "size": 578238997,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:57:44Z",
-        "updated_at": "2026-11-11T21:58:02Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737045135"
+        "created_at": "2026-11-12T13:51:55Z",
+        "updated_at": "2026-11-12T13:52:22Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739672145"
       },
       {
-        "id": 737043786,
+        "id": 739668641,
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-windows-legacy.zip",
-        "size": 531562423,
-        "download_count": 2,
+        "size": 531562538,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:57:13Z",
-        "updated_at": "2026-11-11T21:57:51Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737043786"
+        "created_at": "2026-11-12T13:50:50Z",
+        "updated_at": "2026-11-12T13:51:54Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739668641"
       },
       {
-        "id": 737043791,
+        "id": 739668648,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-windows.zip",
-        "size": 692712914,
-        "download_count": 4,
+        "size": 769801395,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:57:13Z",
-        "updated_at": "2026-11-11T21:57:47Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737043791"
+        "created_at": "2026-11-12T13:50:50Z",
+        "updated_at": "2026-11-12T13:52:08Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739668648"
       },
       {
         "id": 733060709,
@@ -609,15 +736,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/706101039"
       },
       {
-        "id": 739138596,
+        "id": 739672321,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/stats.txt",
         "size": 4144,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T10:59:43Z",
-        "updated_at": "2026-11-12T10:59:43Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739138596"
+        "created_at": "2026-11-12T13:51:59Z",
+        "updated_at": "2026-11-12T13:51:59Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739672321"
       },
       {
         "id": 706101141,
@@ -632,13 +759,13 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 19
+    "downloads": 1
   },
   {
     "id": 432908504,
     "tag_name": "v1.0.1",
     "name": "Portable Flashing Package: Rondo 1.0.1",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nA small update to Rondo for the **Innioasis Y1, Type A**. If your Y1 already runs Rondo, it installs over the one you have in about a minute, and everything stays: settings, Wi-Fi, server connection, playlists and music.\n\n## What's new\n\n- **Click sound stays off.** Turning off **Settings \u203a Click sound** (or the switch in the dashboard) now lasts through a restart. Before, the Y1's own sound profile turned the click back on every time it started.\n- **Every release now comes with its firmware.** The `rom.zip` that Innioasis Updater CE installs is built automatically for each release, so a new install always gets the newest Rondo.\n- **Rondo knows which updates it can install.** The firmware now carries a version of its own. If a future release changes the firmware itself, not only Rondo, Settings \u203a Software update, the dashboard and the update page say so and point you to Innioasis Updater CE, instead of offering an install that couldn't work.\n- **One place for news of a release.** The Y1 (through your server), the dashboard and the update page all learn about a new Rondo from the update page, once its firmware is ready, so they always agree with each other and with Innioasis Updater CE.\n- **New README and guides**, with screenshots.\n\nThe full list is in [CHANGELOG.md](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md).\n\n## Updating from 1.0.0\n\nPick whichever is handiest; none of them reinstalls the firmware:\n\n- **On the Y1:** Settings \u203a Software update, then **Install now** (needs your Rondo server).\n- **In the dashboard:** Settings \u203a Dashboard on the Y1, open it on your phone, press **Install**.\n- **Over USB:** open [the update page](https://jarvissax.github.io/rondo/) in Chrome or Edge and plug the Y1 in.\n\nIf you run a Rondo server, update it too ([how](https://github.com/jarvissax/rondo/blob/main/docs/server.md#keeping-it-running)); it's 1.0.1 as well.\n\n## Installing for the first time\n\nChoose **Rondo** in [Innioasis Updater CE](https://innioasis.app) (Y1, then Type A), or download `rom.zip` below and use the Updater's **Settings \u203a Install from a file\u2026**. Installing replaces everything on the Y1 itself; **the microSD card isn't touched**. The [install guide](https://github.com/jarvissax/rondo/blob/main/docs/install.md) has the details.\n\nOnly for the **Y1 Type A** (players that shipped with software 2.0.0 or later), not the Type B or the Y2.\n\n## Files\n\n- `rom.zip`: the firmware, for Innioasis Updater CE (Y1 Type A). Built from `rondo-1.0.1.apk` by this repository's release workflow, a few minutes after publishing.\n- `rondo-1.0.1.apk`: the update, for a Y1 that already runs the Rondo firmware.\n- `updater.png`: the picture Innioasis Updater CE shows for this release.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"7b7c1ab32b48ac1b507c85860ab25c573e9c9ecb6e46f44c8a381372b1d526db\",\"size\":692713291,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"da4c44cd01ad19b23ab7f3af20684465747019920b03b370767474c20251e15d\",\"size\":531562802,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"12985cb14122bcc53102f04d0dee3e9133e1162fa430face18e41c4c467bdac8\",\"size\":826093087,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"d1847e4032ce19ffca8256ccd92717f634614d1cbc1f32086d72ee01197e14d4\",\"size\":650998029,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"02379ece5a2fd100cd6bfa2370a3761eb3a02c68c8fdcf79bb950f045feb7047\",\"size\":529977085,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"c54998ba599f1344156c15b8b7e39afde6a4be6ee46693655ca8e6ac428c8067\",\"size\":578239260,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-11T21:49:26Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"0b94ea9d7c94d26b1c94f85076730fcacb5be27c92c102a8d40815ebae56b8a9\",\"original_asset_sizes\":{\"rom.zip\":527927138,\"rondo-1.0.1.apk\":6423015,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-1.0.1.apk\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":0,\"rom-linux.zip\":0,\"rom-macos.zip\":4,\"rom-windows.zip\":2,\"rom.zip\":12,\"rondo-1.0.1.apk\":11,\"updater.png\":0},\"generated_at\":\"2026-11-11T21:49:26Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":15} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.1&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nA small update to Rondo for the **Innioasis Y1, Type A**. If your Y1 already runs Rondo, it installs over the one you have in about a minute, and everything stays: settings, Wi-Fi, server connection, playlists and music.\n\n## What's new\n\n- **Click sound stays off.** Turning off **Settings \u203a Click sound** (or the switch in the dashboard) now lasts through a restart. Before, the Y1's own sound profile turned the click back on every time it started.\n- **Every release now comes with its firmware.** The `rom.zip` that Innioasis Updater CE installs is built automatically for each release, so a new install always gets the newest Rondo.\n- **Rondo knows which updates it can install.** The firmware now carries a version of its own. If a future release changes the firmware itself, not only Rondo, Settings \u203a Software update, the dashboard and the update page say so and point you to Innioasis Updater CE, instead of offering an install that couldn't work.\n- **One place for news of a release.** The Y1 (through your server), the dashboard and the update page all learn about a new Rondo from the update page, once its firmware is ready, so they always agree with each other and with Innioasis Updater CE.\n- **New README and guides**, with screenshots.\n\nThe full list is in [CHANGELOG.md](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md).\n\n## Updating from 1.0.0\n\nPick whichever is handiest; none of them reinstalls the firmware:\n\n- **On the Y1:** Settings \u203a Software update, then **Install now** (needs your Rondo server).\n- **In the dashboard:** Settings \u203a Dashboard on the Y1, open it on your phone, press **Install**.\n- **Over USB:** open [the update page](https://jarvissax.github.io/rondo/) in Chrome or Edge and plug the Y1 in.\n\nIf you run a Rondo server, update it too ([how](https://github.com/jarvissax/rondo/blob/main/docs/server.md#keeping-it-running)); it's 1.0.1 as well.\n\n## Installing for the first time\n\nChoose **Rondo** in [Innioasis Updater CE](https://innioasis.app) (Y1, then Type A), or download `rom.zip` below and use the Updater's **Settings \u203a Install from a file\u2026**. Installing replaces everything on the Y1 itself; **the microSD card isn't touched**. The [install guide](https://github.com/jarvissax/rondo/blob/main/docs/install.md) has the details.\n\nOnly for the **Y1 Type A** (players that shipped with software 2.0.0 or later), not the Type B or the Y2.\n\n## Files\n\n- `rom.zip`: the firmware, for Innioasis Updater CE (Y1 Type A). Built from `rondo-1.0.1.apk` by this repository's release workflow, a few minutes after publishing.\n- `rondo-1.0.1.apk`: the update, for a Y1 that already runs the Rondo firmware.\n- `updater.png`: the picture Innioasis Updater CE shows for this release.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"421d0b216fc32bfc8ab42e28a2421627a1591ef7e9f552bbb604bbeb1054f90b\",\"size\":769801772,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"5fda0fdce6a51c61b7226e4752e1a134af5160a912edc8350fcaae8c8746bcf4\",\"size\":531562917,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"368af32bdf798cfaae0ab37c6357107180cf750d8d2bba24c5241fee2ebb8587\",\"size\":826633583,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"5f308b8de4b70762cc0dd3214623ec20be01644c6dbd4f3804f58e1691076018\",\"size\":651538313,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"edf86632d7ecc54c4f5bdd989c303b02aa770881c01bfeb7b3a64c18973e0af2\",\"size\":529977200,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"c2b32f11018fdabe6772961d3ba039ccd8d3ef34e2fc329a1ee31227b5fe0e44\",\"size\":578239375,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T13:45:36Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"3e12a640e74c7fe899eb64dc20819a649e4c3812fe0b08a7599408b75242cddc\",\"original_asset_sizes\":{\"rom.zip\":527927138,\"rondo-1.0.1.apk\":6423015,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-1.0.1.apk\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":2,\"rom-linux-legacy.zip\":2,\"rom-linux.zip\":2,\"rom-macos.zip\":7,\"rom-windows-legacy.zip\":2,\"rom-windows.zip\":6,\"rom.zip\":13,\"rondo-1.0.1.apk\":12,\"updater.png\":0},\"generated_at\":\"2026-11-12T13:45:36Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364428308,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188445269,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:33:23Z",
@@ -648,70 +775,70 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 737024868,
+        "id": 739651033,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-linux-arm64.zip",
-        "size": 650998029,
-        "download_count": 2,
+        "size": 651538313,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:49:30Z",
-        "updated_at": "2026-11-11T21:50:26Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737024868"
+        "created_at": "2026-11-12T13:45:38Z",
+        "updated_at": "2026-11-12T13:46:35Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739651033"
       },
       {
-        "id": 737024864,
+        "id": 739651041,
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-linux-legacy.zip",
-        "size": 529977085,
-        "download_count": 2,
+        "size": 529977200,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:49:30Z",
-        "updated_at": "2026-11-11T21:50:59Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737024864"
+        "created_at": "2026-11-12T13:45:39Z",
+        "updated_at": "2026-11-12T13:46:24Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739651041"
       },
       {
-        "id": 737024871,
+        "id": 739651035,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-linux.zip",
-        "size": 826093087,
-        "download_count": 5,
+        "size": 826633583,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:49:30Z",
-        "updated_at": "2026-11-11T21:50:35Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737024871"
+        "created_at": "2026-11-12T13:45:38Z",
+        "updated_at": "2026-11-12T13:46:37Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739651035"
       },
       {
-        "id": 737027605,
+        "id": 739652334,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-macos.zip",
-        "size": 578239260,
-        "download_count": 3,
+        "size": 578239375,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:50:26Z",
-        "updated_at": "2026-11-11T21:50:57Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737027605"
+        "created_at": "2026-11-12T13:46:01Z",
+        "updated_at": "2026-11-12T13:46:22Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739652334"
       },
       {
-        "id": 737024863,
+        "id": 739651031,
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-windows-legacy.zip",
-        "size": 531562802,
-        "download_count": 2,
+        "size": 531562917,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:49:30Z",
-        "updated_at": "2026-11-11T21:50:54Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737024863"
+        "created_at": "2026-11-12T13:45:38Z",
+        "updated_at": "2026-11-12T13:46:00Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739651031"
       },
       {
-        "id": 737024870,
+        "id": 739651044,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-windows.zip",
-        "size": 692713291,
-        "download_count": 4,
+        "size": 769801772,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:49:30Z",
-        "updated_at": "2026-11-11T21:50:36Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737024870"
+        "created_at": "2026-11-12T13:45:39Z",
+        "updated_at": "2026-11-12T13:46:40Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739651044"
       },
       {
         "id": 733041000,
@@ -736,15 +863,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/706172992"
       },
       {
-        "id": 739138487,
+        "id": 739653591,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/stats.txt",
         "size": 4139,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T10:59:40Z",
-        "updated_at": "2026-11-12T10:59:40Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739138487"
+        "created_at": "2026-11-12T13:46:23Z",
+        "updated_at": "2026-11-12T13:46:23Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739653591"
       },
       {
         "id": 706173138,
@@ -759,13 +886,13 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 19
+    "downloads": 1
   },
   {
     "id": 432900931,
     "tag_name": "v1.0.0",
     "name": "Portable Flashing Package: Rondo 1.0.0",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nRondo is now a firmware for the Innioasis Y1: the Y1 starts straight into Rondo's click-wheel menus, with nothing else on it.\n\n**For the Y1, Type A only** (players that shipped with software 2.0.0 or later). Not for the Type B or the Y2.\n\n## Install\n\nChoose **Rondo** in [Innioasis Updater CE](https://innioasis.app) (Y1, Type A). Or download `rom.zip` below and use the Updater's **Settings \u203a Install from a file\u2026**.\n\nInstalling replaces everything on the Y1 itself: the original player, Rockbox, settings. **The microSD card isn't touched**, so your music stays. When the Updater is done, press the Y1's Power button; the first start takes a couple of minutes. The [install guide](https://github.com/jarvissax/rondo/blob/main/docs/install.md) has the details and the first steps after it.\n\nFor YouTube Music and YouTube, [set up a Rondo server](https://github.com/jarvissax/rondo/blob/main/docs/server.md) with Docker, at home or on a VPS.\n\n## Updates\n\nLater versions install over this one in a minute, without flashing again, keeping your settings, Wi-Fi, playlists and music: **Settings \u203a Software update** on the Y1, **Install** in the dashboard, or [the update page](https://jarvissax.github.io/rondo/) over USB.\n\n## What's in it\n\n- iPod-style menus for the click wheel, with optional vibration and a click on every step\n- Your music and videos from the microSD card, with covers, lyrics, search and playlists\n- The card as a USB drive when the Y1 is plugged into a computer\n- YouTube Music and YouTube, streamed live through your own server, including Shorts, with or without a YouTube account\n- FM radio with station names, scanning and saved stations\n- Bluetooth headphones and speakers, and Wi-Fi, set up from the wheel\n- A dashboard in your phone's browser for music, playlists, settings, the theme, Wi-Fi, Bluetooth, the radio and updates\n- Shut down and restart from Settings, or by holding the Power button\n\n## Good to know\n\n- Only the Y1 Type A is supported; the Type B and Y2 haven't been tested.\n- Rockbox, the original player and Android's own Settings aren't part of Rondo. Innioasis Updater CE puts any of them back.\n- YouTube Music and YouTube need your own Rondo server; the card, the radio and Bluetooth don't.\n\n## Files\n\n| File | What it is | SHA-256 |\n| --- | --- | --- |\n| `rom.zip` | The firmware, for Innioasis Updater CE (Y1 Type A) | `97855240680f2f71f0e33147bd6f7567f4bf17e2efb082d495dc55b2877a0b6c` |\n| `rondo-1.0.0.apk` | Rondo by itself: updates a Y1 that runs the Rondo firmware | `911edd65b8f375e452c05e2004c1c817215a65f9a56d023c5acfb9a7d0857edd` |\n| `updater.png` | The picture Innioasis Updater CE shows for this release | `40b9f5679e2f84b4dd7c6fda968abf702df3ccb6b743fcb88e142eeb8b52047e` |\n\nThe firmware is built with [`firmware/build.sh`](https://github.com/jarvissax/rondo/blob/main/firmware/build.sh) from the y1-community's [Android 4.2 base ROM](https://github.com/y1-community/y1-ata-rom) (0.1, Type A). Its scatter file, preloader and flashing files are the base ROM's, unchanged.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"048d3b71f36e20d0878951a808badefbe76fb1b3d661d0dc1e960ee2e25c7d92\",\"size\":692714208,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"56adecef238f124f8415d9be18e6c20866e6abef35293007d2ebe995d9549d8b\",\"size\":531563719,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"651ea67847ca2c1d0fae5e8c25acb280e9d81f22f6d01181a042d4e9fbb94813\",\"size\":826094004,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"937dbf065a293be329797a7befa37d247f9957a51f37dc71bc3c1046c2af4772\",\"size\":650998946,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"b5b056c08eb9ef6366530ba5d6b7f6c1fcbdf25ad25c1582f68d5375b3d6bf1c\",\"size\":529978002,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"d73e31d3505ad644e6d7708dffefb049fb9b540af0fba911afe241266340aece\",\"size\":578240176,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-11T21:42:27Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"0a53a98c1cec5195b89ba7ff12f820f0e1e2014b3ef8a835224fdac01326fb0a\",\"original_asset_sizes\":{\"rom.zip\":527928053,\"rondo-1.0.0.apk\":6421197,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-1.0.0.apk\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":0,\"rom-linux.zip\":2,\"rom-macos.zip\":5,\"rom-windows.zip\":1,\"rom.zip\":8,\"rondo-1.0.0.apk\":15,\"updater.png\":0},\"generated_at\":\"2026-11-11T21:42:27Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.4\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.4\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":15} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nRondo is now a firmware for the Innioasis Y1: the Y1 starts straight into Rondo's click-wheel menus, with nothing else on it.\n\n**For the Y1, Type A only** (players that shipped with software 2.0.0 or later). Not for the Type B or the Y2.\n\n## Install\n\nChoose **Rondo** in [Innioasis Updater CE](https://innioasis.app) (Y1, Type A). Or download `rom.zip` below and use the Updater's **Settings \u203a Install from a file\u2026**.\n\nInstalling replaces everything on the Y1 itself: the original player, Rockbox, settings. **The microSD card isn't touched**, so your music stays. When the Updater is done, press the Y1's Power button; the first start takes a couple of minutes. The [install guide](https://github.com/jarvissax/rondo/blob/main/docs/install.md) has the details and the first steps after it.\n\nFor YouTube Music and YouTube, [set up a Rondo server](https://github.com/jarvissax/rondo/blob/main/docs/server.md) with Docker, at home or on a VPS.\n\n## Updates\n\nLater versions install over this one in a minute, without flashing again, keeping your settings, Wi-Fi, playlists and music: **Settings \u203a Software update** on the Y1, **Install** in the dashboard, or [the update page](https://jarvissax.github.io/rondo/) over USB.\n\n## What's in it\n\n- iPod-style menus for the click wheel, with optional vibration and a click on every step\n- Your music and videos from the microSD card, with covers, lyrics, search and playlists\n- The card as a USB drive when the Y1 is plugged into a computer\n- YouTube Music and YouTube, streamed live through your own server, including Shorts, with or without a YouTube account\n- FM radio with station names, scanning and saved stations\n- Bluetooth headphones and speakers, and Wi-Fi, set up from the wheel\n- A dashboard in your phone's browser for music, playlists, settings, the theme, Wi-Fi, Bluetooth, the radio and updates\n- Shut down and restart from Settings, or by holding the Power button\n\n## Good to know\n\n- Only the Y1 Type A is supported; the Type B and Y2 haven't been tested.\n- Rockbox, the original player and Android's own Settings aren't part of Rondo. Innioasis Updater CE puts any of them back.\n- YouTube Music and YouTube need your own Rondo server; the card, the radio and Bluetooth don't.\n\n## Files\n\n| File | What it is | SHA-256 |\n| --- | --- | --- |\n| `rom.zip` | The firmware, for Innioasis Updater CE (Y1 Type A) | `97855240680f2f71f0e33147bd6f7567f4bf17e2efb082d495dc55b2877a0b6c` |\n| `rondo-1.0.0.apk` | Rondo by itself: updates a Y1 that runs the Rondo firmware | `911edd65b8f375e452c05e2004c1c817215a65f9a56d023c5acfb9a7d0857edd` |\n| `updater.png` | The picture Innioasis Updater CE shows for this release | `40b9f5679e2f84b4dd7c6fda968abf702df3ccb6b743fcb88e142eeb8b52047e` |\n\nThe firmware is built with [`firmware/build.sh`](https://github.com/jarvissax/rondo/blob/main/firmware/build.sh) from the y1-community's [Android 4.2 base ROM](https://github.com/y1-community/y1-ata-rom) (0.1, Type A). Its scatter file, preloader and flashing files are the base ROM's, unchanged.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"8bf09eff72014ca6311cecdb2ea397f087125ba59089c9b2126216977093b7a0\",\"size\":769802689,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"220f8a66a36ecb20efae498bb1c4916c1df052da4a1b5b7534fae1b90417db6e\",\"size\":531563834,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"a7bbad3271b2be6df8b9876f1bcdbb45a85801105707b9754edeb9e9de97b7f5\",\"size\":826634500,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"8f36e778f258043652e7786c0bd8f019b855de449a2d5b3b835f73dbf7825449\",\"size\":651539230,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"685fe8a9b988f1ee0940899c2eb9f213e5d66abf2ab52162f6b30b0dbecb5251\",\"size\":529978117,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"e066ce3fb9b75fa534fe041e4c0d2023790bae276785ba33c64521cd930389fe\",\"size\":578240291,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T13:39:43Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"1da9680a06e13b87f313704d977fc89ea2eba28853dcbf1d8e0eadf6f0ca00c9\",\"original_asset_sizes\":{\"rom.zip\":527928053,\"rondo-1.0.0.apk\":6421197,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-1.0.0.apk\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":2,\"rom-linux-legacy.zip\":2,\"rom-linux.zip\":4,\"rom-macos.zip\":9,\"rom-windows-legacy.zip\":2,\"rom-windows.zip\":5,\"rom.zip\":9,\"rondo-1.0.0.apk\":16,\"updater.png\":0},\"generated_at\":\"2026-11-12T13:39:43Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364428308,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188445269,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:33:23Z",
@@ -775,70 +902,70 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 737006992,
+        "id": 739630031,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-linux-arm64.zip",
-        "size": 650998946,
-        "download_count": 2,
+        "size": 651539230,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:42:32Z",
-        "updated_at": "2026-11-11T21:43:02Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737006992"
+        "created_at": "2026-11-12T13:39:48Z",
+        "updated_at": "2026-11-12T13:41:23Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739630031"
       },
       {
-        "id": 737006963,
+        "id": 739630023,
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-linux-legacy.zip",
-        "size": 529978002,
-        "download_count": 2,
+        "size": 529978117,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:42:32Z",
-        "updated_at": "2026-11-11T21:43:02Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737006963"
+        "created_at": "2026-11-12T13:39:47Z",
+        "updated_at": "2026-11-12T13:40:27Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739630023"
       },
       {
-        "id": 737006976,
+        "id": 739630029,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-linux.zip",
-        "size": 826094004,
-        "download_count": 5,
+        "size": 826634500,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:42:32Z",
-        "updated_at": "2026-11-11T21:43:02Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737006976"
+        "created_at": "2026-11-12T13:39:48Z",
+        "updated_at": "2026-11-12T13:40:43Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739630029"
       },
       {
-        "id": 737008386,
+        "id": 739631574,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-macos.zip",
-        "size": 578240176,
-        "download_count": 4,
+        "size": 578240291,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:43:00Z",
-        "updated_at": "2026-11-11T21:43:15Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737008386"
+        "created_at": "2026-11-12T13:40:17Z",
+        "updated_at": "2026-11-12T13:40:37Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739631574"
       },
       {
-        "id": 737006962,
+        "id": 739630033,
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-windows-legacy.zip",
-        "size": 531563719,
-        "download_count": 2,
+        "size": 531563834,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:42:32Z",
-        "updated_at": "2026-11-11T21:43:06Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737006962"
+        "created_at": "2026-11-12T13:39:48Z",
+        "updated_at": "2026-11-12T13:40:34Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739630033"
       },
       {
-        "id": 737006980,
+        "id": 739630038,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-windows.zip",
-        "size": 692714208,
-        "download_count": 4,
+        "size": 769802689,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-11T21:42:32Z",
-        "updated_at": "2026-11-11T21:43:00Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/737006980"
+        "created_at": "2026-11-12T13:39:48Z",
+        "updated_at": "2026-11-12T13:40:16Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739630038"
       },
       {
         "id": 733021586,
@@ -863,15 +990,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/706152267"
       },
       {
-        "id": 739138412,
+        "id": 739632194,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/stats.txt",
         "size": 4138,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-12T10:59:38Z",
-        "updated_at": "2026-11-12T10:59:38Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739138412"
+        "created_at": "2026-11-12T13:40:28Z",
+        "updated_at": "2026-11-12T13:40:28Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739632194"
       },
       {
         "id": 706152472,
@@ -886,6 +1013,6 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 20
+    "downloads": 1
   }
 ]
