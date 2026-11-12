@@ -373,6 +373,15 @@
     return "";
   }
 
+  /* The generator writes one compact aggregate per mirror; this host serves
+     static files only, so the browser reads that file instead of an API. */
+  function statsPathFor(mirror) {
+    var slug = String(mirror || "").toLowerCase()
+      .replace("/", "--")
+      .replace(/[^a-z0-9._-]+/g, "-");
+    return "/mirror-stats/" + slug + ".json";
+  }
+
   function fallbackBreakdown() {
     if (!window.InnioasisMirrorStats) return null;
     return window.InnioasisMirrorStats.aggregate([], { sourceReleases: latestReleases });
@@ -389,8 +398,10 @@
 
     function finish(data) {
       var docs = data && Array.isArray(data.releases) ? data.releases : [];
-      var aggregate = null;
-      if (window.InnioasisMirrorStats) {
+      var aggregate = data && data.aggregate && typeof data.aggregate.total === "number"
+        ? data.aggregate
+        : null;
+      if (!aggregate && window.InnioasisMirrorStats) {
         aggregate = window.InnioasisMirrorStats.aggregate(docs, { sourceReleases: latestReleases });
         if ((!aggregate || !aggregate.total) && docs.length) aggregate = fallbackBreakdown();
       }
@@ -404,7 +415,7 @@
       finish(null);
       return;
     }
-    fetch("/mirror-stats?repo=" + encodeURIComponent(mirror), { cache: "no-store" })
+    fetch(statsPathFor(mirror), { cache: "no-store" })
       .then(function (response) { return response.ok ? response.json() : null; })
       .then(finish)
       .catch(function () { finish(null); });

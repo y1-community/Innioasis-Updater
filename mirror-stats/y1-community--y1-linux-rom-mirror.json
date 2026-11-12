@@ -1,0 +1,54 @@
+{
+ "repo": "y1-community/y1-linux-rom-mirror",
+ "generatedAt": "2026-11-11T21:41:43Z",
+ "aggregate": {
+  "total": 66,
+  "originalTotal": 58,
+  "portableTotal": 8,
+  "originals": [
+   {
+    "name": "rom.zip",
+    "count": 58
+   }
+  ],
+  "portable": [
+   {
+    "key": "windows",
+    "label": "Portable zip for Windows",
+    "count": 2
+   },
+   {
+    "key": "windows-arm64",
+    "label": "Portable zip for Windows arm64",
+    "count": 0
+   },
+   {
+    "key": "windows-legacy",
+    "label": "Portable zip for Windows 32-bit (legacy)",
+    "count": 0
+   },
+   {
+    "key": "linux",
+    "label": "Portable zip for Linux",
+    "count": 2
+   },
+   {
+    "key": "linux-arm64",
+    "label": "Portable zip for Linux arm64",
+    "count": 0
+   },
+   {
+    "key": "macos",
+    "label": "Portable zip for macOS",
+    "count": 4
+   },
+   {
+    "key": "linux-legacy",
+    "label": "Portable zip for linux legacy",
+    "count": 0
+   }
+  ],
+  "releases": 1,
+  "hasStats": true
+ }
+}

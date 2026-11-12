@@ -1,0 +1,90 @@
+{
+ "repo": "y1-community/rockbox-mirror",
+ "generatedAt": "2026-11-11T23:03:11Z",
+ "aggregate": {
+  "total": 52002,
+  "originalTotal": 51269,
+  "portableTotal": 733,
+  "originals": [
+   {
+    "name": "rom.zip",
+    "count": 33715
+   },
+   {
+    "name": "rom_240p.zip",
+    "count": 9307
+   },
+   {
+    "name": "rom_360p.zip",
+    "count": 4727
+   },
+   {
+    "name": "update.zip",
+    "count": 1928
+   },
+   {
+    "name": "rom_type_b.zip",
+    "count": 699
+   },
+   {
+    "name": "rom_240p_type_b.zip",
+    "count": 255
+   },
+   {
+    "name": "update_360p.zip",
+    "count": 236
+   },
+   {
+    "name": "rom_360p_type_b.zip",
+    "count": 226
+   },
+   {
+    "name": "update_240p.zip",
+    "count": 145
+   },
+   {
+    "name": "voices.zip",
+    "count": 31
+   }
+  ],
+  "portable": [
+   {
+    "key": "windows",
+    "label": "Portable zip for Windows",
+    "count": 255
+   },
+   {
+    "key": "windows-arm64",
+    "label": "Portable zip for Windows arm64",
+    "count": 0
+   },
+   {
+    "key": "windows-legacy",
+    "label": "Portable zip for Windows 32-bit (legacy)",
+    "count": 0
+   },
+   {
+    "key": "linux",
+    "label": "Portable zip for Linux",
+    "count": 230
+   },
+   {
+    "key": "linux-arm64",
+    "label": "Portable zip for Linux arm64",
+    "count": 0
+   },
+   {
+    "key": "macos",
+    "label": "Portable zip for macOS",
+    "count": 248
+   },
+   {
+    "key": "linux-legacy",
+    "label": "Portable zip for linux legacy",
+    "count": 0
+   }
+  ],
+  "releases": 24,
+  "hasStats": true
+ }
+}

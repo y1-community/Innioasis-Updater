@@ -1,0 +1,78 @@
+{
+ "repo": "y1-community/y2-rockbox-mirror",
+ "generatedAt": "2026-11-11T21:59:50Z",
+ "aggregate": {
+  "total": 2408,
+  "originalTotal": 2359,
+  "portableTotal": 49,
+  "originals": [
+   {
+    "name": "rom_y2.zip",
+    "count": 1659
+   },
+   {
+    "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip",
+    "count": 273
+   },
+   {
+    "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip",
+    "count": 137
+   },
+   {
+    "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip",
+    "count": 100
+   },
+   {
+    "name": "Y2-Rockbox-Beta-v0.1.0-Source.zip",
+    "count": 78
+   },
+   {
+    "name": "Y2-Rockbox-Beta-v0.2.0-Source.zip",
+    "count": 59
+   },
+   {
+    "name": "Y2-Rockbox-V2.5-Source.zip",
+    "count": 53
+   }
+  ],
+  "portable": [
+   {
+    "key": "windows",
+    "label": "Portable zip for Windows",
+    "count": 20
+   },
+   {
+    "key": "windows-arm64",
+    "label": "Portable zip for Windows arm64",
+    "count": 0
+   },
+   {
+    "key": "windows-legacy",
+    "label": "Portable zip for Windows 32-bit (legacy)",
+    "count": 0
+   },
+   {
+    "key": "linux",
+    "label": "Portable zip for Linux",
+    "count": 12
+   },
+   {
+    "key": "linux-arm64",
+    "label": "Portable zip for Linux arm64",
+    "count": 0
+   },
+   {
+    "key": "macos",
+    "label": "Portable zip for macOS",
+    "count": 17
+   },
+   {
+    "key": "linux-legacy",
+    "label": "Portable zip for linux legacy",
+    "count": 0
+   }
+  ],
+  "releases": 3,
+  "hasStats": true
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "repo": "y1-community/better-y-mirror",
+ "generatedAt": "2026-11-11T21:44:31Z",
+ "aggregate": {
+  "total": 635,
+  "originalTotal": 617,
+  "portableTotal": 18,
+  "originals": [
+   {
+    "name": "rom.zip",
+    "count": 617
+   }
+  ],
+  "portable": [
+   {
+    "key": "windows",
+    "label": "Portable zip for Windows",
+    "count": 6
+   },
+   {
+    "key": "windows-arm64",
+    "label": "Portable zip for Windows arm64",
+    "count": 0
+   },
+   {
+    "key": "windows-legacy",
+    "label": "Portable zip for Windows 32-bit (legacy)",
+    "count": 0
+   },
+   {
+    "key": "linux",
+    "label": "Portable zip for Linux",
+    "count": 4
+   },
+   {
+    "key": "linux-arm64",
+    "label": "Portable zip for Linux arm64",
+    "count": 0
+   },
+   {
+    "key": "macos",
+    "label": "Portable zip for macOS",
+    "count": 8
+   },
+   {
+    "key": "linux-legacy",
+    "label": "Portable zip for linux legacy",
+    "count": 0
+   }
+  ],
+  "releases": 2,
+  "hasStats": true
+ }
+}
