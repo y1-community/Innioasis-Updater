@@ -10,10 +10,15 @@
 1. Choose **Y2**, then **Original Software**, pick the **3.2.0** release and select **Install**. Follow the guided steps through to the end.
 2. Choose **Reborn (Y2Linux)** and select **Refresh** to see whether any new Reborn versions have become available.
 3. Select **Install** and Updater CE guides you through the rest of the install.
-
+      
 ### Updates after the install
 Once Reborn starts on the player, enable **Wi-Fi** there. From then on Reborn updates itself over the internet on the Y2 itself, so no computer or Updater CE run is needed for later versions.</full_content>
     <url>https://innioasis.app/guides/reborn-y2linux-y2.html</url>
   </notice>
+
+Troubleshooting
+ Updater CE is powered by and includes SP Flash Tool, if ever you feel you need it, you can launch SP Flash Tool directly from Updater by selecting the firmware you want to install in the main window then clicking the SP Flash Tool button in the sidebar on he left (Windows and Linux)
+  If you encounter issues after doing an install of a firmware on Mac and Linux, using Updater CE on a Windows computer (Intel/AMD only) you can also use the SP Flash Tool install method for recovery from failed mtkclient based installs from Mac or Linux. (These are the tools available within Updater to install software on your player.)
+  For the Y2linux power-users: This can be useful for installing the replacement firmware image file containing SSH keys from the firmware image generator script from SchulzCode
   
 </notices>
