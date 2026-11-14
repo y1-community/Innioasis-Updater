@@ -1094,9 +1094,20 @@ def collect_target_repos() -> tuple[list[str], dict[str, dict]]:
     return ordered_repos, repo_defaults
 
 
+GENERATED_AT_RE = re.compile(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z")
+
+
 def build(refresh: bool = False) -> None:
     FEEDS_DIR.mkdir(parents=True, exist_ok=True)
     RELEASES_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    # Outputs embed the run time. Remember the previous bytes so a run that
+    # finds no new release data can leave the timestamp alone instead of
+    # committing a feed whose only difference is `generated_at`.
+    previous_feeds = {
+        path: path.read_text(encoding="utf-8", errors="ignore")
+        for path in FEEDS_DIR.rglob("*")
+        if path.is_file()
+    }
     generated_at = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     ordered_repos, repo_defaults = collect_target_repos()
@@ -1304,6 +1315,19 @@ def build(refresh: bool = False) -> None:
     )
 
     update_firmware_catalog_js(hardcoded_releases, release_icons, repo_stats)
+    kept = 0
+    for path, old in previous_feeds.items():
+        try:
+            new = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        if new == old:
+            continue
+        if GENERATED_AT_RE.sub("<timestamp>", new) == GENERATED_AT_RE.sub("<timestamp>", old):
+            path.write_text(old, encoding="utf-8")
+            kept += 1
+    if kept:
+        print("  Kept %d feed file(s) unchanged apart from their generated timestamp" % kept)
     print("Done: wrote feeds/releases.{json,xml}, feeds/firmware-releases.json, "
           "feeds/firmware-feed.xml, feeds/index.json, per-repo feeds, "
           ".cache/releases, and firmware-catalog.js")
