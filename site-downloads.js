@@ -18,10 +18,10 @@
 
    Where the File System Access API exists the bytes are written straight to a
    file the reader picks, so a 1.5 GB image never sits in a JavaScript array.
-   Without it, files up to 128 MB are buffered into a blob; larger or
-   unmeasured responses are handed to the browser once, with an inline note
-   that the browser has taken over. A blocked CORS response must never turn a
-   download into a dead click — and never into a second click of its own.
+   Where it does not (Safari, Firefox), the ZIP is staged in the browser's own
+   origin storage and saved to Downloads only once every byte has arrived. The
+   reader therefore watches the whole transfer in the inline card; the browser
+   never takes an archive over mid-transfer.
 */
 (function (global) {
     "use strict";
@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261116inline7";
+    var VERSION = "20261117inline8";
     /* Only archive packages get the in-page treatment. Installers and app
        images always go to the browser's own downloader: a page must never
        stand between a reader and the app they are installing. */
@@ -39,9 +39,6 @@
     /* rom_y1-windows.zip is a portable build of rom_y1.zip, so a portable
        download saves under the mother package's name. */
     var PORTABLE_SUFFIX = /[-_.](windows-legacy|linux-legacy|windows|win32|win64|win|macos|mac|osx|darwin|linux|android|portable|legacy|x64|amd64|x86_64|x86-64|x86|arm64|aarch64)(?:[-_.](x64|amd64|x86_64|x86-64|x86|arm64|aarch64))?(\.zip)$/i;
-    /* A blob that big is the most a phone can hold while still rendering. */
-    var BLOB_LIMIT = 128 * 1024 * 1024;
-    var MAX_JOBS = 2;
     var TICK = 150;
 
     var jobs = [];
@@ -87,20 +84,6 @@
             hi: "सहेजा गया", id: "Tersimpan", vi: "Đã lưu", th: "บันทึกแล้ว",
             sv: "Sparat", da: "Gemt", fi: "Tallennettu", cs: "Uloženo",
             el: "Αποθηκεύτηκε", he: "נשמר", hu: "Mentve", ro: "Salvat", bg: "Запазено"
-        },
-        "Your browser takes over": {
-            de: "Der Browser übernimmt", fr: "Le navigateur prend le relais",
-            es: "El navegador continúa", it: "Continua il browser",
-            pt: "O navegador continua", "pt-BR": "O navegador continua",
-            nl: "De browser neemt het over", pl: "Przeglądarka przejmuje",
-            ru: "Загружает браузер", uk: "Завантажує браузер",
-            ja: "ブラウザが引き継ぎます", ko: "브라우저가 이어받습니다",
-            "zh-CN": "由浏览器继续", "zh-TW": "由瀏覽器繼續", tr: "Tarayıcı devraldı",
-            ar: "يتولى المتصفح", hi: "ब्राउज़र संभाल रहा है", id: "Browser melanjutkan",
-            vi: "Trình duyệt tiếp tục", th: "เบราว์เซอร์ดำเนินการต่อ", sv: "Webbläsaren tar över",
-            da: "Browseren overtager", fi: "Selain jatkaa", cs: "Přebírá prohlížeč",
-            el: "Συνεχίζει το πρόγραμμα περιήγησης", he: "הדפדפן ממשיך",
-            hu: "A böngésző folytatja", ro: "Browserul preia", bg: "Браузърът поема"
         },
         "Failed": {
             de: "Fehlgeschlagen", fr: "Échec", es: "Error", it: "Non riuscito",
@@ -245,7 +228,6 @@
             ".site-dl-progress.is-done .site-dl-progress__pct{color:#43c98b;}",
             ".site-dl-progress.is-done .site-dl-progress__icon{background:rgba(67,201,139,.18);color:#43c98b;}",
             ".site-dl-progress.is-failed .site-dl-progress__fill{background:#e2564f;}",
-            ".site-dl-progress.is-handoff .site-dl-progress__fill{width:100%!important;background:color-mix(in oklab,var(--lumen-accent,#6b9fff) 55%,transparent);}",
             ".site-dl-progress-item{list-style:none;}",
             "@media (prefers-reduced-motion: reduce){.site-dl-progress__fill{transition:none;}.site-dl-progress.is-indeterminate .site-dl-progress__fill{animation:none;}}"
         ].join("");
@@ -314,7 +296,7 @@
     }
 
     function buttonText(job) {
-        if (job.status === "done" || job.status === "handoff") return t("Saved to PC");
+        if (job.status === "done") return t("Saved to PC");
         if (job.status === "failed") return t("Failed");
         var overrun = job.total && job.loaded > job.total;
         var parts = [];
@@ -407,7 +389,6 @@
 
         job.panel.classList.toggle("is-done", job.status === "done");
         job.panel.classList.toggle("is-failed", job.status === "failed");
-        job.panel.classList.toggle("is-handoff", job.status === "handoff");
         job.panel.classList.toggle("is-indeterminate", (!job.total || overrun) && (job.status === "running" || job.status === "starting"));
 
         var fill = job.panel.querySelector(".site-dl-progress__fill");
@@ -442,7 +423,6 @@
         if (state) {
             var wording = job.status === "done" ? t("Saved to PC")
                 : job.status === "failed" ? t("Failed")
-                : job.status === "handoff" ? t("Your browser takes over")
                 : job.status === "running" ? t("Keep this tab open")
                 : t("Preparing…");
             if (state.textContent !== wording) state.textContent = wording;
@@ -458,7 +438,7 @@
         }
 
         var cancel = job.panel.querySelector(".site-dl-progress__cancel");
-        if (cancel) cancel.hidden = job.status === "done" || job.status === "handoff";
+        if (cancel) cancel.hidden = job.status === "done";
     }
 
     /* ------------------------------------------------------------------- jobs */
@@ -514,20 +494,12 @@
             "&filename=" + encodeURIComponent(saveName || motherName(fileNameOf(url)) || "firmware.zip");
     }
 
-    function activeJobs() {
-        return jobs.filter(function (job) {
-            return job.status === "starting" || job.status === "running";
-        });
-    }
-
     function cancelJob(job) {
         job.cancelled = true;
         if (job.controller) {
             try { job.controller.abort(); } catch (_) {}
         }
-        if (job.writer) {
-            try { job.writer.abort(); } catch (_) {}
-        }
+        abortSink(job);
         if (job.anchor && jobByAnchor) jobByAnchor.delete(job.anchor);
         restoreButton(job);
         removePanel(job);
@@ -535,6 +507,9 @@
         if (index !== -1) jobs.splice(index, 1);
     }
 
+    /* A completed file is the only thing this module gives to the browser's
+       downloader. By the time this runs every byte is already on the computer,
+       so the browser merely saves it under the release's own name. */
     function saveBlob(blob, name) {
         var href = global.URL.createObjectURL(blob);
         var link = element("a");
@@ -548,54 +523,7 @@
         setTimeout(function () {
             if (link.parentNode) link.parentNode.removeChild(link);
             global.URL.revokeObjectURL(href);
-        }, 30000);
-    }
-
-    /* The one and only path to the browser's own downloader. Marked so the
-       click interceptor never claims it: a synthetic anchor click used to come
-       straight back through this module and start another copy of the file. */
-    function clickDirect(url, name) {
-        var link = doc.createElement("a");
-        link.href = url;
-        if (name) link.download = name;
-        link.rel = "noopener";
-        link.setAttribute("data-site-download-direct", "1");
-        /* Cached copies of the firmware catalog check only this marker. A
-           hand-off that lacks it is read as a reader click, which starts the
-           same package again and hands off again. */
-        link.setAttribute("data-direct-download", "1");
-        link.style.display = "none";
-        doc.body.appendChild(link);
-        link.click();
-        setTimeout(function () {
-            if (link.parentNode) link.parentNode.removeChild(link);
-        }, 1500);
-    }
-
-    /* The browser's own downloader cannot rename a cross-origin file. The
-       same-origin proxy can: its Content-Disposition carries the package name,
-       so a hand-off goes through it whenever it will serve the asset. A proxy
-       that refuses (403 for a repository outside its allowlist) must never
-       replace the download with an error page, so an unproven proxy is probed
-       with a HEAD request first. */
-    async function handOff(job, url, proven) {
-        job.status = "handoff";
-        paint(job);
-        var target = proven ? (url || job.url) : await proxyTarget(job.url, job.name);
-        clickDirect(target, job.name);
-        setTimeout(function () {
-            if (job.status === "handoff") finish(job, 4000);
-        }, 5000);
-    }
-
-    async function proxyTarget(url, name) {
-        var proxied = proxiedUrl(url, name);
-        if (proxied === url) return url;
-        try {
-            var res = await fetch(proxied, { method: "HEAD", credentials: "omit" });
-            if (res && res.ok) return proxied;
-        } catch (_) {}
-        return url;
+        }, 120000);
     }
 
     function finish(job, delay) {
@@ -608,27 +536,94 @@
         }, delay == null ? 12000 : delay);
     }
 
-    /* Must be called synchronously from the click: Chromium only grants a
-       writable while the reader's gesture is live. Resolving the portable
-       package first used to consume that activation and send the transfer to
-       the browser's own downloader, which also caused the leave-page prompt. */
-    function openWriter(job) {
-        if (typeof global.showSaveFilePicker !== "function") {
+    function failJob(job) {
+        job.status = "failed";
+        paint(job);
+        finish(job, 8000);
+    }
+
+    /* Abort a write and remove any private copy. The delay lets the writer
+       release its lock before the entry is deleted. */
+    function dropStaging(job, when) {
+        var staging = job.staging;
+        if (!staging) return;
+        job.staging = null;
+        setTimeout(function () {
+            try {
+                var pending = staging.dir.removeEntry(staging.name);
+                if (pending && typeof pending.catch === "function") pending.catch(function () {});
+            } catch (_) {}
+        }, when == null ? 0 : when);
+    }
+
+    function abortSink(job) {
+        var writer = job.writer;
+        job.writer = null;
+        if (writer) {
+            try {
+                var pending = writer.abort();
+                if (pending && typeof pending.catch === "function") pending.catch(function () {});
+            } catch (_) {}
+        }
+        dropStaging(job, 1500);
+    }
+
+    /* Safari and Firefox have no save picker, but they do have origin-private
+       file storage. Streaming there keeps the progress card honest without
+       holding a 1.5 GB ZIP in memory; the finished file is handed to the
+       browser only when it is whole. */
+    function openStaging(job) {
+        var storage = global.navigator && global.navigator.storage;
+        if (!storage || typeof storage.getDirectory !== "function") {
             return Promise.resolve({ writer: null });
         }
-        var extension = "." + ((String(job.name || "download.bin").split(".").pop() || "bin").toLowerCase());
-        return global.showSaveFilePicker({
-            suggestedName: job.name,
-            types: [{ description: "Download", accept: { "application/octet-stream": [extension] } }]
+        var dir = null;
+        var name = "download-" + job.id + "-" + Date.now() + ".part";
+        return storage.getDirectory().then(function (root) {
+            return root.getDirectoryHandle("innioasis-downloads", { create: true });
+        }).then(function (directory) {
+            dir = directory;
+            return directory.getFileHandle(name, { create: true });
         }).then(function (handle) {
-            return handle.createWritable();
-        }).then(function (writer) {
-            job.writer = writer;
-            return { writer: writer };
-        }).catch(function (error) {
-            if (error && error.name === "AbortError") return { cancelled: true };
+            return handle.createWritable().then(function (writer) {
+                job.staging = { dir: dir, name: name, handle: handle };
+                job.writer = writer;
+                return { writer: writer };
+            });
+        }).catch(function () {
+            if (dir) {
+                try {
+                    var pending = dir.removeEntry(name);
+                    if (pending && typeof pending.catch === "function") pending.catch(function () {});
+                } catch (_) {}
+            }
             return { writer: null };
         });
+    }
+
+    /* The picker must be opened synchronously from the click: Chromium only
+       grants a writable while the reader's gesture is live. If the browser
+       cannot provide one, stage the bytes privately and save the finished
+       file instead of abandoning the transfer to the download shelf. */
+    function openSink(job) {
+        if (typeof global.showSaveFilePicker !== "function") return openStaging(job);
+        var extension = "." + ((String(job.name || "download.bin").split(".").pop() || "bin").toLowerCase());
+        try {
+            return global.showSaveFilePicker({
+                suggestedName: job.name,
+                types: [{ description: "Download", accept: { "application/octet-stream": [extension] } }]
+            }).then(function (handle) {
+                return handle.createWritable();
+            }).then(function (writer) {
+                job.writer = writer;
+                return { writer: writer };
+            }).catch(function (error) {
+                if (error && error.name === "AbortError") return { cancelled: true };
+                return openStaging(job);
+            });
+        } catch (_) {
+            return openStaging(job);
+        }
     }
 
     async function start(job, source) {
@@ -640,14 +635,14 @@
 
         /* Open the picker before awaiting anything; the resolver runs while the
            dialog is up, so choosing a folder costs no transfer time. */
-        var picked = await openWriter(job);
-        if (picked.cancelled) {
+        var sink = await openSink(job);
+        if (sink.cancelled) {
             cancelJob(job);
             return;
         }
-        var writer = picked.writer;
+        var writer = sink.writer;
         if (job.cancelled) {
-            if (writer) { try { await writer.abort(); } catch (_) {} }
+            abortSink(job);
             return;
         }
 
@@ -657,7 +652,7 @@
             catch (_) { resolved = null; }
         }
         if (job.cancelled) {
-            if (writer) { try { await writer.abort(); } catch (_) {} }
+            abortSink(job);
             return;
         }
         if (resolved && typeof resolved === "object") {
@@ -667,8 +662,8 @@
         }
         var targetUrl = String(resolved || job.url || "");
         if (!targetUrl) {
-            if (writer) { try { await writer.abort(); } catch (_) {} }
-            handOff(job, job.url, false);
+            abortSink(job);
+            failJob(job);
             return;
         }
         job.url = targetUrl;
@@ -684,17 +679,13 @@
             });
         } catch (error) {
             if (job.cancelled) return;
-            /* Nothing is known about the proxy yet: probe it, then use the
-               original asset only when the probe refuses. */
-            handOff(job, requestUrl, false);
+            abortSink(job);
+            failJob(job);
             return;
         }
         if (!response || !response.ok) {
-            if (writer) { try { await writer.abort(); } catch (_) {} }
-            /* A repository outside the proxy's allowlist answers 403 here. The
-               browser must get the release asset, never an error page, so an
-               unproven proxy is probed before the hand-off. */
-            handOff(job, requestUrl, false);
+            abortSink(job);
+            failJob(job);
             return;
         }
 
@@ -702,22 +693,11 @@
            Content-Disposition, and a portable build resolves to its mother
            package (rom_y1-windows.zip saves as rom_y1.zip). */
         var headerName = headerFileName(response);
-        job.name = motherName(headerName || job.name || fileNameOf(url) || "download.bin");
+        job.name = motherName(headerName || job.name || "download.bin");
         var length = Number(response.headers.get("content-length") || 0);
         job.total = Number.isFinite(length) && length > 0 ? length : 0;
         job.status = "running";
         paint(job);
-
-        /* Without a file handle, only a measured, small response is worth
-           reading: streaming a huge or unmeasured one would download it twice
-           or hold it all in memory. Those go to the browser once. */
-        if (!writer && (!job.total || job.total > BLOB_LIMIT)) {
-            try { if (response.body && response.body.cancel) await response.body.cancel(); } catch (_) {}
-            /* The response was OK, so the proxy serves this asset; its header
-               is what keeps the saved name identical on this path. */
-            handOff(job, requestUrl, true);
-            return;
-        }
 
         var chunks = writer ? null : [];
         var reader = null;
@@ -727,8 +707,8 @@
             reader = null;
         }
         if (!reader) {
-            if (writer) { try { await writer.abort(); } catch (_) {} }
-            handOff(job, requestUrl, true);
+            abortSink(job);
+            failJob(job);
             return;
         }
 
@@ -754,14 +734,14 @@
                 }
                 if (job.cancelled) {
                     try { await reader.cancel(); } catch (_) {}
-                    if (writer) { try { await writer.abort(); } catch (_) {} }
+                    abortSink(job);
                     return;
                 }
             }
         } catch (error) {
-            if (writer) { try { await writer.abort(); } catch (_) {} }
+            abortSink(job);
             if (job.cancelled) return;
-            handOff(job, requestUrl, true);
+            failJob(job);
             return;
         }
 
@@ -769,10 +749,21 @@
         if (writer) {
             try { await writer.close(); }
             catch (_) {
-                job.status = "failed";
-                paint(job);
-                finish(job, 8000);
+                abortSink(job);
+                failJob(job);
                 return;
+            }
+            job.writer = null;
+            if (job.staging) {
+                try {
+                    var saved = await job.staging.handle.getFile();
+                    saveBlob(saved, job.name);
+                    dropStaging(job, 120000);
+                } catch (_) {
+                    dropStaging(job, 0);
+                    failJob(job);
+                    return;
+                }
             }
         } else {
             saveBlob(new Blob(chunks, { type: response.headers.get("content-type") || "application/octet-stream" }), job.name);
@@ -786,12 +777,6 @@
         injectStyles();
         if (anchor && jobByAnchor && jobByAnchor.get(anchor)) return true;
         var saveName = motherName(name || fileNameOf(url) || "download.bin");
-        if (activeJobs().length >= MAX_JOBS) {
-            /* The browser can still take it; the page just will not run a third
-               stream beside two the reader is already watching. */
-            proxyTarget(url, saveName).then(function (target) { clickDirect(target, saveName); });
-            return true;
-        }
         var job = {
             id: ++seq,
             url: url,
@@ -806,6 +791,7 @@
             dismissed: false,
             cancelled: false,
             writer: null,
+            staging: null,
             panel: null
         };
         jobs.push(job);
