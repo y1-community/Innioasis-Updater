@@ -1528,7 +1528,7 @@
         if (global.InnioasisDownloads || document.getElementById("site-downloads-script")) return;
         var node = document.createElement("script");
         node.id = "site-downloads-script";
-        node.src = siteBase() + "site-downloads.js?v=20261117inline10";
+        node.src = siteBase() + "site-downloads.js?v=20261117inline11";
         node.defer = true;
         document.head.appendChild(node);
     }
