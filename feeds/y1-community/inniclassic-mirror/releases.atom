@@ -13,14 +13,14 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/inniclassic-mirror/releases/tag/v1.4.5"/>
     <innioasis:tag_name>v1.4.5</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>10</innioasis:downloads>
+    <innioasis:downloads>16</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/InniClassic-1.4.5.apk" title="InniClassic-1.4.5.apk" length="30017796" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706114458"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="648201983" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740879694"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="536151869" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740879696"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux.zip" title="rom-linux.zip" length="823297749" type="application/zip" innioasis:download_count="3" innioasis:asset_id="740879697"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-macos.zip" title="rom-macos.zip" length="582610395" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740881879"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="537737584" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740879695"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows.zip" title="rom-windows.zip" length="775976425" type="application/zip" innioasis:download_count="7" innioasis:asset_id="740879698"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="648201983" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740879694"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="536151869" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740879696"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux.zip" title="rom-linux.zip" length="823297749" type="application/zip" innioasis:download_count="4" innioasis:asset_id="740879697"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-macos.zip" title="rom-macos.zip" length="582610395" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740881879"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="537737584" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740879695"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows.zip" title="rom-windows.zip" length="775976425" type="application/zip" innioasis:download_count="8" innioasis:asset_id="740879698"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom.zip" title="rom.zip" length="462894253" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733154599"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/stats.txt" title="stats.txt" length="4038" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747280553"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
@@ -70,14 +70,14 @@ Full changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/inniclassic-mirror/releases/tag/v1.4.4"/>
     <innioasis:tag_name>v1.4.4</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>8</innioasis:downloads>
+    <innioasis:downloads>14</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/InniClassic-1.4.4.apk" title="InniClassic-1.4.4.apk" length="30000629" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706288406"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="648193116" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740865492"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="536143000" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740865490"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux.zip" title="rom-linux.zip" length="823288882" type="application/zip" innioasis:download_count="3" innioasis:asset_id="740865493"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-macos.zip" title="rom-macos.zip" length="582601527" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740866812"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="537728715" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740865505"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows.zip" title="rom-windows.zip" length="775967558" type="application/zip" innioasis:download_count="5" innioasis:asset_id="740865496"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="648193116" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740865492"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="536143000" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740865490"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux.zip" title="rom-linux.zip" length="823288882" type="application/zip" innioasis:download_count="4" innioasis:asset_id="740865493"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-macos.zip" title="rom-macos.zip" length="582601527" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740866812"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="537728715" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740865505"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows.zip" title="rom-windows.zip" length="775967558" type="application/zip" innioasis:download_count="6" innioasis:asset_id="740865496"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom.zip" title="rom.zip" length="462885386" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733139078"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/stats.txt" title="stats.txt" length="4030" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747280478"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
@@ -143,14 +143,14 @@ Full changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/inniclassic-mirror/releases/tag/v1.4.3"/>
     <innioasis:tag_name>v1.4.3</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>8</innioasis:downloads>
+    <innioasis:downloads>12</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/InniClassic-1.4.3.apk" title="InniClassic-1.4.3.apk" length="29869268" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706278249"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="648199249" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740850020"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="648199249" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740850020"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="536149133" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740850015"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux.zip" title="rom-linux.zip" length="823295015" type="application/zip" innioasis:download_count="3" innioasis:asset_id="740850016"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-macos.zip" title="rom-macos.zip" length="582607661" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740851384"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux.zip" title="rom-linux.zip" length="823295015" type="application/zip" innioasis:download_count="4" innioasis:asset_id="740850016"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-macos.zip" title="rom-macos.zip" length="582607661" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740851384"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="537734848" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740850017"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows.zip" title="rom-windows.zip" length="775973691" type="application/zip" innioasis:download_count="5" innioasis:asset_id="740850013"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows.zip" title="rom-windows.zip" length="775973691" type="application/zip" innioasis:download_count="6" innioasis:asset_id="740850013"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom.zip" title="rom.zip" length="462891519" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733124104"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/stats.txt" title="stats.txt" length="4036" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747280406"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
@@ -213,11 +213,11 @@ Full changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/inniclassic-mirror/releases/tag/v1.4.2"/>
     <innioasis:tag_name>v1.4.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>9</innioasis:downloads>
+    <innioasis:downloads>10</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/InniClassic-1.4.2.apk" title="InniClassic-1.4.2.apk" length="27225340" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706270799"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="648337913" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740834741"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="536287797" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740834738"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux.zip" title="rom-linux.zip" length="823433679" type="application/zip" innioasis:download_count="3" innioasis:asset_id="740834735"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux.zip" title="rom-linux.zip" length="823433679" type="application/zip" innioasis:download_count="4" innioasis:asset_id="740834735"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-macos.zip" title="rom-macos.zip" length="582746325" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740835732"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="537873512" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740834739"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-windows.zip" title="rom-windows.zip" length="776112355" type="application/zip" innioasis:download_count="6" innioasis:asset_id="740834737"/>
@@ -461,10 +461,10 @@ Full changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/inniclassic-mirror/releases/tag/v1.3.0"/>
     <innioasis:tag_name>v1.3.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>9</innioasis:downloads>
+    <innioasis:downloads>10</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/InniClassic-1.3.0.apk" title="InniClassic-1.3.0.apk" length="27221900" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706235542"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="648437081" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740772105"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="536386965" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740772106"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="536386965" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740772106"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux.zip" title="rom-linux.zip" length="823532847" type="application/zip" innioasis:download_count="3" innioasis:asset_id="740772104"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-macos.zip" title="rom-macos.zip" length="582845493" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740773468"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="537972682" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740772103"/>
@@ -532,14 +532,14 @@ Full changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/inniclassic-mirror/releases/tag/v1.2.0"/>
     <innioasis:tag_name>v1.2.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>9</innioasis:downloads>
+    <innioasis:downloads>15</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/InniClassic-1.2.0.apk" title="InniClassic-1.2.0.apk" length="31349729" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706227512"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="648177324" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740752642"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="536127208" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740752634"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux.zip" title="rom-linux.zip" length="823273090" type="application/zip" innioasis:download_count="3" innioasis:asset_id="740752648"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-macos.zip" title="rom-macos.zip" length="582585736" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740755827"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="537712923" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740752646"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows.zip" title="rom-windows.zip" length="775951766" type="application/zip" innioasis:download_count="6" innioasis:asset_id="740752641"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="648177324" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740752642"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="536127208" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740752634"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux.zip" title="rom-linux.zip" length="823273090" type="application/zip" innioasis:download_count="4" innioasis:asset_id="740752648"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-macos.zip" title="rom-macos.zip" length="582585736" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740755827"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="537712923" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740752646"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows.zip" title="rom-windows.zip" length="775951766" type="application/zip" innioasis:download_count="7" innioasis:asset_id="740752641"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom.zip" title="rom.zip" length="462869594" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733040134"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/stats.txt" title="stats.txt" length="4038" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747279839"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
@@ -604,14 +604,14 @@ Full changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/inniclassic-mirror/releases/tag/v1.1.2"/>
     <innioasis:tag_name>v1.1.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>10</innioasis:downloads>
+    <innioasis:downloads>16</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/InniClassic-1.1.2.apk" title="InniClassic-1.1.2.apk" length="7020639" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706218788"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="642445756" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740734132"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="530395638" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740734140"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux.zip" title="rom-linux.zip" length="817541522" type="application/zip" innioasis:download_count="3" innioasis:asset_id="740734136"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-macos.zip" title="rom-macos.zip" length="576854168" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740736443"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="531981353" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740734139"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows.zip" title="rom-windows.zip" length="770220198" type="application/zip" innioasis:download_count="7" innioasis:asset_id="740734133"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="642445756" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740734132"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="530395638" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740734140"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux.zip" title="rom-linux.zip" length="817541522" type="application/zip" innioasis:download_count="4" innioasis:asset_id="740734136"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-macos.zip" title="rom-macos.zip" length="576854168" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740736443"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="531981353" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740734139"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows.zip" title="rom-windows.zip" length="770220198" type="application/zip" innioasis:download_count="8" innioasis:asset_id="740734133"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom.zip" title="rom.zip" length="457138028" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733027759"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/stats.txt" title="stats.txt" length="4032" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747279731"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;

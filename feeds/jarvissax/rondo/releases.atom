@@ -17,7 +17,7 @@
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.2/rom.zip" title="rom.zip" length="529873460" type="application/zip" innioasis:download_count="15" innioasis:asset_id="739289677"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.2/rondo-3.0.2.rondo" title="rondo-3.0.2.rondo" length="17034596" type="application/octet-stream" innioasis:download_count="7" innioasis:asset_id="739281243"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="55" innioasis:asset_id="739289680"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="56" innioasis:asset_id="739289680"/>
     <content type="text">**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it once to [Rondo server 3.1.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.1.0) (its admin page offers it); from then on, Rondo and the server update apart.
 
 - **Downloads are about three times faster.** A YouTube download now comes in four parts at once: a 10-minute 720p video took 50 seconds instead of 145, a two-hour episode about 8 minutes.

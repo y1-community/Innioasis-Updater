@@ -312,7 +312,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
       "icon_dark_url": "",
       "body": "\"General performance and stability improvements.\"\r\n\r\nThis is the software currently being shipped on Y2 retail units.\r\n\r\n(Innioasis have once again failed to release this as an update to existing users, nor do they actually post what changes their firmwares include - this firmware release was imaged from a retail Y2 unit purchased November 12 by the Community Firmware Archive and Updater CE maintainer - tested against both of Updater's installation methods: SP Flash Tool and MTKclient and the underlying tools themselves on a pre 3.2.4 and a 3.2.4 unit with success. Image was taken before any use of the player)",
-      "downloads": 55,
+      "downloads": 56,
       "mirror_downloads": 11,
       "download_breakdown": {
         "tag": "3.2.4-fm",
@@ -321,7 +321,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip",
-            "downloads": 44
+            "downloads": 45
           }
         ],
         "portable": [
@@ -375,7 +375,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip",
           "size": 372994194,
-          "download_count": 44,
+          "download_count": 45,
           "content_type": "application/x-zip-compressed"
         },
         {
@@ -383,7 +383,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
           "size": 30612,
-          "download_count": 114,
+          "download_count": 120,
           "content_type": "image/jpeg"
         }
       ]
@@ -469,7 +469,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg",
           "size": 30612,
-          "download_count": 2016,
+          "download_count": 2017,
           "content_type": "image/jpeg"
         }
       ]
@@ -555,7 +555,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "system.img",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img",
           "size": 859826928,
-          "download_count": 599,
+          "download_count": 602,
           "content_type": "application/x-apple-diskimage"
         },
         {
@@ -563,7 +563,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
           "size": 30612,
-          "download_count": 1623,
+          "download_count": 1624,
           "content_type": "image/jpeg"
         }
       ]
@@ -635,7 +635,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg",
           "size": 30612,
-          "download_count": 1336,
+          "download_count": 1337,
           "content_type": "image/jpeg"
         }
       ]
@@ -650,8 +650,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
       "icon_dark_url": "",
       "body": "Features improved support for AirPods Pro 2, AirPods 3 and later",
-      "downloads": 8878,
-      "mirror_downloads": 472,
+      "downloads": 8884,
+      "mirror_downloads": 476,
       "download_breakdown": {
         "tag": "3.1.2",
         "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -659,7 +659,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
-            "downloads": 8406
+            "downloads": 8408
           }
         ],
         "portable": [
@@ -668,7 +668,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip",
             "size": 491537564,
-            "downloads": 177
+            "downloads": 179
           },
           {
             "platform": "windows-legacy",
@@ -689,7 +689,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux-arm64.zip",
             "size": 373271402,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -703,7 +703,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-macos.zip",
             "size": 299975151,
-            "downloads": 46
+            "downloads": 47
           }
         ]
       },
@@ -713,7 +713,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
           "size": 250125316,
-          "download_count": 8406,
+          "download_count": 8408,
           "content_type": "application/zip"
         },
         {
@@ -721,7 +721,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
           "size": 30612,
-          "download_count": 5574,
+          "download_count": 5584,
           "content_type": "image/jpeg"
         }
       ]
@@ -807,7 +807,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
           "size": 30612,
-          "download_count": 5170,
+          "download_count": 5177,
           "content_type": "image/jpeg"
         }
       ]
@@ -893,7 +893,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.2/updater.jpg",
           "size": 30612,
-          "download_count": 439,
+          "download_count": 440,
           "content_type": "image/jpeg"
         }
       ]
@@ -979,7 +979,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/2.8.2/updater.jpg",
           "size": 30612,
-          "download_count": 427,
+          "download_count": 428,
           "content_type": "image/jpeg"
         }
       ]
@@ -1065,7 +1065,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/type-b-1.7.6/updater.jpg",
           "size": 30612,
-          "download_count": 227,
+          "download_count": 228,
           "content_type": "image/jpeg"
         }
       ]
@@ -1159,7 +1159,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/updater.jpg",
           "size": 30612,
-          "download_count": 409,
+          "download_count": 410,
           "content_type": "image/jpeg"
         }
       ]
@@ -1176,7 +1176,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
       "icon_dark_url": "",
       "body": "Original Innioasis G1 software **MX3-G1-EN-WM-V5.01-20260805**.\n\n- Model: **G1** (Innioasis)\n- Package: `rom_g1.zip`\n- Build tag: `MX3-G1-EN-WM-V5.01-20260805`\n- Build date: 2026-08-05\n\n## Install\n\n1. Download `rom_g1.zip` (every numbered volume if the release has more than one, then `cat rom_g1.zip.* > rom_g1.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g1.zip` | 1569.6 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G1>",
-      "downloads": 129,
+      "downloads": 130,
       "mirror_downloads": 64,
       "download_breakdown": {
         "tag": "MX3-G1-EN-WM-V5.01-20260805",
@@ -1185,7 +1185,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g1.zip",
             "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip",
-            "downloads": 65
+            "downloads": 66
           }
         ],
         "portable": [
@@ -1239,7 +1239,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g1.zip",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip",
           "size": 1645800503,
-          "download_count": 65,
+          "download_count": 66,
           "content_type": "application/octet-stream"
         },
         {
@@ -2712,7 +2712,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/timmkoo_icon.jpeg",
       "icon_dark_url": "",
       "body": "Original Timmkoo Q5 software **MX2D_Q5D-WV3.28-20250619**.\n\n- Model: **Q5** (Timmkoo)\n- Package: `rom_q5.zip`\n- Build tag: `MX2D_Q5D-WV3.28-20250619`\n- Build date: 2025-06-19\n\n## Install\n\n1. Download `rom_q5.zip` (every numbered volume if the release has more than one, then `cat rom_q5.zip.* > rom_q5.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_q5.zip` | 322.1 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=Q5>",
-      "downloads": 39,
+      "downloads": 40,
       "mirror_downloads": 15,
       "download_breakdown": {
         "tag": "MX2D_Q5D-WV3.28-20250619",
@@ -2721,7 +2721,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_q5.zip",
             "url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5.zip",
-            "downloads": 24
+            "downloads": 25
           }
         ],
         "portable": [
@@ -2775,7 +2775,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_q5.zip",
           "browser_download_url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5.zip",
           "size": 337730694,
-          "download_count": 24,
+          "download_count": 25,
           "content_type": "application/octet-stream"
         },
         {
@@ -3035,7 +3035,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/bootimg.img.gz",
           "size": 7557676,
-          "download_count": 83,
+          "download_count": 85,
           "content_type": "application/gzip"
         },
         {
@@ -3043,7 +3043,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.json",
           "size": 4245,
-          "download_count": 207,
+          "download_count": 209,
           "content_type": "application/json"
         },
         {
@@ -3051,7 +3051,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.sig",
           "size": 64,
-          "download_count": 204,
+          "download_count": 206,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3059,7 +3059,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/recovery.img.gz",
           "size": 7557708,
-          "download_count": 82,
+          "download_count": 84,
           "content_type": "application/gzip"
         },
         {
@@ -3067,7 +3067,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/rootfs.ext4.gz",
           "size": 53150447,
-          "download_count": 82,
+          "download_count": 84,
           "content_type": "application/gzip"
         },
         {
@@ -16890,7 +16890,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png",
           "size": 12952,
-          "download_count": 55,
+          "download_count": 56,
           "content_type": "image/png"
         }
       ]
@@ -21710,7 +21710,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "Used for building ROM releases",
-      "downloads": 8493,
+      "downloads": 8495,
       "mirror_downloads": 22,
       "download_breakdown": {
         "tag": "type-a-base",
@@ -21719,7 +21719,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/type-a-base/rom.zip",
-            "downloads": 8471
+            "downloads": 8473
           }
         ],
         "portable": [
@@ -21773,7 +21773,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/type-a-base/rom.zip",
           "size": 456613744,
-          "download_count": 8471,
+          "download_count": 8473,
           "content_type": "application/zip"
         }
       ]
@@ -21788,7 +21788,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "Used for building ROM releases\r\n\r\n",
-      "downloads": 8255,
+      "downloads": 8257,
       "mirror_downloads": 34,
       "download_breakdown": {
         "tag": "type-b-base",
@@ -21797,7 +21797,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/type-b-base/rom.zip",
-            "downloads": 8221
+            "downloads": 8223
           }
         ],
         "portable": [
@@ -21851,7 +21851,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/type-b-base/rom.zip",
           "size": 399460715,
-          "download_count": 8221,
+          "download_count": 8223,
           "content_type": "application/zip"
         }
       ]
@@ -22049,7 +22049,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "# Rockbox Y2 V2.5\n\nV2.5 updates the Y2 dual-boot firmware to the official Innioasis **Stock 3.2FM**\nbaseline while retaining Rockbox and Stock boot routes.\n\n## What changed from V2\n\n- Stock mode is updated to version `3.2` from the 3.2FM firmware release.\n- Clean installs default to MacClassic-Dark with a black Rockbox title screen.\n- Boot presentation and route handoff were requalified to prevent persistent\n  upper-screen artifacts.\n- The Community Updater asset is now a complete 3.2FM-based full-ROM package,\n  compatible with the public updater's clean-install route.\n\n## Qualified V2.5 behavior\n\nThe five V2.5 firmware images have passed the full hands-on matrix on macOS and\nWindows:\n\n- Clean, responsive Rockbox root in about 28 seconds on normal cold boots.\n- Clean dark Rockbox title with no persistent upper artifacts.\n- Automatic screen timeout, centre wake, and power-button sleep/wake.\n- USB-storage mount, safe eject, clean return, and foreground retention.\n- Boot Settings switching between Rockbox and Stock.\n- Responsive Stock root reporting version `3.2` from Stock 3.2FM.\n- No microSD card required for installation or normal boot testing.\n\nThe exact public full-ROM archive passed clean Stock 3.2FM installation and the\ncomplete functional matrix on both macOS and Windows.\n\n## Exact public candidate\n\n| Asset | Bytes | SHA-256 |\n|---|---:|---|\n| `rom_y2.zip` | 361,644,736 | `bbdd139a9a52f90570ef04dec4aeb143a361a1d28a90f7be6d37d44c554bee9a` |\n\nThis archive contains the complete official Stock 3.2FM support set. UBOOT,\nBOOTIMG, RECOVERY, LOGO, and ANDROID are the exact V2.5 images already qualified\non both platforms. MBR, EBR1, EBR2, preloader, SEC_RO, cache, userdata, and the\nscatter remain byte-identical to the official 3.2FM baseline.\n\n## Important installation behavior\n\nV2.5 performs a clean full installation and erases internal user data. Back up\nfirst. On macOS, public Updater CE hands the install to the Innioasis Y2 Install\nTool. On Windows, Updater CE uses its full Y2 installation route. Follow every\nconnection prompt and wait for an explicit completion message.\n",
-      "downloads": 1120,
+      "downloads": 1121,
       "mirror_downloads": 57,
       "download_breakdown": {
         "tag": "v0.2.5-beta",
@@ -22058,7 +22058,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
-            "downloads": 1063
+            "downloads": 1064
           }
         ],
         "portable": [
@@ -22160,7 +22160,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
           "size": 361644736,
-          "download_count": 1063,
+          "download_count": 1064,
           "content_type": "application/zip"
         },
         {
@@ -22603,7 +22603,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "Solar Y2 ROM for Innioasis Y2 (MT6582 ATA). Built from 944d14b.",
-      "downloads": 89,
+      "downloads": 90,
       "mirror_downloads": 21,
       "download_breakdown": {
         "tag": "y2-release",
@@ -22612,7 +22612,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/y2-release/rom_y2.zip",
-            "downloads": 68
+            "downloads": 69
           }
         ],
         "portable": [
@@ -22666,7 +22666,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/y2-release/rom_y2.zip",
           "size": 443599332,
-          "download_count": 68,
+          "download_count": 69,
           "content_type": "application/zip"
         }
       ]
@@ -31749,8 +31749,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "",
       "icon_dark_url": "",
       "body": "### Fixed\n- **Theme could silently revert to the default after connecting the device as USB Mass Storage** \u2014 the selected theme was persisted only as a numeric index into the SD card's theme folder listing, and that listing's order isn't guaranteed stable across a mount/unmount cycle (common FAT32 behavior). The saved index could end up pointing at a completely different theme once the card was reconnected. The theme's name is now saved alongside the index and resolved by name on startup \u2014 independent of scan order \u2014 with the old index kept only as a fallback for upgrades.\n- **`.scrobbler.log` declared its timestamps as `#TZ/UNKNOWN`** even though they're genuinely UTC (`System.currentTimeMillis()` is always UTC epoch time, regardless of the device's local timezone setting). Now correctly declared as `#TZ/UTC`, so any tool that imports the log trusts the timestamps instead of asking or guessing. Only affects newly created log files \u2014 an existing `.scrobbler.log`'s header isn't rewritten.\n- **On-screen keyboard was missing common punctuation**, making some Wi-Fi passwords (and anything else typed through it \u2014 podcast search, Last.fm login, etc.) impossible to enter. Added `; : , / \\ ( ) [ ] { } < > ' ~` `` ` `` and `|`.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.5.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.5.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "downloads": 648,
-      "mirror_downloads": 39,
+      "downloads": 655,
+      "mirror_downloads": 45,
       "download_breakdown": {
         "tag": "v1.4.5",
         "mirrors": "y1-community/inniclassic-mirror",
@@ -31758,7 +31758,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip",
-            "downloads": 609
+            "downloads": 610
           }
         ],
         "portable": [
@@ -31767,42 +31767,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows.zip",
             "size": 775976425,
-            "downloads": 7
+            "downloads": 8
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows-legacy.zip",
             "size": 537737584,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux.zip",
             "size": 823297749,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-arm64.zip",
             "size": 648201983,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-legacy.zip",
             "size": 536151869,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-macos.zip",
             "size": 582610395,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -31820,7 +31820,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip",
           "size": 463531481,
-          "download_count": 609,
+          "download_count": 610,
           "content_type": "application/zip"
         }
       ]
@@ -31835,8 +31835,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "",
       "icon_dark_url": "",
       "body": "A hardware-input overhaul: a real Hold/lock switch, a proper video/music handoff, and a round of Now Playing and Videos polish.\n\n### Added\n- **Hold (key lock)** \u2014 hold Center for 0.8s to lock the wheel/buttons (and physically turn the display off); hold Center again to unlock. This is the real fix for \"screen wakes up randomly in my pocket\": instead of guessing which button presses are accidental, you can now lock input entirely, matching the real iPod Classic's Hold switch.\n- **Toggle Favorite is back in the Now Playing hold-menu** (long-press Play/Pause) \u2014 caught and fixed before release: the redesigned Center gesture handling below removed the old \"double-click Center\" favorite shortcut without anywhere else to reach it.\n\n### Fixed\n- **Video Play/Pause was starting music instead of pausing the video.** Two compounding bugs: the hardware media-button receiver didn't know about video and would call the music player regardless of what was on screen (with \"Screen Off Control\" enabled), and opening a video didn't stop any music that was already playing. Both fixed.\n- **Videos list ignored the wheel/Center** in some cases \u2014 the screen was unconditionally swallowing every key before the shared list-navigation code could see it.\n- **Now Playing wheel seeking** is now a real preview-then-confirm: turning the wheel in Seek mode moves a pending position in 5-second steps without touching actual playback, applied only once you press Center again. The preview no longer gets silently overwritten by the background progress update.\n- Center-button handling is now centralized in one place \u2014 fixes a hold sometimes also registering as a select, and holding Center no longer opens the song menu or toggles video seek mode (that's long Play/Pause and short Center respectively now).\n- Pausing on the Classic theme no longer dims the album artwork or leaves a leftover audio-format overlay on screen; the selected Now Playing bottom-bar mode survives a pause/resume.\n- Removed a duplicate progress-callback registration.\n\n### Changed\n- More compact Now Playing progress/volume bars, fixed-width time labels, and evenly spaced rating marks.\n- Video now seeks via Previous/Next (\u00b110s); the wheel is volume-only during video playback.\n- Classic Videos list shares the same background/row styling as every other list.\n\nFull engineering write-up: [`docs/release-review-1.4.4.md`](https://github.com/FabianZettl/inniclassic/blob/master/docs/release-review-1.4.4.md).\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.4.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.4.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "downloads": 65,
-      "mirror_downloads": 30,
+      "downloads": 72,
+      "mirror_downloads": 36,
       "download_breakdown": {
         "tag": "v1.4.4",
         "mirrors": "y1-community/inniclassic-mirror",
@@ -31844,7 +31844,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/rom.zip",
-            "downloads": 35
+            "downloads": 36
           }
         ],
         "portable": [
@@ -31853,42 +31853,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows.zip",
             "size": 775967558,
-            "downloads": 5
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows-legacy.zip",
             "size": 537728715,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux.zip",
             "size": 823288882,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-arm64.zip",
             "size": 648193116,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-legacy.zip",
             "size": 536143000,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-macos.zip",
             "size": 582601527,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -31906,7 +31906,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/rom.zip",
           "size": 463523953,
-          "download_count": 35,
+          "download_count": 36,
           "content_type": "application/zip"
         }
       ]
@@ -31921,8 +31921,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "",
       "icon_dark_url": "",
       "body": "A theme-consistency pass plus a round of real correctness/security fixes underneath, including a Last.fm crash and a Wireless PC Upload path-traversal issue.\n\n### Changed\n- **Classic themes tightened up**: edge-to-edge, tighter main-menu rows; consistent 21dp bold list type; saturated blue selection gradient shared by both the dynamic menus and library lists; silver status-bar gradient, darker secondary text, and more compact chevrons.\n- Battery silhouette is more rectangular, and battery percentage is now clamped to 0\u2013100.\n- Main Menu, Cover Flow, Wi-Fi and equalizer views now use generated Android view IDs with a stable logical-key mapping instead of ad hoc constants.\n\n### Fixed\n- **Last.fm scrobbling could crash its background worker outright** \u2014 the pending-scrobble queue called `JSONArray.remove(int)`, which doesn't exist on the Y1's Android API 17 (added in API 19). Also, Last.fm can return HTTP 200 with an API-level error payload, which was previously treated as a successful scrobble and silently dropped instead of retried.\n- **Wireless PC Upload (the web server) had a path-traversal weakness** \u2014 file operations now canonicalize and confine paths to the shared root, reject cross-origin writes, and render filenames as plain text. Interrupted uploads now write to a temp file and atomically replace the target only once complete, so a dropped connection can no longer corrupt an existing file. Server connections now have timeouts and a bounded worker pool; shutdown properly closes active sockets.\n- Recycled album rows in the library list could show a stale cover thumbnail if an in-flight request finished after the row was recycled for a different album.\n- Removed a duplicate broadcast-receiver registration and duplicate manifest permission entries; added the newer Android receiver-flags overload with an API 17 fallback and additional Bluetooth/location permission checks.\n- Sound Check no longer calls an API-19-only method unguarded on this API-17 device.\n- Launcher icons switched from WebP to PNG for reliable API 17 rendering; fixed a malformed vector icon path.\n- Audiobook bookmark saving now checks the playlist index is still valid before writing.\n\nFull engineering write-up: [`docs/release-review-1.4.3.md`](https://github.com/FabianZettl/inniclassic/blob/master/docs/release-review-1.4.3.md).\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.3.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.3.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "downloads": 190,
-      "mirror_downloads": 32,
+      "downloads": 194,
+      "mirror_downloads": 36,
       "download_breakdown": {
         "tag": "v1.4.3",
         "mirrors": "y1-community/inniclassic-mirror",
@@ -31939,7 +31939,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows.zip",
             "size": 775973691,
-            "downloads": 5
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -31953,14 +31953,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux.zip",
             "size": 823295015,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux-arm64.zip",
             "size": 648199249,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
@@ -31974,7 +31974,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-macos.zip",
             "size": 582607661,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -32007,8 +32007,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "",
       "icon_dark_url": "",
       "body": "Theme-consistency and Podcasts fixes from user feedback.\n\n### Fixed\n- **Status bar headphone/Bluetooth icons were hardcoded white**, making them nearly invisible on the light iPod Classic theme's light gray status bar. Now use the theme's own text color like the rest of the status bar.\n- **On-screen keyboard's selected character was unreadable on the light theme** \u2014 pure white text on a barely-tinted overlay meant it could blend into a light background almost completely. The keyboard panel's backdrop is now solidly dark so the white text always has real contrast, regardless of theme.\n- **Podcast episode loading always said \"No internet connection\"** even when the real problem was something else entirely (a bad feed URL, a server error, an expired certificate, malformed XML, etc.) \u2014 the actual error was being silently discarded. The toast now shows the real failure reason so it's actually possible to diagnose.\n\n### Added\n- **[`tools/airpods_fix/`](https://github.com/FabianZettl/inniclassic/tree/master/tools/airpods_fix)** \u2014 an experimental, opt-in fix for AirPods Pro 2 connecting over Bluetooth but staying silent, ported from [Semy0nBu/y1-airpods-rtpfix](https://github.com/Semy0nBu/y1-airpods-rtpfix) (all credit for the original fix goes there). Not bundled into the ROM or APK \u2014 it replaces a system-level Bluetooth driver, which is riskier and affects all Bluetooth devices, not just AirPods, so it ships as a separate, clearly-documented install/uninstall script pair instead of being forced on everyone. Read its README for the exact risk tradeoffs before using it.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.2.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.2.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "downloads": 310,
-      "mirror_downloads": 31,
+      "downloads": 311,
+      "mirror_downloads": 32,
       "download_breakdown": {
         "tag": "v1.4.2",
         "mirrors": "y1-community/inniclassic-mirror",
@@ -32039,7 +32039,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux.zip",
             "size": 823433679,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -32351,8 +32351,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "",
       "icon_dark_url": "",
       "body": "A Music Quiz overhaul, a Now Playing polish pass, and another batch of Reddit-reported bugs \u2014 mostly sleep/wake and audio.\n\n### Added\n- **Music Quiz: five new question types** \u2014 alongside \"What song is playing?\", it can now ask which artist released a track, which album it's from, what year it came out, and what genre it is (each only offered when your library actually has enough distinct values to make a fair question). Also new: a visual question type showing 3 album covers side by side to pick from instead of text answers.\n- **Music Quiz: all 4 answers now fit on screen at once**, no more scrolling to see the other options.\n\n### Changed\n- **Now Playing**: the album cover sits slightly lower, spacing between Title/Artist/Album is now perfectly consistent, the star rating moved between Album and the track counter, and the \"X of Y\" track counter is bold at the same size as the rest of the info block.\n- Documented the existing (but easy-to-miss) **synced lyrics** support: drop a `.lrc` file next to a song (same filename) or embed lyrics in ID3/FLAC/ALAC tags, then long-press Center on Now Playing \u2192 Toggle Visualizer to see them scroll in sync with playback.\n\n### Fixed\n- **Screen never came back on after the backlight timer put it to sleep** \u2014 two separate bugs:\n  - The \"virtual\" sleep used while FM Radio or the web server is running (so the CPU stays alive) never had any code path that turned it back off. Once triggered, the screen stayed black forever (vibration/click feedback still worked) until a full reboot.\n  - The \"real\" sleep used during ordinary music playback simulates a power-button press to turn the display off, but nothing ever simulated a second press to turn it back on.\n- **Full device lockup (required a paperclip reset) playing FM Radio through wired headphones for a few minutes** \u2014 the backlight timer's \"virtual sleep\" path was also toggling Wi-Fi off while the FM tuner was active. On this chipset, FM/Wi-Fi/Bluetooth share the same combo radio hardware; killing Wi-Fi mid-session could wedge it badly enough to need a hard reset. Wi-Fi is now left alone whenever the radio is on.\n- **Screen dimming during active use** \u2014 the default Backlight Timer was 10 seconds. Now 1 minute (still adjustable down to 10s in Settings).\n- **Bluetooth headphones (reported with AirPods) noticeably quiet** \u2014 a known AVRCP \"absolute volume\" quirk. Absolute volume is now disabled on connect, so headphones use their own physical volume control.\n- **Some FLAC files failed with \"Legacy Player Error: 262\"** \u2014 failing files now automatically retry once through ExoPlayer's FLAC extension instead of giving up outright.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.3.0.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.3.0.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "downloads": 225,
-      "mirror_downloads": 31,
+      "downloads": 227,
+      "mirror_downloads": 32,
       "download_breakdown": {
         "tag": "v1.3.0",
         "mirrors": "y1-community/inniclassic-mirror",
@@ -32360,7 +32360,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.0/rom.zip",
-            "downloads": 194
+            "downloads": 195
           }
         ],
         "portable": [
@@ -32397,7 +32397,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux-legacy.zip",
             "size": 536386965,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
@@ -32422,7 +32422,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.0/rom.zip",
           "size": 463775055,
-          "download_count": 194,
+          "download_count": 195,
           "content_type": "application/zip"
         }
       ]
@@ -32437,8 +32437,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "",
       "icon_dark_url": "",
       "body": "Video playback, gapless playback, and a full visual consistency pass across every screen.\n\n### Added\n- **Video playback** - new \"Videos\" entry in the Main Menu, its own folder on the SD card (`/storage/sdcard0/Videos`), full-screen player with wheel-driven volume/seek. **Now powered by libVLC instead of ExoPlayer** - ExoPlayer's precise frame-timing API only exists from Android API 21 onward, and its fallback for older devices turned out to be broken on the Y1's API 17 (audio and the position clock stayed correct, but picture played back several times faster than real time). libVLC brings its own native AV-sync engine independent of that Android API, giving stable, correctly-synced playback. Audio-only playback is untouched and still runs on ExoPlayer. Thumbnails in the video list and resume-position are still unaddressed for now - see `tools/handbrake_y1_preset.json` for a ready-to-import HandBrake preset tuned for smooth playback on the Y1's chip.\n- **Gapless playback** - automatically kicks in for albums/playlists of 15 tracks or fewer, with shuffle off and no FLAC in the queue. Track transitions inside a gapless queue no longer stop and reload.\n- **Favorites are always visible now** on Now Playing - hollow heart normally, filled red heart when favorited, instead of nothing at all unless already a favorite.\n\n### Changed\n- Unified font sizes, left alignment, and row spacing across every menu (Main Menu, Music menu, Artists, Albums, Songs, Settings/Bluetooth/Wi-Fi).\n- Right-arrow indicator now only shows on the focused row, everywhere.\n- Thinner status bar matching real iPod proportions; narrows to the left column on both Main Menu and Music menu so the album cover bleeds behind it.\n- Main Menu and Music menu covers now share the exact same slow \"Ken Burns\" panning animation.\n- Bigger Now Playing album cover, bolder track counter, marquee-scrolling long titles, glass-look progress bar.\n- Larger album cover thumbnails in the Albums list.\n\n### Fixed\n- Focus arrow color was theme-dependent instead of fixed white.\n- A recycled list row's blue focused background could get incorrectly reset regardless of actual focus state.\n- Now Playing's progress ticker and the clock/widget refresh loop kept doing full work every 0.5-1s even when not visible (or during virtual screen-off) - both now sit idle unless actually needed. Should help battery life.\n\n### Install\n- **`rom.zip`** - flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.2.0.apk`** - install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.2.0.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "downloads": 151,
-      "mirror_downloads": 33,
+      "downloads": 158,
+      "mirror_downloads": 39,
       "download_breakdown": {
         "tag": "v1.2.0",
         "mirrors": "y1-community/inniclassic-mirror",
@@ -32446,7 +32446,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/rom.zip",
-            "downloads": 118
+            "downloads": 119
           }
         ],
         "portable": [
@@ -32455,42 +32455,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows.zip",
             "size": 775951766,
-            "downloads": 6
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows-legacy.zip",
             "size": 537712923,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux.zip",
             "size": 823273090,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-arm64.zip",
             "size": 648177324,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-legacy.zip",
             "size": 536127208,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-macos.zip",
             "size": 582585736,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -32508,7 +32508,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/rom.zip",
           "size": 463513542,
-          "download_count": 118,
+          "download_count": 119,
           "content_type": "application/zip"
         }
       ]
@@ -32523,8 +32523,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "",
       "icon_dark_url": "",
       "body": "Bug-fix release based on more Reddit feedback from multiple users.\n\n### Fixed\n- **Crash browsing Artists, Album Artists, Albums, Songs, or Genres** - songs with a missing artist/album tag could carry a `null` value that crashed the launcher wherever it was later compared. Every song now always gets a safe \"Unknown Artist\"/\"Unknown Album\" fallback.\n- **FLAC files stuck at 0:00** - the fallback engine that FLAC was supposed to use was never actually being switched on.\n- **Screen turning off during active use** - spinning the wheel now correctly resets the auto-lock timer.\n- **Charging indicator** - the battery icon now actually draws a lightning bolt while charging (the code for it existed but was never enabled).\n- Long album/track names no longer overlap the battery/Bluetooth icons in the status bar.\n\n### Added\n- **Shuffle** row at the top of All Songs, matching the stock Y1 firmware.\n- **FM Radio** is back in the Main Menu (it had quietly disappeared from the theme config).\n\n### Install\n- **rom.zip** - flash via the Innioasis Updater, no ADB required. Must keep the filename exactly rom.zip. Ships the latest Y1 Firmware 3.1.2 with InniClassic pre-installed.\n- **InniClassic-1.1.2.apk** - install over an existing JJ Launcher / InniClassic install via adb install InniClassic-1.1.2.apk.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "downloads": 83,
-      "mirror_downloads": 36,
+      "downloads": 90,
+      "mirror_downloads": 42,
       "download_breakdown": {
         "tag": "v1.1.2",
         "mirrors": "y1-community/inniclassic-mirror",
@@ -32532,7 +32532,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/rom.zip",
-            "downloads": 47
+            "downloads": 48
           }
         ],
         "portable": [
@@ -32541,42 +32541,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows.zip",
             "size": 770220198,
-            "downloads": 7
+            "downloads": 8
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows-legacy.zip",
             "size": 531981353,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux.zip",
             "size": 817541522,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-arm64.zip",
             "size": 642445756,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-legacy.zip",
             "size": 530395638,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-macos.zip",
             "size": 576854168,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -32594,7 +32594,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/rom.zip",
           "size": 457809513,
-          "download_count": 47,
+          "download_count": 48,
           "content_type": "application/zip"
         }
       ]
@@ -40543,8 +40543,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/Leska1337/better-Y/raw/main/screenshots/plus_logo.png",
       "icon_dark_url": "",
       "body": "![Image](https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/themes_support.png \"Logo\")\r\n\r\nSettings marked with \u2699\ufe0f are new rows in the better-Y menu.\r\n\r\n### System\r\n\r\n<details>\r\n<summary>\u2699\ufe0f <b>Data backup</b> \u2014 settings, likes, playlists, bookmarks and reading progress</summary>\r\n<div>\r\n<p></p>\r\n\r\nUpdating the firmware with an updater wipes the user data, so in order to keep it after an update you can use \"Data backup\" button. \r\nIt saves everything to `/better-Y/backup/` on the SD card and you can load it back after you updated to a newer version.\r\n\r\nAlong with the better-Y settings, the archive keeps the theme, the stock settings, the library with\r\nplaylists, bookmarks and audiobook progress, the e-book reader progress. Bluetooth pairings can't be saved.\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary><b>Extended themes support</b> \u2014 screens that were previously hardcoded now use the theme designs</summary>\r\n<div>\r\n<p></p>\r\n\r\n- **USB connected**\r\n- **Loading windows**\r\n- **Equalizer**\r\n- **FM Radio**\r\n- **Photos**\r\n- **Wallpaper**\r\n- **Search** and the **on-screen keyboard**\r\n- **Brightness**\r\n- **Bluetooth**\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary><b>Equalizer now shows each band's level in dB instead of just \"-15\" and \"15\"</b></summary>\r\n<div>\r\n<p></p>\r\n\r\n<table border=\"0\" style=\"border-collapse: collapse; border: none;\">\r\n  <tr style=\"border: none; background: transparent; vertical-align: top;\">\r\n    <td width=\"400\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0 15px 0 0; width: 1px;\">\r\n      <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/equalizer.png\" alt=\"Updated equalizer window\" width=\"373\" style=\"display: block; max-width: none; margin: 0 auto;\">\r\n    </td>\r\n</table>\r\n\r\n</div>\r\n</details>\r\n\r\n<p>&#9679;&ensp;<b>Disabled scroll wheel sounds while the screen is off</b> \u2014 no more clicks in a pocket when Key lock is off</p>\r\n\r\n<p>&#9679;&ensp;<b>Fixed a bug where the song order was reset when a song was added to the queue</b></p>\r\n\r\n<p>&#9679;&ensp;<b>Files of better-Y on the SD card are sorted into folders</b> \u2014 <code>/better-Y/logs/</code> and <code>/better-Y/backup/</code></p>\r\n\r\n<p>&#9679;&ensp;<b>E-book \u2192 Local files no longer lists the files of the /better-Y/ folder</b>\r\n\r\n<p>&#9679;&ensp;<b>Translation fixes and some other minor\u00a0changes</b></p>\r\n\r\n### Now Playing\r\n\r\n<details>\r\n<summary>\u2699\ufe0f <b>Option to change text and lyrics color</b> \u2014 Light / Dark / Theme color</summary>\r\n<div>\r\n<p></p>\r\n\r\n<table border=\"0\" style=\"border-collapse: collapse; border: none; margin: 0; width: auto;\">\r\n  <!-- \u0412\u0415\u0420\u0425\u041d\u0418\u0419 \u0420\u042f\u0414: \u0414\u0412\u0415 \u041a\u0410\u0420\u0422\u0418\u041d\u041a\u0418 -->\r\n  <tr style=\"border: none; background: transparent; vertical-align: top;\">\r\n    <!-- \u041f\u0435\u0440\u0432\u0430\u044f \u043a\u043e\u043b\u043e\u043d\u043a\u0430 (\u0431\u0435\u0437 \u043e\u0442\u0441\u0442\u0443\u043f\u0430 \u0441\u043b\u0435\u0432\u0430) -->\r\n    <td width=\"400\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0 15px 0 0; width: 1px;\">\r\n      <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/color_change_1.png\" alt=\"Icons and text color changed to `Light`\" width=\"373\" style=\"display: block; max-width: none; margin: 0;\">\r\n      <div align=\"center\" style=\"padding-top: 8px; font-size: 14px; line-height: 1.4; text-align: center;\">\r\n        Icons and text color changed to `Light`\r\n      </div>\r\n    </td>\r\n    <!-- \u0412\u0442\u043e\u0440\u0430\u044f \u043a\u043e\u043b\u043e\u043d\u043a\u0430 -->\r\n    <td width=\"400\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0 0 0 15px; width: 1px;\">\r\n      <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/color_change_2.png\" alt=\"Icons and text color changed to `Theme color`\" width=\"373\" style=\"display: block; max-width: none; margin: 0;\">\r\n      <div align=\"center\" style=\"padding-top: 8px; font-size: 14px; line-height: 1.4; text-align: center;\">\r\n        Icons and text color changed to `Theme color`\r\n      </div>\r\n    </td>\r\n  </tr>\r\n\r\n  <!-- \u041e\u0422\u0421\u0422\u0423\u041f \u041c\u0415\u0416\u0414\u0423 \u0420\u042f\u0414\u0410\u041c\u0418 -->\r\n  <tr style=\"border: none; background: transparent; height: 20px;\">\r\n    <td colspan=\"2\" valign=\"top\" style=\"border: none; padding: 0;\"></td>\r\n  </tr>\r\n\r\n  <!-- \u041d\u0418\u0416\u041d\u0418\u0419 \u0420\u042f\u0414: \u0422\u0420\u0415\u0422\u042c\u042f \u041a\u0410\u0420\u0422\u0418\u041d\u041a\u0410 \u041f\u041e \u0426\u0415\u041d\u0422\u0420\u0423 \u041f\u0415\u0420\u0412\u042b\u0425 \u0414\u0412\u0423\u0425 -->\r\n  <tr style=\"border: none; background: transparent; vertical-align: top;\">\r\n    <td colspan=\"2\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0; text-align: center;\">\r\n      <div style=\"display: inline-block; text-align: center;\">\r\n        <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/color_change_3.png\" alt=\"Lyrics color changed to `Theme color`\" width=\"373\" style=\"display: block; max-width: none; margin: 0 auto;\">\r\n        <div align=\"center\" style=\"padding-top: 8px; font-size: 14px; line-height: 1.4; text-align: center;\">\r\n          Lyrics color changed to `Theme color`\r\n        </div>\r\n      </div>\r\n    </td>\r\n  </tr>\r\n</table>\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary>\u2699\ufe0f <b>Long artist/album scroll</b> \u2014 Off / Artists / Albums / Both</summary>\r\n<div>\r\n<p></p>\r\n\r\nLong artist and album lines in the player can now scroll too. Long song titles always scroll,\r\nregardless of the setting.\r\n\r\n</div>\r\n</details>\r\n\r\n### Menu\r\n\r\n<details>\r\n<summary><b>More sorting options</b> \u2014 in Folders and Audiobooks</summary>\r\n<div>\r\n<p></p>\r\n\r\n- **Music/Audiobooks/Videos \u2192 Folders** \u2014 \"Sort by File name\".\r\n- **Audiobooks \u2192 All audiobooks** and the chapters of a book \u2014 \"Sort by File name\".\r\n- **Audiobooks \u2192 Artists** and **Albums** \u2014 \"Sort by\" \u2192 A-Z / Z-A.\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary><b>Photos section rework</b> \u2014 revised to reflect the changes and align with the other sections</summary>\r\n<div>\r\n<p></p>\r\n\r\n- \"Set as wallpaper\" is no longer offered for a folder.\r\n- Leaving a folder returns the grid to where it was, without scrolling down from the top.\r\n- Opening a folder or a picture no longer shows a loading window.\r\n\r\n</div>\r\n</details>\r\n\r\n<p>&#9679;&ensp;<b>Faster and even more responsive scrolling</b> \u2014 up to 4x faster</p>\r\n\r\n<p>&#9679;&ensp;<b>Queue, better-Y, Bluetooth, Themes gallery redesign</b></p>\r\n\r\n<p>&#9679;&ensp;<b>Folders are listed above files in Videos \u2192 Folders</b></p>\r\n\r\n<p>&#9679;&ensp;<b>New default folder and file icons in Folders</b> \u2014 they also follow the theme colors</p>\r\n\r\n<p>&#9679;&ensp;<b>The song number column fix</b> \u2014 no longer cuts off with wide theme fonts and dynamically changes depending on the theme's font size</p>\r\n\r\n<p>&#9679;&ensp;<b>\"MultiSelect\" is back in the menu while songs are selected</b></p>\r\n\r\n<p>&#9679;&ensp;<b>The alphabetical scroll letter no longer gets bigger with wide theme fonts</b></p>\r\n\r\n<p>&#9679;&ensp;<b>Settings and equalizer previews change right after a scroll</b> \u2014 without a delay</p>\r\n\r\n### Metadata\r\n\r\n<details>\r\n<summary><b>Tags of MP3s with big embedded covers are read correctly</b> \u2014 titles, album artist, disc number and the cover itself</summary>\r\n<div>\r\n<p></p>\r\n\r\nThe stock firmware refuses to read an ID3 tag larger than 3 MB and silently falls back to the old ID3v1\r\ntag. That tag has titles cut to 30 characters, no album artist, no disc\r\nnumber, no cover \u2014 and no text encoding, so Cyrillic turned into hieroglyphs.\r\n\r\nbetter-Y now reads such tags itself (ID3v2.2, 2.3 and 2.4). FLAC, M4A and OGG never had this\r\nproblem.\r\n\r\nA library scanned by an older version is fixed once by pressing \"Update library\": on its first run\r\nit re-reads every MP3 whose tag is over the limit, even if the file has not changed.\r\n\r\n</div>\r\n</details>\r\n\r\n> [!TIP]\r\n> If you're updating from version 1.0.0 and don't want to lose your user data (settings, likes, playlists, bookmarks and reading progress), there are instructions in the Update section on how to update without losing your user data. Starting with this version you can back up your data using `Data backup` button in the better-Y menu and load it back after you updated to a newer version using Updater CE or any other option.",
-      "downloads": 503,
-      "mirror_downloads": 53,
+      "downloads": 506,
+      "mirror_downloads": 56,
       "download_breakdown": {
         "tag": "v1.1.0",
         "mirrors": "y1-community/better-y-mirror",
@@ -40561,7 +40561,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows.zip",
             "size": 494326123,
-            "downloads": 5
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -40582,7 +40582,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-arm64.zip",
             "size": 366551681,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
@@ -40596,7 +40596,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-macos.zip",
             "size": 300960097,
-            "downloads": 3
+            "downloads": 4
           }
         ]
       },
@@ -41169,7 +41169,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-14T08:36:06Z"
   },
   "fabianzettl/inniclassic": {
-    "downloads": 2532,
+    "downloads": 2537,
     "forks": 6,
     "release_count": 13,
     "stars": 18,
@@ -41183,7 +41183,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-13T17:15:32Z"
   },
   "jarvissax/rondo": {
-    "downloads": 1037,
+    "downloads": 1038,
     "forks": 1,
     "release_count": 10,
     "stars": 1,
@@ -41204,7 +41204,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T07:39:03Z"
   },
   "rockbox-y1/rockbox": {
-    "downloads": 53171,
+    "downloads": 53175,
     "forks": 23,
     "release_count": 31,
     "stars": 86,
@@ -41218,7 +41218,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-10-15T03:03:06Z"
   },
   "schulzcode/y2linux": {
-    "downloads": 32045,
+    "downloads": 32055,
     "forks": 8,
     "release_count": 104,
     "stars": 24,
@@ -41232,21 +41232,21 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-11T21:59:17Z"
   },
   "spycemagic/y2-rockbox": {
-    "downloads": 4157,
+    "downloads": 4158,
     "forks": 1,
     "release_count": 3,
     "stars": 15,
     "updated_at": "2026-11-08T02:25:53Z"
   },
   "thesolarproject/solar": {
-    "downloads": 4966,
+    "downloads": 4967,
     "forks": 9,
     "release_count": 48,
     "stars": 31,
     "updated_at": "2026-10-15T04:38:54Z"
   },
   "y1-community/better-y-mirror": {
-    "downloads": 33,
+    "downloads": 36,
     "forks": 0,
     "release_count": 2,
     "stars": 0,
@@ -41260,7 +41260,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T14:38:28Z"
   },
   "y1-community/g1-stock-rom": {
-    "downloads": 232,
+    "downloads": 233,
     "forks": 0,
     "release_count": 6,
     "stars": 0,
@@ -41302,14 +41302,14 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-11T22:56:53Z"
   },
   "y1-community/inniclassic-mirror": {
-    "downloads": 116,
+    "downloads": 146,
     "forks": 0,
     "release_count": 11,
     "stars": 0,
     "updated_at": "2026-11-12T15:54:16Z"
   },
   "y1-community/innioasis-updater": {
-    "downloads": 69404,
+    "downloads": 69414,
     "forks": 13,
     "release_count": 74,
     "stars": 55,
@@ -41351,7 +41351,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T13:52:45Z"
   },
   "y1-community/q5-stock-rom": {
-    "downloads": 88,
+    "downloads": 89,
     "forks": 0,
     "release_count": 3,
     "stars": 0,
@@ -41435,14 +41435,14 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T13:41:34Z"
   },
   "y1-community/y1-stock-rom": {
-    "downloads": 57423,
+    "downloads": 57459,
     "forks": 0,
     "release_count": 10,
     "stars": 6,
     "updated_at": "2026-10-27T10:14:24Z"
   },
   "y1-community/y1-stock-rom-mirror": {
-    "downloads": 995,
+    "downloads": 999,
     "forks": 0,
     "release_count": 10,
     "stars": 0,
