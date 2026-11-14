@@ -599,12 +599,26 @@ def build_mirror_payload(
             continue
         idx = index_by_tag.get(tag) or {}
         live_assets = {str(a.get("name") or ""): a for a in rel.get("assets") or []}
+        # A rebuild replaces an asset and GitHub restarts its counter at zero.
+        # The hidden ledger (the source of stats.txt) keeps the downloads the
+        # replaced upload had already received. Add that baseline back to each
+        # per-file figure, not only to the release headline.
+        stats = release_stats_block(rel).get("stats") or {}
+        baseline = {
+            str(name): int(value or 0)
+            for name, value in (stats.get("baseline") or {}).items()
+        }
         by_source: dict[str, dict] = {}
+
+        def cumulative_downloads(name: str) -> int:
+            live = live_assets.get(name) or {}
+            return int(live.get("download_count") or 0) + baseline.get(name, 0)
 
         def source_entry(name: str) -> dict:
             return by_source.setdefault(name, {
                 "original_url": "", "original_size": 0,
-                "mirror_original_url": "", "packages": {},
+                "mirror_original_url": "", "mirror_original_downloads": 0,
+                "packages": {},
             })
 
         for ia in idx.get("assets") or []:
@@ -624,7 +638,7 @@ def build_mirror_payload(
                 package = {
                     "name": name, "url": url, "size": size,
                     "sha256": str(ia.get("sha256") or ia.get("checksum") or ""),
-                    "download_count": int(live.get("download_count") or 0),
+                    "download_count": cumulative_downloads(name),
                 }
                 fallback_url = repo_fallback_url(mirror_repo, tag, name)
                 if fallback_url:
@@ -632,6 +646,7 @@ def build_mirror_payload(
                 entry["packages"][platform] = package
             else:
                 entry["mirror_original_url"] = url
+                entry["mirror_original_downloads"] = cumulative_downloads(name)
                 entry["original_size"] = size
 
         # Files the mirror carries that its index does not describe (a copy of
@@ -648,6 +663,7 @@ def build_mirror_payload(
                 continue
             entry = source_entry(name)
             entry["mirror_original_url"] = url
+            entry["mirror_original_downloads"] = cumulative_downloads(name)
             entry["original_size"] = int(live.get("size") or 0)
 
         releases_map[tag] = {
@@ -788,6 +804,9 @@ def release_platform_breakdown(
         for asset in release.get("assets") or []
         if is_firmware_zip(str(asset.get("name") or ""))
     ]
+    firmware_by_name = {
+        str(entry.get("name") or "").lower(): entry for entry in firmware
+    }
     tag = str(release.get("tag_name") or "").strip().lower()
     portable: list[dict] = []
     mirror_repos: list[str] = []
@@ -806,8 +825,13 @@ def release_platform_breakdown(
                 if mirror_repo not in mirror_repos:
                     mirror_repos.append(mirror_repo)
                 for source_asset, entry in ((info or {}).get("assets") or {}).items():
-                    if not any(str(f["name"]).lower() == str(source_asset).lower() for f in firmware):
+                    original = firmware_by_name.get(str(source_asset).lower())
+                    if not original:
                         continue
+                    mirror_original = int((entry or {}).get("mirror_original_downloads") or 0)
+                    if mirror_original:
+                        original["downloads"] = int(original.get("downloads") or 0) + mirror_original
+                        original["mirror_downloads"] = int(original.get("mirror_downloads") or 0) + mirror_original
                     for platform, package in ((entry or {}).get("packages") or {}).items():
                         portable.append({
                             "platform": str(platform),
@@ -854,9 +878,25 @@ def attach_combined_downloads(
             )
             release["mirror_downloads"] = mirror_total
             release["downloads"] = source_total + mirror_total
-            release["download_breakdown"] = release_platform_breakdown(
-                repo, release, mirrors
+            breakdown = release_platform_breakdown(repo, release, mirrors)
+            # Keep the detail rows adding up to the headline. A ledger can
+            # carry history for a file the mirror no longer publishes; that
+            # remainder belongs to the release's own ZIP rather than being
+            # shown as a second copy of the same download.
+            counted_mirror = sum(
+                int(entry.get("mirror_downloads") or 0)
+                for entry in breakdown.get("firmware") or []
+            ) + sum(
+                int(entry.get("downloads") or 0)
+                for entry in breakdown.get("portable") or []
             )
+            gap = mirror_total - counted_mirror
+            if gap > 0 and breakdown.get("firmware"):
+                first = breakdown["firmware"][0]
+                first["downloads"] = int(first.get("downloads") or 0) + gap
+                first["mirror_downloads"] = int(first.get("mirror_downloads") or 0) + gap
+                first["mirror_unallocated"] = int(first.get("mirror_unallocated") or 0) + gap
+            release["download_breakdown"] = breakdown
 
 
 def build_firmware_feed_json(
@@ -1106,7 +1146,7 @@ def build(refresh: bool = False) -> None:
     previous_feeds = {
         path: path.read_text(encoding="utf-8", errors="ignore")
         for path in FEEDS_DIR.rglob("*")
-        if path.is_file()
+        if path.is_file() and not path.name.startswith(".")
     }
     generated_at = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 

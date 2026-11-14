@@ -33,7 +33,8 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip",
-          "downloads": 255
+          "downloads": 264,
+          "mirror_downloads": 9
         }
       ],
       "portable": [
@@ -42,7 +43,7 @@
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/rom_y2-linux.zip",
           "size": 661571626,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux-arm64",
@@ -56,14 +57,14 @@
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/rom_y2-macos.zip",
           "size": 413717766,
-          "downloads": 4
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/rom_y2-windows.zip",
           "size": 528191830,
-          "downloads": 7
+          "downloads": 8
         }
       ]
     }

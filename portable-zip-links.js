@@ -621,46 +621,67 @@
        same-origin proxy link streams with Content-Disposition, and a direct
        release asset goes through a hidden frame so a cross-origin navigation
        still starts the download. */
+    /* Resolve the mirror's package for this computer and the release's own
+       filename. The caller starts this after the save picker has opened, so a
+       slow lookup never costs the click's file-handle permission. */
+    async function resolvedDownload(link) {
+        var info = zipNameFor(link);
+        var saveName = info.saveName;
+        if (!isFirmwareZip(saveName)) return { cancel: true };
+        var explicitPlatform = link.getAttribute("data-platform") || "";
+        if (explicitPlatform && !/-legacy$/i.test(explicitPlatform) && !legacyKey() && parseAssetUrl(info.href)) {
+            /* The reader picked a named OS build; honour that link, but save
+               it under the release's own name. */
+            return { url: info.href, name: saveName, platform: explicitPlatform };
+        }
+        var target = await withTimeout(
+            resolve(info.sourceUrl, link.getAttribute("data-portable-zips") || "", link.getAttribute("data-release-tag") || "", saveName),
+            9000,
+            null
+        );
+        if (target && target.missing) {
+            showBuildingNotice(link);
+            return { cancel: true };
+        }
+        return {
+            url: (target && target.url) || info.href || info.sourceUrl,
+            name: saveName,
+            platform: (target && target.platform) || explicitPlatform
+        };
+    }
+
     async function downloadLink(link) {
         var info = zipNameFor(link);
         var saveName = info.saveName;
         if (!isFirmwareZip(saveName)) return false;
-        var explicitPlatform = link.getAttribute("data-platform") || "";
-        var label = osLabel(explicitPlatform);
-        var targetUrl = "";
-        if (explicitPlatform && !/-legacy$/i.test(explicitPlatform) && !legacyKey() && parseAssetUrl(info.href)) {
-            /* The reader picked a named OS build; honour that link, but save
-               it under the release's own name. */
-            targetUrl = info.href;
-        } else {
-            var target = await withTimeout(
-                resolve(info.sourceUrl, link.getAttribute("data-portable-zips") || "", link.getAttribute("data-release-tag") || "", saveName),
-                9000,
-                null
+
+        /* The inline module owns the bytes so the reader sees progress, speed
+           and ETA and the file lands under the original ZIP's name. Calling it
+           here, before the first await, keeps the save picker inside the
+           click's user gesture. */
+        var downloads = window.InnioasisDownloads;
+        if (downloads && typeof downloads.startResolved === "function") {
+            downloads.startResolved(
+                function () { return resolvedDownload(link); },
+                info.href || info.sourceUrl,
+                link,
+                saveName
             );
-            if (target && target.url) {
-                targetUrl = target.url;
-                label = osLabel(target.platform);
-            }
-        }
-        if (!targetUrl) {
-            if (target && target.missing) {
-                showBuildingNotice(link);
-                return true;
-            }
-            targetUrl = info.href || info.sourceUrl;
+            return true;
         }
 
-        var proxied = await proxyHref(targetUrl, saveName);
+        var resolved = await resolvedDownload(link);
+        if (resolved.cancel) return true;
+        var proxied = await proxyHref(resolved.url, saveName);
         if (proxied) {
             try {
-                await streamToDownloads(proxied, saveName, label);
+                await streamToDownloads(proxied, saveName, osLabel(resolved.platform));
                 return true;
             } catch (_) {
                 /* Fall through to the browser's own download. */
             }
         }
-        directDownload(targetUrl, saveName, label);
+        directDownload(resolved.url, saveName, osLabel(resolved.platform));
         return true;
     }
 

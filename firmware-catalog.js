@@ -321,7 +321,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip",
-            "downloads": 55
+            "downloads": 56,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -383,7 +384,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
           "size": 30612,
-          "download_count": 157,
+          "download_count": 163,
           "content_type": "image/jpeg"
         }
       ]
@@ -407,7 +408,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/rom_y2.zip",
-            "downloads": 2217
+            "downloads": 2229,
+            "mirror_downloads": 12
           }
         ],
         "portable": [
@@ -416,42 +418,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-windows.zip",
             "size": 656085923,
-            "downloads": 57
+            "downloads": 96
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-windows-legacy.zip",
             "size": 417847108,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-linux.zip",
             "size": 703407247,
-            "downloads": 19
+            "downloads": 26
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-linux-arm64.zip",
             "size": 528311481,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-linux-legacy.zip",
             "size": 416261393,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-macos.zip",
             "size": 462719869,
-            "downloads": 20
+            "downloads": 44
           }
         ]
       },
@@ -469,7 +471,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg",
           "size": 30612,
-          "download_count": 2019,
+          "download_count": 2021,
           "content_type": "image/jpeg"
         }
       ]
@@ -493,7 +495,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/rom_y2.zip",
-            "downloads": 658
+            "downloads": 670,
+            "mirror_downloads": 12
           }
         ],
         "portable": [
@@ -502,42 +505,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows.zip",
             "size": 656085982,
-            "downloads": 58
+            "downloads": 85
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows-legacy.zip",
             "size": 417847167,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux.zip",
             "size": 703407306,
-            "downloads": 18
+            "downloads": 27
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux-arm64.zip",
             "size": 528311540,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux-legacy.zip",
             "size": 416261452,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-macos.zip",
             "size": 462719916,
-            "downloads": 20
+            "downloads": 33
           }
         ]
       },
@@ -555,7 +558,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "system.img",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img",
           "size": 859826928,
-          "download_count": 609,
+          "download_count": 610,
           "content_type": "application/x-apple-diskimage"
         },
         {
@@ -563,7 +566,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
           "size": 30612,
-          "download_count": 1629,
+          "download_count": 1631,
           "content_type": "image/jpeg"
         }
       ]
@@ -587,7 +590,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/rom_y2.zip",
-            "downloads": 1463
+            "downloads": 1473,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -596,7 +600,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.7/rom_y2-linux.zip",
             "size": 702027184,
-            "downloads": 25
+            "downloads": 26
           },
           {
             "platform": "linux-arm64",
@@ -610,14 +614,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.7/rom_y2-macos.zip",
             "size": 461877977,
-            "downloads": 52
+            "downloads": 56
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.7/rom_y2-windows.zip",
             "size": 578155668,
-            "downloads": 99
+            "downloads": 100
           }
         ]
       },
@@ -635,7 +639,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg",
           "size": 30612,
-          "download_count": 1339,
+          "download_count": 1341,
           "content_type": "image/jpeg"
         }
       ]
@@ -650,8 +654,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
       "icon_dark_url": "",
       "body": "Features improved support for AirPods Pro 2, AirPods 3 and later",
-      "downloads": 8898,
-      "mirror_downloads": 479,
+      "downloads": 8902,
+      "mirror_downloads": 480,
       "download_breakdown": {
         "tag": "3.1.2",
         "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -659,7 +663,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
-            "downloads": 8419
+            "downloads": 8435,
+            "mirror_downloads": 13
           }
         ],
         "portable": [
@@ -668,42 +673,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip",
             "size": 491537564,
-            "downloads": 180
+            "downloads": 287
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows-legacy.zip",
             "size": 253298741,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux.zip",
             "size": 548367168,
-            "downloads": 40
+            "downloads": 58
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux-arm64.zip",
             "size": 373271402,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux-legacy.zip",
             "size": 251713026,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-macos.zip",
             "size": 299975151,
-            "downloads": 49
+            "downloads": 114
           }
         ]
       },
@@ -713,7 +718,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
           "size": 250125316,
-          "download_count": 8419,
+          "download_count": 8422,
           "content_type": "application/zip"
         },
         {
@@ -721,7 +726,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
           "size": 30612,
-          "download_count": 5636,
+          "download_count": 5648,
           "content_type": "image/jpeg"
         }
       ]
@@ -745,7 +750,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/rom.zip",
-            "downloads": 7996
+            "downloads": 8009,
+            "mirror_downloads": 13
           }
         ],
         "portable": [
@@ -754,42 +760,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-windows.zip",
             "size": 491407506,
-            "downloads": 176
+            "downloads": 259
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-windows-legacy.zip",
             "size": 253168689,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-linux.zip",
             "size": 548237110,
-            "downloads": 39
+            "downloads": 54
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-linux-arm64.zip",
             "size": 373141344,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-linux-legacy.zip",
             "size": 251582972,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-macos.zip",
             "size": 299845094,
-            "downloads": 45
+            "downloads": 81
           }
         ]
       },
@@ -807,7 +813,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
           "size": 30612,
-          "download_count": 5213,
+          "download_count": 5222,
           "content_type": "image/jpeg"
         }
       ]
@@ -831,7 +837,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.2/rom.zip",
-            "downloads": 11100
+            "downloads": 11112,
+            "mirror_downloads": 12
           }
         ],
         "portable": [
@@ -840,42 +847,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-windows.zip",
             "size": 501367561,
-            "downloads": 6
+            "downloads": 10
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-windows-legacy.zip",
             "size": 263128740,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-linux.zip",
             "size": 558197165,
-            "downloads": 4
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-linux-arm64.zip",
             "size": 383101399,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-linux-legacy.zip",
             "size": 261543023,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-macos.zip",
             "size": 309805163,
-            "downloads": 3
+            "downloads": 7
           }
         ]
       },
@@ -917,7 +924,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/2.8.2/rom.zip",
-            "downloads": 4959
+            "downloads": 4971,
+            "mirror_downloads": 12
           }
         ],
         "portable": [
@@ -926,42 +934,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-windows.zip",
             "size": 501331052,
-            "downloads": 6
+            "downloads": 11
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-windows-legacy.zip",
             "size": 263092231,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-linux.zip",
             "size": 558160656,
-            "downloads": 4
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-linux-arm64.zip",
             "size": 383064890,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-linux-legacy.zip",
             "size": 261506516,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-macos.zip",
             "size": 309768647,
-            "downloads": 2
+            "downloads": 6
           }
         ]
       },
@@ -1003,7 +1011,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/type-b-1.7.6/rom_type_b.zip",
-            "downloads": 1087
+            "downloads": 1099,
+            "mirror_downloads": 12
           }
         ],
         "portable": [
@@ -1012,42 +1021,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-windows.zip",
             "size": 479527243,
-            "downloads": 5
+            "downloads": 16
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-windows-legacy.zip",
             "size": 241288440,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-linux.zip",
             "size": 526848567,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-linux-arm64.zip",
             "size": 351752801,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-linux-legacy.zip",
             "size": 239702725,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-macos.zip",
             "size": 286161195,
-            "downloads": 1
+            "downloads": 6
           }
         ]
       },
@@ -1089,7 +1098,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/rom.zip",
-            "downloads": 1509
+            "downloads": 1521,
+            "mirror_downloads": 12
           }
         ],
         "portable": [
@@ -1098,42 +1108,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-windows.zip",
             "size": 482664700,
-            "downloads": 6
+            "downloads": 12
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-windows-legacy.zip",
             "size": 244425879,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-linux.zip",
             "size": 539494304,
-            "downloads": 3
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-linux-arm64.zip",
             "size": 364398538,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-linux-legacy.zip",
             "size": 242840162,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-macos.zip",
             "size": 291102295,
-            "downloads": 2
+            "downloads": 6
           }
         ]
       },
@@ -1185,7 +1195,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g1.zip",
             "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip",
-            "downloads": 66
+            "downloads": 81,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -1194,42 +1205,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_g1-windows.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-windows.zip",
             "size": 1958882629,
-            "downloads": 6
+            "downloads": 26
           },
           {
             "platform": "windows-legacy",
             "name": "rom_g1-windows-legacy.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-windows-legacy.zip",
             "size": 1720643810,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_g1-linux.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-linux.zip",
             "size": 2006203953,
-            "downloads": 0
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_g1-linux-arm64.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-linux-arm64.zip",
             "size": 1831108187,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "rom_g1-linux-legacy.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-linux-legacy.zip",
             "size": 1719058095,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_g1-macos.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-macos.zip",
             "size": 1765516569,
-            "downloads": 0
+            "downloads": 12
           }
         ]
       },
@@ -1271,7 +1282,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g1.zip",
             "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1.zip",
-            "downloads": 14
+            "downloads": 24,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -1280,42 +1292,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_g1-windows.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-windows.zip",
             "size": 1958841579,
-            "downloads": 6
+            "downloads": 8
           },
           {
             "platform": "windows-legacy",
             "name": "rom_g1-windows-legacy.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-windows-legacy.zip",
             "size": 1720602760,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_g1-linux.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-linux.zip",
             "size": 2006162903,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
             "name": "rom_g1-linux-arm64.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-linux-arm64.zip",
             "size": 1831067137,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_g1-linux-legacy.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-linux-legacy.zip",
             "size": 1719017045,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_g1-macos.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-macos.zip",
             "size": 1765475518,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -1366,42 +1378,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_g1-windows.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-windows.zip",
             "size": 1886307839,
-            "downloads": 5
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom_g1-windows-legacy.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-windows-legacy.zip",
             "size": 1648069020,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_g1-linux.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-linux.zip",
             "size": 1933629163,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_g1-linux-arm64.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-linux-arm64.zip",
             "size": 1758533397,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_g1-linux-legacy.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-linux-legacy.zip",
             "size": 1646483305,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_g1-macos.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-macos.zip",
             "size": 1692941776,
-            "downloads": 0
+            "downloads": 4
           }
         ]
       },
@@ -1443,7 +1455,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g1.zip",
             "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1.zip",
-            "downloads": 15
+            "downloads": 25,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -1452,42 +1465,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_g1-windows.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-windows.zip",
             "size": 1886314770,
-            "downloads": 5
+            "downloads": 8
           },
           {
             "platform": "windows-legacy",
             "name": "rom_g1-windows-legacy.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-windows-legacy.zip",
             "size": 1648075951,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_g1-linux.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-linux.zip",
             "size": 1933636094,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_g1-linux-arm64.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-linux-arm64.zip",
             "size": 1758540328,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_g1-linux-legacy.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-linux-legacy.zip",
             "size": 1646490236,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_g1-macos.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-macos.zip",
             "size": 1692948708,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -1529,7 +1542,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g1.zip",
             "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.04-20260805/rom_g1.zip",
-            "downloads": 16
+            "downloads": 26,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -1538,42 +1552,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_g1-windows.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-windows.zip",
             "size": 1958429181,
-            "downloads": 5
+            "downloads": 8
           },
           {
             "platform": "windows-legacy",
             "name": "rom_g1-windows-legacy.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-windows-legacy.zip",
             "size": 1720190362,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_g1-linux.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-linux.zip",
             "size": 2005750505,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom_g1-linux-arm64.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-linux-arm64.zip",
             "size": 1830654739,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_g1-linux-legacy.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-linux-legacy.zip",
             "size": 1718604645,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_g1-macos.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-macos.zip",
             "size": 1765063124,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -1615,7 +1629,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g1.zip",
             "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.03-20260707/rom_g1.zip",
-            "downloads": 30
+            "downloads": 40,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -1624,42 +1639,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_g1-windows.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-windows.zip",
             "size": 1958462369,
-            "downloads": 4
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom_g1-windows-legacy.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-windows-legacy.zip",
             "size": 1720223550,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_g1-linux.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-linux.zip",
             "size": 2005783693,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_g1-linux-arm64.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-linux-arm64.zip",
             "size": 1830687927,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_g1-linux-legacy.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-linux-legacy.zip",
             "size": 1718637833,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_g1-macos.zip",
             "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-macos.zip",
             "size": 1765096312,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -1703,7 +1718,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g3.zip",
             "url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3.zip",
-            "downloads": 37
+            "downloads": 40,
+            "mirror_downloads": 3
           }
         ],
         "portable": [
@@ -1712,42 +1728,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_g3-windows.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3-windows.zip",
             "size": 1959199230,
-            "downloads": 2
+            "downloads": 9
           },
           {
             "platform": "windows-legacy",
             "name": "rom_g3-windows-legacy.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3-windows-legacy.zip",
             "size": 1720960413,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_g3-linux.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3-linux.zip",
             "size": 2006520554,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom_g3-linux-arm64.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3-linux-arm64.zip",
             "size": 1831424788,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_g3-linux-legacy.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3-linux-legacy.zip",
             "size": 1719374698,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_g3-macos.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3-macos.zip",
             "size": 1765833170,
-            "downloads": 0
+            "downloads": 6
           }
         ]
       },
@@ -1798,42 +1814,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_g3-windows.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3-windows.zip",
             "size": 1959198035,
-            "downloads": 2
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
             "name": "rom_g3-windows-legacy.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3-windows-legacy.zip",
             "size": 1720959220,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_g3-linux.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3-linux.zip",
             "size": 2006519359,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
             "name": "rom_g3-linux-arm64.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3-linux-arm64.zip",
             "size": 1831423593,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_g3-linux-legacy.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3-linux-legacy.zip",
             "size": 1719373503,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_g3-macos.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3-macos.zip",
             "size": 1765831976,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -1875,7 +1891,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g3.zip",
             "url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3.zip",
-            "downloads": 15
+            "downloads": 25,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -1884,42 +1901,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_g3-windows.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3-windows.zip",
             "size": 1886585387,
-            "downloads": 3
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
             "name": "rom_g3-windows-legacy.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3-windows-legacy.zip",
             "size": 1648346570,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_g3-linux.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3-linux.zip",
             "size": 1933906711,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_g3-linux-arm64.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3-linux-arm64.zip",
             "size": 1758810945,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_g3-linux-legacy.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3-linux-legacy.zip",
             "size": 1646760853,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_g3-macos.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3-macos.zip",
             "size": 1693219325,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -1970,42 +1987,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_g3-windows.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3-windows.zip",
             "size": 1886580750,
-            "downloads": 2
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
             "name": "rom_g3-windows-legacy.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3-windows-legacy.zip",
             "size": 1648341933,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_g3-linux.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3-linux.zip",
             "size": 1933902074,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_g3-linux-arm64.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3-linux-arm64.zip",
             "size": 1758806308,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_g3-linux-legacy.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3-linux-legacy.zip",
             "size": 1646756218,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_g3-macos.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3-macos.zip",
             "size": 1693214687,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -2047,7 +2064,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g3.zip",
             "url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3.zip",
-            "downloads": 14
+            "downloads": 24,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -2056,42 +2074,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_g3-windows.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3-windows.zip",
             "size": 1958704617,
-            "downloads": 2
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
             "name": "rom_g3-windows-legacy.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3-windows-legacy.zip",
             "size": 1720465800,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_g3-linux.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3-linux.zip",
             "size": 2006025941,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_g3-linux-arm64.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3-linux-arm64.zip",
             "size": 1830930175,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_g3-linux-legacy.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3-linux-legacy.zip",
             "size": 1718880085,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_g3-macos.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3-macos.zip",
             "size": 1765338557,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -2133,7 +2151,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g3.zip",
             "url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3.zip",
-            "downloads": 13
+            "downloads": 23,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -2142,42 +2161,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_g3-windows.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3-windows.zip",
             "size": 1958719797,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
             "name": "rom_g3-windows-legacy.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3-windows-legacy.zip",
             "size": 1720480980,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_g3-linux.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3-linux.zip",
             "size": 2006041121,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
             "name": "rom_g3-linux-arm64.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3-linux-arm64.zip",
             "size": 1830945355,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_g3-linux-legacy.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3-linux-legacy.zip",
             "size": 1718895263,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_g3-macos.zip",
             "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3-macos.zip",
             "size": 1765353738,
-            "downloads": 0
+            "downloads": 3
           }
         ]
       },
@@ -2221,7 +2240,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g5.zip",
             "url": "https://github.com/y1-community/g5-stock-rom/releases/download/MX4_EN-V1.11-20260727/rom_g5.zip",
-            "downloads": 70
+            "downloads": 72,
+            "mirror_downloads": 2
           }
         ],
         "portable": [
@@ -2230,35 +2250,35 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_g5-windows.zip",
             "url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-windows.zip",
             "size": 2088208244,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows-legacy",
             "name": "rom_g5-windows-legacy.zip",
             "url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-windows-legacy.zip",
             "size": 2097668626,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_g5-linux.zip",
             "url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-linux.zip",
             "size": 2096082089,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_g5-linux-legacy.zip",
             "url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-linux-legacy.zip",
             "size": 2096082911,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_g5-macos.zip",
             "url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-macos.zip",
             "size": 2142541360,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -2461,7 +2481,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_q3.zip",
             "url": "https://github.com/y1-community/q3-stock-rom/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3.zip",
-            "downloads": 18
+            "downloads": 23,
+            "mirror_downloads": 5
           }
         ],
         "portable": [
@@ -2470,42 +2491,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_q3-windows.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-windows.zip",
             "size": 598814110,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
             "name": "rom_q3-windows-legacy.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-windows-legacy.zip",
             "size": 360575295,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_q3-linux.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-linux.zip",
             "size": 646135434,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_q3-linux-arm64.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-linux-arm64.zip",
             "size": 471039668,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_q3-linux-legacy.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-linux-legacy.zip",
             "size": 358989578,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_q3-macos.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-macos.zip",
             "size": 405448060,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -2547,7 +2568,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_q3.zip",
             "url": "https://github.com/y1-community/q3-stock-rom/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3.zip",
-            "downloads": 12
+            "downloads": 17,
+            "mirror_downloads": 5
           }
         ],
         "portable": [
@@ -2556,42 +2578,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_q3-windows.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-windows.zip",
             "size": 592846150,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_q3-windows-legacy.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-windows-legacy.zip",
             "size": 354607335,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_q3-linux.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-linux.zip",
             "size": 640167474,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_q3-linux-arm64.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-linux-arm64.zip",
             "size": 465071708,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_q3-linux-legacy.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-linux-legacy.zip",
             "size": 353021620,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_q3-macos.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-macos.zip",
             "size": 399480100,
-            "downloads": 2
+            "downloads": 4
           }
         ]
       },
@@ -2642,42 +2664,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_q3-windows.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-windows.zip",
             "size": 598800681,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
             "name": "rom_q3-windows-legacy.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-windows-legacy.zip",
             "size": 360561868,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_q3-linux.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-linux.zip",
             "size": 646122005,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
             "name": "rom_q3-linux-arm64.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-linux-arm64.zip",
             "size": 471026239,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_q3-linux-legacy.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-linux-legacy.zip",
             "size": 358976153,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_q3-macos.zip",
             "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-macos.zip",
             "size": 405434636,
-            "downloads": 2
+            "downloads": 5
           }
         ]
       },
@@ -2730,42 +2752,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_q5-windows.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-windows.zip",
             "size": 654565099,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
             "name": "rom_q5-windows-legacy.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-windows-legacy.zip",
             "size": 416326288,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_q5-linux.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-linux.zip",
             "size": 701886423,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_q5-linux-arm64.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-linux-arm64.zip",
             "size": 526790657,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_q5-linux-legacy.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-linux-legacy.zip",
             "size": 414740573,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_q5-macos.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-macos.zip",
             "size": 461199052,
-            "downloads": 2
+            "downloads": 4
           }
         ]
       },
@@ -2816,42 +2838,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_q5-windows.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-windows.zip",
             "size": 660866173,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom_q5-windows-legacy.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-windows-legacy.zip",
             "size": 422627362,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_q5-linux.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-linux.zip",
             "size": 708187497,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
             "name": "rom_q5-linux-arm64.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-linux-arm64.zip",
             "size": 533091731,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_q5-linux-legacy.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-linux-legacy.zip",
             "size": 421041647,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_q5-macos.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-macos.zip",
             "size": 467500125,
-            "downloads": 3
+            "downloads": 5
           }
         ]
       },
@@ -2893,7 +2915,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_q5.zip",
             "url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5.zip",
-            "downloads": 15
+            "downloads": 20,
+            "mirror_downloads": 5
           }
         ],
         "portable": [
@@ -2902,42 +2925,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_q5-windows.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-windows.zip",
             "size": 660836794,
-            "downloads": 2
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
             "name": "rom_q5-windows-legacy.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-windows-legacy.zip",
             "size": 422597981,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_q5-linux.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-linux.zip",
             "size": 708158118,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_q5-linux-arm64.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-linux-arm64.zip",
             "size": 533062352,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_q5-linux-legacy.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-linux-legacy.zip",
             "size": 421012266,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_q5-macos.zip",
             "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-macos.zip",
             "size": 467470746,
-            "downloads": 3
+            "downloads": 4
           }
         ]
       },
@@ -2972,7 +2995,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark_url": "",
       "body": "**Y2Linux 1.0 Beta 9.3.30**: films in every skin, tidier albums, Shuffle in folders and a profile for the Truthear Zero:BLUE2.\n\n## Fixed\n- **Films only showed their picture with the Reborn skin** ([Y2Reborn #131](https://github.com/SchulzCode/Y2Reborn/issues/131)). With a skin that has its own Now Playing (Luna XP, Classic and others) a film looked like a song. Films now always play full screen on black, in every skin; songs keep your skin's Now Playing.\n- **Hundreds of tiny albums.** An album whose songs each name a different Album Artist (common with downloaded music) was split into many albums, two different albums with the same title but no Album Artist were merged, and songs without an album title formed one big mix. Now such an album is one **Various Artists** album, same-titled albums stay apart by artist, and songs without an album title are listed under their artist. Your files are not changed; tidy tags (e.g. with MusicBrainz Picard) still give the best result.\n\n## What's new\n- **Shuffle in folders.** An opened folder in Music \u2192 Folders starts with **Shuffle**, which mixes everything in it, its folders included.\n- **Truthear x Crinacle Zero:BLUE2** has its own headphone profile (Settings \u2192 Sound \u2192 Equalizer \u2192 Headphone Profile), 48 in all.\n\n## Known issues\n- Everything listed for [Beta 9.3.29](https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-259) still applies.\n- Something wrong? Send an error report (Settings \u2192 System \u2192 Error Reports). **Restore Previous System** (Settings \u2192 System \u2192 About, tap Version seven times, then Diagnostics) takes you back to the version you had, with your data kept.\n\nMore details in plain words: **[Beta 9.3.30 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.3.30.md)**.\n\n<!-- github-only -->\n\n## Already running Y2Linux\nSettings \u2192 System \u2192 Software Update \u2192 **Update Now**. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. (On Beta 9.2.8 and older: Settings \u2192 About & Updates \u2192 Check for Updates \u2192 **Update Now**.)\n\n## Install with the Innioasis Updater (easiest)\nThe community **Innioasis Updater CE** installs Y2Linux for you, on **Windows, macOS and Linux**. No SP Flash Tool needed.\n\n1. Download Innioasis Updater CE for your computer from [innioasis.app](https://innioasis.app/guide.html#download-updater) and open it.\n2. Choose **Y2**, then **Reborn (Y2Linux)** and the latest release.\n3. Click **Install / Restore**, switch the Y2 off and connect it when the updater asks. Wait until it confirms, then unplug.\n4. Connect the Y2 to the computer and **copy** `system.img` from the Innioasis Y2 firmware package v3.2.0 into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nStep-by-step guides for each computer: [Reborn (Y2Linux) install guide](https://innioasis.app/guides/reborn-y2linux-y2.html). The way back to stock is in the updater too: choose **Y2** and **Original Software**.\n\n## Install with SP Flash Tool\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.9.3.30-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md) \u00b7 Storage: [Storage](https://github.com/SchulzCode/Y2Linux/blob/main/docs/STORAGE.md) \u00b7 [Videos](https://github.com/SchulzCode/Y2Linux/blob/main/docs/VIDEO.md) \u00b7 [FM radio](https://github.com/SchulzCode/Y2Linux/blob/main/docs/FM-RADIO.md) \u00b7 [Wi-Fi Share](https://github.com/SchulzCode/Y2Linux/blob/main/docs/WIFI-SHARE.md) \u00b7 [Buttons](https://github.com/SchulzCode/Y2Linux/blob/main/docs/BUTTONS.md) \u00b7 [Audiobooks](https://github.com/SchulzCode/Y2Linux/blob/main/docs/AUDIOBOOKS.md) \u00b7 Headphone settings: [Headphone output](https://github.com/SchulzCode/Y2Linux/blob/main/docs/HEADPHONE-OUTPUT.md) \u00b7 [Error reports](https://github.com/SchulzCode/Y2Linux/blob/main/docs/ERROR-REPORTS.md) \u00b7 Skins: [skin guide](https://github.com/SchulzCode/Y2Reborn/blob/main/docs/skins.md)\n\n## How it was tested\nThe platform's full check and Reborn's tests passed, and so did the tests of the release images. New tests: a film in a skin with its own Now Playing (the picture drawn, untinted; it failed before the fix), albums with mixed, missing or differing Album Artist tags, a folder's Shuffle with its subfolders, the new headphone profile. On one player (this build, installed over the air): a film played full screen in the Classic skin, and an opened folder showed Shuffle first. **Not tested on the player: the album changes with a large library, the BLUE2 profile by ear.**\n\n## Files\n- `Y2Linux-1.0.0-beta.9.3.30-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 16710).\n- `Y2Linux-1.0.0-beta.9.3.30-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-261`. The video chip is driven by this project's own driver; no MediaTek video code is on the player. The speaker amplifier driver is Chris Hendrickson's GPL-2.0 AW87559 driver. The headphone profiles are AutoEq results (MIT, Jaakko Pasanen); their licence ships with them.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Awinic, Last.fm, AutoEq, Strawberry, MusicBee, HandBrake, FFmpeg or Google. Noto Sans CJK is licensed under the SIL Open Font License 1.1.\n\n<!-- /github-only -->\n\n<!-- github-only -->\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-third-party-a400ffbbbcb0.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-256/Y2Linux-sources-third-party-a400ffbbbcb0.tar) (attached to `baseline-256`), SHA-256 `a400ffbbbcb07dc08c1241e1f1ad89c5782b9ca40537f2c6e5e2735850b019ca`\n- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-120`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz) (attached to `baseline-120`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n<!-- /github-only -->\n",
-      "downloads": 77,
+      "downloads": 78,
       "mirror_downloads": 15,
       "download_breakdown": {
         "tag": "baseline-261",
@@ -2981,7 +3004,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
-            "downloads": 62
+            "downloads": 65,
+            "mirror_downloads": 2
           }
         ],
         "portable": [
@@ -3035,7 +3059,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/bootimg.img.gz",
           "size": 7557676,
-          "download_count": 89,
+          "download_count": 90,
           "content_type": "application/gzip"
         },
         {
@@ -3043,7 +3067,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.json",
           "size": 4245,
-          "download_count": 227,
+          "download_count": 230,
           "content_type": "application/json"
         },
         {
@@ -3051,7 +3075,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.sig",
           "size": 64,
-          "download_count": 224,
+          "download_count": 227,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3059,7 +3083,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/recovery.img.gz",
           "size": 7557708,
-          "download_count": 88,
+          "download_count": 89,
           "content_type": "application/gzip"
         },
         {
@@ -3067,7 +3091,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/rootfs.ext4.gz",
           "size": 53150447,
-          "download_count": 88,
+          "download_count": 89,
           "content_type": "application/gzip"
         },
         {
@@ -3083,7 +3107,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
           "size": 69256945,
-          "download_count": 62,
+          "download_count": 63,
           "content_type": "application/zip"
         },
         {
@@ -3115,7 +3139,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.29-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install.zip",
-            "downloads": 10
+            "downloads": 11,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -3249,7 +3274,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.28-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install.zip",
-            "downloads": 9
+            "downloads": 10,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -3391,7 +3417,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.27-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install.zip",
-            "downloads": 33
+            "downloads": 34,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -3525,7 +3552,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.26-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-251/Y2Linux-1.0.0-beta.9.3.26-first-install.zip",
-            "downloads": 9
+            "downloads": 10,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -3659,7 +3687,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.25-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-248/Y2Linux-1.0.0-beta.9.3.25-first-install.zip",
-            "downloads": 10
+            "downloads": 11,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -3801,7 +3830,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.24-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install.zip",
-            "downloads": 73
+            "downloads": 76,
+            "mirror_downloads": 3
           }
         ],
         "portable": [
@@ -3810,42 +3840,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-windows.zip",
             "size": 380581857,
-            "downloads": 8
+            "downloads": 13
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-windows-legacy.zip",
             "size": 142343144,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-linux.zip",
             "size": 427903228,
-            "downloads": 8
+            "downloads": 9
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-linux-arm64.zip",
             "size": 252807462,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-linux-legacy.zip",
             "size": 140757468,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-macos.zip",
             "size": 187215964,
-            "downloads": 12
+            "downloads": 14
           }
         ]
       },
@@ -3935,7 +3965,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.23-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install.zip",
-            "downloads": 66
+            "downloads": 69,
+            "mirror_downloads": 3
           }
         ],
         "portable": [
@@ -3944,7 +3975,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-windows.zip",
             "size": 380578834,
-            "downloads": 8
+            "downloads": 16
           },
           {
             "platform": "windows-legacy",
@@ -3958,14 +3989,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-linux.zip",
             "size": 427900205,
-            "downloads": 7
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-linux-arm64.zip",
             "size": 252804439,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
@@ -3979,7 +4010,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-macos.zip",
             "size": 187212941,
-            "downloads": 11
+            "downloads": 13
           }
         ]
       },
@@ -4069,7 +4100,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.22-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-233/Y2Linux-1.0.0-beta.9.3.22-first-install.zip",
-            "downloads": 45
+            "downloads": 49,
+            "mirror_downloads": 4
           }
         ],
         "portable": [
@@ -4078,7 +4110,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.22-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-233/Y2Linux-1.0.0-beta.9.3.22-first-install-windows.zip",
             "size": 380582209,
-            "downloads": 9
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -4092,14 +4124,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.22-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-233/Y2Linux-1.0.0-beta.9.3.22-first-install-linux.zip",
             "size": 427903580,
-            "downloads": 5
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.3.22-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-233/Y2Linux-1.0.0-beta.9.3.22-first-install-linux-arm64.zip",
             "size": 252807814,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -4113,7 +4145,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.22-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-233/Y2Linux-1.0.0-beta.9.3.22-first-install-macos.zip",
             "size": 187216317,
-            "downloads": 9
+            "downloads": 12
           }
         ]
       },
@@ -4203,7 +4235,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.21-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-232/Y2Linux-1.0.0-beta.9.3.21-first-install.zip",
-            "downloads": 11
+            "downloads": 15,
+            "mirror_downloads": 4
           }
         ],
         "portable": [
@@ -4212,7 +4245,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.21-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-232/Y2Linux-1.0.0-beta.9.3.21-first-install-windows.zip",
             "size": 380582298,
-            "downloads": 7
+            "downloads": 15
           },
           {
             "platform": "windows-legacy",
@@ -4226,14 +4259,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.21-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-232/Y2Linux-1.0.0-beta.9.3.21-first-install-linux.zip",
             "size": 427903669,
-            "downloads": 6
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.3.21-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-232/Y2Linux-1.0.0-beta.9.3.21-first-install-linux-arm64.zip",
             "size": 252807903,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -4247,7 +4280,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.21-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-232/Y2Linux-1.0.0-beta.9.3.21-first-install-macos.zip",
             "size": 187216405,
-            "downloads": 9
+            "downloads": 12
           }
         ]
       },
@@ -4345,7 +4378,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.20-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-229/Y2Linux-1.0.0-beta.9.3.20-first-install.zip",
-            "downloads": 35
+            "downloads": 40,
+            "mirror_downloads": 5
           }
         ],
         "portable": [
@@ -4354,7 +4388,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.20-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-229/Y2Linux-1.0.0-beta.9.3.20-first-install-windows.zip",
             "size": 380569154,
-            "downloads": 7
+            "downloads": 16
           },
           {
             "platform": "windows-legacy",
@@ -4368,14 +4402,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.20-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-229/Y2Linux-1.0.0-beta.9.3.20-first-install-linux.zip",
             "size": 427890525,
-            "downloads": 5
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.3.20-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-229/Y2Linux-1.0.0-beta.9.3.20-first-install-linux-arm64.zip",
             "size": 252794759,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -4389,7 +4423,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.20-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-229/Y2Linux-1.0.0-beta.9.3.20-first-install-macos.zip",
             "size": 187203261,
-            "downloads": 10
+            "downloads": 14
           }
         ]
       },
@@ -4479,7 +4513,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.19-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install.zip",
-            "downloads": 59
+            "downloads": 66,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -4488,7 +4523,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip",
             "size": 380564924,
-            "downloads": 7
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -4502,14 +4537,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.19-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-linux.zip",
             "size": 427886295,
-            "downloads": 5
+            "downloads": 9
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.3.19-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-linux-arm64.zip",
             "size": 252790529,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -4523,7 +4558,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.19-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-macos.zip",
             "size": 187199032,
-            "downloads": 9
+            "downloads": 15
           }
         ]
       },
@@ -4613,7 +4648,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.18-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install.zip",
-            "downloads": 21
+            "downloads": 28,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -4622,7 +4658,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.18-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install-windows.zip",
             "size": 380564283,
-            "downloads": 7
+            "downloads": 16
           },
           {
             "platform": "windows-legacy",
@@ -4636,14 +4672,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.18-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install-linux.zip",
             "size": 427885654,
-            "downloads": 5
+            "downloads": 9
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.3.18-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install-linux-arm64.zip",
             "size": 252789888,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -4657,7 +4693,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.18-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install-macos.zip",
             "size": 187198390,
-            "downloads": 9
+            "downloads": 14
           }
         ]
       },
@@ -4747,7 +4783,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.17-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-225/Y2Linux-1.0.0-beta.9.3.17-first-install.zip",
-            "downloads": 26
+            "downloads": 33,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -4756,7 +4793,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.17-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/Y2Linux-1.0.0-beta.9.3.17-first-install-windows.zip",
             "size": 380419712,
-            "downloads": 8
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -4770,14 +4807,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.17-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/Y2Linux-1.0.0-beta.9.3.17-first-install-linux.zip",
             "size": 427741083,
-            "downloads": 4
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.3.17-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/Y2Linux-1.0.0-beta.9.3.17-first-install-linux-arm64.zip",
             "size": 252645317,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -4791,7 +4828,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.17-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/Y2Linux-1.0.0-beta.9.3.17-first-install-macos.zip",
             "size": 187053819,
-            "downloads": 9
+            "downloads": 14
           }
         ]
       },
@@ -4881,7 +4918,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.16-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/Y2Linux-1.0.0-beta.9.3.16-first-install.zip",
-            "downloads": 103
+            "downloads": 120,
+            "mirror_downloads": 17
           }
         ],
         "portable": [
@@ -4890,7 +4928,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.16-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-224/Y2Linux-1.0.0-beta.9.3.16-first-install-windows.zip",
             "size": 380263185,
-            "downloads": 7
+            "downloads": 21
           },
           {
             "platform": "windows-legacy",
@@ -4904,14 +4942,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.16-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-224/Y2Linux-1.0.0-beta.9.3.16-first-install-linux.zip",
             "size": 427584556,
-            "downloads": 3
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.3.16-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-224/Y2Linux-1.0.0-beta.9.3.16-first-install-linux-arm64.zip",
             "size": 252488790,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -4925,7 +4963,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.16-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-224/Y2Linux-1.0.0-beta.9.3.16-first-install-macos.zip",
             "size": 186897292,
-            "downloads": 10
+            "downloads": 17
           }
         ]
       },
@@ -5023,7 +5061,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.15-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-223/Y2Linux-1.0.0-beta.9.3.15-first-install.zip",
-            "downloads": 54
+            "downloads": 58,
+            "mirror_downloads": 4
           }
         ],
         "portable": [
@@ -5032,7 +5071,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.15-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-223/Y2Linux-1.0.0-beta.9.3.15-first-install-windows.zip",
             "size": 380264170,
-            "downloads": 6
+            "downloads": 16
           },
           {
             "platform": "windows-legacy",
@@ -5046,14 +5085,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.15-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-223/Y2Linux-1.0.0-beta.9.3.15-first-install-linux.zip",
             "size": 427585541,
-            "downloads": 3
+            "downloads": 10
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.3.15-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-223/Y2Linux-1.0.0-beta.9.3.15-first-install-linux-arm64.zip",
             "size": 252489775,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -5067,7 +5106,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.15-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-223/Y2Linux-1.0.0-beta.9.3.15-first-install-macos.zip",
             "size": 186898277,
-            "downloads": 11
+            "downloads": 20
           }
         ]
       },
@@ -5157,7 +5196,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.13-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-221/Y2Linux-1.0.0-beta.9.3.13-first-install.zip",
-            "downloads": 20
+            "downloads": 32,
+            "mirror_downloads": 12
           }
         ],
         "portable": [
@@ -5166,7 +5206,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.13-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-221/Y2Linux-1.0.0-beta.9.3.13-first-install-windows.zip",
             "size": 380251368,
-            "downloads": 6
+            "downloads": 16
           },
           {
             "platform": "windows-legacy",
@@ -5180,14 +5220,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.13-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-221/Y2Linux-1.0.0-beta.9.3.13-first-install-linux.zip",
             "size": 427572739,
-            "downloads": 4
+            "downloads": 9
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.3.13-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-221/Y2Linux-1.0.0-beta.9.3.13-first-install-linux-arm64.zip",
             "size": 252476973,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -5201,7 +5241,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.13-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-221/Y2Linux-1.0.0-beta.9.3.13-first-install-macos.zip",
             "size": 186885476,
-            "downloads": 10
+            "downloads": 16
           }
         ]
       },
@@ -5291,7 +5331,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.12-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-220/Y2Linux-1.0.0-beta.9.3.12-first-install.zip",
-            "downloads": 27
+            "downloads": 40,
+            "mirror_downloads": 13
           }
         ],
         "portable": [
@@ -5300,7 +5341,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.12-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-220/Y2Linux-1.0.0-beta.9.3.12-first-install-windows.zip",
             "size": 380248023,
-            "downloads": 6
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -5314,14 +5355,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.12-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-220/Y2Linux-1.0.0-beta.9.3.12-first-install-linux.zip",
             "size": 427569394,
-            "downloads": 4
+            "downloads": 10
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.3.12-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-220/Y2Linux-1.0.0-beta.9.3.12-first-install-linux-arm64.zip",
             "size": 252473628,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -5335,7 +5376,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.12-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-220/Y2Linux-1.0.0-beta.9.3.12-first-install-macos.zip",
             "size": 186882131,
-            "downloads": 10
+            "downloads": 17
           }
         ]
       },
@@ -5433,7 +5474,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.7-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-215/Y2Linux-1.0.0-beta.9.3.7-first-install.zip",
-            "downloads": 46
+            "downloads": 64,
+            "mirror_downloads": 18
           }
         ],
         "portable": [
@@ -5442,7 +5484,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.7-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-215/Y2Linux-1.0.0-beta.9.3.7-first-install-windows.zip",
             "size": 380243030,
-            "downloads": 7
+            "downloads": 20
           },
           {
             "platform": "windows-legacy",
@@ -5456,14 +5498,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.7-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-215/Y2Linux-1.0.0-beta.9.3.7-first-install-linux.zip",
             "size": 427564401,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.3.7-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-215/Y2Linux-1.0.0-beta.9.3.7-first-install-linux-arm64.zip",
             "size": 252468635,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -5477,7 +5519,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.7-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-215/Y2Linux-1.0.0-beta.9.3.7-first-install-macos.zip",
             "size": 186877137,
-            "downloads": 11
+            "downloads": 22
           }
         ]
       },
@@ -5575,7 +5617,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.16-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-207/Y2Linux-1.0.0-beta.9.2.16-first-install.zip",
-            "downloads": 88
+            "downloads": 108,
+            "mirror_downloads": 20
           }
         ],
         "portable": [
@@ -5584,7 +5627,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.16-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-207/Y2Linux-1.0.0-beta.9.2.16-first-install-windows.zip",
             "size": 379680251,
-            "downloads": 6
+            "downloads": 20
           },
           {
             "platform": "windows-legacy",
@@ -5598,14 +5641,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.16-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-207/Y2Linux-1.0.0-beta.9.2.16-first-install-linux.zip",
             "size": 427001622,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.16-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-207/Y2Linux-1.0.0-beta.9.2.16-first-install-linux-arm64.zip",
             "size": 251905856,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -5619,7 +5662,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.16-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-207/Y2Linux-1.0.0-beta.9.2.16-first-install-macos.zip",
             "size": 186314359,
-            "downloads": 10
+            "downloads": 25
           }
         ]
       },
@@ -5717,7 +5760,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.15-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-206/Y2Linux-1.0.0-beta.9.2.15-first-install.zip",
-            "downloads": 28
+            "downloads": 46,
+            "mirror_downloads": 18
           }
         ],
         "portable": [
@@ -5726,7 +5770,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.15-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/Y2Linux-1.0.0-beta.9.2.15-first-install-windows.zip",
             "size": 379681993,
-            "downloads": 7
+            "downloads": 19
           },
           {
             "platform": "windows-legacy",
@@ -5740,14 +5784,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.15-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/Y2Linux-1.0.0-beta.9.2.15-first-install-linux.zip",
             "size": 427003364,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.15-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/Y2Linux-1.0.0-beta.9.2.15-first-install-linux-arm64.zip",
             "size": 251907598,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -5761,7 +5805,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.15-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/Y2Linux-1.0.0-beta.9.2.15-first-install-macos.zip",
             "size": 186316100,
-            "downloads": 10
+            "downloads": 19
           }
         ]
       },
@@ -5851,7 +5895,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.14-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/Y2Linux-1.0.0-beta.9.2.14-first-install.zip",
-            "downloads": 23
+            "downloads": 42,
+            "mirror_downloads": 19
           }
         ],
         "portable": [
@@ -5860,7 +5905,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.14-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-205/Y2Linux-1.0.0-beta.9.2.14-first-install-windows.zip",
             "size": 379682688,
-            "downloads": 7
+            "downloads": 19
           },
           {
             "platform": "windows-legacy",
@@ -5874,14 +5919,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.14-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-205/Y2Linux-1.0.0-beta.9.2.14-first-install-linux.zip",
             "size": 427004059,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.14-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-205/Y2Linux-1.0.0-beta.9.2.14-first-install-linux-arm64.zip",
             "size": 251908293,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -5895,7 +5940,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.14-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-205/Y2Linux-1.0.0-beta.9.2.14-first-install-macos.zip",
             "size": 186316795,
-            "downloads": 11
+            "downloads": 20
           }
         ]
       },
@@ -5985,7 +6030,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.13-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-204/Y2Linux-1.0.0-beta.9.2.13-first-install.zip",
-            "downloads": 28
+            "downloads": 49,
+            "mirror_downloads": 21
           }
         ],
         "portable": [
@@ -5994,7 +6040,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.13-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-204/Y2Linux-1.0.0-beta.9.2.13-first-install-windows.zip",
             "size": 379682411,
-            "downloads": 6
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -6008,14 +6054,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.13-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-204/Y2Linux-1.0.0-beta.9.2.13-first-install-linux.zip",
             "size": 427003782,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.13-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-204/Y2Linux-1.0.0-beta.9.2.13-first-install-linux-arm64.zip",
             "size": 251908016,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -6029,7 +6075,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.13-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-204/Y2Linux-1.0.0-beta.9.2.13-first-install-macos.zip",
             "size": 186316518,
-            "downloads": 10
+            "downloads": 19
           }
         ]
       },
@@ -6119,7 +6165,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.12-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-203/Y2Linux-1.0.0-beta.9.2.12-first-install.zip",
-            "downloads": 28
+            "downloads": 45,
+            "mirror_downloads": 17
           }
         ],
         "portable": [
@@ -6128,7 +6175,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.12-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-203/Y2Linux-1.0.0-beta.9.2.12-first-install-windows.zip",
             "size": 379677433,
-            "downloads": 6
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -6142,14 +6189,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.12-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-203/Y2Linux-1.0.0-beta.9.2.12-first-install-linux.zip",
             "size": 426998804,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.12-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-203/Y2Linux-1.0.0-beta.9.2.12-first-install-linux-arm64.zip",
             "size": 251903038,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -6163,7 +6210,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.12-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-203/Y2Linux-1.0.0-beta.9.2.12-first-install-macos.zip",
             "size": 186311540,
-            "downloads": 11
+            "downloads": 19
           }
         ]
       },
@@ -6253,7 +6300,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.11-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-202/Y2Linux-1.0.0-beta.9.2.11-first-install.zip",
-            "downloads": 22
+            "downloads": 39,
+            "mirror_downloads": 17
           }
         ],
         "portable": [
@@ -6262,7 +6310,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.11-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-202/Y2Linux-1.0.0-beta.9.2.11-first-install-windows.zip",
             "size": 379677682,
-            "downloads": 6
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -6276,14 +6324,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.11-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-202/Y2Linux-1.0.0-beta.9.2.11-first-install-linux.zip",
             "size": 426999053,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.11-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-202/Y2Linux-1.0.0-beta.9.2.11-first-install-linux-arm64.zip",
             "size": 251903287,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -6297,7 +6345,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.11-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-202/Y2Linux-1.0.0-beta.9.2.11-first-install-macos.zip",
             "size": 186311789,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -6387,7 +6435,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.10-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-201/Y2Linux-1.0.0-beta.9.2.10-first-install.zip",
-            "downloads": 24
+            "downloads": 41,
+            "mirror_downloads": 17
           }
         ],
         "portable": [
@@ -6396,7 +6445,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.10-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-201/Y2Linux-1.0.0-beta.9.2.10-first-install-windows.zip",
             "size": 379676808,
-            "downloads": 6
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -6410,14 +6459,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.10-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-201/Y2Linux-1.0.0-beta.9.2.10-first-install-linux.zip",
             "size": 426998179,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.10-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-201/Y2Linux-1.0.0-beta.9.2.10-first-install-linux-arm64.zip",
             "size": 251902413,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -6431,7 +6480,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.10-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-201/Y2Linux-1.0.0-beta.9.2.10-first-install-macos.zip",
             "size": 186310916,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -6521,7 +6570,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.8-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-199/Y2Linux-1.0.0-beta.9.2.8-first-install.zip",
-            "downloads": 22
+            "downloads": 39,
+            "mirror_downloads": 17
           }
         ],
         "portable": [
@@ -6530,7 +6580,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.8-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-199/Y2Linux-1.0.0-beta.9.2.8-first-install-windows.zip",
             "size": 379669303,
-            "downloads": 6
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -6544,14 +6594,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.8-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-199/Y2Linux-1.0.0-beta.9.2.8-first-install-linux.zip",
             "size": 426990674,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.8-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-199/Y2Linux-1.0.0-beta.9.2.8-first-install-linux-arm64.zip",
             "size": 251894908,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -6565,7 +6615,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.8-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-199/Y2Linux-1.0.0-beta.9.2.8-first-install-macos.zip",
             "size": 186303411,
-            "downloads": 11
+            "downloads": 19
           }
         ]
       },
@@ -6655,7 +6705,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.7-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-198/Y2Linux-1.0.0-beta.9.2.7-first-install.zip",
-            "downloads": 20
+            "downloads": 36,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -6664,7 +6715,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.7-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-198/Y2Linux-1.0.0-beta.9.2.7-first-install-windows.zip",
             "size": 379667527,
-            "downloads": 7
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -6678,14 +6729,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.7-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-198/Y2Linux-1.0.0-beta.9.2.7-first-install-linux.zip",
             "size": 426988898,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.7-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-198/Y2Linux-1.0.0-beta.9.2.7-first-install-linux-arm64.zip",
             "size": 251893132,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -6699,7 +6750,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.7-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-198/Y2Linux-1.0.0-beta.9.2.7-first-install-macos.zip",
             "size": 186301635,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -6789,7 +6840,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.6-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-197/Y2Linux-1.0.0-beta.9.2.6-first-install.zip",
-            "downloads": 22
+            "downloads": 37,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -6798,7 +6850,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.6-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-197/Y2Linux-1.0.0-beta.9.2.6-first-install-windows.zip",
             "size": 379663114,
-            "downloads": 7
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -6812,14 +6864,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.6-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-197/Y2Linux-1.0.0-beta.9.2.6-first-install-linux.zip",
             "size": 426984485,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.6-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-197/Y2Linux-1.0.0-beta.9.2.6-first-install-linux-arm64.zip",
             "size": 251888719,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -6833,7 +6885,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.6-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-197/Y2Linux-1.0.0-beta.9.2.6-first-install-macos.zip",
             "size": 186297222,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -6923,7 +6975,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.5-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-196/Y2Linux-1.0.0-beta.9.2.5-first-install.zip",
-            "downloads": 20
+            "downloads": 36,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -6932,7 +6985,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.5-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-196/Y2Linux-1.0.0-beta.9.2.5-first-install-windows.zip",
             "size": 379668813,
-            "downloads": 7
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -6946,14 +6999,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.5-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-196/Y2Linux-1.0.0-beta.9.2.5-first-install-linux.zip",
             "size": 426990184,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.5-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-196/Y2Linux-1.0.0-beta.9.2.5-first-install-linux-arm64.zip",
             "size": 251894418,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -6967,7 +7020,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.5-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-196/Y2Linux-1.0.0-beta.9.2.5-first-install-macos.zip",
             "size": 186302920,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -7057,7 +7110,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.4-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-195/Y2Linux-1.0.0-beta.9.2.4-first-install.zip",
-            "downloads": 22
+            "downloads": 38,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -7066,7 +7120,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.4-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-195/Y2Linux-1.0.0-beta.9.2.4-first-install-windows.zip",
             "size": 379666479,
-            "downloads": 8
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -7080,14 +7134,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.4-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-195/Y2Linux-1.0.0-beta.9.2.4-first-install-linux.zip",
             "size": 426987850,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.4-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-195/Y2Linux-1.0.0-beta.9.2.4-first-install-linux-arm64.zip",
             "size": 251892084,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -7101,7 +7155,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.4-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-195/Y2Linux-1.0.0-beta.9.2.4-first-install-macos.zip",
             "size": 186300586,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -7191,7 +7245,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.3-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-194/Y2Linux-1.0.0-beta.9.2.3-first-install.zip",
-            "downloads": 21
+            "downloads": 37,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -7200,7 +7255,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.3-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-194/Y2Linux-1.0.0-beta.9.2.3-first-install-windows.zip",
             "size": 379653866,
-            "downloads": 8
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -7214,14 +7269,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.3-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-194/Y2Linux-1.0.0-beta.9.2.3-first-install-linux.zip",
             "size": 426975237,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.3-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-194/Y2Linux-1.0.0-beta.9.2.3-first-install-linux-arm64.zip",
             "size": 251879471,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -7235,7 +7290,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.3-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-194/Y2Linux-1.0.0-beta.9.2.3-first-install-macos.zip",
             "size": 186287973,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -7325,7 +7380,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2.2-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-193/Y2Linux-1.0.0-beta.9.2.2-first-install.zip",
-            "downloads": 23
+            "downloads": 39,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -7334,7 +7390,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.2-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-193/Y2Linux-1.0.0-beta.9.2.2-first-install-windows.zip",
             "size": 379630008,
-            "downloads": 8
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -7348,14 +7404,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.2-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-193/Y2Linux-1.0.0-beta.9.2.2-first-install-linux.zip",
             "size": 426951379,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2.2-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-193/Y2Linux-1.0.0-beta.9.2.2-first-install-linux-arm64.zip",
             "size": 251855613,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -7369,7 +7425,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.2-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-193/Y2Linux-1.0.0-beta.9.2.2-first-install-macos.zip",
             "size": 186264116,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -7459,7 +7515,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.2-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-191/Y2Linux-1.0.0-beta.9.2-first-install.zip",
-            "downloads": 28
+            "downloads": 42,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -7468,7 +7525,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-191/Y2Linux-1.0.0-beta.9.2-first-install-windows.zip",
             "size": 379623546,
-            "downloads": 8
+            "downloads": 19
           },
           {
             "platform": "windows-legacy",
@@ -7482,14 +7539,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-191/Y2Linux-1.0.0-beta.9.2-first-install-linux.zip",
             "size": 426944917,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.2-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-191/Y2Linux-1.0.0-beta.9.2-first-install-linux-arm64.zip",
             "size": 251849151,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -7503,7 +7560,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-191/Y2Linux-1.0.0-beta.9.2-first-install-macos.zip",
             "size": 186257655,
-            "downloads": 11
+            "downloads": 19
           }
         ]
       },
@@ -7593,7 +7650,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.1-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-189/Y2Linux-1.0.0-beta.9.1-first-install.zip",
-            "downloads": 23
+            "downloads": 37,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -7602,7 +7660,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.1-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-189/Y2Linux-1.0.0-beta.9.1-first-install-windows.zip",
             "size": 379613451,
-            "downloads": 7
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -7616,14 +7674,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.1-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-189/Y2Linux-1.0.0-beta.9.1-first-install-linux.zip",
             "size": 426934822,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.1-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-189/Y2Linux-1.0.0-beta.9.1-first-install-linux-arm64.zip",
             "size": 251839056,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -7637,7 +7695,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.1-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-189/Y2Linux-1.0.0-beta.9.1-first-install-macos.zip",
             "size": 186247560,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -7727,7 +7785,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.0-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-186/Y2Linux-1.0.0-beta.9.0-first-install.zip",
-            "downloads": 25
+            "downloads": 40,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -7736,7 +7795,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.0-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-186/Y2Linux-1.0.0-beta.9.0-first-install-windows.zip",
             "size": 379484326,
-            "downloads": 8
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -7750,14 +7809,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.0-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-186/Y2Linux-1.0.0-beta.9.0-first-install-linux.zip",
             "size": 426805697,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.9.0-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-186/Y2Linux-1.0.0-beta.9.0-first-install-linux-arm64.zip",
             "size": 251709931,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -7771,7 +7830,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.0-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-186/Y2Linux-1.0.0-beta.9.0-first-install-macos.zip",
             "size": 186118434,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -7869,7 +7928,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.43-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-164/Y2Linux-1.0.0-beta.8.43-first-install.zip",
-            "downloads": 44
+            "downloads": 59,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -7878,7 +7938,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.43-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-164/Y2Linux-1.0.0-beta.8.43-first-install-windows.zip",
             "size": 385255438,
-            "downloads": 8
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -7892,14 +7952,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.43-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-164/Y2Linux-1.0.0-beta.8.43-first-install-linux.zip",
             "size": 432576809,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.43-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-164/Y2Linux-1.0.0-beta.8.43-first-install-linux-arm64.zip",
             "size": 257481043,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -7913,7 +7973,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.43-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-164/Y2Linux-1.0.0-beta.8.43-first-install-macos.zip",
             "size": 191889545,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -8003,7 +8063,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.42-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-163/Y2Linux-1.0.0-beta.8.42-first-install.zip",
-            "downloads": 21
+            "downloads": 36,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -8012,7 +8073,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.42-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-163/Y2Linux-1.0.0-beta.8.42-first-install-windows.zip",
             "size": 385227555,
-            "downloads": 8
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -8026,14 +8087,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.42-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-163/Y2Linux-1.0.0-beta.8.42-first-install-linux.zip",
             "size": 432548926,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.42-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-163/Y2Linux-1.0.0-beta.8.42-first-install-linux-arm64.zip",
             "size": 257453160,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -8047,7 +8108,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.42-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-163/Y2Linux-1.0.0-beta.8.42-first-install-macos.zip",
             "size": 191861664,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -8137,7 +8198,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.41-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-159/Y2Linux-1.0.0-beta.8.41-first-install.zip",
-            "downloads": 39
+            "downloads": 53,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -8146,7 +8208,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.41-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-159/Y2Linux-1.0.0-beta.8.41-first-install-windows.zip",
             "size": 385168605,
-            "downloads": 7
+            "downloads": 16
           },
           {
             "platform": "windows-legacy",
@@ -8160,14 +8222,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.41-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-159/Y2Linux-1.0.0-beta.8.41-first-install-linux.zip",
             "size": 432489976,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.41-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-159/Y2Linux-1.0.0-beta.8.41-first-install-linux-arm64.zip",
             "size": 257394210,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -8181,7 +8243,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.41-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-159/Y2Linux-1.0.0-beta.8.41-first-install-macos.zip",
             "size": 191802713,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -8271,7 +8333,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.40-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-154/Y2Linux-1.0.0-beta.8.40-first-install.zip",
-            "downloads": 23
+            "downloads": 37,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -8280,7 +8343,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.40-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-154/Y2Linux-1.0.0-beta.8.40-first-install-windows.zip",
             "size": 385143691,
-            "downloads": 8
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -8294,14 +8357,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.40-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-154/Y2Linux-1.0.0-beta.8.40-first-install-linux.zip",
             "size": 432465062,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.40-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-154/Y2Linux-1.0.0-beta.8.40-first-install-linux-arm64.zip",
             "size": 257369296,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -8315,7 +8378,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.40-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-154/Y2Linux-1.0.0-beta.8.40-first-install-macos.zip",
             "size": 191777799,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -8405,7 +8468,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.39-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-153/Y2Linux-1.0.0-beta.8.39-first-install.zip",
-            "downloads": 19
+            "downloads": 33,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -8414,7 +8478,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.39-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-153/Y2Linux-1.0.0-beta.8.39-first-install-windows.zip",
             "size": 385143297,
-            "downloads": 8
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -8428,14 +8492,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.39-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-153/Y2Linux-1.0.0-beta.8.39-first-install-linux.zip",
             "size": 432464668,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.39-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-153/Y2Linux-1.0.0-beta.8.39-first-install-linux-arm64.zip",
             "size": 257368902,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -8449,7 +8513,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.39-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-153/Y2Linux-1.0.0-beta.8.39-first-install-macos.zip",
             "size": 191777405,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -8539,7 +8603,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.38-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-146/Y2Linux-1.0.0-beta.8.38-first-install.zip",
-            "downloads": 24
+            "downloads": 38,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -8548,7 +8613,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.38-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-146/Y2Linux-1.0.0-beta.8.38-first-install-windows.zip",
             "size": 385065458,
-            "downloads": 9
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -8562,14 +8627,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.38-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-146/Y2Linux-1.0.0-beta.8.38-first-install-linux.zip",
             "size": 432386829,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.38-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-146/Y2Linux-1.0.0-beta.8.38-first-install-linux-arm64.zip",
             "size": 257291063,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -8583,7 +8648,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.38-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-146/Y2Linux-1.0.0-beta.8.38-first-install-macos.zip",
             "size": 191699566,
-            "downloads": 11
+            "downloads": 19
           }
         ]
       },
@@ -8673,7 +8738,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.37-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-144/Y2Linux-1.0.0-beta.8.37-first-install.zip",
-            "downloads": 18
+            "downloads": 32,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -8682,7 +8748,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.37-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-144/Y2Linux-1.0.0-beta.8.37-first-install-windows.zip",
             "size": 385059151,
-            "downloads": 9
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -8696,14 +8762,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.37-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-144/Y2Linux-1.0.0-beta.8.37-first-install-linux.zip",
             "size": 432380522,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.37-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-144/Y2Linux-1.0.0-beta.8.37-first-install-linux-arm64.zip",
             "size": 257284756,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -8717,7 +8783,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.37-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-144/Y2Linux-1.0.0-beta.8.37-first-install-macos.zip",
             "size": 191693259,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -8807,7 +8873,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.36-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-138/Y2Linux-1.0.0-beta.8.36-first-install.zip",
-            "downloads": 19
+            "downloads": 33,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -8816,7 +8883,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.36-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-138/Y2Linux-1.0.0-beta.8.36-first-install-windows.zip",
             "size": 385041350,
-            "downloads": 8
+            "downloads": 15
           },
           {
             "platform": "windows-legacy",
@@ -8830,14 +8897,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.36-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-138/Y2Linux-1.0.0-beta.8.36-first-install-linux.zip",
             "size": 432362721,
-            "downloads": 4
+            "downloads": 10
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.36-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-138/Y2Linux-1.0.0-beta.8.36-first-install-linux-arm64.zip",
             "size": 257266955,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -8851,7 +8918,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.36-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-138/Y2Linux-1.0.0-beta.8.36-first-install-macos.zip",
             "size": 191675458,
-            "downloads": 10
+            "downloads": 17
           }
         ]
       },
@@ -8941,7 +9008,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.35-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-136/Y2Linux-1.0.0-beta.8.35-first-install.zip",
-            "downloads": 24
+            "downloads": 38,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -8950,7 +9018,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.35-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-136/Y2Linux-1.0.0-beta.8.35-first-install-windows.zip",
             "size": 385034954,
-            "downloads": 9
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -8964,14 +9032,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.35-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-136/Y2Linux-1.0.0-beta.8.35-first-install-linux.zip",
             "size": 432356325,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.35-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-136/Y2Linux-1.0.0-beta.8.35-first-install-linux-arm64.zip",
             "size": 257260559,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -8985,7 +9053,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.35-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-136/Y2Linux-1.0.0-beta.8.35-first-install-macos.zip",
             "size": 191669062,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -9075,7 +9143,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.34-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-135/Y2Linux-1.0.0-beta.8.34-first-install.zip",
-            "downloads": 20
+            "downloads": 34,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -9084,7 +9153,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.34-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-135/Y2Linux-1.0.0-beta.8.34-first-install-windows.zip",
             "size": 385031263,
-            "downloads": 9
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -9098,14 +9167,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.34-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-135/Y2Linux-1.0.0-beta.8.34-first-install-linux.zip",
             "size": 432352634,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.34-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-135/Y2Linux-1.0.0-beta.8.34-first-install-linux-arm64.zip",
             "size": 257256868,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -9119,7 +9188,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.34-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-135/Y2Linux-1.0.0-beta.8.34-first-install-macos.zip",
             "size": 191665370,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -9209,7 +9278,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.33-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-134/Y2Linux-1.0.0-beta.8.33-first-install.zip",
-            "downloads": 21
+            "downloads": 39,
+            "mirror_downloads": 18
           }
         ],
         "portable": [
@@ -9218,7 +9288,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.33-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-134/Y2Linux-1.0.0-beta.8.33-first-install-windows.zip",
             "size": 385030686,
-            "downloads": 9
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -9232,14 +9302,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.33-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-134/Y2Linux-1.0.0-beta.8.33-first-install-linux.zip",
             "size": 432352057,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.33-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-134/Y2Linux-1.0.0-beta.8.33-first-install-linux-arm64.zip",
             "size": 257256291,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -9253,7 +9323,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.33-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-134/Y2Linux-1.0.0-beta.8.33-first-install-macos.zip",
             "size": 191664794,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -9343,7 +9413,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.31-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-130/Y2Linux-1.0.0-beta.8.31-first-install.zip",
-            "downloads": 21
+            "downloads": 36,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -9352,7 +9423,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.31-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-130/Y2Linux-1.0.0-beta.8.31-first-install-windows.zip",
             "size": 384920209,
-            "downloads": 8
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -9366,14 +9437,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.31-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-130/Y2Linux-1.0.0-beta.8.31-first-install-linux.zip",
             "size": 432241580,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.31-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-130/Y2Linux-1.0.0-beta.8.31-first-install-linux-arm64.zip",
             "size": 257145814,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -9387,7 +9458,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.31-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-130/Y2Linux-1.0.0-beta.8.31-first-install-macos.zip",
             "size": 191554317,
-            "downloads": 10
+            "downloads": 19
           }
         ]
       },
@@ -9477,7 +9548,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.30-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-129/Y2Linux-1.0.0-beta.8.30-first-install.zip",
-            "downloads": 20
+            "downloads": 35,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -9486,7 +9558,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.30-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-129/Y2Linux-1.0.0-beta.8.30-first-install-windows.zip",
             "size": 384921617,
-            "downloads": 8
+            "downloads": 16
           },
           {
             "platform": "windows-legacy",
@@ -9500,14 +9572,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.30-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-129/Y2Linux-1.0.0-beta.8.30-first-install-linux.zip",
             "size": 432242988,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.30-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-129/Y2Linux-1.0.0-beta.8.30-first-install-linux-arm64.zip",
             "size": 257147222,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -9521,7 +9593,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.30-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-129/Y2Linux-1.0.0-beta.8.30-first-install-macos.zip",
             "size": 191555725,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -9611,7 +9683,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.29-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-128/Y2Linux-1.0.0-beta.8.29-first-install.zip",
-            "downloads": 24
+            "downloads": 39,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -9620,7 +9693,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.29-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-128/Y2Linux-1.0.0-beta.8.29-first-install-windows.zip",
             "size": 384914123,
-            "downloads": 8
+            "downloads": 16
           },
           {
             "platform": "windows-legacy",
@@ -9634,14 +9707,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.29-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-128/Y2Linux-1.0.0-beta.8.29-first-install-linux.zip",
             "size": 432235494,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.29-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-128/Y2Linux-1.0.0-beta.8.29-first-install-linux-arm64.zip",
             "size": 257139728,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -9655,7 +9728,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.29-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-128/Y2Linux-1.0.0-beta.8.29-first-install-macos.zip",
             "size": 191548231,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -9745,7 +9818,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.28-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-127/Y2Linux-1.0.0-beta.8.28-first-install.zip",
-            "downloads": 27
+            "downloads": 42,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -9754,7 +9828,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.28-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-127/Y2Linux-1.0.0-beta.8.28-first-install-windows.zip",
             "size": 384911506,
-            "downloads": 9
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -9768,14 +9842,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.28-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-127/Y2Linux-1.0.0-beta.8.28-first-install-linux.zip",
             "size": 432232877,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.28-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-127/Y2Linux-1.0.0-beta.8.28-first-install-linux-arm64.zip",
             "size": 257137111,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -9789,7 +9863,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.28-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-127/Y2Linux-1.0.0-beta.8.28-first-install-macos.zip",
             "size": 191545614,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -9879,7 +9953,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.27-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-126/Y2Linux-1.0.0-beta.8.27-first-install.zip",
-            "downloads": 19
+            "downloads": 34,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -9888,7 +9963,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.27-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-126/Y2Linux-1.0.0-beta.8.27-first-install-windows.zip",
             "size": 384892787,
-            "downloads": 9
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -9902,14 +9977,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.27-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-126/Y2Linux-1.0.0-beta.8.27-first-install-linux.zip",
             "size": 432214158,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.27-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-126/Y2Linux-1.0.0-beta.8.27-first-install-linux-arm64.zip",
             "size": 257118392,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -9923,7 +9998,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.27-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-126/Y2Linux-1.0.0-beta.8.27-first-install-macos.zip",
             "size": 191526895,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -10013,7 +10088,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.26-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-125/Y2Linux-1.0.0-beta.8.26-first-install.zip",
-            "downloads": 20
+            "downloads": 35,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -10022,7 +10098,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.26-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-125/Y2Linux-1.0.0-beta.8.26-first-install-windows.zip",
             "size": 384888318,
-            "downloads": 9
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -10036,14 +10112,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.26-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-125/Y2Linux-1.0.0-beta.8.26-first-install-linux.zip",
             "size": 432209689,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.26-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-125/Y2Linux-1.0.0-beta.8.26-first-install-linux-arm64.zip",
             "size": 257113923,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -10057,7 +10133,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.26-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-125/Y2Linux-1.0.0-beta.8.26-first-install-macos.zip",
             "size": 191522426,
-            "downloads": 10
+            "downloads": 19
           }
         ]
       },
@@ -10147,7 +10223,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.25-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-124/Y2Linux-1.0.0-beta.8.25-first-install.zip",
-            "downloads": 28
+            "downloads": 43,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -10156,7 +10233,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.25-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-124/Y2Linux-1.0.0-beta.8.25-first-install-windows.zip",
             "size": 384887266,
-            "downloads": 10
+            "downloads": 20
           },
           {
             "platform": "windows-legacy",
@@ -10170,14 +10247,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.25-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-124/Y2Linux-1.0.0-beta.8.25-first-install-linux.zip",
             "size": 432208637,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.25-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-124/Y2Linux-1.0.0-beta.8.25-first-install-linux-arm64.zip",
             "size": 257112871,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -10191,7 +10268,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.25-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-124/Y2Linux-1.0.0-beta.8.25-first-install-macos.zip",
             "size": 191521374,
-            "downloads": 10
+            "downloads": 19
           }
         ]
       },
@@ -10281,7 +10358,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.24-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-123/Y2Linux-1.0.0-beta.8.24-first-install.zip",
-            "downloads": 22
+            "downloads": 37,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -10290,7 +10368,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.24-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-123/Y2Linux-1.0.0-beta.8.24-first-install-windows.zip",
             "size": 384885172,
-            "downloads": 9
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -10304,14 +10382,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.24-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-123/Y2Linux-1.0.0-beta.8.24-first-install-linux.zip",
             "size": 432206543,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.24-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-123/Y2Linux-1.0.0-beta.8.24-first-install-linux-arm64.zip",
             "size": 257110777,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -10325,7 +10403,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.24-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-123/Y2Linux-1.0.0-beta.8.24-first-install-macos.zip",
             "size": 191519280,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -10415,7 +10493,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.23-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-122/Y2Linux-1.0.0-beta.8.23-first-install.zip",
-            "downloads": 21
+            "downloads": 36,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -10424,7 +10503,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.23-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-122/Y2Linux-1.0.0-beta.8.23-first-install-windows.zip",
             "size": 384888888,
-            "downloads": 10
+            "downloads": 19
           },
           {
             "platform": "windows-legacy",
@@ -10438,14 +10517,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.23-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-122/Y2Linux-1.0.0-beta.8.23-first-install-linux.zip",
             "size": 432210259,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.23-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-122/Y2Linux-1.0.0-beta.8.23-first-install-linux-arm64.zip",
             "size": 257114493,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -10459,7 +10538,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.23-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-122/Y2Linux-1.0.0-beta.8.23-first-install-macos.zip",
             "size": 191522996,
-            "downloads": 11
+            "downloads": 20
           }
         ]
       },
@@ -10549,7 +10628,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.22-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-121/Y2Linux-1.0.0-beta.8.22-first-install.zip",
-            "downloads": 26
+            "downloads": 42,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -10558,7 +10638,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.22-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-121/Y2Linux-1.0.0-beta.8.22-first-install-windows.zip",
             "size": 384869052,
-            "downloads": 9
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -10572,14 +10652,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.22-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-121/Y2Linux-1.0.0-beta.8.22-first-install-linux.zip",
             "size": 432190423,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.22-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-121/Y2Linux-1.0.0-beta.8.22-first-install-linux-arm64.zip",
             "size": 257094657,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -10593,7 +10673,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.22-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-121/Y2Linux-1.0.0-beta.8.22-first-install-macos.zip",
             "size": 191503160,
-            "downloads": 10
+            "downloads": 19
           }
         ]
       },
@@ -10683,7 +10763,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.21-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-1.0.0-beta.8.21-first-install.zip",
-            "downloads": 25
+            "downloads": 40,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -10692,7 +10773,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.21-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-120/Y2Linux-1.0.0-beta.8.21-first-install-windows.zip",
             "size": 384846918,
-            "downloads": 10
+            "downloads": 19
           },
           {
             "platform": "windows-legacy",
@@ -10706,14 +10787,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.21-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-120/Y2Linux-1.0.0-beta.8.21-first-install-linux.zip",
             "size": 432168289,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.21-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-120/Y2Linux-1.0.0-beta.8.21-first-install-linux-arm64.zip",
             "size": 257072523,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -10727,7 +10808,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.21-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-120/Y2Linux-1.0.0-beta.8.21-first-install-macos.zip",
             "size": 191481025,
-            "downloads": 10
+            "downloads": 19
           }
         ]
       },
@@ -10841,7 +10922,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.20-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-119/Y2Linux-1.0.0-beta.8.20-first-install.zip",
-            "downloads": 29
+            "downloads": 44,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -10850,7 +10932,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.20-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-119/Y2Linux-1.0.0-beta.8.20-first-install-windows.zip",
             "size": 384846151,
-            "downloads": 9
+            "downloads": 19
           },
           {
             "platform": "windows-legacy",
@@ -10864,14 +10946,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.20-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-119/Y2Linux-1.0.0-beta.8.20-first-install-linux.zip",
             "size": 432167522,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.20-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-119/Y2Linux-1.0.0-beta.8.20-first-install-linux-arm64.zip",
             "size": 257071756,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -10885,7 +10967,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.20-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-119/Y2Linux-1.0.0-beta.8.20-first-install-macos.zip",
             "size": 191480258,
-            "downloads": 10
+            "downloads": 19
           }
         ]
       },
@@ -10975,7 +11057,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.19-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-118/Y2Linux-1.0.0-beta.8.19-first-install.zip",
-            "downloads": 30
+            "downloads": 45,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -10984,7 +11067,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.19-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-118/Y2Linux-1.0.0-beta.8.19-first-install-windows.zip",
             "size": 384845841,
-            "downloads": 9
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -10998,14 +11081,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.19-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-118/Y2Linux-1.0.0-beta.8.19-first-install-linux.zip",
             "size": 432167212,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.19-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-118/Y2Linux-1.0.0-beta.8.19-first-install-linux-arm64.zip",
             "size": 257071446,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -11019,7 +11102,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.19-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-118/Y2Linux-1.0.0-beta.8.19-first-install-macos.zip",
             "size": 191479949,
-            "downloads": 10
+            "downloads": 19
           }
         ]
       },
@@ -11109,7 +11192,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.17-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-114/Y2Linux-1.0.0-beta.8.17-first-install.zip",
-            "downloads": 24
+            "downloads": 38,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -11118,7 +11202,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.17-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-114/Y2Linux-1.0.0-beta.8.17-first-install-windows.zip",
             "size": 384628181,
-            "downloads": 10
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -11132,14 +11216,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.17-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-114/Y2Linux-1.0.0-beta.8.17-first-install-linux.zip",
             "size": 431949552,
-            "downloads": 4
+            "downloads": 10
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.17-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-114/Y2Linux-1.0.0-beta.8.17-first-install-linux-arm64.zip",
             "size": 256853786,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -11153,7 +11237,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.17-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-114/Y2Linux-1.0.0-beta.8.17-first-install-macos.zip",
             "size": 191262289,
-            "downloads": 11
+            "downloads": 19
           }
         ]
       },
@@ -11251,7 +11335,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.16-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-113/Y2Linux-1.0.0-beta.8.16-first-install.zip",
-            "downloads": 24
+            "downloads": 38,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -11260,7 +11345,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.16-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-113/Y2Linux-1.0.0-beta.8.16-first-install-windows.zip",
             "size": 384615182,
-            "downloads": 9
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -11274,14 +11359,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.16-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-113/Y2Linux-1.0.0-beta.8.16-first-install-linux.zip",
             "size": 431936553,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.16-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-113/Y2Linux-1.0.0-beta.8.16-first-install-linux-arm64.zip",
             "size": 256840787,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -11295,7 +11380,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.16-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-113/Y2Linux-1.0.0-beta.8.16-first-install-macos.zip",
             "size": 191249290,
-            "downloads": 10
+            "downloads": 17
           }
         ]
       },
@@ -11385,7 +11470,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.15-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-112/Y2Linux-1.0.0-beta.8.15-first-install.zip",
-            "downloads": 21
+            "downloads": 35,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -11394,7 +11480,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.15-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-112/Y2Linux-1.0.0-beta.8.15-first-install-windows.zip",
             "size": 384597265,
-            "downloads": 10
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -11408,14 +11494,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.15-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-112/Y2Linux-1.0.0-beta.8.15-first-install-linux.zip",
             "size": 431918636,
-            "downloads": 4
+            "downloads": 10
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.15-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-112/Y2Linux-1.0.0-beta.8.15-first-install-linux-arm64.zip",
             "size": 256822870,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -11429,7 +11515,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.15-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-112/Y2Linux-1.0.0-beta.8.15-first-install-macos.zip",
             "size": 191231373,
-            "downloads": 11
+            "downloads": 18
           }
         ]
       },
@@ -11519,7 +11605,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.14-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-111/Y2Linux-1.0.0-beta.8.14-first-install.zip",
-            "downloads": 22
+            "downloads": 36,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -11528,7 +11615,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.14-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-111/Y2Linux-1.0.0-beta.8.14-first-install-windows.zip",
             "size": 370888721,
-            "downloads": 9
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -11542,14 +11629,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.14-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-111/Y2Linux-1.0.0-beta.8.14-first-install-linux.zip",
             "size": 418210092,
-            "downloads": 4
+            "downloads": 10
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.14-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-111/Y2Linux-1.0.0-beta.8.14-first-install-linux-arm64.zip",
             "size": 243114326,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -11563,7 +11650,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.14-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-111/Y2Linux-1.0.0-beta.8.14-first-install-macos.zip",
             "size": 177522829,
-            "downloads": 11
+            "downloads": 19
           }
         ]
       },
@@ -11653,7 +11740,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.13-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-110/Y2Linux-1.0.0-beta.8.13-first-install.zip",
-            "downloads": 19
+            "downloads": 33,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -11662,7 +11750,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.13-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-110/Y2Linux-1.0.0-beta.8.13-first-install-windows.zip",
             "size": 370892332,
-            "downloads": 10
+            "downloads": 19
           },
           {
             "platform": "windows-legacy",
@@ -11676,14 +11764,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.13-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-110/Y2Linux-1.0.0-beta.8.13-first-install-linux.zip",
             "size": 418213703,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.13-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-110/Y2Linux-1.0.0-beta.8.13-first-install-linux-arm64.zip",
             "size": 243117937,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -11697,7 +11785,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.13-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-110/Y2Linux-1.0.0-beta.8.13-first-install-macos.zip",
             "size": 177526440,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -11787,7 +11875,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.12-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-108/Y2Linux-1.0.0-beta.8.12-first-install.zip",
-            "downloads": 25
+            "downloads": 39,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -11796,7 +11885,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.12-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-108/Y2Linux-1.0.0-beta.8.12-first-install-windows.zip",
             "size": 370886036,
-            "downloads": 10
+            "downloads": 19
           },
           {
             "platform": "windows-legacy",
@@ -11810,14 +11899,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.12-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-108/Y2Linux-1.0.0-beta.8.12-first-install-linux.zip",
             "size": 418207407,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.12-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-108/Y2Linux-1.0.0-beta.8.12-first-install-linux-arm64.zip",
             "size": 243111641,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -11831,7 +11920,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.12-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-108/Y2Linux-1.0.0-beta.8.12-first-install-macos.zip",
             "size": 177520144,
-            "downloads": 10
+            "downloads": 18
           }
         ]
       },
@@ -11921,7 +12010,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.11-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-106/Y2Linux-1.0.0-beta.8.11-first-install.zip",
-            "downloads": 24
+            "downloads": 39,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -11930,7 +12020,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.11-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-106/Y2Linux-1.0.0-beta.8.11-first-install-windows.zip",
             "size": 370873238,
-            "downloads": 9
+            "downloads": 19
           },
           {
             "platform": "windows-legacy",
@@ -11944,14 +12034,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.11-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-106/Y2Linux-1.0.0-beta.8.11-first-install-linux.zip",
             "size": 418194609,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.11-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-106/Y2Linux-1.0.0-beta.8.11-first-install-linux-arm64.zip",
             "size": 243098843,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -11965,7 +12055,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.11-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-106/Y2Linux-1.0.0-beta.8.11-first-install-macos.zip",
             "size": 177507345,
-            "downloads": 10
+            "downloads": 19
           }
         ]
       },
@@ -12055,7 +12145,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.10-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-105/Y2Linux-1.0.0-beta.8.10-first-install.zip",
-            "downloads": 85
+            "downloads": 100,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -12064,7 +12155,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.10-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-105/Y2Linux-1.0.0-beta.8.10-first-install-windows.zip",
             "size": 370875106,
-            "downloads": 10
+            "downloads": 21
           },
           {
             "platform": "windows-legacy",
@@ -12078,14 +12169,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.10-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-105/Y2Linux-1.0.0-beta.8.10-first-install-linux.zip",
             "size": 418196477,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.10-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-105/Y2Linux-1.0.0-beta.8.10-first-install-linux-arm64.zip",
             "size": 243100711,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -12099,7 +12190,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.10-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-105/Y2Linux-1.0.0-beta.8.10-first-install-macos.zip",
             "size": 177509213,
-            "downloads": 11
+            "downloads": 20
           }
         ]
       },
@@ -12189,7 +12280,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.8-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-101/Y2Linux-1.0.0-beta.8.8-first-install.zip",
-            "downloads": 21
+            "downloads": 36,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -12198,7 +12290,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.8-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-101/Y2Linux-1.0.0-beta.8.8-first-install-windows.zip",
             "size": 370868191,
-            "downloads": 9
+            "downloads": 20
           },
           {
             "platform": "windows-legacy",
@@ -12212,14 +12304,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.8-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-101/Y2Linux-1.0.0-beta.8.8-first-install-linux.zip",
             "size": 418189562,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.8-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-101/Y2Linux-1.0.0-beta.8.8-first-install-linux-arm64.zip",
             "size": 243093796,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -12233,7 +12325,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.8-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-101/Y2Linux-1.0.0-beta.8.8-first-install-macos.zip",
             "size": 177502299,
-            "downloads": 11
+            "downloads": 20
           }
         ]
       },
@@ -12323,7 +12415,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.7-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-95/Y2Linux-1.0.0-beta.8.7-first-install.zip",
-            "downloads": 21
+            "downloads": 37,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -12332,7 +12425,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.7-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-95/Y2Linux-1.0.0-beta.8.7-first-install-windows.zip",
             "size": 370835610,
-            "downloads": 9
+            "downloads": 20
           },
           {
             "platform": "windows-legacy",
@@ -12346,14 +12439,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.7-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-95/Y2Linux-1.0.0-beta.8.7-first-install-linux.zip",
             "size": 418156981,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.7-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-95/Y2Linux-1.0.0-beta.8.7-first-install-linux-arm64.zip",
             "size": 243061215,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -12367,7 +12460,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.7-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-95/Y2Linux-1.0.0-beta.8.7-first-install-macos.zip",
             "size": 177469718,
-            "downloads": 10
+            "downloads": 19
           }
         ]
       },
@@ -12457,7 +12550,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.6-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-94/Y2Linux-1.0.0-beta.8.6-first-install.zip",
-            "downloads": 22
+            "downloads": 38,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -12466,7 +12560,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.6-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-94/Y2Linux-1.0.0-beta.8.6-first-install-windows.zip",
             "size": 370835831,
-            "downloads": 9
+            "downloads": 21
           },
           {
             "platform": "windows-legacy",
@@ -12480,14 +12574,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.6-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-94/Y2Linux-1.0.0-beta.8.6-first-install-linux.zip",
             "size": 418157202,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.6-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-94/Y2Linux-1.0.0-beta.8.6-first-install-linux-arm64.zip",
             "size": 243061436,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -12501,7 +12595,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.6-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-94/Y2Linux-1.0.0-beta.8.6-first-install-macos.zip",
             "size": 177469939,
-            "downloads": 10
+            "downloads": 20
           }
         ]
       },
@@ -12591,7 +12685,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.5-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install.zip",
-            "downloads": 20
+            "downloads": 36,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -12600,42 +12695,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.5-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install-windows.zip",
             "size": 370698408,
-            "downloads": 10
+            "downloads": 24
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.8.5-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install-windows-legacy.zip",
             "size": 132459683,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.8.5-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install-linux.zip",
             "size": 418019779,
-            "downloads": 4
+            "downloads": 14
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.5-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install-linux-arm64.zip",
             "size": 242924013,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.8.5-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install-linux-legacy.zip",
             "size": 130874007,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.8.5-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install-macos.zip",
             "size": 177332516,
-            "downloads": 10
+            "downloads": 21
           }
         ]
       },
@@ -12725,7 +12820,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.4-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install.zip",
-            "downloads": 20
+            "downloads": 36,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -12734,42 +12830,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.4-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-windows.zip",
             "size": 370658109,
-            "downloads": 10
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.8.4-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-windows-legacy.zip",
             "size": 132419384,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.8.4-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-linux.zip",
             "size": 417979480,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.4-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-linux-arm64.zip",
             "size": 242883714,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.8.4-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-linux-legacy.zip",
             "size": 130833708,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.8.4-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-macos.zip",
             "size": 177292217,
-            "downloads": 11
+            "downloads": 21
           }
         ]
       },
@@ -12859,7 +12955,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.3-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-first-install.zip",
-            "downloads": 21
+            "downloads": 37,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -12868,42 +12965,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.3-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-first-install-windows.zip",
             "size": 370658208,
-            "downloads": 10
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.8.3-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-first-install-windows-legacy.zip",
             "size": 132419481,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.8.3-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-first-install-linux.zip",
             "size": 417979579,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.3-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-first-install-linux-arm64.zip",
             "size": 242883813,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.8.3-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-first-install-linux-legacy.zip",
             "size": 130833805,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.8.3-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-first-install-macos.zip",
             "size": 177292316,
-            "downloads": 10
+            "downloads": 20
           }
         ]
       },
@@ -12993,7 +13090,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.2-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-first-install.zip",
-            "downloads": 20
+            "downloads": 36,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -13002,42 +13100,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.2-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-first-install-windows.zip",
             "size": 370649131,
-            "downloads": 9
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.8.2-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-first-install-windows-legacy.zip",
             "size": 132410404,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.8.2-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-first-install-linux.zip",
             "size": 417970502,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.2-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-first-install-linux-arm64.zip",
             "size": 242874736,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.8.2-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-first-install-linux-legacy.zip",
             "size": 130824728,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.8.2-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-first-install-macos.zip",
             "size": 177283240,
-            "downloads": 11
+            "downloads": 21
           }
         ]
       },
@@ -13127,7 +13225,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.1-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-first-install.zip",
-            "downloads": 20
+            "downloads": 36,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -13136,42 +13235,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.1-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-first-install-windows.zip",
             "size": 370635964,
-            "downloads": 10
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.8.1-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-first-install-windows-legacy.zip",
             "size": 132397239,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.8.1-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-first-install-linux.zip",
             "size": 417957335,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.1-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-first-install-linux-arm64.zip",
             "size": 242861569,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.8.1-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-first-install-linux-legacy.zip",
             "size": 130811561,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.8.1-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-first-install-macos.zip",
             "size": 177270073,
-            "downloads": 10
+            "downloads": 20
           }
         ]
       },
@@ -13261,7 +13360,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.0-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-first-install.zip",
-            "downloads": 20
+            "downloads": 36,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -13270,42 +13370,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.0-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-first-install-windows.zip",
             "size": 370626508,
-            "downloads": 10
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.8.0-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-first-install-windows-legacy.zip",
             "size": 132387783,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.8.0-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-first-install-linux.zip",
             "size": 417947879,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.8.0-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-first-install-linux-arm64.zip",
             "size": 242852113,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.8.0-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-first-install-linux-legacy.zip",
             "size": 130802105,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.8.0-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-first-install-macos.zip",
             "size": 177260616,
-            "downloads": 10
+            "downloads": 20
           }
         ]
       },
@@ -13403,7 +13503,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.7.11-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/Y2Linux-1.0.0-beta.7.11-first-install.zip",
-            "downloads": 23
+            "downloads": 39,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -13412,42 +13513,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.7.11-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-74/Y2Linux-1.0.0-beta.7.11-first-install-windows.zip",
             "size": 370601418,
-            "downloads": 9
+            "downloads": 22
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.7.11-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-74/Y2Linux-1.0.0-beta.7.11-first-install-windows-legacy.zip",
             "size": 132362697,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.7.11-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-74/Y2Linux-1.0.0-beta.7.11-first-install-linux.zip",
             "size": 417922789,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.7.11-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-74/Y2Linux-1.0.0-beta.7.11-first-install-linux-arm64.zip",
             "size": 242827023,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.7.11-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-74/Y2Linux-1.0.0-beta.7.11-first-install-linux-legacy.zip",
             "size": 130777021,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.7.11-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-74/Y2Linux-1.0.0-beta.7.11-first-install-macos.zip",
             "size": 177235525,
-            "downloads": 11
+            "downloads": 21
           }
         ]
       },
@@ -13537,7 +13638,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.7.10-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/Y2Linux-1.0.0-beta.7.10-first-install.zip",
-            "downloads": 24
+            "downloads": 40,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -13546,42 +13648,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.7.10-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-73/Y2Linux-1.0.0-beta.7.10-first-install-windows.zip",
             "size": 370598095,
-            "downloads": 9
+            "downloads": 24
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.7.10-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-73/Y2Linux-1.0.0-beta.7.10-first-install-windows-legacy.zip",
             "size": 132359376,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.7.10-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-73/Y2Linux-1.0.0-beta.7.10-first-install-linux.zip",
             "size": 417919466,
-            "downloads": 4
+            "downloads": 15
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.7.10-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-73/Y2Linux-1.0.0-beta.7.10-first-install-linux-arm64.zip",
             "size": 242823700,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.7.10-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-73/Y2Linux-1.0.0-beta.7.10-first-install-linux-legacy.zip",
             "size": 130773698,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.7.10-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-73/Y2Linux-1.0.0-beta.7.10-first-install-macos.zip",
             "size": 177232202,
-            "downloads": 10
+            "downloads": 21
           }
         ]
       },
@@ -13671,7 +13773,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.7.9-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/Y2Linux-1.0.0-beta.7.9-first-install.zip",
-            "downloads": 19
+            "downloads": 35,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -13680,42 +13783,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.7.9-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-72/Y2Linux-1.0.0-beta.7.9-first-install-windows.zip",
             "size": 370596134,
-            "downloads": 10
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.7.9-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-72/Y2Linux-1.0.0-beta.7.9-first-install-windows-legacy.zip",
             "size": 132357409,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.7.9-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-72/Y2Linux-1.0.0-beta.7.9-first-install-linux.zip",
             "size": 417917505,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.7.9-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-72/Y2Linux-1.0.0-beta.7.9-first-install-linux-arm64.zip",
             "size": 242821739,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.7.9-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-72/Y2Linux-1.0.0-beta.7.9-first-install-linux-legacy.zip",
             "size": 130771731,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.7.9-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-72/Y2Linux-1.0.0-beta.7.9-first-install-macos.zip",
             "size": 177230242,
-            "downloads": 11
+            "downloads": 23
           }
         ]
       },
@@ -13805,7 +13908,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.7.8-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/Y2Linux-1.0.0-beta.7.8-first-install.zip",
-            "downloads": 21
+            "downloads": 37,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -13814,42 +13918,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.7.8-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-71/Y2Linux-1.0.0-beta.7.8-first-install-windows.zip",
             "size": 370582286,
-            "downloads": 10
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.7.8-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-71/Y2Linux-1.0.0-beta.7.8-first-install-windows-legacy.zip",
             "size": 132343561,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.7.8-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-71/Y2Linux-1.0.0-beta.7.8-first-install-linux.zip",
             "size": 417903657,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.7.8-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-71/Y2Linux-1.0.0-beta.7.8-first-install-linux-arm64.zip",
             "size": 242807891,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.7.8-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-71/Y2Linux-1.0.0-beta.7.8-first-install-linux-legacy.zip",
             "size": 130757883,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.7.8-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-71/Y2Linux-1.0.0-beta.7.8-first-install-macos.zip",
             "size": 177216394,
-            "downloads": 11
+            "downloads": 22
           }
         ]
       },
@@ -13939,7 +14043,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.7.7-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-first-install.zip",
-            "downloads": 20
+            "downloads": 36,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -13948,42 +14053,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.7.7-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-first-install-windows.zip",
             "size": 370576491,
-            "downloads": 9
+            "downloads": 22
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.7.7-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-first-install-windows-legacy.zip",
             "size": 132337766,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.7.7-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-first-install-linux.zip",
             "size": 417897862,
-            "downloads": 4
+            "downloads": 14
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.7.7-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-first-install-linux-arm64.zip",
             "size": 242802096,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.7.7-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-first-install-linux-legacy.zip",
             "size": 130752088,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.7.7-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-first-install-macos.zip",
             "size": 177210599,
-            "downloads": 10
+            "downloads": 20
           }
         ]
       },
@@ -14073,7 +14178,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.7.6-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/Y2Linux-1.0.0-beta.7.6-first-install.zip",
-            "downloads": 21
+            "downloads": 37,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -14082,42 +14188,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.7.6-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-67/Y2Linux-1.0.0-beta.7.6-first-install-windows.zip",
             "size": 370514253,
-            "downloads": 9
+            "downloads": 24
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.7.6-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-67/Y2Linux-1.0.0-beta.7.6-first-install-windows-legacy.zip",
             "size": 132275530,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.7.6-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-67/Y2Linux-1.0.0-beta.7.6-first-install-linux.zip",
             "size": 417835624,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.7.6-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-67/Y2Linux-1.0.0-beta.7.6-first-install-linux-arm64.zip",
             "size": 242739858,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.7.6-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-67/Y2Linux-1.0.0-beta.7.6-first-install-linux-legacy.zip",
             "size": 130689852,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.7.6-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-67/Y2Linux-1.0.0-beta.7.6-first-install-macos.zip",
             "size": 177148361,
-            "downloads": 11
+            "downloads": 22
           }
         ]
       },
@@ -14207,7 +14313,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.7.5-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/Y2Linux-1.0.0-beta.7.5-first-install.zip",
-            "downloads": 21
+            "downloads": 37,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -14216,42 +14323,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.7.5-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-66/Y2Linux-1.0.0-beta.7.5-first-install-windows.zip",
             "size": 370514123,
-            "downloads": 9
+            "downloads": 24
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.7.5-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-66/Y2Linux-1.0.0-beta.7.5-first-install-windows-legacy.zip",
             "size": 132275398,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.7.5-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-66/Y2Linux-1.0.0-beta.7.5-first-install-linux.zip",
             "size": 417835494,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.7.5-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-66/Y2Linux-1.0.0-beta.7.5-first-install-linux-arm64.zip",
             "size": 242739728,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.7.5-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-66/Y2Linux-1.0.0-beta.7.5-first-install-linux-legacy.zip",
             "size": 130689722,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.7.5-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-66/Y2Linux-1.0.0-beta.7.5-first-install-macos.zip",
             "size": 177148231,
-            "downloads": 11
+            "downloads": 23
           }
         ]
       },
@@ -14341,7 +14448,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.7.4-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/Y2Linux-1.0.0-beta.7.4-first-install.zip",
-            "downloads": 19
+            "downloads": 35,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -14350,42 +14458,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.7.4-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-65/Y2Linux-1.0.0-beta.7.4-first-install-windows.zip",
             "size": 370513744,
-            "downloads": 9
+            "downloads": 22
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.7.4-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-65/Y2Linux-1.0.0-beta.7.4-first-install-windows-legacy.zip",
             "size": 132275019,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.7.4-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-65/Y2Linux-1.0.0-beta.7.4-first-install-linux.zip",
             "size": 417835115,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.7.4-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-65/Y2Linux-1.0.0-beta.7.4-first-install-linux-arm64.zip",
             "size": 242739349,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.7.4-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-65/Y2Linux-1.0.0-beta.7.4-first-install-linux-legacy.zip",
             "size": 130689343,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.7.4-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-65/Y2Linux-1.0.0-beta.7.4-first-install-macos.zip",
             "size": 177147852,
-            "downloads": 10
+            "downloads": 21
           }
         ]
       },
@@ -14475,7 +14583,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.7.3-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/Y2Linux-1.0.0-beta.7.3-first-install.zip",
-            "downloads": 19
+            "downloads": 35,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -14484,42 +14593,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.7.3-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-64/Y2Linux-1.0.0-beta.7.3-first-install-windows.zip",
             "size": 370514452,
-            "downloads": 10
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.7.3-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-64/Y2Linux-1.0.0-beta.7.3-first-install-windows-legacy.zip",
             "size": 132275727,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.7.3-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-64/Y2Linux-1.0.0-beta.7.3-first-install-linux.zip",
             "size": 417835823,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.7.3-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-64/Y2Linux-1.0.0-beta.7.3-first-install-linux-arm64.zip",
             "size": 242740057,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.7.3-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-64/Y2Linux-1.0.0-beta.7.3-first-install-linux-legacy.zip",
             "size": 130690051,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.7.3-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-64/Y2Linux-1.0.0-beta.7.3-first-install-macos.zip",
             "size": 177148560,
-            "downloads": 10
+            "downloads": 20
           }
         ]
       },
@@ -14609,7 +14718,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.7.2-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/Y2Linux-1.0.0-beta.7.2-first-install.zip",
-            "downloads": 20
+            "downloads": 35,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -14618,42 +14728,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.7.2-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-63/Y2Linux-1.0.0-beta.7.2-first-install-windows.zip",
             "size": 370514223,
-            "downloads": 9
+            "downloads": 22
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.7.2-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-63/Y2Linux-1.0.0-beta.7.2-first-install-windows-legacy.zip",
             "size": 132275496,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.7.2-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-63/Y2Linux-1.0.0-beta.7.2-first-install-linux.zip",
             "size": 417835594,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.7.2-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-63/Y2Linux-1.0.0-beta.7.2-first-install-linux-arm64.zip",
             "size": 242739828,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.7.2-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-63/Y2Linux-1.0.0-beta.7.2-first-install-linux-legacy.zip",
             "size": 130689820,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.7.2-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-63/Y2Linux-1.0.0-beta.7.2-first-install-macos.zip",
             "size": 177148332,
-            "downloads": 10
+            "downloads": 20
           }
         ]
       },
@@ -14743,7 +14853,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.7.1-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/Y2Linux-1.0.0-beta.7.1-first-install.zip",
-            "downloads": 20
+            "downloads": 36,
+            "mirror_downloads": 16
           }
         ],
         "portable": [
@@ -14752,42 +14863,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.7.1-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-62/Y2Linux-1.0.0-beta.7.1-first-install-windows.zip",
             "size": 370489359,
-            "downloads": 9
+            "downloads": 22
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.7.1-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-62/Y2Linux-1.0.0-beta.7.1-first-install-windows-legacy.zip",
             "size": 132250634,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.7.1-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-62/Y2Linux-1.0.0-beta.7.1-first-install-linux.zip",
             "size": 417810730,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.7.1-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-62/Y2Linux-1.0.0-beta.7.1-first-install-linux-arm64.zip",
             "size": 242714964,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.7.1-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-62/Y2Linux-1.0.0-beta.7.1-first-install-linux-legacy.zip",
             "size": 130664956,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.7.1-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-62/Y2Linux-1.0.0-beta.7.1-first-install-macos.zip",
             "size": 177123468,
-            "downloads": 10
+            "downloads": 20
           }
         ]
       },
@@ -14877,7 +14988,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.7-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/Y2Linux-1.0.0-beta.7-first-install.zip",
-            "downloads": 20
+            "downloads": 35,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -14886,42 +14998,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.7-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-61/Y2Linux-1.0.0-beta.7-first-install-windows.zip",
             "size": 370439908,
-            "downloads": 9
+            "downloads": 21
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.7-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-61/Y2Linux-1.0.0-beta.7-first-install-windows-legacy.zip",
             "size": 132201203,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.7-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-61/Y2Linux-1.0.0-beta.7-first-install-linux.zip",
             "size": 417761279,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.7-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-61/Y2Linux-1.0.0-beta.7-first-install-linux-arm64.zip",
             "size": 242665513,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.7-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-61/Y2Linux-1.0.0-beta.7-first-install-linux-legacy.zip",
             "size": 130615527,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.7-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-61/Y2Linux-1.0.0-beta.7-first-install-macos.zip",
             "size": 177074014,
-            "downloads": 11
+            "downloads": 21
           }
         ]
       },
@@ -15011,7 +15123,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.6.3-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/Y2Linux-1.0.0-beta.6.3-first-install.zip",
-            "downloads": 20
+            "downloads": 35,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -15020,42 +15133,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.6.3-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-60/Y2Linux-1.0.0-beta.6.3-first-install-windows.zip",
             "size": 370435272,
-            "downloads": 10
+            "downloads": 22
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.6.3-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-60/Y2Linux-1.0.0-beta.6.3-first-install-windows-legacy.zip",
             "size": 132196547,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.6.3-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-60/Y2Linux-1.0.0-beta.6.3-first-install-linux.zip",
             "size": 417756643,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.6.3-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-60/Y2Linux-1.0.0-beta.6.3-first-install-linux-arm64.zip",
             "size": 242660877,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.6.3-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-60/Y2Linux-1.0.0-beta.6.3-first-install-linux-legacy.zip",
             "size": 130610871,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.6.3-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-60/Y2Linux-1.0.0-beta.6.3-first-install-macos.zip",
             "size": 177069381,
-            "downloads": 10
+            "downloads": 21
           }
         ]
       },
@@ -15145,7 +15258,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.6.2-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/Y2Linux-1.0.0-beta.6.2-first-install.zip",
-            "downloads": 20
+            "downloads": 35,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -15154,42 +15268,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.6.2-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-59/Y2Linux-1.0.0-beta.6.2-first-install-windows.zip",
             "size": 370434692,
-            "downloads": 10
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.6.2-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-59/Y2Linux-1.0.0-beta.6.2-first-install-windows-legacy.zip",
             "size": 132195965,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.6.2-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-59/Y2Linux-1.0.0-beta.6.2-first-install-linux.zip",
             "size": 417756063,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.6.2-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-59/Y2Linux-1.0.0-beta.6.2-first-install-linux-arm64.zip",
             "size": 242660297,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.6.2-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-59/Y2Linux-1.0.0-beta.6.2-first-install-linux-legacy.zip",
             "size": 130610289,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.6.2-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-59/Y2Linux-1.0.0-beta.6.2-first-install-macos.zip",
             "size": 177068801,
-            "downloads": 11
+            "downloads": 22
           }
         ]
       },
@@ -15279,7 +15393,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.6.1-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-first-install.zip",
-            "downloads": 20
+            "downloads": 35,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -15288,42 +15403,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.6.1-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-first-install-windows.zip",
             "size": 370303059,
-            "downloads": 10
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.6.1-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-first-install-windows-legacy.zip",
             "size": 132064334,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.6.1-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-first-install-linux.zip",
             "size": 417624430,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.6.1-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-first-install-linux-arm64.zip",
             "size": 242528664,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.6.1-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-first-install-linux-legacy.zip",
             "size": 130478656,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.6.1-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-first-install-macos.zip",
             "size": 176937168,
-            "downloads": 10
+            "downloads": 22
           }
         ]
       },
@@ -15413,7 +15528,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.6-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/Y2Linux-1.0.0-beta.6-first-install.zip",
-            "downloads": 21
+            "downloads": 36,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -15422,42 +15538,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.6-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-57/Y2Linux-1.0.0-beta.6-first-install-windows.zip",
             "size": 370301050,
-            "downloads": 9
+            "downloads": 22
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.6-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-57/Y2Linux-1.0.0-beta.6-first-install-windows-legacy.zip",
             "size": 132062345,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.6-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-57/Y2Linux-1.0.0-beta.6-first-install-linux.zip",
             "size": 417622421,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.6-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-57/Y2Linux-1.0.0-beta.6-first-install-linux-arm64.zip",
             "size": 242526655,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.6-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-57/Y2Linux-1.0.0-beta.6-first-install-linux-legacy.zip",
             "size": 130476669,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.6-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-57/Y2Linux-1.0.0-beta.6-first-install-macos.zip",
             "size": 176935156,
-            "downloads": 11
+            "downloads": 25
           }
         ]
       },
@@ -15547,7 +15663,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.5.1-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/Y2Linux-1.0.0-beta.5.1-first-install.zip",
-            "downloads": 20
+            "downloads": 35,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -15556,42 +15673,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.5.1-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-56/Y2Linux-1.0.0-beta.5.1-first-install-windows.zip",
             "size": 370196673,
-            "downloads": 10
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.5.1-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-56/Y2Linux-1.0.0-beta.5.1-first-install-windows-legacy.zip",
             "size": 131957948,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.5.1-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-56/Y2Linux-1.0.0-beta.5.1-first-install-linux.zip",
             "size": 417518044,
-            "downloads": 4
+            "downloads": 14
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.5.1-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-56/Y2Linux-1.0.0-beta.5.1-first-install-linux-arm64.zip",
             "size": 242422278,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.5.1-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-56/Y2Linux-1.0.0-beta.5.1-first-install-linux-legacy.zip",
             "size": 130372270,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.5.1-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-56/Y2Linux-1.0.0-beta.5.1-first-install-macos.zip",
             "size": 176830781,
-            "downloads": 11
+            "downloads": 24
           }
         ]
       },
@@ -15681,7 +15798,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.5-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/Y2Linux-1.0.0-beta.5-first-install.zip",
-            "downloads": 20
+            "downloads": 59,
+            "mirror_downloads": 39
           }
         ],
         "portable": [
@@ -15690,42 +15808,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.5-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-55/Y2Linux-1.0.0-beta.5-first-install-windows.zip",
             "size": 370121635,
-            "downloads": 12
+            "downloads": 28
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.5-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-55/Y2Linux-1.0.0-beta.5-first-install-windows-legacy.zip",
             "size": 131882928,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.5-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-55/Y2Linux-1.0.0-beta.5-first-install-linux.zip",
             "size": 417443006,
-            "downloads": 4
+            "downloads": 16
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.5-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-55/Y2Linux-1.0.0-beta.5-first-install-linux-arm64.zip",
             "size": 242347240,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.5-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-55/Y2Linux-1.0.0-beta.5-first-install-linux-legacy.zip",
             "size": 130297252,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.5-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-55/Y2Linux-1.0.0-beta.5-first-install-macos.zip",
             "size": 176755741,
-            "downloads": 11
+            "downloads": 28
           }
         ]
       },
@@ -15815,7 +15933,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.4.1-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-54/Y2Linux-1.0.0-beta.4.1-first-install.zip",
-            "downloads": 21
+            "downloads": 36,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -15824,42 +15943,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.4.1-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-54/Y2Linux-1.0.0-beta.4.1-first-install-windows.zip",
             "size": 370081259,
-            "downloads": 10
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.4.1-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-54/Y2Linux-1.0.0-beta.4.1-first-install-windows-legacy.zip",
             "size": 131842534,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.4.1-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-54/Y2Linux-1.0.0-beta.4.1-first-install-linux.zip",
             "size": 417402630,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.4.1-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-54/Y2Linux-1.0.0-beta.4.1-first-install-linux-arm64.zip",
             "size": 242306864,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.4.1-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-54/Y2Linux-1.0.0-beta.4.1-first-install-linux-legacy.zip",
             "size": 130256856,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.4.1-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-54/Y2Linux-1.0.0-beta.4.1-first-install-macos.zip",
             "size": 176715367,
-            "downloads": 11
+            "downloads": 24
           }
         ]
       },
@@ -15949,7 +16068,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.4-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-53/Y2Linux-1.0.0-beta.4-first-install.zip",
-            "downloads": 20
+            "downloads": 35,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -15958,42 +16078,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.4-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-53/Y2Linux-1.0.0-beta.4-first-install-windows.zip",
             "size": 370080392,
-            "downloads": 9
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.4-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-53/Y2Linux-1.0.0-beta.4-first-install-windows-legacy.zip",
             "size": 131841685,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.4-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-53/Y2Linux-1.0.0-beta.4-first-install-linux.zip",
             "size": 417401763,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.4-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-53/Y2Linux-1.0.0-beta.4-first-install-linux-arm64.zip",
             "size": 242305997,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.4-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-53/Y2Linux-1.0.0-beta.4-first-install-linux-legacy.zip",
             "size": 130256011,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.4-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-53/Y2Linux-1.0.0-beta.4-first-install-macos.zip",
             "size": 176714497,
-            "downloads": 11
+            "downloads": 24
           }
         ]
       },
@@ -16083,7 +16203,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.3-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install.zip",
-            "downloads": 20
+            "downloads": 35,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -16092,42 +16213,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.3-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-windows.zip",
             "size": 370008896,
-            "downloads": 10
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.3-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-windows-legacy.zip",
             "size": 131770189,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.3-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux.zip",
             "size": 417330267,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.3-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux-arm64.zip",
             "size": 242234501,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip",
             "size": 130184513,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.3-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-macos.zip",
             "size": 176643003,
-            "downloads": 11
+            "downloads": 24
           }
         ]
       },
@@ -16233,7 +16354,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.2-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-first-install.zip",
-            "downloads": 20
+            "downloads": 35,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -16242,42 +16364,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.2-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-first-install-windows.zip",
             "size": 370023556,
-            "downloads": 10
+            "downloads": 24
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.2-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-first-install-windows-legacy.zip",
             "size": 131784849,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.2-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-first-install-linux.zip",
             "size": 417344927,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.2-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-first-install-linux-arm64.zip",
             "size": 242249161,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.2-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-first-install-linux-legacy.zip",
             "size": 130199173,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.2-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-first-install-macos.zip",
             "size": 176657662,
-            "downloads": 10
+            "downloads": 23
           }
         ]
       },
@@ -16375,7 +16497,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.1-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-50/Y2Linux-1.0.0-beta.1-first-install.zip",
-            "downloads": 25
+            "downloads": 40,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -16384,42 +16507,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.1-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-50/Y2Linux-1.0.0-beta.1-first-install-windows.zip",
             "size": 370019267,
-            "downloads": 10
+            "downloads": 24
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-1.0.0-beta.1-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-50/Y2Linux-1.0.0-beta.1-first-install-windows-legacy.zip",
             "size": 131780560,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-1.0.0-beta.1-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-50/Y2Linux-1.0.0-beta.1-first-install-linux.zip",
             "size": 417340638,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-1.0.0-beta.1-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-50/Y2Linux-1.0.0-beta.1-first-install-linux-arm64.zip",
             "size": 242244872,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-1.0.0-beta.1-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-50/Y2Linux-1.0.0-beta.1-first-install-linux-legacy.zip",
             "size": 130194884,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-1.0.0-beta.1-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-50/Y2Linux-1.0.0-beta.1-first-install-macos.zip",
             "size": 176653372,
-            "downloads": 11
+            "downloads": 24
           }
         ]
       },
@@ -16517,7 +16640,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-49-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-49/Y2Linux-49-first-install.zip",
-            "downloads": 23
+            "downloads": 38,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -16526,42 +16650,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-49-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-49/Y2Linux-49-first-install-windows.zip",
             "size": 370015893,
-            "downloads": 9
+            "downloads": 23
           },
           {
             "platform": "windows-legacy",
             "name": "Y2Linux-49-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-49/Y2Linux-49-first-install-windows-legacy.zip",
             "size": 131777150,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "Y2Linux-49-first-install-linux.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-49/Y2Linux-49-first-install-linux.zip",
             "size": 417337264,
-            "downloads": 4
+            "downloads": 13
           },
           {
             "platform": "linux-arm64",
             "name": "Y2Linux-49-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-49/Y2Linux-49-first-install-linux-arm64.zip",
             "size": 242241498,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "Y2Linux-49-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-49/Y2Linux-49-first-install-linux-legacy.zip",
             "size": 130191476,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "Y2Linux-49-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-49/Y2Linux-49-first-install-macos.zip",
             "size": 176649994,
-            "downloads": 10
+            "downloads": 23
           }
         ]
       },
@@ -16811,19 +16935,62 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png",
       "icon_dark_url": "",
       "body": "**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it to [Rondo server 3.2.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0) (its admin page offers it) so YouTube Music downloads get their year and track number; 3.1.0 works for everything else.\n\n**New**\n- **YouTube Music downloads.** Hold center on a song and choose **Download**, or **Download all** on an album or playlist. Songs go to `Music/YouTube Music/Artist/Album (Year)/01 - Title.m4a`: YouTube's own AAC, with the artist, album, year, track number, cover and lyrics (timed where LRCLIB has them) in its tags. **YouTube Music \u203a Home \u203a Downloads** plays them from the card, also offline.\n- **YouTube Music's Home looks like the app's:** each section a shelf of covers that slides along as you turn the wheel, then on into the next one.\n- **The dashboard fills in what your songs' tags leave out** (Library \u203a Fill in): a missing genre, year, album or track number from the iTunes Store and MusicBrainz, reviewed before it's saved into the songs; and lyrics from LRCLIB for every song that has none.\n- **Organize looks up a show's or a movie's years** on the dashboard (TVmaze, Wikidata), so shows are filed as `Silo (2023-)` or `The Walking Dead (2010-2022)`.\n\n**Changed**\n- **Shows and movies go inside Videos:** `Videos/Shows/\u2026` and `Videos/Movies/\u2026`, the way Jellyfin expects them. Organize moves the old top-level `Shows` and `Movies` folders' files there.\n- **A song's menu has an icon for each action.**\n\n**Fixed**\n- **A YouTube video downloads and plays in its original language,** not a dub YouTube listed first.\n- **Changing Repeat or Shuffle no longer stops the song for a moment.**\n- **Library \u203a Files slides in** like every other screen.\n- **The dashboard's Wheel acceleration and Wheel vibration** can be changed again, and its notes keep their distance from what's around them.\n\n**How to get it**\n- **On Rondo 3.0.x:** Settings \u203a System \u203a Software update, the dashboard's Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.\n- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.3), with **Keep my settings** turned on.\n\nFiles: `rondo-3.0.3.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#303-november-14-2026).\n",
-      "downloads": 1,
+      "downloads": 3,
       "mirror_downloads": 0,
       "download_breakdown": {
         "tag": "v3.0.3",
-        "mirrors": "",
+        "mirrors": "y1-community/rondo-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip",
-            "downloads": 1
+            "downloads": 3
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-windows.zip",
+            "size": 771589457,
+            "downloads": 0
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-windows-legacy.zip",
+            "size": 533350604,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-linux.zip",
+            "size": 828419061,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-linux-arm64.zip",
+            "size": 653323295,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-linux-legacy.zip",
+            "size": 531764889,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-macos.zip",
+            "size": 580027059,
+            "downloads": 0
+          }
+        ]
       },
       "assets": [
         {
@@ -16831,7 +16998,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip",
           "size": 529817030,
-          "download_count": 1,
+          "download_count": 3,
           "content_type": "application/zip"
         },
         {
@@ -16891,7 +17058,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/jarvissax/rondo/releases/download/v3.0.2/rom.zip",
-            "downloads": 16
+            "downloads": 18,
+            "mirror_downloads": 2
           }
         ],
         "portable": [
@@ -16900,42 +17068,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-windows.zip",
             "size": 771651598,
-            "downloads": 8
+            "downloads": 16
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-windows-legacy.zip",
             "size": 533412745,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-linux.zip",
             "size": 828481202,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-linux-arm64.zip",
             "size": 653385436,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-linux-legacy.zip",
             "size": 531827030,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-macos.zip",
             "size": 580089200,
-            "downloads": 2
+            "downloads": 3
           }
         ]
       },
@@ -16985,7 +17153,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/jarvissax/rondo/releases/download/v3.0.1/rom.zip",
-            "downloads": 6
+            "downloads": 8,
+            "mirror_downloads": 2
           }
         ],
         "portable": [
@@ -16994,42 +17163,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-windows.zip",
             "size": 771646549,
-            "downloads": 7
+            "downloads": 11
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-windows-legacy.zip",
             "size": 533407696,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-linux.zip",
             "size": 828476153,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-linux-arm64.zip",
             "size": 653380387,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-linux-legacy.zip",
             "size": 531821981,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-macos.zip",
             "size": 580084152,
-            "downloads": 1
+            "downloads": 3
           }
         ]
       },
@@ -17079,7 +17248,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/jarvissax/rondo/releases/download/v3.0.0/rom.zip",
-            "downloads": 5
+            "downloads": 7,
+            "mirror_downloads": 2
           }
         ],
         "portable": [
@@ -17088,42 +17258,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-windows.zip",
             "size": 771646249,
-            "downloads": 7
+            "downloads": 10
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-windows-legacy.zip",
             "size": 533407396,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-linux.zip",
             "size": 828475853,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-linux-arm64.zip",
             "size": 653380087,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-linux-legacy.zip",
             "size": 531821681,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-macos.zip",
             "size": 580083851,
-            "downloads": 1
+            "downloads": 3
           }
         ]
       },
@@ -17173,7 +17343,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/jarvissax/rondo/releases/download/v2.0.1/rom.zip",
-            "downloads": 9
+            "downloads": 11,
+            "mirror_downloads": 2
           }
         ],
         "portable": [
@@ -17182,42 +17353,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-windows.zip",
             "size": 771644987,
-            "downloads": 7
+            "downloads": 10
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-windows-legacy.zip",
             "size": 533406132,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-linux.zip",
             "size": 828474591,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-linux-arm64.zip",
             "size": 653378825,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-linux-legacy.zip",
             "size": 531820417,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-macos.zip",
             "size": 580082590,
-            "downloads": 1
+            "downloads": 3
           }
         ]
       },
@@ -17307,7 +17478,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/jarvissax/rondo/releases/download/v2.0.0/rom.zip",
-            "downloads": 22
+            "downloads": 25,
+            "mirror_downloads": 3
           }
         ],
         "portable": [
@@ -17316,42 +17488,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-windows.zip",
             "size": 771645080,
-            "downloads": 7
+            "downloads": 13
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-windows-legacy.zip",
             "size": 533406225,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-linux.zip",
             "size": 828474684,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-linux-arm64.zip",
             "size": 653378918,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-linux-legacy.zip",
             "size": 531820510,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-macos.zip",
             "size": 580082682,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -17401,7 +17573,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/jarvissax/rondo/releases/download/v1.0.2/rom.zip",
-            "downloads": 66
+            "downloads": 92,
+            "mirror_downloads": 26
           }
         ],
         "portable": [
@@ -17410,42 +17583,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-windows.zip",
             "size": 769801395,
-            "downloads": 7
+            "downloads": 16
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-windows-legacy.zip",
             "size": 531562538,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-linux.zip",
             "size": 826630999,
-            "downloads": 0
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-linux-arm64.zip",
             "size": 651535233,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-linux-legacy.zip",
             "size": 529976823,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-macos.zip",
             "size": 578238997,
-            "downloads": 1
+            "downloads": 17
           }
         ]
       },
@@ -17495,7 +17668,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/rom.zip",
-            "downloads": 24
+            "downloads": 38,
+            "mirror_downloads": 14
           }
         ],
         "portable": [
@@ -17504,42 +17678,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-windows.zip",
             "size": 769801772,
-            "downloads": 7
+            "downloads": 13
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-windows-legacy.zip",
             "size": 531562917,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-linux.zip",
             "size": 826631376,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-linux-arm64.zip",
             "size": 651535610,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-linux-legacy.zip",
             "size": 529977200,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-macos.zip",
             "size": 578239375,
-            "downloads": 1
+            "downloads": 8
           }
         ]
       },
@@ -17589,7 +17763,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/rom.zip",
-            "downloads": 26
+            "downloads": 36,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -17598,42 +17773,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-windows.zip",
             "size": 769802689,
-            "downloads": 7
+            "downloads": 12
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-windows-legacy.zip",
             "size": 531563834,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-linux.zip",
             "size": 826632293,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-linux-arm64.zip",
             "size": 651536527,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-linux-legacy.zip",
             "size": 529978117,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-macos.zip",
             "size": 578240291,
-            "downloads": 1
+            "downloads": 10
           }
         ]
       },
@@ -17676,7 +17851,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "",
-      "downloads": 312,
+      "downloads": 313,
       "mirror_downloads": 53,
       "download_breakdown": {
         "tag": "stable-v0.6.1",
@@ -17685,17 +17860,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
-            "downloads": 237
+            "downloads": 239,
+            "mirror_downloads": 1
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 16,
+            "mirror_downloads": 1
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/update.zip",
-            "downloads": 7
+            "downloads": 8,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -17799,7 +17977,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
           "size": 581693789,
-          "download_count": 237,
+          "download_count": 238,
           "content_type": "application/zip"
         },
         {
@@ -17839,17 +18017,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom.zip",
-            "downloads": 16
+            "downloads": 18,
+            "mirror_downloads": 2
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b.zip",
-            "downloads": 13
+            "downloads": 15,
+            "mirror_downloads": 2
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/update.zip",
-            "downloads": 18
+            "downloads": 20,
+            "mirror_downloads": 2
           }
         ],
         "portable": [
@@ -17858,49 +18039,49 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-windows.zip",
             "size": 838894770,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-windows-legacy.zip",
             "size": 600656077,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux.zip",
             "size": 886216094,
-            "downloads": 2
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux-arm64.zip",
             "size": 711120328,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux-legacy.zip",
             "size": 599070364,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-macos.zip",
             "size": 645528734,
-            "downloads": 2
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b-windows.zip",
             "size": 752384027,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -17914,7 +18095,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b-linux.zip",
             "size": 799705351,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -17935,7 +18116,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b-macos.zip",
             "size": 559017997,
-            "downloads": 2
+            "downloads": 3
           }
         ]
       },
@@ -17993,17 +18174,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/rom.zip",
-            "downloads": 843
+            "downloads": 844,
+            "mirror_downloads": 1
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/rom_type_b.zip",
-            "downloads": 67
+            "downloads": 68,
+            "mirror_downloads": 1
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/update.zip",
-            "downloads": 51
+            "downloads": 52,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -18012,84 +18196,84 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-windows.zip",
             "size": 842355635,
-            "downloads": 19
+            "downloads": 33
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-windows-legacy.zip",
             "size": 604116784,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-linux.zip",
             "size": 889676959,
-            "downloads": 5
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-linux-arm64.zip",
             "size": 714581193,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-linux-legacy.zip",
             "size": 602531069,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-macos.zip",
             "size": 648989604,
-            "downloads": 6
+            "downloads": 16
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-windows.zip",
             "size": 756007620,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-windows-legacy.zip",
             "size": 517768787,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-linux.zip",
             "size": 803328944,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-linux-arm64.zip",
             "size": 628233178,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-linux-legacy.zip",
             "size": 516183072,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-macos.zip",
             "size": 562641596,
-            "downloads": 2
+            "downloads": 5
           }
         ]
       },
@@ -18147,17 +18331,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom.zip",
-            "downloads": 42
+            "downloads": 51,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b.zip",
-            "downloads": 18
+            "downloads": 27,
+            "mirror_downloads": 9
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/update.zip",
-            "downloads": 27
+            "downloads": 36,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -18166,7 +18353,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-windows.zip",
             "size": 838232364,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -18180,14 +18367,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-linux.zip",
             "size": 885553688,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-linux-arm64.zip",
             "size": 710457922,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -18201,14 +18388,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-macos.zip",
             "size": 644866327,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b-windows.zip",
             "size": 752923282,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -18222,7 +18409,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b-linux.zip",
             "size": 800244606,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -18243,7 +18430,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b-macos.zip",
             "size": 559557251,
-            "downloads": 2
+            "downloads": 5
           }
         ]
       },
@@ -18301,17 +18488,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom.zip",
-            "downloads": 24
+            "downloads": 33,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b.zip",
-            "downloads": 17
+            "downloads": 26,
+            "mirror_downloads": 9
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/update.zip",
-            "downloads": 23
+            "downloads": 32,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -18320,7 +18510,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom-windows.zip",
             "size": 845283629,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -18334,7 +18524,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom-linux.zip",
             "size": 892604953,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -18355,14 +18545,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom-macos.zip",
             "size": 651917594,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b-windows.zip",
             "size": 754652036,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -18376,7 +18566,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b-linux.zip",
             "size": 801973360,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -18397,7 +18587,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b-macos.zip",
             "size": 561286007,
-            "downloads": 2
+            "downloads": 5
           }
         ]
       },
@@ -18455,17 +18645,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom.zip",
-            "downloads": 62
+            "downloads": 71,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 28,
+            "mirror_downloads": 9
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/update.zip",
-            "downloads": 32
+            "downloads": 41,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -18474,7 +18667,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-windows.zip",
             "size": 850060676,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -18488,14 +18681,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-linux.zip",
             "size": 897382000,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-linux-arm64.zip",
             "size": 722286234,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -18509,14 +18702,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-macos.zip",
             "size": 656694642,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b-windows.zip",
             "size": 757776623,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -18530,7 +18723,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b-linux.zip",
             "size": 805097947,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -18551,7 +18744,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b-macos.zip",
             "size": 564410595,
-            "downloads": 2
+            "downloads": 5
           }
         ]
       },
@@ -18609,17 +18802,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom.zip",
-            "downloads": 114
+            "downloads": 123,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 32,
+            "mirror_downloads": 9
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/update.zip",
-            "downloads": 37
+            "downloads": 46,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -18628,7 +18824,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom-windows.zip",
             "size": 845452690,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -18642,7 +18838,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom-linux.zip",
             "size": 892774014,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -18663,14 +18859,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom-macos.zip",
             "size": 652086654,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b-windows.zip",
             "size": 761878444,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -18684,7 +18880,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b-linux.zip",
             "size": 809199768,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -18705,7 +18901,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b-macos.zip",
             "size": 568512413,
-            "downloads": 2
+            "downloads": 5
           }
         ]
       },
@@ -18763,17 +18959,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom.zip",
-            "downloads": 87
+            "downloads": 96,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b.zip",
-            "downloads": 18
+            "downloads": 27,
+            "mirror_downloads": 9
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/update.zip",
-            "downloads": 32
+            "downloads": 41,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -18782,7 +18981,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-windows.zip",
             "size": 847359788,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -18796,7 +18995,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-linux.zip",
             "size": 894681112,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -18817,14 +19016,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-macos.zip",
             "size": 653993751,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b-windows.zip",
             "size": 754963451,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -18838,7 +19037,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b-linux.zip",
             "size": 802284775,
-            "downloads": 2
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -18859,7 +19058,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b-macos.zip",
             "size": 561597420,
-            "downloads": 2
+            "downloads": 5
           }
         ]
       },
@@ -18917,17 +19116,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom.zip",
-            "downloads": 142
+            "downloads": 151,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 28,
+            "mirror_downloads": 9
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/update.zip",
-            "downloads": 39
+            "downloads": 48,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -18936,49 +19138,49 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-windows.zip",
             "size": 847342086,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-windows-legacy.zip",
             "size": 609103387,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-linux.zip",
             "size": 894663410,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-linux-arm64.zip",
             "size": 719567644,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-linux-legacy.zip",
             "size": 607517672,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-macos.zip",
             "size": 653976049,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b-windows.zip",
             "size": 763523713,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -18992,7 +19194,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b-linux.zip",
             "size": 810845037,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -19013,7 +19215,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b-macos.zip",
             "size": 570157681,
-            "downloads": 2
+            "downloads": 5
           }
         ]
       },
@@ -19071,17 +19273,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom.zip",
-            "downloads": 166
+            "downloads": 176,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 29,
+            "mirror_downloads": 10
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/update.zip",
-            "downloads": 39
+            "downloads": 49,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -19090,7 +19295,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-windows.zip",
             "size": 846551059,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -19104,14 +19309,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-linux.zip",
             "size": 893872383,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-linux-arm64.zip",
             "size": 718776617,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -19125,14 +19330,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-macos.zip",
             "size": 653185022,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b-windows.zip",
             "size": 762646840,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -19146,7 +19351,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b-linux.zip",
             "size": 809968164,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -19167,7 +19372,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b-macos.zip",
             "size": 569280809,
-            "downloads": 2
+            "downloads": 6
           }
         ]
       },
@@ -19225,17 +19430,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom.zip",
-            "downloads": 292
+            "downloads": 302,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b.zip",
-            "downloads": 24
+            "downloads": 34,
+            "mirror_downloads": 10
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/update.zip",
-            "downloads": 49
+            "downloads": 59,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -19244,7 +19452,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-windows.zip",
             "size": 845322697,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -19258,14 +19466,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-linux.zip",
             "size": 892644021,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-linux-arm64.zip",
             "size": 717548255,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -19279,14 +19487,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-macos.zip",
             "size": 651956660,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b-windows.zip",
             "size": 763386970,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -19300,7 +19508,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b-linux.zip",
             "size": 810708294,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -19321,7 +19529,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b-macos.zip",
             "size": 570020938,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -19379,17 +19587,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom.zip",
-            "downloads": 494
+            "downloads": 504,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b.zip",
-            "downloads": 25
+            "downloads": 35,
+            "mirror_downloads": 10
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/update.zip",
-            "downloads": 59
+            "downloads": 69,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -19398,7 +19609,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom-windows.zip",
             "size": 847266378,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -19412,7 +19623,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom-linux.zip",
             "size": 894587702,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -19433,14 +19644,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom-macos.zip",
             "size": 653900341,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b-windows.zip",
             "size": 755516828,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -19454,7 +19665,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b-linux.zip",
             "size": 802838152,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -19475,7 +19686,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b-macos.zip",
             "size": 562150795,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -19533,17 +19744,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom.zip",
-            "downloads": 80
+            "downloads": 90,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b.zip",
-            "downloads": 21
+            "downloads": 31,
+            "mirror_downloads": 10
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/update.zip",
-            "downloads": 32
+            "downloads": 42,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -19552,7 +19766,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom-windows.zip",
             "size": 846540550,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -19566,7 +19780,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom-linux.zip",
             "size": 893861874,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -19587,14 +19801,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom-macos.zip",
             "size": 653174513,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b-windows.zip",
             "size": 755501120,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -19608,7 +19822,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b-linux.zip",
             "size": 802822444,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -19629,7 +19843,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b-macos.zip",
             "size": 562135089,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -19724,17 +19938,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom.zip",
-            "downloads": 109
+            "downloads": 119,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b.zip",
-            "downloads": 17
+            "downloads": 27,
+            "mirror_downloads": 10
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/update.zip",
-            "downloads": 31
+            "downloads": 41,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -19743,7 +19960,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom-windows.zip",
             "size": 846506280,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -19757,7 +19974,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom-linux.zip",
             "size": 893827604,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -19778,14 +19995,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom-macos.zip",
             "size": 653140242,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b-windows.zip",
             "size": 763474727,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -19799,7 +20016,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b-linux.zip",
             "size": 810796051,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -19820,7 +20037,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b-macos.zip",
             "size": 570108695,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -19878,17 +20095,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/rom.zip",
-            "downloads": 12704
+            "downloads": 12714,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/rom_type_b.zip",
-            "downloads": 253
+            "downloads": 263,
+            "mirror_downloads": 10
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/update.zip",
-            "downloads": 1256
+            "downloads": 1266,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -19897,7 +20117,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-windows.zip",
             "size": 846686810,
-            "downloads": 19
+            "downloads": 32
           },
           {
             "platform": "windows-legacy",
@@ -19911,7 +20131,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-linux.zip",
             "size": 894008134,
-            "downloads": 4
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
@@ -19932,14 +20152,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-macos.zip",
             "size": 653320780,
-            "downloads": 6
+            "downloads": 14
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom_type_b-windows.zip",
             "size": 754512328,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -19953,7 +20173,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom_type_b-linux.zip",
             "size": 801833652,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -19974,7 +20194,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom_type_b-macos.zip",
             "size": 561146304,
-            "downloads": 1
+            "downloads": 4
           }
         ]
       },
@@ -20032,17 +20252,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom.zip",
-            "downloads": 1896
+            "downloads": 1906,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b.zip",
-            "downloads": 47
+            "downloads": 57,
+            "mirror_downloads": 10
           },
           {
             "name": "update.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/update.zip",
-            "downloads": 196
+            "downloads": 206,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -20051,7 +20274,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom-windows.zip",
             "size": 847281232,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -20065,7 +20288,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom-linux.zip",
             "size": 894602556,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -20086,14 +20309,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom-macos.zip",
             "size": 653915193,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b-windows.zip",
             "size": 755440804,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -20107,7 +20330,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b-linux.zip",
             "size": 802762128,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -20128,7 +20351,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b-macos.zip",
             "size": 562074771,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -20186,12 +20409,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom.zip",
-            "downloads": 223
+            "downloads": 255,
+            "mirror_downloads": 32
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b.zip",
-            "downloads": 28
+            "downloads": 58,
+            "mirror_downloads": 30
           }
         ],
         "portable": [
@@ -20200,7 +20425,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom-windows.zip",
             "size": 785975412,
-            "downloads": 1
+            "downloads": 9
           },
           {
             "platform": "windows-legacy",
@@ -20214,7 +20439,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom-linux.zip",
             "size": 833296736,
-            "downloads": 2
+            "downloads": 9
           },
           {
             "platform": "linux-arm64",
@@ -20235,14 +20460,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom-macos.zip",
             "size": 592609375,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b-windows.zip",
             "size": 753730078,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -20256,7 +20481,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b-linux.zip",
             "size": 801051402,
-            "downloads": 0
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
@@ -20277,7 +20502,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b-macos.zip",
             "size": 560364047,
-            "downloads": 1
+            "downloads": 8
           }
         ]
       },
@@ -20327,37 +20552,44 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_240p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rom_240p.zip",
-            "downloads": 6938
+            "downloads": 6949,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_240p_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rom_240p_type_b.zip",
-            "downloads": 94
+            "downloads": 105,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_360p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rom_360p.zip",
-            "downloads": 3357
+            "downloads": 3368,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_360p_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rom_360p_type_b.zip",
-            "downloads": 89
+            "downloads": 100,
+            "mirror_downloads": 11
           },
           {
             "name": "update_240p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/update_240p.zip",
-            "downloads": 61
+            "downloads": 72,
+            "mirror_downloads": 11
           },
           {
             "name": "update_360p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/update_360p.zip",
-            "downloads": 84
+            "downloads": 95,
+            "mirror_downloads": 11
           },
           {
             "name": "voices.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/voices.zip",
-            "downloads": 29
+            "downloads": 40,
+            "mirror_downloads": 11
           }
         ],
         "portable": [
@@ -20366,7 +20598,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-windows.zip",
             "size": 772909690,
-            "downloads": 1
+            "downloads": 8
           },
           {
             "platform": "windows-legacy",
@@ -20380,7 +20612,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-linux.zip",
             "size": 820231014,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
@@ -20401,14 +20633,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-macos.zip",
             "size": 579543665,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_240p_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p_type_b-windows.zip",
             "size": 737997745,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -20422,7 +20654,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p_type_b-linux.zip",
             "size": 785319069,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -20443,14 +20675,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p_type_b-macos.zip",
             "size": 544631725,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_360p-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p-windows.zip",
             "size": 774778356,
-            "downloads": 1
+            "downloads": 8
           },
           {
             "platform": "windows-legacy",
@@ -20464,7 +20696,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p-linux.zip",
             "size": 822099680,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -20485,14 +20717,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p-macos.zip",
             "size": 581412332,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_360p_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p_type_b-windows.zip",
             "size": 740239229,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -20506,7 +20738,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p_type_b-linux.zip",
             "size": 787560553,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -20527,7 +20759,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p_type_b-macos.zip",
             "size": 546873210,
-            "downloads": 1
+            "downloads": 6
           }
         ]
       },
@@ -20625,32 +20857,38 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_240p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p.zip",
-            "downloads": 608
+            "downloads": 619,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_240p_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b.zip",
-            "downloads": 29
+            "downloads": 40,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_360p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p.zip",
-            "downloads": 154
+            "downloads": 165,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_360p_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b.zip",
-            "downloads": 24
+            "downloads": 35,
+            "mirror_downloads": 11
           },
           {
             "name": "update_240p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/update_240p.zip",
-            "downloads": 25
+            "downloads": 36,
+            "mirror_downloads": 11
           },
           {
             "name": "update_360p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/update_360p.zip",
-            "downloads": 59
+            "downloads": 70,
+            "mirror_downloads": 11
           }
         ],
         "portable": [
@@ -20659,7 +20897,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p-windows.zip",
             "size": 772599143,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -20673,7 +20911,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p-linux.zip",
             "size": 819920467,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -20694,14 +20932,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p-macos.zip",
             "size": 579233113,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_240p_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b-windows.zip",
             "size": 740967067,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -20715,7 +20953,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b-linux.zip",
             "size": 788288391,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -20736,14 +20974,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b-macos.zip",
             "size": 547601042,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_360p-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p-windows.zip",
             "size": 774570976,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -20757,7 +20995,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p-linux.zip",
             "size": 821892300,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
@@ -20778,14 +21016,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p-macos.zip",
             "size": 581204947,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_360p_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b-windows.zip",
             "size": 740338635,
-            "downloads": 1
+            "downloads": 8
           },
           {
             "platform": "windows-legacy",
@@ -20799,7 +21037,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b-linux.zip",
             "size": 787659959,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -20820,7 +21058,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b-macos.zip",
             "size": 546972611,
-            "downloads": 1
+            "downloads": 8
           }
         ]
       },
@@ -20910,32 +21148,38 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_240p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p.zip",
-            "downloads": 147
+            "downloads": 158,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_240p_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b.zip",
-            "downloads": 22
+            "downloads": 33,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_360p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p.zip",
-            "downloads": 44
+            "downloads": 55,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_360p_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b.zip",
-            "downloads": 19
+            "downloads": 30,
+            "mirror_downloads": 11
           },
           {
             "name": "update_240p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/update_240p.zip",
-            "downloads": 26
+            "downloads": 37,
+            "mirror_downloads": 11
           },
           {
             "name": "update_360p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/update_360p.zip",
-            "downloads": 30
+            "downloads": 41,
+            "mirror_downloads": 11
           }
         ],
         "portable": [
@@ -20944,7 +21188,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-windows.zip",
             "size": 772033855,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -20958,7 +21202,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-linux.zip",
             "size": 819355179,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -20979,14 +21223,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-macos.zip",
             "size": 578667827,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_240p_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-windows.zip",
             "size": 739078053,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -21000,7 +21244,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-linux.zip",
             "size": 786399377,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -21021,14 +21265,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-macos.zip",
             "size": 545712030,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_360p-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-windows.zip",
             "size": 774298451,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -21042,7 +21286,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-linux.zip",
             "size": 821619775,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -21063,14 +21307,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-macos.zip",
             "size": 580932423,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_360p_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-windows.zip",
             "size": 748837527,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -21084,7 +21328,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-linux.zip",
             "size": 796158851,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -21105,7 +21349,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-macos.zip",
             "size": 555471504,
-            "downloads": 1
+            "downloads": 6
           }
         ]
       },
@@ -21195,32 +21439,38 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_240p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p.zip",
-            "downloads": 131
+            "downloads": 142,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_240p_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b.zip",
-            "downloads": 24
+            "downloads": 35,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_360p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p.zip",
-            "downloads": 62
+            "downloads": 73,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_360p_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b.zip",
-            "downloads": 22
+            "downloads": 33,
+            "mirror_downloads": 11
           },
           {
             "name": "update_240p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/update_240p.zip",
-            "downloads": 25
+            "downloads": 36,
+            "mirror_downloads": 11
           },
           {
             "name": "update_360p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/update_360p.zip",
-            "downloads": 55
+            "downloads": 66,
+            "mirror_downloads": 11
           }
         ],
         "portable": [
@@ -21229,7 +21479,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p-windows.zip",
             "size": 770493544,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -21243,7 +21493,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p-linux.zip",
             "size": 817814868,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -21264,14 +21514,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p-macos.zip",
             "size": 577127514,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_240p_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b-windows.zip",
             "size": 740671637,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -21285,7 +21535,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b-linux.zip",
             "size": 787992961,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -21306,14 +21556,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b-macos.zip",
             "size": 547305612,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_360p-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p-windows.zip",
             "size": 775577325,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -21327,7 +21577,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p-linux.zip",
             "size": 822898649,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -21348,14 +21598,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p-macos.zip",
             "size": 582211295,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_360p_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b-windows.zip",
             "size": 740232298,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -21369,7 +21619,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b-linux.zip",
             "size": 787553622,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -21390,7 +21640,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b-macos.zip",
             "size": 546866273,
-            "downloads": 1
+            "downloads": 6
           }
         ]
       },
@@ -21515,22 +21765,26 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_240p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_240p.zip",
-            "downloads": 1453
+            "downloads": 1464,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_240p_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_240p_type_b.zip",
-            "downloads": 55
+            "downloads": 66,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_360p.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_360p.zip",
-            "downloads": 1079
+            "downloads": 1090,
+            "mirror_downloads": 11
           },
           {
             "name": "rom_360p_type_b.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_360p_type_b.zip",
-            "downloads": 41
+            "downloads": 52,
+            "mirror_downloads": 11
           }
         ],
         "portable": [
@@ -21539,7 +21793,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p-windows.zip",
             "size": 744999523,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -21553,7 +21807,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p-linux.zip",
             "size": 792320847,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -21574,14 +21828,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p-macos.zip",
             "size": 551633498,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_240p_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p_type_b-windows.zip",
             "size": 713381097,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -21595,7 +21849,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p_type_b-linux.zip",
             "size": 760702421,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -21616,14 +21870,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p_type_b-macos.zip",
             "size": 520015078,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_360p-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p-windows.zip",
             "size": 747025479,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -21637,7 +21891,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p-linux.zip",
             "size": 794346803,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -21658,14 +21912,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p-macos.zip",
             "size": 553659455,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_360p_type_b-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p_type_b-windows.zip",
             "size": 713722072,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -21679,7 +21933,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p_type_b-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p_type_b-linux.zip",
             "size": 761043396,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -21700,7 +21954,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_360p_type_b-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p_type_b-macos.zip",
             "size": 520356053,
-            "downloads": 1
+            "downloads": 6
           }
         ]
       },
@@ -21790,7 +22044,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/type-a-base/rom.zip",
-            "downloads": 8473
+            "downloads": 8474,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -21799,7 +22054,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-windows.zip",
             "size": 769041346,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -21813,7 +22068,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-linux.zip",
             "size": 816362670,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -21834,7 +22089,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-macos.zip",
             "size": 575675308,
-            "downloads": 1
+            "downloads": 6
           }
         ]
       },
@@ -21868,7 +22123,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/type-b-base/rom.zip",
-            "downloads": 8223
+            "downloads": 8234,
+            "mirror_downloads": 11
           }
         ],
         "portable": [
@@ -21877,7 +22133,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-windows.zip",
             "size": 712038348,
-            "downloads": 1
+            "downloads": 9
           },
           {
             "platform": "windows-legacy",
@@ -21891,7 +22147,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-linux.zip",
             "size": 759359672,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -21912,7 +22168,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-macos.zip",
             "size": 518672307,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -22129,7 +22385,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
-            "downloads": 1079
+            "downloads": 1107,
+            "mirror_downloads": 28
           }
         ],
         "portable": [
@@ -22138,42 +22395,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-windows.zip",
             "size": 674726914,
-            "downloads": 6
+            "downloads": 14
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-windows-legacy.zip",
             "size": 436488069,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-linux.zip",
             "size": 722048238,
-            "downloads": 1
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-linux-arm64.zip",
             "size": 546952472,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-linux-legacy.zip",
             "size": 434902354,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-macos.zip",
             "size": 481360883,
-            "downloads": 0
+            "downloads": 4
           }
         ]
       },
@@ -22271,7 +22528,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip",
             "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip",
-            "downloads": 87
+            "downloads": 103,
+            "mirror_downloads": 16
           },
           {
             "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip",
@@ -22285,21 +22543,21 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-windows.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-windows.zip",
             "size": 674854310,
-            "downloads": 7
+            "downloads": 10
           },
           {
             "platform": "windows-legacy",
             "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-windows-legacy.zip",
             "size": 436615553,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux.zip",
             "size": 722175634,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -22313,35 +22571,35 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux-legacy.zip",
             "size": 435029836,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip",
             "size": 481488362,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows",
             "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-windows.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-windows.zip",
             "size": 674854310,
-            "downloads": 7
+            "downloads": 11
           },
           {
             "platform": "windows-legacy",
             "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-windows-legacy.zip",
             "size": 436615571,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux.zip",
             "size": 722175634,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -22355,14 +22613,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux-legacy.zip",
             "size": 435029854,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-macos.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-macos.zip",
             "size": 481488368,
-            "downloads": 0
+            "downloads": 5
           }
         ]
       },
@@ -22492,7 +22750,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/rom_y2.zip",
-            "downloads": 730
+            "downloads": 740,
+            "mirror_downloads": 10
           },
           {
             "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip",
@@ -22506,7 +22765,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
             "size": 674923390,
-            "downloads": 33
+            "downloads": 49
           },
           {
             "platform": "windows-legacy",
@@ -22520,7 +22779,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux.zip",
             "size": 722244714,
-            "downloads": 4
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
@@ -22541,49 +22800,49 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-macos.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-macos.zip",
             "size": 481557370,
-            "downloads": 4
+            "downloads": 8
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-windows.zip",
             "size": 674923390,
-            "downloads": 33
+            "downloads": 55
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-windows-legacy.zip",
             "size": 436684551,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-linux.zip",
             "size": 722244714,
-            "downloads": 4
+            "downloads": 10
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-linux-arm64.zip",
             "size": 547148948,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-linux-legacy.zip",
             "size": 435098832,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-macos.zip",
             "size": 481557348,
-            "downloads": 7
+            "downloads": 13
           }
         ]
       },
@@ -22683,7 +22942,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/y2-release/rom_y2.zip",
-            "downloads": 69
+            "downloads": 78,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -22692,7 +22952,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-windows.zip",
             "size": 682548338,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -22706,7 +22966,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-linux.zip",
             "size": 739377942,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -22727,7 +22987,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-macos.zip",
             "size": 490985933,
-            "downloads": 0
+            "downloads": 6
           }
         ]
       },
@@ -22761,17 +23021,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom.zip",
-            "downloads": 944
+            "downloads": 951,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_a5.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom_a5.zip",
-            "downloads": 22
+            "downloads": 29,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom_type_b.zip",
-            "downloads": 31
+            "downloads": 38,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -22780,7 +23043,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-windows.zip",
             "size": 1222207717,
-            "downloads": 2
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -22794,7 +23057,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-linux.zip",
             "size": 1279037321,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -22815,14 +23078,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-macos.zip",
             "size": 1030645320,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_a5-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-windows.zip",
             "size": 534901346,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -22836,7 +23099,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_a5-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-linux.zip",
             "size": 591730950,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -22857,14 +23120,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_a5-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-macos.zip",
             "size": 343338932,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b-windows.zip",
             "size": 729576880,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -22878,7 +23141,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b-linux.zip",
             "size": 786406484,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -22957,7 +23220,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/y2-base/rom_y2.zip",
-            "downloads": 47
+            "downloads": 54,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -22966,7 +23230,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-windows.zip",
             "size": 875491014,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -22980,7 +23244,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-linux.zip",
             "size": 932320618,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
@@ -23035,7 +23299,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/type-a-base/rom.zip",
-            "downloads": 70
+            "downloads": 77,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -23044,7 +23309,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-windows.zip",
             "size": 1221937061,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -23058,7 +23323,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-linux.zip",
             "size": 1278766665,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -23079,7 +23344,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-macos.zip",
             "size": 1030374679,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -23113,12 +23378,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260716-0131/rom.zip",
-            "downloads": 823
+            "downloads": 830,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260716-0131/rom_type_b.zip",
-            "downloads": 29
+            "downloads": 36,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_y2.zip",
@@ -23132,7 +23399,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-windows.zip",
             "size": 784980862,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -23146,7 +23413,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-linux.zip",
             "size": 841810466,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -23174,7 +23441,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-windows.zip",
             "size": 785999753,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -23188,7 +23455,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-linux.zip",
             "size": 842829357,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -23209,14 +23476,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-macos.zip",
             "size": 594437351,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-windows.zip",
             "size": 875491032,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -23230,7 +23497,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-linux.zip",
             "size": 932320636,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -23251,7 +23518,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-macos.zip",
             "size": 683928626,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -23301,12 +23568,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260702-1521/rom.zip",
-            "downloads": 312
+            "downloads": 319,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260702-1521/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 26,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -23315,7 +23584,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-windows.zip",
             "size": 767225569,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -23329,7 +23598,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-linux.zip",
             "size": 814546893,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -23350,14 +23619,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-macos.zip",
             "size": 573859534,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-windows.zip",
             "size": 720172229,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -23371,7 +23640,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-linux.zip",
             "size": 767493553,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -23392,7 +23661,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-macos.zip",
             "size": 526806201,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -23471,12 +23740,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260702-1512/rom.zip",
-            "downloads": 67
+            "downloads": 74,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260702-1512/rom_type_b.zip",
-            "downloads": 12
+            "downloads": 19,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -23485,7 +23756,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-windows.zip",
             "size": 767208593,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows-legacy",
@@ -23499,7 +23770,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-linux.zip",
             "size": 814529917,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -23520,14 +23791,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-macos.zip",
             "size": 573842551,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-windows.zip",
             "size": 718831340,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -23541,7 +23812,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-linux.zip",
             "size": 766152664,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -23562,7 +23833,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-macos.zip",
             "size": 525465305,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -23612,12 +23883,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260701-1453/rom.zip",
-            "downloads": 123
+            "downloads": 130,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260701-1453/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 22,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -23626,7 +23899,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-windows.zip",
             "size": 767169334,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -23640,7 +23913,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-linux.zip",
             "size": 814490658,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -23661,14 +23934,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-macos.zip",
             "size": 573803287,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-windows.zip",
             "size": 718830158,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -23682,7 +23955,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-linux.zip",
             "size": 766151482,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -23703,7 +23976,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-macos.zip",
             "size": 525464118,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -23753,12 +24026,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260701-1454/rom.zip",
-            "downloads": 18
+            "downloads": 25,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260701-1454/rom_type_b.zip",
-            "downloads": 12
+            "downloads": 19,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -23767,7 +24042,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-windows.zip",
             "size": 767202185,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -23781,7 +24056,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-linux.zip",
             "size": 814523509,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -23802,14 +24077,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-macos.zip",
             "size": 573836132,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-windows.zip",
             "size": 719999650,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -23823,7 +24098,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-linux.zip",
             "size": 767320974,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -23844,7 +24119,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-macos.zip",
             "size": 526633604,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -23894,12 +24169,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1236/rom.zip",
-            "downloads": 119
+            "downloads": 126,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1236/rom_type_b.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -23908,7 +24185,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-windows.zip",
             "size": 767230535,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -23922,7 +24199,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-linux.zip",
             "size": 814551859,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -23943,14 +24220,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-macos.zip",
             "size": 573864490,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-windows.zip",
             "size": 719061664,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -23964,7 +24241,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-linux.zip",
             "size": 766382988,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -23985,7 +24262,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-macos.zip",
             "size": 525695625,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -24035,12 +24312,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1125/rom.zip",
-            "downloads": 18
+            "downloads": 25,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1125/rom_type_b.zip",
-            "downloads": 13
+            "downloads": 20,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -24049,7 +24328,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-windows.zip",
             "size": 767162924,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -24063,7 +24342,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-linux.zip",
             "size": 814484248,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -24084,14 +24363,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-macos.zip",
             "size": 573796878,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-windows.zip",
             "size": 718794700,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -24105,7 +24384,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-linux.zip",
             "size": 766116024,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -24126,7 +24405,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-macos.zip",
             "size": 525428660,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -24176,12 +24455,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1120/rom.zip",
-            "downloads": 17
+            "downloads": 24,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1120/rom_type_b.zip",
-            "downloads": 12
+            "downloads": 19,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -24190,7 +24471,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-windows.zip",
             "size": 767182308,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -24204,7 +24485,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-linux.zip",
             "size": 814503632,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -24225,14 +24506,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-macos.zip",
             "size": 573816262,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-windows.zip",
             "size": 718798291,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -24246,7 +24527,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-linux.zip",
             "size": 766119615,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -24267,7 +24548,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-macos.zip",
             "size": 525432251,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -24317,12 +24598,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1110/rom.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1110/rom_type_b.zip",
-            "downloads": 13
+            "downloads": 20,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -24331,7 +24614,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-windows.zip",
             "size": 767169903,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -24345,7 +24628,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-linux.zip",
             "size": 814491227,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -24366,14 +24649,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-macos.zip",
             "size": 573803857,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-windows.zip",
             "size": 719127365,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -24387,7 +24670,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-linux.zip",
             "size": 766448689,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -24408,7 +24691,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-macos.zip",
             "size": 525761325,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -24458,12 +24741,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1102/rom.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1102/rom_type_b.zip",
-            "downloads": 12
+            "downloads": 19,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -24472,7 +24757,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-windows.zip",
             "size": 767184109,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -24486,7 +24771,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-linux.zip",
             "size": 814505433,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -24507,14 +24792,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-macos.zip",
             "size": 573818064,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-windows.zip",
             "size": 723743983,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -24528,7 +24813,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-linux.zip",
             "size": 771065307,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -24549,7 +24834,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-macos.zip",
             "size": 530377944,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -24599,12 +24884,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1023/rom.zip",
-            "downloads": 13
+            "downloads": 20,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1023/rom_type_b.zip",
-            "downloads": 13
+            "downloads": 20,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -24613,7 +24900,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-windows.zip",
             "size": 767167534,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -24627,7 +24914,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux.zip",
             "size": 814488858,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -24648,14 +24935,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-macos.zip",
             "size": 573801489,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-windows.zip",
             "size": 718801099,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -24669,7 +24956,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-linux.zip",
             "size": 766122423,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -24690,7 +24977,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-macos.zip",
             "size": 525435060,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -24740,12 +25027,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1005/rom.zip",
-            "downloads": 16
+            "downloads": 23,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1005/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 22,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -24754,7 +25043,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-windows.zip",
             "size": 767158465,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -24768,7 +25057,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-linux.zip",
             "size": 814479789,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -24789,14 +25078,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-macos.zip",
             "size": 573792419,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-windows.zip",
             "size": 722911327,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -24810,7 +25099,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-linux.zip",
             "size": 770232651,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -24831,7 +25120,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-macos.zip",
             "size": 529545287,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -24881,12 +25170,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0956/rom.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0956/rom_type_b.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -24895,7 +25186,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-windows.zip",
             "size": 767205934,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -24909,7 +25200,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-linux.zip",
             "size": 814527258,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -24930,14 +25221,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-macos.zip",
             "size": 573839887,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-windows.zip",
             "size": 720063226,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -24951,7 +25242,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-linux.zip",
             "size": 767384550,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -24972,7 +25263,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-macos.zip",
             "size": 526697185,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -25022,12 +25313,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0636/rom.zip",
-            "downloads": 16
+            "downloads": 23,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0636/rom_type_b.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -25036,7 +25329,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-windows.zip",
             "size": 767239900,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -25050,7 +25343,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-linux.zip",
             "size": 814561224,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -25071,14 +25364,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-macos.zip",
             "size": 573873854,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-windows.zip",
             "size": 722888443,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -25092,7 +25385,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-linux.zip",
             "size": 770209767,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -25113,7 +25406,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-macos.zip",
             "size": 529522403,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -25163,12 +25456,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0550/rom.zip",
-            "downloads": 15
+            "downloads": 22,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0550/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 22,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -25177,7 +25472,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-windows.zip",
             "size": 767209149,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -25191,7 +25486,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-linux.zip",
             "size": 814530473,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -25212,14 +25507,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-macos.zip",
             "size": 573843104,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-windows.zip",
             "size": 720070079,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -25233,7 +25528,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-linux.zip",
             "size": 767391403,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -25254,7 +25549,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-macos.zip",
             "size": 526704040,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -25304,12 +25599,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1236/rom.zip",
-            "downloads": 19
+            "downloads": 26,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1236/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 22,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -25318,7 +25615,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-windows.zip",
             "size": 767236370,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -25332,7 +25629,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-linux.zip",
             "size": 814557694,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -25353,14 +25650,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-macos.zip",
             "size": 573870318,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-windows.zip",
             "size": 720092648,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -25374,7 +25671,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-linux.zip",
             "size": 767413972,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -25395,7 +25692,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-macos.zip",
             "size": 526726602,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -25445,12 +25742,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1125/rom.zip",
-            "downloads": 15
+            "downloads": 22,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1125/rom_type_b.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -25459,7 +25758,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-windows.zip",
             "size": 767231927,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -25473,7 +25772,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-linux.zip",
             "size": 814553251,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -25494,14 +25793,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-macos.zip",
             "size": 573865872,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-windows.zip",
             "size": 720054072,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -25515,7 +25814,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-linux.zip",
             "size": 767375396,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -25536,7 +25835,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-macos.zip",
             "size": 526688023,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -25586,12 +25885,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1120/rom.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1120/rom_type_b.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -25600,7 +25901,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-windows.zip",
             "size": 767222073,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -25614,7 +25915,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-linux.zip",
             "size": 814543397,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -25635,14 +25936,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-macos.zip",
             "size": 573856020,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-windows.zip",
             "size": 720048152,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -25656,7 +25957,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-linux.zip",
             "size": 767369476,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -25677,7 +25978,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-macos.zip",
             "size": 526682105,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -25727,12 +26028,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1110/rom.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1110/rom_type_b.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -25741,7 +26044,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-windows.zip",
             "size": 767207592,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -25755,7 +26058,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-linux.zip",
             "size": 814528916,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -25776,14 +26079,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-macos.zip",
             "size": 573841539,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-windows.zip",
             "size": 720174167,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -25797,7 +26100,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-linux.zip",
             "size": 767495491,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
@@ -25818,7 +26121,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-macos.zip",
             "size": 526808120,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -25868,12 +26171,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1102/rom.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1102/rom_type_b.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -25882,7 +26187,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-windows.zip",
             "size": 767154759,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -25896,7 +26201,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-linux.zip",
             "size": 814476083,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -25917,14 +26222,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-macos.zip",
             "size": 573788705,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-windows.zip",
             "size": 719106809,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -25938,7 +26243,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-linux.zip",
             "size": 766428133,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -25959,7 +26264,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-macos.zip",
             "size": 525740761,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -26009,12 +26314,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1035/rom.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1035/rom_type_b.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -26023,7 +26330,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-windows.zip",
             "size": 767276121,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -26037,7 +26344,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-linux.zip",
             "size": 814597445,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -26058,14 +26365,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-macos.zip",
             "size": 573910069,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-windows.zip",
             "size": 723766343,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -26079,7 +26386,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-linux.zip",
             "size": 771087667,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
@@ -26100,7 +26407,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-macos.zip",
             "size": 530400297,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -26150,12 +26457,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1024/rom.zip",
-            "downloads": 15
+            "downloads": 22,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1024/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 22,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -26164,7 +26473,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-windows.zip",
             "size": 767156858,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -26178,7 +26487,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-linux.zip",
             "size": 814478182,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -26199,14 +26508,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-macos.zip",
             "size": 573790806,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-windows.zip",
             "size": 720099809,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -26220,7 +26529,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-linux.zip",
             "size": 767421133,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -26241,7 +26550,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-macos.zip",
             "size": 526733763,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -26291,12 +26600,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1005/rom.zip",
-            "downloads": 15
+            "downloads": 23,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1005/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 23,
+            "mirror_downloads": 8
           }
         ],
         "portable": [
@@ -26305,7 +26616,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-windows.zip",
             "size": 768723764,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -26319,7 +26630,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-linux.zip",
             "size": 816045088,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -26340,14 +26651,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-macos.zip",
             "size": 575357710,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-windows.zip",
             "size": 718763502,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -26361,7 +26672,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-linux.zip",
             "size": 766084826,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -26382,7 +26693,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-macos.zip",
             "size": 525397454,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -26432,12 +26743,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0957/rom.zip",
-            "downloads": 15
+            "downloads": 23,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0957/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 23,
+            "mirror_downloads": 8
           }
         ],
         "portable": [
@@ -26446,7 +26759,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-windows.zip",
             "size": 767156339,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -26460,7 +26773,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-linux.zip",
             "size": 814477663,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -26481,14 +26794,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-macos.zip",
             "size": 573790285,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-windows.zip",
             "size": 712559861,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -26502,7 +26815,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-linux.zip",
             "size": 759881185,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -26523,7 +26836,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-macos.zip",
             "size": 519193813,
-            "downloads": 0
+            "downloads": 3
           }
         ]
       },
@@ -26573,12 +26886,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0636/rom.zip",
-            "downloads": 16
+            "downloads": 24,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0636/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 23,
+            "mirror_downloads": 8
           }
         ],
         "portable": [
@@ -26587,7 +26902,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-windows.zip",
             "size": 768741709,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -26601,7 +26916,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-linux.zip",
             "size": 816063033,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -26622,14 +26937,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-macos.zip",
             "size": 575375657,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-windows.zip",
             "size": 718884144,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -26643,7 +26958,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-linux.zip",
             "size": 766205468,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -26664,7 +26979,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-macos.zip",
             "size": 525518098,
-            "downloads": 0
+            "downloads": 3
           }
         ]
       },
@@ -26714,12 +27029,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0549/rom.zip",
-            "downloads": 15
+            "downloads": 22,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0549/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 23,
+            "mirror_downloads": 8
           }
         ],
         "portable": [
@@ -26728,7 +27045,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-windows.zip",
             "size": 767186709,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -26742,7 +27059,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-linux.zip",
             "size": 814508033,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -26763,14 +27080,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-macos.zip",
             "size": 573820654,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-windows.zip",
             "size": 719058047,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -26784,7 +27101,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-linux.zip",
             "size": 766379371,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -26805,7 +27122,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-macos.zip",
             "size": 525691998,
-            "downloads": 0
+            "downloads": 3
           }
         ]
       },
@@ -26855,12 +27172,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-1615/rom.zip",
-            "downloads": 74
+            "downloads": 82,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-1615/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 23,
+            "mirror_downloads": 8
           }
         ],
         "portable": [
@@ -26869,7 +27188,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-windows.zip",
             "size": 767129873,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -26883,7 +27202,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-linux.zip",
             "size": 814451197,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -26904,14 +27223,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-macos.zip",
             "size": 573763826,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-windows.zip",
             "size": 722860869,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -26925,7 +27244,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-linux.zip",
             "size": 770182193,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -26946,7 +27265,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-macos.zip",
             "size": 529494828,
-            "downloads": 0
+            "downloads": 4
           }
         ]
       },
@@ -26996,12 +27315,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-1610/rom.zip",
-            "downloads": 17
+            "downloads": 25,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-1610/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 23,
+            "mirror_downloads": 8
           }
         ],
         "portable": [
@@ -27010,7 +27331,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-windows.zip",
             "size": 767183962,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -27024,7 +27345,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux.zip",
             "size": 814505286,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -27045,14 +27366,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-macos.zip",
             "size": 573817916,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-windows.zip",
             "size": 720029277,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -27066,7 +27387,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-linux.zip",
             "size": 767350601,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -27087,7 +27408,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-macos.zip",
             "size": 526663237,
-            "downloads": 0
+            "downloads": 3
           }
         ]
       },
@@ -27137,12 +27458,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-1444/rom.zip",
-            "downloads": 33
+            "downloads": 41,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-1444/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 23,
+            "mirror_downloads": 8
           }
         ],
         "portable": [
@@ -27151,7 +27474,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-windows.zip",
             "size": 767182824,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -27165,7 +27488,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-linux.zip",
             "size": 814504148,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -27186,14 +27509,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-macos.zip",
             "size": 573816777,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-windows.zip",
             "size": 718873062,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -27207,7 +27530,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-linux.zip",
             "size": 766194386,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -27228,7 +27551,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-macos.zip",
             "size": 525507021,
-            "downloads": 0
+            "downloads": 3
           }
         ]
       },
@@ -27278,12 +27601,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-0955/rom.zip",
-            "downloads": 29
+            "downloads": 37,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-0955/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 23,
+            "mirror_downloads": 8
           }
         ],
         "portable": [
@@ -27292,7 +27617,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-windows.zip",
             "size": 767173422,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -27306,7 +27631,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-linux.zip",
             "size": 814494746,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -27327,14 +27652,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-macos.zip",
             "size": 573807376,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-windows.zip",
             "size": 720045093,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -27348,7 +27673,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-linux.zip",
             "size": 767366417,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -27369,7 +27694,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-macos.zip",
             "size": 526679053,
-            "downloads": 0
+            "downloads": 3
           }
         ]
       },
@@ -27419,12 +27744,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-0057/rom.zip",
-            "downloads": 19
+            "downloads": 27,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-0057/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 23,
+            "mirror_downloads": 8
           }
         ],
         "portable": [
@@ -27433,7 +27760,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-windows.zip",
             "size": 767202672,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -27447,7 +27774,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux.zip",
             "size": 814523996,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -27468,14 +27795,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-macos.zip",
             "size": 573836626,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-windows.zip",
             "size": 719088957,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -27489,7 +27816,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-linux.zip",
             "size": 766410281,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -27510,7 +27837,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-macos.zip",
             "size": 525722917,
-            "downloads": 0
+            "downloads": 3
           }
         ]
       },
@@ -27560,12 +27887,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1616/rom.zip",
-            "downloads": 27
+            "downloads": 36,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1616/rom_type_b.zip",
-            "downloads": 16
+            "downloads": 25,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -27574,7 +27903,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-windows.zip",
             "size": 767196449,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -27588,7 +27917,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-linux.zip",
             "size": 814517773,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -27609,14 +27938,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-macos.zip",
             "size": 573830396,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-windows.zip",
             "size": 720076795,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -27630,7 +27959,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-linux.zip",
             "size": 767398119,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -27651,7 +27980,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-macos.zip",
             "size": 526710748,
-            "downloads": 0
+            "downloads": 2
           }
         ]
       },
@@ -27701,12 +28030,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1609/rom.zip",
-            "downloads": 17
+            "downloads": 26,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1609/rom_type_b.zip",
-            "downloads": 16
+            "downloads": 25,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -27715,7 +28046,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-windows.zip",
             "size": 768737166,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -27729,7 +28060,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux.zip",
             "size": 816058490,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -27750,14 +28081,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-macos.zip",
             "size": 575371112,
-            "downloads": 0
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-windows.zip",
             "size": 719087167,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -27771,7 +28102,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-linux.zip",
             "size": 766408491,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -27792,7 +28123,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-macos.zip",
             "size": 525721119,
-            "downloads": 0
+            "downloads": 4
           }
         ]
       },
@@ -27842,12 +28173,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1444/rom.zip",
-            "downloads": 16
+            "downloads": 25,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1444/rom_type_b.zip",
-            "downloads": 16
+            "downloads": 25,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -27856,7 +28189,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-windows.zip",
             "size": 767203592,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -27870,7 +28203,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-linux.zip",
             "size": 814524916,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -27891,14 +28224,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-macos.zip",
             "size": 573837538,
-            "downloads": 0
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-windows.zip",
             "size": 720058876,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -27912,7 +28245,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-linux.zip",
             "size": 767380200,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -27933,7 +28266,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-macos.zip",
             "size": 526692828,
-            "downloads": 0
+            "downloads": 3
           }
         ]
       },
@@ -27983,12 +28316,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0955/rom.zip",
-            "downloads": 16
+            "downloads": 25,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0955/rom_type_b.zip",
-            "downloads": 16
+            "downloads": 25,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -27997,7 +28332,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-windows.zip",
             "size": 768724633,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -28011,7 +28346,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-linux.zip",
             "size": 816045957,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -28032,14 +28367,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-macos.zip",
             "size": 575358579,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-windows.zip",
             "size": 720106227,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -28053,7 +28388,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-linux.zip",
             "size": 767427551,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -28074,7 +28409,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-macos.zip",
             "size": 526740179,
-            "downloads": 0
+            "downloads": 4
           }
         ]
       },
@@ -28124,12 +28459,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0926/rom.zip",
-            "downloads": 16
+            "downloads": 25,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0926/rom_type_b.zip",
-            "downloads": 16
+            "downloads": 25,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -28138,7 +28475,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-windows.zip",
             "size": 767227989,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -28152,7 +28489,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-linux.zip",
             "size": 814549313,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -28173,14 +28510,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-macos.zip",
             "size": 573861936,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-windows.zip",
             "size": 722857833,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -28194,7 +28531,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-linux.zip",
             "size": 770179157,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -28215,7 +28552,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-macos.zip",
             "size": 529491786,
-            "downloads": 0
+            "downloads": 4
           }
         ]
       },
@@ -28265,12 +28602,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0057/rom.zip",
-            "downloads": 16
+            "downloads": 25,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0057/rom_type_b.zip",
-            "downloads": 16
+            "downloads": 25,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -28279,7 +28618,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-windows.zip",
             "size": 767205818,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -28293,7 +28632,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-linux.zip",
             "size": 814527142,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -28314,14 +28653,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-macos.zip",
             "size": 573839764,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-windows.zip",
             "size": 720068590,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -28335,7 +28674,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-linux.zip",
             "size": 767389914,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -28356,7 +28695,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-macos.zip",
             "size": 526702542,
-            "downloads": 0
+            "downloads": 4
           }
         ]
       },
@@ -28406,12 +28745,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1907/rom.zip",
-            "downloads": 28
+            "downloads": 37,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1907/rom_type_b.zip",
-            "downloads": 17
+            "downloads": 26,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -28420,7 +28761,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-windows.zip",
             "size": 767177328,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -28434,7 +28775,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-linux.zip",
             "size": 814498652,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -28455,14 +28796,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-macos.zip",
             "size": 573811275,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-windows.zip",
             "size": 719985640,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -28476,7 +28817,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-linux.zip",
             "size": 767306964,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -28497,7 +28838,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-macos.zip",
             "size": 526619593,
-            "downloads": 0
+            "downloads": 4
           }
         ]
       },
@@ -28547,12 +28888,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1014/rom.zip",
-            "downloads": 17
+            "downloads": 26,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1014/rom_type_b.zip",
-            "downloads": 16
+            "downloads": 25,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -28561,7 +28904,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-windows.zip",
             "size": 767139512,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -28575,7 +28918,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-linux.zip",
             "size": 814460836,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -28596,14 +28939,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-macos.zip",
             "size": 573773459,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-windows.zip",
             "size": 722380964,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -28617,7 +28960,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-linux.zip",
             "size": 769702288,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -28638,7 +28981,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-macos.zip",
             "size": 529014917,
-            "downloads": 0
+            "downloads": 4
           }
         ]
       },
@@ -28688,12 +29031,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260628-1014/rom.zip",
-            "downloads": 26
+            "downloads": 54,
+            "mirror_downloads": 28
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260628-1014/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 43,
+            "mirror_downloads": 24
           }
         ],
         "portable": [
@@ -28702,7 +29047,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-windows.zip",
             "size": 767164753,
-            "downloads": 4
+            "downloads": 12
           },
           {
             "platform": "windows-legacy",
@@ -28716,7 +29061,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-linux.zip",
             "size": 814486077,
-            "downloads": 1
+            "downloads": 9
           },
           {
             "platform": "linux-arm64",
@@ -28737,14 +29082,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-macos.zip",
             "size": 573798706,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-windows.zip",
             "size": 720144818,
-            "downloads": 3
+            "downloads": 9
           },
           {
             "platform": "windows-legacy",
@@ -28758,7 +29103,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-linux.zip",
             "size": 767466142,
-            "downloads": 1
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
@@ -28779,7 +29124,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-macos.zip",
             "size": 526778777,
-            "downloads": 1
+            "downloads": 7
           }
         ]
       },
@@ -28829,12 +29174,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260627-0304/rom.zip",
-            "downloads": 34
+            "downloads": 43,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260627-0304/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 28,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -28843,7 +29190,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-windows.zip",
             "size": 767244357,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -28857,7 +29204,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-linux.zip",
             "size": 814565681,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
@@ -28878,14 +29225,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-macos.zip",
             "size": 573878311,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-windows.zip",
             "size": 720042528,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -28899,7 +29246,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-linux.zip",
             "size": 767363852,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -28920,7 +29267,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-macos.zip",
             "size": 526676488,
-            "downloads": 0
+            "downloads": 3
           }
         ]
       },
@@ -28970,12 +29317,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0304/rom.zip",
-            "downloads": 17
+            "downloads": 26,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0304/rom_type_b.zip",
-            "downloads": 17
+            "downloads": 26,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -28984,7 +29333,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-windows.zip",
             "size": 767176187,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -28998,7 +29347,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-linux.zip",
             "size": 814497511,
-            "downloads": 0
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
@@ -29019,14 +29368,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-macos.zip",
             "size": 573810134,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-windows.zip",
             "size": 720095633,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -29040,7 +29389,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-linux.zip",
             "size": 767416957,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -29061,7 +29410,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-macos.zip",
             "size": 526729586,
-            "downloads": 0
+            "downloads": 4
           }
         ]
       },
@@ -29111,12 +29460,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0209/rom.zip",
-            "downloads": 18
+            "downloads": 27,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0209/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 24,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -29125,7 +29476,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-windows.zip",
             "size": 769594153,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -29139,7 +29490,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-linux.zip",
             "size": 816915477,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -29160,14 +29511,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-macos.zip",
             "size": 576228100,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-windows.zip",
             "size": 722079453,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -29181,7 +29532,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-linux.zip",
             "size": 769400777,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -29202,7 +29553,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-macos.zip",
             "size": 528713406,
-            "downloads": 0
+            "downloads": 4
           }
         ]
       },
@@ -29283,17 +29634,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6hotfix4/rom.zip",
-            "downloads": 75
+            "downloads": 85,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6hotfix4/rom_type_b.zip",
-            "downloads": 28
+            "downloads": 38,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6hotfix4/rom_y2.zip",
-            "downloads": 120
+            "downloads": 130,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -29302,126 +29656,126 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom-windows.zip",
             "size": 768706473,
-            "downloads": 4
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom-windows-legacy.zip",
             "size": 530467676,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom-linux.zip",
             "size": 816027797,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom-linux-arm64.zip",
             "size": 640932031,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom-linux-legacy.zip",
             "size": 528881963,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom-macos.zip",
             "size": 575340438,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_type_b-windows.zip",
             "size": 712339343,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_type_b-windows-legacy.zip",
             "size": 474100566,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_type_b-linux.zip",
             "size": 759660667,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_type_b-linux-arm64.zip",
             "size": 584564901,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_type_b-linux-legacy.zip",
             "size": 472514851,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_type_b-macos.zip",
             "size": 518973314,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_y2-windows.zip",
             "size": 683309545,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_y2-windows-legacy.zip",
             "size": 445070756,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_y2-linux.zip",
             "size": 740139149,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_y2-linux-arm64.zip",
             "size": 565043383,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_y2-linux-legacy.zip",
             "size": 443485041,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_y2-macos.zip",
             "size": 491747149,
-            "downloads": 2
+            "downloads": 6
           }
         ]
       },
@@ -29500,17 +29854,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom.zip",
-            "downloads": 539
+            "downloads": 549,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 33,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom_y2.zip",
-            "downloads": 495
+            "downloads": 505,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -29519,126 +29876,126 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom-windows.zip",
             "size": 768692207,
-            "downloads": 6
+            "downloads": 11
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom-windows-legacy.zip",
             "size": 530453388,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom-linux.zip",
             "size": 816013531,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom-linux-arm64.zip",
             "size": 640917765,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom-linux-legacy.zip",
             "size": 528867673,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom-macos.zip",
             "size": 575326173,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_type_b-windows.zip",
             "size": 712343852,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_type_b-windows-legacy.zip",
             "size": 474105049,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_type_b-linux.zip",
             "size": 759665176,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_type_b-linux-arm64.zip",
             "size": 584569410,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_type_b-linux-legacy.zip",
             "size": 472519334,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_type_b-macos.zip",
             "size": 518977825,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_y2-windows.zip",
             "size": 683311696,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_y2-windows-legacy.zip",
             "size": 445072887,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_y2-linux.zip",
             "size": 740141300,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_y2-linux-arm64.zip",
             "size": 565045534,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_y2-linux-legacy.zip",
             "size": 443487170,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_y2-macos.zip",
             "size": 491749303,
-            "downloads": 5
+            "downloads": 9
           }
         ]
       },
@@ -29717,17 +30074,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.5/rom.zip",
-            "downloads": 40
+            "downloads": 50,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.5/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 29,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.5/rom_y2.zip",
-            "downloads": 44
+            "downloads": 54,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -29736,126 +30096,126 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-windows.zip",
             "size": 768695483,
-            "downloads": 4
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-windows-legacy.zip",
             "size": 530456666,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-linux.zip",
             "size": 816016807,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-linux-arm64.zip",
             "size": 640921041,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-linux-legacy.zip",
             "size": 528870949,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-macos.zip",
             "size": 575329449,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_type_b-windows.zip",
             "size": 712344489,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_type_b-windows-legacy.zip",
             "size": 474105686,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_type_b-linux.zip",
             "size": 759665813,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_type_b-linux-arm64.zip",
             "size": 584570047,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_type_b-linux-legacy.zip",
             "size": 472519973,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_type_b-macos.zip",
             "size": 518978461,
-            "downloads": 0
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_y2-windows.zip",
             "size": 683298589,
-            "downloads": 2
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_y2-windows-legacy.zip",
             "size": 445059780,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_y2-linux.zip",
             "size": 740128193,
-            "downloads": 3
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_y2-linux-arm64.zip",
             "size": 565032427,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_y2-linux-legacy.zip",
             "size": 443474063,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_y2-macos.zip",
             "size": 491736195,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -29905,12 +30265,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.9/rom.zip",
-            "downloads": 22
+            "downloads": 32,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.9/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 29,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -29919,84 +30281,84 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom-windows.zip",
             "size": 769027426,
-            "downloads": 4
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom-windows-legacy.zip",
             "size": 530788593,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom-linux.zip",
             "size": 816348750,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom-linux-arm64.zip",
             "size": 641252984,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom-linux-legacy.zip",
             "size": 529202878,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom-macos.zip",
             "size": 575661392,
-            "downloads": 1
+            "downloads": 16
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom_type_b-windows.zip",
             "size": 712086102,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom_type_b-windows-legacy.zip",
             "size": 473847287,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom_type_b-linux.zip",
             "size": 759407426,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom_type_b-linux-arm64.zip",
             "size": 584311660,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom_type_b-linux-legacy.zip",
             "size": 472261572,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom_type_b-macos.zip",
             "size": 518720074,
-            "downloads": 0
+            "downloads": 5
           }
         ]
       },
@@ -30038,12 +30400,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.8/rom.zip",
-            "downloads": 20
+            "downloads": 30,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.8/rom_type_b.zip",
-            "downloads": 18
+            "downloads": 28,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -30052,84 +30416,84 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom-windows.zip",
             "size": 769028380,
-            "downloads": 5
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom-windows-legacy.zip",
             "size": 530789549,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom-linux.zip",
             "size": 816349704,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom-linux-arm64.zip",
             "size": 641253938,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom-linux-legacy.zip",
             "size": 529203834,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom-macos.zip",
             "size": 575662347,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom_type_b-windows.zip",
             "size": 712105812,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom_type_b-windows-legacy.zip",
             "size": 473866997,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom_type_b-linux.zip",
             "size": 759427136,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom_type_b-linux-arm64.zip",
             "size": 584331370,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom_type_b-linux-legacy.zip",
             "size": 472281282,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom_type_b-macos.zip",
             "size": 518739784,
-            "downloads": 0
+            "downloads": 5
           }
         ]
       },
@@ -30171,12 +30535,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.6/rom.zip",
-            "downloads": 21
+            "downloads": 31,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.6/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 29,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -30185,84 +30551,84 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/rom-windows.zip",
             "size": 768996172,
-            "downloads": 5
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/rom-windows-legacy.zip",
             "size": 530757341,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/rom-linux.zip",
             "size": 816317496,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/rom-linux-arm64.zip",
             "size": 641221730,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/rom-linux-legacy.zip",
             "size": 529171626,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/rom-macos.zip",
             "size": 575630138,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/rom_type_b-windows.zip",
             "size": 712245398,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/rom_type_b-windows-legacy.zip",
             "size": 474006585,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/rom_type_b-linux.zip",
             "size": 759566722,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/rom_type_b-linux-arm64.zip",
             "size": 584470956,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/rom_type_b-linux-legacy.zip",
             "size": 472420870,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/rom_type_b-macos.zip",
             "size": 518879370,
-            "downloads": 0
+            "downloads": 5
           }
         ]
       },
@@ -30304,12 +30670,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.5/rom.zip",
-            "downloads": 20
+            "downloads": 30,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.5/rom_type_b.zip",
-            "downloads": 17
+            "downloads": 27,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -30318,84 +30686,84 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-windows.zip",
             "size": 769024350,
-            "downloads": 5
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-windows-legacy.zip",
             "size": 530785519,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-linux.zip",
             "size": 816345674,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-linux-arm64.zip",
             "size": 641249908,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-linux-legacy.zip",
             "size": 529199804,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-macos.zip",
             "size": 575658316,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom_type_b-windows.zip",
             "size": 712231147,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom_type_b-windows-legacy.zip",
             "size": 473992334,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom_type_b-linux.zip",
             "size": 759552471,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom_type_b-linux-arm64.zip",
             "size": 584456705,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom_type_b-linux-legacy.zip",
             "size": 472406619,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom_type_b-macos.zip",
             "size": 518865119,
-            "downloads": 0
+            "downloads": 6
           }
         ]
       },
@@ -30437,12 +30805,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.3/rom.zip",
-            "downloads": 20
+            "downloads": 30,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.3/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 29,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -30451,7 +30821,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/rom-windows.zip",
             "size": 768995724,
-            "downloads": 5
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -30465,7 +30835,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/rom-linux.zip",
             "size": 816317048,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -30486,14 +30856,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/rom-macos.zip",
             "size": 575629690,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/rom_type_b-windows.zip",
             "size": 712232537,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows-legacy",
@@ -30507,7 +30877,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/rom_type_b-linux.zip",
             "size": 759553861,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
@@ -30528,7 +30898,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/rom_type_b-macos.zip",
             "size": 518866509,
-            "downloads": 0
+            "downloads": 5
           }
         ]
       },
@@ -30570,17 +30940,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.4/rom.zip",
-            "downloads": 30
+            "downloads": 40,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.4/rom_type_b.zip",
-            "downloads": 18
+            "downloads": 28,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.4/rom_y2.zip",
-            "downloads": 32
+            "downloads": 42,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -30589,7 +30962,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom-windows.zip",
             "size": 768711745,
-            "downloads": 5
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -30603,7 +30976,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom-linux.zip",
             "size": 816033069,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -30624,14 +30997,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom-macos.zip",
             "size": 575345711,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_type_b-windows.zip",
             "size": 712355112,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows-legacy",
@@ -30645,7 +31018,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_type_b-linux.zip",
             "size": 759676436,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
@@ -30666,14 +31039,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_type_b-macos.zip",
             "size": 518989084,
-            "downloads": 0
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_y2-windows.zip",
             "size": 683167117,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -30687,7 +31060,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_y2-linux.zip",
             "size": 739996721,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
@@ -30708,7 +31081,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_y2-macos.zip",
             "size": 491604723,
-            "downloads": 3
+            "downloads": 8
           }
         ]
       },
@@ -30758,12 +31131,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.1/rom.zip",
-            "downloads": 27
+            "downloads": 37,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.1/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 29,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -30772,7 +31147,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.1/rom-windows.zip",
             "size": 769498134,
-            "downloads": 5
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -30786,7 +31161,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.1/rom-linux.zip",
             "size": 816819458,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -30807,14 +31182,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.1/rom-macos.zip",
             "size": 576132101,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.1/rom_type_b-windows.zip",
             "size": 717111938,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows-legacy",
@@ -30828,7 +31203,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.1/rom_type_b-linux.zip",
             "size": 764433262,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
@@ -30849,7 +31224,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.1/rom_type_b-macos.zip",
             "size": 523745911,
-            "downloads": 0
+            "downloads": 5
           }
         ]
       },
@@ -30891,12 +31266,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11/rom.zip",
-            "downloads": 20
+            "downloads": 30,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 29,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -30905,7 +31282,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11/rom-windows.zip",
             "size": 769509562,
-            "downloads": 5
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -30919,7 +31296,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11/rom-linux.zip",
             "size": 816830886,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -30940,14 +31317,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11/rom-macos.zip",
             "size": 576143529,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11/rom_type_b-windows.zip",
             "size": 717105317,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows-legacy",
@@ -30961,7 +31338,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11/rom_type_b-linux.zip",
             "size": 764426641,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
@@ -30982,7 +31359,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11/rom_type_b-macos.zip",
             "size": 523739291,
-            "downloads": 0
+            "downloads": 5
           }
         ]
       },
@@ -31024,12 +31401,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.10.1/rom.zip",
-            "downloads": 19
+            "downloads": 29,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.10.1/rom_type_b.zip",
-            "downloads": 18
+            "downloads": 28,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -31038,7 +31417,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10.1/rom-windows.zip",
             "size": 769966920,
-            "downloads": 5
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -31052,7 +31431,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10.1/rom-linux.zip",
             "size": 817288244,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -31073,14 +31452,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10.1/rom-macos.zip",
             "size": 576600888,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10.1/rom_type_b-windows.zip",
             "size": 712059730,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows-legacy",
@@ -31094,7 +31473,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10.1/rom_type_b-linux.zip",
             "size": 759381054,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
@@ -31115,7 +31494,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10.1/rom_type_b-macos.zip",
             "size": 518693704,
-            "downloads": 0
+            "downloads": 5
           }
         ]
       },
@@ -31157,12 +31536,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.10/rom.zip",
-            "downloads": 23
+            "downloads": 33,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.10/rom_type_b.zip",
-            "downloads": 18
+            "downloads": 28,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -31171,7 +31552,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10/rom-windows.zip",
             "size": 769966812,
-            "downloads": 5
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -31185,7 +31566,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10/rom-linux.zip",
             "size": 817288136,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -31206,14 +31587,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10/rom-macos.zip",
             "size": 576600778,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10/rom_type_b-windows.zip",
             "size": 712064931,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows-legacy",
@@ -31227,7 +31608,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10/rom_type_b-linux.zip",
             "size": 759386255,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
@@ -31248,7 +31629,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10/rom_type_b-macos.zip",
             "size": 518698903,
-            "downloads": 0
+            "downloads": 5
           }
         ]
       },
@@ -31290,12 +31671,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.1/rom.zip",
-            "downloads": 22
+            "downloads": 32,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.1/rom_type_b.zip",
-            "downloads": 18
+            "downloads": 28,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -31304,7 +31687,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom-windows.zip",
             "size": 769025355,
-            "downloads": 5
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -31318,7 +31701,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom-linux.zip",
             "size": 816346679,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -31339,14 +31722,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom-macos.zip",
             "size": 575659322,
-            "downloads": 2
+            "downloads": 8
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom_type_b-windows.zip",
             "size": 712210451,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
@@ -31360,7 +31743,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom_type_b-linux.zip",
             "size": 759531775,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
@@ -31381,7 +31764,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom_type_b-macos.zip",
             "size": 518844424,
-            "downloads": 0
+            "downloads": 6
           }
         ]
       },
@@ -31829,7 +32212,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip",
-            "downloads": 610
+            "downloads": 620,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -31838,7 +32222,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows.zip",
             "size": 775976425,
-            "downloads": 8
+            "downloads": 14
           },
           {
             "platform": "windows-legacy",
@@ -31852,7 +32236,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux.zip",
             "size": 823297749,
-            "downloads": 4
+            "downloads": 9
           },
           {
             "platform": "linux-arm64",
@@ -31873,7 +32257,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-macos.zip",
             "size": 582610395,
-            "downloads": 1
+            "downloads": 9
           }
         ]
       },
@@ -31915,7 +32299,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/rom.zip",
-            "downloads": 36
+            "downloads": 46,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -31924,7 +32309,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows.zip",
             "size": 775967558,
-            "downloads": 6
+            "downloads": 10
           },
           {
             "platform": "windows-legacy",
@@ -31938,7 +32323,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux.zip",
             "size": 823288882,
-            "downloads": 4
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
@@ -31959,7 +32344,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-macos.zip",
             "size": 582601527,
-            "downloads": 1
+            "downloads": 6
           }
         ]
       },
@@ -32001,7 +32386,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.3/rom.zip",
-            "downloads": 159
+            "downloads": 169,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -32010,7 +32396,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows.zip",
             "size": 775973691,
-            "downloads": 6
+            "downloads": 10
           },
           {
             "platform": "windows-legacy",
@@ -32024,7 +32410,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux.zip",
             "size": 823295015,
-            "downloads": 4
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
@@ -32045,7 +32431,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-macos.zip",
             "size": 582607661,
-            "downloads": 1
+            "downloads": 7
           }
         ]
       },
@@ -32087,7 +32473,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.2/rom.zip",
-            "downloads": 280
+            "downloads": 290,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -32096,7 +32483,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-windows.zip",
             "size": 776112355,
-            "downloads": 7
+            "downloads": 11
           },
           {
             "platform": "windows-legacy",
@@ -32110,7 +32497,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux.zip",
             "size": 823433679,
-            "downloads": 4
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
@@ -32131,7 +32518,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-macos.zip",
             "size": 582746325,
-            "downloads": 1
+            "downloads": 6
           }
         ]
       },
@@ -32173,7 +32560,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.1/rom.zip",
-            "downloads": 155
+            "downloads": 188,
+            "mirror_downloads": 33
           }
         ],
         "portable": [
@@ -32182,7 +32570,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-windows.zip",
             "size": 776111881,
-            "downloads": 9
+            "downloads": 17
           },
           {
             "platform": "windows-legacy",
@@ -32196,7 +32584,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-linux.zip",
             "size": 823433205,
-            "downloads": 4
+            "downloads": 11
           },
           {
             "platform": "linux-arm64",
@@ -32217,7 +32605,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-macos.zip",
             "size": 582745851,
-            "downloads": 1
+            "downloads": 11
           }
         ]
       },
@@ -32259,7 +32647,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.2/rom.zip",
-            "downloads": 180
+            "downloads": 190,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -32268,7 +32657,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-windows.zip",
             "size": 776206268,
-            "downloads": 7
+            "downloads": 11
           },
           {
             "platform": "windows-legacy",
@@ -32282,7 +32671,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-linux.zip",
             "size": 823527592,
-            "downloads": 4
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
@@ -32303,7 +32692,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-macos.zip",
             "size": 582840238,
-            "downloads": 1
+            "downloads": 7
           }
         ]
       },
@@ -32345,7 +32734,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.1/rom.zip",
-            "downloads": 265
+            "downloads": 275,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -32354,7 +32744,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-windows.zip",
             "size": 776206203,
-            "downloads": 7
+            "downloads": 11
           },
           {
             "platform": "windows-legacy",
@@ -32368,7 +32758,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-linux.zip",
             "size": 823527527,
-            "downloads": 4
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
@@ -32389,7 +32779,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-macos.zip",
             "size": 582840173,
-            "downloads": 1
+            "downloads": 7
           }
         ]
       },
@@ -32431,7 +32821,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.0/rom.zip",
-            "downloads": 195
+            "downloads": 205,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -32440,7 +32831,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows.zip",
             "size": 776211523,
-            "downloads": 7
+            "downloads": 10
           },
           {
             "platform": "windows-legacy",
@@ -32454,7 +32845,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux.zip",
             "size": 823532847,
-            "downloads": 4
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
@@ -32475,7 +32866,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-macos.zip",
             "size": 582845493,
-            "downloads": 1
+            "downloads": 6
           }
         ]
       },
@@ -32517,7 +32908,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/rom.zip",
-            "downloads": 119
+            "downloads": 129,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -32526,7 +32918,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows.zip",
             "size": 775951766,
-            "downloads": 7
+            "downloads": 11
           },
           {
             "platform": "windows-legacy",
@@ -32540,7 +32932,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux.zip",
             "size": 823273090,
-            "downloads": 4
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
@@ -32561,7 +32953,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-macos.zip",
             "size": 582585736,
-            "downloads": 1
+            "downloads": 7
           }
         ]
       },
@@ -32603,7 +32995,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/rom.zip",
-            "downloads": 48
+            "downloads": 58,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -32612,7 +33005,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows.zip",
             "size": 770220198,
-            "downloads": 8
+            "downloads": 13
           },
           {
             "platform": "windows-legacy",
@@ -32626,7 +33019,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux.zip",
             "size": 817541522,
-            "downloads": 4
+            "downloads": 9
           },
           {
             "platform": "linux-arm64",
@@ -32647,7 +33040,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-macos.zip",
             "size": 576854168,
-            "downloads": 1
+            "downloads": 7
           }
         ]
       },
@@ -32689,7 +33082,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.1/rom.zip",
-            "downloads": 55
+            "downloads": 65,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -32698,7 +33092,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-windows.zip",
             "size": 770114692,
-            "downloads": 7
+            "downloads": 12
           },
           {
             "platform": "windows-legacy",
@@ -32712,7 +33106,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux.zip",
             "size": 817436016,
-            "downloads": 3
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
@@ -32733,7 +33127,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-macos.zip",
             "size": 576748637,
-            "downloads": 0
+            "downloads": 6
           }
         ]
       },
@@ -32835,12 +33229,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "classy-y1-exp.2-type-a.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/y1-exp.2/classy-y1-exp.2-type-a.zip",
-            "downloads": 8
+            "downloads": 9,
+            "mirror_downloads": 1
           },
           {
             "name": "classy-y1-exp.2-type-b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/y1-exp.2/classy-y1-exp.2-type-b.zip",
-            "downloads": 2
+            "downloads": 3,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -33000,17 +33396,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y1_type_a.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/rom_y1_type_a.zip",
-            "downloads": 3
+            "downloads": 4,
+            "mirror_downloads": 1
           },
           {
             "name": "rom_y1_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/rom_y1_type_b.zip",
-            "downloads": 2
+            "downloads": 3,
+            "mirror_downloads": 1
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/rom_y2.zip",
-            "downloads": 5
+            "downloads": 6,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -33212,12 +33611,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261112/rom.zip",
-            "downloads": 8
+            "downloads": 10,
+            "mirror_downloads": 2
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261112/rom_type_b.zip",
-            "downloads": 2
+            "downloads": 4,
+            "mirror_downloads": 2
           },
           {
             "name": "rom_y1_type_a.zip",
@@ -33232,7 +33633,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261112/rom_y2.zip",
-            "downloads": 56
+            "downloads": 58,
+            "mirror_downloads": 2
           }
         ],
         "portable": [
@@ -33241,210 +33643,210 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-windows.zip",
             "size": 758362209,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-windows-legacy.zip",
             "size": 520123392,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-linux.zip",
             "size": 805683533,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-linux-arm64.zip",
             "size": 630587767,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-linux-legacy.zip",
             "size": 518537673,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-macos.zip",
             "size": 564996181,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_type_b-windows.zip",
             "size": 750707486,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_type_b-windows-legacy.zip",
             "size": 512468691,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_type_b-linux.zip",
             "size": 798028810,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_type_b-linux-arm64.zip",
             "size": 622933044,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_type_b-linux-legacy.zip",
             "size": 510882974,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_type_b-macos.zip",
             "size": 557341465,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_a-windows.zip",
             "size": 758362209,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y1_type_a-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_a-windows-legacy.zip",
             "size": 520123424,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_a-linux.zip",
             "size": 805683533,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_a-linux-arm64.zip",
             "size": 630587767,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_a-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_a-linux-legacy.zip",
             "size": 518537705,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_a-macos.zip",
             "size": 564996189,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_b-windows.zip",
             "size": 750707488,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y1_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_b-windows-legacy.zip",
             "size": 512468703,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_b-linux.zip",
             "size": 798028812,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_b-linux-arm64.zip",
             "size": 622933046,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_b-linux-legacy.zip",
             "size": 510882984,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_b-macos.zip",
             "size": 557341469,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y2-windows.zip",
             "size": 665650292,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y2-windows-legacy.zip",
             "size": 427411485,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y2-linux.zip",
             "size": 722479896,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y2-linux-arm64.zip",
             "size": 547384130,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y2-linux-legacy.zip",
             "size": 425825766,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y2-macos.zip",
             "size": 474087905,
-            "downloads": 1
+            "downloads": 2
           }
         ]
       },
@@ -33518,7 +33920,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.json",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261112/update.json",
           "size": 271,
-          "download_count": 42,
+          "download_count": 43,
           "content_type": "application/json"
         }
       ]
@@ -33542,12 +33944,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y1_type_a.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/y1-exp.1/rom_y1_type_a.zip",
-            "downloads": 44
+            "downloads": 46,
+            "mirror_downloads": 2
           },
           {
             "name": "rom_y1_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/y1-exp.1/rom_y1_type_b.zip",
-            "downloads": 6
+            "downloads": 8,
+            "mirror_downloads": 2
           }
         ],
         "portable": [
@@ -33556,84 +33960,84 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-windows.zip",
             "size": 758073747,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y1_type_a-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-windows-legacy.zip",
             "size": 519834932,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-linux.zip",
             "size": 805395071,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-linux-arm64.zip",
             "size": 630299305,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_a-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-linux-legacy.zip",
             "size": 518249213,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-macos.zip",
             "size": 564707706,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-windows.zip",
             "size": 749267432,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y1_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-windows-legacy.zip",
             "size": 511028619,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-linux.zip",
             "size": 796588756,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-linux-arm64.zip",
             "size": 621492990,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-linux-legacy.zip",
             "size": 509442900,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-macos.zip",
             "size": 555901392,
-            "downloads": 1
+            "downloads": 2
           }
         ]
       },
@@ -33707,12 +34111,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261111/rom.zip",
-            "downloads": 6
+            "downloads": 7,
+            "mirror_downloads": 1
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261111/rom_type_b.zip",
-            "downloads": 4
+            "downloads": 5,
+            "mirror_downloads": 1
           },
           {
             "name": "rom_y1_type_a.zip",
@@ -33727,7 +34133,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261111/rom_y2.zip",
-            "downloads": 17
+            "downloads": 18,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -33743,28 +34150,28 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom-windows-legacy.zip",
             "size": 514371381,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom-linux.zip",
             "size": 799931522,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom-linux-arm64.zip",
             "size": 624835756,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom-linux-legacy.zip",
             "size": 512785662,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
@@ -33785,28 +34192,28 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_type_b-windows-legacy.zip",
             "size": 507328565,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_type_b-linux.zip",
             "size": 792888684,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_type_b-linux-arm64.zip",
             "size": 617792918,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_type_b-linux-legacy.zip",
             "size": 505742848,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
@@ -33827,28 +34234,28 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_a-windows-legacy.zip",
             "size": 514371413,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_a-linux.zip",
             "size": 799931522,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_a-linux-arm64.zip",
             "size": 624835756,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_a-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_a-linux-legacy.zip",
             "size": 512785694,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
@@ -33869,28 +34276,28 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_b-windows-legacy.zip",
             "size": 507328575,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_b-linux.zip",
             "size": 792888684,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_b-linux-arm64.zip",
             "size": 617792918,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_b-linux-legacy.zip",
             "size": 505742856,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
@@ -33911,28 +34318,28 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y2-windows-legacy.zip",
             "size": 483074105,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y2-linux.zip",
             "size": 778142516,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y2-linux-arm64.zip",
             "size": 603046750,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y2-linux-legacy.zip",
             "size": 481488386,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
@@ -34037,17 +34444,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom.zip",
-            "downloads": 5
+            "downloads": 8,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom_type_b.zip",
-            "downloads": 5
+            "downloads": 8,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y1_type_a.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom_y1_type_a.zip",
-            "downloads": 12
+            "downloads": 15,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y1_type_b.zip",
@@ -34057,7 +34467,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom_y2.zip",
-            "downloads": 14
+            "downloads": 17,
+            "mirror_downloads": 3
           }
         ],
         "portable": [
@@ -34066,210 +34477,210 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom-windows.zip",
             "size": 752603586,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom-windows-legacy.zip",
             "size": 514364769,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom-linux.zip",
             "size": 799924910,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom-linux-arm64.zip",
             "size": 624829144,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom-linux-legacy.zip",
             "size": 512779052,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom-macos.zip",
             "size": 559237557,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_type_b-windows.zip",
             "size": 745556857,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_type_b-windows-legacy.zip",
             "size": 507318064,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_type_b-linux.zip",
             "size": 792878181,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_type_b-linux-arm64.zip",
             "size": 617782415,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_type_b-linux-legacy.zip",
             "size": 505732345,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_type_b-macos.zip",
             "size": 552190834,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_a-windows.zip",
             "size": 752603586,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y1_type_a-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_a-windows-legacy.zip",
             "size": 514364801,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_a-linux.zip",
             "size": 799924910,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_a-linux-arm64.zip",
             "size": 624829144,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_a-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_a-linux-legacy.zip",
             "size": 512779082,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_a-macos.zip",
             "size": 559237565,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_b-windows.zip",
             "size": 745556855,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y1_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_b-windows-legacy.zip",
             "size": 507318070,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_b-linux.zip",
             "size": 792878179,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_b-linux-arm64.zip",
             "size": 617782413,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_b-linux-legacy.zip",
             "size": 505732353,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_b-macos.zip",
             "size": 552190836,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y2-windows.zip",
             "size": 721215668,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y2-windows-legacy.zip",
             "size": 482976861,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y2-linux.zip",
             "size": 778045272,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y2-linux-arm64.zip",
             "size": 602949506,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y2-linux-legacy.zip",
             "size": 481391144,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y2-macos.zip",
             "size": 529653280,
-            "downloads": 1
+            "downloads": 2
           }
         ]
       },
@@ -34367,12 +34778,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom.zip",
-            "downloads": 9
+            "downloads": 15,
+            "mirror_downloads": 6
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_type_b.zip",
-            "downloads": 8
+            "downloads": 11,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y1_type_a.zip",
@@ -34382,12 +34795,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y1_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y1_type_b.zip",
-            "downloads": 11
+            "downloads": 14,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y2.zip",
-            "downloads": 76
+            "downloads": 82,
+            "mirror_downloads": 6
           }
         ],
         "portable": [
@@ -34396,7 +34811,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom-windows.zip",
             "size": 752317879,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -34410,14 +34825,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom-linux.zip",
             "size": 799639203,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom-linux-arm64.zip",
             "size": 624543437,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -34431,175 +34846,175 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom-macos.zip",
             "size": 558951849,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_type_b-windows.zip",
             "size": 749509878,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_type_b-windows-legacy.zip",
             "size": 511271079,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_type_b-linux.zip",
             "size": 796831202,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_type_b-linux-arm64.zip",
             "size": 621735436,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_type_b-linux-legacy.zip",
             "size": 509685362,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_type_b-macos.zip",
             "size": 556143855,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_a-windows.zip",
             "size": 752317877,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y1_type_a-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_a-windows-legacy.zip",
             "size": 514079090,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_a-linux.zip",
             "size": 799639201,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_a-linux-arm64.zip",
             "size": 624543435,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_a-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_a-linux-legacy.zip",
             "size": 512493371,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_a-macos.zip",
             "size": 558951856,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_b-windows.zip",
             "size": 749509878,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y1_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_b-windows-legacy.zip",
             "size": 511271091,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_b-linux.zip",
             "size": 796831202,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_b-linux-arm64.zip",
             "size": 621735436,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_b-linux-legacy.zip",
             "size": 509685374,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_b-macos.zip",
             "size": 556143858,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y2-windows.zip",
             "size": 721116971,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y2-windows-legacy.zip",
             "size": 482878162,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y2-linux.zip",
             "size": 777946575,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y2-linux-arm64.zip",
             "size": 602850809,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y2-linux-legacy.zip",
             "size": 481292443,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y2-macos.zip",
             "size": 529554582,
-            "downloads": 1
+            "downloads": 4
           }
         ]
       },
@@ -34697,12 +35112,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom.zip",
-            "downloads": 10
+            "downloads": 16,
+            "mirror_downloads": 6
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom_type_b.zip",
-            "downloads": 9
+            "downloads": 15,
+            "mirror_downloads": 6
           },
           {
             "name": "rom_y1_type_a.zip",
@@ -34717,7 +35134,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom_y2.zip",
-            "downloads": 20
+            "downloads": 26,
+            "mirror_downloads": 6
           }
         ],
         "portable": [
@@ -34726,7 +35144,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom-windows.zip",
             "size": 752316895,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -34740,14 +35158,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom-linux.zip",
             "size": 799638219,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom-linux-arm64.zip",
             "size": 624542453,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -34761,14 +35179,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom-macos.zip",
             "size": 558950865,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_type_b-windows.zip",
             "size": 749509241,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -34782,14 +35200,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_type_b-linux.zip",
             "size": 796830565,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_type_b-linux-arm64.zip",
             "size": 621734799,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -34803,14 +35221,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_type_b-macos.zip",
             "size": 556143218,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_a-windows.zip",
             "size": 752316893,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -34824,14 +35242,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_a-linux.zip",
             "size": 799638217,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_a-linux-arm64.zip",
             "size": 624542451,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -34845,14 +35263,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_a-macos.zip",
             "size": 558950872,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_b-windows.zip",
             "size": 749509241,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -34866,14 +35284,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_b-linux.zip",
             "size": 796830565,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_b-linux-arm64.zip",
             "size": 621734799,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -34887,14 +35305,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_b-macos.zip",
             "size": 556143221,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-windows.zip",
             "size": 721116953,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -34908,14 +35326,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-linux.zip",
             "size": 777946557,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-linux-arm64.zip",
             "size": 602850791,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -34929,7 +35347,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-macos.zip",
             "size": 529554564,
-            "downloads": 1
+            "downloads": 4
           }
         ]
       },
@@ -35027,12 +35445,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom.zip",
-            "downloads": 10
+            "downloads": 16,
+            "mirror_downloads": 6
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_type_b.zip",
-            "downloads": 11
+            "downloads": 14,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y1_type_a.zip",
@@ -35042,12 +35462,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y1_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_y1_type_b.zip",
-            "downloads": 11
+            "downloads": 14,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_y2.zip",
-            "downloads": 13
+            "downloads": 19,
+            "mirror_downloads": 6
           }
         ],
         "portable": [
@@ -35056,7 +35478,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom-windows.zip",
             "size": 767963658,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -35070,14 +35492,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom-linux.zip",
             "size": 815284982,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom-linux-arm64.zip",
             "size": 640189216,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -35091,14 +35513,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom-macos.zip",
             "size": 574597629,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_type_b-windows.zip",
             "size": 728010911,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -35112,14 +35534,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_type_b-linux.zip",
             "size": 775332235,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_type_b-linux-arm64.zip",
             "size": 600236469,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -35133,14 +35555,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_type_b-macos.zip",
             "size": 534644889,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_a-windows.zip",
             "size": 767963658,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -35154,14 +35576,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_a-linux.zip",
             "size": 815284982,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_a-linux-arm64.zip",
             "size": 640189216,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -35175,14 +35597,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_a-macos.zip",
             "size": 574597637,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_b-windows.zip",
             "size": 728010911,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -35196,14 +35618,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_b-linux.zip",
             "size": 775332235,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_b-linux-arm64.zip",
             "size": 600236469,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -35217,14 +35639,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_b-macos.zip",
             "size": 534644891,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y2-windows.zip",
             "size": 704919430,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -35238,14 +35660,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y2-linux.zip",
             "size": 761749034,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y2-linux-arm64.zip",
             "size": 586653268,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -35259,7 +35681,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y2-macos.zip",
             "size": 513357042,
-            "downloads": 1
+            "downloads": 4
           }
         ]
       },
@@ -35357,12 +35779,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom.zip",
-            "downloads": 23
+            "downloads": 29,
+            "mirror_downloads": 6
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom_type_b.zip",
-            "downloads": 16
+            "downloads": 19,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y1_type_a.zip",
@@ -35372,12 +35796,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y1_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom_y1_type_b.zip",
-            "downloads": 15
+            "downloads": 18,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom_y2.zip",
-            "downloads": 27
+            "downloads": 33,
+            "mirror_downloads": 6
           }
         ],
         "portable": [
@@ -35386,7 +35812,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-windows.zip",
             "size": 767878366,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -35400,14 +35826,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-linux.zip",
             "size": 815199690,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-linux-arm64.zip",
             "size": 640103924,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -35421,14 +35847,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-macos.zip",
             "size": 574512331,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b-windows.zip",
             "size": 735038437,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -35442,14 +35868,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b-linux.zip",
             "size": 782359761,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b-linux-arm64.zip",
             "size": 607263995,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -35463,14 +35889,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b-macos.zip",
             "size": 541672409,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_a-windows.zip",
             "size": 767878364,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -35484,14 +35910,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_a-linux.zip",
             "size": 815199688,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_a-linux-arm64.zip",
             "size": 640103922,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -35505,14 +35931,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_a-macos.zip",
             "size": 574512338,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_b-windows.zip",
             "size": 735038437,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -35526,14 +35952,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_b-linux.zip",
             "size": 782359761,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_b-linux-arm64.zip",
             "size": 607263995,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -35547,14 +35973,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_b-macos.zip",
             "size": 541672411,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y2-windows.zip",
             "size": 704839695,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -35568,14 +35994,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y2-linux.zip",
             "size": 761669299,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y2-linux-arm64.zip",
             "size": 586573533,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -35589,7 +36015,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y2-macos.zip",
             "size": 513277301,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -35687,12 +36113,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom.zip",
-            "downloads": 26
+            "downloads": 33,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom_type_b.zip",
-            "downloads": 14
+            "downloads": 21,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_y1_type_a.zip",
@@ -35707,7 +36135,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom_y2.zip",
-            "downloads": 33
+            "downloads": 40,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -35716,7 +36145,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom-windows.zip",
             "size": 767871958,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -35730,14 +36159,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom-linux.zip",
             "size": 815193282,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom-linux-arm64.zip",
             "size": 640097516,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
@@ -35751,14 +36180,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom-macos.zip",
             "size": 574505923,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_type_b-windows.zip",
             "size": 735050730,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -35772,14 +36201,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_type_b-linux.zip",
             "size": 782372054,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_type_b-linux-arm64.zip",
             "size": 607276288,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -35793,14 +36222,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_type_b-macos.zip",
             "size": 541684702,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_a-windows.zip",
             "size": 767871956,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -35814,14 +36243,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_a-linux.zip",
             "size": 815193280,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_a-linux-arm64.zip",
             "size": 640097514,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -35835,14 +36264,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_a-macos.zip",
             "size": 574505930,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_b-windows.zip",
             "size": 735050730,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -35856,14 +36285,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_b-linux.zip",
             "size": 782372054,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_b-linux-arm64.zip",
             "size": 607276288,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -35877,14 +36306,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_b-macos.zip",
             "size": 541684704,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y2-windows.zip",
             "size": 704839309,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -35898,14 +36327,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y2-linux.zip",
             "size": 761668913,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y2-linux-arm64.zip",
             "size": 586573147,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -35919,7 +36348,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y2-macos.zip",
             "size": 513276915,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -36017,17 +36446,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom.zip",
-            "downloads": 218
+            "downloads": 221,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_type_b.zip",
-            "downloads": 18
+            "downloads": 25,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_y1_type_a.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_y1_type_a.zip",
-            "downloads": 19
+            "downloads": 23,
+            "mirror_downloads": 4
           },
           {
             "name": "rom_y1_type_b.zip",
@@ -36037,7 +36469,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_y2.zip",
-            "downloads": 126
+            "downloads": 133,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -36046,7 +36479,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom-windows.zip",
             "size": 767874205,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -36060,14 +36493,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom-linux.zip",
             "size": 815195529,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom-linux-arm64.zip",
             "size": 640099763,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36081,14 +36514,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom-macos.zip",
             "size": 574508170,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_type_b-windows.zip",
             "size": 734968263,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -36102,14 +36535,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_type_b-linux.zip",
             "size": 782289587,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_type_b-linux-arm64.zip",
             "size": 607193821,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36123,14 +36556,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_type_b-macos.zip",
             "size": 541602235,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_a-windows.zip",
             "size": 767874203,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -36144,14 +36577,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_a-linux.zip",
             "size": 815195527,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_a-linux-arm64.zip",
             "size": 640099761,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36165,14 +36598,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_a-macos.zip",
             "size": 574508177,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_b-windows.zip",
             "size": 734968263,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -36186,14 +36619,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_b-linux.zip",
             "size": 782289587,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_b-linux-arm64.zip",
             "size": 607193821,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36207,14 +36640,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_b-macos.zip",
             "size": 541602238,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y2-windows.zip",
             "size": 697586795,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -36228,14 +36661,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y2-linux.zip",
             "size": 754416399,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y2-linux-arm64.zip",
             "size": 579320633,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36249,7 +36682,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y2-macos.zip",
             "size": 506024401,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -36347,17 +36780,20 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom.zip",
-            "downloads": 85
+            "downloads": 88,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 22,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_y1_type_a.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom_y1_type_a.zip",
-            "downloads": 14
+            "downloads": 18,
+            "mirror_downloads": 4
           },
           {
             "name": "rom_y1_type_b.zip",
@@ -36367,7 +36803,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom_y2.zip",
-            "downloads": 41
+            "downloads": 48,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -36376,7 +36813,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom-windows.zip",
             "size": 767822548,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -36390,14 +36827,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom-linux.zip",
             "size": 815143872,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom-linux-arm64.zip",
             "size": 640048106,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36411,14 +36848,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom-macos.zip",
             "size": 574456514,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_type_b-windows.zip",
             "size": 735678276,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -36432,14 +36869,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_type_b-linux.zip",
             "size": 782999600,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_type_b-linux-arm64.zip",
             "size": 607903834,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36453,14 +36890,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_type_b-macos.zip",
             "size": 542312248,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_a-windows.zip",
             "size": 767822548,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -36474,14 +36911,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_a-linux.zip",
             "size": 815143872,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_a-linux-arm64.zip",
             "size": 640048106,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36495,14 +36932,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_a-macos.zip",
             "size": 574456522,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_b-windows.zip",
             "size": 735678276,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -36516,14 +36953,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_b-linux.zip",
             "size": 782999600,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_b-linux-arm64.zip",
             "size": 607903834,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36537,14 +36974,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_b-macos.zip",
             "size": 542312250,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2-windows.zip",
             "size": 698431252,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -36558,14 +36995,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2-linux.zip",
             "size": 755260856,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2-linux-arm64.zip",
             "size": 580165090,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36579,7 +37016,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2-macos.zip",
             "size": 506868859,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -36669,27 +37106,32 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom.zip",
-            "downloads": 37
+            "downloads": 47,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom_type_b.zip",
-            "downloads": 13
+            "downloads": 19,
+            "mirror_downloads": 6
           },
           {
             "name": "rom_y1_type_a.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom_y1_type_a.zip",
-            "downloads": 13
+            "downloads": 17,
+            "mirror_downloads": 4
           },
           {
             "name": "rom_y1_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom_y1_type_b.zip",
-            "downloads": 13
+            "downloads": 21,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom_y2.zip",
-            "downloads": 20
+            "downloads": 30,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -36698,7 +37140,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom-windows.zip",
             "size": 767823074,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -36712,14 +37154,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom-linux.zip",
             "size": 815144398,
-            "downloads": 1
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom-linux-arm64.zip",
             "size": 640048632,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36733,14 +37175,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom-macos.zip",
             "size": 574457041,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_type_b-windows.zip",
             "size": 735746143,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -36754,14 +37196,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_type_b-linux.zip",
             "size": 783067467,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_type_b-linux-arm64.zip",
             "size": 607971701,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36775,14 +37217,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_type_b-macos.zip",
             "size": 542380115,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_a-windows.zip",
             "size": 767823074,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -36796,14 +37238,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_a-linux.zip",
             "size": 815144398,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_a-linux-arm64.zip",
             "size": 640048632,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36817,14 +37259,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_a-macos.zip",
             "size": 574457048,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_b-windows.zip",
             "size": 735746143,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -36838,14 +37280,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_b-linux.zip",
             "size": 783067467,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_b-linux-arm64.zip",
             "size": 607971701,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36859,14 +37301,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_b-macos.zip",
             "size": 542380118,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y2-windows.zip",
             "size": 698414634,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -36880,14 +37322,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y2-linux.zip",
             "size": 755244238,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y2-linux-arm64.zip",
             "size": 580148472,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -36901,7 +37343,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y2-macos.zip",
             "size": 506852242,
-            "downloads": 1
+            "downloads": 6
           }
         ]
       },
@@ -36991,12 +37433,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom.zip",
-            "downloads": 36
+            "downloads": 43,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom_type_b.zip",
-            "downloads": 17
+            "downloads": 24,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_y1_type_a.zip",
@@ -37011,7 +37455,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom_y2.zip",
-            "downloads": 21
+            "downloads": 28,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -37020,7 +37465,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom-windows.zip",
             "size": 767830570,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -37034,14 +37479,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom-linux.zip",
             "size": 815151894,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom-linux-arm64.zip",
             "size": 640056128,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37055,14 +37500,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom-macos.zip",
             "size": 574464536,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_type_b-windows.zip",
             "size": 735688062,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -37076,14 +37521,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_type_b-linux.zip",
             "size": 783009386,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_type_b-linux-arm64.zip",
             "size": 607913620,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37097,14 +37542,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_type_b-macos.zip",
             "size": 542322034,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_a-windows.zip",
             "size": 767830570,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -37118,14 +37563,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_a-linux.zip",
             "size": 815151894,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_a-linux-arm64.zip",
             "size": 640056128,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37139,14 +37584,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_a-macos.zip",
             "size": 574464543,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_b-windows.zip",
             "size": 735688064,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -37160,14 +37605,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_b-linux.zip",
             "size": 783009388,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_b-linux-arm64.zip",
             "size": 607913622,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37181,14 +37626,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_b-macos.zip",
             "size": 542322038,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-windows.zip",
             "size": 698388345,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -37202,14 +37647,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-linux.zip",
             "size": 755217949,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-linux-arm64.zip",
             "size": 580122183,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37223,7 +37668,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-macos.zip",
             "size": 506825952,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -37313,27 +37758,32 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom.zip",
-            "downloads": 24
+            "downloads": 27,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 18,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y1_type_a.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom_y1_type_a.zip",
-            "downloads": 17
+            "downloads": 21,
+            "mirror_downloads": 4
           },
           {
             "name": "rom_y1_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom_y1_type_b.zip",
-            "downloads": 14
+            "downloads": 18,
+            "mirror_downloads": 4
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom_y2.zip",
-            "downloads": 36
+            "downloads": 43,
+            "mirror_downloads": 7
           }
         ],
         "portable": [
@@ -37342,7 +37792,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom-windows.zip",
             "size": 767858305,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -37356,14 +37806,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom-linux.zip",
             "size": 815179629,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom-linux-arm64.zip",
             "size": 640083863,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37377,14 +37827,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom-macos.zip",
             "size": 574492270,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_type_b-windows.zip",
             "size": 735693252,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -37398,14 +37848,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_type_b-linux.zip",
             "size": 783014576,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_type_b-linux-arm64.zip",
             "size": 607918810,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37419,14 +37869,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_type_b-macos.zip",
             "size": 542327224,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_a-windows.zip",
             "size": 767858305,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -37440,14 +37890,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_a-linux.zip",
             "size": 815179629,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_a-linux-arm64.zip",
             "size": 640083863,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37461,14 +37911,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_a-macos.zip",
             "size": 574492278,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_b-windows.zip",
             "size": 735693254,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -37482,14 +37932,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_b-linux.zip",
             "size": 783014578,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_b-linux-arm64.zip",
             "size": 607918812,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37503,14 +37953,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_b-macos.zip",
             "size": 542327228,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y2-windows.zip",
             "size": 698375030,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -37524,14 +37974,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y2-linux.zip",
             "size": 755204634,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y2-linux-arm64.zip",
             "size": 580108868,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37545,7 +37995,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y2-macos.zip",
             "size": 506812636,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -37635,12 +38085,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom.zip",
-            "downloads": 16
+            "downloads": 22,
+            "mirror_downloads": 6
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 18,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y1_type_a.zip",
@@ -37650,12 +38102,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y1_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom_y1_type_b.zip",
-            "downloads": 17
+            "downloads": 20,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom_y2.zip",
-            "downloads": 18
+            "downloads": 24,
+            "mirror_downloads": 6
           }
         ],
         "portable": [
@@ -37664,7 +38118,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom-windows.zip",
             "size": 767855264,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -37678,14 +38132,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom-linux.zip",
             "size": 815176588,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom-linux-arm64.zip",
             "size": 640080822,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37699,14 +38153,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom-macos.zip",
             "size": 574489229,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_type_b-windows.zip",
             "size": 735694794,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -37720,14 +38174,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_type_b-linux.zip",
             "size": 783016118,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_type_b-linux-arm64.zip",
             "size": 607920352,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37741,14 +38195,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_type_b-macos.zip",
             "size": 542328765,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_a-windows.zip",
             "size": 767855264,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -37762,14 +38216,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_a-linux.zip",
             "size": 815176588,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_a-linux-arm64.zip",
             "size": 640080822,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37783,14 +38237,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_a-macos.zip",
             "size": 574489237,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_b-windows.zip",
             "size": 735694794,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -37804,14 +38258,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_b-linux.zip",
             "size": 783016118,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_b-linux-arm64.zip",
             "size": 607920352,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -37825,14 +38279,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_b-macos.zip",
             "size": 542328769,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y2-windows.zip",
             "size": 698400623,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
@@ -37846,14 +38300,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y2-linux.zip",
             "size": 755230227,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y2-linux-arm64.zip",
             "size": 580134461,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -37867,7 +38321,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y2-macos.zip",
             "size": 506838229,
-            "downloads": 1
+            "downloads": 4
           }
         ]
       },
@@ -37957,12 +38411,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom.zip",
-            "downloads": 21
+            "downloads": 27,
+            "mirror_downloads": 6
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 22,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y1_type_a.zip",
@@ -37972,12 +38428,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y1_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom_y1_type_b.zip",
-            "downloads": 16
+            "downloads": 19,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom_y2.zip",
-            "downloads": 54
+            "downloads": 60,
+            "mirror_downloads": 6
           }
         ],
         "portable": [
@@ -37986,7 +38444,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom-windows.zip",
             "size": 767860196,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -38000,14 +38458,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom-linux.zip",
             "size": 815181520,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom-linux-arm64.zip",
             "size": 640085754,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38021,14 +38479,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom-macos.zip",
             "size": 574494162,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_type_b-windows.zip",
             "size": 735692976,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -38042,14 +38500,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_type_b-linux.zip",
             "size": 783014300,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_type_b-linux-arm64.zip",
             "size": 607918534,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38063,14 +38521,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_type_b-macos.zip",
             "size": 542326947,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_a-windows.zip",
             "size": 767860196,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -38084,14 +38542,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_a-linux.zip",
             "size": 815181520,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_a-linux-arm64.zip",
             "size": 640085754,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38105,14 +38563,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_a-macos.zip",
             "size": 574494170,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_b-windows.zip",
             "size": 735692976,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -38126,14 +38584,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_b-linux.zip",
             "size": 783014300,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_b-linux-arm64.zip",
             "size": 607918534,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38147,14 +38605,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_b-macos.zip",
             "size": 542326950,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y2-windows.zip",
             "size": 698369091,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -38168,14 +38626,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y2-linux.zip",
             "size": 755198695,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y2-linux-arm64.zip",
             "size": 580102929,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38189,7 +38647,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y2-macos.zip",
             "size": 506806698,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -38279,27 +38737,32 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom.zip",
-            "downloads": 20
+            "downloads": 27,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 25,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_y1_type_a.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom_y1_type_a.zip",
-            "downloads": 18
+            "downloads": 25,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_y1_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom_y1_type_b.zip",
-            "downloads": 17
+            "downloads": 24,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom_y2.zip",
-            "downloads": 28
+            "downloads": 38,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -38308,7 +38771,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom-windows.zip",
             "size": 767853531,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -38322,14 +38785,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom-linux.zip",
             "size": 815174855,
-            "downloads": 2
+            "downloads": 8
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom-linux-arm64.zip",
             "size": 640079089,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38343,14 +38806,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom-macos.zip",
             "size": 574487497,
-            "downloads": 1
+            "downloads": 8
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_type_b-windows.zip",
             "size": 735694814,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -38364,14 +38827,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_type_b-linux.zip",
             "size": 783016138,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_type_b-linux-arm64.zip",
             "size": 607920372,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38385,14 +38848,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_type_b-macos.zip",
             "size": 542328786,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_a-windows.zip",
             "size": 767853531,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -38406,14 +38869,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_a-linux.zip",
             "size": 815174855,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_a-linux-arm64.zip",
             "size": 640079089,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38427,14 +38890,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_a-macos.zip",
             "size": 574487505,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_b-windows.zip",
             "size": 735694816,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
@@ -38448,14 +38911,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_b-linux.zip",
             "size": 783016140,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_b-linux-arm64.zip",
             "size": 607920374,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38469,14 +38932,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_b-macos.zip",
             "size": 542328790,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y2-windows.zip",
             "size": 698378679,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -38490,14 +38953,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y2-linux.zip",
             "size": 755208283,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y2-linux-arm64.zip",
             "size": 580112517,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38511,7 +38974,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y2-macos.zip",
             "size": 506816286,
-            "downloads": 2
+            "downloads": 7
           }
         ]
       },
@@ -38601,12 +39064,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom.zip",
-            "downloads": 16
+            "downloads": 22,
+            "mirror_downloads": 6
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom_type_b.zip",
-            "downloads": 17
+            "downloads": 23,
+            "mirror_downloads": 6
           },
           {
             "name": "rom_y1_type_a.zip",
@@ -38621,7 +39086,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom_y2.zip",
-            "downloads": 18
+            "downloads": 24,
+            "mirror_downloads": 6
           }
         ],
         "portable": [
@@ -38630,7 +39096,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom-windows.zip",
             "size": 767812150,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -38644,14 +39110,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom-linux.zip",
             "size": 815133474,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom-linux-arm64.zip",
             "size": 640037708,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38665,14 +39131,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom-macos.zip",
             "size": 574446115,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_type_b-windows.zip",
             "size": 735690717,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -38686,14 +39152,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_type_b-linux.zip",
             "size": 783012041,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_type_b-linux-arm64.zip",
             "size": 607916275,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38707,14 +39173,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_type_b-macos.zip",
             "size": 542324688,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_a-windows.zip",
             "size": 767812152,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -38728,14 +39194,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_a-linux.zip",
             "size": 815133476,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_a-linux-arm64.zip",
             "size": 640037710,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38749,14 +39215,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_a-macos.zip",
             "size": 574446125,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_b-windows.zip",
             "size": 735690717,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -38770,14 +39236,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_b-linux.zip",
             "size": 783012041,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_b-linux-arm64.zip",
             "size": 607916275,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38791,14 +39257,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_b-macos.zip",
             "size": 542324692,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-windows.zip",
             "size": 698341007,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -38812,14 +39278,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-linux.zip",
             "size": 755170611,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-linux-arm64.zip",
             "size": 580074845,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38833,7 +39299,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-macos.zip",
             "size": 506778613,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -38923,12 +39389,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom.zip",
-            "downloads": 16
+            "downloads": 22,
+            "mirror_downloads": 6
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom_type_b.zip",
-            "downloads": 18
+            "downloads": 24,
+            "mirror_downloads": 6
           },
           {
             "name": "rom_y1_type_a.zip",
@@ -38943,7 +39411,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom_y2.zip",
-            "downloads": 19
+            "downloads": 25,
+            "mirror_downloads": 6
           }
         ],
         "portable": [
@@ -38952,7 +39421,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom-windows.zip",
             "size": 769018051,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -38966,14 +39435,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom-linux.zip",
             "size": 816339375,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom-linux-arm64.zip",
             "size": 641243609,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -38987,14 +39456,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom-macos.zip",
             "size": 575652016,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_type_b-windows.zip",
             "size": 728911362,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -39008,14 +39477,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_type_b-linux.zip",
             "size": 776232686,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_type_b-linux-arm64.zip",
             "size": 601136920,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -39029,14 +39498,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_type_b-macos.zip",
             "size": 535545332,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_a-windows.zip",
             "size": 769018053,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -39050,14 +39519,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_a-linux.zip",
             "size": 816339377,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_a-linux-arm64.zip",
             "size": 641243611,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -39071,14 +39540,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_a-macos.zip",
             "size": 575652026,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_b-windows.zip",
             "size": 728911362,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -39092,14 +39561,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_b-linux.zip",
             "size": 776232686,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_b-linux-arm64.zip",
             "size": 601136920,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -39113,14 +39582,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_b-macos.zip",
             "size": 535545336,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y2-windows.zip",
             "size": 683634207,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "windows-legacy",
@@ -39134,14 +39603,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y2-linux.zip",
             "size": 740463811,
-            "downloads": 1
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y2-linux-arm64.zip",
             "size": 565368045,
-            "downloads": 1
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
@@ -39155,7 +39624,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y2-macos.zip",
             "size": 492071813,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -39245,27 +39714,32 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom.zip",
-            "downloads": 18
+            "downloads": 21,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 18,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y1_type_a.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom_y1_type_a.zip",
-            "downloads": 15
+            "downloads": 18,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y1_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom_y1_type_b.zip",
-            "downloads": 15
+            "downloads": 18,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom_y2.zip",
-            "downloads": 18
+            "downloads": 24,
+            "mirror_downloads": 6
           }
         ],
         "portable": [
@@ -39274,210 +39748,210 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom-windows.zip",
             "size": 767817990,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom-windows-legacy.zip",
             "size": 529579175,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom-linux.zip",
             "size": 815139314,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom-linux-arm64.zip",
             "size": 640043548,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom-linux-legacy.zip",
             "size": 527993456,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom-macos.zip",
             "size": 574451947,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_type_b-windows.zip",
             "size": 735709592,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_type_b-windows-legacy.zip",
             "size": 497470797,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_type_b-linux.zip",
             "size": 783030916,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_type_b-linux-arm64.zip",
             "size": 607935150,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_type_b-linux-legacy.zip",
             "size": 495885080,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_type_b-macos.zip",
             "size": 542343554,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_a-windows.zip",
             "size": 767817992,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y1_type_a-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_a-windows-legacy.zip",
             "size": 529579209,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_a-linux.zip",
             "size": 815139316,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_a-linux-arm64.zip",
             "size": 640043550,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_a-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_a-linux-legacy.zip",
             "size": 527993490,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_a-macos.zip",
             "size": 574451957,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_b-windows.zip",
             "size": 735709592,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y1_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_b-windows-legacy.zip",
             "size": 497470809,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_b-linux.zip",
             "size": 783030916,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_b-linux-arm64.zip",
             "size": 607935150,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_b-linux-legacy.zip",
             "size": 495885092,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_b-macos.zip",
             "size": 542343558,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-windows.zip",
             "size": 698355815,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-windows-legacy.zip",
             "size": 460117010,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-linux.zip",
             "size": 755185419,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-linux-arm64.zip",
             "size": 580089653,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-linux-legacy.zip",
             "size": 458531291,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-macos.zip",
             "size": 506793413,
-            "downloads": 2
+            "downloads": 7
           }
         ]
       },
@@ -39567,12 +40041,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom.zip",
-            "downloads": 16
+            "downloads": 22,
+            "mirror_downloads": 6
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_type_b.zip",
-            "downloads": 15
+            "downloads": 18,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y1_type_a.zip",
@@ -39582,12 +40058,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y1_type_b.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_y1_type_b.zip",
-            "downloads": 17
+            "downloads": 20,
+            "mirror_downloads": 3
           },
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_y2.zip",
-            "downloads": 18
+            "downloads": 24,
+            "mirror_downloads": 6
           }
         ],
         "portable": [
@@ -39596,210 +40074,210 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom-windows.zip",
             "size": 769021964,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom-windows-legacy.zip",
             "size": 530783149,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom-linux.zip",
             "size": 816343288,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom-linux-arm64.zip",
             "size": 641247522,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom-linux-legacy.zip",
             "size": 529197430,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom-macos.zip",
             "size": 575655928,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_type_b-windows.zip",
             "size": 736895618,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_type_b-windows-legacy.zip",
             "size": 498656821,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_type_b-linux.zip",
             "size": 784216942,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_type_b-linux-arm64.zip",
             "size": 609121176,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_type_b-linux-legacy.zip",
             "size": 497071106,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_type_b-macos.zip",
             "size": 543529587,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_a-windows.zip",
             "size": 769021966,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y1_type_a-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_a-windows-legacy.zip",
             "size": 530783183,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_a-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_a-linux.zip",
             "size": 816343290,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_a-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_a-linux-arm64.zip",
             "size": 641247524,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_a-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_a-linux-legacy.zip",
             "size": 529197464,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom_y1_type_a-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_a-macos.zip",
             "size": 575655939,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_y1_type_b-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_b-windows.zip",
             "size": 736895618,
-            "downloads": 1
+            "downloads": 6
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y1_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_b-windows-legacy.zip",
             "size": 498656833,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom_y1_type_b-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_b-linux.zip",
             "size": 784216942,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y1_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_b-linux-arm64.zip",
             "size": 609121176,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y1_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_b-linux-legacy.zip",
             "size": 497071116,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom_y1_type_b-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_b-macos.zip",
             "size": 543529592,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-windows.zip",
             "size": 683647143,
-            "downloads": 2
+            "downloads": 8
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-windows-legacy.zip",
             "size": 445408338,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-linux.zip",
             "size": 740476747,
-            "downloads": 2
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-linux-arm64.zip",
             "size": 565380981,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-linux-legacy.zip",
             "size": 443822619,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-macos.zip",
             "size": 492084748,
-            "downloads": 2
+            "downloads": 7
           }
         ]
       },
@@ -39874,8 +40352,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "",
       "icon_dark_url": "",
       "body": "# Y2Player v2.5 - Search, FM Radio, Faster Navigation, and Playback Reliability\r\n\r\nVersion 2.5 brings whole-device search, FM radio support for compatible Y2 hardware, faster navigation through large libraries, more flexible sleep-timer controls, and a redesigned equalizer interface.\r\n\r\nThis release also addresses several reported problems involving screen-off playback, shuffle ordering, audiobook seeking, queue controls, embedded artwork, list wrapping, and general navigation.\r\n\r\n## Whole-Device Search\r\n\r\nSearch is now available directly from the main menu.\r\n\r\nThe new wheel-driven QWERTY keyboard searches across:\r\n\r\n- Songs\r\n- Albums\r\n- Artists\r\n- Playlists\r\n- Audiobooks\r\n\r\nTrack searches include title, artist, album, filename, genre, and composer metadata. Matching is accent-insensitive and supports multiple search terms, with exact and prefix matches ranked first.\r\n\r\nSearch results reuse the existing playback and browsing flows. Tracks can be played or opened through their context menus, while albums, artists, playlists, and audiobooks open their corresponding library views.\r\n\r\nThe interface was designed for the Y2\u2019s 480 \u00d7 360 display:\r\n\r\n- The keyboard remains visible at the bottom of the screen.\r\n- Two complete result rows remain visible above it.\r\n- The wheel moves through keys in QWERTY order.\r\n- Left and Right move within the current keyboard row.\r\n- Center enters the selected key.\r\n- Back deletes the previous character.\r\n- The Results key moves focus to the matching items.\r\n- Direct touch works on both keyboard keys and results.\r\n- Playback controls are suppressed while typing to prevent accidental track changes.\r\n\r\nSearch also has separate instructions before typing and a dedicated message when no results are found.\r\n\r\nTo keep it responsive with large libraries, searchable metadata is indexed once per active library. Recent queries are cached, and only the best 100 results are retained. In a synthetic 10,000-track benchmark, ordinary indexed queries completed in approximately 2\u20135 ms, while cached queries completed in approximately 0.02 ms.\r\n\r\n## FM Radio\r\n\r\nY2Player now includes support for the MediaTek MT6627 FM tuner found in newer FM-equipped Y2 hardware revisions.\r\n\r\nThe FM Radio interface supports:\r\n\r\n- Wheel-controlled frequency tuning\r\n- Previous and next station seeking\r\n- Frequency and signal information\r\n- Wired-headphone antenna detection\r\n- Tuner power control\r\n- Safe switching between music playback and FM audio\r\n- Proper tuner cleanup when leaving the FM screen\r\n\r\n### Important Y2 Hardware Notice\r\n\r\nInnioasis has confirmed that there are two Y2 hardware revisions.\r\n\r\nThe original Y2 batch does not contain the required FM radio hardware. These devices may be able to open the FM interface and tune frequencies, but they cannot receive a usable radio signal and will normally output only static.\r\n\r\nNewer Y2 units include the required FM circuitry and use the FM-enabled stock firmware.\r\n\r\nBecause many existing Y2 devices cannot receive FM, the FM Radio entry is hidden by default. Owners of compatible newer hardware can enable it under:\r\n\r\nSettings \u2192 Interface \u2192 FM Radio\r\n\r\nFlashing FM-enabled stock firmware cannot add the missing tuner circuitry to an original Y2. FM reception depends on the physical hardware revision, not only the installed firmware.\r\n\r\n## Faster Alphabet Navigation\r\n\r\nLarge alphabetically sorted libraries now support iPod-style alphabet scrolling.\r\n\r\nNormal and moderately fast wheel movement retain the existing precise scrolling behavior. Sustained fast movement activates an alphabet scrub mode with a large temporary `#` or `A\u2013Z` overlay.\r\n\r\nAlphabet scrolling is available where the visible order is genuinely alphabetical, including supported:\r\n\r\n- Song lists\r\n- Favorites\r\n- Artists\r\n- Albums sorted by title\r\n- Playlists\r\n- Filtered library views\r\n\r\nIt remains disabled for album track order, Recently Played, chronologically sorted albums, Queue, folders, settings, confirmation screens, and circular menus.\r\n\r\nThe first position for each letter is indexed once per visible list, so moving through a large library does not repeatedly scan every row.\r\n\r\n## Improved Sleep Timer\r\n\r\nThe sleep timer now opens a dedicated wheel-controlled selection screen instead of cycling through a small number of presets.\r\n\r\nAvailable choices include:\r\n\r\n- Off\r\n- End of track\r\n- End of album\r\n- End of queue\r\n- Every exact duration from 1 through 60 minutes\r\n\r\nReopening the Sleep Timer screen returns to the currently selected option.\r\n\r\nActive minute timers now show a live remaining-time countdown throughout the interface. Expired timers are cleared correctly instead of remaining visibly enabled after playback stops.\r\n\r\nEnd of Album and End of Queue follow the active playback collection and queue rather than using an approximate duration.\r\n\r\n## More Reliable Screen-Off Playback\r\n\r\nY2Player now holds a service-level playback wake lock throughout Preparing and Playing.\r\n\r\nPreviously, the decoder-level wake lock could be released during the brief asynchronous handoff between one completed track and the next. If the display was asleep at that exact moment, Android could suspend the CPU before the service completed the transition.\r\n\r\nThe new ownership closes that gap while still releasing the wake lock when playback is:\r\n\r\n- Paused\r\n- Idle\r\n- Stopped\r\n- In an error state\r\n- Shutting down\r\n\r\nThis fixes playback potentially stopping at the end of a track until the screen was turned back on.\r\n\r\n## Optional Seeking While Locked\r\n\r\nA new option allows the Y2\u2019s Left and Right buttons to seek while the device is locked instead of changing tracks or audiobook chapters.\r\n\r\nIt can be enabled under:\r\n\r\nSettings \u2192 Audio \u2192 Seeking \u2192 Seek When Locked\r\n\r\nWhen enabled, Left and Right use the configured held-seek interval. The option is disabled by default, and headset or Bluetooth transport controls retain their normal behavior.\r\n\r\n## Wake-Up Seek Fix\r\n\r\nA separate input-routing fix prevents a held seek button from being interpreted as multiple Previous or Next commands when the display wakes.\r\n\r\nWhen the unlocked activity is visible, it now has exclusive ownership of local keypad gestures. The vendor broadcast remains available as a screen-off fallback, while genuine headset and Bluetooth media commands remain unaffected.\r\n\r\nThis is particularly useful for audiobooks, where an interrupted seek could previously skip several chapters.\r\n\r\n## Correct Playback Order After Disabling Shuffle\r\n\r\nDisabling Shuffle now rebuilds the ordered continuation around the currently playing track.\r\n\r\nPreviously, turning Shuffle off after progressing through a playlist could restart or incorrectly arrange the remaining ordered playback.\r\n\r\nThe corrected behavior:\r\n\r\n- Keeps the current track active.\r\n- Restores the remaining playlist or collection order.\r\n- Preserves deliberately added Up Next tracks.\r\n- Keeps those Up Next entries ahead of the restored continuation.\r\n- Handles the final track and progressed shuffle sessions correctly.\r\n\r\n## Queue Control Fixes\r\n\r\nCenter-button behavior in Queue now matches other track lists.\r\n\r\nA short Center press opens the selected queue entry\u2019s action menu. Holding Center uses the corresponding long-press behavior without accidentally performing both actions.\r\n\r\nThis removes inconsistent behavior where Queue treated Center differently from Songs and other track views.\r\n\r\n## Redesigned Equalizer Controls\r\n\r\nEqualizer configuration has been redesigned around explicit wheel-controlled selection screens.\r\n\r\nPreset selection now displays a complete list instead of cycling blindly through available presets. The list includes Custom whenever individual band values are active.\r\n\r\nSelecting an equalizer band opens a dedicated dB value screen:\r\n\r\n- The current value is preselected.\r\n- Values use valid 1 dB steps within the range reported by the device.\r\n- Exact minimum and maximum values remain available.\r\n- Center applies the selected value and returns.\r\n- Back cancels without changing the band.\r\n- Left and Right retain their normal global playback behavior.\r\n\r\nThis replaces the previous short-press and long-press band adjustment system, making the current and resulting values much clearer.\r\n\r\n## Consistent List Wrapping\r\n\r\nThe Wrap Lists preference is now respected across all selectable screens.\r\n\r\nIt applies consistently to:\r\n\r\n- Library lists\r\n- Settings\r\n- Confirmation choices\r\n- Equalizer selectors\r\n- Circular action menus\r\n- Search keyboard navigation\r\n\r\nWhen Wrap Lists is disabled, selection stops at the beginning and end. When enabled, selection continues from the final item to the first and vice versa.\r\n\r\nQueue reordering remains intentionally bounded because that screen edits a target position rather than navigating an ordinary menu.\r\n\r\n## Improved Back Navigation\r\n\r\nHolding the Y2\u2019s top Back button now returns directly to the main menu, matching classic iPod behavior.\r\n\r\n- A short press returns one screen.\r\n- A held press clears the navigation stack and returns home.\r\n- Hold detection works with normal Android key repeats.\r\n- Release-based detection also supports firmware that does not emit repeat events.\r\n- The short Back action is suppressed after a recognized hold.\r\n\r\nBack also dismisses temporary alerts and status messages before navigating away. A second press performs the normal Back action.\r\n\r\nPersistent library, playback, Bluetooth, and diagnostic status information is not intercepted.\r\n\r\n## Artist Navigation Fix\r\n\r\nTrack Options \u2192 Browse Track \u2192 Go to Artist now opens the selected artist\u2019s album list.\r\n\r\nPreviously, this route bypassed the normal artist view and opened a flat list containing every song by that artist.\r\n\r\nThe corrected behavior now matches:\r\n\r\nMusic \u2192 Artists \u2192 Artist Albums\r\n\r\nGo to Album and existing featured-artist normalization remain unchanged.\r\n\r\n## Safer Embedded Artwork\r\n\r\nOversized or malformed embedded artwork is now rejected safely.\r\n\r\nPreviously, invalid artwork data could trigger an exception while constructing the artwork byte array and potentially crash Y2Player.\r\n\r\nThe native metadata bridge now:\r\n\r\n- Enforces the configured artwork-size limit before allocation.\r\n- Detects JNI allocation failures.\r\n- Clears the resulting exception safely.\r\n- Returns no artwork instead of bringing down the application.\r\n\r\nValid embedded and external artwork behavior is unchanged.\r\n\r\n## Cleaner Now Playing Footer\r\n\r\nThe permanent transition-mode item and its divider have been removed from the Now Playing footer.\r\n\r\nShuffle and Repeat remain on the left, while queue position remains right-aligned. This gives the footer a more balanced layout and removes information that did not need to remain visible continuously.\r\n\r\nThis is only a presentation change. Gapless playback, Crossfade, Crossfade Mode, their settings, and their playback behavior remain available.\r\n\r\n## USB Connection Feedback\r\n\r\nConnecting USB now produces a single perceptible haptic response when haptics are enabled and supported by the device.\r\n\r\nThe implementation uses the existing coalesced USB state instead of reacting independently to every Android power and USB broadcast.\r\n\r\nThe following do not cause duplicate vibrations:\r\n\r\n- Initial USB state detection\r\n- Repeated connected-state broadcasts\r\n- Power-state refreshes\r\n- Disconnecting the cable\r\n\r\n## Settings and Backup Compatibility\r\n\r\nThe following new preferences are included in Backup & Restore:\r\n\r\n- FM Radio main-menu visibility\r\n- Seek When Locked\r\n\r\nOlder backups remain compatible and receive safe defaults:\r\n\r\n- FM Radio is hidden.\r\n- Seek When Locked is disabled.\r\n\r\n## Validation\r\n\r\nVersion 2.5 has been checked with the complete debug unit-test suite and Android lint.\r\n\r\nThe latest validation completed successfully with more than 930 unit tests covering navigation, Search, FM state, playback, queue behavior, sleep timers, input routing, artwork, preferences, and backup compatibility.\r\n\r\n## Installation\r\n\r\nThe release provides the existing system-only update path as well as a complete `rom_y2.zip` package for the Innioasis Updater.\r\n\r\nFor the system-only method, use SP Flash Tool in Download Only mode with only the ANDROID partition selected, pointing to the supplied `system.img`.\r\n\r\nDo not select, format, or flash unrelated partitions.\r\n\r\nThe complete `rom_y2.zip` installation performs a full-device installation and erases user data. Before using it:\r\n\r\n1. Export a Y2Player backup.\r\n2. Copy the backup off the device.\r\n3. Copy any important music, playlists, diagnostics, and other files to a computer.\r\n4. Verify the supplied package checksum.\r\n5. Follow the installation instructions for the Y2 specifically.\r\n\r\nDo not use a Y1 package on a Y2.\r\n\r\n## Reporting Problems\r\n\r\nIf you encounter a problem, enable verbose diagnostics before reproducing it:\r\n\r\nSettings \u2192 System \u2192 Diagnostics \u2192 Verbose Diagnostics\r\n\r\nAfter reproducing the problem, export the report:\r\n\r\nSettings \u2192 System \u2192 Diagnostics \u2192 Export Diagnostics\r\n\r\nAttach the exported report to a GitHub issue and include:\r\n\r\n- Whether your Y2 is from the original or FM-enabled hardware batch\r\n- The audio format being played\r\n- Whether playback used the speaker, wired headphones, or Bluetooth\r\n- Whether Shuffle, Repeat, Crossfade, ReplayGain, or the equalizer was enabled\r\n- The exact screen and hardware-button sequence that produced the problem\r\n\r\nFor FM problems, also mention whether wired headphones were connected and whether FM works in the FM-enabled Innioasis stock firmware.\r\n\r\nThank you to everyone who submitted issues, tested builds, provided diagnostics, and helped investigate the Y2\u2019s different hardware revisions. Your reports directly shaped the Search interface, navigation improvements, timer redesign, playback fixes, and hardware compatibility behavior in this release.\r\n",
-      "downloads": 1154,
-      "mirror_downloads": 35,
+      "downloads": 1155,
+      "mirror_downloads": 36,
       "download_breakdown": {
         "tag": "Release2.5",
         "mirrors": "y1-community/y2player-mirror",
@@ -39883,7 +40361,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/rom_y2.zip",
-            "downloads": 1119
+            "downloads": 1130,
+            "mirror_downloads": 11
           }
         ],
         "portable": [
@@ -39892,42 +40371,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-windows.zip",
             "size": 549876744,
-            "downloads": 7
+            "downloads": 12
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-windows-legacy.zip",
             "size": 311637897,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-linux.zip",
             "size": 606706348,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-linux-arm64.zip",
             "size": 431610582,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-linux-legacy.zip",
             "size": 310052182,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-macos.zip",
             "size": 358314351,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -39969,7 +40448,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.3/rom_y2.zip",
-            "downloads": 331
+            "downloads": 346,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -39978,42 +40458,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-windows.zip",
             "size": 549846164,
-            "downloads": 6
+            "downloads": 11
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-windows-legacy.zip",
             "size": 311607315,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux.zip",
             "size": 606675768,
-            "downloads": 2
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux-arm64.zip",
             "size": 431580002,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux-legacy.zip",
             "size": 310021598,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-macos.zip",
             "size": 358283771,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -40055,12 +40535,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/rom_y2.zip",
-            "downloads": 88
+            "downloads": 103,
+            "mirror_downloads": 15
           },
           {
             "name": "system.zip",
             "url": "https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/system.zip",
-            "downloads": 41
+            "downloads": 51,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -40069,42 +40551,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-windows.zip",
             "size": 549828695,
-            "downloads": 7
+            "downloads": 12
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-windows-legacy.zip",
             "size": 311589848,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-linux.zip",
             "size": 606658299,
-            "downloads": 2
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-linux-arm64.zip",
             "size": 431562533,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-linux-legacy.zip",
             "size": 310004133,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-macos.zip",
             "size": 358266302,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -40146,12 +40628,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2.1/rom_y2.zip",
-            "downloads": 102
+            "downloads": 117,
+            "mirror_downloads": 15
           },
           {
             "name": "system.img.zip",
             "url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2.1/system.img.zip",
-            "downloads": 46
+            "downloads": 56,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -40160,42 +40644,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-windows.zip",
             "size": 549796608,
-            "downloads": 6
+            "downloads": 12
           },
           {
             "platform": "windows-legacy",
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-windows-legacy.zip",
             "size": 311557765,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux.zip",
             "size": 606626212,
-            "downloads": 2
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux-arm64.zip",
             "size": 431530446,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux-legacy.zip",
             "size": 309972048,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-macos.zip",
             "size": 358234215,
-            "downloads": 1
+            "downloads": 5
           }
         ]
       },
@@ -40449,7 +40933,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.7/rom.zip",
-            "downloads": 905
+            "downloads": 915,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -40458,42 +40943,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-windows.zip",
             "size": 550854730,
-            "downloads": 6
+            "downloads": 8
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-windows-legacy.zip",
             "size": 312615887,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-linux.zip",
             "size": 607684334,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-linux-arm64.zip",
             "size": 432588568,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-linux-legacy.zip",
             "size": 311030170,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-macos.zip",
             "size": 359292333,
-            "downloads": 0
+            "downloads": 4
           }
         ]
       },
@@ -40535,7 +41020,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.2/rom.zip",
-            "downloads": 191
+            "downloads": 201,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -40544,42 +41030,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-windows.zip",
             "size": 570802497,
-            "downloads": 5
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-windows-legacy.zip",
             "size": 332563654,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-linux.zip",
             "size": 627632101,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-linux-arm64.zip",
             "size": 452536335,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-linux-legacy.zip",
             "size": 330977937,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-macos.zip",
             "size": 379240100,
-            "downloads": 0
+            "downloads": 4
           }
         ]
       },
@@ -40623,7 +41109,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/rom.zip",
-            "downloads": 451
+            "downloads": 466,
+            "mirror_downloads": 15
           }
         ],
         "portable": [
@@ -40632,42 +41119,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows.zip",
             "size": 494326123,
-            "downloads": 6
+            "downloads": 13
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows-legacy.zip",
             "size": 256087282,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux.zip",
             "size": 541647447,
-            "downloads": 8
+            "downloads": 14
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-arm64.zip",
             "size": 366551681,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-legacy.zip",
             "size": 254501563,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-macos.zip",
             "size": 300960097,
-            "downloads": 4
+            "downloads": 10
           }
         ]
       },
@@ -40718,42 +41205,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-windows.zip",
             "size": 493907020,
-            "downloads": 5
+            "downloads": 8
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-windows-legacy.zip",
             "size": 255668179,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux.zip",
             "size": 541228344,
-            "downloads": 8
+            "downloads": 12
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux-arm64.zip",
             "size": 366132578,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux-legacy.zip",
             "size": 254082460,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-macos.zip",
             "size": 300540980,
-            "downloads": 2
+            "downloads": 6
           }
         ]
       },
@@ -40789,12 +41276,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip",
-            "downloads": 440
+            "downloads": 450,
+            "mirror_downloads": 10
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip",
-            "downloads": 270
+            "downloads": 280,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -40803,84 +41292,84 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom-windows.zip",
             "size": 767237724,
-            "downloads": 6
+            "downloads": 21
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom-windows-legacy.zip",
             "size": 528998933,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom-linux.zip",
             "size": 824067328,
-            "downloads": 2
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom-linux-arm64.zip",
             "size": 648971562,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom-linux-legacy.zip",
             "size": 527413214,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom-macos.zip",
             "size": 575675318,
-            "downloads": 1
+            "downloads": 7
           },
           {
             "platform": "windows",
             "name": "rom_type_b-windows.zip",
             "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom_type_b-windows.zip",
             "size": 710234720,
-            "downloads": 2
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
             "name": "rom_type_b-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom_type_b-windows-legacy.zip",
             "size": 471995943,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom_type_b-linux.zip",
             "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom_type_b-linux.zip",
             "size": 767064324,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "linux-arm64",
             "name": "rom_type_b-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom_type_b-linux-arm64.zip",
             "size": 591968558,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom_type_b-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom_type_b-linux-legacy.zip",
             "size": 470410226,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom_type_b-macos.zip",
             "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom_type_b-macos.zip",
             "size": 518672320,
-            "downloads": 1
+            "downloads": 4
           }
         ]
       },
@@ -40924,7 +41413,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip",
-            "downloads": 255
+            "downloads": 264,
+            "mirror_downloads": 9
           }
         ],
         "portable": [
@@ -40933,7 +41423,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/rom_y2-linux.zip",
             "size": 661571626,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -40947,14 +41437,14 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-macos.zip",
             "url": "https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/rom_y2-macos.zip",
             "size": 413717766,
-            "downloads": 4
+            "downloads": 6
           },
           {
             "platform": "windows",
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/rom_y2-windows.zip",
             "size": 528191830,
-            "downloads": 7
+            "downloads": 8
           }
         ]
       },
@@ -40990,7 +41480,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/y1-community/y1-linux-rom/releases/download/0.0.1/rom.zip",
-            "downloads": 58
+            "downloads": 68,
+            "mirror_downloads": 10
           }
         ],
         "portable": [
@@ -40999,42 +41490,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-windows.zip",
             "size": 569372655,
-            "downloads": 3
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-windows-legacy.zip",
             "size": 331133872,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux.zip",
             "size": 616693979,
-            "downloads": 0
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-arm64.zip",
             "size": 441598213,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-legacy.zip",
             "size": 329548151,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-macos.zip",
             "size": 376006609,
-            "downloads": 0
+            "downloads": 5
           }
         ]
       },
@@ -41061,7 +41552,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/lithium_icon.jpg",
       "icon_dark_url": "",
       "body": "## Lithium 7 Beta (pre-release) v7.1.06.13.25\r\n\r\n[<img src=\"https://github.com/user-attachments/assets/9167a80e-4368-42c6-885d-6e374467f574\">](https://discord.gg/3zbfaTNN7V)\r\n\r\nThis is a very early beta release of Lithium 7, complete with kernel & ramdisk, with built-in Xposed support. It has achieved a record-setting boot time of just _40 seconds_, as opposed to the 1:04 boot time of Lithium 5.\r\n\r\nIf you have any issues, feel free to join the **[discussion](https://github.com/NoahDomingues/Lithium/discussions)**, or join the **[Discord server](https://discord.gg/3zbfaTNN7V)**. We recommend joining for updates, and even to just to hang out with the community - we even have our own Minecraft server!\r\n\r\n[<img src=\"https://github.com/user-attachments/assets/f61046f5-1dc5-4b0c-87f8-4a94d6cbac96\">](https://discord.gg/3zbfaTNN7V)\r\n\r\n**Full Changelog**: https://github.com/NoahDomingues/Lithium/commits/Lithium-7\r\n\r\n## What's Changed\r\n* Updated initial boot logo\r\n* Added scatter file within flashing package\r\n* Attempted speaker audio fix, but speaker still does not work\r\n\r\n#### A massive thank you to **Meowing Kibble** for the new initial boot logo, and for other contributions (and for working on the speaker issue)!",
-      "downloads": 1125,
+      "downloads": 1127,
       "mirror_downloads": 0,
       "download_breakdown": {
         "tag": "v7.1.06.13.25",
@@ -41070,7 +41561,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Lithium.Beta.v7.1.06.13.25.zip",
             "url": "https://github.com/NoahDomingues/Lithium/releases/download/v7.1.06.13.25/Lithium.Beta.v7.1.06.13.25.zip",
-            "downloads": 1125
+            "downloads": 1127
           }
         ],
         "portable": []
@@ -41081,7 +41572,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Lithium.Beta.v7.1.06.13.25.zip",
           "browser_download_url": "https://github.com/NoahDomingues/Lithium/releases/download/v7.1.06.13.25/Lithium.Beta.v7.1.06.13.25.zip",
           "size": 307094451,
-          "download_count": 1125,
+          "download_count": 1127,
           "content_type": "application/x-zip-compressed"
         }
       ]
@@ -41226,14 +41717,14 @@ window.INNIOASIS_RELEASE_ICONS = {
   "y1-community/g5-stock-rom": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
   "y1-community/q3-stock-rom": "https://innioasis.app/assets/timmkoo_icon.jpeg",
   "y1-community/q5-stock-rom": "https://innioasis.app/assets/timmkoo_icon.jpeg",
-  "y1-community/rondo-mirror": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/updater.png",
+  "y1-community/rondo-mirror": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/updater.png",
   "y1-community/y1-stock-rom": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
   "y1-community/y1-stock-rom-mirror": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/updater.jpg"
 };
 
 window.INNIOASIS_REPO_STATS = {
   "classyplayer/classy": {
-    "downloads": 3369,
+    "downloads": 3370,
     "forks": 3,
     "release_count": 23,
     "stars": 10,
@@ -41254,7 +41745,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-13T17:15:32Z"
   },
   "jarvissax/rondo": {
-    "downloads": 1063,
+    "downloads": 1065,
     "forks": 1,
     "release_count": 12,
     "stars": 1,
@@ -41268,14 +41759,14 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-10-05T06:12:33Z"
   },
   "noahdomingues/lithium": {
-    "downloads": 1406,
+    "downloads": 1408,
     "forks": 6,
     "release_count": 5,
     "stars": 10,
     "updated_at": "2026-11-12T07:39:03Z"
   },
   "rockbox-y1/rockbox": {
-    "downloads": 53223,
+    "downloads": 53224,
     "forks": 23,
     "release_count": 31,
     "stars": 86,
@@ -41289,7 +41780,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-10-15T03:03:06Z"
   },
   "schulzcode/y2linux": {
-    "downloads": 32114,
+    "downloads": 32124,
     "forks": 8,
     "release_count": 104,
     "stars": 24,
@@ -41380,7 +41871,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T15:54:16Z"
   },
   "y1-community/innioasis-updater": {
-    "downloads": 69437,
+    "downloads": 69445,
     "forks": 13,
     "release_count": 74,
     "stars": 55,
@@ -41452,7 +41943,7 @@ window.INNIOASIS_REPO_STATS = {
   "y1-community/rondo-mirror": {
     "downloads": 83,
     "forks": 0,
-    "release_count": 8,
+    "release_count": 9,
     "stars": 0,
     "updated_at": "2026-11-12T14:35:30Z"
   },
@@ -41471,7 +41962,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-05T04:11:50Z"
   },
   "y1-community/updater-ce-neo": {
-    "downloads": 1530,
+    "downloads": 1536,
     "forks": 1,
     "release_count": 5,
     "stars": 0,
@@ -41506,14 +41997,14 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T13:41:34Z"
   },
   "y1-community/y1-stock-rom": {
-    "downloads": 57625,
+    "downloads": 57662,
     "forks": 0,
     "release_count": 10,
     "stars": 6,
     "updated_at": "2026-10-27T10:14:24Z"
   },
   "y1-community/y1-stock-rom-mirror": {
-    "downloads": 1004,
+    "downloads": 1006,
     "forks": 0,
     "release_count": 10,
     "stars": 0,
@@ -41555,7 +42046,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T14:35:24Z"
   },
   "y1-community/y2player-mirror": {
-    "downloads": 44,
+    "downloads": 45,
     "forks": 0,
     "release_count": 4,
     "stars": 0,

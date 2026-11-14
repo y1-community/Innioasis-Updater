@@ -309,25 +309,31 @@ def download_breakdown(release: dict, item: dict, portable: list[dict],
     the row has always shown, so the modal never contradicts the number the
     reader clicked.
     """
-    firmware = firmware_zip_entries(release)
+    known = release.get("download_breakdown") or {}
+    firmware = [dict(entry) for entry in (known.get("firmware") or [])
+                if isinstance(entry, dict)] or firmware_zip_entries(release)
+    source_packages = known.get("portable") or portable
     packages = [
         {
             "platform": p.get("platform") or "",
-            "label": DOWNLOAD_PLATFORM_LABELS.get(p.get("platform") or "",
-                                                  PLATFORM_LABELS.get(p.get("platform") or "", "Package")),
+            "label": p.get("label") or DOWNLOAD_PLATFORM_LABELS.get(
+                p.get("platform") or "",
+                PLATFORM_LABELS.get(p.get("platform") or "", "Package")),
             "name": p.get("name") or "",
             "url": p.get("url") or "",
             "size": int(p.get("size") or 0),
             "downloads": int(p.get("downloads") or 0),
         }
-        for p in portable
+        for p in source_packages
     ]
     packages.sort(key=lambda entry: DOWNLOAD_PLATFORM_ORDER.index(entry["platform"])
                   if entry["platform"] in DOWNLOAD_PLATFORM_ORDER else 99)
-    counted = (sum(entry["downloads"] for entry in firmware) +
+    counted = (sum(int(entry.get("downloads") or 0) for entry in firmware) +
                sum(entry["downloads"] for entry in packages))
     stored = int(release.get("downloads") or 0)
-    mirrors: list[str] = []
+    mirrors: list[str] = [
+        item for item in str(known.get("mirrors") or "").split(",") if item
+    ]
     for entry in portable:
         mirror = str(entry.get("mirror") or "")
         if mirror and mirror not in mirrors:

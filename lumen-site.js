@@ -2400,17 +2400,31 @@
            recorded per-package counts, and site-download-stats.js fills the
            rest from the mirror when the modal opens. */
         function downloadBreakdown(release, item, tag) {
-            var firmware = (release && release.assets || []).reduce(function (list, asset) {
-                var name = String(asset && asset.name || "");
-                if (!/\.zip$/i.test(name) || /sources?|legal-info/i.test(name)) return list;
-                list.push({
-                    name: name,
-                    url: asset.browser_download_url || "",
-                    downloads: parseInt(asset.download_count, 10) || 0
-                });
-                return list;
-            }, []);
             var known = release && release.download_breakdown;
+            /* The feed's firmware rows already fold the mirror's copy of an
+               original ZIP into that ZIP, with the cumulative count from
+               stats.txt. Fall back to the live source assets only when an
+               older cached feed has no breakdown. */
+            var firmware = known && Array.isArray(known.firmware) && known.firmware.length
+                ? known.firmware.map(function (entry) {
+                    return {
+                        name: String(entry && entry.name || ""),
+                        url: String(entry && entry.url || ""),
+                        downloads: parseInt(entry && entry.downloads, 10) || 0,
+                        mirror_downloads: parseInt(entry && entry.mirror_downloads, 10) || 0,
+                        mirror_unallocated: parseInt(entry && entry.mirror_unallocated, 10) || 0
+                    };
+                })
+                : (release && release.assets || []).reduce(function (list, asset) {
+                    var name = String(asset && asset.name || "");
+                    if (!/\.zip$/i.test(name) || /sources?|legal-info/i.test(name)) return list;
+                    list.push({
+                        name: name,
+                        url: asset.browser_download_url || "",
+                        downloads: parseInt(asset.download_count, 10) || 0
+                    });
+                    return list;
+                }, []);
             var portable = known && Array.isArray(known.portable) ? known.portable : [];
             return {
                 title: (item && item.name ? item.name + (item.model ? " for " + item.model : "") + " " : "") +
@@ -2913,18 +2927,27 @@
                package twice, so only the first listener may start a job. */
             if (event.__innioasisZipClaimed) return;
             event.__innioasisZipClaimed = true;
+            /* The control may be an anchor; never let the browser navigate to
+               the package while the page is starting its own transfer. */
+            if (event.preventDefault) event.preventDefault();
             /* The catalog's control is a button, so the inline module cannot
                see it through its anchor handler. Give it the button itself:
-               it paints percent, speed and time left straight onto it. If the
-               module is not on this page, the browser downloads as before. */
+               the module opens the save picker now and shows the floating
+               progress card beside it. If the module is not on this page, the
+               browser downloads as before. */
             var downloads = window.InnioasisDownloads;
-            if (downloads && typeof downloads.start === "function") {
-                /* Resolve the mirror's package for this computer before the
-                   module streams anything: handing it the release's own
-                   rom.zip would skip the OS/arch build every time. */
-                preparePortableZip(btn, zipUrl).then(function (portableUrl) {
-                    downloads.start(portableUrl || zipUrl, btn, btn.getAttribute("data-zip-name") || "rom.zip");
-                });
+            if (downloads && typeof downloads.startResolved === "function") {
+                /* Resolve the mirror's package for this computer only after
+                   the picker has opened: resolving first used to consume the
+                   click's file-handle permission. */
+                downloads.startResolved(function () {
+                    return preparePortableZip(btn, zipUrl).then(function (portableUrl) {
+                        return {
+                            url: portableUrl || zipUrl,
+                            name: btn.getAttribute("data-zip-name") || "rom.zip"
+                        };
+                    });
+                }, zipUrl, btn, btn.getAttribute("data-zip-name") || "rom.zip");
                 return;
             }
             preparePortableZip(btn, zipUrl).then(function (portableUrl) {

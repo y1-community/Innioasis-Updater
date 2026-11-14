@@ -28,7 +28,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
         "size": 581693789,
-        "download_count": 237,
+        "download_count": 238,
         "content_type": "application/zip",
         "created_at": "2026-11-12T13:10:11Z",
         "updated_at": "2026-11-12T13:10:42Z",
@@ -58,7 +58,7 @@
       }
     ],
     "mirror_downloads": 53,
-    "downloads": 312,
+    "downloads": 313,
     "download_breakdown": {
       "tag": "stable-v0.6.1",
       "mirrors": "y1-community/rockbox-mirror",
@@ -66,17 +66,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
-          "downloads": 237
+          "downloads": 239,
+          "mirror_downloads": 1
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom_type_b.zip",
-          "downloads": 15
+          "downloads": 16,
+          "mirror_downloads": 1
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/update.zip",
-          "downloads": 7
+          "downloads": 8,
+          "mirror_downloads": 1
         }
       ],
       "portable": [
@@ -234,17 +237,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom.zip",
-          "downloads": 16
+          "downloads": 18,
+          "mirror_downloads": 2
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b.zip",
-          "downloads": 13
+          "downloads": 15,
+          "mirror_downloads": 2
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/update.zip",
-          "downloads": 18
+          "downloads": 20,
+          "mirror_downloads": 2
         }
       ],
       "portable": [
@@ -253,49 +259,49 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-windows.zip",
           "size": 838894770,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-windows-legacy.zip",
           "size": 600656077,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux.zip",
           "size": 886216094,
-          "downloads": 2
+          "downloads": 4
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux-arm64.zip",
           "size": 711120328,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux-legacy.zip",
           "size": 599070364,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-macos.zip",
           "size": 645528734,
-          "downloads": 2
+          "downloads": 4
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b-windows.zip",
           "size": 752384027,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "windows-legacy",
@@ -309,7 +315,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b-linux.zip",
           "size": 799705351,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux-arm64",
@@ -330,7 +336,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b-macos.zip",
           "size": 559017997,
-          "downloads": 2
+          "downloads": 3
         }
       ]
     }
@@ -402,17 +408,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/rom.zip",
-          "downloads": 843
+          "downloads": 844,
+          "mirror_downloads": 1
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/rom_type_b.zip",
-          "downloads": 67
+          "downloads": 68,
+          "mirror_downloads": 1
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/update.zip",
-          "downloads": 51
+          "downloads": 52,
+          "mirror_downloads": 1
         }
       ],
       "portable": [
@@ -421,84 +430,84 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-windows.zip",
           "size": 842355635,
-          "downloads": 19
+          "downloads": 33
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-windows-legacy.zip",
           "size": 604116784,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-linux.zip",
           "size": 889676959,
-          "downloads": 5
+          "downloads": 11
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-linux-arm64.zip",
           "size": 714581193,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-linux-legacy.zip",
           "size": 602531069,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-macos.zip",
           "size": 648989604,
-          "downloads": 6
+          "downloads": 16
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-windows.zip",
           "size": 756007620,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
           "name": "rom_type_b-windows-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-windows-legacy.zip",
           "size": 517768787,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux",
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-linux.zip",
           "size": 803328944,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
           "name": "rom_type_b-linux-arm64.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-linux-arm64.zip",
           "size": 628233178,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux-legacy",
           "name": "rom_type_b-linux-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-linux-legacy.zip",
           "size": 516183072,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "macos",
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-macos.zip",
           "size": 562641596,
-          "downloads": 2
+          "downloads": 5
         }
       ]
     }
@@ -570,17 +579,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom.zip",
-          "downloads": 42
+          "downloads": 51,
+          "mirror_downloads": 9
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b.zip",
-          "downloads": 18
+          "downloads": 27,
+          "mirror_downloads": 9
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/update.zip",
-          "downloads": 27
+          "downloads": 36,
+          "mirror_downloads": 9
         }
       ],
       "portable": [
@@ -589,7 +601,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-windows.zip",
           "size": 838232364,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -603,14 +615,14 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-linux.zip",
           "size": 885553688,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-linux-arm64.zip",
           "size": 710457922,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux-legacy",
@@ -624,14 +636,14 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-macos.zip",
           "size": 644866327,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b-windows.zip",
           "size": 752923282,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -645,7 +657,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b-linux.zip",
           "size": 800244606,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -666,7 +678,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b-macos.zip",
           "size": 559557251,
-          "downloads": 2
+          "downloads": 5
         }
       ]
     }
@@ -738,17 +750,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom.zip",
-          "downloads": 24
+          "downloads": 33,
+          "mirror_downloads": 9
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b.zip",
-          "downloads": 17
+          "downloads": 26,
+          "mirror_downloads": 9
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/update.zip",
-          "downloads": 23
+          "downloads": 32,
+          "mirror_downloads": 9
         }
       ],
       "portable": [
@@ -757,7 +772,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom-windows.zip",
           "size": 845283629,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -771,7 +786,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom-linux.zip",
           "size": 892604953,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -792,14 +807,14 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom-macos.zip",
           "size": 651917594,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b-windows.zip",
           "size": 754652036,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -813,7 +828,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b-linux.zip",
           "size": 801973360,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -834,7 +849,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b-macos.zip",
           "size": 561286007,
-          "downloads": 2
+          "downloads": 5
         }
       ]
     }
@@ -906,17 +921,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom.zip",
-          "downloads": 62
+          "downloads": 71,
+          "mirror_downloads": 9
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b.zip",
-          "downloads": 19
+          "downloads": 28,
+          "mirror_downloads": 9
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/update.zip",
-          "downloads": 32
+          "downloads": 41,
+          "mirror_downloads": 9
         }
       ],
       "portable": [
@@ -925,7 +943,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-windows.zip",
           "size": 850060676,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -939,14 +957,14 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-linux.zip",
           "size": 897382000,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-linux-arm64.zip",
           "size": 722286234,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux-legacy",
@@ -960,14 +978,14 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-macos.zip",
           "size": 656694642,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b-windows.zip",
           "size": 757776623,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -981,7 +999,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b-linux.zip",
           "size": 805097947,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -1002,7 +1020,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b-macos.zip",
           "size": 564410595,
-          "downloads": 2
+          "downloads": 5
         }
       ]
     }
@@ -1074,17 +1092,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom.zip",
-          "downloads": 114
+          "downloads": 123,
+          "mirror_downloads": 9
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b.zip",
-          "downloads": 23
+          "downloads": 32,
+          "mirror_downloads": 9
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/update.zip",
-          "downloads": 37
+          "downloads": 46,
+          "mirror_downloads": 9
         }
       ],
       "portable": [
@@ -1093,7 +1114,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom-windows.zip",
           "size": 845452690,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -1107,7 +1128,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom-linux.zip",
           "size": 892774014,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -1128,14 +1149,14 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom-macos.zip",
           "size": 652086654,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b-windows.zip",
           "size": 761878444,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -1149,7 +1170,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b-linux.zip",
           "size": 809199768,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -1170,7 +1191,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b-macos.zip",
           "size": 568512413,
-          "downloads": 2
+          "downloads": 5
         }
       ]
     }
@@ -1242,17 +1263,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom.zip",
-          "downloads": 87
+          "downloads": 96,
+          "mirror_downloads": 9
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b.zip",
-          "downloads": 18
+          "downloads": 27,
+          "mirror_downloads": 9
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/update.zip",
-          "downloads": 32
+          "downloads": 41,
+          "mirror_downloads": 9
         }
       ],
       "portable": [
@@ -1261,7 +1285,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-windows.zip",
           "size": 847359788,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -1275,7 +1299,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-linux.zip",
           "size": 894681112,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -1296,14 +1320,14 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-macos.zip",
           "size": 653993751,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b-windows.zip",
           "size": 754963451,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -1317,7 +1341,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b-linux.zip",
           "size": 802284775,
-          "downloads": 2
+          "downloads": 4
         },
         {
           "platform": "linux-arm64",
@@ -1338,7 +1362,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b-macos.zip",
           "size": 561597420,
-          "downloads": 2
+          "downloads": 5
         }
       ]
     }
@@ -1410,17 +1434,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom.zip",
-          "downloads": 142
+          "downloads": 151,
+          "mirror_downloads": 9
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b.zip",
-          "downloads": 19
+          "downloads": 28,
+          "mirror_downloads": 9
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/update.zip",
-          "downloads": 39
+          "downloads": 48,
+          "mirror_downloads": 9
         }
       ],
       "portable": [
@@ -1429,49 +1456,49 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-windows.zip",
           "size": 847342086,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-windows-legacy.zip",
           "size": 609103387,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-linux.zip",
           "size": 894663410,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-linux-arm64.zip",
           "size": 719567644,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-linux-legacy.zip",
           "size": 607517672,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-macos.zip",
           "size": 653976049,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b-windows.zip",
           "size": 763523713,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -1485,7 +1512,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b-linux.zip",
           "size": 810845037,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -1506,7 +1533,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b-macos.zip",
           "size": 570157681,
-          "downloads": 2
+          "downloads": 5
         }
       ]
     }
@@ -1578,17 +1605,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom.zip",
-          "downloads": 166
+          "downloads": 176,
+          "mirror_downloads": 10
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b.zip",
-          "downloads": 19
+          "downloads": 29,
+          "mirror_downloads": 10
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/update.zip",
-          "downloads": 39
+          "downloads": 49,
+          "mirror_downloads": 10
         }
       ],
       "portable": [
@@ -1597,7 +1627,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-windows.zip",
           "size": 846551059,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -1611,14 +1641,14 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-linux.zip",
           "size": 893872383,
-          "downloads": 2
+          "downloads": 7
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-linux-arm64.zip",
           "size": 718776617,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux-legacy",
@@ -1632,14 +1662,14 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-macos.zip",
           "size": 653185022,
-          "downloads": 2
+          "downloads": 7
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b-windows.zip",
           "size": 762646840,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -1653,7 +1683,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b-linux.zip",
           "size": 809968164,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -1674,7 +1704,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b-macos.zip",
           "size": 569280809,
-          "downloads": 2
+          "downloads": 6
         }
       ]
     }
@@ -1746,17 +1776,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom.zip",
-          "downloads": 292
+          "downloads": 302,
+          "mirror_downloads": 10
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b.zip",
-          "downloads": 24
+          "downloads": 34,
+          "mirror_downloads": 10
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/update.zip",
-          "downloads": 49
+          "downloads": 59,
+          "mirror_downloads": 10
         }
       ],
       "portable": [
@@ -1765,7 +1798,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-windows.zip",
           "size": 845322697,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -1779,14 +1812,14 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-linux.zip",
           "size": 892644021,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-linux-arm64.zip",
           "size": 717548255,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "linux-legacy",
@@ -1800,14 +1833,14 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-macos.zip",
           "size": 651956660,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b-windows.zip",
           "size": 763386970,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -1821,7 +1854,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b-linux.zip",
           "size": 810708294,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -1842,7 +1875,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b-macos.zip",
           "size": 570020938,
-          "downloads": 1
+          "downloads": 5
         }
       ]
     }
@@ -1914,17 +1947,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom.zip",
-          "downloads": 494
+          "downloads": 504,
+          "mirror_downloads": 10
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b.zip",
-          "downloads": 25
+          "downloads": 35,
+          "mirror_downloads": 10
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/update.zip",
-          "downloads": 59
+          "downloads": 69,
+          "mirror_downloads": 10
         }
       ],
       "portable": [
@@ -1933,7 +1969,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom-windows.zip",
           "size": 847266378,
-          "downloads": 1
+          "downloads": 4
         },
         {
           "platform": "windows-legacy",
@@ -1947,7 +1983,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom-linux.zip",
           "size": 894587702,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -1968,14 +2004,14 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom-macos.zip",
           "size": 653900341,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b-windows.zip",
           "size": 755516828,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -1989,7 +2025,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b-linux.zip",
           "size": 802838152,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -2010,7 +2046,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b-macos.zip",
           "size": 562150795,
-          "downloads": 1
+          "downloads": 5
         }
       ]
     }
@@ -2082,17 +2118,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom.zip",
-          "downloads": 80
+          "downloads": 90,
+          "mirror_downloads": 10
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b.zip",
-          "downloads": 21
+          "downloads": 31,
+          "mirror_downloads": 10
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/update.zip",
-          "downloads": 32
+          "downloads": 42,
+          "mirror_downloads": 10
         }
       ],
       "portable": [
@@ -2101,7 +2140,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom-windows.zip",
           "size": 846540550,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -2115,7 +2154,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom-linux.zip",
           "size": 893861874,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -2136,14 +2175,14 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom-macos.zip",
           "size": 653174513,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b-windows.zip",
           "size": 755501120,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -2157,7 +2196,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b-linux.zip",
           "size": 802822444,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -2178,7 +2217,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b-macos.zip",
           "size": 562135089,
-          "downloads": 1
+          "downloads": 5
         }
       ]
     }
@@ -2295,17 +2334,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom.zip",
-          "downloads": 109
+          "downloads": 119,
+          "mirror_downloads": 10
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b.zip",
-          "downloads": 17
+          "downloads": 27,
+          "mirror_downloads": 10
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/update.zip",
-          "downloads": 31
+          "downloads": 41,
+          "mirror_downloads": 10
         }
       ],
       "portable": [
@@ -2314,7 +2356,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom-windows.zip",
           "size": 846506280,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -2328,7 +2370,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom-linux.zip",
           "size": 893827604,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -2349,14 +2391,14 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom-macos.zip",
           "size": 653140242,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b-windows.zip",
           "size": 763474727,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -2370,7 +2412,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b-linux.zip",
           "size": 810796051,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -2391,7 +2433,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b-macos.zip",
           "size": 570108695,
-          "downloads": 1
+          "downloads": 5
         }
       ]
     }
@@ -2463,17 +2505,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/rom.zip",
-          "downloads": 12704
+          "downloads": 12714,
+          "mirror_downloads": 10
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/rom_type_b.zip",
-          "downloads": 253
+          "downloads": 263,
+          "mirror_downloads": 10
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/update.zip",
-          "downloads": 1256
+          "downloads": 1266,
+          "mirror_downloads": 10
         }
       ],
       "portable": [
@@ -2482,7 +2527,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-windows.zip",
           "size": 846686810,
-          "downloads": 19
+          "downloads": 32
         },
         {
           "platform": "windows-legacy",
@@ -2496,7 +2541,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-linux.zip",
           "size": 894008134,
-          "downloads": 4
+          "downloads": 8
         },
         {
           "platform": "linux-arm64",
@@ -2517,14 +2562,14 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-macos.zip",
           "size": 653320780,
-          "downloads": 6
+          "downloads": 14
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom_type_b-windows.zip",
           "size": 754512328,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -2538,7 +2583,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom_type_b-linux.zip",
           "size": 801833652,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -2559,7 +2604,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom_type_b-macos.zip",
           "size": 561146304,
-          "downloads": 1
+          "downloads": 4
         }
       ]
     }
@@ -2631,17 +2676,20 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom.zip",
-          "downloads": 1896
+          "downloads": 1906,
+          "mirror_downloads": 10
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b.zip",
-          "downloads": 47
+          "downloads": 57,
+          "mirror_downloads": 10
         },
         {
           "name": "update.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/update.zip",
-          "downloads": 196
+          "downloads": 206,
+          "mirror_downloads": 10
         }
       ],
       "portable": [
@@ -2650,7 +2698,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom-windows.zip",
           "size": 847281232,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -2664,7 +2712,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom-linux.zip",
           "size": 894602556,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -2685,14 +2733,14 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom-macos.zip",
           "size": 653915193,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b-windows.zip",
           "size": 755440804,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -2706,7 +2754,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b-linux.zip",
           "size": 802762128,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -2727,7 +2775,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b-macos.zip",
           "size": 562074771,
-          "downloads": 1
+          "downloads": 5
         }
       ]
     }
@@ -2788,12 +2836,14 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom.zip",
-          "downloads": 223
+          "downloads": 255,
+          "mirror_downloads": 32
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b.zip",
-          "downloads": 28
+          "downloads": 58,
+          "mirror_downloads": 30
         }
       ],
       "portable": [
@@ -2802,7 +2852,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom-windows.zip",
           "size": 785975412,
-          "downloads": 1
+          "downloads": 9
         },
         {
           "platform": "windows-legacy",
@@ -2816,7 +2866,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom-linux.zip",
           "size": 833296736,
-          "downloads": 2
+          "downloads": 9
         },
         {
           "platform": "linux-arm64",
@@ -2837,14 +2887,14 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom-macos.zip",
           "size": 592609375,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b-windows.zip",
           "size": 753730078,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "windows-legacy",
@@ -2858,7 +2908,7 @@
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b-linux.zip",
           "size": 801051402,
-          "downloads": 0
+          "downloads": 7
         },
         {
           "platform": "linux-arm64",
@@ -2879,7 +2929,7 @@
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b-macos.zip",
           "size": 560364047,
-          "downloads": 1
+          "downloads": 8
         }
       ]
     }
@@ -3006,37 +3056,44 @@
         {
           "name": "rom_240p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rom_240p.zip",
-          "downloads": 6938
+          "downloads": 6949,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_240p_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rom_240p_type_b.zip",
-          "downloads": 94
+          "downloads": 105,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_360p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rom_360p.zip",
-          "downloads": 3357
+          "downloads": 3368,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_360p_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rom_360p_type_b.zip",
-          "downloads": 89
+          "downloads": 100,
+          "mirror_downloads": 11
         },
         {
           "name": "update_240p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/update_240p.zip",
-          "downloads": 61
+          "downloads": 72,
+          "mirror_downloads": 11
         },
         {
           "name": "update_360p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/update_360p.zip",
-          "downloads": 84
+          "downloads": 95,
+          "mirror_downloads": 11
         },
         {
           "name": "voices.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/voices.zip",
-          "downloads": 29
+          "downloads": 40,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -3045,7 +3102,7 @@
           "name": "rom_240p-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-windows.zip",
           "size": 772909690,
-          "downloads": 1
+          "downloads": 8
         },
         {
           "platform": "windows-legacy",
@@ -3059,7 +3116,7 @@
           "name": "rom_240p-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-linux.zip",
           "size": 820231014,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "linux-arm64",
@@ -3080,14 +3137,14 @@
           "name": "rom_240p-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-macos.zip",
           "size": 579543665,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_240p_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p_type_b-windows.zip",
           "size": 737997745,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -3101,7 +3158,7 @@
           "name": "rom_240p_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p_type_b-linux.zip",
           "size": 785319069,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -3122,14 +3179,14 @@
           "name": "rom_240p_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p_type_b-macos.zip",
           "size": 544631725,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_360p-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p-windows.zip",
           "size": 774778356,
-          "downloads": 1
+          "downloads": 8
         },
         {
           "platform": "windows-legacy",
@@ -3143,7 +3200,7 @@
           "name": "rom_360p-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p-linux.zip",
           "size": 822099680,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -3164,14 +3221,14 @@
           "name": "rom_360p-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p-macos.zip",
           "size": 581412332,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows",
           "name": "rom_360p_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p_type_b-windows.zip",
           "size": 740239229,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "windows-legacy",
@@ -3185,7 +3242,7 @@
           "name": "rom_360p_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p_type_b-linux.zip",
           "size": 787560553,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -3206,7 +3263,7 @@
           "name": "rom_360p_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p_type_b-macos.zip",
           "size": 546873210,
-          "downloads": 1
+          "downloads": 6
         }
       ]
     }
@@ -3322,32 +3379,38 @@
         {
           "name": "rom_240p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p.zip",
-          "downloads": 608
+          "downloads": 619,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_240p_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b.zip",
-          "downloads": 29
+          "downloads": 40,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_360p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p.zip",
-          "downloads": 154
+          "downloads": 165,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_360p_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b.zip",
-          "downloads": 24
+          "downloads": 35,
+          "mirror_downloads": 11
         },
         {
           "name": "update_240p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/update_240p.zip",
-          "downloads": 25
+          "downloads": 36,
+          "mirror_downloads": 11
         },
         {
           "name": "update_360p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/update_360p.zip",
-          "downloads": 59
+          "downloads": 70,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -3356,7 +3419,7 @@
           "name": "rom_240p-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p-windows.zip",
           "size": 772599143,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -3370,7 +3433,7 @@
           "name": "rom_240p-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p-linux.zip",
           "size": 819920467,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -3391,14 +3454,14 @@
           "name": "rom_240p-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p-macos.zip",
           "size": 579233113,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "windows",
           "name": "rom_240p_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b-windows.zip",
           "size": 740967067,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "windows-legacy",
@@ -3412,7 +3475,7 @@
           "name": "rom_240p_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b-linux.zip",
           "size": 788288391,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -3433,14 +3496,14 @@
           "name": "rom_240p_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b-macos.zip",
           "size": 547601042,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "windows",
           "name": "rom_360p-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p-windows.zip",
           "size": 774570976,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "windows-legacy",
@@ -3454,7 +3517,7 @@
           "name": "rom_360p-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p-linux.zip",
           "size": 821892300,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "linux-arm64",
@@ -3475,14 +3538,14 @@
           "name": "rom_360p-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p-macos.zip",
           "size": 581204947,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows",
           "name": "rom_360p_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b-windows.zip",
           "size": 740338635,
-          "downloads": 1
+          "downloads": 8
         },
         {
           "platform": "windows-legacy",
@@ -3496,7 +3559,7 @@
           "name": "rom_360p_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b-linux.zip",
           "size": 787659959,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -3517,7 +3580,7 @@
           "name": "rom_360p_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b-macos.zip",
           "size": 546972611,
-          "downloads": 1
+          "downloads": 8
         }
       ]
     }
@@ -3633,32 +3696,38 @@
         {
           "name": "rom_240p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p.zip",
-          "downloads": 147
+          "downloads": 158,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_240p_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b.zip",
-          "downloads": 22
+          "downloads": 33,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_360p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p.zip",
-          "downloads": 44
+          "downloads": 55,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_360p_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b.zip",
-          "downloads": 19
+          "downloads": 30,
+          "mirror_downloads": 11
         },
         {
           "name": "update_240p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/update_240p.zip",
-          "downloads": 26
+          "downloads": 37,
+          "mirror_downloads": 11
         },
         {
           "name": "update_360p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/update_360p.zip",
-          "downloads": 30
+          "downloads": 41,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -3667,7 +3736,7 @@
           "name": "rom_240p-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-windows.zip",
           "size": 772033855,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -3681,7 +3750,7 @@
           "name": "rom_240p-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-linux.zip",
           "size": 819355179,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -3702,14 +3771,14 @@
           "name": "rom_240p-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-macos.zip",
           "size": 578667827,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_240p_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-windows.zip",
           "size": 739078053,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -3723,7 +3792,7 @@
           "name": "rom_240p_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-linux.zip",
           "size": 786399377,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -3744,14 +3813,14 @@
           "name": "rom_240p_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-macos.zip",
           "size": 545712030,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_360p-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-windows.zip",
           "size": 774298451,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -3765,7 +3834,7 @@
           "name": "rom_360p-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-linux.zip",
           "size": 821619775,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -3786,14 +3855,14 @@
           "name": "rom_360p-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-macos.zip",
           "size": 580932423,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_360p_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-windows.zip",
           "size": 748837527,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -3807,7 +3876,7 @@
           "name": "rom_360p_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-linux.zip",
           "size": 796158851,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -3828,7 +3897,7 @@
           "name": "rom_360p_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-macos.zip",
           "size": 555471504,
-          "downloads": 1
+          "downloads": 6
         }
       ]
     }
@@ -3944,32 +4013,38 @@
         {
           "name": "rom_240p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p.zip",
-          "downloads": 131
+          "downloads": 142,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_240p_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b.zip",
-          "downloads": 24
+          "downloads": 35,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_360p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p.zip",
-          "downloads": 62
+          "downloads": 73,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_360p_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b.zip",
-          "downloads": 22
+          "downloads": 33,
+          "mirror_downloads": 11
         },
         {
           "name": "update_240p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/update_240p.zip",
-          "downloads": 25
+          "downloads": 36,
+          "mirror_downloads": 11
         },
         {
           "name": "update_360p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/update_360p.zip",
-          "downloads": 55
+          "downloads": 66,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -3978,7 +4053,7 @@
           "name": "rom_240p-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p-windows.zip",
           "size": 770493544,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -3992,7 +4067,7 @@
           "name": "rom_240p-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p-linux.zip",
           "size": 817814868,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -4013,14 +4088,14 @@
           "name": "rom_240p-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p-macos.zip",
           "size": 577127514,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "windows",
           "name": "rom_240p_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b-windows.zip",
           "size": 740671637,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -4034,7 +4109,7 @@
           "name": "rom_240p_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b-linux.zip",
           "size": 787992961,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -4055,14 +4130,14 @@
           "name": "rom_240p_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b-macos.zip",
           "size": 547305612,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_360p-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p-windows.zip",
           "size": 775577325,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "windows-legacy",
@@ -4076,7 +4151,7 @@
           "name": "rom_360p-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p-linux.zip",
           "size": 822898649,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -4097,14 +4172,14 @@
           "name": "rom_360p-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p-macos.zip",
           "size": 582211295,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_360p_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b-windows.zip",
           "size": 740232298,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -4118,7 +4193,7 @@
           "name": "rom_360p_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b-linux.zip",
           "size": 787553622,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -4139,7 +4214,7 @@
           "name": "rom_360p_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b-macos.zip",
           "size": 546866273,
-          "downloads": 1
+          "downloads": 6
         }
       ]
     }
@@ -4295,22 +4370,26 @@
         {
           "name": "rom_240p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_240p.zip",
-          "downloads": 1453
+          "downloads": 1464,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_240p_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_240p_type_b.zip",
-          "downloads": 55
+          "downloads": 66,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_360p.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_360p.zip",
-          "downloads": 1079
+          "downloads": 1090,
+          "mirror_downloads": 11
         },
         {
           "name": "rom_360p_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_360p_type_b.zip",
-          "downloads": 41
+          "downloads": 52,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -4319,7 +4398,7 @@
           "name": "rom_240p-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p-windows.zip",
           "size": 744999523,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "windows-legacy",
@@ -4333,7 +4412,7 @@
           "name": "rom_240p-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p-linux.zip",
           "size": 792320847,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -4354,14 +4433,14 @@
           "name": "rom_240p-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p-macos.zip",
           "size": 551633498,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_240p_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p_type_b-windows.zip",
           "size": 713381097,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows-legacy",
@@ -4375,7 +4454,7 @@
           "name": "rom_240p_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p_type_b-linux.zip",
           "size": 760702421,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -4396,14 +4475,14 @@
           "name": "rom_240p_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p_type_b-macos.zip",
           "size": 520015078,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_360p-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p-windows.zip",
           "size": 747025479,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "windows-legacy",
@@ -4417,7 +4496,7 @@
           "name": "rom_360p-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p-linux.zip",
           "size": 794346803,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -4438,14 +4517,14 @@
           "name": "rom_360p-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p-macos.zip",
           "size": 553659455,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "windows",
           "name": "rom_360p_type_b-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p_type_b-windows.zip",
           "size": 713722072,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "windows-legacy",
@@ -4459,7 +4538,7 @@
           "name": "rom_360p_type_b-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p_type_b-linux.zip",
           "size": 761043396,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -4480,7 +4559,7 @@
           "name": "rom_360p_type_b-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p_type_b-macos.zip",
           "size": 520356053,
-          "downloads": 1
+          "downloads": 6
         }
       ]
     }
@@ -4519,7 +4598,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/type-a-base/rom.zip",
-          "downloads": 8473
+          "downloads": 8474,
+          "mirror_downloads": 1
         }
       ],
       "portable": [
@@ -4528,7 +4608,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-windows.zip",
           "size": 769041346,
-          "downloads": 1
+          "downloads": 7
         },
         {
           "platform": "windows-legacy",
@@ -4542,7 +4622,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-linux.zip",
           "size": 816362670,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -4563,7 +4643,7 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-macos.zip",
           "size": 575675308,
-          "downloads": 1
+          "downloads": 6
         }
       ]
     }
@@ -4602,7 +4682,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/type-b-base/rom.zip",
-          "downloads": 8223
+          "downloads": 8234,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -4611,7 +4692,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-windows.zip",
           "size": 712038348,
-          "downloads": 1
+          "downloads": 9
         },
         {
           "platform": "windows-legacy",
@@ -4625,7 +4706,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-linux.zip",
           "size": 759359672,
-          "downloads": 1
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
@@ -4646,7 +4727,7 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-macos.zip",
           "size": 518672307,
-          "downloads": 1
+          "downloads": 5
         }
       ]
     }

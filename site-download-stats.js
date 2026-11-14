@@ -72,6 +72,39 @@
         catch (_) { return String(num(value)); }
     }
 
+    /* A release can arrive with the project's ZIP and the mirror's copy of
+       that same ZIP as two rows. They are one file to the reader, so merge
+       them and keep the mirror share for the explanation line. */
+    function combineFirmware(list) {
+        var out = [];
+        var at = {};
+        (list || []).forEach(function (entry) {
+            if (!entry || typeof entry !== "object") return;
+            var key = String(entry.name || "").toLowerCase();
+            if (!key) { out.push(entry); return; }
+            if (at[key] === undefined) { at[key] = out.length; out.push(entry); return; }
+            var primary = out[at[key]];
+            var other = entry;
+            if (other.mirror && !primary.mirror) {
+                if (!num(primary.mirror_downloads)) {
+                    primary.downloads = num(primary.downloads) + num(other.downloads);
+                    primary.mirror_downloads = num(other.downloads);
+                }
+                if (!primary.mirror_url && other.url) primary.mirror_url = other.url;
+            } else if (!other.mirror && primary.mirror) {
+                other.downloads = num(other.downloads) + num(primary.downloads);
+                other.mirror_downloads = num(primary.downloads);
+                if (primary.url) other.mirror_url = primary.url;
+                out[at[key]] = other;
+            } else {
+                primary.downloads = num(primary.downloads) + num(other.downloads);
+                primary.mirror_downloads = num(primary.mirror_downloads) +
+                    num(other.mirror_downloads);
+            }
+        });
+        return out;
+    }
+
     function label(platform) {
         return PLATFORM_LABELS[platform] || String(platform || "Package");
     }
@@ -134,9 +167,12 @@
        URL. A release tag is matched exactly, as the packager mirrors tags
        verbatim. */
     function enrich(breakdown) {
-        if (!breakdown || !breakdown.mirrors) return Promise.resolve(breakdown);
+        if (!breakdown) return Promise.resolve(breakdown);
         breakdown.portable = Array.isArray(breakdown.portable) ? breakdown.portable : [];
-        breakdown.firmware = Array.isArray(breakdown.firmware) ? breakdown.firmware : [];
+        breakdown.firmware = combineFirmware(
+            Array.isArray(breakdown.firmware) ? breakdown.firmware : []
+        );
+        if (!breakdown.mirrors) return Promise.resolve(breakdown);
         var pending = breakdown.portable.filter(function (entry) {
             return entry && !entry.downloads && entry.platform;
         });
@@ -146,9 +182,9 @@
            that copy is still missing, even when every portable package
            already carries its count. */
         var wantsCopies = breakdown.firmware.some(function (entry) {
-            return entry && entry.name && !entry.mirror;
+            return entry && entry.name && !entry.mirror && !num(entry.mirror_downloads);
         });
-        if (!repos.length || (!pending.length && breakdown.portable.length && !wantsCopies)) {
+        if (!repos.length || (!pending.length && !wantsCopies)) {
             return Promise.resolve(breakdown);
         }
 
@@ -218,18 +254,16 @@
                     var name = String(entry.name || "").toLowerCase();
                     var copy = copies[name];
                     if (!name || !copy) return;
-                    var listed = breakdown.firmware.some(function (other) {
-                        return other && other.mirror &&
-                            String(other.name || "").toLowerCase() === name;
-                    });
-                    if (listed) return;
-                    breakdown.firmware.push({
-                        name: entry.name,
-                        url: String(copy.browser_download_url || ""),
-                        downloads: num(copy.download_count),
-                        mirror: true
-                    });
+                    /* The feed already merged this copy (and its stats.txt
+                       baseline) into the original row. Do not count it
+                       again. */
+                    if (!num(entry.mirror_downloads)) {
+                        entry.downloads = num(entry.downloads) + num(copy.download_count);
+                        entry.mirror_downloads = num(copy.download_count);
+                    }
+                    if (!entry.mirror_url) entry.mirror_url = String(copy.browser_download_url || "");
                 });
+                breakdown.firmware = combineFirmware(breakdown.firmware);
             });
             breakdown.portable.sort(function (a, b) {
                 var ai = PLATFORM_ORDER.indexOf(a.platform);
@@ -319,7 +353,10 @@
         copy.appendChild(el("span", "dl-stats__name", name));
         var meta = portable
             ? (entry.name || "portable package") + (entry.size ? " · " + size(entry.size) : "")
-            : entry.mirror ? "Copy in the portable package mirror" : "Original firmware ZIP";
+            : entry.mirror ? "Firmware ZIP in the portable mirror" : "Original firmware ZIP";
+        if (!portable && num(entry.mirror_downloads)) {
+            meta += " · includes " + fmt(entry.mirror_downloads) + " from the mirror copy";
+        }
         copy.appendChild(el("span", "dl-stats__meta", meta));
         item.appendChild(copy);
         item.appendChild(el("span", "dl-stats__count", fmt(entry.downloads) + " downloads"));
@@ -388,7 +425,7 @@
         }
 
         var note = el("p", "dl-stats__note",
-            "Firmware counts come from the project's own release; portable counts come from the mirror that repackages it.");
+            "Firmware counts combine the project's release with the mirror's copy of the same ZIP. Portable counts come from the mirror that repackages it.");
         panel.appendChild(note);
 
         close.addEventListener("click", hide);

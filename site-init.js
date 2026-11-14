@@ -1456,12 +1456,10 @@
         return base;
     }
 
-    /* Downloads go to the browser's own downloader by default: the reader
-       sees the file start in the browser and its copy land in Downloads,
-       with the browser's own progress and retry. The in-page progress UI is
-       opt-in while it is repaired: set window.InnioasisInlineDownloads =
-       true before this script runs to let site-downloads.js claim links
-       again (site-downloads.js stays on disk, unused, until then). */
+    /* In-page downloads are the default: the reader sees a card beside the
+       link with progress, speed and ETA, and the file is saved under the
+       original package name. Setting window.InnioasisInlineDownloads = false
+       before this script runs falls back to a plain browser download. */
     function installDirectDownloads() {
         if (global.InnioasisDownloads) return;
         var FILE = /\.(zip|img|dmg|pkg|apk|appimage|exe|msi|7z|tar|gz|xz|bz2|tgz|iso|bin|jar|ipa|app)(?:[?#]|$)/i;
@@ -1530,7 +1528,7 @@
         if (global.InnioasisDownloads || document.getElementById("site-downloads-script")) return;
         var node = document.createElement("script");
         node.id = "site-downloads-script";
-        node.src = siteBase() + "site-downloads.js?v=20261111zip";
+        node.src = siteBase() + "site-downloads.js?v=20261116inline6";
         node.defer = true;
         document.head.appendChild(node);
     }

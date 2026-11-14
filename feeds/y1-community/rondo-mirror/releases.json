@@ -1,5 +1,174 @@
 [
   {
+    "id": 445444882,
+    "tag_name": "v3.0.3",
+    "name": "Portable Flashing Package: Rondo 3.0.3",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;tag=v3.0.3#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.3&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.3&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.3&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.3&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.3&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;tag=v3.0.3&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frondo-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it to [Rondo server 3.2.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0) (its admin page offers it) so YouTube Music downloads get their year and track number; 3.1.0 works for everything else.\n\n**New**\n- **YouTube Music downloads.** Hold center on a song and choose **Download**, or **Download all** on an album or playlist. Songs go to `Music/YouTube Music/Artist/Album (Year)/01 - Title.m4a`: YouTube's own AAC, with the artist, album, year, track number, cover and lyrics (timed where LRCLIB has them) in its tags. **YouTube Music \u203a Home \u203a Downloads** plays them from the card, also offline.\n- **YouTube Music's Home looks like the app's:** each section a shelf of covers that slides along as you turn the wheel, then on into the next one.\n- **The dashboard fills in what your songs' tags leave out** (Library \u203a Fill in): a missing genre, year, album or track number from the iTunes Store and MusicBrainz, reviewed before it's saved into the songs; and lyrics from LRCLIB for every song that has none.\n- **Organize looks up a show's or a movie's years** on the dashboard (TVmaze, Wikidata), so shows are filed as `Silo (2023-)` or `The Walking Dead (2010-2022)`.\n\n**Changed**\n- **Shows and movies go inside Videos:** `Videos/Shows/\u2026` and `Videos/Movies/\u2026`, the way Jellyfin expects them. Organize moves the old top-level `Shows` and `Movies` folders' files there.\n- **A song's menu has an icon for each action.**\n\n**Fixed**\n- **A YouTube video downloads and plays in its original language,** not a dub YouTube listed first.\n- **Changing Repeat or Shuffle no longer stops the song for a moment.**\n- **Library \u203a Files slides in** like every other screen.\n- **The dashboard's Wheel acceleration and Wheel vibration** can be changed again, and its notes keep their distance from what's around them.\n\n**How to get it**\n- **On Rondo 3.0.x:** Settings \u203a System \u203a Software update, the dashboard's Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.\n- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.3), with **Keep my settings** turned on.\n\nFiles: `rondo-3.0.3.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#303-november-14-2026).\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"e5454eb3cf06493933339aa9f3c16e2aff2c23a67cb157d7e0a086870223017b\",\"size\":771589457,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"7d95b319f261d61fb39bcad2b85a15cd8a613a14f38107c6df4630cc3e374bbe\",\"size\":533350604,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"0ec2cde9102e3d1b8e5c7f89daf118b159e1ab90eaa794398a5fa72746545101\",\"size\":828419061,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"678cb517fe673742f8c9e054b753d854d51002029304b25100871637c78970b8\",\"size\":653323295,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"cfbf32e2142b4fa9f2fbb0a2134017ed9130ee68723026f9e33c02e3703c5e5c\",\"size\":531764889,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"2fab713e87fdab69363633175cd3a562e8b1b38caf781ca896789cec68a8985a\",\"size\":580027059,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-14T16:52:23Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"6a0fcb9a43ca4cfe608cc46fff95acc203eb13a6851ea7666fa57090d9308268\",\"original_asset_sizes\":{\"rom.zip\":529714844,\"rondo-3.0.3.rondo\":17159275,\"updater.png\":12952},\"original_assets\":[\"rom.zip\",\"rondo-3.0.3.rondo\",\"updater.png\"],\"skipped\":[],\"stats\":{\"baseline\":{},\"generated_at\":\"2026-11-14T16:52:23Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188443285,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-14T16:46:37Z",
+    "published_at": "2026-11-14T16:52:24Z",
+    "html_url": "https://github.com/y1-community/rondo-mirror/releases/tag/v3.0.3",
+    "icon_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/updater.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 748135993,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-linux-arm64.zip",
+        "size": 653323295,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-14T16:52:25Z",
+        "updated_at": "2026-11-14T16:53:05Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748135993"
+      },
+      {
+        "id": 748135990,
+        "name": "rom-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-linux-legacy.zip",
+        "size": 531764889,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-14T16:52:25Z",
+        "updated_at": "2026-11-14T16:52:41Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748135990"
+      },
+      {
+        "id": 748135989,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-linux.zip",
+        "size": 828419061,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-14T16:52:25Z",
+        "updated_at": "2026-11-14T16:52:58Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748135989"
+      },
+      {
+        "id": 748136691,
+        "name": "rom-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-macos.zip",
+        "size": 580027059,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-14T16:52:42Z",
+        "updated_at": "2026-11-14T16:53:01Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748136691"
+      },
+      {
+        "id": 748135994,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-windows-legacy.zip",
+        "size": 533350604,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-14T16:52:25Z",
+        "updated_at": "2026-11-14T16:52:52Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748135994"
+      },
+      {
+        "id": 748135991,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-windows.zip",
+        "size": 771589457,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-14T16:52:25Z",
+        "updated_at": "2026-11-14T16:53:09Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748135991"
+      },
+      {
+        "id": 748137153,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom.zip",
+        "size": 529714844,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-14T16:52:53Z",
+        "updated_at": "2026-11-14T16:53:11Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748137153"
+      },
+      {
+        "id": 748137456,
+        "name": "rondo-3.0.3.rondo",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rondo-3.0.3.rondo",
+        "size": 17159275,
+        "download_count": 0,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-14T16:52:59Z",
+        "updated_at": "2026-11-14T16:53:00Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748137456"
+      },
+      {
+        "id": 748137549,
+        "name": "stats.txt",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/stats.txt",
+        "size": 2453,
+        "download_count": 0,
+        "content_type": "text/plain; charset=utf-8",
+        "created_at": "2026-11-14T16:53:01Z",
+        "updated_at": "2026-11-14T16:53:01Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748137549"
+      },
+      {
+        "id": 748137519,
+        "name": "updater.png",
+        "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/updater.png",
+        "size": 12952,
+        "download_count": 0,
+        "content_type": "image/png",
+        "created_at": "2026-11-14T16:53:00Z",
+        "updated_at": "2026-11-14T16:53:01Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748137519"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "v3.0.3",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.3/rom.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
+  },
+  {
     "id": 443046417,
     "tag_name": "v3.0.2",
     "name": "Portable Flashing Package: Rondo 3.0.2",
@@ -101,15 +270,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/739762516"
       },
       {
-        "id": 747100738,
+        "id": 748121643,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/stats.txt",
         "size": 4137,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T10:18:16Z",
-        "updated_at": "2026-11-14T10:18:17Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/747100738"
+        "created_at": "2026-11-14T16:47:00Z",
+        "updated_at": "2026-11-14T16:47:00Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748121643"
       },
       {
         "id": 739762530,
@@ -270,15 +439,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738967693"
       },
       {
-        "id": 747100634,
+        "id": 748121566,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/stats.txt",
         "size": 4135,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T10:18:14Z",
-        "updated_at": "2026-11-14T10:18:14Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/747100634"
+        "created_at": "2026-11-14T16:46:58Z",
+        "updated_at": "2026-11-14T16:46:58Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748121566"
       },
       {
         "id": 738967809,
@@ -439,15 +608,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738948746"
       },
       {
-        "id": 747100565,
+        "id": 748121447,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/stats.txt",
         "size": 4135,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T10:18:11Z",
-        "updated_at": "2026-11-14T10:18:11Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/747100565"
+        "created_at": "2026-11-14T16:46:55Z",
+        "updated_at": "2026-11-14T16:46:56Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748121447"
       },
       {
         "id": 738948779,
@@ -608,15 +777,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/738930607"
       },
       {
-        "id": 747100460,
+        "id": 748121347,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/stats.txt",
         "size": 4135,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T10:18:08Z",
-        "updated_at": "2026-11-14T10:18:09Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/747100460"
+        "created_at": "2026-11-14T16:46:53Z",
+        "updated_at": "2026-11-14T16:46:54Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748121347"
       },
       {
         "id": 738930637,
@@ -777,15 +946,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/735815538"
       },
       {
-        "id": 747100269,
+        "id": 748121215,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/stats.txt",
         "size": 4137,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T10:18:03Z",
-        "updated_at": "2026-11-14T10:18:05Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/747100269"
+        "created_at": "2026-11-14T16:46:50Z",
+        "updated_at": "2026-11-14T16:46:51Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748121215"
       },
       {
         "id": 735815578,
@@ -946,15 +1115,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/706101039"
       },
       {
-        "id": 747100159,
+        "id": 748121123,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/stats.txt",
         "size": 4147,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T10:18:01Z",
-        "updated_at": "2026-11-14T10:18:01Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/747100159"
+        "created_at": "2026-11-14T16:46:48Z",
+        "updated_at": "2026-11-14T16:46:48Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748121123"
       },
       {
         "id": 706101141,
@@ -1115,15 +1284,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/706172992"
       },
       {
-        "id": 747100095,
+        "id": 748121012,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/stats.txt",
         "size": 4141,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T10:17:58Z",
-        "updated_at": "2026-11-14T10:17:59Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/747100095"
+        "created_at": "2026-11-14T16:46:46Z",
+        "updated_at": "2026-11-14T16:46:46Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748121012"
       },
       {
         "id": 706173138,
@@ -1284,15 +1453,15 @@
         "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/706152267"
       },
       {
-        "id": 747099988,
+        "id": 748120929,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/stats.txt",
         "size": 4143,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T10:17:56Z",
-        "updated_at": "2026-11-14T10:17:56Z",
-        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/747099988"
+        "created_at": "2026-11-14T16:46:44Z",
+        "updated_at": "2026-11-14T16:46:44Z",
+        "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/748120929"
       },
       {
         "id": 706152472,

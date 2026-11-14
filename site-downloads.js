@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261110inline5";
+    var VERSION = "20261116inline6";
     /* Only archive packages get the in-page treatment. Installers and app
        images always go to the browser's own downloader: a page must never
        stand between a reader and the app they are installing. */
@@ -261,7 +261,12 @@
     }
 
     function buildPanel(job) {
-        var panel = element("div", "site-dl-progress");
+        var panel = element("div", "site-dl-progress site-dl-progress--floating");
+        panel.style.position = "absolute";
+        panel.style.zIndex = "80";
+        panel.style.width = "min(340px, calc(100vw - 1.5rem))";
+        panel.style.maxWidth = "none";
+        panel.style.margin = "0";
         panel.setAttribute("role", "status");
         panel.setAttribute("aria-live", "polite");
 
@@ -344,32 +349,40 @@
     function mount(job, link) {
         var panel = buildPanel(job);
         job.panel = panel;
-        var host = null;
-        if (!link || !link.closest || !link.parentNode) {
-            if (doc.body) doc.body.appendChild(panel);
+        if (!doc.body) return panel;
+        if (!link) {
+            panel.style.position = "fixed";
+            panel.style.right = "1rem";
+            panel.style.bottom = "1rem";
+            doc.body.appendChild(panel);
             return panel;
         }
-        try {
-            host = link.closest(".lumen-actions, .lumen-release-details, .firmware-list-actions, .lumen-hero-actions, .lumen-button-row, .hero-actions, .btn-row, .actions, li, p, td");
-        } catch (_) {}
-        if (!host) host = link.parentElement;
-        if (!host || !host.parentNode) {
-            if (doc.body) doc.body.appendChild(panel);
-            return panel;
-        }
-        if (host.tagName === "TD" || host === link.parentElement) {
-            host.appendChild(panel);
-            return panel;
-        }
-        if (host.tagName === "LI") {
-            var item = element("li", "site-dl-progress-item");
-            item.appendChild(panel);
-            host.parentNode.insertBefore(item, host.nextSibling);
-            job.holder = item;
-            return panel;
-        }
-        host.parentNode.insertBefore(panel, host.nextSibling);
+        doc.body.appendChild(panel);
+        placePanel(job);
         return panel;
+    }
+
+    /* The card sits over the page beside the pressed link, clear of the table
+       cell, and flips above the link when it would fall below the viewport. */
+    function placePanel(job) {
+        if (!job || !job.panel || !job.anchor || !job.anchor.getBoundingClientRect) return;
+        var rect = job.anchor.getBoundingClientRect();
+        var width = job.panel.offsetWidth || 340;
+        var height = job.panel.offsetHeight || 150;
+        var gap = 10;
+        var viewW = global.innerWidth || 0;
+        var viewH = global.innerHeight || 0;
+        var left = rect.left + (global.pageXOffset || 0);
+        left = Math.max(gap, Math.min(left, viewW - width - gap));
+        var top = rect.bottom + (global.pageYOffset || 0) + gap;
+        if (rect.bottom + height + gap * 2 > viewH) {
+            top = rect.top + (global.pageYOffset || 0) - height - gap;
+            if (top < (global.pageYOffset || 0) + gap) {
+                top = rect.bottom + (global.pageYOffset || 0) + gap;
+            }
+        }
+        job.panel.style.left = Math.round(left) + "px";
+        job.panel.style.top = Math.round(top) + "px";
     }
 
     function removePanel(job) {
@@ -379,30 +392,12 @@
         job.holder = null;
     }
 
-    function inView(node) {
-        var rect = node.getBoundingClientRect();
-        var viewH = global.innerHeight || 0;
-        return rect.top >= 0 && rect.bottom <= viewH;
-    }
-
-    /* Show the reader the progress they just started: the card opens where the
-       button is, and if that is off screen the page scrolls back to it. */
-    function reveal(job) {
-        if (!job.panel || !inView(job.panel)) return;
-        var reduce = false;
-        try {
-            reduce = global.matchMedia && global.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        } catch (_) {}
-        try {
-            job.panel.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center", inline: "nearest" });
-        } catch (_) {
-            try { job.panel.scrollIntoView(); } catch (__) {}
-        }
+    function reposition(job) {
+        placePanel(job);
     }
 
     /* ---------------------------------------------------------------- painting */
     function paint(job) {
-        if (job.buttonEl) { paintButton(job); return; }
         if (!job.panel) return;
         var overrun = job.total && job.loaded > job.total;
         var percent = job.total && !overrun ? (job.loaded / job.total) * 100 : 0;
@@ -418,12 +413,9 @@
         var fill = job.panel.querySelector(".site-dl-progress__fill");
         if (fill) fill.style.width = (job.total && !overrun ? percent : 0) + "%";
 
-        /* The button carries percent, speed and time left; the card only
-           repeats them for a job that has no button of its own. */
-        var onButton = Boolean(job.button);
         var pct = job.panel.querySelector(".site-dl-progress__pct");
         if (pct) {
-            pct.hidden = onButton;
+            pct.hidden = false;
             pct.textContent = pctText;
         }
 
@@ -436,13 +428,13 @@
 
         var speedNode = job.panel.querySelector(".site-dl-progress__speed");
         if (speedNode) {
-            speedNode.hidden = onButton;
+            speedNode.hidden = false;
             speedNode.textContent = job.status === "running" && speed > 0 ? bytes(speed) + "/s" : "";
         }
 
         var etaNode = job.panel.querySelector(".site-dl-progress__eta");
         if (etaNode) {
-            etaNode.hidden = onButton;
+            etaNode.hidden = false;
             etaNode.textContent = eta && !overrun ? t("Time left") + " " + seconds(eta) : "";
         }
 
@@ -450,10 +442,19 @@
         if (state) {
             var wording = job.status === "done" ? t("Saved to PC")
                 : job.status === "failed" ? t("Failed")
-                : job.status === "handoff" ? t("Saved to PC")
+                : job.status === "handoff" ? t("Your browser takes over")
                 : job.status === "running" ? t("Keep this tab open")
                 : t("Preparing…");
             if (state.textContent !== wording) state.textContent = wording;
+        }
+
+        var icon = job.panel.querySelector(".site-dl-progress__icon");
+        if (icon) {
+            icon.innerHTML = job.status === "done"
+                ? '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>'
+                : job.status === "failed"
+                    ? '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg>'
+                    : '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></svg>';
         }
 
         var cancel = job.panel.querySelector(".site-dl-progress__cancel");
@@ -607,44 +608,71 @@
         }, delay == null ? 12000 : delay);
     }
 
-    async function start(job, url) {
+    /* Must be called synchronously from the click: Chromium only grants a
+       writable while the reader's gesture is live. Resolving the portable
+       package first used to consume that activation and send the transfer to
+       the browser's own downloader, which also caused the leave-page prompt. */
+    function openWriter(job) {
+        if (typeof global.showSaveFilePicker !== "function") {
+            return Promise.resolve({ writer: null });
+        }
+        var extension = "." + ((String(job.name || "download.bin").split(".").pop() || "bin").toLowerCase());
+        return global.showSaveFilePicker({
+            suggestedName: job.name,
+            types: [{ description: "Download", accept: { "application/octet-stream": [extension] } }]
+        }).then(function (handle) {
+            return handle.createWritable();
+        }).then(function (writer) {
+            job.writer = writer;
+            return { writer: writer };
+        }).catch(function (error) {
+            if (error && error.name === "AbortError") return { cancelled: true };
+            return { writer: null };
+        });
+    }
+
+    async function start(job, source) {
         job.status = "starting";
         paint(job);
 
         var controller = typeof AbortController === "function" ? new AbortController() : null;
         job.controller = controller;
-        var requestUrl = proxiedUrl(url, job.name);
 
-        /* Chromium can write the response straight to a file: no 1.5 GB blob
-           in memory, and progress that matches what the disk is receiving. The
-           picker must be opened while the click still counts as a gesture, so
-           it comes before the request. */
-        /* A 1.8 GB portable package never fits in a JavaScript array, so the
-           reader picks a file once and the bytes go straight to disk. A
-           small measured package is buffered instead, and a blocked or
-           unreadable response falls back to the browser's downloader. */
-        var writer = null;
-        if (typeof global.showSaveFilePicker === "function") {
-            try {
-                var extension = "." + ((job.name.split(".").pop() || "bin").toLowerCase());
-                var handle = await global.showSaveFilePicker({
-                    suggestedName: job.name,
-                    types: [{ description: "Download", accept: { "application/octet-stream": [extension] } }]
-                });
-                writer = await handle.createWritable();
-                job.writer = writer;
-            } catch (error) {
-                if (error && error.name === "AbortError") {
-                    cancelJob(job);
-                    return;
-                }
-                writer = null;
-            }
+        /* Open the picker before awaiting anything; the resolver runs while the
+           dialog is up, so choosing a folder costs no transfer time. */
+        var picked = await openWriter(job);
+        if (picked.cancelled) {
+            cancelJob(job);
+            return;
+        }
+        var writer = picked.writer;
+        if (job.cancelled) {
+            if (writer) { try { await writer.abort(); } catch (_) {} }
+            return;
+        }
+
+        var resolved = source;
+        if (typeof source === "function") {
+            try { resolved = await source(); }
+            catch (_) { resolved = null; }
         }
         if (job.cancelled) {
             if (writer) { try { await writer.abort(); } catch (_) {} }
             return;
         }
+        if (resolved && typeof resolved === "object") {
+            if (resolved.cancel) { cancelJob(job); return; }
+            if (resolved.name) job.name = motherName(resolved.name);
+            resolved = resolved.url || "";
+        }
+        var targetUrl = String(resolved || job.url || "");
+        if (!targetUrl) {
+            if (writer) { try { await writer.abort(); } catch (_) {} }
+            handOff(job, job.url, false);
+            return;
+        }
+        job.url = targetUrl;
+        var requestUrl = proxiedUrl(targetUrl, job.name);
 
         var response;
         try {
@@ -737,18 +765,24 @@
             return;
         }
 
-        job.status = "done";
         if (!job.total) job.total = job.loaded;
         if (writer) {
-            try { await writer.close(); } catch (_) {}
+            try { await writer.close(); }
+            catch (_) {
+                job.status = "failed";
+                paint(job);
+                finish(job, 8000);
+                return;
+            }
         } else {
             saveBlob(new Blob(chunks, { type: response.headers.get("content-type") || "application/octet-stream" }), job.name);
         }
+        job.status = "done";
         paint(job);
         finish(job);
     }
 
-    function queue(url, anchor, name) {
+    function queue(url, anchor, name, resolver) {
         injectStyles();
         if (anchor && jobByAnchor && jobByAnchor.get(anchor)) return true;
         var saveName = motherName(name || fileNameOf(url) || "download.bin");
@@ -763,6 +797,7 @@
             url: url,
             name: saveName,
             anchor: anchor || null,
+            resolver: resolver || null,
             status: "starting",
             loaded: 0,
             total: 0,
@@ -775,18 +810,12 @@
         };
         jobs.push(job);
         if (anchor && jobByAnchor) jobByAnchor.set(anchor, job);
-        if (buttonLike(anchor)) {
-            job.buttonEl = anchor;
-            job.buttonHtml = anchor.innerHTML;
-            job.buttonLabel = (anchor.textContent || "").trim();
-        } else {
-            mount(job, anchor || doc.body);
-        }
+        mount(job, anchor || doc.body);
         paint(job);
         if (job.panel) {
-            setTimeout(function () { reveal(job); }, 60);
+            setTimeout(function () { placePanel(job); }, 60);
         }
-        start(job, url);
+        start(job, resolver || url);
         return true;
     }
 
@@ -866,19 +895,24 @@
             jobs.forEach(paint);
         });
 
-        /* Closing or reloading takes the transfer with it; the reader gets the
-           browser's own confirmation while a download is still running. */
-        global.addEventListener("beforeunload", function (event) {
-            if (!activeJobs().length) return undefined;
-            event.preventDefault();
-            event.returnValue = t("Keep this tab open");
-            return event.returnValue;
+        /* Keep the card beside its link while the reader scrolls or turns the
+           phone; the page itself is never blocked from unloading. */
+        global.addEventListener("scroll", function () {
+            jobs.forEach(reposition);
+        }, { passive: true });
+        global.addEventListener("resize", function () {
+            jobs.forEach(reposition);
         });
     }
 
     global.InnioasisDownloads = {
         version: VERSION,
         start: function (url, anchor, name) { return queue(url, anchor, name); },
+        /* Resolve a portable package after the picker has been opened on the
+           click. The resolver returns {url, name} or {cancel:true}. */
+        startResolved: function (resolver, fallbackUrl, anchor, name) {
+            return queue(fallbackUrl || "", anchor, name || "", resolver);
+        },
         jobs: function () { return jobs.slice(); },
         /* Exposed so a page, a test or the firmware catalog can ask the same
            questions the click handler asks without starting a download. */
