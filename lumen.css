@@ -603,6 +603,7 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
 .lumen-download-option p { margin: 0 0 .75rem; font-size: .86rem; }
 .lumen-download-option .lumen-meta { margin: .75rem 0 0; font-size: .76rem; }
 .lumen-download-option .lumen-button { width: 100%; }
+.lumen-download-option .lumen-button[hidden] { display: none; }
 
 /* ------------------------------------------------------------- widgets
 The installer table builds these controls in JS. The design replacement
@@ -707,6 +708,10 @@ body.site-themes-app a.lumen-updater-button small,
 .smart-app-control-modal { z-index: 1001; }
 .lumen-another-platform { grid-column: 1 / -1; justify-self: center; margin: 1.1rem 0 .35rem; padding: .6rem 1.3rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel); color: var(--lumen-text); font: 700 .82rem var(--lumen-body); cursor: pointer; box-shadow: 0 1px 0 var(--lumen-line); transition: border-color .18s var(--lumen-ease), color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
 .lumen-another-platform:hover, .lumen-another-platform:focus-visible { border-color: var(--lumen-accent); color: var(--lumen-accent); background: var(--lumen-accent-wash); outline: none; }
+.lumen-reveal { display: inline-block; margin: .85rem 0 .2rem; padding: 0; border: 0; background: none; color: var(--lumen-muted); font: inherit; font-size: .82rem; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.lumen-reveal:hover, .lumen-reveal:focus-visible { color: var(--lumen-accent); outline: none; }
+.lumen-reveal-panel { margin-top: .9rem; }
+.lumen-reveal-panel[hidden] { display: none; }
 .lumen-download-notice { padding: 1.1rem; background: var(--lumen-panel); }
 .lumen-download-notice h3 { margin: 0 0 .45rem; }
 .lumen-download-notice p { margin: 0 0 .7rem; }

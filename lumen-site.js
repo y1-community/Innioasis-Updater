@@ -992,6 +992,57 @@
         });
     }
 
+    /* The Linux card offers the AppImage built for the visitor's processor and
+       keeps the other packages behind a text link, so the choice is one button
+       instead of six filenames. The probe reads the architecture only and not
+       the OS: the card is already Linux's, and some browsers name the platform
+       oddly, which would make an OS check throw the answer away. */
+    function linuxArch() {
+        var ua = navigator.userAgent || "";
+        var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "";
+        return /arm64|aarch64|armv8/i.test(ua + " " + platform) ? "arm64" : "x86_64";
+    }
+
+    function showLinuxAppImage(arch) {
+        document.querySelectorAll("[data-linux-appimage]").forEach(function (button) {
+            button.hidden = button.getAttribute("data-linux-arch") !== arch;
+        });
+    }
+
+    function initLinuxCard() {
+        if (!document.querySelector("[data-linux-appimage]")) return;
+        showLinuxAppImage(linuxArch());
+        /* Chromium can only answer the architecture question asynchronously,
+           and only on some platforms, so the answer refines the guess above
+           rather than replacing it. */
+        if (navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === "function") {
+            navigator.userAgentData.getHighEntropyValues(["architecture"]).then(function (data) {
+                var reported = String((data && data.architecture) || "").toLowerCase();
+                if (!reported) return;
+                showLinuxAppImage(reported.indexOf("arm") !== -1 ? "arm64" : "x86_64");
+            }).catch(function () {});
+        }
+    }
+
+    /* A disclosure that reads as a line of text rather than a button. The
+       label is swapped in place, which the language runtime picks up the same
+       way it picks up the other injected labels on the site. */
+    function initReveals() {
+        document.querySelectorAll("[data-reveal]").forEach(function (button) {
+            var target = document.getElementById(button.getAttribute("data-reveal"));
+            if (!target || button.getAttribute("data-reveal-ready") === "1") return;
+            button.setAttribute("data-reveal-ready", "1");
+            var moreLabel = button.textContent;
+            var lessLabel = button.getAttribute("data-reveal-close") || moreLabel;
+            button.addEventListener("click", function () {
+                var expanded = button.getAttribute("aria-expanded") === "true";
+                target.hidden = expanded;
+                button.setAttribute("aria-expanded", expanded ? "false" : "true");
+                button.textContent = expanded ? moreLabel : lessLabel;
+            });
+        });
+    }
+
     function copyTextFallback(text) {
         var area = document.createElement("textarea");
         area.value = text;
@@ -3853,6 +3904,8 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
         document.querySelectorAll("[data-lumen-carousel]").forEach(initCarousel);
         document.querySelectorAll("[data-lumen-feedback]").forEach(initFeedback);
         initPlatformReveal();
+        initLinuxCard();
+        initReveals();
         initCopyButtons();
         initDownloadConfirm();
         initEdgeKeepHelp();
