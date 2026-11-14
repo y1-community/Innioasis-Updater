@@ -4,7 +4,7 @@
   <title>Innioasis and Timmkoo firmware releases</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware-list.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/firmware-feed.xml"/>
-  <updated>2026-11-14T03:46:40Z</updated>
+  <updated>2026-11-14T04:56:31Z</updated>
   <inni:schema_version>2</inni:schema_version>
   <inni:manifest_url>https://innioasis.app/slidia_manifest.xml</inni:manifest_url>
   <inni:firmware_list_url>https://innioasis.app/firmware-list.html</inni:firmware_list_url>
@@ -15,9 +15,9 @@
     <inni:package name="Original Software" brand="Innioasis" repo="y1-community/g3-stock-rom" device="G3" url="https://github.com/y1-community/g3-stock-rom" type="img" handler="Custom Firmware" package_name="rom_g3.zip" portable_zips="y1-community/g3-stock-rom-mirror" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
     <inni:package name="Original Software" brand="Innioasis" repo="y1-community/g5-stock-rom" device="G5" url="https://github.com/y1-community/g5-stock-rom" type="img" handler="Custom Firmware" package_name="rom_g5.zip" portable_zips="y1-community/g5-stock-rom-mirror" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
     <inni:package name="Original Software" brand="Timmkoo" repo="y1-community/q3-stock-rom" device="Q3" url="https://github.com/y1-community/q3-stock-rom" type="img" handler="Custom Firmware" package_name="rom_q3.zip" portable_zips="y1-community/q3-stock-rom-mirror" icon="https://innioasis.app/assets/timmkoo_icon.jpeg"/>
-    <inni:package name="Lithium (Android 7)" brand="Timmkoo" repo="NoahDomingues/Lithium" portable_zips="y1-community/Lithium-mirror" device="Q3" url="https://github.com/NoahDomingues/Lithium" type="img" handler="Custom Firmware" install_first="y1-community/q3-stock-rom" package_name="Lithium*.zip" icon="https://innioasis.app/assets/lithium_icon.jpg"/>
+    <inni:package name="Lithium (Android 7)" brand="Timmkoo" repo="NoahDomingues/Lithium" portable_zips="y1-community/lithium-mirror" device="Q3" url="https://github.com/NoahDomingues/Lithium" type="img" handler="Custom Firmware" install_first="y1-community/q3-stock-rom" package_name="Lithium*.zip" icon="https://innioasis.app/assets/lithium_icon.jpg"/>
     <inni:package name="Original Software" brand="Timmkoo" repo="y1-community/q5-stock-rom" device="Q5" url="https://github.com/y1-community/q5-stock-rom" type="img" handler="Custom Firmware" package_name="rom_q5.zip" portable_zips="y1-community/q5-stock-rom-mirror" icon="https://innioasis.app/assets/timmkoo_icon.jpeg"/>
-    <inni:package name="Lithium (Android 7)" brand="Timmkoo" repo="NoahDomingues/Lithium" portable_zips="y1-community/Lithium-mirror" device="Q5" url="https://github.com/NoahDomingues/Lithium" type="img" handler="Custom Firmware" install_first="y1-community/q5-stock-rom" package_name="Lithium*.zip" icon="https://innioasis.app/assets/lithium_icon.jpg"/>
+    <inni:package name="Lithium (Android 7)" brand="Timmkoo" repo="NoahDomingues/Lithium" portable_zips="y1-community/lithium-mirror" device="Q5" url="https://github.com/NoahDomingues/Lithium" type="img" handler="Custom Firmware" install_first="y1-community/q5-stock-rom" package_name="Lithium*.zip" icon="https://innioasis.app/assets/lithium_icon.jpg"/>
     <inni:package name="Reborn" brand="Innioasis" repo="schulzcode/y2linux" portable_zips="y1-community/y2linux-mirror" device="Y2" url="https://github.com/schulzcode/y2linux" type="img" post_install="https://innioasis.app/y2reborn_wifibt.html" handler="Custom Firmware" install_first="y1-community/y1-stock-rom" icon="https://innioasis.app/assets/reborn_icon.jpg"/>
     <inni:package name="Rockbox" brand="Innioasis" repo="rockbox-y1/rockbox" portable_zips="y1-community/rockbox-mirror" device="Y1" url="https://github.com/rockbox-y1/rockbox" type="img" icon="https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png" handler="Custom Firmware"/>
     <inni:package name="Rockbox" brand="Innioasis" repo="spycemagic/y2-rockbox" portable_zips="y1-community/y2-rockbox-mirror" device="Y2" url="https://github.com/spycemagic/y2-rockbox" icon="https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png" type="img" handler="Custom Firmware"/>
@@ -1222,7 +1222,7 @@
         </inni:mirror_asset>
       </inni:release>
     </inni:mirror>
-    <inni:mirror repo="y1-community/Lithium-mirror" source_repo="noahdomingues/lithium" updated_at="2026-11-14T03:46:40Z">
+    <inni:mirror repo="y1-community/lithium-mirror" source_repo="noahdomingues/lithium" updated_at="2026-11-14T04:56:31Z">
     </inni:mirror>
     <inni:mirror repo="y1-community/q3-stock-rom-mirror" source_repo="y1-community/q3-stock-rom" updated_at="2026-11-12T20:15:55Z">
       <inni:release tag="MX2E-WVGA_TM-WV3.23-20250528" original_tag="MX2E-WVGA_TM-WV3.23-20250528" mirror_tag="MX2E-WVGA_TM-WV3.23-20250528" release_name="Portable Flashing Package: MX2E-WVGA_TM-WV3.23-20250528" published_at="2026-11-05T06:32:56Z">

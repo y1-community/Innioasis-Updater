@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-14T03:46:40Z",
+  "generated_at": "2026-11-14T04:56:31Z",
   "manifest_url": "https://innioasis.app/slidia_manifest.xml",
   "firmware_list_url": "https://innioasis.app/firmware-list.html",
   "feeds": {
@@ -188,8 +188,8 @@
       "releases_atom": "https://innioasis.app/feeds/noahdomingues/lithium/releases.atom",
       "repo_json": "https://innioasis.app/feeds/noahdomingues/lithium/repo.json"
     },
-    "y1-community/Lithium-mirror": {
-      "repo": "y1-community/Lithium-mirror",
+    "y1-community/lithium-mirror": {
+      "repo": "y1-community/lithium-mirror",
       "releases_json": "https://innioasis.app/feeds/y1-community/lithium-mirror/releases.json",
       "releases_atom": "https://innioasis.app/feeds/y1-community/lithium-mirror/releases.atom",
       "repo_json": "https://innioasis.app/feeds/y1-community/lithium-mirror/repo.json"
@@ -326,9 +326,9 @@
       "source_repo": "ryan-specter/koensayr-auto",
       "updated_at": "2026-11-12T19:02:55Z"
     },
-    "y1-community/Lithium-mirror": {
+    "y1-community/lithium-mirror": {
       "source_repo": "noahdomingues/lithium",
-      "updated_at": "2026-11-14T03:46:40Z"
+      "updated_at": "2026-11-14T04:56:31Z"
     },
     "y1-community/q3-stock-rom-mirror": {
       "source_repo": "y1-community/q3-stock-rom",
