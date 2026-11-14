@@ -160,7 +160,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
         "size": 69085458,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-13T22:45:14Z",
         "updated_at": "2026-11-13T22:45:17Z",
@@ -179,7 +179,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 14,
+    "downloads": 15,
     "download_breakdown": {
       "tag": "baseline-261",
       "mirrors": "",
@@ -217,7 +217,7 @@
         {
           "name": "Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
-          "downloads": 1
+          "downloads": 2
         }
       ],
       "portable": []
@@ -318,7 +318,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.29-first-install-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-linux-arm64.zip",
         "size": 254309544,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-13T22:42:28Z",
         "updated_at": "2026-11-13T22:42:41Z",
@@ -329,7 +329,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.29-first-install-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-linux-legacy.zip",
         "size": 142259550,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-13T22:42:27Z",
         "updated_at": "2026-11-13T22:42:35Z",
@@ -340,7 +340,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.29-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-linux.zip",
         "size": 429405310,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-13T22:42:28Z",
         "updated_at": "2026-11-13T22:42:48Z",
@@ -351,7 +351,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.29-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-macos.zip",
         "size": 188718046,
-        "download_count": 3,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-13T22:42:35Z",
         "updated_at": "2026-11-13T22:42:42Z",
@@ -362,7 +362,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.29-first-install-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-windows-legacy.zip",
         "size": 143845226,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-13T22:42:27Z",
         "updated_at": "2026-11-13T22:42:36Z",
@@ -373,7 +373,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.29-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-windows.zip",
         "size": 382083939,
-        "download_count": 3,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-13T22:42:28Z",
         "updated_at": "2026-11-13T22:42:45Z",
@@ -403,7 +403,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 15,
+    "downloads": 21,
     "download_breakdown": {
       "tag": "baseline-259",
       "mirrors": "",
@@ -411,32 +411,32 @@
         {
           "name": "Y2Linux-1.0.0-beta.9.3.29-first-install-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-linux-arm64.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.29-first-install-linux-legacy.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-linux-legacy.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.29-first-install-linux.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-linux.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.29-first-install-macos.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-macos.zip",
-          "downloads": 3
+          "downloads": 4
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.29-first-install-windows-legacy.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-windows-legacy.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.29-first-install-windows.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-windows.zip",
-          "downloads": 3
+          "downloads": 4
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.29-first-install.zip",
@@ -542,7 +542,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.28-first-install-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install-linux-arm64.zip",
         "size": 254225254,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-13T16:29:09Z",
         "updated_at": "2026-11-13T16:29:59Z",
@@ -553,7 +553,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.28-first-install-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install-linux-legacy.zip",
         "size": 142175260,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-13T16:29:09Z",
         "updated_at": "2026-11-13T16:29:27Z",
@@ -564,7 +564,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.28-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install-linux.zip",
         "size": 429321020,
-        "download_count": 3,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-13T16:29:09Z",
         "updated_at": "2026-11-13T16:30:12Z",
@@ -575,7 +575,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.28-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install-macos.zip",
         "size": 188633756,
-        "download_count": 8,
+        "download_count": 9,
         "content_type": "application/zip",
         "created_at": "2026-11-13T16:29:28Z",
         "updated_at": "2026-11-13T16:29:57Z",
@@ -586,7 +586,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.28-first-install-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install-windows-legacy.zip",
         "size": 143760938,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-13T16:29:09Z",
         "updated_at": "2026-11-13T16:29:32Z",
@@ -597,7 +597,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.28-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install-windows.zip",
         "size": 381999649,
-        "download_count": 3,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-13T16:29:09Z",
         "updated_at": "2026-11-13T16:30:10Z",
@@ -638,7 +638,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 21,
+    "downloads": 27,
     "download_breakdown": {
       "tag": "baseline-256",
       "mirrors": "",
@@ -646,32 +646,32 @@
         {
           "name": "Y2Linux-1.0.0-beta.9.3.28-first-install-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install-linux-arm64.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.28-first-install-linux-legacy.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install-linux-legacy.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.28-first-install-linux.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install-linux.zip",
-          "downloads": 3
+          "downloads": 4
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.28-first-install-macos.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install-macos.zip",
-          "downloads": 8
+          "downloads": 9
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.28-first-install-windows-legacy.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install-windows-legacy.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.28-first-install-windows.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install-windows.zip",
-          "downloads": 3
+          "downloads": 4
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.28-first-install.zip",
@@ -1460,7 +1460,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-linux-arm64.zip",
         "size": 252807462,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:16:36Z",
         "updated_at": "2026-11-12T23:16:45Z",
@@ -1471,7 +1471,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-linux-legacy.zip",
         "size": 140757468,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:16:36Z",
         "updated_at": "2026-11-12T23:16:40Z",
@@ -1482,7 +1482,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-linux.zip",
         "size": 427903228,
-        "download_count": 7,
+        "download_count": 8,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:16:36Z",
         "updated_at": "2026-11-12T23:16:51Z",
@@ -1493,7 +1493,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-macos.zip",
         "size": 187215964,
-        "download_count": 11,
+        "download_count": 12,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:16:41Z",
         "updated_at": "2026-11-12T23:16:46Z",
@@ -1504,7 +1504,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-windows-legacy.zip",
         "size": 142343144,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:16:36Z",
         "updated_at": "2026-11-12T23:16:42Z",
@@ -1515,7 +1515,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-windows.zip",
         "size": 380581857,
-        "download_count": 7,
+        "download_count": 8,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:16:36Z",
         "updated_at": "2026-11-12T23:16:50Z",
@@ -1545,7 +1545,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 33,
+    "downloads": 39,
     "download_breakdown": {
       "tag": "baseline-235",
       "mirrors": "",
@@ -1553,32 +1553,32 @@
         {
           "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-linux-arm64.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-linux-legacy.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-linux-legacy.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-linux.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-linux.zip",
-          "downloads": 7
+          "downloads": 8
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-macos.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-macos.zip",
-          "downloads": 11
+          "downloads": 12
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-windows-legacy.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-windows-legacy.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.24-first-install-windows.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-235/Y2Linux-1.0.0-beta.9.3.24-first-install-windows.zip",
-          "downloads": 7
+          "downloads": 8
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.24-first-install.zip",
@@ -1684,7 +1684,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-linux-arm64.zip",
         "size": 252804439,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:13:56Z",
         "updated_at": "2026-11-12T23:14:09Z",
@@ -1706,7 +1706,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-linux.zip",
         "size": 427900205,
-        "download_count": 6,
+        "download_count": 7,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:13:56Z",
         "updated_at": "2026-11-12T23:14:10Z",
@@ -1717,7 +1717,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-macos.zip",
         "size": 187212941,
-        "download_count": 10,
+        "download_count": 11,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:14:04Z",
         "updated_at": "2026-11-12T23:14:08Z",
@@ -1728,7 +1728,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-windows-legacy.zip",
         "size": 142340123,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:13:56Z",
         "updated_at": "2026-11-12T23:14:03Z",
@@ -1739,7 +1739,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-windows.zip",
         "size": 380578834,
-        "download_count": 7,
+        "download_count": 8,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:13:56Z",
         "updated_at": "2026-11-12T23:14:16Z",
@@ -1769,7 +1769,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 31,
+    "downloads": 36,
     "download_breakdown": {
       "tag": "baseline-234",
       "mirrors": "",
@@ -1777,7 +1777,7 @@
         {
           "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-linux-arm64.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-linux-legacy.zip",
@@ -1787,22 +1787,22 @@
         {
           "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-linux.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-linux.zip",
-          "downloads": 6
+          "downloads": 7
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-macos.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-macos.zip",
-          "downloads": 10
+          "downloads": 11
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-windows-legacy.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-windows-legacy.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.23-first-install-windows.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-234/Y2Linux-1.0.0-beta.9.3.23-first-install-windows.zip",
-          "downloads": 7
+          "downloads": 8
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.23-first-install.zip",

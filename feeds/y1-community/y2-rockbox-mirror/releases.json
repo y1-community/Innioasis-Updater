@@ -775,7 +775,7 @@
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-windows.zip",
         "size": 674923390,
-        "download_count": 32,
+        "download_count": 33,
         "content_type": "application/zip",
         "created_at": "2026-11-12T20:14:22Z",
         "updated_at": "2026-11-12T20:14:51Z",
@@ -915,7 +915,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 84,
+    "downloads": 85,
     "download_breakdown": {
       "tag": "v0.1.0-beta",
       "mirrors": "",
@@ -948,7 +948,7 @@
         {
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-windows.zip",
-          "downloads": 32
+          "downloads": 33
         },
         {
           "name": "rom_y2.zip",
