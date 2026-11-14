@@ -26,7 +26,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261116stats4";
+    var VERSION = "20261117stats5";
 
     /* The order a reader thinks in: the usual desktop first, the legacy
        builds after the platform they belong to. */
@@ -486,6 +486,17 @@
         lastTrigger = null;
     }
 
+    /* A download module claims a click before default navigation and asks for
+       the release control that opened the breakdown. Return it after closing
+       the overlay so the inline progress card starts on the page instead of
+       on a link that is about to be removed with the modal. */
+    function dismissForDownload() {
+        if (!overlay) return null;
+        var trigger = lastTrigger;
+        hide();
+        return trigger;
+    }
+
     /* ---------------------------------------------------------------- wiring */
 
     /* The figure carries the payload; the (i) beside it opens the same modal
@@ -536,6 +547,7 @@
         version: VERSION,
         open: function (breakdown, trigger) { show(breakdown, trigger); },
         close: hide,
+        dismissForDownload: dismissForDownload,
         rich: function (breakdown) { return enrich(breakdown); },
         label: label
     };

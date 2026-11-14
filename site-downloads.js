@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261117inline9";
+    var VERSION = "20261117inline10";
     /* Only archive packages get the in-page treatment. Installers and app
        images always go to the browser's own downloader: a page must never
        stand between a reader and the app they are installing. */
@@ -850,9 +850,20 @@
         if (link.target && link.target !== "_self") return;
         var href = link.href || link.getAttribute("href");
         if (/^(blob|data):/i.test(href)) return;
+        /* A Download inside the download-figures breakdown is a page download
+           too. Close the overlay before asking for the save picker, and put
+           the card under the control that opened the breakdown; its link is
+           removed with the modal. */
+        var anchor = link;
+        if (link.closest && link.closest(".dl-stats-overlay")) {
+            var stats = global.InnioasisDownloadStats;
+            if (stats && typeof stats.dismissForDownload === "function") {
+                try { anchor = stats.dismissForDownload() || null; } catch (_) { anchor = null; }
+            }
+        }
         /* data-save-as is what a rendered document uses to name the package
            it links to; it outranks the asset's own filename. */
-        var started = queue(href, link,
+        var started = queue(href, anchor,
             link.getAttribute("data-download-name") ||
             link.getAttribute("data-save-as") ||
             link.getAttribute("download") ||
