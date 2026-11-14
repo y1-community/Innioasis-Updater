@@ -52,7 +52,9 @@ permissions:
 # from committing over each other, which is what produced the rejected pushes.
 concurrency:
   group: site-static-pages
-  cancel-in-progress: true
+  # Never cancel here: cancel-in-progress applies to the whole group, so a new
+  # doc-pages run would kill a queued notice or sitemap run as well.
+  cancel-in-progress: false
 
 jobs:
   build:
