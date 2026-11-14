@@ -26,7 +26,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261115stats1";
+    var VERSION = "20261115stats2";
 
     /* The order a reader thinks in: the usual desktop first, the legacy
        builds after the platform they belong to. */
@@ -136,13 +136,19 @@
     function enrich(breakdown) {
         if (!breakdown || !breakdown.mirrors) return Promise.resolve(breakdown);
         breakdown.portable = Array.isArray(breakdown.portable) ? breakdown.portable : [];
+        breakdown.firmware = Array.isArray(breakdown.firmware) ? breakdown.firmware : [];
         var pending = breakdown.portable.filter(function (entry) {
             return entry && !entry.downloads && entry.platform;
         });
         var repos = String(breakdown.mirrors).split(/[\s,]+/).filter(Boolean);
-        /* Nothing to look up when every package already carries its count
-           and the page listed them. */
-        if (!repos.length || (!pending.length && breakdown.portable.length)) {
+        /* The mirror also keeps a copy of the project's own ZIP, and those
+           downloads belong to the combined figure. Look the mirror up while
+           that copy is still missing, even when every portable package
+           already carries its count. */
+        var wantsCopies = breakdown.firmware.some(function (entry) {
+            return entry && entry.name && !entry.mirror;
+        });
+        if (!repos.length || (!pending.length && breakdown.portable.length && !wantsCopies)) {
             return Promise.resolve(breakdown);
         }
 
@@ -163,8 +169,11 @@
                     return String(entry && entry.tag_name || "").toLowerCase() === tag;
                 });
                 var counts = {};
+                var copies = {};
                 (release && release.assets || []).forEach(function (asset) {
-                    counts[String(asset.name || "").toLowerCase()] = num(asset.download_count);
+                    var assetName = String(asset.name || "").toLowerCase();
+                    counts[assetName] = num(asset.download_count);
+                    copies[assetName] = asset;
                 });
                 var packages = [];
                 ((answer.index && answer.index.releases) || []).forEach(function (entry) {
@@ -199,6 +208,27 @@
                         return String(entry && entry.name || "").toLowerCase() === pkg.name;
                     });
                     if (!known) breakdown.portable.push(pkg);
+                });
+                /* The mirror republishes the original ZIP beside its portable
+                   packages so Updater CE can fetch one release from one place.
+                   Those downloads are part of the combined figure, so the
+                   dialog names the copy next to the project's own ZIP. */
+                breakdown.firmware.forEach(function (entry) {
+                    if (!entry || entry.mirror) return;
+                    var name = String(entry.name || "").toLowerCase();
+                    var copy = copies[name];
+                    if (!name || !copy) return;
+                    var listed = breakdown.firmware.some(function (other) {
+                        return other && other.mirror &&
+                            String(other.name || "").toLowerCase() === name;
+                    });
+                    if (listed) return;
+                    breakdown.firmware.push({
+                        name: entry.name,
+                        url: String(copy.browser_download_url || ""),
+                        downloads: num(copy.download_count),
+                        mirror: true
+                    });
                 });
             });
             breakdown.portable.sort(function (a, b) {
@@ -289,7 +319,7 @@
         copy.appendChild(el("span", "dl-stats__name", name));
         var meta = portable
             ? (entry.name || "portable package") + (entry.size ? " · " + size(entry.size) : "")
-            : "Original firmware ZIP";
+            : entry.mirror ? "Copy in the portable package mirror" : "Original firmware ZIP";
         copy.appendChild(el("span", "dl-stats__meta", meta));
         item.appendChild(copy);
         item.appendChild(el("span", "dl-stats__count", fmt(entry.downloads) + " downloads"));

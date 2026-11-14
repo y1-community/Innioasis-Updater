@@ -695,6 +695,27 @@
        screen (our own feed or the catalogue snapshot), incoming is the
        GitHub answer: a tag both carry is refreshed from GitHub, a tag only
        GitHub has is appended, and nothing appears twice. */
+    /* The GitHub answer knows the project's own release and nothing about
+       the mirror that repackages it. The feed's copy already carries that
+       half in mirror_downloads, so it travels with the replacement; without
+       it the combined figure collapsed to the source ZIPs the moment the
+       fresher GitHub answer arrived, and the row disagreed with the
+       download-figures dialog it opens. */
+    function keepMirrorFigures(release, previous) {
+        if (!release || !previous) return release;
+        if (typeof release.mirror_downloads !== "number" &&
+            typeof previous.mirror_downloads === "number") {
+            release.mirror_downloads = previous.mirror_downloads;
+        }
+        if (!release.download_breakdown && previous.download_breakdown) {
+            release.download_breakdown = previous.download_breakdown;
+        }
+        if (typeof release.downloads !== "number" && typeof previous.downloads === "number") {
+            release.downloads = previous.downloads;
+        }
+        return release;
+    }
+
     function mergeReleaseLists(base, incoming) {
         var merged = [];
         var seen = Object.create(null);
@@ -703,7 +724,7 @@
             var key = releaseKey(release);
             if (!key) return;
             if (seen[key] !== undefined) {
-                if (replace) merged[seen[key]] = release;
+                if (replace) merged[seen[key]] = keepMirrorFigures(release, merged[seen[key]]);
                 return;
             }
             seen[key] = merged.length;
