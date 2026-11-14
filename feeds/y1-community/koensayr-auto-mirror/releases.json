@@ -3,7 +3,7 @@
     "id": 432886152,
     "tag_name": "2.4.0-koensayr-3.0.7",
     "name": "Portable Flashing Package: 2.4.0-koensayr-3.0.7",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.7#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# 2.4.0-koensayr-3.0.7\n\nKoensayr is a mod for the Y1's OS that makes the following improvements to the original OS:\n\nBrowsing the albums of an artist from Main Menu > Artists > Albums\n\nAdds Bluetooth remote control support and track info displayed on your bluetooth receiver, perfect for using your Y1 in a car with the infotainment system.\n\n\n---\n\n## Build metadata\n\nPatched **rom.zip** built from stock **3.0.7** by [koensayr-auto](https://github.com/ryan-specter/koensayr-auto) v2.4.0.\n\n## Upstream\n\n- Repository: [`y1-community/y1-stock-rom`](https://github.com/y1-community/y1-stock-rom)\n- Release tag: `Latest-3.0.7`\n- Asset: `rom.zip`\n- Upstream SHA256: `7cbffcbe7dc1beb823e9ab8d37cea6120d16856bba49e02ed2d6e1548832e695`\n\n## Koensayr build\n\n- Version: `2.4.0`\n- Git revision: `16f65333696597b084d34931d4c94f7c5352e9e5` (includes `com.innioasis.y1` APK patches under `src/patches/`)\n\n## Build output\n\n- Patched `rom.zip` SHA256: `b5b8cfbb651460e989a2cfb93a4f9b5e610a76015103e69bac382ba65f9bf97a` (see `build-manifest.json` on this release)\n- Upstream `rom.zip` was re-hashed at build time; output must differ (CI enforces this).\n\n## Patches (`--all`)\n\n- Music-player UX (Artist\u2192Album navigation)\n- Bluetooth pairing (`audio.conf` / `auto_pairing.conf` / `blacklist.conf` / `build.prop`)\n- System config (ADB debugging, bloatware removal)\n- Root (`/system/xbin/su`, mode 06755)\n- AVRCP 1.3 metadata + control + Y1Bridge\n\nDiagnostic scripts (`tools/dual-capture.sh`, gdb attach, `btlog-dump`) are **not** included in the ROM \u2014 see the repo [Diagnostics](https://github.com/ryan-specter/koensayr-auto#diagnostics).\n\n## After flash\n\nIf AVRCP / MultiDex classes fail to load after upgrading from a prior koensayr build:\n\n```bash\nadb shell rm -rf /data/data/com.innioasis.y1/code_cache/secondary-dexes/\n```\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"9854d29ce2e21882a0fdc91c183e32e5f8a01b939e4f4814ee7d51aa26daab2e\",\"size\":625664623,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"a18a77bed2efdd90d232c40768a32e77e7f14b33e333851bbaabafe61cf17ff0\",\"size\":359631921,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"26bc0c9054aca10d0e5337dcb19416b51d8ef9b18f35defaaeff2652c3c7727c\",\"size\":444175641,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-08T20:01:46Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"e43b9acd63cdbf16fbd6c0688c0ca2138a651b002661ca3242686bf0c97ce85f\",\"original_assets\":[\"build-manifest.json\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"build-manifest.json\":9,\"rom-linux.zip\":1,\"rom-macos.zip\":3,\"rom-windows.zip\":1,\"rom.zip\":9},\"generated_at\":\"2026-11-08T20:01:46Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.7#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.7&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Fkoensayr-auto-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.7&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fkoensayr-auto-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.7&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Fkoensayr-auto-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.7&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fkoensayr-auto-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.7&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fkoensayr-auto-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.7&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Fkoensayr-auto-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# 2.4.0-koensayr-3.0.7\n\nKoensayr is a mod for the Y1's OS that makes the following improvements to the original OS:\n\nBrowsing the albums of an artist from Main Menu > Artists > Albums\n\nAdds Bluetooth remote control support and track info displayed on your bluetooth receiver, perfect for using your Y1 in a car with the infotainment system.\n\n\n---\n\n## Build metadata\n\nPatched **rom.zip** built from stock **3.0.7** by [koensayr-auto](https://github.com/ryan-specter/koensayr-auto) v2.4.0.\n\n## Upstream\n\n- Repository: [`y1-community/y1-stock-rom`](https://github.com/y1-community/y1-stock-rom)\n- Release tag: `Latest-3.0.7`\n- Asset: `rom.zip`\n- Upstream SHA256: `7cbffcbe7dc1beb823e9ab8d37cea6120d16856bba49e02ed2d6e1548832e695`\n\n## Koensayr build\n\n- Version: `2.4.0`\n- Git revision: `16f65333696597b084d34931d4c94f7c5352e9e5` (includes `com.innioasis.y1` APK patches under `src/patches/`)\n\n## Build output\n\n- Patched `rom.zip` SHA256: `b5b8cfbb651460e989a2cfb93a4f9b5e610a76015103e69bac382ba65f9bf97a` (see `build-manifest.json` on this release)\n- Upstream `rom.zip` was re-hashed at build time; output must differ (CI enforces this).\n\n## Patches (`--all`)\n\n- Music-player UX (Artist\u2192Album navigation)\n- Bluetooth pairing (`audio.conf` / `auto_pairing.conf` / `blacklist.conf` / `build.prop`)\n- System config (ADB debugging, bloatware removal)\n- Root (`/system/xbin/su`, mode 06755)\n- AVRCP 1.3 metadata + control + Y1Bridge\n\nDiagnostic scripts (`tools/dual-capture.sh`, gdb attach, `btlog-dump`) are **not** included in the ROM \u2014 see the repo [Diagnostics](https://github.com/ryan-specter/koensayr-auto#diagnostics).\n\n## After flash\n\nIf AVRCP / MultiDex classes fail to load after upgrading from a prior koensayr build:\n\n```bash\nadb shell rm -rf /data/data/com.innioasis.y1/code_cache/secondary-dexes/\n```\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"9c5fab80ba005552154a318e6aa083fb2c6489559c1e4efb7d7a36b1a85bb325\",\"size\":550854730,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"8a4d9201a4ce12a9c7c99d00c34217f8bb7651bfd8649ce4dee3822309f2064b\",\"size\":312615887,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"f72ef5b3d02baf3c03cc3c25babbd9b0d4ea305b99c9b6f75332acd2b45f0d9f\",\"size\":607684334,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"7ae19a1650496ad5e49a2b4583a1399cd3df7bc1e5e573d9f4ad40e9d25d6fe1\",\"size\":432588568,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"fd00dfa437db8747851a3c6bb6413f03f9a3f45b73a008eebc36889ca1b3110d\",\"size\":311030170,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"a612b99471a02c570d37120d43ef1210b35ddc5b515b0fcc54160c6cd6bfe04e\",\"size\":359292333,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T19:02:15Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"cbf737d867a9ce814dfc2a2c51a2ceb308d8e2c477f0d1a595d16710d5ba749f\",\"original_asset_sizes\":{\"build-manifest.json\":545,\"rom.zip\":308982866},\"original_assets\":[\"build-manifest.json\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"build-manifest.json\":14,\"rom-linux-arm64.zip\":1,\"rom-linux-legacy.zip\":1,\"rom-linux.zip\":2,\"rom-macos.zip\":4,\"rom-windows-legacy.zip\":1,\"rom-windows.zip\":2,\"rom.zip\":10},\"generated_at\":\"2026-11-12T19:02:15Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188443285,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:20:48Z",
@@ -24,59 +24,92 @@
         "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/706112375"
       },
       {
-        "id": 725041980,
+        "id": 740713819,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-linux-arm64.zip",
+        "size": 432588568,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T19:02:19Z",
+        "updated_at": "2026-11-12T19:02:45Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/740713819"
+      },
+      {
+        "id": 740713828,
+        "name": "rom-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-linux-legacy.zip",
+        "size": 311030170,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T19:02:19Z",
+        "updated_at": "2026-11-12T19:02:39Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/740713828"
+      },
+      {
+        "id": 740713820,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-linux.zip",
-        "size": 625664623,
+        "size": 607684334,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:01:49Z",
-        "updated_at": "2026-11-08T20:02:12Z",
-        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/725041980"
+        "created_at": "2026-11-12T19:02:19Z",
+        "updated_at": "2026-11-12T19:02:48Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/740713820"
       },
       {
-        "id": 725041989,
+        "id": 740715053,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-macos.zip",
-        "size": 359631921,
+        "size": 359292333,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:01:49Z",
-        "updated_at": "2026-11-08T20:02:06Z",
-        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/725041989"
+        "created_at": "2026-11-12T19:02:40Z",
+        "updated_at": "2026-11-12T19:02:54Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/740715053"
       },
       {
-        "id": 725041993,
+        "id": 740713815,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-windows-legacy.zip",
+        "size": 312615887,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T19:02:19Z",
+        "updated_at": "2026-11-12T19:02:40Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/740713815"
+      },
+      {
+        "id": 740713827,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-windows.zip",
-        "size": 444175641,
-        "download_count": 0,
+        "size": 550854730,
+        "download_count": 6,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:01:49Z",
-        "updated_at": "2026-11-08T20:02:04Z",
-        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/725041993"
+        "created_at": "2026-11-12T19:02:19Z",
+        "updated_at": "2026-11-12T19:02:55Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/740713827"
       },
       {
-        "id": 706112376,
+        "id": 733043515,
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom.zip",
-        "size": 309074505,
-        "download_count": 1,
+        "size": 308982866,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-03T15:35:55Z",
-        "updated_at": "2026-11-03T15:36:22Z",
-        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/706112376"
+        "created_at": "2026-11-10T21:38:04Z",
+        "updated_at": "2026-11-10T21:38:27Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/733043515"
       },
       {
-        "id": 731242848,
+        "id": 745436674,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/stats.txt",
-        "size": 2184,
+        "size": 4055,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T11:46:28Z",
-        "updated_at": "2026-11-10T11:46:28Z",
-        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/731242848"
+        "created_at": "2026-11-13T22:35:23Z",
+        "updated_at": "2026-11-13T22:35:23Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/745436674"
       }
     ]
   },
@@ -84,7 +117,7 @@
     "id": 432920526,
     "tag_name": "2.4.0-koensayr-3.0.2",
     "name": "Portable Flashing Package: 2.4.0-koensayr-3.0.2",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.2#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# 2.4.0-koensayr-3.0.2\n\nKoensayr is a mod for the Y1's OS that makes the following improvements to the original OS:\n\nBrowsing the albums of an artist from Main Menu > Artists > Albums\n\nAdds Bluetooth remote control support and track info displayed on your bluetooth receiver, perfect for using your Y1 in a car with the infotainment system.\n\n\n---\n\n## Build metadata\n\nPatched **rom.zip** built from stock **3.0.2** by [koensayr-auto](https://github.com/ryan-specter/koensayr-auto) v2.4.0.\n\n## Upstream\n\n- Repository: [`y1-community/y1-stock-rom`](https://github.com/y1-community/y1-stock-rom)\n- Release tag: `3.0.2`\n- Asset: `rom.zip`\n- Upstream SHA256: `7ee9aa5bf1c134f71e1f41d92cb90975f2225f9ad9db9617b392ddf653f764b1`\n\n## Koensayr build\n\n- Version: `2.4.0`\n- Git revision: `16f65333696597b084d34931d4c94f7c5352e9e5` (includes `com.innioasis.y1` APK patches under `src/patches/`)\n\n## Build output\n\n- Patched `rom.zip` SHA256: `a791e3de39a27978f15142be02d051fbac57c3e6a8d79088a73db0dbdb39f1b5` (see `build-manifest.json` on this release)\n- Upstream `rom.zip` was re-hashed at build time; output must differ (CI enforces this).\n\n## Patches (`--all`)\n\n- Music-player UX (Artist\u2192Album navigation)\n- Bluetooth pairing (`audio.conf` / `auto_pairing.conf` / `blacklist.conf` / `build.prop`)\n- System config (ADB debugging, bloatware removal)\n- Root (`/system/xbin/su`, mode 06755)\n- AVRCP 1.3 metadata + control + Y1Bridge\n\nDiagnostic scripts (`tools/dual-capture.sh`, gdb attach, `btlog-dump`) are **not** included in the ROM \u2014 see the repo [Diagnostics](https://github.com/ryan-specter/koensayr-auto#diagnostics).\n\n## After flash\n\nIf AVRCP / MultiDex classes fail to load after upgrading from a prior koensayr build:\n\n```bash\nadb shell rm -rf /data/data/com.innioasis.y1/code_cache/secondary-dexes/\n```\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"e87f014990773d0b6be6f1a381cbd94a6ec51a49b5354389152d3e8daea42638\",\"size\":645607855,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"b33551f5a947e0562e07c9b1e0be900b243d5f26a61beb727740e280bb85b5f1\",\"size\":379575153,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"f0e486fe74634063afa5d6a7c84723ec9f49d38b78892489a4c58b072415311a\",\"size\":464118873,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-08T20:00:22Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"4af3877706a818b8f30b7862c037f77c51673a32d7ad105180a6ea732099ee22\",\"original_assets\":[\"build-manifest.json\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"build-manifest.json\":9,\"rom-linux.zip\":1,\"rom-macos.zip\":3,\"rom-windows.zip\":1,\"rom.zip\":9},\"generated_at\":\"2026-11-08T20:00:22Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.2#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.2&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Fkoensayr-auto-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.2&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fkoensayr-auto-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.2&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Fkoensayr-auto-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.2&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fkoensayr-auto-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.2&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fkoensayr-auto-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ryan-specter%2Fkoensayr-auto&amp;tag=2.4.0-koensayr-3.0.2&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Fkoensayr-auto-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# 2.4.0-koensayr-3.0.2\n\nKoensayr is a mod for the Y1's OS that makes the following improvements to the original OS:\n\nBrowsing the albums of an artist from Main Menu > Artists > Albums\n\nAdds Bluetooth remote control support and track info displayed on your bluetooth receiver, perfect for using your Y1 in a car with the infotainment system.\n\n\n---\n\n## Build metadata\n\nPatched **rom.zip** built from stock **3.0.2** by [koensayr-auto](https://github.com/ryan-specter/koensayr-auto) v2.4.0.\n\n## Upstream\n\n- Repository: [`y1-community/y1-stock-rom`](https://github.com/y1-community/y1-stock-rom)\n- Release tag: `3.0.2`\n- Asset: `rom.zip`\n- Upstream SHA256: `7ee9aa5bf1c134f71e1f41d92cb90975f2225f9ad9db9617b392ddf653f764b1`\n\n## Koensayr build\n\n- Version: `2.4.0`\n- Git revision: `16f65333696597b084d34931d4c94f7c5352e9e5` (includes `com.innioasis.y1` APK patches under `src/patches/`)\n\n## Build output\n\n- Patched `rom.zip` SHA256: `a791e3de39a27978f15142be02d051fbac57c3e6a8d79088a73db0dbdb39f1b5` (see `build-manifest.json` on this release)\n- Upstream `rom.zip` was re-hashed at build time; output must differ (CI enforces this).\n\n## Patches (`--all`)\n\n- Music-player UX (Artist\u2192Album navigation)\n- Bluetooth pairing (`audio.conf` / `auto_pairing.conf` / `blacklist.conf` / `build.prop`)\n- System config (ADB debugging, bloatware removal)\n- Root (`/system/xbin/su`, mode 06755)\n- AVRCP 1.3 metadata + control + Y1Bridge\n\nDiagnostic scripts (`tools/dual-capture.sh`, gdb attach, `btlog-dump`) are **not** included in the ROM \u2014 see the repo [Diagnostics](https://github.com/ryan-specter/koensayr-auto#diagnostics).\n\n## After flash\n\nIf AVRCP / MultiDex classes fail to load after upgrading from a prior koensayr build:\n\n```bash\nadb shell rm -rf /data/data/com.innioasis.y1/code_cache/secondary-dexes/\n```\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"e83c881858561f7c7dcfac586525c361eeddccaccd2293a4a00f0691a56b3147\",\"size\":570802497,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"e3db5f7dd886564af2fce3bdadfa2bf75a1bab4495b305d6014ff4544f5c73b5\",\"size\":332563654,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"7695e13476c4c6a3a23adc599083ff803c1307cc63ad8b441cce32e01cf28132\",\"size\":627632101,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"306f8409ccae463d1f6046d6ddb64fa4f23779cc412ae63154f6118ba9f11d3b\",\"size\":452536335,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"7789b88b52ad20a8421a8305351a9da154ca935aeef39bc68416c2105a0bbcd0\",\"size\":330977937,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"5a47d0e841891e92d5e3a09bb27ddf9dcbbd055fb0e0f95118962608a61e328b\",\"size\":379240100,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T18:57:28Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"70ca874a7071ca77041f435ccfdb7d893655dc19ddbad25746e7707e07ff122b\",\"original_asset_sizes\":{\"build-manifest.json\":538,\"rom.zip\":328930606},\"original_assets\":[\"build-manifest.json\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"build-manifest.json\":14,\"rom-linux-arm64.zip\":1,\"rom-linux-legacy.zip\":1,\"rom-linux.zip\":2,\"rom-macos.zip\":4,\"rom-windows-legacy.zip\":1,\"rom-windows.zip\":2,\"rom.zip\":10},\"generated_at\":\"2026-11-12T18:57:28Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188443285,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:36:57Z",
@@ -105,59 +138,92 @@
         "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/706206873"
       },
       {
-        "id": 725039196,
+        "id": 740698010,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-linux-arm64.zip",
+        "size": 452536335,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T18:57:32Z",
+        "updated_at": "2026-11-12T18:57:54Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/740698010"
+      },
+      {
+        "id": 740698005,
+        "name": "rom-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-linux-legacy.zip",
+        "size": 330977937,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T18:57:32Z",
+        "updated_at": "2026-11-12T18:57:46Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/740698005"
+      },
+      {
+        "id": 740698009,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-linux.zip",
-        "size": 645607855,
+        "size": 627632101,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:00:26Z",
-        "updated_at": "2026-11-08T20:00:53Z",
-        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/725039196"
+        "created_at": "2026-11-12T18:57:32Z",
+        "updated_at": "2026-11-12T18:58:00Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/740698009"
       },
       {
-        "id": 725039190,
+        "id": 740698723,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-macos.zip",
-        "size": 379575153,
+        "size": 379240100,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:00:26Z",
-        "updated_at": "2026-11-08T20:00:51Z",
-        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/725039190"
+        "created_at": "2026-11-12T18:57:46Z",
+        "updated_at": "2026-11-12T18:57:58Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/740698723"
       },
       {
-        "id": 725039189,
+        "id": 740698011,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-windows-legacy.zip",
+        "size": 332563654,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T18:57:32Z",
+        "updated_at": "2026-11-12T18:57:46Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/740698011"
+      },
+      {
+        "id": 740698008,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-windows.zip",
-        "size": 464118873,
-        "download_count": 0,
+        "size": 570802497,
+        "download_count": 5,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:00:26Z",
-        "updated_at": "2026-11-08T20:00:50Z",
-        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/725039189"
+        "created_at": "2026-11-12T18:57:32Z",
+        "updated_at": "2026-11-12T18:57:52Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/740698008"
       },
       {
-        "id": 706206861,
+        "id": 733031642,
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom.zip",
-        "size": 329013283,
-        "download_count": 1,
+        "size": 328930606,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-03T16:05:23Z",
-        "updated_at": "2026-11-03T16:05:42Z",
-        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/706206861"
+        "created_at": "2026-11-10T21:34:16Z",
+        "updated_at": "2026-11-10T21:34:31Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/733031642"
       },
       {
-        "id": 731242767,
+        "id": 745436585,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/stats.txt",
-        "size": 2184,
+        "size": 4055,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T11:46:26Z",
-        "updated_at": "2026-11-10T11:46:26Z",
-        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/731242767"
+        "created_at": "2026-11-13T22:35:21Z",
+        "updated_at": "2026-11-13T22:35:22Z",
+        "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/745436585"
       }
     ]
   }

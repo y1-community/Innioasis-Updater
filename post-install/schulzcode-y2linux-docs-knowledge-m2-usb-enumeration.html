@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261111cards" defer></script>
+  <script src="../site-init.js?v=20261110warn" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -79,12 +79,12 @@
 <p>Only exact <code>LOG1\n</code> requests a stream. It emits <code>Y2LOG1 M2-USBACM-03</code> (01/02 in the earlier candidates), retained PID1 startup/mount/sleep/baseline rows and heartbeat/status/error rows, rewinds <code>/dev/kmsg</code> to the oldest available kernel-ring record, and continues both. Kernel records retain native level/sequence/timestamp; PID1 records identify the source and BEAT. The early kernel ring is128KiB; PID1 history8KiB, TX queue32KiB, record buffer8KiB. Full history keeps its early records and explicitly reports loss; queue overflow and kernel EPIPE overrun have GAP records. This is bounded, not a lossless panic/crash recorder. Each once-per-heartbeat service performs at most one32-byte command read,16 kmsg reads and8 partial writes; absent/slow readers and malformed input do not wait. Flush tty output before close.</p>
 <p><a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fbuild%2Fusb-log-capture.md">Host procedure</a> validates the CDC ACM USB parent, records descriptors/path/timestamps/raw bytes/hash and asserts DTR before LOG1. The automatic selector refuses ambiguity; tty numbering alone proves nothing. PTY fixtures are labeled as such and never count as physical enumeration.</p>
 <h2 id="qualification-remaining">Qualification remaining</h2>
-<p>The first candidate combines the reviewed dependency chain, not its proof. Physical attachment, USB reset/control requests, ACM enumeration, log transfer, continued heartbeat and retained calibration require owner hardware evidence. Connected-start recovery and reconnect after a physical detach are deliberately unimplemented in this bounded first-attachment trial. The relay can reopen and replay a surviving tty, but that is not controller reconnect qualification. #27&#x27;s late-open/non-reading/reconnect criteria remain intact and unfulfilled on hardware. #23, #27, #28 and every M2 exit gap stay open; M1 and later gates unchanged.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<p>The first candidate combines the reviewed dependency chain, not its proof. Physical attachment, USB reset/control requests, ACM enumeration, log transfer, continued heartbeat and retained calibration require owner hardware evidence. Connected-start recovery and reconnect after a physical detach are deliberately unimplemented in this bounded first-attachment trial. The relay can reopen and replay a surviving tty, but that is not controller reconnect qualification. #27&#x27;s late-open/non-reading/reconnect criteria remain intact and unfulfilled on hardware. #23, #27, #28 and every M2 exit gap stay open; M1 and later gates unchanged.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261110inline5" defer></script>
-<script src="../portable-zip-links.js?v=20261111zip" defer></script>
-<script src="../nav.js?v=20261111nav" defer></script>
-<script src="../site-locale.js?v=20261111i18nfix" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

@@ -6,7 +6,6 @@ window.INNIOASIS_README_PAGES = {
     "name": "Classy",
     "page": "firmware-info/classyplayer-classy.html",
     "slugs": [
-      "classy-y1",
       "inniclassic-y2"
     ]
   },

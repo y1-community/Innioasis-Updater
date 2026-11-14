@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Classy Release History & Style Examples - Innioasis Updater</title>
+  <meta name="description" content="Classy Release History & Style Examples Findings from the 2026-10 Release Audit 1. Tag Chronology & Versioning : - Releases on ClassyPlayer/Classy formerly JonaszPotoniec">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/classyplayer-classy-.agents-skills-release-notes-references-release-history.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Classy Release History & Style Examples - Innioasis Updater">
+  <meta property="og:description" content="Classy Release History & Style Examples Findings from the 2026-10 Release Audit 1. Tag Chronology & Versioning : - Releases on ClassyPlayer/Classy formerly JonaszPotoniec">
+  <meta property="og:url" content="https://innioasis.app/post-install/classyplayer-classy-.agents-skills-release-notes-references-release-history.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Classy Release History & Style Examples - Innioasis Updater">
+  <meta name="twitter:description" content="Classy Release History & Style Examples Findings from the 2026-10 Release Audit 1. Tag Chronology & Versioning : - Releases on ClassyPlayer/Classy formerly JonaszPotoniec">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=inniclassic-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Classy · Y2</p><h1>Classy Release History &amp; Style Examples</h1><p class="lumen-lead">Classy build for the Innioasis Y2, formerly Inniclassic for Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=inniclassic-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=inniclassic-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="classy-release-history--style-examples">Classy Release History &amp; Style Examples</h1>
+<h2 id="findings-from-the-2026-10-release-audit">Findings from the 2026-10 Release Audit</h2>
+<ol><li><strong>Tag Chronology &amp; Versioning</strong>:<ul><li>Releases on <code>ClassyPlayer/Classy</code> (formerly <code>JonaszPotoniec/inniclassic-y2</code>) use <code>YYYYMMDD</code> tags (and <code>YYYYMMDD-vN</code> or <code>YYYYMMDD-build.N</code> for same-day revisions).</li><li>Since 2026-11, there are two channels. Stable releases are marked Latest and use <code>YYYYMMDD</code>, then <code>YYYYMMDD-vN</code>. Betas are GitHub pre-releases and use <code>YYYYMMDD-beta</code>, then <code>YYYYMMDD-beta.N</code>. The first build of a day has no number; from the second build of that day, one counter is shared by both channels (for example <code>20261114-beta</code>, <code>20261114-beta.2</code>, <code>20261114-v3</code>).</li><li>A beta compares against the previous release of either kind. A stable release compares against the previous stable release, so its notes cover the betas in between. A beta&#x27;s notes start with a line saying it is a beta.</li><li><code>y1-exp.N</code> tags are hand-made Y1 test pre-releases without <code>update.json</code>. They are not part of the compare chain.</li><li><code>v1.5.0</code> (<code>97775e3</code>) was the initial internal tag before the CI naming switch; <code>20260927</code> (<code>ef9d2fc</code>) is the first published GitHub Release and covers <code>v1.5.0...20260927</code> (initial Innioasis Y2 support on top of upstream <code>1.4.3</code>).</li><li><code>20260928</code> was followed on the same day by <code>20260928-build.6</code>, which was then followed by <code>20260929</code>. Therefore <code>20260929</code> compares against <code>20260928-build.6</code> (<code>20260928-build.6...20260929</code>).</li></ul></li><li><strong>CI Release Workflow Behavior</strong>:<ul><li><code>.github/workflows/release.yml</code> builds <code>Classy-&lt;TAG&gt;.apk</code> (legacy <code>InniClassic-&lt;TAG&gt;.apk</code>), <code>update.json</code>, <code>rom_y2.zip</code>, <code>rom_y1_type_a.zip</code>, <code>rom_y1_type_b.zip</code>, and <code>SHA256SUMS.txt</code> (releases before the beta channel also had the copies <code>rom.zip</code> and <code>rom_type_b.zip</code>) when triggered manually from GitHub Actions (<code>workflow_dispatch</code>) or on release tags (it no longer publishes releases automatically on push to <code>main</code>).</li><li>Note that <code>20260927</code> predates OTA <code>update.json</code> (which was introduced in <code>20260928</code> via commit <code>40d1141</code>). All releases from <code>20260928</code> onward include <code>update.json</code>.</li><li>The <code>Prepare Release Notes</code> step in <code>.github/workflows/release.yml</code> writes a static <code>release_body.md</code> and sets <code>generate_release_notes: true</code>. When updating a release with <code>gh release edit &lt;TAG&gt; --notes-file ...</code>, replace the entire body using the clean template in <code>SKILL.md</code>.</li></ul></li></ol>
+<h2 id="reference-examples-humanized-style">Reference Examples (Humanized Style)</h2>
+<h3 id="example-1-20261012-feature--multi-part-bug-fix">Example 1: <code>20261012</code> (Feature + Multi-Part Bug Fix)</h3>
+<pre><code class="language-markdown">- Added Jellyfin sync so you can download music and videos directly from your Jellyfin server over Wi-Fi. You can sign in using QuickConnect (with an on-screen pairing code), username and password, or an API token, then sync all libraries or browse and pick specific folders. Sync options let you download album artwork, transcode videos for playback on the player, and remove local files that were deleted on the server, followed by an automatic library rescan when downloads finish.
+- Fixed four Bluetooth issues on the Y2:
+  - Toggling Bluetooth on now starts the MediaTek Bluetooth daemon (`mtkbt`) automatically (and starts it at boot in the ROM), fixing the bug where Bluetooth refused to turn back on or reconnect to paired headphones after being turned off.
+  - Turning Bluetooth off now stays off across reboots instead of turning itself back on at startup.
+  - &quot;Delete Device&quot; now verifies that unpairing succeeded before showing a confirmation message and refreshes the paired list cleanly.
+  - &quot;Connect Audio&quot; and &quot;Delete Device&quot; options are now visually indented beneath the selected device row.
+
+#### Release assets
+
+| File | Target device | Notes |
+| :--- | :--- | :--- |
+| `InniClassic-20261012.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
+| `update.json` | All devices | OTA update metadata for in-app updater |
+| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
+| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
+| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
+| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
+
+Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261011...20261012</code></pre>
+<h3 id="example-2-20261011-multi-feature-release-with-varied-openings">Example 2: <code>20261011</code> (Multi-Feature Release with Varied Openings)</h3>
+<pre><code class="language-markdown">- The About screen now uses a scrollable two-column iPod Classic layout showing song, video, album, and artist counts, software version, model number, and separate capacity and free space rows for both internal flash and the microSD card.
+- A new &quot;Battery Percentage&quot; setting draws the exact percentage and a compact charging bolt inside the battery icon, with contrasting text colors across the filled and empty parts of the indicator.
+- Genre browsing now follows the classic iPod hierarchy (`Genre -&gt; Artists / All Songs -&gt; Albums / All Songs -&gt; Songs`), and song lists have a Shuffle banner with a song counter at the top. Returning from Now Playing also highlights the playing track, fast scrolling no longer crashes on lists with header rows, and the wheel no longer gets stuck at list edges.
+- FM Radio now remembers your last tuned frequency and saved station presets across restarts, tunes smoothly with the wheel without screen flicker, supports hardware station seek, and routes audio directly to the 3.5mm headphone jack after pausing any playing music.
+- Factory OEM demo tracks in `custom_media` (such as *Despacito* and *Panama*) are no longer scanned, and an automatic cleanup migration removes them from existing libraries while stripping them from newly built ROMs.
+- Both button presses and touch events now reset the screen backlight sleep timer, and the screen stays awake automatically during library scans, radio scans, podcast downloads, video playback, and USB storage mode.
+
+#### Release assets
+
+| File | Target device | Notes |
+| :--- | :--- | :--- |
+| `InniClassic-20261011.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
+| `update.json` | All devices | OTA update metadata for in-app updater |
+| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
+| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
+| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
+| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
+
+Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261008...20261011</code></pre>
+<h2 id="published-release-tag-index">Published Release Tag Index</h2>
+<table><thead><tr><th style="text-align:left">Tag</th><th style="text-align:left">Previous Tag</th><th style="text-align:left">Summary of Changes</th></tr></thead><tbody><tr><td style="text-align:left"><code>20260927</code></td><td style="text-align:left"><code>v1.5.0</code></td><td style="text-align:left">Initial Y2 support, dual storage (<code>sdcard0</code> + <code>sdcard1</code>), microSD watchdog, Y2 click wheel keymap, Y2 FM radio permissions/routing</td></tr><tr><td style="text-align:left"><code>20260928</code></td><td style="text-align:left"><code>20260927</code></td><td style="text-align:left">Y2 quiet headphone volume curve (<code>libaudiocustparam.so</code>), OkHttp GitHub Releases OTA (<code>update.json</code>), Music Quiz cover sizing/ALAC art fix</td></tr><tr><td style="text-align:left"><code>20260928-build.6</code></td><td style="text-align:left"><code>20260928</code></td><td style="text-align:left">Safe Media Volume cap bypass (100% volume + touch slider), Polish translation</td></tr><tr><td style="text-align:left"><code>20260929</code></td><td style="text-align:left"><code>20260928-build.6</code></td><td style="text-align:left">Mute wheel clicks, touch sounds, and vibration when screen is off and Screen Off Control is disabled</td></tr><tr><td style="text-align:left"><code>20261001</code></td><td style="text-align:left"><code>20260929</code></td><td style="text-align:left">30-step virtual volume + sub-steps + iPod HUD, QWERTY keyboard + punctuation, buffered Cover Flow + <code>.y1_thumbs_cache</code>, Hold key lock, Now Playing/video handoff, UMS theme persistence</td></tr><tr><td style="text-align:left"><code>20261006</code></td><td style="text-align:left"><code>20261001</code></td><td style="text-align:left">USB Mass Storage connection prompt &amp; eject screen, 7-language localization pass</td></tr><tr><td style="text-align:left"><code>20261007</code></td><td style="text-align:left"><code>20261006</code></td><td style="text-align:left">Fix missing songs with matching titles across albums, versioned upgrade migration system</td></tr><tr><td style="text-align:left"><code>20261008</code></td><td style="text-align:left"><code>20261007</code></td><td style="text-align:left">Redesigned OTA update UI + Wi-Fi wait + reinstall option, <code>/system/app</code> reboot install fix, Tabler Wi-Fi icon + light theme status bar contrast</td></tr><tr><td style="text-align:left"><code>20261011</code></td><td style="text-align:left"><code>20261008</code></td><td style="text-align:left">Two-column iPod Classic About screen, Battery Percentage icon setting, Genre hierarchy + Shuffle banner + scroll fixes, FM Radio persistence &amp; 3.5mm routing, OEM demo track purge (<code>custom_media</code>), backlight timer fixes</td></tr><tr><td style="text-align:left"><code>20261012</code></td><td style="text-align:left"><code>20261011</code></td><td style="text-align:left">Jellyfin library sync (QuickConnect/credentials/token, folder picker, transcode, auto-scan), Y2 Bluetooth fixes (<code>mtkbt</code> startup, power-off persistence, delete verification, option indentation)</td></tr></tbody></table></article><p class="lumen-doc-footer-note">These are Classy's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=inniclassic-y2">ClassyPlayer's <em>Classy</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=ClassyPlayer%2FClassy&amp;software=inniclassic-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

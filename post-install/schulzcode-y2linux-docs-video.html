@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Videos on the Y2 - Innioasis Updater</title>
+  <meta name="description" content="Videos on the Y2 Status: in public releases since Beta 9.3.25 2026-11-12, as an early version: built and tried on one player; expect bugs. This page says what it does and">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-video.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Videos on the Y2 - Innioasis Updater">
+  <meta property="og:description" content="Videos on the Y2 Status: in public releases since Beta 9.3.25 2026-11-12, as an early version: built and tried on one player; expect bugs. This page says what it does and">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-video.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Videos on the Y2 - Innioasis Updater">
+  <meta name="twitter:description" content="Videos on the Y2 Status: in public releases since Beta 9.3.25 2026-11-12, as an early version: built and tried on one player; expect bugs. This page says what it does and">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Videos on the Y2</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="videos-on-the-y2">Videos on the Y2</h1>
+<p>Status: **in public releases since Beta 9.3.25 (2026-11-12), as an early version: built and tried on one player; expect bugs.** This page says what it does and what it does not do yet. How it is built: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fplanning%2FVIDEO-PLAYBACK-PLAN.md">video playback plan</a>; what the hardware decoder does: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fknowledge%2Fvideo-decoder.md">MT6582 hardware video decoder</a>.</p>
+<h2 id="using-it">Using it</h2>
+<p>Copy video files onto Internal Storage or the SD card, like songs (USB file transfer, or the card in a computer). Any folder works; a folder of your own such as <code>Videos</code> keeps them together. After the next scan <strong>Videos</strong> stands on Home. A film plays on Now Playing: the picture fills the screen, and a button press shows its title and a time line for three seconds (always while paused). Play/Pause, Previous/Next, the wheel and the volume work as they do for a song, and the sound goes to whatever output is chosen. A film goes on where it was left. The screen stays on while a film plays.</p>
+<p>Subtitles show when the file carries a text track, or when a subtitle file with the same name lies beside it (<code>Film.mkv</code> and <code>Film.srt</code>, <code>.ass</code>, <code>.ssa</code> or <code>.vtt</code>).</p>
+<p>Films never appear among the songs, in the albums or artists, in shuffles of the library or on Last.fm.</p>
+<h2 id="what-plays">What plays</h2>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Containers</td><td><code>.mp4</code> <code>.m4v</code> <code>.mov</code> <code>.mkv</code> <code>.webm</code> <code>.avi</code></td></tr><tr><td>Picture, on the hardware decoder</td><td>H.264 (Baseline, Main, High), frames and fields (interlaced too), 4:2:0, 8 bit, up to 1920×1088; MPEG-4 Part 2 (Xvid, DivX 4/5: Simple and Advanced Simple profile), progressive, up to 1920×1088</td></tr><tr><td>Picture, in software</td><td>H.264 the hardware refuses (other chroma formats, 10 bit), MPEG-4 Part 2 the hardware refuses (interlaced, global motion compensation, data partitioning), DivX 3, H.263, VP8, VP9</td></tr><tr><td>Sound</td><td>what songs use (AAC, MP3, FLAC, Vorbis, Opus, ALAC, PCM), and AC-3</td></tr><tr><td>Subtitles</td><td>SubRip, ASS/SSA, WebVTT, MP4 timed text; shown as plain text</td></tr><tr><td>Not played</td><td>HEVC (H.265), AV1, DTS sound, picture subtitles (DVD, Blu-ray), files with a picture and no sound</td></tr></tbody></table>
+<p>The screen is 480×360, so every picture is shrunk to it; a 1080p file looks no better than a 480p file and costs more battery and storage.</p>
+<h2 id="the-best-file-and-converting">The best file, and converting</h2>
+<p>MP4 with H.264 video (8 bit) and AAC sound, 640×360 (480×360 for 4:3 films), up to 30 pictures a second, about 1 Mbit/s: roughly 8 MB a minute, a two-hour film under 1 GB. With <a href="https://ffmpeg.org" target="_blank" rel="noopener noreferrer">FFmpeg</a>:</p>
+<pre><code>ffmpeg -i film.mkv -vf &quot;scale=-2:360&quot; -r 30 -c:v libx264 -profile:v high -pix_fmt yuv420p -crf 23 -c:a aac -b:a 160k film.mp4</code></pre>
+<p>For a 4:3 film use <code>scale=480:360</code>. In <a href="https://handbrake.fr" target="_blank" rel="noopener noreferrer">HandBrake</a>: preset Fast 480p30, format MP4, encoder H.264, height 360 under Dimensions (settings named from its preset list, not tried here). Keep subtitles as a <code>.srt</code> file with the film&#x27;s name or as a text track. Convert films in H.265/HEVC or AV1, films with DTS sound only, and large VP9 files; films in H.264 or Xvid/DivX up to 1920×1080 play as they are. On a FAT32 card a file cannot be larger than 4 GB.</p>
+<h2 id="checked-on-the-owners-player-test-build-243">Checked on the owner&#x27;s player (test build 243)</h2>
+<ul><li>The hardware decoder&#x27;s pictures are byte-identical to FFmpeg&#x27;s software decoding: 95 pictures of six streams<p>through the driver alone, 780 pictures of nine files through FFmpeg (details in the decoder document).</p></li><li>By screen captures from the player: Videos on Home, the list with a picture of each film, films on Now<p>Playing, the paused view with title and time line, seeking, going on where a film was left, subtitles from a <code>.srt</code> file. The time code burnt into the test film (4.13 s) lay within the sound position reported around the capture (4.0 to 4.6 s).</p></li><li>Four test films, ten seconds each, pictures shown / dropped, and the time one picture costs:</li></ul>
+<table><thead><tr><th>Film</th><th>Decoded by</th><th>Shown / dropped</th><th>Decoding</th><th>Shrinking and colour</th></tr></thead><tbody><tr><td>H.264 High 1280×720, 30 fps</td><td>hardware</td><td>307 / 9</td><td>4.2 ms</td><td>17 ms</td></tr><tr><td>H.264 High 1920×1080, 24 fps</td><td>hardware</td><td>238 / 0</td><td>12 ms</td><td>22 ms</td></tr><tr><td>MPEG-4 720×576, 25 fps</td><td>software</td><td>263 / 0</td><td>0.5 ms in the reader (the rest on four decoder threads, 13 % of a core)</td><td>19 ms</td></tr><tr><td>VP9 640×360, 25 fps</td><td>software</td><td>270 / 0</td><td>0.4 ms in the reader (decoder threads 23 % of a core)</td><td>16 ms</td></tr></tbody></table>
+<p>  That table is test build 243. Since then (test build 245) shrinking and colour run in NEON: measured alone   on the player at full clock, 7.0 ms for a 1280×720 picture (was 11.3), 10.6 ms at 1920×1080 (was 16.7),   5.7 ms for 640×360. What is left is mostly fetching the picture from memory. The same four films on build   245, ten seconds each: no picture dropped in any of them, and all of Reborn used 61 % (720p H.264), 64 %   (1080p H.264), 78 % (MPEG-4 576p) and 80 % (VP9 360p) of one core.</p>
+<p>  Software MPEG-4 depends on the material: the flat test pattern decodes in 1.7 ms a picture at 720×576, a   noisy 720×576 film at about 3 Mbit/s in 4.7 ms, a noisy 1280×720 film at about 6.5 Mbit/s in 10.8 ms (on the   four decoder threads).</p>
+<p>  Since test build 246 MPEG-4 Part 2 decodes on the hardware as well. Hardware against software, picture by   picture on the player (<code>vdec-ffmpeg</code>, ten films, 199 to 499 pictures each): the hardware has its own inverse   transform, as the standard allows, so pictures are not identical; no sample was further off than 5 levels   (of 255), with Xvid&#x27;s B pictures, quarter-sample motion, its own quantiser matrices and FFmpeg&#x27;s   multi-slice files. One picture takes the decoder 2.0 ms at 720×576 and 1.5 Mbit/s, 4.2 ms at 1280×720 and   3 Mbit/s, 11 ms at 1920×1080 and 22 Mbit/s, on one thread that mostly waits. In Reborn an Xvid film at   1280×720 used 57 % of one core in all, no picture dropped; the 720×576 pattern above 59 % (78 % in software).   A film made with global motion compensation or as interlaced fields is taken by the software decoder as   before.</p>
+<p>  All of Reborn used 77 to 87 % of one of the four cores while a film played (build 243); the governor ran that core below   its full clock, so the times above are longer than the work needs. The decoder&#x27;s power goes off 200 ms after   the last picture (seen while paused) and the device is closed when Now Playing is left.</p>
+<h2 id="not-done-yet">Not done yet</h2>
+<ul><li>Sleep and wake with a film open have not been tested (it needs a hand on the Power button); battery use while<p>a film plays has not been measured (the player was on the cable). Shrinking the picture is the largest cost and is plain C; it has room to get faster.</p></li><li>Damaged files, very long films and long-term reference pictures have not been tried.</li><li>Picture and sound are aligned by the position the player reports; nobody has judged lip sync by eye and ear<p>yet. Over Bluetooth the sound is later than the picture by the headphones&#x27; own delay (not corrected, by the owner&#x27;s decision for the first version).</p></li><li>Interlaced MPEG-4 Part 2 stays in software: the hardware decodes its I and P pictures, but some macroblocks<p>of its B pictures come out wrong and the cause was not found. FFmpeg&#x27;s software decoder itself gives slightly different B pictures for such films depending on its thread count (seen on the PC too).</p></li><li>No choice of subtitle or sound track (the first text track and the default sound track are used), no switch<p>to turn subtitles off.</p></li><li>Skins draw their own lists; the film itself always uses Reborn&#x27;s own picture screen.</li><li>A file with pictures and no sound is refused.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

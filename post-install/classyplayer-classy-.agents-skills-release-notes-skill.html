@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Classy Release Notes & Changelog Guide - Innioasis Updater</title>
+  <meta name="description" content="--- name: release-notes description: - Draft, audit, and update GitHub Release descriptions and changelogs for ClassyPlayer/Classy using the gh CLI and Humanizer writing">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/classyplayer-classy-.agents-skills-release-notes-skill.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Classy Release Notes & Changelog Guide - Innioasis Updater">
+  <meta property="og:description" content="--- name: release-notes description: - Draft, audit, and update GitHub Release descriptions and changelogs for ClassyPlayer/Classy using the gh CLI and Humanizer writing">
+  <meta property="og:url" content="https://innioasis.app/post-install/classyplayer-classy-.agents-skills-release-notes-skill.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Classy Release Notes & Changelog Guide - Innioasis Updater">
+  <meta name="twitter:description" content="--- name: release-notes description: - Draft, audit, and update GitHub Release descriptions and changelogs for ClassyPlayer/Classy using the gh CLI and Humanizer writing">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=inniclassic-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Classy · Y2</p><h1>Classy Release Notes &amp; Changelog Guide</h1><p class="lumen-lead">Classy build for the Innioasis Y2, formerly Inniclassic for Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=inniclassic-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=inniclassic-y2">Install guide</a></div></header><article class="lumen-doc-body"><hr>
+<p>name: release-notes description: &gt;-   Draft, audit, and update GitHub Release descriptions and changelogs for   ClassyPlayer/Classy using the gh CLI and Humanizer writing rules.   Use this skill whenever preparing a new release, updating existing GitHub</p>
+<h2>Releases, or writing user-facing changelog entries for Classy.</h2>
+<h1 id="classy-release-notes--changelog-guide">Classy Release Notes &amp; Changelog Guide</h1>
+<p>Use this skill to write or update GitHub Release descriptions on <code>ClassyPlayer/Classy</code> so every release starts with a human-readable changelog focused on user impact and features.</p>
+<h2 id="release-description-structure">Release Description Structure</h2>
+<p>Every GitHub release body must follow this exact structure:</p>
+<ol><li><strong>Human-readable changelog first</strong>:<ul><li>For a beta (a GitHub pre-release, tag <code>YYYYMMDD-beta</code> or <code>YYYYMMDD-beta.N</code>), the first line says it is a beta, for example: <code>This is a beta release. To get it on the player, choose Settings &gt; General &gt; System Update &gt; Update Channel &gt; Beta.</code> The bullets follow after a blank line.</li><li>Otherwise, start immediately with the changelog bullets (or a short one-sentence overview for major milestone releases, followed by bullets).</li><li>Do <strong>not</strong> include a top-level <code>### Classy Release</code> heading or &quot;Automated build with full support...&quot; boilerplate.</li><li>Focus on what changed for the user (features, UI changes, audio/hardware behavior, bug fixes) with light technical context where helpful (for example, <code>mtkbt</code> daemon, <code>libaudiocustparam.so</code>, <code>/system/app</code>, <code>.y1_thumbs_cache</code>).</li></ul></li><li><strong>Release assets table</strong>:<ul><li>Use sentence case with no emoji (<code>#### Release assets</code>).</li><li>Keep file names in inline code (<code>Classy-&lt;TAG&gt;.apk</code>, <code>update.json</code>, <code>rom_y2.zip</code>, <code>rom_y1_type_a.zip</code>, <code>rom_y1_type_b.zip</code>, <code>SHA256SUMS.txt</code>) without bold decoration on every cell.</li></ul></li><li><strong>Full changelog link</strong>:<ul><li>End with <code>Full changelog: https://github.com/ClassyPlayer/Classy/compare/&lt;PREV_TAG&gt;...&lt;TAG&gt;</code>.</li><li><strong>Never</strong> include the <code>Flashing Instructions (SP Flash Tool)</code> section or decorative <code>---</code> horizontal rules.</li></ul></li></ol>
+<h3 id="template">Template</h3>
+<pre><code class="language-markdown">- &lt;Bullet 1: user-facing feature or fix&gt;
+- &lt;Bullet 2: user-facing feature or fix&gt;
+
+#### Release assets
+
+| File | Target device | Notes |
+| :--- | :--- | :--- |
+| `Classy-&lt;TAG&gt;.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
+| `update.json` | All devices | OTA update metadata for in-app updater |
+| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
+| `rom_y1_type_a.zip` | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
+| `rom_y1_type_b.zip` | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
+| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
+
+Full changelog: https://github.com/ClassyPlayer/Classy/compare/&lt;PREV_TAG&gt;...&lt;TAG&gt;</code></pre>
+<h2 id="tags-and-the-compare-range">Tags and the compare range</h2>
+<p>Tags are based on the build date. The first build of a day has no number: <code>20261114</code> (stable) or <code>20261114-beta</code> (beta). From the second build of that day there is a number, from one counter shared by both channels: <code>20261114-vN</code> (stable) or <code>20261114-beta.N</code> (beta). Older tags also include <code>YYYYMMDD-build.N</code>. The <code>y1-exp.N</code> pre-releases are hand-made test builds: never use them as <code>&lt;PREV_TAG&gt;</code>.</p>
+<p>Choose <code>&lt;PREV_TAG&gt;</code> by the kind of release:</p>
+<ul><li>A beta compares against the previous release of either kind (beta or stable).</li><li>A stable release compares against the previous stable release, so its notes cover all the betas in between. Write them for players who skipped the betas: describe the end result, not each beta&#x27;s fixes to features that were new in those betas.</li></ul>
+<p>A promoted stable release is a new build of the same commit as its beta, so <code>git log &lt;PREV_STABLE&gt;..&lt;STABLE_TAG&gt;</code> already covers the betas. See <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FClassyPlayer%2FClassy%2Fblob%2FHEAD%2FRELEASING.md">RELEASING.md</a> for the release process.</p>
+<h2 id="humanizer-writing-rules">Humanizer Writing Rules</h2>
+<p>Apply the <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fblader%2Fhumanizer%2Fraw%2Frefs%2Fheads%2Fmain%2FSKILL.md">blader/humanizer</a> guidelines to every release description:</p>
+<ol><li><strong>No bold labels on list items (§19)</strong>: Do not start bullets with <code>- **Feature Name:** ...</code> or bold random words for decoration. Write normal sentences in each bullet.</li><li><strong>Vary sentence openings (§7)</strong>: Do not start every bullet with a past-tense verb (<code>Added...</code>, <code>Fixed...</code>, <code>Improved...</code>). Mix subject-first openings (<code>The About screen now...</code>, <code>FM Radio remembers...</code>, <code>Volume uses...</code>) with action openings.</li><li><strong>No em dashes or en dashes (§8)</strong>: Do not use <code>—</code>, <code>–</code>, or spaced double hyphens (<code>--</code>) in prose. Use commas, periods, colons, or parentheses instead. (Hyphens inside inline code, paths, or UI quotes like <code>&quot;Connected - Eject before disconnecting&quot;</code> are fine.)</li><li><strong>No &quot;not X, but Y&quot; contrasts (§1) or one-line closers (§2)</strong>: State what changed directly without rhetorical contrast or summary taglines.</li><li><strong>No AI watch words (§12-§18)</strong>: Avoid <code>additionally</code>, <code>align with</code>, <code>bolstered</code>, <code>crucial</code>, <code>deep dive</code>, <code>delve</code>, <code>enduring</code>, <code>enhance</code>, <code>featuring</code>, <code>boasts</code>, <code>serves as</code>, <code>offers</code>, <code>garner</code>, <code>highlight</code>, <code>interplay</code>, <code>intricate</code>, <code>key</code> (adjective), <code>landscape</code>, <code>meticulous</code>, <code>pivotal</code>, <code>quietly</code>, <code>robust</code> (figurative), <code>seamless</code>, <code>showcase</code>, <code>tapestry</code>, <code>testament</code>, <code>underscore</code>, <code>valuable</code>, <code>vibrant</code>, and shallow <code>-ing</code> riders (<code>, ensuring...</code>, <code>, highlighting...</code>, <code>, reflecting...</code>).</li><li><strong>Decorative formatting (§20-§21)</strong>: Use sentence-case headings (<code>#### Release assets</code>), no emojis in headings or bullets, no horizontal rules (<code>---</code>), and straight quotes (<code>&quot;</code>).</li><li><strong>Strict factual accuracy</strong>: Every detail must come from the git commits in the tag range. Never invent causes, metrics, or behavior.</li></ol>
+<h2 id="workflow-for-updating-a-new-release">Workflow for Updating a New Release</h2>
+<p>Note: Triggering the <strong>Build &amp; Release</strong> workflow manually from GitHub Actions (or pushing a release tag) publishes a pre-release (<code>channel: beta</code>, the default) or a release marked Latest (<code>channel: stable</code>). The release body comes from a static template that still contains the legacy <code>Flashing Instructions</code> block unless overwritten. Merging to <code>main</code> no longer deploys a release automatically. After a release is published (or when preparing release notes):</p>
+<ol><li><strong>List releases and find the tag range</strong> (pick <code>&lt;PREV_TAG&gt;</code> as described in <a href="#tags-and-the-compare-range">Tags and the compare range</a>; <code>gh release list</code> marks betas as <code>Pre-release</code> and the newest stable release as <code>Latest</code>):<p><code></code>`bash gh release list --repo ClassyPlayer/Classy --limit 20 git fetch --tags origin git log --format=&quot;- %h %s%n%w(0,4,4)%b&quot; &lt;PREV_TAG&gt;..&lt;NEW_TAG&gt; <code></code>`</p></li><li><strong>Inspect commits with short messages</strong>:<p>For any commit that only has a one-line subject, inspect its diff so you capture the real user impact: <code></code>`bash git show --stat &lt;COMMIT_SHA&gt; git show &lt;COMMIT_SHA&gt; -- app/src/main/assets/languages/english.json <code></code>`</p></li><li><strong>Draft and audit the release notes</strong>:<ul><li>Write the release body using the template above.</li><li>Check against the Humanizer rules (no <code>—</code>/<code>–</code>, no <code>- **Label:**</code>, varied bullet openings, no AI watch words, no <code>Flashing Instructions</code>).</li><li>Compare against past examples in <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FClassyPlayer%2FClassy%2Fblob%2FHEAD%2F.agents%2Fskills%2Frelease-notes%2Freferences%2Frelease-history.md">release-history.md</a>.</li></ul></li><li><strong>Update the GitHub Release</strong>:<p><code></code>`bash gh release edit &lt;NEW_TAG&gt; --repo ClassyPlayer/Classy --notes-file /tmp/release_notes.md rm -f /tmp/release_notes.md <code></code>`</p></li><li><strong>Verify</strong>:<p><code></code>`bash gh release view &lt;NEW_TAG&gt; --repo ClassyPlayer/Classy <code></code>`</p></li></ol></article><p class="lumen-doc-footer-note">These are Classy's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=inniclassic-y2">ClassyPlayer's <em>Classy</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=ClassyPlayer%2FClassy&amp;software=inniclassic-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

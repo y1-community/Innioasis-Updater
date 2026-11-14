@@ -4,7 +4,181 @@
   <title>Release notes from jarvissax/rondo</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/jarvissax/rondo/releases.atom"/>
-  <updated>2026-11-03T08:34:35Z</updated>
+  <updated>2026-11-12T11:47:50Z</updated>
+  <entry>
+    <id>tag:innioasis.app,2026:jarvissax/rondo/v3.0.2</id>
+    <updated>2026-11-12T11:47:50Z</updated>
+    <published>2026-11-12T11:47:50Z</published>
+    <title>Rondo 3.0.2</title>
+    <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v3.0.2"/>
+    <innioasis:tag_name>v3.0.2</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.2/rom.zip" title="rom.zip" length="529873460" type="application/zip" innioasis:download_count="14" innioasis:asset_id="739289677"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.2/rondo-3.0.2.rondo" title="rondo-3.0.2.rondo" length="17034596" type="application/octet-stream" innioasis:download_count="7" innioasis:asset_id="739281243"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="49" innioasis:asset_id="739289680"/>
+    <content type="text">**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it once to [Rondo server 3.1.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.1.0) (its admin page offers it); from then on, Rondo and the server update apart.
+
+- **Downloads are about three times faster.** A YouTube download now comes in four parts at once: a 10-minute 720p video took 50 seconds instead of 145, a two-hour episode about 8 minutes.
+- **A download survives a dropout.** When the Wi-Fi or the internet goes away for a while, the download waits and carries on where it stopped, instead of failing or starting over (Software update&#x27;s download too).
+- **The Y1 stays awake while a download runs,** unplugged with the screen off too.
+- **YouTube&#x27;s pictures are back** in search, the feeds and on a download&#x27;s row.
+- **A download&#x27;s row says what it&#x27;s doing:** Downloading video, Downloading sound, Getting subtitles, Saving.
+- **Rondo and the server have their own version numbers now.** Most releases change only the Y1, so they no longer ask you to update your server. This Rondo works with Rondo server 3.1.0 or newer; with an older one, Settings › YouTube › Connection, the dashboard and the YouTube screens say **Server needs an update**.
+
+**How to get it**
+- **On Rondo 3.0.x:** Settings › System › Software update, the dashboard&#x27;s Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.
+- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.2), with **Keep my settings** turned on.
+
+Files: `rondo-3.0.2.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#302-november-12-2026).
+</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:jarvissax/rondo/v3.0.1</id>
+    <updated>2026-11-12T08:47:07Z</updated>
+    <published>2026-11-12T08:47:07Z</published>
+    <title>Rondo 3.0.1</title>
+    <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v3.0.1"/>
+    <innioasis:tag_name>v3.0.1</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.0.1/updater.png</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.1/rom.zip" title="rom.zip" length="529873910" type="application/zip" innioasis:download_count="6" innioasis:asset_id="738745102"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.1/rondo-3.0.1.rondo" title="rondo-3.0.1.rondo" length="17032563" type="application/octet-stream" innioasis:download_count="6" innioasis:asset_id="738738326"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="30" innioasis:asset_id="738745103"/>
+    <content type="text">**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi.
+
+- **Charging shows on the battery.** On a charger or a computer, a green bolt shows next to the battery in the status bar and the YouTube headers, and the charge turns green.
+- **YouTube and YouTube Music without internet.** With Wi-Fi off they now say &quot;No Wi-Fi connection&quot; at once instead of &quot;Loading…&quot;, and load by themselves when Wi-Fi is back. On a Wi-Fi network without internet they give up after 30 seconds at most and say they couldn&#x27;t reach YouTube.
+- **Sharper subtitles.** Their lines sat between two rows of pixels, which blurred every letter.
+- **The rest of SPWall is gone too:** its packet filter, code injector and renamed iptables, which nothing started, and the stock firmware&#x27;s distribution tag. Rondo removes them itself when it updates, and the firmware leaves them out.
+
+**How to get it**
+- **On Rondo 3.0.0:** Settings › System › Software update, the dashboard&#x27;s Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.
+- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.1), with **Keep my settings** turned on.
+
+Files: `rondo-3.0.1.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#301-november-12-2026).</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:jarvissax/rondo/v3.0.0</id>
+    <updated>2026-11-12T07:38:39Z</updated>
+    <published>2026-11-12T07:38:39Z</published>
+    <title>Rondo 3.0.0</title>
+    <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v3.0.0"/>
+    <innioasis:tag_name>v3.0.0</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.0.0/updater.png</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.0/rom.zip" title="rom.zip" length="529881492" type="application/zip" innioasis:download_count="5" innioasis:asset_id="738545205"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.0/rondo-3.0.0.rondo" title="rondo-3.0.0.rondo" length="17027331" type="application/octet-stream" innioasis:download_count="6" innioasis:asset_id="738539239"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="26" innioasis:asset_id="738545203"/>
+    <content type="text">**For the Innioasis Y1, Type A.** A new firmware without the stock firmware&#x27;s root backdoors.
+
+- **The root backdoors are gone.** Innioasis&#x27;s own firmware, and so every Rondo firmware before this one, ran three programs as root that nothing on the Y1 needs:
+  - `aggdll`, an app pusher&#x27;s agent: a hidden `su` and a silent app installer;
+  - `wifi_init`, a downloader it starts, which checks in with a server and runs what it downloads as root. That server doesn&#x27;t answer today;
+  - SPWall (`libsp.so`), which runs commands as root for other programs.
+
+  This firmware leaves all three out, with what they left behind, and puts Android&#x27;s own `am` back.
+- **A Y1 installed again runs the firmware&#x27;s own Rondo**, not an older update it took over Wi-Fi before.
+
+**How to get it**
+- **Innioasis Updater CE**: Y1, Type A, **Rondo**, 3.0.0. Turn on **Keep my settings** so your settings, Wi-Fi networks, server connection and paired headphones stay. Your music on the card is never touched.
+- Software update on 2.0 shows 3.0.0 but can&#x27;t install it, because the firmware itself has to change.
+
+Files: `rondo-3.0.0.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#300-november-12-2026).</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:jarvissax/rondo/v2.0.1</id>
+    <updated>2026-11-12T06:44:13Z</updated>
+    <published>2026-11-12T06:44:13Z</published>
+    <title>Rondo 2.0.1</title>
+    <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v2.0.1"/>
+    <innioasis:tag_name>v2.0.1</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v2.0.1/updater.png</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v2.0.1/rom.zip" title="rom.zip" length="529870979" type="application/zip" innioasis:download_count="8" innioasis:asset_id="738392884"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v2.0.1/rondo-2.0.1.rondo" title="rondo-2.0.1.rondo" length="17020017" type="application/octet-stream" innioasis:download_count="6" innioasis:asset_id="738386879"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v2.0.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="26" innioasis:asset_id="738392886"/>
+    <content type="text">**For the Innioasis Y1, Type A.** A fix release for Rondo 2.0.
+
+- **Wi-Fi works after a fresh install.** On a Y1 that installed 2.0.0 without keeping its data, Wi-Fi never came on (&quot;Wi-Fi didn&#x27;t start&quot;): Rondo powered the Wi-Fi chip on while its driver was still loading, and the chip stayed stuck until the next restart. Rondo now waits for the driver first (#3).
+- **Next and Previous in Now Playing slide smoothly:** the slide starts on the press, and the covers of the songs before and after are ready before you press.
+
+**How to get it**
+- **Wi-Fi not working on 2.0.0?** Install with **Innioasis Updater CE** (Y1, Type A, Rondo 2.0.1), or over USB from the [update page](https://jarvissax.github.io/rondo/) in Chrome or Edge.
+- **Wi-Fi working:** Settings › System › Software update, or the dashboard&#x27;s Overview.
+- **Coming from 1.0:** Innioasis Updater CE, with **Keep Data** to keep your settings.
+
+Files: `rondo-2.0.1.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#201-november-12-2026).
+</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:jarvissax/rondo/server-v3.1.1</id>
+    <updated>2026-11-12T12:04:21Z</updated>
+    <published>2026-11-12T12:04:21Z</published>
+    <title>Rondo server 3.1.1</title>
+    <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/server-v3.1.1"/>
+    <innioasis:tag_name>server-v3.1.1</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:icon_url>https://innioasis.app/assets/rondo_icon.jpg</innioasis:icon_url>
+    <content type="text">**A small clean-up of the Rondo server.**
+
+- **`/healthz` no longer sends the `api` number** that 3.1.0 added. Nothing reads it: Rondo tells whether a server is new enough from the server&#x27;s version, against the oldest server it works with. Nothing else changes, so this update is optional.
+
+**How to update**
+- The admin page&#x27;s **Update**.
+- Or by hand: `docker compose -f infra/compose.home.yaml pull &amp;&amp; docker compose -f infra/compose.home.yaml up -d` (or `compose.vps.yaml`).
+
+Images: `ghcr.io/jarvissax/rondo-server:3.1.1` and `ghcr.io/jarvissax/rondo-updater:3.1.1` (also `latest`). Changes: [server/CHANGELOG.md](https://github.com/jarvissax/rondo/blob/main/server/CHANGELOG.md).
+</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:jarvissax/rondo/server-v3.1.0</id>
+    <updated>2026-11-12T11:33:51Z</updated>
+    <published>2026-11-12T11:33:51Z</published>
+    <title>Rondo server 3.1.0</title>
+    <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/server-v3.1.0"/>
+    <innioasis:tag_name>server-v3.1.0</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:icon_url>https://innioasis.app/assets/rondo_icon.jpg</innioasis:icon_url>
+    <content type="text">**The Rondo server, released apart from Rondo on the Y1 from now on.**
+
+- **A version of its own.** Most Rondo releases change only the Y1, so they no longer ask you to update your server. The admin page&#x27;s Overview says when a newer server is out.
+- **`/healthz` says the server&#x27;s version,** which Rondo checks against the oldest server it works with. (It also sends an `api` number, which nothing reads; [3.1.1](https://github.com/jarvissax/rondo/releases/tag/server-v3.1.1) drops it.)
+
+**How to update**
+- The admin page&#x27;s **Update**. A server on 3.0.1 hears of it once Rondo 3.0.2 is out; from 3.1.0 on, it watches the server&#x27;s own releases.
+- Or by hand: `docker compose -f infra/compose.home.yaml pull &amp;&amp; docker compose -f infra/compose.home.yaml up -d` (or `compose.vps.yaml`).
+
+Images: `ghcr.io/jarvissax/rondo-server:3.1.0` and `ghcr.io/jarvissax/rondo-updater:3.1.0` (also `latest`), published by the release workflow a few minutes after this release. Changes: [server/CHANGELOG.md](https://github.com/jarvissax/rondo/blob/main/server/CHANGELOG.md).</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:jarvissax/rondo/v2.0.0</id>
+    <updated>2026-11-11T12:33:03Z</updated>
+    <published>2026-11-11T12:33:03Z</published>
+    <title>Rondo 2.0.0</title>
+    <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v2.0.0"/>
+    <innioasis:tag_name>v2.0.0</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v2.0.0/rom.zip" title="rom.zip" length="529874086" type="application/zip" innioasis:download_count="22" innioasis:asset_id="735470141"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v2.0.0/rondo-2.0.0.rondo" title="rondo-2.0.0.rondo" length="17019301" type="application/octet-stream" innioasis:download_count="8" innioasis:asset_id="735462742"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="55" innioasis:asset_id="735470143"/>
+    <content type="text">**For the Innioasis Y1, Type A.** A new firmware: install `rom.zip` with **Innioasis Updater CE** (choose **Keep Data** to keep your settings when coming from 1.0). After that, Rondo updates itself over Wi-Fi from GitHub.
+
+Rondo 2.0 is rebuilt as a program of its own: Android&#x27;s app layer is gone, the Y1 starts straight into Rondo, and everything runs smoother at 60 frames a second.
+
+- **YouTube and YouTube Music straight from the Y1**, no server needed (your own server is optional and still works). Sign in with a code, like a smart TV.
+- **Subtitles** on YouTube videos and on the videos on the card, in a look of your own (YouTube&#x27;s by default).
+- **Download YouTube videos** at 720p, 480p or 360p, with their subtitles, to watch offline.
+- **Library in four:** Music (with Cover Flow, album artists, genres, smart playlists), Videos, Photos and Files.
+- **Sound:** an equalizer for each output, Headphone match (with a server), loudness boost, volume leveling, the amplifier and a volume limit.
+- **Software update from GitHub**, with or without a server; the dashboard has every setting too.
+
+Everything else is in the [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#200-november-11-2026).
+
+Files: `rondo-2.0.0.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing.
+</content>
+  </entry>
   <entry>
     <id>tag:innioasis.app,2026:jarvissax/rondo/v1.0.2</id>
     <updated>2026-11-03T08:34:35Z</updated>
@@ -14,9 +188,9 @@
     <innioasis:tag_name>v1.0.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v1.0.2/updater.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.2/rom.zip" title="rom.zip" length="528028371" type="application/zip" innioasis:download_count="55" innioasis:asset_id="704945383"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.2/rondo-1.0.2.apk" title="rondo-1.0.2.apk" length="6423022" type="application/vnd.android.package-archive" innioasis:download_count="16" innioasis:asset_id="704898289"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="176" innioasis:asset_id="704945379"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.2/rom.zip" title="rom.zip" length="528028371" type="application/zip" innioasis:download_count="66" innioasis:asset_id="704945383"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.2/rondo-1.0.2.apk" title="rondo-1.0.2.apk" length="6423022" type="application/vnd.android.package-archive" innioasis:download_count="24" innioasis:asset_id="704898289"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="234" innioasis:asset_id="704945379"/>
     <content type="text">Rondo 1.0.2 is about the server: it now updates itself with one click from its admin page. **Nothing changes on the Y1 itself**; it still offers this version as an update so the Y1 and the server stay on the same number.
 
 ## What&#x27;s new
@@ -60,9 +234,9 @@ If your Y1 runs Rondo 1.0.1, **Settings › Software update**, **Install** in th
     <innioasis:tag_name>v1.0.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v1.0.1/updater.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.1/rom.zip" title="rom.zip" length="528031354" type="application/zip" innioasis:download_count="16" innioasis:asset_id="704788605"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.1/rondo-1.0.1.apk" title="rondo-1.0.1.apk" length="6423015" type="application/vnd.android.package-archive" innioasis:download_count="14" innioasis:asset_id="704784362"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="88" innioasis:asset_id="704788606"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.1/rom.zip" title="rom.zip" length="528031354" type="application/zip" innioasis:download_count="24" innioasis:asset_id="704788605"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.1/rondo-1.0.1.apk" title="rondo-1.0.1.apk" length="6423015" type="application/vnd.android.package-archive" innioasis:download_count="21" innioasis:asset_id="704784362"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="141" innioasis:asset_id="704788606"/>
     <content type="text">A small update to Rondo for the **Innioasis Y1, Type A**. If your Y1 already runs Rondo, it installs over the one you have in about a minute, and everything stays: settings, Wi-Fi, server connection, playlists and music.
 
 ## What&#x27;s new
@@ -107,9 +281,9 @@ Only for the **Y1 Type A** (players that shipped with software 2.0.0 or later), 
     <innioasis:tag_name>v1.0.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.0/rom.zip" title="rom.zip" length="528038771" type="application/zip" innioasis:download_count="18" innioasis:asset_id="701648157"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.0/rondo-1.0.0.apk" title="rondo-1.0.0.apk" length="6421197" type="application/vnd.android.package-archive" innioasis:download_count="15" innioasis:asset_id="701646360"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="123" innioasis:asset_id="701647593"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.0/rom.zip" title="rom.zip" length="528038771" type="application/zip" innioasis:download_count="26" innioasis:asset_id="701648157"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.0/rondo-1.0.0.apk" title="rondo-1.0.0.apk" length="6421197" type="application/vnd.android.package-archive" innioasis:download_count="22" innioasis:asset_id="701646360"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="178" innioasis:asset_id="701647593"/>
     <content type="text">Rondo is now a firmware for the Innioasis Y1: the Y1 starts straight into Rondo&#x27;s click-wheel menus, with nothing else on it.
 
 **For the Y1, Type A only** (players that shipped with software 2.0.0 or later). Not for the Type B or the Y2.

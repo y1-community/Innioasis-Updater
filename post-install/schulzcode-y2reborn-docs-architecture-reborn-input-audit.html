@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261111cards" defer></script>
+  <script src="../site-init.js?v=20261110warn" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -63,12 +63,12 @@
 <p>Long press is emitted once and recorded by <code>ActionRouter</code>; the matching release is consumed, so a long press cannot also trigger its short action.</p>
 <h2 id="screen-off-policy">Screen-off policy</h2>
 <p><code>ActionRouter::route</code> receives the authoritative screen-on flag. While the screen is off, wheel/navigation/select/back actions produce no semantic action. Volume and playback controls remain global and do not wake the display. Only a Power release while the screen is off produces <code>ScreenWake</code>.</p>
-<p>Playback buttons and volume are routed above the current screen, so ordinary navigation and Back cannot stop playback. The UI only returns typed <code>Effect</code> values; service calls remain in <code>app/reborn</code>.</p></article><p class="lumen-doc-footer-note">These are Y2Reborn's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware_info.html?repo=SchulzCode%2FY2Reborn&amp;software=schulzcode-y2reborn">SchulzCode/Y2Reborn</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=SchulzCode%2FY2Reborn&amp;software=schulzcode-y2reborn" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3ASchulzCode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<p>Playback buttons and volume are routed above the current screen, so ordinary navigation and Back cannot stop playback. The UI only returns typed <code>Effect</code> values; service calls remain in <code>app/reborn</code>.</p></article><p class="lumen-doc-footer-note">These are Y2Reborn's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?software=schulzcode-y2reborn">SchulzCode's <em>Y2Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=SchulzCode%2FY2Reborn&amp;software=schulzcode-y2reborn" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261110inline5" defer></script>
-<script src="../portable-zip-links.js?v=20261111zip" defer></script>
-<script src="../nav.js?v=20261111nav" defer></script>
-<script src="../site-locale.js?v=20261111i18nfix" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

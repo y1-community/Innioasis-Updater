@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.29: Buttons - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.29: Buttons Release 1.0.0-beta.9.3.29 , Y2Reborn 1.0.0-beta.9.3.29 , kernel 6.18.56-y2linux-1.0.0-beta.9.3.29 , update sequence 16600, root 2026.08-p">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.29.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.29: Buttons - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.29: Buttons Release 1.0.0-beta.9.3.29 , Y2Reborn 1.0.0-beta.9.3.29 , kernel 6.18.56-y2linux-1.0.0-beta.9.3.29 , update sequence 16600, root 2026.08-p">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.29.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.29: Buttons - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.29: Buttons Release 1.0.0-beta.9.3.29 , Y2Reborn 1.0.0-beta.9.3.29 , kernel 6.18.56-y2linux-1.0.0-beta.9.3.29 , update sequence 16600, root 2026.08-p">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.29: Buttons</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9329-buttons">Y2Linux 1.0 Beta 9.3.29: Buttons</h1>
+<p>Release <code>1.0.0-beta.9.3.29</code>, Y2Reborn <code>1.0.0-beta.9.3.29</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.29</code>, update sequence 16600, root <code>2026.08-platform-v1.282</code>. Published as GitHub release <code>baseline-259</code> (build 259; test builds 257 and 258 before it). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.28.md">Beta 9.3.28</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p><strong>Buttons</strong> (Settings → Customize → Buttons) lets you give any button, any hold and either turn of the wheel the job you want, separately in the menus, on Now Playing and with the screen off. Changes are kept as layouts; <strong>Reborn Default</strong>, how the buttons always worked, is always one step away. It is built so nobody can lock themselves out: Power never changes, a layout that couldn&#x27;t select, go back or scroll is not saved, a new layout must be kept with its own buttons or it undoes itself, and the Quick Menu brings Reborn Default back.</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>Three places, one drawing each.</strong> In Menus, On Now Playing and Screen Off each show the player. Turn the wheel<p>or press a button to pick it; its card says what a press and a hold do. Select changes them. Now Playing uses what the menus do for every button you leave alone; the dark offers only what makes sense in a pocket.</p></li><li><strong>Layouts.</strong> Your changes become <strong>My Buttons</strong> (up to four). Built in: Reborn Default, Pocket (screen off: only<p>Play/Pause and volume), Wheel Seeks (the wheel moves through the song on Now Playing), One Hand (screen off: the wheel is the volume, the centre plays and pauses, the side buttons skip). <strong>Hold Time</strong> sets how long a hold is.</p></li><li><strong>Safety.</strong> Power is in no layout. The Buttons pages, the Quick Menu and the on-screen keyboard always answer<p>as Reborn Default. <strong>Save Changes</strong> checks the layout and walks the player&#x27;s own menus with it, then asks <strong>Keep These Buttons?</strong>: unless Keep is chosen with the new buttons, the old ones are back after 15 seconds. While another layout is in use, the Quick Menu has a <strong>Buttons</strong> tile (<strong>Use Default</strong>). Back held for five seconds in the first minute after start also brings Reborn Default back.</p></li><li><strong>A buzz in the dark.</strong> With Haptics on, a button that did something with the screen off buzzes once.</li><li><strong>The older settings</strong> &quot;Wheel on Now Playing&quot; and &quot;Buttons While Screen Off&quot; are part of Buttons now; a player<p>that had changed them got that choice as a layout on its first start.</p></li></ul>
+<p>Guide: <strong><a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2FBUTTONS.md">Buttons</a></strong>.</p>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>Tests</strong>: the platform&#x27;s full check, Reborn&#x27;s tests and the tests of the release images passed. All earlier<p>tests of the button handling pass unchanged with Reborn Default. New tests: layouts and their check, the walk through the menus with built-in and moved layouts, Keep, Undo and the timeout, the Quick Menu tile, the start-up escape, commands in the dark, older settings taken over, layouts written by a newer Reborn.</p></li><li><strong>On one player</strong> (test builds 257 and 258, then this build), with real button presses fed into its input<p>devices: the older settings became Reborn Default; Next pressed on the drawing picked Next; Next changed to Shuffle, saved and left alone came back undone after 15 seconds; saved again and kept, the Next button toggled Shuffle; Centre set to Shuffle for the dark toggled it with the screen off, Back did nothing there and Power woke the player; Power held opened the Quick Menu, whose Buttons tile (its place fixed in 258) brought Reborn Default back. The player was left on Reborn Default.</p></li><li><strong>Not tested on the player</strong>: holding the five front buttons (also the start-up escape), because they are read<p>by polling and an injected press is released at once; the buzz in the dark. Both are covered by the tests.</p></li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<p>Everything listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.28.md%23known-issues&amp;anchor=known-issues">Beta 9.3.28</a> still applies. New:</p>
+<ul><li>With the player asleep, only Power works; the front buttons can&#x27;t wake it as they are wired up today.</li><li>Double presses, sharing layouts as files and headphone buttons are not part of Buttons.</li></ul>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>Reborn <code>crates/reborn-core/src/buttons.rs</code> (layouts, layers, commands, presets, check, migration; stored in<p><code>Settings.buttons</code>, additive), <code>crates/reborn-platform/src/input.rs</code> (<code>ActionRouter</code> answers through the layout of the layer a button went down in; protected pages use Reborn Default; Power and the keyboard unchanged; holds and repeats reported for every button, hold time adjustable, Power fixed at 650 ms), <code>crates/reborn-ui/src/buttons_page.rs</code> and <code>views_buttons.rs</code> (pages, save walk, trial, the drawing), <code>app/reborn/src/buttons.rs</code> (trial timeout). Plan and as built: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Reborn%2Fblob%2Fmain%2Fdocs%2Fui%2FREBORN-BUTTON-MAPPER.md">REBORN-BUTTON-MAPPER.md</a>.</p></li><li>Scope note: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fplanning%2Froadmap-gap-audit.md">roadmap gap audit</a> (no kernel, platform or image change).</li><li>Images built from Linux <code>c5571186</code>, Reborn <code>0c74ffd</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

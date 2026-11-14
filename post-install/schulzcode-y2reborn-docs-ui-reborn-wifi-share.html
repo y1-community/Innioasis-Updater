@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wi-Fi Share: plan - Innioasis Updater</title>
+  <meta name="description" content="Wi-Fi Share: plan Owner request 2026-11-12 after Y2Linux 115: an iPhone cannot open the player over a cable: copy music onto the player over Wi-Fi, from any phone or comp">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2reborn-docs-ui-reborn-wifi-share.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Wi-Fi Share: plan - Innioasis Updater">
+  <meta property="og:description" content="Wi-Fi Share: plan Owner request 2026-11-12 after Y2Linux 115: an iPhone cannot open the player over a cable: copy music onto the player over Wi-Fi, from any phone or comp">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2reborn-docs-ui-reborn-wifi-share.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wi-Fi Share: plan - Innioasis Updater">
+  <meta name="twitter:description" content="Wi-Fi Share: plan Owner request 2026-11-12 after Y2Linux 115: an iPhone cannot open the player over a cable: copy music onto the player over Wi-Fi, from any phone or comp">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../post-install/index.html">← All documentation</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Y2Reborn</p><h1>Wi-Fi Share: plan</h1><p class="lumen-lead">Documentation published by SchulzCode/Y2Reborn.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../post-install/index.html">All documentation →</a><a class="lumen-button" href="../post-install/index.html">All documentation</a></div></header><article class="lumen-doc-body"><h1 id="wi-fi-share-plan">Wi-Fi Share: plan</h1>
+<p>Owner request 2026-11-12 (after Y2Linux #115: an iPhone cannot open the player over a cable): copy music onto the player over Wi-Fi, from any phone or computer, through a web page that works like a file browser for Internal Storage and the SD card.</p>
+<h2 id="what-the-listener-gets">What the listener gets</h2>
+<ol><li><strong>Settings → Library → Wi-Fi Share.</strong> The page shows an address (<code>http://192.168.x.y</code>), a QR code of it and<p>a six-digit code. Sharing is on only while this page is open.</p></li><li>On the phone or computer (same Wi-Fi): scan the QR code or type the address, enter the code once.</li><li>A file browser: Internal Storage and SD Card, folders, sizes, free space. <strong>Upload</strong> files or whole<p>folders (also by dropping them on the page), <strong>download</strong>, <strong>new folder</strong>, <strong>rename</strong>, <strong>delete</strong>.</p></li><li>Leaving the page on the player (Back, Home, or <strong>Stop Sharing</strong>) ends sharing. If anything changed,<p>Reborn scans for music by itself, as it does after a USB copy.</p></li></ol>
+<h2 id="decisions">Decisions</h2>
+<table><thead><tr><th>Question</th><th>Decision</th><th>Why</th></tr></thead><tbody><tr><td>Where the server runs</td><td>Inside Reborn (<code>reborn_platform::share</code>, its own threads)</td><td>Reborn owns the page, the code and the scan afterwards; no new service, no platform contract change</td></tr><tr><td>Protocol</td><td>Plain HTTP on port 80, our own small server on <code>std::net</code></td><td>No HTTP crate is vendored; FFmpeg and curl stay without server code. A home network has no certificate for HTTPS</td></tr><tr><td>Who may connect</td><td>Anyone on the same network who knows the six-digit code shown on the player&#x27;s screen; five wrong codes lock for 30 s; a new code every time sharing starts</td><td>The traffic is not encrypted, so sharing is off unless the listener opens the page, and never runs unattended</td></tr><tr><td>What is shared</td><td>The two music roots only (<code>/media/internal/music</code>, <code>/media/sd</code>); paths are resolved inside them, links are not followed, names starting with a dot are hidden</td><td>The same view a computer gets over USB</td></tr><tr><td>SD card writes</td><td>Inside the platform&#x27;s write window (<code>media write --holder reborn</code>), renewed while an upload runs, released after</td><td>The card stays read-only between writes (Beta 8.27)</td></tr><tr><td>Uploads</td><td>One request per file (<code>PUT</code>), written to <code>.name.part</code> and renamed when complete; never over an existing file unless the page asked to replace it</td><td>A broken transfer leaves no half song in the library</td></tr><tr><td>Sleep</td><td>The player stays awake while the page is open</td><td>Wi-Fi is off in sleep</td></tr><tr><td>Settings place</td><td>Library (&quot;Where is my music…&quot;), a sub-page of <code>Screen::Library</code> with the filter <code>share</code></td><td>Settings map rule: no new <code>Screen</code> value</td></tr><tr><td>Without Wi-Fi</td><td>The page says so and leads to Wi-Fi</td><td>—</td></tr></tbody></table>
+<h2 id="parts">Parts</h2>
+<ul><li><code>crates/reborn-platform/src/share/</code>: <code>http.rs</code> (request line, headers, bodies with a length), <code>files.rs</code><p>(safe paths, list, make, rename, delete), <code>mod.rs</code> (the server: accept loop, sessions, routes, write windows, a change counter), <code>page.html</code> (the browser page: one file, no outside resources).</p></li><li><code>app/reborn/src/share.rs</code>: starts and stops the server with the page (checked on the runtime&#x27;s tick, state<p>beside the runtime), keeps the player awake, scans after changes.</p></li><li><code>crates/reborn-ui</code>: the Library row, the page (address, QR, code, activity), reusing the QR drawing of the<p>Last.fm sign-in.</p></li><li>Y2Linux: <code>docs/WIFI-SHARE.md</code> for owners, the settings map, an audit note (a network service that listens<p>only while its page is open).</p></li></ul>
+<h2 id="routes">Routes</h2>
+<table><thead><tr><th>Route</th><th>What</th></tr></thead><tbody><tr><td><code>GET /</code></td><td>the page</td></tr><tr><td><code>POST /api/enter?code=</code></td><td>sets the session cookie</td></tr><tr><td><code>GET /api/list?root=&amp;path=</code></td><td>entries (name, folder, size, time), free and total space; without <code>root</code>: the storages</td></tr><tr><td><code>GET /api/file?root=&amp;path=</code></td><td>download</td></tr><tr><td><code>PUT /api/file?root=&amp;path=[&amp;replace=1]</code></td><td>upload (body = the file)</td></tr><tr><td><code>POST /api/folder?root=&amp;path=</code></td><td>new folder</td></tr><tr><td><code>POST /api/rename?root=&amp;path=&amp;to=</code></td><td>rename within its folder</td></tr><tr><td><code>POST /api/delete?root=&amp;path=</code></td><td>delete a file, or a folder with what is in it</td></tr></tbody></table>
+<h2 id="tests">Tests</h2>
+<p>Host: path resolution (no escape through <code>..</code>, links or absolute paths), request parsing, the code and its lockout, and the routes over a loopback connection against a temporary folder (list, upload with <code>.part</code>, replace refused, rename, delete, download). Player: the page from a computer and a phone on the owner&#x27;s Wi-Fi; an upload to Internal Storage and to the SD card; the scan afterwards; sharing ends with the page.</p>
+<h2 id="not-in-the-first-version">Not in the first version</h2>
+<p>HTTPS; resuming a broken upload; playing music in the browser; moving between folders or storages; several people&#x27;s accounts. A listener who wants none of this simply never opens the page.</p></article><p class="lumen-doc-footer-note">These are Y2Reborn's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?software=schulzcode-y2reborn">SchulzCode's <em>Y2Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=SchulzCode%2FY2Reborn&amp;software=schulzcode-y2reborn" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

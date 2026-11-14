@@ -3,7 +3,7 @@
     "id": 436678365,
     "tag_name": "MX2D_Q5D-WV3.28-20250619",
     "name": "Portable Flashing Package: MX2D_Q5D-WV3.28-20250619",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2D_Q5D-WV3.28-20250619#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Q5 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Q5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Q5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Q5 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Timmkoo Q5 software **MX2D_Q5D-WV3.28-20250619**.\n\n- Model: **Q5** (Timmkoo)\n- Package: `rom_q5.zip`\n- Build tag: `MX2D_Q5D-WV3.28-20250619`\n- Build date: 2025-06-19\n\n## Install\n\n1. Download `rom_q5.zip` (every numbered volume if the release has more than one, then `cat rom_q5.zip.* > rom_q5.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_q5.zip` | 322.1 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=Q5>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Q5\",\"name\":\"rom_q5-windows.zip\",\"platform\":\"windows\",\"sha256\":\"6838f0df6a9ff5aef7fb1e662d654ee9e6834e8c137ed5fccc6a2b2acca5a589\",\"size\":548145286,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-linux.zip\",\"platform\":\"linux\",\"sha256\":\"2adbef2d6d4da59336ce99254cc6120c20206445d39478fed7c098d22d326234\",\"size\":729634268,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-macos.zip\",\"platform\":\"macos\",\"sha256\":\"3abd06d36c9c1463c7971f73c67554dde7c8cd9548ddde925789b2c8d4212341\",\"size\":461800951,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-08T20:00:43Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"db41824fc4f96928a74535c51329456d7817af7b2cb3c66bf6b79796863bcef2\",\"original_assets\":[\"rom_q5.zip\",\"SHA256SUMS.MX2D_Q5D-WV3.28-20250619\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX2D_Q5D-WV3.28-20250619\":4,\"rom_q5-linux.zip\":0,\"rom_q5-macos.zip\":1,\"rom_q5-windows.zip\":3,\"rom_q5.zip\":0},\"generated_at\":\"2026-11-08T20:00:43Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2D_Q5D-WV3.28-20250619#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Q5 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2D_Q5D-WV3.28-20250619&amp;asset=rom_q5.zip&amp;platform=windows&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Q5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2D_Q5D-WV3.28-20250619&amp;asset=rom_q5.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Q5 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2D_Q5D-WV3.28-20250619&amp;asset=rom_q5.zip&amp;platform=linux&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Q5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2D_Q5D-WV3.28-20250619&amp;asset=rom_q5.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Q5 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2D_Q5D-WV3.28-20250619&amp;asset=rom_q5.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Q5 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2D_Q5D-WV3.28-20250619&amp;asset=rom_q5.zip&amp;platform=macos&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Q5 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Timmkoo Q5 software **MX2D_Q5D-WV3.28-20250619**.\n\n- Model: **Q5** (Timmkoo)\n- Package: `rom_q5.zip`\n- Build tag: `MX2D_Q5D-WV3.28-20250619`\n- Build date: 2025-06-19\n\n## Install\n\n1. Download `rom_q5.zip` (every numbered volume if the release has more than one, then `cat rom_q5.zip.* > rom_q5.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_q5.zip` | 322.1 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=Q5>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Q5\",\"name\":\"rom_q5-windows.zip\",\"platform\":\"windows\",\"sha256\":\"81a77bc80e22a81bc547a1c53d92c1345d517cc188f331d92d5dfdab01703cd1\",\"size\":654565099,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"ec83e7e36be75e7d579d67cd8951f7bcd6da3bc03ae42f98cce5a34abfe74194\",\"size\":416326288,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-linux.zip\",\"platform\":\"linux\",\"sha256\":\"8a24034ce6f691d6fbbbe722a03f0dedd9dbb8089c7fb0144cb9cf65947d43dd\",\"size\":701886423,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"4a141728f74f0416ac3cb33fc1360eada1ac22d3158af5c6a1bd8e85470c8f1a\",\"size\":526790657,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"ad93ec39d8991bb54206af9054cf850be97fb94dfb454c91a327a43f19c4e7ae\",\"size\":414740573,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-macos.zip\",\"platform\":\"macos\",\"sha256\":\"36ce4235215b0fa4c85fea11b5bad752e80d8d9a6ba696cc1fed6d954e90bc68\",\"size\":461199052,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-12T19:12:50Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"7d29e469f3d675bdae02f79775e6a909e6a2b17f58607d15d2c0bc381c3b0e8a\",\"original_asset_sizes\":{\"SHA256SUMS.MX2D_Q5D-WV3.28-20250619\":78,\"rom_q5.zip\":341483621},\"original_assets\":[\"rom_q5.zip\",\"SHA256SUMS.MX2D_Q5D-WV3.28-20250619\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX2D_Q5D-WV3.28-20250619\":9,\"rom_q5-linux-arm64.zip\":1,\"rom_q5-linux-legacy.zip\":1,\"rom_q5-linux.zip\":2,\"rom_q5-macos.zip\":2,\"rom_q5-windows-legacy.zip\":1,\"rom_q5-windows.zip\":4,\"rom_q5.zip\":0},\"generated_at\":\"2026-11-12T19:12:50Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188443285,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-06T15:35:35Z",
@@ -13,48 +13,81 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 725039916,
+        "id": 740746058,
+        "name": "rom_q5-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-linux-arm64.zip",
+        "size": 526790657,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T19:12:55Z",
+        "updated_at": "2026-11-12T19:13:23Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740746058"
+      },
+      {
+        "id": 740746060,
+        "name": "rom_q5-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-linux-legacy.zip",
+        "size": 414740573,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T19:12:55Z",
+        "updated_at": "2026-11-12T19:13:13Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740746060"
+      },
+      {
+        "id": 740746062,
         "name": "rom_q5-linux.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-linux.zip",
-        "size": 729634268,
+        "size": 701886423,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:00:47Z",
-        "updated_at": "2026-11-08T20:01:16Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/725039916"
+        "created_at": "2026-11-12T19:12:55Z",
+        "updated_at": "2026-11-12T19:13:23Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740746062"
       },
       {
-        "id": 725039919,
+        "id": 740746981,
         "name": "rom_q5-macos.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-macos.zip",
-        "size": 461800951,
-        "download_count": 0,
+        "size": 461199052,
+        "download_count": 2,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:00:47Z",
-        "updated_at": "2026-11-08T20:01:06Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/725039919"
+        "created_at": "2026-11-12T19:13:12Z",
+        "updated_at": "2026-11-12T19:13:24Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740746981"
       },
       {
-        "id": 725039917,
+        "id": 740746056,
+        "name": "rom_q5-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-windows-legacy.zip",
+        "size": 416326288,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T19:12:55Z",
+        "updated_at": "2026-11-12T19:13:11Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740746056"
+      },
+      {
+        "id": 740746057,
         "name": "rom_q5-windows.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-windows.zip",
-        "size": 548145286,
-        "download_count": 0,
+        "size": 654565099,
+        "download_count": 2,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:00:47Z",
-        "updated_at": "2026-11-08T20:01:09Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/725039917"
+        "created_at": "2026-11-12T19:12:55Z",
+        "updated_at": "2026-11-12T19:13:19Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740746057"
       },
       {
-        "id": 717631994,
+        "id": 733059658,
         "name": "rom_q5.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5.zip",
-        "size": 337730694,
+        "size": 341483621,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-06T15:40:09Z",
-        "updated_at": "2026-11-06T15:40:20Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/717631994"
+        "created_at": "2026-11-10T21:43:30Z",
+        "updated_at": "2026-11-10T21:43:45Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/733059658"
       },
       {
         "id": 717631990,
@@ -68,15 +101,15 @@
         "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/717631990"
       },
       {
-        "id": 731235263,
+        "id": 745446111,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/stats.txt",
-        "size": 2181,
+        "size": 4015,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T11:43:50Z",
-        "updated_at": "2026-11-10T11:43:51Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/731235263"
+        "created_at": "2026-11-13T22:38:23Z",
+        "updated_at": "2026-11-13T22:38:24Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/745446111"
       }
     ]
   },
@@ -84,7 +117,7 @@
     "id": 436675060,
     "tag_name": "MX2-WVGA_TM-WV3.27-20250528",
     "name": "Portable Flashing Package: MX2-WVGA_TM-WV3.27-20250528",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-WVGA_TM-WV3.27-20250528#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Q5 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Q5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Q5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Q5 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Timmkoo Q5 software **MX2-WVGA_TM-WV3.27-20250528**.\n\n- Model: **Q5** (Timmkoo)\n- Package: `rom_q5.zip`\n- Build tag: `MX2-WVGA_TM-WV3.27-20250528`\n- Build date: 2025-05-28\n\n## Install\n\n1. Download `rom_q5.zip` (every numbered volume if the release has more than one, then `cat rom_q5.zip.* > rom_q5.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_q5.zip` | 328.2 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=Q5>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Q5\",\"name\":\"rom_q5-windows.zip\",\"platform\":\"windows\",\"sha256\":\"6ab8b9c251568ef13d0133c119f20f403276c111250e1b75e51373a3f82b2e2f\",\"size\":554423608,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-linux.zip\",\"platform\":\"linux\",\"sha256\":\"e981ad92c33c959ea9cf80d506c20f63eff950bde63e00037a713c75930f5787\",\"size\":735912590,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-macos.zip\",\"platform\":\"macos\",\"sha256\":\"1bc6ad760f03283a6d148aa8ff91f4b86cf7db72806c671001a1cdc5a5fef729\",\"size\":468079272,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-08T19:59:03Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"809dbd2a8da66e7b334dca4274b893844828ae4666a6aae5b72b86b5453b32c0\",\"original_assets\":[\"rom_q5.zip\",\"SHA256SUMS.MX2-WVGA_TM-WV3.27-20250528\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX2-WVGA_TM-WV3.27-20250528\":4,\"rom_q5-linux.zip\":0,\"rom_q5-macos.zip\":1,\"rom_q5-windows.zip\":4,\"rom_q5.zip\":0},\"generated_at\":\"2026-11-08T19:59:03Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-WVGA_TM-WV3.27-20250528#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Q5 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-WVGA_TM-WV3.27-20250528&amp;asset=rom_q5.zip&amp;platform=windows&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Q5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-WVGA_TM-WV3.27-20250528&amp;asset=rom_q5.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Q5 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-WVGA_TM-WV3.27-20250528&amp;asset=rom_q5.zip&amp;platform=linux&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Q5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-WVGA_TM-WV3.27-20250528&amp;asset=rom_q5.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Q5 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-WVGA_TM-WV3.27-20250528&amp;asset=rom_q5.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Q5 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-WVGA_TM-WV3.27-20250528&amp;asset=rom_q5.zip&amp;platform=macos&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Q5 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Timmkoo Q5 software **MX2-WVGA_TM-WV3.27-20250528**.\n\n- Model: **Q5** (Timmkoo)\n- Package: `rom_q5.zip`\n- Build tag: `MX2-WVGA_TM-WV3.27-20250528`\n- Build date: 2025-05-28\n\n## Install\n\n1. Download `rom_q5.zip` (every numbered volume if the release has more than one, then `cat rom_q5.zip.* > rom_q5.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_q5.zip` | 328.2 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=Q5>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Q5\",\"name\":\"rom_q5-windows.zip\",\"platform\":\"windows\",\"sha256\":\"5e65658ad3897ab9e0a1ef90788764fa233a331ff114b07efcf3a1bbebe8c68c\",\"size\":660866173,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"9236aacf1adae52efd1c326ac834999cf42f8b535dc7dcd95db262d529e81ebd\",\"size\":422627362,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-linux.zip\",\"platform\":\"linux\",\"sha256\":\"02ed0939c4c1c37df904e852c4aadc182ee90986cc5a16885e56aba4e1cabab9\",\"size\":708187497,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"311a6f056ea0ef6dd741fad9b8b9ce512054d6155b9c43e747612402b2753383\",\"size\":533091731,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"d43a5d5fa9bba017db919cac370a8ff7cb0834a230678d762d1c4f8d1f4a9b00\",\"size\":421041647,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-macos.zip\",\"platform\":\"macos\",\"sha256\":\"842d27b83ec5c2a97d391b3948bb0eca76bb6705292a8f790d891f81e33a7b1c\",\"size\":467500125,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-12T19:07:17Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"41644aac4234f9cf91ef9a2db5235551618aa7bc6b2300c34caf82647fc35c2f\",\"original_asset_sizes\":{\"SHA256SUMS.MX2-WVGA_TM-WV3.27-20250528\":78,\"rom_q5.zip\":347784771},\"original_assets\":[\"rom_q5.zip\",\"SHA256SUMS.MX2-WVGA_TM-WV3.27-20250528\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX2-WVGA_TM-WV3.27-20250528\":9,\"rom_q5-linux-arm64.zip\":1,\"rom_q5-linux-legacy.zip\":1,\"rom_q5-linux.zip\":1,\"rom_q5-macos.zip\":2,\"rom_q5-windows-legacy.zip\":1,\"rom_q5-windows.zip\":5,\"rom_q5.zip\":0},\"generated_at\":\"2026-11-12T19:07:17Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188443285,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-06T15:35:35Z",
@@ -94,48 +127,81 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 725036132,
+        "id": 740730758,
+        "name": "rom_q5-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-linux-arm64.zip",
+        "size": 533091731,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T19:07:21Z",
+        "updated_at": "2026-11-12T19:07:41Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740730758"
+      },
+      {
+        "id": 740730754,
+        "name": "rom_q5-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-linux-legacy.zip",
+        "size": 421041647,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T19:07:21Z",
+        "updated_at": "2026-11-12T19:07:51Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740730754"
+      },
+      {
+        "id": 740730751,
         "name": "rom_q5-linux.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-linux.zip",
-        "size": 735912590,
+        "size": 708187497,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T19:59:06Z",
-        "updated_at": "2026-11-08T19:59:34Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/725036132"
+        "created_at": "2026-11-12T19:07:21Z",
+        "updated_at": "2026-11-12T19:07:46Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740730751"
       },
       {
-        "id": 725036136,
+        "id": 740731525,
         "name": "rom_q5-macos.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-macos.zip",
-        "size": 468079272,
-        "download_count": 0,
+        "size": 467500125,
+        "download_count": 3,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T19:59:06Z",
-        "updated_at": "2026-11-08T19:59:23Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/725036136"
+        "created_at": "2026-11-12T19:07:36Z",
+        "updated_at": "2026-11-12T19:07:47Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740731525"
       },
       {
-        "id": 725036128,
+        "id": 740730753,
+        "name": "rom_q5-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-windows-legacy.zip",
+        "size": 422627362,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T19:07:21Z",
+        "updated_at": "2026-11-12T19:07:35Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740730753"
+      },
+      {
+        "id": 740730757,
         "name": "rom_q5-windows.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-windows.zip",
-        "size": 554423608,
-        "download_count": 0,
+        "size": 660866173,
+        "download_count": 2,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T19:59:06Z",
-        "updated_at": "2026-11-08T19:59:28Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/725036128"
+        "created_at": "2026-11-12T19:07:21Z",
+        "updated_at": "2026-11-12T19:07:45Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740730757"
       },
       {
-        "id": 717627008,
+        "id": 733045755,
         "name": "rom_q5.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5.zip",
-        "size": 344107791,
+        "size": 347784771,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-06T15:38:23Z",
-        "updated_at": "2026-11-06T15:38:36Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/717627008"
+        "created_at": "2026-11-10T21:38:48Z",
+        "updated_at": "2026-11-10T21:39:03Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/733045755"
       },
       {
         "id": 717627010,
@@ -149,15 +215,15 @@
         "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/717627010"
       },
       {
-        "id": 731235191,
+        "id": 745445982,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/stats.txt",
-        "size": 2184,
+        "size": 4018,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T11:43:48Z",
-        "updated_at": "2026-11-10T11:43:49Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/731235191"
+        "created_at": "2026-11-13T22:38:21Z",
+        "updated_at": "2026-11-13T22:38:21Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/745445982"
       }
     ]
   },
@@ -165,7 +231,7 @@
     "id": 436672025,
     "tag_name": "MX2-ES_Q5-WV5.02-20250619",
     "name": "Portable Flashing Package: MX2-ES_Q5-WV5.02-20250619",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-ES_Q5-WV5.02-20250619#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Q5 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Q5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Q5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Q5 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Timmkoo Q5 software **MX2-ES_Q5-WV5.02-20250619**.\n\n- Model: **Q5** (Timmkoo)\n- Package: `rom_q5.zip`\n- Build tag: `MX2-ES_Q5-WV5.02-20250619`\n- Build date: 2025-06-19\n\n## Install\n\n1. Download `rom_q5.zip` (every numbered volume if the release has more than one, then `cat rom_q5.zip.* > rom_q5.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_q5.zip` | 328.1 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=Q5>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Q5\",\"name\":\"rom_q5-windows.zip\",\"platform\":\"windows\",\"sha256\":\"49400fac019a59c42ae6f21ee8975d42a2f261087e757b0b8d0c365175963ce6\",\"size\":554424775,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-linux.zip\",\"platform\":\"linux\",\"sha256\":\"f5f639e8213dfe3667dfff9d319e0dc8d1cf5cc360eb65df1ffbc0d8bffb05e7\",\"size\":735913757,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-macos.zip\",\"platform\":\"macos\",\"sha256\":\"aeabcfb2c0a61acc38a6138839e9ece2bf7f46c5b70478e0b75331309295b2d6\",\"size\":468080439,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-08T19:57:21Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"f41df86bfe2a916e9a1815e8bf3cf788c2b8cc4db5c16155c71297a09f9ef58e\",\"original_assets\":[\"rom_q5.zip\",\"SHA256SUMS.MX2-ES_Q5-WV5.02-20250619\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX2-ES_Q5-WV5.02-20250619\":4,\"rom_q5-linux.zip\":1,\"rom_q5-macos.zip\":0,\"rom_q5-windows.zip\":1,\"rom_q5.zip\":4},\"generated_at\":\"2026-11-08T19:57:21Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-ES_Q5-WV5.02-20250619#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Q5 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-ES_Q5-WV5.02-20250619&amp;asset=rom_q5.zip&amp;platform=windows&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Q5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-ES_Q5-WV5.02-20250619&amp;asset=rom_q5.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Q5 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-ES_Q5-WV5.02-20250619&amp;asset=rom_q5.zip&amp;platform=linux&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Q5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-ES_Q5-WV5.02-20250619&amp;asset=rom_q5.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Q5 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-ES_Q5-WV5.02-20250619&amp;asset=rom_q5.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Q5 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fq5-stock-rom&amp;tag=MX2-ES_Q5-WV5.02-20250619&amp;asset=rom_q5.zip&amp;platform=macos&amp;mirror=y1-community%2Fq5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/q5-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Q5 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Timmkoo Q5 software **MX2-ES_Q5-WV5.02-20250619**.\n\n- Model: **Q5** (Timmkoo)\n- Package: `rom_q5.zip`\n- Build tag: `MX2-ES_Q5-WV5.02-20250619`\n- Build date: 2025-06-19\n\n## Install\n\n1. Download `rom_q5.zip` (every numbered volume if the release has more than one, then `cat rom_q5.zip.* > rom_q5.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_q5.zip` | 328.1 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=Q5>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Q5\",\"name\":\"rom_q5-windows.zip\",\"platform\":\"windows\",\"sha256\":\"5f41e53506bd3437aa541f4227e6dceded96bab05f9df9fec51241b4e1cf97ba\",\"size\":660836794,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"1f22e62eca801a9f3d28dacf0a23a2379b3641c10a3ed7f1b80af84e7b66ab86\",\"size\":422597981,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-linux.zip\",\"platform\":\"linux\",\"sha256\":\"c42825bb9a012cbd492014362e9f90cf69411e1be0f429822959ee129bde0a58\",\"size\":708158118,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"846e9553313105a4eed9ce9b644444b096655b9d32376d872badd017eb9eafae\",\"size\":533062352,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"35c13a87991587f4441acb92531bf1b7931ecf08ddcfaeb0fc8d16f4eb2a0bf2\",\"size\":421012266,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"},{\"model\":\"Q5\",\"name\":\"rom_q5-macos.zip\",\"platform\":\"macos\",\"sha256\":\"53cca4e81e1a67510daa1cb4f71288b81d45345a7e304ab23473a4f720bb017a\",\"size\":467470746,\"source_asset\":\"rom_q5.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-12T19:01:41Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"6662cc1a4d2431e44cb073bb37a0f886a84c17961b98cee997b264e5f59987bc\",\"original_asset_sizes\":{\"SHA256SUMS.MX2-ES_Q5-WV5.02-20250619\":78,\"rom_q5.zip\":347755340},\"original_assets\":[\"rom_q5.zip\",\"SHA256SUMS.MX2-ES_Q5-WV5.02-20250619\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX2-ES_Q5-WV5.02-20250619\":9,\"rom_q5-linux-arm64.zip\":1,\"rom_q5-linux-legacy.zip\":1,\"rom_q5-linux.zip\":2,\"rom_q5-macos.zip\":1,\"rom_q5-windows-legacy.zip\":1,\"rom_q5-windows.zip\":2,\"rom_q5.zip\":5},\"generated_at\":\"2026-11-12T19:01:41Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188443285,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-06T15:35:35Z",
@@ -175,48 +241,81 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 725032754,
+        "id": 740711870,
+        "name": "rom_q5-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-linux-arm64.zip",
+        "size": 533062352,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T19:01:45Z",
+        "updated_at": "2026-11-12T19:02:14Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740711870"
+      },
+      {
+        "id": 740711900,
+        "name": "rom_q5-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-linux-legacy.zip",
+        "size": 421012266,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T19:01:45Z",
+        "updated_at": "2026-11-12T19:02:07Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740711900"
+      },
+      {
+        "id": 740711884,
         "name": "rom_q5-linux.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-linux.zip",
-        "size": 735913757,
+        "size": 708158118,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T19:57:26Z",
-        "updated_at": "2026-11-08T19:57:51Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/725032754"
+        "created_at": "2026-11-12T19:01:45Z",
+        "updated_at": "2026-11-12T19:02:14Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740711884"
       },
       {
-        "id": 725032758,
+        "id": 740712969,
         "name": "rom_q5-macos.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-macos.zip",
-        "size": 468080439,
-        "download_count": 0,
+        "size": 467470746,
+        "download_count": 3,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T19:57:26Z",
-        "updated_at": "2026-11-08T19:57:45Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/725032758"
+        "created_at": "2026-11-12T19:02:05Z",
+        "updated_at": "2026-11-12T19:02:17Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740712969"
       },
       {
-        "id": 725032757,
+        "id": 740711874,
+        "name": "rom_q5-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-windows-legacy.zip",
+        "size": 422597981,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T19:01:45Z",
+        "updated_at": "2026-11-12T19:02:04Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740711874"
+      },
+      {
+        "id": 740711862,
         "name": "rom_q5-windows.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-windows.zip",
-        "size": 554424775,
-        "download_count": 0,
+        "size": 660836794,
+        "download_count": 2,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T19:57:26Z",
-        "updated_at": "2026-11-08T19:57:50Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/725032757"
+        "created_at": "2026-11-12T19:01:45Z",
+        "updated_at": "2026-11-12T19:02:12Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/740711862"
       },
       {
-        "id": 717622301,
+        "id": 733031082,
         "name": "rom_q5.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5.zip",
-        "size": 344010052,
-        "download_count": 1,
+        "size": 347755340,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-06T15:36:47Z",
-        "updated_at": "2026-11-06T15:37:00Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/717622301"
+        "created_at": "2026-11-10T21:34:03Z",
+        "updated_at": "2026-11-10T21:34:21Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/733031082"
       },
       {
         "id": 717622292,
@@ -230,15 +329,15 @@
         "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/717622292"
       },
       {
-        "id": 731235111,
+        "id": 745445850,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/stats.txt",
-        "size": 2183,
+        "size": 4075,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T11:43:47Z",
-        "updated_at": "2026-11-10T11:43:47Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/731235111"
+        "created_at": "2026-11-13T22:38:19Z",
+        "updated_at": "2026-11-13T22:38:19Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/745445850"
       }
     ]
   }

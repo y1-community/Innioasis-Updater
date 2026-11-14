@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FM radio on the Y2 - Innioasis Updater</title>
+  <meta name="description" content="FM radio on the Y2 Status: in Beta 9.3.26 2026-11-12; owner test builds 249 and 250 before it. FM has played on one player, a first-revision Y2 that receives no stations;">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-fm-radio.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="FM radio on the Y2 - Innioasis Updater">
+  <meta property="og:description" content="FM radio on the Y2 Status: in Beta 9.3.26 2026-11-12; owner test builds 249 and 250 before it. FM has played on one player, a first-revision Y2 that receives no stations;">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-fm-radio.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FM radio on the Y2 - Innioasis Updater">
+  <meta name="twitter:description" content="FM radio on the Y2 Status: in Beta 9.3.26 2026-11-12; owner test builds 249 and 250 before it. FM has played on one player, a first-revision Y2 that receives no stations;">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>FM radio on the Y2</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="fm-radio-on-the-y2">FM radio on the Y2</h1>
+<p>Status: <strong>in Beta 9.3.26 (2026-11-12; owner test builds 249 and 250 before it).</strong> FM has played on one player, a first-revision Y2 that receives no stations; nobody has confirmed reception under Y2Linux yet. This page says who can use it, how, and what is known.</p>
+<h2 id="which-players">Which players</h2>
+<p>The Y2&#x27;s radio chip contains an FM tuner in every unit, but not every unit can receive with it.</p>
+<table><thead><tr><th>Your Y2</th><th>FM</th></tr></thead><tbody><tr><td>A later revision (the stock software&#x27;s FM radio found stations on it)</td><td>Supported: this is the player FM is for</td></tr><tr><td>The first revision (the stock FM radio never found a station)</td><td>The tuner switches on and tunes, but only noise arrives. No software can change that: hide FM (below)</td></tr></tbody></table>
+<p>If you do not know which you have, try a search. It takes a few seconds and harms nothing.</p>
+<h2 id="setting-it-up">Setting it up</h2>
+<p>FM needs two small files of MediaTek&#x27;s from the same <code>system.img</code> that Wi-Fi and Bluetooth need (the Innioasis Y2 firmware package v3.2.0). Y2Linux may not hand them out.</p>
+<ul><li><strong>A new installation</strong> takes them along when you copy <code>system.img</code> into the <strong>Firmware</strong> folder<p>(<a href="https://innioasis.app/guides/reborn-y2linux-y2.html">INSTALL</a>).</p></li><li><strong>A player that was set up before FM arrived</strong> has Wi-Fi and Bluetooth but not these two files, and the player<p>deleted its copy of <code>system.img</code> back then. Make a folder named <strong>Firmware</strong> on Internal Storage (or the SD card) and copy <code>system.img</code> into it once more. Within a minute the player takes the two files and deletes the copy; Wi-Fi and Bluetooth are not interrupted. Until then FM Radio says &quot;Needs the tuner firmware&quot;.</p></li></ul>
+<h2 id="using-it">Using it</h2>
+<ul><li><strong>Radio</strong> on Home now opens as <strong>FM Radio</strong> and <strong>Internet Radio</strong>. (On a player without FM, or with FM hidden,<p>Radio is the internet stations as before.)</p></li><li>Plug in <strong>wired headphones</strong>: their cable is the antenna, also when the sound goes to Bluetooth.</li><li><strong>Search for Stations</strong> goes through 87.5 to 108 MHz and lists what it finds by frequency. <strong>Search Again</strong> is<p>the last row of that list; search again in another place.</p></li><li>A station plays like any radio station: Now Playing shows the frequency and Stereo or Mono, the volume, the<p>outputs and Favorites work as usual, and it keeps playing with the screen off.</p></li><li>FM stops when the player goes to sleep by the Power button, and does not come back by itself after the wake.</li></ul>
+<h2 id="hiding-fm">Hiding FM</h2>
+<p>On a player that receives nothing, FM Radio is only in the way.</p>
+<ul><li>The page of a search that found no station has <strong>Hide FM Radio</strong>.</li><li><strong>Settings → Customize → Browsing → FM Radio</strong> is the switch for it, and brings FM back.</li></ul>
+<h2 id="what-was-checked-and-what-was-not">What was checked, and what was not</h2>
+<p>On a first-revision Y2 (test builds 249 and 250): the tuner switches on and reports the right chip, tunes across the band, and reads a signal level (−102 to −107 dBm everywhere: noise); its sound arrives as a steady stream; the search runs and saves its result; a station plays in Reborn; pausing switches the tuner off after three seconds and resuming switches it on again; Wi-Fi and Bluetooth keep working beside it. The commands the driver sends are the stock firmware&#x27;s, compared byte for byte in an emulator.</p>
+<p>Not checked: <strong>reception of a real station</strong> (needs a later-revision Y2), sleep with FM playing, FM over Bluetooth by ear, long listening and battery use. There is no RDS (station names) yet. The search on the first-revision player listed one or two frequencies that are probably not stations.</p>
+<p>How it is built: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fplanning%2FBETA-8-FM-PLAN.md">FM plan and results</a>.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

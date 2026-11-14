@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.28: a fast Audiobooks list, films that keep their picture - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.28: a fast Audiobooks list, films that keep their picture Release 1.0.0-beta.9.3.28 , Y2Reborn 1.0.0-beta.9.3.28 , kernel 6.18.56-y2linux-1.0.0-beta.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.28.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.28: a fast Audiobooks list, films that keep their picture - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.28: a fast Audiobooks list, films that keep their picture Release 1.0.0-beta.9.3.28 , Y2Reborn 1.0.0-beta.9.3.28 , kernel 6.18.56-y2linux-1.0.0-beta.">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.28.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.28: a fast Audiobooks list, films that keep their picture - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.28: a fast Audiobooks list, films that keep their picture Release 1.0.0-beta.9.3.28 , Y2Reborn 1.0.0-beta.9.3.28 , kernel 6.18.56-y2linux-1.0.0-beta.">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.28: a fast Audiobooks list, films that keep their picture</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9328-a-fast-audiobooks-list-films-that-keep-their-picture">Y2Linux 1.0 Beta 9.3.28: a fast Audiobooks list, films that keep their picture</h1>
+<p>Release <code>1.0.0-beta.9.3.28</code>, Y2Reborn <code>1.0.0-beta.9.3.28</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.28</code>, update sequence 16510, root <code>2026.08-platform-v1.279</code>. Published as GitHub release <code>baseline-256</code> (build 256; build 255 was an unpublished first build of this version). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.27.md">Beta 9.3.27</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p>Three fixes. <strong>Audiobooks</strong> with a few hundred books made of many small files was so slow that reaching a letter took minutes (<a href="https://github.com/SchulzCode/Y2Reborn/issues/27" target="_blank" rel="noopener noreferrer">Y2Reborn #27</a>); the list is now prepared once and scrolls fast. A <strong>film&#x27;s picture could freeze after seeking</strong> back while it was still catching up from the seek before (<a href="https://github.com/SchulzCode/Y2Reborn/issues/129" target="_blank" rel="noopener noreferrer">Y2Reborn #129</a>). And, found while testing that: **films with few reference pictures<strong> (as phones and screen recorders often make them) </strong>stopped after their first pictures** on the video chip.</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>Audiobooks.</strong> The list of books (and its Cover Flow) used to be worked out again several times for every picture<p>drawn and for every turn of the wheel. It is now kept until the library, a book&#x27;s progress or the playing book changes; only the playing book&#x27;s &quot;Chapter … · …%&quot; line follows the sound. A fast turn of the wheel moves several books at a time, as in Songs.</p></li><li><strong>Films after seeking.</strong> After a seek, the picture decodes forward from the nearest key picture until it reaches the<p>sound. A second seek during that catch-up (above all back) was ignored, and the picture stood still until the sound reached it again. Every seek is now followed.</p></li><li><strong>Films on the video chip.</strong> The chip&#x27;s picture memory was sized from the film&#x27;s reference pictures alone, but the<p>decoder works on several pictures at once. A film with one reference picture got four buffers, ran out after three pictures and showed a still picture while the sound played. The memory now counts the pictures in flight.</p></li></ul>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>Tests</strong>: the platform&#x27;s full check, Reborn&#x27;s tests and the tests of the release images passed. New tests: the<p>Audiobooks list is kept between frames while the playing book&#x27;s place still moves, a fast turn moves several books; the rule that follows a seek during a catch-up.</p></li><li><strong>On the computer</strong>: a list of 200 books made of 10 000 files took 1.5 ms per redraw and 2.8 ms per wheel step<p>before, 0.02 ms for both after (the player is roughly ten to twenty times slower).</p></li><li><strong>On one player</strong> (builds 255 and 256, installed over the air): 200 test books of 50 files each (10 337 tracks):<p>Audiobooks opened in Cover Flow with 205 books, 40 wheel steps at 14 ms per frame on average. A 3-minute test film with one key picture per minute and a clock in the picture: on build 255 it stood still at its third picture (&quot;all 4 frames are in use&quot;), which led to the third fix; on build 256 it played, a seek to 1:50 followed half a second later by a seek back to 0:20 showed 0:22 two seconds later, and a seek to 2:30 showed 2:35 five seconds later. The 1080p test film still plays on the chip. The test files were removed again.</p></li><li><strong>Not tested</strong>: the reporters&#x27; own libraries and films.</li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<p>Everything listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.27.md%23known-issues&amp;anchor=known-issues">Beta 9.3.27</a> still applies.</p>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>Reborn <code>crates/reborn-ui/src/views_books.rs</code> (<code>with_book_rows</code>: rows cached by library stamp, shelf, chapter count<p>and playing book; the playing row&#x27;s status refreshed on each read; <code>with_books</code> no longer clones every book to find one), <code>rows.rs</code> (row count, row and window read from the cache), <code>actions.rs</code> (Audiobooks accelerates like the library and the time zones).</p></li><li>Reborn <code>app/reborn/src/video.rs</code>: <code>Shared::moves</code> counts the sound&#x27;s moves; <code>follow_move</code> seeks again during a<p>catch-up when the sound moved since that seek (no loop on a demuxer that lands after the target).</p></li><li><code>buildroot/patches/ffmpeg/0001-y2-vdec-h264-hwaccel.patch</code>: <code>ff_y2vdec_open</code> adds <code>thread_count</code> frames under frame<p>threading, as FFmpeg&#x27;s own hardware frame pools do (driver maximum 24 unchanged).</p></li><li>Images built from Linux <code>744c913e</code>, Reborn <code>dbe6c29</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

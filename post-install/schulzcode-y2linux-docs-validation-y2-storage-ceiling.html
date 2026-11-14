@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261111cards" defer></script>
+  <script src="../site-init.js?v=20261110warn" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -97,12 +97,12 @@
 <ul><li><strong>eMMC:</strong> works at HS200. Status showed 8-bit, 199 999 771 Hz, 1.8 V; tuning<p>passed on the first run and the readback passed. There were no CRC/timeout events and no fallbacks. A read-only 128 MiB direct read took 0.96 s (~133 MB/s).</p></li><li><strong>SD:</strong> no card initialised. The PWRAP PMIC write gate<p>(<code>kernel/platform/policy.h</code>) refused every VMC/VMCH write with <code>-EPERM</code> (<code>vmch-sd-card: failed to disable: -1</code>, <code>could not set regulator OCR (-1)</code>). The 1.8 V switch failed, and so did the 3.3 V power cycle used for the fallback.</p></li></ul>
 <p>Commit <code>61a353b</code> admits only VMC enable (DIGLDO_CON3 bit 12), VMCH enable (CON5 bit 14), the VMC 1.8/3.3 V selector (CON24 bit 4) and the VMCH selector pinned to 3.3 V (CON26 bit 7). VEMC_3V3 stays unwritable. A PWRAP test drives the exact regulator writes through the gate.</p>
 <table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Linux built source</td><td><code>4db6d6dee8e8b21d85f4f7dfa8e6b7aac82d5e56</code></td></tr><tr><td>Reborn built source</td><td><code>b92d312cc2dc4b74f57a1a9a7b1407e34707137a</code></td></tr><tr><td>Kernel / root / release / build</td><td><code>6.18.0-y2linux-storage-ceiling-02</code> / <code>2025.02.18-platform-v1.12</code> / <code>1.0.0-storage-ceiling-candidate.2</code> / <code>Y2LINUX-STORAGE-CEILING-02</code></td></tr><tr><td>Validation</td><td>Production/platform 281 tests PASS (3 native skips); Reborn ARM QEMU, installed ARM, ELF, release inventory, legal-info, preserving package PASS</td></tr><tr><td><code>BOOTIMG.img</code></td><td><code>5c17f744a0569feb16f6954531024ae7dcafee10bf14cbdb2eb18ba5d083fd36</code></td></tr><tr><td><code>Y2ROOT.img</code></td><td><code>dc611011ce6f129cf18a61a28f9435e2504ade1d416f0b78d6db26764fd20a59</code></td></tr></tbody></table>
-<p>Package: <code>out/y2linux-storage-ceiling-02-candidate/</code>. It supersedes the first candidate. Not flashed by this pass.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<p>Package: <code>out/y2linux-storage-ceiling-02-candidate/</code>. It supersedes the first candidate. Not flashed by this pass.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261110inline5" defer></script>
-<script src="../portable-zip-links.js?v=20261111zip" defer></script>
-<script src="../nav.js?v=20261111nav" defer></script>
-<script src="../site-locale.js?v=20261111i18nfix" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rondo server 3.1.1 - Innioasis Updater</title>
+  <meta name="description" content="A small clean-up of the Rondo server. - /healthz no longer sends the api number that 3.1.0 added. Nothing reads it: Rondo tells whether a server is new enough from the server's ver">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/release-notes/rondo-y1/server-v3.1.1.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Rondo server 3.1.1 - Innioasis Updater">
+  <meta property="og:description" content="A small clean-up of the Rondo server. - /healthz no longer sends the api number that 3.1.0 added. Nothing reads it: Rondo tells whether a server is new enough from the server's ver">
+  <meta property="og:url" content="https://innioasis.app/release-notes/rondo-y1/server-v3.1.1.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rondo server 3.1.1 - Innioasis Updater">
+  <meta name="twitter:description" content="A small clean-up of the Rondo server. - /healthz no longer sends the api number that 3.1.0 added. Nothing reads it: Rondo tells whether a server is new enough from the server's ver">
+  <link rel="icon" href="../../y1_illustration.png">
+  <link rel="stylesheet" href="../../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page lumen-release-page"><p class="lumen-doc-back"><a href="../../firmware.html?model=Y1&amp;software=rondo-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><div class="lumen-release-head"><img class="lumen-release-icon" src="https://innioasis.app/assets/rondo_icon.jpg" alt="" loading="lazy"><div class="lumen-release-titles"><p class="lumen-kicker">Firmware release notes · Rondo · Y1</p><h1>Rondo server 3.1.1</h1></div></div><p class="lumen-lead">A lightweight, custom audio operating system for the Innioasis Y1.</p><div class="lumen-release-tag-row"><span class="lumen-release-pill">server-v3.1.1</span><span>Y1</span><span>2026-11-12</span><a class="lumen-release-repo" href="https://innioasis.app/firmware.html?model=Y1&amp;software=rondo-y1">jarvissax/rondo</a></div><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../../guide.html?model=Y1&amp;software=rondo-y1">Get it in Updater CE</a><a class="lumen-button" href="../../firmware.html?model=Y1&amp;software=rondo-y1">Firmware Downloads</a></div></header><article class="lumen-doc-body lumen-release-body"><p><strong>A small clean-up of the Rondo server.</strong></p>
+<ul><li><strong><code>/healthz</code> no longer sends the <code>api</code> number</strong> that 3.1.0 added. Nothing reads it: Rondo tells whether a server is new enough from the server&#x27;s version, against the oldest server it works with. Nothing else changes, so this update is optional.</li></ul>
+<p><strong>How to update</strong></p>
+<ul><li>The admin page&#x27;s <strong>Update</strong>.</li><li>Or by hand: <code>docker compose -f infra/compose.home.yaml pull &amp;&amp; docker compose -f infra/compose.home.yaml up -d</code> (or <code>compose.vps.yaml</code>).</li></ul>
+<p>Images: <code>ghcr.io/jarvissax/rondo-server:3.1.1</code> and <code>ghcr.io/jarvissax/rondo-updater:3.1.1</code> (also <code>latest</code>). Changes: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fjarvissax%2Frondo%2Fblob%2Fmain%2Fserver%2FCHANGELOG.md">server/CHANGELOG.md</a>.</p></article><section class="lumen-doc-related"><h2>Also useful</h2><ul class="lumen-doc-related-list"><li><a href="../../post_install.html?software=rondo-y1" data-post-install-link data-slug="rondo-y1"><strong>Setup after install</strong><small>The steps to finish after this firmware is installed</small></a></li><li><a href="../../guides/rondo-y1.html"><strong>Install guide</strong><small>Step-by-step install for Rondo</small></a></li><li><a href="../../release-notes/rondo-y1/v3.0.2.html"><strong>Rondo 3.0.2</strong><small>v3.0.2 · 2026-11-12</small></a></li><li><a href="../../release-notes/rondo-y1/server-v3.1.0.html"><strong>Rondo server 3.1.0</strong><small>server-v3.1.0 · 2026-11-12</small></a></li><li><a href="../../release-notes/rondo-y1/v3.0.1.html"><strong>Rondo 3.0.1</strong><small>v3.0.1 · 2026-11-12</small></a></li><li><a href="../../release-notes/rondo-y1/v3.0.0.html"><strong>Rondo 3.0.0</strong><small>v3.0.0 · 2026-11-12</small></a></li><li><a href="../../release-notes/rondo-y1/v2.0.1.html"><strong>Rondo 2.0.1</strong><small>v2.0.1 · 2026-11-12</small></a></li><li><a href="../../release-notes/rondo-y1/v2.0.0.html"><strong>Rondo 2.0.0</strong><small>v2.0.0 · 2026-11-11</small></a></li><li><a href="../../release-notes/rondo-y1/v1.0.2.html"><strong>Rondo 1.0.2</strong><small>v1.0.2 · 2026-11-03</small></a></li></ul></section><p class="lumen-doc-footer-note">Notes as published by the Rondo project. Install it with Updater CE, or download it from the firmware directory.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=rondo-y1">jarvissax's <em>Rondo</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=jarvissax%2Frondo&amp;software=rondo-y1" title="Firmware Archive page">[1]</a> <a class="lumen-cite" href="https://innioasis.app/release_notes.html?author=jarvissax&amp;project=rondo&amp;version=server-v3.1.1&amp;software=rondo-y1" title="Release notes">[2]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../../nav.js?v=20261103brand" defer></script>
+<script src="../../site-locale.js?v=20261108c" defer></script>
+<script src="../../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

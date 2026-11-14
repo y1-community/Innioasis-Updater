@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wi-Fi Share: copying music without a cable - Innioasis Updater</title>
+  <meta name="description" content="Wi-Fi Share: copying music without a cable Status: new in Beta 9.3.27 13 November 2026. Tried from a computer's browser against one player; phones, the QR code and very l">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-wifi-share.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Wi-Fi Share: copying music without a cable - Innioasis Updater">
+  <meta property="og:description" content="Wi-Fi Share: copying music without a cable Status: new in Beta 9.3.27 13 November 2026. Tried from a computer's browser against one player; phones, the QR code and very l">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-wifi-share.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wi-Fi Share: copying music without a cable - Innioasis Updater">
+  <meta name="twitter:description" content="Wi-Fi Share: copying music without a cable Status: new in Beta 9.3.27 13 November 2026. Tried from a computer's browser against one player; phones, the QR code and very l">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Wi-Fi Share: copying music without a cable</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="wi-fi-share-copying-music-without-a-cable">Wi-Fi Share: copying music without a cable</h1>
+<p>Status: <strong>new in Beta 9.3.27 (13 November 2026).</strong> Tried from a computer&#x27;s browser against one player; phones, the QR code and very large uploads are not confirmed yet. Tell us how it goes.</p>
+<p>Wi-Fi Share turns the player into a small website on your home network. Any phone, tablet or computer on the same Wi-Fi opens it in a browser and sees a file browser for <strong>Internal Storage</strong> and the <strong>SD Card</strong>: no cable, no program to install, and it works on an iPhone, which cannot open the player over USB (<a href="https://github.com/SchulzCode/Y2Linux/issues/115" target="_blank" rel="noopener noreferrer">#115</a>).</p>
+<h2 id="using-it">Using it</h2>
+<ol><li>On the player: <strong>Settings → Library → Wi-Fi Share</strong>. The page shows a QR code, an address such as<p><code>192.168.1.23</code>, and a six-digit code.</p></li><li>On the phone or computer, on the same Wi-Fi: scan the QR code with the camera, or type the address into the<p>browser. Enter the six-digit code once.</p></li><li>Pick a storage and a folder. <strong>Upload files</strong> or <strong>Upload a folder</strong> (on a computer you can also drop files and<p>folders onto the page). <strong>Download</strong>, <strong>Rename</strong>, <strong>Delete</strong> and <strong>New folder</strong> are beside each entry.</p></li><li>When you are done, press Back or <strong>Stop Sharing</strong> on the player. If anything changed, the player looks for new<p>music by itself.</p></li></ol>
+<p>Sharing runs only while that page is open on the player, and the player stays awake for it. Leave the page and the website is gone.</p>
+<h2 id="good-to-know">Good to know</h2>
+<ul><li><strong>Who can get in:</strong> anyone on the same network who knows the code on the player&#x27;s screen. Five wrong codes lock<p>the door for half a minute, and every start has a new code. The connection is not encrypted (a home network has no certificate for it), so use it on a network you trust, not on public Wi-Fi.</p></li><li><strong>What is shared:</strong> the music storages, exactly what a computer sees over USB. Nothing else of the player.</li><li><strong>Uploads</strong> arrive under a temporary name and get their real name when they are complete: a transfer that breaks<p>leaves no half song. A file that is already there is kept unless you agree to replace it.</p></li><li><strong>The SD card</strong> is opened for writing only while something is written, as with a USB copy.</li><li><strong>Speed</strong> depends on your Wi-Fi; the player&#x27;s radio is 2.4 GHz. A USB cable is faster for a whole library.</li><li><strong>Large files:</strong> a FAT32 card takes no file above 4 GB.</li></ul>
+<h2 id="not-there-yet">Not there yet</h2>
+<p>Encrypted connections (HTTPS), resuming a broken upload, playing music in the browser, moving files between folders.</p>
+<p>How it is built: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Reborn%2Fblob%2Fmain%2Fdocs%2Fui%2FREBORN-WIFI-SHARE.md">plan</a>.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

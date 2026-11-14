@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.26: FM radio, Next between films, pairing from a car - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.26: FM radio, Next between films, pairing from a car Release 1.0.0-beta.9.3.26 , Y2Reborn 1.0.0-beta.9.3.26 , kernel 6.18.56-y2linux-1.0.0-beta.9.3.2">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.26.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.26: FM radio, Next between films, pairing from a car - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.26: FM radio, Next between films, pairing from a car Release 1.0.0-beta.9.3.26 , Y2Reborn 1.0.0-beta.9.3.26 , kernel 6.18.56-y2linux-1.0.0-beta.9.3.2">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.26.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.26: FM radio, Next between films, pairing from a car - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.26: FM radio, Next between films, pairing from a car Release 1.0.0-beta.9.3.26 , Y2Reborn 1.0.0-beta.9.3.26 , kernel 6.18.56-y2linux-1.0.0-beta.9.3.2">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.26: FM radio, Next between films, pairing from a car</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9326-fm-radio-next-between-films-pairing-from-a-car">Y2Linux 1.0 Beta 9.3.26: FM radio, Next between films, pairing from a car</h1>
+<p>Release <code>1.0.0-beta.9.3.26</code>, Y2Reborn <code>1.0.0-beta.9.3.26</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.26</code>, update sequence 16300, root <code>2026.08-platform-v1.274</code>. Published as GitHub release <code>baseline-251</code> (build 251). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.25.md">Beta 9.3.25</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p><strong>FM radio is back</strong> for Y2s whose hardware receives FM: Radio opens as FM Radio and Internet Radio. It played on one player, a first-revision Y2 that receives only noise, so <strong>reception of a real station is still unconfirmed</strong>. Also new: <strong>a car can pair with the Y2 from its own screen</strong> (<a href="https://github.com/SchulzCode/Y2Linux/issues/116" target="_blank" rel="noopener noreferrer">#116</a>), and <strong>Next and Previous during a film go to the next or previous film</strong> instead of a song (<a href="https://github.com/SchulzCode/Y2Reborn/issues/128" target="_blank" rel="noopener noreferrer">Y2Reborn #128</a>).</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>FM radio.</strong> Radio on Home opens as <strong>FM Radio</strong> and <strong>Internet Radio</strong> on a player with the tuner&#x27;s files. Wired<p>headphones are the antenna. <strong>Search for Stations</strong> lists what it finds; a station plays like an internet station, with frequency and Stereo/Mono on Now Playing. <strong>Hide FM Radio</strong> (on an empty search) and <strong>Settings → Customize → Browsing → FM Radio</strong> switch it off. A player set up before this release needs <code>system.img</code> copied into the <strong>Firmware</strong> folder once more for the tuner&#x27;s two files. Everything else: <strong><a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2FFM-RADIO.md">FM radio on the Y2</a></strong>.</p></li><li><strong>Pairing from a car.</strong> Cars pair from their own screen: they search, list the devices that make themselves<p>visible, and show a number to confirm on both. The Y2 never made itself visible, so it was never listed (the reporter&#x27;s error report showed exactly that). Now <strong>Settings → Bluetooth → Search for Devices</strong> also makes the player visible as <strong>Y2Linux</strong> for 2 minutes. The car&#x27;s number appears on the Y2 to confirm; after that the car&#x27;s audio connection needs no second question, and the car is remembered and reconnects like headphones paired on the Y2. Bluetooth off, sleep, a pairing started on the Y2 or the 2 minutes end the visibility.</p></li><li><strong>Films in order.</strong> A film chosen under Videos plays with the Videos list as its queue: Next and Previous go to<p>the film below or above, in the list&#x27;s order also with Shuffle on. Before, a film was put in front of the music queue, so Next went on with a song.</p></li></ul>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>Tests</strong>: the platform&#x27;s full check, Reborn&#x27;s tests and the tests of the release images passed. New tests: a<p>simulated Bluetooth stack in which a car pairs from its side (the player becomes visible on a search, the car&#x27;s number is asked, the yes is enough for its audio, it is trusted, the player hidden again and the car connected), and the Videos list handing its order to Next and Previous.</p></li><li><strong>On one player</strong> (first revision, test builds 249 and 250): the FM tuner switched on and reported its chip,<p>tuned across the band (signal −102 to −107 dBm everywhere: noise), the search ran, a station played in Reborn, pausing switched the tuner off after three seconds and resuming on again, Wi-Fi and Bluetooth kept working.</p></li><li><strong>Not tested</strong>: reception of a real station (needs a later-revision Y2), sleep with FM playing, FM over Bluetooth<p>by ear; pairing with a real car (the reporter&#x27;s Tesla); this exact build on a player.</p></li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<p>Everything listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.25.md%23known-issues&amp;anchor=known-issues">Beta 9.3.25</a> still applies. New:</p>
+<ul><li>FM reception is unconfirmed; a first-revision Y2 receives only noise, and its search may list one or two<p>frequencies that are not stations.</p></li><li>FM stops when the player goes to sleep by the Power button and does not come back by itself; no RDS station names.</li><li>Whether every car lists a music player (the Y2 announces itself as portable audio, not as a phone) is unknown.</li></ul>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>FM: kernel <code>connectivity/fm.c</code> (MT6627 on STP channel 1, the stock firmware&#x27;s commands), AFE capture `Y2 FM<p>Capture<code>at 48 kHz; platform</code>commands/service/radiofw/fm.rs<code>takes the tuner&#x27;s two files from</code>system.img`; the sleep helper switches a left-on tuner off; Reborn <code>crates/reborn-platform/src/fm.rs</code>, <code>app/reborn/src/fm.rs</code>. Plan and results: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fplanning%2FBETA-8-FM-PLAN.md">BETA-8-FM-PLAN.md</a>.</p></li><li>Car pairing: <code>y2-radiod</code> <code>bt/agent.rs</code> (<code>show_to_others</code>: Discoverable and Pairable for 120 s with BlueZ&#x27;s own<p>timeouts; <code>welcomed</code>/<code>adopt_welcomed</code>), started from the scan in <code>bt/reconcile.rs</code>; described in <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Farchitecture%2Fradio-daemon.md">radio-daemon.md</a>. Fake-BlueZ scenario <code>a_car_pairs_from_its_side</code>.</p></li><li>Films: Reborn <code>views_videos::films</code> is the Videos order, <code>reborn_core::queue::keeps_order</code> keeps a film<p>collection unshuffled.</p></li><li>Images built from Linux <code>302077e2</code>, Reborn <code>acafbda</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261111cards" defer></script>
+  <script src="../site-init.js?v=20261110warn" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -61,12 +61,12 @@
 <p><strong>First boot after the flash (boot <code>53bad0d8</code>), USB networking did not work.</strong> The gadget enumerated and configured (stage 6, <code>usb0</code> up with 10.42.0.1), the Y2 received 36 packets but sent none (<code>usb0 tx_packets=0</code>, DMA completions 10/10, no unmask loss); the host saw bulk-OUT transmit timeouts (<code>NETDEV WATCHDOG</code>, 83 TX errors, ARP for 10.42.0.1 FAILED). Wi-Fi ping answered. The owner turned the player off and on (clean shutdown) and replugged; the next boot <code>6fd4d362</code> worked at once. A milder version occurred on 18&#x27;s first check (first SSH timed out, 1 of 2 pings answered), so it is not attributed to 20&#x27;s change; cause open (first connection after a flash). Evidence: archive <code>out/deep-sleep-final/evidence/20261013/117-power20-first-check/</code> (rows of boot <code>53bad0d8</code> in <code>sleep-diagnostics.jsonl</code>).</p>
 <p><strong>Working boot <code>6fd4d362</code> (archive 117):</strong> kernel <code>-power-final-20</code>, taint 0, <code>application_ready</code> 40.4 s; <code>clocks.unused_handoff</code>: <code>UART1 ... reason=never_initialised retained=0</code>; <code>uart1_gate_now=1</code>; awake PERI_PDN0 <code>0x2eed3fd</code> (bit 17 set); <code>uart_sleep_owner_ready=1</code> (the deep-idle UART owner check no longer refuses); all 16–19 features armed; Wi-Fi, Bluetooth, USB (archive taken over it), charging.</p>
 <h2 id="what-to-check-after-the-flash">What to check after the flash</h2>
-<ol><li>Boot, display, audio, radios, USB; <code>cat /sys/module/clocks/parameters/unused_handoff</code> shows UART1<p><code>reason=never_initialised retained=0</code>; PERI_PDN0 bit 17 set (<code>golden</code> row <code>PERI_PDN0_STA</code> now matching).</p></li><li>A ~35-min sleep: golden SoC differences down by one; <strong><code>y2_infra/state last_lost</code></strong>.</li><li>The overnight drain against 16&#x27;s ≈8.6 mA (first night for 17–20 together).</li></ol></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<ol><li>Boot, display, audio, radios, USB; <code>cat /sys/module/clocks/parameters/unused_handoff</code> shows UART1<p><code>reason=never_initialised retained=0</code>; PERI_PDN0 bit 17 set (<code>golden</code> row <code>PERI_PDN0_STA</code> now matching).</p></li><li>A ~35-min sleep: golden SoC differences down by one; <strong><code>y2_infra/state last_lost</code></strong>.</li><li>The overnight drain against 16&#x27;s ≈8.6 mA (first night for 17–20 together).</li></ol></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261110inline5" defer></script>
-<script src="../portable-zip-links.js?v=20261111zip" defer></script>
-<script src="../nav.js?v=20261111nav" defer></script>
-<script src="../site-locale.js?v=20261111i18nfix" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

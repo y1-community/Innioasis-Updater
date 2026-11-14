@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.30: films in every skin, tidier albums, Shuffle in folders - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.30: films in every skin, tidier albums, Shuffle in folders Release 1.0.0-beta.9.3.30 , Y2Reborn 1.0.0-beta.9.3.30 , kernel 6.18.56-y2linux-1.0.0-beta">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.30.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.30: films in every skin, tidier albums, Shuffle in folders - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.30: films in every skin, tidier albums, Shuffle in folders Release 1.0.0-beta.9.3.30 , Y2Reborn 1.0.0-beta.9.3.30 , kernel 6.18.56-y2linux-1.0.0-beta">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.30.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.30: films in every skin, tidier albums, Shuffle in folders - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.30: films in every skin, tidier albums, Shuffle in folders Release 1.0.0-beta.9.3.30 , Y2Reborn 1.0.0-beta.9.3.30 , kernel 6.18.56-y2linux-1.0.0-beta">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.30: films in every skin, tidier albums, Shuffle in folders</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9330-films-in-every-skin-tidier-albums-shuffle-in-folders">Y2Linux 1.0 Beta 9.3.30: films in every skin, tidier albums, Shuffle in folders</h1>
+<p>Release <code>1.0.0-beta.9.3.30</code>, Y2Reborn <code>1.0.0-beta.9.3.30</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.30</code>, update sequence 16710, root <code>2026.08-platform-v1.284</code>. Published as GitHub release <code>baseline-261</code> (build 261; build 260 before it on one player). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.29.md">Beta 9.3.29</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p>Films now play with any skin (<a href="https://github.com/SchulzCode/Y2Reborn/issues/131" target="_blank" rel="noopener noreferrer">Y2Reborn #131</a>); before, a skin with its own Now Playing showed a film like a song. A Reddit user&#x27;s library of &quot;over 720 albums&quot; led to three fixes in how songs become albums, a <strong>Shuffle</strong> row on every opened folder, and a headphone profile for the Truthear x Crinacle Zero:BLUE2 they asked about.</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>Films in every skin.</strong> A film on Now Playing is always the picture on black, whatever the skin, and the<p>skin&#x27;s colours no longer tint it. Songs keep the skin&#x27;s Now Playing.</p></li><li><strong>Albums.</strong> Within one folder, the songs of one album title now always make one album: when they name<p>different Album Artists, or none while different artists sing, it is a <strong>Various Artists</strong> album (before, it was split into one album per name). Two different albums of the same title without the Album Artist tag stay apart by artist (before, they were merged), and songs without an album title are listed under their own artist (before, they formed one mix). The music files are not changed, and Last.fm still gets each song&#x27;s own tag.</p></li><li><strong>Shuffle in folders.</strong> An opened folder in Music → Folders starts with <strong>Shuffle</strong>: everything in the<p>folder, its folders included.</p></li><li><strong>Headphone profile</strong> for the Truthear x Crinacle Zero:BLUE2 (AutoEq, measured by Kazi): 48 profiles in all.</li></ul>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>Tests</strong>: the platform&#x27;s full check, Reborn&#x27;s tests and the tests of the release images passed. New tests: a<p>film in the Classic skin (picture drawn and untinted; it failed before the fix), albums with differing, missing and mixed Album Artist tags and songs without an album title, a folder&#x27;s Shuffle with its subfolders.</p></li><li><strong>On one player</strong> (builds 260 and 261, over the air): a film played full screen in the Classic skin; an opened<p>folder showed Shuffle first (on 260 with a folder&#x27;s icon, corrected in 261). The player went back to the Reborn skin.</p></li><li><strong>Not tested on the player</strong>: the album changes with a large library (the owner&#x27;s library is small and tidy),<p>the BLUE2 profile by ear.</p></li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<p>Everything listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.29.md%23known-issues&amp;anchor=known-issues">Beta 9.3.29</a> still applies.</p>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>Reborn <code>crates/reborn-ui/src/screens.rs</code> (<code>film_playing</code>: no skin layout and no palette remap for a film),<p><code>skin/draw.rs</code> (<code>remap</code> leaves <code>Tex::Video</code> alone); <code>crates/reborn-core/src/albums.rs</code> (<code>unify_album_artists</code>: one name → it, several → Various Artists, none → the one singing artist else Various Artists, untitled songs → own artist; <code>own_album_artist</code> keeps the tag); <code>catalog.rs</code> <code>folder_rows</code> (Shuffle row), <code>selects.rs</code> (<code>play_filtered</code> takes a folder&#x27;s <code>group_members</code>); <code>assets/eq</code> (+1 profile).</p></li><li>Images built from Linux <code>d26d82b8</code>, Reborn <code>be78d4a</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

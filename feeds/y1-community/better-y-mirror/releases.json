@@ -3,7 +3,7 @@
     "id": 432885934,
     "tag_name": "v1.1.0",
     "name": "Portable Flashing Package: Version 1.1.0",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.1.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n![Image](https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/themes_support.png \"Logo\")\r\n\r\nSettings marked with \u2699\ufe0f are new rows in the better-Y menu.\r\n\r\n### System\r\n\r\n<details>\r\n<summary>\u2699\ufe0f <b>Data backup</b> \u2014 settings, likes, playlists, bookmarks and reading progress</summary>\r\n<div>\r\n<p></p>\r\n\r\nUpdating the firmware with an updater wipes the user data, so in order to keep it after an update you can use \"Data backup\" button. \r\nIt saves everything to `/better-Y/backup/` on the SD card and you can load it back after you updated to a newer version.\r\n\r\nAlong with the better-Y settings, the archive keeps the theme, the stock settings, the library with\r\nplaylists, bookmarks and audiobook progress, the e-book reader progress. Bluetooth pairings can't be saved.\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary><b>Extended themes support</b> \u2014 screens that were previously hardcoded now use the theme designs</summary>\r\n<div>\r\n<p></p>\r\n\r\n- **USB connected**\r\n- **Loading windows**\r\n- **Equalizer**\r\n- **FM Radio**\r\n- **Photos**\r\n- **Wallpaper**\r\n- **Search** and the **on-screen keyboard**\r\n- **Brightness**\r\n- **Bluetooth**\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary><b>Equalizer now shows each band's level in dB instead of just \"-15\" and \"15\"</b></summary>\r\n<div>\r\n<p></p>\r\n\r\n<table border=\"0\" style=\"border-collapse: collapse; border: none;\">\r\n  <tr style=\"border: none; background: transparent; vertical-align: top;\">\r\n    <td width=\"400\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0 15px 0 0; width: 1px;\">\r\n      <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/equalizer.png\" alt=\"Updated equalizer window\" width=\"373\" style=\"display: block; max-width: none; margin: 0 auto;\">\r\n    </td>\r\n</table>\r\n\r\n</div>\r\n</details>\r\n\r\n<p>&#9679;&ensp;<b>Disabled scroll wheel sounds while the screen is off</b> \u2014 no more clicks in a pocket when Key lock is off</p>\r\n\r\n<p>&#9679;&ensp;<b>Fixed a bug where the song order was reset when a song was added to the queue</b></p>\r\n\r\n<p>&#9679;&ensp;<b>Files of better-Y on the SD card are sorted into folders</b> \u2014 <code>/better-Y/logs/</code> and <code>/better-Y/backup/</code></p>\r\n\r\n<p>&#9679;&ensp;<b>E-book \u2192 Local files no longer lists the files of the /better-Y/ folder</b>\r\n\r\n<p>&#9679;&ensp;<b>Translation fixes and some other minor\u00a0changes</b></p>\r\n\r\n### Now Playing\r\n\r\n<details>\r\n<summary>\u2699\ufe0f <b>Option to change text and lyrics color</b> \u2014 Light / Dark / Theme color</summary>\r\n<div>\r\n<p></p>\r\n\r\n<table border=\"0\" style=\"border-collapse: collapse; border: none; margin: 0; width: auto;\">\r\n  <!-- \u0412\u0415\u0420\u0425\u041d\u0418\u0419 \u0420\u042f\u0414: \u0414\u0412\u0415 \u041a\u0410\u0420\u0422\u0418\u041d\u041a\u0418 -->\r\n  <tr style=\"border: none; background: transparent; vertical-align: top;\">\r\n    <!-- \u041f\u0435\u0440\u0432\u0430\u044f \u043a\u043e\u043b\u043e\u043d\u043a\u0430 (\u0431\u0435\u0437 \u043e\u0442\u0441\u0442\u0443\u043f\u0430 \u0441\u043b\u0435\u0432\u0430) -->\r\n    <td width=\"400\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0 15px 0 0; width: 1px;\">\r\n      <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/color_change_1.png\" alt=\"Icons and text color changed to `Light`\" width=\"373\" style=\"display: block; max-width: none; margin: 0;\">\r\n      <div align=\"center\" style=\"padding-top: 8px; font-size: 14px; line-height: 1.4; text-align: center;\">\r\n        Icons and text color changed to `Light`\r\n      </div>\r\n    </td>\r\n    <!-- \u0412\u0442\u043e\u0440\u0430\u044f \u043a\u043e\u043b\u043e\u043d\u043a\u0430 -->\r\n    <td width=\"400\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0 0 0 15px; width: 1px;\">\r\n      <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/color_change_2.png\" alt=\"Icons and text color changed to `Theme color`\" width=\"373\" style=\"display: block; max-width: none; margin: 0;\">\r\n      <div align=\"center\" style=\"padding-top: 8px; font-size: 14px; line-height: 1.4; text-align: center;\">\r\n        Icons and text color changed to `Theme color`\r\n      </div>\r\n    </td>\r\n  </tr>\r\n\r\n  <!-- \u041e\u0422\u0421\u0422\u0423\u041f \u041c\u0415\u0416\u0414\u0423 \u0420\u042f\u0414\u0410\u041c\u0418 -->\r\n  <tr style=\"border: none; background: transparent; height: 20px;\">\r\n    <td colspan=\"2\" valign=\"top\" style=\"border: none; padding: 0;\"></td>\r\n  </tr>\r\n\r\n  <!-- \u041d\u0418\u0416\u041d\u0418\u0419 \u0420\u042f\u0414: \u0422\u0420\u0415\u0422\u042c\u042f \u041a\u0410\u0420\u0422\u0418\u041d\u041a\u0410 \u041f\u041e \u0426\u0415\u041d\u0422\u0420\u0423 \u041f\u0415\u0420\u0412\u042b\u0425 \u0414\u0412\u0423\u0425 -->\r\n  <tr style=\"border: none; background: transparent; vertical-align: top;\">\r\n    <td colspan=\"2\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0; text-align: center;\">\r\n      <div style=\"display: inline-block; text-align: center;\">\r\n        <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/color_change_3.png\" alt=\"Lyrics color changed to `Theme color`\" width=\"373\" style=\"display: block; max-width: none; margin: 0 auto;\">\r\n        <div align=\"center\" style=\"padding-top: 8px; font-size: 14px; line-height: 1.4; text-align: center;\">\r\n          Lyrics color changed to `Theme color`\r\n        </div>\r\n      </div>\r\n    </td>\r\n  </tr>\r\n</table>\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary>\u2699\ufe0f <b>Long artist/album scroll</b> \u2014 Off / Artists / Albums / Both</summary>\r\n<div>\r\n<p></p>\r\n\r\nLong artist and album lines in the player can now scroll too. Long song titles always scroll,\r\nregardless of the setting.\r\n\r\n</div>\r\n</details>\r\n\r\n### Menu\r\n\r\n<details>\r\n<summary><b>More sorting options</b> \u2014 in Folders and Audiobooks</summary>\r\n<div>\r\n<p></p>\r\n\r\n- **Music/Audiobooks/Videos \u2192 Folders** \u2014 \"Sort by File name\".\r\n- **Audiobooks \u2192 All audiobooks** and the chapters of a book \u2014 \"Sort by File name\".\r\n- **Audiobooks \u2192 Artists** and **Albums** \u2014 \"Sort by\" \u2192 A-Z / Z-A.\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary><b>Photos section rework</b> \u2014 revised to reflect the changes and align with the other sections</summary>\r\n<div>\r\n<p></p>\r\n\r\n- \"Set as wallpaper\" is no longer offered for a folder.\r\n- Leaving a folder returns the grid to where it was, without scrolling down from the top.\r\n- Opening a folder or a picture no longer shows a loading window.\r\n\r\n</div>\r\n</details>\r\n\r\n<p>&#9679;&ensp;<b>Faster and even more responsive scrolling</b> \u2014 up to 4x faster</p>\r\n\r\n<p>&#9679;&ensp;<b>Queue, better-Y, Bluetooth, Themes gallery redesign</b></p>\r\n\r\n<p>&#9679;&ensp;<b>Folders are listed above files in Videos \u2192 Folders</b></p>\r\n\r\n<p>&#9679;&ensp;<b>New default folder and file icons in Folders</b> \u2014 they also follow the theme colors</p>\r\n\r\n<p>&#9679;&ensp;<b>The song number column fix</b> \u2014 no longer cuts off with wide theme fonts and dynamically changes depending on the theme's font size</p>\r\n\r\n<p>&#9679;&ensp;<b>\"MultiSelect\" is back in the menu while songs are selected</b></p>\r\n\r\n<p>&#9679;&ensp;<b>The alphabetical scroll letter no longer gets bigger with wide theme fonts</b></p>\r\n\r\n<p>&#9679;&ensp;<b>Settings and equalizer previews change right after a scroll</b> \u2014 without a delay</p>\r\n\r\n### Metadata\r\n\r\n<details>\r\n<summary><b>Tags of MP3s with big embedded covers are read correctly</b> \u2014 titles, album artist, disc number and the cover itself</summary>\r\n<div>\r\n<p></p>\r\n\r\nThe stock firmware refuses to read an ID3 tag larger than 3 MB and silently falls back to the old ID3v1\r\ntag. That tag has titles cut to 30 characters, no album artist, no disc\r\nnumber, no cover \u2014 and no text encoding, so Cyrillic turned into hieroglyphs.\r\n\r\nbetter-Y now reads such tags itself (ID3v2.2, 2.3 and 2.4). FLAC, M4A and OGG never had this\r\nproblem.\r\n\r\nA library scanned by an older version is fixed once by pressing \"Update library\": on its first run\r\nit re-reads every MP3 whose tag is over the limit, even if the file has not changed.\r\n\r\n</div>\r\n</details>\r\n\r\n> [!TIP]\r\n> If you're updating from version 1.0.0 and don't want to lose your user data (settings, likes, playlists, bookmarks and reading progress), there are instructions in the Update section on how to update without losing your user data. Starting with this version you can back up your data using `Data backup` button in the better-Y menu and load it back after you updated to a newer version using Updater CE or any other option.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"f238570a5c03ae9c71b1da6380fadd5464447f5704299a2921cf9ab4bebae42c\",\"size\":569123137,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"7768ca15ba0e01ccace46f08f7e18f18d7f92096ac4a6d09c6e95ed445b5eab2\",\"size\":301289841,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"d7960a51d99d9d16ceaf73c19810b3f0b4a315bf2593879346db0acaf95f8e02\",\"size\":387634155,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-08T19:58:36Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"f63887b73a3650cf3cd983169cf03f2efab3f86c7af519d1ee51b4c19545fdbf\",\"original_assets\":[\"better-Y_3.1.2_v1.1.0.apk\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"better-Y_3.1.2_v1.1.0.apk\":9,\"rom-linux.zip\":3,\"rom-macos.zip\":5,\"rom-windows.zip\":4,\"rom.zip\":9},\"generated_at\":\"2026-11-08T19:58:36Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.1.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.1.0&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Fbetter-y-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.1.0&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fbetter-y-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.1.0&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Fbetter-y-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.1.0&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fbetter-y-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.1.0&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fbetter-y-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.1.0&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Fbetter-y-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n![Image](https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/themes_support.png \"Logo\")\r\n\r\nSettings marked with \u2699\ufe0f are new rows in the better-Y menu.\r\n\r\n### System\r\n\r\n<details>\r\n<summary>\u2699\ufe0f <b>Data backup</b> \u2014 settings, likes, playlists, bookmarks and reading progress</summary>\r\n<div>\r\n<p></p>\r\n\r\nUpdating the firmware with an updater wipes the user data, so in order to keep it after an update you can use \"Data backup\" button. \r\nIt saves everything to `/better-Y/backup/` on the SD card and you can load it back after you updated to a newer version.\r\n\r\nAlong with the better-Y settings, the archive keeps the theme, the stock settings, the library with\r\nplaylists, bookmarks and audiobook progress, the e-book reader progress. Bluetooth pairings can't be saved.\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary><b>Extended themes support</b> \u2014 screens that were previously hardcoded now use the theme designs</summary>\r\n<div>\r\n<p></p>\r\n\r\n- **USB connected**\r\n- **Loading windows**\r\n- **Equalizer**\r\n- **FM Radio**\r\n- **Photos**\r\n- **Wallpaper**\r\n- **Search** and the **on-screen keyboard**\r\n- **Brightness**\r\n- **Bluetooth**\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary><b>Equalizer now shows each band's level in dB instead of just \"-15\" and \"15\"</b></summary>\r\n<div>\r\n<p></p>\r\n\r\n<table border=\"0\" style=\"border-collapse: collapse; border: none;\">\r\n  <tr style=\"border: none; background: transparent; vertical-align: top;\">\r\n    <td width=\"400\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0 15px 0 0; width: 1px;\">\r\n      <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/equalizer.png\" alt=\"Updated equalizer window\" width=\"373\" style=\"display: block; max-width: none; margin: 0 auto;\">\r\n    </td>\r\n</table>\r\n\r\n</div>\r\n</details>\r\n\r\n<p>&#9679;&ensp;<b>Disabled scroll wheel sounds while the screen is off</b> \u2014 no more clicks in a pocket when Key lock is off</p>\r\n\r\n<p>&#9679;&ensp;<b>Fixed a bug where the song order was reset when a song was added to the queue</b></p>\r\n\r\n<p>&#9679;&ensp;<b>Files of better-Y on the SD card are sorted into folders</b> \u2014 <code>/better-Y/logs/</code> and <code>/better-Y/backup/</code></p>\r\n\r\n<p>&#9679;&ensp;<b>E-book \u2192 Local files no longer lists the files of the /better-Y/ folder</b>\r\n\r\n<p>&#9679;&ensp;<b>Translation fixes and some other minor\u00a0changes</b></p>\r\n\r\n### Now Playing\r\n\r\n<details>\r\n<summary>\u2699\ufe0f <b>Option to change text and lyrics color</b> \u2014 Light / Dark / Theme color</summary>\r\n<div>\r\n<p></p>\r\n\r\n<table border=\"0\" style=\"border-collapse: collapse; border: none; margin: 0; width: auto;\">\r\n  <!-- \u0412\u0415\u0420\u0425\u041d\u0418\u0419 \u0420\u042f\u0414: \u0414\u0412\u0415 \u041a\u0410\u0420\u0422\u0418\u041d\u041a\u0418 -->\r\n  <tr style=\"border: none; background: transparent; vertical-align: top;\">\r\n    <!-- \u041f\u0435\u0440\u0432\u0430\u044f \u043a\u043e\u043b\u043e\u043d\u043a\u0430 (\u0431\u0435\u0437 \u043e\u0442\u0441\u0442\u0443\u043f\u0430 \u0441\u043b\u0435\u0432\u0430) -->\r\n    <td width=\"400\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0 15px 0 0; width: 1px;\">\r\n      <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/color_change_1.png\" alt=\"Icons and text color changed to `Light`\" width=\"373\" style=\"display: block; max-width: none; margin: 0;\">\r\n      <div align=\"center\" style=\"padding-top: 8px; font-size: 14px; line-height: 1.4; text-align: center;\">\r\n        Icons and text color changed to `Light`\r\n      </div>\r\n    </td>\r\n    <!-- \u0412\u0442\u043e\u0440\u0430\u044f \u043a\u043e\u043b\u043e\u043d\u043a\u0430 -->\r\n    <td width=\"400\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0 0 0 15px; width: 1px;\">\r\n      <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/color_change_2.png\" alt=\"Icons and text color changed to `Theme color`\" width=\"373\" style=\"display: block; max-width: none; margin: 0;\">\r\n      <div align=\"center\" style=\"padding-top: 8px; font-size: 14px; line-height: 1.4; text-align: center;\">\r\n        Icons and text color changed to `Theme color`\r\n      </div>\r\n    </td>\r\n  </tr>\r\n\r\n  <!-- \u041e\u0422\u0421\u0422\u0423\u041f \u041c\u0415\u0416\u0414\u0423 \u0420\u042f\u0414\u0410\u041c\u0418 -->\r\n  <tr style=\"border: none; background: transparent; height: 20px;\">\r\n    <td colspan=\"2\" valign=\"top\" style=\"border: none; padding: 0;\"></td>\r\n  </tr>\r\n\r\n  <!-- \u041d\u0418\u0416\u041d\u0418\u0419 \u0420\u042f\u0414: \u0422\u0420\u0415\u0422\u042c\u042f \u041a\u0410\u0420\u0422\u0418\u041d\u041a\u0410 \u041f\u041e \u0426\u0415\u041d\u0422\u0420\u0423 \u041f\u0415\u0420\u0412\u042b\u0425 \u0414\u0412\u0423\u0425 -->\r\n  <tr style=\"border: none; background: transparent; vertical-align: top;\">\r\n    <td colspan=\"2\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0; text-align: center;\">\r\n      <div style=\"display: inline-block; text-align: center;\">\r\n        <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/color_change_3.png\" alt=\"Lyrics color changed to `Theme color`\" width=\"373\" style=\"display: block; max-width: none; margin: 0 auto;\">\r\n        <div align=\"center\" style=\"padding-top: 8px; font-size: 14px; line-height: 1.4; text-align: center;\">\r\n          Lyrics color changed to `Theme color`\r\n        </div>\r\n      </div>\r\n    </td>\r\n  </tr>\r\n</table>\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary>\u2699\ufe0f <b>Long artist/album scroll</b> \u2014 Off / Artists / Albums / Both</summary>\r\n<div>\r\n<p></p>\r\n\r\nLong artist and album lines in the player can now scroll too. Long song titles always scroll,\r\nregardless of the setting.\r\n\r\n</div>\r\n</details>\r\n\r\n### Menu\r\n\r\n<details>\r\n<summary><b>More sorting options</b> \u2014 in Folders and Audiobooks</summary>\r\n<div>\r\n<p></p>\r\n\r\n- **Music/Audiobooks/Videos \u2192 Folders** \u2014 \"Sort by File name\".\r\n- **Audiobooks \u2192 All audiobooks** and the chapters of a book \u2014 \"Sort by File name\".\r\n- **Audiobooks \u2192 Artists** and **Albums** \u2014 \"Sort by\" \u2192 A-Z / Z-A.\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary><b>Photos section rework</b> \u2014 revised to reflect the changes and align with the other sections</summary>\r\n<div>\r\n<p></p>\r\n\r\n- \"Set as wallpaper\" is no longer offered for a folder.\r\n- Leaving a folder returns the grid to where it was, without scrolling down from the top.\r\n- Opening a folder or a picture no longer shows a loading window.\r\n\r\n</div>\r\n</details>\r\n\r\n<p>&#9679;&ensp;<b>Faster and even more responsive scrolling</b> \u2014 up to 4x faster</p>\r\n\r\n<p>&#9679;&ensp;<b>Queue, better-Y, Bluetooth, Themes gallery redesign</b></p>\r\n\r\n<p>&#9679;&ensp;<b>Folders are listed above files in Videos \u2192 Folders</b></p>\r\n\r\n<p>&#9679;&ensp;<b>New default folder and file icons in Folders</b> \u2014 they also follow the theme colors</p>\r\n\r\n<p>&#9679;&ensp;<b>The song number column fix</b> \u2014 no longer cuts off with wide theme fonts and dynamically changes depending on the theme's font size</p>\r\n\r\n<p>&#9679;&ensp;<b>\"MultiSelect\" is back in the menu while songs are selected</b></p>\r\n\r\n<p>&#9679;&ensp;<b>The alphabetical scroll letter no longer gets bigger with wide theme fonts</b></p>\r\n\r\n<p>&#9679;&ensp;<b>Settings and equalizer previews change right after a scroll</b> \u2014 without a delay</p>\r\n\r\n### Metadata\r\n\r\n<details>\r\n<summary><b>Tags of MP3s with big embedded covers are read correctly</b> \u2014 titles, album artist, disc number and the cover itself</summary>\r\n<div>\r\n<p></p>\r\n\r\nThe stock firmware refuses to read an ID3 tag larger than 3 MB and silently falls back to the old ID3v1\r\ntag. That tag has titles cut to 30 characters, no album artist, no disc\r\nnumber, no cover \u2014 and no text encoding, so Cyrillic turned into hieroglyphs.\r\n\r\nbetter-Y now reads such tags itself (ID3v2.2, 2.3 and 2.4). FLAC, M4A and OGG never had this\r\nproblem.\r\n\r\nA library scanned by an older version is fixed once by pressing \"Update library\": on its first run\r\nit re-reads every MP3 whose tag is over the limit, even if the file has not changed.\r\n\r\n</div>\r\n</details>\r\n\r\n> [!TIP]\r\n> If you're updating from version 1.0.0 and don't want to lose your user data (settings, likes, playlists, bookmarks and reading progress), there are instructions in the Update section on how to update without losing your user data. Starting with this version you can back up your data using `Data backup` button in the better-Y menu and load it back after you updated to a newer version using Updater CE or any other option.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"e376862dbb89aad9d6bb0cfcdcbec021afce53c25cd7f4baca4a4a72ba6d4bd2\",\"size\":494326123,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"2a354f315939c961fa26888c4a626a13254cc7422661cb07a7717f9403cdfa2c\",\"size\":256087282,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"eb8b187a807bbdaeadfdb91f9d13e25a44f7106d7bee70ac01125a16e3b03d73\",\"size\":541647447,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"3fc80ec169f9774358ee058321b6e79df72b72538b734294c19bc80766044087\",\"size\":366551681,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"33db2ea3f7d32dd28b0d1d3de2c4b99d1fc896dbbbe24aa02bdaaa2ed84d7527\",\"size\":254501563,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"69228209aaa137dd9fbcdb8579f2b22fcf7ee5cc52f6fba6be9a54d0a39a5683\",\"size\":300960097,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T20:12:03Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"ab2dccb86f6d8ef5c2f25be77325c7a00228cb31b44c85ecaa290792d7fdcd60\",\"original_asset_sizes\":{\"better-Y_3.1.2_v1.1.0.apk\":60200797,\"rom.zip\":181243963},\"original_assets\":[\"better-Y_3.1.2_v1.1.0.apk\",\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"better-Y_3.1.2_v1.1.0.apk\":14,\"rom-linux-arm64.zip\":1,\"rom-linux-legacy.zip\":1,\"rom-linux.zip\":6,\"rom-macos.zip\":6,\"rom-windows-legacy.zip\":1,\"rom-windows.zip\":7,\"rom.zip\":14},\"generated_at\":\"2026-11-12T20:12:03Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188443285,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:34:53Z",
@@ -24,37 +24,70 @@
         "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/706111759"
       },
       {
-        "id": 725035210,
+        "id": 740923945,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-arm64.zip",
+        "size": 366551681,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T20:12:06Z",
+        "updated_at": "2026-11-12T20:12:20Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/740923945"
+      },
+      {
+        "id": 740923934,
+        "name": "rom-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-legacy.zip",
+        "size": 254501563,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T20:12:06Z",
+        "updated_at": "2026-11-12T20:12:15Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/740923934"
+      },
+      {
+        "id": 740923932,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux.zip",
-        "size": 569123137,
-        "download_count": 0,
+        "size": 541647447,
+        "download_count": 8,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T19:58:40Z",
-        "updated_at": "2026-11-08T19:59:00Z",
-        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/725035210"
+        "created_at": "2026-11-12T20:12:06Z",
+        "updated_at": "2026-11-12T20:12:23Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/740923932"
       },
       {
-        "id": 725035188,
+        "id": 740924375,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-macos.zip",
-        "size": 301289841,
-        "download_count": 0,
+        "size": 300960097,
+        "download_count": 2,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T19:58:39Z",
-        "updated_at": "2026-11-08T19:58:50Z",
-        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/725035188"
+        "created_at": "2026-11-12T20:12:15Z",
+        "updated_at": "2026-11-12T20:12:28Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/740924375"
       },
       {
-        "id": 725035186,
+        "id": 740923938,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows-legacy.zip",
+        "size": 256087282,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T20:12:06Z",
+        "updated_at": "2026-11-12T20:12:16Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/740923938"
+      },
+      {
+        "id": 740923939,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows.zip",
-        "size": 387634155,
-        "download_count": 1,
+        "size": 494326123,
+        "download_count": 5,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T19:58:39Z",
-        "updated_at": "2026-11-08T19:58:55Z",
-        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/725035186"
+        "created_at": "2026-11-12T20:12:06Z",
+        "updated_at": "2026-11-12T20:12:22Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/740923939"
       },
       {
         "id": 706111766,
@@ -68,15 +101,15 @@
         "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/706111766"
       },
       {
-        "id": 731235302,
+        "id": 745455825,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/stats.txt",
-        "size": 2158,
+        "size": 4032,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T11:43:51Z",
-        "updated_at": "2026-11-10T11:43:52Z",
-        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/731235302"
+        "created_at": "2026-11-13T22:42:13Z",
+        "updated_at": "2026-11-13T22:42:13Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/745455825"
       }
     ]
   },
@@ -84,7 +117,7 @@
     "id": 432920895,
     "tag_name": "v1.0.0",
     "name": "Portable Flashing Package: Version 1.0.0 - Initial release",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.0.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n> [!WARNING]\r\n> Y1, type A only\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"617336e729259f438ab3ee1e9311f3ca787739767273392c66db6fe69eeb500e\",\"size\":568694788,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"e22b00813392b38d34fde4c7720a1ac2a4a6999d04915a4b8accc4f02022ca70\",\"size\":300861478,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"47106443b2ec11365007a3c4d517093297eb9339e1ccf935bb3f017de83594c5\",\"size\":387205806,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-08T19:57:13Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"d5e30c552e8f6438e220bbf12d96318e50c1cccc013a938f9ae8bb7f8c9b5622\",\"original_assets\":[\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux.zip\":1,\"rom-macos.zip\":3,\"rom-windows.zip\":1,\"rom.zip\":0},\"generated_at\":\"2026-11-08T19:57:13Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.0.0#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Fbetter-y-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fbetter-y-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Fbetter-y-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fbetter-y-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fbetter-y-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=Leska1337%2Fbetter-Y&amp;tag=v1.0.0&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Fbetter-y-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/better-y-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n> [!WARNING]\r\n> Y1, type A only\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"85d71dd3b80bea9afb5e25fa19c511254e59e804ba6970ae98fb17ab85026760\",\"size\":493907020,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"69de2cfa7f88543fffa3a008e360a64518efab8220de6cf2cdf1d195a689439d\",\"size\":255668179,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"e0a8fe43ef0c1353aa0870cd911904bff841faec80d63146870620237947ac0e\",\"size\":541228344,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"8342f78d4e7454ed077cc89eff8d7337aff1de47f8e6a42db1c9aaa41ce9f6a7\",\"size\":366132578,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"7ede87b0b24f917cddf40e9cce717f3296aa1b196e8e25e07cdddabefe8abd35\",\"size\":254082460,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"f3463aeb38db5641180207adec82c5bd9740f79f40c26bf8064eb89009582ce0\",\"size\":300540980,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T20:08:04Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"cf364db1ff2a462746176bb1865b38b14aef9718c2e2353df223b1fef42039a7\",\"original_asset_sizes\":{\"rom.zip\":180824832},\"original_assets\":[\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":1,\"rom-linux-legacy.zip\":1,\"rom-linux.zip\":4,\"rom-macos.zip\":4,\"rom-windows-legacy.zip\":1,\"rom-windows.zip\":3,\"rom.zip\":0},\"generated_at\":\"2026-11-12T20:08:04Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188443285,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T16:04:36Z",
@@ -94,59 +127,92 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 725032338,
+        "id": 740911066,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux-arm64.zip",
+        "size": 366132578,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T20:08:07Z",
+        "updated_at": "2026-11-12T20:08:17Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/740911066"
+      },
+      {
+        "id": 740911065,
+        "name": "rom-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux-legacy.zip",
+        "size": 254082460,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T20:08:07Z",
+        "updated_at": "2026-11-12T20:08:15Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/740911065"
+      },
+      {
+        "id": 740911064,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux.zip",
-        "size": 568694788,
-        "download_count": 0,
+        "size": 541228344,
+        "download_count": 8,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T19:57:17Z",
-        "updated_at": "2026-11-08T19:57:38Z",
-        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/725032338"
+        "created_at": "2026-11-12T20:08:07Z",
+        "updated_at": "2026-11-12T20:08:22Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/740911064"
       },
       {
-        "id": 725032336,
+        "id": 740911542,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-macos.zip",
-        "size": 300861478,
-        "download_count": 0,
+        "size": 300540980,
+        "download_count": 2,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T19:57:17Z",
-        "updated_at": "2026-11-08T19:57:28Z",
-        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/725032336"
+        "created_at": "2026-11-12T20:08:16Z",
+        "updated_at": "2026-11-12T20:08:23Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/740911542"
       },
       {
-        "id": 725032337,
+        "id": 740911067,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-windows-legacy.zip",
+        "size": 255668179,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-12T20:08:07Z",
+        "updated_at": "2026-11-12T20:08:16Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/740911067"
+      },
+      {
+        "id": 740911054,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-windows.zip",
-        "size": 387205806,
-        "download_count": 0,
+        "size": 493907020,
+        "download_count": 5,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T19:57:17Z",
-        "updated_at": "2026-11-08T19:57:32Z",
-        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/725032337"
+        "created_at": "2026-11-12T20:08:07Z",
+        "updated_at": "2026-11-12T20:08:26Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/740911054"
       },
       {
-        "id": 706208031,
+        "id": 733008365,
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom.zip",
-        "size": 181072948,
+        "size": 180824832,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-03T16:05:42Z",
-        "updated_at": "2026-11-03T16:05:58Z",
-        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/706208031"
+        "created_at": "2026-11-10T21:26:58Z",
+        "updated_at": "2026-11-10T21:27:11Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/733008365"
       },
       {
-        "id": 731235223,
+        "id": 745455757,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/stats.txt",
-        "size": 2033,
+        "size": 3785,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T11:43:49Z",
-        "updated_at": "2026-11-10T11:43:50Z",
-        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/731235223"
+        "created_at": "2026-11-13T22:42:12Z",
+        "updated_at": "2026-11-13T22:42:12Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/745455757"
       }
     ]
   }
