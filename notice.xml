@@ -1,13 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <notices updated="2026-11-10">
 
-  <notice id="2026-11-10-y1-black-yellow-sale" persistent="false" severity="info" display="once">
-    <title>One-off Y1 for sale</title>
-    <content>We're selling a black and yellow Y1. It's the only one we've made. Photos, price and shipping are all on our Ko-fi page.</content>
-    <full_content>We're selling a black and yellow Y1. It's the only one we've made. Photos, price and shipping are on the [Ko-fi listing](https://ko-fi.com/s/f5ce621783).</full_content>
-    <url>https://ko-fi.com/s/f5ce621783</url>
-    <link>https://ko-fi.com/s/f5ce621783</link>
-  </notice>
 
   <notice id="2026-11-07-codesigning" persistent="false" severity="info" from="2026-10-25" until="2026-12-31" platform="windows" models="Y1,Y2">
     <title>Windows 10/11 app launch issues &amp; Smart App Control workaround</title>
