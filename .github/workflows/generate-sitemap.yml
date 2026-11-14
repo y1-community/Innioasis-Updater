@@ -19,7 +19,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: sitemap-main
+  # Shared with the other static generators: sitemap.xml is their output too.
+  group: site-static-pages
   cancel-in-progress: false
 
 jobs:

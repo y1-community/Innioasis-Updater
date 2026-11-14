@@ -47,8 +47,11 @@ on:
 permissions:
   contents: write
 
+# The static generators write the same files (sitemap.xml, feeds, index pages).
+# Sharing one concurrency group keeps doc pages, notice pages and the sitemap
+# from committing over each other, which is what produced the rejected pushes.
 concurrency:
-  group: generate-doc-pages
+  group: site-static-pages
   cancel-in-progress: true
 
 jobs:
@@ -133,12 +136,22 @@ jobs:
 
       - name: Commit regenerated pages
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add feeds firmware-catalog.js release-notes post-install firmware-info rockbox-y1 rockbox-y2 rockbox-rom-download.html rockbox-y1-themes.html firmware-list.html firmware.html install sitemap.xml llms.txt
           if git diff --cached --quiet; then
             echo "No release, post-install or README changes."
-          else
-            git commit -m "Regenerate static release notes, post-install, README and firmware list pages"
-            git push
+            exit 0
           fi
+          git commit -m "Regenerate static release notes, post-install, README and firmware list pages"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if git pull --rebase --autostash -X theirs origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 10))
+          done
+          echo "ERROR: could not push regenerated pages." >&2
+          exit 1
