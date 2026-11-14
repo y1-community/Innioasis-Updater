@@ -13,6 +13,7 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/rondo-mirror/releases/tag/v3.0.2"/>
     <innioasis:tag_name>v3.0.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>10</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="653385436" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740829828"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="531827030" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740829829"/>
@@ -22,7 +23,7 @@
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-windows.zip" title="rom-windows.zip" length="771651598" type="application/zip" innioasis:download_count="8" innioasis:asset_id="740829827"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom.zip" title="rom.zip" length="529776985" type="application/zip" innioasis:download_count="1" innioasis:asset_id="739762165"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rondo-3.0.2.rondo" title="rondo-3.0.2.rondo" length="17034596" type="application/octet-stream" innioasis:download_count="1" innioasis:asset_id="739762516"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/stats.txt" title="stats.txt" length="4137" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="746151418"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/stats.txt" title="stats.txt" length="4137" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747100738"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="0" innioasis:asset_id="739762530"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;amp;tag=v3.0.2#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -75,6 +76,7 @@ Files: `rondo-3.0.2.rondo` is the signed update bundle; `rom.zip` (the firmware)
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/rondo-mirror/releases/tag/v3.0.1"/>
     <innioasis:tag_name>v3.0.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>9</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="653380387" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740812445"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="531821981" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740812447"/>
@@ -84,7 +86,7 @@ Files: `rondo-3.0.2.rondo` is the signed update bundle; `rom.zip` (the firmware)
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom-windows.zip" title="rom-windows.zip" length="771646549" type="application/zip" innioasis:download_count="7" innioasis:asset_id="740812453"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rom.zip" title="rom.zip" length="529771938" type="application/zip" innioasis:download_count="1" innioasis:asset_id="738967387"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/rondo-3.0.1.rondo" title="rondo-3.0.1.rondo" length="17032563" type="application/octet-stream" innioasis:download_count="1" innioasis:asset_id="738967693"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/stats.txt" title="stats.txt" length="4135" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="746151394"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/stats.txt" title="stats.txt" length="4135" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747100634"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="0" innioasis:asset_id="738967809"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;amp;tag=v3.0.1#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -135,6 +137,7 @@ Files: `rondo-3.0.1.rondo` is the signed update bundle; `rom.zip` (the firmware)
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/rondo-mirror/releases/tag/v3.0.0"/>
     <innioasis:tag_name>v3.0.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>9</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="653380087" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740795167"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="531821681" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740795173"/>
@@ -144,7 +147,7 @@ Files: `rondo-3.0.1.rondo` is the signed update bundle; `rom.zip` (the firmware)
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-windows.zip" title="rom-windows.zip" length="771646249" type="application/zip" innioasis:download_count="7" innioasis:asset_id="740795175"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom.zip" title="rom.zip" length="529771636" type="application/zip" innioasis:download_count="1" innioasis:asset_id="738948527"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rondo-3.0.0.rondo" title="rondo-3.0.0.rondo" length="17027331" type="application/octet-stream" innioasis:download_count="1" innioasis:asset_id="738948746"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/stats.txt" title="stats.txt" length="4135" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="746151371"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/stats.txt" title="stats.txt" length="4135" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747100565"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="0" innioasis:asset_id="738948779"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;amp;tag=v3.0.0#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -198,6 +201,7 @@ Files: `rondo-3.0.0.rondo` is the signed update bundle; `rom.zip` (the firmware)
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/rondo-mirror/releases/tag/v2.0.1"/>
     <innioasis:tag_name>v2.0.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>9</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="653378825" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740777207"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="531820417" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740777203"/>
@@ -207,7 +211,7 @@ Files: `rondo-3.0.0.rondo` is the signed update bundle; `rom.zip` (the firmware)
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom-windows.zip" title="rom-windows.zip" length="771644987" type="application/zip" innioasis:download_count="7" innioasis:asset_id="740777208"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rom.zip" title="rom.zip" length="529770376" type="application/zip" innioasis:download_count="1" innioasis:asset_id="738930335"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/rondo-2.0.1.rondo" title="rondo-2.0.1.rondo" length="17020017" type="application/octet-stream" innioasis:download_count="1" innioasis:asset_id="738930607"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/stats.txt" title="stats.txt" length="4135" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="746151339"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/stats.txt" title="stats.txt" length="4135" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747100460"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="0" innioasis:asset_id="738930637"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;amp;tag=v2.0.1#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -257,6 +261,7 @@ Files: `rondo-2.0.1.rondo` is the signed update bundle; `rom.zip` (the firmware)
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/rondo-mirror/releases/tag/v2.0.0"/>
     <innioasis:tag_name>v2.0.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>9</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="653378918" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740759848"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="531820510" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740759846"/>
@@ -266,7 +271,7 @@ Files: `rondo-2.0.1.rondo` is the signed update bundle; `rom.zip` (the firmware)
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-windows.zip" title="rom-windows.zip" length="771645080" type="application/zip" innioasis:download_count="7" innioasis:asset_id="740759850"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom.zip" title="rom.zip" length="529770467" type="application/zip" innioasis:download_count="1" innioasis:asset_id="735814584"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rondo-2.0.0.rondo" title="rondo-2.0.0.rondo" length="17019301" type="application/octet-stream" innioasis:download_count="1" innioasis:asset_id="735815538"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/stats.txt" title="stats.txt" length="4137" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="746151320"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/stats.txt" title="stats.txt" length="4137" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747100269"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="0" innioasis:asset_id="735815578"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;amp;tag=v2.0.0#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -319,6 +324,7 @@ Files: `rondo-2.0.0.rondo` is the signed update bundle; `rom.zip` (the firmware)
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/rondo-mirror/releases/tag/v1.0.2"/>
     <innioasis:tag_name>v1.0.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>9</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="651535233" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740741014"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="529976823" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740741015"/>
@@ -328,7 +334,7 @@ Files: `rondo-2.0.0.rondo` is the signed update bundle; `rom.zip` (the firmware)
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-windows.zip" title="rom-windows.zip" length="769801395" type="application/zip" innioasis:download_count="7" innioasis:asset_id="740741005"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom.zip" title="rom.zip" length="527926760" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733060709"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rondo-1.0.2.apk" title="rondo-1.0.2.apk" length="6423022" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706101039"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/stats.txt" title="stats.txt" length="4147" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="746151287"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/stats.txt" title="stats.txt" length="4147" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747100159"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="1" innioasis:asset_id="706101141"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;amp;tag=v1.0.2#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -399,6 +405,7 @@ If your Y1 runs Rondo 1.0.1, **Settings › Software update**, **Install** in th
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/rondo-mirror/releases/tag/v1.0.1"/>
     <innioasis:tag_name>v1.0.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>9</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="651535610" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740722788"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="529977200" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740722790"/>
@@ -408,7 +415,7 @@ If your Y1 runs Rondo 1.0.1, **Settings › Software update**, **Install** in th
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-windows.zip" title="rom-windows.zip" length="769801772" type="application/zip" innioasis:download_count="7" innioasis:asset_id="740722774"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom.zip" title="rom.zip" length="527927138" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733041000"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rondo-1.0.1.apk" title="rondo-1.0.1.apk" length="6423015" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706172992"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/stats.txt" title="stats.txt" length="4141" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="746151239"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/stats.txt" title="stats.txt" length="4141" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747100095"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="0" innioasis:asset_id="706173138"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;amp;tag=v1.0.1#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -480,6 +487,7 @@ Only for the **Y1 Type A** (players that shipped with software 2.0.0 or later), 
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/rondo-mirror/releases/tag/v1.0.0"/>
     <innioasis:tag_name>v1.0.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>9</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="651536527" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740701901"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="529978117" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740701912"/>
@@ -489,7 +497,7 @@ Only for the **Y1 Type A** (players that shipped with software 2.0.0 or later), 
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-windows.zip" title="rom-windows.zip" length="769802689" type="application/zip" innioasis:download_count="7" innioasis:asset_id="740701900"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom.zip" title="rom.zip" length="527928053" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733021586"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rondo-1.0.0.apk" title="rondo-1.0.0.apk" length="6421197" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706152267"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/stats.txt" title="stats.txt" length="4143" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="746151190"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/stats.txt" title="stats.txt" length="4143" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747099988"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="0" innioasis:asset_id="706152472"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;amp;tag=v1.0.0#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;

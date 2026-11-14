@@ -28,13 +28,70 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.7/rom.zip",
         "size": 309074505,
-        "download_count": 904,
+        "download_count": 905,
         "content_type": "application/zip",
         "created_at": "2026-05-22T23:50:28Z",
         "updated_at": "2026-05-22T23:50:36Z",
         "url": "https://api.github.com/repos/ryan-specter/koensayr-auto/releases/assets/427486583"
       }
-    ]
+    ],
+    "mirror_downloads": 27,
+    "downloads": 932,
+    "download_breakdown": {
+      "tag": "2.4.0-koensayr-3.0.7",
+      "mirrors": "y1-community/koensayr-auto-mirror",
+      "firmware": [
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.7/rom.zip",
+          "downloads": 905
+        }
+      ],
+      "portable": [
+        {
+          "platform": "windows",
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-windows.zip",
+          "size": 550854730,
+          "downloads": 6
+        },
+        {
+          "platform": "windows-legacy",
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-windows-legacy.zip",
+          "size": 312615887,
+          "downloads": 0
+        },
+        {
+          "platform": "linux",
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-linux.zip",
+          "size": 607684334,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-arm64",
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-linux-arm64.zip",
+          "size": 432588568,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-legacy",
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-linux-legacy.zip",
+          "size": 311030170,
+          "downloads": 0
+        },
+        {
+          "platform": "macos",
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-macos.zip",
+          "size": 359292333,
+          "downloads": 0
+        }
+      ]
+    }
   },
   {
     "id": 328185161,
@@ -71,6 +128,63 @@
         "updated_at": "2026-05-22T23:50:52Z",
         "url": "https://api.github.com/repos/ryan-specter/koensayr-auto/releases/assets/427486710"
       }
-    ]
+    ],
+    "mirror_downloads": 26,
+    "downloads": 217,
+    "download_breakdown": {
+      "tag": "2.4.0-koensayr-3.0.2",
+      "mirrors": "y1-community/koensayr-auto-mirror",
+      "firmware": [
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.2/rom.zip",
+          "downloads": 191
+        }
+      ],
+      "portable": [
+        {
+          "platform": "windows",
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-windows.zip",
+          "size": 570802497,
+          "downloads": 5
+        },
+        {
+          "platform": "windows-legacy",
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-windows-legacy.zip",
+          "size": 332563654,
+          "downloads": 0
+        },
+        {
+          "platform": "linux",
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-linux.zip",
+          "size": 627632101,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-arm64",
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-linux-arm64.zip",
+          "size": 452536335,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-legacy",
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-linux-legacy.zip",
+          "size": 330977937,
+          "downloads": 0
+        },
+        {
+          "platform": "macos",
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-macos.zip",
+          "size": 379240100,
+          "downloads": 0
+        }
+      ]
+    }
   }
 ]

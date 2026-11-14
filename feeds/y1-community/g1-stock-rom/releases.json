@@ -17,7 +17,7 @@
         "name": "rom_g1.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip",
         "size": 1645800503,
-        "download_count": 64,
+        "download_count": 65,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:05:06Z",
         "updated_at": "2026-11-05T05:07:52Z",
@@ -34,7 +34,64 @@
         "updated_at": "2026-11-05T05:07:54Z",
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712152060"
       }
-    ]
+    ],
+    "mirror_downloads": 64,
+    "downloads": 129,
+    "download_breakdown": {
+      "tag": "MX3-G1-EN-WM-V5.01-20260805",
+      "mirrors": "y1-community/g1-stock-rom-mirror",
+      "firmware": [
+        {
+          "name": "rom_g1.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip",
+          "downloads": 65
+        }
+      ],
+      "portable": [
+        {
+          "platform": "windows",
+          "name": "rom_g1-windows.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-windows.zip",
+          "size": 1958882629,
+          "downloads": 6
+        },
+        {
+          "platform": "windows-legacy",
+          "name": "rom_g1-windows-legacy.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-windows-legacy.zip",
+          "size": 1720643810,
+          "downloads": 0
+        },
+        {
+          "platform": "linux",
+          "name": "rom_g1-linux.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-linux.zip",
+          "size": 2006203953,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-arm64",
+          "name": "rom_g1-linux-arm64.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-linux-arm64.zip",
+          "size": 1831108187,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-legacy",
+          "name": "rom_g1-linux-legacy.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-linux-legacy.zip",
+          "size": 1719058095,
+          "downloads": 0
+        },
+        {
+          "platform": "macos",
+          "name": "rom_g1-macos.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-macos.zip",
+          "size": 1765516569,
+          "downloads": 0
+        }
+      ]
+    }
   },
   {
     "id": 434798724,
@@ -71,7 +128,64 @@
         "updated_at": "2026-11-05T05:00:20Z",
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712134111"
       }
-    ]
+    ],
+    "mirror_downloads": 23,
+    "downloads": 37,
+    "download_breakdown": {
+      "tag": "MX3-G1-EN-WM-V5.00-20260722",
+      "mirrors": "y1-community/g1-stock-rom-mirror",
+      "firmware": [
+        {
+          "name": "rom_g1.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1.zip",
+          "downloads": 14
+        }
+      ],
+      "portable": [
+        {
+          "platform": "windows",
+          "name": "rom_g1-windows.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-windows.zip",
+          "size": 1958841579,
+          "downloads": 6
+        },
+        {
+          "platform": "windows-legacy",
+          "name": "rom_g1-windows-legacy.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-windows-legacy.zip",
+          "size": 1720602760,
+          "downloads": 0
+        },
+        {
+          "platform": "linux",
+          "name": "rom_g1-linux.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-linux.zip",
+          "size": 2006162903,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-arm64",
+          "name": "rom_g1-linux-arm64.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-linux-arm64.zip",
+          "size": 1831067137,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-legacy",
+          "name": "rom_g1-linux-legacy.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-linux-legacy.zip",
+          "size": 1719017045,
+          "downloads": 0
+        },
+        {
+          "platform": "macos",
+          "name": "rom_g1-macos.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-macos.zip",
+          "size": 1765475518,
+          "downloads": 0
+        }
+      ]
+    }
   },
   {
     "id": 434794779,
@@ -108,7 +222,64 @@
         "updated_at": "2026-11-05T04:53:07Z",
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712114674"
       }
-    ]
+    ],
+    "mirror_downloads": 16,
+    "downloads": 36,
+    "download_breakdown": {
+      "tag": "MX3-9_G1_MULTI-V3.03-20260826",
+      "mirrors": "y1-community/g1-stock-rom-mirror",
+      "firmware": [
+        {
+          "name": "rom_g1.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1.zip",
+          "downloads": 20
+        }
+      ],
+      "portable": [
+        {
+          "platform": "windows",
+          "name": "rom_g1-windows.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-windows.zip",
+          "size": 1886307839,
+          "downloads": 5
+        },
+        {
+          "platform": "windows-legacy",
+          "name": "rom_g1-windows-legacy.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-windows-legacy.zip",
+          "size": 1648069020,
+          "downloads": 0
+        },
+        {
+          "platform": "linux",
+          "name": "rom_g1-linux.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-linux.zip",
+          "size": 1933629163,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-arm64",
+          "name": "rom_g1-linux-arm64.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-linux-arm64.zip",
+          "size": 1758533397,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-legacy",
+          "name": "rom_g1-linux-legacy.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-linux-legacy.zip",
+          "size": 1646483305,
+          "downloads": 0
+        },
+        {
+          "platform": "macos",
+          "name": "rom_g1-macos.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-macos.zip",
+          "size": 1692941776,
+          "downloads": 0
+        }
+      ]
+    }
   },
   {
     "id": 434791282,
@@ -145,7 +316,64 @@
         "updated_at": "2026-11-05T04:46:14Z",
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712098603"
       }
-    ]
+    ],
+    "mirror_downloads": 24,
+    "downloads": 39,
+    "download_breakdown": {
+      "tag": "MX3-9_G1_MULTI-V3.01-20260720",
+      "mirrors": "y1-community/g1-stock-rom-mirror",
+      "firmware": [
+        {
+          "name": "rom_g1.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1.zip",
+          "downloads": 15
+        }
+      ],
+      "portable": [
+        {
+          "platform": "windows",
+          "name": "rom_g1-windows.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-windows.zip",
+          "size": 1886314770,
+          "downloads": 5
+        },
+        {
+          "platform": "windows-legacy",
+          "name": "rom_g1-windows-legacy.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-windows-legacy.zip",
+          "size": 1648075951,
+          "downloads": 0
+        },
+        {
+          "platform": "linux",
+          "name": "rom_g1-linux.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-linux.zip",
+          "size": 1933636094,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-arm64",
+          "name": "rom_g1-linux-arm64.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-linux-arm64.zip",
+          "size": 1758540328,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-legacy",
+          "name": "rom_g1-linux-legacy.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-linux-legacy.zip",
+          "size": 1646490236,
+          "downloads": 0
+        },
+        {
+          "platform": "macos",
+          "name": "rom_g1-macos.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-macos.zip",
+          "size": 1692948708,
+          "downloads": 0
+        }
+      ]
+    }
   },
   {
     "id": 434787340,
@@ -182,7 +410,64 @@
         "updated_at": "2026-11-05T04:39:30Z",
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712082715"
       }
-    ]
+    ],
+    "mirror_downloads": 25,
+    "downloads": 41,
+    "download_breakdown": {
+      "tag": "MX3-9_EN-V1.04-20260805",
+      "mirrors": "y1-community/g1-stock-rom-mirror",
+      "firmware": [
+        {
+          "name": "rom_g1.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.04-20260805/rom_g1.zip",
+          "downloads": 16
+        }
+      ],
+      "portable": [
+        {
+          "platform": "windows",
+          "name": "rom_g1-windows.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-windows.zip",
+          "size": 1958429181,
+          "downloads": 5
+        },
+        {
+          "platform": "windows-legacy",
+          "name": "rom_g1-windows-legacy.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-windows-legacy.zip",
+          "size": 1720190362,
+          "downloads": 0
+        },
+        {
+          "platform": "linux",
+          "name": "rom_g1-linux.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-linux.zip",
+          "size": 2005750505,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-arm64",
+          "name": "rom_g1-linux-arm64.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-linux-arm64.zip",
+          "size": 1830654739,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-legacy",
+          "name": "rom_g1-linux-legacy.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-linux-legacy.zip",
+          "size": 1718604645,
+          "downloads": 0
+        },
+        {
+          "platform": "macos",
+          "name": "rom_g1-macos.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-macos.zip",
+          "size": 1765063124,
+          "downloads": 0
+        }
+      ]
+    }
   },
   {
     "id": 434783060,
@@ -219,6 +504,63 @@
         "updated_at": "2026-11-05T04:31:55Z",
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712063532"
       }
-    ]
+    ],
+    "mirror_downloads": 24,
+    "downloads": 54,
+    "download_breakdown": {
+      "tag": "MX3-9_EN-V1.03-20260707",
+      "mirrors": "y1-community/g1-stock-rom-mirror",
+      "firmware": [
+        {
+          "name": "rom_g1.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.03-20260707/rom_g1.zip",
+          "downloads": 30
+        }
+      ],
+      "portable": [
+        {
+          "platform": "windows",
+          "name": "rom_g1-windows.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-windows.zip",
+          "size": 1958462369,
+          "downloads": 4
+        },
+        {
+          "platform": "windows-legacy",
+          "name": "rom_g1-windows-legacy.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-windows-legacy.zip",
+          "size": 1720223550,
+          "downloads": 0
+        },
+        {
+          "platform": "linux",
+          "name": "rom_g1-linux.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-linux.zip",
+          "size": 2005783693,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-arm64",
+          "name": "rom_g1-linux-arm64.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-linux-arm64.zip",
+          "size": 1830687927,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-legacy",
+          "name": "rom_g1-linux-legacy.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-linux-legacy.zip",
+          "size": 1718637833,
+          "downloads": 0
+        },
+        {
+          "platform": "macos",
+          "name": "rom_g1-macos.zip",
+          "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-macos.zip",
+          "size": 1765096312,
+          "downloads": 0
+        }
+      ]
+    }
   }
 ]

@@ -17,12 +17,69 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/y1-linux-rom/releases/download/0.0.1/rom.zip",
         "size": 270175226,
-        "download_count": 55,
+        "download_count": 57,
         "content_type": "application/zip",
         "created_at": "2026-10-03T15:28:17Z",
         "updated_at": "2026-10-03T15:28:48Z",
         "url": "https://api.github.com/repos/y1-community/y1-linux-rom/releases/assets/608039598"
       }
-    ]
+    ],
+    "mirror_downloads": 28,
+    "downloads": 85,
+    "download_breakdown": {
+      "tag": "0.0.1",
+      "mirrors": "y1-community/y1-linux-rom-mirror",
+      "firmware": [
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/y1-linux-rom/releases/download/0.0.1/rom.zip",
+          "downloads": 57
+        }
+      ],
+      "portable": [
+        {
+          "platform": "windows",
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-windows.zip",
+          "size": 569372655,
+          "downloads": 3
+        },
+        {
+          "platform": "windows-legacy",
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-windows-legacy.zip",
+          "size": 331133872,
+          "downloads": 0
+        },
+        {
+          "platform": "linux",
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux.zip",
+          "size": 616693979,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-arm64",
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-arm64.zip",
+          "size": 441598213,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-legacy",
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-legacy.zip",
+          "size": 329548151,
+          "downloads": 0
+        },
+        {
+          "platform": "macos",
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-macos.zip",
+          "size": 376006609,
+          "downloads": 0
+        }
+      ]
+    }
   }
 ]

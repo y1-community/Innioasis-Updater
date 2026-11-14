@@ -178,15 +178,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/741791203"
       },
       {
-        "id": 746152630,
+        "id": 747294611,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/stats.txt",
         "size": 6305,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:12Z",
-        "updated_at": "2026-11-14T03:29:12Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746152630"
+        "created_at": "2026-11-14T11:35:02Z",
+        "updated_at": "2026-11-14T11:35:02Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747294611"
       },
       {
         "id": 741791279,
@@ -199,7 +199,91 @@
         "updated_at": "2026-11-13T01:24:22Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/741791279"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 40,
+    "download_breakdown": {
+      "tag": "stable-v0.6.1",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-linux.zip",
+          "downloads": 4
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-macos.zip",
+          "downloads": 4
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-windows.zip",
+          "downloads": 20
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 440296010,
@@ -380,15 +464,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733418372"
       },
       {
-        "id": 746152597,
+        "id": 747294505,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/stats.txt",
         "size": 6335,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:11Z",
-        "updated_at": "2026-11-14T03:29:11Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746152597"
+        "created_at": "2026-11-14T11:34:59Z",
+        "updated_at": "2026-11-14T11:35:00Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747294505"
       },
       {
         "id": 733420030,
@@ -401,7 +485,91 @@
         "updated_at": "2026-11-10T23:53:12Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733420030"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 15,
+    "download_breakdown": {
+      "tag": "nightly-a8c63c04f0030dca6bc193a437767e1838067b67",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 435993831,
@@ -582,15 +750,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733384039"
       },
       {
-        "id": 746152544,
+        "id": 747294398,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/stats.txt",
         "size": 6250,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:09Z",
-        "updated_at": "2026-11-14T03:29:10Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746152544"
+        "created_at": "2026-11-14T11:34:57Z",
+        "updated_at": "2026-11-14T11:34:57Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747294398"
       },
       {
         "id": 733384845,
@@ -603,7 +771,91 @@
         "updated_at": "2026-11-10T23:38:01Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733384845"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 39,
+    "download_breakdown": {
+      "tag": "stable-v0.6",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-linux.zip",
+          "downloads": 4
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-macos.zip",
+          "downloads": 5
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-windows.zip",
+          "downloads": 18
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432921057,
@@ -696,17 +948,61 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733036746"
       },
       {
-        "id": 746151514,
+        "id": 747292240,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/stats.txt",
         "size": 3854,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:38Z",
-        "updated_at": "2026-11-14T03:28:39Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746151514"
+        "created_at": "2026-11-14T11:34:03Z",
+        "updated_at": "2026-11-14T11:34:04Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747292240"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 7,
+    "download_breakdown": {
+      "tag": "type-b-base",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432923376,
@@ -799,17 +1095,61 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733055840"
       },
       {
-        "id": 746151562,
+        "id": 747292339,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/stats.txt",
         "size": 3852,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:40Z",
-        "updated_at": "2026-11-14T03:28:40Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746151562"
+        "created_at": "2026-11-14T11:34:06Z",
+        "updated_at": "2026-11-14T11:34:06Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747292339"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 7,
+    "download_breakdown": {
+      "tag": "type-a-base",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432981128,
@@ -990,15 +1330,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733339348"
       },
       {
-        "id": 746151937,
+        "id": 747293172,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/stats.txt",
         "size": 6332,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:53Z",
-        "updated_at": "2026-11-14T03:28:53Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746151937"
+        "created_at": "2026-11-14T11:34:27Z",
+        "updated_at": "2026-11-14T11:34:28Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747293172"
       },
       {
         "id": 733340513,
@@ -1011,7 +1351,91 @@
         "updated_at": "2026-11-10T23:21:06Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733340513"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 41,
+    "download_breakdown": {
+      "tag": "stable-v0.5",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-linux.zip",
+          "downloads": 4
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-macos.zip",
+          "downloads": 6
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-windows.zip",
+          "downloads": 19
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432966160,
@@ -1357,15 +1781,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733365002"
       },
       {
-        "id": 746151766,
+        "id": 747292881,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/stats.txt",
         "size": 11127,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:48Z",
-        "updated_at": "2026-11-14T03:28:49Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746151766"
+        "created_at": "2026-11-14T11:34:20Z",
+        "updated_at": "2026-11-14T11:34:21Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747292881"
       },
       {
         "id": 733365864,
@@ -1400,7 +1824,171 @@
         "updated_at": "2026-11-10T23:30:33Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733365865"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 31,
+    "download_breakdown": {
+      "tag": "stable-v0.4",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom_240p-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_360p_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update_240p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/update_240p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update_360p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/update_360p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "voices.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/voices.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432930584,
@@ -1768,17 +2356,166 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733140194"
       },
       {
-        "id": 746151595,
+        "id": 747292402,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/stats.txt",
         "size": 10100,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:41Z",
-        "updated_at": "2026-11-14T03:28:42Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746151595"
+        "created_at": "2026-11-14T11:34:08Z",
+        "updated_at": "2026-11-14T11:34:08Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747292402"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 28,
+    "download_breakdown": {
+      "tag": "stable-v0.3",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom_240p-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_240p_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/rom_360p_type_b.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433010110,
@@ -1959,15 +2696,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733369498"
       },
       {
-        "id": 746152220,
+        "id": 747293697,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/stats.txt",
         "size": 6347,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:00Z",
-        "updated_at": "2026-11-14T03:29:00Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746152220"
+        "created_at": "2026-11-14T11:34:40Z",
+        "updated_at": "2026-11-14T11:34:40Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747293697"
       },
       {
         "id": 733370188,
@@ -1980,7 +2717,91 @@
         "updated_at": "2026-11-10T23:31:57Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733370188"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 15,
+    "download_breakdown": {
+      "tag": "nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433006016,
@@ -2161,15 +2982,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733374176"
       },
       {
-        "id": 746152167,
+        "id": 747293603,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/stats.txt",
         "size": 6348,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:58Z",
-        "updated_at": "2026-11-14T03:28:59Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746152167"
+        "created_at": "2026-11-14T11:34:38Z",
+        "updated_at": "2026-11-14T11:34:38Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747293603"
       },
       {
         "id": 733375398,
@@ -2182,7 +3003,91 @@
         "updated_at": "2026-11-10T23:33:50Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733375398"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 15,
+    "download_breakdown": {
+      "tag": "nightly-ec32a663dfb8396080227de03846c30f07dc258d",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433014246,
@@ -2363,15 +3268,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733360237"
       },
       {
-        "id": 746152282,
+        "id": 747293814,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/stats.txt",
         "size": 6342,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:01Z",
-        "updated_at": "2026-11-14T03:29:01Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746152282"
+        "created_at": "2026-11-14T11:34:42Z",
+        "updated_at": "2026-11-14T11:34:43Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747293814"
       },
       {
         "id": 733360870,
@@ -2384,7 +3289,91 @@
         "updated_at": "2026-11-10T23:28:48Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733360870"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 15,
+    "download_breakdown": {
+      "tag": "nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433317138,
@@ -2565,15 +3554,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733417178"
       },
       {
-        "id": 746152362,
+        "id": 747294002,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/stats.txt",
         "size": 6342,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:04Z",
-        "updated_at": "2026-11-14T03:29:04Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746152362"
+        "created_at": "2026-11-14T11:34:47Z",
+        "updated_at": "2026-11-14T11:34:47Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747294002"
       },
       {
         "id": 733420574,
@@ -2586,7 +3575,91 @@
         "updated_at": "2026-11-10T23:53:22Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733420574"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 15,
+    "download_breakdown": {
+      "tag": "nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432971845,
@@ -2767,17 +3840,96 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733338851"
       },
       {
-        "id": 746151855,
+        "id": 747292985,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/stats.txt",
         "size": 5935,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:50Z",
-        "updated_at": "2026-11-14T03:28:50Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746151855"
+        "created_at": "2026-11-14T11:34:23Z",
+        "updated_at": "2026-11-14T11:34:23Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747292985"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 13,
+    "download_breakdown": {
+      "tag": "nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432993153,
@@ -2958,15 +4110,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733334992"
       },
       {
-        "id": 746151980,
+        "id": 747293246,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/stats.txt",
         "size": 6348,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:54Z",
-        "updated_at": "2026-11-14T03:28:54Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746151980"
+        "created_at": "2026-11-14T11:34:30Z",
+        "updated_at": "2026-11-14T11:34:30Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747293246"
       },
       {
         "id": 733336182,
@@ -2979,7 +4131,91 @@
         "updated_at": "2026-11-10T23:19:36Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733336182"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 15,
+    "download_breakdown": {
+      "tag": "nightly-abc6ac2fc4700171a3402d41714d618321895ce9",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433327837,
@@ -3160,15 +4396,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733395971"
       },
       {
-        "id": 746152482,
+        "id": 747294305,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/stats.txt",
         "size": 6339,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:08Z",
-        "updated_at": "2026-11-14T03:29:08Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746152482"
+        "created_at": "2026-11-14T11:34:54Z",
+        "updated_at": "2026-11-14T11:34:54Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747294305"
       },
       {
         "id": 733396937,
@@ -3181,7 +4417,91 @@
         "updated_at": "2026-11-10T23:43:05Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733396937"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 15,
+    "download_breakdown": {
+      "tag": "nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433320626,
@@ -3362,15 +4682,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733396337"
       },
       {
-        "id": 746152407,
+        "id": 747294109,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/stats.txt",
         "size": 6340,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:05Z",
-        "updated_at": "2026-11-14T03:29:06Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746152407"
+        "created_at": "2026-11-14T11:34:49Z",
+        "updated_at": "2026-11-14T11:34:50Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747294109"
       },
       {
         "id": 733398620,
@@ -3383,7 +4703,91 @@
         "updated_at": "2026-11-10T23:43:46Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733398620"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 15,
+    "download_breakdown": {
+      "tag": "nightly-9733397325a7c3239cac067d86ca7682b11136b2",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432957639,
@@ -3729,15 +5133,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733364541"
       },
       {
-        "id": 746151719,
+        "id": 747292803,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/stats.txt",
         "size": 10736,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:47Z",
-        "updated_at": "2026-11-14T03:28:47Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746151719"
+        "created_at": "2026-11-14T11:34:18Z",
+        "updated_at": "2026-11-14T11:34:18Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747292803"
       },
       {
         "id": 733366676,
@@ -3761,7 +5165,166 @@
         "updated_at": "2026-11-10T23:30:52Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733366675"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 30,
+    "download_breakdown": {
+      "tag": "nightly-785381002f50cb58b32990a69df3e0cce5c8a90e",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom_240p-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update_240p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/update_240p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update_360p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/update_360p.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432939046,
@@ -4107,15 +5670,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733213332"
       },
       {
-        "id": 746151634,
+        "id": 747292612,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/stats.txt",
         "size": 10732,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:44Z",
-        "updated_at": "2026-11-14T03:28:44Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746151634"
+        "created_at": "2026-11-14T11:34:13Z",
+        "updated_at": "2026-11-14T11:34:13Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747292612"
       },
       {
         "id": 733214550,
@@ -4139,7 +5702,166 @@
         "updated_at": "2026-11-10T22:32:15Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733214556"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 30,
+    "download_breakdown": {
+      "tag": "nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom_240p-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update_240p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/update_240p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update_360p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/update_360p.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432997148,
@@ -4320,15 +6042,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733392344"
       },
       {
-        "id": 746152044,
+        "id": 747293362,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/stats.txt",
         "size": 6347,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:56Z",
-        "updated_at": "2026-11-14T03:28:56Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746152044"
+        "created_at": "2026-11-14T11:34:33Z",
+        "updated_at": "2026-11-14T11:34:33Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747293362"
       },
       {
         "id": 733393085,
@@ -4341,7 +6063,91 @@
         "updated_at": "2026-11-10T23:41:25Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733393085"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 15,
+    "download_breakdown": {
+      "tag": "nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433001464,
@@ -4522,15 +6328,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733369840"
       },
       {
-        "id": 746152108,
+        "id": 747293437,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/stats.txt",
         "size": 6347,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:57Z",
-        "updated_at": "2026-11-14T03:28:57Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746152108"
+        "created_at": "2026-11-14T11:34:35Z",
+        "updated_at": "2026-11-14T11:34:36Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747293437"
       },
       {
         "id": 733372247,
@@ -4543,7 +6349,91 @@
         "updated_at": "2026-11-10T23:32:46Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733372247"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 15,
+    "download_breakdown": {
+      "tag": "nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433323922,
@@ -4724,15 +6614,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733401862"
       },
       {
-        "id": 746152449,
+        "id": 747294229,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/stats.txt",
         "size": 6338,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:07Z",
-        "updated_at": "2026-11-14T03:29:07Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746152449"
+        "created_at": "2026-11-14T11:34:52Z",
+        "updated_at": "2026-11-14T11:34:52Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747294229"
       },
       {
         "id": 733402932,
@@ -4745,7 +6635,91 @@
         "updated_at": "2026-11-10T23:45:44Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733402932"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 15,
+    "download_breakdown": {
+      "tag": "nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433313562,
@@ -4926,15 +6900,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733393584"
       },
       {
-        "id": 746152327,
+        "id": 747293915,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/stats.txt",
         "size": 6341,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:03Z",
-        "updated_at": "2026-11-14T03:29:03Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746152327"
+        "created_at": "2026-11-14T11:34:45Z",
+        "updated_at": "2026-11-14T11:34:45Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747293915"
       },
       {
         "id": 733395010,
@@ -4947,7 +6921,91 @@
         "updated_at": "2026-11-10T23:42:18Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733395010"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 15,
+    "download_breakdown": {
+      "tag": "nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432889304,
@@ -5083,7 +7141,61 @@
         "updated_at": "2026-11-03T15:39:16Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/706122751"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 8,
+    "download_breakdown": {
+      "tag": "nightly-0936ff79cff7ee5e47c6278b648d478824e709fa",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0936ff79cff7ee5e47c6278b648d478824e709fa/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0936ff79cff7ee5e47c6278b648d478824e709fa/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0936ff79cff7ee5e47c6278b648d478824e709fa/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0936ff79cff7ee5e47c6278b648d478824e709fa/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0936ff79cff7ee5e47c6278b648d478824e709fa/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0936ff79cff7ee5e47c6278b648d478824e709fa/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0936ff79cff7ee5e47c6278b648d478824e709fa/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0936ff79cff7ee5e47c6278b648d478824e709fa/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0936ff79cff7ee5e47c6278b648d478824e709fa/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432976770,
@@ -5264,15 +7376,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733341708"
       },
       {
-        "id": 746151906,
+        "id": 747293091,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/stats.txt",
         "size": 6356,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:51Z",
-        "updated_at": "2026-11-14T03:28:51Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746151906"
+        "created_at": "2026-11-14T11:34:25Z",
+        "updated_at": "2026-11-14T11:34:25Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747293091"
       },
       {
         "id": 733342641,
@@ -5285,7 +7397,91 @@
         "updated_at": "2026-11-10T23:21:56Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733342641"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 15,
+    "download_breakdown": {
+      "tag": "nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/update.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432948734,
@@ -5631,15 +7827,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733275195"
       },
       {
-        "id": 746151674,
+        "id": 747292717,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/stats.txt",
         "size": 10732,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:45Z",
-        "updated_at": "2026-11-14T03:28:46Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/746151674"
+        "created_at": "2026-11-14T11:34:15Z",
+        "updated_at": "2026-11-14T11:34:16Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/747292717"
       },
       {
         "id": 733276643,
@@ -5663,6 +7859,165 @@
         "updated_at": "2026-11-10T22:56:16Z",
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733276644"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 30,
+    "download_breakdown": {
+      "tag": "nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom_240p-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_240p_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-linux.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-macos.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b-windows.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_360p_type_b.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update_240p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/update_240p.zip",
+          "downloads": 1
+        },
+        {
+          "name": "update_360p.zip",
+          "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/update_360p.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   }
 ]

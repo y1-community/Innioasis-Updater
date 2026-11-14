@@ -189,15 +189,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/742490318"
       },
       {
-        "id": 746153358,
+        "id": 747299339,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/stats.txt",
         "size": 6491,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:33Z",
-        "updated_at": "2026-11-14T03:29:33Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746153358"
+        "created_at": "2026-11-14T11:37:03Z",
+        "updated_at": "2026-11-14T11:37:03Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747299339"
       },
       {
         "id": 742490338,
@@ -221,7 +221,86 @@
         "updated_at": "2026-11-13T06:01:57Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/742490355"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 14,
+    "download_breakdown": {
+      "tag": "y1-exp.2",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "classy-y1-exp.2-type-a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "classy-y1-exp.2-type-a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "classy-y1-exp.2-type-a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "classy-y1-exp.2-type-a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "classy-y1-exp.2-type-a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "classy-y1-exp.2-type-a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "classy-y1-exp.2-type-a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a.zip",
+          "downloads": 1
+        },
+        {
+          "name": "classy-y1-exp.2-type-b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "classy-y1-exp.2-type-b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "classy-y1-exp.2-type-b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "classy-y1-exp.2-type-b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "classy-y1-exp.2-type-b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "classy-y1-exp.2-type-b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "classy-y1-exp.2-type-b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 444823918,
@@ -490,15 +569,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/745504659"
       },
       {
-        "id": 746153270,
+        "id": 747299231,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/stats.txt",
-        "size": 8056,
+        "size": 8057,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:30Z",
-        "updated_at": "2026-11-14T03:29:31Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746153270"
+        "created_at": "2026-11-14T11:37:01Z",
+        "updated_at": "2026-11-14T11:37:01Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747299231"
       },
       {
         "id": 745504657,
@@ -511,7 +590,121 @@
         "updated_at": "2026-11-13T23:02:07Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/745504657"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 21,
+    "download_breakdown": {
+      "tag": "20261113-beta",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_a.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y1_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 443239657,
@@ -945,15 +1138,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/740289552"
       },
       {
-        "id": 746153172,
+        "id": 747299146,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/stats.txt",
         "size": 11730,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:28Z",
-        "updated_at": "2026-11-14T03:29:29Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746153172"
+        "created_at": "2026-11-14T11:36:59Z",
+        "updated_at": "2026-11-14T11:36:59Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747299146"
       },
       {
         "id": 740289585,
@@ -966,7 +1159,191 @@
         "updated_at": "2026-11-12T16:55:26Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/740289585"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20261112",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_a.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y1_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 441736435,
@@ -1400,15 +1777,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/735642945"
       },
       {
-        "id": 746153011,
+        "id": 747299003,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/stats.txt",
         "size": 11727,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:24Z",
-        "updated_at": "2026-11-14T03:29:24Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746153011"
+        "created_at": "2026-11-14T11:36:54Z",
+        "updated_at": "2026-11-14T11:36:55Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747299003"
       },
       {
         "id": 735642988,
@@ -1421,7 +1798,191 @@
         "updated_at": "2026-11-11T13:33:18Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/735642988"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20261111",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_a.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y1_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 442278794,
@@ -1613,15 +2174,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/737202102"
       },
       {
-        "id": 746153091,
+        "id": 747299082,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/stats.txt",
         "size": 6350,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:26Z",
-        "updated_at": "2026-11-14T03:29:26Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746153091"
+        "created_at": "2026-11-14T11:36:56Z",
+        "updated_at": "2026-11-14T11:36:57Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747299082"
       },
       {
         "id": 737202120,
@@ -1645,7 +2206,86 @@
         "updated_at": "2026-11-11T22:57:06Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/737202143"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 14,
+    "download_breakdown": {
+      "tag": "y1-exp.1",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_a.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.1/rom_y1_type_b.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 441101976,
@@ -2079,15 +2719,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/733559886"
       },
       {
-        "id": 746152951,
+        "id": 747298905,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/stats.txt",
         "size": 11790,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:22Z",
-        "updated_at": "2026-11-14T03:29:22Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746152951"
+        "created_at": "2026-11-14T11:36:52Z",
+        "updated_at": "2026-11-14T11:36:52Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747298905"
       },
       {
         "id": 733559900,
@@ -2100,7 +2740,191 @@
         "updated_at": "2026-11-11T00:48:38Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/733559900"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 34,
+    "download_breakdown": {
+      "tag": "20261110",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_a.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y1_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261110/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437927652,
@@ -2534,15 +3358,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722350535"
       },
       {
-        "id": 746152833,
+        "id": 747298785,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/stats.txt",
         "size": 11733,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:18Z",
-        "updated_at": "2026-11-14T03:29:18Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746152833"
+        "created_at": "2026-11-14T11:36:48Z",
+        "updated_at": "2026-11-14T11:36:48Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747298785"
       },
       {
         "id": 722350540,
@@ -2555,7 +3379,191 @@
         "updated_at": "2026-11-08T00:07:25Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722350540"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20261107",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_a.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y1_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437924473,
@@ -2989,15 +3997,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722335899"
       },
       {
-        "id": 746152762,
+        "id": 747298719,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/stats.txt",
         "size": 11792,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:15Z",
-        "updated_at": "2026-11-14T03:29:16Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746152762"
+        "created_at": "2026-11-14T11:36:46Z",
+        "updated_at": "2026-11-14T11:36:46Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747298719"
       },
       {
         "id": 722335896,
@@ -3010,7 +4018,191 @@
         "updated_at": "2026-11-07T23:59:44Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722335896"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20261106",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_a.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y1_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261106/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437921498,
@@ -3444,15 +4636,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722320930"
       },
       {
-        "id": 746152657,
+        "id": 747298641,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/stats.txt",
         "size": 11794,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:13Z",
-        "updated_at": "2026-11-14T03:29:13Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746152657"
+        "created_at": "2026-11-14T11:36:44Z",
+        "updated_at": "2026-11-14T11:36:44Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747298641"
       },
       {
         "id": 722320933,
@@ -3465,7 +4657,191 @@
         "updated_at": "2026-11-07T23:52:22Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722320933"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20261105",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_a.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437918208,
@@ -3899,15 +5275,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722306135"
       },
       {
-        "id": 746152603,
+        "id": 747298554,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/stats.txt",
         "size": 11736,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:11Z",
-        "updated_at": "2026-11-14T03:29:11Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746152603"
+        "created_at": "2026-11-14T11:36:42Z",
+        "updated_at": "2026-11-14T11:36:42Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747298554"
       },
       {
         "id": 722306136,
@@ -3920,7 +5296,191 @@
         "updated_at": "2026-11-07T23:44:52Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722306136"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20261104",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_a.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y1_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261104/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437914920,
@@ -4354,15 +5914,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722290188"
       },
       {
-        "id": 746152503,
+        "id": 747298493,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/stats.txt",
         "size": 11799,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:09Z",
-        "updated_at": "2026-11-14T03:29:09Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746152503"
+        "created_at": "2026-11-14T11:36:40Z",
+        "updated_at": "2026-11-14T11:36:40Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747298493"
       },
       {
         "id": 722290187,
@@ -4375,7 +5935,191 @@
         "updated_at": "2026-11-07T23:37:19Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722290187"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20261017",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_a.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y1_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437911392,
@@ -4798,15 +6542,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722274712"
       },
       {
-        "id": 746152458,
+        "id": 747298393,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/stats.txt",
         "size": 11674,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:07Z",
-        "updated_at": "2026-11-14T03:29:07Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746152458"
+        "created_at": "2026-11-14T11:36:37Z",
+        "updated_at": "2026-11-14T11:36:38Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747298393"
       },
       {
         "id": 722274713,
@@ -4819,7 +6563,191 @@
         "updated_at": "2026-11-07T23:29:49Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722274713"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20261013",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_a.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y1_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437908131,
@@ -5242,15 +7170,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722259877"
       },
       {
-        "id": 746152383,
+        "id": 747298303,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/stats.txt",
         "size": 11733,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:05Z",
-        "updated_at": "2026-11-14T03:29:05Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746152383"
+        "created_at": "2026-11-14T11:36:35Z",
+        "updated_at": "2026-11-14T11:36:35Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747298303"
       },
       {
         "id": 722259875,
@@ -5263,7 +7191,191 @@
         "updated_at": "2026-11-07T23:22:06Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722259875"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 37,
+    "download_breakdown": {
+      "tag": "20261012",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_type_b-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_a.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_b-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y1_type_b.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437904742,
@@ -5686,15 +7798,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722243870"
       },
       {
-        "id": 746152312,
+        "id": 747298200,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/stats.txt",
         "size": 11614,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:02Z",
-        "updated_at": "2026-11-14T03:29:03Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746152312"
+        "created_at": "2026-11-14T11:36:33Z",
+        "updated_at": "2026-11-14T11:36:33Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747298200"
       },
       {
         "id": 722243869,
@@ -5707,7 +7819,191 @@
         "updated_at": "2026-11-07T23:14:25Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722243869"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20261011",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_a.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437901421,
@@ -6130,15 +8426,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722225921"
       },
       {
-        "id": 746152223,
+        "id": 747298072,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/stats.txt",
         "size": 11732,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:00Z",
-        "updated_at": "2026-11-14T03:29:00Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746152223"
+        "created_at": "2026-11-14T11:36:31Z",
+        "updated_at": "2026-11-14T11:36:31Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747298072"
       },
       {
         "id": 722225923,
@@ -6151,7 +8447,191 @@
         "updated_at": "2026-11-07T23:06:44Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722225923"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20261008",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_a.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y1_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261008/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437897945,
@@ -6574,15 +9054,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722208658"
       },
       {
-        "id": 746152133,
+        "id": 747297983,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/stats.txt",
         "size": 11671,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:58Z",
-        "updated_at": "2026-11-14T03:28:58Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746152133"
+        "created_at": "2026-11-14T11:36:29Z",
+        "updated_at": "2026-11-14T11:36:29Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747297983"
       },
       {
         "id": 722208656,
@@ -6595,7 +9075,191 @@
         "updated_at": "2026-11-07T22:59:19Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722208656"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20261007",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_a.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y1_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261007/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437894348,
@@ -7018,15 +9682,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722193348"
       },
       {
-        "id": 746152022,
+        "id": 747297888,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/stats.txt",
         "size": 11673,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:55Z",
-        "updated_at": "2026-11-14T03:28:56Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746152022"
+        "created_at": "2026-11-14T11:36:26Z",
+        "updated_at": "2026-11-14T11:36:27Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747297888"
       },
       {
         "id": 722193347,
@@ -7039,7 +9703,191 @@
         "updated_at": "2026-11-07T22:51:43Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722193347"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20261006",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_a.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y1_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437890882,
@@ -7462,15 +10310,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722174980"
       },
       {
-        "id": 746151951,
+        "id": 747297786,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/stats.txt",
         "size": 11733,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:53Z",
-        "updated_at": "2026-11-14T03:28:53Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746151951"
+        "created_at": "2026-11-14T11:36:24Z",
+        "updated_at": "2026-11-14T11:36:24Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747297786"
       },
       {
         "id": 722174982,
@@ -7483,7 +10331,191 @@
         "updated_at": "2026-11-07T22:44:04Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722174982"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 42,
+    "download_breakdown": {
+      "tag": "20261001",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_type_b-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_a.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_b-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_b-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y2-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y2-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437887355,
@@ -7906,15 +10938,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722157711"
       },
       {
-        "id": 746151894,
+        "id": 747297697,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/stats.txt",
         "size": 11613,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:51Z",
-        "updated_at": "2026-11-14T03:28:51Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746151894"
+        "created_at": "2026-11-14T11:36:22Z",
+        "updated_at": "2026-11-14T11:36:22Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747297697"
       },
       {
         "id": 722157712,
@@ -7927,7 +10959,191 @@
         "updated_at": "2026-11-07T22:36:21Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722157712"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20260929",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_a.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y1_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437883933,
@@ -8350,15 +11566,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722139802"
       },
       {
-        "id": 746151768,
+        "id": 747297608,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/stats.txt",
         "size": 11613,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:48Z",
-        "updated_at": "2026-11-14T03:28:49Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746151768"
+        "created_at": "2026-11-14T11:36:20Z",
+        "updated_at": "2026-11-14T11:36:20Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747297608"
       },
       {
         "id": 722139805,
@@ -8371,7 +11587,191 @@
         "updated_at": "2026-11-07T22:28:32Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722139805"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20260928",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_a.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y1_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437877048,
@@ -8794,17 +12194,201 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722106231"
       },
       {
-        "id": 746151648,
+        "id": 747297437,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/stats.txt",
         "size": 11552,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:44Z",
-        "updated_at": "2026-11-14T03:28:45Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746151648"
+        "created_at": "2026-11-14T11:36:15Z",
+        "updated_at": "2026-11-14T11:36:16Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747297437"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 62,
+    "download_breakdown": {
+      "tag": "20260927",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom-linux-arm64.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom-linux-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom-windows-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_type_b-linux-arm64.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_type_b-linux-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_type_b-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_type_b-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_type_b-windows-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_type_b-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_a-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_a-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_a-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_a.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_b-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_b-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y1_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-linux-arm64.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-linux-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-windows-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437930865,
@@ -9238,15 +12822,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722367269"
       },
       {
-        "id": 746152898,
+        "id": 747298850,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/stats.txt",
         "size": 11796,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:20Z",
-        "updated_at": "2026-11-14T03:29:20Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746152898"
+        "created_at": "2026-11-14T11:36:50Z",
+        "updated_at": "2026-11-14T11:36:50Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747298850"
       },
       {
         "id": 722367271,
@@ -9259,7 +12843,191 @@
         "updated_at": "2026-11-08T00:15:09Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722367271"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 33,
+    "download_breakdown": {
+      "tag": "20261107-v2",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_a-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_a-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_a-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_a.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y1_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y2-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y2-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y2-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y2-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107-v2/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 437880462,
@@ -9682,15 +13450,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722123546"
       },
       {
-        "id": 746151693,
+        "id": 747297542,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/stats.txt",
         "size": 11741,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:28:46Z",
-        "updated_at": "2026-11-14T03:28:47Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/746151693"
+        "created_at": "2026-11-14T11:36:18Z",
+        "updated_at": "2026-11-14T11:36:18Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/747297542"
       },
       {
         "id": 722123547,
@@ -9703,6 +13471,190 @@
         "updated_at": "2026-11-07T22:21:02Z",
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/722123547"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 63,
+    "download_breakdown": {
+      "tag": "20260928-build.6",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom-linux-arm64.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom-linux-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom-windows-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_type_b-linux-arm64.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_type_b-linux-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_type_b-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_type_b-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_type_b-windows-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_type_b-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y1_type_a-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_a-linux-arm64.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_a-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_a-linux-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_a-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_a-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_a-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_a-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_a-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_a-windows-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_a-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_a-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_a.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_b-linux-arm64.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_b-linux-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_b-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_b-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_b-windows-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_b-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y1_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-linux-arm64.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-linux-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-macos.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-windows-legacy.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   }
 ]

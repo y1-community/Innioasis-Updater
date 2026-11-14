@@ -13,6 +13,7 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/koensayr-auto-mirror/releases/tag/2.4.0-koensayr-3.0.7"/>
     <innioasis:tag_name>2.4.0-koensayr-3.0.7</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>6</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/build-manifest.json" title="build-manifest.json" length="545" type="application/json" innioasis:download_count="1" innioasis:asset_id="706112375"/>
     <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="432588568" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740713819"/>
     <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="311030170" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740713828"/>
@@ -21,7 +22,7 @@
     <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="312615887" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740713815"/>
     <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-windows.zip" title="rom-windows.zip" length="550854730" type="application/zip" innioasis:download_count="6" innioasis:asset_id="740713827"/>
     <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom.zip" title="rom.zip" length="308982866" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733043515"/>
-    <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/stats.txt" title="stats.txt" length="4055" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="746151411"/>
+    <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/stats.txt" title="stats.txt" length="4055" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747103551"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=ryan-specter%2Fkoensayr-auto&amp;amp;tag=2.4.0-koensayr-3.0.7#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -108,6 +109,7 @@ adb shell rm -rf /data/data/com.innioasis.y1/code_cache/secondary-dexes/
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/koensayr-auto-mirror/releases/tag/2.4.0-koensayr-3.0.2"/>
     <innioasis:tag_name>2.4.0-koensayr-3.0.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>5</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/build-manifest.json" title="build-manifest.json" length="538" type="application/json" innioasis:download_count="1" innioasis:asset_id="706206873"/>
     <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="452536335" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740698010"/>
     <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="330977937" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740698005"/>
@@ -116,7 +118,7 @@ adb shell rm -rf /data/data/com.innioasis.y1/code_cache/secondary-dexes/
     <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="332563654" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740698011"/>
     <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-windows.zip" title="rom-windows.zip" length="570802497" type="application/zip" innioasis:download_count="5" innioasis:asset_id="740698008"/>
     <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom.zip" title="rom.zip" length="328930606" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733031642"/>
-    <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/stats.txt" title="stats.txt" length="4055" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="746151378"/>
+    <link rel="enclosure" href="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/stats.txt" title="stats.txt" length="4055" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="747103492"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=ryan-specter%2Fkoensayr-auto&amp;amp;tag=2.4.0-koensayr-3.0.2#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/koensayr-auto-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;

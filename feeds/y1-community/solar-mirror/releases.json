@@ -90,17 +90,61 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733453409"
       },
       {
-        "id": 746154754,
+        "id": 747290382,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/y2-release/stats.txt",
         "size": 3864,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:30:14Z",
-        "updated_at": "2026-11-14T03:30:14Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746154754"
+        "created_at": "2026-11-14T11:33:20Z",
+        "updated_at": "2026-11-14T11:33:20Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747290382"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 1,
+    "download_breakdown": {
+      "tag": "y2-release",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433388230,
@@ -193,17 +237,61 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733454301"
       },
       {
-        "id": 746154652,
+        "id": 747290244,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/stats.txt",
         "size": 3860,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:30:11Z",
-        "updated_at": "2026-11-14T03:30:11Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746154652"
+        "created_at": "2026-11-14T11:33:16Z",
+        "updated_at": "2026-11-14T11:33:16Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747290244"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 1,
+    "download_breakdown": {
+      "tag": "y2-base",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433386227,
@@ -296,17 +384,61 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733473172"
       },
       {
-        "id": 746154603,
+        "id": 747290166,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/stats.txt",
         "size": 3840,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:30:09Z",
-        "updated_at": "2026-11-14T03:30:10Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746154603"
+        "created_at": "2026-11-14T11:33:14Z",
+        "updated_at": "2026-11-14T11:33:14Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747290166"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 2,
+    "download_breakdown": {
+      "tag": "type-a-base",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433373256,
@@ -487,17 +619,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733433850"
       },
       {
-        "id": 746154384,
+        "id": 747289898,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/stats.txt",
         "size": 5898,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:30:05Z",
-        "updated_at": "2026-11-14T03:30:05Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746154384"
+        "created_at": "2026-11-14T11:33:07Z",
+        "updated_at": "2026-11-14T11:33:07Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747289898"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260702-1512",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433367361,
@@ -678,17 +889,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733454585"
       },
       {
-        "id": 746154216,
+        "id": 747289718,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:30:01Z",
-        "updated_at": "2026-11-14T03:30:01Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746154216"
+        "created_at": "2026-11-14T11:33:03Z",
+        "updated_at": "2026-11-14T11:33:03Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747289718"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260701-1454",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433331648,
@@ -869,17 +1159,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733389170"
       },
       {
-        "id": 746153728,
+        "id": 747288742,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:45Z",
-        "updated_at": "2026-11-14T03:29:45Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153728"
+        "created_at": "2026-11-14T11:32:39Z",
+        "updated_at": "2026-11-14T11:32:40Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747288742"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260630-1236",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433328750,
@@ -1060,17 +1429,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733397304"
       },
       {
-        "id": 746153691,
+        "id": 747288626,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:43Z",
-        "updated_at": "2026-11-14T03:29:43Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153691"
+        "created_at": "2026-11-14T11:32:37Z",
+        "updated_at": "2026-11-14T11:32:37Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747288626"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260630-1125",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433325626,
@@ -1251,17 +1699,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733393650"
       },
       {
-        "id": 746153649,
+        "id": 747288520,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:42Z",
-        "updated_at": "2026-11-14T03:29:42Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153649"
+        "created_at": "2026-11-14T11:32:35Z",
+        "updated_at": "2026-11-14T11:32:35Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747288520"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260630-1120",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433321878,
@@ -1442,17 +1969,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733389958"
       },
       {
-        "id": 746153613,
+        "id": 747288401,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:40Z",
-        "updated_at": "2026-11-14T03:29:40Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153613"
+        "created_at": "2026-11-14T11:32:33Z",
+        "updated_at": "2026-11-14T11:32:33Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747288401"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260630-1110",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433318223,
@@ -1633,17 +2239,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733390942"
       },
       {
-        "id": 746153581,
+        "id": 747288302,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:39Z",
-        "updated_at": "2026-11-14T03:29:39Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153581"
+        "created_at": "2026-11-14T11:32:31Z",
+        "updated_at": "2026-11-14T11:32:31Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747288302"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260630-1102",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433314488,
@@ -1824,17 +2509,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733373565"
       },
       {
-        "id": 746153528,
+        "id": 747288183,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:37Z",
-        "updated_at": "2026-11-14T03:29:38Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153528"
+        "created_at": "2026-11-14T11:32:29Z",
+        "updated_at": "2026-11-14T11:32:29Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747288183"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260630-1035",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433310291,
@@ -2015,17 +2779,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733363550"
       },
       {
-        "id": 746153476,
+        "id": 747288041,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:36Z",
-        "updated_at": "2026-11-14T03:29:36Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153476"
+        "created_at": "2026-11-14T11:32:27Z",
+        "updated_at": "2026-11-14T11:32:27Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747288041"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260630-1024",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433011415,
@@ -2206,17 +3049,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733370286"
       },
       {
-        "id": 746153446,
+        "id": 747287936,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:34Z",
-        "updated_at": "2026-11-14T03:29:35Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153446"
+        "created_at": "2026-11-14T11:32:25Z",
+        "updated_at": "2026-11-14T11:32:25Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747287936"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260630-1005",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433007665,
@@ -2397,17 +3319,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733368994"
       },
       {
-        "id": 746153369,
+        "id": 747287842,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:33Z",
-        "updated_at": "2026-11-14T03:29:33Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153369"
+        "created_at": "2026-11-14T11:32:23Z",
+        "updated_at": "2026-11-14T11:32:23Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747287842"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260630-0957",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433003779,
@@ -2588,17 +3589,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733364021"
       },
       {
-        "id": 746153311,
+        "id": 747287757,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:31Z",
-        "updated_at": "2026-11-14T03:29:32Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153311"
+        "created_at": "2026-11-14T11:32:21Z",
+        "updated_at": "2026-11-14T11:32:21Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747287757"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260630-0636",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432999801,
@@ -2779,17 +3859,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733364966"
       },
       {
-        "id": 746153250,
+        "id": 747287660,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:30Z",
-        "updated_at": "2026-11-14T03:29:30Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153250"
+        "created_at": "2026-11-14T11:32:18Z",
+        "updated_at": "2026-11-14T11:32:19Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747287660"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260630-0549",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432970064,
@@ -2970,17 +4129,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733337295"
       },
       {
-        "id": 746152910,
+        "id": 747287102,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:20Z",
-        "updated_at": "2026-11-14T03:29:21Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746152910"
+        "created_at": "2026-11-14T11:32:06Z",
+        "updated_at": "2026-11-14T11:32:06Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747287102"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260629-1616",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432965242,
@@ -3161,17 +4399,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733330605"
       },
       {
-        "id": 746152860,
+        "id": 747287031,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:19Z",
-        "updated_at": "2026-11-14T03:29:19Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746152860"
+        "created_at": "2026-11-14T11:32:04Z",
+        "updated_at": "2026-11-14T11:32:04Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747287031"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260629-1609",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432960917,
@@ -3352,17 +4669,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733295073"
       },
       {
-        "id": 746152819,
+        "id": 747286947,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:17Z",
-        "updated_at": "2026-11-14T03:29:17Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746152819"
+        "created_at": "2026-11-14T11:32:02Z",
+        "updated_at": "2026-11-14T11:32:02Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747286947"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260629-1444",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432957032,
@@ -3543,17 +4939,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733270083"
       },
       {
-        "id": 746152773,
+        "id": 747286867,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:16Z",
-        "updated_at": "2026-11-14T03:29:16Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746152773"
+        "created_at": "2026-11-14T11:31:59Z",
+        "updated_at": "2026-11-14T11:32:00Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747286867"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260629-0955",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432952807,
@@ -3734,17 +5209,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733248273"
       },
       {
-        "id": 746152700,
+        "id": 747286792,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:14Z",
-        "updated_at": "2026-11-14T03:29:14Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746152700"
+        "created_at": "2026-11-14T11:31:57Z",
+        "updated_at": "2026-11-14T11:31:57Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747286792"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260629-0926",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432949106,
@@ -3925,17 +5479,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733226857"
       },
       {
-        "id": 746152639,
+        "id": 747286693,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:12Z",
-        "updated_at": "2026-11-14T03:29:13Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746152639"
+        "created_at": "2026-11-14T11:31:55Z",
+        "updated_at": "2026-11-14T11:31:55Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747286693"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260629-0057",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432944031,
@@ -4116,17 +5749,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733200261"
       },
       {
-        "id": 746152588,
+        "id": 747286597,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/stats.txt",
         "size": 5898,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:11Z",
-        "updated_at": "2026-11-14T03:29:11Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746152588"
+        "created_at": "2026-11-14T11:31:53Z",
+        "updated_at": "2026-11-14T11:31:53Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747286597"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260628-1907",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432940046,
@@ -4307,17 +6019,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733173894"
       },
       {
-        "id": 746152496,
+        "id": 747286529,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:09Z",
-        "updated_at": "2026-11-14T03:29:09Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746152496"
+        "created_at": "2026-11-14T11:31:51Z",
+        "updated_at": "2026-11-14T11:31:51Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747286529"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260628-1014",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432927032,
@@ -4498,17 +6289,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733084347"
       },
       {
-        "id": 746152375,
+        "id": 747286325,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:04Z",
-        "updated_at": "2026-11-14T03:29:05Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746152375"
+        "created_at": "2026-11-14T11:31:45Z",
+        "updated_at": "2026-11-14T11:31:45Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747286325"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260627-0304",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432922295,
@@ -4689,17 +6559,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733054385"
       },
       {
-        "id": 746152328,
+        "id": 747286252,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:03Z",
-        "updated_at": "2026-11-14T03:29:03Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746152328"
+        "created_at": "2026-11-14T11:31:43Z",
+        "updated_at": "2026-11-14T11:31:43Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747286252"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "nightly-20260627-0209",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433391954,
@@ -4957,17 +6906,131 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733465201"
       },
       {
-        "id": 746154707,
+        "id": 747290314,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/stats.txt",
         "size": 7724,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:30:12Z",
-        "updated_at": "2026-11-14T03:30:13Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746154707"
+        "created_at": "2026-11-14T11:33:18Z",
+        "updated_at": "2026-11-14T11:33:18Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747290314"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 4,
+    "download_breakdown": {
+      "tag": "20260819-0956",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_a5-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_a5-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_a5-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_a5-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_a5-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_a5-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_a5.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433382619,
@@ -5214,17 +7277,131 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733489850"
       },
       {
-        "id": 746154546,
+        "id": 747290086,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/stats.txt",
         "size": 7485,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:30:08Z",
-        "updated_at": "2026-11-14T03:30:08Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746154546"
+        "created_at": "2026-11-14T11:33:11Z",
+        "updated_at": "2026-11-14T11:33:12Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747290086"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 5,
+    "download_breakdown": {
+      "tag": "20260716-0131",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_y2-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433375847,
@@ -5405,17 +7582,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733464776"
       },
       {
-        "id": 746154466,
+        "id": 747289987,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/stats.txt",
         "size": 5893,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:30:06Z",
-        "updated_at": "2026-11-14T03:30:07Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746154466"
+        "created_at": "2026-11-14T11:33:09Z",
+        "updated_at": "2026-11-14T11:33:09Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747289987"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260702-1521",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433370482,
@@ -5596,17 +7852,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733438577"
       },
       {
-        "id": 746154265,
+        "id": 747289816,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/stats.txt",
         "size": 5894,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:30:03Z",
-        "updated_at": "2026-11-14T03:30:03Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746154265"
+        "created_at": "2026-11-14T11:33:05Z",
+        "updated_at": "2026-11-14T11:33:05Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747289816"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260701-1453",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433361965,
@@ -5787,17 +8122,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733447356"
       },
       {
-        "id": 746154149,
+        "id": 747289619,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/stats.txt",
         "size": 5894,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:30:00Z",
-        "updated_at": "2026-11-14T03:30:00Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746154149"
+        "created_at": "2026-11-14T11:33:00Z",
+        "updated_at": "2026-11-14T11:33:01Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747289619"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260630-1236",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433358857,
@@ -5978,17 +8392,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733438433"
       },
       {
-        "id": 746154104,
+        "id": 747289506,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:58Z",
-        "updated_at": "2026-11-14T03:29:58Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746154104"
+        "created_at": "2026-11-14T11:32:58Z",
+        "updated_at": "2026-11-14T11:32:58Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747289506"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260630-1125",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433355644,
@@ -6169,17 +8662,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733440246"
       },
       {
-        "id": 746154044,
+        "id": 747289407,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:57Z",
-        "updated_at": "2026-11-14T03:29:57Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746154044"
+        "created_at": "2026-11-14T11:32:56Z",
+        "updated_at": "2026-11-14T11:32:56Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747289407"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260630-1120",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433352479,
@@ -6360,17 +8932,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733413372"
       },
       {
-        "id": 746154009,
+        "id": 747289313,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:55Z",
-        "updated_at": "2026-11-14T03:29:55Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746154009"
+        "created_at": "2026-11-14T11:32:54Z",
+        "updated_at": "2026-11-14T11:32:54Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747289313"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260630-1110",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433349185,
@@ -6551,17 +9202,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733412899"
       },
       {
-        "id": 746153970,
+        "id": 747289232,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:54Z",
-        "updated_at": "2026-11-14T03:29:54Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153970"
+        "created_at": "2026-11-14T11:32:52Z",
+        "updated_at": "2026-11-14T11:32:52Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747289232"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260630-1102",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433346305,
@@ -6742,17 +9472,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733425220"
       },
       {
-        "id": 746153924,
+        "id": 747289159,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:52Z",
-        "updated_at": "2026-11-14T03:29:52Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153924"
+        "created_at": "2026-11-14T11:32:50Z",
+        "updated_at": "2026-11-14T11:32:50Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747289159"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260630-1023",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433343443,
@@ -6933,17 +9742,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733416059"
       },
       {
-        "id": 746153891,
+        "id": 747289099,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:51Z",
-        "updated_at": "2026-11-14T03:29:51Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153891"
+        "created_at": "2026-11-14T11:32:48Z",
+        "updated_at": "2026-11-14T11:32:48Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747289099"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260630-1005",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433340657,
@@ -7124,17 +10012,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733413179"
       },
       {
-        "id": 746153852,
+        "id": 747288997,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:49Z",
-        "updated_at": "2026-11-14T03:29:49Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153852"
+        "created_at": "2026-11-14T11:32:46Z",
+        "updated_at": "2026-11-14T11:32:46Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747288997"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260630-0956",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433337660,
@@ -7315,17 +10282,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733414035"
       },
       {
-        "id": 746153811,
+        "id": 747288917,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:48Z",
-        "updated_at": "2026-11-14T03:29:48Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153811"
+        "created_at": "2026-11-14T11:32:44Z",
+        "updated_at": "2026-11-14T11:32:44Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747288917"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260630-0636",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 433334534,
@@ -7506,17 +10552,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733393810"
       },
       {
-        "id": 746153769,
+        "id": 747288841,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:46Z",
-        "updated_at": "2026-11-14T03:29:46Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153769"
+        "created_at": "2026-11-14T11:32:41Z",
+        "updated_at": "2026-11-14T11:32:42Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747288841"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260630-0550",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432996097,
@@ -7697,17 +10822,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733352477"
       },
       {
-        "id": 746153175,
+        "id": 747287592,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/stats.txt",
         "size": 5891,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:28Z",
-        "updated_at": "2026-11-14T03:29:29Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153175"
+        "created_at": "2026-11-14T11:32:16Z",
+        "updated_at": "2026-11-14T11:32:16Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747287592"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260629-1615",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432992629,
@@ -7888,17 +11092,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733336401"
       },
       {
-        "id": 746153130,
+        "id": 747287532,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:27Z",
-        "updated_at": "2026-11-14T03:29:27Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153130"
+        "created_at": "2026-11-14T11:32:14Z",
+        "updated_at": "2026-11-14T11:32:14Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747287532"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260629-1610",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432982664,
@@ -8079,17 +11362,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733339678"
       },
       {
-        "id": 746153049,
+        "id": 747287409,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/stats.txt",
-        "size": 5888,
+        "size": 5890,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:25Z",
-        "updated_at": "2026-11-14T03:29:25Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153049"
+        "created_at": "2026-11-14T11:32:12Z",
+        "updated_at": "2026-11-14T11:32:12Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747287409"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260629-1444",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432978566,
@@ -8270,17 +11632,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733338577"
       },
       {
-        "id": 746153007,
+        "id": 747287318,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:24Z",
-        "updated_at": "2026-11-14T03:29:24Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746153007"
+        "created_at": "2026-11-14T11:32:10Z",
+        "updated_at": "2026-11-14T11:32:10Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747287318"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20260629-0955",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432974426,
@@ -8461,17 +11902,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733336583"
       },
       {
-        "id": 746152953,
+        "id": 747287199,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/stats.txt",
         "size": 5889,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:22Z",
-        "updated_at": "2026-11-14T03:29:22Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746152953"
+        "created_at": "2026-11-14T11:32:08Z",
+        "updated_at": "2026-11-14T11:32:08Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747287199"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 4,
+    "download_breakdown": {
+      "tag": "20260629-0057",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432935978,
@@ -8634,7 +12154,7 @@
         "name": "rom_type_b-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-windows.zip",
         "size": 720144818,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-12T20:41:18Z",
         "updated_at": "2026-11-12T20:41:56Z",
@@ -8652,17 +12172,96 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733146954"
       },
       {
-        "id": 746152469,
+        "id": 747286455,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/stats.txt",
         "size": 5897,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:08Z",
-        "updated_at": "2026-11-14T03:29:08Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746152469"
+        "created_at": "2026-11-14T11:31:49Z",
+        "updated_at": "2026-11-14T11:31:49Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747286455"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 13,
+    "download_breakdown": {
+      "tag": "20260628-1014",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-windows.zip",
+          "downloads": 4
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-windows.zip",
+          "downloads": 3
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 432931352,
@@ -8843,16 +12442,95 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733113876"
       },
       {
-        "id": 746152428,
+        "id": 747286402,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/stats.txt",
         "size": 5892,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-14T03:29:06Z",
-        "updated_at": "2026-11-14T03:29:06Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/746152428"
+        "created_at": "2026-11-14T11:31:47Z",
+        "updated_at": "2026-11-14T11:31:47Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/747286402"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 4,
+    "download_breakdown": {
+      "tag": "20260627-0304",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-arm64.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-linux.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-linux.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-macos.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows-legacy.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom_type_b-windows.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_type_b.zip",
+          "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
   }
 ]

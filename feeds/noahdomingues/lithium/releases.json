@@ -17,13 +17,27 @@
         "name": "Lithium.Beta.v7.1.06.13.25.zip",
         "browser_download_url": "https://github.com/NoahDomingues/Lithium/releases/download/v7.1.06.13.25/Lithium.Beta.v7.1.06.13.25.zip",
         "size": 307094451,
-        "download_count": 1118,
+        "download_count": 1122,
         "content_type": "application/x-zip-compressed",
         "created_at": "2025-06-13T12:52:32Z",
         "updated_at": "2025-06-13T12:54:48Z",
         "url": "https://api.github.com/repos/NoahDomingues/Lithium/releases/assets/263633229"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 1122,
+    "download_breakdown": {
+      "tag": "v7.1.06.13.25",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "Lithium.Beta.v7.1.06.13.25.zip",
+          "url": "https://github.com/NoahDomingues/Lithium/releases/download/v7.1.06.13.25/Lithium.Beta.v7.1.06.13.25.zip",
+          "downloads": 1122
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 224055014,
@@ -43,13 +57,27 @@
         "name": "Lithium.7.v7.1.06.09.25.zip",
         "browser_download_url": "https://github.com/NoahDomingues/Lithium/releases/download/v7.1.06.09.25/Lithium.7.v7.1.06.09.25.zip",
         "size": 328910851,
-        "download_count": 98,
+        "download_count": 100,
         "content_type": "application/x-zip-compressed",
         "created_at": "2025-06-09T14:37:57Z",
         "updated_at": "2025-06-09T14:45:20Z",
         "url": "https://api.github.com/repos/NoahDomingues/Lithium/releases/assets/262341064"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 100,
+    "download_breakdown": {
+      "tag": "v7.1.06.09.25",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "Lithium.7.v7.1.06.09.25.zip",
+          "url": "https://github.com/NoahDomingues/Lithium/releases/download/v7.1.06.09.25/Lithium.7.v7.1.06.09.25.zip",
+          "downloads": 100
+        }
+      ],
+      "portable": []
+    }
   },
   {
     "id": 224527513,
@@ -75,7 +103,15 @@
         "updated_at": "2025-06-11T08:19:25Z",
         "url": "https://api.github.com/repos/NoahDomingues/Lithium/releases/assets/262868441"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "Scatter-v7.1.06.11.25",
+      "mirrors": "",
+      "firmware": [],
+      "portable": []
+    }
   },
   {
     "id": 224062420,
@@ -101,7 +137,15 @@
         "updated_at": "2025-06-09T14:54:02Z",
         "url": "https://api.github.com/repos/NoahDomingues/Lithium/releases/assets/262344908"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "Kernel-v7.1.06.09.25",
+      "mirrors": "",
+      "firmware": [],
+      "portable": []
+    }
   },
   {
     "id": 223022623,
@@ -127,6 +171,14 @@
         "updated_at": "2025-06-04T10:20:55Z",
         "url": "https://api.github.com/repos/NoahDomingues/Lithium/releases/assets/260861043"
       }
-    ]
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "Kernel",
+      "mirrors": "",
+      "firmware": [],
+      "portable": []
+    }
   }
 ]

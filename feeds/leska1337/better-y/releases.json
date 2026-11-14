@@ -28,13 +28,70 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/rom.zip",
         "size": 181243963,
-        "download_count": 449,
+        "download_count": 450,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-09-25T18:43:13Z",
         "updated_at": "2026-09-25T18:46:53Z",
         "url": "https://api.github.com/repos/Leska1337/better-Y/releases/assets/588998617"
       }
-    ]
+    ],
+    "mirror_downloads": 53,
+    "downloads": 503,
+    "download_breakdown": {
+      "tag": "v1.1.0",
+      "mirrors": "y1-community/better-y-mirror",
+      "firmware": [
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/rom.zip",
+          "downloads": 450
+        }
+      ],
+      "portable": [
+        {
+          "platform": "windows",
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows.zip",
+          "size": 494326123,
+          "downloads": 5
+        },
+        {
+          "platform": "windows-legacy",
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows-legacy.zip",
+          "size": 256087282,
+          "downloads": 0
+        },
+        {
+          "platform": "linux",
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux.zip",
+          "size": 541647447,
+          "downloads": 8
+        },
+        {
+          "platform": "linux-arm64",
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-arm64.zip",
+          "size": 366551681,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-legacy",
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-legacy.zip",
+          "size": 254501563,
+          "downloads": 0
+        },
+        {
+          "platform": "macos",
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-macos.zip",
+          "size": 300960097,
+          "downloads": 3
+        }
+      ]
+    }
   },
   {
     "id": 382482140,
@@ -60,6 +117,63 @@
         "updated_at": "2026-09-04T04:45:59Z",
         "url": "https://api.github.com/repos/Leska1337/better-Y/releases/assets/543801871"
       }
-    ]
+    ],
+    "mirror_downloads": 29,
+    "downloads": 222,
+    "download_breakdown": {
+      "tag": "v1.0.0",
+      "mirrors": "y1-community/better-y-mirror",
+      "firmware": [
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/Leska1337/better-Y/releases/download/v1.0.0/rom.zip",
+          "downloads": 193
+        }
+      ],
+      "portable": [
+        {
+          "platform": "windows",
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-windows.zip",
+          "size": 493907020,
+          "downloads": 5
+        },
+        {
+          "platform": "windows-legacy",
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-windows-legacy.zip",
+          "size": 255668179,
+          "downloads": 0
+        },
+        {
+          "platform": "linux",
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux.zip",
+          "size": 541228344,
+          "downloads": 8
+        },
+        {
+          "platform": "linux-arm64",
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux-arm64.zip",
+          "size": 366132578,
+          "downloads": 0
+        },
+        {
+          "platform": "linux-legacy",
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux-legacy.zip",
+          "size": 254082460,
+          "downloads": 0
+        },
+        {
+          "platform": "macos",
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-macos.zip",
+          "size": 300540980,
+          "downloads": 2
+        }
+      ]
+    }
   }
 ]
