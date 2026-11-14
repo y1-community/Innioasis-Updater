@@ -24,8 +24,8 @@
         "url": "https://api.github.com/repos/y1-community/y1-linux-rom/releases/assets/608039598"
       }
     ],
-    "mirror_downloads": 28,
-    "downloads": 86,
+    "mirror_downloads": 29,
+    "downloads": 87,
     "download_breakdown": {
       "tag": "0.0.1",
       "mirrors": "y1-community/y1-linux-rom-mirror",
@@ -57,7 +57,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux.zip",
           "size": 616693979,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux-arm64",

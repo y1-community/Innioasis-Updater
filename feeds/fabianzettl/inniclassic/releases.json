@@ -28,7 +28,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip",
         "size": 463531481,
-        "download_count": 610,
+        "download_count": 613,
         "content_type": "application/zip",
         "created_at": "2026-09-29T12:14:46Z",
         "updated_at": "2026-09-29T12:16:11Z",
@@ -36,7 +36,7 @@
       }
     ],
     "mirror_downloads": 45,
-    "downloads": 655,
+    "downloads": 658,
     "download_breakdown": {
       "tag": "v1.4.5",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -44,7 +44,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip",
-          "downloads": 620,
+          "downloads": 623,
           "mirror_downloads": 10
         }
       ],
@@ -123,7 +123,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/rom.zip",
         "size": 463523953,
-        "download_count": 36,
+        "download_count": 37,
         "content_type": "application/zip",
         "created_at": "2026-09-29T11:56:08Z",
         "updated_at": "2026-09-29T11:57:37Z",
@@ -131,7 +131,7 @@
       }
     ],
     "mirror_downloads": 36,
-    "downloads": 72,
+    "downloads": 73,
     "download_breakdown": {
       "tag": "v1.4.4",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -139,7 +139,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/rom.zip",
-          "downloads": 46,
+          "downloads": 47,
           "mirror_downloads": 10
         }
       ],
