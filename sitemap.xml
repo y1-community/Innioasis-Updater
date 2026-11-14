@@ -973,6 +973,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://innioasis.app/install/legacy-linux.html</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://innioasis.app/install/legacy-windows.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -1741,6 +1747,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://innioasis.app/linux-legacy.html</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://innioasis.app/linux-y1-software.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -1929,6 +1941,18 @@
   <url>
     <loc>https://innioasis.app/original-software-y2.html</loc>
     <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://innioasis.app/portable-builds.html</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://innioasis.app/portable-rom-packages.html</loc>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
