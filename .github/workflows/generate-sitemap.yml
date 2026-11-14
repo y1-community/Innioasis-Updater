@@ -9,6 +9,7 @@ on:
     paths:
       - "**/*.html"
       - "scripts/generate_sitemap.py"
+      - "scripts/audit_site_seo.py"
       - "scripts/i18n/generate_multilingual_static_pages.py"
       - ".github/workflows/generate-sitemap.yml"
   schedule:
@@ -41,6 +42,7 @@ jobs:
       - name: Verify the result
         run: |
           python scripts/generate_sitemap.py --check
+          python scripts/audit_site_seo.py
           python - <<'PY'
           import pathlib, xml.etree.ElementTree as ET
           for path in sorted(pathlib.Path(".").glob("sitemap*.xml")):

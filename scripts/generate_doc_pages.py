@@ -35,6 +35,7 @@ import json
 import os
 import pathlib
 import re
+import shutil
 import sys
 import time
 import urllib.error
@@ -307,7 +308,20 @@ def fetch_releases(repo: str, refresh: bool = False) -> list[dict]:
         if len(batch) < 100:
             break
         page += 1
-    return releases[:MAX_RELEASES]
+    if releases:
+        return releases[:MAX_RELEASES]
+    # A blocked or exhausted GitHub API must not take a project's pages down.
+    # The hourly backup feed carries the same releases, so the static pages and
+    # their sitemap entries keep existing while the API is unavailable.
+    backup = ROOT / "feeds" / repo.strip().lower() / "releases.json"
+    try:
+        payload = json.loads(backup.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return []
+    if not isinstance(payload, list):
+        return []
+    print("  ! GitHub API returned no releases for %s; using %s" % (repo, backup), file=sys.stderr)
+    return [entry for entry in payload if isinstance(entry, dict)][:MAX_RELEASES]
 
 
 def release_tag_message(repo: str, tag: str, refresh: bool = False) -> str:
@@ -1320,17 +1334,37 @@ document.addEventListener("DOMContentLoaded", function () {
 """
 
 
-def page(head_args: dict, main: str, up: str) -> str:
-    return (HEAD.format(brand=BRAND, up=up, **head_args) + main +
+def page(head_args: dict, main: str, up: str, jsonld_blocks: list[dict] | None = None) -> str:
+    html = HEAD.format(brand=BRAND, up=up, **head_args)
+    canonical = str(head_args.get("canonical") or "")
+    extras = ""
+    if canonical:
+        # These pages are English-only; the self-referencing pair tells search
+        # engines the language and stops locale guesswork on translated routes.
+        extras += ('<link rel="alternate" hreflang="en" href="%s">'
+                   '<link rel="alternate" hreflang="x-default" href="%s">\n'
+                   % (esc(canonical), esc(canonical)))
+    if jsonld_blocks:
+        extras += jsonld(jsonld_blocks) + "\n"
+    if extras:
+        html = html.replace("</head>", extras + "</head>", 1)
+    return (html + main +
             FOOT.format(up=up).replace("</body></html>", FOOT_SCRIPT))
 
 
 def release_version(release: dict) -> str:
     name = str(release.get("name") or "")
     match = re.search(r"(?:^|\s)(v?\d+\.\d+(?:\.\d+)?(?:-[a-zA-Z0-9.]+)?)(?:\s|$)", name)
-    if match:
-        return match.group(1)
-    return str(release.get("tag_name") or "")
+    value = match.group(1) if match else str(release.get("tag_name") or "").strip()
+    # Tags commonly repeat the software name before the version
+    # ("launcher-v0.11.6", "kernel-v7.1.06"). The page already names it.
+    for _ in range(2):
+        stripped = re.sub(r"^[A-Za-z][A-Za-z0-9]*-", "", value)
+        if stripped != value and re.match(r"^v?\d", stripped):
+            value = stripped
+        else:
+            break
+    return value
 
 
 def guide_href(item: dict, up: str) -> str:
@@ -1438,10 +1472,329 @@ PLATFORM_LABELS = {
     "macos": "macOS",
     "windows": "Windows",
     "windows-arm64": "Windows on ARM",
+    "windows-legacy": "Windows 7/8 or 32-bit",
     "linux": "Linux",
     "linux-arm64": "Linux on ARM",
+    "linux-legacy": "32-bit Linux",
 }
-PLATFORM_ORDER = list(PLATFORM_LABELS)
+PLATFORM_ORDER = [
+    "windows", "windows-arm64", "windows-legacy",
+    "macos", "linux", "linux-arm64", "linux-legacy",
+]
+
+# One tutorial page per release and family: a reader searching for "Y2 3.2.4
+# Windows download" lands on a page written for that computer, while the
+# architecture variants sit on the same page as separate download choices.
+PLATFORM_FAMILIES = {
+    "windows": {
+        "label": "Windows",
+        "keys": ["windows", "windows-arm64", "windows-legacy"],
+        "heading": "a Windows PC",
+        "note": "Windows 11 and Windows 10 are supported; the legacy ZIP is for Windows 7/8 "
+                "and 32-bit Windows, and Windows on ARM runs its own build natively.",
+    },
+    "macos": {
+        "label": "macOS",
+        "keys": ["macos"],
+        "heading": "a Mac",
+        "note": "The macOS package is universal: it runs on Apple silicon and Intel Macs.",
+    },
+    "linux": {
+        "label": "Linux",
+        "keys": ["linux", "linux-arm64", "linux-legacy"],
+        "heading": "Linux",
+        "note": "Use the x64 build on an ordinary Intel or AMD desktop, the arm64 build on a "
+                "Raspberry Pi or other ARM board, and the legacy ZIP on 32-bit Linux.",
+    },
+}
+
+
+def platform_family(key: str) -> str:
+    for family, config in PLATFORM_FAMILIES.items():
+        if key in config["keys"]:
+            return family
+    return ""
+
+
+def release_platform_groups(portable: list[tuple[dict, list[dict]]]) -> list[tuple[str, list[dict]]]:
+    """The mirror's packages for this release, grouped into tutorial families."""
+    grouped: dict[str, list[dict]] = {}
+    seen: set[tuple[str, str]] = set()
+    for asset, packages in portable:
+        for package in packages:
+            key = str(package.get("platform") or "")
+            family = platform_family(key)
+            if not family or not package.get("url"):
+                continue
+            # A release can carry Type A and Type B ROMs, each with its own
+            # Windows/macOS/Linux build. Keep both; only identical packages are
+            # duplicates.
+            identity = (str(asset.get("name") or ""), key)
+            if identity in seen:
+                continue
+            seen.add(identity)
+            grouped.setdefault(family, []).append(dict(package, source=str(asset.get("name") or "")))
+    order = [family for family in PLATFORM_FAMILIES if family in grouped]
+    return [(family, grouped[family]) for family in order]
+
+
+def device_label(item: dict) -> str:
+    model = str(item.get("model") or "").upper()
+    brand = str(item.get("brand") or "").strip()
+    if not brand:
+        brand = "Timmkoo" if model in {"A5", "Q3", "Q3E", "Q5", "Q8", "SR1"} else "Innioasis"
+    return (brand + " " + model).strip()
+
+
+def release_update_title(item: dict, release: dict) -> str:
+    name = software_label(item)
+    version = release_version(release)
+    return "%s %s update for %s" % (name, version, device_label(item))
+
+
+def release_update_description(item: dict, release: dict, portable: list[tuple[dict, list[dict]]]) -> str:
+    """A stable English description, regardless of the language of the notes."""
+    name = software_label(item)
+    version = release_version(release)
+    device = device_label(item)
+    packages = release_platform_groups(portable)
+    options = ""
+    if packages:
+        labels = [PLATFORM_FAMILIES[family]["label"] for family, _ in packages]
+        options = " Download the portable package for %s, or install it with Updater CE." % (
+            ", ".join(labels[:-1]) + " or " + labels[-1] if len(labels) > 1 else labels[0]
+        )
+    return (
+        "%s %s update for the %s: release notes, verified download links and step-by-step "
+        "install instructions.%s" % (name, version, device, options)
+    )
+
+
+def jsonld(blocks: list[dict]) -> str:
+    return "".join(
+        '<script type="application/ld+json">%s</script>'
+        % json.dumps(block, ensure_ascii=False, separators=(",", ":"))
+        for block in blocks if block
+    )
+
+
+def breadcrumb_json(parts: list[tuple[str, str]]) -> dict:
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": index, "name": label, "item": url}
+            for index, (label, url) in enumerate(parts, 1)
+        ],
+    }
+
+
+def software_json(item: dict, release: dict, download_url: str, file_size: int) -> dict:
+    version = release_version(release)
+    published = str(release.get("published_at") or "")[:10]
+    data = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "%s %s" % (software_label(item), version),
+        "applicationCategory": "Firmware",
+        "applicationSubCategory": software_label(item),
+        "operatingSystem": device_label(item),
+        "softwareVersion": version,
+        "isAccessibleForFree": True,
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD",
+                   "availability": "https://schema.org/InStock"},
+    }
+    if download_url:
+        data["downloadUrl"] = download_url
+        data["encodingFormat"] = "application/zip"
+    if file_size:
+        data["fileSize"] = str(file_size)
+    if published:
+        data["datePublished"] = published
+    return data
+
+
+def howto_json(name: str, description: str, steps: list[tuple[str, str]]) -> dict:
+    return {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": name,
+        "description": description,
+        "totalTime": "PT15M",
+        "tool": [{"@type": "HowToTool", "name": "A computer and a USB cable"}],
+        "step": [
+            {"@type": "HowToStep", "position": index, "name": title,
+             "text": re.sub(r"<[^>]+>", "", text), "url": "#step-%d" % index}
+            for index, (title, text) in enumerate(steps, 1)
+        ],
+    }
+
+
+def faq_json(faqs: list[tuple[str, str]]) -> dict:
+    return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": question,
+             "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", "", answer)}}
+            for question, answer in faqs
+        ],
+    }
+
+
+def release_install_steps(item: dict, release: dict) -> list[tuple[str, str]]:
+    name = software_label(item)
+    return [
+        ("Check the model and type",
+         "Confirm the player is an %s before downloading. Y1 players come in two hardware revisions, "
+         "Type A (software 2.0.0 or later) and Type B (earlier software); the two ROMs are not "
+         "interchangeable." % device_label(item)),
+        ("Download the package built for your computer",
+         "Use Updater CE for the guided route, or download the portable package for Windows, macOS "
+         "or Linux from this page. The release's own ZIP is also listed for manual flashing."),
+        ("Connect the player while it is switched off",
+         "Use a data-capable USB cable and connect the player only when the installer asks. "
+         "Keep it connected until the flash reports success."),
+        ("Verify the version after it reboots",
+         "Open the player's Settings or About screen and check that it reports %s %s." % (
+             name, release_version(release))),
+    ]
+
+
+def platform_steps(family: str, item: dict, release: dict, packages: list[dict]) -> list[tuple[str, str]]:
+    names = ", ".join(sorted({str(package.get("name") or "") for package in packages if package.get("name")}))
+    config = PLATFORM_FAMILIES[family]
+    if family == "windows":
+        return [
+            ("Download the Windows ZIP",
+             "The button above saves %s. Choose Windows on ARM if the PC runs a Snapdragon or other "
+             "ARM processor; the ordinary Windows ZIP is for Intel and AMD PCs." % (names or "the package")),
+            ("Extract the archive",
+             "Right-click the downloaded ZIP, choose Extract All, and open the new folder. Keep every "
+             "file beside the flash tool; it looks for its images in that folder."),
+            ("Connect the player switched off",
+             "Use a data-capable USB cable. With the player powered off, hold its power button until "
+             "Windows recognises the device, then release it."),
+            ("Run the installer and wait",
+             "Start the tool in the extracted folder, follow its prompts, and leave the player alone "
+             "until it reports success. Windows may show a SmartScreen prompt for a new tool: choose "
+             "More info, then Run anyway."),
+        ]
+    if family == "macos":
+        return [
+            ("Download the macOS ZIP",
+             "The button above saves %s. The package is universal, so the same file runs on Apple "
+             "silicon and Intel Macs." % (names or "the package")),
+            ("Unzip it",
+             "Double-click the downloaded ZIP to expand it in Finder. Keep the expanded folder "
+             "together; the flash tool needs the images beside it."),
+            ("Allow the tool to open",
+             "If macOS blocks it as an unidentified developer, Control-click the app and choose Open, "
+             "or allow it in System Settings → Privacy & Security."),
+            ("Connect the player switched off and run the tool",
+             "Use a data-capable USB cable, connect the player while it is powered off, and start the "
+             "tool. Keep the player connected until it reports success."),
+        ]
+    return [
+        ("Download the Linux ZIP",
+         "The button above saves %s. Use the arm64 build on ARM hardware and the legacy ZIP on "
+         "32-bit Linux." % (names or "the package")),
+        ("Unzip it",
+         "Expand the archive in your file manager or with unzip, and keep the folder contents "
+         "together."),
+        ("Make the tool executable",
+         "Open a terminal in the folder and run chmod +x on the flash tool. If it asks for udev "
+         "rules for the player, install them as described in the folder's README."),
+        ("Connect the player switched off and run the tool",
+         "With the player powered off, connect it with a data-capable USB cable, then start the tool "
+         "and follow its prompts until the flash reports success."),
+    ]
+
+
+def platform_faqs(family: str, item: dict, release: dict, packages: list[dict]) -> list[tuple[str, str]]:
+    name = software_label(item)
+    version = release_version(release)
+    device = device_label(item)
+    config = PLATFORM_FAMILIES[family]
+    names = ", ".join(sorted({str(package.get("name") or "") for package in packages if package.get("name")}))
+    faqs = [
+        ("Which package do I need for %s?" % config["heading"],
+         "%s is the %s build for %s %s. %s" % (
+             names or "The listed package", config["label"], name, version, config["note"])),
+        ("Do I need Innioasis Updater CE to install %s %s?" % (name, version),
+         "No. The portable package includes the flash tool, so the steps on this page install the "
+         "same release without Updater CE. Updater CE is the easier route when you want it to pick "
+         "the right file for the player."),
+        ("Will installing this release erase my music?",
+         "A firmware flash can erase the player's internal storage. Copy your music, playlists and "
+         "recordings to your computer before you start."),
+        ("How do I check that %s %s is installed?" % (name, version),
+         "After the player reboots, open Settings (or About) on the %s and check the version it "
+         "reports. It should match %s." % (device, version)),
+    ]
+    return faqs
+
+
+def platform_cards(item: dict, release: dict, groups: list[tuple[str, list[dict]]]) -> str:
+    """Links from the release page to its per-computer tutorial pages."""
+    if not groups:
+        return ""
+    tag = tag_slug(str(release.get("tag_name") or ""))
+    cards = []
+    for family, packages in groups:
+        config = PLATFORM_FAMILIES[family]
+        sizes = [size_label(package.get("size")) for package in packages if package.get("size")]
+        cards.append(
+            '<article class="lumen-card"><small>%s</small>'
+            '<h3><a href="%s-%s.html">Install on %s</a></h3>'
+            '<p>%s</p>%s</article>'
+            % (
+                esc(config["label"]), esc(tag), esc(family), esc(config["label"]),
+                esc(config["note"]),
+                ('<p class="lumen-meta">%s</p>' % esc(" · ".join(sizes))) if sizes else "",
+            )
+        )
+    return (
+        '<section class="lumen-guide-section" id="install-by-computer">'
+        '<h2>Install %s %s on your computer</h2>'
+        '<p class="lead">Pick the guide for the computer you will flash from. Each one names the '
+        'exact package, its size and the steps that machine needs.</p>'
+        '<div class="lumen-grid">%s</div></section>'
+        % (esc(software_label(item)), esc(release_version(release)), "".join(cards))
+    )
+
+
+def release_faqs(item: dict, release: dict, groups: list[tuple[str, list[dict]]]) -> list[tuple[str, str]]:
+    name = software_label(item)
+    version = release_version(release)
+    device = device_label(item)
+    faqs = [
+        ("How do I update %s to %s %s?" % (device, name, version),
+         "Download the package for your computer from this page, or open Updater CE and choose %s "
+         "%s for %s. Connect the player while it is switched off, then let the installer finish "
+         "and let the player reboot." % (name, version, device)),
+        ("Is %s %s the latest %s release?" % (name, version, name),
+         "The release list on this page is ordered newest first, so the top entry is the latest "
+         "published build. Preview and nightly builds are labelled as such."),
+        ("Can I install %s %s from another computer?" % (name, version),
+         "Yes. Download the ZIP here, copy it to the computer that can talk to the player, and "
+         "follow the install guide there. The package is self-contained."),
+    ]
+    if groups:
+        faqs.append((
+            "Which file do I download for Windows, macOS or Linux?",
+            "Each portable package in the download section is built for one computer. The guide "
+            "pages linked under \"Install on your computer\" name the exact file and its size.",
+        ))
+    return faqs
+
+
+def faq_section(title: str, faqs: list[tuple[str, str]]) -> str:
+    items = "".join(
+        '<details><summary>%s</summary><p>%s</p></details>' % (esc(question), esc(answer))
+        for question, answer in faqs
+    )
+    return '<section class="lumen-guide-section" id="faq"><h2>%s</h2>%s</section>' % (esc(title), items)
 
 
 def size_label(size) -> str:
@@ -1654,6 +2007,11 @@ def release_page(item: dict, release: dict, siblings: list[dict], portable: list
         release_body or plain_notes or
         ("Release notes, downloads and the Updater CE install guide for %s %s on the Innioasis %s." % (name, version, model))
     )
+    seo_title = release_update_title(item, release)
+    seo_description = release_update_description(item, release, portable)
+    groups = release_platform_groups(portable)
+    update_steps = release_install_steps(item, release)
+    faqs = release_faqs(item, release, groups)
     meta_bits = ['<span class="lumen-release-pill">%s</span>' % esc(tag)]
     if model:
         meta_bits.append("<span>%s</span>" % esc(model))
@@ -1726,7 +2084,11 @@ def release_page(item: dict, release: dict, siblings: list[dict], portable: list
         '<div class="lumen-release-head">%s<div class="lumen-release-titles">' % icon_html,
         '<p class="lumen-kicker">Firmware release notes · %s%s</p>' % (esc(name), (" · " + esc(model)) if model else ""),
         "<h1>%s</h1></div></div>" % esc(title),
-        '<p class="lumen-lead">%s</p>' % esc(item.get("description") or "What changed in this release, and how to install it."),
+        '<p class="lumen-lead"><strong>%s %s update for the %s.</strong> '
+        'Download it below, or let Updater CE install it for you.</p>'
+        % (esc(name), esc(version), esc(device_label(item))),
+        ('<p class="lumen-lead lumen-release-summary">%s</p>'
+         % esc(one_line(item.get("description") or ""))) if item.get("description") else "",
         '<div class="lumen-release-tag-row">%s</div>' % "".join(meta_bits),
         '<div class="lumen-doc-actions">',
         '<a class="lumen-button lumen-button--primary" href="%s">Get it in Updater CE</a>'
@@ -1738,6 +2100,22 @@ def release_page(item: dict, release: dict, siblings: list[dict], portable: list
         release_downloads_html(item, release, portable),
         '<article class="lumen-doc-body lumen-release-body">%s</article>' % notes,
     ]
+    main.append(
+        '<section class="lumen-guide-section" id="update-%s">'
+        '<h2>Updating to %s %s</h2>'
+        '<p class="lead">The same steps install this release for the first time or replace the '
+        'build already on the player. Back up your music before you start.</p>'
+        '<ol class="lumen-guide-steps">%s</ol></section>'
+        % (
+            esc(tag_slug(version) or "latest"), esc(name), esc(version),
+            "".join(
+                '<li id="step-%d"><strong>%s</strong><p>%s</p></li>' % (index, esc(step), esc(text))
+                for index, (step, text) in enumerate(update_steps, 1)
+            ),
+        )
+    )
+    main.append(platform_cards(item, release, groups))
+    main.append(faq_section("Questions about this update", faqs))
     if related:
         main.append(
             '<section class="lumen-doc-related"><h2>Also useful</h2>'
@@ -1751,39 +2129,216 @@ def release_page(item: dict, release: dict, siblings: list[dict], portable: list
     main.append(source_citations(item, tag))
     main.append("</main>")
 
+    download_url = ""
+    download_size = 0
+    if groups:
+        download_url = str(groups[0][1][0].get("url") or "")
+        download_size = groups[0][1][0].get("size") or 0
+    else:
+        assets = model_assets(item, release)
+        if assets:
+            download_url = str(assets[0].get("browser_download_url") or "")
+            download_size = assets[0].get("size") or 0
+    structured = [
+        breadcrumb_json([
+            ("Innioasis Updater", SITE + "/"),
+            ("Firmware downloads", SITE + "/firmware.html"),
+            ("%s release notes" % name, "%s/release-notes/%s/index.html" % (SITE, item["slug"])),
+            ("%s %s" % (name, version), canonical),
+        ]),
+        software_json(item, release, download_url, download_size),
+        howto_json("%s %s update for %s" % (name, version, device_label(item)),
+                  "How to install %s %s on the %s." % (name, version, device_label(item)),
+                  update_steps),
+        faq_json(faqs),
+    ]
     return page({
-        "title": "%s - %s" % (title, BRAND),
-        "description": description,
+        "title": "%s - %s" % (seo_title, BRAND),
+        "description": seo_description,
         "canonical": canonical,
-    }, "".join(main), up)
+    }, "".join(main), up, structured)
 
 
-def software_index_page(item: dict, releases: list[dict]) -> str:
+def platform_page(item: dict, release: dict, family: str, packages: list[dict],
+                  groups: list[tuple[str, list[dict]]]) -> str:
+    """A install tutorial for one release on one computer platform.
+
+    The page exists so a search for "<software> <version> Windows download" has
+    a page that answers it: the exact package, its size, the steps that platform
+    needs, and its own FAQ. It links back to the shared release notes instead of
+    copying them, so the pair is not two copies of the same document.
+    """
+    up = "../../"
+    name = software_label(item)
+    version = release_version(release)
+    device = device_label(item)
+    tag = str(release.get("tag_name") or "")
+    tag_key = tag_slug(tag)
+    config = PLATFORM_FAMILIES[family]
+    label = config["label"]
+    canonical = "%s/release-notes/%s/%s-%s.html" % (SITE, item["slug"], tag_key, family)
+    filename = "%s-%s.html" % (tag_key, family)
+    release_href = "%s.html" % tag_key
+    steps = platform_steps(family, item, release, packages)
+    faqs = platform_faqs(family, item, release, packages)
+    published = str(release.get("published_at") or "")[:10]
+
+    buttons = []
+    sources = sorted({str(package.get("source") or "") for package in packages if package.get("source")})
+    for package in packages:
+        platform_label = PLATFORM_LABELS.get(str(package.get("platform")), label)
+        if len(sources) > 1 and package.get("source"):
+            platform_label += " · " + str(package.get("source"))
+        buttons.append(
+            '<a class="lumen-button lumen-button--primary" href="%s" download="%s" rel="nofollow" '
+            'data-platform="%s"><span translate="no" class="notranslate" data-i18n-skip>%s</span> '
+            '<span class="lumen-meta">%s</span></a>'
+            % (esc(package.get("url")), esc(package.get("name") or ""),
+               esc(package.get("platform")), esc(platform_label),
+               esc(size_label(package.get("size")) or "portable package"))
+        )
+    names = ", ".join(sorted({str(p.get("name") or "") for p in packages if p.get("name")}))
+    sibling_links = "".join(
+        '<li><a href="%s-%s.html">Install on %s</a>'
+        '<small>%s</small></li>' % (
+            esc(tag_key), esc(other), esc(PLATFORM_FAMILIES[other]["label"]),
+            esc(PLATFORM_FAMILIES[other]["note"]),
+        )
+        for other, _ in groups if other != family
+    )
+    requirements = {
+        "windows": [
+            "Windows 10 or 11 on an Intel/AMD PC, Windows on ARM, or the legacy build on Windows 7/8 and 32-bit systems",
+            "A data-capable USB cable (charge-only cables are not enough)",
+            "About 1 GB of free space for the ZIP and the extracted files",
+        ],
+        "macos": [
+            "macOS 11 or later on Apple silicon or Intel",
+            "A data-capable USB cable (charge-only cables are not enough)",
+            "About 1 GB of free space for the ZIP and the extracted files",
+        ],
+        "linux": [
+            "A 64-bit Linux distribution (x64 or arm64), or the legacy build on 32-bit Linux",
+            "A data-capable USB cable (charge-only cables are not enough)",
+            "About 1 GB of free space for the ZIP and the extracted files",
+        ],
+    }[family]
+    requirements_html = "".join("<li>%s</li>" % esc(line) for line in requirements)
+    # The install guides use the short "mac" suffix for macOS.
+    guide_suffix = {"windows": "windows", "macos": "mac", "linux": "linux"}.get(family, family)
+    guide_path = ROOT / "install" / ("%s-%s.html" % (item["slug"], guide_suffix))
+    guide_link = (
+        '<li><a href="%sinstall/%s-%s.html">Full %s install guide</a>'
+        '<small>The general steps for this player on %s, for any release</small></li>'
+        % (up, esc(item["slug"]), esc(guide_suffix), esc(label), esc(label))
+    ) if guide_path.exists() else ""
+
+    meta_bits = ['<span class="lumen-release-pill">%s</span>' % esc(tag)]
+    if published:
+        meta_bits.append("<span>%s</span>" % esc(published))
+    if release.get("prerelease"):
+        meta_bits.append('<span class="lumen-release-pill lumen-release-pill--prerelease">Preview build</span>')
+
+    main = (
+        '<main id="main" class="lumen-guide lumen-doc-page lumen-release-page">'
+        '<p class="lumen-doc-back"><a href="%s">← %s %s release notes</a></p>'
+        '<header class="lumen-doc-head">'
+        '<p class="lumen-kicker">Install tutorial · %s · %s</p>'
+        '<h1>%s %s update for %s on %s</h1>'
+        '<p class="lumen-lead">Download the %s package for %s %s and install it on the %s. '
+        '%s</p>'
+        '<div class="lumen-release-tag-row">%s</div>'
+        '<div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="#download">Download for %s</a>'
+        '<a class="lumen-button" href="%s">Full release notes</a></div></header>'
+        '<section class="lumen-doc-downloads" id="download"><h2>Download for %s</h2>'
+        '<p class="lumen-meta">%s</p>%s</section>'
+        '<section class="lumen-guide-section" id="requirements"><h2>Before you start</h2><ul>%s</ul></section>'
+        '<section class="lumen-guide-section" id="steps"><h2>How to install %s %s on %s</h2>'
+        '<ol class="lumen-guide-steps">%s</ol></section>'
+        '<section class="lumen-guide-section" id="faq"><h2>%s install questions</h2>%s</section>'
+        '<section class="lumen-guide-section"><h2>Also useful</h2><ul class="lumen-doc-related-list">'
+        '<li><a href="%s">Full release notes</a><small>What changed in %s %s, and the other downloads</small></li>'
+        '%s%s</ul></section>'
+        '<p class="lumen-doc-footer-note">%s %s is published by the %s project. This page installs '
+        'the same files as the release page, with the steps for %s.</p>'
+        '</main>'
+    ) % (
+        release_href, esc(name), esc(version),
+        esc(name), esc(device), esc(name), esc(version), esc(device), esc(label),
+        esc(label), esc(name), esc(version), esc(device), esc(config["note"]),
+        "".join(meta_bits), esc(label), release_href, esc(label), esc(names),
+        "".join(buttons), requirements_html,
+        esc(name), esc(version), esc(label),
+        "".join(
+            '<li id="step-%d"><strong>%s</strong><p>%s</p></li>' % (index, esc(step), esc(text))
+            for index, (step, text) in enumerate(steps, 1)
+        ),
+        esc(label),
+        "".join(
+            '<details><summary>%s</summary><p>%s</p></details>' % (esc(question), esc(answer))
+            for question, answer in faqs
+        ),
+        release_href, esc(name), esc(version), sibling_links, guide_link,
+        esc(name), esc(version), esc(str(item.get("repo") or "project")), esc(label),
+    )
+    structured = [
+        breadcrumb_json([
+            ("Innioasis Updater", SITE + "/"),
+            ("Firmware downloads", SITE + "/firmware.html"),
+            ("%s release notes" % name, "%s/release-notes/%s/index.html" % (SITE, item["slug"])),
+            ("%s %s" % (name, version), "%s/release-notes/%s/%s.html" % (SITE, item["slug"], tag_key)),
+            ("%s on %s" % (version, label), canonical),
+        ]),
+        software_json(item, release, str(packages[0].get("url") or ""), packages[0].get("size") or 0),
+        howto_json("Install %s %s on %s" % (name, version, label),
+                  "Download and install the %s %s update on the %s from a %s computer." % (
+                      name, version, device, label), steps),
+        faq_json(faqs),
+    ]
+    return page({
+        "title": "%s %s update for %s on %s - download and install - %s" % (
+            name, version, device, label, BRAND),
+        "description": "Download %s %s for the %s on %s (%s) and install it step by step. %s" % (
+            name, version, device, label, names or "portable package", config["note"]),
+        "canonical": canonical,
+    }, main, up, structured)
+
+
+def software_index_page(item: dict, releases: list[dict],
+                        platforms: dict[str, list[tuple[str, list[dict]]]] | None = None) -> str:
     # This page is release-notes/<software>/index.html: two levels below the
     # site root, exactly like the individual release pages.
     up = "../../"
     name = software_label(item)
     model = item.get("model") or ""
     canonical = "%s/release-notes/%s/index.html" % (SITE, item["slug"])
+    platforms = platforms or {}
     cards = []
     for release in releases:
         tag = str(release.get("tag_name") or "").strip()
         if not tag:
             continue
+        tag_key = tag_slug(tag)
+        guide_links = " ".join(
+            '<a href="%s-%s.html">%s</a>' % (esc(tag_key), esc(family), esc(PLATFORM_FAMILIES[family]["label"]))
+            for family, _packages in platforms.get(tag, [])
+        )
         # Each card is the generated page for that release, so the index and
-        # its releases form one crawlable static set.
+        # its releases form one crawlable static set. The platform links are
+        # the crawl path to the per-computer install tutorials.
         cards.append(
             '<article class="lumen-card"><small>%s%s</small>'
-            '<h3><a href="%s.html">%s</a></h3><p>%s</p></article>'
+            '<h3><a href="%s.html">%s</a></h3><p>%s</p>%s</article>'
             % (
                 esc(str(release.get("published_at") or "")[:10]),
                 " · Preview" if release.get("prerelease") else "",
-                esc(tag_slug(tag)),
+                esc(tag_key),
                 esc(release.get("name") or tag or "Release"),
                 esc(one_line(strip_leading_tag_line(release.get("body") or "", tag), 150)
                     or one_line(strip_leading_tag_line(
                         release_tag_message(item.get("repo", ""), tag), tag), 150)
                     or "No notes published."),
+                ('<p class="lumen-meta">Install on %s</p>' % guide_links) if guide_links else "",
             )
         )
     if not cards:
@@ -2130,16 +2685,39 @@ def build(refresh: bool = False) -> None:
         if releases:
             folder = release_root / slug
             folder.mkdir(exist_ok=True)
+            platforms: dict[str, list[tuple[str, list[dict]]]] = {}
+            expected_files = {"index.html"}
             for release in releases:
                 tag = str(release.get("tag_name") or "")
                 if not tag:
                     continue
                 portable = release_portable_packages(item, release, refresh=refresh)
-                (folder / (tag_slug(tag) + ".html")).write_text(
+                release_name = tag_slug(tag) + ".html"
+                (folder / release_name).write_text(
                     release_page(item, release, releases, portable), encoding="utf-8"
                 )
-                sitemap_urls.append("%s/release-notes/%s/%s.html" % (SITE, slug, tag_slug(tag)))
-            (folder / "index.html").write_text(software_index_page(item, releases), encoding="utf-8")
+                expected_files.add(release_name)
+                sitemap_urls.append("%s/release-notes/%s/%s" % (SITE, slug, release_name))
+                # One tutorial per release and computer platform, generated only
+                # where the mirror actually publishes a package for it.
+                groups = release_platform_groups(portable)
+                platforms[tag] = groups
+                for family, packages in groups:
+                    platform_name = "%s-%s.html" % (tag_slug(tag), family)
+                    (folder / platform_name).write_text(
+                        platform_page(item, release, family, packages, groups), encoding="utf-8"
+                    )
+                    expected_files.add(platform_name)
+                    sitemap_urls.append("%s/release-notes/%s/%s" % (SITE, slug, platform_name))
+            (folder / "index.html").write_text(
+                software_index_page(item, releases, platforms), encoding="utf-8"
+            )
+            # A release that was deleted or renamed upstream must not leave an
+            # orphan page behind for search engines to keep indexing.
+            for stale in folder.glob("*.html"):
+                if stale.name not in expected_files:
+                    stale.unlink()
+                    print("  - removed stale %s/%s" % (slug, stale.name))
             sitemap_urls.append("%s/release-notes/%s/index.html" % (SITE, slug))
             print("  %-32s %3d releases" % (slug, len(releases)))
         else:
@@ -2160,6 +2738,15 @@ def build(refresh: bool = False) -> None:
         written_post_slugs.add(slug)
         sitemap_urls.append("%s/post-install/%s.html" % (SITE, slug))
         post_install_items.append((item, source))
+
+    # Folders for software that has been renamed or retired are not regenerated
+    # above. Leaving them online keeps stale duplicate pages in the index, so
+    # they go with the run that noticed they are no longer in the manifest.
+    active_slugs = {item["slug"] for item in software}
+    for folder in release_root.iterdir():
+        if folder.is_dir() and folder.name not in active_slugs:
+            shutil.rmtree(folder)
+            print("  - removed orphan release folder %s" % folder.name)
 
     extra_urls, extra_cards = render_discovered_markdown_pages(
         software, refresh=refresh, written_slugs=written_post_slugs

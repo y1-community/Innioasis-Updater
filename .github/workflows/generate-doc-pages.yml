@@ -28,6 +28,7 @@ on:
       - scripts/install_guides_data.py
       - install.css
       - scripts/generate_sitemap.py
+      - scripts/audit_site_seo.py
       - config.ini
       - .github/workflows/generate-doc-pages.yml
   # A release published in any listed project can ask for a rebuild.
@@ -117,6 +118,9 @@ jobs:
         run: |
           python scripts/generate_sitemap.py
           python scripts/generate_sitemap.py --check
+
+      - name: Audit titles, canonicals, structured data and internal links
+        run: python scripts/audit_site_seo.py
 
       # A package listed in slidia_manifest.xml with no feed on disk has no
       # backup: a blocked GitHub API would leave it invisible. This warns

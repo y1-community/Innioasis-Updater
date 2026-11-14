@@ -53,6 +53,13 @@ SKIP_FILES = {
     "404.html", "support_toolbar.html", "firmware_info.html",
     "innioasis-embed.html", "leaving.html", "donate.html",
 }
+# Directories whose pages are written by the generators. Untracked files are
+# included only here, so a local test harness at the repository root never ends
+# up in a sitemap just because it exists on disk.
+GENERATED_DIRS = {
+    "release-notes", "post-install", "install", "firmware-info",
+    "rockbox-y1", "rockbox-y2",
+}
 # Three-letter directories that are not languages.
 NOT_LOCALES = {"img", "api", "app", "tmp", "www", "new", "old", "pdf", "css", "js", "log", "dat"}
 LOCALE_FILE_RE = re.compile(
@@ -80,10 +87,21 @@ def tracked_html() -> list[str]:
     come from the index.
     """
     raw = subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT)
-    return sorted(
+    paths = {
         path for path in raw.decode("utf-8", "surrogateescape").split("\0")
-        if path.endswith(".html")
+        if path.endswith(".html") and (ROOT / path).is_file()
+    }
+    # Pages written by the generators are not in the index until the workflow
+    # commits them. Include them now so one generation run publishes a sitemap
+    # that already lists the pages it created.
+    fresh = subprocess.check_output(
+        ["git", "ls-files", "-z", "--others", "--exclude-standard"], cwd=ROOT
     )
+    paths.update(
+        path for path in fresh.decode("utf-8", "surrogateescape").split("\0")
+        if path.endswith(".html") and path.split("/", 1)[0] in GENERATED_DIRS
+    )
+    return sorted(paths)
 
 
 def blob_prefixes(rels: list[str], limit: int = 6000) -> dict[str, str]:
@@ -102,7 +120,7 @@ def blob_prefixes(rels: list[str], limit: int = 6000) -> dict[str, str]:
         proc.stdin.flush()
         header = proc.stdout.readline()
         if b" missing" in header:
-            found[rel] = ""
+            found[rel] = read_worktree(rel)
             continue
         size = int(header.split()[-1])
         data = proc.stdout.read(size)
@@ -111,6 +129,14 @@ def blob_prefixes(rels: list[str], limit: int = 6000) -> dict[str, str]:
     proc.stdin.close()
     proc.wait()
     return found
+
+
+def read_worktree(rel: str, limit: int = 6000) -> str:
+    """Head of a file that git does not know yet (a generated page)."""
+    try:
+        return (ROOT / rel).read_text(encoding="utf-8", errors="ignore")[:limit]
+    except OSError:
+        return ""
 
 
 def locale_dirs(pages: list[str]) -> set[str]:
@@ -131,7 +157,9 @@ def static_pages(prefixes: dict[str, str]) -> list[str]:
             continue
         if rel in SKIP_FILES or rel.startswith("404") or parts[0].startswith("."):
             continue
-        if parts[-1].startswith("theme_downloader"):
+        # support_toolbar*.html are fragments the pages include, not standalone
+        # documents; listing them asks Google to index a partial page.
+        if parts[-1].startswith(("theme_downloader", "support_toolbar")):
             continue
         if NOINDEX_RE.search(prefixes[rel]):
             continue
@@ -340,10 +368,11 @@ def main() -> int:
             print(f"sitemap: {path.name} is not well-formed XML: {exc}", file=sys.stderr)
             return 1
     for path in outputs:
-        if path.name.startswith("sitemap-i18n-") or path.name == "sitemap-i18n.xml":
-            if path.read_text(encoding="utf-8").count("<url>") > 50000:
-                print(f"sitemap: {path.name} exceeds the 50,000 URL limit", file=sys.stderr)
-                return 1
+        if path.name == "sitemap-index.xml":
+            continue
+        if path.read_text(encoding="utf-8").count("<url>") > 50000:
+            print(f"sitemap: {path.name} exceeds the 50,000 URL limit", file=sys.stderr)
+            return 1
     return 0
 
 

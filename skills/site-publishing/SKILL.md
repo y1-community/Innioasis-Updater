@@ -26,14 +26,19 @@ firmware-catalog.js  ──┼──> scripts/generate_doc_pages.py ──> rele
   description, download metadata. The generators read it too.
 - `docs-viewer.js` — the runtime Markdown renderer. The Python generator
   intentionally mirrors its rules so the static page and the reader agree.
-- `scripts/generate_doc_pages.py` — writes one static page per release and per
-  imported Markdown document, and appends new URLs to `sitemap.xml`.
+- `scripts/generate_doc_pages.py` — writes one static page per release, one
+  install tutorial per release and computer platform, and one page per imported
+  Markdown document, then appends new URLs to `sitemap.xml`.
 - `scripts/generate_firmware_info.py` — writes `firmware-info/<slug>.html` from
   each project's README and calls the doc generator for discovered documents.
 - `scripts/generate_notice_pages.py` — writes `notices/<id>.html` from
   `notice.xml`.
 - `scripts/generate_sitemap.py` — audits/repairs the sitemap; `--check` is the
-  CI gate.
+  CI gate. It includes freshly generated but not-yet-committed pages under
+  `release-notes/`, `post-install/`, `install/` and `firmware-info/`.
+- `scripts/audit_site_seo.py` — fails CI when a sitemap URL has no file, a
+  generated page lacks a title, description, canonical or JSON-LD, or a
+  generated page links to a missing local file.
 - `.github/workflows/generate-doc-pages.yml` — runs hourly and commits generated
   output with the bot identity. Generated pages are expected in the repository.
 
@@ -88,6 +93,11 @@ same document.
   Y2Reborn, linked by Y2Linux docs) still gets a page, attributed to that repo.
 - Each generated page has a canonical URL, a title, a description, and a link
   back into the site.
+- Release pages carry `SoftwareApplication`, `HowTo`, `FAQPage` and
+  `BreadcrumbList` JSON-LD. A release with portable packages also gets one
+  tutorial per computer platform at
+  `release-notes/<slug>/<tag>-windows.html`, `-macos.html` or `-linux.html`,
+  named in the title/description and linked from the release page and index.
 - The post-install index links the static page, not only the live reader.
 - `sitemap.xml` contains every generated page.
 
@@ -119,8 +129,13 @@ you have just published a release. The cache lives in `.cache/doc-pages/`
   `/post-install/` or `/firmware-info/`.
 - Canonical URLs — every generated page declares one; keep the
   `https://innioasis.app/...` form.
+- Release and platform pages also declare `hreflang="en"` and
+  `hreflang="x-default"`; they are English-only until the translation run
+  covers them.
 - Titles/descriptions — derived from the document's first heading and first
-  paragraph. If a page has a bad title, fix the Markdown heading, not the
+  paragraph, except release pages, which build them from the software name,
+  version, device and available packages so `innioasis y2 3.2.4 update` style
+  searches match. If a page has a bad title, fix the Markdown heading, not the
   generator.
 - Internal links — the index pages must link the static pages so crawlers can
   reach them without JavaScript.
