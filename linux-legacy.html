@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install firmware on 32-bit Linux - Innioasis Updater</title>
+  <meta name="description" content="How to install Innioasis software, firmware, updates and stock packages on a 32-bit Intel Linux PC with the 32-bit Linux software install zip.">
+  <link rel="canonical" href="https://innioasis.app/linux-legacy.html">
+  <meta name="keywords" content="install Innioasis firmware 32 bit Linux, Innioasis update old Linux PC, 32 bit Linux firmware install, i686 Linux Innioasis, Timmkoo firmware Linux, software install zip Linux">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Install firmware on 32-bit Linux - Innioasis Updater">
+  <meta name="twitter:description" content="Install Innioasis software, firmware, updates and stock packages on a 32-bit Intel Linux PC with the software install zip.">
+  <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Install firmware on 32-bit Linux - Innioasis Updater">
+  <meta property="og:description" content="Install Innioasis software, firmware, updates and stock packages on a 32-bit Intel Linux PC with the software install zip.">
+  <meta property="og:url" content="https://innioasis.app/linux-legacy.html">
+  <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="lumen.css?v=20261110picker">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="install.css?v=20261106">
+  <script src="site-init.js?v=20261111cards" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Install Innioasis firmware on 32-bit Linux","description":"Install Innioasis or Timmkoo software, firmware, an update or a stock package on a 32-bit Intel Linux PC using the software install zip.","totalTime":"PT15M","tool":[{"@type":"HowToTool","name":"Linux PC with a 32-bit Intel or AMD processor"},{"@type":"HowToTool","name":"USB data cable"},{"@type":"HowToTool","name":"The software install zip for your model"}],"step":[{"@type":"HowToStep","name":"Download the software install zip for your model","text":"On the firmware list, choose the 32-bit Linux package for your player model and the software you want."},{"@type":"HowToStep","name":"Unpack the zip","text":"Unpack the download and keep the folder together, because the installer reads the files beside itself."},{"@type":"HowToStep","name":"Make the installer executable","text":"Run chmod +x on the installer in the folder, as the readme inside the zip explains."},{"@type":"HowToStep","name":"Load the scatter file","text":"Start the installer and choose the scatter file from the firmware folder."},{"@type":"HowToStep","name":"Install the firmware","text":"Press Download, then connect the powered-off player. Wait for the green success box before unplugging."}]}</script>
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">Skip to content</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-main">
+    <header class="lumen-page-head">
+      <p class="lumen-kicker">32-bit Linux · Intel and AMD</p>
+      <h1>Install software, firmware or updates on a 32-bit Linux PC</h1>
+      <p class="lead">On a 32-bit Intel or AMD Linux PC we install with a <strong>32-bit Linux software install zip</strong> instead of Updater CE. Every package in the archive has one, it runs here, and it contains everything needed for the install: the firmware, the installer and a readme. On older Windows instead, read <a href="windows-legacy.html">the Windows page</a>.</p>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="firmware-list.html">Browse packages for my model</a>
+        <a class="lumen-button" href="install/legacy-linux.html">Step-by-step install guide</a>
+        <a class="lumen-button" href="windows-legacy.html">Older Windows</a>
+        <a class="lumen-button" href="firmware-guide.html">Firmware guide</a>
+      </div>
+    </header>
+
+    <section class="lumen-section" id="which-package">
+      <h2>Which package do I download?</h2>
+      <p>Open the <a href="firmware-list.html">firmware list</a>, find your model, then find the software you want: Original Software, Rockbox, Solar, JJ Launcher, Inniclassic, Y2Player, Koensayr or a community system. Each release shows its packages as buttons. On a 32-bit Linux PC the archive offers the <strong>32-bit Linux</strong> package; the same row offers the normal Linux, Windows and macOS builds for other computers.</p>
+      <div class="lumen-callout">
+        <p><strong>The package name tells you what it is.</strong> A software install zip is named after the release, with <code>-linux-legacy</code> before <code>.zip</code>. Inside you get the firmware files (the rom and its scatter file), the installer that writes the firmware, a readme with the details of that release and a <code>donate.txt</code>. Nothing in it needs an internet connection.</p>
+      </div>
+      <p class="lumen-meta">Firmware is model-specific. Software written for the Y1 cannot be installed on a Y2, and the reverse is also true. Check the model printed on the player before you download.</p>
+    </section>
+
+    <section class="lumen-section" id="unpack">
+      <h2>Step 1: unpack the zip</h2>
+      <ol class="lumen-steps">
+        <li>Unpack the software install zip into its own folder, for example <code>~/innioasis</code>. Keep the folder together: the installer reads the rom files next to itself.</li>
+        <li>Open a terminal in that folder.</li>
+        <li>Make the installer runnable. The readme inside the zip names the exact file; the usual command is <code>chmod +x ./*</code>.</li>
+      </ol>
+      <p class="lumen-meta">Linux needs no separate USB driver package for this. If the player is never detected, see <a href="drivers.html#linux">the Linux setup notes</a> for the MediaTek udev rule.</p>
+    </section>
+
+    <section class="lumen-section" id="flash">
+      <h2>Step 2: write the firmware</h2>
+      <ol class="lumen-steps">
+        <li>Start the installer from the folder: <code>./flash_tool</code>, or the name the readme gives.</li>
+        <li>Choose <strong>Scatter-loading</strong>, pick the <code>_Android_scatter.txt</code> file from the firmware folder, and check that the partition list fills with the rom files beside it.</li>
+        <li>Leave the default <strong>Download Only</strong> mode. Keep <strong>Preloader</strong> ticked only if you are restoring a player that will not start at all.</li>
+        <li>Press <strong>Download</strong>. Then power the player fully off and plug in the USB cable. The installer writes the firmware the moment the player appears.</li>
+        <li>Wait for the green success box. Do not unplug the player, and do not close the installer, while the progress bar is moving.</li>
+      </ol>
+      <div class="lumen-callout">
+        <p><strong>If the player will not switch on at all</strong>, straighten a paperclip and press the small reset hole on the player for a second before you connect it. That resets the power state without touching your files, and it is the usual fix when nothing appears after you press Download.</p>
+      </div>
+      <p class="lumen-meta">Some distributions block a program that was unpacked from a download until it is marked executable. If the shell answers <code>Permission denied</code>, run the <code>chmod +x</code> command again in the folder that holds the installer.</p>
+    </section>
+
+    <section class="lumen-section" id="terms">
+      <h2>Software, firmware, update or package: what is the difference?</h2>
+      <p>The words are used interchangeably on this site, and the steps above are the same for each:</p>
+      <ul>
+        <li><strong>Firmware</strong> or <strong>rom</strong>: the complete system image for a model. Installing it replaces everything on the player's system partition.</li>
+        <li><strong>Software</strong> or <strong>system</strong>: a community build such as Rockbox, Solar or JJ Launcher, delivered as the same kind of rom package.</li>
+        <li><strong>Update</strong>: a newer release of either of the above. Install it exactly like a fresh package.</li>
+        <li><strong>Package</strong>, <strong>zip</strong> or <strong>software install zip</strong>: the download itself. The software install zip is the one built for this PC.</li>
+      </ul>
+      <p class="lumen-meta">Updater CE does the same job with fewer steps, and it keeps your music and Bluetooth pairings. It is only available on 64-bit Windows 10 (1809 or newer), macOS and 64-bit Linux. A software install zip install writes the system partition, so copy your music off the player first if you have files you cannot replace.</p>
+    </section>
+
+    <section class="lumen-section" id="after">
+      <h2>After the install</h2>
+      <p>Disconnect the player, switch it on, and let it finish its first boot. If it starts but shows the wrong language, install the package again with the language you want. If it does not start, connect it while switched off and write the firmware again, this time with <strong>Preloader</strong> ticked.</p>
+      <ul>
+        <li><a href="recover-non-booting-device.html">Recover a player that will not boot</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting an install that stops</a></li>
+        <li><a href="post_install.html">What to do after installing</a></li>
+      </ul>
+    </section>
+
+    <section class="lumen-section" id="donate">
+      <h2>Support the project</h2>
+      <p>The firmware archive and Updater CE are run by the community and are free. If a package saved your player, you can say thanks from the <a href="donate.html">donate page</a>, on <a href="https://ko-fi.com/teamslide" rel="noopener noreferrer">Ko-fi</a>, or through <a href="https://github.com/sponsors/y1-community" rel="noopener noreferrer">GitHub Sponsors</a>. Software install zips include the same links in <code>donate.txt</code>.</p>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="site-i18n.js?v=20260830" defer></script>
+  <script src="site-locale.js?v=20261111i18nfix" defer></script>
+</body>
+</html>

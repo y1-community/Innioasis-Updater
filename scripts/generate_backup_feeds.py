@@ -61,45 +61,9 @@ FEED_XML_NAME = "firmware-feed.xml"
 SITE = "https://innioasis.app"
 MIRROR_INDEX_URL = "https://raw.githubusercontent.com/{repo}/{branch}/index.json"
 USABLE_ROM_RE = re.compile(r"\.(zip|7z|rar|tar\.gz|tgz|img|bin|gz|tar)$", re.I)
-# The packager writes its download ledger into a hidden block in every mirror
-# release body. ``stats.txt`` is rendered from this same record.
-PORTABLE_BLOCK_RE = re.compile(r"<!--\s*portable-mirror:(\{.*?\})\s*-->", re.DOTALL)
 
 ICON_ASSET_RE = re.compile(r"^updater\.(png|webp|jpe?g|svg)$", re.I)
 DARK_ICON_ASSET_RE = re.compile(r"^updater_dark\.(png|webp|jpe?g|svg)$", re.I)
-FALLBACK_OWNER = "ryan-specter"
-
-
-def repo_variants(repo: str) -> list[str]:
-    """A repository plus the ryan-specter spelling when it is under the org."""
-    clean = str(repo or "").strip().strip("/")
-    candidates = [clean] if clean else []
-    if "/" in clean:
-        owner, name = clean.split("/", 1)
-        if owner.lower() == "y1-community":
-            candidates.append(FALLBACK_OWNER + "/" + name)
-    return list(dict.fromkeys(candidates))
-
-
-def is_firmware_zip(name: str) -> bool:
-    value = str(name or "")
-    return bool(re.search(r"\.zip$", value, re.I)) and not re.search(
-        r"sources?|legal-info", value, re.I
-    )
-
-
-def repo_fallback_url(repo: str, tag: str, name: str) -> str:
-    """The fallback owner's download URL for the same tag and asset."""
-    if "/" not in str(repo or ""):
-        return ""
-    owner, repo_name = str(repo).split("/", 1)
-    if owner.lower() != "y1-community":
-        return ""
-    return "https://github.com/%s/%s/releases/download/%s/%s" % (
-        FALLBACK_OWNER, repo_name,
-        urllib.parse.quote(str(tag), safe=""),
-        urllib.parse.quote(str(name), safe=""),
-    )
 
 
 def load_tokens() -> list[str]:
@@ -188,7 +152,7 @@ def github_get_json(url: str, refresh: bool = False):
     return payload
 
 
-def _fetch_all_repo_releases(repo: str, refresh: bool = False) -> list[dict]:
+def fetch_all_repo_releases(repo: str, refresh: bool = False) -> list[dict]:
     collected: list[dict] = []
     seen_tags: set[str] = set()
     for page in range(1, 4):
@@ -219,24 +183,8 @@ def _fetch_all_repo_releases(repo: str, refresh: bool = False) -> list[dict]:
     return collected
 
 
-def fetch_all_repo_releases(repo: str, refresh: bool = False) -> list[dict]:
-    """Read releases from the primary owner, then the fallback owner."""
-    for candidate in repo_variants(repo):
-        releases = _fetch_all_repo_releases(candidate, refresh=refresh)
-        if releases:
-            return releases
-    return []
-
-
 def fetch_repo_info(repo: str, refresh: bool = False) -> dict:
-    data = {}
-    for candidate in repo_variants(repo):
-        payload = github_get_json(
-            f"https://api.github.com/repos/{candidate}", refresh=refresh
-        )
-        if isinstance(payload, dict) and payload:
-            data = payload
-            break
+    data = github_get_json(f"https://api.github.com/repos/{repo}", refresh=refresh)
     if not isinstance(data, dict):
         return {}
     license_obj = data.get("license") if isinstance(data.get("license"), dict) else {}
@@ -414,7 +362,6 @@ def build_atom_feed(repo: str, repo_info: dict, releases: list[dict], generated_
         body = str(rel.get("body") or "")
         html_url = str(rel.get("html_url") or f"https://github.com/{repo}/releases/tag/{urllib.parse.quote(tag)}")
         prerelease = "true" if rel.get("prerelease") else "false"
-        downloads = int(rel.get("downloads") or 0)
         icon_url = str(rel.get("icon_url") or "")
         icon_dark_url = str(rel.get("icon_dark_url") or "")
         lines.extend([
@@ -426,7 +373,6 @@ def build_atom_feed(repo: str, repo_info: dict, releases: list[dict], generated_
             f'    <link rel="alternate" type="text/html" href="{html.escape(html_url, quote=True)}"/>',
             f"    <innioasis:tag_name>{html.escape(tag)}</innioasis:tag_name>",
             f"    <innioasis:prerelease>{prerelease}</innioasis:prerelease>",
-            f"    <innioasis:downloads>{downloads}</innioasis:downloads>",
         ])
         if icon_url:
             lines.append(f"    <innioasis:icon_url>{html.escape(icon_url)}</innioasis:icon_url>")
@@ -502,9 +448,13 @@ def load_manifest_packages() -> list[dict]:
     """Every package attribute in ``slidia_manifest.xml``, verbatim.
 
     The app parses the same file, so the feed carries each attribute it can
-    configure: ``repo``, ``device``, ``portable_zips``, ``derivative``,
-    ``info_repo``, ``apk_repo``, ``post_install``, ``do_not_keep_data`` and the
-    rest. The placeholder entry that tells an old app to update is skipped.
+    configure: ``repo``, ``device``, ``devices``, ``package_name`` and the
+    per-model ``package_name_<model>`` spelling, ``portable_zips``,
+    ``derivative``, ``info_repo``, ``apk_repo``, ``post_install``,
+    ``do_not_keep_data`` and the rest. Attributes are copied verbatim, so a row
+    that serves several models reaches the app with ``devices`` intact and a
+    model it serves later needs no feed change. The placeholder entry that
+    tells an old app to update is skipped.
     """
     path = ROOT / "slidia_manifest.xml"
     if not path.exists():
@@ -555,19 +505,17 @@ def fetch_mirror_index(mirror_repo: str, refresh: bool = False) -> dict:
                 return cached
         except (OSError, json.JSONDecodeError):
             pass
-    for candidate in repo_variants(mirror_repo):
-        for branch in ("main", "master"):
-            url = MIRROR_INDEX_URL.format(repo=candidate, branch=branch)
-            req = urllib.request.Request(url, headers={"User-Agent": "innioasis-backup-feeds-generator"})
-            try:
-                with urllib.request.urlopen(req, timeout=30) as resp:
-                    payload = json.loads(resp.read().decode("utf-8", "replace"))
-                if isinstance(payload, dict) and payload:
-                    payload["__repo"] = candidate
-                    cache_path.write_text(json.dumps(payload), encoding="utf-8")
-                    return payload
-            except Exception:  # noqa: BLE001 - a missing mirror index is not fatal
-                continue
+    for branch in ("main", "master"):
+        url = MIRROR_INDEX_URL.format(repo=mirror_repo, branch=branch)
+        req = urllib.request.Request(url, headers={"User-Agent": "innioasis-backup-feeds-generator"})
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                payload = json.loads(resp.read().decode("utf-8", "replace"))
+            if isinstance(payload, dict) and payload:
+                cache_path.write_text(json.dumps(payload), encoding="utf-8")
+                return payload
+        except Exception:  # noqa: BLE001 - a missing mirror index is not fatal
+            continue
     return {}
 
 
@@ -621,15 +569,10 @@ def build_mirror_payload(
             size = int(live.get("size") or ia.get("size") or 0)
             entry = source_entry(source_asset)
             if platform:
-                package = {
+                entry["packages"][platform] = {
                     "name": name, "url": url, "size": size,
                     "sha256": str(ia.get("sha256") or ia.get("checksum") or ""),
-                    "download_count": int(live.get("download_count") or 0),
                 }
-                fallback_url = repo_fallback_url(mirror_repo, tag, name)
-                if fallback_url:
-                    package["fallback_url"] = fallback_url
-                entry["packages"][platform] = package
             else:
                 entry["mirror_original_url"] = url
                 entry["original_size"] = size
@@ -665,139 +608,11 @@ def build_mirror_payload(
                            or (source_repos[0] if source_repos else "")),
         "source_repos": source_repos,
         "mirror_repo": mirror_repo,
-        "fallback_repo": repo_variants(mirror_repo)[1] if len(repo_variants(mirror_repo)) > 1 else "",
         "updated_at": str((index.get("generated_at") if isinstance(index, dict) else "")
                           or generated_at),
         "platforms": list(index.get("platforms") or []) if isinstance(index, dict) else [],
         "releases": releases_map,
     }
-
-
-def release_stats_block(release: dict) -> dict:
-    """The download ledger from a mirror release's hidden build block.
-
-    ``baseline`` holds the counts of assets that a rebuild replaced (their
-    GitHub counter restarts at zero) and ``retired`` holds assets that no
-    longer exist. ``stats.txt`` is generated from this same record, so reading
-    the block gives the site those figures without one HTTP request per
-    release.
-    """
-    match = PORTABLE_BLOCK_RE.search(str(release.get("body") or ""))
-    if not match:
-        return {}
-    try:
-        block = json.loads(match.group(1))
-    except json.JSONDecodeError:
-        return {}
-    return block if isinstance(block, dict) else {}
-
-
-def mirror_release_zip_downloads(release: dict) -> int:
-    """Cumulative downloads of every ZIP a mirror release carries.
-
-    The live ``download_count`` only covers the upload that is on the release
-    now. A rebuild replaces assets and resets their counters, so the recorded
-    baseline/retired counts are added back. This is what ``stats.txt`` shows as
-    the mirror total, plus any downloads since that file was generated.
-    """
-    live = {
-        str(asset.get("name") or ""): int(asset.get("download_count") or 0)
-        for asset in release.get("assets") or []
-        if is_firmware_zip(str(asset.get("name") or ""))
-    }
-    stats = release_stats_block(release).get("stats") or {}
-    if not isinstance(stats, dict) or not stats:
-        return sum(live.values())
-
-    baseline = {
-        str(name): int(value or 0)
-        for name, value in (stats.get("baseline") or {}).items()
-        if is_firmware_zip(str(name))
-    }
-    retired = {
-        str(name): int(value or 0)
-        for name, value in (stats.get("retired") or {}).items()
-        if is_firmware_zip(str(name))
-    }
-    total = sum(retired.values())
-    for name, count in live.items():
-        total += count + baseline.pop(name, 0)
-    # A baseline whose asset vanished without being retired is still history.
-    total += sum(baseline.values())
-    return total
-
-
-def release_download_breakdown(
-    repo: str,
-    release: dict,
-    mirrors: dict[str, dict],
-    mirror_releases: dict[str, dict[str, dict]],
-) -> tuple[int, int]:
-    """Source firmware ZIP downloads and the mirrors' cumulative ZIP downloads.
-
-    All three routes fetch the same release: the original repository's ZIPs
-    (Firmware Archive and Updater CE 2.5.x link these directly) and the mirror's
-    repackaged plus copied ZIPs, including the counts recorded in ``stats.txt``
-    before a rebuild replaced them.
-    """
-    source_total = sum(
-        int(asset.get("download_count") or 0)
-        for asset in release.get("assets") or []
-        if is_firmware_zip(str(asset.get("name") or ""))
-    )
-    tag = str(release.get("tag_name") or "").strip().lower()
-    if not tag:
-        return source_total, 0
-
-    mirror_total = 0
-    for mirror_repo, mirror in mirrors.items():
-        source_repos = [str(item).lower() for item in mirror.get("source_repos") or []]
-        source_repo = str(mirror.get("source_repo") or "").lower()
-        if source_repo and source_repo not in source_repos:
-            source_repos.append(source_repo)
-        if str(repo).lower() not in source_repos:
-            continue
-        by_tag = mirror_releases.get(mirror_repo.lower()) or {}
-        for mirror_tag, info in (mirror.get("releases") or {}).items():
-            original_tag = str((info or {}).get("original_tag") or "").lower()
-            if tag not in {str(mirror_tag).lower(), original_tag}:
-                continue
-            mirror_release = by_tag.get(str(mirror_tag).lower())
-            if mirror_release:
-                mirror_total += mirror_release_zip_downloads(mirror_release)
-            break
-    return source_total, mirror_total
-
-
-def attach_combined_downloads(
-    repos_payload: dict[str, dict], mirrors: dict[str, dict]
-) -> None:
-    """Add the release download figures for tables and feeds.
-
-    ``downloads`` stays the single combined number the tables show;
-    ``mirror_downloads`` is kept beside it so a live GitHub answer can refresh
-    the original repository's count without losing the mirror's contribution.
-    """
-    mirror_releases: dict[str, dict[str, dict]] = {}
-    for mirror_repo in mirrors:
-        payload = next(
-            (info for repo, info in repos_payload.items() if repo.lower() == mirror_repo.lower()),
-            None,
-        )
-        if payload is None:
-            continue
-        mirror_releases[mirror_repo.lower()] = {
-            str(rel.get("tag_name") or "").lower(): rel
-            for rel in payload.get("releases") or []
-        }
-
-    for repo, info in repos_payload.items():
-        for release in info.get("releases") or []:
-            source_total, mirror_total = release_download_breakdown(
-                repo, release, mirrors, mirror_releases
-            )
-            release["mirror_downloads"] = mirror_total
-            release["downloads"] = source_total + mirror_total
 
 
 def build_firmware_feed_json(
@@ -884,12 +699,11 @@ def build_firmware_feed_xml(feed: dict) -> str:
                 )
                 for platform, pkg in (info.get("packages") or {}).items():
                     lines.append(
-                        "          <inni:package platform=\"%s\" name=\"%s\" url=\"%s\" size=\"%d\" downloads=\"%d\"/>"
+                        "          <inni:package platform=\"%s\" name=\"%s\" url=\"%s\" size=\"%d\"/>"
                         % (html.escape(str(platform), quote=True),
                            html.escape(str(pkg.get("name") or ""), quote=True),
                            html.escape(str(pkg.get("url") or ""), quote=True),
-                           int(pkg.get("size") or 0),
-                           int(pkg.get("download_count") or 0))
+                           int(pkg.get("size") or 0))
                     )
                 lines.append("        </inni:mirror_asset>")
             lines.append("      </inni:release>")
@@ -917,7 +731,6 @@ def build_firmware_feed_xml(feed: dict) -> str:
             lines.append(f"    <inni:repo>{html.escape(repo)}</inni:repo>")
             lines.append(f"    <inni:tag_name>{html.escape(tag)}</inni:tag_name>")
             lines.append(f"    <inni:name>{html.escape(str(rel.get('name') or tag))}</inni:name>")
-            lines.append(f"    <inni:downloads>{int(rel.get('downloads') or 0)}</inni:downloads>")
             lines.append("    <inni:prerelease>%s</inni:prerelease>"
                          % ("true" if rel.get("prerelease") else "false"))
             if rel.get("icon_url"):
@@ -1148,8 +961,6 @@ def build(refresh: bool = False) -> None:
                     "icon_url": rel.get("icon_url") or "",
                     "icon_dark_url": rel.get("icon_dark_url") or "",
                     "body": rel.get("body") or "",
-                    "downloads": int(rel.get("downloads") or 0),
-                    "mirror_downloads": int(rel.get("mirror_downloads") or 0),
                     "assets": [
                         {
                             "id": a.get("id") or 0,
@@ -1193,45 +1004,6 @@ def build(refresh: bool = False) -> None:
         mirrors[payload["repo"]] = mirror_entry
         print(f"  ✓ mirror {payload['repo']:<34} {len(mirror_entry['releases']):>3} portable releases"
               f"{' (no index.json)' if not index else ''}")
-
-    # The tables show one figure: source firmware ZIPs plus every portable
-    # package built from the same release. Update both the feed copy and the
-    # catalog snapshot before either is written.
-    attach_combined_downloads(repos_payload, mirrors)
-    for repo, catalog_releases in hardcoded_releases.items():
-        source = repos_payload.get(repo) or {}
-        by_tag = {
-            str(rel.get("tag_name") or "").lower(): rel
-            for rel in source.get("releases") or []
-        }
-        for rel in catalog_releases:
-            current = by_tag.get(str(rel.get("tag_name") or "").lower()) or {}
-            rel["downloads"] = int(current.get("downloads") or 0)
-            rel["mirror_downloads"] = int(current.get("mirror_downloads") or 0)
-
-    # The per-repo snapshots were written before the mirrors were collected.
-    # Re-write them now so the JSON and Atom copies carry the same combined
-    # downloads figure as the app feed and the rendered tables.
-    master_json_path.write_text(
-        json.dumps(master_payload, indent=2), encoding="utf-8"
-    )
-    (FEEDS_DIR / "releases.xml").write_text(
-        build_combined_xml(repos_payload, generated_at), encoding="utf-8"
-    )
-    for repo, info in repos_payload.items():
-        lower = repo.lower()
-        if "/" not in lower:
-            continue
-        owner_part, name_part = lower.split("/", 1)
-        repo_feed_dir = FEEDS_DIR / owner_part / name_part
-        releases = info.get("releases") or []
-        (repo_feed_dir / "releases.json").write_text(
-            json.dumps(releases, indent=2), encoding="utf-8"
-        )
-        (repo_feed_dir / "releases.atom").write_text(
-            build_atom_feed(repo, info.get("repo_info") or {}, releases, generated_at),
-            encoding="utf-8",
-        )
 
     firmware_feed = build_firmware_feed_json(repos_payload, packages, mirrors, generated_at)
     (FEEDS_DIR / FEED_JSON_NAME).write_text(

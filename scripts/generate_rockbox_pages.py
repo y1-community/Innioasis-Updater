@@ -236,7 +236,7 @@ def head(title: str, description: str, canonical: str, up: str) -> str:
   <link rel="stylesheet" href="{up}lumen.css?v=20261105hero">
   <link rel="stylesheet" href="{up}site-pages.css?v=20260818">
   <link rel="stylesheet" href="{up}site-toolbar.css?v=20261108hero">
-  <script src="{up}site-init.js?v=20261113badge2" defer></script>
+  <script src="{up}site-init.js?v=20261110warn" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -247,7 +247,7 @@ def head(title: str, description: str, canonical: str, up: str) -> str:
 FOOT = """<div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="{up}firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="{up}docs-viewer.js?v=20261104cite" defer></script>
-<script src="{up}portable-zip-links.js?v=20261106direct" defer></script>
+<script src="{up}portable-zip-links.js?v=20261110direct2" defer></script>
 <script src="{up}nav.js?v=20261103brand" defer></script>
 <script src="{up}site-locale.js?v=20261108c" defer></script>
 <script src="{up}site-i18n.js?v=20260830" defer></script>

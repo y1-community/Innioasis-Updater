@@ -1903,12 +1903,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://innioasis.app/notices/2026-11-11-original-software-3-2-0-before-reborn.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://innioasis.app/notices/notice-y1-rockbox-legacy.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -1935,18 +1929,6 @@
   <url>
     <loc>https://innioasis.app/original-software-y2.html</loc>
     <lastmod>2026-11-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/portable-builds.html</loc>
-    <lastmod>2026-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/portable-rom-packages.html</loc>
-    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2029,12 +2011,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://innioasis.app/post-install/jarvissax-rondo-docs-device-native.html</loc>
-    <lastmod>2026-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://innioasis.app/post-install/jarvissax-rondo-docs-server.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -2049,12 +2025,6 @@
   <url>
     <loc>https://innioasis.app/post-install/jarvissax-rondo-docs-using.html</loc>
     <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/post-install/jarvissax-rondo-server-changelog.html</loc>
-    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4285,18 +4255,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.23.html</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.24.html</loc>
-    <lastmod>2026-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.7.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -5779,24 +5737,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://innioasis.app/release-notes/inniclassic-y2/20261111.html</loc>
-    <lastmod>2026-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/inniclassic-y2/20261112.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/inniclassic-y2/y1-exp.1.html</loc>
-    <lastmod>2026-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://innioasis.app/release-notes/jj-launcher-y1/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -6195,42 +6135,6 @@
   <url>
     <loc>https://innioasis.app/release-notes/linux-y1/0.0.1.html</loc>
     <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/lithium-q3/</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/lithium-q3/kernel-v7.1.06.09.25.html</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/lithium-q3/kernel.html</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/lithium-q3/scatter-v7.1.06.11.25.html</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/lithium-q3/v7.1.06.09.25.html</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/lithium-q3/v7.1.06.13.25.html</loc>
-    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -7183,18 +7087,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://innioasis.app/release-notes/reborn-y2linux-y2/baseline-234.html</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/reborn-y2linux-y2/baseline-235.html</loc>
-    <lastmod>2026-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://innioasis.app/release-notes/reborn-y2linux-y2/baseline-46.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -7567,12 +7459,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://innioasis.app/release-notes/rockbox-y1/stable-v0.6.1.html</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://innioasis.app/release-notes/rockbox-y1/stable-v0.6.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -7633,18 +7519,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://innioasis.app/release-notes/rondo-y1/server-v3.1.0.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/rondo-y1/server-v3.1.1.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://innioasis.app/release-notes/rondo-y1/v1.0.0.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -7659,36 +7533,6 @@
   <url>
     <loc>https://innioasis.app/release-notes/rondo-y1/v1.0.2.html</loc>
     <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/rondo-y1/v2.0.0.html</loc>
-    <lastmod>2026-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/rondo-y1/v2.0.1.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/rondo-y1/v3.0.0.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/rondo-y1/v3.0.1.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://innioasis.app/release-notes/rondo-y1/v3.0.2.html</loc>
-    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

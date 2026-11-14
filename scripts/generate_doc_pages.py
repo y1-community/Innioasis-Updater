@@ -42,6 +42,8 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
+import manifest_schema
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://innioasis.app"
 BRAND = "Innioasis Updater"
@@ -142,6 +144,13 @@ def load_catalog() -> list[dict]:
 
 
 def load_manifest() -> list[dict]:
+    """Every active manifest row, one copy per model it serves.
+
+    ``device`` names a single model; ``devices`` names several, in which case
+    the row becomes one copy per model so every other reader (pages, feeds,
+    post-install cards) keeps its one-model-per-row assumption. The package
+    name is the one the row declares for that model, if any.
+    """
     path = ROOT / "slidia_manifest.xml"
     if not path.exists():
         return []
@@ -156,8 +165,9 @@ def load_manifest() -> list[dict]:
             continue
         if data.get("device_type") == "0":
             continue
-        data["device"] = (data.get("device") or "").upper()
-        packages.append(data)
+        for row in manifest_schema.expand_packages([data]):
+            row["device"] = (row.get("device") or "").upper()
+            packages.append(row)
     return packages
 
 
@@ -298,6 +308,62 @@ def fetch_releases(repo: str, refresh: bool = False) -> list[dict]:
             break
         page += 1
     return releases[:MAX_RELEASES]
+
+
+def release_tag_message(repo: str, tag: str, refresh: bool = False) -> str:
+    """The plain-text notes GitHub shows for a release with no Markdown body.
+
+    An annotated tag carries its own message; a lightweight one borrows the
+    message of the commit it names. That text is what the project wrote, so it
+    is shown verbatim instead of an empty state, and nothing is invented when
+    neither carries a message.
+    """
+    repo = (repo or "").strip()
+    tag = (tag or "").strip()
+    if not repo or not tag:
+        return ""
+    ref = cached_json(
+        "https://api.github.com/repos/%s/git/ref/tags/%s"
+        % (repo, urllib.parse.quote(tag, safe="")),
+        refresh=refresh,
+    )
+    target = (ref or {}).get("object") or {}
+    sha = str(target.get("sha") or "")
+    if not sha:
+        return ""
+    if target.get("type") == "tag":
+        annotated = cached_json(
+            "https://api.github.com/repos/%s/git/tags/%s" % (repo, sha), refresh=refresh
+        )
+        return str((annotated or {}).get("message") or "").strip()
+    commit = cached_json(
+        "https://api.github.com/repos/%s/commits/%s" % (repo, sha), refresh=refresh
+    )
+    return str(((commit or {}).get("commit") or {}).get("message") or "").strip()
+
+
+def strip_leading_tag_line(text: str, tag: str) -> str:
+    """Notes without the tag line they repeat at the top.
+
+    A nightly release is named after its tag, then repeats the tag (or the bare
+    commit hash it carries) as the first line of its notes. The page already
+    shows the tag beside the title, so only the text underneath it is kept.
+    """
+    lines = str(text or "").splitlines()
+    while lines and not lines[0].strip():
+        lines.pop(0)
+    if not lines:
+        return ""
+    first = lines[0].strip()
+    bare = str(tag or "").strip()
+    without_prefix = re.sub(r"^[A-Za-z][A-Za-z0-9]*-", "", bare)
+    hash_like = bool(re.match(r"^[0-9a-f]{7,40}$", first, re.I))
+    shortened_tag = len(first) >= 12 and bare.lower().startswith(first.lower())
+    if first == bare or (without_prefix and first == without_prefix) or hash_like or shortened_tag:
+        lines.pop(0)
+        while lines and not lines[0].strip():
+            lines.pop(0)
+    return "\n".join(lines).strip()
 
 
 def mirror_index(refresh: bool = False) -> dict[tuple[str, str], list[dict]]:
@@ -1222,7 +1288,7 @@ HEAD = """<!doctype html>
   <link rel="stylesheet" href="{up}site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="{up}docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="{up}site-init.js?v=20261113badge2" defer></script>
+  <script src="{up}site-init.js?v=20261110warn" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -1232,7 +1298,7 @@ HEAD = """<!doctype html>
 FOOT = """<div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="{up}firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="{up}docs-viewer.js?v=20261104cite" defer></script>
-<script src="{up}portable-zip-links.js?v=20261106direct" defer></script>
+<script src="{up}portable-zip-links.js?v=20261110direct2" defer></script>
 <script src="{up}nav.js?v=20261103brand" defer></script>
 <script src="{up}site-locale.js?v=20261108c" defer></script>
 <script src="{up}site-i18n.js?v=20260830" defer></script>
@@ -1477,12 +1543,12 @@ def release_portable_packages(item: dict, release: dict, refresh: bool = False) 
 
 
 def release_downloads_html(item: dict, release: dict, portable: list[tuple[dict, list[dict]]]) -> str:
-    """Portable builds first, then the release's own archive.
+    """Software install zips first, then the release's own archive.
 
     The archive button names the software, not the file it saves; its download
     attribute still carries the release's own filename. site-downloads.js moves
-    the archive ahead of the portable builds on phones and other systems that
-    cannot run a portable package.
+    the archive ahead of the software install zips on phones and other systems that
+    cannot run a software install zip.
     """
     assets = model_assets(item, release)
     if not assets:
@@ -1578,8 +1644,14 @@ def release_page(item: dict, release: dict, siblings: list[dict], portable: list
     title = release.get("name") or ("%s %s" % (name, version)).strip()
     published = str(release.get("published_at") or "")[:10]
     canonical = "%s/release-notes/%s/%s.html" % (SITE, item["slug"], tag_slug(tag))
+    release_body = strip_leading_tag_line((release.get("body") or "").strip(), tag)
+    # A release with no Markdown still carries plain text on its tag; that is
+    # what GitHub shows for it, so it is what this page shows too.
+    plain_notes = "" if release_body else strip_leading_tag_line(
+        release_tag_message(item.get("repo", ""), tag), tag
+    )
     description = one_line(
-        (release.get("body") or "").strip() or
+        release_body or plain_notes or
         ("Release notes, downloads and the Updater CE install guide for %s %s on the Innioasis %s." % (name, version, model))
     )
     meta_bits = ['<span class="lumen-release-pill">%s</span>' % esc(tag)]
@@ -1607,7 +1679,9 @@ def release_page(item: dict, release: dict, siblings: list[dict], portable: list
     body_ctx = {"repo": item.get("repo", ""), "ref": tag,
                 "raw_dir": "https://raw.githubusercontent.com/%s/%s/" % (item.get("repo", ""), tag),
                 "blob_dir": "https://github.com/%s/blob/%s/" % (item.get("repo", ""), tag)}
-    notes = markdown_to_html(release.get("body") or "", body_ctx) if (release.get("body") or "").strip() else ""
+    notes = markdown_to_html(release_body, body_ctx) if release_body else ""
+    if not notes and plain_notes:
+        notes = '<pre class="lumen-release-plaintext">%s</pre>' % esc(plain_notes)
     if not notes:
         notes = '<p class="lumen-doc-status">This release has no published notes yet. Install it with Updater CE, or from the firmware directory.</p>'
 
@@ -1706,7 +1780,10 @@ def software_index_page(item: dict, releases: list[dict]) -> str:
                 " · Preview" if release.get("prerelease") else "",
                 esc(tag_slug(tag)),
                 esc(release.get("name") or tag or "Release"),
-                esc(one_line(release.get("body") or "", 150) or "No notes published."),
+                esc(one_line(strip_leading_tag_line(release.get("body") or "", tag), 150)
+                    or one_line(strip_leading_tag_line(
+                        release_tag_message(item.get("repo", ""), tag), tag), 150)
+                    or "No notes published."),
             )
         )
     if not cards:
@@ -2025,46 +2102,6 @@ def render_discovered_markdown_pages(
 # ---------------------------------------------------------------- build
 
 
-def refresh_stale_citations(software: list[dict]) -> int:
-    """Rewrite attribution blocks left behind when a release fetch came back empty.
-
-    A project whose releases cannot be fetched keeps its previous static pages,
-    so the old repository/GitHub citation would survive there forever. The
-    release tag is recoverable from that old block, so the archive wording can
-    be rebuilt without the network.
-    """
-    by_slug = {str(item.get("slug") or ""): item for item in software}
-    release_root = ROOT / "release-notes"
-    if not release_root.exists():
-        return 0
-    changed = 0
-    for path in sorted(release_root.glob("*/*.html")):
-        html = path.read_text(encoding="utf-8")
-        match = re.search(r'<p class="lumen-doc-sources">.*?</p>', html, flags=re.S)
-        if not match:
-            continue
-        block = match.group(0)
-        if "github.com" not in block and "Firmware Archive page" in block:
-            continue
-
-        def param(name: str) -> str:
-            found = re.search(r"[?&]" + name + r"=([^&\"']+)", block)
-            return urllib.parse.unquote(found.group(1)) if found else ""
-
-        item = by_slug.get(path.parent.name) or {
-            "repo": param("repo"),
-            "model": param("model"),
-            "slug": param("software") or path.parent.name,
-            "name": "",
-        }
-        replacement = source_citations(item, param("version"))
-        if not replacement or replacement == block:
-            continue
-        path.write_text(html[: match.start()] + replacement + html[match.end():], encoding="utf-8")
-        changed += 1
-    return changed
-
-
 def build(refresh: bool = False) -> None:
     DISCOVERED_MD_SOURCES.clear()
     catalog = load_catalog()
@@ -2136,9 +2173,6 @@ def build(refresh: bool = False) -> None:
     (post_root / "index.html").write_text(
         post_install_index_page(post_install_cards, manifest, software), encoding="utf-8"
     )
-    refreshed = refresh_stale_citations(software)
-    if refreshed:
-        print("  refreshed %d stale citations" % refreshed)
     update_sitemap(sitemap_urls)
     print(
         "done: %d release pages, %d post-install pages, %d linked doc pages"

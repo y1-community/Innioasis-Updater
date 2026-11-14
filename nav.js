@@ -730,7 +730,7 @@
       '<button class="hamburger" id="hamburger" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>' +
       '</div>' +
       '<ul class="nav-links" id="navLinks">' +
-      '<li><a class="lumen-nav-install-cta" id="lumen-nav-install-cta" href="' + escapeHtml(decorateMainSiteHref("/guide.html")) + '"><span class="lumen-nav-install-cta-label">' + escapeHtml(ctaLabel) + '</span>' + ctaPlatformHtml + '</a></li>' +
+      '<li><a class="lumen-nav-install-cta" id="lumen-nav-install-cta" data-availability="updater" href="' + escapeHtml(decorateMainSiteHref("/guide.html")) + '"><span class="lumen-nav-install-cta-label">' + escapeHtml(ctaLabel) + '</span>' + ctaPlatformHtml + '</a></li>' +
       '<li><a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=software")) + '">Software Updates</a></li>' +
       '<li><a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=firmware")) + '">Downloads</a></li>' +
       themesNavLinkHtml +
@@ -1013,6 +1013,7 @@
           from: n.getAttribute("from") || n.getAttribute("date") || "",
           until: n.getAttribute("until") || "",
           persistent: (n.getAttribute("persistent") || "").toLowerCase() === "true",
+          display: (n.getAttribute("display") || "").toLowerCase(),
           models: n.getAttribute("models") || "",
           deviceType: n.getAttribute("device_type") || "",
           firmwareRepo: n.getAttribute("firmware_repo") || "",
@@ -1311,6 +1312,65 @@
     return noticeCard;
   }
 
+  /* ---- One-shot announcement ------------------------------------------------
+     A notice marked display="once" in the feed becomes a bar under the header,
+     shown once per page load. Closing it removes the element and records
+     nothing, so the next load or app launch brings it back. Nothing here reads
+     or writes a cookie, localStorage, sessionStorage or IndexedDB. */
+  var onceNoticesMounted = false;
+  var onceNoticesClosed = {};
+  function mountOnceNotices() {
+    if (onceNoticesMounted) return;
+    onceNoticesMounted = true;
+    var host = document.getElementById("nav-root");
+    if (!host || !host.parentNode) return;
+    var show = noticeEligible().filter(function (notice) {
+      return notice.display === "once" && notice.id && !onceNoticesClosed[notice.id];
+    });
+    if (!show.length) return;
+    var notice = show[0];
+    var pageUrl = (notice.link && !noticeIsBareSiteUrl(notice.link)) ? notice.link : "";
+    var bar = document.createElement("div");
+    bar.className = "y1-once-notice";
+    bar.setAttribute("role", "region");
+    bar.setAttribute("aria-label", "Announcement");
+    bar.setAttribute("data-notice-id", notice.id);
+    bar.style.cssText = "display:flex;flex-wrap:wrap;gap:.75rem 1rem;align-items:center;justify-content:center;" +
+      "margin:0 auto;padding:.8rem 1.1rem;border-bottom:1px solid var(--lumen-line,#2f2f2f);" +
+      "background:var(--lumen-panel-soft,#1b1b1b);color:var(--lumen-text,#f2f2f2);" +
+      "font:500 .9rem/1.45 var(--lumen-body,system-ui),system-ui,-apple-system,sans-serif;text-align:center;";
+    var text = document.createElement("p");
+    text.style.cssText = "margin:0;flex:1 1 320px;min-width:0;";
+    var strong = document.createElement("strong");
+    strong.textContent = notice.title || "Announcement";
+    text.appendChild(strong);
+    if (notice.summary) text.appendChild(document.createTextNode(" " + notice.summary));
+    bar.appendChild(text);
+    var actions = document.createElement("div");
+    actions.style.cssText = "display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:center;";
+    if (pageUrl) {
+      var link = document.createElement("a");
+      link.href = pageUrl;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = "See the listing";
+      link.style.cssText = "font-weight:700;color:var(--lumen-accent,#f0b429);text-decoration:underline;";
+      actions.appendChild(link);
+    }
+    var close = document.createElement("button");
+    close.type = "button";
+    close.textContent = "Dismiss";
+    close.style.cssText = "padding:.3rem .85rem;border:1px solid var(--lumen-line-strong,#3a3a3a);border-radius:999px;" +
+      "background:transparent;color:inherit;font:inherit;cursor:pointer;";
+    close.addEventListener("click", function () {
+      onceNoticesClosed[notice.id] = true;
+      if (bar.parentNode) bar.parentNode.removeChild(bar);
+    });
+    actions.appendChild(close);
+    bar.appendChild(actions);
+    host.parentNode.insertBefore(bar, host.nextSibling);
+  }
+
   /* A page calls this whenever the viewer's selection changes. Dimensions left
      empty are forgotten, so a stale repo cannot keep a notice alive. */
   function setNoticeContext(patch) {
@@ -1480,6 +1540,7 @@
           noticeFeed = items;
           noticeTrayAll = items;
           mountNoticeCard();
+          mountOnceNotices();
           try {
             document.dispatchEvent(new CustomEvent("innioasis:notices", { detail: items }));
           } catch (_) {}
@@ -1727,7 +1788,6 @@
       '<h4>Developers</h4>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/developers.html")) + '">Developer Guide &amp; Tooling</a>' +
       '<a href="' + escapeHtml(decorateCrossDomainHref("https://innioasis.app/")) + '">Updater CE</a>' +
-      '<a href="' + escapeHtml(decorateMainSiteHref("/firmware.html")) + '">Downloads</a>' +
       '<a href="' + escapeHtml(decorateCrossDomainHref("https://themes.innioasis.app/")) + '" data-cross-site-link="1">Themes Gallery</a>' +
       '<a href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer">Discord Server</a>' +
       '<a href="https://reddit.com/r/innioasis" target="_blank" rel="noopener noreferrer">r/innioasis on Reddit</a>' +

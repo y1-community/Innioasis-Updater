@@ -1,31 +1,37 @@
-/* Windows XP / Vista / 7 / 8 / 8.1 and 32-bit Windows.
+/* Older Windows and 32-bit Linux.
  *
- * Updater CE is a 64-bit application and needs Windows 10 1809 or newer, so a
- * reader on an older or 32-bit Windows PC cannot install it at all. Those
- * readers can still flash their player: every firmware package has a
- * Windows XP/7/8 (32/64-bit) portable zip that carries SP Flash Tool beside
- * the rom, which works back to Windows XP.
+ * Updater CE is published for 64-bit Windows 10 and 11, macOS, x86-64 Linux
+ * and ARM64 Linux. A reader on Windows XP through 8.1, on any 32-bit Windows,
+ * or on a 32-bit Intel Linux desktop cannot run any of those builds. Their
+ * player is still supported: every firmware release also has a legacy zip
+ * that carries a small stand-alone installer beside the rom, and that
+ * installer runs on those systems.
  *
- * This module notices that visit and changes what the page offers:
+ * This module notices such a visit and changes what the page offers:
  *
- *   - "Get Updater CE" becomes "Browse firmwares" on the home page, because an
- *     install link they cannot run is worse than no link;
- *   - every other Updater CE call to action becomes "Get Zip" and resolves
- *     the same release's Windows XP/7/8 portable package, keeping the button
- *     markup and styling; the programmatic firmware list is the fallback;
- *   - guide links carry platform=windows-legacy, and the shared guide page
- *     swaps its Updater CE sections for the portable package steps, so the
- *     visit reads the same guide as everyone else instead of a warning panel.
+ *   - the Updater CE download card becomes a store-style button for the
+ *     software install zip built for this computer;
+ *   - "Get Updater CE" on the home page becomes "Browse firmwares", and the
+ *     other Updater CE calls to action become "Get the software install zip";
+ *   - the firmware table's own button for this platform is renamed.
  *
- * Detection is deliberately conservative. Windows NT 5.x-6.3 (XP through 8.1)
- * is legacy; Windows 10 and 11 are always treated as supported, because the
- * build number that distinguishes 1507-1709 from 1809+ is not exposed to the
- * browser. A 32-bit Windows 10/11 browser is legacy, but an unknown bitness is
- * never assumed to be 32-bit, so a reader is never blocked on a guess.
+ * Nothing is injected as a callout: a reader on an older computer sees the same
+ * pages as everyone else, with the download and the guide links pointing at the
+ * package that computer can actually use.
  *
- * Nobody else is told about any of this: the page is unchanged for supported
- * Windows, macOS, Linux, Android and Apple mobile visitors, and the guidance
- * page stays reachable by URL for search.
+ * The zip is the archive's own package: it carries the firmware, the driver
+ * and the installer together. Nothing here sends a reader to a third-party
+ * flashing tool or asks them to assemble a kit themselves.
+ *
+ * Detection is conservative. Windows NT 5.x-6.3 (XP through 8.1) is legacy,
+ * and so is a Windows or Linux browser that reports 32-bit. Windows 10 and 11
+ * are otherwise treated as supported, because the build number that separates
+ * 1507-1709 from 1809+ is not exposed to the browser. An unknown bitness is
+ * never assumed to be 32-bit, so nobody is blocked on a guess.
+ *
+ * Supported Windows, macOS, 64-bit Linux, Android and Apple mobile visitors
+ * are not told about any of this, and the guidance pages stay reachable by
+ * URL for search.
  */
 (function (global) {
     "use strict";
@@ -34,14 +40,14 @@
     var doc = global.document;
     if (!doc) return;
 
-    var PLATFORM_KEY = "windows-legacy";
-    var BIG_LABEL = "Windows XP/7/8 32/64-bit";
     var LIST = "firmware-list.html";
-    var ZIP_LABEL = "Get Zip";
-    /* Declared above the early return below: refresh() is callable on any
-       visit through the published API, and a var initialised further down
-       would be undefined there. */
+    var GUIDES = {
+        "windows-legacy": "windows-legacy.html",
+        "linux-legacy": "linux-legacy.html"
+    };
+    var OS_PLATFORM = { "windows-legacy": "windows", "linux-legacy": "linux" };
     var UPDATER_TEXT = /updater\s*(ce|installer|2\.)/i;
+    var ICON = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 7.2v7"/><path d="m8.9 11.3 3.1 3.1 3.1-3.1"/><path d="M8.4 17.1h7.2"/></svg>';
 
     var VERSION_NAMES = {
         "5.0": "Windows 2000",
@@ -54,11 +60,53 @@
         "10.0": "Windows 10 or 11"
     };
 
-    function detectBits(ua) {
+    function windowsBits(ua) {
         if (/arm64|aarch64/i.test(ua)) return 64;
         if (/wow64|win64|x64|amd64|x86_64/i.test(ua)) return 64;
-        if (/win32|i686|i386/i.test(ua)) return 32;
+        if (/win32|i686|i386|i586/i.test(ua)) return 32;
         return 0;
+    }
+
+    function legacyState(system, name, bits, reason) {
+        var key = system + "-legacy";
+        return {
+            isLegacy: true,
+            system: system,
+            platformKey: key,
+            label: system === "windows" ? "Windows XP/7/8 (32/64-bit)" : "32-bit Linux",
+            name: name,
+            bits: bits,
+            reason: reason
+        };
+    }
+
+    function detectWindows(ua) {
+        if (!/windows/i.test(ua)) return null;
+        var match = /Windows NT (\d+\.\d+)/i.exec(ua);
+        if (!match) return null;
+        var nt = match[1];
+        var bits = windowsBits(ua);
+        var name = VERSION_NAMES[nt] || ("Windows NT " + nt);
+        if (nt !== "10.0") return legacyState("windows", name, bits, "version");
+        /* Windows 10/11: the browser cannot report the build number, so only a
+           clearly 32-bit browser is treated as unable to run Updater CE. */
+        if (bits === 32) return legacyState("windows", name, 32, "bits");
+        return { isLegacy: false, system: "windows", name: name, bits: bits, nt: nt };
+    }
+
+    /* Updater CE's Linux builds are x86-64 and ARM64, so a 32-bit Intel
+       desktop has nothing to run. A browser built for i386 reports itself as
+       such in the user agent and in navigator.platform; an unknown or 64-bit
+       one is left alone. */
+    function detectLinux(ua, nav) {
+        if (/android/i.test(ua)) return null;
+        var platform = String(nav.platform || "");
+        var linux = /linux|ubuntu|debian|fedora|x11/i.test(platform) || /linux/i.test(ua);
+        if (!linux) return null;
+        if (/i[3-6]86/i.test(platform) || /i[3-6]86/i.test(ua)) {
+            return legacyState("linux", "32-bit Linux", 32, "bits");
+        }
+        return { isLegacy: false, system: "linux", name: "Linux", bits: windowsBits(ua) };
     }
 
     function detect() {
@@ -66,60 +114,34 @@
         var ua = String(nav.userAgent || "");
         /* Windows Phone and other mobile shells are not this audience. */
         if (/windows phone|iemobile|mobile/i.test(ua)) return null;
-        if (!/windows/i.test(ua)) return null;
-        var match = /Windows NT (\d+\.\d+)/i.exec(ua);
-        if (!match) return null;
-        var nt = match[1];
-        var bits = detectBits(ua);
-        var name = VERSION_NAMES[nt] || ("Windows NT " + nt);
-
-        if (nt !== "10.0") {
-            return { isLegacy: true, nt: nt, name: name, bits: bits, reason: "version" };
-        }
-        /* Windows 10/11: the browser cannot report the build number, so only a
-           clearly 32-bit browser is treated as unable to run Updater CE. */
-        if (bits === 32) {
-            return { isLegacy: true, nt: nt, name: name, bits: 32, reason: "bits" };
-        }
-        return { isLegacy: false, nt: nt, name: name, bits: bits, reason: "" };
+        return detectWindows(ua) || detectLinux(ua, nav);
     }
 
     var state = detect();
 
     function publish(current) {
-        if (current && current.isLegacy) {
-            global.INNIOASIS_LEGACY = {
-                isLegacy: true,
-                platformKey: PLATFORM_KEY,
-                label: BIG_LABEL,
-                version: current.name,
-                nt: current.nt,
-                bits: current.bits,
-                reason: current.reason
-            };
-            return;
-        }
-        /* An explicit ?platform=windows-legacy link uses the portable route
-           on any computer. Publish the same marker so the table buttons, the
-           guide and every lookup make one shared choice. */
-        global.INNIOASIS_LEGACY = requestedPlatform() === PLATFORM_KEY ? {
+        global.INNIOASIS_LEGACY = current && current.isLegacy ? {
             isLegacy: true,
-            platformKey: PLATFORM_KEY,
-            label: BIG_LABEL,
-            version: "requested",
-            nt: "",
-            bits: 0,
-            reason: "query"
+            platformKey: current.platformKey,
+            label: current.label,
+            system: current.system,
+            version: current.name,
+            name: current.name,
+            bits: current.bits,
+            reason: current.reason
         } : null;
+        if (global.InnioasisLegacy && current) {
+            global.InnioasisLegacy.platformKey = current.platformKey || "";
+            global.InnioasisLegacy.label = current.label || "";
+        }
     }
 
     publish(state);
 
-    /* Windows 10 and 11 are never classified from the user agent alone: the
-       build number that decides 1809+ is not exposed to the browser, so the
-       safe default there is "supported". Chromium can still report the browser
-       bitness on request, and a 32-bit browser cannot run the 64-bit app. The
-       call is skipped for every other visitor. */
+    /* Chromium can report the browser bitness on request, which settles the
+       cases the user agent leaves out: a 32-bit browser on 64-bit Windows 10,
+       and a 32-bit browser on a distribution whose user agent claims x86_64.
+       The call is skipped for every other visitor. */
     function upgradeFromUserAgentData() {
         var uaData = global.navigator && global.navigator.userAgentData;
         if (!uaData || typeof uaData.getHighEntropyValues !== "function") return;
@@ -130,10 +152,29 @@
             return;
         }
         Promise.resolve(pending).then(function (data) {
-            if (!data || String(data.bitness) !== "32") return;
+            if (!data) return;
+            var bits = Number(data.bitness);
+            if (bits !== 32 && bits !== 64) return;
             var found = detect();
-            if (!found || String(found.nt) !== "10.0") return;
-            state = { isLegacy: true, nt: found.nt, name: found.name, bits: 32, reason: "bits" };
+            if (!found) return;
+            if (found.isLegacy) {
+                /* Already legacy on the version. The browser can still report
+                   the bitness the user agent leaves out, so the package is
+                   named "Windows 7 32-bit" instead of just "Windows 7". */
+                /* found.bits is 0 when the user agent left the bitness out;
+                   the reported value fills it in rather than being ignored. */
+                if (found.bits === bits) return;
+                state = legacyState(found.system, found.name, bits, found.reason);
+                publish(state);
+                rerender();
+                return;
+            }
+            if (bits !== 32) return;
+            var system = String(data.architecture || "").toLowerCase().indexOf("arm") !== -1 ? "" : found.system;
+            if (!system) return;
+            /* Only a 32-bit browser on the platform itself counts: a 64-bit
+               kernel with a 32-bit browser is still a 32-bit userland. */
+            state = legacyState(system, found.name, 32, "bits");
             publish(state);
             init();
         }).catch(function () {});
@@ -143,32 +184,18 @@
        the same question this module asks, and reapply the swaps after the
        catalogue paints new rows. */
     global.InnioasisLegacy = {
-        platformKey: PLATFORM_KEY,
-        label: BIG_LABEL,
+        platformKey: state && state.isLegacy ? state.platformKey : "",
+        label: state && state.isLegacy ? state.label : "",
         detect: detect,
         refresh: refresh
     };
 
-    /* A shared link can name the portable route directly, so a supported
-       machine opening ?platform=windows-legacy still reads that guide. */
-    function requestedPlatform() {
-        try {
-            return String(new URLSearchParams(global.location.search).get("platform") || "").trim().toLowerCase();
-        } catch (_) {
-            return "";
-        }
-    }
+    /* Ask for the reported bitness on every visit: a legacy page still needs
+       it to name the zip correctly, and a supported page may turn out to be a
+       32-bit browser. */
+    upgradeFromUserAgentData();
 
-    if (!state || !state.isLegacy) {
-        if (requestedPlatform() === PLATFORM_KEY) {
-            /* root and the helper declarations finish below; run after this
-               script has finished executing. */
-            global.setTimeout(init, 0);
-        } else {
-            upgradeFromUserAgentData();
-        }
-        return;
-    }
+    if (!state || !state.isLegacy) return;
 
     var root = "";
     try {
@@ -191,12 +218,44 @@
         return root ? root + path : path;
     }
 
+    function guideFor() {
+        return GUIDES[state.platformKey] || GUIDES["windows-legacy"];
+    }
+
+    function systemName() {
+        var name = String(state.name || "");
+        if (state.system === "linux") return /32-bit/i.test(name) ? name : name + ", 32-bit";
+        var label = /^Windows/i.test(name) ? name : "Windows " + name;
+        if (state.bits === 32 && !/32-bit/i.test(label)) label += ", 32-bit";
+        else if (state.bits === 64 && !/64-bit/i.test(label)) label += ", 64-bit";
+        return label;
+    }
+
     function each(selector, callback) {
         Array.prototype.forEach.call(doc.querySelectorAll(selector), callback);
     }
 
     function inChrome(node) {
         return Boolean(node.closest && node.closest("nav, #nav-root, footer, #footer-root, #support-toolbar-slot"));
+    }
+
+    function injectStyles() {
+        if (doc.getElementById("site-legacy-styles")) return;
+        var style = doc.createElement("style");
+        style.id = "site-legacy-styles";
+        style.textContent = [
+            ".lumen-legacy-download{display:grid;gap:.55rem;margin:1.1rem 0;}",
+            ".lumen-unavailable-line{margin:0;color:var(--lumen-muted,#9aa3b5);font-size:.92rem;}",
+            ".lumen-store-badge{display:inline-flex;align-items:center;gap:.7rem;width:max-content;max-width:100%;padding:.58rem 1.05rem .58rem .85rem;border-radius:999px;background:#101218;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.16);box-shadow:0 6px 18px rgba(0,0,0,.22);transition:transform .15s ease,box-shadow .15s ease;}",
+            ".lumen-store-badge:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.28);color:#fff;}",
+            ".lumen-store-badge:focus-visible{outline:2px solid var(--lumen-accent,#6b9fff);outline-offset:3px;}",
+            ".lumen-store-badge svg{flex:0 0 auto;}",
+            ".lumen-store-badge-copy{display:grid;line-height:1.15;text-align:start;}",
+            ".lumen-store-badge-copy small{font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.72);}",
+            ".lumen-store-badge-copy strong{font-size:.98rem;font-weight:700;}",
+            "@media (prefers-reduced-motion: reduce){.lumen-store-badge{transition:none;}.lumen-store-badge:hover{transform:none;}}"
+        ].join("");
+        (doc.head || doc.documentElement).appendChild(style);
     }
 
     /* The home page asks for Updater CE where it means "start here". A reader
@@ -213,160 +272,121 @@
         });
     }
 
-    /* Every remaining Updater CE call to action becomes the portable package
-       they can actually run. Anchors that already download a zip are left to
-       the firmware table, which resolves the legacy build itself. */
+    /* Every remaining Updater CE call to action becomes the legacy zip they
+       can actually use. Anchors that already download a zip are left to the
+       firmware table, which resolves the legacy build itself. */
     function swapUpdaterCtas() {
         each("main a, main button", function (node) {
             if (node.getAttribute("data-legacy-browse") === "1") return;
             if (node.getAttribute("data-legacy-cta") === "1") return;
-            if (node.classList && node.classList.contains("lumen-updater-button")) return;
             if (inChrome(node)) return;
             var text = String(node.textContent || "").replace(/\s+/g, " ").trim();
             if (!UPDATER_TEXT.test(text)) return;
             var href = node.getAttribute("href") || "";
             if (/\.zip(\?|#|$)/i.test(href)) return;
-            if (/windows-legacy\.html/i.test(href)) return;
+            if (/(windows|linux)-legacy\.html/i.test(href)) return;
             node.setAttribute("data-legacy-cta", "1");
             node.setAttribute("data-legacy-original-label", text);
-            node.textContent = ZIP_LABEL;
-            node.setAttribute("href", absolute(LIST));
+            node.textContent = "Get the software";
+            node.setAttribute("href", absolute(guideFor()));
             node.removeAttribute("download");
             node.removeAttribute("target");
         });
     }
 
-    /* Updater CE cannot run here, so its header link is not a useful first
-       stop. Put the firmware catalogue in that slot instead, without changing
-       the rest of the navigation or the labels the i18n pass already built. */
-    function adjustHeaderCta() {
-        var cta = doc.getElementById("lumen-nav-install-cta");
-        if (cta) {
-            cta.hidden = true;
-            cta.style.display = "none";
-            cta.setAttribute("aria-hidden", "true");
-            cta.setAttribute("tabindex", "-1");
-        }
-        each('#navLinks a[href*="view=software"]', function (link) {
-            if (link.getAttribute("data-legacy-primary") === "1") return;
-            link.setAttribute("data-legacy-primary", "1");
-            link.classList.add("lumen-nav-install-cta", "lumen-nav-install-cta--legacy");
-            link.style.color = "var(--lumen-accent)";
-            link.style.background = "var(--lumen-accent-wash)";
-        });
-    }
-
-    /* The table's Updater column is the same promise as its buttons. Keep the
-       original label so a supported visitor never sees the swap. */
-    function swapTableHeadings() {
-        each("th", function (heading) {
-            if (heading.getAttribute("data-legacy-heading") === "1") return;
-            var text = String(heading.textContent || "").replace(/\s+/g, " ").trim();
-            if (!/Updater CE/i.test(text)) return;
-            heading.setAttribute("data-legacy-heading", "1");
-            heading.setAttribute("data-legacy-original-label", text);
-            heading.textContent = ZIP_LABEL;
-        });
-    }
-
-    /* The firmware table renders after this module starts. The button keeps
-       its icon and layout; only the label changes. The actual package is the
-       same release's windows-legacy mirror asset, resolved from the metadata
-       lumen-site.js puts on the anchor. */
-    function relabelUpdaterButtons() {
-        each("a.lumen-updater-button", function (link) {
-            if (link.getAttribute("data-legacy-zip") === "1") return;
-            link.setAttribute("data-legacy-zip", "1");
-            link.setAttribute("data-legacy-original-label", String(link.textContent || "").replace(/\s+/g, " ").trim());
-            var strong = link.querySelector("strong");
-            var small = link.querySelector("small");
-            if (strong) strong.textContent = ZIP_LABEL;
-            else link.textContent = ZIP_LABEL;
-            if (small) small.textContent = "portable package";
-            link.setAttribute("href", absolute(LIST));
-            link.removeAttribute("target");
-            resolveLegacyZip(link);
-        });
-    }
-
-    function resolveLegacyZip(link) {
-        if (!link || link.getAttribute("data-legacy-zip-resolved") === "1") return;
-        var source = link.getAttribute("data-zip-url") || "";
-        var resolver = global.InnioasisPortable && global.InnioasisPortable.resolve;
-        if (!source || typeof resolver !== "function") return;
-        try {
-            Promise.resolve(resolver(
-                source,
-                link.getAttribute("data-portable-zips") || "",
-                link.getAttribute("data-release-tag") || "",
-                link.getAttribute("data-zip-name") || ""
-            )).then(function (target) {
-                if (!target || !target.url) return;
-                link.setAttribute("href", target.url);
-                link.setAttribute("download", "");
-                link.setAttribute("data-legacy-zip-resolved", "1");
-                link.setAttribute("title", "Download the " + BIG_LABEL + " portable zip");
-            }).catch(function () {});
-        } catch (_) {}
-    }
-
-    /* The firmware rows carry one button per desktop OS. On this computer the
-       Windows button is the flash-tool package, so it is relabelled that way
-       and its click is told to resolve the legacy asset. The macOS and Linux
-       builds stay visible: a reader may be collecting files for another PC. */
+    /* The firmware rows carry one button per desktop platform. On this
+       computer the matching button is the legacy zip, so it is renamed and
+       its click is told to resolve the legacy asset. The other platforms stay
+       visible, because a reader may be collecting files for another PC. */
     function relabelPortableButtons() {
-        each('.lumen-portable-downloads a[data-platform="windows"], a.lumen-zip-download-button[data-platform="windows"]', function (link) {
-            if (link.getAttribute("data-legacy-relabel") === "1") return;
+        var osPlatform = OS_PLATFORM[state.platformKey];
+        if (!osPlatform) return;
+        each('.lumen-portable-downloads, .lumen-zip-download-row', function (group) {
+            if (group.querySelector('[data-platform="' + state.platformKey + '"]')) return;
+            var link = group.querySelector('a[data-platform="' + osPlatform + '"]');
+            if (!link || link.getAttribute("data-legacy-relabel") === "1") return;
             link.setAttribute("data-legacy-relabel", "1");
-            link.setAttribute("data-platform", PLATFORM_KEY);
-            link.setAttribute("title", "SP Flash Tool package for " + BIG_LABEL);
+            link.setAttribute("data-platform", state.platformKey);
+            link.setAttribute("title", "Download for this computer");
             var strong = link.querySelector("strong");
-            if (strong) strong.textContent = BIG_LABEL;
+            if (strong) strong.textContent = "Download";
+        });
+        each('a.lumen-zip-download-button[data-platform="' + osPlatform + '"]', function (link) {
+            if (link.getAttribute("data-legacy-relabel") === "1") return;
+            var group = link.closest(".lumen-portable-downloads, .lumen-zip-download-row");
+            if (group && group.querySelector('[data-platform="' + state.platformKey + '"]')) return;
+            link.setAttribute("data-legacy-relabel", "1");
+            link.setAttribute("data-platform", state.platformKey);
+            link.setAttribute("title", "Download for this computer");
+            var strong = link.querySelector("strong");
+            if (strong) strong.textContent = "Download";
         });
     }
 
-    /* The shared guide page accepts URL parameters. Marking guide links keeps
-       a legacy visit on the same page as everyone else; the guide itself shows
-       the portable steps when that parameter is present. */
-    function rewriteGuideLinks() {
-        each("a[href]", function (link) {
-            if (link.getAttribute("data-legacy-guide-link") === "1") return;
-            var href = link.getAttribute("href") || "";
-            if (!href || /^(#|mailto:|tel:|javascript:)/i.test(href)) return;
-            var url;
-            try {
-                url = new URL(href, global.location.href);
-            } catch (_) {
-                return;
-            }
-            if (url.origin !== global.location.origin) return;
-            if (!/(^|\/)(?:guide|firmware-guide)\.html$/i.test(url.pathname)) return;
-            url.searchParams.set("platform", PLATFORM_KEY);
-            link.setAttribute("href", url.pathname + url.search + url.hash);
-            link.setAttribute("data-legacy-guide-link", "1");
-        });
+    function cardHtml() {
+        return '' +
+            '<p class="lumen-kicker notranslate" translate="no">' + systemName() + '</p>' +
+            '<h2>Install on this computer</h2>' +
+            '<p class="lead">Pick the software you want. The download for this computer already includes everything needed to install it, so there is nothing else to find or set up first.</p>' +
+            '<a class="lumen-store-badge" href="' + absolute(LIST) + '" data-legacy-store>' +
+            ICON + '<span class="lumen-store-badge-copy"><small>Get</small><strong><span>Software for</span> ' +
+            '<span class="notranslate" translate="no" data-i18n-skip>' + systemName() + '</span></strong></span></a>' +
+            '<p class="lumen-unavailable-line"><span>Every entry in the list has it.</span> ' +
+            '<a href="' + absolute(guideFor()) + '">How installation works</a></p>';
     }
 
-    function notifyPortableReady() {
-        try {
-            global.dispatchEvent(new CustomEvent("innioasis-portable-ready"));
-        } catch (_) {}
+    function downloadCard() {
+        var card = doc.createElement("section");
+        card.className = "lumen-section lumen-legacy-download";
+        card.setAttribute("data-legacy-download", "1");
+        card.setAttribute("data-i18n-english", "");
+        card.innerHTML = cardHtml();
+        return card;
+    }
+
+    /* Chromium can report the bitness after the first paint, which changes the
+       package's name. Repaint the injected blocks in place so the page never
+       keeps a label that no longer matches the detected computer. */
+    function rerender() {
+        each("[data-legacy-download]", function (card) {
+            card.innerHTML = cardHtml();
+        });
+        relabelPortableButtons();
+        swapUpdaterCtas();
+    }
+
+    /* The Updater CE download card lists an installer per desktop. On a
+       computer that cannot run any of them, the whole card is replaced with
+       one button that leads to the firmware list. */
+    function replaceUpdaterCards() {
+        each("[data-platform-detect]", function (options) {
+            if (options.getAttribute("data-legacy-replaced") === "1") return;
+            options.setAttribute("data-legacy-replaced", "1");
+            var host = options.closest("section.lumen-updater-download, section.lumen-platforms, details#download-updater, section, details, .lumen-platform-panel");
+            if (!host || !host.parentNode) return;
+            host.parentNode.insertBefore(downloadCard(), host.nextSibling);
+            host.hidden = true;
+            host.setAttribute("aria-hidden", "true");
+            /* A disclosure button the download module added before this
+               swap belongs to a hidden card now, so it goes with it. */
+            var stray = host.querySelector(".lumen-other-downloads");
+            if (stray && stray.parentNode) stray.parentNode.removeChild(stray);
+        });
     }
 
     function stamp() {
-        doc.documentElement.setAttribute("data-windows-legacy", "true");
-        doc.documentElement.setAttribute("data-os", "windows-legacy");
-        if (doc.body) doc.body.classList.add("windows-legacy");
+        doc.documentElement.setAttribute("data-os", state.platformKey);
+        doc.documentElement.setAttribute("data-legacy", state.platformKey);
+        if (state.system === "windows") doc.documentElement.setAttribute("data-windows-legacy", "true");
+        else doc.documentElement.setAttribute("data-linux-legacy", "true");
+        if (doc.body) doc.body.classList.add(state.platformKey);
     }
 
     function refresh() {
+        replaceUpdaterCards();
         swapUpdaterAvailability();
         swapUpdaterCtas();
-        adjustHeaderCta();
-        swapTableHeadings();
-        relabelUpdaterButtons();
         relabelPortableButtons();
-        rewriteGuideLinks();
     }
 
     function observe() {
@@ -381,21 +401,18 @@
         });
         observer.observe(doc.body, { childList: true, subtree: true });
         /* The firmware catalogue paints its rows after this module starts, so
-           two timed passes catch late call to actions without a busy loop. */
+           two timed passes catch late calls to action without a busy loop. */
         global.setTimeout(refresh, 300);
         global.setTimeout(refresh, 1200);
     }
 
     function init() {
+        injectStyles();
         stamp();
+        replaceUpdaterCards();
         swapUpdaterAvailability();
         swapUpdaterCtas();
-        adjustHeaderCta();
-        swapTableHeadings();
-        relabelUpdaterButtons();
         relabelPortableButtons();
-        rewriteGuideLinks();
-        notifyPortableReady();
         observe();
     }
 

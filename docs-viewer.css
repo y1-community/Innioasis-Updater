@@ -157,6 +157,14 @@
   font-size: .88rem;
 }
 
+/* Plain-text release notes (a tag or commit message): the project's own line
+   breaks are the content, so they wrap instead of scrolling off the page. */
+.lumen-doc-body pre.lumen-release-plaintext {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: .84rem;
+}
+
 .lumen-doc-body blockquote {
   margin: 0 0 15px;
   padding: 4px 0 4px 15px;

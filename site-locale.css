@@ -367,13 +367,23 @@ html:not([lang]) .site-i18n-badge,
 }
 
 .site-i18n-spinner {
+  display: inline-block;
   flex: none;
   width: 10px;
   height: 10px;
+  min-width: 10px;
+  max-width: 10px;
+  min-height: 10px;
+  max-height: 10px;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: 1.5px solid currentColor;
   border-top-color: transparent;
   box-sizing: border-box;
+  vertical-align: middle;
+  margin-inline-start: 4px;
+  overflow: hidden;
+  line-height: 0;
   animation: site-i18n-spin .8s linear infinite;
 }
 

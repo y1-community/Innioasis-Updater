@@ -101,7 +101,7 @@ def page_title(title: str, description: str, canonical: str, keywords: list[str]
 <link rel="stylesheet" href="../site-pages.css?v=20260818">
 <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
 <link rel="stylesheet" href="../install.css?v=20261106">
-<script src="../site-init.js?v=20261113badge2" defer></script>
+<script src="../site-init.js?v=20261110warn" defer></script>
 {blocks}
 </head>
 <body class="{classes}"><a class="lumen-skip-link" href="#main">Skip to content</a>

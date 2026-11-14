@@ -1689,7 +1689,7 @@
   function releaseNotesMarkdown(repo, tag) {
     if (!repo || !tag) return Promise.reject(new Error("no-release"));
     return fetchRelease(repo, tag).then(function (release) {
-      var body = withoutGithubOnly(release && release.body).trim();
+      var body = stripLeadingTagLine(withoutGithubOnly(release && release.body), tag);
       if (body) {
         return {
           markdown: body,
@@ -1707,11 +1707,80 @@
       if (asset) {
         chain = chain.catch(function () { return fetchAssetMarkdown(repo, asset); });
       }
+      /* Projects that write no Markdown still leave plain text on the tag:
+         an annotated tag's own message, or the message of the commit it points
+         at. That is the text GitHub shows for such a release, so the page
+         shows it too instead of an empty state. */
+      chain = chain.catch(function () {
+        return releaseTagMessage(repo, tag).then(function (message) {
+          return {
+            markdown: message,
+            path: "",
+            url: releasePageUrl(repo, tag),
+            plain: true
+          };
+        });
+      });
       return chain.then(function (found) {
         found.release = release;
         return found;
       });
     });
+  }
+
+  /**
+   * The plain-text notes for a release that publishes no Markdown: the
+   * annotated tag's message, else the message of the commit the tag names.
+   * Nothing is invented here; a project that wrote no notes leaves both empty.
+   */
+  function releaseTagMessage(repo, tag) {
+    if (!repo || !tag) return Promise.reject(new Error("no-release"));
+    return fetchGithubJson(
+      "https://api.github.com/repos/" + repo + "/git/ref/tags/" + encodeURIComponent(tag)
+    ).then(function (ref) {
+      var object = (ref && ref.object) || {};
+      if (!object.sha) throw new Error("no-tag");
+      if (object.type === "tag") {
+        return fetchGithubJson(
+          "https://api.github.com/repos/" + repo + "/git/tags/" + object.sha
+        ).then(function (annotated) { return String((annotated && annotated.message) || "").trim(); });
+      }
+      return fetchGithubJson(
+        "https://api.github.com/repos/" + repo + "/commits/" + object.sha
+      ).then(function (commit) {
+        return String((commit && commit.commit && commit.commit.message) || "").trim();
+      });
+    }).then(function (message) {
+      var notes = stripLeadingTagLine(message, tag);
+      if (!notes) throw new Error("no-message");
+      return notes;
+    });
+  }
+
+  /**
+   * Nightly notes often repeat their own tag at the top: the tag name, a bare
+   * commit hash, then the line that says what changed. The tag is already
+   * shown beside the title, so only the text underneath it is returned.
+   */
+  function stripLeadingTagLine(text, tag) {
+    var lines = String(text || "").split("\n");
+    while (lines.length && !lines[0].trim()) lines.shift();
+    if (!lines.length) return "";
+    var first = lines[0].trim();
+    var bare = String(tag || "").trim();
+    var withoutPrefix = bare.replace(/^[A-Za-z][A-Za-z0-9]*-/, "");
+    var hashLike = /^[0-9a-f]{7,40}$/i.test(first);
+    var shortenedTag = first.length >= 12 && bare.toLowerCase().indexOf(first.toLowerCase()) === 0;
+    if (first === bare || (withoutPrefix && first === withoutPrefix) || hashLike || shortenedTag) {
+      lines.shift();
+      while (lines.length && !lines[0].trim()) lines.shift();
+    }
+    return lines.join("\n").trim();
+  }
+
+  /** Plain-text notes keep the project's own line breaks. */
+  function plainNotesHtml(text) {
+    return '<pre class="lumen-release-plaintext">' + escapeHtml(String(text || "").trim()) + "</pre>";
   }
 
   /* ------------------------------------------------------------------ *
@@ -1950,6 +2019,9 @@
     sanitizeHtml: sanitizeHtml,
     loadMarkdown: loadMarkdown,
     releaseNotesMarkdown: releaseNotesMarkdown,
+    releaseTagMessage: releaseTagMessage,
+    plainNotesHtml: plainNotesHtml,
+    stripLeadingTagLine: stripLeadingTagLine,
     fetchRepoMarkdown: fetchRepoMarkdown,
     markdownAssets: markdownAssets,
     fetchText: fetchText,

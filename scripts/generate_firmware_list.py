@@ -66,10 +66,11 @@ PLATFORM_LABELS = {
     "linux": "Linux",
     "linux-arm64": "Linux on ARM",
     "macos": "macOS",
-    # The SP Flash Tool bundle the mirror builds for Windows XP through 8.1 and
-    # 32-bit Windows, where Updater CE cannot run. Listed last so the normal
-    # desktop builds stay first in the row.
-    "windows-legacy": "Windows XP/7/8 (32/64-bit)",
+    # The legacy zips the mirrors build for systems where Updater CE cannot
+    # run: Windows XP through 8.1, 32-bit Windows and 32-bit Linux. Listed
+    # last so the normal desktop builds stay first in the row.
+    "windows-legacy": "Windows XP/7/8 software install zip",
+    "linux-legacy": "32-bit Linux software install zip",
 }
 
 AUTHOR_ORG = {"@type": "Organization", "name": "Innioasis Community",
@@ -191,7 +192,7 @@ def manifest_mirrors() -> dict[str, set[str]]:
     """Source repository -> the portable mirrors its manifest entry names.
 
     A project with no entry in ``slidia_manifest.xml``, or one whose entry names
-    no mirror, gets no portable package here: its download links stay on the
+    no mirror, gets no software install zip here: its download links stay on the
     rom.zip (or other package) the project itself publishes. That keeps the
     static list from offering a repackaged mirror build that Updater CE cannot
     reach anyway.
@@ -229,7 +230,7 @@ def package_asset(release: dict, package_name: str) -> dict:
 
 
 def portable_packages(mirrors: list[dict], tag: str, asset_name: str) -> list[dict]:
-    """Portable builds of one original asset, best platform first."""
+    """Software install zips of one original asset, best platform first."""
     out: list[dict] = []
     wanted_tag = str(tag or "").strip()
     wanted_asset = str(asset_name or "").strip().lower()
@@ -395,7 +396,7 @@ def software_section(item: dict, releases: list[dict], mirrors: list[dict], feed
                    esc(p["label"]), esc(human_size(p["size"]) or "portable"))
                 for p in portable)
             download_cell.append(
-                '<div class="lumen-meta" style="margin-top:6px">Portable packages:</div>'
+                '<div class="lumen-meta" style="margin-top:6px">Downloads for your computer:</div>'
                 '<div class="lumen-actions lumen-portable-downloads">%s</div>' % buttons)
         elif asset_url and not listed_repo:
             # Standalone-only cohort: the project is in the feeds but not in the
@@ -444,7 +445,7 @@ def software_section(item: dict, releases: list[dict], mirrors: list[dict], feed
                 "encodingFormat": "application/zip",
                 "additionalProperty": [
                     {"@type": "PropertyValue",
-                     "name": "Portable package for %s" % p["label"],
+                     "name": "Software install zip for %s" % p["label"],
                      "value": p["url"]} for p in portable
                 ],
             }
@@ -513,7 +514,7 @@ def render_page(feed: dict, software: list[dict]) -> tuple[str, list[dict]]:
             '<div class="lumen-section-head"><div><p class="lumen-kicker">%s</p>'
             '<h2 id="model-%s-title">%s software and firmware</h2>'
             '<p class="lumen-meta">Every listed release for this model, with the original '
-            'download URL and the portable packages built for each computer.</p></div></div>%s</section>'
+            'download URL and the software install zips built for each computer.</p></div></div>%s</section>'
             % (esc(model.lower()), esc(model.lower()), esc(device_name(model)),
                esc(model.lower()), esc(device_name(model)), "".join(models[model])))
 
@@ -524,7 +525,7 @@ def render_page(feed: dict, software: list[dict]) -> tuple[str, list[dict]]:
         "@type": "ItemList",
         "name": "Innioasis and Timmkoo firmware by software and model",
         "description": "Every software option in the Innioasis Firmware Archive, its author, "
-                       "its current version, its download URL and its portable packages.",
+                       "its current version, its download URL and its software install zips.",
         "numberOfItems": len(cards),
         "itemListElement": [
             {"@type": "ListItem", "position": position + 1, "item": card}
@@ -564,15 +565,10 @@ def render_page(feed: dict, software: list[dict]) -> tuple[str, list[dict]]:
         '<header class="lumen-directory-hero"><div>',
         '<p class="lumen-kicker">Innioasis &amp; Timmkoo Firmware Archive</p>',
         "<h1>Firmware list: every release, model and download</h1></div><div>",
-        "<p>Every release listed for every model, in plain HTML. Each entry names the software, "
-        "its author, the device model, the original package and the portable build for Windows, "
-        "macOS and Linux.</p>",
-        '<p class="lumen-meta">Updated %s · %d software options · %d releases</p>'
-        % (esc(generated_at), len(cards), total),
+        "<p>Pick your player, then the software you want. Each entry shows what it is, "
+        "who made it, and the download for your computer.</p>",
         '<div class="lumen-actions"><a class="lumen-button lumen-button--primary" href="firmware.html">'
-        "Open the installer view</a>"
-        '<a class="lumen-button" href="feeds/firmware-feed.xml">Atom feed</a>'
-        '<a class="lumen-button" href="feeds/firmware-releases.json">JSON data</a></div>',
+        "Open the installer view</a></div>",
         '<p class="lumen-meta">Jump to %s.</p></div></header>' % toc,
         "".join(sections),
         '<section class="lumen-section"><div class="lumen-callout">',
@@ -590,7 +586,7 @@ def render_page(feed: dict, software: list[dict]) -> tuple[str, list[dict]]:
     head_args = {
         "title": "Firmware list - every Innioasis and Timmkoo release | Innioasis Updater",
         "description": "Every Innioasis and Timmkoo firmware release in one static list: model, "
-                       "software, author, original download URL and portable packages for Windows, "
+                       "software, author, original download URL and software install zips for Windows, "
                        "macOS and Linux.",
         "canonical": SITE + "/firmware-list.html",
     }

@@ -33,6 +33,7 @@ SHELL_FILES = [
     "firmware-catalog.js",
     "tutorial-video.js",
     "portable-zip-links.js",
+    "site-legacy.js",
     "docs-viewer.js",
     "site-locale.js",
     "support_toolbar.html",

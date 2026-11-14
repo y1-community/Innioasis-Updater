@@ -4,21 +4,6 @@
 (function (global) {
     "use strict";
 
-    /* A shared guide link can request the portable route on a computer that
-       can otherwise run Updater CE. Mark it before site-platform.js decides
-       which OS copy to insert, so the portable guide is not mixed with the
-       Updater download panel. */
-    (function markPortableGuideRequest() {
-        try {
-            var requested = String(new URLSearchParams(global.location.search).get("platform") || "").trim().toLowerCase();
-            if (requested !== "windows-legacy") return;
-            if (document.documentElement) {
-                document.documentElement.setAttribute("data-windows-legacy", "true");
-                document.documentElement.setAttribute("data-os", "windows-legacy");
-            }
-        } catch (_) {}
-    })();
-
     /* ---- Appearance -------------------------------------------------------
        One choice, four palettes. The preference is kept locally, mirrored to
        the shared .innioasis.app cookie so it follows the visitor between
@@ -1497,11 +1482,6 @@
            rendered after this script runs. */
         function handBack(link) {
             if (!link || !link.getAttribute) return false;
-            /* A portable row carries the mirror metadata while its visible
-               href is still the project's source zip. Marking it direct here
-               made the browser follow that source zip before lumen-site.js
-               could resolve the platform build for this computer. */
-            if (link.hasAttribute("data-portable-zips") || link.hasAttribute("data-release-tag") || link.hasAttribute("data-zip-url")) return false;
             var href = link.getAttribute("href") || "";
             if (!href || /^(#|mailto:|tel:|javascript:)/i.test(href)) return false;
             var url = unwrap(href);
@@ -1522,30 +1502,8 @@
 
         /* Pages and scripts that ask for a download by URL get the same
            browser download, so no caller is left without its file. */
-        /* Something must happen where the reader clicked, on any screen size.
-           Nothing is measured or streamed here: the badge only says the
-           browser has taken the file. */
-        function badge(anchorNode, text) {
-            if (!anchorNode || !anchorNode.parentNode) return null;
-            var previous = document.getElementById("site-dl-badge");
-            if (previous && previous.parentNode) previous.parentNode.removeChild(previous);
-            var span = document.createElement("span");
-            span.id = "site-dl-badge";
-            span.setAttribute("role", "status");
-            span.setAttribute("aria-live", "polite");
-            span.textContent = text;
-            span.style.cssText = "display:inline-flex;align-items:center;margin:6px 8px;padding:5px 10px;border-radius:999px;" +
-                "font:600 12px/1.35 system-ui,sans-serif;color:#dfe7f7;background:rgba(107,159,255,.18);" +
-                "border:1px solid rgba(107,159,255,.45);max-width:min(100%,340px);white-space:normal;";
-            anchorNode.parentNode.insertBefore(span, anchorNode.nextSibling);
-            setTimeout(function () {
-                if (span.parentNode) span.parentNode.removeChild(span);
-            }, 12000);
-            return span;
-        }
-
         global.InnioasisDownloads = {
-            version: "20261113badge2",
+            version: "20261110direct",
             start: function (url, anchor, name) {
                 var link = document.createElement("a");
                 link.href = unwrap(url);
@@ -1564,8 +1522,7 @@
 
         document.addEventListener("click", function (event) {
             if (event.defaultPrevented || event.button !== 0) return;
-            var link = anchorOf(event.target);
-            if (handBack(link)) badge(link, "Download started - check your Downloads folder");
+            handBack(anchorOf(event.target));
         }, true);
     }
 
@@ -1573,7 +1530,7 @@
         if (global.InnioasisDownloads || document.getElementById("site-downloads-script")) return;
         var node = document.createElement("script");
         node.id = "site-downloads-script";
-        node.src = siteBase() + "site-downloads.js?v=20261112portable6";
+        node.src = siteBase() + "site-downloads.js?v=20261111zip";
         node.defer = true;
         document.head.appendChild(node);
     }
@@ -1581,39 +1538,8 @@
     /* In-page progress for rom packages is on by default; installer links
        are excluded inside site-downloads.js itself, so app and driver
        buttons always stay plain browser downloads. */
-    /* The firmware archive and Updater CE hand every package to the browser's
-       own downloader: no proxy streaming, nothing that can truncate a 1.7 GB
-       rom zip. The Themes Gallery keeps its in-page design. */
-    if (/^themes\./i.test(global.location.hostname || "")) loadSiteDownloads();
-    else installDirectDownloads();
-
-    /* The resolver turns a release's original ZIP metadata into the portable
-       package for this computer. firmware-list.html already loads it; the
-       dynamic firmware table needs it before site-legacy.js can swap its
-       Updater buttons to Get Zip. */
-    function loadSitePortable() {
-        if (global.InnioasisPortableZip || document.getElementById("site-portable-script") ||
-            document.querySelector('script[src*="portable-zip-links.js"]')) return;
-        var base = "";
-        try {
-            var scripts = document.getElementsByTagName("script");
-            for (var i = 0; i < scripts.length; i++) {
-                var src = scripts[i].src || "";
-                if (src.indexOf("site-init.js") === -1) continue;
-                base = src.replace(/[?#].*$/, "").replace(/[^/]*$/, "");
-                break;
-            }
-        } catch (_) {}
-        var node = document.createElement("script");
-        node.id = "site-portable-script";
-        node.src = base + "portable-zip-links.js?v=20261113legacyguide";
-        node.defer = true;
-        document.head.appendChild(node);
-    }
-    if (/\/firmware(?:-list)?(?:_[a-zA-Z0-9_-]+)?\.html$/i.test(global.location.pathname || "") ||
-        document.querySelector("[data-firmware-page]") || document.getElementById("lumen-firmware-table")) {
-        loadSitePortable();
-    }
+    if (global.InnioasisInlineDownloads === false) installDirectDownloads();
+    else loadSiteDownloads();
 
     /* Windows XP/Vista/7/8/8.1 and 32-bit Windows cannot run Updater CE, so
        that visit gets the portable SP Flash Tool route instead of install
@@ -1633,11 +1559,35 @@
         } catch (_) {}
         var node = document.createElement("script");
         node.id = "site-legacy-script";
-        node.src = base + "site-legacy.js?v=20261113legacynav2";
+        node.src = base + "site-legacy.js?v=20261111cards";
         node.defer = true;
         document.head.appendChild(node);
     }
     loadSiteLegacy();
+
+    /* Every release row offers a package per computer. This module keeps the
+       build for the visitor's own machine in place and puts the others behind
+       an "Other downloads" button, so a legacy visit is not shown two links
+       that cannot run there. */
+    function loadSiteDownloadChoices() {
+        if (global.InnioasisDownloadChoices || document.getElementById("site-download-choices-script")) return;
+        var base = "";
+        try {
+            var scripts = document.getElementsByTagName("script");
+            for (var i = 0; i < scripts.length; i++) {
+                var src = scripts[i].src || "";
+                if (src.indexOf("site-init.js") === -1) continue;
+                base = src.replace(/[?#].*$/, "").replace(/[^/]*$/, "");
+                break;
+            }
+        } catch (_) {}
+        var node = document.createElement("script");
+        node.id = "site-download-choices-script";
+        node.src = base + "site-download-choices.js?v=20261111zip";
+        node.defer = true;
+        document.head.appendChild(node);
+    }
+    loadSiteDownloadChoices();
 
     global.y1LoadSupportToolbar = loadSupportToolbar;
 })(typeof window !== "undefined" ? window : globalThis);

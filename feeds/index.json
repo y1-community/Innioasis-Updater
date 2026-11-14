@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-12T14:42:22Z",
+  "generated_at": "2026-11-10T17:58:53Z",
   "manifest_url": "https://innioasis.app/slidia_manifest.xml",
   "firmware_list_url": "https://innioasis.app/firmware-list.html",
   "feeds": {
@@ -182,18 +182,6 @@
       "releases_atom": "https://innioasis.app/feeds/y1-community/q3-stock-rom-mirror/releases.atom",
       "repo_json": "https://innioasis.app/feeds/y1-community/q3-stock-rom-mirror/repo.json"
     },
-    "NoahDomingues/Lithium": {
-      "repo": "NoahDomingues/Lithium",
-      "releases_json": "https://innioasis.app/feeds/noahdomingues/lithium/releases.json",
-      "releases_atom": "https://innioasis.app/feeds/noahdomingues/lithium/releases.atom",
-      "repo_json": "https://innioasis.app/feeds/noahdomingues/lithium/repo.json"
-    },
-    "y1-community/Lithium-mirror": {
-      "repo": "y1-community/Lithium-mirror",
-      "releases_json": "https://innioasis.app/feeds/y1-community/lithium-mirror/releases.json",
-      "releases_atom": "https://innioasis.app/feeds/y1-community/lithium-mirror/releases.atom",
-      "repo_json": "https://innioasis.app/feeds/y1-community/lithium-mirror/repo.json"
-    },
     "y1-community/q5-stock-rom-mirror": {
       "repo": "y1-community/q5-stock-rom-mirror",
       "releases_json": "https://innioasis.app/feeds/y1-community/q5-stock-rom-mirror/releases.json",
@@ -235,18 +223,6 @@
       "releases_json": "https://innioasis.app/feeds/y1-community/y1_launcher-mirror/releases.json",
       "releases_atom": "https://innioasis.app/feeds/y1-community/y1_launcher-mirror/releases.atom",
       "repo_json": "https://innioasis.app/feeds/y1-community/y1_launcher-mirror/repo.json"
-    },
-    "y1-community/inniclassic-mirror": {
-      "repo": "y1-community/inniclassic-mirror",
-      "releases_json": "https://innioasis.app/feeds/y1-community/inniclassic-mirror/releases.json",
-      "releases_atom": "https://innioasis.app/feeds/y1-community/inniclassic-mirror/releases.atom",
-      "repo_json": "https://innioasis.app/feeds/y1-community/inniclassic-mirror/repo.json"
-    },
-    "y1-community/classy-mirror": {
-      "repo": "y1-community/classy-mirror",
-      "releases_json": "https://innioasis.app/feeds/y1-community/classy-mirror/releases.json",
-      "releases_atom": "https://innioasis.app/feeds/y1-community/classy-mirror/releases.atom",
-      "repo_json": "https://innioasis.app/feeds/y1-community/classy-mirror/repo.json"
     },
     "y1-community/y2player-mirror": {
       "repo": "y1-community/y2player-mirror",
@@ -300,87 +276,75 @@
   "mirrors": {
     "y1-community/better-y-mirror": {
       "source_repo": "Leska1337/better-Y",
-      "updated_at": "2026-11-12T13:43:25Z"
-    },
-    "y1-community/classy-mirror": {
-      "source_repo": "ClassyPlayer/Classy",
-      "updated_at": "2026-11-12T13:38:23Z"
+      "updated_at": "2026-11-08T19:59:00Z"
     },
     "y1-community/g1-stock-rom-mirror": {
       "source_repo": "y1-community/g1-stock-rom",
-      "updated_at": "2026-11-12T03:50:48Z"
+      "updated_at": "2026-11-08T20:41:39Z"
     },
     "y1-community/g3-stock-rom-mirror": {
       "source_repo": "y1-community/g3-stock-rom",
-      "updated_at": "2026-11-12T03:43:56Z"
+      "updated_at": "2026-11-08T20:33:09Z"
     },
     "y1-community/g5-stock-rom-mirror": {
       "source_repo": "y1-community/g5-stock-rom",
-      "updated_at": "2026-11-11T22:56:48Z"
-    },
-    "y1-community/inniclassic-mirror": {
-      "source_repo": "FabianZettl/inniclassic",
-      "updated_at": "2026-11-12T03:08:19Z"
+      "updated_at": "2026-11-06T21:04:17Z"
     },
     "y1-community/koensayr-auto-mirror": {
       "source_repo": "ryan-specter/koensayr-auto",
-      "updated_at": "2026-11-12T13:43:38Z"
-    },
-    "y1-community/Lithium-mirror": {
-      "source_repo": "noahdomingues/lithium",
-      "updated_at": "2026-11-12T14:42:22Z"
+      "updated_at": "2026-11-08T20:02:13Z"
     },
     "y1-community/q3-stock-rom-mirror": {
       "source_repo": "y1-community/q3-stock-rom",
-      "updated_at": "2026-11-12T13:52:39Z"
+      "updated_at": "2026-11-08T20:00:37Z"
     },
     "y1-community/q5-stock-rom-mirror": {
       "source_repo": "y1-community/q5-stock-rom",
-      "updated_at": "2026-11-12T13:53:32Z"
+      "updated_at": "2026-11-08T20:01:17Z"
     },
     "y1-community/rockbox-mirror": {
       "source_repo": "rockbox-y1/rockbox",
-      "updated_at": "2026-11-12T08:07:11Z"
+      "updated_at": "2026-11-10T11:51:14Z"
     },
     "y1-community/rondo-mirror": {
       "source_repo": "jarvissax/rondo",
-      "updated_at": "2026-11-12T14:19:21Z"
+      "updated_at": "2026-11-10T11:51:56Z"
     },
     "y1-community/solar-mirror": {
       "source_repo": "thesolarproject/solar",
-      "updated_at": "2026-11-12T13:01:34Z"
+      "updated_at": "2026-11-08T23:01:33Z"
     },
     "y1-community/y1-ata-rom-mirror": {
       "source_repo": "y1-community/y1-ata-rom",
-      "updated_at": "2026-11-12T13:50:43Z"
+      "updated_at": "2026-11-08T19:59:06Z"
     },
     "y1-community/y1-linux-rom-mirror": {
       "source_repo": "y1-community/y1-linux-rom",
-      "updated_at": "2026-11-12T13:41:29Z"
+      "updated_at": "2026-11-08T19:56:49Z"
     },
     "y1-community/y1-stock-rom-mirror": {
       "source_repo": "y1-community/y1-stock-rom",
-      "updated_at": "2026-11-12T14:11:14Z"
+      "updated_at": "2026-11-08T20:07:10Z"
     },
     "y1-community/y1_launcher-mirror": {
       "source_repo": "ismileblue/y1_launcher",
-      "updated_at": "2026-11-12T05:36:36Z"
+      "updated_at": "2026-11-08T20:45:25Z"
     },
     "y1-community/y2-ata-rom-mirror": {
       "source_repo": "y1-community/y2-ata-rom",
-      "updated_at": "2026-11-11T21:38:32Z"
+      "updated_at": "2026-11-08T19:57:00Z"
     },
     "y1-community/y2-rockbox-mirror": {
       "source_repo": "spycemagic/y2-rockbox",
-      "updated_at": "2026-11-12T14:04:59Z"
+      "updated_at": "2026-11-08T20:03:02Z"
     },
     "y1-community/y2linux-mirror": {
       "source_repo": "schulzcode/y2linux",
-      "updated_at": "2026-11-12T06:29:07Z"
+      "updated_at": "2026-11-10T13:14:49Z"
     },
     "y1-community/y2player-mirror": {
-      "source_repo": "schulzcode/Y2Player",
-      "updated_at": "2026-11-12T13:57:33Z"
+      "source_repo": "schulzcode/y2player",
+      "updated_at": "2026-11-10T17:58:53Z"
     }
   }
 }

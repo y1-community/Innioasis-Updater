@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261113badge2" defer></script>
+  <script src="../site-init.js?v=20261111cards" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -70,12 +70,12 @@ Supersedes the 70/450/650 mA statements in [the M4 charging record](m4-charging.
 <p><code>charging_state</code> reports three separate quantities: the stock request (<code>stock_request_ua</code>), the programmed selector (<code>charge_limit_ua</code>, <code>selector</code>) and <code>sense_current_est_ua</code>.</p>
 <p>The estimate is <code>(ISENSE - BATSNS - offset) / 200 mohm</code>. Evidence: 16 constant-current samples at the 450 mA selector average 98.3 mV across 3.70 to 4.17 V, 2 samples at 650 mA (DCP) average 139.6 mV, and the zero-current offset is about 2 mV, giving 0.21 ohm. The BSP header uses <code>CUST_R_SENSE 200</code> for the internal linear charger (68 only for an external FAN5405/BQ24158), which fits; the stock Y2 binary compiles 68, which does not. The estimate reads about 6 percent above the selector label. It is the charger path only: not USB input current, not net battery current (the system also draws from the battery), and unvalidated without an external meter. It is deliberately not exposed as <code>current_now</code>.</p>
 <h2 id="not-done">Not done</h2>
-<p>No VCDT (VBUS) ADC channel is read, so a collapsing source is not detected. No pack-temperature or current calibration exists. Termination is voltage-limited rather than the stock current-taper rule. No high-current mode was exercised on hardware.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn (Y2Linux)</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<p>No VCDT (VBUS) ADC channel is read, so a collapsing source is not detected. No pack-temperature or current calibration exists. Termination is voltage-limited rather than the stock current-taper rule. No high-current mode was exercised on hardware.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261106direct" defer></script>
-<script src="../nav.js?v=20261103brand" defer></script>
-<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../docs-viewer.js?v=20261110inline5" defer></script>
+<script src="../portable-zip-links.js?v=20261111zip" defer></script>
+<script src="../nav.js?v=20261111nav" defer></script>
+<script src="../site-locale.js?v=20261111i18nfix" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

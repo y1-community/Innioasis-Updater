@@ -1,24 +1,57 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<notices updated="2026-11-11">
+<notices updated="2026-11-10">
 
-  <notice id="2026-11-11-original-software-3-2-0-before-reborn" persistent="false" severity="info" from="2026-11-11" until="2026-12-31">
-    <title>Install Original Software 3.2.0 or later before installing Reborn</title>
-    <content>Original Software 3.2.0 or later is needed on your Y2 to install Reborn. Install it first, then choose Reborn, select Refresh to see whether any new Reborn versions have become available, and select Install to be guided through the install.</content>
-    <full_content>**Original Software 3.2.0** is the recommended Original Software release for the Y2. Install it before you install Reborn (Y2Linux).
-
-### In Updater CE
-1. Choose **Y2**, then **Original Software**, pick the **3.2.0** release and select **Install**. Follow the guided steps through to the end.
-2. Choose **Reborn (Y2Linux)** and select **Refresh** to see whether any new Reborn versions have become available.
-3. Select **Install** and Updater CE guides you through the rest of the install.
-      
-### Updates after the install
-Once Reborn starts on the player, enable **Wi-Fi** there. From then on Reborn updates itself over the internet on the Y2 itself, so no computer or Updater CE run is needed for later versions.</full_content>
-    <url>https://innioasis.app/guides/reborn-y2linux-y2.html</url>
+  <notice id="2026-11-10-y1-black-yellow-sale" persistent="false" severity="info" display="once">
+    <title>One-off Y1 for sale</title>
+    <content>We're selling a black and yellow Y1. It's the only one we've made. Photos, price and shipping are all on our Ko-fi page.</content>
+    <full_content>We're selling a black and yellow Y1. It's the only one we've made. Photos, price and shipping are on the [Ko-fi listing](https://ko-fi.com/s/f5ce621783).</full_content>
+    <url>https://ko-fi.com/s/f5ce621783</url>
+    <link>https://ko-fi.com/s/f5ce621783</link>
   </notice>
 
-Troubleshooting
- Updater CE is powered by and includes SP Flash Tool, if ever you feel you need it, you can launch SP Flash Tool directly from Updater by selecting the firmware you want to install in the main window then clicking the SP Flash Tool button in the sidebar on he left (Windows and Linux)
-  If you encounter issues after doing an install of a firmware on Mac and Linux, using Updater CE on a Windows computer (Intel/AMD only) you can also use the SP Flash Tool install method for recovery from failed mtkclient based installs from Mac or Linux. (These are the tools available within Updater to install software on your player.)
-  For the Y2linux power-users: This can be useful for installing the replacement firmware image file containing SSH keys from the firmware image generator script from SchulzCode
-  
+  <notice id="2026-11-07-codesigning" persistent="false" severity="info" from="2026-10-25" until="2026-12-31" platform="windows" models="Y1,Y2">
+    <title>Windows 10/11 app launch issues &amp; Smart App Control workaround</title>
+    <content>If Windows 10/11 or Smart App Control stops you from launching the app, follow the workaround here.</content>
+    <full_content>False-positive reports were submitted to Microsoft for `installer.exe` and `InnioasisUpdater.exe` and actioned, but if Windows Endpoint Protection or Smart App Control is still blocking the application on your computer, use this workaround:
+
+### Temporary Workaround: Turn Smart App Control Off
+1. Open Windows **Settings** (press `Win + I`).
+2. Go to **Privacy &amp; security** &gt; **Windows Security** &gt; **App &amp; browser control**.
+3. Under **Smart App Control**, click **Smart App Control settings**.
+4. Set Smart App Control to **Off**. This immediately allows the app to open and run.
+
+If Windows or Edge prevents you from downloading Updater CE, click more options (**…**) then **Keep** &gt; **Show more** &gt; **Keep anyway**.
+
+### Re-enabling Smart App Control
+When false-positive definitions finish updating on your computer, you can re-enable Smart App Control via the Windows Registry:
+1. Press **Windows Key + R**, type `regedit`, and press Enter to open Registry Editor as administrator.
+2. Navigate to: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Policy` (or `Policies`).
+3. Locate `VerifiedAndReputablePolicyState` in the right-hand pane.
+4. Double-click `VerifiedAndReputablePolicyState` and change its Value data to:
+   - `1` = On (Enforced)
+   - `2` = Evaluation Mode
+5. Click OK, close the Registry Editor, and restart your computer.
+
+[See the installer.exe report to Microsoft](https://www.microsoft.com/en-us/wdsi/submission/45d25b9c-0dd6-4d01-afd2-f0ea6b224dfd)  
+[See the InnioasisUpdater.exe report to Microsoft](https://www.microsoft.com/en-us/wdsi/submission/1aef842b-3fda-44e7-bcfb-1a64af3ea661)</full_content>
+    <url>https://innioasis.app/notices.html</url>
+    <link>https://www.microsoft.com/en-us/wdsi/submission/45d25b9c-0dd6-4d01-afd2-f0ea6b224dfd</link>
+  </notice>
+
+  <notice id="notice-y1-rockbox-legacy" persistent="true" severity="warning" models="Y1" firmware_repo="rockbox-y1/rockbox" max_version="0.5" firmware_version="v0.4.*,0.4.*,v0.3.*,0.3.*,v0.2.*,0.2.*,v0.1.*,0.1.*">
+    <title>Rockbox Y1 Compatibility Warning</title>
+    <content>This Rockbox-Y1 release predates 0.5 and is not compatible with Y1 units shipped with firmware 3.0.7 or later. Flashing will prevent booting.</content>
+    <full_content>This Rockbox-Y1 release predates version 0.5. It is not compatible with Innioasis Y1 hardware shipped after March 2026 with Innioasis OS 3.0.7 pre-installed. Flashing this legacy build on those devices will prevent booting until restored via [Updater CE's SP Flash Tool engine](https://innioasis.app/Troubleshooting/recover-non-booting-device.html#sp-flash-tool-engine).</full_content>
+    <url>https://innioasis.app/Troubleshooting/recover-non-booting-device.html#sp-flash-tool-engine</url>
+    <link>https://innioasis.app/Troubleshooting/recover-non-booting-device.html#sp-flash-tool-engine</link>
+  </notice>
+
+  <notice id="notice-y1-stock-legacy" persistent="true" severity="warning" models="Y1" firmware_repo="y1-community/y1-stock-rom,y1-community/y1-stock-rom-mirror" max_version="3.0.7" firmware_version="v3.0.0,3.0.0,v3.0.1,3.0.1,v3.0.2,3.0.2,v3.0.3,3.0.3,v3.0.4,3.0.4,v3.0.5,3.0.5,v3.0.6,3.0.6,v2.*,2.*,v1.*,1.*">
+    <title>Original Software Y1 Compatibility Warning</title>
+    <content>This Original Software release predates 3.0.7 and will prevent booting on newer Y1 hardware until a compatible build is installed.</content>
+    <full_content>This Original Software release predates 3.0.7. It is not compatible with Y1 units manufactured with Innioasis OS 3.0.7 or later. Flashing it will leave the device in a non-booting state until 3.0.7 or higher is installed using [Updater CE's SP Flash Tool engine](https://innioasis.app/Troubleshooting/recover-non-booting-device.html#sp-flash-tool-engine).</full_content>
+    <url>https://innioasis.app/Troubleshooting/recover-non-booting-device.html#sp-flash-tool-engine</url>
+    <link>https://innioasis.app/Troubleshooting/recover-non-booting-device.html#sp-flash-tool-engine</link>
+  </notice>
+
 </notices>

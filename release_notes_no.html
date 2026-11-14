@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="docs-viewer.css?v=20261112cites">
-  <script src="site-init.js?v=20261110inline" defer></script>
+  <script src="site-init.js?v=20261111cards" defer></script>
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Innioasis Oppdaterer">
   <meta property="og:title" content="Firmware release notes - Innioasis Oppdaterer">
@@ -111,9 +111,9 @@
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
   <script src="firmware-catalog.js?v=20261106mirror" defer></script>
-  <script src="docs-viewer.js?v=20261114releaseview" defer></script>
-<script src="portable-zip-links.js?v=20261110warn" defer></script>
-  <script src="nav.js?v=20261110sites" defer></script>
+  <script src="docs-viewer.js?v=20261110inline5" defer></script>
+<script src="portable-zip-links.js?v=20261111zip" defer></script>
+  <script src="nav.js?v=20261111nav" defer></script>
   <script src="site-i18n.js?v=20260830" defer></script>
   <script>
     /* Release notes reader.
@@ -382,6 +382,11 @@
         }
         if (body) {
           var published = String((release && release.body) || "").trim();
+          /* A tag that repeats itself above its notes adds nothing: the tag
+             pill already names it. */
+          if (published && typeof D.stripLeadingTagLine === "function") {
+            published = D.stripLeadingTagLine(published, state.tag);
+          }
           if (published) {
             body.innerHTML = D.markdownToHtml(published, ctx);
             if (window.InnioasisLocale && typeof window.InnioasisLocale.translateDynamic === "function") {
@@ -391,7 +396,11 @@
             body.innerHTML = '<p class="lumen-doc-status">Loading the notes from the project…</p>';
             D.releaseNotesMarkdown(state.repo, state.tag).then(function (found) {
               if (found && found.markdown) {
-                body.innerHTML = D.markdownToHtml(found.markdown, ctx);
+                /* A release with no Markdown notes still carries plain text on
+                   its tag; show it as written rather than an empty state. */
+                body.innerHTML = found.plain && typeof D.plainNotesHtml === "function"
+                  ? D.plainNotesHtml(found.markdown)
+                  : D.markdownToHtml(found.markdown, ctx);
                 if (window.InnioasisLocale && typeof window.InnioasisLocale.translateDynamic === "function") {
                   window.InnioasisLocale.translateDynamic(body);
                 }
@@ -556,5 +565,5 @@
       }
     })();
   </script>
-<script src="site-locale.js?v=20261109stack" defer></script></body>
+<script src="site-locale.js?v=20261111i18nfix" defer></script></body>
 </html>

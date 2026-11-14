@@ -49,7 +49,7 @@ function corsHeaders(request, env) {
   };
 }
 
-const PLATFORM_SUFFIX = /[-_](windows[-_]legacy|macos|mac|windows|win|linux|android|darwin)([-_](x64|amd64|x86_64|x86-64|arm64|aarch64))?(?=\.zip$)/i;
+const PLATFORM_SUFFIX = /[-_](windows[-_]legacy|linux[-_]legacy|macos|mac|windows|win|linux|android|darwin)([-_](x64|amd64|x86_64|x86-64|arm64|aarch64))?(?=\.zip$)/i;
 const ARCH_SUFFIX = /[-_](x64|amd64|x86_64|x86-64|arm64|aarch64)(?=\.zip$)/i;
 
 function safeFilename(name) {

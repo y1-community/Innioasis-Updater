@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261113badge2" defer></script>
+  <script src="../site-init.js?v=20261111cards" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -94,12 +94,12 @@
 <p>This checks the original root hash, copies only to a new regular file, deliberately removes <code>/usr/bin/reborn</code>, updates the derived rootfs identity and checks ext4. It never installs or signs anything and never alters the original. Inspect <code>fixture.json</code> and <code>e2fsck.log</code>. The resulting <code>INTENTIONALLY-BROKEN-APP.ext4</code> is not a release. Only for the approved recovery session, the owner can use <code>tools/update/package.py package</code> with that image, <code>fault-versions.json</code>, a fresh output, an off-device trusted development key/key ID, an allowed sequence greater than the current accepted sequence and <code>--rollback-allowed</code>. Stage/apply that signed package through the normal commands. Keep USB/power/recovery available; the app is intentionally absent. Wait for <code>RollbackPending</code>, save status and use the normal platform reboot to restore the verified previous root. Bind its capture to <code>fault-versions.json</code>; start a separate capture after restoration. The real host ext4 fixture test proves preparation/preservation only, not recovery on physical flash. Do not distribute or install this fixture as ordinary firmware.</p>
 <p>A torn BOOTIMG cannot be fixed by root-only OTA. Development downgrade permission is signed/key-policy controlled; production replay policy, release keys and trust rotation/revocation require deliberate owner release management. Never copy the private signing key to Y2. Current rescue keys can only be changed by a separately controlled trusted BOOTIMG update; mutable root policy cannot revoke old rescue.</p>
 <h2 id="long-runs-and-freeze-acceptance">Long runs and freeze acceptance</h2>
-<p>After the relevant short session passes, run wired 8h, Bluetooth 8h, scan+playback, Wi-Fi transfer+playback, Wi-Fi+Bluetooth, SD/USB cycles, file transfer, renderer/service recovery, repeated boots and near-full behavior. Suspend and electrical OTA interruption remain separately gated. Keep workload parameters and manual observations with each capture, including gaps/failures. Set measurable product budgets from these results before claiming performance or endurance. Only owner-reviewed evidence promotes the exact advertised capability.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn (Y2Linux)</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<p>After the relevant short session passes, run wired 8h, Bluetooth 8h, scan+playback, Wi-Fi transfer+playback, Wi-Fi+Bluetooth, SD/USB cycles, file transfer, renderer/service recovery, repeated boots and near-full behavior. Suspend and electrical OTA interruption remain separately gated. Keep workload parameters and manual observations with each capture, including gaps/failures. Set measurable product budgets from these results before claiming performance or endurance. Only owner-reviewed evidence promotes the exact advertised capability.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261106direct" defer></script>
-<script src="../nav.js?v=20261103brand" defer></script>
-<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../docs-viewer.js?v=20261110inline5" defer></script>
+<script src="../portable-zip-links.js?v=20261111zip" defer></script>
+<script src="../nav.js?v=20261111nav" defer></script>
+<script src="../site-locale.js?v=20261111i18nfix" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

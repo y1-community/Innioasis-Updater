@@ -13,7 +13,6 @@
        a blocked or unavailable GitHub, so a page still works without it. */
     var MANIFEST_SOURCES = [
         "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/main/slidia_manifest.xml",
-        "https://raw.githubusercontent.com/ryan-specter/Innioasis-Updater/main/slidia_manifest.xml",
         "slidia_manifest.xml",
         "../slidia_manifest.xml",
         "/slidia_manifest.xml",
@@ -21,17 +20,10 @@
     ];
 
     function fetchManifestText() {
-        return fetchFirstText(MANIFEST_SOURCES);
-    }
-
-    /* GitHub first under both owner spellings, then the site copy. This keeps
-       page reads off innioasis.app while GitHub is healthy and still lets a
-       brief domain outage leave the tables usable. */
-    function fetchFirstText(urls) {
         var index = 0;
         function attempt() {
-            if (index >= urls.length) return Promise.resolve("");
-            var url = urls[index++];
+            if (index >= MANIFEST_SOURCES.length) return Promise.resolve("");
+            var url = MANIFEST_SOURCES[index++];
             return fetch(url, { cache: "no-cache" })
                 .then(function (response) {
                     if (!response.ok) throw new Error("HTTP " + response.status);
@@ -40,16 +32,6 @@
                 .catch(function () { return attempt(); });
         }
         return attempt();
-    }
-
-    function repoFileSources(file, localFirst) {
-        var github = [
-            "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/main/" + file,
-            "https://raw.githubusercontent.com/ryan-specter/Innioasis-Updater/main/" + file
-        ];
-        var local = [file, "../" + file, "/" + file];
-        var site = ["https://innioasis.app/" + file];
-        return localFirst ? local.concat(github, site) : github.concat(local, site);
     }
 
     /* Which player an asset is built for, read from the file name. Shared
@@ -142,6 +124,7 @@
     function packageNamesFor(item, type) {
         var name = (item.packageName || "").toLowerCase();
         var wanted = String(type || "").toUpperCase();
+        var typeBDeclared = String(item.typeBPackageName || "").toLowerCase();
         var names = name ? [name] : [];
         if (name === "rom.zip") {
             var typeA = ["rom.zip", "rom_type_a.zip", "rom_y1_type_a.zip", "rom_240p.zip", "rom_360p.zip"];
@@ -152,6 +135,16 @@
         }
         if (item.repo && item.repo.toLowerCase().indexOf("y2linux") !== -1) {
             names.push("first-install.zip", "y2linux");
+        }
+        /* A row may name its Type B package explicitly
+           (package_name_y1_type_b). It belongs to Type B only, so the Type A
+           list stays free of it. */
+        if (typeBDeclared) {
+            if (wanted === "A") {
+                names = names.filter(function (entry) { return entry !== typeBDeclared; });
+            } else if (names.indexOf(typeBDeclared) === -1) {
+                names.push(typeBDeclared);
+            }
         }
         return names;
     }
@@ -488,7 +481,8 @@
     var githubTokens = [];
 
     function loadGithubTokens() {
-        return fetchFirstText(repoFileSources("config.ini", false))
+        return fetch("config.ini", { cache: "no-store" })
+            .then(function (response) { return response.ok ? response.text() : ""; })
             .then(function (text) {
                 githubTokens = (text || "").split(/\r?\n/)
                     .map(function (line) { return line.trim(); })
@@ -560,23 +554,18 @@
         if (!repo) return Promise.resolve(null);
         var path = window.location.pathname || "";
         var prefix = /\/guides\/|\/notices\/|\/Troubleshooting\/|\/firmware-info\/|\/release-notes\/|\/post-install\//.test(path) ? "../" : "";
-        var repoPath = "feeds/" + String(repo).toLowerCase() + "/releases.json";
-        var urls = [prefix + repoPath, window.location.origin + "/" + repoPath, "https://innioasis.app/" + repoPath];
-        var index = 0;
-        function attempt() {
-            if (index >= urls.length) {
+        var feedUrl = prefix + "feeds/" + String(repo).toLowerCase() + "/releases.json";
+        return fetch(feedUrl, { cache: "no-store" })
+            .then(function (res) { return res.ok ? res.json() : null; })
+            .then(function (list) {
+                if (Array.isArray(list) && list.length) return { releases: list, complete: true, backup: true };
                 var local = hardcodedReleasesFor(repo);
                 return local ? { releases: local, complete: true, backup: true } : null;
-            }
-            return fetch(urls[index++], { cache: "no-store" })
-                .then(function (res) { return res.ok ? res.json() : null; })
-                .then(function (list) {
-                    if (Array.isArray(list) && list.length) return { releases: list, complete: true, backup: true };
-                    return attempt();
-                })
-                .catch(attempt);
-        }
-        return Promise.resolve().then(attempt);
+            })
+            .catch(function () {
+                var local = hardcodedReleasesFor(repo);
+                return local ? { releases: local, complete: true, backup: true } : null;
+            });
     }
 
     /* Repository names are lookup keys for the release map. GitHub and the
@@ -590,30 +579,98 @@
        behaviour instead of stripping every Updater CE button from the page. */
     var manifestListedRepos = null;
 
+    /* repo -> portable mirror repositories, read from the portable_zips
+       attribute the app itself reads. The catalogue snapshot can be older than
+       the manifest, so a firmware whose mirror is declared there still gets its
+       OS build instead of the project's own rom.zip. */
+    var manifestMirrorsByRepo = {};
+    var manifestMirrorsPromise = null;
+
+    /* Two manifest entries can name the same repository (one per device).
+       Every mirror either of them declares is kept. */
+    function mergeMirrorList(existing, incoming) {
+        var seen = {};
+        var merged = [];
+        String(existing || "").split(/[\s,]+/)
+            .concat(String(incoming || "").split(/[\s,]+/))
+            .forEach(function (value) {
+                var mirror = String(value || "").trim();
+                var key = mirror.toLowerCase();
+                if (!mirror || seen[key]) return;
+                seen[key] = true;
+                merged.push(mirror);
+            });
+        return merged.join(",");
+    }
+
+    /* The manifest lists every package the app can install. Parsing it for
+       mirrors alone leaves the catalogue entries and the listed flags to
+       loadAndMergeManifest. */
+    function parseManifestMirrors(xmlText) {
+        if (!xmlText) return;
+        var doc;
+        try {
+            doc = new DOMParser().parseFromString(xmlText, "application/xml");
+        } catch (_) {
+            return;
+        }
+        if (!doc || doc.querySelector("parsererror")) return;
+        Array.prototype.forEach.call(doc.querySelectorAll("package"), function (pkg) {
+            var handler = pkg.getAttribute("handler") || "";
+            if (handler && handler !== "Custom Firmware") return;
+            var repo = repoKey(pkg.getAttribute("repo"));
+            var mirrors = (pkg.getAttribute("portable_zips") || "").trim();
+            if (!repo || !mirrors) return;
+            manifestMirrorsByRepo[repo] = mergeMirrorList(manifestMirrorsByRepo[repo], mirrors);
+        });
+    }
+
+    /* Fetched at most once per page, for a click that arrives before the
+       manifest has been merged into the catalogue. */
+    function loadManifestMirrors() {
+        if (!manifestMirrorsPromise) {
+            manifestMirrorsPromise = fetchManifestText()
+                .then(parseManifestMirrors)
+                .catch(function () {});
+        }
+        return manifestMirrorsPromise;
+    }
+
     /* Hardware types each model declares in slidia_manifest.xml, from
        type_a_asset and type_b_asset. A model that declares none is not made to
        invent one; typed release asset names fill this in for such projects. */
     var manifestTypesByModel = {};
 
-    /* repo -> portable mirror repositories. The manifest is the source of
-       truth when a rendered row did not carry data-portable-zips itself. */
-    var manifestPortableByRepo = {};
-
     /* Updater CE only installs a project the manifest lists. A firmware that
        lives in the feeds alone has releases worth reading, but no install route
-       and no portable package, so its rows download the project's own rom.zip. */
+       and no software install zip, so its rows download the project's own rom.zip. */
     function manifestRepoListed(item) {
         if (manifestListedRepos === null) return true;
         var key = repoKey(item && item.repo);
         return Boolean(key && manifestListedRepos[key]);
     }
 
+    /* The catalogue value first, then the manifest, because the manifest is
+       the file the app reads and the catalogue is only a snapshot of it. */
     function manifestPortableZips(item) {
         if (!manifestRepoListed(item)) return "";
         var declared = String((item && item.portable_zips) || "").trim();
         if (declared) return declared;
-        var key = repoKey(item && item.repo);
-        return (key && manifestPortableByRepo[key]) || "";
+        return manifestMirrorsByRepo[repoKey(item && item.repo)] || "";
+    }
+
+    /* The mirrors a download control may use. The rendered attribute can be
+       empty on a page whose catalogue predates the manifest, so the repository
+       the control names is the fallback. */
+    function portableZipsFor(control) {
+        var declared = (control.getAttribute("data-portable-zips") || "").trim();
+        if (declared) return Promise.resolve(declared);
+        var repo = repoKey(control.getAttribute("data-item-repo") || "");
+        if (!repo) return Promise.resolve("");
+        if (manifestMirrorsByRepo[repo]) return Promise.resolve(manifestMirrorsByRepo[repo]);
+        return loadManifestMirrors().then(function () {
+            return manifestMirrorsByRepo[repo] || "";
+        });
     }
 
     /* One identity per release, so the cached catalogue, the per-repo feed
@@ -646,22 +703,7 @@
             var key = releaseKey(release);
             if (!key) return;
             if (seen[key] !== undefined) {
-                if (replace && release) {
-                    /* GitHub's live answer only knows the original repository.
-                       Keep the mirror half and the combined snapshot from our
-                       feed so the row does not lose the portable downloads or
-                       the history stats.txt recorded for replaced assets. */
-                    var cached = merged[seen[key]];
-                    if (cached) {
-                        if (typeof release.mirror_downloads !== "number" && typeof cached.mirror_downloads === "number") {
-                            release.mirror_downloads = cached.mirror_downloads;
-                        }
-                        if (typeof release.downloads !== "number" && typeof cached.downloads === "number") {
-                            release.downloads = cached.downloads;
-                        }
-                    }
-                    merged[seen[key]] = release;
-                }
+                if (replace) merged[seen[key]] = release;
                 return;
             }
             seen[key] = merged.length;
@@ -1203,9 +1245,6 @@
             arch = "arm64";
         } else if (/riscv64|riscv/i.test(ua)) {
             arch = "riscv";
-        } else if (/i686|i386|win32;|x86;/i.test(ua)) {
-            /* A 32-bit browser must not be handed an x86-64 desktop bundle. */
-            arch = "x86";
         }
         return { os: os, arch: arch };
     }
@@ -1214,11 +1253,11 @@
         var p = detectSystemArchitecture();
         if (navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === "function") {
             try {
-                var data = await navigator.userAgentData.getHighEntropyValues(["architecture", "bitness"]);
+                var data = await navigator.userAgentData.getHighEntropyValues(["architecture"]);
                 if (data && data.architecture) {
                     var a = data.architecture.toLowerCase();
                     if (a.includes("arm")) p.arch = "arm64";
-                    else if (a.includes("x86")) p.arch = String(data.bitness) === "32" ? "x86" : "x86-64";
+                    else if (a.includes("x86")) p.arch = "x86-64";
                     else if (a.includes("riscv")) p.arch = "riscv";
                 }
             } catch (_) {}
@@ -1227,6 +1266,9 @@
     }
 
     var portableIndexCache = {};
+    /* Set once a mirror index has been read: that is what separates "this
+       release has no build for this computer yet" from "the lookup failed". */
+    var portableIndexSeen = false;
 
     function normalizePortableRepo(value) {
         var text = String(value || "").trim();
@@ -1251,110 +1293,16 @@
         return repos;
     }
 
-    /* Release-note deep links name one release and one package:
-       ?repo=owner/name&tag=v1.2.3&asset=rom.zip&platform=windows&mirror=owner/mirror.
-       Missing or unknown values return null so the directory renders exactly
-       as it did before this feature. */
-    var DEEP_LINK_PLATFORMS = {
-        windows: "Windows 10/11 (64-bit)",
-        "windows-arm64": "Windows on ARM",
-        "windows-legacy": "Windows XP/7/8 (32/64-bit)",
-        linux: "Linux (64-bit)",
-        "linux-arm64": "Linux on ARM",
-        "linux-legacy": "32-bit Linux",
-        macos: "macOS 12+"
-    };
-
-    function deepLinkPlatformLabel(key) {
-        return DEEP_LINK_PLATFORMS[String(key || "").toLowerCase()] || "";
-    }
-
-    function parseDeepLink(search) {
-        var params = new URLSearchParams(String(search || ""));
-        var state = {
-            repo: (params.get("repo") || "").trim(),
-            tag: (params.get("tag") || "").trim(),
-            asset: (params.get("asset") || "").trim(),
-            platform: (params.get("platform") || "").trim().toLowerCase(),
-            mirror: normalizePortableRepo(params.get("mirror") || "")
-        };
-        if (!state.repo || state.repo.indexOf("/") === -1 || !state.tag) return null;
-        /* An unknown platform must not silently fall back to the visitor's
-           detected architecture: that would hand a Windows ARM reader an
-           x86-64 package, or the other way round. Leave it empty and the
-           download falls back to the project's own ZIP. */
-        if (!DEEP_LINK_PLATFORMS[state.platform]) state.platform = "";
-        return state;
-    }
-
-    /* One repo can host several catalogue entries (the stock repo carries a
-       Y1 and a Y2 package). The asset name picks the matching entry before
-       the model fallback, so rom_y2.zip never opens the Y1 row. */
-    function deepLinkCatalogItem(catalog, state) {
-        if (!state || !Array.isArray(catalog)) return null;
-        var repo = repoKey(state.repo);
-        var candidates = catalog.filter(function (item) {
-            return item && repoKey(item.repo) === repo;
-        });
-        if (!candidates.length) return null;
-        var asset = String(state.asset || "").toLowerCase();
-        if (asset) {
-            var byPackage = candidates.filter(function (item) {
-                return String(item.packageName || "").toLowerCase() === asset;
-            });
-            if (byPackage.length === 1) return byPackage[0];
-            var model = assetModel(asset);
-            var byModel = model ? candidates.filter(function (item) {
-                return String(item.model || "").toUpperCase() === model;
-            }) : [];
-            if (byModel.length === 1) return byModel[0];
-        }
-        return candidates[0];
-    }
-
-    function tagMatches(candidate, wanted) {
-        return tagKey(candidate) === tagKey(wanted);
-    }
-
-    function deepLinkTargetRelease(releases, state) {
-        if (!Array.isArray(releases) || !state || !state.tag) return null;
-        for (var i = 0; i < releases.length; i += 1) {
-            var release = releases[i];
-            if (release && tagMatches(release.tag_name || release.name, state.tag)) return release;
-        }
-        return null;
-    }
-
-    /* A valid tag scopes the directory to that release; a missing tag returns
-       null, which leaves the normal full list in place. */
-    function deepLinkScopedRelease(state, releases) {
-        if (!state) return null;
-        return deepLinkTargetRelease(releases, state);
-    }
-
-    /* The release-history page for a software project: every published
-       version, with its full download list on each release page. */
-    function deepLinkVersionsPage(item) {
-        if (!item || !item.slug) return "";
-        return "release-notes/" + encodeURIComponent(item.slug) + "/index.html";
-    }
-
-    /* One decision shared by the firmware table and the guide: a real legacy
-       Windows visit, an explicit ?platform=windows-legacy URL, or the marker
-       site-legacy.js publishes. Everything else keeps the Updater CE route. */
-    function portableRequested() {
+    /* Legacy Windows is decided once, by site-legacy.js: XP through 8.1 and
+       32-bit PCs take the flash-tool bundle, because Updater CE cannot run
+       there. Supported Windows, macOS and Linux follow the reported arch. */
+    function legacyPortableKey() {
         try {
             var marker = window.INNIOASIS_LEGACY;
-            if (marker && marker.isLegacy) return marker.platformKey || "windows-legacy";
-            if (document.documentElement.getAttribute("data-windows-legacy") === "true") return "windows-legacy";
-            var requested = String(new URLSearchParams(window.location.search).get("platform") || "").trim().toLowerCase();
-            if (requested === "windows-legacy") return requested;
-        } catch (_) {}
-        return "";
-    }
-
-    function legacyPortableKey() {
-        return portableRequested();
+            return marker && marker.isLegacy ? String(marker.platformKey || "windows-legacy") : "";
+        } catch (_) {
+            return "";
+        }
     }
 
     function portablePlatformKey(platform) {
@@ -1363,7 +1311,6 @@
         if (!platform) return "";
         if (platform.os === "macos") return "macos";
         if (platform.os !== "windows" && platform.os !== "linux") return "";
-        if (platform.arch === "x86") return platform.os === "linux" ? "linux-legacy" : "windows-legacy";
         if (platform.arch && platform.arch !== "x86-64" && platform.arch !== "arm64") return "";
         return platform.os + (platform.arch === "arm64" ? "-arm64" : "");
     }
@@ -1377,22 +1324,13 @@
         if (!portableIndexCache[repo]) {
             portableIndexCache[repo] = (async function () {
                 /* Mirrors publish their manifest on main, but a few older
-                   repositories still use master. The owner fallback keeps a
-                   moved mirror reachable without an API request. */
+                   repositories still use master. Try both before giving up. */
                 var branches = ["main", "master"];
-                var owners = [repo];
-                if (/^y1-community\//i.test(repo)) owners.push(repo.replace(/^y1-community\//i, "ryan-specter/"));
-                for (var o = 0; o < owners.length; o++) {
-                    for (var i = 0; i < branches.length; i++) {
-                        try {
-                            var res = await fetch("https://raw.githubusercontent.com/" + owners[o] + "/" + branches[i] + "/index.json", { cache: "no-store" });
-                            if (res.ok) {
-                                var data = await res.json();
-                                data.__repo = owners[o];
-                                return data;
-                            }
-                        } catch (_) {}
-                    }
+                for (var i = 0; i < branches.length; i++) {
+                    try {
+                        var res = await fetch("https://raw.githubusercontent.com/" + repo + "/" + branches[i] + "/index.json", { cache: "no-store" });
+                        if (res.ok) return await res.json();
+                    } catch (_) {}
                 }
                 return null;
             })();
@@ -1437,16 +1375,11 @@
     async function verifiedMirrorAssetUrl(assetUrl, declaredSize) {
         var parts = githubReleaseAssetParts(assetUrl);
         if (!parts) return null;
-        /* index.json carries the published byte size. Trust it and skip the
-           API call, keeping the common download path under no rate limit. */
-        if (Number(declaredSize) > 0) {
-            return { url: assetUrl, size: Number(declaredSize) || 0 };
-        }
         var release = await fetchMirrorRelease(parts.repo, parts.tag);
         if (!release || !Array.isArray(release.assets)) {
             /* api.github.com allows 60 requests an hour per visitor and can be
                blocked outright. The mirror's own index.json already names the
-               file and its byte size, so keep the portable package instead of
+               file and its byte size, so keep the software install zip instead of
                dropping back to the original repository on a rate limit. */
             return Number(declaredSize) > 0
                 ? { url: assetUrl, size: Number(declaredSize) || 0 }
@@ -1463,49 +1396,37 @@
         return { url: published.browser_download_url, size: Number(published.size) || 0 };
     }
 
-    /* Mirrors do not always copy a project's tag spelling: rondo-mirror tags
-       a release v1.0.2 where the project used 1.0.2. Compare the number, not
-       the prefix. */
-    function tagKey(value) {
-        return String(value || "").trim().toLowerCase().replace(/^v(?=\d)/, "");
-    }
-
     /* The file name a mirror gives the package it built for one platform. */
     function portableSuffix(platformKey) {
         return platformKey === "macos" ? "-macos.zip" :
             platformKey === "windows" ? "-windows.zip" :
             platformKey === "windows-arm64" ? "-windows-arm64.zip" :
             platformKey === "windows-legacy" ? "-windows-legacy.zip" :
+            platformKey === "linux-legacy" ? "-linux-legacy.zip" :
             platformKey === "linux" ? "-linux.zip" :
-            platformKey === "linux-arm64" ? "-linux-arm64.zip" :
-            platformKey === "linux-legacy" ? "-linux-legacy.zip" : "";
+            platformKey === "linux-arm64" ? "-linux-arm64.zip" : "";
     }
 
-    /* A mirror can publish a release before its own index.json catches up. The
-       release's assets still follow the <rom>-<platform>.zip name, so the
-       package is found from the release itself during that window instead of
-       falling back to the project's plain rom.zip. */
+    /* A mirror can publish a release before its index.json catches up. The
+       release's own assets still follow the <rom>-<platform>.zip name, so the
+       package is found from the release itself in that window. */
     async function findConventionalAsset(repo, tag, sourceAsset, platformKey) {
         var suffix = portableSuffix(platformKey);
         if (!suffix || !tag || !sourceAsset) return null;
-        var candidates = [String(tag)];
-        if (!/^v/i.test(candidates[0])) candidates.push("v" + candidates[0]);
+        var release = await fetchMirrorRelease(repo, tag);
+        if (!release || !Array.isArray(release.assets)) return null;
         var wanted = String(sourceAsset).replace(/\.zip$/i, "") + suffix;
-        for (var i = 0; i < candidates.length; i++) {
-            var release = await fetchMirrorRelease(repo, candidates[i]);
-            if (!release || !Array.isArray(release.assets)) continue;
-            var published = release.assets.find(function (entry) {
-                return entry && String(entry.name) === wanted && Number(entry.size) > 0;
-            });
-            if (published) return { name: published.name, url: published.browser_download_url, size: Number(published.size) || 0 };
-        }
-        return null;
+        var published = release.assets.find(function (entry) {
+            return entry && String(entry.name) === wanted && Number(entry.size) > 0;
+        });
+        if (!published) return null;
+        return { name: published.name, url: published.browser_download_url, size: Number(published.size) || 0 };
     }
 
     function findPortableAsset(index, tag, sourceAsset, platformKey) {
         if (!index || Number(index.schema) !== 1 || !Array.isArray(index.releases)) return null;
         var release = index.releases.find(function (candidate) {
-            return candidate && tagKey(candidate.tag) === tagKey(tag);
+            return candidate && String(candidate.tag || "").toLowerCase() === String(tag).toLowerCase();
         });
         if (!release || !Array.isArray(release.assets)) return null;
         var base = String(sourceAsset).replace(/\.zip$/i, "");
@@ -1522,20 +1443,27 @@
        and holds the package built for this firmware file on this OS/arch.
        Every other case returns null so the caller downloads from the project
        that publishes the firmware. */
-    async function resolvePortableZip(mirrors, releaseTag, sourceAsset, platformOverride) {
+    async function resolvePortableZip(mirrors, releaseTag, sourceAsset) {
         var repos = parsePortableZips(mirrors);
         if (!repos.length || !releaseTag || !sourceAsset) return null;
-        var key = String(platformOverride || "").toLowerCase();
-        if (!key) {
-            var platform = await getFullPlatform();
-            key = portablePlatformKey(platform);
-        }
+        var platform = await getFullPlatform();
+        var key = portablePlatformKey(platform);
         if (!key) return null;
         for (var i = 0; i < repos.length; i++) {
             var index = await fetchPortableIndex(repos[i]);
+            if (index && Array.isArray(index.releases)) portableIndexSeen = true;
             var asset = findPortableAsset(index, releaseTag, sourceAsset, key);
+            /* Windows on ARM has no native package in the current mirrors. The
+               x64 build is the one Windows runs there through its own
+               emulation; the mother rom.zip would install nothing at all. */
+            if (!asset && key === "windows-arm64") {
+                asset = findPortableAsset(index, releaseTag, sourceAsset, "windows");
+            }
             if (!asset || !asset.name) {
                 asset = await findConventionalAsset(repos[i], releaseTag, sourceAsset, key);
+                if (!asset && key === "windows-arm64") {
+                    asset = await findConventionalAsset(repos[i], releaseTag, sourceAsset, "windows");
+                }
             }
             if (!asset || !asset.name) continue;
             var candidate = /^https:\/\/github\.com\//i.test(String(asset.url || ""))
@@ -1671,8 +1599,8 @@
 
     async function startSmartZipDownload(zipUrl, zipName, itemName, itemModel, releaseTag, portableZips, trigger) {
         zipName = releaseFileName(zipName, "rom.zip");
-        /* A second click (another portable package, or the project's own zip
-           when this computer has no portable build) restarts the panel for the
+        /* A second click (another software install zip, or the project's own zip
+           when this computer has no software install zip) restarts the panel for the
            new file instead of being dropped. */
         hideDownloadPanel();
 
@@ -1762,11 +1690,14 @@
             downloadPanelHideTimer = setTimeout(hideDownloadPanel, 10000);
         }
 
+        var ZIP_BUILDING_TEXT = "This download is being prepared. Check back soon.";
+
         function osLabelFor(key) {
             return key === "macos" ? "macOS" :
                 key === "windows" ? "Windows" :
                 key === "windows-arm64" ? "Windows on ARM" :
-                key === "windows-legacy" ? "Windows XP/7/8 (32/64-bit)" :
+                key === "windows-legacy" ? "Windows XP/7/8 software install zip" :
+                key === "linux-legacy" ? "32-bit Linux software install zip" :
                 key === "linux" ? "Linux" :
                 key === "linux-arm64" ? "Linux on ARM" : "";
         }
@@ -1814,6 +1745,19 @@
            progress, then written to Downloads under the release's name. */
         try {
             var portableZip = await resolvePortableZip(portableZips, releaseTag, zipName);
+            if (!portableZip) {
+                var visitPlatform = await getFullPlatform();
+                if (portableIndexSeen && portablePlatformKey(visitPlatform)) {
+                    /* This release has no software install zip for this computer yet.
+                       The project's own zip has no installer for the platform,
+                       so name the wait instead of starting that download. */
+                    if (label) label.textContent = ZIP_BUILDING_TEXT;
+                    if (metrics) metrics.textContent = "";
+                    if (bar) bar.style.width = "0%";
+                    if (dismissBtn) { dismissBtn.hidden = false; dismissBtn.onclick = hideDownloadPanel; }
+                    return;
+                }
+            }
             var chosenUrl = portableZip ? portableZip.url : zipUrl;
             var chosenPlatform = portableZip ? portableZip.platform : "";
             /* Route through the proxy only when it answers for this asset. If
@@ -1881,14 +1825,7 @@
            so a link can point straight at one model's release list. The legacy
            #y1 / #y2 hash anchors still work for older links. */
         var searchParams = new URLSearchParams(window.location.search);
-        /* Release-note deep links scope the table to one release. If the repo
-           is not in the catalogue the whole feature stays off and the normal
-           directory renders unchanged. */
-        var deepLink = parseDeepLink(window.location.search);
-        var deepLinkItem = deepLink ? deepLinkCatalogItem(catalog, deepLink) : null;
-        if (!deepLinkItem) deepLink = null;
         var modelParam = (searchParams.get("model") || "").toUpperCase();
-        if (deepLinkItem && deepLinkItem.model) modelParam = String(deepLinkItem.model).toUpperCase();
         /* A specific model is more precise than a brand, so a link that names
            both lands on the model's own brand. */
         var wantedBrand = brandFromUrl();
@@ -1896,9 +1833,6 @@
         if (!wantedBrand) wantedBrand = DEFAULT_BRAND;
         if (brandSelect) brandSelect.value = wantedBrand;
         var typeParam = (searchParams.get("type") || "").toUpperCase();
-        /* The release link carries the source asset, so a Type B package is
-           not lost when the link does not repeat ?type=B. */
-        if (deepLink && /type[_-]?b/i.test(String(deepLink.asset || ""))) typeParam = "B";
         var viewParam = (searchParams.get("view") || "software").toLowerCase();
         var heroKicker = document.querySelector("#main > header .lumen-kicker");
         var heroH1 = document.querySelector("#main > header h1");
@@ -2003,7 +1937,8 @@
         function loadBlocklist() {
             var files = ["release_blocklist.csv", "release_blocklist.default.csv"];
             return Promise.all(files.map(function (file) {
-                return fetchFirstText(repoFileSources(file, false))
+                return fetch(file, { cache: "no-store" })
+                    .then(function (response) { return response.ok ? response.text() : ""; })
                     .then(parseBlocklist)
                     .catch(function () { return []; });
             })).then(function (lists) {
@@ -2188,7 +2123,6 @@
         }
         /* ?software=slug preselects a project; the slug embeds the model (original-y1, rockbox-y2). */
         var softwareParam = (searchParams.get("software") || "").toLowerCase();
-        if (deepLinkItem && deepLinkItem.slug) softwareParam = String(deepLinkItem.slug).toLowerCase();
         if (softwareParam && model) {
             var paramItem = catalog.find(function (item) { return item.slug === softwareParam; });
             if (paramItem) {
@@ -2322,20 +2256,11 @@
                     var entry = MODEL_ZIPS.find(function (candidate) { return candidate.name === aName; });
                     var label = entry ? entry.label : (assetType ? item.model + " · Type " + assetType : item.model + " package");
                     var title = entry ? entry.title : ("For " + item.model + " players" + (assetType ? " · Type " + assetType : ""));
-                    links.push('<li><a class="lumen-download-link lumen-zip-text-link" href="' + escapeHtml(asset.browser_download_url) + '" download="' + escapeHtml(asset.name) + '" data-zip-url="' + escapeHtml(asset.browser_download_url) + '" data-zip-name="' + escapeHtml(asset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "") + '" data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '" data-item-name="' + escapeHtml(item.name || "") + '" data-item-model="' + escapeHtml(item.model || "") + '" title="' + escapeHtml(title) + '"><span class="lumen-zip-file">' + escapeHtml(manifestPortableZips(item) ? "Portable ZIP" : asset.name) + '</span> <span class="lumen-meta">' + escapeHtml(label) + '</span></a></li>');
+                    links.push('<li><a class="lumen-download-link lumen-zip-text-link" href="' + escapeHtml(asset.browser_download_url) + '" download="' + escapeHtml(asset.name) + '" data-zip-url="' + escapeHtml(asset.browser_download_url) + '" data-zip-name="' + escapeHtml(asset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "") + '" data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '" data-item-repo="' + escapeHtml(item.repo || "") + '" data-item-name="' + escapeHtml(item.name || "") + '" data-item-model="' + escapeHtml(item.model || "") + '" title="' + escapeHtml(title) + '">' + escapeHtml(asset.name) + ' <span class="lumen-meta">' + escapeHtml(label) + '</span></a></li>');
                 }
             });
             var assetLinks = links.length ? links.join("") : '<li>No ZIP asset was found in this release.</li>';
-            /* This row is already a specific release. Send its "Other
-               versions" control to that release's download page, not to the
-               software's version picker where the user has to choose again. */
-            var versionsHref = staticReleaseNotesHref(
-                item, release.tag_name || release.name || ""
-            ) || deepLinkVersionsPage(item);
-            var versionsLink = versionsHref
-                ? '<p class="lumen-meta lumen-release-versions"><a href="' + escapeHtml(versionsHref) + '" title="See every published version of ' + escapeHtml(item.name || "this software") + '">Other versions</a></p>'
-                : "";
-            return '<details class="lumen-release-details"><summary>Release details and zip</summary><p><strong>' + escapeHtml(release.name || release.tag_name || "Public release") + '</strong>' + (release.published_at ? ' · ' + escapeHtml(release.published_at.slice(0, 10)) : '') + '</p><ul>' + assetLinks + '</ul>' + versionsLink + '</details>';
+            return '<details class="lumen-release-details"><summary>Release details and zip</summary><p><strong>' + escapeHtml(release.name || release.tag_name || "Public release") + '</strong>' + (release.published_at ? ' · ' + escapeHtml(release.published_at.slice(0, 10)) : '') + '</p><ul>' + assetLinks + '</ul></details>';
         }
 
         /* The release-table icon opens the project's README: the static page
@@ -2422,33 +2347,6 @@
             return { version: version, date: dated ? dated.date : "" };
         }
 
-        /* One figure for the release: the project's own firmware ZIPs plus
-           every ZIP the portable mirror carries, including the downloads
-           stats.txt recorded before a rebuild replaced an asset. The live
-           GitHub count refreshes only the original repository, so the mirror
-           half comes from the feed and is added to it. */
-        function sourceZipDownloads(release) {
-            return (release.assets || []).reduce(function (total, asset) {
-                var name = String(asset && asset.name || "");
-                if (!/\.zip$/i.test(name) || /sources?|legal-info/i.test(name)) return total;
-                return total + (parseInt(asset.download_count, 10) || 0);
-            }, 0);
-        }
-
-        function releaseDownloadTotal(release) {
-            if (!release) return 0;
-            if (typeof release.mirror_downloads === "number") {
-                return sourceZipDownloads(release) + release.mirror_downloads;
-            }
-            if (typeof release.downloads === "number") return release.downloads;
-            return sourceZipDownloads(release);
-        }
-
-        function formatDownloadCount(value) {
-            try { return Number(value || 0).toLocaleString("en-US"); }
-            catch (_) { return String(value || 0); }
-        }
-
         function releaseRows(release, item, state) {
             /* The Release column label with icon and semver detection. */
             var iconHtml = firmwareIconLink(resolveFirmwareIcon(release, item), item);
@@ -2490,26 +2388,8 @@
                 : '';
             var guideUrl = 'guide.html?model=' + encodeURIComponent(item.model) + '&software=' + encodeURIComponent(item.slug);
             var listedInManifest = manifestRepoListed(item);
-            /* The legacy CTA resolves this same release through the mirror
-               index or the site feed. Keep the original filename on the
-               anchor so source_asset stays precise. */
-            var ctaAsset = null;
-            if (release) {
-                var ctaAssets = zipAssets(release, item.model);
-                ctaAsset = ctaAssets.find(function (asset) {
-                    return String(asset.name || "").toLowerCase() === String(item.packageName || "").toLowerCase();
-                }) || ctaAssets[0] || null;
-            }
-            var ctaData = ctaAsset
-                ? ' data-zip-url="' + escapeHtml(ctaAsset.browser_download_url) + '" data-zip-name="' + escapeHtml(ctaAsset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "release") + '" data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '"'
-                : '';
-            var legacyNow = Boolean(portableRequested());
             var updater = listedInManifest
-                ? '<a class="lumen-updater-button lumen-updater-button--table" href="' + (legacyNow ? escapeHtml("firmware-list.html") : guideUrl) + '"' + ctaData + ' aria-label="' + (legacyNow ? 'Get the portable ZIP for ' + escapeHtml(item.name) : 'Get ' + escapeHtml(item.name) + ' for ' + escapeHtml(item.model) + ' on Innioasis Updater') + '"><img src="assets/icon.ico" width="28" height="28" alt=""><span><strong>' + (legacyNow ? 'Get Zip' : 'Get it on Updater') + '</strong><small>' + (legacyNow ? 'portable package' : 'with guided install') + '</small></span></a>'
-                : '';
-            var downloadTotal = releaseDownloadTotal(release);
-            var downloadsMeta = release
-                ? '<div class="lumen-meta lumen-download-count">Downloads: ' + formatDownloadCount(downloadTotal) + '</div>'
+                ? '<a class="lumen-updater-button lumen-updater-button--table" href="' + guideUrl + '" aria-label="Get ' + escapeHtml(item.name) + ' for ' + escapeHtml(item.model) + ' on Innioasis Updater"><img src="assets/icon.ico" width="28" height="28" alt=""><span><strong>Get it on Updater</strong><small>with guided install</small></span></a>'
                 : '';
 
             var zipBtn = '';
@@ -2537,7 +2417,7 @@
                     }) || (rowType ? null : assets[0]);
                 }
                 if (primaryAsset) {
-                    zipBtn = ' <button type="button" class="lumen-zip-download-button lumen-zip-download-button--table" data-zip-url="' + escapeHtml(primaryAsset.browser_download_url) + '" data-zip-name="' + escapeHtml(primaryAsset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "release") + '" data-item-name="' + escapeHtml(item.name) + '" data-item-model="' + escapeHtml(item.model) + '" data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '" aria-label="Download standalone ' + escapeHtml(primaryAsset.name) + ' ZIP package">' +
+                    zipBtn = ' <button type="button" class="lumen-zip-download-button lumen-zip-download-button--table" data-zip-url="' + escapeHtml(primaryAsset.browser_download_url) + '" data-zip-name="' + escapeHtml(primaryAsset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "release") + '" data-item-repo="' + escapeHtml(item.repo || "") + '" data-item-name="' + escapeHtml(item.name) + '" data-item-model="' + escapeHtml(item.model) + '" data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '" aria-label="Download standalone ' + escapeHtml(primaryAsset.name) + ' ZIP package">' +
                         '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16h12M10 3v9m0 0l-3.5-3.5M10 12l3.5-3.5"/></svg>' +
                         '<span><strong>Download ZIP</strong><small>standalone package</small></span>' +
                         '</button>';
@@ -2548,7 +2428,7 @@
                only. Say what opens that ZIP, so a reader does not have to guess
                whether the file is useful without Updater CE. */
             var standaloneNote = listedInManifest ? ''
-                : '<span class="lumen-meta lumen-standalone-note" style="flex-basis:100%;display:block;">Works with Updater CE, Innioasis Universal Flash Tool, SP Flash Tool and MTKClient (Updater CE Recommended).</span>';
+                : '<span class="lumen-meta lumen-standalone-note" style="flex-basis:100%;display:block;">Works with Updater CE, or the software install zip built for your computer.</span>';
 
             /* The Software name is not shown here: the software filter above
                already sets the project, so every row belongs to it. */
@@ -2558,7 +2438,7 @@
                 '<td><div style="display:flex;align-items:center;gap:10px;">' + iconHtml + '<div>' + versionHtml + (release && release.published_at ? '<br><span class="lumen-meta">' + escapeHtml(release.published_at.slice(0, 10)) + '</span>' : '') + '</div></div></td>' +
                 /* The package is not shown: the Release details expander lists
                    the rom zips this release is packaged in. */
-                '<td><div class="lumen-actions">' + updater + zipBtn + standaloneNote + hint + downloadsMeta + '</div>' + releaseDetails(release, item, typeForItem(item)) + '</td>' +
+                '<td><div class="lumen-actions">' + updater + zipBtn + standaloneNote + hint + '</div>' + releaseDetails(release, item, typeForItem(item)) + '</td>' +
                 '<td><a class="lumen-release-notes-link" href="' + releaseNotesUrl + '" aria-label="Read the release notes for ' + escapeHtml(release && release.tag_name ? release.tag_name : item.name) + '">' +                '<svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h6l3 3v11H6z"/><path d="M12 3v3h3"/><path d="M8.5 10h5M8.5 13h5"/></svg></a></td>' +
                 '</tr>';
         }
@@ -2570,13 +2450,6 @@
 
         function render() {
             var items = matchingItems();
-            var deepLinkScoped = null;
-            if (deepLink && deepLinkItem && items.indexOf(deepLinkItem) !== -1) {
-                var deepLinkCandidates = (releasesForItem(deepLinkItem) || []).filter(function (release) {
-                    return !isBlockedRelease(blocklistRules, deepLinkItem, release, typeForItem(deepLinkItem));
-                });
-                deepLinkScoped = deepLinkScopedRelease(deepLink, deepLinkCandidates);
-            }
             if (!items.length) {
                 var brandNow = currentBrand();
                 var modelNow = model ? model.value : "";
@@ -2615,7 +2488,6 @@
             items.forEach(function (item) {
                 if (betterYExplain && isBetterYItem(item)) return;
                 var itemReleases = visibleReleases(item);
-                if (deepLinkScoped && item === deepLinkItem) itemReleases = [deepLinkScoped];
                 var modelReleases = releasesForItem(item);
                 if (itemReleases) {
                     itemReleases.forEach(function (release) { pushRow(releaseRows(release, item, "loaded"), rowKeyFor(item, release)); });
@@ -2937,7 +2809,8 @@
             /* A scripted anchor click is how the download module hands a file
                to the browser. Hearing it as a reader click started a second
                copy of the same package, whose hand-off clicked again: the
-               download restarted until the page was closed. */
+               download restarted until the page was closed. Only a real
+               pointer or keyboard click may start a package job. */
             if (event.isTrusted === false) return;
             if (event.defaultPrevented || event.button !== 0) return;
             var btn = event.target && event.target.closest ? event.target.closest(".lumen-zip-download-button, .lumen-zip-text-link, a[data-zip-url], a[href*='rom.zip'], a[href$='.zip']") : null;
@@ -2945,17 +2818,11 @@
             var href = btn.getAttribute("href") || "";
             var zipUrl = btn.getAttribute("data-zip-url") || href;
             if (!zipUrl || !/\.zip/i.test(zipUrl)) return;
-            var saveName = btn._portableName || btn.getAttribute("data-portable-name") || btn.getAttribute("data-zip-name") || "rom.zip";
             /* The same click bubbles through the table and the document, and
                both listeners are this function. Resolving twice fetched the
                package twice, so only the first listener may start a job. */
             if (event.__innioasisZipClaimed) return;
             event.__innioasisZipClaimed = true;
-            /* Resolution is asynchronous, so stop the browser following the
-               anchor's original href while the portable build is looked up.
-               The module no longer claims portable rows in its capture
-               handler, which leaves the default action to this listener. */
-            if (event.preventDefault) event.preventDefault();
             /* The catalog's control is a button, so the inline module cannot
                see it through its anchor handler. Give it the button itself:
                it paints percent, speed and time left straight onto it. If the
@@ -2966,161 +2833,35 @@
                    module streams anything: handing it the release's own
                    rom.zip would skip the OS/arch build every time. */
                 preparePortableZip(btn, zipUrl).then(function (portableUrl) {
-                    /* A portable button's own href is already the mirror build
-                       for the platform it names; keep it when resolution had
-                       nothing better to offer. The old fallback used
-                       data-zip-url (the original release asset), which threw
-                       the portable href away on a blocked API lookup. */
-                    downloads.start(portableUrl || href || zipUrl, btn, saveName);
+                    downloads.start(portableUrl || zipUrl, btn, btn.getAttribute("data-zip-name") || "rom.zip");
                 });
                 return;
             }
             preparePortableZip(btn, zipUrl).then(function (portableUrl) {
-                if (!portableUrl) { startBrowserDownload(href || zipUrl); return; }
-                /* The proxy's Content-Disposition writes the mirror's own name,
-                   so a Safari download is not called rom.zip either. */
-                proxyHrefIfUsable(portableUrl, saveName)
+                if (!portableUrl) {
+                    if (!href) startBrowserDownload(zipUrl);
+                    return;
+                }
+                /* Same-origin proxy first: its Content-Disposition keeps the
+                   release's name when the browser saves the file. */
+                proxyHrefIfUsable(portableUrl, btn.getAttribute("data-zip-name") || "rom.zip")
                     .then(function (target) { startBrowserDownload(target || portableUrl); });
             });
         }
 
         /* The mirror names the file it built for this computer; a project
-           with no portable build keeps its own rom.zip. One lookup per
+           with no software install zip keeps its own rom.zip. One lookup per
            control, shared by the hover warm-up and the click, so the click
            never repeats a request the pointer already started. */
-        /* The mirror names its package rom-macos.zip; the link and the file in
-           Downloads carry that name, so the two agree and the reader can see
-           which platform build they are getting. */
-        function applyPortableName(control, name) {
-            if (!control || !name) return;
-            control.setAttribute("data-portable-name", name);
-            control.setAttribute("download", name);
-            control._portableName = name;
-            var holder = control.querySelector(".lumen-zip-file");
-            if (holder) holder.textContent = name;
-            var note = control.querySelector("small");
-            if (note && /standalone package|ZIP/i.test(note.textContent || "")) note.textContent = name;
-        }
-
-        /* A release with a mirror must never offer the project's plain rom.zip
-           while the mirror lookup is still running: rom.zip and the package
-           built for this computer look identical on the page, and a reader in
-           a hurry takes the wrong one. The row starts as a portable link with
-           no name yet, the name lands as soon as the mirror answers, and the
-           plain file only comes back when the mirror really has no build for
-           this computer. */
-        function portableNameKey(mirrors, tag, assetName) {
-            return "innioasis-portable-name:" + String(mirrors || "").toLowerCase() + "|" + tagKey(tag) + "|" + String(assetName || "").toLowerCase();
-        }
-        /* A resolved name is remembered, so the next visit paints the exact
-           file name instead of the placeholder. */
-        function cachedPortableName(mirrors, tag, assetName) {
-            try {
-                var stored = window.localStorage.getItem(portableNameKey(mirrors, tag, assetName)) || "";
-                return /\.zip$/i.test(stored) ? stored : "";
-            } catch (_) { return ""; }
-        }
-        function rememberPortableName(mirrors, tag, assetName, name) {
-            try {
-                if (name) window.localStorage.setItem(portableNameKey(mirrors, tag, assetName), name);
-                else window.localStorage.removeItem(portableNameKey(mirrors, tag, assetName));
-            } catch (_) {}
-        }
-        function showPortablePending(control) {
-            if (!control || control.getAttribute("data-platform")) return;
-            if (control.classList.contains("lumen-updater-button") && !portableRequested()) return;
-            if (!control.getAttribute("data-portable-zips")) return;
-            if (control.getAttribute("data-portable-name")) return;
-            if (control.getAttribute("data-portable-pending") === "1") return;
-            if (control.getAttribute("data-portable-none") === "1") return;
-            control.setAttribute("data-portable-pending", "1");
-            control.setAttribute("aria-busy", "true");
-            control.setAttribute("data-plain-name", control.getAttribute("data-zip-name") || "rom.zip");
-            var holder = control.querySelector(".lumen-zip-file");
-            if (holder) holder.textContent = "Portable ZIP";
-            var note = control.querySelector("small");
-            if (note && /standalone package|ZIP/i.test(note.textContent || "")) note.textContent = "Matching this computer…";
-        }
-        function showPortableName(control, name) {
-            if (!control || !name) return;
-            control.removeAttribute("data-portable-pending");
-            control.removeAttribute("data-portable-none");
-            control.removeAttribute("aria-busy");
-            applyPortableName(control, name);
-        }
-        function showPlainZip(control) {
-            if (!control) return;
-            control.removeAttribute("data-portable-pending");
-            control.removeAttribute("aria-busy");
-            control.removeAttribute("data-portable-name");
-            control._portableName = "";
-            control.setAttribute("data-portable-none", "1");
-            /* A legacy CTA must never fall back to the project's original
-               rom.zip: that is the file the portable package is supposed to
-               replace. Send the reader to the programmatic list instead. */
-            if (portableRequested() && (control.classList.contains("lumen-updater-button") ||
-                control.getAttribute("data-legacy-zip") === "1")) {
-                control.setAttribute("href", "firmware-list.html");
-                control.removeAttribute("download");
-                var legacyNote = control.querySelector("small");
-                if (legacyNote) legacyNote.textContent = "portable package unavailable";
-                return;
-            }
-            var plain = control.getAttribute("data-plain-name") || control.getAttribute("data-zip-name") || "rom.zip";
-            var sourceHref = control.getAttribute("data-zip-url") || "";
-            if (sourceHref) control.setAttribute("href", sourceHref);
-            control.setAttribute("download", plain);
-            var holder = control.querySelector(".lumen-zip-file");
-            if (holder) holder.textContent = plain;
-            var note = control.querySelector("small");
-            if (note && /standalone package|ZIP/i.test(note.textContent || "")) note.textContent = "No portable build for this computer";
-        }
-
         function preparePortableZip(btn, zipUrl) {
             if (btn._portableZip) return btn._portableZip;
-            /* The Updater CTA keeps its guide link for supported computers;
-               its mirror metadata is only for the legacy route. */
-            if (btn.classList.contains("lumen-updater-button") && !portableRequested()) return Promise.resolve("");
-            var portableZips = btn.getAttribute("data-portable-zips") || "";
-            var href = btn.getAttribute("href") || "";
-            var explicitPlatform = btn.getAttribute("data-platform") || "";
-            var sourceParts = githubReleaseAssetParts(zipUrl || href || "");
-            if (!portableZips && sourceParts) {
-                portableZips = manifestPortableByRepo[repoKey(sourceParts.repo)] || "";
-            }
-            var releaseTag = btn.getAttribute("data-release-tag") || (sourceParts ? sourceParts.tag : "");
+            var releaseTag = btn.getAttribute("data-release-tag") || "";
             var assetName = btn.getAttribute("data-zip-name") || String(zipUrl || "").split("/").pop() || "rom.zip";
-            /* A generated per-OS button already points at the exact mirror
-               asset named on its face. Resolving by the visiting computer
-               instead replaced a deliberately chosen Windows or Linux build
-               with the host's platform, or with the original when the lookup
-               failed. */
-            if (explicitPlatform && href && href !== zipUrl && /^https:\/\/github\.com\//i.test(href)) {
-                return Promise.resolve(href);
-            }
-            if (!portableZips || !releaseTag) return Promise.resolve("");
-            var mirrors = portableZips;
-            btn._portableZip = resolvePortableZip(portableZips, releaseTag, assetName).then(function (portable) {
-                if (!portable) {
-                    /* The mirror has no package for this computer, so this row
-                       is the project's own file and now says so. */
-                    btn._portableZip = null;
-                    rememberPortableName(mirrors, releaseTag, assetName, "");
-                    showPlainZip(btn);
-                    return "";
-                }
-                rememberPortableName(mirrors, releaseTag, assetName, portable.name);
-                showPortableName(btn, portable.name);
-                btn._portableName = portable.name;
-                /* The visible name and the actual target must be the same
-                   file. Keeping the source href here let a direct-download
-                   handler save rom.zip while the row said rom-macos.zip. */
-                btn.setAttribute("href", portable.url);
-                return portable.url;
-            }, function () {
-                btn._portableZip = null;
-                showPlainZip(btn);
-                return "";
+            btn._portableZip = portableZipsFor(btn).then(function (portableZips) {
+                if (!portableZips || !releaseTag) return "";
+                return resolvePortableZip(portableZips, releaseTag, assetName).then(function (portable) {
+                    return portable ? portable.url : "";
+                }, function () { return ""; });
             });
             return btn._portableZip;
         }
@@ -3137,53 +2878,6 @@
         document.addEventListener("click", handleZipDownloadClick);
         table.addEventListener("pointerover", warmPortableZip);
         table.addEventListener("focusin", warmPortableZip);
-
-        /* Every mirror row is claimed and asked for as soon as it is drawn,
-           not when a pointer reaches it, so the platform name is on the page
-           before the reader has finished reading the row. */
-        function sweepPortableRows() {
-            var controls = table.querySelectorAll("[data-portable-zips]");
-            Array.prototype.forEach.call(controls, function (btn) {
-                var mirrors = btn.getAttribute("data-portable-zips") || "";
-                if (!mirrors) return;
-                var tag = btn.getAttribute("data-release-tag") || "";
-                var assetName = btn.getAttribute("data-zip-name") || "";
-                showPortablePending(btn);
-                var known = cachedPortableName(mirrors, tag, assetName);
-                if (known) showPortableName(btn, known);
-            });
-        }
-        function warmPortableRows() {
-            var controls = table.querySelectorAll("[data-portable-zips]");
-            Array.prototype.forEach.call(controls, function (btn, index) {
-                if (!btn.getAttribute("data-portable-zips") || btn._portableZip) return;
-                window.setTimeout(function () {
-                    if (!document.documentElement.contains(btn)) return;
-                    preparePortableZip(btn, btn.getAttribute("data-zip-url") || btn.getAttribute("href") || "");
-                }, Math.min(index * 80, 1600));
-            });
-        }
-        var portableSweepTimer = 0;
-        function schedulePortableSweep() {
-            if (portableSweepTimer) return;
-            portableSweepTimer = window.setTimeout(function () {
-                portableSweepTimer = 0;
-                sweepPortableRows();
-                warmPortableRows();
-            }, 0);
-        }
-        /* Only row insertion is watched: watching the subtree would also fire
-           on the label this sweep just wrote, and every write would schedule
-           another sweep. */
-        if (window.MutationObserver) {
-            var sweepTargets = [table];
-            var tableBody = table.querySelector("tbody");
-            if (tableBody) sweepTargets.push(tableBody);
-            sweepTargets.forEach(function (target) {
-                new MutationObserver(schedulePortableSweep).observe(target, { childList: true });
-            });
-        }
-        schedulePortableSweep();
 
         /* Opening a release's details means the visitor is reading about that
            exact version, so version-targeted notices apply from then on. */
@@ -3369,83 +3063,49 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
             .catch(function () {});
     }
 
-    /* The portable route uses the same catalogue item as the firmware table:
-       its package name plus the platform suffix named by the mirror index or
-       slidia_manifest.xml spec. The guide and the buttons therefore make the
-       same package choice from the same data. */
-    function portableGuideSteps(item, model, name, platformKey) {
-        var label = platformKey === "windows-legacy" ? "Windows XP/7/8 (32/64-bit)" : "portable";
-        var suffix = portableSuffix(platformKey);
-        var source = item && item.packageName ? String(item.packageName).replace(/\.zip$/i, "") : "";
-        var example = source && suffix ? source + suffix : "";
-        var target = item && model ? name + " on the " + model : "your model and software";
-        return [
-            "Open the firmware list and choose " + target + ". Download the package marked " + label +
-                (example ? " — its file name ends in " + suffix + ", for example " + example : "") + ".",
-            "Unpack the package with the built-in zip support, 7-Zip or WinRAR. Keep the rom files and the scatter file in one folder.",
-            "Run the driver installer from the package's Driver folder, then restart the PC so the MediaTek driver is active.",
-            "Open flash_tool.exe from the package's SP_Flash_Tool folder, click Scatter-loading, and choose the _Android_scatter.txt file beside the rom.",
-            "Leave Download Only selected, click Download, then power the player fully off and connect the USB cable. Use a data cable and a port on the PC itself.",
-            "Wait for the green success box before unplugging. When the flash finishes, disconnect the player and start it."
-        ];
-    }
-
     function initPersonalisedGuide() {
         var section = document.getElementById("personalised-steps");
         if (!section) return;
         var params = new URLSearchParams(window.location.search);
-        var portable = portableRequested();
         var model = (params.get("model") || "").toUpperCase();
         var slug = params.get("software") || "";
+        if (!model || !slug) return;
         var item = null;
-        if (model && slug && Array.isArray(window.INNIOASIS_FIRMWARE_CATALOG)) {
+        if (Array.isArray(window.INNIOASIS_FIRMWARE_CATALOG)) {
             item = window.INNIOASIS_FIRMWARE_CATALOG.find(function (entry) { return entry.model === model && entry.slug === slug; }) || null;
         }
-        if (!item && !portable) return;
-        var restoring = Boolean(item && /original/.test(item.slug));
-        var name = item ? item.name : "firmware";
-        var platformKey = portable || detectPlatform();
-        var platformLabel = portable ? "Windows XP/7/8 (32/64-bit)" : (platformKey === "macos" ? "macOS" : (platformKey === "windows" ? "Windows" : (platformKey === "linux" ? "Linux" : "")));
+        if (!item) return;
+        var restoring = /original/.test(item.slug);
+        var name = item.name;
+        var platformKey = detectPlatform();
+        var platformLabel = platformKey === "macos" ? "macOS" : (platformKey === "windows" ? "Windows" : (platformKey === "linux" ? "Linux" : ""));
         var platformSlug = platformKey === "macos" ? "mac" : platformKey;
-        var platformPhrase = portable ? "from Windows" : (platformKey === "macos" ? "with a Mac" : (platformKey === "windows" ? "with a Windows PC" : "on Linux"));
-        var heading = portable
-            ? (item && model ? "Install " + name + " on your " + model + " with the portable package" : "Install firmware with the portable package")
-            : (restoring ? "Restore Original Software on your " + model : "Install " + name + " on your " + model);
-        if (!portable && platformLabel) heading += " " + platformPhrase;
+        var platformPhrase = platformKey === "macos" ? "with a Mac" : (platformKey === "windows" ? "with a Windows PC" : "on Linux");
+        var heading = restoring ? "Restore Original Software on your " + model : "Install " + name + " on your " + model;
+        if (platformLabel) heading += " " + platformPhrase;
         var kicker = section.querySelector("[data-personalised-kicker]");
-        if (kicker) kicker.textContent = portable
-            ? "Portable package · " + platformLabel + (item && model ? " · " + model : "")
-            : (restoring ? "Restore · " + model : name + " · " + model) + (platformLabel ? " · " + platformLabel : "");
+        if (kicker) kicker.textContent = (restoring ? "Restore · " + model : name + " · " + model) + (platformLabel ? " · " + platformLabel : "");
         var headingEl = section.querySelector("[data-personalised-heading]");
         if (headingEl) headingEl.textContent = heading;
         var lead = section.querySelector("[data-personalised-lead]");
-        var leadText;
-        if (portable) {
-            leadText = item && model
-                ? "Follow these steps for " + name + " on your " + model + " with the " + platformLabel + " package. It includes the rom, the scatter file, SP Flash Tool and the MediaTek driver."
-                : "Follow these steps with the " + platformLabel + " package. It includes the firmware, the scatter file, SP Flash Tool and the MediaTek driver.";
-        } else {
-            leadText = restoring
-                ? "Follow these steps in Updater. The player you want to restore is the " + model + "."
-                : "Follow these steps in Updater. You have the " + model + " and want " + name + " on it.";
-            if (platformLabel) leadText += " This is the " + platformLabel + " route.";
-        }
+        var leadText = restoring
+            ? "Follow these steps in Updater. The player you want to restore is the " + model + "."
+            : "Follow these steps in Updater. You have the " + model + " and want " + name + " on it.";
+        if (platformLabel) leadText += " This is the " + platformLabel + " route.";
         if (lead) lead.textContent = leadText;
-        var steps = portable
-            ? portableGuideSteps(item, model, name, platformKey)
-            : [
-                platformKey === "windows" ? "Open Updater from the Start menu. If it is not installed, use the download button below, then restart the PC after installing the MediaTek driver." :
-                platformKey === "macos" ? "Open Updater from Applications. If macOS blocks the first launch, approve it in System Settings → Privacy & Security, then reopen it." :
-                platformKey === "linux" ? "Run the UpdaterCE AppImage you made executable. Do not run it as root; if it cannot open the player, apply the udev rule first." :
-                "Open Updater on your computer, or install it first with the button below.",
-                "In Device Model, select " + model + ".",
-                restoring ? "In Software, select Original Software." : "In Software, select " + name + ".",
-                "Select a stable release shown for the " + model + ".",
-                "Click Install / Restore, then power off the player.",
-                "Connect the player only when Updater says it is ready." +
-                    (platformKey === "macos" ? " Use a direct USB port, not a hub." : (platformKey === "linux" ? " Check lsusb for the MediaTek ID 0e8d if it does not appear." : (platformKey === "windows" ? " If Device Manager does not show the MediaTek port, reinstall the driver." : ""))),
-                "Wait for the success message, then disconnect and start the player."
-            ];
+        var steps = [
+            platformKey === "windows" ? "Open Updater from the Start menu. If it is not installed, use the download button below, then restart the PC after installing the MediaTek driver." :
+            platformKey === "macos" ? "Open Updater from Applications. If macOS blocks the first launch, approve it in System Settings → Privacy & Security, then reopen it." :
+            platformKey === "linux" ? "Run the UpdaterCE AppImage you made executable. Do not run it as root; if it cannot open the player, apply the udev rule first." :
+            "Open Updater on your computer, or install it first with the button below.",
+            "In Device Model, select " + model + ".",
+            restoring ? "In Software, select Original Software." : "In Software, select " + name + ".",
+            "Select a stable release shown for the " + model + ".",
+            "Click Install / Restore, then power off the player.",
+            "Connect the player only when Updater says it is ready." +
+                (platformKey === "macos" ? " Use a direct USB port, not a hub." : (platformKey === "linux" ? " Check lsusb for the MediaTek ID 0e8d if it does not appear." : (platformKey === "windows" ? " If Device Manager does not show the MediaTek port, reinstall the driver." : ""))),
+            "Wait for the success message, then disconnect and start the player."
+        ];
         var list = section.querySelector("[data-personalised-steps]");
         if (list) {
             list.innerHTML = "";
@@ -3454,7 +3114,7 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
                 li.textContent = text;
                 list.appendChild(li);
             });
-            if (item && (item.post_install || item.post_install2)) {
+            if (item.post_install || item.post_install2) {
                 var postLi = document.createElement("li");
                 postLi.setAttribute("data-post-install-step", "1");
                 postLi.setAttribute("data-slug", item.slug);
@@ -3487,48 +3147,26 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
             postInstallEl.remove();
         }
         var note = section.querySelector("[data-personalised-note]");
-        if (note) note.textContent = portable
-            ? "The portable package writes the system partition, so copy anything you cannot replace off the player first. If the player does not start afterwards, flash again with Preloader ticked."
-            : (restoring
-                ? "That puts the " + model + " back on its original software. The download and computer setup sections below still apply if you need them."
-                : "That is the whole " + name + " install on the " + model + ". The download and computer setup sections below still apply if you need them.");
-        if (portable) {
-            ["platform", "choose", "restore", "which-updater", "smart-app-control"].forEach(function (id) {
-                var el = document.getElementById(id);
-                if (el) el.hidden = true;
-            });
-        }
-        var downloadLink = section.querySelector("[data-personalised-download]");
-        if (downloadLink) {
-            if (portable) {
-                downloadLink.setAttribute("href", "firmware-list.html");
-                downloadLink.textContent = "Choose your package";
-            } else {
-                downloadLink.setAttribute("href", "guide.html#download-updater");
-                downloadLink.textContent = "Get Updater CE";
-            }
-        }
+        if (note) note.textContent = restoring
+            ? "That puts the " + model + " back on its original software. The download and computer setup sections below still apply if you need them."
+            : "That is the whole " + name + " install on the " + model + ". The download and computer setup sections below still apply if you need them.";
         /* The generic firmware guide page fills its copy with the project
            name and model from the URL, so any listed firmware gets a
            readable tutorial even without a dedicated page. */
         document.querySelectorAll("[data-personalised-software]").forEach(function (el) { el.textContent = name; });
-        document.querySelectorAll("[data-personalised-model]").forEach(function (el) { el.textContent = model || "your player"; });
+        document.querySelectorAll("[data-personalised-model]").forEach(function (el) { el.textContent = model; });
         var missing = document.querySelector("[data-personalised-missing]");
         if (missing) missing.hidden = true;
         document.querySelectorAll("[data-personalised-reveal]").forEach(function (el) { el.hidden = false; });
         var guideLink = section.querySelector("[data-personalised-guide]");
-        var dedicatedGuide = item ? (item.guide || item.seoPage || "") : "";
+        var dedicatedGuide = item.guide || item.seoPage || "";
         var installBase = "install/";
         var ownScript = document.querySelector('script[src*="lumen-site.js"]');
         if (ownScript && ownScript.src) {
             try { installBase = new URL(".", ownScript.src).href + "install/"; } catch (error) { installBase = "install/"; }
         }
         if (guideLink) {
-            if (portable) {
-                guideLink.href = "windows-legacy.html";
-                guideLink.textContent = "Full portable package guide";
-                guideLink.hidden = false;
-            } else if (platformKey) {
+            if (platformKey) {
                 guideLink.href = installBase + item.slug + "-" + platformSlug + ".html";
                 guideLink.textContent = "Open the " + platformLabel + " install guide";
                 guideLink.hidden = false;
@@ -3541,26 +3179,14 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
             }
         }
         var headerKicker = document.querySelector("#main > header .lumen-kicker");
-        if (headerKicker) headerKicker.textContent = portable
-            ? "Portable package · " + platformLabel + (item && model ? " · " + model : "")
-            : (restoring ? "Restore " : "Install ") + name + " on " + model + " · beginner route" + (platformLabel ? " · " + platformLabel : "");
+        if (headerKicker) headerKicker.textContent = (restoring ? "Restore " : "Install ") + name + " on " + model + " · beginner route" + (platformLabel ? " · " + platformLabel : "");
         var h1 = document.querySelector("#main > header h1");
         if (h1) h1.textContent = heading + ".";
-        var pageLead = document.querySelector("#main > header .lead");
-        if (portable && pageLead) {
-            pageLead.textContent = "This is the same guide, with the route this computer can run. Choose your model and software, download the Windows XP/7/8 package, and follow the SP Flash Tool steps below.";
-        }
         document.title = heading + " | Innioasis Updater";
         section.hidden = false;
         if (!window.location.hash) {
             window.setTimeout(function () { section.scrollIntoView({ block: "start" }); }, 0);
         }
-    }
-
-    if (typeof window !== "undefined" && window.addEventListener) {
-        window.addEventListener("innioasis-portable-ready", function () {
-            initPersonalisedGuide();
-        });
     }
 
     /* The "Software guides by model" cards, built from the catalog so any
@@ -3805,6 +3431,95 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
         }
     }
 
+    /* ------------------------------------------------------------------ *
+     * Manifest schema: which models a row covers, and its package names
+     * ------------------------------------------------------------------ */
+    /* Exposed so a page (and the responsive checks) can resolve a row without
+       loading the whole catalogue. Pure functions, no state. */
+    if (typeof window !== "undefined") {
+        window.InnioasisManifest = {
+            deviceSpecs: function (pkg) { return manifestDeviceSpecs(pkg); },
+            declaredPackageName: function (pkg, model, brand, type) {
+                return declaredManifestPackageName(pkg, model, brand, type);
+            },
+            defaultPackageName: defaultPackageName
+        };
+    }
+
+    /* The models one <package> row covers. ``device`` names a single model and
+       keeps working exactly as before; the multi-model spelling ``devices``
+       names several: ``devices="Y1,Y2,G5"``. An entry may carry its brand as
+       ``Timmkoo/Q3`` or ``Timmkoo:Q3`` so two brands with the same model number
+       stay apart. Nothing here is a fixed list: a model the manifest gains
+       tomorrow is read from the row and needs no code change. */
+    function manifestDeviceSpecs(pkg) {
+        var raw = (pkg.getAttribute("devices") || "").trim();
+        if (!raw) raw = (pkg.getAttribute("device") || "").trim();
+        var rowBrand = (pkg.getAttribute("brand") || "").trim();
+        var specs = [];
+        var seen = {};
+        raw.split(/[\s,;]+/).forEach(function (entry) {
+            var value = String(entry || "").trim();
+            if (!value) return;
+            var brand = rowBrand;
+            var model = value;
+            var parts = value.replace(/:/g, "/").split("/");
+            if (parts.length > 1) {
+                brand = parts[0].trim();
+                model = parts.slice(1).join("/").trim();
+            }
+            model = model.toUpperCase();
+            if (!model) return;
+            var key = (brand + "/" + model).toLowerCase();
+            if (seen[key]) return;
+            seen[key] = true;
+            specs.push({ brand: brand, model: model });
+        });
+        return specs;
+    }
+
+    /* The ROM asset name the app has always assumed when a row says nothing:
+       rom.zip on the Y1, rom_<model>.zip everywhere else. */
+    function defaultPackageName(model) {
+        var value = String(model || "").toUpperCase();
+        if (!value || value === "Y1") return "rom.zip";
+        return "rom_" + value.toLowerCase() + ".zip";
+    }
+
+    /* The per-model package name a row declares, or "" when it declares none.
+       A row can name the ROM for each model and hardware type it serves:
+
+           package_name_y2="rom_y2.zip"
+           package_name_a5="rom_a5.zip"
+           package_name_g5="rom_g5.zip"
+           package_name_y1="rom.zip"
+           package_name_y1_type_b="rom_type_b.zip"
+           package_name_timmkoo_q3="rom_q3.zip"
+
+       The most specific declaration wins: brand + model + type, model + type,
+       brand + model, model, then the row-wide package_name. Attribute names
+       are matched without case, so package_name_A5 works too. */
+    function declaredManifestPackageName(pkg, model, brand, type) {
+        var attrs = {};
+        Array.prototype.forEach.call(pkg.attributes || [], function (attr) {
+            attrs[String(attr.name || "").toLowerCase()] = attr.value;
+        });
+        var modelKey = String(model || "").toLowerCase().replace(/[^a-z0-9]+/g, "_");
+        var brandKey = String(brand || "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+        var typeKey = String(type || "").toLowerCase().replace(/^type_?/, "");
+        var keys = [];
+        if (typeKey && brandKey) keys.push("package_name_" + brandKey + "_" + modelKey + "_type_" + typeKey);
+        if (typeKey) keys.push("package_name_" + modelKey + "_type_" + typeKey);
+        if (brandKey) keys.push("package_name_" + brandKey + "_" + modelKey);
+        keys.push("package_name_" + modelKey);
+        keys.push("package_name");
+        for (var i = 0; i < keys.length; i += 1) {
+            var value = String(attrs[keys[i]] || "").trim();
+            if (value) return value;
+        }
+        return "";
+    }
+
     function loadAndMergeManifest() {
         return fetchManifestText()
             .then(function (xmlText) {
@@ -3827,66 +3542,73 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
                     if (listedRepo) listed[listedRepo] = true;
                 });
                 manifestListedRepos = listed;
-                var portableByRepo = {};
-                packages.forEach(function (pkg) {
-                    var declaredRepo = repoKey(pkg.getAttribute("repo"));
-                    var declaredPortable = (pkg.getAttribute("portable_zips") || "").trim();
-                    if (declaredRepo && declaredPortable) portableByRepo[declaredRepo] = declaredPortable;
-                });
-                manifestPortableByRepo = portableByRepo;
+                parseManifestMirrors(xmlText);
                 if (!Array.isArray(window.INNIOASIS_FIRMWARE_CATALOG)) return;
                 var catalog = window.INNIOASIS_FIRMWARE_CATALOG;
                 packages.forEach(function (pkg) {
                     var name = (pkg.getAttribute("name") || "").trim();
                     var repo = (pkg.getAttribute("repo") || "").trim();
-                    var device = (pkg.getAttribute("device") || "").toUpperCase().trim();
+                    var specs = manifestDeviceSpecs(pkg);
                     var typeAAsset = (pkg.getAttribute("type_a_asset") || "").trim();
                     var typeBAsset = (pkg.getAttribute("type_b_asset") || "").trim();
-                    if (device && (typeAAsset || typeBAsset)) {
-                        var declaredTypes = manifestTypesByModel[device] || (manifestTypesByModel[device] = {});
-                        if (typeAAsset) declaredTypes.A = true;
-                        if (typeBAsset) declaredTypes.B = true;
-                    }
                     var icon = (pkg.getAttribute("icon") || "").trim();
                     var postInstall = (pkg.getAttribute("post_install") || "").trim();
                     var postInstall2 = (pkg.getAttribute("post_install2") || "").trim();
                     var portableZips = (pkg.getAttribute("portable_zips") || "").trim();
-                    var packageName = (pkg.getAttribute("package_name") || "").trim();
-                    var fallbackPackage = packageName || (device === "Y2" ? "rom_y2.zip" : (device === "Y1" || !device ? "rom.zip" : "rom_" + device.toLowerCase() + ".zip"));
                     var handler = pkg.getAttribute("handler") || "";
                     if (!name || /please update/i.test(name)) return;
                     if (handler && handler !== "Custom Firmware") return;
+                    if (!specs.length) return;
 
-                    var match = catalog.find(function (item) {
-                        return (item.repo && repo && item.repo.toLowerCase() === repo.toLowerCase() && item.model === device) ||
-                               (item.name.toLowerCase() === name.toLowerCase() && item.model === device);
-                    });
-                    if (match) {
-                        if (icon && !match.icon) match.icon = icon;
-                        /* The manifest is what Updater CE actually reads, so its
-                           repository wins: it is the one whose releases the
-                           firmware list and release pages must show. */
-                        if (repo) match.repo = repo;
-                        if (postInstall) match.post_install = postInstall;
-                        if (postInstall2) match.post_install2 = postInstall2;
-                        if (portableZips) match.portable_zips = portableZips;
-                        if (packageName) match.packageName = packageName;
-                    } else if (name && device) {
-                        var slug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-                        catalog.push({
-                            name: name,
-                            model: device,
-                            slug: slug + "-" + device.toLowerCase(),
-                            repo: repo,
-                            type: /^original/i.test(name) ? "original" : "custom",
-                            icon: icon,
-                            post_install: postInstall,
-                            post_install2: postInstall2,
-                            portable_zips: portableZips,
-                            packageName: fallbackPackage,
-                            description: "Community firmware package for the " + device + "."
+                    /* One row may serve several models; each model gets its own
+                       catalogue item and its own package name. */
+                    specs.forEach(function (spec) {
+                        var device = spec.model;
+                        if (typeAAsset || typeBAsset) {
+                            var declaredTypes = manifestTypesByModel[device] || (manifestTypesByModel[device] = {});
+                            if (typeAAsset) declaredTypes.A = true;
+                            if (typeBAsset) declaredTypes.B = true;
+                        }
+                        var declaredPackage = declaredManifestPackageName(pkg, device, spec.brand, "");
+                        var declaredTypeB = declaredManifestPackageName(pkg, device, spec.brand, "b");
+                        var fallbackPackage = declaredPackage || defaultPackageName(device);
+
+                        var match = catalog.find(function (item) {
+                            return (item.repo && repo && item.repo.toLowerCase() === repo.toLowerCase() && item.model === device) ||
+                                   (item.name.toLowerCase() === name.toLowerCase() && item.model === device);
                         });
-                    }
+                        if (match) {
+                            if (icon && !match.icon) match.icon = icon;
+                            /* The manifest is what Updater CE actually reads, so its
+                               repository wins: it is the one whose releases the
+                               firmware list and release pages must show. */
+                            if (repo) match.repo = repo;
+                            if (postInstall) match.post_install = postInstall;
+                            if (postInstall2) match.post_install2 = postInstall2;
+                            if (portableZips) match.portable_zips = mergeMirrorList(match.portable_zips, portableZips);
+                            /* Only a name this row declares replaces a catalogue
+                               one; an absent attribute leaves it as it was. */
+                            if (declaredPackage) match.packageName = declaredPackage;
+                            if (declaredTypeB) match.typeBPackageName = declaredTypeB;
+                        } else {
+                            var slug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+                            var added = {
+                                name: name,
+                                model: device,
+                                slug: slug + "-" + device.toLowerCase(),
+                                repo: repo,
+                                type: /^original/i.test(name) ? "original" : "custom",
+                                icon: icon,
+                                post_install: postInstall,
+                                post_install2: postInstall2,
+                                portable_zips: portableZips,
+                                packageName: fallbackPackage,
+                                description: "Community firmware package for the " + device + "."
+                            };
+                            if (declaredTypeB) added.typeBPackageName = declaredTypeB;
+                            catalog.push(added);
+                        }
+                    });
                 });
                 initHomeFirmware();
         initHomeVersions();
@@ -3940,17 +3662,4 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
             initFirmwareDirectory();
         });
     });
-
-    /* Small, dependency-free surface for the Node regression test. Nothing in
-       the browser reads this unless the test flag is set. */
-    if (typeof window !== "undefined" && window.__INNIOASIS_TEST__) {
-        window.INNIOASIS_DEEPLINK_TEST = {
-            parseDeepLink: parseDeepLink,
-            itemFor: deepLinkCatalogItem,
-            targetRelease: deepLinkTargetRelease,
-            scopedRelease: deepLinkScopedRelease,
-            versionsPage: deepLinkVersionsPage,
-            platformLabel: deepLinkPlatformLabel
-        };
-    }
 })();

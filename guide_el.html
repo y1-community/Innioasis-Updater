@@ -34,65 +34,7 @@
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
 <meta property="og:type" content="article"><meta property="og:title" content="Ξεκινώντας με το Innioasis Updater CE - Innioasis Updater"><meta property="og:description" content="Πραγματοποιήστε λήψη του Innioasis Updater CE για Windows, macOS ή Linux και, στη συνέχεια, εγκαταστήστε ή επαναφέρετε το υλικολογισμικό σε οποιοδήποτε πρόγραμμα αναπαραγωγής Innioasis ή Timmkoo σε μερικά καθοδηγούμενα βήματα."><meta property="og:url" content="https://innioasis.app/guide_el.html"><meta property="og:image" content="https://innioasis.app/assets/og-image.png">
   <link rel="icon" href="y1_illustration.png">
-  <link rel="stylesheet" href="site-theme.css?v=20261109theme"><link rel="stylesheet" href="lumen.css?v=20261110picker"><link rel="stylesheet" href="site-pages.css?v=20260818"><link rel="stylesheet" href="site-toolbar.css?v=20261108hero"><link rel="stylesheet" href="install.css?v=20261106"><script src="site-init.js?v=20261110inline2" defer></script>
-<!-- Emergency: downloads on this page hand straight back to the browser's
-     own downloader. The in-page progress UI is paused here while it is being
-     fixed; remove this block to let it claim links again. -->
-<script>
-(function () {
-  var FILE = /\.(zip|img|dmg|pkg|apk|appimage|exe|msi|7z|tar|gz|xz|bz2|tgz|iso|bin|jar|ipa|app)(?:[?#]|$)/i;
-  var ASSET = /^https:\/\/github\.com\/[^/]+\/[^/]+\/releases\/(?:latest\/)?download\//i;
-  function unwrap(href) {
-    try {
-      var url = new URL(href, location.href);
-      var target = url.searchParams.get("url");
-      if (target && ASSET.test(target)) return target;
-      return url.href;
-    } catch (_) { return href; }
-  }
-  /* Mark the link so lumen-site.js and site-downloads.js both leave it to the
-     browser, and point a proxy-wrapped link at the asset itself. */
-  function handBack(link) {
-    if (!link || !link.getAttribute) return false;
-    var href = link.getAttribute("href") || "";
-    if (!href || /^(#|mailto:|tel:|javascript:)/i.test(href)) return false;
-    var url = unwrap(href);
-    if (!FILE.test(url) && !link.hasAttribute("download")) return false;
-    link.setAttribute("data-direct-download", "");
-    link.setAttribute("data-no-inpage-download", "");
-    if (url !== href) link.setAttribute("href", url);
-    return true;
-  }
-  function anchorOf(node) {
-    while (node && node !== document.body && node.nodeType === 1) {
-      if (node.tagName === "A" && node.getAttribute("href")) return node;
-      node = node.parentNode;
-    }
-    return null;
-  }
-  window.InnioasisDownloads = {
-    version: "20261110direct",
-    start: function (url, anchor, name) {
-      var link = document.createElement("a");
-      link.href = unwrap(url);
-      link.download = name || "";
-      link.rel = "noopener";
-      link.setAttribute("data-direct-download", "");
-      (document.body || document.documentElement).appendChild(link);
-      link.click();
-      setTimeout(function () {
-        if (link.parentNode) link.parentNode.removeChild(link);
-      }, 3000);
-      return true;
-    },
-    jobs: function () { return []; }
-  };
-  document.addEventListener("click", function (event) {
-    if (event.defaultPrevented || event.button !== 0) return;
-    handBack(anchorOf(event.target));
-  }, true);
-})();
-</script>
+  <link rel="stylesheet" href="site-theme.css?v=20261109theme"><link rel="stylesheet" href="lumen.css?v=20261110picker"><link rel="stylesheet" href="site-pages.css?v=20260818"><link rel="stylesheet" href="site-toolbar.css?v=20261108hero"><link rel="stylesheet" href="install.css?v=20261106"><script src="site-init.js?v=20261111cards" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Getting started with Innioasis Updater CE","description":"Get and use Innioasis Updater CE to discover, install, or restore firmware on an Innioasis Y1 or Y2.","tool":[{"@type":"HowToTool","name":"Computer"},{"@type":"HowToTool","name":"USB data cable"}],"step":[{"@type":"HowToStep","name":"Get Innioasis Updater CE","text":"Download Innioasis Updater CE for Windows, macOS, or Linux."},{"@type":"HowToStep","name":"Choose your model and software","text":"Choose Y1 or Y2, then choose a firmware project in Updater CE."},{"@type":"HowToStep","name":"Choose a release","text":"Choose a stable release for the selected model and project."},{"@type":"HowToStep","name":"Install or restore","text":"Click Install / Restore, power off when asked, and connect USB when prompted."}]}</script>
 <meta property="og:site_name" content="Innioasis Ενημερωτής">
   <!-- i18n-hreflang-start -->
@@ -163,13 +105,9 @@
         </div>
         <div class="lumen-download-option" id="linux" data-platform="linux">
           <h3 translate="no" class="notranslate" data-i18n-skip>Linux</h3>
-          <p>Take the file that matches your processor. Intel and AMD PCs use the x86_64 builds; ARM boards and ARM laptops, including Raspberry Pi and Snapdragon machines, use the arm64 builds.</p>
-          <div class="lumen-actions"><a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/innioasis-updater/releases/latest/download/UpdaterCE.appimage" download data-download-confirm="Download started">AppImage for Intel/AMD</a><a class="lumen-button" href="https://github.com/y1-community/innioasis-updater/releases/latest/download/UpdaterCE-arm64.appimage" download data-download-confirm="Download started">AppImage for ARM64</a><a class="lumen-button" href="https://github.com/y1-community/innioasis-updater/releases/latest/download/UpdaterCE-Linux-Portable.tar.gz" download data-download-confirm="Download started">tar.gz for Intel/AMD</a><a class="lumen-button" href="https://github.com/y1-community/innioasis-updater/releases/latest/download/UpdaterCE-Linux-Portable-arm64.tar.gz" download data-download-confirm="Download started">tar.gz for ARM64</a><a class="lumen-button" href="https://github.com/y1-community/innioasis-updater/releases/latest/download/UpdaterCE-Linux-Portable.zip" download data-download-confirm="Download started">zip for Intel/AMD</a><a class="lumen-button" href="https://github.com/y1-community/innioasis-updater/releases/latest/download/UpdaterCE-Linux-Portable-arm64.zip" download data-download-confirm="Download started">zip for ARM64</a></div>
-          <p>An AppImage needs <code>chmod +x</code> before it runs. The tar.gz and the zip are folders to unpack, not installers. Every one of these files carries the terminal interface, so <code>--tui</code> opens the same app without a window.</p>
-          <p>To skip the downloads and let the launcher choose, copy this into a terminal. It reads your processor, fetches the matching build, and asks whether to install or run once:</p>
-          <pre id="run-linux-command" style="background:#f4f4f5;padding:12px 14px;border-radius:8px;overflow-x:auto;font-size:0.85rem;user-select:all;white-space:pre-wrap;word-break:break-all;margin:12px 0;">curl -fsSL https://innioasis.app/run_linux.sh | bash</pre>
-          <div class="lumen-actions"><button type="button" class="lumen-button" data-copy-target="run-linux-command">Copy command</button><a class="lumen-button" href="portable-builds.html">How the packages are built</a></div>
-          <p class="lumen-meta">The launcher's menu has a run-once option for the terminal, which is the one to use over SSH or on a machine with no desktop. <a href="drivers_el.html#linux">Σημειώσεις εγκατάστασης Linux</a></p>
+          <p>Κατεβάστε το AppImage για συστήματα Intel και AMD, κάντε το εκτελέσιμο και εκτελέστε το.</p>
+          <div class="lumen-actions"><a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/innioasis-updater/releases/latest/download/UpdaterCE.AppImage" download data-download-confirm="Download started">Κατεβάστε το AppImage για Intel/AMD</a></div>
+          <p class="lumen-meta"><a href="drivers_el.html#linux">Σημειώσεις εγκατάστασης Linux</a></p>
         </div>
         <button type="button" class="lumen-another-platform" data-another-platform hidden>Άλλη πλατφόρμα;</button>
       </div>
@@ -198,4 +136,4 @@
     </div>
   </div>
   <section class="lumen-guide-section" data-lumen-feedback data-feedback="canonical-guide"><h2>Ήταν αυτό χρήσιμο;</h2><div class="lumen-feedback"><p>Η απάντησή σας βοηθά στη βελτίωση αυτού του οδηγού.</p><button type="button" data-feedback-value="yes" aria-pressed="false">Ναι, το βρήκα χρήσιμο</button><button type="button" data-feedback-value="no" aria-pressed="false">Όχι ακόμα</button><a class="lumen-feedback-support" data-feedback-support hidden href="https://github.com/y1-community/Innioasis-Updater/issues" target="_blank" rel="noopener noreferrer">Ενημερώστε μας πώς μπορούμε να βελτιωθούμε</a></div></section>
-</main><div id="footer-root"></div><div id="support-toolbar-slot"></div><script src="firmware-catalog.js?v=20261106mirror" defer></script><script src="nav.js?v=20261110sale" defer></script><script src="lumen-site.js?v=20261112portable9" defer></script><script src="site-i18n.js?v=20260830" defer></script><script src="site-platform.js?v=20261109stack" defer></script><script src="tutorial-video.js?v=20261103spanish" defer></script><script src="site-locale.js?v=20261109stack" defer></script></body></html>
+</main><div id="footer-root"></div><div id="support-toolbar-slot"></div><script src="firmware-catalog.js?v=20261106mirror" defer></script><script src="nav.js?v=20261111nav" defer></script><script src="lumen-site.js?v=20261111zip" defer></script><script src="site-i18n.js?v=20260830" defer></script><script src="site-platform.js?v=20261109stack" defer></script><script src="tutorial-video.js?v=20261103spanish" defer></script><script src="site-locale.js?v=20261111i18nfix" defer></script></body></html>

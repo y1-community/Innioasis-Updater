@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261113badge2" defer></script>
+  <script src="../site-init.js?v=20261111cards" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -70,12 +70,12 @@
 <ul><li>POWER / DEV / HW: MAC power, device control and hardware version.</li><li>PHY68: seven bytes, offsets 0x68 through 0x6e in order.</li><li>DMA: eight consecutive four-hex-digit words, channels 0 through 7.</li><li>IRQE TX / RX / USB: interrupt-enable masks, not pending interrupts.</li></ul>
 <p>Raw values are unknown until the trial; neither nonzero DMA nor PHY state should be silently interpreted as failure/success. Only valid-mask bits are evidence: bits 0–5 are POWER/DEV/HW/TXE/RXE/USBE, 6–12 PHY68..6E, 13–20 DMA0..7. On supply/clock guard refusal, rows instead show PERI/MUX/PLL/PWR for diagnosis. <code>USB RC:-19</code> refuses prerequisites, -16 is a resource conflict, -12 a mapping failure; the heartbeat should continue. A bus hang may freeze at the pre-probe stage; use the existing bounded manual recovery procedure.</p>
 <p>Return full-screen photos near <strong>BEAT 10 and BEAT 50/STOP</strong>, or the exact last visible stage on failure. Include USB RC/VALID, PW/CLK, all four raw rows, timer count, uptime, MemTotal, mount/sleep status and LAST ERR. Also report selected image hash (flashed/readback hash if available from the usual procedure), host elapsed time, USB cable state, any reset/freeze and restoration outcome if done.</p>
-<p>Retained prior image: <code>out/m2-usbclk-01/BOOTIMG.img</code>, SHA-256 <code>602080eb199f3a4be30082ee114dfeb97ef414e10d8ad4acf5d239f2096cd6ec</code>. The owner-proven stock/FM restore and M1 fallback boundaries are unchanged. Work stops here for the owner test; #23/#27/#28 remain open and M3 is deferred.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn (Y2Linux)</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<p>Retained prior image: <code>out/m2-usbclk-01/BOOTIMG.img</code>, SHA-256 <code>602080eb199f3a4be30082ee114dfeb97ef414e10d8ad4acf5d239f2096cd6ec</code>. The owner-proven stock/FM restore and M1 fallback boundaries are unchanged. Work stops here for the owner test; #23/#27/#28 remain open and M3 is deferred.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261106direct" defer></script>
-<script src="../nav.js?v=20261103brand" defer></script>
-<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../docs-viewer.js?v=20261110inline5" defer></script>
+<script src="../portable-zip-links.js?v=20261111zip" defer></script>
+<script src="../nav.js?v=20261111nav" defer></script>
+<script src="../site-locale.js?v=20261111i18nfix" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261112portable6";
+    var VERSION = "20261110inline5";
     /* Only archive packages get the in-page treatment. Installers and app
        images always go to the browser's own downloader: a page must never
        stand between a reader and the app they are installing. */
@@ -38,7 +38,7 @@
     var NEVER_STREAM = /\.(exe|dmg|appimage|msi|pkg|apk|img|bin|iso|jar|ipa)(\?|#|$)/i;
     /* rom_y1-windows.zip is a portable build of rom_y1.zip, so a portable
        download saves under the mother package's name. */
-    var PORTABLE_SUFFIX = /[-_.](windows|win32|win64|win|macos|mac|osx|darwin|linux|android|portable|x64|amd64|x86_64|x86-64|x86|arm64|aarch64)(?:[-_.](x64|amd64|x86_64|x86-64|x86|arm64|aarch64))?(\.zip)$/i;
+    var PORTABLE_SUFFIX = /[-_.](windows-legacy|linux-legacy|windows|win32|win64|win|macos|mac|osx|darwin|linux|android|portable|legacy|x64|amd64|x86_64|x86-64|x86|arm64|aarch64)(?:[-_.](x64|amd64|x86_64|x86-64|x86|arm64|aarch64))?(\.zip)$/i;
     /* A blob that big is the most a phone can hold while still rendering. */
     var BLOB_LIMIT = 128 * 1024 * 1024;
     var MAX_JOBS = 2;
@@ -541,9 +541,6 @@
         link.download = name;
         link.rel = "noopener";
         link.setAttribute("data-site-download-direct", "1");
-        /* lumen-site.js re-claims any anchor whose href contains "rom.zip",
-           and the proxy URL carries the package name: without this mark the
-           handoff click started the same transfer again, forever. */
         link.setAttribute("data-direct-download", "1");
         doc.body.appendChild(link);
         link.click();
@@ -556,45 +553,15 @@
     /* The one and only path to the browser's own downloader. Marked so the
        click interceptor never claims it: a synthetic anchor click used to come
        straight back through this module and start another copy of the file. */
-    function crossOrigin(url) {
-        try {
-            return new global.URL(url, global.location.href).origin !== global.location.origin;
-        } catch (_) {
-            return false;
-        }
-    }
-
-    /* A cross-origin asset goes to a hidden frame. Clicking an anchor at it
-       navigated the tab instead of downloading, and that navigation is what
-       made the browser ask whether to leave the page in the middle of a
-       download; cancelling the question cancelled the download. */
-    function downloadFrame() {
-        var frame = doc.getElementById("innioasis-download-frame");
-        if (!frame) {
-            frame = doc.createElement("iframe");
-            frame.id = "innioasis-download-frame";
-            frame.setAttribute("aria-hidden", "true");
-            frame.tabIndex = -1;
-            frame.style.cssText = "display:none;width:0;height:0;border:0;";
-            doc.body.appendChild(frame);
-        }
-        return frame;
-    }
-
     function clickDirect(url, name) {
-        if (crossOrigin(url)) {
-            downloadFrame().src = url;
-            return;
-        }
         var link = doc.createElement("a");
         link.href = url;
         if (name) link.download = name;
         link.rel = "noopener";
         link.setAttribute("data-site-download-direct", "1");
-        /* lumen-site.js re-claims any anchor whose href contains "rom.zip",
-           and the proxy URL carries the package name: without this mark the
-           handoff click started the same transfer again, forever. */
-        link.setAttribute("data-direct-download", "1");
+        /* Cached copies of the firmware catalog check only this marker. A
+           hand-off that lacks it is read as a reader click, which starts the
+           same package again and hands off again. */
         link.setAttribute("data-direct-download", "1");
         link.style.display = "none";
         doc.body.appendChild(link);
@@ -604,17 +571,30 @@
         }, 1500);
     }
 
-    function handOff(job, url) {
+    /* The browser's own downloader cannot rename a cross-origin file. The
+       same-origin proxy can: its Content-Disposition carries the package name,
+       so a hand-off goes through it whenever it will serve the asset. A proxy
+       that refuses (403 for a repository outside its allowlist) must never
+       replace the download with an error page, so an unproven proxy is probed
+       with a HEAD request first. */
+    async function handOff(job, url, proven) {
         job.status = "handoff";
         paint(job);
-        /* Callers pass the original release URL whenever the proxy refused the
-           request (403 for a repository outside its allowlist), so a refused
-           response is never saved under the package's name. */
-        var target = url || job.url;
+        var target = proven ? (url || job.url) : await proxyTarget(job.url, job.name);
         clickDirect(target, job.name);
         setTimeout(function () {
             if (job.status === "handoff") finish(job, 4000);
         }, 5000);
+    }
+
+    async function proxyTarget(url, name) {
+        var proxied = proxiedUrl(url, name);
+        if (proxied === url) return url;
+        try {
+            var res = await fetch(proxied, { method: "HEAD", credentials: "omit" });
+            if (res && res.ok) return proxied;
+        } catch (_) {}
+        return url;
     }
 
     function finish(job, delay) {
@@ -635,22 +615,40 @@
         job.controller = controller;
         var requestUrl = proxiedUrl(url, job.name);
 
-        /* A package is never read through a save dialog or held in memory:
-           the browser's own downloader takes the URL a few lines below. The
-           picker this replaced opened a Save As window on every click, and
-           cancelling it silently lost the download entirely. Only a measured
-           response small enough to buffer is still read here, so the button
-           can show its own progress. */
+        /* Chromium can write the response straight to a file: no 1.5 GB blob
+           in memory, and progress that matches what the disk is receiving. The
+           picker must be opened while the click still counts as a gesture, so
+           it comes before the request. */
+        /* A 1.8 GB portable package never fits in a JavaScript array, so the
+           reader picks a file once and the bytes go straight to disk. A
+           small measured package is buffered instead, and a blocked or
+           unreadable response falls back to the browser's downloader. */
         var writer = null;
-        if (job.cancelled) return;
+        if (typeof global.showSaveFilePicker === "function") {
+            try {
+                var extension = "." + ((job.name.split(".").pop() || "bin").toLowerCase());
+                var handle = await global.showSaveFilePicker({
+                    suggestedName: job.name,
+                    types: [{ description: "Download", accept: { "application/octet-stream": [extension] } }]
+                });
+                writer = await handle.createWritable();
+                job.writer = writer;
+            } catch (error) {
+                if (error && error.name === "AbortError") {
+                    cancelJob(job);
+                    return;
+                }
+                writer = null;
+            }
+        }
+        if (job.cancelled) {
+            if (writer) { try { await writer.abort(); } catch (_) {} }
+            return;
+        }
 
-        /* Ask what the file is before pulling a byte. A package is hundreds of
-           megabytes, and fetching it only to read its headers started a second
-           transfer beside the browser's own download. */
         var response;
         try {
             response = await fetch(requestUrl, {
-                method: "HEAD",
                 mode: "cors",
                 credentials: "omit",
                 redirect: "follow",
@@ -658,15 +656,17 @@
             });
         } catch (error) {
             if (job.cancelled) return;
-            /* Nothing is known about the proxy yet: the original asset is the
-               only URL that is certain to download. */
-            handOff(job, url);
+            /* Nothing is known about the proxy yet: probe it, then use the
+               original asset only when the probe refuses. */
+            handOff(job, requestUrl, false);
             return;
         }
         if (!response || !response.ok) {
+            if (writer) { try { await writer.abort(); } catch (_) {} }
             /* A repository outside the proxy's allowlist answers 403 here. The
-               browser must get the release asset, never that error page. */
-            handOff(job, url);
+               browser must get the release asset, never an error page, so an
+               unproven proxy is probed before the hand-off. */
+            handOff(job, requestUrl, false);
             return;
         }
 
@@ -677,31 +677,17 @@
         job.name = motherName(headerName || job.name || fileNameOf(url) || "download.bin");
         var length = Number(response.headers.get("content-length") || 0);
         job.total = Number.isFinite(length) && length > 0 ? length : 0;
-
-        /* Anything the page cannot read whole goes to the browser at once,
-           under the name the proxy just gave it. */
-        if (!writer && (!job.total || job.total > BLOB_LIMIT)) {
-            handOff(job, requestUrl);
-            return;
-        }
-
         job.status = "running";
         paint(job);
 
-        try {
-            response = await fetch(requestUrl, {
-                mode: "cors",
-                credentials: "omit",
-                redirect: "follow",
-                signal: controller ? controller.signal : undefined
-            });
-        } catch (error) {
-            if (job.cancelled) return;
-            handOff(job, url);
-            return;
-        }
-        if (!response || !response.ok) {
-            handOff(job, url);
+        /* Without a file handle, only a measured, small response is worth
+           reading: streaming a huge or unmeasured one would download it twice
+           or hold it all in memory. Those go to the browser once. */
+        if (!writer && (!job.total || job.total > BLOB_LIMIT)) {
+            try { if (response.body && response.body.cancel) await response.body.cancel(); } catch (_) {}
+            /* The response was OK, so the proxy serves this asset; its header
+               is what keeps the saved name identical on this path. */
+            handOff(job, requestUrl, true);
             return;
         }
 
@@ -714,7 +700,7 @@
         }
         if (!reader) {
             if (writer) { try { await writer.abort(); } catch (_) {} }
-            handOff(job, requestUrl);
+            handOff(job, requestUrl, true);
             return;
         }
 
@@ -747,7 +733,7 @@
         } catch (error) {
             if (writer) { try { await writer.abort(); } catch (_) {} }
             if (job.cancelled) return;
-            handOff(job, requestUrl);
+            handOff(job, requestUrl, true);
             return;
         }
 
@@ -769,7 +755,7 @@
         if (activeJobs().length >= MAX_JOBS) {
             /* The browser can still take it; the page just will not run a third
                stream beside two the reader is already watching. */
-            clickDirect(url, saveName);
+            proxyTarget(url, saveName).then(function (target) { clickDirect(target, saveName); });
             return true;
         }
         var job = {
@@ -818,12 +804,6 @@
         if (!link) return false;
         if (link.hasAttribute("data-no-inpage-download")) return false;
         if (link.hasAttribute("data-site-download-direct")) return false;
-        /* A row that names a portable mirror carries data-portable-zips. The
-           firmware catalog resolves the build for this computer from that
-           metadata and then calls start() with the resolved URL. Claiming the
-           click here streamed the project's original rom.zip instead, because
-           the visible href is the source release asset. */
-        if (link.hasAttribute("data-portable-zips") || link.hasAttribute("data-release-tag") || link.hasAttribute("data-zip-url")) return false;
         var href = link.getAttribute("href") || "";
         if (!href || href.charAt(0) === "#" || /^(mailto|tel|javascript):/i.test(href)) return false;
         /* Installers and app images belong to the browser, always. */
@@ -848,20 +828,19 @@
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         var link = anchorOf(event.target);
         if (!streamable(link)) return;
-        /* A portable package's anchor already points at the mirror build for
-           its platform, so the module takes it: the release's own rom.zip is
-           only the fallback when no mirror build exists. Leaving these to the
-           browser navigated the tab at GitHub instead of downloading. */
+        /* The firmware catalog owns these: it resolves the mirror's package
+           for this computer before starting the transfer. Claiming the link
+           here would fetch the release's own rom.zip instead. */
+        if (link.closest("[data-portable-zips]")) return;
         if (link.target && link.target !== "_self") return;
         var href = link.href || link.getAttribute("href");
         if (/^(blob|data):/i.test(href)) return;
         /* data-save-as is what a rendered document uses to name the package
            it links to; it outranks the asset's own filename. */
         var started = queue(href, link,
-            link.getAttribute("data-zip-name") ||
-            link.getAttribute("download") ||
             link.getAttribute("data-download-name") ||
             link.getAttribute("data-save-as") ||
+            link.getAttribute("download") ||
             "");
         if (started === false) return;
         /* A stale copy of docs-viewer.js also claims this click and would
@@ -887,10 +866,14 @@
             jobs.forEach(paint);
         });
 
-        /* No leave guard. A download belongs to the browser, so nothing on
-           the page may block navigation, and a running transfer is not a
-           reason to ask the reader to confirm leaving a page they are not
-           leaving. That question is what looped on every download click. */
+        /* Closing or reloading takes the transfer with it; the reader gets the
+           browser's own confirmation while a download is still running. */
+        global.addEventListener("beforeunload", function (event) {
+            if (!activeJobs().length) return undefined;
+            event.preventDefault();
+            event.returnValue = t("Keep this tab open");
+            return event.returnValue;
+        });
     }
 
     global.InnioasisDownloads = {

@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="lumen.css?v=20261110picker">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261110inline" defer></script>
+  <script src="site-init.js?v=20261111cards" defer></script>
   <style>
     .lumen-manifest-form { display: grid; gap: 1rem; margin: 1.25rem 0; padding: 1.25rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
     .lumen-manifest-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .9rem; }
@@ -432,7 +432,7 @@
             <tr><th scope="row"><code>icon_dark</code></th><td>Optional</td><td>Dark-theme logo. <code>image_dark</code> is an accepted alias.</td></tr>
             <tr><th scope="row"><code>image</code></th><td>Optional</td><td>Secondary light artwork, tried after <code>icon</code>.</td></tr>
             <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Optional</td><td>Page(s) opened after a successful install. The second one covers a multi-step guide.</td></tr>
-            <tr><th scope="row"><code>portable_zips</code></th><td>Optional</td><td>Comma-separated <code>*-mirror</code> repos that publish ready-to-run portable packages.</td></tr>
+            <tr><th scope="row"><code>portable_zips</code></th><td>Optional</td><td>Comma-separated <code>*-mirror</code> repos that publish ready-to-run software install zips.</td></tr>
             <tr><th scope="row"><code>derivative</code></th><td>Optional</td><td>Repository the firmware is built from. Firmware with the same derivative root can keep user data.</td></tr>
             <tr><th scope="row"><code>info_repo</code></th><td>Optional</td><td>App repository whose releases describe what the firmware deploys. Requires <code>post_install</code> or <code>post_install2</code>.</td></tr>
             <tr><th scope="row"><code>apk_repo</code></th><td>Optional</td><td>App repository whose APK the app installs after the firmware.</td></tr>
@@ -509,7 +509,17 @@
       <p>For a local check, run that command from the repository root. It verifies XML syntax only; it does not prove that a release contains valid firmware or that a device is safe to flash.</p>
     </section>
 
-<section class="lumen-guide-section" aria-labelledby="links-title">
+<section class="lumen-guide-section" id="feeds" aria-labelledby="feeds-title">
+      <h2 id="feeds-title">Firmware data feeds</h2>
+      <p>Tools, apps and the Updater itself can read the same catalogue this site renders, without scraping a page. Both files are generated from the release manifest and describe every listed release:</p>
+      <ul>
+        <li><a href="feeds/firmware-releases.json"><code>feeds/firmware-releases.json</code></a>: one JSON document listing each release with its model, software, tag, assets and per-computer builds.</li>
+        <li><a href="feeds/firmware-feed.xml"><code>feeds/firmware-feed.xml</code></a>: the same releases as an Atom feed, for feed readers and watchers.</li>
+      </ul>
+      <p>These are integration endpoints, documented here for developers. They are deliberately not linked from the public firmware list, so a reader choosing a download is never sent to a data file.</p>
+    </section>
+
+    <section class="lumen-guide-section" aria-labelledby="links-title">
       <h2 id="links-title">Useful project links</h2>
       <div class="lumen-actions">
         <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
@@ -559,9 +569,9 @@
 </main>
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
-  <script src="nav.js?v=20261110sites" defer></script>
+  <script src="nav.js?v=20261111nav" defer></script>
 <script src="site-i18n.js?v=20260830" defer></script>
-<script src="portable-zip-links.js?v=20261110warn" defer></script>
+<script src="portable-zip-links.js?v=20261111zip" defer></script>
 <script>
 (function () {
   "use strict";
@@ -929,5 +939,5 @@
   render();
   loadManifest();
 })();
-</script><script src="site-locale.js?v=20261109stack" defer></script></body>
+</script><script src="site-locale.js?v=20261111i18nfix" defer></script></body>
 </html>

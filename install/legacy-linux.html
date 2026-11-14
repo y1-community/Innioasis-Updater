@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en"><head><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<meta charset="utf-8">
+<meta name="author" content="Innioasis and Ryan Specter">
+<meta name="creator" content="Innioasis and Ryan Specter">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install firmware on 32-bit Linux | Software install zip install guide</title>
+<meta name="description" content="Step-by-step install guide for Innioasis and Timmkoo firmware on a 32-bit Intel or AMD Linux PC. Download the software install zip, make the installer executable, load the scatter file and write the firmware on a 32-bit Intel or AMD Linux PC.">
+<meta name="keywords" content="install Innioasis firmware 32 bit Linux, i686 Linux Innioasis, Innioasis software Linux, Innioasis update 32-bit Linux, Timmkoo firmware Linux, Innioasis software install zip install, flash Innioasis old Linux PC">
+<link rel="canonical" href="https://innioasis.app/install/legacy-linux.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Install firmware on 32-bit Linux">
+<meta property="og:description" content="Step-by-step install guide for Innioasis and Timmkoo firmware on 32-bit Intel or AMD Linux, using the software install zip.">
+<meta property="og:url" content="https://innioasis.app/install/legacy-linux.html">
+<meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Install firmware on 32-bit Linux">
+<meta name="twitter:description" content="Install Innioasis or Timmkoo firmware, software or an update on a 32-bit Linux PC with the software install zip.">
+<meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
+<meta property="og:site_name" content="Innioasis Updater">
+<link rel="icon" href="../y1_illustration.png">
+<link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+<link rel="stylesheet" href="../lumen.css?v=20261110picker">
+<link rel="stylesheet" href="../site-pages.css?v=20260818">
+<link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+<link rel="stylesheet" href="../install.css?v=20261106">
+<script src="../site-init.js?v=20261111cards" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Install Innioasis or Timmkoo firmware on 32-bit Linux","description":"Download the software install zip, make the installer executable, load the scatter file and write the firmware on a 32-bit Intel or AMD Linux PC.","totalTime":"PT15M","tool":[{"@type":"HowToTool","name":"A Linux PC with a 32-bit Intel or AMD processor"},{"@type":"HowToTool","name":"A USB cable that carries data"},{"@type":"HowToTool","name":"The software install zip for your model, which includes the installer"}],"step":[{"@type":"HowToStep","name":"Download the software install zip for your model","text":"Open the firmware list, choose the model printed on the player, then choose the release. Download the zip whose name ends in -linux-legacy.zip."},{"@type":"HowToStep","name":"Unpack the zip","text":"Unpack the download into its own folder and keep the folder together, because the installer reads the files beside itself."},{"@type":"HowToStep","name":"Make the installer executable","text":"Open a terminal in the folder and run chmod +x on the installer, as the readme inside the zip explains."},{"@type":"HowToStep","name":"Load the scatter file","text":"Start the installer, choose Scatter-loading and select the _Android_scatter.txt file from the firmware folder."},{"@type":"HowToStep","name":"Write the firmware","text":"Press Download, power the player fully off, then connect it with the USB cable. Wait for the green success box before unplugging anything."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I install Innioasis firmware on a 32-bit Linux PC?","acceptedAnswer":{"@type":"Answer","text":"Yes. Updater CE is published for 64-bit Linux and ARM64 only, but every release has a software install zip ending in -linux-legacy.zip that carries the same firmware and an installer that runs on 32-bit Intel and AMD systems."}},{"@type":"Question","name":"Do I need a driver package on Linux?","acceptedAnswer":{"@type":"Answer","text":"No separate installer is needed. Linux needs the MediaTek udev rule for vendor ID 0e8d so your user may open the player; the setup notes cover it, and the readme in the zip repeats the terminal steps."}},{"@type":"Question","name":"Why is the installer refused when I run it?","acceptedAnswer":{"@type":"Answer","text":"A file unpacked from a download does not carry its executable bit on every archive tool. Run chmod +x on the installer in its folder, or chmod +x ./* to mark everything in that folder."}},{"@type":"Question","name":"Is the -linux-legacy.zip the same firmware?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is the same rom for the same release, packaged with a stand-alone installer instead of the Updater CE app. The scatter file and partition images are identical."}},{"@type":"Question","name":"Do I need the internet on the player?","acceptedAnswer":{"@type":"Answer","text":"No. Everything needed is inside the zip: the firmware, the installer, a readme and a donate.txt. Nothing is downloaded during the install."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://innioasis.app/"},{"@type":"ListItem","position":2,"name":"Install guides","item":"https://innioasis.app/install/"},{"@type":"ListItem","position":3,"name":"32-bit Linux","item":"https://innioasis.app/install/legacy-linux.html"}]}</script>
+</head>
+<body class="site-themes-app install-page install-deep"><a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-install">
+<nav class="install-crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> <span class="install-crumb-sep">/</span> <a href="index.html">Install guides</a> <span class="install-crumb-sep">/</span> <span aria-current="page">32-bit Linux</span></nav>
+<header>
+<p class="lumen-kicker">32-bit Linux · Intel and AMD</p>
+<h1>Install firmware on a 32-bit Linux PC</h1>
+<p class="lead">This guide installs with a software install zip: one download that carries the firmware, the installer and a readme, built for a 32-bit Intel or AMD Linux PC. Use it for firmware, a community software release, an update or a stock package.</p>
+<div class="lumen-actions"><a class="lumen-button lumen-button--primary" href="../firmware-list.html">Browse packages for my model</a><a class="lumen-button" href="../linux-legacy.html">What is in the package?</a><a class="lumen-button" href="legacy-windows.html">Older Windows instead</a><a class="lumen-button" href="index.html">All install guides</a></div>
+</header>
+<section class="lumen-guide-section install-section">
+<h2>Before you start</h2>
+<ul class="install-checklist">
+<li><strong>Model:</strong> the name printed on the player. A Y1 package will not work on a Y2, and Timmkoo models are not interchangeable with Innioasis ones either.</li>
+<li><strong>Computer:</strong> a 32-bit Intel or AMD Linux install. A 64-bit Linux machine can use Updater CE from the <a href="../guide.html">main guide</a> instead.</li>
+<li><strong>Cable:</strong> a USB cable that carries data. A charge-only cable is the usual reason the player is never detected.</li>
+<li><strong>Power:</strong> charge the player to at least half before you begin.</li>
+<li><strong>Backup:</strong> copy music and other files you cannot replace off the player. An install replaces the system partition.</li>
+</ul>
+</section>
+<section class="lumen-guide-section install-section" id="which-package">
+<h2>Which file do I download?</h2>
+<p>Open the <a href="../firmware-list.html">firmware list</a>, find the model, then the software you want: Original Software, Rockbox, Solar, JJ Launcher, Inniclassic, Y2Player, Koensayr or another community system. For each release the archive lists the packages it has.</p>
+<p>A package for this computer ends in <code>-linux-legacy.zip</code>. It is named after the release, for example <code>rom-linux-legacy.zip</code> or <code>rom_y2-linux-legacy.zip</code>, and it contains the firmware, the installer that writes it, a readme with the details of that release and a <code>donate.txt</code>. If you only see Linux, Windows or macOS packages, that release has not been built for 32-bit Linux yet; try the newest release of the same software.</p>
+<div class="lumen-callout"><p><strong>Same firmware, different wrapper.</strong> The software install zip holds exactly the same scatter file and partition images as the Updater CE version. The only difference is which app opens them.</p></div>
+</section>
+<section class="lumen-guide-section install-section">
+<h2>Step 1: unpack the zip</h2>
+<ol class="lumen-steps">
+<li>Unpack the download into its own folder, for example <code>~/innioasis</code>. Keep the folder together: the installer reads the rom files beside itself.</li>
+<li>Open a terminal in that folder.</li>
+<li>Mark the installer executable. The readme inside the zip names the file; <code>chmod +x ./*</code> covers the whole folder.</li>
+</ol>
+<pre><code>cd ~/innioasis
+chmod +x ./*
+./flash_tool</code></pre>
+<p class="lumen-meta">No driver installer is needed on Linux. The player needs the MediaTek udev rule for vendor ID <code>0e8d</code>, which the <a href="../drivers.html#linux">Linux setup notes</a> cover. If the shell answers <code>Permission denied</code>, the executable bit is missing; run <code>chmod +x</code> again.</p>
+</section>
+<section class="lumen-guide-section install-section">
+<h2>Step 2: write the firmware</h2>
+<ol class="lumen-steps">
+<li>Start the installer from the folder, as shown above.</li>
+<li>Choose <strong>Scatter-loading</strong> and pick the <code>_Android_scatter.txt</code> file. The partition list should fill with the rom files beside it.</li>
+<li>Leave the mode on <strong>Download Only</strong>. Tick <strong>Preloader</strong> only when the player will not start at all and you are restoring it.</li>
+<li>Press <strong>Download</strong>. Then power the player fully off and plug in the USB cable.</li>
+<li>Wait for the green success box. Do not unplug the player and do not close the installer while the progress bar is moving.</li>
+</ol>
+<div class="lumen-callout"><p><strong>The player will not switch on?</strong> Straighten a paperclip and press the small reset hole on the player for a second, then connect it while it is still off. That resets the power state and leaves your files alone.</p></div>
+<div class="lumen-warning"><strong>Never cross-install a model.</strong><span>A Y1 package on a Y2, or the other way round, can leave the player with dead controls or a boot loop. Check the printed model before you start.</span></div>
+</section>
+<section class="lumen-guide-section install-section">
+<h2>If the install does not start</h2>
+<ol class="lumen-steps">
+<li><strong>Permission denied:</strong> the installer is not executable yet. Run <code>chmod +x</code> on it in the folder it lives in.</li>
+<li><strong>Nothing happens after Download:</strong> unplug the cable, hold the player's power button for ten seconds, press the reset hole with a paperclip, then press <strong>Download</strong> again and reconnect only once the installer is waiting.</li>
+<li><strong>The player is never detected:</strong> add the udev rule for vendor ID <code>0e8d</code>, reload udev, and try another USB port on the computer itself rather than a hub.</li>
+<li><strong>It finishes but will not boot:</strong> give the first boot a few minutes, then restore Original Software for the same model from the <a href="../firmware-list.html">firmware list</a>.</li>
+</ol>
+<p class="lumen-meta">If no app detects the player at all, treat it as a cable, udev or hardware problem before trying another firmware.</p>
+</section>
+<section class="lumen-guide-section install-section" id="terms">
+<h2>Firmware, software, update or package?</h2>
+<p>The words are used interchangeably across this site, and the steps above are the same for each:</p>
+<ul>
+<li><strong>Firmware</strong> or <strong>rom</strong>: the complete system image for a model.</li>
+<li><strong>Software</strong> or <strong>system</strong>: a community build such as Rockbox, Solar or JJ Launcher, delivered as the same kind of package.</li>
+<li><strong>Update</strong>: a newer release of either. Install it exactly like a fresh package.</li>
+<li><strong>Package</strong> or <strong>zip</strong>: the download. A software install zip is the one built for this PC.</li>
+</ul>
+</section>
+<section class="lumen-guide-section install-section">
+<h2>Supporting the projects</h2>
+<p>Every software install zip includes <code>donate.txt</code>, which lists the ways to support the people who keep these players usable. Nothing in the package is limited by whether you donate.</p>
+<div class="lumen-actions"><a class="lumen-button" href="../support_devs.html">Support the projects</a><a class="lumen-button" href="../linux-legacy.html">32-bit Linux overview</a></div>
+</section>
+<section class="lumen-guide-section install-section">
+<h2>Questions people ask</h2>
+<details><summary>Can I install Innioasis firmware on a 32-bit Linux PC?</summary><p>Yes. Updater CE is published for 64-bit Linux and ARM64 only, but every release has a software install zip ending in <code>-linux-legacy.zip</code> that carries the same firmware and an installer that runs on 32-bit Intel and AMD systems.</p></details>
+<details><summary>Which package should I use on a 32-bit Linux PC?</summary><p>Updater CE needs 64-bit Windows 10 1809 or newer, macOS, or 64-bit Linux. On a 32-bit Linux install the site offers the software install zip instead, because there is no build the app could run as.</p></details>
+<details><summary>Do I need a driver package on Linux?</summary><p>No separate installer is needed. Linux needs the MediaTek udev rule for vendor ID <code>0e8d</code> so your user may open the player; the setup notes cover it, and the readme in the zip repeats the terminal steps.</p></details>
+<details><summary>Is the -linux-legacy.zip the same firmware?</summary><p>Yes. It is the same rom for the same release, packaged with a stand-alone installer instead of the Updater CE app. The scatter file and partition images are identical.</p></details>
+<details><summary>Will installing erase my music?</summary><p>An install writes the system partition, so copy any files you cannot replace off the player first. Files on a microSD card are normally left alone, but remove the card if you want to be certain.</p></details>
+</section>
+<section class="lumen-guide-section install-section">
+<h2>Other computers and references</h2>
+<div class="lumen-grid install-related">
+<article class="lumen-card install-card"><h3>64-bit Linux</h3><p>Updater CE runs there, including the guided install and the udev rule.</p><div class="lumen-actions"><a class="lumen-button" href="linux.html">Linux install guides</a></div></article>
+<article class="lumen-card install-card"><h3>Older Windows</h3><p>The same software install zip route on Windows XP through 8.1 and 32-bit Windows, with the driver step.</p><div class="lumen-actions"><a class="lumen-button" href="legacy-windows.html">Older Windows guide</a></div></article>
+<article class="lumen-card install-card"><h3>macOS and Windows 10</h3><p>Both run Updater CE, and neither needs this guide.</p><div class="lumen-actions"><a class="lumen-button" href="mac.html">macOS</a><a class="lumen-button" href="windows.html">Windows</a></div></article>
+</div>
+<div class="lumen-actions"><a class="lumen-button" href="index.html">All install guides</a><a class="lumen-button" href="../troubleshooting.html">Troubleshooting</a><a class="lumen-button" href="../firmware-list.html">Firmware list</a></div>
+</section>
+<section class="lumen-guide-section" data-lumen-feedback data-feedback="install-guide"><h2>Was this useful?</h2><div class="lumen-feedback"><p>Your answer helps improve this guide.</p><button type="button" data-feedback-value="yes" aria-pressed="false">Yes, I found it useful</button><button type="button" data-feedback-value="no" aria-pressed="false">Not yet</button><a class="lumen-feedback-support" data-feedback-support hidden href="https://github.com/y1-community/Innioasis-Updater/issues" target="_blank" rel="noopener noreferrer">Let us know how we can improve</a></div></section>
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../nav.js?v=20261111nav" defer></script>
+<script src="../site-locale.js?v=20261111i18nfix" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+<script src="../site-platform.js?v=20261106" defer></script>
+</body></html>

@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="lumen.css?v=20261110picker">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261110inline2" defer></script>
+  <script src="site-init.js?v=20261111cards" defer></script>
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Innioasis Updater">
   <meta property="og:title" content="Portable ROM packages">
@@ -49,7 +49,7 @@
       <p>A project names its mirror in <code>slidia_manifest.xml</code>, on the <code>portable_zips</code> attribute, written as <code>author/repo</code>:</p>
       <pre class="pr-code">&lt;package name="Rockbox" repo="rockbox-y1/rockbox" portable_zips="y1-community/rockbox-mirror" device="Y1" /&gt;</pre>
       <p>When you click a ROM zip on the firmware page, the page reads that mirror's <code>index.json</code>, looks for the same release tag and the same ROM file inside it, and keeps only the entry built for your operating system and processor. The mirror's own GitHub release is then checked to confirm the file exists and is not an empty placeholder. If any of that fails, the click keeps the project's original zip, which is always a real file.</p>
-      <p>The file is saved under the release's own name, so the mirror's <code>rom_y2-linux-arm64.zip</code> arrives in your Downloads folder as <code>rom_y2.zip</code>. You can see the same choice without clicking anything by hovering the link, or from the release page at <a href="release_view.html">release_view.html</a>, which lists a portable build per platform next to the original file.</p>
+      <p>The file is saved under the release's own name, so the mirror's <code>rom_y2-linux-arm64.zip</code> arrives in your Downloads folder as <code>rom_y2.zip</code>. You can see the same choice without clicking anything by hovering the link, or from the release page at <a href="release_view.html">release_view.html</a>, which lists a software install zip per platform next to the original file.</p>
     </section>
 
     <section class="lumen-guide-section">
@@ -87,8 +87,8 @@ chmod +x ./*
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Making an AppImage from a portable package</h2>
-      <p>An AppImage is an AppDir packed into one file, and an AppDir is a folder with an <code>AppRun</code> entry point, a desktop entry and an icon. A portable package already holds the program, so it can be wrapped.</p>
+      <h2>Making an AppImage from a software install zip</h2>
+      <p>An AppImage is an AppDir packed into one file, and an AppDir is a folder with an <code>AppRun</code> entry point, a desktop entry and an icon. A software install zip already holds the program, so it can be wrapped.</p>
       <ol class="lumen-steps">
         <li>Unpack the archive into a folder, for example <code>AppDir</code>.</li>
         <li>Add <code>AppDir/AppRun</code>, an executable script that starts the tool with the ROM beside it:
@@ -100,12 +100,12 @@ exec "$here/flash_tool" "$@"</pre></li>
           <pre class="pr-code">appimagetool AppDir Innioasis-Flash.AppImage</pre></li>
       </ol>
       <p>Do this on the processor you are packaging for. An AppImage built on an ARM64 machine runs on ARM64 machines, and the Intel and AMD package has to be built on an Intel or AMD machine.</p>
-      <p>Building the application itself, rather than wrapping a package, is covered on <a href="portable-builds.html">AppImages, tarballs and portable builds</a>.</p>
+      <p>Building the application itself, rather than wrapping a package, is covered on <a href="portable-builds.html">AppImages, tarballs and software install zips</a>.</p>
     </section>
 
     <section class="lumen-guide-section">
       <h2>When a package does not appear</h2>
-      <p>A mirror builds after the project publishes, so a release that appeared minutes ago may not have its packages yet. The archive serves the project's original zip in that case, and the portable build appears once the mirror has published it.</p>
+      <p>A mirror builds after the project publishes, so a release that appeared minutes ago may not have its packages yet. The archive serves the project's original zip in that case, and the software install zip appears once the mirror has published it.</p>
       <p>A ROM that is listed in the feeds but not in the manifest has no mirror at all. Its row downloads the project's own zip, which is the only file that exists for it.</p>
       <div class="lumen-actions">
         <a class="lumen-button lumen-button--primary" href="firmware.html">Open the firmware archive</a>
@@ -116,9 +116,9 @@ exec "$here/flash_tool" "$@"</pre></li>
     <div id="footer-root"></div>
     <div id="support-toolbar-slot"></div>
   </main>
-  <script src="nav.js?v=20261110sale" defer></script>
-  <script src="lumen-site.js?v=20261112portable9" defer></script>
+  <script src="nav.js?v=20261111nav" defer></script>
+  <script src="lumen-site.js?v=20261111zip" defer></script>
   <script src="site-i18n.js?v=20261113blocklist" defer></script>
-  <script src="site-locale.js?v=20261109stack" defer></script>
+  <script src="site-locale.js?v=20261111i18nfix" defer></script>
 </body>
 </html>

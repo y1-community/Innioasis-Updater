@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261113badge2" defer></script>
+  <script src="../site-init.js?v=20261111cards" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -69,12 +69,12 @@
 <p>Boot stages retain initramfs, discovery, preflight, fsck, mounts and switch_root timing in <code>/run/y2/boot-stages.jsonl</code>. A durable, bounded eight-boot journal in <code>/data/system/platform/boot.json</code> retains identity, count, last stage, previous boot ID and orderly-shutdown marker. Three unclean predecessors recommend recovery; no automatic reboot follows. An unclean record does not distinguish power loss, panic, reset or removal of power. Watchdog sysfs and pstore inventory are observations only; no AP watchdog is armed and no RAM region is reserved. Failures before validated writable data cannot be promised persistent retention.</p>
 <p>The interpreter uses only the standard library; no pip or network packages are installed. Files are size-bounded, PID requests capped at 32, and subprocesses have output caps and deadlines. A kernel task stuck in uninterruptible I/O cannot be made time-bounded by a userspace timeout. Full status is an on-demand tool, not a high-frequency polling daemon; benchmark records include collection cost.</p>
 <p><code>--reborn --pss</code> observes the current service PID/start-time and bounded Reborn metrics; collection follows restarts as separate memory series. Boot evidence is captured before the current logger starts. Status contains only previous-log metadata/hashes, while <code>y2-platform boot-evidence</code> is private owner retrieval. Kernel taint and actual CONSYS status are observations; no kernel warning count or packet-loss number is synthesized from log text or application XRUNs.</p>
-<p>The <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FPLATFORM-V1-OWNER-QUALIFICATION.md">owner qualification plan</a> uses <code>tools/host/qualify.py</code>: local plan by default, explicit readonly USB collection, exact source-pair matching, bounded gaps and no automatic hardware actions. Capture completion and qualification acceptance are separate states.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn (Y2Linux)</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<p>The <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FPLATFORM-V1-OWNER-QUALIFICATION.md">owner qualification plan</a> uses <code>tools/host/qualify.py</code>: local plan by default, explicit readonly USB collection, exact source-pair matching, bounded gaps and no automatic hardware actions. Capture completion and qualification acceptance are separate states.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261106direct" defer></script>
-<script src="../nav.js?v=20261103brand" defer></script>
-<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../docs-viewer.js?v=20261110inline5" defer></script>
+<script src="../portable-zip-links.js?v=20261111zip" defer></script>
+<script src="../nav.js?v=20261111nav" defer></script>
+<script src="../site-locale.js?v=20261111i18nfix" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

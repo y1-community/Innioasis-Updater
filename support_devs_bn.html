@@ -43,7 +43,7 @@
   <link rel="stylesheet" href="lumen.css?v=20261110picker">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261110inline" defer></script>
+  <script src="site-init.js?v=20261111cards" defer></script>
   <style>
     .supported-projects-grid {
       display: grid;
@@ -306,26 +306,6 @@
     }
     .donation-impact-note strong { color: var(--lumen-text, #fff); }
     .donation-impact-note p { margin: 4px 0 0; color: var(--lumen-muted, #9aa3b5); }
-    .financial-accounting-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
-    }
-    .financial-accounting-card {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      min-height: 126px;
-      padding: 16px;
-      border: 1px solid var(--lumen-card-border, rgba(255,255,255,.14));
-      border-radius: 12px;
-      background: var(--lumen-card-bg, rgba(255,255,255,.05));
-    }
-    .financial-accounting-card--total { border-color: rgba(16,185,129,.55); background: linear-gradient(135deg, rgba(16,185,129,.14), rgba(16,185,129,.04)); }
-    .financial-accounting-card strong { font-size: 1.35rem; color: var(--lumen-text, #fff); }
-    .financial-accounting-card small { color: var(--lumen-muted, #9aa3b5); line-height: 1.4; }
-    .financial-accounting-label { color: var(--lumen-muted, #9aa3b5); font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
     .sponsorship-list { margin-top: 18px; }
     .sponsorship-list h3 { margin-bottom: 6px; }
     .donor-contributor-key {
@@ -551,27 +531,7 @@
       <h2>Developer documentation</h2>
       <p>Publishing custom software? Read the <a href="developers_bn.html">developer guide for adding Y1 and Y2 releases to Updater</a>.</p>
     </section>
-
-    <section class="lumen-guide-section">
-      <h2>Project links</h2>
-      <p><a href="https://github.com/rockbox-y1/rockbox" target="_blank" rel="noopener noreferrer">Rockbox Y1</a> · <a href="https://github.com/y1-community/rockbox-y2-rom" target="_blank" rel="noopener noreferrer">Rockbox Y2</a> · <a href="https://github.com/thesolarproject/solar" target="_blank" rel="noopener noreferrer">Solar</a> · <a href="https://themes.innioasis.app/" target="_blank" rel="noopener noreferrer">থিম গ্যালারি</a></p>
-    </section>
-
-    <!-- Section 4: Financial accounting, kept at the bottom so the people and projects stay front and centre. -->
-    <section class="lumen-guide-section" id="financial-accounting">
-      <h2>Where the money goes</h2>
-      <p>Running Updater CE, the Themes Gallery and the firmware archive costs about $200 a month. On top of that comes the Apple Developer fee each year, a one-off Mac mini for testing, and the hardware: a player for every model and release worth testing, and some of those players do not survive the work. Community contributions currently cover roughly <strong>15%</strong> of the real total; the rest comes out of my own pocket.</p>
-      <div class="financial-accounting-grid" aria-label="Project financial summary">
-        <article class="financial-accounting-card financial-accounting-card--total"><span class="financial-accounting-label">Total cost so far</span><strong id="financial-total-cost">$0</strong><small id="financial-total-cost-detail">Adding it up...</small></article>
-        <article class="financial-accounting-card"><span class="financial-accounting-label">Community contributions</span><strong id="financial-community-raised">$0</strong><small>Received from community supporters. Commercial sponsorship is kept separate.</small></article>
-        <article class="financial-accounting-card"><span class="financial-accounting-label">Innioasis sponsorship</span><strong id="financial-corporate-raised">$0</strong><small>Commercial sponsorship received from Innioasis, listed separately below the community ledger.</small></article>
-        <article class="financial-accounting-card"><span class="financial-accounting-label">Community projects supported</span><strong id="financial-outgoing-cost">$0</strong><small>Money sent to other creators and projects, shown separately from community contributions.</small></article>
-        <article class="financial-accounting-card"><span class="financial-accounting-label">Apple Developer certification</span><strong id="financial-apple-cost">$0</strong><small>$99 each year.</small></article>
-        <article class="financial-accounting-card"><span class="financial-accounting-label">Mac mini testing hardware</span><strong id="financial-hardware-cost">$599</strong><small>One-off platform testing hardware for macOS.</small></article>
-      </div>
-      <p>The figures above count the regular bills. They do not count the test players: those are bought per release, and some are lost to failed flashes while a build is being checked. Counting them, community support is about 15% of what the project actually costs.</p>
-    </section>
-  </main>
+</main>
 
   <div id="donor-credits-overlay" class="donor-credits-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="donor-credits-title">
     <div class="donor-credits-stage">
@@ -590,7 +550,7 @@
   </div>
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
-  <script src="nav.js?v=20261110sites" defer></script>
+  <script src="nav.js?v=20261111nav" defer></script>
   <script src="site-i18n.js?v=20260830" defer></script>
 
   <script>
@@ -2126,26 +2086,6 @@
         }
       }
 
-      var launchMonthIndex = 2025 * 12 + 6;
-      var currentMonthIndex = curYear * 12 + curMonth;
-      var elapsedMonths = Math.max(1, currentMonthIndex - launchMonthIndex + 1);
-      var monthlyRunningCosts = elapsedMonths * 200;
-      var annualCertificationPeriods = Math.max(1, Math.ceil(elapsedMonths / 12));
-      var appleDeveloperCosts = annualCertificationPeriods * 99;
-      var macMiniTestingHardware = 599;
-      var totalAccountedCost = monthlyRunningCosts + appleDeveloperCosts + macMiniTestingHardware + totalOutgoingSpent;
-      function setMoney(id, amount) {
-        var el = document.getElementById(id);
-        if (el) el.textContent = "$" + (amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2));
-      }
-      setMoney("financial-total-cost", totalAccountedCost);
-      setMoney("financial-community-raised", totalCommunityRaised);
-      setMoney("financial-corporate-raised", totalCorporateRaised);
-      setMoney("financial-outgoing-cost", totalOutgoingSpent);
-      setMoney("financial-apple-cost", appleDeveloperCosts);
-      var totalDetail = document.getElementById("financial-total-cost-detail");
-      if (totalDetail) totalDetail.textContent = "$200 monthly running costs × " + elapsedMonths + " calendar months + $" + appleDeveloperCosts.toFixed(0) + " Apple certification + $" + macMiniTestingHardware.toFixed(0) + " Mac mini + $" + totalOutgoingSpent.toFixed(2) + " project support.";
-
     }
 
     /* The root path is tried first (a relative "donors.csv" from a nested
@@ -2198,5 +2138,5 @@
   })();
   
 </script>
-<script src="site-locale.js?v=20261109stack" defer></script></body>
+<script src="site-locale.js?v=20261111i18nfix" defer></script></body>
 </html>

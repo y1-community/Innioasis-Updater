@@ -1,287 +1,5 @@
 [
   {
-    "id": 442872569,
-    "tag_name": "v3.0.2",
-    "name": "Rondo 3.0.2",
-    "body": "**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it once to [Rondo server 3.1.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.1.0) (its admin page offers it); from then on, Rondo and the server update apart.\n\n- **Downloads are about three times faster.** A YouTube download now comes in four parts at once: a 10-minute 720p video took 50 seconds instead of 145, a two-hour episode about 8 minutes.\n- **A download survives a dropout.** When the Wi-Fi or the internet goes away for a while, the download waits and carries on where it stopped, instead of failing or starting over (Software update's download too).\n- **The Y1 stays awake while a download runs,** unplugged with the screen off too.\n- **YouTube's pictures are back** in search, the feeds and on a download's row.\n- **A download's row says what it's doing:** Downloading video, Downloading sound, Getting subtitles, Saving.\n- **Rondo and the server have their own version numbers now.** Most releases change only the Y1, so they no longer ask you to update your server. This Rondo works with Rondo server 3.1.0 or newer; with an older one, Settings \u203a YouTube \u203a Connection, the dashboard and the YouTube screens say **Server needs an update**.\n\n**How to get it**\n- **On Rondo 3.0.x:** Settings \u203a System \u203a Software update, the dashboard's Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.\n- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.2), with **Keep my settings** turned on.\n\nFiles: `rondo-3.0.2.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#302-november-12-2026).\n",
-    "draft": false,
-    "prerelease": false,
-    "created_at": "2026-11-12T11:46:47Z",
-    "published_at": "2026-11-12T11:47:50Z",
-    "html_url": "https://github.com/jarvissax/rondo/releases/tag/v3.0.2",
-    "icon_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png",
-    "icon_dark_url": "",
-    "assets": [
-      {
-        "id": 739289677,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.2/rom.zip",
-        "size": 529873460,
-        "download_count": 5,
-        "content_type": "application/zip",
-        "created_at": "2026-11-12T11:50:03Z",
-        "updated_at": "2026-11-12T11:50:24Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/739289677"
-      },
-      {
-        "id": 739281243,
-        "name": "rondo-3.0.2.rondo",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.2/rondo-3.0.2.rondo",
-        "size": 17034596,
-        "download_count": 4,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-11-12T11:47:25Z",
-        "updated_at": "2026-11-12T11:47:43Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/739281243"
-      },
-      {
-        "id": 739289680,
-        "name": "updater.png",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png",
-        "size": 12952,
-        "download_count": 5,
-        "content_type": "image/png",
-        "created_at": "2026-11-12T11:50:03Z",
-        "updated_at": "2026-11-12T11:50:03Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/739289680"
-      }
-    ],
-    "mirror_downloads": 7,
-    "downloads": 12
-  },
-  {
-    "id": 442684952,
-    "tag_name": "v3.0.1",
-    "name": "Rondo 3.0.1",
-    "body": "**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi.\n\n- **Charging shows on the battery.** On a charger or a computer, a green bolt shows next to the battery in the status bar and the YouTube headers, and the charge turns green.\n- **YouTube and YouTube Music without internet.** With Wi-Fi off they now say \"No Wi-Fi connection\" at once instead of \"Loading\u2026\", and load by themselves when Wi-Fi is back. On a Wi-Fi network without internet they give up after 30 seconds at most and say they couldn't reach YouTube.\n- **Sharper subtitles.** Their lines sat between two rows of pixels, which blurred every letter.\n- **The rest of SPWall is gone too:** its packet filter, code injector and renamed iptables, which nothing started, and the stock firmware's distribution tag. Rondo removes them itself when it updates, and the firmware leaves them out.\n\n**How to get it**\n- **On Rondo 3.0.0:** Settings \u203a System \u203a Software update, the dashboard's Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.\n- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.1), with **Keep my settings** turned on.\n\nFiles: `rondo-3.0.1.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#301-november-12-2026).",
-    "draft": false,
-    "prerelease": false,
-    "created_at": "2026-11-12T08:43:18Z",
-    "published_at": "2026-11-12T08:47:07Z",
-    "html_url": "https://github.com/jarvissax/rondo/releases/tag/v3.0.1",
-    "icon_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.1/updater.png",
-    "icon_dark_url": "",
-    "assets": [
-      {
-        "id": 738745102,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.1/rom.zip",
-        "size": 529873910,
-        "download_count": 5,
-        "content_type": "application/zip",
-        "created_at": "2026-11-12T08:48:53Z",
-        "updated_at": "2026-11-12T08:49:04Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/738745102"
-      },
-      {
-        "id": 738738326,
-        "name": "rondo-3.0.1.rondo",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.1/rondo-3.0.1.rondo",
-        "size": 17032563,
-        "download_count": 5,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-11-12T08:46:33Z",
-        "updated_at": "2026-11-12T08:46:49Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/738738326"
-      },
-      {
-        "id": 738745103,
-        "name": "updater.png",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.1/updater.png",
-        "size": 12952,
-        "download_count": 8,
-        "content_type": "image/png",
-        "created_at": "2026-11-12T08:48:53Z",
-        "updated_at": "2026-11-12T08:48:53Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/738745103"
-      }
-    ],
-    "mirror_downloads": 22,
-    "downloads": 27
-  },
-  {
-    "id": 442622007,
-    "tag_name": "v3.0.0",
-    "name": "Rondo 3.0.0",
-    "body": "**For the Innioasis Y1, Type A.** A new firmware without the stock firmware's root backdoors.\n\n- **The root backdoors are gone.** Innioasis's own firmware, and so every Rondo firmware before this one, ran three programs as root that nothing on the Y1 needs:\n  - `aggdll`, an app pusher's agent: a hidden `su` and a silent app installer;\n  - `wifi_init`, a downloader it starts, which checks in with a server and runs what it downloads as root. That server doesn't answer today;\n  - SPWall (`libsp.so`), which runs commands as root for other programs.\n\n  This firmware leaves all three out, with what they left behind, and puts Android's own `am` back.\n- **A Y1 installed again runs the firmware's own Rondo**, not an older update it took over Wi-Fi before.\n\n**How to get it**\n- **Innioasis Updater CE**: Y1, Type A, **Rondo**, 3.0.0. Turn on **Keep my settings** so your settings, Wi-Fi networks, server connection and paired headphones stay. Your music on the card is never touched.\n- Software update on 2.0 shows 3.0.0 but can't install it, because the firmware itself has to change.\n\nFiles: `rondo-3.0.0.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#300-november-12-2026).",
-    "draft": false,
-    "prerelease": false,
-    "created_at": "2026-11-12T07:35:32Z",
-    "published_at": "2026-11-12T07:38:39Z",
-    "html_url": "https://github.com/jarvissax/rondo/releases/tag/v3.0.0",
-    "icon_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.0/updater.png",
-    "icon_dark_url": "",
-    "assets": [
-      {
-        "id": 738545205,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.0/rom.zip",
-        "size": 529881492,
-        "download_count": 4,
-        "content_type": "application/zip",
-        "created_at": "2026-11-12T07:40:31Z",
-        "updated_at": "2026-11-12T07:40:47Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/738545205"
-      },
-      {
-        "id": 738539239,
-        "name": "rondo-3.0.0.rondo",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.0/rondo-3.0.0.rondo",
-        "size": 17027331,
-        "download_count": 5,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-11-12T07:38:24Z",
-        "updated_at": "2026-11-12T07:38:36Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/738539239"
-      },
-      {
-        "id": 738545203,
-        "name": "updater.png",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.0/updater.png",
-        "size": 12952,
-        "download_count": 8,
-        "content_type": "image/png",
-        "created_at": "2026-11-12T07:40:31Z",
-        "updated_at": "2026-11-12T07:40:31Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/738545203"
-      }
-    ],
-    "mirror_downloads": 21,
-    "downloads": 25
-  },
-  {
-    "id": 442581192,
-    "tag_name": "v2.0.1",
-    "name": "Rondo 2.0.1",
-    "body": "**For the Innioasis Y1, Type A.** A fix release for Rondo 2.0.\n\n- **Wi-Fi works after a fresh install.** On a Y1 that installed 2.0.0 without keeping its data, Wi-Fi never came on (\"Wi-Fi didn't start\"): Rondo powered the Wi-Fi chip on while its driver was still loading, and the chip stayed stuck until the next restart. Rondo now waits for the driver first (#3).\n- **Next and Previous in Now Playing slide smoothly:** the slide starts on the press, and the covers of the songs before and after are ready before you press.\n\n**How to get it**\n- **Wi-Fi not working on 2.0.0?** Install with **Innioasis Updater CE** (Y1, Type A, Rondo 2.0.1), or over USB from the [update page](https://jarvissax.github.io/rondo/) in Chrome or Edge.\n- **Wi-Fi working:** Settings \u203a System \u203a Software update, or the dashboard's Overview.\n- **Coming from 1.0:** Innioasis Updater CE, with **Keep Data** to keep your settings.\n\nFiles: `rondo-2.0.1.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#201-november-12-2026).\n",
-    "draft": false,
-    "prerelease": false,
-    "created_at": "2026-11-12T06:42:10Z",
-    "published_at": "2026-11-12T06:44:13Z",
-    "html_url": "https://github.com/jarvissax/rondo/releases/tag/v2.0.1",
-    "icon_url": "https://github.com/jarvissax/rondo/releases/download/v2.0.1/updater.png",
-    "icon_dark_url": "",
-    "assets": [
-      {
-        "id": 738392884,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v2.0.1/rom.zip",
-        "size": 529870979,
-        "download_count": 7,
-        "content_type": "application/zip",
-        "created_at": "2026-11-12T06:46:12Z",
-        "updated_at": "2026-11-12T06:46:30Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/738392884"
-      },
-      {
-        "id": 738386879,
-        "name": "rondo-2.0.1.rondo",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v2.0.1/rondo-2.0.1.rondo",
-        "size": 17020017,
-        "download_count": 5,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-11-12T06:43:51Z",
-        "updated_at": "2026-11-12T06:44:09Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/738386879"
-      },
-      {
-        "id": 738392886,
-        "name": "updater.png",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v2.0.1/updater.png",
-        "size": 12952,
-        "download_count": 7,
-        "content_type": "image/png",
-        "created_at": "2026-11-12T06:46:12Z",
-        "updated_at": "2026-11-12T06:46:12Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/738392886"
-      }
-    ],
-    "mirror_downloads": 18,
-    "downloads": 25
-  },
-  {
-    "id": 442890968,
-    "tag_name": "server-v3.1.1",
-    "name": "Rondo server 3.1.1",
-    "body": "**A small clean-up of the Rondo server.**\n\n- **`/healthz` no longer sends the `api` number** that 3.1.0 added. Nothing reads it: Rondo tells whether a server is new enough from the server's version, against the oldest server it works with. Nothing else changes, so this update is optional.\n\n**How to update**\n- The admin page's **Update**.\n- Or by hand: `docker compose -f infra/compose.home.yaml pull && docker compose -f infra/compose.home.yaml up -d` (or `compose.vps.yaml`).\n\nImages: `ghcr.io/jarvissax/rondo-server:3.1.1` and `ghcr.io/jarvissax/rondo-updater:3.1.1` (also `latest`). Changes: [server/CHANGELOG.md](https://github.com/jarvissax/rondo/blob/main/server/CHANGELOG.md).\n",
-    "draft": false,
-    "prerelease": false,
-    "created_at": "2026-11-12T11:58:08Z",
-    "published_at": "2026-11-12T12:04:21Z",
-    "html_url": "https://github.com/jarvissax/rondo/releases/tag/server-v3.1.1",
-    "icon_url": "https://innioasis.app/assets/rondo_icon.jpg",
-    "icon_dark_url": "",
-    "assets": [],
-    "mirror_downloads": 0,
-    "downloads": 0
-  },
-  {
-    "id": 442858372,
-    "tag_name": "server-v3.1.0",
-    "name": "Rondo server 3.1.0",
-    "body": "**The Rondo server, released apart from Rondo on the Y1 from now on.**\n\n- **A version of its own.** Most Rondo releases change only the Y1, so they no longer ask you to update your server. The admin page's Overview says when a newer server is out.\n- **`/healthz` says the server's version,** which Rondo checks against the oldest server it works with. (It also sends an `api` number, which nothing reads; [3.1.1](https://github.com/jarvissax/rondo/releases/tag/server-v3.1.1) drops it.)\n\n**How to update**\n- The admin page's **Update**. A server on 3.0.1 hears of it once Rondo 3.0.2 is out; from 3.1.0 on, it watches the server's own releases.\n- Or by hand: `docker compose -f infra/compose.home.yaml pull && docker compose -f infra/compose.home.yaml up -d` (or `compose.vps.yaml`).\n\nImages: `ghcr.io/jarvissax/rondo-server:3.1.0` and `ghcr.io/jarvissax/rondo-updater:3.1.0` (also `latest`), published by the release workflow a few minutes after this release. Changes: [server/CHANGELOG.md](https://github.com/jarvissax/rondo/blob/main/server/CHANGELOG.md).",
-    "draft": false,
-    "prerelease": false,
-    "created_at": "2026-11-12T11:32:04Z",
-    "published_at": "2026-11-12T11:33:51Z",
-    "html_url": "https://github.com/jarvissax/rondo/releases/tag/server-v3.1.0",
-    "icon_url": "https://innioasis.app/assets/rondo_icon.jpg",
-    "icon_dark_url": "",
-    "assets": [],
-    "mirror_downloads": 0,
-    "downloads": 0
-  },
-  {
-    "id": 441668172,
-    "tag_name": "v2.0.0",
-    "name": "Rondo 2.0.0",
-    "body": "**For the Innioasis Y1, Type A.** A new firmware: install `rom.zip` with **Innioasis Updater CE** (choose **Keep Data** to keep your settings when coming from 1.0). After that, Rondo updates itself over Wi-Fi from GitHub.\n\nRondo 2.0 is rebuilt as a program of its own: Android's app layer is gone, the Y1 starts straight into Rondo, and everything runs smoother at 60 frames a second.\n\n- **YouTube and YouTube Music straight from the Y1**, no server needed (your own server is optional and still works). Sign in with a code, like a smart TV.\n- **Subtitles** on YouTube videos and on the videos on the card, in a look of your own (YouTube's by default).\n- **Download YouTube videos** at 720p, 480p or 360p, with their subtitles, to watch offline.\n- **Library in four:** Music (with Cover Flow, album artists, genres, smart playlists), Videos, Photos and Files.\n- **Sound:** an equalizer for each output, Headphone match (with a server), loudness boost, volume leveling, the amplifier and a volume limit.\n- **Software update from GitHub**, with or without a server; the dashboard has every setting too.\n\nEverything else is in the [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#200-november-11-2026).\n\nFiles: `rondo-2.0.0.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing.\n",
-    "draft": false,
-    "prerelease": false,
-    "created_at": "2026-11-11T12:32:17Z",
-    "published_at": "2026-11-11T12:33:03Z",
-    "html_url": "https://github.com/jarvissax/rondo/releases/tag/v2.0.0",
-    "icon_url": "https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png",
-    "icon_dark_url": "",
-    "assets": [
-      {
-        "id": 735470141,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v2.0.0/rom.zip",
-        "size": 529874086,
-        "download_count": 21,
-        "content_type": "application/zip",
-        "created_at": "2026-11-11T12:35:04Z",
-        "updated_at": "2026-11-11T12:35:24Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/735470141"
-      },
-      {
-        "id": 735462742,
-        "name": "rondo-2.0.0.rondo",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v2.0.0/rondo-2.0.0.rondo",
-        "size": 17019301,
-        "download_count": 7,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-11-11T12:32:45Z",
-        "updated_at": "2026-11-11T12:33:02Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/735462742"
-      },
-      {
-        "id": 735470143,
-        "name": "updater.png",
-        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png",
-        "size": 12952,
-        "download_count": 36,
-        "content_type": "image/png",
-        "created_at": "2026-11-11T12:35:04Z",
-        "updated_at": "2026-11-11T12:35:04Z",
-        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/735470143"
-      }
-    ],
-    "mirror_downloads": 23,
-    "downloads": 44
-  },
-  {
     "id": 432440033,
     "tag_name": "v1.0.2",
     "name": "Rondo 1.0.2",
@@ -299,7 +17,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.2/rom.zip",
         "size": 528028371,
-        "download_count": 65,
+        "download_count": 55,
         "content_type": "application/zip",
         "created_at": "2026-11-03T08:52:51Z",
         "updated_at": "2026-11-03T08:53:08Z",
@@ -310,7 +28,7 @@
         "name": "rondo-1.0.2.apk",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.2/rondo-1.0.2.apk",
         "size": 6423022,
-        "download_count": 23,
+        "download_count": 16,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-11-03T08:34:24Z",
         "updated_at": "2026-11-03T08:34:34Z",
@@ -321,15 +39,13 @@
         "name": "updater.png",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.2/updater.png",
         "size": 12952,
-        "download_count": 214,
+        "download_count": 176,
         "content_type": "image/png",
         "created_at": "2026-11-03T08:52:51Z",
         "updated_at": "2026-11-03T08:52:51Z",
         "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/704945379"
       }
-    ],
-    "mirror_downloads": 62,
-    "downloads": 127
+    ]
   },
   {
     "id": 432404909,
@@ -349,7 +65,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/rom.zip",
         "size": 528031354,
-        "download_count": 23,
+        "download_count": 16,
         "content_type": "application/zip",
         "created_at": "2026-11-03T07:54:15Z",
         "updated_at": "2026-11-03T07:54:38Z",
@@ -360,7 +76,7 @@
         "name": "rondo-1.0.1.apk",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/rondo-1.0.1.apk",
         "size": 6423015,
-        "download_count": 20,
+        "download_count": 14,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-11-03T07:52:23Z",
         "updated_at": "2026-11-03T07:52:26Z",
@@ -371,15 +87,13 @@
         "name": "updater.png",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/updater.png",
         "size": 12952,
-        "download_count": 119,
+        "download_count": 88,
         "content_type": "image/png",
         "created_at": "2026-11-03T07:54:15Z",
         "updated_at": "2026-11-03T07:54:16Z",
         "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/704788606"
       }
-    ],
-    "mirror_downloads": 35,
-    "downloads": 58
+    ]
   },
   {
     "id": 431423072,
@@ -399,7 +113,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/rom.zip",
         "size": 528038771,
-        "download_count": 25,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-11-02T12:15:31Z",
         "updated_at": "2026-11-02T12:19:13Z",
@@ -410,7 +124,7 @@
         "name": "rondo-1.0.0.apk",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/rondo-1.0.0.apk",
         "size": 6421197,
-        "download_count": 21,
+        "download_count": 15,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-11-02T12:14:48Z",
         "updated_at": "2026-11-02T12:14:53Z",
@@ -421,14 +135,12 @@
         "name": "updater.png",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png",
         "size": 12952,
-        "download_count": 156,
+        "download_count": 123,
         "content_type": "image/png",
         "created_at": "2026-11-02T12:15:19Z",
         "updated_at": "2026-11-02T12:15:19Z",
         "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/701647593"
       }
-    ],
-    "mirror_downloads": 34,
-    "downloads": 59
+    ]
   }
 ]

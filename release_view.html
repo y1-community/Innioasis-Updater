@@ -27,7 +27,7 @@
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Firmware releases - Innioasis Updater</title>
-  <meta name="description" content="Every release of a community firmware project, with the portable build for your computer and the original release file, without leaving Innioasis.">
+  <meta name="description" content="Every release of a community firmware project, with the software install zip for your computer and the original release file, without leaving Innioasis.">
   <link rel="canonical" href="https://innioasis.app/release_view.html">
   <link rel="icon" href="y1_illustration.png">
   <link rel="stylesheet" href="site-theme.css?v=20261109theme">
@@ -35,12 +35,12 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="docs-viewer.css?v=20261112cites">
-  <script src="site-init.js?v=20261110inline" defer></script>
+  <script src="site-init.js?v=20261111cards" defer></script>
   <meta name="innioasis-download-proxy" content="/download-proxy">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Innioasis Updater">
   <meta property="og:title" content="Firmware releases - Innioasis Updater">
-  <meta property="og:description" content="Every release of a community firmware project, with the portable build for your computer and the original release file.">
+  <meta property="og:description" content="Every release of a community firmware project, with the software install zip for your computer and the original release file.">
   <meta property="og:url" content="https://innioasis.app/release_view.html">
   <meta name="twitter:card" content="summary_large_image">
   <!-- i18n-hreflang-start -->
@@ -95,7 +95,7 @@
           <h1 id="rv-title">Releases</h1>
         </div>
       </div>
-      <p class="lumen-lead" id="rv-lead">Every published release, with the portable build for your computer and the original file from the developer.</p>
+      <p class="lumen-lead" id="rv-lead">Every published release, with the software install zip for your computer and the original file from the developer.</p>
       <div class="lumen-release-tag-row" id="rv-meta"></div>
       <div class="lumen-doc-actions" id="rv-actions" hidden>
         <a class="lumen-button lumen-button--primary" id="rv-updater" href="guide.html">Get it in Updater CE</a>
@@ -111,14 +111,14 @@
     <div id="support-toolbar-slot"></div>
   </main>
   <script src="firmware-catalog.js?v=20261106mirror" defer></script>
-  <script src="docs-viewer.js?v=20261114releaseview" defer></script>
-  <script src="nav.js?v=20261110sites" defer></script>
+  <script src="docs-viewer.js?v=20261110inline5" defer></script>
+  <script src="nav.js?v=20261111nav" defer></script>
   <script>
     /* Release viewer.
 
        GitHub releases links anywhere on the site land here instead of on
        github.com: the same releases, the same notes, and two download rows -
-       the portable build repackaged for this computer (published by the
+       the software install zip repackaged for this computer (published by the
        project's portable mirror) and the original release file. Both save
        under the release's own file name through our download proxy. */
     (function () {
@@ -272,7 +272,7 @@
           notes = "<p>" + escapeHtml(release.body || "") + "</p>";
         }
 
-        /* The mirror is only a host: each portable build keeps the name of the
+        /* The mirror is only a host: each software install zip keeps the name of the
            release file it was repackaged from, so it saves as rom.zip rather
            than rom-windows.zip. */
         var portable = (mirrors || []).map(function (asset) {
@@ -299,10 +299,10 @@
             (index === 0 ? " · Latest" : "") +
           "</p>" +
           '<div class="rv-notes">' + notes + "</div>" +
-          downloadRow("Portable build for your computer", portable, true) +
+          downloadRow("Software install zip for your computer", portable, true) +
           downloadRow("Original release file", original, false) +
           (portable.length
-            ? '<p class="rv-note">Portable builds save as the original release file name (' +
+            ? '<p class="rv-note">Software install zips save as the original release file name (' +
               escapeHtml(portable[0].source_asset || portable[0].name) +
               ") and run the same flashing tool, without a separate runtime install.</p>"
             : "") +
@@ -349,7 +349,7 @@
         el("rv-title").textContent = title;
         el("rv-kicker").textContent = entry ? "Firmware releases" : "GitHub releases";
         el("rv-lead").textContent = "Every published release of " + title +
-          ", with the portable build for your computer and the original file from the developer.";
+          ", with the software install zip for your computer and the original file from the developer.";
         el("rv-meta").innerHTML = '<span class="rv-tag">' + escapeHtml(repo) + "</span>";
         el("rv-actions").hidden = false;
         if (entry) {

@@ -21,8 +21,10 @@
 - [Windows install guides](https://innioasis.app/install/windows.html): MediaTek driver, SmartScreen and Updater CE setup for Windows.
 - [macOS install guides](https://innioasis.app/install/mac.html): Gatekeeper approval, direct USB and Updater CE setup for Intel and Apple Silicon Macs.
 - [Linux install guides](https://innioasis.app/install/linux.html): AppImage, libfuse2 and the MediaTek udev rule.
-- [Older Windows and 32-bit Windows](https://innioasis.app/install/legacy-windows.html): installing firmware, software, updates or a stock package with SP Flash Tool on Windows XP, Vista, 7, 8, 8.1 or 32-bit Windows, where Updater CE cannot run. The same firmware is published as a `<release>-windows-legacy.zip` that carries the flash tool beside the rom.
+- [Older Windows and 32-bit Windows](https://innioasis.app/install/legacy-windows.html): installing firmware, software, updates or a stock package on Windows XP, Vista, 7, 8, 8.1 or 32-bit Windows, where Updater CE cannot run. The same firmware is published as a `<release>-windows-legacy.zip` that carries a stand-alone installer beside the rom.
 - [Older Windows overview](https://innioasis.app/windows-legacy.html): which package to download, what is inside it, and how it differs from the Updater CE install.
+- [32-bit Linux](https://innioasis.app/install/legacy-linux.html): the same legacy zip route on a 32-bit Intel or AMD Linux PC, including the `chmod +x` step for the installer.
+- [32-bit Linux overview](https://innioasis.app/linux-legacy.html): which package to download on 32-bit Linux and how the legacy zip differs from the Updater CE install.
 - [Rockbox on Y2 with a Mac](https://innioasis.app/install/rockbox-y2-mac.html): the macOS Rockbox-Y2 route.
 - [Reborn (Y2Linux) on Y2 with Linux](https://innioasis.app/install/reborn-y2linux-y2-linux.html): installing y2reborn on a Linux computer.
 - [JJ Launcher on Y1 with a Windows PC](https://innioasis.app/install/jj-launcher-y1-windows.html): the Windows JJ Launcher route.

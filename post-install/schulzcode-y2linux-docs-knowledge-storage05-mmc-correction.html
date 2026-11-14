@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261113badge2" defer></script>
+  <script src="../site-init.js?v=20261111cards" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -80,12 +80,12 @@
 <h2 id="offline-and-physical-acceptance">Offline and physical acceptance</h2>
 <p>The transport harness executes actual production request, raw-command, command completion and data completion functions. It covers CMD23→CMD18 at sector zero, the factory 55aa fixture through an injected DMA response, unchanged wire LBAs, one-block reliable/tagged CMD25, CMD12, refused R1, concurrent ready/CRC, all DMA faults and stop timeouts, and protected writes rejected before DMA. Injected card/MMIO responses prove software behavior, not actual eMMC contents. The context tests cover initialization before card registration, failed/confirmed selection, DMA ownership and CMD0 invalidation. The actual upstream parser and production resolver validate stock geometry and reject malformed/shifted/SD clones.</p>
 <p>Package acceptance also checks existing ext4 integrity/UUID/labels/markers, independent component versions, no-SD rescue→validated root/data→switch_root, module ABI, ARM userspace, kernel/DT/initramfs memory bounds, Android/MTK BOOTIMG envelopes/hash and exact stock scatter selection. Final test/build records belong to docs/build/evidence/y2linux-production-v1-r5.</p>
-<p>After the single manual BOOTIMG-only flash, boot once without SD and observe whether both partitions appear and rescue logs <code>switching to Buildroot</code>. Expected normal services can then start; the existing missing matching SSH client key is unchanged. Internal boot/write success and physical protected-byte preservation are not claimed until hardware evidence establishes them.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn (Y2Linux)</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<p>After the single manual BOOTIMG-only flash, boot once without SD and observe whether both partitions appear and rescue logs <code>switching to Buildroot</code>. Expected normal services can then start; the existing missing matching SSH client key is unchanged. Internal boot/write success and physical protected-byte preservation are not claimed until hardware evidence establishes them.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261106direct" defer></script>
-<script src="../nav.js?v=20261103brand" defer></script>
-<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../docs-viewer.js?v=20261110inline5" defer></script>
+<script src="../portable-zip-links.js?v=20261111zip" defer></script>
+<script src="../nav.js?v=20261111nav" defer></script>
+<script src="../site-locale.js?v=20261111i18nfix" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

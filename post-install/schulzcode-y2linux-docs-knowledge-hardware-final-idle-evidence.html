@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261113badge2" defer></script>
+  <script src="../site-init.js?v=20261111cards" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -66,12 +66,12 @@
 <p>The exact stock deep-idle PCM is 1920 bytes with SHA-256 <code>b0f8d879456e72ae62daf09ba8359761aee12c3bcc687f47f870af402fce8f49</code>. It matches the 480-word branch of <code>mt_spm_sleep.c</code>, with event-vector offsets 0/9/28/68 and session 2; the other branch has 484 words and does not match. The implemented suspend PCM has 597 words and different event vectors. It must not be reused as a runtime idle program.</p>
 <p>Vendor <code>dpidle_can_enter</code> requires a local deadline of at least 26000 ticks (2 ms at 13 MHz), one online CPU and the early-suspend voltage condition. <code>clkmgr_idle_can_enter</code> first rejects active MSDC clocks, then tests all clock groups against the state&#x27;s masks. Before WFI, the runtime path enables bus DCM, moves the audio internal bus to its 26 MHz source and arms GPT4 with the remaining local-timer deadline. After wake it restores that deadline and bus sources. The stock <code>spm_go_to_dpidle</code> masks/clones GIC state into CIRQ, enables CIRQ, then flushes/disables it and restores masks on every exit. Current DTS has no CIRQ node; a compiled generic irq-mtk-cirq object is not active registration or a runtime-idle hook. Missing these steps can lose a timer deadline or IRQ.</p>
 <p>GPT6 is explicitly 64-bit in the retained <code>mt_gpt.c</code> (<code>GPT_FEAT_64_BIT</code>, high counter at offset 0x18). The ARM timer&#x27;s 56-bit clocksource mask is therefore not by itself a 32-bit-counter bug. The disabled vendor <code>CONFIG_SYSCNT_ASSIST</code> diagnostic checks high-word synchronization after low-word wrap. A physical continuity run must cross the approximately 330.38-second low-word rollover. Current DT has <code>arm,no-tick-in-suspend</code>, so Linux does not mark this clocksource suspend-nonstop; absence of <code>always-on</code> separately marks local clockevents C3STOP. Runtime idle must preserve the free-running system counter or provide an evidenced clocksource alternative. These properties do not prove wake.</p>
-<p>No new idle state, DCM write or PCM was enabled by this source audit.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn (Y2Linux)</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<p>No new idle state, DCM write or PCM was enabled by this source audit.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261106direct" defer></script>
-<script src="../nav.js?v=20261103brand" defer></script>
-<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../docs-viewer.js?v=20261110inline5" defer></script>
+<script src="../portable-zip-links.js?v=20261111zip" defer></script>
+<script src="../nav.js?v=20261111nav" defer></script>
+<script src="../site-locale.js?v=20261111i18nfix" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

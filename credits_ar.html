@@ -43,7 +43,7 @@
   <link rel="stylesheet" href="lumen.css?v=20261110picker">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261110inline" defer></script>
+  <script src="site-init.js?v=20261111cards" defer></script>
   <style>
     .supported-projects-grid {
       display: grid;
@@ -127,6 +127,103 @@
     }
     .donations-table tr:hover {
       background: rgba(255, 255, 255, 0.03);
+    }
+    .donor-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .donor-name-line {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .donor-count {
+      color: var(--lumen-muted, #9aa3b5);
+      font-weight: 400;
+    }
+    .donor-chat-bubble {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      background: var(--lumen-card-bg, rgba(255, 255, 255, 0.06));
+      border: 1px solid var(--lumen-card-border, rgba(255, 255, 255, 0.12));
+      border-radius: 8px;
+      padding: 4px 8px;
+      margin-top: 2px;
+      max-width: 420px;
+      width: fit-content;
+      font-size: 0.78rem;
+      color: var(--lumen-text, #e5e7eb);
+      line-height: 1.35;
+      position: relative;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+    .donor-chat-bubble::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 14px;
+      border-width: 0 5px 5px 5px;
+      border-style: solid;
+      border-color: transparent transparent var(--lumen-card-border, rgba(255, 255, 255, 0.25)) transparent;
+    }
+    .donor-bubble-text-wrap {
+      max-height: 2.7em;
+      overflow: hidden;
+      position: relative;
+    }
+    .donor-bubble-marquee {
+      display: inline-block;
+      animation: marqueeScroll 12s linear infinite alternate;
+    }
+    @keyframes marqueeScroll {
+      0%, 25% { transform: translateY(0); }
+      75%, 100% { transform: translateY(calc(-100% + 2.7em)); }
+    }
+    .donor-amount-col {
+      white-space: nowrap;
+      font-weight: 700;
+    }
+    .donor-method-col {
+      white-space: nowrap;
+    }
+    .donor-method-none {
+      color: var(--lumen-muted, #9aa3b5);
+    }
+    .donor-date-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .donor-date {
+      font-size: 0.82rem;
+      color: var(--lumen-muted, #9aa3b5);
+    }
+    .donor-date-since {
+      font-size: 0.74rem;
+      color: var(--lumen-muted, #9aa3b5);
+      opacity: 0.8;
+    }
+    .method-icon-img {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+      flex-shrink: 0;
+    }
+    .method-icon-img:last-child {
+      margin-right: 0;
+    }
+    .contributor-star {
+      color: #f5b942;
+      font-size: 1rem;
+      line-height: 1;
+      text-shadow: 0 0 8px rgba(245, 185, 66, 0.35);
     }
     .supporter-badge-regular {
       display: inline-block;
@@ -306,26 +403,6 @@
     }
     .donation-impact-note strong { color: var(--lumen-text, #fff); }
     .donation-impact-note p { margin: 4px 0 0; color: var(--lumen-muted, #9aa3b5); }
-    .financial-accounting-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
-    }
-    .financial-accounting-card {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      min-height: 126px;
-      padding: 16px;
-      border: 1px solid var(--lumen-card-border, rgba(255,255,255,.14));
-      border-radius: 12px;
-      background: var(--lumen-card-bg, rgba(255,255,255,.05));
-    }
-    .financial-accounting-card--total { border-color: rgba(16,185,129,.55); background: linear-gradient(135deg, rgba(16,185,129,.14), rgba(16,185,129,.04)); }
-    .financial-accounting-card strong { font-size: 1.35rem; color: var(--lumen-text, #fff); }
-    .financial-accounting-card small { color: var(--lumen-muted, #9aa3b5); line-height: 1.4; }
-    .financial-accounting-label { color: var(--lumen-muted, #9aa3b5); font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
     .sponsorship-list { margin-top: 18px; }
     .sponsorship-list h3 { margin-bottom: 6px; }
     .donor-contributor-key {
@@ -520,6 +597,7 @@
             <tr>
               <th>مؤيد</th>
               <th>المساهمة</th>
+              <th>الطريقة</th>
               <th>التاريخ</th>
             </tr>
           </thead>
@@ -548,27 +626,7 @@
       <h2>وثائق المطور</h2>
       <p>نشر البرامج المخصصة؟ اقرأ <a href="developers_ar.html">دليل المطور لإضافة إصدارات Y1 وY2 إلى المحدث</a>.</p>
     </section>
-
-    <section class="lumen-guide-section">
-      <h2>روابط المشروع</h2>
-      <p><a href="https://github.com/rockbox-y1/rockbox" target="_blank" rel="noopener noreferrer">Rockbox Y1</a> · <a href="https://github.com/y1-community/rockbox-y2-rom" target="_blank" rel="noopener noreferrer">Rockbox Y2</a> · <a href="https://github.com/thesolarproject/solar" target="_blank" rel="noopener noreferrer">Solar</a> · <a href="https://themes.innioasis.app/?lang=ar" target="_blank" rel="noopener noreferrer">معرض المواضيع</a></p>
-    </section>
-
-    <!-- Section 4: Financial accounting, kept at the bottom so the people and projects stay front and centre. -->
-    <section class="lumen-guide-section" id="financial-accounting">
-      <h2>أين يذهب المال</h2>
-      <p>يتكلف تشغيل Updater CE ومعرض السمات وأرشيف البرامج الثابتة حوالي 200 دولار شهريًا. علاوة على ذلك، تأتي رسوم Apple Developer كل عام، وجهاز Mac mini للاختبار لمرة واحدة، والأجهزة: مشغل لكل طراز وإصدار يستحق الاختبار، وبعض هؤلاء اللاعبين لا ينجو من العمل. تغطي مساهمات المجتمع حاليًا تقريبًا <strong>15%</strong> من المجموع الحقيقي؛ والباقي يخرج من جيبي الخاص.</p>
-      <div class="financial-accounting-grid" aria-label="الملخص المالي للمشروع">
-        <article class="financial-accounting-card financial-accounting-card--total"><span class="financial-accounting-label">التكلفة الإجمالية حتى الآن</span><strong id="financial-total-cost">$0</strong><small id="financial-total-cost-detail">إضافتها...</small></article>
-        <article class="financial-accounting-card"><span class="financial-accounting-label">مساهمات المجتمع</span><strong id="financial-community-raised">$0</strong><small>وردت من أنصار المجتمع. يتم الاحتفاظ بالرعاية التجارية بشكل منفصل.</small></article>
-        <article class="financial-accounting-card"><span class="financial-accounting-label">Innioasis الرعاية</span><strong id="financial-corporate-raised">$0</strong><small>الرعاية التجارية المستلمة من Innioasis، مدرجة بشكل منفصل أسفل دفتر الأستاذ المجتمعي.</small></article>
-        <article class="financial-accounting-card"><span class="financial-accounting-label">دعمت المشاريع المجتمعية</span><strong id="financial-outgoing-cost">$0</strong><small>الأموال المرسلة إلى المبدعين والمشاريع الأخرى، تظهر بشكل منفصل عن مساهمات المجتمع.</small></article>
-        <article class="financial-accounting-card"><span class="financial-accounting-label">شهادة مطور أبل</span><strong id="financial-apple-cost">$0</strong><small>99 دولارًا كل عام.</small></article>
-        <article class="financial-accounting-card"><span class="financial-accounting-label">أجهزة اختبار ماك ميني</span><strong id="financial-hardware-cost">$599</strong><small>أجهزة اختبار النظام الأساسي لمرة واحدة لنظام التشغيل macOS.</small></article>
-      </div>
-      <p>الأرقام أعلاه تحسب الفواتير العادية. إنهم لا يحسبون مشغلات الاختبار: يتم شراؤها لكل إصدار، وبعضها يتم فقدانه بسبب ومضات فاشلة أثناء فحص البناء. وبحسابهم، يبلغ الدعم المجتمعي حوالي 15% من التكلفة الفعلية للمشروع.</p>
-    </section>
-  </main>
+</main>
 
   <div id="donor-credits-overlay" class="donor-credits-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="donor-credits-title">
     <div class="donor-credits-stage">
@@ -587,7 +645,7 @@
   </div>
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
-  <script src="nav.js?v=20261110sites" defer></script>
+  <script src="nav.js?v=20261111nav" defer></script>
   <script src="site-i18n.js?v=20260830" defer></script>
 
   <script>
@@ -824,6 +882,62 @@
       return dt;
     }
 
+    /* Dates and times are described in the reader's own language. English keeps
+       the day-first ledger wording ("2nd June", "1st January 2025"); every other
+       language gets its own pattern from Intl, which knows where the day, month
+       and year belong and whether the month should be written first. */
+    function donorLocale() {
+      try {
+        if (window.InnioasisLocale && window.InnioasisLocale.locale) return String(window.InnioasisLocale.locale);
+      } catch (_) {}
+      var lang = document.documentElement.getAttribute("lang");
+      if (lang) return lang;
+      try { return navigator.language || navigator.userLanguage || "en"; } catch (_) {}
+      return "en";
+    }
+
+    function englishDayOrdinal(day) {
+      var rem100 = day % 100;
+      if (rem100 >= 11 && rem100 <= 13) return day + "th";
+      if (day % 10 === 1) return day + "st";
+      if (day % 10 === 2) return day + "nd";
+      if (day % 10 === 3) return day + "rd";
+      return day + "th";
+    }
+
+    var ENGLISH_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    function formatDonorDate(dt, withYear) {
+      if (!dt) return "";
+      var locale = donorLocale();
+      try {
+        if (/^en\b/i.test(locale)) {
+          var month = ENGLISH_MONTHS[dt.getMonth()];
+          try {
+            month = new Intl.DateTimeFormat("en-GB", { month: "long" }).format(dt);
+          } catch (_) {}
+          return englishDayOrdinal(dt.getDate()) + " " + month + (withYear ? " " + dt.getFullYear() : "");
+        }
+        return new Intl.DateTimeFormat(locale, withYear
+          ? { day: "numeric", month: "long", year: "numeric" }
+          : { day: "numeric", month: "long" }).format(dt);
+      } catch (_) {}
+      return englishDayOrdinal(dt.getDate()) + " " + ENGLISH_MONTHS[dt.getMonth()] + (withYear ? " " + dt.getFullYear() : "");
+    }
+
+    /* "2 weeks ago" in the reader's language comes from Intl.RelativeTimeFormat,
+       which knows each language's plural and case rules. The catalogs remain the
+       fallback for browsers that do not ship it. */
+    function relPhrase(value, unit) {
+      try {
+        if (typeof Intl !== "undefined" && Intl.RelativeTimeFormat) {
+          var rtf = new Intl.RelativeTimeFormat(donorLocale(), { numeric: "auto" });
+          return rtf.format(value, unit);
+        }
+      } catch (_) {}
+      return "";
+    }
+
     function getRel(dt) {
       if (!dt) return "";
       var now = new Date();
@@ -834,29 +948,29 @@
         if (diffMs < 0) diffMs = 0;
         var mins = Math.floor(diffMs / 60000);
         if (mins < 1) return _t("just now");
-        if (mins < 60) return mins === 1 ? _t("1 minute ago") : _t("{count} minutes ago", { count: mins });
+        if (mins < 60) {
+          return relPhrase(-mins, "minute") || (mins === 1 ? _t("1 minute ago") : _t("{count} minutes ago", { count: mins }));
+        }
         var hrs = Math.floor(diffMs / 3600000);
-        if (hrs < 24) return hrs === 1 ? _t("1 hour ago") : _t("{count} hours ago", { count: hrs });
+        var sameDay = dt.getFullYear() === now.getFullYear() && dt.getMonth() === now.getMonth() && dt.getDate() === now.getDate();
+        if (hrs < 24 && sameDay) {
+          return relPhrase(-hrs, "hour") || (hrs === 1 ? _t("1 hour ago") : _t("{count} hours ago", { count: hrs }));
+        }
       }
       var startToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
       var startThat = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate());
       var d = Math.round((startToday.getTime() - startThat.getTime()) / 86400000);
-      if (d <= 0) return _t("today");
-      if (d === 1) return _t("yesterday");
-      if (d < 7) return d === 1 ? _t("1 day ago") : _t("{count} days ago", { count: d });
-      if (d < 14) return _t("1 week ago");
+      if (d <= 0) return relPhrase(0, "day") || _t("today");
+      if (d === 1) return relPhrase(-1, "day") || _t("yesterday");
+      if (d < 7) return relPhrase(-d, "day") || _t("{count} days ago", { count: d });
+      if (d < 14) return relPhrase(-1, "week") || _t("last week");
       if (d < 30) {
         var w = Math.floor(d / 7);
-        return w === 1 ? _t("1 week ago") : _t("{count} weeks ago", { count: w });
+        return relPhrase(-w, "week") || _t("{count} weeks ago", { count: w });
       }
-      if (d < 60) return _t("1 month ago");
-      if (d < 365) {
-        var m = Math.floor(d / 30);
-        return m === 1 ? _t("1 month ago") : _t("{count} months ago", { count: m });
-      }
-      if (d < 730) return _t("1 year ago");
-      var y = Math.floor(d / 365);
-      return y === 1 ? _t("1 year ago") : _t("{count} years ago", { count: y });
+      if (dt.getFullYear() === now.getFullYear()) return formatDonorDate(dt, false);
+      if (now.getFullYear() - dt.getFullYear() === 1) return _t("a year ago");
+      return formatDonorDate(dt, true);
     }
 
     function formatDonorTimestamp(dt) {
@@ -944,8 +1058,9 @@
 
     function contributorLabel(name, top) {
       var cleanName = cleanSupporterName(name, top);
-      var label = top ? "Top Supporter" : "Supporter";
-      return /(?:\band\b|[+&])/i.test(cleanName) ? label + "s" : label;
+      var plural = /(?:\band\b|[+&])/i.test(cleanName);
+      if (top) return plural ? _t("Top Supporters") : _t("Top Supporter");
+      return plural ? _t("Supporters") : _t("Supporter");
     }
 
     function getTopSupporterGroups(donations) {
@@ -1894,7 +2009,7 @@
         });
 
         if (communityDonations.length === 0) {
-          tableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: var(--lumen-muted);">No contributions recorded yet.</td></tr>';
+          tableBody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--lumen-muted);">' + _t("No contributions recorded yet.") + '</td></tr>';
         } else {
           var mergedMap = {};
           var anonEntries = [];
@@ -1918,6 +2033,7 @@
                 latestDate: "",
                 latestDt: null,
                 firstDate: "",
+                firstDt: null,
                 messages: []
               };
             }
@@ -1931,6 +2047,7 @@
               if (!entry.latestUrl && d.url) entry.latestUrl = d.url;
             }
             if (!entry.firstDate) entry.firstDate = d.dateStr;
+            if (!entry.firstDt && d.dt) entry.firstDt = d.dt;
             var mLow = (d.method || "").toLowerCase();
             if (!entry.methodSet[mLow]) {
               entry.methodSet[mLow] = true;
@@ -2029,7 +2146,7 @@
 
             var nameHeader;
             var contributionCount = entry.count > 1
-              ? ' <small style="color: var(--lumen-muted); font-weight: 400;">(' + entry.count + ' contributions)</small>'
+              ? ' <small class="donor-count">' + _t("{count} contributions", { count: entry.count }) + '</small>'
               : '';
             if (isReg) {
               nameHeader = '<span class="contributor-star" aria-hidden="true">&#9733;</span>' +
@@ -2053,15 +2170,24 @@
             }
             nameCol += '</div>';
 
-            var dateStr;
-            if (isReg && entry.firstDate && entry.firstDate !== entry.latestDate) {
-              dateStr = entry.firstDate + ' – ' + entry.latestDate;
-            } else {
-              dateStr = entry.latestDate;
+            var dateRel = getRel(entry.latestDt) || entry.latestDate || "";
+            var dateStamp = formatDonorTimestamp(entry.latestDt);
+            var dateCol = '<div class="donor-date-cell"><span class="donor-date"' +
+              (dateStamp ? ' title="' + escapeDonorAttr(dateStamp) + '"' : '') + '>' + dateRel + '</span>';
+            if (isReg && entry.firstDt && entry.latestDt && entry.firstDt.getTime() !== entry.latestDt.getTime()) {
+              var firstDate = formatDonorDate(entry.firstDt, entry.firstDt.getFullYear() !== new Date().getFullYear());
+              if (firstDate) {
+                dateCol += '<span class="donor-date-since">' + _t("since {date}", { date: firstDate }) + '</span>';
+              }
             }
-            var dateCol = '<span style="font-size: 0.82rem; color: var(--lumen-muted);">' + dateStr + '</span>';
+            dateCol += '</div>';
 
-            tr.innerHTML = '<td>' + nameCol + '</td><td>' + dateCol + '</td>';
+            var amountCol = '<td class="donor-amount-col"><span class="donor-amount">' + amtStr + '</span></td>';
+            var methodCol = '<td class="donor-method-col">' +
+              (entry.methods.length ? buildMethodIcons(entry.methods) : '<span class="donor-method-none">—</span>') +
+              '</td>';
+
+            tr.innerHTML = '<td>' + nameCol + '</td>' + amountCol + methodCol + '<td>' + dateCol + '</td>';
             wireIconFallbacks(tr);
             return tr;
           }
@@ -2073,7 +2199,7 @@
           anonEntries.forEach(function (d) {
             var tr = document.createElement("tr");
             var nameCol = '<div class="donor-cell">' +
-              '<div class="donor-name-line"><span style="color: var(--lumen-muted, #9aa3b5);">A supporter</span></div>';
+              '<div class="donor-name-line"><span style="color: var(--lumen-muted, #9aa3b5);">' + _t("A supporter") + '</span></div>';
             if (d.message && d.message.trim()) {
               var cleanAnonMsg = d.message.trim().replace(/^note\s*[:\-–—]?\s*/i, "").replace(/</g, "&lt;").replace(/>/g, "&gt;");
               var marqueeClass = cleanAnonMsg.length > 60 ? " donor-bubble-marquee" : "";
@@ -2082,8 +2208,15 @@
                 '</div>';
             }
             nameCol += '</div>';
-            var dateCol = '<span style="font-size: 0.82rem; color: var(--lumen-muted);">' + d.dateStr + '</span>';
-            tr.innerHTML = '<td>' + nameCol + '</td><td>' + dateCol + '</td>';
+            var anonAmount = "$" + (d.amount % 1 === 0 ? d.amount.toFixed(0) : d.amount.toFixed(2));
+            var anonRel = getRel(d.dt) || d.dateStr || "";
+            var anonStamp = formatDonorTimestamp(d.dt);
+            var dateCol = '<div class="donor-date-cell"><span class="donor-date"' +
+              (anonStamp ? ' title="' + escapeDonorAttr(anonStamp) + '"' : '') + '>' + anonRel + '</span></div>';
+            var anonMethodCol = '<td class="donor-method-col"><img class="method-icon-img" data-method-icon="' +
+              iconForMethod((d.method || "").toLowerCase()) + '" src="./assets/' + iconForMethod((d.method || "").toLowerCase()) +
+              '" alt="' + escapeDonorAttr(d.method || "") + '" title="' + escapeDonorAttr(d.method || "") + '"></td>';
+            tr.innerHTML = '<td>' + nameCol + '</td><td class="donor-amount-col"><span class="donor-amount">' + anonAmount + '</span></td>' + anonMethodCol + '<td>' + dateCol + '</td>';
             wireIconFallbacks(tr);
             tableBody.appendChild(tr);
           });
@@ -2105,31 +2238,15 @@
             var amount = Math.abs(d.amount);
             var amountText = "$" + (amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2));
             var tr = document.createElement("tr");
-            tr.innerHTML = '<td><strong style="color: #60a5fa;">' + amountText + '</strong></td><td>' + (d.dateStr || "") + '</td>';
+            var corpRel = getRel(d.dt) || d.dateStr || "";
+            var corpStamp = formatDonorTimestamp(d.dt);
+            tr.innerHTML = '<td><strong style="color: #60a5fa;">' + amountText + '</strong></td><td>' +
+              '<span class="donor-date"' + (corpStamp ? ' title="' + escapeDonorAttr(corpStamp) + '"' : '') + '>' +
+              corpRel + '</span></td>';
             sponsorshipBody.appendChild(tr);
           });
         }
       }
-
-      var launchMonthIndex = 2025 * 12 + 6;
-      var currentMonthIndex = curYear * 12 + curMonth;
-      var elapsedMonths = Math.max(1, currentMonthIndex - launchMonthIndex + 1);
-      var monthlyRunningCosts = elapsedMonths * 200;
-      var annualCertificationPeriods = Math.max(1, Math.ceil(elapsedMonths / 12));
-      var appleDeveloperCosts = annualCertificationPeriods * 99;
-      var macMiniTestingHardware = 599;
-      var totalAccountedCost = monthlyRunningCosts + appleDeveloperCosts + macMiniTestingHardware + totalOutgoingSpent;
-      function setMoney(id, amount) {
-        var el = document.getElementById(id);
-        if (el) el.textContent = "$" + (amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2));
-      }
-      setMoney("financial-total-cost", totalAccountedCost);
-      setMoney("financial-community-raised", totalCommunityRaised);
-      setMoney("financial-corporate-raised", totalCorporateRaised);
-      setMoney("financial-outgoing-cost", totalOutgoingSpent);
-      setMoney("financial-apple-cost", appleDeveloperCosts);
-      var totalDetail = document.getElementById("financial-total-cost-detail");
-      if (totalDetail) totalDetail.textContent = "$200 monthly running costs × " + elapsedMonths + " calendar months + $" + appleDeveloperCosts.toFixed(0) + " Apple certification + $" + macMiniTestingHardware.toFixed(0) + " Mac mini + $" + totalOutgoingSpent.toFixed(2) + " project support.";
 
     }
 
@@ -2183,5 +2300,5 @@
   })();
   
 </script>
-<script src="site-locale.js?v=20261109stack" defer></script></body>
+<script src="site-locale.js?v=20261111i18nfix" defer></script></body>
 </html>

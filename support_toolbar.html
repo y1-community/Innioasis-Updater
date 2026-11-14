@@ -2022,6 +2022,60 @@
     return dt;
   }
 
+  /* English keeps the day-first wording ("2nd June", "1st January 2025");
+     every other language gets its own date pattern from Intl. */
+  function donorLocale() {
+    try {
+      if (window.InnioasisLocale && window.InnioasisLocale.locale) return String(window.InnioasisLocale.locale);
+    } catch (_) {}
+    var lang = document.documentElement.getAttribute("lang");
+    if (lang) return lang;
+    try { return navigator.language || navigator.userLanguage || "en"; } catch (_) {}
+    return "en";
+  }
+
+  function englishDayOrdinal(day) {
+    var rem100 = day % 100;
+    if (rem100 >= 11 && rem100 <= 13) return day + "th";
+    if (day % 10 === 1) return day + "st";
+    if (day % 10 === 2) return day + "nd";
+    if (day % 10 === 3) return day + "rd";
+    return day + "th";
+  }
+
+  var ENGLISH_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+  function formatDonorDate(dt, withYear) {
+    if (!dt) return "";
+    var locale = donorLocale();
+    try {
+      if (/^en\b/i.test(locale)) {
+        var month = ENGLISH_MONTHS[dt.getMonth()];
+        try {
+          month = new Intl.DateTimeFormat("en-GB", { month: "long" }).format(dt);
+        } catch (_) {}
+        return englishDayOrdinal(dt.getDate()) + " " + month + (withYear ? " " + dt.getFullYear() : "");
+      }
+      return new Intl.DateTimeFormat(locale, withYear
+        ? { day: "numeric", month: "long", year: "numeric" }
+        : { day: "numeric", month: "long" }).format(dt);
+    } catch (_) {}
+    return englishDayOrdinal(dt.getDate()) + " " + ENGLISH_MONTHS[dt.getMonth()] + (withYear ? " " + dt.getFullYear() : "");
+  }
+
+  /* "2 weeks ago" in the reader's language comes from Intl.RelativeTimeFormat,
+     which knows each language's plural and case rules. The catalogs remain the
+     fallback for browsers that do not ship it. */
+  function relPhrase(value, unit) {
+    try {
+      if (typeof Intl !== "undefined" && Intl.RelativeTimeFormat) {
+        var rtf = new Intl.RelativeTimeFormat(donorLocale(), { numeric: "auto" });
+        return rtf.format(value, unit);
+      }
+    } catch (_) {}
+    return "";
+  }
+
   function getRelativeTime(dt) {
     if (!dt) return "";
     var now = new Date();
@@ -2033,31 +2087,29 @@
       if (diffMs < 0) diffMs = 0;
       var mins = Math.floor(diffMs / 60000);
       if (mins < 1) return _t("just now");
-      if (mins < 60) return mins === 1 ? _t("1 minute ago") : _t("{count} minutes ago", { count: mins });
+      if (mins < 60) {
+        return relPhrase(-mins, "minute") || (mins === 1 ? _t("1 minute ago") : _t("{count} minutes ago", { count: mins }));
+      }
       var hrs = Math.floor(diffMs / 3600000);
-      if (hrs < 24) return hrs === 1 ? _t("1 hour ago") : _t("{count} hours ago", { count: hrs });
+      var sameDay = dt.getFullYear() === now.getFullYear() && dt.getMonth() === now.getMonth() && dt.getDate() === now.getDate();
+      if (hrs < 24 && sameDay) {
+        return relPhrase(-hrs, "hour") || (hrs === 1 ? _t("1 hour ago") : _t("{count} hours ago", { count: hrs }));
+      }
     }
     var startToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     var startThat = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate());
     var diffDays = Math.round((startToday.getTime() - startThat.getTime()) / 86400000);
-    if (diffDays <= 0) return _t("today");
-    if (diffDays === 1) return _t("yesterday");
-    if (diffDays < 7) {
-      return diffDays === 1 ? _t("1 day ago") : _t("{count} days ago", { count: diffDays });
-    }
-    if (diffDays < 14) return _t("1 week ago");
+    if (diffDays <= 0) return relPhrase(0, "day") || _t("today");
+    if (diffDays === 1) return relPhrase(-1, "day") || _t("yesterday");
+    if (diffDays < 7) return relPhrase(-diffDays, "day") || _t("{count} days ago", { count: diffDays });
+    if (diffDays < 14) return relPhrase(-1, "week") || _t("last week");
     if (diffDays < 30) {
       var w = Math.floor(diffDays / 7);
-      return w === 1 ? _t("1 week ago") : _t("{count} weeks ago", { count: w });
+      return relPhrase(-w, "week") || _t("{count} weeks ago", { count: w });
     }
-    if (diffDays < 60) return _t("1 month ago");
-    if (diffDays < 365) {
-      var m = Math.floor(diffDays / 30);
-      return m === 1 ? _t("1 month ago") : _t("{count} months ago", { count: m });
-    }
-    if (diffDays < 730) return _t("1 year ago");
-    var y = Math.floor(diffDays / 365);
-    return y === 1 ? _t("1 year ago") : _t("{count} years ago", { count: y });
+    if (dt.getFullYear() === now.getFullYear()) return formatDonorDate(dt, false);
+    if (now.getFullYear() - dt.getFullYear() === 1) return _t("a year ago");
+    return formatDonorDate(dt, true);
   }
 
   function formatDonorTimestamp(dt) {
@@ -2965,4 +3017,4 @@
   window.addEventListener("load", schedule, { once: true });
 })();
 </script>
-<script src="site-locale.js?v=20261109stack" defer></script>
+<script src="site-locale.js?v=20261111i18nfix" defer></script>

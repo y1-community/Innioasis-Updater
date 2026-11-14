@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="docs-viewer.css?v=20261112cites">
-  <script src="site-init.js?v=20261110inline" defer></script>
+  <script src="site-init.js?v=20261110picker" defer></script>
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Innioasis Atualizador">
   <meta property="og:title" content="Notas de versão de firmware - Innioasis Updater">
@@ -165,26 +165,18 @@
       }
 
       /* Quiet source links: who publishes this firmware, plus numbered
-         references (the archive's project page, release notes). */
+         references (firmware directory/README, release notes, catalogue pull requests). */
       function setSource(release) {
         var node = el("release-source");
         if (!node) return;
         if (!state.repo) { node.hidden = true; node.innerHTML = ""; return; }
-        var item = catalogItem() || {};
-        var author = String(state.repo).split("/")[0];
-        var software = item.name || state.software || String(state.repo).split("/")[1];
-        var model = item.model || state.model || "";
-        var slug = item.slug || state.software || "";
-        var params = [];
-        if (model) params.push("model=" + encodeURIComponent(model));
-        if (slug) params.push("software=" + encodeURIComponent(slug));
-        var projectUrl = "https://innioasis.app/firmware.html" +
-          (params.length ? "?" + params.join("&") : "");
-        var readmeUrl = D.firmwareInfoHref(state.repo, state.software);
+        var owner = String(state.repo).split("/")[0];
         var tag = (release && release.tag_name) || state.tag || "";
-        var html = 'Published by <a href="' + escapeHtml(projectUrl) + '">' +
-          escapeHtml(author) + "&#39;s <em>" + escapeHtml(software) + "</em></a> project " +
-          '<a class="lumen-cite" href="' + escapeHtml(readmeUrl) + '" title="Firmware Archive page">[1]</a>';
+        var projectUrl = D.firmwarePageFor(state.repo) || D.firmwareInfoHref(state.repo, state.software);
+        var readmeUrl = D.firmwareInfoHref(state.repo, state.software);
+        var html = 'Published by the <a href="' + escapeHtml(projectUrl) + '">' +
+          escapeHtml(state.repo) + '</a> project ' +
+          '<a class="lumen-cite" href="' + escapeHtml(readmeUrl) + '" title="Project README">[1]</a>';
         if (tag) {
           var notesUrl = "https://innioasis.app/" + D.releaseNotesHref({
             repo: state.repo, tag: tag, model: state.model,
@@ -193,6 +185,10 @@
           html += ' <a class="lumen-cite" href="' + escapeHtml(notesUrl) +
             '" title="Release notes">[2]</a>';
         }
+        html += ' <a class="lumen-cite" href="' +
+          escapeHtml("https://github.com/y1-community/Innioasis-Updater/pulls?q=" +
+            encodeURIComponent("is:pr author:" + owner)) +
+          '" rel="noopener" title="Catalogue pull requests">[3]</a>';
         node.innerHTML = html;
         node.hidden = false;
       }

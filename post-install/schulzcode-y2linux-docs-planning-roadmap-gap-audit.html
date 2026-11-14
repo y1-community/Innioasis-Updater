@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261113badge2" defer></script>
+  <script src="../site-init.js?v=20261111cards" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -1555,12 +1555,12 @@
 <p><strong>Boundary:</strong> architecture change of a hardware subsystem (Bluetooth control moves from five owners to one daemon, <code>y2-radiod</code>; the sleep helper&#x27;s radio steps and Wi-Fi power go through it). Owner request 2026-11-03: &quot;a complete new reimplementation built on reliability … without losing the codecs and bitrates&quot;, then &quot;do the full implementation in one step, build and install on my Y2&quot;. Plan: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fplanning%2FBLUETOOTH-REIMPLEMENTATION-PLAN.md">BLUETOOTH-REIMPLEMENTATION-PLAN.md</a>.</p>
 <p><strong>Evidence (date, revision, origin, limits):</strong> Y2Linux b8e78d3f / Y2Reborn 6fd259c (Beta 9.2.16, baseline-207); field reports 0400eb78 (583b7c23 58e1456e a74ed186), 5692dd73 (962aac6c 46fcbe24) and 11-01..03 others; ledger F64 (library emptied by a Bluetooth rollback, proven in code), F65 (wake reconnect race), F63 corrected (encoder ABR shows the air-time shortfall). No hardware measurement was taken for this audit (the player was not reachable); the plan&#x27;s P0 measurements (air-time matrix, timing table, keep-alive, stock coex REA) are <strong>not done</strong> and the first build uses the existing measured constants (page timeout 5.12 s, power-on ≈1.6 s warm, Start up to 6 s).</p>
 <p><strong>Coverage:</strong> kernel connectivity driver, firmware, BlueZ 5.87, BlueALSA 5.0.0 and its patches: kept (no field failure starts there). Replaced: <code>y2-bt-reconnect</code>, <code>bluetooth-power</code>, the intent file and the operation/PCM locks, the codec-uncertain marker, Reborn&#x27;s D-Bus worker. Wi-Fi association (wpa_supplicant, Reborn&#x27;s join/scan, the F52/F53 heals) is <strong>not</strong> rewritten in this step (plan §7, P7); its power, the F60 restart and the wake order go through the daemon.</p>
-<p><strong>Readiness:</strong> implementation ready; owner authorised build and install on the owner&#x27;s player. Risks accepted by the owner: no P0 measurements first, no v1/v2 switch on the device (rollback = the installer&#x27;s kept previous package). Hardware authorization covers the owner&#x27;s player only; publishing is a separate decision.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn (Y2Linux)</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<p><strong>Readiness:</strong> implementation ready; owner authorised build and install on the owner&#x27;s player. Risks accepted by the owner: no P0 measurements first, no v1/v2 switch on the device (rollback = the installer&#x27;s kept previous package). Hardware authorization covers the owner&#x27;s player only; publishing is a separate decision.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261106direct" defer></script>
-<script src="../nav.js?v=20261103brand" defer></script>
-<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../docs-viewer.js?v=20261110inline5" defer></script>
+<script src="../portable-zip-links.js?v=20261111zip" defer></script>
+<script src="../nav.js?v=20261111nav" defer></script>
+<script src="../site-locale.js?v=20261111i18nfix" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

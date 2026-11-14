@@ -31,7 +31,7 @@
     "use strict";
 
     var DEFAULT_LOCALE = "en";
-    var RUNTIME_VERSION = "20261109i18n";
+    var RUNTIME_VERSION = "20261111i18nfix";
     /* Catalogs are re-fetched under a new URL when their content changes.
        Without this a returning visitor keeps the copy they cached, so a
        language whose catalog was just completed still reads as English. */
@@ -1029,8 +1029,10 @@
             "font-size:.85em;line-height:1;pointer-events:none;user-select:none;}",
             "html[lang^=\"en\"] .site-i18n-badge,html:not([lang]) .site-i18n-badge,[lang^=\"en\"] .site-i18n-badge,[data-locale^=\"en\"] .site-i18n-badge{display:none!important;}",
             ".site-i18n-globe{flex:none;width:13px;height:13px;}",
-            ".site-i18n-spinner{flex:none;width:10px;height:10px;border-radius:50%;",
-            "border:1.5px solid currentColor;border-top-color:transparent;box-sizing:border-box;",
+            ".site-i18n-spinner{display:inline-block;flex:none;width:10px;height:10px;",
+            "min-width:10px;max-width:10px;min-height:10px;max-height:10px;aspect-ratio:1/1;",
+            "border-radius:50%;border:1.5px solid currentColor;border-top-color:transparent;",
+            "box-sizing:border-box;vertical-align:middle;margin-inline-start:4px;overflow:hidden;",
             "animation:site-i18n-spin .8s linear infinite;}",
             ".site-locale-throbber{display:none;width:12px;height:12px;border-radius:50%;",
             "border:1.5px solid currentColor;border-top-color:transparent;box-sizing:border-box;",
@@ -1323,7 +1325,7 @@
                     /* Covered by the catalog, unless the entry only repeats the
                        English text (what the provider returns for copy it
                        leaves untouched); that still needs the API. */
-                    var known = state.strings[value];
+                    var known = state.strings && state.strings[value];
                     if (known && known !== value) return NodeFilter.FILTER_REJECT;
                     if (catalogHasValue(value)) return NodeFilter.FILTER_REJECT;
                     /* A label that is only a brand name stays as written. */
@@ -1365,7 +1367,7 @@
                         if (!raw) return;
                         var text = normalise(raw);
                         if (text.length < 4 || !/[A-Za-z]{2}/.test(text)) return;
-                        var known = state.strings[text];
+                        var known = state.strings && state.strings[text];
                         if (known && known !== text) return;
                         if (catalogHasValue(text)) return;
                         if (isBrandOnly(text)) return;
@@ -2020,6 +2022,173 @@
         global.location.href = url.pathname + url.search + url.hash;
     }
 
+    /* ---------------------------------------------------------------- */
+    /* Carrying preferences into the language the visitor picked        */
+    /* ---------------------------------------------------------------- */
+
+    var APPEARANCES = ["auto", "dark", "light", "high-contrast", "2077"];
+    /* Everything the shell reads on arrival and then clears from the
+       address bar. Rebuilt from the live page, never forwarded blindly, so
+       a stale value cannot outlive the choice that produced it. */
+    var PREFERENCE_KEYS = [
+        "privacy", "privacy_analytics", "privacy_feedback", "privacy_nightly",
+        "donations", "site_theme", "accent", "accent_color", "accent-color",
+        "accentColor", "accentColour", "ce", "accessibility", "a11y",
+        "reduce-motion", "reduce_motion", "fontSize", "fontScale", "font-scale",
+        "fs", "lumen-font-scale", "lang", "dock", "footer", "analytics", "telemetry"
+    ];
+
+    function currentAppearance() {
+        var root = document.documentElement;
+        var value = (root && root.getAttribute("data-appearance")) || "";
+        if (APPEARANCES.indexOf(value) < 0) value = readStorage("lumen-theme") || "";
+        if (APPEARANCES.indexOf(value) < 0) value = getSharedCookie("innioasis-theme") || "";
+        value = String(value).toLowerCase();
+        return APPEARANCES.indexOf(value) >= 0 ? value : "";
+    }
+
+    function currentAccent() {
+        var value = "";
+        try {
+            if (typeof global.y1GetAccent === "function") value = global.y1GetAccent() || "";
+        } catch (_) {}
+        if (!value && document.documentElement) value = document.documentElement.getAttribute("data-accent") || "";
+        if (!value) value = getSharedCookie("innioasis-accent") || "";
+        if (!value) value = readStorage("lumen-accent") || "";
+        return /^#[0-9a-f]{6}$/i.test(value) ? value : "";
+    }
+
+    function currentAccessibility() {
+        var stored = readStorage("innioasis-accessibility") || getSharedCookie("innioasis-accessibility") || "";
+        if (stored === "reduce-motion") return stored;
+        if (document.documentElement && document.documentElement.getAttribute("data-reduced-motion") === "true") {
+            return "reduce-motion";
+        }
+        if (stored === "default" || stored === "none") return "default";
+        return "";
+    }
+
+    function currentFontScale() {
+        var raw = "";
+        try {
+            var p = new URLSearchParams((global.location && global.location.search) || "");
+            raw = p.get("fontSize") || p.get("fontScale") || p.get("font-scale") || p.get("fs") || p.get("lumen-font-scale") || "";
+        } catch (_) {}
+        if (!raw) raw = readStorage("lumen-font-scale") || getSharedCookie("lumen-font-scale") || "";
+        if (!raw && document.documentElement) {
+            raw = document.documentElement.getAttribute("data-font-scale") ||
+                document.documentElement.style.getPropertyValue("--lumen-font-scale") || "";
+        }
+        var value = parseFloat(String(raw).replace("%", ""));
+        if (value > 10) value = value / 100;
+        return (value >= 0.7 && value <= 1.6) ? String(+value.toFixed(2)) : "";
+    }
+
+    function currentPrivacy() {
+        var raw = param("privacy") || getSharedCookie("innioasis-privacy") || "";
+        if (raw) return raw;
+        var stored = readStorage("innioasis-consent");
+        if (!stored) return "";
+        try {
+            var data = JSON.parse(stored);
+            if (!data || typeof data !== "object" || typeof data.feedback !== "boolean") return "";
+            var feedback = data.feedback !== false;
+            var nightly = data.nightly !== false;
+            if (feedback && nightly) return "all";
+            if (!feedback && !nightly) return "none";
+            return feedback ? "feedback" : "nightly";
+        } catch (_) {}
+        return "";
+    }
+
+    function currentPreferenceParams() {
+        var params = {};
+        var appearance = currentAppearance();
+        if (appearance) params.site_theme = appearance;
+        var accent = currentAccent();
+        if (accent) params.accent = accent;
+        var accessibility = currentAccessibility();
+        if (accessibility) params.accessibility = accessibility;
+        var fontScale = currentFontScale();
+        if (fontScale) params.fontSize = fontScale;
+        var privacy = currentPrivacy();
+        if (privacy) params.privacy = privacy;
+        var analytics = param("privacy_analytics") || getSharedCookie("innioasis-privacy-analytics") || "";
+        if (analytics) params.privacy_analytics = analytics;
+        if (readStorage("innioasis-pc-accent") || getSharedCookie("innioasis-pc-accent")) params.ce = "true";
+        var donationsOff = readStorage("innioasis-donations-off") === "1" || getSharedCookie("innioasis-donations-off") === "1";
+        params.donations = donationsOff ? "false" : "true";
+        var dockClosed = false;
+        try { dockClosed = sessionStorage.getItem("y1-dock-dismissed") === "1"; } catch (_) {}
+        if (!dockClosed) dockClosed = getSharedCookie("innioasis-dock") === "closed";
+        params.dock = dockClosed ? "closed" : "open";
+        return params;
+    }
+
+    /* A translated copy advertises itself in the page's hreflang alternates.
+       Following that link is the only way to know the copy exists without a
+       request that could 404. Pages with no alternates stay where they are
+       and load ?lang=, which the runtime translates after boot. */
+    function alternateCopyHref(code) {
+        var wanted = normalizeTag(code);
+        var links = document.querySelectorAll('link[rel="alternate"][hreflang]');
+        for (var i = 0; i < links.length; i++) {
+            var tag = normalizeTag(links[i].getAttribute("hreflang"));
+            if (!tag || tag === "x-default" || tag !== wanted) continue;
+            var href = links[i].getAttribute("href");
+            if (href) return href;
+        }
+        return "";
+    }
+
+    function localeSwitchUrl(code) {
+        var here = new URL(global.location.href);
+        var url = new URL(here.href);
+        var hash = here.hash;
+        var alternate = alternateCopyHref(code);
+        if (alternate) {
+            try {
+                var copy = new URL(alternate, here.href);
+                /* Keep the reader on the origin they are already using: the
+                   alternates name the production host even on a local
+                   server or a preview deployment. */
+                url.pathname = copy.pathname;
+                url.search = copy.search;
+                if (copy.origin === here.origin && copy.hash) hash = copy.hash;
+            } catch (_) {}
+        } else {
+            /* No advertised copy: go back to the English source page and let
+               ?lang= translate it. Staying on a _de.html file to show
+               Swahili would leave the filename contradicting the page. */
+            url.pathname = url.pathname.replace(/_([a-z]{2,3}(?:-[a-z0-9]{2,4})?)\.html$/i, ".html");
+        }
+        PREFERENCE_KEYS.forEach(function (key) { url.searchParams.delete(key); });
+        if (url.searchParams.has("theme")) {
+            /* On the gallery, ?theme= names a theme someone shared, not the
+               site's appearance. Only an appearance value is replaced. */
+            var themeValue = (url.searchParams.get("theme") || "").toLowerCase().trim();
+            if (APPEARANCES.indexOf(themeValue) >= 0) url.searchParams.delete("theme");
+        }
+        url.searchParams.set("lang", code);
+        var preferences = currentPreferenceParams();
+        Object.keys(preferences).forEach(function (key) {
+            if (preferences[key]) url.searchParams.set(key, preferences[key]);
+        });
+        url.hash = hash;
+        return url.toString();
+    }
+
+    function reloadTo(href) {
+        try {
+            if (!href || !global.location || typeof global.location.assign !== "function") return false;
+            if (href === global.location.href) return false;
+            global.location.assign(href);
+            return true;
+        } catch (_) {
+            return false;
+        }
+    }
+
     function literalPathFor(code) {
         var pathname = (global.location && global.location.pathname) || "/";
         var fileName = pathname.split("/").pop() || "index.html";
@@ -2128,6 +2297,16 @@
         writeStorage(STORAGE_LOCALE, resolved);
         setSharedCookie(STORAGE_LOCALE, resolved);
         track("site_language_change", { language_chosen: resolved });
+
+        /* A language choice is a page load, not a repaint. The target URL
+           names the language's own page and carries the appearance, accent,
+           text size and other preferences in the query string, so the next
+           document paints correctly before any of its scripts run. The shell
+           on arrival remembers each value and clears it from the address
+           bar, leaving a shareable URL. */
+        var target = "";
+        try { target = localeSwitchUrl(resolved); } catch (_) {}
+        if (reloadTo(target)) return;
 
         if (!sourcesReady()) {
             var reverse = (state.strings && baseOfLocale(state.locale) !== DEFAULT_LOCALE)

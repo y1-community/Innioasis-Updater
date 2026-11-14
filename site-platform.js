@@ -38,21 +38,20 @@
         },
         linux: {
             heading: "Install Updater CE on Linux",
-            lead: "The AppImage comes in Intel/AMD and ARM64 builds, and the same application ships as a tar.gz and a zip. USB access needs a udev rule.",
+            lead: "The AppImage is for Intel/AMD x86_64 Linux. USB access needs a udev rule.",
             steps: [
-                "Take the file for your processor from the guide, then run <code>chmod +x UpdaterCE.appimage</code> or <code>chmod +x UpdaterCE-arm64.appimage</code> and start it.",
-                "Prefer no manual download? Run <code>curl -fsSL https://innioasis.app/run_linux.sh | bash</code> and it picks the build for your machine.",
+                "Download <code>UpdaterCE.AppImage</code> and run <code>chmod +x UpdaterCE.AppImage</code>.",
                 "If it does not start, install <code>libfuse2</code> (or <code>libfuse2t64</code> on Ubuntu 24.04). Do not run it as root.",
                 "Add the MediaTek udev rule for vendor ID <code>0e8d</code>, reload udev, and connect the player only at the prompt."
             ],
-            note: "Add your user to <code>plugdev</code> if the player is still permission-denied. The terminal interface opens with <code>--tui</code>."
+            note: "Add your user to <code>plugdev</code> if the player is still permission-denied."
         }
     };
 
     /* site-legacy.js hides the Updater CE install links on Windows XP through
-       8.1 and on 32-bit Windows, where the app cannot run. Highlighting a
-       Windows install guide there would point at a download that does not
-       work, so this shell stands down for that visit. */
+       8.1, on 32-bit Windows and on 32-bit Linux, where the app cannot run.
+       Highlighting a platform install guide there would point at a download
+       that does not work, so this shell stands down for that visit. */
     function legacyVisitor() {
         try {
             if (document.documentElement.getAttribute("data-windows-legacy") === "true") return true;
