@@ -4,23 +4,25 @@
   <title>Innioasis and Timmkoo firmware releases</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware-list.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/firmware-feed.xml"/>
-  <updated>2026-11-14T03:11:01Z</updated>
+  <updated>2026-11-14T03:46:40Z</updated>
   <inni:schema_version>2</inni:schema_version>
   <inni:manifest_url>https://innioasis.app/slidia_manifest.xml</inni:manifest_url>
   <inni:firmware_list_url>https://innioasis.app/firmware-list.html</inni:firmware_list_url>
   <inni:packages>
-    <inni:package name="Original Software" brand="Innioasis" repo="y1-community/y1-stock-rom" portable_zips="y1-community/y1-stock-rom-mirror" device="Y1" url="https://github.com/y1-community/y1-stock-rom" type="img" handler="Custom Firmware"/>
-    <inni:package name="Original Software" brand="Innioasis" repo="y1-community/y1-stock-rom" portable_zips="y1-community/y1-stock-rom-mirror" device="Y2" url="https://github.com/y1-community/y1-stock-rom" type="img" handler="Custom Firmware"/>
-    <inni:package name="Original Software" brand="Innioasis" repo="y1-community/g1-stock-rom" device="G1" url="https://github.com/y1-community/g1-stock-rom" type="img" handler="Custom Firmware" package_name="rom_g1.zip" portable_zips="y1-community/g1-stock-rom-mirror"/>
-    <inni:package name="Original Software" brand="Innioasis" repo="y1-community/g3-stock-rom" device="G3" url="https://github.com/y1-community/g3-stock-rom" type="img" handler="Custom Firmware" package_name="rom_g3.zip" portable_zips="y1-community/g3-stock-rom-mirror"/>
-    <inni:package name="Original Software" brand="Innioasis" repo="y1-community/g5-stock-rom" device="G5" url="https://github.com/y1-community/g5-stock-rom" type="img" handler="Custom Firmware" package_name="rom_g5.zip" portable_zips="y1-community/g5-stock-rom-mirror"/>
-    <inni:package name="Original Software" brand="Timmkoo" repo="y1-community/q3-stock-rom" device="Q3" url="https://github.com/y1-community/q3-stock-rom" type="img" handler="Custom Firmware" package_name="rom_q3.zip" portable_zips="y1-community/q3-stock-rom-mirror"/>
-    <inni:package name="Original Software" brand="Timmkoo" repo="y1-community/q5-stock-rom" device="Q5" url="https://github.com/y1-community/q5-stock-rom" type="img" handler="Custom Firmware" package_name="rom_q5.zip" portable_zips="y1-community/q5-stock-rom-mirror"/>
-    <inni:package name="Reborn" brand="Innioasis" repo="schulzcode/y2linux" portable_zips="y1-community/y2linux-mirror" device="Y2" url="https://github.com/schulzcode/y2linux" type="img" post_install="https://innioasis.app/y2reborn_wifibt.html" handler="Custom Firmware" icon="https://innioasis.app/assets/reborn_icon.jpg"/>
+    <inni:package name="Original Software" brand="Innioasis" repo="y1-community/y1-stock-rom" portable_zips="y1-community/y1-stock-rom-mirror" device="Y1" url="https://github.com/y1-community/y1-stock-rom" type="img" handler="Custom Firmware" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
+    <inni:package name="Original Software" brand="Innioasis" repo="y1-community/y1-stock-rom" portable_zips="y1-community/y1-stock-rom-mirror" device="Y2" url="https://github.com/y1-community/y1-stock-rom" type="img" handler="Custom Firmware" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
+    <inni:package name="Original Software" brand="Innioasis" repo="y1-community/g1-stock-rom" device="G1" url="https://github.com/y1-community/g1-stock-rom" type="img" handler="Custom Firmware" package_name="rom_g1.zip" portable_zips="y1-community/g1-stock-rom-mirror" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
+    <inni:package name="Original Software" brand="Innioasis" repo="y1-community/g3-stock-rom" device="G3" url="https://github.com/y1-community/g3-stock-rom" type="img" handler="Custom Firmware" package_name="rom_g3.zip" portable_zips="y1-community/g3-stock-rom-mirror" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
+    <inni:package name="Original Software" brand="Innioasis" repo="y1-community/g5-stock-rom" device="G5" url="https://github.com/y1-community/g5-stock-rom" type="img" handler="Custom Firmware" package_name="rom_g5.zip" portable_zips="y1-community/g5-stock-rom-mirror" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
+    <inni:package name="Original Software" brand="Timmkoo" repo="y1-community/q3-stock-rom" device="Q3" url="https://github.com/y1-community/q3-stock-rom" type="img" handler="Custom Firmware" package_name="rom_q3.zip" portable_zips="y1-community/q3-stock-rom-mirror" icon="https://innioasis.app/assets/timmkoo_icon.jpeg"/>
+    <inni:package name="Lithium (Android 7)" brand="Timmkoo" repo="NoahDomingues/Lithium" portable_zips="y1-community/Lithium-mirror" device="Q3" url="https://github.com/NoahDomingues/Lithium" type="img" handler="Custom Firmware" install_first="y1-community/q3-stock-rom" package_name="Lithium*.zip" icon="https://innioasis.app/assets/lithium_icon.jpg"/>
+    <inni:package name="Original Software" brand="Timmkoo" repo="y1-community/q5-stock-rom" device="Q5" url="https://github.com/y1-community/q5-stock-rom" type="img" handler="Custom Firmware" package_name="rom_q5.zip" portable_zips="y1-community/q5-stock-rom-mirror" icon="https://innioasis.app/assets/timmkoo_icon.jpeg"/>
+    <inni:package name="Lithium (Android 7)" brand="Timmkoo" repo="NoahDomingues/Lithium" portable_zips="y1-community/Lithium-mirror" device="Q5" url="https://github.com/NoahDomingues/Lithium" type="img" handler="Custom Firmware" install_first="y1-community/q5-stock-rom" package_name="Lithium*.zip" icon="https://innioasis.app/assets/lithium_icon.jpg"/>
+    <inni:package name="Reborn" brand="Innioasis" repo="schulzcode/y2linux" portable_zips="y1-community/y2linux-mirror" device="Y2" url="https://github.com/schulzcode/y2linux" type="img" post_install="https://innioasis.app/y2reborn_wifibt.html" handler="Custom Firmware" install_first="y1-community/y1-stock-rom" icon="https://innioasis.app/assets/reborn_icon.jpg"/>
     <inni:package name="Rockbox" brand="Innioasis" repo="rockbox-y1/rockbox" portable_zips="y1-community/rockbox-mirror" device="Y1" url="https://github.com/rockbox-y1/rockbox" type="img" icon="https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png" handler="Custom Firmware"/>
     <inni:package name="Rockbox" brand="Innioasis" repo="spycemagic/y2-rockbox" portable_zips="y1-community/y2-rockbox-mirror" device="Y2" url="https://github.com/spycemagic/y2-rockbox" icon="https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png" type="img" handler="Custom Firmware"/>
     <inni:package name="Rondo" brand="Innioasis" repo="jarvissax/rondo" portable_zips="y1-community/rondo-mirror" device="Y1" url="https://github.com/jarvissax/rondo" post_install="https://github.com/jarvissax/rondo/blob/main/docs/install.md#first-start" icon="https://innioasis.app/assets/rondo_icon.jpg" type="img" handler="Custom Firmware"/>
-    <inni:package name="Koensayr" brand="Innioasis" repo="ryan-specter/koensayr-auto" portable_zips="y1-community/koensayr-auto-mirror" derivative="y1-community/y1-stock-rom" device="Y1" url="https://github.com/ryan-specter/koensayr-auto" type="img" handler="Custom Firmware"/>
+    <inni:package name="Koensayr" brand="Innioasis" repo="ryan-specter/koensayr-auto" portable_zips="y1-community/koensayr-auto-mirror" derivative="y1-community/y1-stock-rom" device="Y1" url="https://github.com/ryan-specter/koensayr-auto" type="img" handler="Custom Firmware" icon="https://avatars.githubusercontent.com/u/10089013"/>
     <inni:package name="JJ Launcher" brand="Innioasis" repo="ismileblue/y1_launcher" portable_zips="y1-community/y1_launcher-mirror" device="Y1" url="https://github.com/ismileblue/y1_launcher" type="img" handler="Custom Firmware"/>
     <inni:package name="JJ Launcher" brand="Innioasis" repo="ismileblue/y1_launcher" portable_zips="y1-community/y1_launcher-mirror" device="Y2" url="https://github.com/ismileblue/y1_launcher" type="img" handler="Custom Firmware"/>
     <inni:package name="inniclassic" brand="Innioasis" repo="FabianZettl/inniclassic" portable_zips="y1-community/inniclassic-mirror" device="Y1" url="https://github.com/FabianZettl/inniclassic" type="img" handler="Custom Firmware"/>
@@ -1219,6 +1221,8 @@
           <inni:package platform="macos" name="rom-macos.zip" url="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-macos.zip" size="379240100"/>
         </inni:mirror_asset>
       </inni:release>
+    </inni:mirror>
+    <inni:mirror repo="y1-community/Lithium-mirror" source_repo="noahdomingues/lithium" updated_at="2026-11-14T03:46:40Z">
     </inni:mirror>
     <inni:mirror repo="y1-community/q3-stock-rom-mirror" source_repo="y1-community/q3-stock-rom" updated_at="2026-11-12T20:15:55Z">
       <inni:release tag="MX2E-WVGA_TM-WV3.23-20250528" original_tag="MX2E-WVGA_TM-WV3.23-20250528" mirror_tag="MX2E-WVGA_TM-WV3.23-20250528" release_name="Portable Flashing Package: MX2E-WVGA_TM-WV3.23-20250528" published_at="2026-11-05T06:32:56Z">
@@ -2804,7 +2808,17 @@
         </inni:mirror_asset>
       </inni:release>
     </inni:mirror>
-    <inni:mirror repo="y1-community/y1-stock-rom-mirror" source_repo="y1-community/y1-stock-rom" updated_at="2026-11-12T19:35:04Z">
+    <inni:mirror repo="y1-community/y1-stock-rom-mirror" source_repo="y1-community/y1-stock-rom" updated_at="2026-11-14T03:21:59Z">
+      <inni:release tag="3.2.4-fm" original_tag="3.2.4-fm" mirror_tag="3.2.4-fm" release_name="Portable Flashing Package: Original System Software 3.2.4 for Innioasis Y2" published_at="2026-11-13T23:34:58Z">
+        <inni:mirror_asset name="rom_y2.zip" tag="3.2.4-fm" original_url="" original_size="372464667" mirror_original_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2.zip">
+          <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-windows.zip" size="685495138"/>
+          <inni:package platform="windows-legacy" name="rom_y2-windows-legacy.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-windows-legacy.zip" size="447256325"/>
+          <inni:package platform="linux" name="rom_y2-linux.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux.zip" size="732816462"/>
+          <inni:package platform="linux-arm64" name="rom_y2-linux-arm64.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux-arm64.zip" size="557720696"/>
+          <inni:package platform="linux-legacy" name="rom_y2-linux-legacy.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux-legacy.zip" size="445670610"/>
+          <inni:package platform="macos" name="rom_y2-macos.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-macos.zip" size="492129071"/>
+        </inni:mirror_asset>
+      </inni:release>
       <inni:release tag="3.2.1" original_tag="3.2.1" mirror_tag="3.2.1" release_name="Portable Flashing Package: System Software 3.2.1 for Innioasis Y2" published_at="2026-09-13T13:11:31Z">
         <inni:mirror_asset name="rom_y2.zip" tag="3.2.1" original_url="" original_size="354935543" mirror_original_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2.zip">
           <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-windows.zip" size="656085923"/>
@@ -5381,6 +5395,7 @@ Theme Installation: Default themes are now copied in the background to prevent c
     <inni:tag_name>MX3-G1-EN-WM-V5.01-20260805</inni:tag_name>
     <inni:name>MX3-G1-EN-WM-V5.01-20260805</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip" title="rom_g1.zip" length="1645800503" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/SHA256SUMS.MX3-G1-EN-WM-V5.01-20260805" title="SHA256SUMS.MX3-G1-EN-WM-V5.01-20260805" length="78" type="application/octet-stream"/>
     <content type="text">Original Innioasis G1 software **MX3-G1-EN-WM-V5.01-20260805**.
@@ -5418,6 +5433,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;</content>
     <inni:tag_name>MX3-G1-EN-WM-V5.00-20260722</inni:tag_name>
     <inni:name>MX3-G1-EN-WM-V5.00-20260722</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1.zip" title="rom_g1.zip" length="1645759451" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.00-20260722/SHA256SUMS.MX3-G1-EN-WM-V5.00-20260722" title="SHA256SUMS.MX3-G1-EN-WM-V5.00-20260722" length="78" type="application/octet-stream"/>
     <content type="text">Original Innioasis G1 software **MX3-G1-EN-WM-V5.00-20260722**.
@@ -5455,6 +5471,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;</content>
     <inni:tag_name>MX3-9_G1_MULTI-V3.03-20260826</inni:tag_name>
     <inni:name>MX3-9_G1_MULTI-V3.03-20260826</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1.zip" title="rom_g1.zip" length="1573225707" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.03-20260826/SHA256SUMS.MX3-9_G1_MULTI-V3.03-20260826" title="SHA256SUMS.MX3-9_G1_MULTI-V3.03-20260826" length="78" type="application/octet-stream"/>
     <content type="text">Original Innioasis G1 software **MX3-9_G1_MULTI-V3.03-20260826**.
@@ -5492,6 +5509,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;</content>
     <inni:tag_name>MX3-9_G1_MULTI-V3.01-20260720</inni:tag_name>
     <inni:name>MX3-9_G1_MULTI-V3.01-20260720</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1.zip" title="rom_g1.zip" length="1573232640" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.01-20260720/SHA256SUMS.MX3-9_G1_MULTI-V3.01-20260720" title="SHA256SUMS.MX3-9_G1_MULTI-V3.01-20260720" length="78" type="application/octet-stream"/>
     <content type="text">Original Innioasis G1 software **MX3-9_G1_MULTI-V3.01-20260720**.
@@ -5529,6 +5547,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;</content>
     <inni:tag_name>MX3-9_EN-V1.04-20260805</inni:tag_name>
     <inni:name>MX3-9_EN-V1.04-20260805</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.04-20260805/rom_g1.zip" title="rom_g1.zip" length="1645347061" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.04-20260805/SHA256SUMS.MX3-9_EN-V1.04-20260805" title="SHA256SUMS.MX3-9_EN-V1.04-20260805" length="78" type="application/octet-stream"/>
     <content type="text">Original Innioasis G1 software **MX3-9_EN-V1.04-20260805**.
@@ -5566,6 +5585,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;</content>
     <inni:tag_name>MX3-9_EN-V1.03-20260707</inni:tag_name>
     <inni:name>MX3-9_EN-V1.03-20260707</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.03-20260707/rom_g1.zip" title="rom_g1.zip" length="1645380249" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.03-20260707/SHA256SUMS.MX3-9_EN-V1.03-20260707" title="SHA256SUMS.MX3-9_EN-V1.03-20260707" length="78" type="application/octet-stream"/>
     <content type="text">Original Innioasis G1 software **MX3-9_EN-V1.03-20260707**.
@@ -5603,6 +5623,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;</content>
     <inni:tag_name>MX3-G3-EN-WM-V6.01-20260805</inni:tag_name>
     <inni:name>MX3-G3-EN-WM-V6.01-20260805</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3.zip" title="rom_g3.zip" length="1646117102" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.01-20260805/SHA256SUMS.MX3-G3-EN-WM-V6.01-20260805" title="SHA256SUMS.MX3-G3-EN-WM-V6.01-20260805" length="78" type="application/octet-stream"/>
     <content type="text">Original Innioasis G3 software **MX3-G3-EN-WM-V6.01-20260805**.
@@ -5640,6 +5661,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G3&gt;</content>
     <inni:tag_name>MX3-G3-EN-WM-V6.00-20260722</inni:tag_name>
     <inni:name>MX3-G3-EN-WM-V6.00-20260722</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3.zip" title="rom_g3.zip" length="1646115909" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.00-20260722/SHA256SUMS.MX3-G3-EN-WM-V6.00-20260722" title="SHA256SUMS.MX3-G3-EN-WM-V6.00-20260722" length="78" type="application/octet-stream"/>
     <content type="text">Original Innioasis G3 software **MX3-G3-EN-WM-V6.00-20260722**.
@@ -5677,6 +5699,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G3&gt;</content>
     <inni:tag_name>MX3-9_G3_MULTI-V4.03-20260826</inni:tag_name>
     <inni:name>MX3-9_G3_MULTI-V4.03-20260826</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3.zip" title="rom_g3.zip" length="1573503257" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.03-20260826/SHA256SUMS.MX3-9_G3_MULTI-V4.03-20260826" title="SHA256SUMS.MX3-9_G3_MULTI-V4.03-20260826" length="78" type="application/octet-stream"/>
     <content type="text">Original Innioasis G3 software **MX3-9_G3_MULTI-V4.03-20260826**.
@@ -5714,6 +5737,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G3&gt;</content>
     <inni:tag_name>MX3-9_G3_MULTI-V4.02-20260720</inni:tag_name>
     <inni:name>MX3-9_G3_MULTI-V4.02-20260720</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3.zip" title="rom_g3.zip" length="1573498618" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.02-20260720/SHA256SUMS.MX3-9_G3_MULTI-V4.02-20260720" title="SHA256SUMS.MX3-9_G3_MULTI-V4.02-20260720" length="78" type="application/octet-stream"/>
     <content type="text">Original Innioasis G3 software **MX3-9_G3_MULTI-V4.02-20260720**.
@@ -5751,6 +5775,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G3&gt;</content>
     <inni:tag_name>MX3-9_EN_G3-V2.04-20260805</inni:tag_name>
     <inni:name>MX3-9_EN_G3-V2.04-20260805</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3.zip" title="rom_g3.zip" length="1645622491" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.04-20260805/SHA256SUMS.MX3-9_EN_G3-V2.04-20260805" title="SHA256SUMS.MX3-9_EN_G3-V2.04-20260805" length="78" type="application/octet-stream"/>
     <content type="text">Original Innioasis G3 software **MX3-9_EN_G3-V2.04-20260805**.
@@ -5788,6 +5813,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G3&gt;</content>
     <inni:tag_name>MX3-9_EN_G3-V2.03-20260709</inni:tag_name>
     <inni:name>MX3-9_EN_G3-V2.03-20260709</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3.zip" title="rom_g3.zip" length="1645637673" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.03-20260709/SHA256SUMS.MX3-9_EN_G3-V2.03-20260709" title="SHA256SUMS.MX3-9_EN_G3-V2.03-20260709" length="78" type="application/octet-stream"/>
     <content type="text">Original Innioasis G3 software **MX3-9_EN_G3-V2.03-20260709**.
@@ -5825,6 +5851,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G3&gt;</content>
     <inni:tag_name>MX4_EN-V1.11-20260727</inni:tag_name>
     <inni:name>MX4_EN-V1.11-20260727</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g5-stock-rom/releases/download/MX4_EN-V1.11-20260727/rom_g5.zip" title="rom_g5.zip" length="2048654340" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/g5-stock-rom/releases/download/MX4_EN-V1.11-20260727/SHA256SUMS.MX4_EN-V1.11-20260727" title="SHA256SUMS.MX4_EN-V1.11-20260727" length="78" type="application/octet-stream"/>
     <content type="text">Original Innioasis G5 software **MX4_EN-V1.11-20260727**.
@@ -5978,6 +6005,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=SR1&gt;</content>
     <inni:tag_name>MX2E-WVGA_TM-WV3.23-20250528</inni:tag_name>
     <inni:name>MX2E-WVGA_TM-WV3.23-20250528</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://innioasis.app/assets/timmkoo_icon.jpeg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/q3-stock-rom/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3.zip" title="rom_q3.zip" length="286142520" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/q3-stock-rom/releases/download/MX2E-WVGA_TM-WV3.23-20250528/SHA256SUMS.MX2E-WVGA_TM-WV3.23-20250528" title="SHA256SUMS.MX2E-WVGA_TM-WV3.23-20250528" length="78" type="application/octet-stream"/>
     <content type="text">Original Timmkoo Q3 software **MX2E-WVGA_TM-WV3.23-20250528**.
@@ -6015,6 +6043,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q3&gt;</content>
     <inni:tag_name>MX2D-WVGA_TM-WV3.20-20250618</inni:tag_name>
     <inni:name>MX2D-WVGA_TM-WV3.20-20250618</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://innioasis.app/assets/timmkoo_icon.jpeg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/q3-stock-rom/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3.zip" title="rom_q3.zip" length="280175608" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/q3-stock-rom/releases/download/MX2D-WVGA_TM-WV3.20-20250618/SHA256SUMS.MX2D-WVGA_TM-WV3.20-20250618" title="SHA256SUMS.MX2D-WVGA_TM-WV3.20-20250618" length="78" type="application/octet-stream"/>
     <content type="text">Original Timmkoo Q3 software **MX2D-WVGA_TM-WV3.20-20250618**.
@@ -6052,6 +6081,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q3&gt;</content>
     <inni:tag_name>MX2-ES-WV4.01-20250619</inni:tag_name>
     <inni:name>MX2-ES-WV4.01-20250619</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://innioasis.app/assets/timmkoo_icon.jpeg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/q3-stock-rom/releases/download/MX2-ES-WV4.01-20250619/rom_q3.zip" title="rom_q3.zip" length="282112139" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/q3-stock-rom/releases/download/MX2-ES-WV4.01-20250619/SHA256SUMS.MX2-ES-WV4.01-20250619" title="SHA256SUMS.MX2-ES-WV4.01-20250619" length="78" type="application/octet-stream"/>
     <content type="text">Original Timmkoo Q3 software **MX2-ES-WV4.01-20250619**.
@@ -6089,6 +6119,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q3&gt;</content>
     <inni:tag_name>MX2D_Q5D-WV3.28-20250619</inni:tag_name>
     <inni:name>MX2D_Q5D-WV3.28-20250619</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://innioasis.app/assets/timmkoo_icon.jpeg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/q5-stock-rom/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5.zip" title="rom_q5.zip" length="337730694" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/q5-stock-rom/releases/download/MX2D_Q5D-WV3.28-20250619/SHA256SUMS.MX2D_Q5D-WV3.28-20250619" title="SHA256SUMS.MX2D_Q5D-WV3.28-20250619" length="78" type="application/octet-stream"/>
     <content type="text">Original Timmkoo Q5 software **MX2D_Q5D-WV3.28-20250619**.
@@ -6126,6 +6157,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q5&gt;</content>
     <inni:tag_name>MX2-WVGA_TM-WV3.27-20250528</inni:tag_name>
     <inni:name>MX2-WVGA_TM-WV3.27-20250528</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://innioasis.app/assets/timmkoo_icon.jpeg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/q5-stock-rom/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5.zip" title="rom_q5.zip" length="344107791" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/q5-stock-rom/releases/download/MX2-WVGA_TM-WV3.27-20250528/SHA256SUMS.MX2-WVGA_TM-WV3.27-20250528" title="SHA256SUMS.MX2-WVGA_TM-WV3.27-20250528" length="78" type="application/octet-stream"/>
     <content type="text">Original Timmkoo Q5 software **MX2-WVGA_TM-WV3.27-20250528**.
@@ -6163,6 +6195,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q5&gt;</content>
     <inni:tag_name>MX2-ES_Q5-WV5.02-20250619</inni:tag_name>
     <inni:name>MX2-ES_Q5-WV5.02-20250619</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://innioasis.app/assets/timmkoo_icon.jpeg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/q5-stock-rom/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5.zip" title="rom_q5.zip" length="344010052" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/q5-stock-rom/releases/download/MX2-ES_Q5-WV5.02-20250619/SHA256SUMS.MX2-ES_Q5-WV5.02-20250619" title="SHA256SUMS.MX2-ES_Q5-WV5.02-20250619" length="78" type="application/octet-stream"/>
     <content type="text">Original Timmkoo Q5 software **MX2-ES_Q5-WV5.02-20250619**.
@@ -20469,6 +20502,7 @@ Thank you for trying Y2Player!
     <inni:tag_name>2.4.0-koensayr-3.0.7</inni:tag_name>
     <inni:name>2.4.0-koensayr-3.0.7</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://avatars.githubusercontent.com/u/10089013</inni:icon_url>
     <link rel="enclosure" href="https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.7/build-manifest.json" title="build-manifest.json" length="545" type="application/json"/>
     <link rel="enclosure" href="https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.7/rom.zip" title="rom.zip" length="309074505" type="application/zip"/>
     <content type="text"># 2.4.0-koensayr-3.0.7
@@ -20533,6 +20567,7 @@ adb shell rm -rf /data/data/com.innioasis.y1/code_cache/secondary-dexes/
     <inni:tag_name>2.4.0-koensayr-3.0.2</inni:tag_name>
     <inni:name>2.4.0-koensayr-3.0.2</inni:name>
     <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://avatars.githubusercontent.com/u/10089013</inni:icon_url>
     <link rel="enclosure" href="https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.2/build-manifest.json" title="build-manifest.json" length="538" type="application/json"/>
     <link rel="enclosure" href="https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.2/rom.zip" title="rom.zip" length="329013283" type="application/zip"/>
     <content type="text"># 2.4.0-koensayr-3.0.2
@@ -20852,6 +20887,60 @@ Connect your Y2 and wait for install to finish.</content>
     <content type="text">This is a release of Linux for the Innioasis Y1 intended for developers to create novel experiences on the Innioasis Y1 audio player.
 
 Credit to @palutenfan123 for building this.</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:y1-community/y1-stock-rom-mirror/3.2.4-fm</id>
+    <updated>2026-11-14T03:21:11Z</updated>
+    <published>2026-11-14T03:21:11Z</published>
+    <title>Portable Flashing Package: Original System Software 3.2.4 for Innioasis Y2</title>
+    <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/tag/3.2.4-fm"/>
+    <inni:repo>y1-community/y1-stock-rom-mirror</inni:repo>
+    <inni:tag_name>3.2.4-fm</inni:tag_name>
+    <inni:name>Portable Flashing Package: Original System Software 3.2.4 for Innioasis Y2</inni:name>
+    <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="557720696" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux-legacy.zip" title="rom_y2-linux-legacy.zip" length="445670610" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux.zip" title="rom_y2-linux.zip" length="732816462" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-macos.zip" title="rom_y2-macos.zip" length="492129071" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="447256325" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-windows.zip" title="rom_y2-windows.zip" length="685495138" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2.zip" title="rom_y2.zip" length="372464667" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/stats.txt" title="stats.txt" length="3934" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg"/>
+    <content type="text">&lt;p align=&quot;center&quot;&gt;
+  &lt;a href=&quot;https://innioasis.app/guide.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.2.4-fm#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+### Downloads
+
+**Y2 · Stock**
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;a href=&quot;https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.2.4-fm&amp;amp;asset=rom_y2.zip&amp;amp;platform=windows&amp;amp;mirror=y1-community%2Fy1-stock-rom-mirror&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg&quot; width=&quot;400&quot; alt=&quot;Download .zip for Windows for Y2 · Stock - x86-64 · portable package&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.2.4-fm&amp;amp;asset=rom_y2.zip&amp;amp;platform=windows-legacy&amp;amp;mirror=y1-community%2Fy1-stock-rom-mirror&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg&quot; width=&quot;400&quot; alt=&quot;Download .zip for Windows 7 for Y2 · Stock - XP/7/8.1 · SP Flash Tool guide&quot;&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;a href=&quot;https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.2.4-fm&amp;amp;asset=rom_y2.zip&amp;amp;platform=linux&amp;amp;mirror=y1-community%2Fy1-stock-rom-mirror&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg&quot; width=&quot;400&quot; alt=&quot;Download .zip for Linux for Y2 · Stock - x86-64 · portable package&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.2.4-fm&amp;amp;asset=rom_y2.zip&amp;amp;platform=linux-arm64&amp;amp;mirror=y1-community%2Fy1-stock-rom-mirror&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg&quot; width=&quot;400&quot; alt=&quot;Download .zip for Linux arm64 for Y2 · Stock - portable package&quot;&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;a href=&quot;https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.2.4-fm&amp;amp;asset=rom_y2.zip&amp;amp;platform=linux-legacy&amp;amp;mirror=y1-community%2Fy1-stock-rom-mirror&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg&quot; width=&quot;400&quot; alt=&quot;Download .zip for 32-bit Linux for Y2 · Stock - pre-AppImage · SP Flash Tool&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.2.4-fm&amp;amp;asset=rom_y2.zip&amp;amp;platform=macos&amp;amp;mirror=y1-community%2Fy1-stock-rom-mirror&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg&quot; width=&quot;400&quot; alt=&quot;Download .zip for macOS 12+ for Y2 · Stock - Intel + Apple silicon&quot;&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+---
+
+&quot;General performance and stability improvements.&quot;
+
+This is the software currently being shipped on Y2 retail units.
+
+(Innioasis have once again failed to release this as an update to existing users, nor do they actually post what changes their firmwares include - this firmware release was imaged from a retail Y2 unit purchased November 12 by the Community Firmware Archive and Updater CE maintainer - tested against both of Updater&#x27;s installation methods: SP Flash Tool and MTKclient and the underlying tools themselves on a pre 3.2.4 and a 3.2.4 unit with success. Image was taken before any use of the player)
+
+&lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;49cdc07b02aecbafb3261f8d641c3cf3b1dab60db1b704bb0fe97ea2f5557e5d&quot;,&quot;size&quot;:685495138,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;3495a8d6592c2ae9863af2ce0f0ac83e158f5eaa0ad13fc8ca4b95be619c09f1&quot;,&quot;size&quot;:447256325,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;edb912a55d7f72129ffcb6e317fa2b2eaeda5edda2072ccc5e6c9f4d6f9a42c4&quot;,&quot;size&quot;:732816462,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux-arm64.zip&quot;,&quot;platform&quot;:&quot;linux-arm64&quot;,&quot;sha256&quot;:&quot;b9620c0e483ac9df1ecaddb3acbea56c3f612fd6fdded026604f111dfe16847f&quot;,&quot;size&quot;:557720696,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;8cd9c039e6a034e6cce7d9cb1360acb101c7a734d5cfd9ae5648cfd231135051&quot;,&quot;size&quot;:445670610,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;cc49295c3eb89fa173bba3e8b280c0724a3f2dd0ff03264880961fd8e03da966&quot;,&quot;size&quot;:492129071,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;}],&quot;built_at&quot;:&quot;2026-11-14T03:21:10Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-arm64.svg&quot;,&quot;size&quot;:1510},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[],&quot;fingerprint&quot;:&quot;0d0209c419b9cb59b9df024f26ea0ea4bbd4e9280be2691cbc5a559a834a4b6f&quot;,&quot;original_asset_sizes&quot;:{&quot;rom_y2.zip&quot;:372464667,&quot;updater.jpg&quot;:30612},&quot;original_assets&quot;:[&quot;rom_y2.zip&quot;,&quot;updater.jpg&quot;],&quot;skipped&quot;:[],&quot;stats&quot;:{&quot;baseline&quot;:{},&quot;generated_at&quot;:&quot;2026-11-14T03:21:10Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable.zip&quot;,&quot;size&quot;:364426302,&quot;tag&quot;:&quot;2.5.5&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:188443285,&quot;tag&quot;:&quot;2.5.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:119710372,&quot;tag&quot;:&quot;2.5.3&quot;},&quot;windows&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Windows-Portable.zip.zip&quot;,&quot;size&quot;:313278741,&quot;tag&quot;:&quot;2.5.4&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:16} --&gt;
+</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:y1-community/y1-stock-rom-mirror/3.2.1</id>
@@ -22442,6 +22531,163 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q3&gt;
 </content>
   </entry>
   <entry>
+    <id>tag:innioasis.app,2026:NoahDomingues/Lithium/v7.1.06.13.25</id>
+    <updated>2025-06-13T12:57:19Z</updated>
+    <published>2025-06-13T12:57:19Z</published>
+    <title>Lithium 7 Beta</title>
+    <link rel="alternate" type="text/html" href="https://github.com/NoahDomingues/Lithium/releases/tag/v7.1.06.13.25"/>
+    <inni:repo>NoahDomingues/Lithium</inni:repo>
+    <inni:tag_name>v7.1.06.13.25</inni:tag_name>
+    <inni:name>Lithium 7 Beta</inni:name>
+    <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://innioasis.app/assets/lithium_icon.jpg</inni:icon_url>
+    <link rel="enclosure" href="https://github.com/NoahDomingues/Lithium/releases/download/v7.1.06.13.25/Lithium.Beta.v7.1.06.13.25.zip" title="Lithium.Beta.v7.1.06.13.25.zip" length="307094451" type="application/x-zip-compressed"/>
+    <content type="text">## Lithium 7 Beta (pre-release) v7.1.06.13.25
+
+[&lt;img src=&quot;https://github.com/user-attachments/assets/9167a80e-4368-42c6-885d-6e374467f574&quot;&gt;](https://discord.gg/3zbfaTNN7V)
+
+This is a very early beta release of Lithium 7, complete with kernel &amp; ramdisk, with built-in Xposed support. It has achieved a record-setting boot time of just _40 seconds_, as opposed to the 1:04 boot time of Lithium 5.
+
+If you have any issues, feel free to join the **[discussion](https://github.com/NoahDomingues/Lithium/discussions)**, or join the **[Discord server](https://discord.gg/3zbfaTNN7V)**. We recommend joining for updates, and even to just to hang out with the community - we even have our own Minecraft server!
+
+[&lt;img src=&quot;https://github.com/user-attachments/assets/f61046f5-1dc5-4b0c-87f8-4a94d6cbac96&quot;&gt;](https://discord.gg/3zbfaTNN7V)
+
+**Full Changelog**: https://github.com/NoahDomingues/Lithium/commits/Lithium-7
+
+## What&#x27;s Changed
+* Updated initial boot logo
+* Added scatter file within flashing package
+* Attempted speaker audio fix, but speaker still does not work
+
+#### A massive thank you to **Meowing Kibble** for the new initial boot logo, and for other contributions (and for working on the speaker issue)!</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:NoahDomingues/Lithium/v7.1.06.09.25</id>
+    <updated>2025-06-09T14:45:37Z</updated>
+    <published>2025-06-09T14:45:37Z</published>
+    <title>Lithium 7 Beta</title>
+    <link rel="alternate" type="text/html" href="https://github.com/NoahDomingues/Lithium/releases/tag/v7.1.06.09.25"/>
+    <inni:repo>NoahDomingues/Lithium</inni:repo>
+    <inni:tag_name>v7.1.06.09.25</inni:tag_name>
+    <inni:name>Lithium 7 Beta</inni:name>
+    <inni:prerelease>true</inni:prerelease>
+    <inni:icon_url>https://innioasis.app/assets/lithium_icon.jpg</inni:icon_url>
+    <link rel="enclosure" href="https://github.com/NoahDomingues/Lithium/releases/download/v7.1.06.09.25/Lithium.7.v7.1.06.09.25.zip" title="Lithium.7.v7.1.06.09.25.zip" length="328910851" type="application/x-zip-compressed"/>
+    <content type="text">## Lithium 7 Beta (pre-release) v7.1.06.09.25
+
+[&lt;img src=&quot;https://github.com/user-attachments/assets/9167a80e-4368-42c6-885d-6e374467f574&quot;&gt;](https://discord.gg/3zbfaTNN7V)
+
+This is a very early beta release of Lithium 7, complete with kernel &amp; ramdisk, with built-in Xposed support. It has achieved a record-setting boot time of just _40 seconds_, as opposed to the 1:04 boot time of Lithium 5.
+
+If you have any issues, feel free to join the **[discussion](https://github.com/NoahDomingues/Lithium/discussions)**, or join the **[Discord server](https://discord.gg/3zbfaTNN7V)**.
+
+[&lt;img src=&quot;https://github.com/user-attachments/assets/f61046f5-1dc5-4b0c-87f8-4a94d6cbac96&quot;&gt;](https://discord.gg/3zbfaTNN7V)
+
+**Full Changelog**: https://github.com/NoahDomingues/Lithium/commits/Lithium-7
+
+## What&#x27;s Changed
+* Upgraded to Lithium 7 from Lithium 5 by @NoahDomingues in https://github.com/NoahDomingues/Lithium/pull/4
+* Update SECURITY.MD and other policies by @ItsNoahDomingues in https://github.com/NoahDomingues/Lithium/pull/5
+
+## New Contributors
+* @NoahDomingues made their first contribution in https://github.com/NoahDomingues/Lithium/pull/4
+* @ItsNoahDomingues made their first contribution in https://github.com/NoahDomingues/Lithium/pull/5
+
+**Full Changelog (since last release)**: https://github.com/NoahDomingues/Lithium/compare/Kernel...v0.1.06.09.25</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:NoahDomingues/Lithium/Scatter-v7.1.06.11.25</id>
+    <updated>2025-06-11T08:19:26Z</updated>
+    <published>2025-06-11T08:19:26Z</published>
+    <title>Lithium 7 Scatter v7.1.06.11.25</title>
+    <link rel="alternate" type="text/html" href="https://github.com/NoahDomingues/Lithium/releases/tag/Scatter-v7.1.06.11.25"/>
+    <inni:repo>NoahDomingues/Lithium</inni:repo>
+    <inni:tag_name>Scatter-v7.1.06.11.25</inni:tag_name>
+    <inni:name>Lithium 7 Scatter v7.1.06.11.25</inni:name>
+    <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://innioasis.app/assets/lithium_icon.jpg</inni:icon_url>
+    <link rel="enclosure" href="https://github.com/NoahDomingues/Lithium/releases/download/Scatter-v7.1.06.11.25/MT6582_Android_scatter.txt" title="MT6582_Android_scatter.txt" length="6876" type="text/plain"/>
+    <content type="text">## Lithium 7 Scatter File v7.1.06.11.25
+
+[&lt;img src=&quot;https://github.com/user-attachments/assets/9167a80e-4368-42c6-885d-6e374467f574&quot;&gt;](https://discord.gg/3zbfaTNN7V)
+
+This is the scatter file for **Lithium 7** and **Lithium 7 Beta**, which allows you to flash the OS using MediaTek SP Flash Tool.
+
+If you have any issues, feel free to join the **[discussion](https://github.com/NoahDomingues/Lithium/discussions)**, or join the **[Discord server](https://discord.gg/3zbfaTNN7V)**.
+
+[&lt;img src=&quot;https://github.com/user-attachments/assets/f61046f5-1dc5-4b0c-87f8-4a94d6cbac96&quot;&gt;](https://discord.gg/3zbfaTNN7V)
+
+**Full Changelog**: https://github.com/NoahDomingues/Lithium/commits/Lithium-7
+
+## New Contributors
+* @NoahDomingues made their first contribution in https://github.com/NoahDomingues/Lithium/pull/4
+* @ItsNoahDomingues made their first contribution in https://github.com/NoahDomingues/Lithium/pull/5
+
+**Full Changelog**: https://github.com/NoahDomingues/Lithium/compare/Kernel-v7.1.06.09.25...Scatter-v7.1.06.11.25</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:NoahDomingues/Lithium/Kernel-v7.1.06.09.25</id>
+    <updated>2025-06-09T14:55:05Z</updated>
+    <published>2025-06-09T14:55:05Z</published>
+    <title>Lithium 7 Kernel v7.1.06.09.25</title>
+    <link rel="alternate" type="text/html" href="https://github.com/NoahDomingues/Lithium/releases/tag/Kernel-v7.1.06.09.25"/>
+    <inni:repo>NoahDomingues/Lithium</inni:repo>
+    <inni:tag_name>Kernel-v7.1.06.09.25</inni:tag_name>
+    <inni:name>Lithium 7 Kernel v7.1.06.09.25</inni:name>
+    <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://innioasis.app/assets/lithium_icon.jpg</inni:icon_url>
+    <link rel="enclosure" href="https://github.com/NoahDomingues/Lithium/releases/download/Kernel-v7.1.06.09.25/boot.img" title="boot.img" length="5208064" type="application/octet-stream"/>
+    <content type="text">## Lithium 7 Kernel v7.1.06.09.25
+
+[&lt;img src=&quot;https://github.com/user-attachments/assets/9167a80e-4368-42c6-885d-6e374467f574&quot;&gt;](https://discord.gg/3zbfaTNN7V)
+
+This is a first official release of the Lithium 7 Android kernel &amp; ramdisk, with built-in Xposed support.
+
+You can use this kernel with _some_ other Android 7 ROMs for Timmkoo devices, and you are welcome to modify the kernel and contribute with any changes.
+
+If you have any issues, feel free to join the **[discussion](https://github.com/NoahDomingues/Lithium/discussions)**, or join the **[Discord server](https://discord.gg/3zbfaTNN7V)**.
+
+[&lt;img src=&quot;https://github.com/user-attachments/assets/f61046f5-1dc5-4b0c-87f8-4a94d6cbac96&quot;&gt;](https://discord.gg/3zbfaTNN7V)
+
+**Full Changelog**: https://github.com/NoahDomingues/Lithium/commits/Kernel
+
+## What&#x27;s Changed
+* Added Discord badge to ReadMe. by @NoahDomingues in https://github.com/NoahDomingues/Lithium/pull/4
+* Update SECURITY.MD by @ItsNoahDomingues in https://github.com/NoahDomingues/Lithium/pull/5
+
+## New Contributors
+* @NoahDomingues made their first contribution in https://github.com/NoahDomingues/Lithium/pull/4
+* @ItsNoahDomingues made their first contribution in https://github.com/NoahDomingues/Lithium/pull/5
+
+**Full Changelog**: https://github.com/NoahDomingues/Lithium/compare/Kernel...Kernel-v7.1.06.09.25
+
+This project, and this particular ROM, was made possible entirely with the efforts of **[Palutenfan123](https://github.com/timmkoo)**. It was his discovery and his work that brought this into existence; therefore, he deserves full credit for it. Also thanks to him for providing the hosting services for our [website](https://lithium.timmkoo.de). He maintains his own custom ROM, called T-ROM, available [here](https://timmkoo.de).</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:NoahDomingues/Lithium/Kernel</id>
+    <updated>2025-06-04T10:21:13Z</updated>
+    <published>2025-06-04T10:21:13Z</published>
+    <title>Lithium 5 Kernel Beta v0.06.04.25</title>
+    <link rel="alternate" type="text/html" href="https://github.com/NoahDomingues/Lithium/releases/tag/Kernel"/>
+    <inni:repo>NoahDomingues/Lithium</inni:repo>
+    <inni:tag_name>Kernel</inni:tag_name>
+    <inni:name>Lithium 5 Kernel Beta v0.06.04.25</inni:name>
+    <inni:prerelease>true</inni:prerelease>
+    <inni:icon_url>https://innioasis.app/assets/lithium_icon.jpg</inni:icon_url>
+    <link rel="enclosure" href="https://github.com/NoahDomingues/Lithium/releases/download/Kernel/boot.img" title="boot.img" length="4681728" type="application/octet-stream"/>
+    <content type="text">## Lithium 5 Kernel Beta v0.06.04.25
+
+This is a beta release of the Lithium 5 Android kernel &amp; ramdisk, with built-in Magisk support.
+
+You can use this kernel with any other Android 5 ROM for Timmkoo devices, and you are welcome to modify the kernel and contribute with any changes.
+
+If you have any issues, feel free to join the **[discussion](https://github.com/NoahDomingues/Lithium/discussions)**, or join the **[Discord server](https://discord.gg/3zbfaTNN7V)**.
+
+[&lt;img src=&quot;https://github.com/user-attachments/assets/f61046f5-1dc5-4b0c-87f8-4a94d6cbac96&quot;&gt;](https://discord.gg/3zbfaTNN7V)
+
+**Full Changelog**: https://github.com/NoahDomingues/Lithium/commits/Kernel</content>
+  </entry>
+  <entry>
     <id>tag:innioasis.app,2026:y1-community/q5-stock-rom-mirror/MX2D_Q5D-WV3.28-20250619</id>
     <updated>2026-11-06T15:40:08Z</updated>
     <published>2026-11-06T15:40:08Z</published>
@@ -22673,7 +22919,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q5&gt;
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-261/recovery.img.gz" title="recovery.img.gz" length="7557708" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-261/rootfs.ext4.gz" title="rootfs.ext4.gz" length="53150447" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-261/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-261/stats.txt" title="stats.txt" length="2860" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-261/stats.txt" title="stats.txt" length="5111" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install-linux-arm64.zip" title="Y2Linux-1.0.0-beta.9.3.30-first-install-linux-arm64.zip" length="254307507" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install-linux-legacy.zip" title="Y2Linux-1.0.0-beta.9.3.30-first-install-linux-legacy.zip" length="142257511" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install-linux.zip" title="Y2Linux-1.0.0-beta.9.3.30-first-install-linux.zip" length="429403273" type="application/zip"/>
@@ -22790,7 +23036,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/recovery.img.gz" title="recovery.img.gz" length="7557766" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/rootfs.ext4.gz" title="rootfs.ext4.gz" length="53142251" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/stats.txt" title="stats.txt" length="2855" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/stats.txt" title="stats.txt" length="5108" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-linux-arm64.zip" title="Y2Linux-1.0.0-beta.9.3.29-first-install-linux-arm64.zip" length="254309544" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-linux-legacy.zip" title="Y2Linux-1.0.0-beta.9.3.29-first-install-linux-legacy.zip" length="142259550" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-259/Y2Linux-1.0.0-beta.9.3.29-first-install-linux.zip" title="Y2Linux-1.0.0-beta.9.3.29-first-install-linux.zip" length="429405310" type="application/zip"/>
@@ -23259,7 +23505,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-248/recovery.img.gz" title="recovery.img.gz" length="7549724" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-248/rootfs.ext4.gz" title="rootfs.ext4.gz" length="52985714" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-248/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-248/stats.txt" title="stats.txt" length="5233" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-248/stats.txt" title="stats.txt" length="5235" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-248/Y2Linux-1.0.0-beta.9.3.25-first-install-linux-arm64.zip" title="Y2Linux-1.0.0-beta.9.3.25-first-install-linux-arm64.zip" length="254132176" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-248/Y2Linux-1.0.0-beta.9.3.25-first-install-linux-legacy.zip" title="Y2Linux-1.0.0-beta.9.3.25-first-install-linux-legacy.zip" length="142082182" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-248/Y2Linux-1.0.0-beta.9.3.25-first-install-linux.zip" title="Y2Linux-1.0.0-beta.9.3.25-first-install-linux.zip" length="429227942" type="application/zip"/>
@@ -24143,7 +24389,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/recovery.img.gz" title="recovery.img.gz" length="7539768" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/rootfs.ext4.gz" title="rootfs.ext4.gz" length="51660739" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/stats.txt" title="stats.txt" length="5119" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/stats.txt" title="stats.txt" length="5120" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install-linux-arm64.zip" title="Y2Linux-1.0.0-beta.9.3.18-first-install-linux-arm64.zip" length="252789888" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install-linux-legacy.zip" title="Y2Linux-1.0.0-beta.9.3.18-first-install-linux-legacy.zip" length="140739894" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install-linux.zip" title="Y2Linux-1.0.0-beta.9.3.18-first-install-linux.zip" length="427885654" type="application/zip"/>
@@ -24268,7 +24514,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/recovery.img.gz" title="recovery.img.gz" length="7539244" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/rootfs.ext4.gz" title="rootfs.ext4.gz" length="51517451" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/stats.txt" title="stats.txt" length="5119" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/stats.txt" title="stats.txt" length="5120" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/Y2Linux-1.0.0-beta.9.3.17-first-install-linux-arm64.zip" title="Y2Linux-1.0.0-beta.9.3.17-first-install-linux-arm64.zip" length="252645317" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/Y2Linux-1.0.0-beta.9.3.17-first-install-linux-legacy.zip" title="Y2Linux-1.0.0-beta.9.3.17-first-install-linux-legacy.zip" length="140595323" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/Y2Linux-1.0.0-beta.9.3.17-first-install-linux.zip" title="Y2Linux-1.0.0-beta.9.3.17-first-install-linux.zip" length="427741083" type="application/zip"/>
@@ -25295,7 +25541,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, La
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/recovery.img.gz" title="recovery.img.gz" length="7522486" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/rootfs.ext4.gz" title="rootfs.ext4.gz" length="41839924" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/SHA256SUMS" title="SHA256SUMS" length="939" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/stats.txt" title="stats.txt" length="5076" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/stats.txt" title="stats.txt" length="5077" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-linux-arm64.zip" title="Y2Linux-1.0.0-beta.8.4-first-install-linux-arm64.zip" length="242883714" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-linux-legacy.zip" title="Y2Linux-1.0.0-beta.8.4-first-install-linux-legacy.zip" length="130833708" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install-linux.zip" title="Y2Linux-1.0.0-beta.8.4-first-install-linux.zip" length="417979480" type="application/zip"/>
@@ -25393,7 +25639,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek or 
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/recovery.img.gz" title="recovery.img.gz" length="7522133" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/rootfs.ext4.gz" title="rootfs.ext4.gz" length="41844042" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/SHA256SUMS" title="SHA256SUMS" length="939" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/stats.txt" title="stats.txt" length="5076" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/stats.txt" title="stats.txt" length="5077" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-first-install-linux-arm64.zip" title="Y2Linux-1.0.0-beta.8.3-first-install-linux-arm64.zip" length="242883813" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-first-install-linux-legacy.zip" title="Y2Linux-1.0.0-beta.8.3-first-install-linux-legacy.zip" length="130833805" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-first-install-linux.zip" title="Y2Linux-1.0.0-beta.8.3-first-install-linux.zip" length="417979579" type="application/zip"/>
@@ -25492,7 +25738,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek or 
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/recovery.img.gz" title="recovery.img.gz" length="7519130" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/rootfs.ext4.gz" title="rootfs.ext4.gz" length="41826989" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/SHA256SUMS" title="SHA256SUMS" length="939" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/stats.txt" title="stats.txt" length="5076" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/stats.txt" title="stats.txt" length="5077" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-first-install-linux-arm64.zip" title="Y2Linux-1.0.0-beta.8.2-first-install-linux-arm64.zip" length="242874736" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-first-install-linux-legacy.zip" title="Y2Linux-1.0.0-beta.8.2-first-install-linux-legacy.zip" length="130824728" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-first-install-linux.zip" title="Y2Linux-1.0.0-beta.8.2-first-install-linux.zip" length="417970502" type="application/zip"/>
@@ -25591,7 +25837,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek or 
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/recovery.img.gz" title="recovery.img.gz" length="7513218" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/rootfs.ext4.gz" title="rootfs.ext4.gz" length="41624239" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/SHA256SUMS" title="SHA256SUMS" length="939" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/stats.txt" title="stats.txt" length="5076" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/stats.txt" title="stats.txt" length="5077" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-first-install-linux-arm64.zip" title="Y2Linux-1.0.0-beta.8.1-first-install-linux-arm64.zip" length="242861569" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-first-install-linux-legacy.zip" title="Y2Linux-1.0.0-beta.8.1-first-install-linux-legacy.zip" length="130811561" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-first-install-linux.zip" title="Y2Linux-1.0.0-beta.8.1-first-install-linux.zip" length="417957335" type="application/zip"/>
@@ -25691,7 +25937,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek or 
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/recovery.img.gz" title="recovery.img.gz" length="7509168" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/rootfs.ext4.gz" title="rootfs.ext4.gz" length="41624008" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/SHA256SUMS" title="SHA256SUMS" length="939" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/stats.txt" title="stats.txt" length="5198" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/stats.txt" title="stats.txt" length="5199" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-first-install-linux-arm64.zip" title="Y2Linux-1.0.0-beta.8.0-first-install-linux-arm64.zip" length="242852113" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-first-install-linux-legacy.zip" title="Y2Linux-1.0.0-beta.8.0-first-install-linux-legacy.zip" length="130802105" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-first-install-linux.zip" title="Y2Linux-1.0.0-beta.8.0-first-install-linux.zip" length="417947879" type="application/zip"/>
@@ -26193,7 +26439,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek or 
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/recovery.img.gz" title="recovery.img.gz" length="7505984" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/rootfs.ext4.gz" title="rootfs.ext4.gz" length="41584433" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/SHA256SUMS" title="SHA256SUMS" length="830" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/stats.txt" title="stats.txt" length="5076" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/stats.txt" title="stats.txt" length="5077" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-first-install-linux-arm64.zip" title="Y2Linux-1.0.0-beta.7.7-first-install-linux-arm64.zip" length="242802096" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-first-install-linux-legacy.zip" title="Y2Linux-1.0.0-beta.7.7-first-install-linux-legacy.zip" length="130752088" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-first-install-linux.zip" title="Y2Linux-1.0.0-beta.7.7-first-install-linux.zip" length="417897862" type="application/zip"/>
@@ -27159,7 +27405,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis or MediaTek. 
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/recovery.img.gz" title="recovery.img.gz" length="7505079" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/rootfs.ext4.gz" title="rootfs.ext4.gz" length="41309976" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/SHA256SUMS" title="SHA256SUMS" length="830" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/stats.txt" title="stats.txt" length="5076" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/stats.txt" title="stats.txt" length="5077" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-first-install-linux-arm64.zip" title="Y2Linux-1.0.0-beta.6.1-first-install-linux-arm64.zip" length="242528664" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-first-install-linux-legacy.zip" title="Y2Linux-1.0.0-beta.6.1-first-install-linux-legacy.zip" length="130478656" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-first-install-linux.zip" title="Y2Linux-1.0.0-beta.6.1-first-install-linux.zip" length="417624430" type="application/zip"/>
@@ -28210,7 +28456,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/recovery.img.gz" title="recovery.img.gz" length="7539337" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/rootfs.ext4.gz" title="rootfs.ext4.gz" length="50759038" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/stats.txt" title="stats.txt" length="5125" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/stats.txt" title="stats.txt" length="5126" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/Y2Linux-1.0.0-beta.9.2.15-first-install-linux-arm64.zip" title="Y2Linux-1.0.0-beta.9.2.15-first-install-linux-arm64.zip" length="251907598" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/Y2Linux-1.0.0-beta.9.2.15-first-install-linux-legacy.zip" title="Y2Linux-1.0.0-beta.9.2.15-first-install-linux-legacy.zip" length="139857604" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/Y2Linux-1.0.0-beta.9.2.15-first-install-linux.zip" title="Y2Linux-1.0.0-beta.9.2.15-first-install-linux.zip" length="427003364" type="application/zip"/>
@@ -36830,7 +37076,7 @@ adb shell pm grant com.themoon.y1 android.permission.WRITE_SECURE_SETTINGS
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="445072887" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_y2-windows.zip" title="rom_y2-windows.zip" length="683311696" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_y2.zip" title="rom_y2.zip" length="442768975" type="application/zip"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/stats.txt" title="stats.txt" length="7560" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/stats.txt" title="stats.txt" length="7561" type="text/plain; charset=utf-8"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=ismileblue%2Fy1_launcher&amp;amp;tag=launcher-v0.11.6#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1_launcher-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -36953,7 +37199,7 @@ adb shell pm grant com.themoon.y1 android.permission.WRITE_SECURE_SETTINGS
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="445059780" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_y2-windows.zip" title="rom_y2-windows.zip" length="683298589" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_y2.zip" title="rom_y2.zip" length="442755868" type="application/zip"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/stats.txt" title="stats.txt" length="7551" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/stats.txt" title="stats.txt" length="7552" type="text/plain; charset=utf-8"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=ismileblue%2Fy1_launcher&amp;amp;tag=launcher-v0.11.5#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1_launcher-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -37855,7 +38101,7 @@ Full changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="537873040" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-windows.zip" title="rom-windows.zip" length="776111881" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom.zip" title="rom.zip" length="463029711" type="application/zip"/>
-    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/stats.txt" title="stats.txt" length="4041" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/stats.txt" title="stats.txt" length="4043" type="text/plain; charset=utf-8"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;amp;tag=v1.4.1#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -38427,7 +38673,7 @@ Experimental build for the Innioasis Y1 (Android 4.2), to collect test results f
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y2-windows.zip" title="rom_y2-windows.zip" length="721783296" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y2.zip" title="rom_y2.zip" length="482182978" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/SHA256SUMS.txt" title="SHA256SUMS.txt" length="336" type="text/plain; charset=utf-8"/>
-    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/stats.txt" title="stats.txt" length="2967" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/stats.txt" title="stats.txt" length="8056" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/update.json" title="update.json" length="326" type="application/json"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=ClassyPlayer%2FClassy&amp;amp;tag=20261113-beta#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -47363,7 +47609,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481803719" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720042528" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b.zip" title="rom_type_b.zip" length="406960324" type="application/zip"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/stats.txt" title="stats.txt" length="5891" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/stats.txt" title="stats.txt" length="5892" type="text/plain; charset=utf-8"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260627-0304#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;

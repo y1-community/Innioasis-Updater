@@ -15,7 +15,7 @@
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rockbox.apk" title="rockbox.apk" length="16533880" type="application/vnd.android.package-archive" innioasis:download_count="5" innioasis:asset_id="739536420"/>
-    <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip" title="rom.zip" length="581693789" type="application/zip" innioasis:download_count="193" innioasis:asset_id="739536855"/>
+    <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip" title="rom.zip" length="581693789" type="application/zip" innioasis:download_count="194" innioasis:asset_id="739536855"/>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom_type_b.zip" title="rom_type_b.zip" length="495537505" type="application/zip" innioasis:download_count="13" innioasis:asset_id="739538696"/>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/update.zip" title="update.zip" length="100165786" type="application/zip" innioasis:download_count="6" innioasis:asset_id="739536543"/>
     <content type="text"></content>
@@ -455,7 +455,7 @@ Also:
     <innioasis:tag_name>voices-22511894870</innioasis:tag_name>
     <innioasis:prerelease>true</innioasis:prerelease>
     <innioasis:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/voices-22511894870/voices.zip" title="voices.zip" length="76500020" type="application/zip" innioasis:download_count="21" innioasis:asset_id="363891291"/>
+    <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/voices-22511894870/voices.zip" title="voices.zip" length="76500020" type="application/zip" innioasis:download_count="23" innioasis:asset_id="363891291"/>
     <content type="text"></content>
   </entry>
   <entry>
@@ -561,7 +561,7 @@ And many bug fixes and general UI/UX improvements. A big thanks to all the contr
     <innioasis:tag_name>16761617720</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/16761617720/libs.zip" title="libs.zip" length="3996666" type="application/zip" innioasis:download_count="71" innioasis:asset_id="279675112"/>
+    <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/16761617720/libs.zip" title="libs.zip" length="3996666" type="application/zip" innioasis:download_count="73" innioasis:asset_id="279675112"/>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/16761617720/rockbox-v0.2.apk" title="rockbox-v0.2.apk" length="4184373" type="application/vnd.android.package-archive" innioasis:download_count="101" innioasis:asset_id="279675108"/>
     <content type="text">Release v0.2
 
@@ -604,7 +604,7 @@ And many bug fixes and general UI/UX improvements. A big thanks to all the contr
     <innioasis:tag_name>016733367579</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/016733367579/voices.zip" title="voices.zip" length="76155485" type="application/zip" innioasis:download_count="141" innioasis:asset_id="279340035"/>
+    <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/016733367579/voices.zip" title="voices.zip" length="76155485" type="application/zip" innioasis:download_count="143" innioasis:asset_id="279340035"/>
     <content type="text">## Voice Files for Rockbox-Y1 v0.2
 
 Includes these languages:

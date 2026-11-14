@@ -301,7 +301,7 @@ adb shell pm grant com.themoon.y1 android.permission.WRITE_SECURE_SETTINGS</cont
     <innioasis:prerelease>false</innioasis:prerelease>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.4/rom.zip" title="rom.zip" length="456287678" type="application/zip" innioasis:download_count="30" innioasis:asset_id="541199939"/>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.4/rom_type_b.zip" title="rom_type_b.zip" length="399771390" type="application/zip" innioasis:download_count="18" innioasis:asset_id="541199938"/>
-    <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.4/rom_y2.zip" title="rom_y2.zip" length="443266446" type="application/zip" innioasis:download_count="29" innioasis:asset_id="541199940"/>
+    <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.4/rom_y2.zip" title="rom_y2.zip" length="443266446" type="application/zip" innioasis:download_count="31" innioasis:asset_id="541199940"/>
     <content type="text">
 Here is what’s new in this release:
 
@@ -678,7 +678,7 @@ Please continue to show your interest and support. Thank you! :D</content>
     <innioasis:tag_name>v0.8</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/v0.8/app-release.apk" title="app-release.apk" length="1250544" type="application/vnd.android.package-archive" innioasis:download_count="71" innioasis:asset_id="456682154"/>
-    <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/v0.8/Y1_Themes.zip" title="Y1_Themes.zip" length="819854" type="application/x-zip-compressed" innioasis:download_count="16" innioasis:asset_id="456683120"/>
+    <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/v0.8/Y1_Themes.zip" title="Y1_Themes.zip" length="819854" type="application/x-zip-compressed" innioasis:download_count="18" innioasis:asset_id="456683120"/>
     <content type="text">## 🚀 What&#x27;s New in v0.8
 
 ### 🎨 1. New Theme Engine Implemented
@@ -761,7 +761,7 @@ adb shell pm grant com.themoon.y1 android.permission.WRITE_SECURE_SETTINGS</cont
     <innioasis:tag_name>v0.5</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/v0.5/app-release_0.5.apk" title="app-release_0.5.apk" length="406717" type="application/vnd.android.package-archive" innioasis:download_count="92" innioasis:asset_id="448008404"/>
-    <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/v0.5/Y1_Themes.zip" title="Y1_Themes.zip" length="339264" type="application/x-zip-compressed" innioasis:download_count="16" innioasis:asset_id="448009809"/>
+    <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/v0.5/Y1_Themes.zip" title="Y1_Themes.zip" length="339264" type="application/x-zip-compressed" innioasis:download_count="18" innioasis:asset_id="448009809"/>
     <content type="text">&gt; [!WARNING]
 &gt; &lt;span style=&quot;color:#d9381e; font-weight:bold;&quot;&gt;⚠️ IMPORTANT: This has only been tested on System Software version 2.1.9. It is highly recommended to check your own firmware version before proceeding with the installation.&lt;/span&gt;
 

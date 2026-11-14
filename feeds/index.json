@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-14T03:11:01Z",
+  "generated_at": "2026-11-14T03:46:40Z",
   "manifest_url": "https://innioasis.app/slidia_manifest.xml",
   "firmware_list_url": "https://innioasis.app/firmware-list.html",
   "feeds": {
@@ -182,6 +182,18 @@
       "releases_atom": "https://innioasis.app/feeds/y1-community/q3-stock-rom-mirror/releases.atom",
       "repo_json": "https://innioasis.app/feeds/y1-community/q3-stock-rom-mirror/repo.json"
     },
+    "NoahDomingues/Lithium": {
+      "repo": "NoahDomingues/Lithium",
+      "releases_json": "https://innioasis.app/feeds/noahdomingues/lithium/releases.json",
+      "releases_atom": "https://innioasis.app/feeds/noahdomingues/lithium/releases.atom",
+      "repo_json": "https://innioasis.app/feeds/noahdomingues/lithium/repo.json"
+    },
+    "y1-community/Lithium-mirror": {
+      "repo": "y1-community/Lithium-mirror",
+      "releases_json": "https://innioasis.app/feeds/y1-community/lithium-mirror/releases.json",
+      "releases_atom": "https://innioasis.app/feeds/y1-community/lithium-mirror/releases.atom",
+      "repo_json": "https://innioasis.app/feeds/y1-community/lithium-mirror/repo.json"
+    },
     "y1-community/q5-stock-rom-mirror": {
       "repo": "y1-community/q5-stock-rom-mirror",
       "releases_json": "https://innioasis.app/feeds/y1-community/q5-stock-rom-mirror/releases.json",
@@ -314,6 +326,10 @@
       "source_repo": "ryan-specter/koensayr-auto",
       "updated_at": "2026-11-12T19:02:55Z"
     },
+    "y1-community/Lithium-mirror": {
+      "source_repo": "noahdomingues/lithium",
+      "updated_at": "2026-11-14T03:46:40Z"
+    },
     "y1-community/q3-stock-rom-mirror": {
       "source_repo": "y1-community/q3-stock-rom",
       "updated_at": "2026-11-12T20:15:55Z"
@@ -344,7 +360,7 @@
     },
     "y1-community/y1-stock-rom-mirror": {
       "source_repo": "y1-community/y1-stock-rom",
-      "updated_at": "2026-11-12T19:35:04Z"
+      "updated_at": "2026-11-14T03:21:59Z"
     },
     "y1-community/y1_launcher-mirror": {
       "source_repo": "ismileblue/y1_launcher",

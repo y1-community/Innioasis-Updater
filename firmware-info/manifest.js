@@ -38,6 +38,14 @@ window.INNIOASIS_README_PAGES = {
       "better-y-y1"
     ]
   },
+  "noahdomingues/lithium": {
+    "name": "Lithium (Android 7)",
+    "page": "firmware-info/noahdomingues-lithium.html",
+    "slugs": [
+      "lithium-android-7-q3",
+      "lithium-android-7-q5"
+    ]
+  },
   "rockbox-y1/rockbox": {
     "name": "Rockbox",
     "page": "firmware-info/rockbox-y1-rockbox.html",
