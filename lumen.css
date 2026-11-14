@@ -841,7 +841,10 @@ body.site-themes-app a.lumen-updater-button small,
        sideways instead. The two-column homepage summary still fits. */
     .lumen-release-table:has(> thead > tr > th:nth-child(3)) { min-width: 640px; }
     .lumen-release-table th, .lumen-release-table td { padding: .75rem .65rem; }
-    .lumen-release-table th:nth-child(1) { width: 36%; }
+    .lumen-release-table th:nth-child(1) { width: 32%; }
+    .lumen-release-table:has(> thead > tr > th:nth-child(3)) > thead > tr > th:nth-child(1) { width: 32%; }
+    .lumen-release-table:has(> thead > tr > th:nth-child(3)) > thead > tr > th:nth-child(2) { width: 48%; }
+    .lumen-release-table:has(> thead > tr > th:nth-child(3)) > thead > tr > th:nth-child(3) { width: 20%; }
     .lumen-hero-art { margin-inline: .5rem; }
     .lumen-hero-art img { width: min(82%, 330px); transform: none; }
     body.site-themes-app .site-footer .footer-grid { grid-template-columns: minmax(0, 1fr); }
@@ -1542,23 +1545,42 @@ body.site-themes-app #footer-root {
 
 /* —— Release rows: the action cell holds a two-line button and a download
    prompt, so it needs real width and labels must never break per letter. —— */
-.lumen-release-table:has(> thead > tr > th:nth-child(3)) > thead > tr > th:nth-child(1) { width: 38%; }
-.lumen-release-table:has(> thead > tr > th:nth-child(3)) > thead > tr > th:nth-child(2) { width: 26%; }
-.lumen-release-table:has(> thead > tr > th:nth-child(3)) > thead > tr > th:nth-child(3) { width: 36%; }
+/* Release / install / notes. The install cell needs the room: it carries the
+   two-line Updater badge and the download prompt, and translated labels are
+   longer than the English ones. The notes cell is one icon. */
+.lumen-release-table:has(> thead > tr > th:nth-child(3)) > thead > tr > th:nth-child(1) { width: 34%; }
+.lumen-release-table:has(> thead > tr > th:nth-child(3)) > thead > tr > th:nth-child(2) { width: 46%; }
+.lumen-release-table:has(> thead > tr > th:nth-child(3)) > thead > tr > th:nth-child(3) { width: 20%; }
 
-.lumen-release-table .lumen-actions { min-width: 230px; }
+.lumen-release-table .lumen-actions { min-width: 0; width: 100%; }
 
-.lumen-release-table .lumen-actions a,
-.lumen-release-table .lumen-actions button,
-.lumen-release-table .lumen-updater-button,
-.lumen-release-table .lumen-updater-button strong,
-.lumen-release-table .lumen-updater-button small {
+/* Compact controls keep one line; the Updater badge is a sentence and must
+   wrap instead of pushing into the release-notes column. */
+.lumen-release-table .lumen-actions .lumen-zip-download-button,
+.lumen-release-table .lumen-actions .lumen-download-stats__figure {
     white-space: nowrap;
     overflow-wrap: normal;
     word-break: normal;
 }
 
-.lumen-release-table .lumen-updater-button { max-width: 100%; }
+.lumen-release-table .lumen-updater-button {
+    max-width: 100%;
+    min-width: 0;
+    flex: 0 1 auto;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+.lumen-release-table .lumen-updater-button span { min-width: 0; }
+
+.lumen-release-table .lumen-updater-button strong,
+.lumen-release-table .lumen-updater-button small {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    hyphens: auto;
+}
 
 .lumen-download-progress-box {
     min-width: 240px;
