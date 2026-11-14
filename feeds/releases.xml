@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<releases_backup generated_at="2026-11-14T16:12:59Z">
-  <repository name="y1-community/y1-stock-rom" downloads="57608" release_count="10" stars="6" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg" icon_dark="">
+<releases_backup generated_at="2026-11-14T16:22:24Z">
+  <repository name="y1-community/y1-stock-rom" downloads="57615" release_count="10" stars="6" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg" icon_dark="">
     <release id="444843295" tag_name="3.2.4-fm" name="Original System Software 3.2.4 for Innioasis Y2" published_at="2026-11-13T23:34:58Z" prerelease="false" html_url="https://github.com/y1-community/y1-stock-rom/releases/tag/3.2.4-fm" icon_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg" icon_dark_url="">
       <body>&quot;General performance and stability improvements.&quot;
 
@@ -9,7 +9,7 @@ This is the software currently being shipped on Y2 retail units.
 (Innioasis have once again failed to release this as an update to existing users, nor do they actually post what changes their firmwares include - this firmware release was imaged from a retail Y2 unit purchased November 12 by the Community Firmware Archive and Updater CE maintainer - tested against both of Updater&#x27;s installation methods: SP Flash Tool and MTKclient and the underlying tools themselves on a pre 3.2.4 and a 3.2.4 unit with success. Image was taken before any use of the player)</body>
       <assets>
         <asset id="745568755" name="rom_y2.zip" size="372994194" download_count="55" content_type="application/x-zip-compressed" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip"/>
-        <asset id="746061830" name="updater.jpg" size="30612" download_count="153" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
+        <asset id="746061830" name="updater.jpg" size="30612" download_count="155" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
       </assets>
     </release>
     <release id="387902888" tag_name="3.2.1" name="System Software 3.2.1 for Innioasis Y2" published_at="2026-09-13T13:11:31Z" prerelease="false" html_url="https://github.com/y1-community/y1-stock-rom/releases/tag/3.2.1" icon_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg" icon_dark_url="">
@@ -23,8 +23,8 @@ This is the software currently being shipped on Y2 retail units.
       <body>This release adds FM Radio functionality to supported Y2 players, please note that some earlier Y2 revisions may not have the underlying functionality needed for FM Radio, there is an alternative release of 3.2.0 available for those in these circumstances.</body>
       <assets>
         <asset id="561172655" name="rom_y2.zip" size="355558382" download_count="658" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/rom_y2.zip"/>
-        <asset id="703033870" name="system.img" size="859826928" download_count="606" content_type="application/x-apple-diskimage" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img"/>
-        <asset id="627525519" name="updater.jpg" size="30612" download_count="1627" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg"/>
+        <asset id="703033870" name="system.img" size="859826928" download_count="609" content_type="application/x-apple-diskimage" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img"/>
+        <asset id="627525519" name="updater.jpg" size="30612" download_count="1628" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg"/>
       </assets>
     </release>
     <release id="343049934" tag_name="3.1.7" name="Original System Software 3.1.7 for Innioasis Y2" published_at="2026-06-22T17:03:20Z" prerelease="false" html_url="https://github.com/y1-community/y1-stock-rom/releases/tag/3.1.7" icon_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg" icon_dark_url="">
@@ -39,7 +39,7 @@ This can be used to restore your Y2 back to its factory conditions and get thing
     <release id="354826587" tag_name="3.1.2" name="Original System Software 3.1.2 for Innioasis Y1" published_at="2026-07-16T02:03:48Z" prerelease="false" html_url="https://github.com/y1-community/y1-stock-rom/releases/tag/3.1.2" icon_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg" icon_dark_url="">
       <body>Features improved support for AirPods Pro 2, AirPods 3 and later</body>
       <assets>
-        <asset id="478638297" name="rom.zip" size="250125316" download_count="8418" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip"/>
+        <asset id="478638297" name="rom.zip" size="250125316" download_count="8419" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip"/>
         <asset id="627528645" name="updater.jpg" size="30612" download_count="5632" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg"/>
       </assets>
     </release>
@@ -823,7 +823,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q5&gt;</body>
       </assets>
     </release>
   </repository>
-  <repository name="schulzcode/y2linux" downloads="32109" release_count="104" stars="24" icon="https://innioasis.app/assets/reborn_icon.jpg" icon_dark="">
+  <repository name="schulzcode/y2linux" downloads="32112" release_count="104" stars="24" icon="https://innioasis.app/assets/reborn_icon.jpg" icon_dark="">
     <release id="444632838" tag_name="baseline-261" name="Y2Linux 1.0 Beta 9.3.30" published_at="2026-11-13T19:11:26Z" prerelease="false" html_url="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-261" icon_url="https://innioasis.app/assets/reborn_icon.jpg" icon_dark_url="">
       <body>**Y2Linux 1.0 Beta 9.3.30**: films in every skin, tidier albums, Shuffle in folders and a profile for the Truthear Zero:BLUE2.
 
@@ -891,12 +891,12 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
 </body>
       <assets>
         <asset id="744843657" name="bootimg.img.gz" size="7557676" download_count="89" content_type="application/gzip" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/bootimg.img.gz"/>
-        <asset id="744843658" name="manifest.json" size="4245" download_count="225" content_type="application/json" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.json"/>
-        <asset id="744843704" name="manifest.sig" size="64" download_count="222" content_type="application/pgp-signature" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.sig"/>
+        <asset id="744843658" name="manifest.json" size="4245" download_count="226" content_type="application/json" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.json"/>
+        <asset id="744843704" name="manifest.sig" size="64" download_count="223" content_type="application/pgp-signature" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.sig"/>
         <asset id="744843706" name="recovery.img.gz" size="7557708" download_count="88" content_type="application/gzip" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/recovery.img.gz"/>
         <asset id="744843793" name="rootfs.ext4.gz" size="53150447" download_count="88" content_type="application/gzip" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/rootfs.ext4.gz"/>
         <asset id="744843659" name="SHA256SUMS" size="945" download_count="3" content_type="application/octet-stream" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/SHA256SUMS"/>
-        <asset id="744843660" name="Y2Linux-1.0.0-beta.9.3.30-first-install.zip" size="69256945" download_count="61" content_type="application/zip" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install.zip"/>
+        <asset id="744843660" name="Y2Linux-1.0.0-beta.9.3.30-first-install.zip" size="69256945" download_count="62" content_type="application/zip" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install.zip"/>
         <asset id="744843663" name="Y2Linux-1.0.0-beta.9.3.30-sources-buildroot-legal-info.tar" size="19312640" download_count="3" content_type="application/x-tar" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-sources-buildroot-legal-info.tar"/>
       </assets>
     </release>
@@ -7386,7 +7386,7 @@ Assets: `manifest.json` + `manifest.sig` (Ed25519, key `platform-v1-release-2026
       </assets>
     </release>
   </repository>
-  <repository name="jarvissax/rondo" downloads="1050" release_count="12" stars="1" icon="https://innioasis.app/assets/rondo_icon.jpg" icon_dark="">
+  <repository name="jarvissax/rondo" downloads="1053" release_count="12" stars="1" icon="https://innioasis.app/assets/rondo_icon.jpg" icon_dark="">
     <release id="445417488" tag_name="v3.0.3" name="Rondo 3.0.3" published_at="2026-11-14T16:09:05Z" prerelease="false" html_url="https://github.com/jarvissax/rondo/releases/tag/v3.0.3" icon_url="https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png" icon_dark_url="">
       <body>**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it to [Rondo server 3.2.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0) (its admin page offers it) so YouTube Music downloads get their year and track number; 3.1.0 works for everything else.
 
@@ -7414,7 +7414,7 @@ Files: `rondo-3.0.3.rondo` is the signed update bundle; `rom.zip` (the firmware)
 </body>
       <assets>
         <asset id="748024902" name="rom.zip" size="529817030" download_count="0" content_type="application/zip" browser_download_url="https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip"/>
-        <asset id="748018354" name="rondo-3.0.3.rondo" size="17159275" download_count="0" content_type="application/octet-stream" browser_download_url="https://github.com/jarvissax/rondo/releases/download/v3.0.3/rondo-3.0.3.rondo"/>
+        <asset id="748018354" name="rondo-3.0.3.rondo" size="17159275" download_count="3" content_type="application/octet-stream" browser_download_url="https://github.com/jarvissax/rondo/releases/download/v3.0.3/rondo-3.0.3.rondo"/>
         <asset id="748024900" name="updater.png" size="12952" download_count="0" content_type="image/png" browser_download_url="https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png"/>
       </assets>
     </release>
@@ -7695,12 +7695,12 @@ The firmware is built with [`firmware/build.sh`](https://github.com/jarvissax/ro
       </assets>
     </release>
   </repository>
-  <repository name="rockbox-y1/rockbox" downloads="53222" release_count="31" stars="86" icon="https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png" icon_dark="">
+  <repository name="rockbox-y1/rockbox" downloads="53223" release_count="31" stars="86" icon="https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png" icon_dark="">
     <release id="442964318" tag_name="stable-v0.6.1" name=" Rockbox-Y1 v0.6.1" published_at="2026-11-12T13:11:00Z" prerelease="false" html_url="https://github.com/rockbox-y1/rockbox/releases/tag/stable-v0.6.1" icon_url="https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png" icon_dark_url="">
       <body></body>
       <assets>
         <asset id="739536420" name="rockbox.apk" size="16533880" download_count="5" content_type="application/vnd.android.package-archive" browser_download_url="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rockbox.apk"/>
-        <asset id="739536855" name="rom.zip" size="581693789" download_count="236" content_type="application/zip" browser_download_url="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip"/>
+        <asset id="739536855" name="rom.zip" size="581693789" download_count="237" content_type="application/zip" browser_download_url="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip"/>
         <asset id="739538696" name="rom_type_b.zip" size="495537505" download_count="15" content_type="application/zip" browser_download_url="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom_type_b.zip"/>
         <asset id="739536543" name="update.zip" size="100165786" download_count="7" content_type="application/zip" browser_download_url="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/update.zip"/>
       </assets>
@@ -13348,11 +13348,11 @@ it re-reads every MP3 whose tag is over the limit, even if the file has not chan
       </assets>
     </release>
   </repository>
-  <repository name="y1-community/y1-ata-rom" downloads="709" release_count="1" stars="0" icon="" icon_dark="">
+  <repository name="y1-community/y1-ata-rom" downloads="710" release_count="1" stars="0" icon="" icon_dark="">
     <release id="354461174" tag_name="0.1" name="Y1 ATA ROM for Type A and Type B" published_at="2026-07-15T13:32:25Z" prerelease="false" html_url="https://github.com/y1-community/y1-ata-rom/releases/tag/0.1" icon_url="" icon_dark_url="">
       <body></body>
       <assets>
-        <asset id="477967571" name="rom.zip" size="533410269" download_count="439" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"/>
+        <asset id="477967571" name="rom.zip" size="533410269" download_count="440" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"/>
         <asset id="477970033" name="rom_type_b.zip" size="475393744" download_count="270" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"/>
       </assets>
     </release>
