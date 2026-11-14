@@ -73,6 +73,24 @@ PLATFORM_LABELS = {
     "linux-legacy": "32-bit Linux software install zip",
 }
 
+# The order the download breakdown lists packages in: the usual desktop
+# builds first, then each platform's legacy bundle.
+DOWNLOAD_PLATFORM_ORDER = [
+    "windows", "windows-arm64", "windows-legacy",
+    "macos", "linux", "linux-arm64", "linux-legacy",
+]
+
+# Wording the breakdown modal uses, matching what the package actually is.
+DOWNLOAD_PLATFORM_LABELS = {
+    "windows": "Windows 10/11 portable install package",
+    "windows-arm64": "Windows on ARM portable install package",
+    "windows-legacy": "Windows 7-10 32-bit portable install package",
+    "macos": "macOS install package",
+    "linux": "Linux x64 portable install package",
+    "linux-arm64": "Linux arm64 portable install package",
+    "linux-legacy": "32-bit Linux portable install package",
+}
+
 AUTHOR_ORG = {"@type": "Organization", "name": "Innioasis Community",
               "url": "https://github.com/y1-community"}
 
@@ -256,11 +274,89 @@ def portable_packages(mirrors: list[dict], tag: str, asset_name: str) -> list[di
                     "name": str(pkg.get("name") or ""),
                     "url": str(pkg.get("url") or ""),
                     "size": int(pkg.get("size") or 0),
+                    "downloads": int(pkg.get("download_count") or 0),
                     "mirror": str(mirror.get("mirror_repo") or ""),
                 })
     out.sort(key=lambda item: list(PLATFORM_LABELS).index(item["platform"])
              if item["platform"] in PLATFORM_LABELS else 99)
     return out
+
+
+def firmware_zip_entries(release: dict) -> list[dict]:
+    """The release's own firmware ZIPs, with their published download counts."""
+    out: list[dict] = []
+    for asset in release.get("assets") or []:
+        name = str(asset.get("name") or "")
+        if not name.lower().endswith(".zip"):
+            continue
+        if re.search(r"sources?|legal-info", name, re.IGNORECASE):
+            continue
+        out.append({
+            "name": name,
+            "url": str(asset.get("browser_download_url") or ""),
+            "downloads": int(asset.get("download_count") or 0),
+        })
+    return out
+
+
+def download_breakdown(release: dict, item: dict, portable: list[dict],
+                      tag: str) -> dict:
+    """Everything the (i) control opens: both halves of the combined figure.
+
+    The firmware half is the project's own ZIPs. The portable half is the
+    mirror's per-platform packages for the same release, each with the count
+    GitHub recorded for that exact file. ``total`` stays the combined figure
+    the row has always shown, so the modal never contradicts the number the
+    reader clicked.
+    """
+    firmware = firmware_zip_entries(release)
+    packages = [
+        {
+            "platform": p.get("platform") or "",
+            "label": DOWNLOAD_PLATFORM_LABELS.get(p.get("platform") or "",
+                                                  PLATFORM_LABELS.get(p.get("platform") or "", "Package")),
+            "name": p.get("name") or "",
+            "url": p.get("url") or "",
+            "size": int(p.get("size") or 0),
+            "downloads": int(p.get("downloads") or 0),
+        }
+        for p in portable
+    ]
+    packages.sort(key=lambda entry: DOWNLOAD_PLATFORM_ORDER.index(entry["platform"])
+                  if entry["platform"] in DOWNLOAD_PLATFORM_ORDER else 99)
+    counted = (sum(entry["downloads"] for entry in firmware) +
+               sum(entry["downloads"] for entry in packages))
+    stored = int(release.get("downloads") or 0)
+    mirrors: list[str] = []
+    for entry in portable:
+        mirror = str(entry.get("mirror") or "")
+        if mirror and mirror not in mirrors:
+            mirrors.append(mirror)
+    name = str(item.get("name") or "Firmware")
+    model = str(item.get("model") or "").upper()
+    return {
+        "title": "%s%s %s download figures" % (name, (" for " + model) if model else "", tag),
+        "tag": str(tag or ""),
+        "mirrors": ",".join(mirrors),
+        "total": max(counted, stored),
+        "firmware": firmware,
+        "portable": packages,
+    }
+
+
+def stats_markup(breakdown: dict) -> str:
+    """The figure plus its (i) button, both carrying the same breakdown."""
+    payload = esc(json.dumps(breakdown, ensure_ascii=False, separators=(",", ":")))
+    total = int(breakdown.get("total") or 0)
+    return (
+        '<div class="lumen-meta lumen-download-count lumen-download-stats">'
+        '<button type="button" class="lumen-download-stats__figure" data-download-stats="%s" '
+        'aria-haspopup="dialog">Downloads: %s</button>'
+        '<button type="button" class="lumen-download-stats__info" '
+        'aria-haspopup="dialog" aria-label="Download figures and breakdown" '
+        'title="Download figures and breakdown">i</button>'
+        '</div>'
+    ) % (payload, format(total, ",d"))
 
 
 def repo_owner(repo: str) -> str:
@@ -382,6 +478,7 @@ def software_section(item: dict, releases: list[dict], mirrors: list[dict], feed
                 % (esc(asset_url), esc(str(asset.get("name") or "Download")), esc(human_size(asset_size))))
         else:
             download_cell.append('<span class="lumen-meta">No package file</span>')
+        download_cell.append(stats_markup(download_breakdown(release, item, portable, tag)))
         if portable:
             mirror_repos = str(item.get("portable_zips") or ",".join(
                 str(m.get("mirror_repo") or "") for m in mirrors if m.get("mirror_repo")))
@@ -598,6 +695,7 @@ def render_page(feed: dict, software: list[dict]) -> tuple[str, list[dict]]:
         'title="Firmware releases">' % SITE,
         '<link rel="alternate" type="application/json" href="%s/feeds/firmware-releases.json" '
         'title="Firmware release data">' % SITE,
+        '<script src="site-download-stats.js?v=20261115stats1" defer></script>',
         '<script type="application/ld+json">%s</script>'
         % json.dumps(graph, ensure_ascii=False, separators=(",", ":")),
     ]

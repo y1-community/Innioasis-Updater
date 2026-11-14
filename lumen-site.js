@@ -2347,6 +2347,71 @@
             return { version: version, date: dated ? dated.date : "" };
         }
 
+        /* One figure for the release: the project's own firmware ZIPs plus
+           every ZIP the portable mirror carries, including the downloads
+           stats.txt recorded before a rebuild replaced an asset. The live
+           GitHub count refreshes only the original repository, so the mirror
+           half comes from the feed and is added to it. */
+        function sourceZipDownloads(release) {
+            return (release.assets || []).reduce(function (total, asset) {
+                var name = String(asset && asset.name || "");
+                if (!/\.zip$/i.test(name) || /sources?|legal-info/i.test(name)) return total;
+                return total + (parseInt(asset.download_count, 10) || 0);
+            }, 0);
+        }
+
+        function releaseDownloadTotal(release) {
+            if (!release) return 0;
+            if (typeof release.mirror_downloads === "number") {
+                return sourceZipDownloads(release) + release.mirror_downloads;
+            }
+            if (typeof release.downloads === "number") return release.downloads;
+            return sourceZipDownloads(release);
+        }
+
+        function formatDownloadCount(value) {
+            try { return Number(value || 0).toLocaleString("en-US"); }
+            catch (_) { return String(value || 0); }
+        }
+
+        /* What the (i) control opens. The firmware half is always known from
+           the release itself; the portable half comes from the feed when it
+           recorded per-package counts, and site-download-stats.js fills the
+           rest from the mirror when the modal opens. */
+        function downloadBreakdown(release, item, tag) {
+            var firmware = (release && release.assets || []).reduce(function (list, asset) {
+                var name = String(asset && asset.name || "");
+                if (!/\.zip$/i.test(name) || /sources?|legal-info/i.test(name)) return list;
+                list.push({
+                    name: name,
+                    url: asset.browser_download_url || "",
+                    downloads: parseInt(asset.download_count, 10) || 0
+                });
+                return list;
+            }, []);
+            var known = release && release.download_breakdown;
+            var portable = known && Array.isArray(known.portable) ? known.portable : [];
+            return {
+                title: (item && item.name ? item.name + (item.model ? " for " + item.model : "") + " " : "") +
+                    (tag || "release") + " download figures",
+                tag: String(tag || ""),
+                mirrors: (known && known.mirrors) || manifestPortableZips(item) || "",
+                total: releaseDownloadTotal(release),
+                firmware: firmware,
+                portable: portable
+            };
+        }
+
+        function downloadStatsHtml(release, item, tag) {
+            if (!release) return "";
+            var payload = escapeHtml(JSON.stringify(downloadBreakdown(release, item, tag)));
+            return '<div class="lumen-meta lumen-download-count lumen-download-stats">' +
+                '<button type="button" class="lumen-download-stats__figure" data-download-stats="' + payload + '" aria-haspopup="dialog">Downloads: ' +
+                escapeHtml(formatDownloadCount(releaseDownloadTotal(release))) + '</button>' +
+                '<button type="button" class="lumen-download-stats__info" aria-haspopup="dialog" aria-label="Download figures and breakdown" title="Download figures and breakdown">i</button>' +
+                '</div>';
+        }
+
         function releaseRows(release, item, state) {
             /* The Release column label with icon and semver detection. */
             var iconHtml = firmwareIconLink(resolveFirmwareIcon(release, item), item);
@@ -2430,6 +2495,10 @@
             var standaloneNote = listedInManifest ? ''
                 : '<span class="lumen-meta lumen-standalone-note" style="flex-basis:100%;display:block;">Works with Updater CE, or the software install zip built for your computer.</span>';
 
+            var downloadsMeta = release
+                ? downloadStatsHtml(release, item, release.tag_name || release.name || "")
+                : "";
+
             /* The Software name is not shown here: the software filter above
                already sets the project, so every row belongs to it. */
             /* The reader goes to our own release-notes page. Never fall back
@@ -2438,7 +2507,7 @@
                 '<td><div style="display:flex;align-items:center;gap:10px;">' + iconHtml + '<div>' + versionHtml + (release && release.published_at ? '<br><span class="lumen-meta">' + escapeHtml(release.published_at.slice(0, 10)) + '</span>' : '') + '</div></div></td>' +
                 /* The package is not shown: the Release details expander lists
                    the rom zips this release is packaged in. */
-                '<td><div class="lumen-actions">' + updater + zipBtn + standaloneNote + hint + '</div>' + releaseDetails(release, item, typeForItem(item)) + '</td>' +
+                '<td><div class="lumen-actions">' + updater + zipBtn + standaloneNote + hint + downloadsMeta + '</div>' + releaseDetails(release, item, typeForItem(item)) + '</td>' +
                 '<td><a class="lumen-release-notes-link" href="' + releaseNotesUrl + '" aria-label="Read the release notes for ' + escapeHtml(release && release.tag_name ? release.tag_name : item.name) + '">' +                '<svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h6l3 3v11H6z"/><path d="M12 3v3h3"/><path d="M8.5 10h5M8.5 13h5"/></svg></a></td>' +
                 '</tr>';
         }
