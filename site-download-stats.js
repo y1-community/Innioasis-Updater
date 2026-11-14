@@ -26,7 +26,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261115stats2";
+    var VERSION = "20261116stats3";
 
     /* The order a reader thinks in: the usual desktop first, the legacy
        builds after the platform they belong to. */
