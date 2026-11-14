@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261117inline8";
+    var VERSION = "20261117inline9";
     /* Only archive packages get the in-page treatment. Installers and app
        images always go to the browser's own downloader: a page must never
        stand between a reader and the app they are installing. */
