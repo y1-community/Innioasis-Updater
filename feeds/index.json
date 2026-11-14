@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-14T04:56:31Z",
+  "generated_at": "2026-11-14T05:02:10Z",
   "manifest_url": "https://innioasis.app/slidia_manifest.xml",
   "firmware_list_url": "https://innioasis.app/firmware-list.html",
   "feeds": {
@@ -327,8 +327,8 @@
       "updated_at": "2026-11-12T19:02:55Z"
     },
     "y1-community/lithium-mirror": {
-      "source_repo": "noahdomingues/lithium",
-      "updated_at": "2026-11-14T04:56:31Z"
+      "source_repo": "NoahDomingues/Lithium",
+      "updated_at": "2026-11-14T04:58:18Z"
     },
     "y1-community/q3-stock-rom-mirror": {
       "source_repo": "y1-community/q3-stock-rom",

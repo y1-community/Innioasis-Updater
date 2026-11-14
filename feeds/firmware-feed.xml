@@ -4,7 +4,7 @@
   <title>Innioasis and Timmkoo firmware releases</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware-list.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/firmware-feed.xml"/>
-  <updated>2026-11-14T04:56:31Z</updated>
+  <updated>2026-11-14T05:02:10Z</updated>
   <inni:schema_version>2</inni:schema_version>
   <inni:manifest_url>https://innioasis.app/slidia_manifest.xml</inni:manifest_url>
   <inni:firmware_list_url>https://innioasis.app/firmware-list.html</inni:firmware_list_url>
@@ -1222,7 +1222,7 @@
         </inni:mirror_asset>
       </inni:release>
     </inni:mirror>
-    <inni:mirror repo="y1-community/lithium-mirror" source_repo="noahdomingues/lithium" updated_at="2026-11-14T04:56:31Z">
+    <inni:mirror repo="y1-community/lithium-mirror" source_repo="NoahDomingues/Lithium" updated_at="2026-11-14T04:58:18Z">
     </inni:mirror>
     <inni:mirror repo="y1-community/q3-stock-rom-mirror" source_repo="y1-community/q3-stock-rom" updated_at="2026-11-12T20:15:55Z">
       <inni:release tag="MX2E-WVGA_TM-WV3.23-20250528" original_tag="MX2E-WVGA_TM-WV3.23-20250528" mirror_tag="MX2E-WVGA_TM-WV3.23-20250528" release_name="Portable Flashing Package: MX2E-WVGA_TM-WV3.23-20250528" published_at="2026-11-05T06:32:56Z">

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-14T04:56:31Z",
+  "generated_at": "2026-11-14T05:02:10Z",
   "manifest_url": "https://innioasis.app/slidia_manifest.xml",
   "firmware_list_url": "https://innioasis.app/firmware-list.html",
   "feed_urls": {
@@ -325,7 +325,7 @@
             "name": "updater.jpg",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
             "size": 30612,
-            "download_count": 18,
+            "download_count": 26,
             "content_type": "image/jpeg",
             "created_at": "2026-11-14T02:48:48Z",
             "updated_at": "2026-11-14T02:48:49Z",
@@ -362,7 +362,7 @@
             "name": "updater.jpg",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg",
             "size": 30612,
-            "download_count": 1983,
+            "download_count": 1985,
             "content_type": "image/jpeg",
             "created_at": "2026-10-10T09:17:30Z",
             "updated_at": "2026-10-10T09:17:30Z",
@@ -399,7 +399,7 @@
             "name": "system.img",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img",
             "size": 859826928,
-            "download_count": 584,
+            "download_count": 585,
             "content_type": "application/x-apple-diskimage",
             "created_at": "2026-11-02T20:10:34Z",
             "updated_at": "2026-11-02T20:14:19Z",
@@ -410,7 +410,7 @@
             "name": "updater.jpg",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
             "size": 30612,
-            "download_count": 1588,
+            "download_count": 1590,
             "content_type": "image/jpeg",
             "created_at": "2026-10-10T09:17:43Z",
             "updated_at": "2026-10-10T09:17:43Z",
@@ -447,7 +447,7 @@
             "name": "updater.jpg",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg",
             "size": 30612,
-            "download_count": 1299,
+            "download_count": 1301,
             "content_type": "image/jpeg",
             "created_at": "2026-10-10T09:17:57Z",
             "updated_at": "2026-10-10T09:17:57Z",
@@ -484,7 +484,7 @@
             "name": "updater.jpg",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
             "size": 30612,
-            "download_count": 5471,
+            "download_count": 5478,
             "content_type": "image/jpeg",
             "created_at": "2026-10-10T09:19:27Z",
             "updated_at": "2026-10-10T09:19:27Z",
@@ -521,7 +521,7 @@
             "name": "updater.jpg",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
             "size": 30612,
-            "download_count": 5075,
+            "download_count": 5081,
             "content_type": "image/jpeg",
             "created_at": "2026-10-10T09:18:17Z",
             "updated_at": "2026-10-10T09:18:17Z",
@@ -12737,7 +12737,7 @@
             "name": "updater.png",
             "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png",
             "size": 12952,
-            "download_count": 178,
+            "download_count": 179,
             "content_type": "image/png",
             "created_at": "2026-11-02T12:15:19Z",
             "updated_at": "2026-11-02T12:15:19Z",
@@ -25045,7 +25045,7 @@
             "name": "Y2Linux-1.0.0-beta.9.3.30-first-install-windows.zip",
             "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install-windows.zip",
             "size": 382081902,
-            "download_count": 3,
+            "download_count": 4,
             "content_type": "application/zip",
             "created_at": "2026-11-13T22:44:52Z",
             "updated_at": "2026-11-13T22:45:13Z",
@@ -78788,9 +78788,9 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "open_issues_count": 0,
-      "updated_at": "2026-11-14T04:55:48Z",
-      "pushed_at": "2026-11-14T04:55:53Z",
-      "license": ""
+      "updated_at": "2026-11-14T04:57:21Z",
+      "pushed_at": "2026-11-14T04:58:20Z",
+      "license": "GPL-3.0"
     },
     "y1-community/q5-stock-rom-mirror": {
       "full_name": "y1-community/q5-stock-rom-mirror",
@@ -78993,7 +78993,7 @@
       "forks_count": 13,
       "open_issues_count": 3,
       "updated_at": "2026-11-12T15:32:59Z",
-      "pushed_at": "2026-11-14T04:57:11Z",
+      "pushed_at": "2026-11-14T05:01:49Z",
       "license": "GPL-3.0"
     }
   },
@@ -85644,13 +85644,70 @@
     "y1-community/lithium-mirror": {
       "version": 1,
       "schema": 1,
-      "source_repo": "noahdomingues/lithium",
+      "source_repo": "NoahDomingues/Lithium",
       "source_repos": [
         "noahdomingues/lithium"
       ],
       "mirror_repo": "y1-community/lithium-mirror",
-      "updated_at": "2026-11-14T04:56:31Z",
-      "platforms": [],
+      "updated_at": "2026-11-14T04:58:18Z",
+      "platforms": [
+        {
+          "key": "windows",
+          "os": "windows",
+          "arch": "x86-64",
+          "suffix": "-windows.zip",
+          "layout": "sp_flash_tool",
+          "legacy": false
+        },
+        {
+          "key": "windows-arm64",
+          "os": "windows",
+          "arch": "arm64",
+          "suffix": "-windows-arm64.zip",
+          "layout": "sp_flash_tool",
+          "legacy": false
+        },
+        {
+          "key": "windows-legacy",
+          "os": "windows",
+          "arch": "x86",
+          "suffix": "-windows-legacy.zip",
+          "layout": "sp_flash_tool",
+          "legacy": true
+        },
+        {
+          "key": "linux",
+          "os": "linux",
+          "arch": "x86-64",
+          "suffix": "-linux.zip",
+          "layout": "sp_flash_tool",
+          "legacy": false
+        },
+        {
+          "key": "linux-arm64",
+          "os": "linux",
+          "arch": "arm64",
+          "suffix": "-linux-arm64.zip",
+          "layout": "sp_flash_tool",
+          "legacy": false
+        },
+        {
+          "key": "linux-legacy",
+          "os": "linux",
+          "arch": "x86",
+          "suffix": "-linux-legacy.zip",
+          "layout": "sp_flash_tool",
+          "legacy": true
+        },
+        {
+          "key": "macos",
+          "os": "macos",
+          "arch": "universal",
+          "suffix": "-macos.zip",
+          "layout": "beside_dmg",
+          "legacy": false
+        }
+      ],
       "releases": {}
     },
     "y1-community/q3-stock-rom-mirror": {

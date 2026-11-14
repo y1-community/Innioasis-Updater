@@ -326,7 +326,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
           "size": 30612,
-          "download_count": 18,
+          "download_count": 26,
           "content_type": "image/jpeg"
         }
       ]
@@ -355,7 +355,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg",
           "size": 30612,
-          "download_count": 1983,
+          "download_count": 1985,
           "content_type": "image/jpeg"
         }
       ]
@@ -384,7 +384,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "system.img",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img",
           "size": 859826928,
-          "download_count": 584,
+          "download_count": 585,
           "content_type": "application/x-apple-diskimage"
         },
         {
@@ -392,7 +392,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
           "size": 30612,
-          "download_count": 1588,
+          "download_count": 1590,
           "content_type": "image/jpeg"
         }
       ]
@@ -421,7 +421,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg",
           "size": 30612,
-          "download_count": 1299,
+          "download_count": 1301,
           "content_type": "image/jpeg"
         }
       ]
@@ -450,7 +450,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
           "size": 30612,
-          "download_count": 5471,
+          "download_count": 5478,
           "content_type": "image/jpeg"
         }
       ]
@@ -479,7 +479,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
           "size": 30612,
-          "download_count": 5075,
+          "download_count": 5081,
           "content_type": "image/jpeg"
         }
       ]
@@ -9661,7 +9661,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png",
           "size": 12952,
-          "download_count": 178,
+          "download_count": 179,
           "content_type": "image/png"
         }
       ]
@@ -16579,7 +16579,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-13T17:15:32Z"
   },
   "jarvissax/rondo": {
-    "downloads": 1017,
+    "downloads": 1018,
     "forks": 1,
     "release_count": 10,
     "stars": 1,
@@ -16723,7 +16723,7 @@ window.INNIOASIS_REPO_STATS = {
     "forks": 0,
     "release_count": 0,
     "stars": 0,
-    "updated_at": "2026-11-14T04:55:48Z"
+    "updated_at": "2026-11-14T04:57:21Z"
   },
   "y1-community/pr1-stock-rom": {
     "downloads": 37,
@@ -16831,7 +16831,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T13:41:34Z"
   },
   "y1-community/y1-stock-rom": {
-    "downloads": 56951,
+    "downloads": 56979,
     "forks": 0,
     "release_count": 10,
     "stars": 6,
@@ -16873,7 +16873,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T15:05:05Z"
   },
   "y1-community/y2linux-mirror": {
-    "downloads": 3388,
+    "downloads": 3389,
     "forks": 0,
     "release_count": 101,
     "stars": 0,
