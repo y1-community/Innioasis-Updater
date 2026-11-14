@@ -527,7 +527,7 @@
         "name": "update.json",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261112/update.json",
         "size": 271,
-        "download_count": 44,
+        "download_count": 46,
         "content_type": "application/json",
         "created_at": "2026-11-12T10:28:47Z",
         "updated_at": "2026-11-12T10:28:47Z",
@@ -4325,8 +4325,8 @@
         "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/635077113"
       }
     ],
-    "mirror_downloads": 164,
-    "downloads": 260,
+    "mirror_downloads": 165,
+    "downloads": 261,
     "download_breakdown": {
       "tag": "20261012",
       "mirrors": "y1-community/classy-mirror",
@@ -4368,7 +4368,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom-windows.zip",
           "size": 767823074,
-          "downloads": 6
+          "downloads": 7
         },
         {
           "platform": "windows-legacy",

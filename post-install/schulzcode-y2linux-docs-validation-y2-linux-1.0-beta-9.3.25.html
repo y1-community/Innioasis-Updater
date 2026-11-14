@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261114dl1" defer></script>
+  <script src="../site-init.js?v=20261110warn" defer></script>
 <link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.25.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.25.html">
 </head>
 <body class="site-themes-app">
@@ -78,9 +78,9 @@
 <h2 id="technical-appendix">Technical appendix</h2>
 <ul><li>Kernel: <code>kernel/platform/vdec.c</code>, <code>vdec-h264.c</code>, <code>vdec-mpeg4.c</code>, interface <code>y2-vdec.h</code> (<code>/dev/y2-vdec</code>: size<p>the buffers, map them, one call per picture). Power domain VDE through the SPM provider, off 200 ms after the last picture, on close and before every sleep. No MediaTek library or firmware; the register sequences were read out of the stock firmware&#x27;s open user-space library and are written down in <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fknowledge%2Fvideo-decoder.md">video-decoder.md</a>. Root-only bring-up files stay in debugfs (<code>/sys/kernel/debug/y2_vdec</code>).</p></li><li>FFmpeg 9.0.2: <code>buildroot/patches/ffmpeg</code> adds the hardware paths <code>h264_y2vdec</code> and <code>mpeg4_y2vdec</code>; software<p>decoders h264, mpeg4, h263, msmpeg4v3, vp8, vp9; ac3; Matroska and AVI demuxers; text subtitle decoders.</p></li><li>Reborn: <code>crates/reborn-media/native/video.c</code> (second reader, NEON shrink and colour to at most 480×360),<p><code>app/reborn/src/video.rs</code> (reader thread, resume in <code>state/videos.json</code>), <code>crates/reborn-ui/src/views_videos.rs</code>. A film is a track whose codec names a picture and a sound stream.</p></li><li>MPEG-4 specifics: the picture is taken from motion compensation, not from the stock path&#x27;s deblocked copy;<p>video packet headers are cut out of B pictures because the hardware misses one in front of a skipped macroblock. Interlaced streams, global motion compensation and data partitioning go to software.</p></li><li>Plan and decisions: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fplanning%2FVIDEO-PLAYBACK-PLAN.md">VIDEO-PLAYBACK-PLAN.md</a>; audit entry VIDEO and its<p>MPEG-4 addendum in the roadmap audit. Images built from Linux <code>d163c3e5</code>, Reborn <code>a5d85be</code>.</p></li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261114order1" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
 <script src="../portable-zip-links.js?v=20261110direct2" defer></script>
-<script src="../nav.js?v=20261114links1" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
 <script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 

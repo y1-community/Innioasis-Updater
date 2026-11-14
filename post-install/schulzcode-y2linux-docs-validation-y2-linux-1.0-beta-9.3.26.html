@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261114dl1" defer></script>
+  <script src="../site-init.js?v=20261110warn" defer></script>
 <link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.26.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.26.html">
 </head>
 <body class="site-themes-app">
@@ -67,9 +67,9 @@
 <h2 id="technical-appendix">Technical appendix</h2>
 <ul><li>FM: kernel <code>connectivity/fm.c</code> (MT6627 on STP channel 1, the stock firmware&#x27;s commands), AFE capture `Y2 FM<p>Capture<code>at 48 kHz; platform</code>commands/service/radiofw/fm.rs<code>takes the tuner&#x27;s two files from</code>system.img`; the sleep helper switches a left-on tuner off; Reborn <code>crates/reborn-platform/src/fm.rs</code>, <code>app/reborn/src/fm.rs</code>. Plan and results: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fplanning%2FBETA-8-FM-PLAN.md">BETA-8-FM-PLAN.md</a>.</p></li><li>Car pairing: <code>y2-radiod</code> <code>bt/agent.rs</code> (<code>show_to_others</code>: Discoverable and Pairable for 120 s with BlueZ&#x27;s own<p>timeouts; <code>welcomed</code>/<code>adopt_welcomed</code>), started from the scan in <code>bt/reconcile.rs</code>; described in <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Farchitecture%2Fradio-daemon.md">radio-daemon.md</a>. Fake-BlueZ scenario <code>a_car_pairs_from_its_side</code>.</p></li><li>Films: Reborn <code>views_videos::films</code> is the Videos order, <code>reborn_core::queue::keeps_order</code> keeps a film<p>collection unshuffled.</p></li><li>Images built from Linux <code>302077e2</code>, Reborn <code>acafbda</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261114order1" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
 <script src="../portable-zip-links.js?v=20261110direct2" defer></script>
-<script src="../nav.js?v=20261114links1" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
 <script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 

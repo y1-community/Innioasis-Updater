@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261114dl1" defer></script>
+  <script src="../site-init.js?v=20261110warn" defer></script>
 <link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.24.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.24.html">
 </head>
 <body class="site-themes-app">
@@ -67,9 +67,9 @@
 <h2 id="technical-appendix">Technical appendix</h2>
 <ul><li>Linux <code>6cd59c94</code>: <code>codec.rs</code> has one SBC quality (<code>SBC_QUALITY</code>); a saved <code>xq</code>/<code>xq+</code> is read as <code>high</code>;<p><code>codec-settings --sbc-quality</code> takes <code>high</code> only; y2-radiod&#x27;s <code>CODEC_ARGUMENTS</code> has no XQ argument; capability <code>bluetooth_sbc_xq</code> stays and is never enabled. Reborn <code>97b05c5</code>: SBC Quality row, <code>SbcQuality</code>, <code>PlatformTask::SbcQuality</code> and the SBC-XQ codec choice removed; a saved <code>SBC-XQ</code> preference reads as SBC. Evidence: report fff72d5d (install 4c5dcdcb, 9.3.23).</p></li><li>Linux <code>6cd59c94</code>: <code>power/battery/display.rs</code> <code>restore()</code>: on a cold start whose fresh power-on OCV reads 10 or more<p>points above the saved display value, the OCV estimate is shown (<code>UI_CHARGED_OFF_POINTS</code>, finding F81). Evidence: report fc0b70b9 (install a204f45a, 9.3.23): off at 63 % / 3.82 V, cold start at an OCV of 4.114 V, <code>cold/saved</code>.</p></li><li>Linux <code>abe9918e</code>: y2-radiod <code>rate.rs</code> writes each change of BlueALSA&#x27;s EncoderStats while a stream plays to<p><code>/run/y2/bt-encoder-rate.jsonl</code> (tmpfs, 128 KB, part of every report).</p></li><li>Open, finding F80: underruns while the Wi-Fi radio starts (reports 9862ade7, 91bef6ce).</li><li>Bumps <code>0537b06</code>, <code>e0a57350</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261114order1" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
 <script src="../portable-zip-links.js?v=20261110direct2" defer></script>
-<script src="../nav.js?v=20261114links1" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
 <script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
