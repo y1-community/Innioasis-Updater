@@ -1,4 +1,16 @@
-name: Multilingual Static Page Generation & GA4 Verification
+name: Multilingual Static Page Verification & GA4 Audit
+
+# This workflow used to run the whole translation pipeline a second time: the
+# same harvest → extract → translate → commit steps as
+# ``update-translations.yml``, committing the same catalogs, literal language
+# pages and sitemaps. Two workflows writing the same files on the same push is
+# why one of them nearly always ended in "failed to push some refs".
+#
+# Translation and the commit of catalogs/static pages now belong to
+# update-translations.yml alone. This workflow only proves that the committed
+# tree still builds: it renders every locale into dist/ (uploaded as an
+# artifact, never committed) and audits the analytics tags, so a broken
+# template or catalog is visible without touching main.
 
 on:
   push:
@@ -9,19 +21,20 @@ on:
       - 'support_toolbar.html'
       - 'i18n/**'
       - 'scripts/i18n/**'
+      - '.github/workflows/generate-i18n-pages.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: generate-i18n-pages
-  cancel-in-progress: false
+  group: i18n-verify
+  cancel-in-progress: true
 
 jobs:
   build-and-verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 90
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,68 +47,51 @@ jobs:
       - name: Harvest strings rendered by the JavaScript shell
         run: python3 scripts/i18n/harvest_ui_strings.py
 
-      - name: Extract strings from pages including newly added pages
+      - name: Extract strings from every page, including generated ones
         run: python3 scripts/i18n/extract_strings.py --tiers core,full
 
       - name: Merge hand-reviewed copy and pre-translated assets
         run: python3 scripts/i18n/seed_catalogs.py
 
-      - name: Fetch translations for missing non-English strings
-        continue-on-error: true
-        run: |
-          python3 scripts/i18n/translate.py --provider google-web --locales all --top 500
-
       - name: Protect and repair brand terms and model names
         run: python3 scripts/i18n/repair_brands.py --write
 
-      - name: Rebuild language picker index with demographic prioritization
-        run: python3 scripts/i18n/translate.py --index-only
-
+      # The failure mode this catches: a page added without the GTM container
+      # never reports a language view, so the translation work is invisible in
+      # analytics and the page looks unstyled next to the rest of the site.
       - name: Verify GA4 tag and Raptive semantic markup
         run: |
           python3 - <<'PY'
-          import os, sys
-          missing_ga4 = []
+          import os
+          missing = []
+          total = 0
           for root, dirs, files in os.walk("."):
               dirs[:] = [d for d in dirs if d not in {".git", "node_modules", "dist", ".cache"}]
-              for f in files:
-                  if f.endswith((".html", ".htm")):
-                      p = os.path.join(root, f)
-                      c = open(p, "r", encoding="utf-8", errors="ignore").read()
-                      if "GTM-TNDGC37L" not in c:
-                          missing_ga4.append(p)
-          if missing_ga4:
-              print(f"Warning: {len(missing_ga4)} pages missing GA4 tag.")
-          else:
-              print("GA4 tag verified across all HTML pages.")
+              for name in files:
+                  if not name.endswith((".html", ".htm")):
+                      continue
+                  total += 1
+                  path = os.path.join(root, name)
+                  with open(path, "r", encoding="utf-8", errors="ignore") as handle:
+                      body = handle.read()
+                  if "GTM-TNDGC37L" not in body:
+                      missing.append(path)
+          for path in sorted(missing):
+              print("::warning::%s has no GTM/GA4 tag" % path)
+          print("%d of %d HTML pages carry the GA4 tag." % (total - len(missing), total))
           PY
 
-      - name: Build static multilingual page trees & sitemap
+      - name: Build the static multilingual trees
         run: |
           python3 scripts/i18n/generate_multilingual_static_pages.py
           python3 scripts/i18n/prerender.py --locales all --tiers core --out dist
-          python3 scripts/generate_sitemap.py
+          test -f dist/index.html
 
-      - name: Upload static page artifact
+      - name: Upload the build as an artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: i18n-static-pages
-          path: |
-            dist/
-            sitemap.xml
-            sitemap-i18n.xml
+          path: dist/
           if-no-files-found: ignore
           retention-days: 14
-
-      - name: Commit updated catalogs, picker index, static pages and sitemaps
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add i18n/catalogs/ i18n/strings/ i18n/site-locales.json i18n/reviewed/ i18n/prerendered.json sitemap.xml sitemap-i18n.xml *.html || true
-          if git diff --cached --quiet; then
-            echo "No translation or catalog changes to commit."
-          else
-            git commit -m "chore(i18n): update translations, literal static pages, and sitemaps [skip ci]"
-            git push
-          fi

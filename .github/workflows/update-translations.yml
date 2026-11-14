@@ -37,7 +37,7 @@ on:
         default: "all"
       top:
         description: "Only the N most-used strings (0 = every missing string)"
-        default: "0"
+        default: "600"
       deploy_pages:
         description: "Publish English + pre-rendered locale pages to GitHub Pages"
         type: boolean
@@ -48,9 +48,12 @@ on:
 permissions:
   contents: write
 
+# Translation is incremental: a catalog on disk is the cache, so a newer run
+# safely replaces a queued or half-finished one. Without this a full run could
+# queue for hours behind the previous one (or sit pending indefinitely).
 concurrency:
   group: update-translations
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   translate:
@@ -77,8 +80,12 @@ jobs:
       # Google's public endpoint needs no key. A keyed provider can be swapped
       # in with --provider google-cloud and GOOGLE_TRANSLATE_API_KEY; the cache
       # and catalogs are the same either way.
+      # Bounded so the job always reaches the commit step. An unbounded pass
+      # over every missing string in 270 languages ran past the job timeout,
+      # which discarded the work and left the catalogs and static pages stale.
       - name: Translate strings that are still missing
         continue-on-error: true
+        timeout-minutes: 90
         env:
           LOCALES: ${{ github.event.inputs.locales || 'all' }}
           TOP: ${{ github.event.inputs.top || '0' }}
@@ -139,16 +146,26 @@ jobs:
 
       - name: Commit updated catalogs, literal static pages, and sitemaps
         run: |
+          set -euo pipefail
           python3 scripts/generate_sitemap.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add i18n/catalogs i18n/strings i18n/site-locales.json i18n/reviewed i18n/prerendered.json sitemap.xml sitemap-index.xml sitemap-i18n*.xml *.html || true
           if git diff --cached --quiet; then
             echo "No translation changes."
-          else
-            git commit -m "Update site translations and literal static language pages across supported languages"
-            git push
+            exit 0
           fi
+          git commit -m "Update site translations and literal static language pages across supported languages"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if git pull --rebase --autostash -X theirs origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 10))
+          done
+          echo "ERROR: could not push translation updates." >&2
+          exit 1
 
   # Opt-in: build the English site plus every locale copy and publish it. Only
   # a manual dispatch can run this, so a normal translation commit never
