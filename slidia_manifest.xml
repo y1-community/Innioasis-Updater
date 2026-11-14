@@ -85,7 +85,7 @@
 
 <package name="Classy" brand="Innioasis" repo="ClassyPlayer/Classy" PMT_format_needed="true" portable_zips="y1-community/classy-mirror" device="Y2" url="https://github.com/ClassyPlayer/Classy" type="img" icon="https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png" handler="Custom Firmware" />
 
-<package name="Classy" brand="Innioasis" repo="ClassyPlayer/Classy" PMT_format_needed="true" portable_zips="y1-community/classy-mirror" device="Y1" url="https://github.com/ClassyPlayer/Classy" type="img" icon="https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png" handler="Custom Firmware" />
+<!-- <package name="Classy" brand="Innioasis" repo="ClassyPlayer/Classy" PMT_format_needed="true" portable_zips="y1-community/classy-mirror" device="Y1" url="https://github.com/ClassyPlayer/Classy" type="img" icon="https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png" handler="Custom Firmware" /> -->
 
 
 <package name="Y2Player" brand="Innioasis" repo="schulzcode/Y2Player" portable_zips="y1-community/y2player-mirror" device="Y2" url="https://github.com/schulzcode/Y2Player" type="img" handler="Custom Firmware" />
