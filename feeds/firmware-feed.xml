@@ -4,7 +4,7 @@
   <title>Innioasis and Timmkoo firmware releases</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware-list.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/firmware-feed.xml"/>
-  <updated>2026-11-14T22:39:26Z</updated>
+  <updated>2026-11-14T23:10:29Z</updated>
   <inni:schema_version>2</inni:schema_version>
   <inni:manifest_url>https://innioasis.app/slidia_manifest.xml</inni:manifest_url>
   <inni:firmware_list_url>https://innioasis.app/firmware-list.html</inni:firmware_list_url>
@@ -1086,7 +1086,7 @@
         </inni:mirror_asset>
       </inni:release>
     </inni:mirror>
-    <inni:mirror repo="y1-community/g5-stock-rom-mirror" source_repo="y1-community/g5-stock-rom" updated_at="2026-11-14T18:38:03Z">
+    <inni:mirror repo="y1-community/g5-stock-rom-mirror" source_repo="y1-community/g5-stock-rom" updated_at="2026-11-14T23:02:53Z">
       <inni:release tag="MX4_EN-V1.11-20260727" original_tag="MX4_EN-V1.11-20260727" mirror_tag="MX4_EN-V1.11-20260727" release_name="Portable Flashing Package: MX4_EN-V1.11-20260727" published_at="2026-11-05T04:21:06Z">
         <inni:mirror_asset name="rom_g5.zip" tag="MX4_EN-V1.11-20260727" original_url="" original_size="2048654340" mirror_original_url="https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5.zip">
           <inni:package platform="windows" name="rom_g5-windows.zip" url="https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-windows.zip" size="2088208244" downloads="1"/>
@@ -2850,7 +2850,7 @@
       </inni:release>
       <inni:release tag="3.2.0-fm" original_tag="3.2.0-fm" mirror_tag="3.2.0-fm" release_name="Portable Flashing Package: System Software 3.2.0 for Innioasis Y2 with FM Radio" published_at="2026-09-13T12:42:26Z">
         <inni:mirror_asset name="rom_y2.zip" tag="3.2.0-fm" original_url="" original_size="354935460" mirror_original_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2.zip">
-          <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows.zip" size="656085982" downloads="86"/>
+          <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows.zip" size="656085982" downloads="87"/>
           <inni:package platform="windows-legacy" name="rom_y2-windows-legacy.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows-legacy.zip" size="417847167" downloads="2"/>
           <inni:package platform="linux" name="rom_y2-linux.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux.zip" size="703407306" downloads="27"/>
           <inni:package platform="linux-arm64" name="rom_y2-linux-arm64.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux-arm64.zip" size="528311540" downloads="2"/>
@@ -5193,7 +5193,7 @@
     <inni:repo>y1-community/y1-stock-rom</inni:repo>
     <inni:tag_name>3.2.4-fm</inni:tag_name>
     <inni:name>Original System Software 3.2.4 for Innioasis Y2</inni:name>
-    <inni:downloads>20</inni:downloads>
+    <inni:downloads>24</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip" title="rom_y2.zip" length="343742697" type="application/zip"/>
@@ -5229,7 +5229,7 @@ This is the software currently being shipped on Y2 retail units.
     <inni:repo>y1-community/y1-stock-rom</inni:repo>
     <inni:tag_name>3.2.0-fm</inni:tag_name>
     <inni:name>System Software 3.2.0 for Innioasis Y2 with FM Radio</inni:name>
-    <inni:downloads>837</inni:downloads>
+    <inni:downloads>840</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/rom_y2.zip" title="rom_y2.zip" length="355558382" type="application/zip"/>
@@ -5891,7 +5891,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G3&gt;</content>
     <inni:repo>y1-community/g5-stock-rom</inni:repo>
     <inni:tag_name>MX4_EN-V1.11-20260727</inni:tag_name>
     <inni:name>MX4_EN-V1.11-20260727</inni:name>
-    <inni:downloads>79</inni:downloads>
+    <inni:downloads>81</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g5-stock-rom/releases/download/MX4_EN-V1.11-20260727/rom_g5.zip" title="rom_g5.zip" length="2048654340" type="application/octet-stream"/>
@@ -6283,7 +6283,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q5&gt;</content>
     <inni:repo>schulzcode/y2linux</inni:repo>
     <inni:tag_name>baseline-261</inni:tag_name>
     <inni:name>Y2Linux 1.0 Beta 9.3.30</inni:name>
-    <inni:downloads>90</inni:downloads>
+    <inni:downloads>91</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://innioasis.app/assets/reborn_icon.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/bootimg.img.gz" title="bootimg.img.gz" length="7557676" type="application/gzip"/>
@@ -14195,7 +14195,7 @@ The firmware is built with [`firmware/build.sh`](https://github.com/jarvissax/ro
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>stable-v0.6.1</inni:tag_name>
     <inni:name> Rockbox-Y1 v0.6.1</inni:name>
-    <inni:downloads>342</inni:downloads>
+    <inni:downloads>343</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rockbox.apk" title="rockbox.apk" length="16533880" type="application/vnd.android.package-archive"/>
@@ -14702,7 +14702,7 @@ Also:
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>voices-22511894870</inni:tag_name>
     <inni:name>Voice Files (latest) - 453d02bb2a2759079cb06e2b724330c0a6fa2aa3</inni:name>
-    <inni:downloads>25</inni:downloads>
+    <inni:downloads>26</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/voices-22511894870/voices.zip" title="voices.zip" length="76500020" type="application/zip"/>
@@ -14823,7 +14823,7 @@ And many bug fixes and general UI/UX improvements. A big thanks to all the contr
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>16761617720</inni:tag_name>
     <inni:name>Rockbox-Y1 v0.2</inni:name>
-    <inni:downloads>75</inni:downloads>
+    <inni:downloads>76</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/16761617720/libs.zip" title="libs.zip" length="3996666" type="application/zip"/>
@@ -14869,7 +14869,7 @@ And many bug fixes and general UI/UX improvements. A big thanks to all the contr
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>016733367579</inni:tag_name>
     <inni:name>Voice Files v0.2</inni:name>
-    <inni:downloads>145</inni:downloads>
+    <inni:downloads>146</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/016733367579/voices.zip" title="voices.zip" length="76155485" type="application/zip"/>
@@ -14953,7 +14953,7 @@ Includes these languages:
     <inni:repo>spycemagic/y2-rockbox</inni:repo>
     <inni:tag_name>v0.2.5-beta</inni:tag_name>
     <inni:name>V2.5</inni:name>
-    <inni:downloads>1145</inni:downloads>
+    <inni:downloads>1146</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/INSTALL-GUIDE.md" title="INSTALL-GUIDE.md" length="4237" type="application/octet-stream"/>
@@ -17341,7 +17341,7 @@ Features
     <inni:repo>ismileblue/y1_launcher</inni:repo>
     <inni:tag_name>launcher-v0.11.6</inni:tag_name>
     <inni:name>JJ Launcher ROM v0.11.6</inni:name>
-    <inni:downloads>1145</inni:downloads>
+    <inni:downloads>1146</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom.zip" title="rom.zip" length="456271826" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom_type_b.zip" title="rom_type_b.zip" length="399777849" type="application/zip"/>
@@ -18005,7 +18005,7 @@ Please continue to show your interest and support. Thank you! :D</content>
     <inni:repo>ismileblue/y1_launcher</inni:repo>
     <inni:tag_name>v0.8</inni:tag_name>
     <inni:name>alpha v0.8</inni:name>
-    <inni:downloads>20</inni:downloads>
+    <inni:downloads>21</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/v0.8/app-release.apk" title="app-release.apk" length="1250544" type="application/vnd.android.package-archive"/>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/v0.8/Y1_Themes.zip" title="Y1_Themes.zip" length="819854" type="application/x-zip-compressed"/>
@@ -18094,7 +18094,7 @@ adb shell pm grant com.themoon.y1 android.permission.WRITE_SECURE_SETTINGS</cont
     <inni:repo>ismileblue/y1_launcher</inni:repo>
     <inni:tag_name>v0.5</inni:tag_name>
     <inni:name>alpha v0.5</inni:name>
-    <inni:downloads>20</inni:downloads>
+    <inni:downloads>21</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/v0.5/app-release_0.5.apk" title="app-release_0.5.apk" length="406717" type="application/vnd.android.package-archive"/>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/v0.5/Y1_Themes.zip" title="Y1_Themes.zip" length="339264" type="application/x-zip-compressed"/>
@@ -21396,7 +21396,7 @@ General performance and stability improvements
     <inni:repo>y1-community/y1-stock-rom-mirror</inni:repo>
     <inni:tag_name>3.2.0-fm</inni:tag_name>
     <inni:name>Portable Flashing Package: System Software 3.2.0 for Innioasis Y2 with FM Radio</inni:name>
-    <inni:downloads>102</inni:downloads>
+    <inni:downloads>103</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="528311540" type="application/zip"/>
@@ -22797,7 +22797,7 @@ This wipes the player. Back up music and recordings first.
 
 Full archive: &lt;https://innioasis.app/firmware.html?model=G5&gt;
 
-&lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;G5&quot;,&quot;name&quot;:&quot;rom_g5-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;e37cf22f41580c8e377524867ab45df14e6c14d8ce38cbc77bb9245eed6ee92e&quot;,&quot;size&quot;:2088208244,&quot;source_asset&quot;:&quot;rom_g5.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;G5&quot;,&quot;name&quot;:&quot;rom_g5-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;006ed4efc21ba851abe04b24451da9e1ba39c95dc377223f470769d66ab5bbc2&quot;,&quot;size&quot;:2097668626,&quot;source_asset&quot;:&quot;rom_g5.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;G5&quot;,&quot;name&quot;:&quot;rom_g5-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;12b21dd2754eb777f15d72ce212498b1d78c023460e1b24f8a38484b76daca26&quot;,&quot;size&quot;:2096082089,&quot;source_asset&quot;:&quot;rom_g5.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;G5&quot;,&quot;name&quot;:&quot;rom_g5-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;bedc4d31dd0b4dee8c85b9504cccf80b13bad3c3901c6dc84ad157e6c5cfc299&quot;,&quot;size&quot;:2096082911,&quot;source_asset&quot;:&quot;rom_g5.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;G5&quot;,&quot;name&quot;:&quot;rom_g5-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;7409bea2e19bfd45dc0ee6446f87c779016b13614b888e9729c153e0f8e816e7&quot;,&quot;size&quot;:2142541360,&quot;source_asset&quot;:&quot;rom_g5.zip&quot;,&quot;type&quot;:&quot;Stock&quot;}],&quot;built_at&quot;:&quot;2026-11-14T18:36:23Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[&quot;rom_g5-linux-arm64.zip is 2208133175 bytes, over the 2147483648 byte GitHub asset limit&quot;],&quot;fingerprint&quot;:&quot;4dc84db49209e42da0649d96a37d77e59f8327c6a5605b21d40b8be864f6190d&quot;,&quot;original_asset_sizes&quot;:{&quot;SHA256SUMS.MX4_EN-V1.11-20260727&quot;:78,&quot;rom_g5.zip&quot;:2048654340},&quot;original_assets&quot;:[&quot;rom_g5.zip&quot;,&quot;SHA256SUMS.MX4_EN-V1.11-20260727&quot;],&quot;skipped&quot;:[],&quot;stats&quot;:{&quot;baseline&quot;:{&quot;SHA256SUMS.MX4_EN-V1.11-20260727&quot;:1,&quot;rom_g5-linux-legacy.zip&quot;:1,&quot;rom_g5-linux.zip&quot;:1,&quot;rom_g5-macos.zip&quot;:1,&quot;rom_g5-windows-legacy.zip&quot;:1,&quot;rom_g5-windows.zip&quot;:1,&quot;rom_g5.zip&quot;:1},&quot;generated_at&quot;:&quot;2026-11-14T18:36:23Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:188443285,&quot;tag&quot;:&quot;2.5.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:119710372,&quot;tag&quot;:&quot;2.5.3&quot;},&quot;windows&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:16} --&gt;
+&lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;G5&quot;,&quot;name&quot;:&quot;rom_g5-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;ec260cf10f0f3617c070da8fc2aba0c7af767b93942e6c2f98adbe412ca526f8&quot;,&quot;size&quot;:2088208244,&quot;source_asset&quot;:&quot;rom_g5.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;G5&quot;,&quot;name&quot;:&quot;rom_g5-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;1152460f6e8557f6f2cbcde55812d6b2295a2406d5a211423c461e3de61acca7&quot;,&quot;size&quot;:2097668626,&quot;source_asset&quot;:&quot;rom_g5.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;G5&quot;,&quot;name&quot;:&quot;rom_g5-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;3ecd60ecc5cb09bb370655c01af7b9fa992306f9ebbf3f7d8980f9ee07535b3d&quot;,&quot;size&quot;:2096082089,&quot;source_asset&quot;:&quot;rom_g5.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;G5&quot;,&quot;name&quot;:&quot;rom_g5-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;42469694030699c6e9a82d407652eb10c4acef76beb040348cb5e362afb69577&quot;,&quot;size&quot;:2096082911,&quot;source_asset&quot;:&quot;rom_g5.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;G5&quot;,&quot;name&quot;:&quot;rom_g5-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;fc8c8b194128482a1ecbec820fe4facf86e919181def482489b95293d8ad89f6&quot;,&quot;size&quot;:2142541360,&quot;source_asset&quot;:&quot;rom_g5.zip&quot;,&quot;type&quot;:&quot;Stock&quot;}],&quot;built_at&quot;:&quot;2026-11-14T22:59:59Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[&quot;rom_g5-linux-arm64.zip is 2208133175 bytes, over the 2147483648 byte GitHub asset limit&quot;],&quot;fingerprint&quot;:&quot;4dc84db49209e42da0649d96a37d77e59f8327c6a5605b21d40b8be864f6190d&quot;,&quot;original_asset_sizes&quot;:{&quot;SHA256SUMS.MX4_EN-V1.11-20260727&quot;:78,&quot;rom_g5.zip&quot;:2048654340},&quot;original_assets&quot;:[&quot;rom_g5.zip&quot;,&quot;SHA256SUMS.MX4_EN-V1.11-20260727&quot;],&quot;platforms&quot;:{&quot;linux&quot;:&quot;3f9b7aaf4c9d7bb9ad54b63700a4d54c7451fb2289d8da50434930949baa2da1&quot;,&quot;linux-arm64&quot;:&quot;2fef7b48aa0dd0bdfd7ff5e0ee05d6b853f756b5c4aef9f88a291d898abbc81a&quot;,&quot;linux-legacy&quot;:&quot;2630a6e0fe813ad9abb7be5d4e37504301906f4e49d2cd1893a791b4283279a2&quot;,&quot;macos&quot;:&quot;f9b79df69ad3f3a0eed03add7440d663857c41bcae14062a6e55af680caedaa7&quot;,&quot;windows&quot;:&quot;09b358499dbde9c75a990f60d23c6397971461bc373acffd0a1cd07b23e7bc46&quot;,&quot;windows-legacy&quot;:&quot;2b489fe098763799461c8ee003b3091e1d2d442051ba15233e115896536d98ca&quot;},&quot;skipped&quot;:[],&quot;source_fingerprint&quot;:&quot;530562e9de3ce0d9be8f62d40187a00724b5f073e77d84ec4cb12aa84f57b7c6&quot;,&quot;stats&quot;:{&quot;baseline&quot;:{&quot;SHA256SUMS.MX4_EN-V1.11-20260727&quot;:2,&quot;rom_g5-linux-legacy.zip&quot;:1,&quot;rom_g5-linux.zip&quot;:1,&quot;rom_g5-macos.zip&quot;:1,&quot;rom_g5-windows-legacy.zip&quot;:1,&quot;rom_g5-windows.zip&quot;:1,&quot;rom_g5.zip&quot;:2},&quot;generated_at&quot;:&quot;2026-11-14T22:59:59Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:188443285,&quot;tag&quot;:&quot;2.5.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:119710372,&quot;tag&quot;:&quot;2.5.3&quot;},&quot;windows&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:16} --&gt;
 </content>
   </entry>
   <entry>
@@ -48512,7 +48512,7 @@ Features
     <inni:repo>y1-community/updater-ce-neo</inni:repo>
     <inni:tag_name>2.5.5</inni:tag_name>
     <inni:name>Updater CE 2.5.5 for Windows and Linux</inni:name>
-    <inni:downloads>183</inni:downloads>
+    <inni:downloads>184</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/run_linux.sh" title="run_linux.sh" length="53935" type="application/x-sh"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/run_linux.sh.sha256" title="run_linux.sh.sha256" length="79" type="application/octet-stream"/>
@@ -48962,7 +48962,7 @@ curl -fsSL https://innioasis.app/run_linux.sh | bash
     <inni:repo>y1-community/Innioasis-Updater</inni:repo>
     <inni:tag_name>flash_tool</inni:tag_name>
     <inni:name>flash_tool</inni:name>
-    <inni:downloads>489</inni:downloads>
+    <inni:downloads>491</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe" title="1.Install.Driver.First.and.Reboot.PC.exe" length="9534578" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip" title="flash_tool_linux.zip" length="73234593" type="application/zip"/>
