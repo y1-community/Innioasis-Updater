@@ -20,8 +20,10 @@ permissions:
   contents: write
 
 concurrency:
-  # Shared with the other static generators: sitemap.xml is their output too.
-  group: site-static-pages
+  # Sitemaps have their own lock: the doc-pages job also writes sitemap.xml,
+  # but both rebase and retry their pushes. Sharing one lock cancelled this
+  # workflow whenever a newer static-page run was queued, so it never ran.
+  group: site-sitemaps
   cancel-in-progress: false
 
 jobs:
