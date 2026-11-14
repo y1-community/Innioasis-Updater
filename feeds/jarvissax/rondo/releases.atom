@@ -13,11 +13,11 @@
     <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v3.0.3"/>
     <innioasis:tag_name>v3.0.3</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>3</innioasis:downloads>
+    <innioasis:downloads>10</innioasis:downloads>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip" title="rom.zip" length="529817030" type="application/zip" innioasis:download_count="3" innioasis:asset_id="748024902"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.3/rondo-3.0.3.rondo" title="rondo-3.0.3.rondo" length="17159275" type="application/octet-stream" innioasis:download_count="3" innioasis:asset_id="748018354"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="1" innioasis:asset_id="748024900"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.3/rondo-3.0.3.rondo" title="rondo-3.0.3.rondo" length="17159275" type="application/octet-stream" innioasis:download_count="4" innioasis:asset_id="748018354"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="2" innioasis:asset_id="748024900"/>
     <content type="text">**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it to [Rondo server 3.2.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0) (its admin page offers it) so YouTube Music downloads get their year and track number; 3.1.0 works for everything else.
 
 **New**
@@ -72,7 +72,7 @@ Images: `ghcr.io/jarvissax/rondo-server:3.2.0` and `ghcr.io/jarvissax/rondo-upda
     <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v3.0.2"/>
     <innioasis:tag_name>v3.0.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>42</innioasis:downloads>
+    <innioasis:downloads>47</innioasis:downloads>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.2/rom.zip" title="rom.zip" length="529873460" type="application/zip" innioasis:download_count="16" innioasis:asset_id="739289677"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.2/rondo-3.0.2.rondo" title="rondo-3.0.2.rondo" length="17034596" type="application/octet-stream" innioasis:download_count="7" innioasis:asset_id="739281243"/>
