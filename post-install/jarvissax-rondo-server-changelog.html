@@ -45,12 +45,15 @@
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
   <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/jarvissax-rondo-server-changelog.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/jarvissax-rondo-server-changelog.html">
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
 <div id="nav-root"></div>
 <main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y1&amp;software=rondo-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Rondo · Y1</p><h1>What&#x27;s new in the Rondo server</h1><p class="lumen-lead">A lightweight, custom audio operating system for the Innioasis Y1.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y1&amp;software=rondo-y1">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y1&amp;software=rondo-y1">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="whats-new-in-the-rondo-server">What&#x27;s new in the Rondo server</h1>
 <p>The server&#x27;s releases, newest first (tags <code>server-v&lt;version&gt;</code>, on the <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=rondo-y1">releases page</a>). Until 3.0.1 the server shared Rondo&#x27;s version, and its changes are in Rondo&#x27;s <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fjarvissax%2Frondo%2Fblob%2FHEAD%2FCHANGELOG.md">CHANGELOG.md</a>.</p>
+<h2 id="320-november-14-2026">3.2.0 (November 14, 2026)</h2>
+<ul><li><strong>YouTube Music downloads get their full details</strong> (Rondo 3.0.3): <code>GET /music/song/:id</code> gives a<p>song&#x27;s artist, album, year, track number and cover, from its queue row and its album&#x27;s page. Rondo works without it, but a song downloaded through an older server is named from its row, without its year and track number.</p></li></ul>
 <h2 id="311-november-12-2026">3.1.1 (November 12, 2026)</h2>
 <ul><li><strong><code>/healthz</code> no longer sends the <code>api</code> number</strong> that 3.1.0 added. Nothing reads it: Rondo tells<p>whether a server is new enough from the server&#x27;s version, against the oldest server it works with. Nothing else changes, so this update is optional.</p></li></ul>
 <h2 id="310-november-12-2026">3.1.0 (November 12, 2026)</h2>

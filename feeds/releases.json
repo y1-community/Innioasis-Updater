@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-14T15:40:57Z",
+  "generated_at": "2026-11-14T16:12:59Z",
   "repos": {
     "y1-community/y1-stock-rom": {
       "repo": "y1-community/y1-stock-rom",
       "icon": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
       "icon_dark": "",
       "stats": {
-        "downloads": 57545,
+        "downloads": 57608,
         "release_count": 10,
         "stars": 6,
         "forks": 0,
@@ -43,7 +43,7 @@
               "name": "rom_y2.zip",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip",
               "size": 372994194,
-              "download_count": 52,
+              "download_count": 55,
               "content_type": "application/x-zip-compressed",
               "created_at": "2026-11-13T23:29:08Z",
               "updated_at": "2026-11-13T23:34:58Z",
@@ -54,7 +54,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
               "size": 30612,
-              "download_count": 142,
+              "download_count": 153,
               "content_type": "image/jpeg",
               "created_at": "2026-11-14T02:48:48Z",
               "updated_at": "2026-11-14T02:48:49Z",
@@ -62,7 +62,7 @@
             }
           ],
           "mirror_downloads": 11,
-          "downloads": 63,
+          "downloads": 66,
           "download_breakdown": {
             "tag": "3.2.4-fm",
             "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -70,7 +70,7 @@
               {
                 "name": "rom_y2.zip",
                 "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip",
-                "downloads": 52
+                "downloads": 55
               }
             ],
             "portable": [
@@ -148,7 +148,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg",
               "size": 30612,
-              "download_count": 2018,
+              "download_count": 2019,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:17:30Z",
               "updated_at": "2026-10-10T09:17:30Z",
@@ -242,7 +242,7 @@
               "name": "system.img",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img",
               "size": 859826928,
-              "download_count": 605,
+              "download_count": 606,
               "content_type": "application/x-apple-diskimage",
               "created_at": "2026-11-02T20:10:34Z",
               "updated_at": "2026-11-02T20:14:19Z",
@@ -253,15 +253,15 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
               "size": 30612,
-              "download_count": 1626,
+              "download_count": 1627,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:17:43Z",
               "updated_at": "2026-10-10T09:17:43Z",
               "url": "https://api.github.com/repos/y1-community/y1-stock-rom/releases/assets/627525519"
             }
           ],
-          "mirror_downloads": 162,
-          "downloads": 820,
+          "mirror_downloads": 163,
+          "downloads": 821,
           "download_breakdown": {
             "tag": "3.2.0-fm",
             "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -278,7 +278,7 @@
                 "name": "rom_y2-windows.zip",
                 "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows.zip",
                 "size": 656085982,
-                "downloads": 57
+                "downloads": 58
               },
               {
                 "platform": "windows-legacy",
@@ -347,7 +347,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg",
               "size": 30612,
-              "download_count": 1338,
+              "download_count": 1339,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:17:57Z",
               "updated_at": "2026-10-10T09:17:57Z",
@@ -416,7 +416,7 @@
               "name": "rom.zip",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
               "size": 250125316,
-              "download_count": 8415,
+              "download_count": 8418,
               "content_type": "application/zip",
               "created_at": "2026-07-16T02:03:01Z",
               "updated_at": "2026-07-16T02:03:27Z",
@@ -427,7 +427,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
               "size": 30612,
-              "download_count": 5610,
+              "download_count": 5632,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:19:27Z",
               "updated_at": "2026-10-10T09:19:27Z",
@@ -435,7 +435,7 @@
             }
           ],
           "mirror_downloads": 479,
-          "downloads": 8894,
+          "downloads": 8897,
           "download_breakdown": {
             "tag": "3.1.2",
             "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -443,7 +443,7 @@
               {
                 "name": "rom.zip",
                 "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
-                "downloads": 8415
+                "downloads": 8418
               }
             ],
             "portable": [
@@ -521,7 +521,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
               "size": 30612,
-              "download_count": 5194,
+              "download_count": 5210,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:18:17Z",
               "updated_at": "2026-10-10T09:18:17Z",
@@ -615,7 +615,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.2/updater.jpg",
               "size": 30612,
-              "download_count": 440,
+              "download_count": 441,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:18:30Z",
               "updated_at": "2026-10-10T09:18:30Z",
@@ -709,7 +709,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/2.8.2/updater.jpg",
               "size": 30612,
-              "download_count": 428,
+              "download_count": 429,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:18:55Z",
               "updated_at": "2026-10-10T09:18:55Z",
@@ -803,7 +803,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/type-b-1.7.6/updater.jpg",
               "size": 30612,
-              "download_count": 228,
+              "download_count": 229,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:19:10Z",
               "updated_at": "2026-10-10T09:19:11Z",
@@ -908,7 +908,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/updater.jpg",
               "size": 30612,
-              "download_count": 410,
+              "download_count": 411,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:17:17Z",
               "updated_at": "2026-10-10T09:17:18Z",
@@ -3153,7 +3153,7 @@
       "icon": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark": "",
       "stats": {
-        "downloads": 32087,
+        "downloads": 32109,
         "release_count": 104,
         "stars": 24,
         "forks": 8,
@@ -3190,7 +3190,7 @@
               "name": "bootimg.img.gz",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/bootimg.img.gz",
               "size": 7557676,
-              "download_count": 87,
+              "download_count": 89,
               "content_type": "application/gzip",
               "created_at": "2026-11-13T19:10:44Z",
               "updated_at": "2026-11-13T19:10:54Z",
@@ -3201,7 +3201,7 @@
               "name": "manifest.json",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.json",
               "size": 4245,
-              "download_count": 219,
+              "download_count": 225,
               "content_type": "application/json",
               "created_at": "2026-11-13T19:10:44Z",
               "updated_at": "2026-11-13T19:10:45Z",
@@ -3212,7 +3212,7 @@
               "name": "manifest.sig",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.sig",
               "size": 64,
-              "download_count": 216,
+              "download_count": 222,
               "content_type": "application/pgp-signature",
               "created_at": "2026-11-13T19:10:45Z",
               "updated_at": "2026-11-13T19:10:46Z",
@@ -3223,7 +3223,7 @@
               "name": "recovery.img.gz",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/recovery.img.gz",
               "size": 7557708,
-              "download_count": 86,
+              "download_count": 88,
               "content_type": "application/gzip",
               "created_at": "2026-11-13T19:10:45Z",
               "updated_at": "2026-11-13T19:10:56Z",
@@ -3234,7 +3234,7 @@
               "name": "rootfs.ext4.gz",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/rootfs.ext4.gz",
               "size": 53150447,
-              "download_count": 86,
+              "download_count": 88,
               "content_type": "application/gzip",
               "created_at": "2026-11-13T19:10:47Z",
               "updated_at": "2026-11-13T19:11:23Z",
@@ -3256,7 +3256,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
               "size": 69256945,
-              "download_count": 58,
+              "download_count": 61,
               "content_type": "application/zip",
               "created_at": "2026-11-13T19:10:44Z",
               "updated_at": "2026-11-13T19:11:26Z",
@@ -3275,7 +3275,7 @@
             }
           ],
           "mirror_downloads": 15,
-          "downloads": 73,
+          "downloads": 76,
           "download_breakdown": {
             "tag": "baseline-261",
             "mirrors": "y1-community/y2linux-mirror",
@@ -3283,7 +3283,7 @@
               {
                 "name": "Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
                 "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
-                "downloads": 58
+                "downloads": 61
               }
             ],
             "portable": [
@@ -3747,7 +3747,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.27-first-install.zip",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install.zip",
               "size": 69160854,
-              "download_count": 32,
+              "download_count": 33,
               "content_type": "application/zip",
               "created_at": "2026-11-12T23:18:18Z",
               "updated_at": "2026-11-12T23:18:49Z",
@@ -3765,8 +3765,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/741456432"
             }
           ],
-          "mirror_downloads": 24,
-          "downloads": 56,
+          "mirror_downloads": 30,
+          "downloads": 63,
           "download_breakdown": {
             "tag": "baseline-254",
             "mirrors": "y1-community/y2linux-mirror",
@@ -3774,7 +3774,7 @@
               {
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install.zip",
                 "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install.zip",
-                "downloads": 32
+                "downloads": 33
               }
             ],
             "portable": [
@@ -3783,42 +3783,42 @@
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-windows.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-windows.zip",
                 "size": 381986325,
-                "downloads": 8
+                "downloads": 9
               },
               {
                 "platform": "windows-legacy",
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-windows-legacy.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-windows-legacy.zip",
                 "size": 143747614,
-                "downloads": 1
+                "downloads": 2
               },
               {
                 "platform": "linux",
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-linux.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux.zip",
                 "size": 429307696,
-                "downloads": 3
+                "downloads": 4
               },
               {
                 "platform": "linux-arm64",
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-linux-arm64.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux-arm64.zip",
                 "size": 254211930,
-                "downloads": 1
+                "downloads": 2
               },
               {
                 "platform": "linux-legacy",
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-linux-legacy.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux-legacy.zip",
                 "size": 142161936,
-                "downloads": 1
+                "downloads": 2
               },
               {
                 "platform": "macos",
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-macos.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-macos.zip",
                 "size": 188620432,
-                "downloads": 9
+                "downloads": 10
               }
             ]
           }
@@ -19739,7 +19739,7 @@
       "icon_dark": "",
       "stats": {
         "downloads": 1050,
-        "release_count": 10,
+        "release_count": 12,
         "stars": 1,
         "forks": 1,
         "updated_at": "2026-11-12T12:33:09Z"
@@ -19753,10 +19753,94 @@
         "forks_count": 1,
         "open_issues_count": 0,
         "updated_at": "2026-11-12T12:33:09Z",
-        "pushed_at": "2026-11-12T11:58:13Z",
+        "pushed_at": "2026-11-14T16:08:44Z",
         "license": "MIT"
       },
       "releases": [
+        {
+          "id": 445417488,
+          "tag_name": "v3.0.3",
+          "name": "Rondo 3.0.3",
+          "body": "**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it to [Rondo server 3.2.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0) (its admin page offers it) so YouTube Music downloads get their year and track number; 3.1.0 works for everything else.\n\n**New**\n- **YouTube Music downloads.** Hold center on a song and choose **Download**, or **Download all** on an album or playlist. Songs go to `Music/YouTube Music/Artist/Album (Year)/01 - Title.m4a`: YouTube's own AAC, with the artist, album, year, track number, cover and lyrics (timed where LRCLIB has them) in its tags. **YouTube Music \u203a Home \u203a Downloads** plays them from the card, also offline.\n- **YouTube Music's Home looks like the app's:** each section a shelf of covers that slides along as you turn the wheel, then on into the next one.\n- **The dashboard fills in what your songs' tags leave out** (Library \u203a Fill in): a missing genre, year, album or track number from the iTunes Store and MusicBrainz, reviewed before it's saved into the songs; and lyrics from LRCLIB for every song that has none.\n- **Organize looks up a show's or a movie's years** on the dashboard (TVmaze, Wikidata), so shows are filed as `Silo (2023-)` or `The Walking Dead (2010-2022)`.\n\n**Changed**\n- **Shows and movies go inside Videos:** `Videos/Shows/\u2026` and `Videos/Movies/\u2026`, the way Jellyfin expects them. Organize moves the old top-level `Shows` and `Movies` folders' files there.\n- **A song's menu has an icon for each action.**\n\n**Fixed**\n- **A YouTube video downloads and plays in its original language,** not a dub YouTube listed first.\n- **Changing Repeat or Shuffle no longer stops the song for a moment.**\n- **Library \u203a Files slides in** like every other screen.\n- **The dashboard's Wheel acceleration and Wheel vibration** can be changed again, and its notes keep their distance from what's around them.\n\n**How to get it**\n- **On Rondo 3.0.x:** Settings \u203a System \u203a Software update, the dashboard's Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.\n- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.3), with **Keep my settings** turned on.\n\nFiles: `rondo-3.0.3.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#303-november-14-2026).\n",
+          "draft": false,
+          "prerelease": false,
+          "created_at": "2026-11-14T16:02:44Z",
+          "published_at": "2026-11-14T16:09:05Z",
+          "html_url": "https://github.com/jarvissax/rondo/releases/tag/v3.0.3",
+          "icon_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png",
+          "icon_dark_url": "",
+          "assets": [
+            {
+              "id": 748024902,
+              "name": "rom.zip",
+              "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip",
+              "size": 529817030,
+              "download_count": 0,
+              "content_type": "application/zip",
+              "created_at": "2026-11-14T16:11:01Z",
+              "updated_at": "2026-11-14T16:11:15Z",
+              "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/748024902"
+            },
+            {
+              "id": 748018354,
+              "name": "rondo-3.0.3.rondo",
+              "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/rondo-3.0.3.rondo",
+              "size": 17159275,
+              "download_count": 0,
+              "content_type": "application/octet-stream",
+              "created_at": "2026-11-14T16:08:47Z",
+              "updated_at": "2026-11-14T16:08:58Z",
+              "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/748018354"
+            },
+            {
+              "id": 748024900,
+              "name": "updater.png",
+              "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png",
+              "size": 12952,
+              "download_count": 0,
+              "content_type": "image/png",
+              "created_at": "2026-11-14T16:11:01Z",
+              "updated_at": "2026-11-14T16:11:01Z",
+              "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/748024900"
+            }
+          ],
+          "mirror_downloads": 0,
+          "downloads": 0,
+          "download_breakdown": {
+            "tag": "v3.0.3",
+            "mirrors": "",
+            "firmware": [
+              {
+                "name": "rom.zip",
+                "url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip",
+                "downloads": 0
+              }
+            ],
+            "portable": []
+          }
+        },
+        {
+          "id": 445416617,
+          "tag_name": "server-v3.2.0",
+          "name": "Rondo server 3.2.0",
+          "body": "**YouTube Music downloads get their full details.**\n\n- **`GET /music/song/:id`** gives a song's artist, album, year, track number and cover, from its queue row and its album's page. Rondo 3.0.3 uses it to name and tag the songs it downloads (`Music/YouTube Music/Artist/Album (Year)/01 - Title.m4a`). Rondo works without it, but a song downloaded through an older server is named from its row, without its year and track number.\n\n**How to update**\n- The admin page's **Update**.\n- Or by hand: `docker compose -f infra/compose.home.yaml pull && docker compose -f infra/compose.home.yaml up -d` (or `compose.vps.yaml`).\n\nImages: `ghcr.io/jarvissax/rondo-server:3.2.0` and `ghcr.io/jarvissax/rondo-updater:3.2.0` (also `latest`). Changes: [server/CHANGELOG.md](https://github.com/jarvissax/rondo/blob/main/server/CHANGELOG.md).\n",
+          "draft": false,
+          "prerelease": false,
+          "created_at": "2026-11-14T16:02:04Z",
+          "published_at": "2026-11-14T16:07:20Z",
+          "html_url": "https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0",
+          "icon_url": "https://innioasis.app/assets/rondo_icon.jpg",
+          "icon_dark_url": "",
+          "assets": [],
+          "mirror_downloads": 0,
+          "downloads": 0,
+          "download_breakdown": {
+            "tag": "server-v3.2.0",
+            "mirrors": "",
+            "firmware": [],
+            "portable": []
+          }
+        },
         {
           "id": 442872569,
           "tag_name": "v3.0.2",
@@ -20648,7 +20732,7 @@
       "icon": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark": "",
       "stats": {
-        "downloads": 53216,
+        "downloads": 53222,
         "release_count": 31,
         "stars": 86,
         "forks": 23,
@@ -20696,7 +20780,7 @@
               "name": "rom.zip",
               "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
               "size": 581693789,
-              "download_count": 233,
+              "download_count": 236,
               "content_type": "application/zip",
               "created_at": "2026-11-12T13:10:11Z",
               "updated_at": "2026-11-12T13:10:42Z",
@@ -20726,7 +20810,7 @@
             }
           ],
           "mirror_downloads": 53,
-          "downloads": 308,
+          "downloads": 311,
           "download_breakdown": {
             "tag": "stable-v0.6.1",
             "mirrors": "y1-community/rockbox-mirror",
@@ -20734,7 +20818,7 @@
               {
                 "name": "rom.zip",
                 "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
-                "downloads": 233
+                "downloads": 236
               },
               {
                 "name": "rom_type_b.zip",
@@ -21032,7 +21116,7 @@
               "name": "rom.zip",
               "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/rom.zip",
               "size": 588795445,
-              "download_count": 841,
+              "download_count": 843,
               "content_type": "application/zip",
               "created_at": "2026-10-29T00:50:36Z",
               "updated_at": "2026-10-29T00:50:56Z",
@@ -21062,7 +21146,7 @@
             }
           ],
           "mirror_downloads": 97,
-          "downloads": 1056,
+          "downloads": 1058,
           "download_breakdown": {
             "tag": "stable-v0.6",
             "mirrors": "y1-community/rockbox-mirror",
@@ -21070,7 +21154,7 @@
               {
                 "name": "rom.zip",
                 "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/rom.zip",
-                "downloads": 841
+                "downloads": 843
               },
               {
                 "name": "rom_type_b.zip",
@@ -23093,7 +23177,7 @@
               "name": "rom.zip",
               "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/rom.zip",
               "size": 534484127,
-              "download_count": 12703,
+              "download_count": 12704,
               "content_type": "application/zip",
               "created_at": "2026-05-16T00:19:17Z",
               "updated_at": "2026-05-16T00:19:32Z",
@@ -23123,7 +23207,7 @@
             }
           ],
           "mirror_downloads": 104,
-          "downloads": 14316,
+          "downloads": 14317,
           "download_breakdown": {
             "tag": "stable-v0.5",
             "mirrors": "y1-community/rockbox-mirror",
@@ -23131,7 +23215,7 @@
               {
                 "name": "rom.zip",
                 "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/rom.zip",
-                "downloads": 12703
+                "downloads": 12704
               },
               {
                 "name": "rom_type_b.zip",
@@ -25541,7 +25625,7 @@
       "icon": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark": "",
       "stats": {
-        "downloads": 4175,
+        "downloads": 4177,
         "release_count": 3,
         "stars": 15,
         "forks": 1,
@@ -25644,7 +25728,7 @@
               "name": "rom_y2.zip",
               "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
               "size": 361644736,
-              "download_count": 1076,
+              "download_count": 1078,
               "content_type": "application/zip",
               "created_at": "2026-09-29T12:14:45Z",
               "updated_at": "2026-09-29T12:16:13Z",
@@ -25674,7 +25758,7 @@
             }
           ],
           "mirror_downloads": 57,
-          "downloads": 1133,
+          "downloads": 1135,
           "download_breakdown": {
             "tag": "v0.2.5-beta",
             "mirrors": "y1-community/y2-rockbox-mirror",
@@ -25682,7 +25766,7 @@
               {
                 "name": "rom_y2.zip",
                 "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
-                "downloads": 1076
+                "downloads": 1078
               }
             ],
             "portable": [
@@ -33320,7 +33404,7 @@
       "icon": "",
       "icon_dark": "",
       "stats": {
-        "downloads": 24951,
+        "downloads": 24952,
         "release_count": 30,
         "stars": 25,
         "forks": 5,
@@ -33624,7 +33708,7 @@
               "name": "rom.zip",
               "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom.zip",
               "size": 456271826,
-              "download_count": 538,
+              "download_count": 539,
               "content_type": "application/zip",
               "created_at": "2026-09-02T13:15:31Z",
               "updated_at": "2026-09-02T13:15:45Z",
@@ -33654,7 +33738,7 @@
             }
           ],
           "mirror_downloads": 86,
-          "downloads": 1142,
+          "downloads": 1143,
           "download_breakdown": {
             "tag": "launcher-v0.11.6",
             "mirrors": "y1-community/y1_launcher-mirror",
@@ -33662,7 +33746,7 @@
               {
                 "name": "rom.zip",
                 "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom.zip",
-                "downloads": 538
+                "downloads": 539
               },
               {
                 "name": "rom_type_b.zip",
@@ -44933,7 +45017,7 @@
       "icon": "",
       "icon_dark": "",
       "stats": {
-        "downloads": 2122,
+        "downloads": 2123,
         "release_count": 10,
         "stars": 29,
         "forks": 4,
@@ -44970,7 +45054,7 @@
               "name": "rom_y2.zip",
               "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/rom_y2.zip",
               "size": 296365314,
-              "download_count": 1118,
+              "download_count": 1119,
               "content_type": "application/zip",
               "created_at": "2026-09-04T19:37:37Z",
               "updated_at": "2026-09-04T19:38:42Z",
@@ -44989,7 +45073,7 @@
             }
           ],
           "mirror_downloads": 35,
-          "downloads": 1153,
+          "downloads": 1154,
           "download_breakdown": {
             "tag": "Release2.5",
             "mirrors": "y1-community/y2player-mirror",
@@ -44997,7 +45081,7 @@
               {
                 "name": "rom_y2.zip",
                 "url": "https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/rom_y2.zip",
-                "downloads": 1118
+                "downloads": 1119
               }
             ],
             "portable": [
@@ -45799,7 +45883,7 @@
       "icon": "https://github.com/Leska1337/better-Y/raw/main/screenshots/plus_logo.png",
       "icon_dark": "",
       "stats": {
-        "downloads": 677,
+        "downloads": 678,
         "release_count": 2,
         "stars": 8,
         "forks": 1,
@@ -45847,7 +45931,7 @@
               "name": "rom.zip",
               "browser_download_url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/rom.zip",
               "size": 181243963,
-              "download_count": 450,
+              "download_count": 451,
               "content_type": "application/x-zip-compressed",
               "created_at": "2026-09-25T18:43:13Z",
               "updated_at": "2026-09-25T18:46:53Z",
@@ -45855,7 +45939,7 @@
             }
           ],
           "mirror_downloads": 56,
-          "downloads": 506,
+          "downloads": 507,
           "download_breakdown": {
             "tag": "v1.1.0",
             "mirrors": "y1-community/better-y-mirror",
@@ -45863,7 +45947,7 @@
               {
                 "name": "rom.zip",
                 "url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/rom.zip",
-                "downloads": 450
+                "downloads": 451
               }
             ],
             "portable": [
@@ -46373,7 +46457,7 @@
       "icon": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/updater.jpg",
       "icon_dark": "",
       "stats": {
-        "downloads": 1003,
+        "downloads": 1004,
         "release_count": 10,
         "stars": 0,
         "forks": 0,
@@ -46781,7 +46865,7 @@
               "name": "rom_y2-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows.zip",
               "size": 656085982,
-              "download_count": 57,
+              "download_count": 58,
               "content_type": "application/zip",
               "created_at": "2026-11-12T19:28:19Z",
               "updated_at": "2026-11-12T19:29:06Z",
@@ -46833,7 +46917,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 99,
+          "downloads": 100,
           "download_breakdown": {
             "tag": "3.2.0-fm",
             "mirrors": "",
@@ -46866,7 +46950,7 @@
               {
                 "name": "rom_y2-windows.zip",
                 "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows.zip",
-                "downloads": 57
+                "downloads": 58
               },
               {
                 "name": "rom_y2.zip",
@@ -51318,7 +51402,7 @@
       "icon": "",
       "icon_dark": "",
       "stats": {
-        "downloads": 3438,
+        "downloads": 3444,
         "release_count": 101,
         "stars": 0,
         "forks": 0,
@@ -52115,7 +52199,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-linux-arm64.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux-arm64.zip",
               "size": 254211930,
-              "download_count": 1,
+              "download_count": 2,
               "content_type": "application/zip",
               "created_at": "2026-11-13T00:32:03Z",
               "updated_at": "2026-11-13T00:32:12Z",
@@ -52126,7 +52210,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-linux-legacy.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux-legacy.zip",
               "size": 142161936,
-              "download_count": 1,
+              "download_count": 2,
               "content_type": "application/zip",
               "created_at": "2026-11-13T00:32:03Z",
               "updated_at": "2026-11-13T00:32:11Z",
@@ -52137,7 +52221,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-linux.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux.zip",
               "size": 429307696,
-              "download_count": 3,
+              "download_count": 4,
               "content_type": "application/zip",
               "created_at": "2026-11-13T00:32:03Z",
               "updated_at": "2026-11-13T00:32:16Z",
@@ -52148,7 +52232,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-macos.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-macos.zip",
               "size": 188620432,
-              "download_count": 9,
+              "download_count": 10,
               "content_type": "application/zip",
               "created_at": "2026-11-13T00:32:09Z",
               "updated_at": "2026-11-13T00:32:14Z",
@@ -52159,7 +52243,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-windows-legacy.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-windows-legacy.zip",
               "size": 143747614,
-              "download_count": 1,
+              "download_count": 2,
               "content_type": "application/zip",
               "created_at": "2026-11-13T00:32:03Z",
               "updated_at": "2026-11-13T00:32:09Z",
@@ -52170,7 +52254,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-windows.zip",
               "size": 381986325,
-              "download_count": 8,
+              "download_count": 9,
               "content_type": "application/zip",
               "created_at": "2026-11-13T00:32:03Z",
               "updated_at": "2026-11-13T00:32:17Z",
@@ -52200,7 +52284,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 24,
+          "downloads": 30,
           "download_breakdown": {
             "tag": "baseline-254",
             "mirrors": "",
@@ -52208,32 +52292,32 @@
               {
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-linux-arm64.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux-arm64.zip",
-                "downloads": 1
+                "downloads": 2
               },
               {
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-linux-legacy.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux-legacy.zip",
-                "downloads": 1
+                "downloads": 2
               },
               {
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-linux.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux.zip",
-                "downloads": 3
+                "downloads": 4
               },
               {
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-macos.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-macos.zip",
-                "downloads": 9
+                "downloads": 10
               },
               {
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-windows-legacy.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-windows-legacy.zip",
-                "downloads": 1
+                "downloads": 2
               },
               {
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-windows.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-windows.zip",
-                "downloads": 8
+                "downloads": 9
               },
               {
                 "name": "Y2Linux-1.0.0-beta.9.3.27-first-install.zip",
@@ -118660,7 +118744,7 @@
       "icon": "",
       "icon_dark": "",
       "stats": {
-        "downloads": 1529,
+        "downloads": 1530,
         "release_count": 5,
         "stars": 0,
         "forks": 1,
@@ -119094,7 +119178,7 @@
               "name": "Innioasis.Updater.for.Mac.dmg",
               "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/Innioasis.Updater.for.Mac.dmg",
               "size": 119710372,
-              "download_count": 24,
+              "download_count": 25,
               "content_type": "application/x-diskcopy",
               "created_at": "2026-11-11T00:22:19Z",
               "updated_at": "2026-11-11T00:22:43Z",
@@ -119345,7 +119429,7 @@
       "icon": "",
       "icon_dark": "",
       "stats": {
-        "downloads": 69428,
+        "downloads": 69436,
         "release_count": 74,
         "stars": 55,
         "forks": 13,
@@ -119360,7 +119444,7 @@
         "forks_count": 13,
         "open_issues_count": 3,
         "updated_at": "2026-11-12T15:32:59Z",
-        "pushed_at": "2026-11-14T15:39:56Z",
+        "pushed_at": "2026-11-14T16:13:12Z",
         "license": "GPL-3.0"
       },
       "releases": [
@@ -119382,7 +119466,7 @@
               "name": "Innioasis.Updater.for.Mac.dmg",
               "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg",
               "size": 119710372,
-              "download_count": 311,
+              "download_count": 313,
               "content_type": "application/x-diskcopy",
               "created_at": "2026-11-11T00:21:08Z",
               "updated_at": "2026-11-11T00:21:31Z",
@@ -119393,7 +119477,7 @@
               "name": "installer.exe",
               "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/installer.exe",
               "size": 157480421,
-              "download_count": 245,
+              "download_count": 249,
               "content_type": "application/x-msdownload",
               "created_at": "2026-11-12T21:08:48Z",
               "updated_at": "2026-11-12T21:09:58Z",
@@ -119492,7 +119576,7 @@
               "name": "UpdaterCE-Linux-Portable.tar.gz",
               "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable.tar.gz",
               "size": 361117380,
-              "download_count": 6,
+              "download_count": 7,
               "content_type": "application/x-gtar",
               "created_at": "2026-11-12T13:56:45Z",
               "updated_at": "2026-11-12T13:59:15Z",
@@ -119569,7 +119653,7 @@
               "name": "UpdaterCE.appimage",
               "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage",
               "size": 306530808,
-              "download_count": 43,
+              "download_count": 44,
               "content_type": "application/octet-stream",
               "created_at": "2026-11-12T13:56:45Z",
               "updated_at": "2026-11-12T13:59:00Z",

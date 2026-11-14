@@ -17,7 +17,7 @@
         "name": "bootimg.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/bootimg.img.gz",
         "size": 7557676,
-        "download_count": 87,
+        "download_count": 89,
         "content_type": "application/gzip",
         "created_at": "2026-11-13T19:10:44Z",
         "updated_at": "2026-11-13T19:10:54Z",
@@ -28,7 +28,7 @@
         "name": "manifest.json",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.json",
         "size": 4245,
-        "download_count": 219,
+        "download_count": 225,
         "content_type": "application/json",
         "created_at": "2026-11-13T19:10:44Z",
         "updated_at": "2026-11-13T19:10:45Z",
@@ -39,7 +39,7 @@
         "name": "manifest.sig",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.sig",
         "size": 64,
-        "download_count": 216,
+        "download_count": 222,
         "content_type": "application/pgp-signature",
         "created_at": "2026-11-13T19:10:45Z",
         "updated_at": "2026-11-13T19:10:46Z",
@@ -50,7 +50,7 @@
         "name": "recovery.img.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/recovery.img.gz",
         "size": 7557708,
-        "download_count": 86,
+        "download_count": 88,
         "content_type": "application/gzip",
         "created_at": "2026-11-13T19:10:45Z",
         "updated_at": "2026-11-13T19:10:56Z",
@@ -61,7 +61,7 @@
         "name": "rootfs.ext4.gz",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/rootfs.ext4.gz",
         "size": 53150447,
-        "download_count": 86,
+        "download_count": 88,
         "content_type": "application/gzip",
         "created_at": "2026-11-13T19:10:47Z",
         "updated_at": "2026-11-13T19:11:23Z",
@@ -83,7 +83,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
         "size": 69256945,
-        "download_count": 58,
+        "download_count": 61,
         "content_type": "application/zip",
         "created_at": "2026-11-13T19:10:44Z",
         "updated_at": "2026-11-13T19:11:26Z",
@@ -102,7 +102,7 @@
       }
     ],
     "mirror_downloads": 15,
-    "downloads": 73,
+    "downloads": 76,
     "download_breakdown": {
       "tag": "baseline-261",
       "mirrors": "y1-community/y2linux-mirror",
@@ -110,7 +110,7 @@
         {
           "name": "Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
           "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/Y2Linux-1.0.0-beta.9.3.30-first-install.zip",
-          "downloads": 58
+          "downloads": 61
         }
       ],
       "portable": [
@@ -574,7 +574,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.27-first-install.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install.zip",
         "size": 69160854,
-        "download_count": 32,
+        "download_count": 33,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:18:18Z",
         "updated_at": "2026-11-12T23:18:49Z",
@@ -592,8 +592,8 @@
         "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/741456432"
       }
     ],
-    "mirror_downloads": 24,
-    "downloads": 56,
+    "mirror_downloads": 30,
+    "downloads": 63,
     "download_breakdown": {
       "tag": "baseline-254",
       "mirrors": "y1-community/y2linux-mirror",
@@ -601,7 +601,7 @@
         {
           "name": "Y2Linux-1.0.0-beta.9.3.27-first-install.zip",
           "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install.zip",
-          "downloads": 32
+          "downloads": 33
         }
       ],
       "portable": [
@@ -610,42 +610,42 @@
           "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-windows.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-windows.zip",
           "size": 381986325,
-          "downloads": 8
+          "downloads": 9
         },
         {
           "platform": "windows-legacy",
           "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-windows-legacy.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-windows-legacy.zip",
           "size": 143747614,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "linux",
           "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-linux.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux.zip",
           "size": 429307696,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux-arm64",
           "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux-arm64.zip",
           "size": 254211930,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "linux-legacy",
           "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-linux-legacy.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux-legacy.zip",
           "size": 142161936,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "macos",
           "name": "Y2Linux-1.0.0-beta.9.3.27-first-install-macos.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-macos.zip",
           "size": 188620432,
-          "downloads": 9
+          "downloads": 10
         }
       ]
     }

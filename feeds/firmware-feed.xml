@@ -4,7 +4,7 @@
   <title>Innioasis and Timmkoo firmware releases</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware-list.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/firmware-feed.xml"/>
-  <updated>2026-11-14T15:40:57Z</updated>
+  <updated>2026-11-14T16:12:59Z</updated>
   <inni:schema_version>2</inni:schema_version>
   <inni:manifest_url>https://innioasis.app/slidia_manifest.xml</inni:manifest_url>
   <inni:firmware_list_url>https://innioasis.app/firmware-list.html</inni:firmware_list_url>
@@ -2840,7 +2840,7 @@
       </inni:release>
       <inni:release tag="3.2.0-fm" original_tag="3.2.0-fm" mirror_tag="3.2.0-fm" release_name="Portable Flashing Package: System Software 3.2.0 for Innioasis Y2 with FM Radio" published_at="2026-09-13T12:42:26Z">
         <inni:mirror_asset name="rom_y2.zip" tag="3.2.0-fm" original_url="" original_size="354935460" mirror_original_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2.zip">
-          <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows.zip" size="656085982" downloads="57"/>
+          <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows.zip" size="656085982" downloads="58"/>
           <inni:package platform="windows-legacy" name="rom_y2-windows-legacy.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows-legacy.zip" size="417847167" downloads="1"/>
           <inni:package platform="linux" name="rom_y2-linux.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux.zip" size="703407306" downloads="18"/>
           <inni:package platform="linux-arm64" name="rom_y2-linux-arm64.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux-arm64.zip" size="528311540" downloads="1"/>
@@ -3336,12 +3336,12 @@
       </inni:release>
       <inni:release tag="baseline-254" original_tag="baseline-254" mirror_tag="baseline-254" release_name="Portable Flashing Package: Y2Linux 1.0 Beta 9.3.27" published_at="2026-11-12T23:18:50Z">
         <inni:mirror_asset name="Y2Linux-1.0.0-beta.9.3.27-first-install.zip" tag="baseline-254" original_url="" original_size="68989880" mirror_original_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install.zip">
-          <inni:package platform="windows" name="Y2Linux-1.0.0-beta.9.3.27-first-install-windows.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-windows.zip" size="381986325" downloads="8"/>
-          <inni:package platform="windows-legacy" name="Y2Linux-1.0.0-beta.9.3.27-first-install-windows-legacy.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-windows-legacy.zip" size="143747614" downloads="1"/>
-          <inni:package platform="linux" name="Y2Linux-1.0.0-beta.9.3.27-first-install-linux.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux.zip" size="429307696" downloads="3"/>
-          <inni:package platform="linux-arm64" name="Y2Linux-1.0.0-beta.9.3.27-first-install-linux-arm64.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux-arm64.zip" size="254211930" downloads="1"/>
-          <inni:package platform="linux-legacy" name="Y2Linux-1.0.0-beta.9.3.27-first-install-linux-legacy.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux-legacy.zip" size="142161936" downloads="1"/>
-          <inni:package platform="macos" name="Y2Linux-1.0.0-beta.9.3.27-first-install-macos.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-macos.zip" size="188620432" downloads="9"/>
+          <inni:package platform="windows" name="Y2Linux-1.0.0-beta.9.3.27-first-install-windows.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-windows.zip" size="381986325" downloads="9"/>
+          <inni:package platform="windows-legacy" name="Y2Linux-1.0.0-beta.9.3.27-first-install-windows-legacy.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-windows-legacy.zip" size="143747614" downloads="2"/>
+          <inni:package platform="linux" name="Y2Linux-1.0.0-beta.9.3.27-first-install-linux.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux.zip" size="429307696" downloads="4"/>
+          <inni:package platform="linux-arm64" name="Y2Linux-1.0.0-beta.9.3.27-first-install-linux-arm64.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux-arm64.zip" size="254211930" downloads="2"/>
+          <inni:package platform="linux-legacy" name="Y2Linux-1.0.0-beta.9.3.27-first-install-linux-legacy.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-linux-legacy.zip" size="142161936" downloads="2"/>
+          <inni:package platform="macos" name="Y2Linux-1.0.0-beta.9.3.27-first-install-macos.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/Y2Linux-1.0.0-beta.9.3.27-first-install-macos.zip" size="188620432" downloads="10"/>
         </inni:mirror_asset>
         <inni:mirror_asset name="bootimg.img.gz" tag="baseline-254" original_url="" original_size="7557824" mirror_original_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/bootimg.img.gz">
         </inni:mirror_asset>
@@ -5183,7 +5183,7 @@
     <inni:repo>y1-community/y1-stock-rom</inni:repo>
     <inni:tag_name>3.2.4-fm</inni:tag_name>
     <inni:name>Original System Software 3.2.4 for Innioasis Y2</inni:name>
-    <inni:downloads>63</inni:downloads>
+    <inni:downloads>66</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip" title="rom_y2.zip" length="372994194" type="application/x-zip-compressed"/>
@@ -5219,7 +5219,7 @@ This is the software currently being shipped on Y2 retail units.
     <inni:repo>y1-community/y1-stock-rom</inni:repo>
     <inni:tag_name>3.2.0-fm</inni:tag_name>
     <inni:name>System Software 3.2.0 for Innioasis Y2 with FM Radio</inni:name>
-    <inni:downloads>820</inni:downloads>
+    <inni:downloads>821</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/rom_y2.zip" title="rom_y2.zip" length="355558382" type="application/zip"/>
@@ -5254,7 +5254,7 @@ This can be used to restore your Y2 back to its factory conditions and get thing
     <inni:repo>y1-community/y1-stock-rom</inni:repo>
     <inni:tag_name>3.1.2</inni:tag_name>
     <inni:name>Original System Software 3.1.2 for Innioasis Y1</inni:name>
-    <inni:downloads>8894</inni:downloads>
+    <inni:downloads>8897</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip" title="rom.zip" length="250125316" type="application/zip"/>
@@ -6273,7 +6273,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q5&gt;</content>
     <inni:repo>schulzcode/y2linux</inni:repo>
     <inni:tag_name>baseline-261</inni:tag_name>
     <inni:name>Y2Linux 1.0 Beta 9.3.30</inni:name>
-    <inni:downloads>73</inni:downloads>
+    <inni:downloads>76</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://innioasis.app/assets/reborn_icon.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/bootimg.img.gz" title="bootimg.img.gz" length="7557676" type="application/gzip"/>
@@ -6525,7 +6525,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <inni:repo>schulzcode/y2linux</inni:repo>
     <inni:tag_name>baseline-254</inni:tag_name>
     <inni:name>Y2Linux 1.0 Beta 9.3.27</inni:name>
-    <inni:downloads>56</inni:downloads>
+    <inni:downloads>63</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://innioasis.app/assets/reborn_icon.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-254/bootimg.img.gz" title="bootimg.img.gz" length="7557824" type="application/gzip"/>
@@ -13762,6 +13762,69 @@ Assets: `manifest.json` + `manifest.sig` (Ed25519, key `platform-v1-release-2026
 </content>
   </entry>
   <entry>
+    <id>tag:innioasis.app,2026:jarvissax/rondo/v3.0.3</id>
+    <updated>2026-11-14T16:09:05Z</updated>
+    <published>2026-11-14T16:09:05Z</published>
+    <title>Rondo 3.0.3</title>
+    <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v3.0.3"/>
+    <inni:repo>jarvissax/rondo</inni:repo>
+    <inni:tag_name>v3.0.3</inni:tag_name>
+    <inni:name>Rondo 3.0.3</inni:name>
+    <inni:downloads>0</inni:downloads>
+    <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png</inni:icon_url>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip" title="rom.zip" length="529817030" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.3/rondo-3.0.3.rondo" title="rondo-3.0.3.rondo" length="17159275" type="application/octet-stream"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png" title="updater.png" length="12952" type="image/png"/>
+    <content type="text">**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it to [Rondo server 3.2.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0) (its admin page offers it) so YouTube Music downloads get their year and track number; 3.1.0 works for everything else.
+
+**New**
+- **YouTube Music downloads.** Hold center on a song and choose **Download**, or **Download all** on an album or playlist. Songs go to `Music/YouTube Music/Artist/Album (Year)/01 - Title.m4a`: YouTube&#x27;s own AAC, with the artist, album, year, track number, cover and lyrics (timed where LRCLIB has them) in its tags. **YouTube Music › Home › Downloads** plays them from the card, also offline.
+- **YouTube Music&#x27;s Home looks like the app&#x27;s:** each section a shelf of covers that slides along as you turn the wheel, then on into the next one.
+- **The dashboard fills in what your songs&#x27; tags leave out** (Library › Fill in): a missing genre, year, album or track number from the iTunes Store and MusicBrainz, reviewed before it&#x27;s saved into the songs; and lyrics from LRCLIB for every song that has none.
+- **Organize looks up a show&#x27;s or a movie&#x27;s years** on the dashboard (TVmaze, Wikidata), so shows are filed as `Silo (2023-)` or `The Walking Dead (2010-2022)`.
+
+**Changed**
+- **Shows and movies go inside Videos:** `Videos/Shows/…` and `Videos/Movies/…`, the way Jellyfin expects them. Organize moves the old top-level `Shows` and `Movies` folders&#x27; files there.
+- **A song&#x27;s menu has an icon for each action.**
+
+**Fixed**
+- **A YouTube video downloads and plays in its original language,** not a dub YouTube listed first.
+- **Changing Repeat or Shuffle no longer stops the song for a moment.**
+- **Library › Files slides in** like every other screen.
+- **The dashboard&#x27;s Wheel acceleration and Wheel vibration** can be changed again, and its notes keep their distance from what&#x27;s around them.
+
+**How to get it**
+- **On Rondo 3.0.x:** Settings › System › Software update, the dashboard&#x27;s Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.
+- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.3), with **Keep my settings** turned on.
+
+Files: `rondo-3.0.3.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#303-november-14-2026).
+</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:jarvissax/rondo/server-v3.2.0</id>
+    <updated>2026-11-14T16:07:20Z</updated>
+    <published>2026-11-14T16:07:20Z</published>
+    <title>Rondo server 3.2.0</title>
+    <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0"/>
+    <inni:repo>jarvissax/rondo</inni:repo>
+    <inni:tag_name>server-v3.2.0</inni:tag_name>
+    <inni:name>Rondo server 3.2.0</inni:name>
+    <inni:downloads>0</inni:downloads>
+    <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://innioasis.app/assets/rondo_icon.jpg</inni:icon_url>
+    <content type="text">**YouTube Music downloads get their full details.**
+
+- **`GET /music/song/:id`** gives a song&#x27;s artist, album, year, track number and cover, from its queue row and its album&#x27;s page. Rondo 3.0.3 uses it to name and tag the songs it downloads (`Music/YouTube Music/Artist/Album (Year)/01 - Title.m4a`). Rondo works without it, but a song downloaded through an older server is named from its row, without its year and track number.
+
+**How to update**
+- The admin page&#x27;s **Update**.
+- Or by hand: `docker compose -f infra/compose.home.yaml pull &amp;&amp; docker compose -f infra/compose.home.yaml up -d` (or `compose.vps.yaml`).
+
+Images: `ghcr.io/jarvissax/rondo-server:3.2.0` and `ghcr.io/jarvissax/rondo-updater:3.2.0` (also `latest`). Changes: [server/CHANGELOG.md](https://github.com/jarvissax/rondo/blob/main/server/CHANGELOG.md).
+</content>
+  </entry>
+  <entry>
     <id>tag:innioasis.app,2026:jarvissax/rondo/v3.0.2</id>
     <updated>2026-11-12T11:47:50Z</updated>
     <published>2026-11-12T11:47:50Z</published>
@@ -14122,7 +14185,7 @@ The firmware is built with [`firmware/build.sh`](https://github.com/jarvissax/ro
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>stable-v0.6.1</inni:tag_name>
     <inni:name> Rockbox-Y1 v0.6.1</inni:name>
-    <inni:downloads>308</inni:downloads>
+    <inni:downloads>311</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rockbox.apk" title="rockbox.apk" length="16533880" type="application/vnd.android.package-archive"/>
@@ -14158,7 +14221,7 @@ The firmware is built with [`firmware/build.sh`](https://github.com/jarvissax/ro
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>stable-v0.6</inni:tag_name>
     <inni:name>Rockbox-Y1 v0.6</inni:name>
-    <inni:downloads>1056</inni:downloads>
+    <inni:downloads>1058</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/rockbox.apk" title="rockbox.apk" length="16537976" type="application/vnd.android.package-archive"/>
@@ -14405,7 +14468,7 @@ License: MIT</content>
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>stable-v0.5</inni:tag_name>
     <inni:name>Rockbox-Y1 v0.5</inni:name>
-    <inni:downloads>14316</inni:downloads>
+    <inni:downloads>14317</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/rockbox.apk" title="rockbox.apk" length="16402741" type="application/vnd.android.package-archive"/>
@@ -14880,7 +14943,7 @@ Includes these languages:
     <inni:repo>spycemagic/y2-rockbox</inni:repo>
     <inni:tag_name>v0.2.5-beta</inni:tag_name>
     <inni:name>V2.5</inni:name>
-    <inni:downloads>1133</inni:downloads>
+    <inni:downloads>1135</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/INSTALL-GUIDE.md" title="INSTALL-GUIDE.md" length="4237" type="application/octet-stream"/>
@@ -17268,7 +17331,7 @@ Features
     <inni:repo>ismileblue/y1_launcher</inni:repo>
     <inni:tag_name>launcher-v0.11.6</inni:tag_name>
     <inni:name>JJ Launcher ROM v0.11.6</inni:name>
-    <inni:downloads>1142</inni:downloads>
+    <inni:downloads>1143</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom.zip" title="rom.zip" length="456271826" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom_type_b.zip" title="rom_type_b.zip" length="399777849" type="application/zip"/>
@@ -19480,7 +19543,7 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/v1.5.0.
     <inni:repo>schulzcode/Y2Player</inni:repo>
     <inni:tag_name>Release2.5</inni:tag_name>
     <inni:name>Y2Player V2.5</inni:name>
-    <inni:downloads>1153</inni:downloads>
+    <inni:downloads>1154</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/rom_y2.zip" title="rom_y2.zip" length="296365314" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/system.img" title="system.img" length="369235868" type="application/octet-stream"/>
@@ -20946,7 +21009,7 @@ adb shell rm -rf /data/data/com.innioasis.y1/code_cache/secondary-dexes/
     <inni:repo>Leska1337/better-Y</inni:repo>
     <inni:tag_name>v1.1.0</inni:tag_name>
     <inni:name>Version 1.1.0</inni:name>
-    <inni:downloads>506</inni:downloads>
+    <inni:downloads>507</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/Leska1337/better-Y/raw/main/screenshots/plus_logo.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/Leska1337/better-Y/releases/download/v1.1.0/better-Y_3.1.2_v1.1.0.apk" title="better-Y_3.1.2_v1.1.0.apk" length="60200797" type="application/vnd.android.package-archive"/>
@@ -21323,7 +21386,7 @@ General performance and stability improvements
     <inni:repo>y1-community/y1-stock-rom-mirror</inni:repo>
     <inni:tag_name>3.2.0-fm</inni:tag_name>
     <inni:name>Portable Flashing Package: System Software 3.2.0 for Innioasis Y2 with FM Radio</inni:name>
-    <inni:downloads>99</inni:downloads>
+    <inni:downloads>100</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="528311540" type="application/zip"/>
@@ -23687,7 +23750,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <inni:repo>y1-community/y2linux-mirror</inni:repo>
     <inni:tag_name>baseline-254</inni:tag_name>
     <inni:name>Portable Flashing Package: Y2Linux 1.0 Beta 9.3.27</inni:name>
-    <inni:downloads>24</inni:downloads>
+    <inni:downloads>30</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/bootimg.img.gz" title="bootimg.img.gz" length="7557824" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-254/manifest.json" title="manifest.json" length="4246" type="application/json"/>

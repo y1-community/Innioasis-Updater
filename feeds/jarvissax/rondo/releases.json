@@ -1,5 +1,89 @@
 [
   {
+    "id": 445417488,
+    "tag_name": "v3.0.3",
+    "name": "Rondo 3.0.3",
+    "body": "**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it to [Rondo server 3.2.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0) (its admin page offers it) so YouTube Music downloads get their year and track number; 3.1.0 works for everything else.\n\n**New**\n- **YouTube Music downloads.** Hold center on a song and choose **Download**, or **Download all** on an album or playlist. Songs go to `Music/YouTube Music/Artist/Album (Year)/01 - Title.m4a`: YouTube's own AAC, with the artist, album, year, track number, cover and lyrics (timed where LRCLIB has them) in its tags. **YouTube Music \u203a Home \u203a Downloads** plays them from the card, also offline.\n- **YouTube Music's Home looks like the app's:** each section a shelf of covers that slides along as you turn the wheel, then on into the next one.\n- **The dashboard fills in what your songs' tags leave out** (Library \u203a Fill in): a missing genre, year, album or track number from the iTunes Store and MusicBrainz, reviewed before it's saved into the songs; and lyrics from LRCLIB for every song that has none.\n- **Organize looks up a show's or a movie's years** on the dashboard (TVmaze, Wikidata), so shows are filed as `Silo (2023-)` or `The Walking Dead (2010-2022)`.\n\n**Changed**\n- **Shows and movies go inside Videos:** `Videos/Shows/\u2026` and `Videos/Movies/\u2026`, the way Jellyfin expects them. Organize moves the old top-level `Shows` and `Movies` folders' files there.\n- **A song's menu has an icon for each action.**\n\n**Fixed**\n- **A YouTube video downloads and plays in its original language,** not a dub YouTube listed first.\n- **Changing Repeat or Shuffle no longer stops the song for a moment.**\n- **Library \u203a Files slides in** like every other screen.\n- **The dashboard's Wheel acceleration and Wheel vibration** can be changed again, and its notes keep their distance from what's around them.\n\n**How to get it**\n- **On Rondo 3.0.x:** Settings \u203a System \u203a Software update, the dashboard's Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.\n- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.3), with **Keep my settings** turned on.\n\nFiles: `rondo-3.0.3.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#303-november-14-2026).\n",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-14T16:02:44Z",
+    "published_at": "2026-11-14T16:09:05Z",
+    "html_url": "https://github.com/jarvissax/rondo/releases/tag/v3.0.3",
+    "icon_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 748024902,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip",
+        "size": 529817030,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-14T16:11:01Z",
+        "updated_at": "2026-11-14T16:11:15Z",
+        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/748024902"
+      },
+      {
+        "id": 748018354,
+        "name": "rondo-3.0.3.rondo",
+        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/rondo-3.0.3.rondo",
+        "size": 17159275,
+        "download_count": 0,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-14T16:08:47Z",
+        "updated_at": "2026-11-14T16:08:58Z",
+        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/748018354"
+      },
+      {
+        "id": 748024900,
+        "name": "updater.png",
+        "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png",
+        "size": 12952,
+        "download_count": 0,
+        "content_type": "image/png",
+        "created_at": "2026-11-14T16:11:01Z",
+        "updated_at": "2026-11-14T16:11:01Z",
+        "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/748024900"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "v3.0.3",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip",
+          "downloads": 0
+        }
+      ],
+      "portable": []
+    }
+  },
+  {
+    "id": 445416617,
+    "tag_name": "server-v3.2.0",
+    "name": "Rondo server 3.2.0",
+    "body": "**YouTube Music downloads get their full details.**\n\n- **`GET /music/song/:id`** gives a song's artist, album, year, track number and cover, from its queue row and its album's page. Rondo 3.0.3 uses it to name and tag the songs it downloads (`Music/YouTube Music/Artist/Album (Year)/01 - Title.m4a`). Rondo works without it, but a song downloaded through an older server is named from its row, without its year and track number.\n\n**How to update**\n- The admin page's **Update**.\n- Or by hand: `docker compose -f infra/compose.home.yaml pull && docker compose -f infra/compose.home.yaml up -d` (or `compose.vps.yaml`).\n\nImages: `ghcr.io/jarvissax/rondo-server:3.2.0` and `ghcr.io/jarvissax/rondo-updater:3.2.0` (also `latest`). Changes: [server/CHANGELOG.md](https://github.com/jarvissax/rondo/blob/main/server/CHANGELOG.md).\n",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-14T16:02:04Z",
+    "published_at": "2026-11-14T16:07:20Z",
+    "html_url": "https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0",
+    "icon_url": "https://innioasis.app/assets/rondo_icon.jpg",
+    "icon_dark_url": "",
+    "assets": [],
+    "mirror_downloads": 0,
+    "downloads": 0,
+    "download_breakdown": {
+      "tag": "server-v3.2.0",
+      "mirrors": "",
+      "firmware": [],
+      "portable": []
+    }
+  },
+  {
     "id": 442872569,
     "tag_name": "v3.0.2",
     "name": "Rondo 3.0.2",

@@ -4,7 +4,66 @@
   <title>Release notes from jarvissax/rondo</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/jarvissax/rondo/releases.atom"/>
-  <updated>2026-11-12T11:47:50Z</updated>
+  <updated>2026-11-14T16:09:05Z</updated>
+  <entry>
+    <id>tag:innioasis.app,2026:jarvissax/rondo/v3.0.3</id>
+    <updated>2026-11-14T16:09:05Z</updated>
+    <published>2026-11-14T16:09:05Z</published>
+    <title>Rondo 3.0.3</title>
+    <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v3.0.3"/>
+    <innioasis:tag_name>v3.0.3</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip" title="rom.zip" length="529817030" type="application/zip" innioasis:download_count="0" innioasis:asset_id="748024902"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.3/rondo-3.0.3.rondo" title="rondo-3.0.3.rondo" length="17159275" type="application/octet-stream" innioasis:download_count="0" innioasis:asset_id="748018354"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="0" innioasis:asset_id="748024900"/>
+    <content type="text">**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it to [Rondo server 3.2.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0) (its admin page offers it) so YouTube Music downloads get their year and track number; 3.1.0 works for everything else.
+
+**New**
+- **YouTube Music downloads.** Hold center on a song and choose **Download**, or **Download all** on an album or playlist. Songs go to `Music/YouTube Music/Artist/Album (Year)/01 - Title.m4a`: YouTube&#x27;s own AAC, with the artist, album, year, track number, cover and lyrics (timed where LRCLIB has them) in its tags. **YouTube Music › Home › Downloads** plays them from the card, also offline.
+- **YouTube Music&#x27;s Home looks like the app&#x27;s:** each section a shelf of covers that slides along as you turn the wheel, then on into the next one.
+- **The dashboard fills in what your songs&#x27; tags leave out** (Library › Fill in): a missing genre, year, album or track number from the iTunes Store and MusicBrainz, reviewed before it&#x27;s saved into the songs; and lyrics from LRCLIB for every song that has none.
+- **Organize looks up a show&#x27;s or a movie&#x27;s years** on the dashboard (TVmaze, Wikidata), so shows are filed as `Silo (2023-)` or `The Walking Dead (2010-2022)`.
+
+**Changed**
+- **Shows and movies go inside Videos:** `Videos/Shows/…` and `Videos/Movies/…`, the way Jellyfin expects them. Organize moves the old top-level `Shows` and `Movies` folders&#x27; files there.
+- **A song&#x27;s menu has an icon for each action.**
+
+**Fixed**
+- **A YouTube video downloads and plays in its original language,** not a dub YouTube listed first.
+- **Changing Repeat or Shuffle no longer stops the song for a moment.**
+- **Library › Files slides in** like every other screen.
+- **The dashboard&#x27;s Wheel acceleration and Wheel vibration** can be changed again, and its notes keep their distance from what&#x27;s around them.
+
+**How to get it**
+- **On Rondo 3.0.x:** Settings › System › Software update, the dashboard&#x27;s Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.
+- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.3), with **Keep my settings** turned on.
+
+Files: `rondo-3.0.3.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#303-november-14-2026).
+</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:jarvissax/rondo/server-v3.2.0</id>
+    <updated>2026-11-14T16:07:20Z</updated>
+    <published>2026-11-14T16:07:20Z</published>
+    <title>Rondo server 3.2.0</title>
+    <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0"/>
+    <innioasis:tag_name>server-v3.2.0</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:icon_url>https://innioasis.app/assets/rondo_icon.jpg</innioasis:icon_url>
+    <content type="text">**YouTube Music downloads get their full details.**
+
+- **`GET /music/song/:id`** gives a song&#x27;s artist, album, year, track number and cover, from its queue row and its album&#x27;s page. Rondo 3.0.3 uses it to name and tag the songs it downloads (`Music/YouTube Music/Artist/Album (Year)/01 - Title.m4a`). Rondo works without it, but a song downloaded through an older server is named from its row, without its year and track number.
+
+**How to update**
+- The admin page&#x27;s **Update**.
+- Or by hand: `docker compose -f infra/compose.home.yaml pull &amp;&amp; docker compose -f infra/compose.home.yaml up -d` (or `compose.vps.yaml`).
+
+Images: `ghcr.io/jarvissax/rondo-server:3.2.0` and `ghcr.io/jarvissax/rondo-updater:3.2.0` (also `latest`). Changes: [server/CHANGELOG.md](https://github.com/jarvissax/rondo/blob/main/server/CHANGELOG.md).
+</content>
+  </entry>
   <entry>
     <id>tag:innioasis.app,2026:jarvissax/rondo/v3.0.2</id>
     <updated>2026-11-12T11:47:50Z</updated>
