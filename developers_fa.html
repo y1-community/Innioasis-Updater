@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="lumen.css?v=20261110picker">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261111cards" defer></script>
+  <script src="site-init.js?v=20261114dl1" defer></script>
   <style>
     .lumen-manifest-form { display: grid; gap: 1rem; margin: 1.25rem 0; padding: 1.25rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
     .lumen-manifest-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .9rem; }
@@ -132,7 +132,7 @@
       <h1>سیستم عامل خود را به Updater CE اضافه کنید.</h1>
       <p class="lead">Updater CE کاتالوگ انجمن و نصب کننده سیستم عامل سفارشی است. پروژه خود را از پایه ROM توسعه دهید، آن را به عنوان یک مخزن عمومی با دارایی های انتشار صحیح منتشر کنید، ورودی های مدل را به آن اضافه کنید <code>slidia_manifest.xml</code>، فیلترهای مدل را تست کنید و درخواست کشش را باز کنید. یک مخزن می تواند به هر مدلی که پشتیبانی می کند سرویس دهد.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">منبع Updater CE را مشاهده کنید</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/ryan-specter/updater-ce-neo" target="_blank" rel="noopener noreferrer">منبع Updater CE را مشاهده کنید</a>
         <a class="lumen-button" href="firmware_fa.html">دانلود نرم افزارها را مرور کنید</a>
       </div>
     </header>
@@ -197,7 +197,7 @@
 <section class="lumen-guide-section" aria-labelledby="steps-title">
       <h2 id="steps-title">یک پروژه را در پنج مرحله منتشر کنید</h2>
       <ol class="lumen-steps">
-        <li><strong>مخزن Updater CE را فورک کنید.</strong> چنگال خود را ایجاد کنید <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>، سپس چنگال خود را به صورت محلی کلون کنید.</li>
+        <li><strong>مخزن Updater CE را فورک کنید.</strong> چنگال خود را ایجاد کنید <a href="https://github.com/ryan-specter/updater-ce-neo" target="_blank" rel="noopener noreferrer">ryan-specter/updater-ce-neo</a>، سپس چنگال خود را به صورت محلی کلون کنید.</li>
         <li><strong>یک مخزن سیستم عامل عمومی آماده کنید.</strong> مطمئن شوید که مخزن عمومی است و انتشار آن حاوی دارایی های ZIP صحیح است. می توانید قرار دهید <code>rom.zip</code>, <code>rom_type_b.zip</code>، و <code>rom_y2.zip</code> در همان نسخه زمانی که آنها به همان نسخه تعلق دارند.</li>
         <li><strong>مانیفست را ویرایش کنید.</strong> باز کنید <code>slidia_manifest.xml</code> در ریشه فورک Updater CE شما. برای هر مدلی که نسخه پشتیبانی می کند یک خط اضافه کنید (Y1 و Y2 جفت مشترک هستند). این <code>repo</code> ارزش مخزن است <code>owner/repository</code>; <code>url</code> صفحه پروژه عمومی است.</li>
         <li><strong>کاتالوگ را تست کنید</strong> Updater را از تسویه حساب ویرایش شده اجرا کنید. Y1 را انتخاب کنید و تأیید کنید که پروژه دارایی‌های Y1 را نشان می‌دهد. Y2 را انتخاب کنید و تأیید کنید که انتشار Y2 را نشان می‌دهد. هنگامی که هر دو منتشر می شوند، Type A و Type B را به طور جداگانه بررسی کنید.</li>
@@ -512,7 +512,7 @@
 <section class="lumen-guide-section" aria-labelledby="links-title">
       <h2 id="links-title">لینک های مفید پروژه</h2>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/ryan-specter/updater-ce-neo/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
         <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">مانیفست را ببینید</a>
         <a class="lumen-button" href="support_devs_fa.html">یادداشت های مشارکت جامعه</a>
         <a class="lumen-button" href="troubleshooting_fa.html">عیب‌یابی</a>
@@ -559,7 +559,7 @@
 </main>
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
-  <script src="nav.js?v=20261111nav" defer></script>
+  <script src="nav.js?v=20261114links1" defer></script>
 <script src="site-i18n.js?v=20260830" defer></script>
 <script src="portable-zip-links.js?v=20261111zip" defer></script>
 <script>

@@ -1528,14 +1528,14 @@
         if (global.InnioasisDownloads || document.getElementById("site-downloads-script")) return;
         var node = document.createElement("script");
         node.id = "site-downloads-script";
-        node.src = siteBase() + "site-downloads.js?v=20261117inline11";
+        node.src = siteBase() + "site-downloads.js?v=20261117inline12";
         node.defer = true;
         document.head.appendChild(node);
     }
 
-    /* In-page progress for rom packages is on by default; installer links
-       are excluded inside site-downloads.js itself, so app and driver
-       buttons always stay plain browser downloads. */
+    /* In-page progress for packages, installers, app images and drivers is on
+       by default. site-downloads.js resolves a staggered app release before
+       the transfer and gives each job its own progress bar. */
     if (global.InnioasisInlineDownloads === false) installDirectDownloads();
     else loadSiteDownloads();
 

@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="lumen.css?v=20261110picker">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261111cards" defer></script>
+  <script src="site-init.js?v=20261114dl1" defer></script>
   <style>
     .lumen-manifest-form { display: grid; gap: 1rem; margin: 1.25rem 0; padding: 1.25rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
     .lumen-manifest-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .9rem; }
@@ -132,7 +132,7 @@
       <h1>Thêm chương trình cơ sở của bạn vào Updater CE.</h1>
       <p class="lead">Updater CE là danh mục cộng đồng và trình cài đặt cho chương trình cơ sở tùy chỉnh. Phát triển dự án của bạn từ cơ sở ROM, xuất bản nó dưới dạng kho lưu trữ công cộng với nội dung phát hành chính xác, thêm các mục mô hình vào <code>slidia_manifest.xml</code>, kiểm tra bộ lọc mô hình và mở yêu cầu kéo. Một kho lưu trữ có thể phục vụ mọi mô hình mà nó hỗ trợ.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">Xem nguồn CE của Trình cập nhật</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/ryan-specter/updater-ce-neo" target="_blank" rel="noopener noreferrer">Xem nguồn CE của Trình cập nhật</a>
         <a class="lumen-button" href="firmware_vi.html">Duyệt tải xuống phần mềm</a>
       </div>
     </header>
@@ -197,7 +197,7 @@
 <section class="lumen-guide-section" aria-labelledby="steps-title">
       <h2 id="steps-title">Xuất bản một dự án trong năm bước</h2>
       <ol class="lumen-steps">
-        <li><strong>Phân nhánh kho lưu trữ Updater CE.</strong> Tạo nhánh của riêng bạn <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, sau đó sao chép ngã ba của bạn cục bộ.</li>
+        <li><strong>Phân nhánh kho lưu trữ Updater CE.</strong> Tạo nhánh của riêng bạn <a href="https://github.com/ryan-specter/updater-ce-neo" target="_blank" rel="noopener noreferrer">ryan-specter/updater-ce-neo</a>, sau đó sao chép ngã ba của bạn cục bộ.</li>
         <li><strong>Chuẩn bị một kho lưu trữ phần mềm công cộng.</strong> Đảm bảo kho lưu trữ ở chế độ công khai và bản phát hành của nó chứa đúng nội dung ZIP. Bạn có thể đặt <code>rom.zip</code>, <code>rom_type_b.zip</code>và <code>rom_y2.zip</code> trên cùng một bản phát hành khi chúng thuộc cùng một phiên bản.</li>
         <li><strong>Chỉnh sửa bảng kê khai.</strong> Mở <code>slidia_manifest.xml</code> trong thư mục gốc của nhánh Updater CE của bạn. Thêm một dòng cho mỗi kiểu máy mà bản phát hành hỗ trợ (Y1 và Y2 là cặp chung). các <code>repo</code> giá trị là của kho lưu trữ <code>owner/repository</code>; <code>url</code> là trang dự án công cộng.</li>
         <li><strong>Kiểm tra danh mục.</strong> Chạy Trình cập nhật từ thanh toán đã chỉnh sửa. Chọn Y1 và xác nhận dự án hiển thị nội dung Y1. Chọn Y2 và xác nhận nó hiển thị bản phát hành Y2. Kiểm tra riêng Type A và Type B khi cả hai đều được xuất bản.</li>
@@ -512,7 +512,7 @@
 <section class="lumen-guide-section" aria-labelledby="links-title">
       <h2 id="links-title">Liên kết dự án hữu ích</h2>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Trình cập nhật ngã ba CE</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/ryan-specter/updater-ce-neo/fork" target="_blank" rel="noopener noreferrer">Trình cập nhật ngã ba CE</a>
         <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Xem bảng kê khai</a>
         <a class="lumen-button" href="support_devs_vi.html">Ghi chú đóng góp của cộng đồng</a>
         <a class="lumen-button" href="troubleshooting_vi.html">Khắc phục sự cố</a>
@@ -559,7 +559,7 @@
 </main>
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
-  <script src="nav.js?v=20261111nav" defer></script>
+  <script src="nav.js?v=20261114links1" defer></script>
 <script src="site-i18n.js?v=20260830" defer></script>
 <script src="portable-zip-links.js?v=20261111zip" defer></script>
 <script>

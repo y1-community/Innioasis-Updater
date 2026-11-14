@@ -30,12 +30,21 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261117inline11";
-    /* Only archive packages get the in-page treatment. Installers and app
-       images always go to the browser's own downloader: a page must never
-       stand between a reader and the app they are installing. */
-    var STREAMABLE = /\.(zip|7z|tar\.gz|tgz|tar\.xz|txz|tar\.bz2|tbz2)(\?|#|$)/i;
-    var NEVER_STREAM = /\.(exe|dmg|appimage|msi|pkg|apk|img|bin|iso|jar|ipa)(\?|#|$)/i;
+    var VERSION = "20261117inline12";
+    /* Archives, installers and app images all stream in-page. A driver or app
+       download is often the one a reader most wants a speed and time-left for,
+       so it deserves the same progress card as a firmware ZIP. Phone packages
+       and disk images stay with the browser. */
+    var STREAMABLE = /\.(zip|7z|tar\.gz|tgz|tar\.xz|txz|tar\.bz2|tbz2|exe|msi|dmg|pkg|appimage)(\?|#|$)/i;
+    var NEVER_STREAM = /\.(apk|img|bin|iso|jar|ipa)(\?|#|$)/i;
+    /* The app and driver repositories whose "latest" download links may name
+       an asset the newest release does not carry. Those links are resolved
+       against the release list before the transfer starts. */
+    var RELEASE_RESOLVED_REPO = /(^|\/)(innioasis-updater|supplemental-apks)$/i;
+    /* App and driver packages keep their published filename. The portable
+       suffix rule below exists for firmware zips, where a mirror adds the
+       platform to the name and the saved file must match the release. */
+    var APP_DOWNLOAD_URL = /^https:\/\/github\.com\/[^/]+\/(?:innioasis-updater|supplemental-apks|updater-ce-neo)\//i;
     /* rom_y1-windows.zip is a portable build of rom_y1.zip, so a portable
        download saves under the mother package's name. */
     var PORTABLE_SUFFIX = /[-_.](windows-legacy|linux-legacy|windows|win32|win64|win|macos|mac|osx|darwin|linux|android|portable|legacy|x64|amd64|x86_64|x86-64|x86|arm64|aarch64)(?:[-_.](x64|amd64|x86_64|x86-64|x86|arm64|aarch64))?(\.zip)$/i;
@@ -44,6 +53,10 @@
     var jobs = [];
     var seq = 0;
     var jobByAnchor = typeof WeakMap === "function" ? new WeakMap() : null;
+    /* Jobs started from the same button row share one card, so an app and a
+       driver download running together show two bars with their own speed and
+       time left instead of two cards fighting for the same space. */
+    var groups = [];
     var stylesInjected = false;
 
     /* ------------------------------------------------------------- wording
@@ -211,6 +224,8 @@
         style.id = "site-downloads-styles";
         style.textContent = [
             ".site-dl-progress{display:grid;gap:.45rem;box-sizing:border-box;width:100%;max-width:540px;margin:.55rem 0 .25rem;padding:.7rem .8rem;border:1px solid var(--lumen-line-strong,rgba(255,255,255,.22));border-radius:12px;background:var(--lumen-panel-soft,var(--lumen-panel,#161a24));color:var(--lumen-text,#f4f6fb);box-shadow:0 8px 22px rgba(0,0,0,.24);font:500 12.5px/1.4 var(--lumen-body,system-ui,sans-serif);text-align:start;}",
+            ".site-dl-progress-group{position:absolute;z-index:80;display:flex;flex-direction:column;gap:.5rem;width:min(360px,calc(100vw - 1.5rem));}",
+            ".site-dl-progress-group .site-dl-progress{max-width:none;margin:0;}",
             ".site-dl-progress[hidden]{display:none!important;}",
             ".site-dl-progress__head{display:flex;align-items:center;gap:.55rem;min-width:0;}",
             ".site-dl-progress__icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:22px;height:22px;border-radius:999px;background:color-mix(in oklab,var(--lumen-accent,#6b9fff) 20%,transparent);color:var(--lumen-accent,#6b9fff);}",
@@ -242,13 +257,32 @@
         return node;
     }
 
+    function buildGroup() {
+        return element("div", "site-dl-progress-group");
+    }
+
+    function groupFor(container) {
+        for (var i = 0; i < groups.length; i += 1) {
+            if (groups[i].container === container) return groups[i].group;
+        }
+        return null;
+    }
+
+    function forgetGroup(group) {
+        groups = groups.filter(function (entry) { return entry.group !== group; });
+    }
+
+    function anchorContainer(link) {
+        if (!link) return null;
+        if (link.closest) {
+            var row = link.closest(".lumen-actions") || link.closest(".lumen-download-option");
+            if (row) return row;
+        }
+        return link.parentNode;
+    }
+
     function buildPanel(job) {
-        var panel = element("div", "site-dl-progress site-dl-progress--floating");
-        panel.style.position = "absolute";
-        panel.style.zIndex = "80";
-        panel.style.width = "min(340px, calc(100vw - 1.5rem))";
-        panel.style.maxWidth = "none";
-        panel.style.margin = "0";
+        var panel = element("div", "site-dl-progress");
         panel.setAttribute("role", "status");
         panel.setAttribute("aria-live", "polite");
 
@@ -329,28 +363,42 @@
     }
 
     function mount(job, link) {
-        var panel = buildPanel(job);
-        job.panel = panel;
-        if (!doc.body) return panel;
+        var row = buildPanel(job);
+        job.panel = row;
+        if (!doc.body) return row;
         if (!link) {
-            panel.style.position = "fixed";
-            panel.style.right = "1rem";
-            panel.style.bottom = "1rem";
-            doc.body.appendChild(panel);
-            return panel;
+            var detached = buildGroup();
+            detached.style.position = "fixed";
+            detached.style.right = "1rem";
+            detached.style.bottom = "1rem";
+            detached.appendChild(row);
+            doc.body.appendChild(detached);
+            job.group = detached;
+            return row;
         }
-        doc.body.appendChild(panel);
+        var container = anchorContainer(link);
+        var group = container ? groupFor(container) : null;
+        if (!group) {
+            group = buildGroup();
+            doc.body.appendChild(group);
+            if (container) groups.push({ container: container, group: group });
+        }
+        group.appendChild(row);
+        job.group = group;
+        job.container = container;
         placePanel(job);
-        return panel;
+        return row;
     }
 
     /* The card sits over the page beside the pressed link, clear of the table
        cell, and flips above the link when it would fall below the viewport. */
     function placePanel(job) {
-        if (!job || !job.panel || !job.anchor || !job.anchor.getBoundingClientRect) return;
-        var rect = job.anchor.getBoundingClientRect();
-        var width = job.panel.offsetWidth || 340;
-        var height = job.panel.offsetHeight || 150;
+        var node = job && (job.group || job.panel);
+        var target = job && (job.container || job.anchor);
+        if (!node || !target || !target.getBoundingClientRect) return;
+        var rect = target.getBoundingClientRect();
+        var width = node.offsetWidth || 360;
+        var height = node.offsetHeight || 150;
         var gap = 10;
         var viewW = global.innerWidth || 0;
         var viewH = global.innerHeight || 0;
@@ -360,18 +408,25 @@
         if (rect.bottom + height + gap * 2 > viewH) {
             top = rect.top + (global.pageYOffset || 0) - height - gap;
             if (top < (global.pageYOffset || 0) + gap) {
-                top = rect.bottom + (global.pageYOffset || 0) + gap;
+                top = (global.pageYOffset || 0) + gap;
             }
         }
-        job.panel.style.left = Math.round(left) + "px";
-        job.panel.style.top = Math.round(top) + "px";
+        node.style.left = Math.round(left) + "px";
+        node.style.top = Math.round(top) + "px";
     }
 
     function removePanel(job) {
         if (job.panel && job.panel.parentNode) job.panel.parentNode.removeChild(job.panel);
         if (job.holder && job.holder.parentNode) job.holder.parentNode.removeChild(job.holder);
+        var group = job.group;
+        if (group && !group.querySelector(".site-dl-progress")) {
+            if (group.parentNode) group.parentNode.removeChild(group);
+            forgetGroup(group);
+        }
         job.panel = null;
         job.holder = null;
+        job.group = null;
+        job.container = null;
     }
 
     function reposition(job) {
@@ -489,9 +544,10 @@
         if (!/^https:\/\/github\.com\/[^/]+\/[^/]+\/releases\/(?:latest\/)?download\//i.test(String(url || ""))) return url;
         var proxy = downloadProxyUrl();
         if (!proxy) return url;
+        var fallback = APP_DOWNLOAD_URL.test(String(url || "")) ? fileNameOf(url) : motherName(fileNameOf(url));
         return proxy + (proxy.indexOf("?") === -1 ? "?" : "&") +
             "url=" + encodeURIComponent(url) +
-            "&filename=" + encodeURIComponent(saveName || motherName(fileNameOf(url)) || "firmware.zip");
+            "&filename=" + encodeURIComponent(saveName || fallback || "firmware.zip");
     }
 
     function cancelJob(job) {
@@ -657,7 +713,9 @@
         }
         if (resolved && typeof resolved === "object") {
             if (resolved.cancel) { cancelJob(job); return; }
-            if (resolved.name) job.name = motherName(resolved.name);
+            /* A resolver returns the release's own asset name; it is already
+               the filename the reader should get. */
+            if (resolved.name) job.name = resolved.name;
             resolved = resolved.url || "";
         }
         var targetUrl = String(resolved || job.url || "");
@@ -693,7 +751,9 @@
            Content-Disposition, and a portable build resolves to its mother
            package (rom_y1-windows.zip saves as rom_y1.zip). */
         var headerName = headerFileName(response);
-        job.name = motherName(headerName || job.name || "download.bin");
+        job.name = APP_DOWNLOAD_URL.test(targetUrl)
+            ? (headerName || job.name || "download.bin")
+            : motherName(headerName || job.name || "download.bin");
         var length = Number(response.headers.get("content-length") || 0);
         job.total = Number.isFinite(length) && length > 0 ? length : 0;
         job.status = "running";
@@ -773,10 +833,165 @@
         finish(job);
     }
 
+    /* ------------------------------------------------------- release assets
+
+       A "releases/latest/download/installer.exe" link only works while the
+       newest release happens to carry that exact file. The app and driver
+       repositories publish staggered releases, so the newest one can omit a
+       platform build that an older release still has. Before the transfer
+       starts, the release list is read and the newest release carrying the
+       requested kind of asset wins; when no release names it, the newest
+       release's closest file is used, and the original link is the last
+       resort. */
+    var releaseListCache = {};
+
+    function releaseRepo(url) {
+        var match = String(url || "").match(/^https:\/\/github\.com\/([^/]+)\/([^/]+)\/releases\/latest\/download\//i);
+        if (!match) return "";
+        var repo = match[1] + "/" + match[2];
+        return RELEASE_RESOLVED_REPO.test(repo) ? repo : "";
+    }
+
+    function releaseOrderKey(release) {
+        var tag = String((release && release.tag_name) || "");
+        var stamp = 0;
+        var match = tag.match(/(^|[^0-9])((?:19|20)\d{2})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(?:[-_.]?(\d{2})(\d{2}))?(?!\d)/);
+        if (match) {
+            var year = Number(match[2]);
+            var month = Number(match[3]);
+            var day = Number(match[4]);
+            var value = Date.UTC(year, month - 1, day, Number(match[5] || 0), Number(match[6] || 0));
+            var check = new Date(value);
+            if (check.getUTCFullYear() === year && check.getUTCMonth() === month - 1 && check.getUTCDate() === day) stamp = value;
+        }
+        var semver = [];
+        if (!stamp) {
+            var version = tag.match(/(?:^|[^0-9A-Za-z])v?(\d+(?:\.\d+)+)(?![0-9A-Za-z])/i);
+            if (version) semver = version[1].split(".").map(Number);
+        }
+        return [stamp || semver.length ? 1 : 0, stamp, semver,
+            Date.parse((release && release.published_at) || "") || 0, tag.toLowerCase()];
+    }
+
+    function compareReleaseOrder(a, b) {
+        for (var index = 0; index < 4; index += 1) {
+            var left = a[index];
+            var right = b[index];
+            if (Array.isArray(left) && Array.isArray(right)) {
+                var length = Math.max(left.length, right.length);
+                for (var part = 0; part < length; part += 1) {
+                    var l = part < left.length ? left[part] : 0;
+                    var r = part < right.length ? right[part] : 0;
+                    if (l !== r) return l - r;
+                }
+            } else if (left !== right) {
+                return left - right;
+            }
+        }
+        return a[4].localeCompare(b[4]);
+    }
+
+    function newestReleases(list) {
+        return (list || []).slice().sort(function (a, b) {
+            return compareReleaseOrder(releaseOrderKey(b), releaseOrderKey(a));
+        });
+    }
+
+    function assetExtension(name) {
+        var lower = String(name || "").toLowerCase();
+        if (/\.tar\.gz$/.test(lower)) return ".tar.gz";
+        if (/\.tar\.xz$/.test(lower)) return ".tar.xz";
+        var match = lower.match(/(\.[a-z0-9]+)$/);
+        return match ? match[1] : "";
+    }
+
+    /* How well an asset in a release answers the link the reader pressed.
+       Exact name wins; otherwise the extension names the platform for an
+       installer or app image, while an archive has to name it. */
+    function assetMatch(name, wantedName) {
+        var lower = String(name || "").toLowerCase();
+        var wanted = String(wantedName || "").toLowerCase();
+        var extension = assetExtension(wanted);
+        if (!extension || assetExtension(lower) !== extension) return -1;
+        if (/source|sha256|checksum|licen[cs]e|legal/i.test(lower)) return -1;
+        if (lower === wanted) return 1000;
+        var archive = /\.(zip|7z|tar\.gz|tgz|tar\.xz|txz|tar\.bz2|tbz2)$/.test(lower);
+        var score = archive ? 100 : 300;
+        if (archive) {
+            var tokens = [];
+            if (/mac|osx|darwin/.test(wanted)) tokens = ["mac", "osx", "darwin"];
+            else if (/linux/.test(wanted)) tokens = ["linux"];
+            else if (/win/.test(wanted)) tokens = ["win"];
+            if (tokens.length) {
+                score += tokens.some(function (token) { return lower.indexOf(token) !== -1; }) ? 200 : -150;
+            }
+        }
+        var arm = wanted.indexOf("arm64") !== -1 || wanted.indexOf("aarch64") !== -1;
+        if (arm) score += /arm64|aarch64/.test(lower) ? 100 : -400;
+        return score;
+    }
+
+    function releaseAssetFor(releases, wantedName) {
+        var list = newestReleases((releases || []).filter(function (release) {
+            return release && !release.draft;
+        }));
+        for (var index = 0; index < list.length; index += 1) {
+            var chosen = null;
+            var score = 249;
+            (list[index].assets || []).forEach(function (asset) {
+                var value = assetMatch(asset.name, wantedName);
+                if (value > score) { score = value; chosen = asset; }
+            });
+            if (chosen) return chosen;
+        }
+        if (list.length) {
+            var fallback = null;
+            var best = 0;
+            (list[0].assets || []).forEach(function (asset) {
+                var value = assetMatch(asset.name, wantedName);
+                if (value > best) { best = value; fallback = asset; }
+            });
+            if (fallback) return fallback;
+        }
+        return null;
+    }
+
+    function releaseList(repo) {
+        var key = repo.toLowerCase();
+        if (releaseListCache[key]) return releaseListCache[key];
+        releaseListCache[key] = fetch("https://api.github.com/repos/" + repo + "/releases?per_page=100", {
+            mode: "cors",
+            credentials: "omit",
+            cache: "no-store",
+            headers: { Accept: "application/vnd.github+json" }
+        }).then(function (response) {
+            if (!response.ok) throw new Error("release list");
+            return response.json();
+        }).catch(function () {
+            delete releaseListCache[key];
+            return [];
+        });
+        return releaseListCache[key];
+    }
+
+    function releaseResolver(url) {
+        var repo = releaseRepo(url);
+        var wanted = fileNameOf(url);
+        if (!repo || !wanted) return null;
+        return function () {
+            return releaseList(repo).then(function (releases) {
+                var asset = releaseAssetFor(releases, wanted);
+                return asset ? { url: asset.browser_download_url, name: asset.name } : null;
+            });
+        };
+    }
+
     function queue(url, anchor, name, resolver) {
         injectStyles();
         if (anchor && jobByAnchor && jobByAnchor.get(anchor)) return true;
-        var saveName = motherName(name || fileNameOf(url) || "download.bin");
+        var saveName = APP_DOWNLOAD_URL.test(String(url || ""))
+            ? (name || fileNameOf(url) || "download.bin")
+            : motherName(name || fileNameOf(url) || "download.bin");
         var job = {
             id: ++seq,
             url: url,
@@ -792,11 +1007,13 @@
             cancelled: false,
             writer: null,
             staging: null,
-            panel: null
+            panel: null,
+            group: null,
+            container: null
         };
         jobs.push(job);
         if (anchor && jobByAnchor) jobByAnchor.set(anchor, job);
-        mount(job, anchor || doc.body);
+        mount(job, anchor || null);
         paint(job);
         if (job.panel) {
             setTimeout(function () { placePanel(job); }, 60);
@@ -821,7 +1038,7 @@
         if (link.hasAttribute("data-site-download-direct")) return false;
         var href = link.getAttribute("href") || "";
         if (!href || href.charAt(0) === "#" || /^(mailto|tel|javascript):/i.test(href)) return false;
-        /* Installers and app images belong to the browser, always. */
+        /* Phone packages and disk images still belong to the browser. */
         if (NEVER_STREAM.test(href)) return false;
         /* A rendered document names the package it links to. When that name is
            an archive, the link is a package download even if the asset URL
@@ -867,7 +1084,7 @@
             link.getAttribute("data-download-name") ||
             link.getAttribute("data-save-as") ||
             link.getAttribute("download") ||
-            "");
+            "", releaseResolver(href));
         if (started === false) return;
         /* A stale copy of docs-viewer.js also claims this click and would
            fetch a second copy. It skips a link marked busy, so the mark is

@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="lumen.css?v=20261110picker">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261111cards" defer></script>
+  <script src="site-init.js?v=20261114dl1" defer></script>
   <style>
     .lumen-manifest-form { display: grid; gap: 1rem; margin: 1.25rem 0; padding: 1.25rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
     .lumen-manifest-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .9rem; }
@@ -132,7 +132,7 @@
       <h1>Legg til fastvaren til Updater CE.</h1>
       <p class="lead">Updater CE er fellesskapskatalogen og installasjonsprogrammet for tilpasset fastvare. Utvikl prosjektet ditt fra en base ROM, publiser det som et offentlig depot med de riktige utgivelseselementene, legg til modelloppføringene i <code>slidia_manifest.xml</code>, test modellfiltrene og åpne en pull-forespørsel. Ett depot kan betjene hver modell den støtter.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">Se Updater CE-kilden</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/ryan-specter/updater-ce-neo" target="_blank" rel="noopener noreferrer">Se Updater CE-kilden</a>
         <a class="lumen-button" href="firmware_no.html">Bla gjennom programvarenedlastinger</a>
       </div>
     </header>
@@ -197,7 +197,7 @@
 <section class="lumen-guide-section" aria-labelledby="steps-title">
       <h2 id="steps-title">Publiser et prosjekt i fem trinn</h2>
       <ol class="lumen-steps">
-        <li><strong>Fork Updater CE-depotet.</strong> Lag din egen gaffel av <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, klone deretter gaffelen lokalt.</li>
+        <li><strong>Fork Updater CE-depotet.</strong> Lag din egen gaffel av <a href="https://github.com/ryan-specter/updater-ce-neo" target="_blank" rel="noopener noreferrer">ryan-specter/updater-ce-neo</a>, klone deretter gaffelen lokalt.</li>
         <li><strong>Forbered et offentlig fastvarelager.</strong> Sørg for at depotet er offentlig og at utgivelsen inneholder de riktige ZIP-elementene. Du kan sette <code>rom.zip</code>, <code>rom_type_b.zip</code>, og <code>rom_y2.zip</code> på samme utgivelse når de tilhører samme versjon.</li>
         <li><strong>Rediger manifestet.</strong> Åpne <code>slidia_manifest.xml</code> i roten av din Updater CE-gaffel. Legg til én linje for hver modell utgivelsen støtter (Y1 og Y2 er det vanlige paret). Den <code>repo</code> verdien er depotets <code>owner/repository</code>; <code>url</code> er den offentlige prosjektsiden.</li>
         <li><strong>Test katalogen.</strong> Kjør Updater fra den redigerte kassen. Velg Y1 og bekreft at prosjektet viser Y1 eiendeler. Velg Y2 og bekreft at det viser Y2-utgivelsen. Sjekk Type A og Type B separat når begge er publisert.</li>
@@ -512,7 +512,7 @@
 <section class="lumen-guide-section" aria-labelledby="links-title">
       <h2 id="links-title">Nyttige prosjektlenker</h2>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Gaffeloppdatering CE</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/ryan-specter/updater-ce-neo/fork" target="_blank" rel="noopener noreferrer">Gaffeloppdatering CE</a>
         <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Se manifestet</a>
         <a class="lumen-button" href="support_devs_no.html">Notater om samfunnsbidrag</a>
         <a class="lumen-button" href="troubleshooting_no.html">Feilsøking</a>
@@ -559,7 +559,7 @@
 </main>
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
-  <script src="nav.js?v=20261111nav" defer></script>
+  <script src="nav.js?v=20261114links1" defer></script>
 <script src="site-i18n.js?v=20260830" defer></script>
 <script src="portable-zip-links.js?v=20261111zip" defer></script>
 <script>

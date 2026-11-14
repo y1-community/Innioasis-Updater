@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="lumen.css?v=20261110picker">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261111cards" defer></script>
+  <script src="site-init.js?v=20261114dl1" defer></script>
   <style>
     .lumen-manifest-form { display: grid; gap: 1rem; margin: 1.25rem 0; padding: 1.25rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
     .lumen-manifest-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .9rem; }
@@ -132,7 +132,7 @@
       <h1>הוסף את הקושחה שלך ל-Updater CE.</h1>
       <p class="lead">Updater CE הוא קטלוג הקהילה ומתקין עבור קושחה מותאמת אישית. פתח את הפרויקט שלך מבסיס ROM, פרסם אותו כמאגר ציבורי עם נכסי השחרור הנכונים, הוסף את ערכי המודל ל- <code>slidia_manifest.xml</code>, בדוק את מסנני הדגם ופתח בקשת משיכה. מאגר אחד יכול לשרת כל דגם שהוא תומך בו.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">צפה במקור Updater CE</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/ryan-specter/updater-ce-neo" target="_blank" rel="noopener noreferrer">צפה במקור Updater CE</a>
         <a class="lumen-button" href="firmware_he.html">עיין בהורדות תוכנה</a>
       </div>
     </header>
@@ -197,7 +197,7 @@
 <section class="lumen-guide-section" aria-labelledby="steps-title">
       <h2 id="steps-title">פרסם פרויקט בחמישה שלבים</h2>
       <ol class="lumen-steps">
-        <li><strong>מזלג את מאגר Updater CE.</strong> צור מזלג משלך <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, ואז לשבט את המזלג שלך באופן מקומי.</li>
+        <li><strong>מזלג את מאגר Updater CE.</strong> צור מזלג משלך <a href="https://github.com/ryan-specter/updater-ce-neo" target="_blank" rel="noopener noreferrer">ryan-specter/updater-ce-neo</a>, ואז לשבט את המזלג שלך באופן מקומי.</li>
         <li><strong>הכן מאגר קושחה ציבורי.</strong> ודא שהמאגר הוא ציבורי והשחרור שלו מכיל את נכסי ה-ZIP הנכונים. אתה יכול לשים <code>rom.zip</code>, <code>rom_type_b.zip</code>, ו <code>rom_y2.zip</code> באותה גרסה כשהם שייכים לאותה גרסה.</li>
         <li><strong>ערוך את המניפסט.</strong> פתוח <code>slidia_manifest.xml</code> בשורש המזלג של Updater CE. הוסף שורה אחת עבור כל דגם שהמהדורה תומכת בו (Y1 ו-Y2 הם הזוג המשותף). ה <code>repo</code> הערך הוא של המאגר <code>owner/repository</code>; <code>url</code> הוא עמוד הפרויקט הציבורי.</li>
         <li><strong>בדוק את הקטלוג.</strong> הפעל את Updater מהקופה הערוכה. בחר Y1 ואשר שהפרויקט מציג את הנכסים Y1. בחר Y2 ואשר שזה מציג את השחרור Y2. סמן את Type A ואת Type B בנפרד כאשר שניהם מתפרסמים.</li>
@@ -512,7 +512,7 @@
 <section class="lumen-guide-section" aria-labelledby="links-title">
       <h2 id="links-title">קישורים שימושיים לפרויקט</h2>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/ryan-specter/updater-ce-neo/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
         <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">ראה את המניפסט</a>
         <a class="lumen-button" href="support_devs_he.html">הערות תרומה לקהילה</a>
         <a class="lumen-button" href="troubleshooting_he.html">פתרון תקלות</a>
@@ -559,7 +559,7 @@
 </main>
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
-  <script src="nav.js?v=20261111nav" defer></script>
+  <script src="nav.js?v=20261114links1" defer></script>
 <script src="site-i18n.js?v=20260830" defer></script>
 <script src="portable-zip-links.js?v=20261111zip" defer></script>
 <script>

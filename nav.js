@@ -1791,14 +1791,14 @@
       '<a href="' + escapeHtml(decorateCrossDomainHref("https://themes.innioasis.app/")) + '" data-cross-site-link="1">Themes Gallery</a>' +
       '<a href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer">Discord Server</a>' +
       '<a href="https://reddit.com/r/innioasis" target="_blank" rel="noopener noreferrer">r/innioasis on Reddit</a>' +
-      '<a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">Updater CE Source Code</a>' +
+      '<a href="https://github.com/ryan-specter/updater-ce-neo" target="_blank" rel="noopener noreferrer">Updater CE Source Code</a>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/credits.html#donate")) + '" data-donations-appeal>Support Independent Projects</a>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/credits.html")) + '">Credits</a>' +
       '</div>' +
       '</div>' +
       '<div class="footer-bottom">' +
       '<p class="footer-works-with"><a href="' + escapeHtml(decorateMainSiteHref("/y1-firmware.html")) + '">Y1 firmware</a>, <a href="' + escapeHtml(decorateMainSiteHref("/y2-firmware.html")) + '">Y2 firmware</a>, <a href="' + escapeHtml(decorateMainSiteHref("/unbrick.html")) + '">unbrick</a>, <a href="' + escapeHtml(decorateMainSiteHref("/timmkoo-firmware.html")) + '">Timmkoo firmware</a>, <a href="' + escapeHtml(decorateCrossDomainHref("https://themes.innioasis.app/")) + '" data-cross-site-link="1">themes</a>.</p>' +
-      '<span class="footer-copyleft">Copyleft - Innioasis and <span translate="no" data-i18n-skip>Ryan Specter</span></span>' +
+      '<span class="footer-copyleft">Copyleft - Innioasis and <span translate="no" data-i18n-skip><a href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer">Ryan Specter</a></span></span>' +
       '<span class="footer-legal"><a href="' + escapeHtml(decorateMainSiteHref("/about.html")) + '">About &amp; Editorial</a>' +
       '<a href="/privacy.html">Privacy</a>' +
       '<a class="footer-privacy-button" href="/privacy.html#choices">Privacy settings</a></span></div>' +

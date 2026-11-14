@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261110warn" defer></script>
+  <script src="../site-init.js?v=20261114dl1" defer></script>
 <link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/jarvissax-rondo-docs-dev-dashboard-api.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/jarvissax-rondo-docs-dev-dashboard-api.html">
 </head>
 <body class="site-themes-app">
@@ -108,9 +108,9 @@
 <p>Videos saved to <code>Videos/YouTube</code> on the card with their subtitles (<code>native/shell/downloads.h</code>).</p>
 <ul><li><code>GET /api/downloads</code> → `{&quot;dir&quot;: &quot;/storage/sdcard0/Videos/YouTube&quot;,<p>&quot;jobs&quot;: [{&quot;id&quot;, &quot;title&quot;, &quot;channel&quot;, &quot;quality&quot;, &quot;state&quot;: &quot;waiting&quot; | &quot;running&quot; | &quot;done&quot; | &quot;failed&quot;, &quot;percent&quot;, &quot;stage&quot;, &quot;error&quot;, &quot;file&quot;}], &quot;files&quot;: [{&quot;file&quot;, &quot;id&quot;, &quot;title&quot;, &quot;subtitle&quot;}]}`.</p></li><li><code>POST /api/downloads</code> <code>{&quot;video&quot;: &quot;&lt;link or id&gt;&quot;, &quot;quality&quot;: 720 | 480 | 360}</code> → the <code>GET</code> shape;<p><code>400</code> for something that isn&#x27;t a YouTube link or id, <code>409</code> when it&#x27;s on the card or on its way already.</p></li><li><code>POST /api/downloads/cancel</code> <code>{&quot;id&quot;}</code> → the <code>GET</code> shape.</li><li><code>DELETE /api/downloads?file=&lt;path&gt;</code> → the <code>GET</code> shape (the video and its subtitles).</li></ul></article><p class="lumen-doc-footer-note">These are Rondo's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=rondo-y1">jarvissax's <em>Rondo</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=jarvissax%2Frondo&amp;software=rondo-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
-<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../docs-viewer.js?v=20261114order1" defer></script>
 <script src="../portable-zip-links.js?v=20261110direct2" defer></script>
-<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../nav.js?v=20261114links1" defer></script>
 <script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 

@@ -425,21 +425,35 @@
         };
     }
 
+    /* A calendar stamp written into a release tag: YYYYMMDD with an optional
+       HHMM time. Older builds are sometimes republished on GitHub months
+       after they shipped, so this stamp, not the GitHub published date, is
+       what orders them. Returns 0 when the tag carries no real date. */
+    function tagDateStamp(tag) {
+        var text = String(tag == null ? "" : tag);
+        var match = text.match(/(^|[^0-9])((?:19|20)\d{2})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(?:[-_.]?(\d{2})(\d{2}))?(?!\d)/);
+        if (!match) return 0;
+        var year = Number(match[2]);
+        var month = Number(match[3]);
+        var day = Number(match[4]);
+        var hour = match[5] ? Number(match[5]) : 0;
+        var minute = match[6] ? Number(match[6]) : 0;
+        var stamp = Date.UTC(year, month - 1, day, hour, minute);
+        var check = new Date(stamp);
+        if (check.getUTCFullYear() !== year || check.getUTCMonth() !== month - 1 || check.getUTCDate() !== day) return 0;
+        return stamp;
+    }
+
     /* Sortable key for a release so newer builds come first, mirroring the
-       Updater app's _release_sort_key: a tag-embedded YYYYMMDD-HHMM
-       timestamp sorts highest, then the semantic version tuple, then the
-       GitHub published date as the tiebreaker, then the tag name. Releases
-       with no usable version sort below the versioned ones. */
+       Updater app's _release_sort_key: a tag-embedded calendar stamp
+       (YYYYMMDD, optionally with HHMM) sorts highest, then the semantic
+       version tuple, then the GitHub published date as the tiebreaker, then
+       the tag name. Releases with no usable version sort below the versioned
+       ones. */
     function releaseSortKey(release) {
         var tag = (release && release.tag_name) || "";
         var version = displayVersion(tag);
-        var tagTimestamp = 0;
-        var timestampMatch = version.match(/^(\d{8})-(\d{4})$/);
-        if (timestampMatch) {
-            var digits = timestampMatch[1];
-            var time = timestampMatch[2];
-            tagTimestamp = Date.UTC(Number(digits.slice(0, 4)), Number(digits.slice(4, 6)) - 1, Number(digits.slice(6, 8)), Number(time.slice(0, 2)), Number(time.slice(2, 4)));
-        }
+        var tagTimestamp = tagDateStamp(tag);
         var semver = null;
         if (!tagTimestamp && /^\d+(\.\d+)*$/.test(version)) {
             semver = version.split(".").map(function (part) { return Number(part); });

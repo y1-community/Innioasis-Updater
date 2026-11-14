@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="lumen.css?v=20261110picker">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261111cards" defer></script>
+  <script src="site-init.js?v=20261114dl1" defer></script>
   <style>
     .lumen-manifest-form { display: grid; gap: 1rem; margin: 1.25rem 0; padding: 1.25rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
     .lumen-manifest-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .9rem; }
@@ -132,7 +132,7 @@
       <h1>Updater CE에 펌웨어를 추가하세요.</h1>
       <p class="lead">Updater CE는 맞춤형 펌웨어를 위한 커뮤니티 카탈로그이자 설치 프로그램입니다. 기본 ROM에서 프로젝트를 개발하고 이를 올바른 릴리스 자산과 함께 공개 저장소로 게시하고 모델 항목을 <code>slidia_manifest.xml</code>, 모델 필터를 테스트하고 끌어오기 요청을 엽니다. 하나의 저장소가 지원하는 모든 모델을 제공할 수 있습니다.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">업데이터 CE 소스 보기</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/ryan-specter/updater-ce-neo" target="_blank" rel="noopener noreferrer">업데이터 CE 소스 보기</a>
         <a class="lumen-button" href="firmware_ko.html">소프트웨어 다운로드 찾아보기</a>
       </div>
     </header>
@@ -197,7 +197,7 @@
 <section class="lumen-guide-section" aria-labelledby="steps-title">
       <h2 id="steps-title">5단계로 프로젝트 게시</h2>
       <ol class="lumen-steps">
-        <li><strong>Updater CE 저장소를 포크합니다.</strong> 나만의 포크 만들기 <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>을 클릭한 다음 포크를 로컬로 복제하세요.</li>
+        <li><strong>Updater CE 저장소를 포크합니다.</strong> 나만의 포크 만들기 <a href="https://github.com/ryan-specter/updater-ce-neo" target="_blank" rel="noopener noreferrer">ryan-specter/updater-ce-neo</a>을 클릭한 다음 포크를 로컬로 복제하세요.</li>
         <li><strong>공개 펌웨어 저장소를 준비합니다.</strong> 저장소가 공개되어 있고 해당 릴리스에 올바른 ZIP 자산이 포함되어 있는지 확인하세요. 당신은 넣을 수 있습니다 <code>rom.zip</code>, <code>rom_type_b.zip</code>, 그리고 <code>rom_y2.zip</code> 동일한 버전에 속하면 동일한 릴리스에 있어야 합니다.</li>
         <li><strong>매니페스트를 편집합니다.</strong> 열기 <code>slidia_manifest.xml</code> Updater CE 포크의 루트에 있습니다. 릴리스가 지원하는 각 모델에 대해 한 줄을 추가합니다(Y1 및 Y2은 공통 쌍입니다). 그만큼 <code>repo</code> 값은 저장소의 <code>owner/repository</code>; <code>url</code> 공개 프로젝트 페이지입니다.</li>
         <li><strong>카탈로그를 테스트해 보세요.</strong> 편집된 체크아웃에서 Updater를 실행합니다. Y1을 선택하고 프로젝트에 Y1 자산이 표시되는지 확인합니다. Y2를 선택하고 Y2 릴리스가 표시되는지 확인합니다. 둘 다 게시되면 Type A와 Type B를 별도로 확인하세요.</li>
@@ -512,7 +512,7 @@
 <section class="lumen-guide-section" aria-labelledby="links-title">
       <h2 id="links-title">유용한 프로젝트 링크</h2>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">포크 업데이터 CE</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/ryan-specter/updater-ce-neo/fork" target="_blank" rel="noopener noreferrer">포크 업데이터 CE</a>
         <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">매니페스트 보기</a>
         <a class="lumen-button" href="support_devs_ko.html">지역 사회 기여 메모</a>
         <a class="lumen-button" href="troubleshooting_ko.html">문제 해결</a>
@@ -559,7 +559,7 @@
 </main>
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
-  <script src="nav.js?v=20261111nav" defer></script>
+  <script src="nav.js?v=20261114links1" defer></script>
 <script src="site-i18n.js?v=20260830" defer></script>
 <script src="portable-zip-links.js?v=20261111zip" defer></script>
 <script>

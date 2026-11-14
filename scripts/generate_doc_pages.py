@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import datetime as dt
 import hashlib
 import html
 import json
@@ -111,6 +112,43 @@ def software_label(item: dict) -> str:
 def tag_slug(tag: str) -> str:
     slug = re.sub(r"[^a-z0-9._-]+", "-", str(tag or "").lower()).strip("-")
     return slug or "release"
+
+
+TAG_STAMP_RE = re.compile(
+    r"(^|[^0-9])((?:19|20)\d{2})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(?:[-_.]?(\d{2})(\d{2}))?(?!\d)"
+)
+TAG_SEMVER_RE = re.compile(
+    r"(?:^|[^0-9A-Za-z])v?(\d+(?:\.\d+)+)(?![0-9A-Za-z])", re.IGNORECASE
+)
+
+
+def release_sort_key(release: dict) -> tuple:
+    """Newest-first key: tag calendar stamp, then semantic version, then the
+    GitHub published date as a tiebreaker.
+
+    A release republished months after it shipped carries a later GitHub
+    date than a newer build, so ``published_at`` must never lead the order.
+    """
+    tag = str((release or {}).get("tag_name") or "")
+    stamp = 0
+    match = TAG_STAMP_RE.search(tag)
+    if match:
+        year, month, day = int(match.group(2)), int(match.group(3)), int(match.group(4))
+        hour = int(match.group(5) or 0)
+        minute = int(match.group(6) or 0)
+        try:
+            value = dt.datetime(year, month, day, hour, minute, tzinfo=dt.timezone.utc)
+            stamp = int(value.timestamp())
+        except ValueError:
+            stamp = 0
+    semver: tuple = ()
+    if not stamp:
+        version = TAG_SEMVER_RE.search(tag)
+        if version:
+            parts = [int(part) for part in version.group(1).split(".")][:4]
+            semver = tuple(parts) + (0,) * (4 - len(parts))
+    published = str((release or {}).get("published_at") or "")
+    return (1 if stamp or semver else 0, stamp, semver, published, tag.lower())
 
 
 def software_slug(name: str, device: str) -> str:
@@ -2680,7 +2718,7 @@ def build(refresh: bool = False) -> None:
         repo = item.get("repo") or ""
         slug = item["slug"]
         releases = [entry for entry in fetch_releases(repo, refresh=refresh) if not entry.get("draft")]
-        releases.sort(key=lambda entry: str(entry.get("published_at") or ""), reverse=True)
+        releases.sort(key=release_sort_key, reverse=True)
         release_counts[slug] = len(releases)
         if releases:
             folder = release_root / slug

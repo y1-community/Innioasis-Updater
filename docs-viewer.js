@@ -1842,6 +1842,54 @@
     return releaseCache[key];
   }
 
+  /* Newest-first release order: a calendar stamp in the tag, then a semantic
+     version, then the GitHub published date. A build that was republished
+     later must not jump ahead of a newer version. */
+  function releaseOrderKey(release) {
+    var tag = String((release && release.tag_name) || "");
+    var stamp = 0;
+    var match = tag.match(/(^|[^0-9])((?:19|20)\d{2})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(?:[-_.]?(\d{2})(\d{2}))?(?!\d)/);
+    if (match) {
+      var year = Number(match[2]);
+      var month = Number(match[3]);
+      var day = Number(match[4]);
+      var value = Date.UTC(year, month - 1, day, Number(match[5] || 0), Number(match[6] || 0));
+      var check = new Date(value);
+      if (check.getUTCFullYear() === year && check.getUTCMonth() === month - 1 && check.getUTCDate() === day) stamp = value;
+    }
+    var semver = [];
+    if (!stamp) {
+      var version = tag.match(/(?:^|[^0-9A-Za-z])v?(\d+(?:\.\d+)+)(?![0-9A-Za-z])/i);
+      if (version) semver = version[1].split(".").map(Number);
+    }
+    return [stamp || semver.length ? 1 : 0, stamp, semver,
+      Date.parse((release && release.published_at) || "") || 0, tag.toLowerCase()];
+  }
+
+  function compareReleaseOrder(a, b) {
+    for (var index = 0; index < 4; index += 1) {
+      var left = a[index];
+      var right = b[index];
+      if (Array.isArray(left) && Array.isArray(right)) {
+        var length = Math.max(left.length, right.length);
+        for (var part = 0; part < length; part += 1) {
+          var l = part < left.length ? left[part] : 0;
+          var r = part < right.length ? right[part] : 0;
+          if (l !== r) return l - r;
+        }
+      } else if (left !== right) {
+        return left - right;
+      }
+    }
+    return a[4].localeCompare(b[4]);
+  }
+
+  function sortReleases(releases) {
+    return (releases || []).slice().sort(function (a, b) {
+      return compareReleaseOrder(releaseOrderKey(b), releaseOrderKey(a));
+    });
+  }
+
   function fetchReleases(repo, pages) {
     if (!repo) return Promise.resolve([]);
     var perPage = 100;
@@ -1862,8 +1910,8 @@
       })(page);
     }
     return chain.then(function () {
-      if (collected.length) return collected;
-      return backupReleasesForRepo(repo);
+      if (collected.length) return sortReleases(collected);
+      return backupReleasesForRepo(repo).then(sortReleases);
     });
   }
 

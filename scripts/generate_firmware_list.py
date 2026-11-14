@@ -602,7 +602,7 @@ def render_page(feed: dict, software: list[dict]) -> tuple[str, list[dict]]:
             # gets its static rows (and mirror buttons) from GitHub directly.
             releases = [entry for entry in gdp.fetch_releases(str(item.get("repo") or ""))
                         if isinstance(entry, dict) and not entry.get("draft")]
-        releases.sort(key=lambda entry: str(entry.get("published_at") or ""), reverse=True)
+        releases.sort(key=gdp.release_sort_key, reverse=True)
         total += len(releases)
         block, ld = software_section(item, releases, mirrors_for(feed, str(item.get("repo") or "")), feed)
         model = str(item.get("model") or "").upper() or "OTHER"

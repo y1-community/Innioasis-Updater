@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="lumen.css?v=20261110picker">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261111cards" defer></script>
+  <script src="site-init.js?v=20261114dl1" defer></script>
   <style>
     .lumen-manifest-form { display: grid; gap: 1rem; margin: 1.25rem 0; padding: 1.25rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
     .lumen-manifest-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .9rem; }
@@ -132,7 +132,7 @@
       <h1>เพิ่มเฟิร์มแวร์ของคุณไปที่ Updater CE</h1>
       <p class="lead">Updater CE เป็นแค็ตตาล็อกชุมชนและโปรแกรมติดตั้งสำหรับเฟิร์มแวร์ที่กำหนดเอง พัฒนาโครงการของคุณจากฐาน ROM เผยแพร่เป็นพื้นที่เก็บข้อมูลสาธารณะด้วยเนื้อหาที่เผยแพร่ที่ถูกต้อง เพิ่มรายการโมเดลไปที่ <code>slidia_manifest.xml</code>ทดสอบตัวกรองโมเดล และเปิดคำขอดึง พื้นที่เก็บข้อมูลหนึ่งแห่งสามารถรองรับทุกรุ่นที่รองรับ</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">ดูแหล่งสัญญาณ Updater CE</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/ryan-specter/updater-ce-neo" target="_blank" rel="noopener noreferrer">ดูแหล่งสัญญาณ Updater CE</a>
         <a class="lumen-button" href="firmware_th.html">เรียกดูการดาวน์โหลดซอฟต์แวร์</a>
       </div>
     </header>
@@ -197,7 +197,7 @@
 <section class="lumen-guide-section" aria-labelledby="steps-title">
       <h2 id="steps-title">เผยแพร่โครงการในห้าขั้นตอน</h2>
       <ol class="lumen-steps">
-        <li><strong>แยกที่เก็บ Updater CE</strong> สร้างทางแยกของคุณเอง <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>จากนั้นโคลนส้อมของคุณภายในเครื่อง</li>
+        <li><strong>แยกที่เก็บ Updater CE</strong> สร้างทางแยกของคุณเอง <a href="https://github.com/ryan-specter/updater-ce-neo" target="_blank" rel="noopener noreferrer">ryan-specter/updater-ce-neo</a>จากนั้นโคลนส้อมของคุณภายในเครื่อง</li>
         <li><strong>เตรียมพื้นที่เก็บข้อมูลเฟิร์มแวร์สาธารณะ</strong> ตรวจสอบให้แน่ใจว่าที่เก็บเป็นแบบสาธารณะและการเผยแพร่มีเนื้อหา ZIP ที่ถูกต้อง คุณสามารถใส่ <code>rom.zip</code>, <code>rom_type_b.zip</code>และ <code>rom_y2.zip</code> ในรุ่นเดียวกันเมื่ออยู่ในเวอร์ชันเดียวกัน</li>
         <li><strong>แก้ไขรายการ</strong> เปิด <code>slidia_manifest.xml</code> ในรากของทางแยก Updater CE ของคุณ เพิ่มหนึ่งบรรทัดสำหรับแต่ละรุ่นที่รองรับรุ่น (Y1 และ Y2 เป็นคู่ทั่วไป) ที่ <code>repo</code> ค่าเป็นของที่เก็บ <code>owner/repository</code>; <code>url</code> เป็นหน้าโครงการสาธารณะ</li>
         <li><strong>ทดสอบแค็ตตาล็อก</strong> เรียกใช้ Updater จากการชำระเงินที่แก้ไข เลือก Y1 และยืนยันว่าโครงการแสดงสินทรัพย์ Y1 เลือก Y2 และยืนยันว่าแสดงรุ่น Y2 ตรวจสอบ Type A และ Type B แยกกันเมื่อมีการเผยแพร่ทั้งสองรายการ</li>
@@ -512,7 +512,7 @@
 <section class="lumen-guide-section" aria-labelledby="links-title">
       <h2 id="links-title">ลิงค์โครงการที่เป็นประโยชน์</h2>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">ส้อม Updater CE</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/ryan-specter/updater-ce-neo/fork" target="_blank" rel="noopener noreferrer">ส้อม Updater CE</a>
         <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">ดูรายการ</a>
         <a class="lumen-button" href="support_devs_th.html">บันทึกการมีส่วนร่วมของชุมชน</a>
         <a class="lumen-button" href="troubleshooting_th.html">การแก้ไขปัญหา</a>
@@ -559,7 +559,7 @@
 </main>
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
-  <script src="nav.js?v=20261111nav" defer></script>
+  <script src="nav.js?v=20261114links1" defer></script>
 <script src="site-i18n.js?v=20260830" defer></script>
 <script src="portable-zip-links.js?v=20261111zip" defer></script>
 <script>
