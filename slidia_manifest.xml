@@ -81,7 +81,7 @@
 
 <package name="Please Update App To Continue" device_type="0" repo="Please-Click/Updates-Available" device="Y1" url="https://github.com/Please-Click/Updates-Available/releases/latest" type="img" handler="Custom Firmware" />
 
-<package name="inniclassic" brand="Innioasis" repo="FabianZettl/inniclassic" device="Y1" url="https://github.com/FabianZettl/inniclassic" type="img" handler="Custom Firmware"  />
+<package name="inniclassic" brand="Innioasis" repo="FabianZettl/inniclassic" portable_zips="y1-community/inniclassic-mirror" device="Y1" url="https://github.com/FabianZettl/inniclassic" type="img" handler="Custom Firmware"  />
 
 <package name="Classy" brand="Innioasis" repo="ClassyPlayer/Classy" PMT_format_needed="true" portable_zips="y1-community/classy-mirror" device="Y2" url="https://github.com/ClassyPlayer/Classy" type="img" icon="https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png" handler="Custom Firmware" />
 
