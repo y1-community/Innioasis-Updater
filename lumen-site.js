@@ -2265,20 +2265,21 @@
            under the Y1 row or a rom.zip under the Y2 row. */
         function releaseDetails(release, item, type) {
             if (!release) return '';
-            var names = packageNamesFor(item, type);
             var assets = zipAssets(release, item.model);
             var links = [];
             assets.forEach(function (asset) {
                 var aName = (asset.name || "").toLowerCase();
                 var assetType = zipType(aName);
-                /* Never offer the other hardware revision's ROM. */
+                /* Never offer the other hardware revision's ROM, source
+                   archives or licence bundles. Everything else is a real
+                   package for this model, even when its filename does not
+                   follow the usual rom*.zip convention. */
                 if (type && assetType && assetType !== type) return;
-                if (names.indexOf(aName) !== -1 || aName === (item.packageName || "").toLowerCase() || aName.indexOf(item.model.toLowerCase()) !== -1) {
-                    var entry = MODEL_ZIPS.find(function (candidate) { return candidate.name === aName; });
-                    var label = entry ? entry.label : (assetType ? item.model + " · Type " + assetType : item.model + " package");
-                    var title = entry ? entry.title : ("For " + item.model + " players" + (assetType ? " · Type " + assetType : ""));
-                    links.push('<li><a class="lumen-download-link lumen-zip-text-link" href="' + escapeHtml(asset.browser_download_url) + '" download="' + escapeHtml(asset.name) + '" data-zip-url="' + escapeHtml(asset.browser_download_url) + '" data-zip-name="' + escapeHtml(asset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "") + '" data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '" data-item-repo="' + escapeHtml(item.repo || "") + '" data-item-name="' + escapeHtml(item.name || "") + '" data-item-model="' + escapeHtml(item.model || "") + '" title="' + escapeHtml(title) + '">' + escapeHtml(asset.name) + ' <span class="lumen-meta">' + escapeHtml(label) + '</span></a></li>');
-                }
+                if (/sources?|legal-info/i.test(aName)) return;
+                var entry = MODEL_ZIPS.find(function (candidate) { return candidate.name === aName; });
+                var label = entry ? entry.label : (assetType ? item.model + " · Type " + assetType : item.model + " package");
+                var title = entry ? entry.title : ("For " + item.model + " players" + (assetType ? " · Type " + assetType : ""));
+                links.push('<li><a class="lumen-download-link lumen-zip-text-link" href="' + escapeHtml(asset.browser_download_url) + '" download="' + escapeHtml(asset.name) + '" data-zip-url="' + escapeHtml(asset.browser_download_url) + '" data-zip-name="' + escapeHtml(asset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "") + '" data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '" data-item-repo="' + escapeHtml(item.repo || "") + '" data-item-name="' + escapeHtml(item.name || "") + '" data-item-model="' + escapeHtml(item.model || "") + '" title="' + escapeHtml(title) + '">' + escapeHtml(asset.name) + ' <span class="lumen-meta">' + escapeHtml(label) + '</span></a></li>');
             });
             var assetLinks = links.length ? links.join("") : '<li>No ZIP asset was found in this release.</li>';
             return '<details class="lumen-release-details"><summary>Release details and zip</summary><p><strong>' + escapeHtml(release.name || release.tag_name || "Public release") + '</strong>' + (release.published_at ? ' · ' + escapeHtml(release.published_at.slice(0, 10)) : '') + '</p><ul>' + assetLinks + '</ul></details>';
@@ -2542,7 +2543,7 @@
                 '<td><div style="display:flex;align-items:center;gap:10px;">' + iconHtml + '<div>' + versionHtml + (release && release.published_at ? '<br><span class="lumen-meta">' + escapeHtml(release.published_at.slice(0, 10)) + '</span>' : '') + '</div></div></td>' +
                 /* The package is not shown: the Release details expander lists
                    the rom zips this release is packaged in. */
-                '<td><div class="lumen-actions">' + updater + zipBtn + standaloneNote + hint + downloadsMeta + '</div>' + releaseDetails(release, item, typeForItem(item)) + '</td>' +
+                '<td><div class="lumen-actions">' + updater + zipBtn + standaloneNote + hint + '</div>' + releaseDetails(release, item, typeForItem(item)) + downloadsMeta + '</td>' +
                 '<td><a class="lumen-release-notes-link" href="' + releaseNotesUrl + '" aria-label="Read the release notes for ' + escapeHtml(release && release.tag_name ? release.tag_name : item.name) + '">' +                '<svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h6l3 3v11H6z"/><path d="M12 3v3h3"/><path d="M8.5 10h5M8.5 13h5"/></svg></a></td>' +
                 '</tr>';
         }

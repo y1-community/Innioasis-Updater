@@ -1554,6 +1554,15 @@ body.site-themes-app #footer-root {
 
 .lumen-release-table .lumen-actions { min-width: 0; width: 100%; }
 
+/* The figure sits after the release-details expander, so it stays under
+   the Updater button and under the revealed ZIP link at every width. */
+.lumen-release-table td > .lumen-download-stats {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: .65rem 0 .15rem;
+}
+
 /* Compact controls keep one line; the Updater badge is a sentence and must
    wrap instead of pushing into the release-notes column. */
 .lumen-release-table .lumen-actions .lumen-zip-download-button,
