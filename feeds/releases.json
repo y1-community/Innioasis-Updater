@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-14T16:22:24Z",
+  "generated_at": "2026-11-14T16:31:21Z",
   "repos": {
     "y1-community/y1-stock-rom": {
       "repo": "y1-community/y1-stock-rom",
       "icon": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
       "icon_dark": "",
       "stats": {
-        "downloads": 57615,
+        "downloads": 57625,
         "release_count": 10,
         "stars": 6,
         "forks": 0,
@@ -54,7 +54,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
               "size": 30612,
-              "download_count": 155,
+              "download_count": 157,
               "content_type": "image/jpeg",
               "created_at": "2026-11-14T02:48:48Z",
               "updated_at": "2026-11-14T02:48:49Z",
@@ -253,7 +253,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
               "size": 30612,
-              "download_count": 1628,
+              "download_count": 1629,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:17:43Z",
               "updated_at": "2026-10-10T09:17:43Z",
@@ -427,7 +427,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
               "size": 30612,
-              "download_count": 5632,
+              "download_count": 5636,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:19:27Z",
               "updated_at": "2026-10-10T09:19:27Z",
@@ -521,7 +521,7 @@
               "name": "updater.jpg",
               "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
               "size": 30612,
-              "download_count": 5210,
+              "download_count": 5213,
               "content_type": "image/jpeg",
               "created_at": "2026-10-10T09:18:17Z",
               "updated_at": "2026-10-10T09:18:17Z",
@@ -3153,7 +3153,7 @@
       "icon": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark": "",
       "stats": {
-        "downloads": 32112,
+        "downloads": 32114,
         "release_count": 104,
         "stars": 24,
         "forks": 8,
@@ -3201,7 +3201,7 @@
               "name": "manifest.json",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.json",
               "size": 4245,
-              "download_count": 226,
+              "download_count": 227,
               "content_type": "application/json",
               "created_at": "2026-11-13T19:10:44Z",
               "updated_at": "2026-11-13T19:10:45Z",
@@ -3212,7 +3212,7 @@
               "name": "manifest.sig",
               "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.sig",
               "size": 64,
-              "download_count": 223,
+              "download_count": 224,
               "content_type": "application/pgp-signature",
               "created_at": "2026-11-13T19:10:45Z",
               "updated_at": "2026-11-13T19:10:46Z",
@@ -19738,7 +19738,7 @@
       "icon": "https://innioasis.app/assets/rondo_icon.jpg",
       "icon_dark": "",
       "stats": {
-        "downloads": 1053,
+        "downloads": 1063,
         "release_count": 12,
         "stars": 1,
         "forks": 1,
@@ -19775,7 +19775,7 @@
               "name": "rom.zip",
               "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip",
               "size": 529817030,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-14T16:11:01Z",
               "updated_at": "2026-11-14T16:11:15Z",
@@ -19797,7 +19797,7 @@
               "name": "updater.png",
               "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png",
               "size": 12952,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "image/png",
               "created_at": "2026-11-14T16:11:01Z",
               "updated_at": "2026-11-14T16:11:01Z",
@@ -19805,7 +19805,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 0,
+          "downloads": 1,
           "download_breakdown": {
             "tag": "v3.0.3",
             "mirrors": "",
@@ -19813,7 +19813,7 @@
               {
                 "name": "rom.zip",
                 "url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip",
-                "downloads": 0
+                "downloads": 1
               }
             ],
             "portable": []
@@ -19881,7 +19881,7 @@
               "name": "updater.png",
               "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png",
               "size": 12952,
-              "download_count": 58,
+              "download_count": 59,
               "content_type": "image/png",
               "created_at": "2026-11-12T11:50:03Z",
               "updated_at": "2026-11-12T11:50:03Z",
@@ -19986,7 +19986,7 @@
               "name": "updater.png",
               "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.1/updater.png",
               "size": 12952,
-              "download_count": 34,
+              "download_count": 35,
               "content_type": "image/png",
               "created_at": "2026-11-12T08:48:53Z",
               "updated_at": "2026-11-12T08:48:53Z",
@@ -20091,7 +20091,7 @@
               "name": "updater.png",
               "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.0/updater.png",
               "size": 12952,
-              "download_count": 31,
+              "download_count": 32,
               "content_type": "image/png",
               "created_at": "2026-11-12T07:40:31Z",
               "updated_at": "2026-11-12T07:40:31Z",
@@ -20196,7 +20196,7 @@
               "name": "updater.png",
               "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v2.0.1/updater.png",
               "size": 12952,
-              "download_count": 31,
+              "download_count": 32,
               "content_type": "image/png",
               "created_at": "2026-11-12T06:46:12Z",
               "updated_at": "2026-11-12T06:46:12Z",
@@ -20345,7 +20345,7 @@
               "name": "updater.png",
               "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png",
               "size": 12952,
-              "download_count": 59,
+              "download_count": 60,
               "content_type": "image/png",
               "created_at": "2026-11-11T12:35:04Z",
               "updated_at": "2026-11-11T12:35:04Z",
@@ -20450,7 +20450,7 @@
               "name": "updater.png",
               "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.2/updater.png",
               "size": 12952,
-              "download_count": 237,
+              "download_count": 238,
               "content_type": "image/png",
               "created_at": "2026-11-03T08:52:51Z",
               "updated_at": "2026-11-03T08:52:51Z",
@@ -20555,7 +20555,7 @@
               "name": "updater.png",
               "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/updater.png",
               "size": 12952,
-              "download_count": 144,
+              "download_count": 145,
               "content_type": "image/png",
               "created_at": "2026-11-03T07:54:15Z",
               "updated_at": "2026-11-03T07:54:16Z",
@@ -20660,7 +20660,7 @@
               "name": "updater.png",
               "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png",
               "size": 12952,
-              "download_count": 182,
+              "download_count": 183,
               "content_type": "image/png",
               "created_at": "2026-11-02T12:15:19Z",
               "updated_at": "2026-11-02T12:15:19Z",
@@ -25625,7 +25625,7 @@
       "icon": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark": "",
       "stats": {
-        "downloads": 4177,
+        "downloads": 4179,
         "release_count": 3,
         "stars": 15,
         "forks": 1,
@@ -25717,7 +25717,7 @@
               "name": "rockbox-y2-v2.5-release-square.png",
               "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rockbox-y2-v2.5-release-square.png",
               "size": 1585171,
-              "download_count": 497,
+              "download_count": 498,
               "content_type": "image/png",
               "created_at": "2026-09-29T12:14:46Z",
               "updated_at": "2026-09-29T12:14:47Z",
@@ -25728,7 +25728,7 @@
               "name": "rom_y2.zip",
               "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
               "size": 361644736,
-              "download_count": 1078,
+              "download_count": 1079,
               "content_type": "application/zip",
               "created_at": "2026-09-29T12:14:45Z",
               "updated_at": "2026-09-29T12:16:13Z",
@@ -25758,7 +25758,7 @@
             }
           ],
           "mirror_downloads": 57,
-          "downloads": 1135,
+          "downloads": 1136,
           "download_breakdown": {
             "tag": "v0.2.5-beta",
             "mirrors": "y1-community/y2-rockbox-mirror",
@@ -25766,7 +25766,7 @@
               {
                 "name": "rom_y2.zip",
                 "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
-                "downloads": 1078
+                "downloads": 1079
               }
             ],
             "portable": [
@@ -119429,7 +119429,7 @@
       "icon": "",
       "icon_dark": "",
       "stats": {
-        "downloads": 69436,
+        "downloads": 69437,
         "release_count": 74,
         "stars": 55,
         "forks": 13,
@@ -119444,7 +119444,7 @@
         "forks_count": 13,
         "open_issues_count": 3,
         "updated_at": "2026-11-12T15:32:59Z",
-        "pushed_at": "2026-11-14T16:20:40Z",
+        "pushed_at": "2026-11-14T16:30:58Z",
         "license": "GPL-3.0"
       },
       "releases": [
@@ -119466,7 +119466,7 @@
               "name": "Innioasis.Updater.for.Mac.dmg",
               "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg",
               "size": 119710372,
-              "download_count": 313,
+              "download_count": 314,
               "content_type": "application/x-diskcopy",
               "created_at": "2026-11-11T00:21:08Z",
               "updated_at": "2026-11-11T00:21:31Z",

@@ -383,7 +383,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
           "size": 30612,
-          "download_count": 155,
+          "download_count": 157,
           "content_type": "image/jpeg"
         }
       ]
@@ -563,7 +563,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
           "size": 30612,
-          "download_count": 1628,
+          "download_count": 1629,
           "content_type": "image/jpeg"
         }
       ]
@@ -721,7 +721,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
           "size": 30612,
-          "download_count": 5632,
+          "download_count": 5636,
           "content_type": "image/jpeg"
         }
       ]
@@ -807,7 +807,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
           "size": 30612,
-          "download_count": 5210,
+          "download_count": 5213,
           "content_type": "image/jpeg"
         }
       ]
@@ -3043,7 +3043,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.json",
           "size": 4245,
-          "download_count": 226,
+          "download_count": 227,
           "content_type": "application/json"
         },
         {
@@ -3051,7 +3051,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/manifest.sig",
           "size": 64,
-          "download_count": 223,
+          "download_count": 224,
           "content_type": "application/pgp-signature"
         },
         {
@@ -16811,7 +16811,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png",
       "icon_dark_url": "",
       "body": "**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it to [Rondo server 3.2.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0) (its admin page offers it) so YouTube Music downloads get their year and track number; 3.1.0 works for everything else.\n\n**New**\n- **YouTube Music downloads.** Hold center on a song and choose **Download**, or **Download all** on an album or playlist. Songs go to `Music/YouTube Music/Artist/Album (Year)/01 - Title.m4a`: YouTube's own AAC, with the artist, album, year, track number, cover and lyrics (timed where LRCLIB has them) in its tags. **YouTube Music \u203a Home \u203a Downloads** plays them from the card, also offline.\n- **YouTube Music's Home looks like the app's:** each section a shelf of covers that slides along as you turn the wheel, then on into the next one.\n- **The dashboard fills in what your songs' tags leave out** (Library \u203a Fill in): a missing genre, year, album or track number from the iTunes Store and MusicBrainz, reviewed before it's saved into the songs; and lyrics from LRCLIB for every song that has none.\n- **Organize looks up a show's or a movie's years** on the dashboard (TVmaze, Wikidata), so shows are filed as `Silo (2023-)` or `The Walking Dead (2010-2022)`.\n\n**Changed**\n- **Shows and movies go inside Videos:** `Videos/Shows/\u2026` and `Videos/Movies/\u2026`, the way Jellyfin expects them. Organize moves the old top-level `Shows` and `Movies` folders' files there.\n- **A song's menu has an icon for each action.**\n\n**Fixed**\n- **A YouTube video downloads and plays in its original language,** not a dub YouTube listed first.\n- **Changing Repeat or Shuffle no longer stops the song for a moment.**\n- **Library \u203a Files slides in** like every other screen.\n- **The dashboard's Wheel acceleration and Wheel vibration** can be changed again, and its notes keep their distance from what's around them.\n\n**How to get it**\n- **On Rondo 3.0.x:** Settings \u203a System \u203a Software update, the dashboard's Overview, or the [update page](https://jarvissax.github.io/rondo/) over USB.\n- **On Rondo 2.0 or earlier:** Innioasis Updater CE (Y1, Type A, Rondo 3.0.3), with **Keep my settings** turned on.\n\nFiles: `rondo-3.0.3.rondo` is the signed update bundle; `rom.zip` (the firmware) and `updater.png` are added by the release workflow a few minutes after publishing. Everything else: [changelog](https://github.com/jarvissax/rondo/blob/main/CHANGELOG.md#303-november-14-2026).\n",
-      "downloads": 0,
+      "downloads": 1,
       "mirror_downloads": 0,
       "download_breakdown": {
         "tag": "v3.0.3",
@@ -16820,7 +16820,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip",
-            "downloads": 0
+            "downloads": 1
           }
         ],
         "portable": []
@@ -16831,7 +16831,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/rom.zip",
           "size": 529817030,
-          "download_count": 0,
+          "download_count": 1,
           "content_type": "application/zip"
         },
         {
@@ -16847,7 +16847,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png",
           "size": 12952,
-          "download_count": 0,
+          "download_count": 1,
           "content_type": "image/png"
         }
       ]
@@ -16961,7 +16961,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png",
           "size": 12952,
-          "download_count": 58,
+          "download_count": 59,
           "content_type": "image/png"
         }
       ]
@@ -17055,7 +17055,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.1/updater.png",
           "size": 12952,
-          "download_count": 34,
+          "download_count": 35,
           "content_type": "image/png"
         }
       ]
@@ -17149,7 +17149,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.0/updater.png",
           "size": 12952,
-          "download_count": 31,
+          "download_count": 32,
           "content_type": "image/png"
         }
       ]
@@ -17243,7 +17243,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v2.0.1/updater.png",
           "size": 12952,
-          "download_count": 31,
+          "download_count": 32,
           "content_type": "image/png"
         }
       ]
@@ -17377,7 +17377,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png",
           "size": 12952,
-          "download_count": 59,
+          "download_count": 60,
           "content_type": "image/png"
         }
       ]
@@ -17471,7 +17471,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.2/updater.png",
           "size": 12952,
-          "download_count": 237,
+          "download_count": 238,
           "content_type": "image/png"
         }
       ]
@@ -17565,7 +17565,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/updater.png",
           "size": 12952,
-          "download_count": 144,
+          "download_count": 145,
           "content_type": "image/png"
         }
       ]
@@ -17659,7 +17659,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png",
           "size": 12952,
-          "download_count": 182,
+          "download_count": 183,
           "content_type": "image/png"
         }
       ]
@@ -22120,7 +22120,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "# Rockbox Y2 V2.5\n\nV2.5 updates the Y2 dual-boot firmware to the official Innioasis **Stock 3.2FM**\nbaseline while retaining Rockbox and Stock boot routes.\n\n## What changed from V2\n\n- Stock mode is updated to version `3.2` from the 3.2FM firmware release.\n- Clean installs default to MacClassic-Dark with a black Rockbox title screen.\n- Boot presentation and route handoff were requalified to prevent persistent\n  upper-screen artifacts.\n- The Community Updater asset is now a complete 3.2FM-based full-ROM package,\n  compatible with the public updater's clean-install route.\n\n## Qualified V2.5 behavior\n\nThe five V2.5 firmware images have passed the full hands-on matrix on macOS and\nWindows:\n\n- Clean, responsive Rockbox root in about 28 seconds on normal cold boots.\n- Clean dark Rockbox title with no persistent upper artifacts.\n- Automatic screen timeout, centre wake, and power-button sleep/wake.\n- USB-storage mount, safe eject, clean return, and foreground retention.\n- Boot Settings switching between Rockbox and Stock.\n- Responsive Stock root reporting version `3.2` from Stock 3.2FM.\n- No microSD card required for installation or normal boot testing.\n\nThe exact public full-ROM archive passed clean Stock 3.2FM installation and the\ncomplete functional matrix on both macOS and Windows.\n\n## Exact public candidate\n\n| Asset | Bytes | SHA-256 |\n|---|---:|---|\n| `rom_y2.zip` | 361,644,736 | `bbdd139a9a52f90570ef04dec4aeb143a361a1d28a90f7be6d37d44c554bee9a` |\n\nThis archive contains the complete official Stock 3.2FM support set. UBOOT,\nBOOTIMG, RECOVERY, LOGO, and ANDROID are the exact V2.5 images already qualified\non both platforms. MBR, EBR1, EBR2, preloader, SEC_RO, cache, userdata, and the\nscatter remain byte-identical to the official 3.2FM baseline.\n\n## Important installation behavior\n\nV2.5 performs a clean full installation and erases internal user data. Back up\nfirst. On macOS, public Updater CE hands the install to the Innioasis Y2 Install\nTool. On Windows, Updater CE uses its full Y2 installation route. Follow every\nconnection prompt and wait for an explicit completion message.\n",
-      "downloads": 1135,
+      "downloads": 1136,
       "mirror_downloads": 57,
       "download_breakdown": {
         "tag": "v0.2.5-beta",
@@ -22129,7 +22129,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
-            "downloads": 1078
+            "downloads": 1079
           }
         ],
         "portable": [
@@ -22223,7 +22223,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox-y2-v2.5-release-square.png",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rockbox-y2-v2.5-release-square.png",
           "size": 1585171,
-          "download_count": 497,
+          "download_count": 498,
           "content_type": "image/png"
         },
         {
@@ -22231,7 +22231,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
           "size": 361644736,
-          "download_count": 1078,
+          "download_count": 1079,
           "content_type": "application/zip"
         },
         {
@@ -41254,7 +41254,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-13T17:15:32Z"
   },
   "jarvissax/rondo": {
-    "downloads": 1053,
+    "downloads": 1063,
     "forks": 1,
     "release_count": 12,
     "stars": 1,
@@ -41289,7 +41289,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-10-15T03:03:06Z"
   },
   "schulzcode/y2linux": {
-    "downloads": 32112,
+    "downloads": 32114,
     "forks": 8,
     "release_count": 104,
     "stars": 24,
@@ -41303,7 +41303,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-11T21:59:17Z"
   },
   "spycemagic/y2-rockbox": {
-    "downloads": 4177,
+    "downloads": 4179,
     "forks": 1,
     "release_count": 3,
     "stars": 15,
@@ -41380,7 +41380,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T15:54:16Z"
   },
   "y1-community/innioasis-updater": {
-    "downloads": 69436,
+    "downloads": 69437,
     "forks": 13,
     "release_count": 74,
     "stars": 55,
@@ -41506,7 +41506,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T13:41:34Z"
   },
   "y1-community/y1-stock-rom": {
-    "downloads": 57615,
+    "downloads": 57625,
     "forks": 0,
     "release_count": 10,
     "stars": 6,
