@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261117inline12";
+    var VERSION = "20261117fallback2";
     /* Archives, installers and app images all stream in-page. A driver or app
        download is often the one a reader most wants a speed and time-left for,
        so it deserves the same progress card as a firmware ZIP. Phone packages
@@ -97,6 +97,18 @@
             hi: "सहेजा गया", id: "Tersimpan", vi: "Đã lưu", th: "บันทึกแล้ว",
             sv: "Sparat", da: "Gemt", fi: "Tallennettu", cs: "Uloženo",
             el: "Αποθηκεύτηκε", he: "נשמר", hu: "Mentve", ro: "Salvat", bg: "Запазено"
+        },
+        "Download started": {
+            de: "Download gestartet", fr: "Téléchargement lancé", es: "Descarga iniciada",
+            it: "Download avviato", pt: "Transferência iniciada", "pt-BR": "Download iniciado",
+            nl: "Download gestart", pl: "Pobieranie rozpoczęte", ru: "Загрузка началась",
+            uk: "Завантаження почалося", ja: "ダウンロードを開始しました", ko: "다운로드가 시작되었습니다",
+            "zh-CN": "下载已开始", "zh-TW": "下載已開始", tr: "İndirme başladı",
+            ar: "بدأ التنزيل", hi: "डाउनलोड शुरू हो गया", id: "Unduhan dimulai",
+            vi: "Đã bắt đầu tải xuống", th: "เริ่มดาวน์โหลดแล้ว", sv: "Nedladdning startad",
+            da: "Download startet", fi: "Lataus aloitettu", cs: "Stahování zahájeno",
+            el: "Η λήψη ξεκίνησε", he: "ההורדה החלה", hu: "A letöltés elindult",
+            ro: "Descărcarea a început", bg: "Изтеглянето започна"
         },
         "Failed": {
             de: "Fehlgeschlagen", fr: "Échec", es: "Error", it: "Non riuscito",
@@ -227,6 +239,7 @@
             ".site-dl-progress-group{position:absolute;z-index:80;display:flex;flex-direction:column;gap:.5rem;width:min(360px,calc(100vw - 1.5rem));}",
             ".site-dl-progress-group .site-dl-progress{max-width:none;margin:0;}",
             ".site-dl-progress[hidden]{display:none!important;}",
+            ".site-dl-progress--notice{display:block;position:fixed;left:50%;bottom:1.25rem;transform:translateX(-50%);z-index:90;width:auto;max-width:calc(100vw - 2rem);margin:0;padding:.6rem .95rem;text-align:center;pointer-events:none;font-weight:750;box-shadow:0 10px 28px rgba(0,0,0,.35);}",
             ".site-dl-progress__head{display:flex;align-items:center;gap:.55rem;min-width:0;}",
             ".site-dl-progress__icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:22px;height:22px;border-radius:999px;background:color-mix(in oklab,var(--lumen-accent,#6b9fff) 20%,transparent);color:var(--lumen-accent,#6b9fff);}",
             ".site-dl-progress__name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:750;}",
@@ -552,6 +565,7 @@
 
     function cancelJob(job) {
         job.cancelled = true;
+        clearStall(job);
         if (job.controller) {
             try { job.controller.abort(); } catch (_) {}
         }
@@ -592,10 +606,59 @@
         }, delay == null ? 12000 : delay);
     }
 
+    /* An in-page failure must never strand the reader. Close the card, abort
+       the private stream, and hand the direct asset URL to the browser once.
+       The job flag keeps a rejected fetch, a writer abort and a stall timer
+       from starting a second copy. */
     function failJob(job) {
+        if (!job || job.cancelled || job.fallbackStarted || job.status === "done") return;
+        fallbackToBrowser(job, job.directUrl || job.url || "");
+    }
+
+    var startedNotice = null;
+
+    function showStarted() {
+        if (!doc.body) return;
+        if (startedNotice && startedNotice.parentNode) startedNotice.parentNode.removeChild(startedNotice);
+        startedNotice = element("div", "site-dl-progress site-dl-progress--notice", t("Download started"));
+        startedNotice.setAttribute("role", "status");
+        startedNotice.setAttribute("aria-live", "polite");
+        doc.body.appendChild(startedNotice);
+        setTimeout(function () {
+            if (startedNotice && startedNotice.parentNode) startedNotice.parentNode.removeChild(startedNotice);
+            if (startedNotice && !startedNotice.parentNode) startedNotice = null;
+        }, 3200);
+    }
+
+    function fallbackToBrowser(job, direct) {
+        if (!job || job.fallbackStarted) return;
+        job.fallbackStarted = true;
         job.status = "failed";
-        paint(job);
-        finish(job, 8000);
+        clearStall(job);
+        if (job.controller) {
+            try { job.controller.abort(); } catch (_) {}
+        }
+        abortSink(job);
+        if (job.anchor && jobByAnchor) jobByAnchor.delete(job.anchor);
+        restoreButton(job);
+        removePanel(job);
+        var index = jobs.indexOf(job);
+        if (index !== -1) jobs.splice(index, 1);
+        if (!direct) return;
+        var link = element("a");
+        link.href = direct;
+        if (job.name) link.download = job.name;
+        link.rel = "noopener";
+        link.setAttribute("data-site-download-direct", "1");
+        link.setAttribute("data-direct-download", "1");
+        doc.body.appendChild(link);
+        var triggered = false;
+        try { link.click(); triggered = true; }
+        catch (_) { try { global.location.assign(direct); triggered = true; } catch (__) {} }
+        if (triggered) showStarted();
+        setTimeout(function () {
+            if (link.parentNode) link.parentNode.removeChild(link);
+        }, 60000);
     }
 
     /* Abort a write and remove any private copy. The delay lets the writer
@@ -622,6 +685,12 @@
             } catch (_) {}
         }
         dropStaging(job, 1500);
+    }
+
+    function clearStall(job) {
+        if (!job || !job.stallTimer) return;
+        clearTimeout(job.stallTimer);
+        job.stallTimer = null;
     }
 
     /* Safari and Firefox have no save picker, but they do have origin-private
@@ -683,6 +752,14 @@
     }
 
     async function start(job, source) {
+        try {
+            await runJob(job, source);
+        } catch (_) {
+            if (!job.cancelled) failJob(job);
+        }
+    }
+
+    async function runJob(job, source) {
         job.status = "starting";
         paint(job);
 
@@ -725,8 +802,16 @@
             return;
         }
         job.url = targetUrl;
+        job.directUrl = targetUrl;
         var requestUrl = proxiedUrl(targetUrl, job.name);
 
+        /* A proxy that never answers should not hold the reader in the card.
+           After the timeout the direct asset URL is handed to the browser. */
+        var connectTimer = setTimeout(function () {
+            if (job.controller) {
+                try { job.controller.abort(); } catch (_) {}
+            }
+        }, 20000);
         var response;
         try {
             response = await fetch(requestUrl, {
@@ -740,6 +825,8 @@
             abortSink(job);
             failJob(job);
             return;
+        } finally {
+            clearTimeout(connectTimer);
         }
         if (!response || !response.ok) {
             abortSink(job);
@@ -772,6 +859,18 @@
             return;
         }
 
+        /* A truncated proxy stream can leave read() pending forever. Abort
+           after a minute without bytes so the browser fallback can start. */
+        var armStall = function () {
+            clearStall(job);
+            job.stallTimer = setTimeout(function () {
+                if (job.controller) {
+                    try { job.controller.abort(); } catch (_) {}
+                }
+            }, 60000);
+        };
+        armStall();
+
         var lastPaint = 0;
         var lastSample = 0;
         try {
@@ -782,6 +881,7 @@
                 job.loaded += chunk.byteLength;
                 if (writer) await writer.write(chunk);
                 else chunks.push(chunk);
+                armStall();
                 var now = Date.now();
                 if (now - lastSample > 400) {
                     job.samples.push({ at: now, bytes: job.loaded });
@@ -798,7 +898,9 @@
                     return;
                 }
             }
+            clearStall(job);
         } catch (error) {
+            clearStall(job);
             abortSink(job);
             if (job.cancelled) return;
             failJob(job);
@@ -1007,6 +1109,9 @@
             cancelled: false,
             writer: null,
             staging: null,
+            directUrl: url,
+            fallbackStarted: false,
+            stallTimer: null,
             panel: null,
             group: null,
             container: null

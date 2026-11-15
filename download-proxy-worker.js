@@ -103,7 +103,12 @@ export default {
     }
 
     const parts = target.pathname.split("/").filter(Boolean);
-    if (parts.length < 6 || parts[2] !== "releases" || parts[3] !== "download") {
+    /* Both an explicit tag and the rolling latest release are valid asset
+       paths. App buttons use /releases/latest/download/installer.exe, so
+       rejecting the latest form left every app download stuck. */
+    const latestRelease = parts[3] === "latest" && parts[4] === "download";
+    if (parts.length < 6 || parts[2] !== "releases" ||
+        (parts[3] !== "download" && !latestRelease)) {
       return text(403, "only release assets are allowed", cors);
     }
     const repo = (parts[0] + "/" + parts[1]).toLowerCase();

@@ -64,7 +64,9 @@ async function handle(request, env) {
   }
 
   const parts = target.pathname.split("/").filter(Boolean);
-  if (parts.length < 6 || parts[2] !== "releases" || parts[3] !== "download") {
+  const latestRelease = parts[3] === "latest" && parts[4] === "download";
+  if (parts.length < 6 || parts[2] !== "releases" ||
+      (parts[3] !== "download" && !latestRelease)) {
     return text(403, "only release assets are allowed", cors);
   }
 
