@@ -40,7 +40,7 @@
     var doc = global.document;
     if (!doc) return;
 
-    var LIST = "firmware-list.html";
+    var LIST = "firmware.html";
     var GUIDES = {
         "windows-legacy": "windows-legacy.html",
         "linux-legacy": "linux-legacy.html"
@@ -280,6 +280,7 @@
             if (node.getAttribute("data-legacy-browse") === "1") return;
             if (node.getAttribute("data-legacy-cta") === "1") return;
             if (inChrome(node)) return;
+            if (node.closest && node.closest("[data-platform-detect]")) return;
             var text = String(node.textContent || "").replace(/\s+/g, " ").trim();
             if (!UPDATER_TEXT.test(text)) return;
             var href = node.getAttribute("href") || "";
@@ -287,8 +288,8 @@
             if (/(windows|linux)-legacy\.html/i.test(href)) return;
             node.setAttribute("data-legacy-cta", "1");
             node.setAttribute("data-legacy-original-label", text);
-            node.textContent = "Get the software";
-            node.setAttribute("href", absolute(guideFor()));
+            node.textContent = "Portable firmware packages";
+            node.setAttribute("href", absolute(LIST));
             node.removeAttribute("download");
             node.removeAttribute("target");
         });
@@ -324,15 +325,14 @@
     }
 
     function cardHtml() {
+        var name = systemName();
         return '' +
-            '<p class="lumen-kicker notranslate" translate="no">' + systemName() + '</p>' +
-            '<h2>Install on this computer</h2>' +
-            '<p class="lead">Pick the software you want. The download for this computer already includes everything needed to install it, so there is nothing else to find or set up first.</p>' +
-            '<a class="lumen-store-badge" href="' + absolute(LIST) + '" data-legacy-store>' +
-            ICON + '<span class="lumen-store-badge-copy"><small>Get</small><strong><span>Software for</span> ' +
-            '<span class="notranslate" translate="no" data-i18n-skip>' + systemName() + '</span></strong></span></a>' +
-            '<p class="lumen-unavailable-line"><span>Every entry in the list has it.</span> ' +
-            '<a href="' + absolute(guideFor()) + '">How installation works</a></p>';
+            '<p class="lumen-kicker notranslate" translate="no">' + name + '</p>' +
+            '<h2>Portable Firmware Packages for <span class="notranslate" translate="no" data-i18n-skip>' + name + '</span></h2>' +
+            '<p class="lead">Updater CE cannot run on this computer. Use the portable firmware package built for ' + name + '; it includes the firmware, driver and installer.</p>' +
+            '<div class="lumen-actions"><a class="lumen-button lumen-button--primary" href="' + absolute(LIST) + '" data-legacy-store>Portable Firmware Packages for ' + name + '</a>' +
+            '<a class="lumen-button" href="' + absolute(guideFor()) + '">How installation works</a></div>' +
+            '<p class="lumen-meta">The platform instructions below still work; only the app download is unavailable on this computer.</p>';
     }
 
     function downloadCard() {
@@ -356,21 +356,20 @@
     }
 
     /* The Updater CE download card lists an installer per desktop. On a
-       computer that cannot run any of them, the whole card is replaced with
-       one button that leads to the firmware list. */
+       computer that cannot run any of them, put the portable-package route
+       above the platform cards and remove only the app download buttons. The
+       instructions stay available, so the reader can still choose to read
+       the steps for their own platform or the other two. */
     function replaceUpdaterCards() {
         each("[data-platform-detect]", function (options) {
             if (options.getAttribute("data-legacy-replaced") === "1") return;
             options.setAttribute("data-legacy-replaced", "1");
-            var host = options.closest("section.lumen-updater-download, section.lumen-platforms, details#download-updater, section, details, .lumen-platform-panel");
-            if (!host || !host.parentNode) return;
-            host.parentNode.insertBefore(downloadCard(), host.nextSibling);
-            host.hidden = true;
-            host.setAttribute("aria-hidden", "true");
-            /* A disclosure button the download module added before this
-               swap belongs to a hidden card now, so it goes with it. */
-            var stray = host.querySelector(".lumen-other-downloads");
-            if (stray && stray.parentNode) stray.parentNode.removeChild(stray);
+            if (options.parentNode) options.parentNode.insertBefore(downloadCard(), options);
+            each("[data-platform-detect] a[download]", function (link) {
+                link.hidden = true;
+                link.setAttribute("aria-hidden", "true");
+                link.setAttribute("tabindex", "-1");
+            });
         });
     }
 

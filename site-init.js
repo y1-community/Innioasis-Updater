@@ -1557,7 +1557,7 @@
         } catch (_) {}
         var node = document.createElement("script");
         node.id = "site-legacy-script";
-        node.src = base + "site-legacy.js?v=20261111cards";
+        node.src = base + "site-legacy.js?v=20261117legacy1";
         node.defer = true;
         document.head.appendChild(node);
     }
