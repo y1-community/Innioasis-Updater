@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261117fallback2";
+    var VERSION = "20261117fallback3";
     /* Archives, installers and app images all stream in-page. A driver or app
        download is often the one a reader most wants a speed and time-left for,
        so it deserves the same progress card as a firmware ZIP. Phone packages
@@ -627,7 +627,7 @@
         setTimeout(function () {
             if (startedNotice && startedNotice.parentNode) startedNotice.parentNode.removeChild(startedNotice);
             if (startedNotice && !startedNotice.parentNode) startedNotice = null;
-        }, 3200);
+        }, 5000);
     }
 
     function fallbackToBrowser(job, direct) {
@@ -731,6 +731,13 @@
        cannot provide one, stage the bytes privately and save the finished
        file instead of abandoning the transfer to the download shelf. */
     function openSink(job) {
+        /* App installers and drivers are the mission-critical downloads. They
+           stage privately instead of opening a save picker first, so a broken
+           proxy falls straight through to one direct browser download rather
+           than making the reader dismiss a picker for a transfer that fails. */
+        if (APP_DOWNLOAD_URL.test(String(job.url || "")) || APP_DOWNLOAD_URL.test(String(job.directUrl || ""))) {
+            return openStaging(job);
+        }
         if (typeof global.showSaveFilePicker !== "function") return openStaging(job);
         var extension = "." + ((String(job.name || "download.bin").split(".").pop() || "bin").toLowerCase());
         try {
