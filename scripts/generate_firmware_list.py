@@ -701,7 +701,7 @@ def render_page(feed: dict, software: list[dict]) -> tuple[str, list[dict]]:
         'title="Firmware releases">' % SITE,
         '<link rel="alternate" type="application/json" href="%s/feeds/firmware-releases.json" '
         'title="Firmware release data">' % SITE,
-        '<script src="site-download-stats.js?v=20261115stats2" defer></script>',
+        '<script src="site-download-stats.js?v=20261117stats7" defer></script>',
         '<script type="application/ld+json">%s</script>'
         % json.dumps(graph, ensure_ascii=False, separators=(",", ":")),
     ]

@@ -6,8 +6,10 @@
    for next. This module turns the number into a control that opens a small
    modal listing both halves:
 
-     - the firmware ZIPs in the original repository, and
-     - the portable install packages built for each computer.
+     - the portable install packages built for each computer, and
+     - the project's own firmware ZIP, reported at the end as the number of
+       downloads Updater CE has pulled, without a download button of its own:
+       the way in is the Updater CE button that sits above the list.
 
    The breakdown travels with the page. A generated list embeds it in
    data-download-stats; a row drawn at runtime hands it over through
@@ -26,7 +28,12 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261117stats6";
+    var VERSION = "20261117stats7";
+
+    /* The firmware ZIP is no longer offered as a file here: a reader installs
+       the release through Updater CE, and this is the line that says how many
+       times that has happened. */
+    var FIRMWARE_FOOT_LABEL = "Downloads from Updater CE";
 
     /* The order a reader thinks in: the usual desktop first, the legacy
        builds after the platform they belong to. */
@@ -311,6 +318,13 @@
             ".dl-stats__name{display:block;font-weight:600;overflow-wrap:anywhere;}",
             ".dl-stats__meta{display:block;color:var(--lumen-muted,#9aa3b5);font-size:11.5px;overflow-wrap:anywhere;}",
             ".dl-stats__count{flex:0 0 auto;font-variant-numeric:tabular-nums;font-weight:700;color:var(--lumen-accent,#6b9fff);}",
+            ".dl-stats__cta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:.1rem 0 .2rem;padding:.55rem .6rem;border:1px solid var(--lumen-line,rgba(255,255,255,.1));border-radius:10px;background:var(--lumen-panel-soft,var(--lumen-panel,#1b2030));}",
+            ".dl-stats__install{display:inline-flex;align-items:center;padding:.4rem .75rem;border-radius:999px;background:var(--lumen-accent,#6b9fff);color:#0b0e14;font:700 12.5px/1.3 var(--lumen-body,system-ui,sans-serif);text-decoration:none;}",
+            ".dl-stats__install:hover{filter:brightness(1.08);}",
+            ".dl-stats__install:focus-visible{outline:2px solid var(--lumen-text,#fff);outline-offset:2px;}",
+            ".dl-stats__cta-note{margin:0;flex:1 1 12rem;min-width:0;color:var(--lumen-muted,#9aa3b5);font-size:11.5px;}",
+            ".dl-stats__list--firmware{margin-top:.85rem;}",
+            ".dl-stats__row--firmware{border-style:dashed;}",
             ".dl-stats__row a.dl-stats__get{flex:0 0 auto;font-size:11.5px;color:var(--lumen-accent,#6b9fff);}",
             ".dl-stats__empty{margin:.2rem 0;color:var(--lumen-muted,#9aa3b5);font-size:12px;}",
             ".dl-stats__note{margin:.85rem 0 0;color:var(--lumen-muted,#9aa3b5);font-size:11.5px;}",
@@ -344,19 +358,14 @@
         return wrap;
     }
 
-    function row(entry, kind) {
+    /* One portable install package: the file the reader can actually take
+       away for the computer they are on. */
+    function row(entry) {
         var item = el("li", "dl-stats__row");
         var copy = el("div", "dl-stats__copy");
-        var portable = kind === "portable";
-        var name = portable ? label(entry.platform)
-            : (entry.name || "firmware ZIP");
-        copy.appendChild(el("span", "dl-stats__name", name));
-        var meta = portable
-            ? (entry.name || "portable package") + (entry.size ? " · " + size(entry.size) : "")
-            : entry.mirror ? "Firmware ZIP in the portable mirror" : "Original firmware ZIP";
-        if (!portable && num(entry.mirror_downloads)) {
-            meta += " · includes " + fmt(entry.mirror_downloads) + " from the mirror copy";
-        }
+        copy.appendChild(el("span", "dl-stats__name", label(entry.platform)));
+        var meta = (entry.name || "portable package") +
+            (entry.size ? " · " + size(entry.size) : "");
         copy.appendChild(el("span", "dl-stats__meta", meta));
         item.appendChild(copy);
         item.appendChild(el("span", "dl-stats__count", fmt(entry.downloads) + " downloads"));
@@ -370,6 +379,64 @@
         return item;
     }
 
+    /* The firmware ZIP reported as a figure instead of a file: no link, no
+       download button, just the count and the ZIP names it covers. Several
+       ZIPs (Y1 Type A and Type B) fold into one line. */
+    function firmwareFootRow(firmware) {
+        var total = 0;
+        var mirror = 0;
+        var names = [];
+        firmware.forEach(function (entry) {
+            total += num(entry.downloads);
+            mirror += num(entry.mirror_downloads);
+            if (entry.name) names.push(String(entry.name));
+        });
+        var item = el("li", "dl-stats__row dl-stats__row--firmware");
+        var copy = el("div", "dl-stats__copy");
+        copy.appendChild(el("span", "dl-stats__name", FIRMWARE_FOOT_LABEL));
+        var meta = names.join(", ");
+        if (mirror) {
+            meta += (meta ? " · " : "") + "includes " + fmt(mirror) + " from the mirror copy";
+        }
+        if (meta) copy.appendChild(el("span", "dl-stats__meta", meta));
+        item.appendChild(copy);
+        item.appendChild(el("span", "dl-stats__count", fmt(total) + " downloads"));
+        return item;
+    }
+
+    /* The action that replaces the old rom.zip row: hand the release to
+       Updater CE, which picks the package for the player and walks through
+       the install. A breakdown drawn at runtime carries its own guide link;
+       a page generated before that field existed is read from its markup, so
+       the link still names the model and software. */
+    function guideHref(breakdown, trigger) {
+        if (breakdown && breakdown.guide) return String(breakdown.guide);
+        var software = "";
+        var model = "";
+        if (trigger && trigger.closest) {
+            var block = trigger.closest("section[id]");
+            if (block && /^[a-z0-9-]+$/.test(block.id) && block.id.indexOf("model-") !== 0) {
+                software = block.id;
+            }
+            var hardware = trigger.closest('section[id^="model-"]');
+            if (hardware) model = hardware.id.slice("model-".length).toUpperCase();
+        }
+        var query = [];
+        if (model) query.push("model=" + encodeURIComponent(model));
+        if (software) query.push("software=" + encodeURIComponent(software));
+        return "guide.html" + (query.length ? "?" + query.join("&") : "");
+    }
+
+    function cta(breakdown, trigger) {
+        var wrap = el("div", "dl-stats__cta");
+        var link = el("a", "dl-stats__install", "Install this easily with Updater");
+        link.href = guideHref(breakdown, trigger);
+        wrap.appendChild(link);
+        wrap.appendChild(el("p", "dl-stats__cta-note",
+            "Updater CE fetches this release for your player and walks you through the install."));
+        return wrap;
+    }
+
     function size(bytes) {
         var n = Number(bytes) || 0;
         if (n < 1024) return n + " B";
@@ -380,7 +447,7 @@
         return (mb / 1024).toFixed(2) + " GB";
     }
 
-    function build(breakdown) {
+    function build(breakdown, trigger) {
         var panel = el("div", "dl-stats");
         panel.setAttribute("role", "dialog");
         panel.setAttribute("aria-modal", "true");
@@ -400,15 +467,13 @@
         total.innerHTML = "Combined downloads: <strong>" + fmt(totalOf(breakdown)) + "</strong>";
         panel.appendChild(total);
 
-        var firmware = breakdown.firmware || [];
-        panel.appendChild(section("Firmware ZIPs"));
-        if (firmware.length) {
-            var fit = el("ul", "dl-stats__list");
-            firmware.forEach(function (entry) { fit.appendChild(row(entry, "firmware")); });
-            panel.appendChild(fit);
-        } else {
-            panel.appendChild(el("p", "dl-stats__empty", "No firmware ZIP is listed for this release."));
-        }
+        /* The way in comes first, where the rom.zip row used to be: install
+           this release with Updater CE rather than hunting for the file. */
+        panel.appendChild(cta(breakdown, trigger));
+
+        var firmware = (breakdown.firmware || []).filter(function (entry) {
+            return entry && typeof entry === "object";
+        });
 
         var portable = (breakdown.portable || []).slice().sort(function (a, b) {
             var ai = PLATFORM_ORDER.indexOf(a.platform);
@@ -418,14 +483,22 @@
         panel.appendChild(section("Portable install packages"));
         if (portable.length) {
             var pit = el("ul", "dl-stats__list");
-            portable.forEach(function (entry) { pit.appendChild(row(entry, "portable")); });
+            portable.forEach(function (entry) { pit.appendChild(row(entry)); });
             panel.appendChild(pit);
         } else {
             panel.appendChild(el("p", "dl-stats__empty", "No portable package is published for this release."));
         }
 
+        /* The project's own ZIP closes the list as a figure: counted, never
+           offered as a file of its own. */
+        if (firmware.length) {
+            var fit = el("ul", "dl-stats__list dl-stats__list--firmware");
+            fit.appendChild(firmwareFootRow(firmware));
+            panel.appendChild(fit);
+        }
+
         var note = el("p", "dl-stats__note",
-            "Firmware counts combine the project's release with the mirror's copy of the same ZIP. Portable counts come from the mirror that repackages it.");
+            "The Updater CE figure combines the project's release with the mirror's copy of the same ZIP. Portable counts come from the mirror that repackages it.");
         panel.appendChild(note);
 
         close.addEventListener("click", hide);
@@ -462,7 +535,7 @@
         lastTrigger = trigger || doc.activeElement || null;
         hide();
         overlay = el("div", "dl-stats-overlay");
-        var panel = build(breakdown);
+        var panel = build(breakdown, trigger);
         overlay.appendChild(panel);
         overlay.addEventListener("click", function (event) {
             if (event.target === overlay) hide();

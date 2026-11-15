@@ -2441,7 +2441,13 @@
                     return list;
                 }, []);
             var portable = known && Array.isArray(known.portable) ? known.portable : [];
+            /* The modal's Updater CE button lands on the guide for this exact
+               model and software. */
+            var guideQuery = [];
+            if (item && item.model) guideQuery.push("model=" + encodeURIComponent(item.model));
+            if (item && item.slug) guideQuery.push("software=" + encodeURIComponent(item.slug));
             return {
+                guide: "guide.html" + (guideQuery.length ? "?" + guideQuery.join("&") : ""),
                 title: (item && item.name ? item.name + (item.model ? " for " + item.model : "") + " " : "") +
                     (tag || "release") + " download figures",
                 tag: String(tag || ""),
