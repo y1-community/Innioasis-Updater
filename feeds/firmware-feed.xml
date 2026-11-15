@@ -4,7 +4,7 @@
   <title>Innioasis and Timmkoo firmware releases</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware-list.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/firmware-feed.xml"/>
-  <updated>2026-11-15T10:19:32Z</updated>
+  <updated>2026-11-15T11:15:23Z</updated>
   <inni:schema_version>2</inni:schema_version>
   <inni:manifest_url>https://innioasis.app/slidia_manifest.xml</inni:manifest_url>
   <inni:firmware_list_url>https://innioasis.app/firmware-list.html</inni:firmware_list_url>
@@ -1313,7 +1313,7 @@
           <inni:package platform="linux" name="rom_type_b-linux.zip" url="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom_type_b-linux.zip" size="796537833" downloads="2"/>
           <inni:package platform="linux-arm64" name="rom_type_b-linux-arm64.zip" url="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom_type_b-linux-arm64.zip" size="621442067" downloads="2"/>
           <inni:package platform="linux-legacy" name="rom_type_b-linux-legacy.zip" url="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom_type_b-linux-legacy.zip" size="509391969" downloads="2"/>
-          <inni:package platform="macos" name="rom_type_b-macos.zip" url="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom_type_b-macos.zip" size="555850486" downloads="2"/>
+          <inni:package platform="macos" name="rom_type_b-macos.zip" url="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom_type_b-macos.zip" size="555850486" downloads="3"/>
         </inni:mirror_asset>
         <inni:mirror_asset name="update.zip" tag="stable-v0.6.1" original_url="" original_size="100114970" mirror_original_url="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/update.zip">
         </inni:mirror_asset>
@@ -5264,7 +5264,7 @@ This can be used to restore your Y2 back to its factory conditions and get thing
     <inni:repo>y1-community/y1-stock-rom</inni:repo>
     <inni:tag_name>3.1.2</inni:tag_name>
     <inni:name>Original System Software 3.1.2 for Innioasis Y1</inni:name>
-    <inni:downloads>8994</inni:downloads>
+    <inni:downloads>8999</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip" title="rom.zip" length="250125316" type="application/zip"/>
@@ -5423,7 +5423,7 @@ Theme Installation: Default themes are now copied in the background to prevent c
     <inni:repo>y1-community/g1-stock-rom</inni:repo>
     <inni:tag_name>MX3-G1-EN-WM-V5.01-20260805</inni:tag_name>
     <inni:name>MX3-G1-EN-WM-V5.01-20260805</inni:name>
-    <inni:downloads>138</inni:downloads>
+    <inni:downloads>140</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip" title="rom_g1.zip" length="1645800503" type="application/octet-stream"/>
@@ -6283,7 +6283,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q5&gt;</content>
     <inni:repo>schulzcode/y2linux</inni:repo>
     <inni:tag_name>baseline-261</inni:tag_name>
     <inni:name>Y2Linux 1.0 Beta 9.3.30</inni:name>
-    <inni:downloads>105</inni:downloads>
+    <inni:downloads>109</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://innioasis.app/assets/reborn_icon.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-261/bootimg.img.gz" title="bootimg.img.gz" length="7557676" type="application/gzip"/>
@@ -14195,7 +14195,7 @@ The firmware is built with [`firmware/build.sh`](https://github.com/jarvissax/ro
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>stable-v0.6.1</inni:tag_name>
     <inni:name> Rockbox-Y1 v0.6.1</inni:name>
-    <inni:downloads>382</inni:downloads>
+    <inni:downloads>387</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rockbox.apk" title="rockbox.apk" length="16533880" type="application/vnd.android.package-archive"/>
@@ -14702,7 +14702,7 @@ Also:
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>voices-22511894870</inni:tag_name>
     <inni:name>Voice Files (latest) - 453d02bb2a2759079cb06e2b724330c0a6fa2aa3</inni:name>
-    <inni:downloads>27</inni:downloads>
+    <inni:downloads>28</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/voices-22511894870/voices.zip" title="voices.zip" length="76500020" type="application/zip"/>
@@ -14823,7 +14823,7 @@ And many bug fixes and general UI/UX improvements. A big thanks to all the contr
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>16761617720</inni:tag_name>
     <inni:name>Rockbox-Y1 v0.2</inni:name>
-    <inni:downloads>77</inni:downloads>
+    <inni:downloads>78</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/16761617720/libs.zip" title="libs.zip" length="3996666" type="application/zip"/>
@@ -14869,7 +14869,7 @@ And many bug fixes and general UI/UX improvements. A big thanks to all the contr
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>016733367579</inni:tag_name>
     <inni:name>Voice Files v0.2</inni:name>
-    <inni:downloads>147</inni:downloads>
+    <inni:downloads>148</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/016733367579/voices.zip" title="voices.zip" length="76155485" type="application/zip"/>
@@ -14953,7 +14953,7 @@ Includes these languages:
     <inni:repo>spycemagic/y2-rockbox</inni:repo>
     <inni:tag_name>v0.2.5-beta</inni:tag_name>
     <inni:name>V2.5</inni:name>
-    <inni:downloads>1175</inni:downloads>
+    <inni:downloads>1177</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/INSTALL-GUIDE.md" title="INSTALL-GUIDE.md" length="4237" type="application/octet-stream"/>
@@ -18172,7 +18172,7 @@ adb shell pm grant com.themoon.y1 android.permission.WRITE_SECURE_SETTINGS</cont
     <inni:repo>FabianZettl/inniclassic</inni:repo>
     <inni:tag_name>v1.4.5</inni:tag_name>
     <inni:name>InniClassic 1.4.5</inni:name>
-    <inni:downloads>669</inni:downloads>
+    <inni:downloads>670</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/InniClassic-1.4.5.apk" title="InniClassic-1.4.5.apk" length="30017796" type="application/vnd.android.package-archive"/>
     <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip" title="rom.zip" length="463531481" type="application/zip"/>
@@ -18647,7 +18647,7 @@ See [CHANGELOG.md](https://github.com/FabianZettl/jj-launcher-classic/blob/maste
     <inni:repo>ClassyPlayer/Classy</inni:repo>
     <inni:tag_name>20261113-beta</inni:tag_name>
     <inni:name>Classy 20261113 (beta)</inni:name>
-    <inni:downloads>36</inni:downloads>
+    <inni:downloads>38</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/Classy-20261113-beta.apk" title="Classy-20261113-beta.apk" length="25251963" type="application/vnd.android.package-archive"/>
@@ -20220,7 +20220,7 @@ Thank you to everyone who reported the queue, metadata, audiobook, browsing, and
     <inni:repo>schulzcode/Y2Player</inni:repo>
     <inni:tag_name>ReleaseV2.2</inni:tag_name>
     <inni:name>Y2Player V2.2</inni:name>
-    <inni:downloads>58</inni:downloads>
+    <inni:downloads>59</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2/system.zip" title="system.zip" length="225481335" type="application/x-zip-compressed"/>
     <content type="text"># Y2Player v2.2 - Interface Redesign, Audiobooks, and Library Browsing
@@ -20348,7 +20348,7 @@ Y2Player can now export your listening history, making it easy to keep a record 
     <inni:repo>schulzcode/Y2Player</inni:repo>
     <inni:tag_name>ReleaseV2.1</inni:tag_name>
     <inni:name>Y2Player V2.1</inni:name>
-    <inni:downloads>58</inni:downloads>
+    <inni:downloads>59</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.1/system.zip" title="system.zip" length="225469939" type="application/x-zip-compressed"/>
     <content type="text"># Y2Player v2.1 — Library Scanner and Media Engine Improvements
@@ -20579,7 +20579,7 @@ Feedback from real-world libraries is especially useful. If you have a large col
     <inni:repo>schulzcode/Y2Player</inni:repo>
     <inni:tag_name>ReleaseV2.0</inni:tag_name>
     <inni:name>Y2Player 2.0 Complete Media Engine Rewrite</inni:name>
-    <inni:downloads>46</inni:downloads>
+    <inni:downloads>47</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.0/system.zip" title="system.zip" length="329753589" type="application/x-zip-compressed"/>
     <content type="text">---
@@ -20693,7 +20693,7 @@ With FFmpeg at its core, Y2Player now has a modern, future-proof media foundatio
     <inni:repo>schulzcode/Y2Player</inni:repo>
     <inni:tag_name>ReleaseV1.2</inni:tag_name>
     <inni:name>Y2Player V1.2</inni:name>
-    <inni:downloads>51</inni:downloads>
+    <inni:downloads>52</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV1.2/system.zip" title="system.zip" length="330410840" type="application/x-zip-compressed"/>
     <content type="text"># Changelog
@@ -20795,7 +20795,7 @@ so it is not planned.
     <inni:repo>schulzcode/Y2Player</inni:repo>
     <inni:tag_name>ReleaseV1.1</inni:tag_name>
     <inni:name>Release V1.1</inni:name>
-    <inni:downloads>28</inni:downloads>
+    <inni:downloads>29</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV1.1/system.zip" title="system.zip" length="330412470" type="application/x-zip-compressed"/>
     <content type="text"># Changelog
@@ -20844,7 +20844,7 @@ so it is not planned.
     <inni:repo>schulzcode/Y2Player</inni:repo>
     <inni:tag_name>Release</inni:tag_name>
     <inni:name>Y2Player V1.0</inni:name>
-    <inni:downloads>45</inni:downloads>
+    <inni:downloads>46</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/Release/system.zip" title="system.zip" length="330410980" type="application/x-zip-compressed"/>
     <content type="text">---
@@ -21235,7 +21235,7 @@ it re-reads every MP3 whose tag is over the limit, even if the file has not chan
     <inni:repo>y1-community/y1-ata-rom</inni:repo>
     <inni:tag_name>0.1</inni:tag_name>
     <inni:name>Y1 ATA ROM for Type A and Type B</inni:name>
-    <inni:downloads>792</inni:downloads>
+    <inni:downloads>793</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip" title="rom.zip" length="533410269" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip" title="rom_type_b.zip" length="475393744" type="application/zip"/>
@@ -23028,7 +23028,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q3&gt;
     <inni:repo>NoahDomingues/Lithium</inni:repo>
     <inni:tag_name>v7.1.06.13.25</inni:tag_name>
     <inni:name>Lithium 7 Beta</inni:name>
-    <inni:downloads>1140</inni:downloads>
+    <inni:downloads>1141</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://innioasis.app/assets/lithium_icon.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/NoahDomingues/Lithium/releases/download/v7.1.06.13.25/Lithium.Beta.v7.1.06.13.25.zip" title="Lithium.Beta.v7.1.06.13.25.zip" length="307094451" type="application/x-zip-compressed"/>
@@ -23060,7 +23060,7 @@ If you have any issues, feel free to join the **[discussion](https://github.com/
     <inni:repo>NoahDomingues/Lithium</inni:repo>
     <inni:tag_name>v7.1.06.09.25</inni:tag_name>
     <inni:name>Lithium 7 Beta</inni:name>
-    <inni:downloads>106</inni:downloads>
+    <inni:downloads>107</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://innioasis.app/assets/lithium_icon.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/NoahDomingues/Lithium/releases/download/v7.1.06.09.25/Lithium.7.v7.1.06.09.25.zip" title="Lithium.7.v7.1.06.09.25.zip" length="328910851" type="application/x-zip-compressed"/>
@@ -34058,7 +34058,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, La
     <inni:repo>y1-community/rockbox-mirror</inni:repo>
     <inni:tag_name>stable-v0.6.1</inni:tag_name>
     <inni:name>Portable Flashing Package: Rockbox-Y1 v0.6.1</inni:name>
-    <inni:downloads>55</inni:downloads>
+    <inni:downloads>56</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rockbox.apk" title="rockbox.apk" length="16533880" type="application/vnd.android.package-archive"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="707474595" type="application/zip"/>
@@ -34221,7 +34221,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, La
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="517768787" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="756007620" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b.zip" title="rom_type_b.zip" length="501657775" type="application/zip"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/stats.txt" title="stats.txt" length="6251" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/stats.txt" title="stats.txt" length="6253" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/update.zip" title="update.zip" length="99329841" type="application/zip"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=rockbox-y1%2Frockbox&amp;amp;tag=stable-v0.6#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -39410,7 +39410,7 @@ Experimental build for the Innioasis Y1 (Android 4.2), to collect test results f
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y2-windows.zip" title="rom_y2-windows.zip" length="721783296" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/rom_y2.zip" title="rom_y2.zip" length="482182978" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/SHA256SUMS.txt" title="SHA256SUMS.txt" length="336" type="text/plain; charset=utf-8"/>
-    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/stats.txt" title="stats.txt" length="8057" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/stats.txt" title="stats.txt" length="8058" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261113-beta/update.json" title="update.json" length="326" type="application/json"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=ClassyPlayer%2FClassy&amp;amp;tag=20261113-beta#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -48512,7 +48512,7 @@ Features
     <inni:repo>y1-community/updater-ce-neo</inni:repo>
     <inni:tag_name>2.5.5</inni:tag_name>
     <inni:name>Updater CE 2.5.5 for Windows and Linux</inni:name>
-    <inni:downloads>195</inni:downloads>
+    <inni:downloads>197</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/run_linux.sh" title="run_linux.sh" length="53935" type="application/x-sh"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.5/run_linux.sh.sha256" title="run_linux.sh.sha256" length="79" type="application/octet-stream"/>
@@ -48545,7 +48545,7 @@ This update ensures that you always install the correct software before installi
     <inni:repo>y1-community/updater-ce-neo</inni:repo>
     <inni:tag_name>2.5.4</inni:tag_name>
     <inni:name>Innioasis Updater 2.5.5 for Windows and 2.5.4 for Mac and Linux (experimental app image - please report any issues)</inni:name>
-    <inni:downloads>383</inni:downloads>
+    <inni:downloads>384</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/UpdaterCE.appimage" title="UpdaterCE.appimage" length="305895928" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/UpdaterCE-arm64.appimage" title="UpdaterCE-arm64.appimage" length="172796424" type="application/octet-stream"/>
@@ -48640,7 +48640,7 @@ Support for the full Innioasis and Timmkoo product line in Updater CE and Firmwa
     <inni:repo>y1-community/Innioasis-Updater</inni:repo>
     <inni:tag_name>2.5.3</inni:tag_name>
     <inni:name>Innioasis Updater, 2.5.3 for Windows and 2.5.4 for Mac and Linux</inni:name>
-    <inni:downloads>15</inni:downloads>
+    <inni:downloads>16</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="119710372" type="application/x-diskcopy"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/installer.exe" title="installer.exe" length="157480421" type="application/x-msdownload"/>
@@ -48962,7 +48962,7 @@ curl -fsSL https://innioasis.app/run_linux.sh | bash
     <inni:repo>y1-community/Innioasis-Updater</inni:repo>
     <inni:tag_name>flash_tool</inni:tag_name>
     <inni:name>flash_tool</inni:name>
-    <inni:downloads>503</inni:downloads>
+    <inni:downloads>506</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe" title="1.Install.Driver.First.and.Reboot.PC.exe" length="9534578" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip" title="flash_tool_linux.zip" length="73234593" type="application/zip"/>
