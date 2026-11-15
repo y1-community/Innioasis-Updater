@@ -655,7 +655,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-windows.zip",
         "size": 842355635,
-        "download_count": 20,
+        "download_count": 21,
         "content_type": "application/zip",
         "created_at": "2026-11-13T00:59:37Z",
         "updated_at": "2026-11-13T01:00:12Z",
@@ -721,7 +721,7 @@
         "name": "rom_type_b-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-windows-legacy.zip",
         "size": 517768787,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-13T00:59:57Z",
         "updated_at": "2026-11-13T01:00:12Z",
@@ -773,7 +773,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 54,
+    "downloads": 56,
     "download_breakdown": {
       "tag": "stable-v0.6",
       "mirrors": "",
@@ -806,7 +806,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-windows.zip",
-          "downloads": 20
+          "downloads": 21
         },
         {
           "name": "rom.zip",
@@ -836,7 +836,7 @@
         {
           "name": "rom_type_b-windows-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom_type_b-windows-legacy.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "rom_type_b-windows.zip",
@@ -1235,7 +1235,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-windows.zip",
         "size": 846686810,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/zip",
         "created_at": "2026-11-12T22:39:33Z",
         "updated_at": "2026-11-12T22:39:58Z",
@@ -1353,7 +1353,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 41,
+    "downloads": 42,
     "download_breakdown": {
       "tag": "stable-v0.5",
       "mirrors": "",
@@ -1386,7 +1386,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-windows.zip",
-          "downloads": 19
+          "downloads": 20
         },
         {
           "name": "rom.zip",
