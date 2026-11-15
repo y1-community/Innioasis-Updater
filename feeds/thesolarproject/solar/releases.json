@@ -112,7 +112,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom.zip",
         "size": 981474469,
-        "download_count": 947,
+        "download_count": 948,
         "content_type": "application/zip",
         "created_at": "2026-08-19T10:05:51Z",
         "updated_at": "2026-08-19T10:06:37Z",
@@ -142,7 +142,7 @@
       }
     ],
     "mirror_downloads": 41,
-    "downloads": 1041,
+    "downloads": 1042,
     "download_breakdown": {
       "tag": "20260819-0956",
       "mirrors": "y1-community/solar-mirror",
@@ -150,7 +150,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom.zip",
-          "downloads": 954,
+          "downloads": 955,
           "mirror_downloads": 7
         },
         {
@@ -6723,7 +6723,7 @@
         "name": "app-release.apk",
         "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260627-0304/app-release.apk",
         "size": 11815148,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-06-27T03:08:51Z",
         "updated_at": "2026-06-27T03:08:51Z",

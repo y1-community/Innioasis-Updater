@@ -801,7 +801,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-windows.zip",
         "size": 758362209,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-13T05:46:44Z",
         "updated_at": "2026-11-13T05:47:09Z",
@@ -1161,7 +1161,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 33,
+    "downloads": 34,
     "download_breakdown": {
       "tag": "20261112",
       "mirrors": "",
@@ -1194,7 +1194,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261112/rom-windows.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom.zip",
@@ -4310,7 +4310,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom.zip",
         "size": 454796172,
-        "download_count": 1,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-11T00:22:20Z",
         "updated_at": "2026-11-11T00:22:40Z",
@@ -4387,7 +4387,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b.zip",
         "size": 421956245,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-11T00:22:20Z",
         "updated_at": "2026-11-11T00:22:40Z",
@@ -4431,7 +4431,7 @@
         "name": "rom_y1_type_a-macos.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_a-macos.zip",
         "size": 574512338,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-13T02:25:19Z",
         "updated_at": "2026-11-13T02:25:36Z",
@@ -4629,7 +4629,7 @@
         "name": "SHA256SUMS.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/SHA256SUMS.txt",
         "size": 491,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-11-07T23:52:22Z",
         "updated_at": "2026-11-07T23:52:22Z",
@@ -4659,7 +4659,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 33,
+    "downloads": 38,
     "download_breakdown": {
       "tag": "20261105",
       "mirrors": "",
@@ -4697,7 +4697,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom.zip",
-          "downloads": 1
+          "downloads": 3
         },
         {
           "name": "rom_type_b-linux-arm64.zip",
@@ -4732,7 +4732,7 @@
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_type_b.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "rom_y1_type_a-linux-arm64.zip",
@@ -4752,7 +4752,7 @@
         {
           "name": "rom_y1_type_a-macos.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261105/rom_y1_type_a-macos.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom_y1_type_a-windows-legacy.zip",
@@ -6844,7 +6844,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom.zip",
         "size": 454740884,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-10T23:38:12Z",
         "updated_at": "2026-11-10T23:39:50Z",
@@ -6921,7 +6921,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_type_b.zip",
         "size": 422663953,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-10T23:38:13Z",
         "updated_at": "2026-11-10T23:38:28Z",
@@ -7193,7 +7193,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 38,
+    "downloads": 40,
     "download_breakdown": {
       "tag": "20261012",
       "mirrors": "",
@@ -7231,7 +7231,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom_type_b-linux-arm64.zip",
@@ -7266,7 +7266,7 @@
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_type_b.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom_y1_type_a-linux-arm64.zip",
@@ -10094,7 +10094,7 @@
         "name": "rom_y1_type_a-linux.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_a-linux.zip",
         "size": 815174855,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-12T22:15:07Z",
         "updated_at": "2026-11-12T22:15:29Z",
@@ -10333,7 +10333,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 42,
+    "downloads": 43,
     "download_breakdown": {
       "tag": "20261001",
       "mirrors": "",
@@ -10421,7 +10421,7 @@
         {
           "name": "rom_y1_type_a-linux.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261001/rom_y1_type_a-linux.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom_y1_type_a-macos.zip",

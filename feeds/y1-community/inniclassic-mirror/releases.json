@@ -83,7 +83,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows.zip",
         "size": 775976425,
-        "download_count": 8,
+        "download_count": 9,
         "content_type": "application/zip",
         "created_at": "2026-11-12T19:58:21Z",
         "updated_at": "2026-11-12T19:59:40Z",
@@ -113,7 +113,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 16,
+    "downloads": 17,
     "download_breakdown": {
       "tag": "v1.4.5",
       "mirrors": "",
@@ -146,7 +146,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows.zip",
-          "downloads": 8
+          "downloads": 9
         },
         {
           "name": "rom.zip",
