@@ -46,6 +46,11 @@ When false-positive definitions finish updating on your computer, you can re-ena
     <url>https://www.reddit.com/r/innioasis/comments/1xxxi4d/bricked_my_y2_trying_to_install_jj_launcher/</url>
     <link>https://www.reddit.com/r/innioasis/comments/1xxxi4d/bricked_my_y2_trying_to_install_jj_launcher/</link>
   </notice>
+
+      <notice id="notice-y2-reborn" persistent="true" severity="warning" models="Y2" firmware_repo="schulzcode/y2linux" >
+    <title>Installing Reborn for the First Time?</title>
+    <content>Install Original Software for Y2 (any version) for the best results, it may not boot if coming from Classy or another custom firmware</content>
+  </notice>
   
   <notice id="notice-y1-stock-legacy" persistent="true" severity="warning" models="Y1" firmware_repo="y1-community/y1-stock-rom,y1-community/y1-stock-rom-mirror" max_version="3.0.7" firmware_version="v3.0.0,3.0.0,v3.0.1,3.0.1,v3.0.2,3.0.2,v3.0.3,3.0.3,v3.0.4,3.0.4,v3.0.5,3.0.5,v3.0.6,3.0.6,v2.*,2.*,v1.*,1.*">
     <title>Original Software Y1 Compatibility Warning</title>
