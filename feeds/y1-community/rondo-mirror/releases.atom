@@ -685,12 +685,12 @@ Files: `rondo-3.0.1.rondo` is the signed update bundle; `rom.zip` (the firmware)
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/rondo-mirror/releases/tag/v3.0.0"/>
     <innioasis:tag_name>v3.0.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>15</innioasis:downloads>
+    <innioasis:downloads>17</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="653380087" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740795167"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="531821681" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740795173"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-linux.zip" title="rom-linux.zip" length="828475853" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740795172"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-macos.zip" title="rom-macos.zip" length="580083851" type="application/zip" innioasis:download_count="2" innioasis:asset_id="740796404"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-macos.zip" title="rom-macos.zip" length="580083851" type="application/zip" innioasis:download_count="4" innioasis:asset_id="740796404"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="533407396" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740795170"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom-windows.zip" title="rom-windows.zip" length="771646249" type="application/zip" innioasis:download_count="8" innioasis:asset_id="740795175"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.0/rom.zip" title="rom.zip" length="529771636" type="application/zip" innioasis:download_count="1" innioasis:asset_id="738948527"/>

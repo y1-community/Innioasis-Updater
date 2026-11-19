@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-19T13:02:19Z",
+  "generated_at": "2026-11-19T15:04:06Z",
   "manifest_url": "https://innioasis.app/slidia_manifest.xml",
   "firmware_list_url": "https://innioasis.app/firmware-list.html",
   "feeds": {
@@ -158,18 +158,6 @@
       "releases_atom": "https://innioasis.app/feeds/y1-community/y1-stock-rom-mirror/releases.atom",
       "repo_json": "https://innioasis.app/feeds/y1-community/y1-stock-rom-mirror/repo.json"
     },
-    "spirk0/retailos-y1": {
-      "repo": "spirk0/retailos-y1",
-      "releases_json": "https://innioasis.app/feeds/spirk0/retailos-y1/releases.json",
-      "releases_atom": "https://innioasis.app/feeds/spirk0/retailos-y1/releases.atom",
-      "repo_json": "https://innioasis.app/feeds/spirk0/retailos-y1/repo.json"
-    },
-    "y1-community/retailos-y1-mirror": {
-      "repo": "y1-community/retailos-y1-mirror",
-      "releases_json": "https://innioasis.app/feeds/y1-community/retailos-y1-mirror/releases.json",
-      "releases_atom": "https://innioasis.app/feeds/y1-community/retailos-y1-mirror/releases.atom",
-      "repo_json": "https://innioasis.app/feeds/y1-community/retailos-y1-mirror/repo.json"
-    },
     "y1-community/g1-stock-rom-mirror": {
       "repo": "y1-community/g1-stock-rom-mirror",
       "releases_json": "https://innioasis.app/feeds/y1-community/g1-stock-rom-mirror/releases.json",
@@ -290,6 +278,18 @@
       "releases_atom": "https://innioasis.app/feeds/y1-community/y1-linux-rom-mirror/releases.atom",
       "repo_json": "https://innioasis.app/feeds/y1-community/y1-linux-rom-mirror/repo.json"
     },
+    "spirk0/retailos-y1": {
+      "repo": "spirk0/retailos-y1",
+      "releases_json": "https://innioasis.app/feeds/spirk0/retailos-y1/releases.json",
+      "releases_atom": "https://innioasis.app/feeds/spirk0/retailos-y1/releases.atom",
+      "repo_json": "https://innioasis.app/feeds/spirk0/retailos-y1/repo.json"
+    },
+    "y1-community/retailos-y1-mirror": {
+      "repo": "y1-community/retailos-y1-mirror",
+      "releases_json": "https://innioasis.app/feeds/y1-community/retailos-y1-mirror/releases.json",
+      "releases_atom": "https://innioasis.app/feeds/y1-community/retailos-y1-mirror/releases.atom",
+      "repo_json": "https://innioasis.app/feeds/y1-community/retailos-y1-mirror/repo.json"
+    },
     "y1-community/solar-mirror": {
       "repo": "y1-community/solar-mirror",
       "releases_json": "https://innioasis.app/feeds/y1-community/solar-mirror/releases.json",
@@ -316,7 +316,7 @@
     },
     "y1-community/classy-mirror": {
       "source_repo": "ClassyPlayer/Classy",
-      "updated_at": "2026-11-18T20:07:25Z"
+      "updated_at": "2026-11-19T13:43:07Z"
     },
     "y1-community/g1-stock-rom-mirror": {
       "source_repo": "y1-community/g1-stock-rom",
@@ -328,7 +328,7 @@
     },
     "y1-community/g5-stock-rom-mirror": {
       "source_repo": "y1-community/g5-stock-rom",
-      "updated_at": "2026-11-19T03:55:09Z"
+      "updated_at": "2026-11-19T13:46:35Z"
     },
     "y1-community/inniclassic-mirror": {
       "source_repo": "FabianZettl/inniclassic",
@@ -352,7 +352,7 @@
     },
     "y1-community/retailos-y1-mirror": {
       "source_repo": "spirk0/retailos-y1",
-      "updated_at": "2026-11-19T13:02:19Z"
+      "updated_at": "2026-11-19T15:04:06Z"
     },
     "y1-community/rockbox-mirror": {
       "source_repo": "rockbox-y1/rockbox",
