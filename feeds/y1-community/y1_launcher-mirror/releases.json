@@ -72,7 +72,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom-windows.zip",
         "size": 769027426,
-        "download_count": 4,
+        "download_count": 5,
         "content_type": "application/zip",
         "created_at": "2026-11-12T22:32:03Z",
         "updated_at": "2026-11-12T22:32:29Z",
@@ -167,19 +167,19 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733262823"
       },
       {
-        "id": 766086512,
+        "id": 767801730,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/stats.txt",
-        "size": 5717,
+        "size": 5718,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:40Z",
-        "updated_at": "2026-11-19T03:39:40Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086512"
+        "created_at": "2026-11-19T13:28:32Z",
+        "updated_at": "2026-11-19T13:28:32Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767801730"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 8,
+    "downloads": 9,
     "download_breakdown": {
       "tag": "launcher-v0.9",
       "mirrors": "",
@@ -212,7 +212,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom-windows.zip",
-          "downloads": 4
+          "downloads": 5
         },
         {
           "name": "rom.zip",
@@ -426,15 +426,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733245253"
       },
       {
-        "id": 766086444,
+        "id": 767801633,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/stats.txt",
         "size": 5714,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:38Z",
-        "updated_at": "2026-11-19T03:39:38Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086444"
+        "created_at": "2026-11-19T13:28:29Z",
+        "updated_at": "2026-11-19T13:28:30Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767801633"
       }
     ],
     "mirror_downloads": 0,
@@ -685,15 +685,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733224874"
       },
       {
-        "id": 766086378,
+        "id": 767801511,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/stats.txt",
         "size": 5714,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:37Z",
-        "updated_at": "2026-11-19T03:39:37Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086378"
+        "created_at": "2026-11-19T13:28:27Z",
+        "updated_at": "2026-11-19T13:28:28Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767801511"
       }
     ],
     "mirror_downloads": 0,
@@ -944,15 +944,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733203038"
       },
       {
-        "id": 766086306,
+        "id": 767801404,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/stats.txt",
         "size": 5715,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:35Z",
-        "updated_at": "2026-11-19T03:39:35Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086306"
+        "created_at": "2026-11-19T13:28:25Z",
+        "updated_at": "2026-11-19T13:28:25Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767801404"
       }
     ],
     "mirror_downloads": 0,
@@ -1203,15 +1203,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733180460"
       },
       {
-        "id": 766086236,
+        "id": 767801281,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/stats.txt",
         "size": 5714,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:34Z",
-        "updated_at": "2026-11-19T03:39:34Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086236"
+        "created_at": "2026-11-19T13:28:23Z",
+        "updated_at": "2026-11-19T13:28:23Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767801281"
       }
     ],
     "mirror_downloads": 0,
@@ -1539,15 +1539,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733346251"
       },
       {
-        "id": 766086745,
+        "id": 767802178,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/stats.txt",
         "size": 7561,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:45Z",
-        "updated_at": "2026-11-19T03:39:45Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086745"
+        "created_at": "2026-11-19T13:28:39Z",
+        "updated_at": "2026-11-19T13:28:40Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767802178"
       }
     ],
     "mirror_downloads": 0,
@@ -1910,15 +1910,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733319108"
       },
       {
-        "id": 766086662,
+        "id": 767801991,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/stats.txt",
         "size": 7561,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:43Z",
-        "updated_at": "2026-11-19T03:39:43Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086662"
+        "created_at": "2026-11-19T13:28:37Z",
+        "updated_at": "2026-11-19T13:28:37Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767801991"
       }
     ],
     "mirror_downloads": 0,
@@ -2281,15 +2281,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733292335"
       },
       {
-        "id": 766086593,
+        "id": 767801860,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/stats.txt",
         "size": 7552,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:41Z",
-        "updated_at": "2026-11-19T03:39:41Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086593"
+        "created_at": "2026-11-19T13:28:34Z",
+        "updated_at": "2026-11-19T13:28:34Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767801860"
       }
     ],
     "mirror_downloads": 0,
@@ -2652,15 +2652,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733158744"
       },
       {
-        "id": 766086155,
+        "id": 767801168,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/stats.txt",
         "size": 7549,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:32Z",
-        "updated_at": "2026-11-19T03:39:33Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086155"
+        "created_at": "2026-11-19T13:28:20Z",
+        "updated_at": "2026-11-19T13:28:20Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767801168"
       }
     ],
     "mirror_downloads": 0,
@@ -2946,15 +2946,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733120740"
       },
       {
-        "id": 766086106,
+        "id": 767801045,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.1/stats.txt",
         "size": 5717,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:31Z",
-        "updated_at": "2026-11-19T03:39:31Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086106"
+        "created_at": "2026-11-19T13:28:18Z",
+        "updated_at": "2026-11-19T13:28:18Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767801045"
       }
     ],
     "mirror_downloads": 0,
@@ -3205,15 +3205,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733095338"
       },
       {
-        "id": 766086034,
+        "id": 767800918,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11/stats.txt",
         "size": 5715,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:29Z",
-        "updated_at": "2026-11-19T03:39:30Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086034"
+        "created_at": "2026-11-19T13:28:15Z",
+        "updated_at": "2026-11-19T13:28:15Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767800918"
       }
     ],
     "mirror_downloads": 0,
@@ -3464,15 +3464,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733071471"
       },
       {
-        "id": 766085962,
+        "id": 767800738,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10.1/stats.txt",
         "size": 5717,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:28Z",
-        "updated_at": "2026-11-19T03:39:28Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766085962"
+        "created_at": "2026-11-19T13:28:12Z",
+        "updated_at": "2026-11-19T13:28:13Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767800738"
       }
     ],
     "mirror_downloads": 0,
@@ -3723,15 +3723,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733048077"
       },
       {
-        "id": 766085886,
+        "id": 767800616,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10/stats.txt",
         "size": 5715,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:26Z",
-        "updated_at": "2026-11-19T03:39:26Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766085886"
+        "created_at": "2026-11-19T13:28:10Z",
+        "updated_at": "2026-11-19T13:28:10Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767800616"
       }
     ],
     "mirror_downloads": 0,
@@ -3982,15 +3982,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733024087"
       },
       {
-        "id": 766085805,
+        "id": 767800510,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/stats.txt",
         "size": 5714,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-19T03:39:25Z",
-        "updated_at": "2026-11-19T03:39:25Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766085805"
+        "created_at": "2026-11-19T13:28:08Z",
+        "updated_at": "2026-11-19T13:28:08Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/767800510"
       }
     ],
     "mirror_downloads": 0,

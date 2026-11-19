@@ -3210,8 +3210,8 @@
         "url": "https://api.github.com/repos/thesolarproject/solar/releases/assets/462096103"
       }
     ],
-    "mirror_downloads": 26,
-    "downloads": 54,
+    "mirror_downloads": 27,
+    "downloads": 55,
     "download_breakdown": {
       "tag": "nightly-20260630-1120",
       "mirrors": "y1-community/solar-mirror",
@@ -3256,7 +3256,7 @@
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-linux-arm64.zip",
           "size": 639447631,
-          "downloads": 0
+          "downloads": 1
         },
         {
           "platform": "linux-legacy",

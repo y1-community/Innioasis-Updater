@@ -743,8 +743,8 @@
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200058"
       }
     ],
-    "mirror_downloads": 64,
-    "downloads": 106,
+    "mirror_downloads": 65,
+    "downloads": 107,
     "download_breakdown": {
       "tag": "launcher-v0.9",
       "mirrors": "y1-community/y1_launcher-mirror",
@@ -768,7 +768,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom-windows.zip",
           "size": 769027426,
-          "downloads": 7
+          "downloads": 8
         },
         {
           "platform": "windows-legacy",

@@ -3013,8 +3013,8 @@
         "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/615345408"
       }
     ],
-    "mirror_downloads": 126,
-    "downloads": 181,
+    "mirror_downloads": 128,
+    "downloads": 183,
     "download_breakdown": {
       "tag": "20261006",
       "mirrors": "y1-community/classy-mirror",
@@ -3040,7 +3040,7 @@
           "name": "rom_y2-windows-legacy.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261006/rom_y2-windows-legacy.zip",
           "size": 460130278,
-          "downloads": 2
+          "downloads": 4
         },
         {
           "platform": "linux",
