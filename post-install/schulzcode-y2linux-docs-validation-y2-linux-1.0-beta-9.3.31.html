@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.31: the "End of Song" sleep timer no longer stops the music you choose - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.31: the "End of Song" sleep timer no longer stops the music you choose Release 1.0.0-beta.9.3.31 , Y2Reborn 1.0.0-beta.9.3.31 , kernel 6.18.56-y2linu">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.31.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.31: the "End of Song" sleep timer no longer stops the music you choose - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.31: the "End of Song" sleep timer no longer stops the music you choose Release 1.0.0-beta.9.3.31 , Y2Reborn 1.0.0-beta.9.3.31 , kernel 6.18.56-y2linu">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.31.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.31: the "End of Song" sleep timer no longer stops the music you choose - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.31: the "End of Song" sleep timer no longer stops the music you choose Release 1.0.0-beta.9.3.31 , Y2Reborn 1.0.0-beta.9.3.31 , kernel 6.18.56-y2linu">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.31.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.31.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.31: the &quot;End of Song&quot; sleep timer no longer stops the music you choose</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9331-the-end-of-song-sleep-timer-no-longer-stops-the-music-you-choose">Y2Linux 1.0 Beta 9.3.31: the &quot;End of Song&quot; sleep timer no longer stops the music you choose</h1>
+<p>Release <code>1.0.0-beta.9.3.31</code>, Y2Reborn <code>1.0.0-beta.9.3.31</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.31</code>, update sequence 16800, root <code>2026.08-platform-v1.285</code>. Published as GitHub release <code>baseline-262</code> (build 262). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.30.md">Beta 9.3.30</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p>A listener reported that after using the sleep timer&#x27;s <strong>End of Song</strong> overnight, the player would not let them skip songs or start one with Play the next morning (<a href="https://github.com/SchulzCode/Y2Reborn/issues/137" target="_blank" rel="noopener noreferrer">Y2Reborn #137</a>). The timer took any change of song, including the listener&#x27;s own, for the end of the song it was set on, and paused what they had just chosen. This release fixes that.</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>The timer goes along with the song you choose.</strong> With <strong>End of Song</strong> set, Next, Previous, a song picked from a<p>list and a new queue no longer pause the song they start. While you listen, the timer carries on with the new song (or chapter): it still ends at the end of the song you are now hearing, so skipping on the way to sleep still ends in sleep.</p></li><li><strong>A leftover timer ends.</strong> If playback was paused or stopped and you then start another song, the old End of Song<p>timer ends and the player says &quot;Sleep timer off&quot;. Before, it paused the new song a moment after it began, and the player went back to the old song, which made Next and Play seem dead.</p></li><li><strong>Adding or removing songs in the queue</strong> no longer changes what the timer waits for: it follows the song itself,<p>not its place in the queue.</p></li><li>Timed sleep (5 minutes to 3 hours) is unchanged.</li></ul>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>Tests</strong>: the platform&#x27;s full check, Reborn&#x27;s tests and the tests of the release images passed. New tests: the<p>timer carrying on with a song chosen while playing, ending when a song is chosen after a pause or stop, being left alone when the listener did not change the song, following a new chapter of a book, and keeping its song when songs before it leave the queue.</p></li><li><strong>On one player</strong> (Beta 9.3.30): the problem was reproduced before the fix: with End of Song set, Next, and<p>starting another song, paused it again within a second, and the new song did not start.</p></li><li><strong>Not tested on the player</strong>: this fix itself. Also unchanged and untested: End of Song while Repeat Song is on.</li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<p>Everything listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.30.md%23known-issues&amp;anchor=known-issues">Beta 9.3.30</a> still applies. The report of #137 also asked why the timer was still set in the morning; that is not known yet (the error report <code>4001AB49</code> was not at hand).</p>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>Reborn <code>crates/reborn-core/src/sleep.rs</code> (new; the sleep timer moved out of <code>lib.rs</code>): the timer&#x27;s item is the<p>queue entry id (<code>QueueEntryId</code>) and the chapter, not the queue position; <code>SleepTimer::after_listener_moved</code> carries an end-of-item timer to the new item while playing and ends it otherwise. <code>app/reborn/src/runtime/effects.rs</code> (<code>effect</code> wraps <code>run_effect</code>: every listener action goes through it; natural advances come from the decoder events and are still told apart by the timer&#x27;s tick) and <code>sleep_timer.rs</code> (<code>sleep_timer_follows_listener</code>).</p></li><li>Images built from Linux <code>59fc2156</code>, Reborn <code>200e56d</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

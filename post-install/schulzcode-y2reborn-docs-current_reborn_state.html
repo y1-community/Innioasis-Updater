@@ -26,17 +26,17 @@
   <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Current Reborn state on the Y2 - Innioasis Updater</title>
-  <meta name="description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.20 — Y2Linux 1.0 Beta 9.3.20 Baseline 229, 2026-11-10: issue fixes published Published as baseline-229 Reborn f6ba913 ; work">
+  <meta name="description" content="Current Reborn state on the Y2 Source candidate: synchronized LRC lyrics, 2026-11-11 The draft lyrics contribution adds Now Playing → Lyrics, bounded background sidecar l">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2reborn-docs-current_reborn_state.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Innioasis Updater">
   <meta property="og:title" content="Current Reborn state on the Y2 - Innioasis Updater">
-  <meta property="og:description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.20 — Y2Linux 1.0 Beta 9.3.20 Baseline 229, 2026-11-10: issue fixes published Published as baseline-229 Reborn f6ba913 ; work">
+  <meta property="og:description" content="Current Reborn state on the Y2 Source candidate: synchronized LRC lyrics, 2026-11-11 The draft lyrics contribution adds Now Playing → Lyrics, bounded background sidecar l">
   <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2reborn-docs-current_reborn_state.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Current Reborn state on the Y2 - Innioasis Updater">
-  <meta name="twitter:description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.20 — Y2Linux 1.0 Beta 9.3.20 Baseline 229, 2026-11-10: issue fixes published Published as baseline-229 Reborn f6ba913 ; work">
+  <meta name="twitter:description" content="Current Reborn state on the Y2 Source candidate: synchronized LRC lyrics, 2026-11-11 The draft lyrics contribution adds Now Playing → Lyrics, bounded background sidecar l">
   <link rel="icon" href="../y1_illustration.png">
   <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
   <link rel="stylesheet" href="../lumen.css?v=20261105hero">
@@ -51,6 +51,8 @@
 <a class="lumen-skip-link" href="#main">Skip to content</a>
 <div id="nav-root"></div>
 <main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../post-install/index.html">← All documentation</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Y2Reborn</p><h1>Current Reborn state on the Y2</h1><p class="lumen-lead">Documentation published by SchulzCode/Y2Reborn.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../post-install/index.html">All documentation →</a><a class="lumen-button" href="../post-install/index.html">All documentation</a></div></header><article class="lumen-doc-body"><h1 id="current-reborn-state-on-the-y2">Current Reborn state on the Y2</h1>
+<h2 id="source-candidate-synchronized-lrc-lyrics-2026-11-11">Source candidate: synchronized LRC lyrics, 2026-11-11</h2>
+<p>The draft lyrics contribution adds Now Playing → Lyrics, bounded background sidecar loading, audio-position highlighting, wrapped text and native skin colors. See the <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Reborn%2Fblob%2Fmain%2Fdocs%2Flyrics.md">guide</a> and <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Reborn%2Fblob%2Fmain%2Fdocs%2Fvalidation%2Fsynced-lyrics-host.md">host validation</a>. This is not a published image or physical Y2 qualification; existing release receipts below retain their original scope.</p>
 <h2 id="100-beta9320--y2linux-10-beta-9320-baseline-229-2026-11-10-issue-fixes-published">1.0.0-beta.9.3.20 — Y2Linux 1.0 Beta 9.3.20 (Baseline 229), 2026-11-10: issue fixes (published)</h2>
 <p>Published as <code>baseline-229</code> (Reborn <code>f6ba913</code>; work <code>5c6e769</code>). Audiobook Previous/Next: <code>Listening::button_step</code> (chapter start within <code>BUTTON_REACH_MS</code> 10 min, else <code>BUTTON_SKIP_MS</code> 30 s, backward continues into the previous part), Now Playing book menu Previous/Next Chapter (<code>PlayBook(key, Chapter(n))</code>), <code>Shelf::record</code> keeps a place at 0:00 (Y2Linux #103). <code>queue::one_album</code> plays a one-album queue unshuffled (#113). Skin Cover Flow captions glide via <code>Canvas::flow_caption</code>/<code>flow_glide</code> (#112). Wi-Fi <code>PendingJoin::absent()</code> before NotFound (Y2Linux #83). EFBIG counted in Settings → Library (<code>left_out_note</code>, Y2Linux #84). Service menu SBC Auto Rate (<code>PlatformTask::SbcAbr</code>, Y2Linux #99). Architecture guard skips every <code>tests.rs</code> host module. Host-tested only (<a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.20.md">Beta 9.3.20 report</a>).</p>
 <h2 id="100-beta9319--y2linux-10-beta-9319-baseline-228-2026-11-08-update-notifications-published">1.0.0-beta.9.3.19 — Y2Linux 1.0 Beta 9.3.19 (Baseline 228), 2026-11-08: update notifications (published)</h2>

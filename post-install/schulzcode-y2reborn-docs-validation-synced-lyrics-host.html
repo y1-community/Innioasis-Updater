@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Synchronized lyrics — host validation - Innioasis Updater</title>
+  <meta name="description" content="Synchronized lyrics — host validation This draft source candidate was validated on 2026-11-11 against Y2Reborn 0537b06 and unchanged Y2Linux 45765da5088b3641421df74e7d157">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2reborn-docs-validation-synced-lyrics-host.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Synchronized lyrics — host validation - Innioasis Updater">
+  <meta property="og:description" content="Synchronized lyrics — host validation This draft source candidate was validated on 2026-11-11 against Y2Reborn 0537b06 and unchanged Y2Linux 45765da5088b3641421df74e7d157">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2reborn-docs-validation-synced-lyrics-host.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Synchronized lyrics — host validation - Innioasis Updater">
+  <meta name="twitter:description" content="Synchronized lyrics — host validation This draft source candidate was validated on 2026-11-11 against Y2Reborn 0537b06 and unchanged Y2Linux 45765da5088b3641421df74e7d157">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2reborn-docs-validation-synced-lyrics-host.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2reborn-docs-validation-synced-lyrics-host.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../post-install/index.html">← All documentation</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Y2Reborn</p><h1>Synchronized lyrics — host validation</h1><p class="lumen-lead">Documentation published by SchulzCode/Y2Reborn.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../post-install/index.html">All documentation →</a><a class="lumen-button" href="../post-install/index.html">All documentation</a></div></header><article class="lumen-doc-body"><h1 id="synchronized-lyrics--host-validation">Synchronized lyrics — host validation</h1>
+<p>This draft source candidate was validated on 2026-11-11 against Y2Reborn <code>0537b06</code> and unchanged Y2Linux <code>45765da5088b3641421df74e7d1578fd33931f3f</code>. No physical Innioasis Y2 was used. These results do not qualify device memory, frame pacing, suspend latency or Bluetooth position accuracy.</p>
+<h2 id="environment-and-results">Environment and results</h2>
+<p>The checks ran in a native WHPX Linux VM with four virtual CPUs and 4 GiB RAM, using a Debian userspace, Rust 1.99, SQLite 3.46.1 and FFmpeg 9 (<code>libavcodec</code> 63.1.102). This is a host development environment, not the production Buildroot image.</p>
+<table><thead><tr><th>Check</th><th>Actual result</th></tr></thead><tbody><tr><td><code>cargo fmt --all -- --check</code></td><td>Passed</td></tr><tr><td><code>cargo clippy --workspace --all-targets --locked --offline -- -D warnings</code></td><td>Passed, no warnings</td></tr><tr><td><code>cargo test --workspace --locked --offline --no-fail-fast</code></td><td>811 passed, 0 failed, 10 existing ignored tests; 32 unit/doc target summaries</td></tr><tr><td>Focused lyrics tests</td><td>7 core parser/lookup, 5 UI and 5 application/worker tests passed; included in the workspace total</td></tr><tr><td>Production UI previews</td><td>Four skin previews and the missing-file view generated and visually reviewed</td></tr><tr><td>Platform record compatibility</td><td>No fields lost or retyped against <code>e0a57350850c</code></td></tr><tr><td>Reborn platform contract</td><td>483 cases generated; <code>reborn_reads_the_platform</code> passed</td></tr><tr><td>Platform gate</td><td>Official byte-baseline mode passed; 1,058 cases identical to clean upstream output on this host</td></tr><tr><td>Documentation checker</td><td>Y2Reborn: 73 pages, 498 local links, no problems; unchanged Y2Linux: 192 existing broken-link problems</td></tr></tbody></table>
+<p>The workspace tests used <code>RUST_TEST_THREADS=1</code> to avoid contending real audio test fixtures. Earlier attempts exposed an existing artwork readiness race: the test slept for 300 ms before expecting an asynchronous reply. It now waits for that actual reply with a bounded timeout, retaining the unread-channel, deduplication and cache assertions. Production artwork code is unchanged. Menu expectations were updated for the new Lyrics row. Early implementation compile/test failures were corrected before the final complete run above.</p>
+<h2 id="platform-gate-scope">Platform gate scope</h2>
+<p>The baseline was recorded once from the unchanged Y2Linux upstream commit:</p>
+<pre><code class="language-sh">sh tools/development/platform-gate.sh --baseline /root/lyrics/platform-baseline
+sh tools/development/platform-gate.sh /root/lyrics/platform-baseline</code></pre>
+<p>This is the script&#x27;s documented byte-for-byte mode. It runs formatting, Clippy, the platform ARMv7 type check, the quality ratchet across both trees, platform Rust tests and comparison of all captured stdout/files against that clean reference. The ratchet passed without raising any limit or exception. Record compatibility and the Reborn contract were run separately because this mode does not invoke them. No Y2Linux source or tracked golden was changed. A single harness CPU setting bounded its automatic worker pool.</p>
+<p>The default semantic golden suite is not claimed as passing. Byte-baseline mode was used to compare unchanged platform behavior on one consistent host, avoiding unrelated historical host-library fixture differences. The raw capture tool deliberately bypasses its semantic shape expectations, as the official gate script documents; its assertions are not reported as passing Python unit tests. The actual byte comparison and final <code>GATE OK</code> are the qualification evidence. Both contribution commits were preceded by this gate.</p>
+<h2 id="preview-evidence">Preview evidence</h2>
+<p>These images use the production native renderer and shipped Classic, Neon, Terminal and Paper palettes, with the original demonstration LRC fixture. They are host previews at the Y2&#x27;s 480×360 logical resolution, not device photos. All seventeen skin files and the compiler&#x27;s unknown-variable rejection remain unchanged. The UI tests also exercise the native fallback with a custom light palette and reduced motion.</p>
+<p><img src="https://raw.githubusercontent.com/SchulzCode/Y2Reborn/main/docs/images/synced-lyrics.png" alt="Lyrics in four shipped skins" loading="lazy" decoding="async"></p>
+<p><img src="https://raw.githubusercontent.com/SchulzCode/Y2Reborn/main/docs/images/lyrics-missing.png" alt="Missing lyrics state" loading="lazy" decoding="async"></p>
+<h2 id="coverage-and-remaining-qualification">Coverage and remaining qualification</h2>
+<p>Automated tests cover timestamp precision, stable ties and repeated tags, sorting, metadata/offsets, invalid arithmetic, BOM/CRLF/Unicode, empty lines, resource bounds and binary-search lookup. UI tests exercise pause/seek, navigation, global playback routing, manual browsing, stale-track rejection, wrapping and reduced motion. Real temporary-file tests cover discovery, missing/invalid/oversized sidecars, cache/source replacement, worker cancellation and quiescence. Normal playback does not start the lyrics worker.</p>
+<p>Before marking the PR ready, test on a physical Y2: long and short songs, pause/resume, forward/backward seeks, track transitions under shuffle/repeat, Bluetooth playback, SD removal/replacement, repeated sleep/wake, long wrapped Unicode lines and the readability of the active installed skins. Measure memory, scrolling frame pacing and sleep preparation with a worst-case sidecar. Enhanced word timing, embedded lyrics, translation selection and remote lyric providers are outside this change. Reopen Lyrics to reread an edited sidecar.</p>
+<p>See the <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Reborn%2Fblob%2Fmain%2Fdocs%2Flyrics.md">usage and format guide</a> for controls, exact parsing limits and reproduction commands.</p>
+<h2 id="upstream-integration-2026-11-14">Upstream integration, 2026-11-14</h2>
+<p>Merged upstream <code>be78d4abe5c44f98a842fbe2e2bc3fad458ce3a5</code> into the contribution. The conflict resolution preserves the new core exports and Videos route, video-control activation and native video rendering alongside Lyrics. Upstream button mapping and its early command routing remain intact.</p>
+<p>The combined tree passed formatting, locked/offline all-target Clippy with <code>-D warnings</code>, and the full locked/offline workspace: **855 passed, 0 failed, 11 existing ignored tests**. This includes the lyrics, video and button tests. The same native Linux VM and toolchain described above were used. Byte hashes confirmed 2,467 Rust source/root dependency files matched the contribution tree.</p>
+<p>The official platform gate again printed <code>GATE OK</code> in byte-baseline mode: 1,058 cases matched clean Y2Linux <code>61b65d47</code> on the same host. Separate checks reported no lost/retyped record fields against <code>d26d82b876b8</code> and passed all 483 Reborn platform contract cases. The shared ratchet passed with five improvements and no raised limits. The default semantic golden suite is still outside the passing-results claim.</p>
+<p>The initial integration check found four upstream Clippy errors. Behavior- preserving cleanups remove an identity string conversion, pass the QR button&#x27;s already-computed selection as one argument, and initialize two test fields in their struct literals. One full test attempt also hit the existing audio S32 test&#x27;s asynchronous temporary-directory cleanup race (<code>DirectoryNotEmpty</code>); its isolated rerun and the complete workspace rerun passed without an audio source change.</p>
+<p>The current documentation checker reports two existing Reborn catalog omissions (the upstream Wi-Fi Share and Button Mapper guides) and 193 problems in unchanged Y2Linux documentation. The lyrics guide/report links remain valid. Physical Y2 qualification remains outstanding as described above.</p></article><p class="lumen-doc-footer-note">These are Y2Reborn's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?software=schulzcode-y2reborn">SchulzCode's <em>Y2Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=SchulzCode%2FY2Reborn&amp;software=schulzcode-y2reborn" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

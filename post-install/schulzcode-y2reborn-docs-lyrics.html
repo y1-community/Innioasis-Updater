@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Synchronized lyrics - Innioasis Updater</title>
+  <meta name="description" content="Synchronized lyrics Open the Now Playing options menu and select Lyrics . This source candidate adds a native 480×360 viewer; it has not been tested on a physical Y2 and">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2reborn-docs-lyrics.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Synchronized lyrics - Innioasis Updater">
+  <meta property="og:description" content="Synchronized lyrics Open the Now Playing options menu and select Lyrics . This source candidate adds a native 480×360 viewer; it has not been tested on a physical Y2 and">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2reborn-docs-lyrics.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Synchronized lyrics - Innioasis Updater">
+  <meta name="twitter:description" content="Synchronized lyrics Open the Now Playing options menu and select Lyrics . This source candidate adds a native 480×360 viewer; it has not been tested on a physical Y2 and">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2reborn-docs-lyrics.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2reborn-docs-lyrics.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../post-install/index.html">← All documentation</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Y2Reborn</p><h1>Synchronized lyrics</h1><p class="lumen-lead">Documentation published by SchulzCode/Y2Reborn.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../post-install/index.html">All documentation →</a><a class="lumen-button" href="../post-install/index.html">All documentation</a></div></header><article class="lumen-doc-body"><h1 id="synchronized-lyrics">Synchronized lyrics</h1>
+<p>Open the Now Playing options menu and select <strong>Lyrics</strong>. This source candidate adds a native 480×360 viewer; it has not been tested on a physical Y2 and is proposed as a draft contribution.</p>
+<p>Place a UTF-8 <code>.lrc</code> file beside the local song, with the same base name:</p>
+<pre><code class="language-text">Music/Homeward.mp3
+Music/Homeward.lrc</code></pre>
+<p>The reader checks <code>.lrc</code>, then <code>.LRC</code>, in that directory on Internal Storage or an available SD-card source. It does not search the internet or read embedded lyric tags. Radio retains its existing menu. This example uses original demonstration lyrics:</p>
+<pre><code class="language-lrc">[ar:Reborn original examples]
+[ti:Homeward]
+[offset:+250]
+[00:02.00]A quiet street begins to glow
+[00:05.000]The harbour wakes below
+[00:08.00][00:29.50]We bring the long way home
+[00:20.00]</code></pre>
+<p>Positive offsets advance all entries: <code>+250</code> makes the first line appear at 1.750 seconds. Negative offsets delay them. The final valid offset applies to the entire file; adjusted times below zero clamp to zero. Multiple timestamps repeat a line. Valid entries are sorted by time, preserving file order for equal times; simultaneous lines share the accent. Before the first timestamp no line is highlighted. The final line remains until the track changes. Empty timed lines mark instrumental breaks.</p>
+<p>The parser accepts integer minutes, two-digit seconds from 00–59, and optional one-, two- or three-digit fractional seconds. UTF-8 BOM, LF/CRLF and Unicode text are supported. Metadata such as <code>[ar:]</code>, <code>[ti:]</code> and <code>[al:]</code> is ignored; the header uses the playing song&#x27;s title. Malformed timestamps and untimed lines are ignored. Invalid encoding or limits produce a readable error without changing playback. Enhanced word timing, translation selection, embedded lyrics and automatic downloads are outside this implementation. Missing glyphs use the existing font fallback.</p>
+<h2 id="controls">Controls</h2>
+<table><thead><tr><th>Input in Lyrics</th><th>Action</th></tr></thead><tbody><tr><td>Wheel</td><td>Browse the text without seeking audio</td></tr><tr><td>Centre</td><td>Return to following the current line</td></tr><tr><td>Back</td><td>Return to Now Playing</td></tr><tr><td>Play/Pause, Previous/Next, held seeks, volume</td><td>Existing global playback actions</td></tr></tbody></table>
+<p>There is no new global gesture. Track changes and seeking return the viewer to the audio position. Paused lyrics remain at the paused position. Reduced UI motion skips scroll easing. Close and reopen Lyrics to reload a sidecar edited while it was open.</p>
+<p>Missing files show <strong>No lyrics found</strong>, followed by “Add an .lrc file beside your song to display synced lyrics.”</p>
+<h2 id="architecture-and-resource-bounds">Architecture and resource bounds</h2>
+<p><code>reborn-core::lyrics</code> parses bytes and finds the active entry by binary search. A lazy application worker uses the existing descriptor-based storage guard to open only regular sibling files. It reads, parses and prepares wrapped rows in the background. One replaceable pending job and one result bound the queue. Revision tokens reject results after navigation, track changes, source replacement or cancellation.</p>
+<p>The UI receives an immutable prepared document. Drawing performs no filesystem access, parsing or paragraph layout. It selects visible rows by binary search and uses <code>AppModel.position_ms</code>, the existing playback position, as the only lyric clock. Existing motion helpers animate the presentation without advancing lyric timing. Changed lines, input, results and unsettled motion request redraws. Normal playback never starts the reader until Lyrics is opened.</p>
+<p>The cache covers only the displayed track and is cleared when Lyrics closes or its track/source revision changes. Storage removal clears stale content. Sleep preparation cancels pending work and waits for the active reader to release storage. FFmpeg and audio playback are unchanged.</p>
+<p>Limits are 256 KiB of file bytes, 8,192 input lines, 4,096 bytes per input line, 4,096 timed entries, 32 timestamps per input line and 256 KiB of expanded lyric text. Repeated timestamps share parsed strings. Rows and entry centers are bounded by these limits; only visible rows are drawn. These are resource bounds, not on-device memory or latency qualification.</p>
+<p>The screen uses existing native fonts, skin colors and opaque clipping bands. It does not add <code>{lyrics}</code>, change the skin compiler, or edit any of the seventeen shipped skins. Custom skins use the ordinary native fallback in their existing colors.</p>
+<h2 id="verification-and-previews">Verification and previews</h2>
+<pre><code class="language-sh">cargo fmt --all -- --check
+cargo test --workspace --locked --offline
+cargo clippy --workspace --all-targets --locked --offline -- -D warnings
+../Y2Linux/tools/development/platform-gate.sh
+cargo run --bin reborn-lyrics-preview --locked --offline -- /tmp/lyrics-preview skins/classic
+python3 tools/preview/render_previews.py /tmp/lyrics-preview</code></pre>
+<p>The <a href="https://github.com/SchulzCode/Y2Reborn/blob/main/assets/fixtures/lyrics-original.lrc" target="_blank" rel="noopener noreferrer">original fixture</a> supplies the production UI previews. <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Reborn%2Fblob%2Fmain%2Fdocs%2Fvalidation%2Fsynced-lyrics-host.md">Host validation</a> records actual results. Before merge, verify real playback, seeks, repeat/shuffle, Bluetooth position reporting, SD removal and repeated sleep/wake on a physical Y2.</p></article><p class="lumen-doc-footer-note">These are Y2Reborn's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?software=schulzcode-y2reborn">SchulzCode's <em>Y2Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=SchulzCode%2FY2Reborn&amp;software=schulzcode-y2reborn" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

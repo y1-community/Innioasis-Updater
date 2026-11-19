@@ -94,7 +94,7 @@
         "name": "rom_y2-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-linux-legacy.zip",
         "size": 434902354,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-12T20:31:51Z",
         "updated_at": "2026-11-12T20:32:23Z",
@@ -116,7 +116,7 @@
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-macos.zip",
         "size": 481360883,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-12T20:32:16Z",
         "updated_at": "2026-11-12T20:32:41Z",
@@ -127,7 +127,7 @@
         "name": "rom_y2-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-windows-legacy.zip",
         "size": 436488069,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-12T20:31:51Z",
         "updated_at": "2026-11-12T20:32:15Z",
@@ -167,15 +167,15 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706116543"
       },
       {
-        "id": 750731453,
+        "id": 766083461,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/stats.txt",
         "size": 5050,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:09:49Z",
-        "updated_at": "2026-11-15T11:09:49Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/750731453"
+        "created_at": "2026-11-19T03:38:27Z",
+        "updated_at": "2026-11-19T03:38:27Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/766083461"
       },
       {
         "id": 706114042,
@@ -212,7 +212,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 10,
+    "downloads": 16,
     "download_breakdown": {
       "tag": "v0.2.5-beta",
       "mirrors": "",
@@ -225,7 +225,7 @@
         {
           "name": "rom_y2-linux-legacy.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-linux-legacy.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "rom_y2-linux.zip",
@@ -235,12 +235,12 @@
         {
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-macos.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom_y2-windows-legacy.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-windows-legacy.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_y2-windows.zip",
@@ -358,15 +358,15 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706230074"
       },
       {
-        "id": 750731352,
+        "id": 766083384,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/stats.txt",
         "size": 7768,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:09:46Z",
-        "updated_at": "2026-11-15T11:09:46Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/750731352"
+        "created_at": "2026-11-19T03:38:25Z",
+        "updated_at": "2026-11-19T03:38:26Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/766083384"
       },
       {
         "id": 706230077,
@@ -775,7 +775,7 @@
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-windows.zip",
         "size": 674923390,
-        "download_count": 33,
+        "download_count": 35,
         "content_type": "application/zip",
         "created_at": "2026-11-12T20:14:22Z",
         "updated_at": "2026-11-12T20:14:51Z",
@@ -804,15 +804,15 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706215317"
       },
       {
-        "id": 750731259,
+        "id": 766083326,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/stats.txt",
         "size": 6943,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:09:44Z",
-        "updated_at": "2026-11-15T11:09:44Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/750731259"
+        "created_at": "2026-11-19T03:38:24Z",
+        "updated_at": "2026-11-19T03:38:24Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/766083326"
       },
       {
         "id": 706215320,
@@ -896,7 +896,7 @@
         "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
         "size": 674923390,
-        "download_count": 34,
+        "download_count": 38,
         "content_type": "application/zip",
         "created_at": "2026-11-12T20:13:54Z",
         "updated_at": "2026-11-12T20:14:34Z",
@@ -915,7 +915,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 86,
+    "downloads": 92,
     "download_breakdown": {
       "tag": "v0.1.0-beta",
       "mirrors": "",
@@ -948,7 +948,7 @@
         {
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-windows.zip",
-          "downloads": 33
+          "downloads": 35
         },
         {
           "name": "rom_y2.zip",
@@ -983,7 +983,7 @@
         {
           "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
-          "downloads": 34
+          "downloads": 38
         },
         {
           "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip",

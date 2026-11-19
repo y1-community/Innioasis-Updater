@@ -13,15 +13,15 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/y2-release"/>
     <innioasis:tag_name>y2-release</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>1</innioasis:downloads>
+    <innioasis:downloads>2</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="564282176" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742397182"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-linux-legacy.zip" title="rom_y2-linux-legacy.zip" length="442723784" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742397188"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-linux.zip" title="rom_y2-linux.zip" length="739377942" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742397185"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-macos.zip" title="rom_y2-macos.zip" length="490985933" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742397730"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="444309499" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742397181"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2-windows.zip" title="rom_y2-windows.zip" length="682548338" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742397179"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2.zip" title="rom_y2.zip" length="442948018" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733453409"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-release/stats.txt" title="stats.txt" length="3864" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750707636"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-release/rom_y2.zip" title="rom_y2.zip" length="442948018" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733453409"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-release/stats.txt" title="stats.txt" length="3872" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766072127"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=y2-release#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -60,15 +60,15 @@ Solar Y2 ROM for Innioasis Y2 (MT6582 ATA). Built from 944d14b.
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/y2-base"/>
     <innioasis:tag_name>y2-base</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>1</innioasis:downloads>
+    <innioasis:downloads>2</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="757224852" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742331102"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-linux-legacy.zip" title="rom_y2-linux-legacy.zip" length="635666448" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742331105"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-linux.zip" title="rom_y2-linux.zip" length="932320618" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742331104"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-linux.zip" title="rom_y2-linux.zip" length="932320618" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742331104"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-macos.zip" title="rom_y2-macos.zip" length="683928613" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742332105"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="637252167" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742331106"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-windows.zip" title="rom_y2-windows.zip" length="875491014" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742331103"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2.zip" title="rom_y2.zip" length="634951584" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733454301"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-base/stats.txt" title="stats.txt" length="3860" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750707526"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/y2-base/stats.txt" title="stats.txt" length="3860" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766071710"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=y2-base#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -105,15 +105,15 @@ Solar Y2 ROM for Innioasis Y2 (MT6582 ATA). Built from 944d14b.
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/type-a-base"/>
     <innioasis:tag_name>type-a-base</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>2</innioasis:downloads>
+    <innioasis:downloads>6</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="1103670899" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742310571"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="982112497" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742310576"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="982112497" type="application/zip" innioasis:download_count="4" innioasis:asset_id="742310576"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-linux.zip" title="rom-linux.zip" length="1278766665" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742310575"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-macos.zip" title="rom-macos.zip" length="1030374679" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742311795"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="983698214" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742310577"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-windows.zip" title="rom-windows.zip" length="1221937061" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742310574"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom.zip" title="rom.zip" length="980065221" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733473172"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/type-a-base/stats.txt" title="stats.txt" length="3840" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750707465"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/type-a-base/stats.txt" title="stats.txt" length="3841" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766071614"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=type-a-base#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -166,7 +166,7 @@ Solar Y2 ROM for Innioasis Y2 (MT6582 ATA). Built from 944d14b.
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480592527" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742203829"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="718831340" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742203691"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b.zip" title="rom_type_b.zip" length="405749146" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733433850"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/stats.txt" title="stats.txt" length="5898" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750707279"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/stats.txt" title="stats.txt" length="5898" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766071320"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260702-1512#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -252,9 +252,9 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260701-1454"/>
     <innioasis:tag_name>nightly-20260701-1454</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>1</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/app-release.apk" title="app-release.apk" length="12051745" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707627691"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639427743" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742136625"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639427743" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742136625"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527377639" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742136627"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-linux.zip" title="rom-linux.zip" length="814523509" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742136623"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-macos.zip" title="rom-macos.zip" length="573836132" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742137449"/>
@@ -268,7 +268,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481760837" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742137587"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="719999650" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742137522"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b.zip" title="rom_type_b.zip" length="406917434" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733454585"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750707181"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766071130"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260701-1454#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -368,7 +368,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481853839" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741752864"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720092648" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741752740"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b.zip" title="rom_type_b.zip" length="407010432" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733389170"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706562"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766070092"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260630-1236#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -467,7 +467,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481815263" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741721167"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720054072" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741721122"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b.zip" title="rom_type_b.zip" length="406971850" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733397304"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706497"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766069951"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260630-1125#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -550,13 +550,13 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260630-1120"/>
     <innioasis:tag_name>nightly-20260630-1120</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>1</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/app-release.apk" title="app-release.apk" length="11915334" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707463422"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639447631" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741692665"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527397529" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741692663"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-linux.zip" title="rom-linux.zip" length="814543397" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741692659"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-macos.zip" title="rom-macos.zip" length="573856020" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741693983"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528983246" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741692660"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528983246" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741692660"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-windows.zip" title="rom-windows.zip" length="767222073" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741692662"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom.zip" title="rom.zip" length="454139855" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733393587"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="592273710" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741694640"/>
@@ -566,7 +566,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481809343" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741694358"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720048152" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741694083"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b.zip" title="rom_type_b.zip" length="406965934" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733393650"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706448"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766069858"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260630-1120#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -665,7 +665,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481935358" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741662978"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720174167" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741662882"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b.zip" title="rom_type_b.zip" length="407091949" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733389958"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706363"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766069762"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260630-1110#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -748,13 +748,13 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260630-1102"/>
     <innioasis:tag_name>nightly-20260630-1102</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>2</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/app-release.apk" title="app-release.apk" length="11914620" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707436232"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639380317" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741632637"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527330215" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741632636"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-linux.zip" title="rom-linux.zip" length="814476083" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741632629"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-linux.zip" title="rom-linux.zip" length="814476083" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741632629"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-macos.zip" title="rom-macos.zip" length="573788705" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741633869"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528915932" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741632631"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528915932" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741632631"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-windows.zip" title="rom-windows.zip" length="767154759" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741632635"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom.zip" title="rom.zip" length="454072539" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733390881"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="591332367" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741634152"/>
@@ -764,7 +764,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480868000" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741633954"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="719106809" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741633883"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b.zip" title="rom_type_b.zip" length="406024589" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733390942"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706315"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766069623"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260630-1102#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -847,9 +847,9 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260630-1035"/>
     <innioasis:tag_name>nightly-20260630-1035</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>3</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/app-release.apk" title="app-release.apk" length="11914277" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707423196"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639501679" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741603396"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639501679" type="application/zip" innioasis:download_count="3" innioasis:asset_id="741603396"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527451577" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741603397"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-linux.zip" title="rom-linux.zip" length="814597445" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741603401"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-macos.zip" title="rom-macos.zip" length="573910069" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741605424"/>
@@ -863,7 +863,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="485527534" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741605517"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="723766343" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741605456"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b.zip" title="rom_type_b.zip" length="410684127" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733373565"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706248"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766069507"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260630-1035#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -946,11 +946,11 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260630-1024"/>
     <innioasis:tag_name>nightly-20260630-1024</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>1</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/app-release.apk" title="app-release.apk" length="11914103" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707407684"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639382416" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741574746"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527332314" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741574745"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-linux.zip" title="rom-linux.zip" length="814478182" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741574743"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-linux.zip" title="rom-linux.zip" length="814478182" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741574743"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-macos.zip" title="rom-macos.zip" length="573790806" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741576125"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528918031" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741574739"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-windows.zip" title="rom-windows.zip" length="767156858" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741574740"/>
@@ -962,7 +962,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481861000" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741576208"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720099809" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741576198"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b.zip" title="rom_type_b.zip" length="407017593" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733363550"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706190"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766069409"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260630-1024#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -1046,14 +1046,14 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260630-1005"/>
     <innioasis:tag_name>nightly-20260630-1005</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>3</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/app-release.apk" title="app-release.apk" length="11913510" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706468639"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="640949322" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741544312"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="528899220" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741544311"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-linux.zip" title="rom-linux.zip" length="816045088" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741544314"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-linux.zip" title="rom-linux.zip" length="816045088" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741544314"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-macos.zip" title="rom-macos.zip" length="575357710" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741545844"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="530484937" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741544307"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-windows.zip" title="rom-windows.zip" length="768723764" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741544304"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-windows.zip" title="rom-windows.zip" length="768723764" type="application/zip" innioasis:download_count="2" innioasis:asset_id="741544304"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom.zip" title="rom.zip" length="455641544" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733370260"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="590989060" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741546496"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-linux-legacy.zip" title="rom_type_b-linux-legacy.zip" length="478938978" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741547622"/>
@@ -1062,7 +1062,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480524693" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741546053"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="718763502" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741546040"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b.zip" title="rom_type_b.zip" length="405681282" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733370286"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706096"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/stats.txt" title="stats.txt" length="5897" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766069300"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260630-1005#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -1146,14 +1146,14 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260630-0957"/>
     <innioasis:tag_name>nightly-20260630-0957</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>1</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/app-release.apk" title="app-release.apk" length="11913516" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706457341"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639381897" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741514493"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527331795" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741514507"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-linux.zip" title="rom-linux.zip" length="814477663" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741514497"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-macos.zip" title="rom-macos.zip" length="573790285" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741515781"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528917512" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741514494"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-windows.zip" title="rom-windows.zip" length="767156339" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741514506"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-windows.zip" title="rom-windows.zip" length="767156339" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741514506"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom.zip" title="rom.zip" length="454074119" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733368859"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="584785419" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741516444"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-linux-legacy.zip" title="rom_type_b-linux-legacy.zip" length="472735337" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741518020"/>
@@ -1162,7 +1162,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="474321052" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741515994"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="712559861" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741515992"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b.zip" title="rom_type_b.zip" length="399477641" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733368994"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706024"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766069202"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260630-0957#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -1246,13 +1246,13 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260630-0636"/>
     <innioasis:tag_name>nightly-20260630-0636</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>2</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/app-release.apk" title="app-release.apk" length="11908449" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706446074"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="640967267" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741483318"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="528917165" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741483309"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-linux.zip" title="rom-linux.zip" length="816063033" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741483334"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-macos.zip" title="rom-macos.zip" length="575375657" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741484453"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="530502882" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741483313"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="530502882" type="application/zip" innioasis:download_count="2" innioasis:asset_id="741483313"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-windows.zip" title="rom-windows.zip" length="768741709" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741483312"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom.zip" title="rom.zip" length="455659493" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733363907"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="591109702" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741484831"/>
@@ -1262,7 +1262,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480645335" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741484509"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="718884144" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741484461"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b.zip" title="rom_type_b.zip" length="405801928" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733364021"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750705955"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766069097"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260630-0636#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -1363,7 +1363,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480819238" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741456221"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="719058047" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741455988"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b.zip" title="rom_type_b.zip" length="405975825" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733364966"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750705878"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766068911"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260630-0549#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -1448,12 +1448,12 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260629-1616"/>
     <innioasis:tag_name>nightly-20260629-1616</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>1</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/app-release.apk" title="app-release.apk" length="11855666" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706351883"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639422007" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741280198"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527371905" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741280203"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-linux.zip" title="rom-linux.zip" length="814517773" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741280197"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-macos.zip" title="rom-macos.zip" length="573830396" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741281343"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-macos.zip" title="rom-macos.zip" length="573830396" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741281343"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528957622" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741280204"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-windows.zip" title="rom-windows.zip" length="767196449" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741280202"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom.zip" title="rom.zip" length="454114231" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733337266"/>
@@ -1464,7 +1464,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481837986" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741281655"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720076795" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741281398"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b.zip" title="rom_type_b.zip" length="406994577" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733337295"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750705360"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766068288"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260629-1616#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -1549,13 +1549,13 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260629-1609"/>
     <innioasis:tag_name>nightly-20260629-1609</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>5</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/app-release.apk" title="app-release.apk" length="11855675" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706340043"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="640962724" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741245992"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="640962724" type="application/zip" innioasis:download_count="2" innioasis:asset_id="741245992"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="528912622" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741245991"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux.zip" title="rom-linux.zip" length="816058490" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741245996"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-macos.zip" title="rom-macos.zip" length="575371112" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741247316"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="530498339" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741245993"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-macos.zip" title="rom-macos.zip" length="575371112" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741247316"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="530498339" type="application/zip" innioasis:download_count="2" innioasis:asset_id="741245993"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-windows.zip" title="rom-windows.zip" length="768737166" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741245994"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom.zip" title="rom.zip" length="455654946" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733330486"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="591312725" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741248339"/>
@@ -1565,7 +1565,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480848358" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741247585"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="719087167" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741247560"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b.zip" title="rom_type_b.zip" length="406004947" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733330605"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750705267"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766068182"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260629-1609#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -1666,7 +1666,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481820067" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741216690"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720058876" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741216504"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b.zip" title="rom_type_b.zip" length="406976656" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733295073"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750705205"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766068080"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260629-1444#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -1751,10 +1751,10 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260629-0955"/>
     <innioasis:tag_name>nightly-20260629-0955</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>4</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/app-release.apk" title="app-release.apk" length="11849735" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706315215"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="640950191" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741180375"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="528900089" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741180378"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="528900089" type="application/zip" innioasis:download_count="4" innioasis:asset_id="741180378"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-linux.zip" title="rom-linux.zip" length="816045957" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741180377"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-macos.zip" title="rom-macos.zip" length="575358579" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741181819"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="530485806" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741180379"/>
@@ -1767,7 +1767,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481867418" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741182345"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720106227" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741182024"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b.zip" title="rom_type_b.zip" length="407024007" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733270083"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750705127"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766067983"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260629-0955#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -1852,11 +1852,11 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260629-0926"/>
     <innioasis:tag_name>nightly-20260629-0926</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>1</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/app-release.apk" title="app-release.apk" length="11849728" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706302335"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639453547" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741144581"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527403445" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741144578"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-linux.zip" title="rom-linux.zip" length="814549313" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741144583"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-linux.zip" title="rom-linux.zip" length="814549313" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741144583"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-macos.zip" title="rom-macos.zip" length="573861936" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741146469"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528989162" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741144579"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-windows.zip" title="rom-windows.zip" length="767227989" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741144595"/>
@@ -1868,7 +1868,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="484619024" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741147197"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="722857833" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741147170"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b.zip" title="rom_type_b.zip" length="409775615" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733248273"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750705019"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766067898"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260629-0926#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -1969,7 +1969,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481829781" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741110118"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720068590" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741109762"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b.zip" title="rom_type_b.zip" length="406986370" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733226857"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750704925"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766067769"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260629-0057#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -2070,7 +2070,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481746831" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741077642"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="719985640" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741077629"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b.zip" title="rom_type_b.zip" length="406903422" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733200261"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/stats.txt" title="stats.txt" length="5898" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750704826"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/stats.txt" title="stats.txt" length="5898" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766067670"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260628-1907#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -2155,14 +2155,14 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260628-1014"/>
     <innioasis:tag_name>nightly-20260628-1014</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>4</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/app-release.apk" title="app-release.apk" length="11815214" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706264885"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639365070" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741042824"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527314970" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741042814"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-linux.zip" title="rom-linux.zip" length="814460836" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741042818"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-linux.zip" title="rom-linux.zip" length="814460836" type="application/zip" innioasis:download_count="3" innioasis:asset_id="741042818"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-macos.zip" title="rom-macos.zip" length="573773459" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741044651"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528900685" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741042823"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-windows.zip" title="rom-windows.zip" length="767139512" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741042817"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-windows.zip" title="rom-windows.zip" length="767139512" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741042817"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom.zip" title="rom.zip" length="454057294" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733173814"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="594606522" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741045320"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-linux-legacy.zip" title="rom_type_b-linux-legacy.zip" length="482556440" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741046806"/>
@@ -2171,7 +2171,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="484142155" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741044667"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="722380964" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741044665"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b.zip" title="rom_type_b.zip" length="409298746" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733173894"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750704731"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/stats.txt" title="stats.txt" length="5897" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766067578"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260628-1014#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -2256,13 +2256,13 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260627-0304"/>
     <innioasis:tag_name>nightly-20260627-0304</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>5</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/app-release.apk" title="app-release.apk" length="11815258" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706227198"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639401745" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740942172"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527351643" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740942169"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639401745" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740942172"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527351643" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740942169"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-linux.zip" title="rom-linux.zip" length="814497511" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740942167"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-macos.zip" title="rom-macos.zip" length="573810134" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740943976"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528937360" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740942166"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528937360" type="application/zip" innioasis:download_count="3" innioasis:asset_id="740942166"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-windows.zip" title="rom-windows.zip" length="767176187" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740942180"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom.zip" title="rom.zip" length="454093969" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733084331"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="592321191" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740944930"/>
@@ -2272,7 +2272,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481856824" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740944647"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720095633" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740944249"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b.zip" title="rom_type_b.zip" length="407013415" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733084347"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750704438"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766067241"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260627-0304#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -2357,10 +2357,10 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/nightly-20260627-0209"/>
     <innioasis:tag_name>nightly-20260627-0209</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:downloads>1</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/app-release.apk" title="app-release.apk" length="11815179" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706215033"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="641819711" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740907257"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="529769609" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740907258"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="529769609" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740907258"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-linux.zip" title="rom-linux.zip" length="816915477" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740907263"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-macos.zip" title="rom-macos.zip" length="576228100" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740908965"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="531355326" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740907260"/>
@@ -2373,7 +2373,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="483840644" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740909401"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="722079453" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740909000"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b.zip" title="rom_type_b.zip" length="408997235" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733054385"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750704349"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/stats.txt" title="stats.txt" length="5896" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766067148"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=nightly-20260627-0209#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -2448,21 +2448,21 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/20260819-0956"/>
     <innioasis:tag_name>20260819-0956</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>4</innioasis:downloads>
+    <innioasis:downloads>19</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/app-release.apk" title="app-release.apk" length="20001162" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707718166"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="1103941555" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742379153"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="1103941555" type="application/zip" innioasis:download_count="2" innioasis:asset_id="742379153"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="982383179" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742379158"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-linux.zip" title="rom-linux.zip" length="1279037321" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742379156"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-macos.zip" title="rom-macos.zip" length="1030645320" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742380617"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-macos.zip" title="rom-macos.zip" length="1030645320" type="application/zip" innioasis:download_count="3" innioasis:asset_id="742380617"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="983968896" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742379166"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-windows.zip" title="rom-windows.zip" length="1222207717" type="application/zip" innioasis:download_count="2" innioasis:asset_id="742379154"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom-windows.zip" title="rom-windows.zip" length="1222207717" type="application/zip" innioasis:download_count="8" innioasis:asset_id="742379154"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom.zip" title="rom.zip" length="980335841" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733465193"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-linux-arm64.zip" title="rom_a5-linux-arm64.zip" length="416635184" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742382162"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-linux-legacy.zip" title="rom_a5-linux-legacy.zip" length="295076818" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742382644"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-linux.zip" title="rom_a5-linux.zip" length="591730950" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742381944"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-macos.zip" title="rom_a5-macos.zip" length="343338932" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742382653"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-windows-legacy.zip" title="rom_a5-windows-legacy.zip" length="296662535" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742381824"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-windows.zip" title="rom_a5-windows.zip" length="534901346" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742381245"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5-windows.zip" title="rom_a5-windows.zip" length="534901346" type="application/zip" innioasis:download_count="4" innioasis:asset_id="742381245"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_a5.zip" title="rom_a5.zip" length="293180812" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733465206"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="611310718" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742383067"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b-linux-legacy.zip" title="rom_type_b-linux-legacy.zip" length="489752360" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742383140"/>
@@ -2471,7 +2471,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="491338075" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742382646"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="729576880" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742382647"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/rom_type_b.zip" title="rom_type_b.zip" length="487705004" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733465201"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/stats.txt" title="stats.txt" length="7725" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750707578"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/stats.txt" title="stats.txt" length="7728" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766071841"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260819-0956#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -2556,13 +2556,13 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/20260716-0131"/>
     <innioasis:tag_name>20260716-0131</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>5</innioasis:downloads>
+    <innioasis:downloads>11</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="666714700" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742285183"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="545156320" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742285181"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="545156320" type="application/zip" innioasis:download_count="3" innioasis:asset_id="742285181"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-linux.zip" title="rom-linux.zip" length="841810466" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742285180"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-macos.zip" title="rom-macos.zip" length="593418454" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742286084"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="546742037" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742285178"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-windows.zip" title="rom-windows.zip" length="784980862" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742285176"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-windows.zip" title="rom-windows.zip" length="784980862" type="application/zip" innioasis:download_count="2" innioasis:asset_id="742285176"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom.zip" title="rom.zip" length="543108966" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733489852"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="667733591" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742286556"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-linux-legacy.zip" title="rom_type_b-linux-legacy.zip" length="546175229" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742287684"/>
@@ -2576,9 +2576,9 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-linux.zip" title="rom_y2-linux.zip" length="932320636" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742287677"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-macos.zip" title="rom_y2-macos.zip" length="683928626" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742288778"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="637252213" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742287679"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-windows.zip" title="rom_y2-windows.zip" length="875491032" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742287680"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-windows.zip" title="rom_y2-windows.zip" length="875491032" type="application/zip" innioasis:download_count="3" innioasis:asset_id="742287680"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2.zip" title="rom_y2.zip" length="634951584" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733489850"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/stats.txt" title="stats.txt" length="7485" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750707413"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/stats.txt" title="stats.txt" length="7486" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766071538"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260716-0131#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -2675,7 +2675,7 @@ After installing for the first time please wait 10-15 minutes for your device to
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481933416" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742237529"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720172229" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742237474"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b.zip" title="rom_type_b.zip" length="407090049" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733464776"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/stats.txt" title="stats.txt" length="5893" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750707358"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/stats.txt" title="stats.txt" length="5893" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766071416"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260702-1521#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -2762,14 +2762,14 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/20260701-1453"/>
     <innioasis:tag_name>20260701-1453</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>3</innioasis:downloads>
+    <innioasis:downloads>6</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/app-release.apk" title="app-release.apk" length="12051734" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707639594"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639394892" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742167946"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527344788" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742167947"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527344788" type="application/zip" innioasis:download_count="2" innioasis:asset_id="742167947"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-linux.zip" title="rom-linux.zip" length="814490658" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742167933"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-macos.zip" title="rom-macos.zip" length="573803287" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742169197"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528930505" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742167939"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-windows.zip" title="rom-windows.zip" length="767169334" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742167948"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-windows.zip" title="rom-windows.zip" length="767169334" type="application/zip" innioasis:download_count="2" innioasis:asset_id="742167948"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom.zip" title="rom.zip" length="454087130" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733438505"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="591055716" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742169668"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-linux-legacy.zip" title="rom_type_b-linux-legacy.zip" length="479005630" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742170988"/>
@@ -2778,7 +2778,7 @@ Solar is not yet stable for everyday use - we recommend using this only if you&#
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480591345" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742169409"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="718830158" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742169402"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b.zip" title="rom_type_b.zip" length="405747954" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733438577"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/stats.txt" title="stats.txt" length="5894" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750707229"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/stats.txt" title="stats.txt" length="5894" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766071223"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260701-1453#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -2879,7 +2879,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480822855" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742102828"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="719061664" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742102635"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b.zip" title="rom_type_b.zip" length="405979462" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733447356"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/stats.txt" title="stats.txt" length="5894" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750707142"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/stats.txt" title="stats.txt" length="5894" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766071065"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260630-1236#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -2962,14 +2962,14 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/20260630-1125"/>
     <innioasis:tag_name>20260630-1125</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>3</innioasis:downloads>
+    <innioasis:downloads>7</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/app-release.apk" title="app-release.apk" length="11915122" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707593753"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639388482" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742066957"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527338380" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742066958"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-linux.zip" title="rom-linux.zip" length="814484248" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742066951"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-macos.zip" title="rom-macos.zip" length="573796878" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742067923"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528924097" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742066952"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-windows.zip" title="rom-windows.zip" length="767162924" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742066955"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528924097" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742066952"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-windows.zip" title="rom-windows.zip" length="767162924" type="application/zip" innioasis:download_count="4" innioasis:asset_id="742066955"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom.zip" title="rom.zip" length="454080720" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733438390"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="591020258" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742068249"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-linux-legacy.zip" title="rom_type_b-linux-legacy.zip" length="478970176" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742069441"/>
@@ -2978,7 +2978,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480555891" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742068064"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="718794700" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742067956"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b.zip" title="rom_type_b.zip" length="405712496" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733438433"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750707075"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/stats.txt" title="stats.txt" length="5889" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766071003"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260630-1125#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -3061,14 +3061,14 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/20260630-1120"/>
     <innioasis:tag_name>20260630-1120</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>3</innioasis:downloads>
+    <innioasis:downloads>8</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/app-release.apk" title="app-release.apk" length="11915313" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707581188"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639407866" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742030714"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527357764" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742030719"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527357764" type="application/zip" innioasis:download_count="3" innioasis:asset_id="742030719"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-linux.zip" title="rom-linux.zip" length="814503632" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742030715"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-macos.zip" title="rom-macos.zip" length="573816262" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742031238"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528943481" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742030722"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-windows.zip" title="rom-windows.zip" length="767182308" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742030713"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-windows.zip" title="rom-windows.zip" length="767182308" type="application/zip" innioasis:download_count="3" innioasis:asset_id="742030713"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom.zip" title="rom.zip" length="454100104" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733440178"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="591023849" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742031891"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-linux-legacy.zip" title="rom_type_b-linux-legacy.zip" length="478973767" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742032728"/>
@@ -3077,7 +3077,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480559482" type="application/zip" innioasis:download_count="0" innioasis:asset_id="742031648"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="718798291" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742031476"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b.zip" title="rom_type_b.zip" length="405716087" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733440246"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750707007"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766070869"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260630-1120#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -3160,23 +3160,23 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/20260630-1110"/>
     <innioasis:tag_name>20260630-1110</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>3</innioasis:downloads>
+    <innioasis:downloads>5</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/app-release.apk" title="app-release.apk" length="11914912" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707568128"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639395461" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741992286"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527345359" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741992285"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-linux.zip" title="rom-linux.zip" length="814491227" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741992292"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-macos.zip" title="rom-macos.zip" length="573803857" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741993394"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528931076" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741992291"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-windows.zip" title="rom-windows.zip" length="767169903" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741992288"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-windows.zip" title="rom-windows.zip" length="767169903" type="application/zip" innioasis:download_count="2" innioasis:asset_id="741992288"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom.zip" title="rom.zip" length="454087699" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733413097"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="591352923" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741993641"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-linux-legacy.zip" title="rom_type_b-linux-legacy.zip" length="479302841" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741994694"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-linux.zip" title="rom_type_b-linux.zip" length="766448689" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741993640"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-linux.zip" title="rom_type_b-linux.zip" length="766448689" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741993640"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-macos.zip" title="rom_type_b-macos.zip" length="525761325" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741994699"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480888556" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741993581"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="719127365" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741993451"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b.zip" title="rom_type_b.zip" length="406045161" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733413372"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706961"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766070724"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260630-1110#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -3259,14 +3259,14 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/20260630-1102"/>
     <innioasis:tag_name>20260630-1102</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>3</innioasis:downloads>
+    <innioasis:downloads>4</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/app-release.apk" title="app-release.apk" length="11914613" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707555266"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639409667" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741957861"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527359565" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741957864"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-linux.zip" title="rom-linux.zip" length="814505433" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741957867"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-macos.zip" title="rom-macos.zip" length="573818064" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741959009"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528945282" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741957866"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-windows.zip" title="rom-windows.zip" length="767184109" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741957865"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-windows.zip" title="rom-windows.zip" length="767184109" type="application/zip" innioasis:download_count="2" innioasis:asset_id="741957865"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom.zip" title="rom.zip" length="454101907" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733412887"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="595969541" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741959503"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-linux-legacy.zip" title="rom_type_b-linux-legacy.zip" length="483919459" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741960554"/>
@@ -3275,7 +3275,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="485505174" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741959114"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="723743983" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741959051"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b.zip" title="rom_type_b.zip" length="410661781" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733412899"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706910"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766070639"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260630-1102#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -3358,14 +3358,14 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/20260630-1023"/>
     <innioasis:tag_name>20260630-1023</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>3</innioasis:downloads>
+    <innioasis:downloads>9</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/app-release.apk" title="app-release.apk" length="11914022" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707541689"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639393092" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741920349"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527342990" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741920345"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux.zip" title="rom-linux.zip" length="814488858" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741920358"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639393092" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741920349"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527342990" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741920345"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux.zip" title="rom-linux.zip" length="814488858" type="application/zip" innioasis:download_count="2" innioasis:asset_id="741920358"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-macos.zip" title="rom-macos.zip" length="573801489" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741921407"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528928707" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741920347"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-windows.zip" title="rom-windows.zip" length="767167534" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741920350"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-windows.zip" title="rom-windows.zip" length="767167534" type="application/zip" innioasis:download_count="4" innioasis:asset_id="741920350"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom.zip" title="rom.zip" length="454085332" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733424685"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="591026657" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741921792"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-linux-legacy.zip" title="rom_type_b-linux-legacy.zip" length="478976575" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741922826"/>
@@ -3374,7 +3374,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480562290" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741921700"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="718801099" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741921624"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b.zip" title="rom_type_b.zip" length="405718897" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733425220"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706845"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/stats.txt" title="stats.txt" length="5889" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766070533"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260630-1023#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -3458,12 +3458,12 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/20260630-1005"/>
     <innioasis:tag_name>20260630-1005</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>3</innioasis:downloads>
+    <innioasis:downloads>4</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/app-release.apk" title="app-release.apk" length="11913472" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707530138"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639384023" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741887856"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527333921" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741887854"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-linux.zip" title="rom-linux.zip" length="814479789" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741887857"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-macos.zip" title="rom-macos.zip" length="573792419" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741888701"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-macos.zip" title="rom-macos.zip" length="573792419" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741888701"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528919638" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741887853"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-windows.zip" title="rom-windows.zip" length="767158465" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741887855"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom.zip" title="rom.zip" length="454076261" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733416042"/>
@@ -3474,7 +3474,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="484672518" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741889109"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="722911327" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741888786"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b.zip" title="rom_type_b.zip" length="409829123" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733416059"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706794"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766070445"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260630-1005#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -3574,7 +3574,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481824417" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741840089"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720063226" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741840062"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b.zip" title="rom_type_b.zip" length="406981020" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733413179"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706739"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766070328"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260630-0956#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -3674,7 +3674,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="484649634" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741812883"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="722888443" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741812816"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b.zip" title="rom_type_b.zip" length="409806239" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733414035"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706695"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766070256"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260630-0636#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -3759,10 +3759,10 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/20260630-0550"/>
     <innioasis:tag_name>20260630-0550</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>3</innioasis:downloads>
+    <innioasis:downloads>4</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/app-release.apk" title="app-release.apk" length="11906829" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707496577"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639434707" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741782136"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527384605" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741782130"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527384605" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741782130"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-linux.zip" title="rom-linux.zip" length="814530473" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741782149"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-macos.zip" title="rom-macos.zip" length="573843104" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741783251"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528970322" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741782131"/>
@@ -3775,7 +3775,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481831270" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741783745"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720070079" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741783622"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b.zip" title="rom_type_b.zip" length="406987877" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733393810"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750706633"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766070183"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260630-0550#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -3876,7 +3876,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="484622060" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741428893"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="722860869" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741428744"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b.zip" title="rom_type_b.zip" length="409778663" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733352477"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/stats.txt" title="stats.txt" length="5891" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750705788"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/stats.txt" title="stats.txt" length="5891" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766068822"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260629-1615#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -3961,14 +3961,14 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/20260629-1610"/>
     <innioasis:tag_name>20260629-1610</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>3</innioasis:downloads>
+    <innioasis:downloads>11</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/app-release.apk" title="app-release.apk" length="11855693" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706414505"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639409520" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741399359"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527359418" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741399365"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux.zip" title="rom-linux.zip" length="814505286" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741399355"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527359418" type="application/zip" innioasis:download_count="3" innioasis:asset_id="741399365"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux.zip" title="rom-linux.zip" length="814505286" type="application/zip" innioasis:download_count="4" innioasis:asset_id="741399355"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-macos.zip" title="rom-macos.zip" length="573817916" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741400343"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="528945135" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741399364"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-windows.zip" title="rom-windows.zip" length="767183962" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741399363"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-windows.zip" title="rom-windows.zip" length="767183962" type="application/zip" innioasis:download_count="3" innioasis:asset_id="741399363"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom.zip" title="rom.zip" length="454101758" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733336289"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="592254835" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741400848"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-linux-legacy.zip" title="rom_type_b-linux-legacy.zip" length="480204753" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741401664"/>
@@ -3977,7 +3977,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481790468" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741400558"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720029277" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741400438"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b.zip" title="rom_type_b.zip" length="406947073" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733336401"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750705703"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/stats.txt" title="stats.txt" length="5890" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766068730"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260629-1610#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -4078,7 +4078,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480634253" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741373119"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="718873062" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741373085"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b.zip" title="rom_type_b.zip" length="405790856" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733339678"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/stats.txt" title="stats.txt" length="5890" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750705630"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/stats.txt" title="stats.txt" length="5890" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766068623"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260629-1444#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -4181,7 +4181,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481806284" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741345486"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720045093" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741345416"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b.zip" title="rom_type_b.zip" length="406962889" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733338577"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750705547"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/stats.txt" title="stats.txt" length="5888" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766068508"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260629-0955#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -4268,9 +4268,9 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/solar-mirror/releases/tag/20260629-0057"/>
     <innioasis:tag_name>20260629-0057</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>4</innioasis:downloads>
+    <innioasis:downloads>8</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/app-release.apk" title="app-release.apk" length="11839226" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="706363959"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639428230" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741311197"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639428230" type="application/zip" innioasis:download_count="4" innioasis:asset_id="741311197"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527378128" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741311193"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux.zip" title="rom-linux.zip" length="814523996" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741311194"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-macos.zip" title="rom-macos.zip" length="573836626" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741312910"/>
@@ -4284,7 +4284,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="480850148" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741313187"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="719088957" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741313108"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b.zip" title="rom_type_b.zip" length="406006753" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733336583"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/stats.txt" title="stats.txt" length="5889" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750705460"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/stats.txt" title="stats.txt" length="5889" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766068393"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260629-0057#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -4372,7 +4372,7 @@ Features
     <innioasis:tag_name>20260628-1014</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:downloads>13</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/app-release.apk" title="app-release.apk" length="11815142" type="application/vnd.android.package-archive" innioasis:download_count="4" innioasis:asset_id="706253725"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/app-release.apk" title="app-release.apk" length="11815142" type="application/vnd.android.package-archive" innioasis:download_count="5" innioasis:asset_id="706253725"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="639390311" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741011669"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527340211" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741011670"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-linux.zip" title="rom-linux.zip" length="814486077" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741011667"/>
@@ -4387,7 +4387,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481906009" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741013311"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720144818" type="application/zip" innioasis:download_count="3" innioasis:asset_id="741013321"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b.zip" title="rom_type_b.zip" length="407062612" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733146954"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/stats.txt" title="stats.txt" length="5897" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750704610"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/stats.txt" title="stats.txt" length="5897" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766067436"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260628-1014#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -4490,7 +4490,7 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="481803719" type="application/zip" innioasis:download_count="0" innioasis:asset_id="740980420"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="720042528" type="application/zip" innioasis:download_count="1" innioasis:asset_id="740979763"/>
     <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b.zip" title="rom_type_b.zip" length="406960324" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733113876"/>
-    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/stats.txt" title="stats.txt" length="5892" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="750704520"/>
+    <link rel="enclosure" href="https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/stats.txt" title="stats.txt" length="5892" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766067339"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;amp;tag=20260627-0304#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;

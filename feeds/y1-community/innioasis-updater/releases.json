@@ -17,7 +17,7 @@
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg",
         "size": 119710372,
-        "download_count": 367,
+        "download_count": 561,
         "content_type": "application/x-diskcopy",
         "created_at": "2026-11-11T00:21:08Z",
         "updated_at": "2026-11-11T00:21:31Z",
@@ -28,7 +28,7 @@
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/installer.exe",
         "size": 157480421,
-        "download_count": 374,
+        "download_count": 860,
         "content_type": "application/x-msdownload",
         "created_at": "2026-11-12T21:08:48Z",
         "updated_at": "2026-11-12T21:09:58Z",
@@ -39,7 +39,7 @@
         "name": "run_linux.sh",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/run_linux.sh",
         "size": 53935,
-        "download_count": 4,
+        "download_count": 5,
         "content_type": "application/x-sh",
         "created_at": "2026-11-12T13:31:50Z",
         "updated_at": "2026-11-12T13:31:50Z",
@@ -50,7 +50,7 @@
         "name": "run_linux.sh.sha256",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/run_linux.sh.sha256",
         "size": 79,
-        "download_count": 6,
+        "download_count": 7,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-10T18:58:03Z",
         "updated_at": "2026-11-10T18:58:03Z",
@@ -61,7 +61,7 @@
         "name": "UpdaterCE-arm64.appimage",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-arm64.appimage",
         "size": 173320712,
-        "download_count": 1,
+        "download_count": 5,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-12T13:56:46Z",
         "updated_at": "2026-11-12T13:57:33Z",
@@ -127,7 +127,7 @@
         "name": "UpdaterCE-Linux-Portable.tar.gz",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable.tar.gz",
         "size": 361117380,
-        "download_count": 7,
+        "download_count": 9,
         "content_type": "application/x-gtar",
         "created_at": "2026-11-12T13:56:45Z",
         "updated_at": "2026-11-12T13:59:15Z",
@@ -149,7 +149,7 @@
         "name": "UpdaterCE-Linux-Portable.zip",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable.zip",
         "size": 364426302,
-        "download_count": 4,
+        "download_count": 7,
         "content_type": "application/zip",
         "created_at": "2026-11-12T13:56:45Z",
         "updated_at": "2026-11-12T13:59:18Z",
@@ -171,7 +171,7 @@
         "name": "UpdaterCE-Lite.tar.gz",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Lite.tar.gz",
         "size": 228632671,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/x-gtar",
         "created_at": "2026-11-12T13:31:51Z",
         "updated_at": "2026-11-12T13:32:36Z",
@@ -182,7 +182,7 @@
         "name": "UpdaterCE-Lite.tar.gz.sha256",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Lite.tar.gz.sha256",
         "size": 88,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-12T13:57:38Z",
         "updated_at": "2026-11-12T13:57:39Z",
@@ -193,7 +193,7 @@
         "name": "UpdaterCE-Windows-Portable.zip",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Windows-Portable.zip",
         "size": 279830502,
-        "download_count": 11,
+        "download_count": 14,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-12T21:11:13Z",
         "updated_at": "2026-11-12T21:12:35Z",
@@ -204,7 +204,7 @@
         "name": "UpdaterCE.appimage",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage",
         "size": 306530808,
-        "download_count": 60,
+        "download_count": 159,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-12T13:56:45Z",
         "updated_at": "2026-11-12T13:59:00Z",
@@ -215,7 +215,7 @@
         "name": "UpdaterCE.appimage.sha256",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage.sha256",
         "size": 85,
-        "download_count": 6,
+        "download_count": 10,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-12T13:56:45Z",
         "updated_at": "2026-11-12T13:56:45Z",
@@ -223,7 +223,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 16,
+    "downloads": 22,
     "download_breakdown": {
       "tag": "2.5.3",
       "mirrors": "",
@@ -236,12 +236,12 @@
         {
           "name": "UpdaterCE-Linux-Portable.zip",
           "url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable.zip",
-          "downloads": 4
+          "downloads": 7
         },
         {
           "name": "UpdaterCE-Windows-Portable.zip",
           "url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Windows-Portable.zip",
-          "downloads": 11
+          "downloads": 14
         }
       ],
       "portable": []
@@ -735,7 +735,7 @@
         "name": "1.Install.Driver.First.and.Reboot.PC.exe",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe",
         "size": 9534578,
-        "download_count": 143,
+        "download_count": 202,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-11T14:32:18Z",
         "updated_at": "2026-11-11T14:32:21Z",
@@ -746,7 +746,7 @@
         "name": "flash_tool_linux.zip",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip",
         "size": 73234593,
-        "download_count": 359,
+        "download_count": 421,
         "content_type": "application/zip",
         "created_at": "2026-10-27T09:21:19Z",
         "updated_at": "2026-10-27T09:21:32Z",
@@ -757,7 +757,7 @@
         "name": "flash_tool_windows.zip",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_windows.zip",
         "size": 65386356,
-        "download_count": 147,
+        "download_count": 206,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-07T19:09:32Z",
         "updated_at": "2026-11-07T19:09:55Z",
@@ -765,7 +765,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 506,
+    "downloads": 627,
     "download_breakdown": {
       "tag": "flash_tool",
       "mirrors": "",
@@ -773,12 +773,12 @@
         {
           "name": "flash_tool_linux.zip",
           "url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip",
-          "downloads": 359
+          "downloads": 421
         },
         {
           "name": "flash_tool_windows.zip",
           "url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_windows.zip",
-          "downloads": 147
+          "downloads": 206
         }
       ],
       "portable": []

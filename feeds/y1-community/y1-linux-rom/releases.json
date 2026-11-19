@@ -17,15 +17,15 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/y1-linux-rom/releases/download/0.0.1/rom.zip",
         "size": 270175226,
-        "download_count": 58,
+        "download_count": 71,
         "content_type": "application/zip",
         "created_at": "2026-10-03T15:28:17Z",
         "updated_at": "2026-10-03T15:28:48Z",
         "url": "https://api.github.com/repos/y1-community/y1-linux-rom/releases/assets/608039598"
       }
     ],
-    "mirror_downloads": 29,
-    "downloads": 87,
+    "mirror_downloads": 33,
+    "downloads": 104,
     "download_breakdown": {
       "tag": "0.0.1",
       "mirrors": "y1-community/y1-linux-rom-mirror",
@@ -33,7 +33,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/y1-community/y1-linux-rom/releases/download/0.0.1/rom.zip",
-          "downloads": 68,
+          "downloads": 81,
           "mirror_downloads": 10
         }
       ],
@@ -43,7 +43,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-windows.zip",
           "size": 569372655,
-          "downloads": 7
+          "downloads": 8
         },
         {
           "platform": "windows-legacy",
@@ -57,7 +57,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux.zip",
           "size": 616693979,
-          "downloads": 4
+          "downloads": 7
         },
         {
           "platform": "linux-arm64",

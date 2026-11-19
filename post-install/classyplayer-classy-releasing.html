@@ -52,6 +52,9 @@
 <div id="nav-root"></div>
 <main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=inniclassic-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Classy · Y2</p><h1>Releasing Classy</h1><p class="lumen-lead">Classy build for the Innioasis Y2, formerly Inniclassic for Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=inniclassic-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=inniclassic-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="releasing-classy">Releasing Classy</h1>
 <p>This guide is for maintainers. It explains how to publish beta and stable releases, how to promote a beta, how to fix a stable release, and how to write the release notes.</p>
+<h2 id="release-cycle">Release cycle</h2>
+<ol><li>Merge the changes to <code>main</code>. A merge does not publish a release.</li><li>Cut a beta from <code>main</code> (<a href="#cut-a-beta">Cut a beta</a>).</li><li>Let players test the beta for <strong>at least 2 days</strong>. Give a beta with changes to playback, the library or the updater more time.</li><li>Before you promote it, check:<ul><li>No open issue (or Reddit or Telegram report) shows a new bug in the beta.</li><li><em>System Update</em> from the last stable release to the beta worked on at least one player.</li><li>If the current stable release is a hotfix (from a <code>release/&lt;tag&gt;</code> branch), the beta has its fix. Look at the code of the beta tag (for example <code>git log &lt;beta tag&gt;</code> or the changed file), not only at the date. If the fix is not there, cut and test a new beta from <code>main</code>.</li></ul></li><li>Promote that beta tag to stable (<a href="#promote-a-beta-to-stable">Promote a beta to stable</a>) and write the release notes.</li></ol>
+<p>You do not have to wait with merges while a beta is tested. Merge and cut the next beta when it is ready, and promote the older beta later from its own tag. Promote only a beta that is newer than the current stable release: a beta built from an older commit of <code>main</code> has older code, so System Update does not offer it to players on that stable release.</p>
 <h2 id="channels">Channels</h2>
 <p>Classy has two update channels:</p>
 <ul><li><strong>Stable</strong>: GitHub releases marked Latest. Most players are on this channel.</li><li><strong>Beta</strong>: GitHub pre-releases. Testers get new features before the stable release.</li></ul>
@@ -70,9 +73,16 @@
 <p>If you type a tag, it must not have the date and number of an existing tag (for example <code>20261114</code> when <code>20261114-beta</code> exists): the player would see the two as one version. The workflow stops on such a tag.</p>
 <h2 id="cut-a-beta">Cut a beta</h2>
 <ol><li>Merge the changes to <code>main</code>.</li><li>Open Actions &gt; Build &amp; Release &gt; Run workflow.</li><li>Leave &quot;Use workflow from&quot; on <code>main</code> and <code>channel</code> on <code>beta</code>. Leave the tag empty to get the date-based tag.</li><li>The workflow publishes a pre-release with the APK, <code>update.json</code>, the ROM zips and <code>SHA256SUMS.txt</code>.</li><li>Write the release notes (see <a href="#release-notes">Release notes</a>).</li></ol>
+<p>The same from a terminal, with the <a href="https://cli.github.com/" target="_blank" rel="noopener noreferrer">GitHub CLI</a>:</p>
+<pre><code class="language-bash">gh workflow run release.yml -R ClassyPlayer/Classy --ref main -f channel=beta
+gh run watch -R ClassyPlayer/Classy          # follow the run
+gh release list -R ClassyPlayer/Classy -L 3  # the new tag</code></pre>
 <h2 id="promote-a-beta-to-stable">Promote a beta to stable</h2>
-<p>When a beta has been tested and is ready for everyone:</p>
+<p>When a beta has been tested and the checks in <a href="#release-cycle">Release cycle</a> are done:</p>
 <ol><li>Open Actions &gt; Build &amp; Release &gt; Run workflow.</li><li>In &quot;Use workflow from&quot;, choose the beta tag (for example <code>20261114-beta</code>).</li><li>Set <code>channel</code> to <code>stable</code> and run the workflow.</li></ol>
+<p>From a terminal:</p>
+<pre><code class="language-bash">gh workflow run release.yml -R ClassyPlayer/Classy --ref 20261114-beta -f channel=stable
+gh run watch -R ClassyPlayer/Classy</code></pre>
 <p>This makes a new build of the same commit, with a new stable tag, marked Latest. If you promote a beta that is not the newest one, players on a newer beta keep their beta: the stable release has older code. Never un-tick &quot;Set as a pre-release&quot; on a beta release to promote it: the beta build carries the beta channel inside it, so players that install it stay on Beta.</p>
 <h2 id="fix-a-stable-release-hotfix">Fix a stable release (hotfix)</h2>
 <p>Use a hotfix when a stable release needs a fix but <code>main</code> has changes that are not ready for stable yet.</p>

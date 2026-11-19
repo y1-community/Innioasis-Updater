@@ -4,7 +4,204 @@
   <title>Release notes from ClassyPlayer/Classy</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/classyplayer/classy/releases.atom"/>
-  <updated>2026-11-13T00:24:19Z</updated>
+  <updated>2026-11-18T17:24:30Z</updated>
+  <entry>
+    <id>tag:innioasis.app,2026:ClassyPlayer/Classy/20261118-beta</id>
+    <updated>2026-11-18T17:24:30Z</updated>
+    <published>2026-11-18T17:24:30Z</published>
+    <title>Classy 20261118 (beta)</title>
+    <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261118-beta"/>
+    <innioasis:tag_name>20261118-beta</innioasis:tag_name>
+    <innioasis:prerelease>true</innioasis:prerelease>
+    <innioasis:downloads>11</innioasis:downloads>
+    <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261118-beta/Classy-20261118-beta.apk" title="Classy-20261118-beta.apk" length="25380174" type="application/vnd.android.package-archive" innioasis:download_count="4" innioasis:asset_id="764300954"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261118-beta/rom_y2.zip" title="rom_y2.zip" length="483032208" type="application/zip" innioasis:download_count="2" innioasis:asset_id="764300957"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261118-beta/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain" innioasis:download_count="2" innioasis:asset_id="764300970"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261118-beta/update.json" title="update.json" length="348" type="application/json" innioasis:download_count="4" innioasis:asset_id="764300962"/>
+    <content type="text">&gt; [!WARNING]
+&gt; **This is a beta.** It may have bugs that are not in the stable release. Players get it in **Settings → General → System Update → Update Channel → Beta**.
+
+#### Release assets
+
+| File | Target device | Notes |
+| :--- | :--- | :--- |
+| `Classy-20261118-beta.apk` | Innioasis Y2 | Standalone launcher APK (sideload or install) |
+| `update.json` | Innioasis Y2 | OTA update metadata for in-app updater |
+| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
+| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
+
+Y1 firmware is not in this release. Y1 builds are in the Y1 experimental pre-releases.
+
+
+## What&#x27;s Changed
+* fix(podcasts): trust Mozilla&#x27;s root certificates, so that megaphone.fm streams play on Android 4.4 by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/121
+* fix(podcasts): show a spinner while a stream or an episode list loads, the show cover on Now Playing, and hour-long times on one line by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/122
+
+
+**Full Changelog**: https://github.com/ClassyPlayer/Classy/compare/20261116-beta.2...20261118-beta</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:ClassyPlayer/Classy/20261117</id>
+    <updated>2026-11-17T19:17:15Z</updated>
+    <published>2026-11-17T19:17:15Z</published>
+    <title>Classy 20261117</title>
+    <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261117"/>
+    <innioasis:tag_name>20261117</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>31</innioasis:downloads>
+    <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261117/Classy-20261117.apk" title="Classy-20261117.apk" length="25264576" type="application/vnd.android.package-archive" innioasis:download_count="11" innioasis:asset_id="760307934"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261117/rom_y2.zip" title="rom_y2.zip" length="483284092" type="application/zip" innioasis:download_count="24" innioasis:asset_id="760307932"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261117/SHA256SUMS.txt" title="SHA256SUMS.txt" length="163" type="text/plain" innioasis:download_count="2" innioasis:asset_id="760307931"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261117/update.json" title="update.json" length="318" type="application/json" innioasis:download_count="13" innioasis:asset_id="760307928"/>
+    <content type="text">#### Release assets
+
+| File | Target device | Notes |
+| :--- | :--- | :--- |
+| `Classy-20261117.apk` | Innioasis Y2 | Standalone launcher APK (sideload or install) |
+| `update.json` | Innioasis Y2 | OTA update metadata for in-app updater |
+| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
+| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
+
+Y1 firmware is not in this release. Y1 builds are in the Y1 experimental pre-releases.
+
+
+## What&#x27;s Changed
+* feat(playlists): show playlist songs with their cover, title and artist by @andsuor in https://github.com/ClassyPlayer/Classy/pull/84
+* fix(podcasts): play or open the chosen episode, not the last Music list by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/89
+* fix(library): skip hidden files and folders in the library scan, such as the macOS ._ files by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/90
+* fix(video): keep the screen on during a video, and fix the length and the diamond of the scrub bar by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/91
+* fix(player): make Repeat All play the whole list, not only the current song by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/88
+* feat(library): list each artist of a multi-artist tag on its own by @andsuor in https://github.com/ClassyPlayer/Classy/pull/85
+* docs(install): keep the file name of the release ROM and clear the Updater CE cache for a local install by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/92
+* feat(audio): add Settings → Playback → Mono Audio, which mixes left and right on both channels for one earbud by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/93
+* feat(playlists): show each song&#x27;s length at the right of a playlist row by @andsuor in https://github.com/ClassyPlayer/Classy/pull/86
+* feat(playlists): keep playlists in Playlists on the microSD card so they can be copied from a computer by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/97
+* fix(podcasts): list the downloaded episodes of a channel when its feed does not load by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/96
+* fix(quiz): use FLAC songs in Music Quiz, and do not ask again a song whose clip does not play by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/95
+* feat(update): add a beta update channel by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/100
+* fix(podcasts): make Stream (Play) work over HTTPS on Android 4.4, and show why a stream fails by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/102
+* fix(update): do not offer a release with older code than the installed build by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/104
+* docs: shorten the README and add Files and limits to the website by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/105
+* fix(audio): mix FLAC files with Mono Audio, and play a Music Quiz clip with ExoPlayer when MediaPlayer cannot by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/103
+* fix(audio): keep ExoPlayer&#x27;s buffer in one block that the player keeps, so that FLAC tracks do not stop at 0:00 on Android 4.4 by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/109
+* refactor(audio): play all music with ExoPlayer, and remove the MediaPlayer path of FLAC files and Music Quiz clips by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/110
+* docs(releasing): add the release cycle, the checks before a promotion and the gh commands by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/112
+* ci(release): publish no Y1 ROMs until main supports the Y1, and use the release-notes layout in the release template by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/113
+* feat(controls): add Settings → Controls → Letter Jump and Letter Jump Sensitivity, to turn off or tune the iPod letter jump by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/115
+
+## New Contributors
+* @andsuor made their first contribution in https://github.com/ClassyPlayer/Classy/pull/84
+
+**Full Changelog**: https://github.com/ClassyPlayer/Classy/compare/20261112...20261117</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:ClassyPlayer/Classy/20261116-beta.2</id>
+    <updated>2026-11-16T21:30:52Z</updated>
+    <published>2026-11-16T21:30:52Z</published>
+    <title>Classy 20261116 (beta 2)</title>
+    <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261116-beta.2"/>
+    <innioasis:tag_name>20261116-beta.2</innioasis:tag_name>
+    <innioasis:prerelease>true</innioasis:prerelease>
+    <innioasis:downloads>15</innioasis:downloads>
+    <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261116-beta.2/Classy-20261116-beta.2.apk" title="Classy-20261116-beta.2.apk" length="25264507" type="application/vnd.android.package-archive" innioasis:download_count="3" innioasis:asset_id="756523407"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261116-beta.2/rom_y2.zip" title="rom_y2.zip" length="483276457" type="application/zip" innioasis:download_count="8" innioasis:asset_id="756523412"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261116-beta.2/SHA256SUMS.txt" title="SHA256SUMS.txt" length="170" type="text/plain" innioasis:download_count="3" innioasis:asset_id="756523408"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261116-beta.2/update.json" title="update.json" length="360" type="application/json" innioasis:download_count="5" innioasis:asset_id="756523411"/>
+    <content type="text">This is a beta release. To get it on the player, choose Settings &gt; General &gt; System Update &gt; Update Channel &gt; Beta.
+
+- Settings &gt; Controls &gt; Letter Jump turns the iPod letter jump on or off. With it off, a fast wheel turn moves row by row in the lists and in Cover Flow.
+- Settings &gt; Controls &gt; Letter Jump Sensitivity sets how fast the wheel must turn before the letter jump starts: Low needs a faster turn, High starts it with a slower turn. The default is On and Normal, as before.
+
+#### Release assets
+
+| File | Target device | Notes |
+| :--- | :--- | :--- |
+| `Classy-20261116-beta.2.apk` | Innioasis Y2 | Standalone launcher APK (sideload or install) |
+| `update.json` | Innioasis Y2 | OTA update metadata for in-app updater |
+| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
+| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
+
+Y1 firmware is not in this release. Y1 builds are in the Y1 experimental pre-releases.
+
+Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261116-beta...20261116-beta.2
+</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:ClassyPlayer/Classy/20261116-beta</id>
+    <updated>2026-11-16T10:56:32Z</updated>
+    <published>2026-11-16T10:56:32Z</published>
+    <title>Classy 20261116 (beta)</title>
+    <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261116-beta"/>
+    <innioasis:tag_name>20261116-beta</innioasis:tag_name>
+    <innioasis:prerelease>true</innioasis:prerelease>
+    <innioasis:downloads>11</innioasis:downloads>
+    <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261116-beta/Classy-20261116-beta.apk" title="Classy-20261116-beta.apk" length="25263842" type="application/vnd.android.package-archive" innioasis:download_count="4" innioasis:asset_id="754498908"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261116-beta/rom_y2.zip" title="rom_y2.zip" length="483262667" type="application/zip" innioasis:download_count="4" innioasis:asset_id="754498910"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261116-beta/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="2" innioasis:asset_id="754509170"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261116-beta/update.json" title="update.json" length="348" type="application/json" innioasis:download_count="4" innioasis:asset_id="754498904"/>
+    <content type="text">This is a beta release. To get it on the player, choose Settings &gt; General &gt; System Update &gt; Update Channel &gt; Beta.
+
+- All music now plays through ExoPlayer, also FLAC files. FLAC above 48 kHz plays too (24-bit 96 kHz in real time), and Speed, Software EQ and Crossfeed now change FLAC tracks.
+- FLAC albums of 15 songs or fewer play gapless, as MP3 albums do.
+- A song that cannot play shows a notice and is skipped. When no song of the queue plays, playback stops after one pass with &quot;All tracks failed. Playback stopped.&quot; With Repeat Off, a broken last song stops playback at the end of the queue.
+- At the end of a gapless album with Repeat Off, the player now waits at the first song (before, it went on to the second).
+- Music Quiz uses one player for all clips and also asks about Opus and Ogg songs. A volume change during a clip now changes the sound.
+- FM radio and the music of the games are not changed.
+
+#### Release assets
+
+| File | Target device | Notes |
+| :--- | :--- | :--- |
+| `Classy-20261116-beta.apk` | Innioasis Y2 | Standalone launcher APK (sideload or install) |
+| `update.json` | Innioasis Y2 | OTA update metadata for in-app updater |
+| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
+| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
+
+Y1 firmware is not in this release. Y1 builds are in the Y1 experimental pre-releases.
+
+Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261115-beta...20261116-beta
+</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:ClassyPlayer/Classy/20261115-beta</id>
+    <updated>2026-11-15T18:03:51Z</updated>
+    <published>2026-11-15T18:03:51Z</published>
+    <title>Classy 20261115 (beta)</title>
+    <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261115-beta"/>
+    <innioasis:tag_name>20261115-beta</innioasis:tag_name>
+    <innioasis:prerelease>true</innioasis:prerelease>
+    <innioasis:downloads>37</innioasis:downloads>
+    <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261115-beta/Classy-20261115-beta.apk" title="Classy-20261115-beta.apk" length="25266246" type="application/vnd.android.package-archive" innioasis:download_count="6" innioasis:asset_id="751858897"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261115-beta/rom_y2.zip" title="rom_y2.zip" length="482823961" type="application/zip" innioasis:download_count="9" innioasis:asset_id="751858882"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261115-beta/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="6" innioasis:asset_id="754089839"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261115-beta/update.json" title="update.json" length="348" type="application/json" innioasis:download_count="4" innioasis:asset_id="751858885"/>
+    <content type="text">This is a beta release. To get it on the player, choose Settings &gt; General &gt; System Update &gt; Update Channel &gt; Beta.
+
+- Podcast streaming (Stream (Play)) works over HTTPS, with a check of the server certificate. A stream that does not play shows why, for example &quot;No internet connection&quot;.
+- FLAC tracks no longer stop at 0:00 when they play through ExoPlayer.
+- With Settings &gt; Playback &gt; Mono Audio on, FLAC files play through ExoPlayer and are mixed to mono too. A Music Quiz clip that does not play in the old player plays through ExoPlayer.
+- System Update does not offer a release that has older code than the installed build.
+- The website has a new Files and limits section: file formats, folders, covers, lyrics files and the known limits.
+
+#### Release assets
+
+| File | Target device | Notes |
+| :--- | :--- | :--- |
+| `Classy-20261115-beta.apk` | Innioasis Y2 | Standalone launcher APK (sideload or install) |
+| `update.json` | Innioasis Y2 | OTA update metadata for in-app updater |
+| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
+| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
+
+Y1 firmware is not in this release. Y1 builds are in the Y1 experimental pre-releases.
+
+Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261113-beta...20261115-beta
+</content>
+  </entry>
   <entry>
     <id>tag:innioasis.app,2026:ClassyPlayer/Classy/y1-exp.2</id>
     <updated>2026-11-13T00:24:19Z</updated>
@@ -13,10 +210,10 @@
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/y1-exp.2"/>
     <innioasis:tag_name>y1-exp.2</innioasis:tag_name>
     <innioasis:prerelease>true</innioasis:prerelease>
-    <innioasis:downloads>25</innioasis:downloads>
+    <innioasis:downloads>31</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/y1-exp.2/Classy-20261112-exp.2-y1.apk" title="Classy-20261112-exp.2-y1.apk" length="25237181" type="application/vnd.android.package-archive" innioasis:download_count="2" innioasis:asset_id="741612313"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/y1-exp.2/classy-y1-exp.2-type-a.zip" title="classy-y1-exp.2-type-a.zip" length="445698431" type="application/zip" innioasis:download_count="9" innioasis:asset_id="741612302"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/y1-exp.2/classy-y1-exp.2-type-a.zip" title="classy-y1-exp.2-type-a.zip" length="445698431" type="application/zip" innioasis:download_count="15" innioasis:asset_id="741612302"/>
     <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/y1-exp.2/classy-y1-exp.2-type-b.zip" title="classy-y1-exp.2-type-b.zip" length="436724945" type="application/zip" innioasis:download_count="2" innioasis:asset_id="741612314"/>
     <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/y1-exp.2/SHA256SUMS.txt" title="SHA256SUMS.txt" length="436" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="741612393"/>
     <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/y1-exp.2/y1-logs.bat" title="y1-logs.bat" length="2229" type="application/x-msdownload" innioasis:download_count="3" innioasis:asset_id="741612311"/>
@@ -39,61 +236,37 @@
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261113-beta"/>
     <innioasis:tag_name>20261113-beta</innioasis:tag_name>
     <innioasis:prerelease>true</innioasis:prerelease>
-    <innioasis:downloads>38</innioasis:downloads>
+    <innioasis:downloads>44</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/Classy-20261113-beta.apk" title="Classy-20261113-beta.apk" length="25251963" type="application/vnd.android.package-archive" innioasis:download_count="3" innioasis:asset_id="745424036"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="445947132" type="application/zip" innioasis:download_count="4" innioasis:asset_id="745424041"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="438175822" type="application/zip" innioasis:download_count="2" innioasis:asset_id="745424037"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/rom_y2.zip" title="rom_y2.zip" length="482896572" type="application/zip" innioasis:download_count="11" innioasis:asset_id="745424035"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/SHA256SUMS.txt" title="SHA256SUMS.txt" length="336" type="text/plain" innioasis:download_count="3" innioasis:asset_id="745424034"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/update.json" title="update.json" length="326" type="application/json" innioasis:download_count="3" innioasis:asset_id="745424039"/>
-    <content type="text">&gt; [!WARNING]
-&gt; **This is a beta.** It may have bugs that are not in the stable release. Players get it in **Settings → General → System Update → Update Channel → Beta**.
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/Classy-20261113-beta.apk" title="Classy-20261113-beta.apk" length="25251963" type="application/vnd.android.package-archive" innioasis:download_count="4" innioasis:asset_id="745424036"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/rom_y2.zip" title="rom_y2.zip" length="482896572" type="application/zip" innioasis:download_count="15" innioasis:asset_id="745424035"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754089984"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261113-beta/update.json" title="update.json" length="326" type="application/json" innioasis:download_count="4" innioasis:asset_id="745424039"/>
+    <content type="text">This is a beta release. To get it on the player, choose Settings &gt; General &gt; System Update &gt; Update Channel &gt; Beta.
 
-### Classy Release
+- Settings &gt; General &gt; System Update &gt; Update Channel chooses Stable or Beta. This is the first release on the Beta channel.
+- Settings &gt; Playback &gt; Mono Audio plays the left and the right channel on both sides, for listening with one earbud (also on Bluetooth). FLAC files and videos stay stereo in this beta.
+- Playlist rows show each song&#x27;s cover, title, artist and length.
+- Playlists are now in the `Playlists` folder on the microSD card (on the internal storage without a card), so they can be copied from a computer. Playlists in the old `Y1_Playlists` folder move there on the first start.
+- Each artist of a multi-artist tag shows on its own in Artists.
+- The library scan skips hidden files and folders. The `._` files that a Mac writes next to each song no longer show as songs that do not play.
+- Repeat All plays the whole list again, not only the current song.
+- The screen stays on during a video, and the scrub bar shows the correct length.
+- Choosing a podcast episode plays or opens that episode. When a feed does not load, the downloaded episodes of that channel still show.
+- Music Quiz also uses FLAC songs, and it does not ask again about a song whose clip does not play.
 
-Automated build with full support for **Innioasis Y1** (Type A &amp; Type B) and **Innioasis Y2**.
+#### Release assets
 
-#### 📦 Release Assets
-
-| File | Target Device | Notes |
+| File | Target device | Notes |
 | :--- | :--- | :--- |
-| **`Classy-20261113-beta.apk`** | All Devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
-| **`update.json`** | All Devices | OTA update metadata for in-app updater |
-| **`rom_y2.zip`** | **Innioasis Y2** (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| **`rom_y1_type_a.zip`** | **Innioasis Y1** (Type A) | Flashable ROM for Y1 players with original firmware **2.0.0 or higher** |
-| **`rom_y1_type_b.zip`** | **Innioasis Y1** (Type B) | Flashable ROM for Y1 players with original firmware **below 2.0.0** |
-| **`SHA256SUMS.txt`** | All Files | SHA-256 integrity checksums |
+| `Classy-20261113-beta.apk` | Innioasis Y2 | Standalone launcher APK (sideload or install) |
+| `update.json` | Innioasis Y2 | OTA update metadata for in-app updater |
+| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
+| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
-#### ⚡ Flashing Instructions (SP Flash Tool)
-1. Extract the corresponding zip file for your device.
-2. Launch `flash_tool.exe` (or Linux `flash_tool`).
-3. Load the scatter file (`MT6582_Android_scatter.txt` for Y2, `MT6572_Android_scatter.txt` for Y1).
-4. Select **Firmware Upgrade** or **Download Only**.
-5. Power off the device completely, click **Download**, and connect the USB cable.
+Y1 firmware is not in this release. Y1 builds are in the Y1 experimental pre-releases.
 
----
-
-
-## What&#x27;s Changed
-* feat(playlists): show playlist songs with their cover, title and artist by @andsuor in https://github.com/ClassyPlayer/Classy/pull/84
-* fix(podcasts): play or open the chosen episode, not the last Music list by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/89
-* fix(library): skip hidden files and folders in the library scan, such as the macOS ._ files by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/90
-* fix(video): keep the screen on during a video, and fix the length and the diamond of the scrub bar by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/91
-* fix(player): make Repeat All play the whole list, not only the current song by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/88
-* feat(library): list each artist of a multi-artist tag on its own by @andsuor in https://github.com/ClassyPlayer/Classy/pull/85
-* docs(install): keep the file name of the release ROM and clear the Updater CE cache for a local install by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/92
-* feat(audio): add Settings → Playback → Mono Audio, which mixes left and right on both channels for one earbud by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/93
-* feat(playlists): show each song&#x27;s length at the right of a playlist row by @andsuor in https://github.com/ClassyPlayer/Classy/pull/86
-* feat(playlists): keep playlists in Playlists on the microSD card so they can be copied from a computer by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/97
-* fix(podcasts): list the downloaded episodes of a channel when its feed does not load by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/96
-* fix(quiz): use FLAC songs in Music Quiz, and do not ask again a song whose clip does not play by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/95
-* feat(update): add a beta update channel by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/100
-
-## New Contributors
-* @andsuor made their first contribution in https://github.com/ClassyPlayer/Classy/pull/84
-
-**Full Changelog**: https://github.com/ClassyPlayer/Classy/compare/20261112...20261113-beta
+Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261112...20261113-beta
 </content>
   </entry>
   <entry>
@@ -104,17 +277,13 @@ Automated build with full support for **Innioasis Y1** (Type A &amp; Type B) and
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261112"/>
     <innioasis:tag_name>20261112</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>152</innioasis:downloads>
+    <innioasis:downloads>185</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/Classy-20261112.apk" title="Classy-20261112.apk" length="25226865" type="application/vnd.android.package-archive" innioasis:download_count="23" innioasis:asset_id="739046115"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/index.html" title="index.html" length="40176" type="text/html" innioasis:download_count="5" innioasis:asset_id="739046114"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/rom.zip" title="rom.zip" length="445995496" type="application/zip" innioasis:download_count="9" innioasis:asset_id="739046110"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/rom_type_b.zip" title="rom_type_b.zip" length="438175401" type="application/zip" innioasis:download_count="2" innioasis:asset_id="739046119"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="445995496" type="application/zip" innioasis:download_count="9" innioasis:asset_id="739046116"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="438175401" type="application/zip" innioasis:download_count="3" innioasis:asset_id="739046109"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/rom_y2.zip" title="rom_y2.zip" length="426796024" type="application/zip" innioasis:download_count="62" innioasis:asset_id="739046106"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/SHA256SUMS.txt" title="SHA256SUMS.txt" length="486" type="text/plain" innioasis:download_count="4" innioasis:asset_id="739046118"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/update.json" title="update.json" length="271" type="application/json" innioasis:download_count="47" innioasis:asset_id="739046105"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/Classy-20261112.apk" title="Classy-20261112.apk" length="25226865" type="application/vnd.android.package-archive" innioasis:download_count="29" innioasis:asset_id="739046115"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/index.html" title="index.html" length="40176" type="text/html" innioasis:download_count="7" innioasis:asset_id="739046114"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/rom_y2.zip" title="rom_y2.zip" length="426796024" type="application/zip" innioasis:download_count="105" innioasis:asset_id="739046106"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/SHA256SUMS.txt" title="SHA256SUMS.txt" length="163" type="text/plain; charset=utf-8" innioasis:download_count="4" innioasis:asset_id="754090149"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261112/update.json" title="update.json" length="271" type="application/json" innioasis:download_count="69" innioasis:asset_id="739046105"/>
     <content type="text">- A new Games section runs iPod click wheel games through emulation. You need decrypted game files, which can be found on the Internet Archive. Games pause when you leave the app or stay idle. Expect some visual bugs, and the wheel resolution is lower than on an iPod.
 - System Update now verifies every file of the downloaded update and its signature before it touches the system. If the check fails, the download is deleted and the player says so.
 
@@ -125,11 +294,12 @@ Automated build with full support for **Innioasis Y1** (Type A &amp; Type B) and
 | `Classy-20261112.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261111...20261112
+
 </content>
   </entry>
   <entry>
@@ -163,17 +333,13 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261111...202611
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261111"/>
     <innioasis:tag_name>20261111</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>103</innioasis:downloads>
+    <innioasis:downloads>82</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/Classy-20261111.apk" title="Classy-20261111.apk" length="24677789" type="application/vnd.android.package-archive" innioasis:download_count="15" innioasis:asset_id="734798518"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/index.html" title="index.html" length="38404" type="text/html" innioasis:download_count="4" innioasis:asset_id="734798523"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/rom.zip" title="rom.zip" length="440232535" type="application/zip" innioasis:download_count="6" innioasis:asset_id="734798520"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/rom_type_b.zip" title="rom_type_b.zip" length="433046270" type="application/zip" innioasis:download_count="4" innioasis:asset_id="734798524"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="440232535" type="application/zip" innioasis:download_count="16" innioasis:asset_id="734798522"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="433046270" type="application/zip" innioasis:download_count="6" innioasis:asset_id="734798526"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/rom_y2.zip" title="rom_y2.zip" length="482427581" type="application/zip" innioasis:download_count="18" innioasis:asset_id="734798519"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/SHA256SUMS.txt" title="SHA256SUMS.txt" length="486" type="text/plain" innioasis:download_count="6" innioasis:asset_id="734798521"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/update.json" title="update.json" length="271" type="application/json" innioasis:download_count="14" innioasis:asset_id="734798527"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/Classy-20261111.apk" title="Classy-20261111.apk" length="24677789" type="application/vnd.android.package-archive" innioasis:download_count="16" innioasis:asset_id="734798518"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/index.html" title="index.html" length="38404" type="text/html" innioasis:download_count="5" innioasis:asset_id="734798523"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/rom_y2.zip" title="rom_y2.zip" length="482427581" type="application/zip" innioasis:download_count="21" innioasis:asset_id="734798519"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/SHA256SUMS.txt" title="SHA256SUMS.txt" length="163" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754090363"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261111/update.json" title="update.json" length="271" type="application/json" innioasis:download_count="15" innioasis:asset_id="734798527"/>
     <content type="text">- System Update no longer leaves the player stuck on the start screen. It checks the signing key before changing anything, and if the update cannot replace the installed app, it explains how to update with Innioasis Updater CE instead.
 - Releases are now signed with one fixed key, so future in-app updates install normally. Updating from 20261110 or older may need Innioasis Updater CE once.
 - The new boot screen now actually applies after an update on the Y2.
@@ -185,11 +351,12 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261111...202611
 | `Classy-20261111.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261110...20261111
+
 </content>
   </entry>
   <entry>
@@ -200,17 +367,13 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261110...202611
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261110"/>
     <innioasis:tag_name>20261110</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>114</innioasis:downloads>
+    <innioasis:downloads>97</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/Classy-20261110.apk" title="Classy-20261110.apk" length="24675311" type="application/vnd.android.package-archive" innioasis:download_count="15" innioasis:asset_id="731967647"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/index.html" title="index.html" length="38392" type="text/html" innioasis:download_count="5" innioasis:asset_id="731967648"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom.zip" title="rom.zip" length="440224174" type="application/zip" innioasis:download_count="5" innioasis:asset_id="731967645"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom_type_b.zip" title="rom_type_b.zip" length="433056054" type="application/zip" innioasis:download_count="5" innioasis:asset_id="731967649"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="440224174" type="application/zip" innioasis:download_count="12" innioasis:asset_id="731967646"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="433056054" type="application/zip" innioasis:download_count="5" innioasis:asset_id="731967641"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom_y2.zip" title="rom_y2.zip" length="482334719" type="application/zip" innioasis:download_count="14" innioasis:asset_id="731967642"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/SHA256SUMS.txt" title="SHA256SUMS.txt" length="486" type="text/plain" innioasis:download_count="5" innioasis:asset_id="731967651"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/update.json" title="update.json" length="269" type="application/json" innioasis:download_count="14" innioasis:asset_id="731967635"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/Classy-20261110.apk" title="Classy-20261110.apk" length="24675311" type="application/vnd.android.package-archive" innioasis:download_count="16" innioasis:asset_id="731967647"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/index.html" title="index.html" length="38392" type="text/html" innioasis:download_count="6" innioasis:asset_id="731967648"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom_y2.zip" title="rom_y2.zip" length="482334719" type="application/zip" innioasis:download_count="15" innioasis:asset_id="731967642"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/SHA256SUMS.txt" title="SHA256SUMS.txt" length="163" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754090525"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261110/update.json" title="update.json" length="269" type="application/json" innioasis:download_count="15" innioasis:asset_id="731967635"/>
     <content type="text">- The Y2 now shows a custom boot screen with a progress bar. It is applied on update and through a migration, so existing players get it too.
 - On the Y2, Classy turns off parts of Android it does not use: the status bar, the lockscreen, the keyboard, window animations, and MediaTek daemons for logs, analog TV, OTA, A-GPS and device management.
 - A themed notice replaces MediaTek&#x27;s &quot;SD card ready&quot; dialog.
@@ -223,11 +386,12 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261110...202611
 | `Classy-20261110.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261107-v2...20261110
+
 </content>
   </entry>
   <entry>
@@ -238,17 +402,13 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261107-v2...202
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261107-v2"/>
     <innioasis:tag_name>20261107-v2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>229</innioasis:downloads>
+    <innioasis:downloads>200</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/Classy-20261107-v2.apk" title="Classy-20261107-v2.apk" length="24544653" type="application/vnd.android.package-archive" innioasis:download_count="17" innioasis:asset_id="720855025"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/index.html" title="index.html" length="37652" type="text/html" innioasis:download_count="9" innioasis:asset_id="720855026"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom.zip" title="rom.zip" length="439947905" type="application/zip" innioasis:download_count="9" innioasis:asset_id="720855019"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_type_b.zip" title="rom_type_b.zip" length="436987850" type="application/zip" innioasis:download_count="8" innioasis:asset_id="720855024"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="439947905" type="application/zip" innioasis:download_count="17" innioasis:asset_id="720855021"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="436987850" type="application/zip" innioasis:download_count="11" innioasis:asset_id="720855022"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y2.zip" title="rom_y2.zip" length="482216428" type="application/zip" innioasis:download_count="77" innioasis:asset_id="720855023"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/SHA256SUMS.txt" title="SHA256SUMS.txt" length="489" type="text/plain" innioasis:download_count="9" innioasis:asset_id="720855028"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/update.json" title="update.json" length="288" type="application/json" innioasis:download_count="24" innioasis:asset_id="720855017"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/Classy-20261107-v2.apk" title="Classy-20261107-v2.apk" length="24544653" type="application/vnd.android.package-archive" innioasis:download_count="18" innioasis:asset_id="720855025"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/index.html" title="index.html" length="37652" type="text/html" innioasis:download_count="10" innioasis:asset_id="720855026"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y2.zip" title="rom_y2.zip" length="482216428" type="application/zip" innioasis:download_count="86" innioasis:asset_id="720855023"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/SHA256SUMS.txt" title="SHA256SUMS.txt" length="166" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754090693"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/update.json" title="update.json" length="288" type="application/json" innioasis:download_count="25" innioasis:asset_id="720855017"/>
     <content type="text">- The video overlay now hides while a video plays, and the centre button opens scrub mode.
 
 #### Release assets
@@ -258,11 +418,12 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261107-v2...202
 | `Classy-20261107-v2.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261107...20261107-v2
+
 </content>
   </entry>
   <entry>
@@ -273,17 +434,13 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261107...202611
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261107"/>
     <innioasis:tag_name>20261107</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>159</innioasis:downloads>
+    <innioasis:downloads>128</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/Classy-20261107.apk" title="Classy-20261107.apk" length="24542812" type="application/vnd.android.package-archive" innioasis:download_count="11" innioasis:asset_id="720263962"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/index.html" title="index.html" length="36957" type="text/html" innioasis:download_count="10" innioasis:asset_id="720263967"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom.zip" title="rom.zip" length="439954614" type="application/zip" innioasis:download_count="10" innioasis:asset_id="720263959"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom_type_b.zip" title="rom_type_b.zip" length="436969414" type="application/zip" innioasis:download_count="9" innioasis:asset_id="720263965"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="439954614" type="application/zip" innioasis:download_count="11" innioasis:asset_id="720263970"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="436969414" type="application/zip" innioasis:download_count="10" innioasis:asset_id="720263963"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom_y2.zip" title="rom_y2.zip" length="482232373" type="application/zip" innioasis:download_count="20" innioasis:asset_id="720263966"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/SHA256SUMS.txt" title="SHA256SUMS.txt" length="486" type="text/plain" innioasis:download_count="10" innioasis:asset_id="720263961"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/update.json" title="update.json" length="269" type="application/json" innioasis:download_count="10" innioasis:asset_id="720263964"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/Classy-20261107.apk" title="Classy-20261107.apk" length="24542812" type="application/vnd.android.package-archive" innioasis:download_count="12" innioasis:asset_id="720263962"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/index.html" title="index.html" length="36957" type="text/html" innioasis:download_count="11" innioasis:asset_id="720263967"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom_y2.zip" title="rom_y2.zip" length="482232373" type="application/zip" innioasis:download_count="21" innioasis:asset_id="720263966"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/SHA256SUMS.txt" title="SHA256SUMS.txt" length="163" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754090903"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261107/update.json" title="update.json" length="269" type="application/json" innioasis:download_count="11" innioasis:asset_id="720263964"/>
     <content type="text">- USB Drive mode was reworked. The player checks for a microSD card before sharing it (instead of waiting about 30 seconds), and Android no longer kills the app while the card is shared. A new Settings → Connectivity → USB Drive option lets you pick Ask, Always or Never when a cable is plugged in, and the music resumes after Eject only if it was playing before.
 - Videos play again on ROM installs, because the launcher&#x27;s native libraries are now installed in `/system/lib`.
 - Android&#x27;s notification icons and tickers no longer appear on top of the app.
@@ -297,11 +454,12 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261107...202611
 | `Classy-20261107.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261106...20261107
+
 </content>
   </entry>
   <entry>
@@ -312,17 +470,13 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261106...202611
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261106"/>
     <innioasis:tag_name>20261106</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>156</innioasis:downloads>
+    <innioasis:downloads>125</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/Classy-20261106.apk" title="Classy-20261106.apk" length="24606606" type="application/vnd.android.package-archive" innioasis:download_count="11" innioasis:asset_id="717685988"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/index.html" title="index.html" length="35988" type="text/html" innioasis:download_count="10" innioasis:asset_id="717685986"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom.zip" title="rom.zip" length="455546831" type="application/zip" innioasis:download_count="10" innioasis:asset_id="717685992"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_type_b.zip" title="rom_type_b.zip" length="415427715" type="application/zip" innioasis:download_count="11" innioasis:asset_id="717685990"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="455546831" type="application/zip" innioasis:download_count="12" innioasis:asset_id="717685989"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="415427715" type="application/zip" innioasis:download_count="11" innioasis:asset_id="717685995"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_y2.zip" title="rom_y2.zip" length="465983256" type="application/zip" innioasis:download_count="13" innioasis:asset_id="717686002"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/SHA256SUMS.txt" title="SHA256SUMS.txt" length="486" type="text/plain" innioasis:download_count="10" innioasis:asset_id="717685985"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/update.json" title="update.json" length="269" type="application/json" innioasis:download_count="10" innioasis:asset_id="717685982"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/Classy-20261106.apk" title="Classy-20261106.apk" length="24606606" type="application/vnd.android.package-archive" innioasis:download_count="12" innioasis:asset_id="717685988"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/index.html" title="index.html" length="35988" type="text/html" innioasis:download_count="11" innioasis:asset_id="717685986"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_y2.zip" title="rom_y2.zip" length="465983256" type="application/zip" innioasis:download_count="14" innioasis:asset_id="717686002"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/SHA256SUMS.txt" title="SHA256SUMS.txt" length="163" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754091120"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261106/update.json" title="update.json" length="269" type="application/json" innioasis:download_count="11" innioasis:asset_id="717685982"/>
     <content type="text">- InniClassic is now Classy. The app name, repository links and the new Classy boot logo all use the new name, and settings backups made with older versions still restore.
 - Play On sends the music to a Sonos, DLNA or Google Cast speaker on the same Wi-Fi.
 - A new Settings → Battery screen shows the battery level and the screen time for the last 24 hours or 10 days.
@@ -337,11 +491,12 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261106...202611
 | `Classy-20261106.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261105...20261106
+
 </content>
   </entry>
   <entry>
@@ -352,17 +507,13 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261105...202611
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261105"/>
     <innioasis:tag_name>20261105</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>221</innioasis:downloads>
+    <innioasis:downloads>163</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/index.html" title="index.html" length="32699" type="text/html" innioasis:download_count="16" innioasis:asset_id="713717422"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/InniClassic-20261105.apk" title="InniClassic-20261105.apk" length="24532442" type="application/vnd.android.package-archive" innioasis:download_count="16" innioasis:asset_id="713717420"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom.zip" title="rom.zip" length="455463136" type="application/zip" innioasis:download_count="23" innioasis:asset_id="713717416"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom_type_b.zip" title="rom_type_b.zip" length="422464888" type="application/zip" innioasis:download_count="16" innioasis:asset_id="713717414"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="455463136" type="application/zip" innioasis:download_count="16" innioasis:asset_id="713717412"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="422464888" type="application/zip" innioasis:download_count="15" innioasis:asset_id="713717421"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom_y2.zip" title="rom_y2.zip" length="465902259" type="application/zip" innioasis:download_count="27" innioasis:asset_id="713717408"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/SHA256SUMS.txt" title="SHA256SUMS.txt" length="491" type="text/plain" innioasis:download_count="15" innioasis:asset_id="713717415"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="19" innioasis:asset_id="713717407"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/index.html" title="index.html" length="32699" type="text/html" innioasis:download_count="17" innioasis:asset_id="713717422"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/InniClassic-20261105.apk" title="InniClassic-20261105.apk" length="24532442" type="application/vnd.android.package-archive" innioasis:download_count="17" innioasis:asset_id="713717420"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom_y2.zip" title="rom_y2.zip" length="465902259" type="application/zip" innioasis:download_count="30" innioasis:asset_id="713717408"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754091304"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261105/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="20" innioasis:asset_id="713717407"/>
     <content type="text">### InniClassic Release
 
 Automated build with full support for **Innioasis Y1** (Type A &amp; Type B) and **Innioasis Y2**.
@@ -374,9 +525,9 @@ Automated build with full support for **Innioasis Y1** (Type A &amp; Type B) and
 | **`InniClassic-20261105.apk`** | All Devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | **`update.json`** | All Devices | OTA update metadata for in-app updater |
 | **`rom_y2.zip`** | **Innioasis Y2** (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| **`rom_y1_type_a.zip`** (`rom.zip`) | **Innioasis Y1** (Type A) | Flashable ROM for Y1 players with original firmware **2.0.0 or higher** |
-| **`rom_y1_type_b.zip`** (`rom_type_b.zip`) | **Innioasis Y1** (Type B) | Flashable ROM for Y1 players with original firmware **below 2.0.0** |
 | **`SHA256SUMS.txt`** | All Files | SHA-256 integrity checksums |
+
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
 
 #### ⚡ Flashing Instructions (SP Flash Tool)
 1. Extract the corresponding zip file for your device.
@@ -394,7 +545,8 @@ Automated build with full support for **Innioasis Y1** (Type A &amp; Type B) and
 * refactor(ui): remove the App Drawer and Screen Recorder screens, which nothing can open by @ferrolho in https://github.com/JonaszPotoniec/inniclassic-y2/pull/44
 
 
-**Full Changelog**: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261104...20261105</content>
+**Full Changelog**: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261104...20261105
+</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:ClassyPlayer/Classy/20261104</id>
@@ -404,17 +556,13 @@ Automated build with full support for **Innioasis Y1** (Type A &amp; Type B) and
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261104"/>
     <innioasis:tag_name>20261104</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>227</innioasis:downloads>
+    <innioasis:downloads>164</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/index.html" title="index.html" length="30965" type="text/html" innioasis:download_count="15" innioasis:asset_id="710801195"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/InniClassic-20261104.apk" title="InniClassic-20261104.apk" length="24527493" type="application/vnd.android.package-archive" innioasis:download_count="15" innioasis:asset_id="710801198"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom.zip" title="rom.zip" length="455462943" type="application/zip" innioasis:download_count="26" innioasis:asset_id="710801202"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom_type_b.zip" title="rom_type_b.zip" length="422466574" type="application/zip" innioasis:download_count="14" innioasis:asset_id="710801190"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="455462943" type="application/zip" innioasis:download_count="18" innioasis:asset_id="710801196"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="422466574" type="application/zip" innioasis:download_count="13" innioasis:asset_id="710801197"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom_y2.zip" title="rom_y2.zip" length="465901262" type="application/zip" innioasis:download_count="33" innioasis:asset_id="710801191"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/SHA256SUMS.txt" title="SHA256SUMS.txt" length="491" type="text/plain" innioasis:download_count="15" innioasis:asset_id="710801194"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="14" innioasis:asset_id="710801193"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/index.html" title="index.html" length="30965" type="text/html" innioasis:download_count="16" innioasis:asset_id="710801195"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/InniClassic-20261104.apk" title="InniClassic-20261104.apk" length="24527493" type="application/vnd.android.package-archive" innioasis:download_count="16" innioasis:asset_id="710801198"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom_y2.zip" title="rom_y2.zip" length="465901262" type="application/zip" innioasis:download_count="34" innioasis:asset_id="710801191"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754091484"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261104/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="15" innioasis:asset_id="710801193"/>
     <content type="text">Thanks @ferrolho for making this release possible!
 
 many bug fixes
@@ -440,11 +588,12 @@ many bug fixes
 | `InniClassic-20261104.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
-Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261017...20261104</content>
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
+Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261017...20261104
+</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:ClassyPlayer/Classy/20261017</id>
@@ -454,17 +603,13 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026101
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261017"/>
     <innioasis:tag_name>20261017</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>522</innioasis:downloads>
+    <innioasis:downloads>262</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/index.html" title="index.html" length="11442" type="text/html" innioasis:download_count="23" innioasis:asset_id="650267207"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/InniClassic-20261017.apk" title="InniClassic-20261017.apk" length="24451136" type="application/vnd.android.package-archive" innioasis:download_count="36" innioasis:asset_id="650267213"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom.zip" title="rom.zip" length="455460055" type="application/zip" innioasis:download_count="218" innioasis:asset_id="650267212"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_type_b.zip" title="rom_type_b.zip" length="422390294" type="application/zip" innioasis:download_count="18" innioasis:asset_id="650267209"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="455460055" type="application/zip" innioasis:download_count="19" innioasis:asset_id="650267214"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="422390294" type="application/zip" innioasis:download_count="17" innioasis:asset_id="650267215"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_y2.zip" title="rom_y2.zip" length="458640295" type="application/zip" innioasis:download_count="126" innioasis:asset_id="650267210"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/SHA256SUMS.txt" title="SHA256SUMS.txt" length="491" type="text/plain" innioasis:download_count="22" innioasis:asset_id="650267211"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="26" innioasis:asset_id="650267206"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/index.html" title="index.html" length="11442" type="text/html" innioasis:download_count="24" innioasis:asset_id="650267207"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/InniClassic-20261017.apk" title="InniClassic-20261017.apk" length="24451136" type="application/vnd.android.package-archive" innioasis:download_count="37" innioasis:asset_id="650267213"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_y2.zip" title="rom_y2.zip" length="458640295" type="application/zip" innioasis:download_count="127" innioasis:asset_id="650267210"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754091660"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261017/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="27" innioasis:asset_id="650267206"/>
     <content type="text">The Biggest Release!
 
 - The entire application codebase has been rewritten from Java to 100% Kotlin, decomposing the monolithic main activity into dedicated domain managers, screen controllers, and an input router, backed by 16 regression test suites running in CI.
@@ -487,11 +632,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026101
 | `InniClassic-20261017.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
-Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261013...20261017</content>
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
+Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261013...20261017
+</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:ClassyPlayer/Classy/20261013</id>
@@ -501,16 +647,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026101
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261013"/>
     <innioasis:tag_name>20261013</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>291</innioasis:downloads>
+    <innioasis:downloads>170</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261013/InniClassic-20261013.apk" title="InniClassic-20261013.apk" length="25302210" type="application/vnd.android.package-archive" innioasis:download_count="21" innioasis:asset_id="636618066"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom.zip" title="rom.zip" length="455407982" type="application/zip" innioasis:download_count="85" innioasis:asset_id="636618069"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom_type_b.zip" title="rom_type_b.zip" length="423125776" type="application/zip" innioasis:download_count="15" innioasis:asset_id="636618071"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="455407982" type="application/zip" innioasis:download_count="14" innioasis:asset_id="636618070"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="423125776" type="application/zip" innioasis:download_count="15" innioasis:asset_id="636618072"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom_y2.zip" title="rom_y2.zip" length="459507925" type="application/zip" innioasis:download_count="41" innioasis:asset_id="636618061"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261013/SHA256SUMS.txt" title="SHA256SUMS.txt" length="491" type="text/plain" innioasis:download_count="18" innioasis:asset_id="636618063"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261013/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="20" innioasis:asset_id="636618058"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261013/InniClassic-20261013.apk" title="InniClassic-20261013.apk" length="25302210" type="application/vnd.android.package-archive" innioasis:download_count="22" innioasis:asset_id="636618066"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom_y2.zip" title="rom_y2.zip" length="459507925" type="application/zip" innioasis:download_count="42" innioasis:asset_id="636618061"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261013/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754091831"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261013/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="21" innioasis:asset_id="636618058"/>
     <content type="text">- Improve Jellyfin sync
 
 #### Release assets
@@ -520,11 +662,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026101
 | `InniClassic-20261012.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261011...20261012
+
 </content>
   </entry>
   <entry>
@@ -535,16 +678,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026101
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261012"/>
     <innioasis:tag_name>20261012</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>263</innioasis:downloads>
+    <innioasis:downloads>198</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261012/InniClassic-20261012.apk" title="InniClassic-20261012.apk" length="25287379" type="application/vnd.android.package-archive" innioasis:download_count="16" innioasis:asset_id="635077116"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom.zip" title="rom.zip" length="455407537" type="application/zip" innioasis:download_count="37" innioasis:asset_id="635077122"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom_type_b.zip" title="rom_type_b.zip" length="423165422" type="application/zip" innioasis:download_count="13" innioasis:asset_id="635077118"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="455407537" type="application/zip" innioasis:download_count="13" innioasis:asset_id="635077123"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="423165422" type="application/zip" innioasis:download_count="13" innioasis:asset_id="635077119"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom_y2.zip" title="rom_y2.zip" length="459484049" type="application/zip" innioasis:download_count="20" innioasis:asset_id="635077117"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261012/SHA256SUMS.txt" title="SHA256SUMS.txt" length="491" type="text/plain" innioasis:download_count="13" innioasis:asset_id="635077120"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261012/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="16" innioasis:asset_id="635077113"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261012/InniClassic-20261012.apk" title="InniClassic-20261012.apk" length="25287379" type="application/vnd.android.package-archive" innioasis:download_count="17" innioasis:asset_id="635077116"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom_y2.zip" title="rom_y2.zip" length="459484049" type="application/zip" innioasis:download_count="21" innioasis:asset_id="635077117"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261012/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754092030"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261012/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="17" innioasis:asset_id="635077113"/>
     <content type="text">- Added Jellyfin sync so you can download music and videos directly from your Jellyfin server over Wi-Fi. You can sign in using QuickConnect (with an on-screen pairing code), username and password, or an API token, then sync all libraries or browse and pick specific folders. Sync options let you download album artwork, transcode videos for playback on the player, and remove local files that were deleted on the server, followed by an automatic library rescan when downloads finish.
 - Fixed four Bluetooth issues on the Y2:
   - Toggling Bluetooth on now starts the MediaTek Bluetooth daemon (`mtkbt`) automatically (and starts it at boot in the ROM), fixing the bug where Bluetooth refused to turn back on or reconnect to paired headphones after being turned off.
@@ -559,11 +698,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026101
 | `InniClassic-20261012.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261011...20261012
+
 </content>
   </entry>
   <entry>
@@ -574,16 +714,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026101
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261011"/>
     <innioasis:tag_name>20261011</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>236</innioasis:downloads>
+    <innioasis:downloads>152</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261011/InniClassic-20261011.apk" title="InniClassic-20261011.apk" length="25249278" type="application/vnd.android.package-archive" innioasis:download_count="23" innioasis:asset_id="631746387"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom.zip" title="rom.zip" length="455407764" type="application/zip" innioasis:download_count="36" innioasis:asset_id="631746385"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom_type_b.zip" title="rom_type_b.zip" length="423133957" type="application/zip" innioasis:download_count="17" innioasis:asset_id="631746386"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="455407764" type="application/zip" innioasis:download_count="20" innioasis:asset_id="631746382"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="423133957" type="application/zip" innioasis:download_count="19" innioasis:asset_id="631746384"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom_y2.zip" title="rom_y2.zip" length="459449940" type="application/zip" innioasis:download_count="21" innioasis:asset_id="631746379"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261011/SHA256SUMS.txt" title="SHA256SUMS.txt" length="491" type="text/plain" innioasis:download_count="19" innioasis:asset_id="631746380"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261011/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="21" innioasis:asset_id="631746378"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261011/InniClassic-20261011.apk" title="InniClassic-20261011.apk" length="25249278" type="application/vnd.android.package-archive" innioasis:download_count="24" innioasis:asset_id="631746387"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom_y2.zip" title="rom_y2.zip" length="459449940" type="application/zip" innioasis:download_count="22" innioasis:asset_id="631746379"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261011/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754092195"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261011/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="22" innioasis:asset_id="631746378"/>
     <content type="text">- The About screen now uses a scrollable two-column iPod Classic layout showing song, video, album, and artist counts, software version, model number, and separate capacity and free space rows for both internal flash and the microSD card.
 - A new &quot;Battery Percentage&quot; setting draws the exact percentage and a compact charging bolt inside the battery icon, with contrasting text colors across the filled and empty parts of the indicator.
 - Genre browsing now follows the classic iPod hierarchy (`Genre -&gt; Artists / All Songs -&gt; Albums / All Songs -&gt; Songs`), and song lists have a Shuffle banner with a song counter at the top. Returning from Now Playing also highlights the playing track, fast scrolling no longer crashes on lists with header rows, and the wheel no longer gets stuck at list edges.
@@ -598,11 +734,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026101
 | `InniClassic-20261011.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261008...20261011
+
 </content>
   </entry>
   <entry>
@@ -613,16 +750,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026100
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261008"/>
     <innioasis:tag_name>20261008</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>229</innioasis:downloads>
+    <innioasis:downloads>169</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261008/InniClassic-20261008.apk" title="InniClassic-20261008.apk" length="25241731" type="application/vnd.android.package-archive" innioasis:download_count="21" innioasis:asset_id="619886904"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom.zip" title="rom.zip" length="455440329" type="application/zip" innioasis:download_count="24" innioasis:asset_id="619886910"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom_type_b.zip" title="rom_type_b.zip" length="423114074" type="application/zip" innioasis:download_count="15" innioasis:asset_id="619886906"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="455440329" type="application/zip" innioasis:download_count="17" innioasis:asset_id="619886908"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="423114074" type="application/zip" innioasis:download_count="14" innioasis:asset_id="619886911"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom_y2.zip" title="rom_y2.zip" length="459436324" type="application/zip" innioasis:download_count="36" innioasis:asset_id="619886903"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261008/SHA256SUMS.txt" title="SHA256SUMS.txt" length="491" type="text/plain" innioasis:download_count="17" innioasis:asset_id="619886909"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261008/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="22" innioasis:asset_id="619886902"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261008/InniClassic-20261008.apk" title="InniClassic-20261008.apk" length="25241731" type="application/vnd.android.package-archive" innioasis:download_count="22" innioasis:asset_id="619886904"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom_y2.zip" title="rom_y2.zip" length="459436324" type="application/zip" innioasis:download_count="37" innioasis:asset_id="619886903"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261008/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754092356"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261008/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="23" innioasis:asset_id="619886902"/>
     <content type="text">- The in-app Software Update screen now shows clearer status feedback, waits automatically while Wi-Fi finishes connecting, and lets you reinstall the current build if you are already up to date.
 - Over-the-air updates now install properly when InniClassic runs as a system ROM app (`/system/app`) by copying the new APK into `/system/app` and rebooting. Version checks also handle same-day revision tags (`YYYYMMDD-vN`).
 - Status bar icons are darker on the light theme so they stay readable against the silver bar, and the Wi-Fi indicator now uses a sharper Tabler icon.
@@ -634,11 +767,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026100
 | `InniClassic-20261008.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261007...20261008
+
 </content>
   </entry>
   <entry>
@@ -649,16 +783,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026100
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261007"/>
     <innioasis:tag_name>20261007</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>193</innioasis:downloads>
+    <innioasis:downloads>137</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261007/InniClassic-20261007.apk" title="InniClassic-20261007.apk" length="25234954" type="application/vnd.android.package-archive" innioasis:download_count="19" innioasis:asset_id="619490459"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom.zip" title="rom.zip" length="455436338" type="application/zip" innioasis:download_count="16" innioasis:asset_id="619490463"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom_type_b.zip" title="rom_type_b.zip" length="423114974" type="application/zip" innioasis:download_count="15" innioasis:asset_id="619490460"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="455436338" type="application/zip" innioasis:download_count="17" innioasis:asset_id="619490457"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="423114974" type="application/zip" innioasis:download_count="17" innioasis:asset_id="619490454"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom_y2.zip" title="rom_y2.zip" length="459463641" type="application/zip" innioasis:download_count="18" innioasis:asset_id="619490458"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261007/SHA256SUMS.txt" title="SHA256SUMS.txt" length="491" type="text/plain" innioasis:download_count="17" innioasis:asset_id="619490456"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261007/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="28" innioasis:asset_id="619490455"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261007/InniClassic-20261007.apk" title="InniClassic-20261007.apk" length="25234954" type="application/vnd.android.package-archive" innioasis:download_count="20" innioasis:asset_id="619490459"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom_y2.zip" title="rom_y2.zip" length="459463641" type="application/zip" innioasis:download_count="19" innioasis:asset_id="619490458"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261007/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754092516"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261007/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="29" innioasis:asset_id="619490455"/>
     <content type="text">- Fixed a bug where tracks with the same title across different albums (such as live recordings, greatest hits, or deluxe editions) were treated as duplicates and hidden from your library except for the single highest-bitrate copy.
 - Added an automatic versioned migration system that runs an incremental media scan on first launch after updating, restoring any previously skipped songs to your albums without resetting your existing library cache.
 
@@ -669,11 +799,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026100
 | `InniClassic-20261007.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261006...20261007
+
 </content>
   </entry>
   <entry>
@@ -684,16 +815,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026100
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261006"/>
     <innioasis:tag_name>20261006</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>246</innioasis:downloads>
+    <innioasis:downloads>181</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261006/InniClassic-20261006.apk" title="InniClassic-20261006.apk" length="25233311" type="application/vnd.android.package-archive" innioasis:download_count="24" innioasis:asset_id="615345407"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom.zip" title="rom.zip" length="455437962" type="application/zip" innioasis:download_count="21" innioasis:asset_id="615345410"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom_type_b.zip" title="rom_type_b.zip" length="423114161" type="application/zip" innioasis:download_count="19" innioasis:asset_id="615345409"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="455437962" type="application/zip" innioasis:download_count="18" innioasis:asset_id="615345414"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="423114161" type="application/zip" innioasis:download_count="16" innioasis:asset_id="615345411"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom_y2.zip" title="rom_y2.zip" length="459424649" type="application/zip" innioasis:download_count="54" innioasis:asset_id="615345413"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261006/SHA256SUMS.txt" title="SHA256SUMS.txt" length="491" type="text/plain" innioasis:download_count="17" innioasis:asset_id="615345412"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261006/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="20" innioasis:asset_id="615345408"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261006/InniClassic-20261006.apk" title="InniClassic-20261006.apk" length="25233311" type="application/vnd.android.package-archive" innioasis:download_count="25" innioasis:asset_id="615345407"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom_y2.zip" title="rom_y2.zip" length="459424649" type="application/zip" innioasis:download_count="55" innioasis:asset_id="615345413"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261006/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754092706"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261006/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="21" innioasis:asset_id="615345408"/>
     <content type="text">- Added native USB Mass Storage support for the microSD card when plugging the player into a computer. A prompt asks whether to &quot;Connect as Storage&quot; or &quot;Charge Only&quot; (which can be toggled under Settings -&gt; Ask on USB Connect). While connected, the player shows an iPod-style &quot;Connected - Eject before disconnecting&quot; screen where pressing Center safely ejects the drive and automatically rescans your library for newly added music.
 - Translated the new keyboard settings, &quot;Add to Favorites&quot;, equalizer headers, screen recorder prompts, and error toasts across all 7 supported languages, and replaced leftover Korean internal keys in the screen recorder menus with English text.
 
@@ -704,11 +831,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026100
 | `InniClassic-20261006.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261001...20261006
+
 </content>
   </entry>
   <entry>
@@ -719,16 +847,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026100
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20261001"/>
     <innioasis:tag_name>20261001</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>267</innioasis:downloads>
+    <innioasis:downloads>211</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261001/InniClassic-20261001.apk" title="InniClassic-20261001.apk" length="25225302" type="application/vnd.android.package-archive" innioasis:download_count="18" innioasis:asset_id="602779246"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom.zip" title="rom.zip" length="455436434" type="application/zip" innioasis:download_count="20" innioasis:asset_id="602779252"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom_type_b.zip" title="rom_type_b.zip" length="423113479" type="application/zip" innioasis:download_count="15" innioasis:asset_id="602779251"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="455436434" type="application/zip" innioasis:download_count="18" innioasis:asset_id="602779250"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="423113479" type="application/zip" innioasis:download_count="17" innioasis:asset_id="602779247"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom_y2.zip" title="rom_y2.zip" length="459439768" type="application/zip" innioasis:download_count="28" innioasis:asset_id="602779248"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261001/SHA256SUMS.txt" title="SHA256SUMS.txt" length="491" type="text/plain" innioasis:download_count="17" innioasis:asset_id="602779245"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261001/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="21" innioasis:asset_id="602779244"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261001/InniClassic-20261001.apk" title="InniClassic-20261001.apk" length="25225302" type="application/vnd.android.package-archive" innioasis:download_count="19" innioasis:asset_id="602779246"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom_y2.zip" title="rom_y2.zip" length="459439768" type="application/zip" innioasis:download_count="29" innioasis:asset_id="602779248"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261001/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754092881"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261001/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="22" innioasis:asset_id="602779244"/>
     <content type="text">- Volume now uses a 30-step virtual scale with an iPod-style overlay across all screens instead of the stock Android popup. It works across music, video playback, FM radio, and Music Quiz, and includes six extra-quiet digital sub-steps at the bottom of the scale (down to -28 dBFS) for sensitive earphones.
 - A full QWERTY on-screen keyboard is now available in Settings alongside the original grid layout. It includes a symbol layer, column memory when moving vertically across the spacebar, lighter 10ms key vibration, and full punctuation (`; : , / \ ( ) [ ] { } &lt; &gt; &#x27; ~ \`` and `|`) for Wi-Fi passwords and search queries.
 - Cover Flow and album lists use a 9-slot buffered layout and a 256x256 disk and RAM thumbnail cache (`.y1_thumbs_cache`), eliminating card pop-in and lag when spinning the wheel fast or reversing direction.
@@ -743,11 +867,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026100
 | `InniClassic-20261001.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260929...20261001
+
 </content>
   </entry>
   <entry>
@@ -758,16 +883,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026092
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20260929"/>
     <innioasis:tag_name>20260929</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>200</innioasis:downloads>
+    <innioasis:downloads>146</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260929/InniClassic-20260929.apk" title="InniClassic-20260929.apk" length="25200732" type="application/vnd.android.package-archive" innioasis:download_count="16" innioasis:asset_id="599337236"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom.zip" title="rom.zip" length="455397679" type="application/zip" innioasis:download_count="16" innioasis:asset_id="599337241"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom_type_b.zip" title="rom_type_b.zip" length="423111794" type="application/zip" innioasis:download_count="17" innioasis:asset_id="599337235"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="455397679" type="application/zip" innioasis:download_count="16" innioasis:asset_id="599337239"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="423111794" type="application/zip" innioasis:download_count="15" innioasis:asset_id="599337238"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom_y2.zip" title="rom_y2.zip" length="459397798" type="application/zip" innioasis:download_count="18" innioasis:asset_id="599337234"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260929/SHA256SUMS.txt" title="SHA256SUMS.txt" length="491" type="text/plain" innioasis:download_count="18" innioasis:asset_id="599337237"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260929/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="18" innioasis:asset_id="599337233"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260929/InniClassic-20260929.apk" title="InniClassic-20260929.apk" length="25200732" type="application/vnd.android.package-archive" innioasis:download_count="17" innioasis:asset_id="599337236"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom_y2.zip" title="rom_y2.zip" length="459397798" type="application/zip" innioasis:download_count="21" innioasis:asset_id="599337234"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260929/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="4" innioasis:asset_id="754093075"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260929/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="19" innioasis:asset_id="599337233"/>
     <content type="text">- Muted wheel clicks, system touch sounds, and vibration when the screen is off and &quot;Screen Off Control&quot; is disabled in Settings. Accidental touches in your pocket no longer make noise, buzz, or reset the backlight timer to wake the screen, and feedback turns back on as soon as you wake the display.
 
 #### Release assets
@@ -777,11 +898,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026092
 | `InniClassic-20260929.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260928-build.6...20260929
+
 </content>
   </entry>
   <entry>
@@ -792,16 +914,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026092
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20260928"/>
     <innioasis:tag_name>20260928</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>204</innioasis:downloads>
+    <innioasis:downloads>145</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928/InniClassic-20260928.apk" title="InniClassic-20260928.apk" length="25186866" type="application/vnd.android.package-archive" innioasis:download_count="16" innioasis:asset_id="594881463"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom.zip" title="rom.zip" length="456594638" type="application/zip" innioasis:download_count="16" innioasis:asset_id="594881465"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom_type_b.zip" title="rom_type_b.zip" length="416333879" type="application/zip" innioasis:download_count="18" innioasis:asset_id="594881461"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="456594638" type="application/zip" innioasis:download_count="17" innioasis:asset_id="594881462"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="416333879" type="application/zip" innioasis:download_count="16" innioasis:asset_id="594881466"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom_y2.zip" title="rom_y2.zip" length="444691351" type="application/zip" innioasis:download_count="19" innioasis:asset_id="594881460"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928/SHA256SUMS.txt" title="SHA256SUMS.txt" length="491" type="text/plain" innioasis:download_count="18" innioasis:asset_id="594881469"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="20" innioasis:asset_id="594881467"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928/InniClassic-20260928.apk" title="InniClassic-20260928.apk" length="25186866" type="application/vnd.android.package-archive" innioasis:download_count="17" innioasis:asset_id="594881463"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom_y2.zip" title="rom_y2.zip" length="444691351" type="application/zip" innioasis:download_count="20" innioasis:asset_id="594881460"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754093422"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928/update.json" title="update.json" length="299" type="application/json" innioasis:download_count="21" innioasis:asset_id="594881467"/>
     <content type="text">- The Y2 headphone volume curve in `libaudiocustparam.so` is tuned lower at the bottom of the range, so sensitive earphones can be used comfortably in quiet rooms where step 1 was previously too loud.
 - Over-the-air (OTA) updates now download directly from GitHub Releases (`update.json`) using OkHttp, which follows GitHub redirects reliably and checks the downloaded file size before installing.
 - In Music Quiz, the visual album cover round now sizes tiles properly on the Y2 screen and extracts artwork from `.m4a`/ALAC files, manual cover files, and scaled folder images without running out of memory.
@@ -813,11 +931,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026092
 | `InniClassic-20260928.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260927...20260928
+
 </content>
   </entry>
   <entry>
@@ -828,16 +947,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026092
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20260928-build.6"/>
     <innioasis:tag_name>20260928-build.6</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>259</innioasis:downloads>
+    <innioasis:downloads>204</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/InniClassic-20260928-build.6.apk" title="InniClassic-20260928-build.6.apk" length="25200586" type="application/vnd.android.package-archive" innioasis:download_count="16" innioasis:asset_id="596631161"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom.zip" title="rom.zip" length="455402613" type="application/zip" innioasis:download_count="18" innioasis:asset_id="596631156"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom_type_b.zip" title="rom_type_b.zip" length="423124101" type="application/zip" innioasis:download_count="15" innioasis:asset_id="596631160"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="455402613" type="application/zip" innioasis:download_count="15" innioasis:asset_id="596631163"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="423124101" type="application/zip" innioasis:download_count="15" innioasis:asset_id="596631158"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom_y2.zip" title="rom_y2.zip" length="459402216" type="application/zip" innioasis:download_count="18" innioasis:asset_id="596631162"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/SHA256SUMS.txt" title="SHA256SUMS.txt" length="499" type="text/plain" innioasis:download_count="18" innioasis:asset_id="596631159"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/update.json" title="update.json" length="341" type="application/json" innioasis:download_count="20" innioasis:asset_id="596631154"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/InniClassic-20260928-build.6.apk" title="InniClassic-20260928-build.6.apk" length="25200586" type="application/vnd.android.package-archive" innioasis:download_count="17" innioasis:asset_id="596631161"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom_y2.zip" title="rom_y2.zip" length="459402216" type="application/zip" innioasis:download_count="19" innioasis:asset_id="596631162"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/SHA256SUMS.txt" title="SHA256SUMS.txt" length="176" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754093216"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/update.json" title="update.json" length="341" type="application/json" innioasis:download_count="21" innioasis:asset_id="596631154"/>
     <content type="text">- Removed Android&#x27;s Safe Media Volume cap in both the app and the ROM so headphone volume can reach 100% without stopping at the system warning limit. You can also tap or drag the on-screen volume bar to change the volume directly.
 - Added a full Polish translation and improved how bundled language files load on startup.
 
@@ -848,11 +963,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026092
 | `InniClassic-20260928-build.6.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `update.json` | All devices | OTA update metadata for in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260928...20260928-build.6
+
 </content>
   </entry>
   <entry>
@@ -863,15 +979,11 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026092
     <link rel="alternate" type="text/html" href="https://github.com/ClassyPlayer/Classy/releases/tag/20260927"/>
     <innioasis:tag_name>20260927</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>261</innioasis:downloads>
+    <innioasis:downloads>210</innioasis:downloads>
     <innioasis:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260927/InniClassic-20260927.apk" title="InniClassic-20260927.apk" length="25186490" type="application/vnd.android.package-archive" innioasis:download_count="17" innioasis:asset_id="593488151"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom.zip" title="rom.zip" length="456599763" type="application/zip" innioasis:download_count="16" innioasis:asset_id="593488159"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_type_b.zip" title="rom_type_b.zip" length="424305181" type="application/zip" innioasis:download_count="15" innioasis:asset_id="593488160"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_y1_type_a.zip" title="rom_y1_type_a.zip" length="456599763" type="application/zip" innioasis:download_count="17" innioasis:asset_id="593488154"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="424305181" type="application/zip" innioasis:download_count="17" innioasis:asset_id="593488152"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_y2.zip" title="rom_y2.zip" length="444712441" type="application/zip" innioasis:download_count="18" innioasis:asset_id="593488157"/>
-    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260927/SHA256SUMS.txt" title="SHA256SUMS.txt" length="491" type="text/plain" innioasis:download_count="18" innioasis:asset_id="593488153"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260927/InniClassic-20260927.apk" title="InniClassic-20260927.apk" length="25186490" type="application/vnd.android.package-archive" innioasis:download_count="18" innioasis:asset_id="593488151"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_y2.zip" title="rom_y2.zip" length="444712441" type="application/zip" innioasis:download_count="19" innioasis:asset_id="593488157"/>
+    <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20260927/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="3" innioasis:asset_id="754093627"/>
     <content type="text">First release with support for the Innioasis Y2 alongside the Innioasis Y1 (Type A and Type B).
 
 - Music, audiobooks, and videos are now indexed across both internal storage (`/storage/sdcard0`) and the removable microSD card (`/storage/sdcard1`).
@@ -886,11 +998,12 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026092
 | :--- | :--- | :--- |
 | `InniClassic-20260927.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
-| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
-| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
 
+&gt; Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.
+
 Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/v1.5.0...20260927
+
 </content>
   </entry>
 </feed>

@@ -167,15 +167,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733262823"
       },
       {
-        "id": 750738460,
+        "id": 766086512,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/stats.txt",
         "size": 5717,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:47Z",
-        "updated_at": "2026-11-15T11:12:48Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750738460"
+        "created_at": "2026-11-19T03:39:40Z",
+        "updated_at": "2026-11-19T03:39:40Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086512"
       }
     ],
     "mirror_downloads": 0,
@@ -426,15 +426,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733245253"
       },
       {
-        "id": 750738388,
+        "id": 766086444,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/stats.txt",
         "size": 5714,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:45Z",
-        "updated_at": "2026-11-15T11:12:46Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750738388"
+        "created_at": "2026-11-19T03:39:38Z",
+        "updated_at": "2026-11-19T03:39:38Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086444"
       }
     ],
     "mirror_downloads": 0,
@@ -685,15 +685,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733224874"
       },
       {
-        "id": 750738309,
+        "id": 766086378,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/stats.txt",
         "size": 5714,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:43Z",
-        "updated_at": "2026-11-15T11:12:43Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750738309"
+        "created_at": "2026-11-19T03:39:37Z",
+        "updated_at": "2026-11-19T03:39:37Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086378"
       }
     ],
     "mirror_downloads": 0,
@@ -849,7 +849,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-windows.zip",
         "size": 769024350,
-        "download_count": 5,
+        "download_count": 6,
         "content_type": "application/zip",
         "created_at": "2026-11-12T21:53:46Z",
         "updated_at": "2026-11-12T21:54:06Z",
@@ -944,19 +944,19 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733203038"
       },
       {
-        "id": 750738248,
+        "id": 766086306,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/stats.txt",
-        "size": 5714,
+        "size": 5715,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:41Z",
-        "updated_at": "2026-11-15T11:12:41Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750738248"
+        "created_at": "2026-11-19T03:39:35Z",
+        "updated_at": "2026-11-19T03:39:35Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086306"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 7,
+    "downloads": 8,
     "download_breakdown": {
       "tag": "launcher-v0.5",
       "mirrors": "",
@@ -989,7 +989,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-windows.zip",
-          "downloads": 5
+          "downloads": 6
         },
         {
           "name": "rom.zip",
@@ -1053,7 +1053,7 @@
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/rom-linux-arm64.zip",
         "size": 641221282,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-12T21:40:45Z",
         "updated_at": "2026-11-12T21:41:02Z",
@@ -1064,7 +1064,7 @@
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/rom-linux-legacy.zip",
         "size": 529171178,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-12T21:40:45Z",
         "updated_at": "2026-11-12T21:41:04Z",
@@ -1086,7 +1086,7 @@
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/rom-macos.zip",
         "size": 575629690,
-        "download_count": 1,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-12T21:41:03Z",
         "updated_at": "2026-11-12T21:41:22Z",
@@ -1203,19 +1203,19 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733180460"
       },
       {
-        "id": 750738162,
+        "id": 766086236,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/stats.txt",
         "size": 5714,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:39Z",
-        "updated_at": "2026-11-15T11:12:39Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750738162"
+        "created_at": "2026-11-19T03:39:34Z",
+        "updated_at": "2026-11-19T03:39:34Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086236"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 7,
+    "downloads": 14,
     "download_breakdown": {
       "tag": "launcher-v0.3",
       "mirrors": "",
@@ -1223,12 +1223,12 @@
         {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/rom-linux-arm64.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/rom-linux-legacy.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "rom-linux.zip",
@@ -1238,7 +1238,7 @@
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.3/rom-macos.zip",
-          "downloads": 1
+          "downloads": 4
         },
         {
           "name": "rom-windows-legacy.zip",
@@ -1367,7 +1367,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom-windows.zip",
         "size": 768706473,
-        "download_count": 4,
+        "download_count": 5,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:25:11Z",
         "updated_at": "2026-11-12T23:25:29Z",
@@ -1521,7 +1521,7 @@
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_y2-windows.zip",
         "size": 683309545,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:25:53Z",
         "updated_at": "2026-11-12T23:26:15Z",
@@ -1539,19 +1539,19 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733346251"
       },
       {
-        "id": 750738767,
+        "id": 766086745,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/stats.txt",
         "size": 7561,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:55Z",
-        "updated_at": "2026-11-15T11:12:55Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750738767"
+        "created_at": "2026-11-19T03:39:45Z",
+        "updated_at": "2026-11-19T03:39:45Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086745"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 9,
+    "downloads": 11,
     "download_breakdown": {
       "tag": "launcher-v0.11.6hotfix4",
       "mirrors": "",
@@ -1584,7 +1584,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom-windows.zip",
-          "downloads": 4
+          "downloads": 5
         },
         {
           "name": "rom.zip",
@@ -1654,7 +1654,7 @@
         {
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_y2-windows.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom_y2.zip",
@@ -1738,7 +1738,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom-windows.zip",
         "size": 768692207,
-        "download_count": 6,
+        "download_count": 9,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:07:27Z",
         "updated_at": "2026-11-12T23:07:49Z",
@@ -1892,7 +1892,7 @@
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_y2-windows.zip",
         "size": 683311696,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:08:12Z",
         "updated_at": "2026-11-12T23:08:34Z",
@@ -1910,19 +1910,19 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733319108"
       },
       {
-        "id": 750738683,
+        "id": 766086662,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/stats.txt",
         "size": 7561,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:53Z",
-        "updated_at": "2026-11-15T11:12:53Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750738683"
+        "created_at": "2026-11-19T03:39:43Z",
+        "updated_at": "2026-11-19T03:39:43Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086662"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 17,
+    "downloads": 21,
     "download_breakdown": {
       "tag": "launcher-v0.11.6",
       "mirrors": "",
@@ -1955,7 +1955,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom-windows.zip",
-          "downloads": 6
+          "downloads": 9
         },
         {
           "name": "rom.zip",
@@ -2025,7 +2025,7 @@
         {
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom_y2-windows.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "rom_y2.zip",
@@ -2087,7 +2087,7 @@
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-macos.zip",
         "size": 575329449,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-12T22:49:51Z",
         "updated_at": "2026-11-12T22:50:04Z",
@@ -2252,7 +2252,7 @@
         "name": "rom_y2-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_y2-windows-legacy.zip",
         "size": 445059780,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-12T22:50:27Z",
         "updated_at": "2026-11-12T22:50:42Z",
@@ -2281,19 +2281,19 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733292335"
       },
       {
-        "id": 750738560,
+        "id": 766086593,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/stats.txt",
         "size": 7552,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:50Z",
-        "updated_at": "2026-11-15T11:12:50Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750738560"
+        "created_at": "2026-11-19T03:39:41Z",
+        "updated_at": "2026-11-19T03:39:41Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086593"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 12,
+    "downloads": 14,
     "download_breakdown": {
       "tag": "launcher-v0.11.5",
       "mirrors": "",
@@ -2316,7 +2316,7 @@
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-macos.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom-windows-legacy.zip",
@@ -2391,7 +2391,7 @@
         {
           "name": "rom_y2-windows-legacy.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom_y2-windows-legacy.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom_y2-windows.zip",
@@ -2425,7 +2425,7 @@
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom-linux-arm64.zip",
         "size": 640937303,
-        "download_count": 0,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-12T21:27:33Z",
         "updated_at": "2026-11-12T21:27:51Z",
@@ -2652,19 +2652,19 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733158744"
       },
       {
-        "id": 750738059,
+        "id": 766086155,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/stats.txt",
         "size": 7549,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:37Z",
-        "updated_at": "2026-11-15T11:12:37Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750738059"
+        "created_at": "2026-11-19T03:39:32Z",
+        "updated_at": "2026-11-19T03:39:33Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086155"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 16,
+    "downloads": 20,
     "download_breakdown": {
       "tag": "launcher-v0.11.4",
       "mirrors": "",
@@ -2672,7 +2672,7 @@
         {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom-linux-arm64.zip",
-          "downloads": 0
+          "downloads": 4
         },
         {
           "name": "rom-linux-legacy.zip",
@@ -2946,15 +2946,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733120740"
       },
       {
-        "id": 750737886,
+        "id": 766086106,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.1/stats.txt",
         "size": 5717,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:35Z",
-        "updated_at": "2026-11-15T11:12:35Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750737886"
+        "created_at": "2026-11-19T03:39:31Z",
+        "updated_at": "2026-11-19T03:39:31Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086106"
       }
     ],
     "mirror_downloads": 0,
@@ -3055,7 +3055,7 @@
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11/rom-linux-arm64.zip",
         "size": 641735120,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-12T20:56:50Z",
         "updated_at": "2026-11-12T20:57:11Z",
@@ -3099,7 +3099,7 @@
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11/rom-windows-legacy.zip",
         "size": 531270733,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-12T20:56:50Z",
         "updated_at": "2026-11-12T20:57:05Z",
@@ -3205,19 +3205,19 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733095338"
       },
       {
-        "id": 750737808,
+        "id": 766086034,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11/stats.txt",
         "size": 5715,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:32Z",
-        "updated_at": "2026-11-15T11:12:33Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750737808"
+        "created_at": "2026-11-19T03:39:29Z",
+        "updated_at": "2026-11-19T03:39:30Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766086034"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 8,
+    "downloads": 13,
     "download_breakdown": {
       "tag": "launcher-v0.11",
       "mirrors": "",
@@ -3225,7 +3225,7 @@
         {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11/rom-linux-arm64.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "rom-linux-legacy.zip",
@@ -3245,7 +3245,7 @@
         {
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11/rom-windows-legacy.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom-windows.zip",
@@ -3314,7 +3314,7 @@
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10.1/rom-linux-arm64.zip",
         "size": 642192478,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-12T20:44:08Z",
         "updated_at": "2026-11-12T20:44:35Z",
@@ -3358,7 +3358,7 @@
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10.1/rom-windows-legacy.zip",
         "size": 531728097,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-12T20:44:08Z",
         "updated_at": "2026-11-12T20:44:24Z",
@@ -3464,19 +3464,19 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733071471"
       },
       {
-        "id": 750737715,
+        "id": 766085962,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10.1/stats.txt",
         "size": 5717,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:30Z",
-        "updated_at": "2026-11-15T11:12:30Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750737715"
+        "created_at": "2026-11-19T03:39:28Z",
+        "updated_at": "2026-11-19T03:39:28Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766085962"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 8,
+    "downloads": 13,
     "download_breakdown": {
       "tag": "launcher-v0.10.1",
       "mirrors": "",
@@ -3484,7 +3484,7 @@
         {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10.1/rom-linux-arm64.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "rom-linux-legacy.zip",
@@ -3504,7 +3504,7 @@
         {
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10.1/rom-windows-legacy.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom-windows.zip",
@@ -3723,15 +3723,15 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733048077"
       },
       {
-        "id": 750737631,
+        "id": 766085886,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10/stats.txt",
         "size": 5715,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:28Z",
-        "updated_at": "2026-11-15T11:12:28Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750737631"
+        "created_at": "2026-11-19T03:39:26Z",
+        "updated_at": "2026-11-19T03:39:26Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766085886"
       }
     ],
     "mirror_downloads": 0,
@@ -3876,7 +3876,7 @@
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom-windows-legacy.zip",
         "size": 530786522,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-12T20:18:04Z",
         "updated_at": "2026-11-12T20:18:22Z",
@@ -3982,19 +3982,19 @@
         "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/733024087"
       },
       {
-        "id": 750737568,
+        "id": 766085805,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/stats.txt",
         "size": 5714,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-15T11:12:26Z",
-        "updated_at": "2026-11-15T11:12:26Z",
-        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/750737568"
+        "created_at": "2026-11-19T03:39:25Z",
+        "updated_at": "2026-11-19T03:39:25Z",
+        "url": "https://api.github.com/repos/y1-community/y1_launcher-mirror/releases/assets/766085805"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 8,
+    "downloads": 10,
     "download_breakdown": {
       "tag": "launcher-v0.1",
       "mirrors": "",
@@ -4022,7 +4022,7 @@
         {
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom-windows-legacy.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "rom-windows.zip",

@@ -17,7 +17,7 @@
         "name": "rom_g1.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip",
         "size": 1645800503,
-        "download_count": 76,
+        "download_count": 100,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:05:06Z",
         "updated_at": "2026-11-05T05:07:52Z",
@@ -28,15 +28,15 @@
         "name": "SHA256SUMS.MX3-G1-EN-WM-V5.01-20260805",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/SHA256SUMS.MX3-G1-EN-WM-V5.01-20260805",
         "size": 78,
-        "download_count": 12,
+        "download_count": 13,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:07:53Z",
         "updated_at": "2026-11-05T05:07:54Z",
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712152060"
       }
     ],
-    "mirror_downloads": 64,
-    "downloads": 140,
+    "mirror_downloads": 66,
+    "downloads": 166,
     "download_breakdown": {
       "tag": "MX3-G1-EN-WM-V5.01-20260805",
       "mirrors": "y1-community/g1-stock-rom-mirror",
@@ -44,7 +44,7 @@
         {
           "name": "rom_g1.zip",
           "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip",
-          "downloads": 91,
+          "downloads": 115,
           "mirror_downloads": 15
         }
       ],
@@ -54,7 +54,7 @@
           "name": "rom_g1-windows.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-windows.zip",
           "size": 1958882629,
-          "downloads": 26
+          "downloads": 28
         },
         {
           "platform": "windows-legacy",
@@ -112,7 +112,7 @@
         "name": "rom_g1.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1.zip",
         "size": 1645759451,
-        "download_count": 14,
+        "download_count": 17,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T04:57:46Z",
         "updated_at": "2026-11-05T05:00:18Z",
@@ -123,15 +123,15 @@
         "name": "SHA256SUMS.MX3-G1-EN-WM-V5.00-20260722",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.00-20260722/SHA256SUMS.MX3-G1-EN-WM-V5.00-20260722",
         "size": 78,
-        "download_count": 11,
+        "download_count": 12,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:00:19Z",
         "updated_at": "2026-11-05T05:00:20Z",
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712134111"
       }
     ],
-    "mirror_downloads": 23,
-    "downloads": 37,
+    "mirror_downloads": 26,
+    "downloads": 43,
     "download_breakdown": {
       "tag": "MX3-G1-EN-WM-V5.00-20260722",
       "mirrors": "y1-community/g1-stock-rom-mirror",
@@ -139,7 +139,7 @@
         {
           "name": "rom_g1.zip",
           "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1.zip",
-          "downloads": 24,
+          "downloads": 27,
           "mirror_downloads": 10
         }
       ],
@@ -149,7 +149,7 @@
           "name": "rom_g1-windows.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-windows.zip",
           "size": 1958841579,
-          "downloads": 8
+          "downloads": 11
         },
         {
           "platform": "windows-legacy",
@@ -207,7 +207,7 @@
         "name": "rom_g1.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1.zip",
         "size": 1573225707,
-        "download_count": 22,
+        "download_count": 29,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T04:50:29Z",
         "updated_at": "2026-11-05T04:53:06Z",
@@ -218,15 +218,15 @@
         "name": "SHA256SUMS.MX3-9_G1_MULTI-V3.03-20260826",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.03-20260826/SHA256SUMS.MX3-9_G1_MULTI-V3.03-20260826",
         "size": 78,
-        "download_count": 12,
+        "download_count": 13,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T04:53:07Z",
         "updated_at": "2026-11-05T04:53:07Z",
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712114674"
       }
     ],
-    "mirror_downloads": 16,
-    "downloads": 38,
+    "mirror_downloads": 21,
+    "downloads": 50,
     "download_breakdown": {
       "tag": "MX3-9_G1_MULTI-V3.03-20260826",
       "mirrors": "y1-community/g1-stock-rom-mirror",
@@ -234,7 +234,7 @@
         {
           "name": "rom_g1.zip",
           "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1.zip",
-          "downloads": 22
+          "downloads": 29
         }
       ],
       "portable": [
@@ -243,7 +243,7 @@
           "name": "rom_g1-windows.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-windows.zip",
           "size": 1886307839,
-          "downloads": 7
+          "downloads": 11
         },
         {
           "platform": "windows-legacy",
@@ -278,7 +278,7 @@
           "name": "rom_g1-macos.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-macos.zip",
           "size": 1692941776,
-          "downloads": 4
+          "downloads": 5
         }
       ]
     }
@@ -312,15 +312,15 @@
         "name": "SHA256SUMS.MX3-9_G1_MULTI-V3.01-20260720",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.01-20260720/SHA256SUMS.MX3-9_G1_MULTI-V3.01-20260720",
         "size": 78,
-        "download_count": 14,
+        "download_count": 15,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T04:46:14Z",
         "updated_at": "2026-11-05T04:46:14Z",
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712098603"
       }
     ],
-    "mirror_downloads": 24,
-    "downloads": 39,
+    "mirror_downloads": 26,
+    "downloads": 41,
     "download_breakdown": {
       "tag": "MX3-9_G1_MULTI-V3.01-20260720",
       "mirrors": "y1-community/g1-stock-rom-mirror",
@@ -352,7 +352,7 @@
           "name": "rom_g1-linux.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-linux.zip",
           "size": 1933636094,
-          "downloads": 2
+          "downloads": 4
         },
         {
           "platform": "linux-arm64",
@@ -396,7 +396,7 @@
         "name": "rom_g1.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.04-20260805/rom_g1.zip",
         "size": 1645347061,
-        "download_count": 17,
+        "download_count": 22,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T04:36:58Z",
         "updated_at": "2026-11-05T04:39:29Z",
@@ -407,15 +407,15 @@
         "name": "SHA256SUMS.MX3-9_EN-V1.04-20260805",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.04-20260805/SHA256SUMS.MX3-9_EN-V1.04-20260805",
         "size": 78,
-        "download_count": 11,
+        "download_count": 12,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T04:39:30Z",
         "updated_at": "2026-11-05T04:39:30Z",
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712082715"
       }
     ],
-    "mirror_downloads": 25,
-    "downloads": 42,
+    "mirror_downloads": 26,
+    "downloads": 48,
     "download_breakdown": {
       "tag": "MX3-9_EN-V1.04-20260805",
       "mirrors": "y1-community/g1-stock-rom-mirror",
@@ -423,7 +423,7 @@
         {
           "name": "rom_g1.zip",
           "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.04-20260805/rom_g1.zip",
-          "downloads": 27,
+          "downloads": 32,
           "mirror_downloads": 10
         }
       ],
@@ -433,7 +433,7 @@
           "name": "rom_g1-windows.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-windows.zip",
           "size": 1958429181,
-          "downloads": 8
+          "downloads": 9
         },
         {
           "platform": "windows-legacy",
@@ -491,7 +491,7 @@
         "name": "rom_g1.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.03-20260707/rom_g1.zip",
         "size": 1645380249,
-        "download_count": 30,
+        "download_count": 32,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T04:29:03Z",
         "updated_at": "2026-11-05T04:31:54Z",
@@ -502,7 +502,7 @@
         "name": "SHA256SUMS.MX3-9_EN-V1.03-20260707",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.03-20260707/SHA256SUMS.MX3-9_EN-V1.03-20260707",
         "size": 78,
-        "download_count": 12,
+        "download_count": 13,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T04:31:55Z",
         "updated_at": "2026-11-05T04:31:55Z",
@@ -510,7 +510,7 @@
       }
     ],
     "mirror_downloads": 24,
-    "downloads": 54,
+    "downloads": 56,
     "download_breakdown": {
       "tag": "MX3-9_EN-V1.03-20260707",
       "mirrors": "y1-community/g1-stock-rom-mirror",
@@ -518,7 +518,7 @@
         {
           "name": "rom_g1.zip",
           "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.03-20260707/rom_g1.zip",
-          "downloads": 40,
+          "downloads": 42,
           "mirror_downloads": 10
         }
       ],
