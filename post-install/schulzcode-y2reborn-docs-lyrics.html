@@ -26,17 +26,17 @@
   <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Synchronized lyrics - Innioasis Updater</title>
-  <meta name="description" content="Synchronized lyrics Open the Now Playing options menu and select Lyrics . This source candidate adds a native 480×360 viewer; it has not been tested on a physical Y2 and">
+  <meta name="description" content="Synchronized lyrics Open the Now Playing options menu hold Select and select Lyrics . Reborn shows the lyrics of the song playing: from a .lrc file beside it, or, without">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2reborn-docs-lyrics.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Innioasis Updater">
   <meta property="og:title" content="Synchronized lyrics - Innioasis Updater">
-  <meta property="og:description" content="Synchronized lyrics Open the Now Playing options menu and select Lyrics . This source candidate adds a native 480×360 viewer; it has not been tested on a physical Y2 and">
+  <meta property="og:description" content="Synchronized lyrics Open the Now Playing options menu hold Select and select Lyrics . Reborn shows the lyrics of the song playing: from a .lrc file beside it, or, without">
   <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2reborn-docs-lyrics.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Synchronized lyrics - Innioasis Updater">
-  <meta name="twitter:description" content="Synchronized lyrics Open the Now Playing options menu and select Lyrics . This source candidate adds a native 480×360 viewer; it has not been tested on a physical Y2 and">
+  <meta name="twitter:description" content="Synchronized lyrics Open the Now Playing options menu hold Select and select Lyrics . Reborn shows the lyrics of the song playing: from a .lrc file beside it, or, without">
   <link rel="icon" href="../y1_illustration.png">
   <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
   <link rel="stylesheet" href="../lumen.css?v=20261105hero">
@@ -51,11 +51,11 @@
 <a class="lumen-skip-link" href="#main">Skip to content</a>
 <div id="nav-root"></div>
 <main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../post-install/index.html">← All documentation</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Y2Reborn</p><h1>Synchronized lyrics</h1><p class="lumen-lead">Documentation published by SchulzCode/Y2Reborn.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../post-install/index.html">All documentation →</a><a class="lumen-button" href="../post-install/index.html">All documentation</a></div></header><article class="lumen-doc-body"><h1 id="synchronized-lyrics">Synchronized lyrics</h1>
-<p>Open the Now Playing options menu and select <strong>Lyrics</strong>. This source candidate adds a native 480×360 viewer; it has not been tested on a physical Y2 and is proposed as a draft contribution.</p>
+<p>Open the Now Playing options menu (hold Select) and select <strong>Lyrics</strong>. Reborn shows the lyrics of the song playing: from a <code>.lrc</code> file beside it, or, without one, from the song&#x27;s own tags.</p>
 <p>Place a UTF-8 <code>.lrc</code> file beside the local song, with the same base name:</p>
 <pre><code class="language-text">Music/Homeward.mp3
 Music/Homeward.lrc</code></pre>
-<p>The reader checks <code>.lrc</code>, then <code>.LRC</code>, in that directory on Internal Storage or an available SD-card source. It does not search the internet or read embedded lyric tags. Radio retains its existing menu. This example uses original demonstration lyrics:</p>
+<p>The reader checks <code>.lrc</code>, then <code>.LRC</code>, in that directory on Internal Storage or an available SD-card source. Without a <code>.lrc</code> file it reads the lyrics stored in the song&#x27;s tags (MP3 USLT, FLAC and Ogg <code>LYRICS</code> or <code>UNSYNCEDLYRICS</code>, M4A lyrics). Tag lyrics with LRC timestamps follow the music like a <code>.lrc</code> file; plain tag lyrics show as text you scroll with the wheel. It never searches the internet. Radio retains its existing menu. This example uses original demonstration lyrics:</p>
 <pre><code class="language-lrc">[ar:Reborn original examples]
 [ti:Homeward]
 [offset:+250]
@@ -82,7 +82,7 @@ cargo clippy --workspace --all-targets --locked --offline -- -D warnings
 ../Y2Linux/tools/development/platform-gate.sh
 cargo run --bin reborn-lyrics-preview --locked --offline -- /tmp/lyrics-preview skins/classic
 python3 tools/preview/render_previews.py /tmp/lyrics-preview</code></pre>
-<p>The <a href="https://github.com/SchulzCode/Y2Reborn/blob/main/assets/fixtures/lyrics-original.lrc" target="_blank" rel="noopener noreferrer">original fixture</a> supplies the production UI previews. <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Reborn%2Fblob%2Fmain%2Fdocs%2Fvalidation%2Fsynced-lyrics-host.md">Host validation</a> records actual results. Before merge, verify real playback, seeks, repeat/shuffle, Bluetooth position reporting, SD removal and repeated sleep/wake on a physical Y2.</p></article><p class="lumen-doc-footer-note">These are Y2Reborn's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?software=schulzcode-y2reborn">SchulzCode's <em>Y2Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=SchulzCode%2FY2Reborn&amp;software=schulzcode-y2reborn" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<p>The <a href="https://github.com/SchulzCode/Y2Reborn/blob/main/assets/fixtures/lyrics-original.lrc" target="_blank" rel="noopener noreferrer">original fixture</a> supplies the production UI previews. The contribution&#x27;s host validation is in <a href="https://github.com/SchulzCode/Y2Reborn/pull/126" target="_blank" rel="noopener noreferrer">PR #126</a>.</p></article><p class="lumen-doc-footer-note">These are Y2Reborn's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?software=schulzcode-y2reborn">SchulzCode's <em>Y2Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=SchulzCode%2FY2Reborn&amp;software=schulzcode-y2reborn" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
 <script src="../portable-zip-links.js?v=20261110direct2" defer></script>

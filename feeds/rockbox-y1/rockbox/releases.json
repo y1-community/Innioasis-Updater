@@ -28,7 +28,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
         "size": 581693789,
-        "download_count": 669,
+        "download_count": 680,
         "content_type": "application/zip",
         "created_at": "2026-11-12T13:10:11Z",
         "updated_at": "2026-11-12T13:10:42Z",
@@ -39,7 +39,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom_type_b.zip",
         "size": 495537505,
-        "download_count": 45,
+        "download_count": 46,
         "content_type": "application/zip",
         "created_at": "2026-11-12T13:10:43Z",
         "updated_at": "2026-11-12T13:10:59Z",
@@ -57,8 +57,8 @@
         "url": "https://api.github.com/repos/rockbox-y1/rockbox/releases/assets/739536543"
       }
     ],
-    "mirror_downloads": 93,
-    "downloads": 823,
+    "mirror_downloads": 94,
+    "downloads": 836,
     "download_breakdown": {
       "tag": "stable-v0.6.1",
       "mirrors": "y1-community/rockbox-mirror",
@@ -66,13 +66,13 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
-          "downloads": 670,
+          "downloads": 681,
           "mirror_downloads": 1
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom_type_b.zip",
-          "downloads": 46,
+          "downloads": 47,
           "mirror_downloads": 1
         },
         {
@@ -102,7 +102,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-linux.zip",
           "size": 882570361,
-          "downloads": 13
+          "downloads": 14
         },
         {
           "platform": "linux-arm64",
@@ -1425,8 +1425,8 @@
         "url": "https://api.github.com/repos/rockbox-y1/rockbox/releases/assets/553609880"
       }
     ],
-    "mirror_downloads": 90,
-    "downloads": 293,
+    "mirror_downloads": 92,
+    "downloads": 295,
     "download_breakdown": {
       "tag": "nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b",
       "mirrors": "y1-community/rockbox-mirror",
@@ -1470,7 +1470,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-linux.zip",
           "size": 894663410,
-          "downloads": 7
+          "downloads": 8
         },
         {
           "platform": "linux-arm64",
@@ -1491,7 +1491,7 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-macos.zip",
           "size": 653976049,
-          "downloads": 7
+          "downloads": 8
         },
         {
           "platform": "windows",
@@ -2467,7 +2467,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/rom.zip",
         "size": 534484127,
-        "download_count": 12738,
+        "download_count": 12739,
         "content_type": "application/zip",
         "created_at": "2026-05-16T00:19:17Z",
         "updated_at": "2026-05-16T00:19:32Z",
@@ -2497,7 +2497,7 @@
       }
     ],
     "mirror_downloads": 109,
-    "downloads": 14356,
+    "downloads": 14357,
     "download_breakdown": {
       "tag": "stable-v0.5",
       "mirrors": "y1-community/rockbox-mirror",
@@ -2505,7 +2505,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/rom.zip",
-          "downloads": 12748,
+          "downloads": 12749,
           "mirror_downloads": 10
         },
         {
@@ -3047,8 +3047,8 @@
         "url": "https://api.github.com/repos/rockbox-y1/rockbox/releases/assets/382038488"
       }
     ],
-    "mirror_downloads": 164,
-    "downloads": 10820,
+    "mirror_downloads": 165,
+    "downloads": 10821,
     "download_breakdown": {
       "tag": "stable-v0.4",
       "mirrors": "y1-community/rockbox-mirror",
@@ -3116,7 +3116,7 @@
           "name": "rom_240p-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-linux.zip",
           "size": 820231014,
-          "downloads": 7
+          "downloads": 8
         },
         {
           "platform": "linux-arm64",
@@ -4004,8 +4004,8 @@
         "url": "https://api.github.com/repos/rockbox-y1/rockbox/releases/assets/364274821"
       }
     ],
-    "mirror_downloads": 152,
-    "downloads": 471,
+    "mirror_downloads": 153,
+    "downloads": 472,
     "download_breakdown": {
       "tag": "nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f",
       "mirrors": "y1-community/rockbox-mirror",
@@ -4074,7 +4074,7 @@
           "name": "rom_240p-linux-arm64.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p-linux-arm64.zip",
           "size": 642719102,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "linux-legacy",
@@ -4589,8 +4589,8 @@
         "url": "https://api.github.com/repos/rockbox-y1/rockbox/releases/assets/413887377"
       }
     ],
-    "mirror_downloads": 26,
-    "downloads": 8537,
+    "mirror_downloads": 27,
+    "downloads": 8538,
     "download_breakdown": {
       "tag": "type-a-base",
       "mirrors": "y1-community/rockbox-mirror",
@@ -4622,7 +4622,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-linux.zip",
           "size": 816362670,
-          "downloads": 5
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",

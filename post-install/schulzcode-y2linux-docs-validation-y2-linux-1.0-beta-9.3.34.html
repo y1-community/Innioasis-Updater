@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.34: Bluetooth stalls in error reports, and where Bluetooth's limits are - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.34: Bluetooth stalls in error reports, and where Bluetooth's limits are Release 1.0.0-beta.9.3.34 , Y2Reborn 1.0.0-beta.9.3.34 , kernel 6.18.56-y2lin">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.34.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.34: Bluetooth stalls in error reports, and where Bluetooth's limits are - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.34: Bluetooth stalls in error reports, and where Bluetooth's limits are Release 1.0.0-beta.9.3.34 , Y2Reborn 1.0.0-beta.9.3.34 , kernel 6.18.56-y2lin">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.34.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.34: Bluetooth stalls in error reports, and where Bluetooth's limits are - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.34: Bluetooth stalls in error reports, and where Bluetooth's limits are Release 1.0.0-beta.9.3.34 , Y2Reborn 1.0.0-beta.9.3.34 , kernel 6.18.56-y2lin">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.34.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.34.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.34: Bluetooth stalls in error reports, and where Bluetooth&#x27;s limits are</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9334-bluetooth-stalls-in-error-reports-and-where-bluetooths-limits-are">Y2Linux 1.0 Beta 9.3.34: Bluetooth stalls in error reports, and where Bluetooth&#x27;s limits are</h1>
+<p>Release <code>1.0.0-beta.9.3.34</code>, Y2Reborn <code>1.0.0-beta.9.3.34</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.34</code>, update sequence 17200, root <code>2026.08-platform-v1.290</code>. Published as GitHub release <code>baseline-267</code> (build 267). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.33.md">Beta 9.3.33</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p>A last look at every open Bluetooth issue and its error reports (Y2Linux #99, #129, #130, Y2Reborn #132) found the player&#x27;s side clean in all of them: no audio underruns, no codec errors, the rate and channel protections working. What remains is the radio link itself. This release adds the one thing that was missing to tell such cases apart: each stall of the link is now written down, so a report shows when a cutout happened and how long it lasted.</p>
+<h2 id="what-the-reports-showed">What the reports showed</h2>
+<ul><li><strong>Soundbar stutter (#99)</strong>: the rate stepped down six times in 20 seconds while Wi-Fi was off the whole time. The<p>link to that soundbar is weak; holding the player or moving it makes it worse. Wi-Fi was not the cause.</p></li><li><strong>Earbuds cutting out in a pocket (#130)</strong>: short cutouts that recover by themselves, no disconnects, no rate<p>changes. A player in a pocket, covered by a hand, is the hardest case for a 2.4 GHz radio.</p></li><li><strong>AirPods silent in crowded places or after walking away (#129, #132)</strong>: the link stalls without disconnecting;<p>afterwards some AirPods stay silent until a pause and play start a new stream. Reborn&#x27;s own writes keep flowing during such a stall, so the player cannot notice it from the music side; restarting the stream from inside the Bluetooth service would change the path for every pair of headphones and could not be tested out of range, so it is not done.</p></li></ul>
+<h2 id="what-y2linux-already-does-about-it">What Y2Linux already does about it</h2>
+<p>Lower data rate when the link struggles (SBC Auto Rate, LDAC), a lower codec ceiling while Wi-Fi is on, Bluetooth kept off the Wi-Fi channel, Wi-Fi power save while music streams, a bounded catch-up after a stall, silence instead of gaps, and real-time priority for the audio path. Beyond that the limit is the hardware: one small radio sharing its antenna with Wi-Fi. <strong>For listening without dropouts, wired headphones are the best choice on the Y2.</strong></p>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>Tests</strong>: the platform&#x27;s full check, Reborn&#x27;s tests and the tests of the release images passed. The changed<p>BlueALSA patch applies to BlueALSA 5.0.0 with the other Y2 patches, and its catch-up tests pass; the report summary counts the new lines (new test). Only a log line is added: the pacing is unchanged.</p></li><li><strong>Not tested on a player</strong>: a real Bluetooth dropout with this release, and this release itself.</li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<ul><li>AirPods can stay silent after a Bluetooth dropout until you pause and play<p>(<a href="https://github.com/SchulzCode/Y2Reborn/issues/132" target="_blank" rel="noopener noreferrer">Y2Reborn #132</a>).</p></li><li>Everything else listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.32.md%23known-issues&amp;anchor=known-issues">Beta 9.3.32</a> still applies.</li></ul>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>BlueALSA patch <code>0009</code>: <code>asrsync_sync()</code> warns <code>Y2 stall: stream N ms behind real time</code> once per stall it bounds<p>(when the start time moves); <code>bluealsad</code> runs with <code>--syslog</code> (<code>y2-radiod</code> <code>bt/supervise.rs</code>), so the line lands in <code>/data/logs/system.log</code>. <code>tools/reports/summary.py</code> prints the count and the longest.</p></li><li>Images built from Linux <code>d3ea1f73</code>, Reborn <code>a8c8ec8</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+
