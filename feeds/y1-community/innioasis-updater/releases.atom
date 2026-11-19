@@ -15,7 +15,7 @@
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:downloads>22</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="119710372" type="application/x-diskcopy" innioasis:download_count="561" innioasis:asset_id="733490344"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/installer.exe" title="installer.exe" length="157480421" type="application/x-msdownload" innioasis:download_count="860" innioasis:asset_id="741092037"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/installer.exe" title="installer.exe" length="157480421" type="application/x-msdownload" innioasis:download_count="887" innioasis:asset_id="741092037"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/run_linux.sh" title="run_linux.sh" length="53935" type="application/x-sh" innioasis:download_count="5" innioasis:asset_id="739604801"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/run_linux.sh.sha256" title="run_linux.sh.sha256" length="79" type="application/octet-stream" innioasis:download_count="7" innioasis:asset_id="732580260"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-arm64.appimage" title="UpdaterCE-arm64.appimage" length="173320712" type="application/octet-stream" innioasis:download_count="5" innioasis:asset_id="739686970"/>
@@ -31,7 +31,7 @@
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Lite.tar.gz" title="UpdaterCE-Lite.tar.gz" length="228632671" type="application/x-gtar" innioasis:download_count="2" innioasis:asset_id="739604889"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Lite.tar.gz.sha256" title="UpdaterCE-Lite.tar.gz.sha256" length="88" type="application/octet-stream" innioasis:download_count="2" innioasis:asset_id="739689846"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Windows-Portable.zip" title="UpdaterCE-Windows-Portable.zip" length="279830502" type="application/x-zip-compressed" innioasis:download_count="14" innioasis:asset_id="741098862"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage" title="UpdaterCE.appimage" length="306530808" type="application/octet-stream" innioasis:download_count="159" innioasis:asset_id="739686865"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage" title="UpdaterCE.appimage" length="306530808" type="application/octet-stream" innioasis:download_count="166" innioasis:asset_id="739686865"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage.sha256" title="UpdaterCE.appimage.sha256" length="85" type="application/octet-stream" innioasis:download_count="10" innioasis:asset_id="739686864"/>
     <content type="text">In this release changes include:
 
@@ -149,7 +149,7 @@ You can contribute to this project for free by [sharing 100MB on Honeygain](http
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:downloads>0</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.3/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="1389069" type="application/octet-stream" innioasis:download_count="636" innioasis:asset_id="498780553"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.3/installer.exe" title="installer.exe" length="264870688" type="application/x-msdownload" innioasis:download_count="2241" innioasis:asset_id="498780685"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.3/installer.exe" title="installer.exe" length="264870688" type="application/x-msdownload" innioasis:download_count="2242" innioasis:asset_id="498780685"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.3/run_linux.sh" title="run_linux.sh" length="87903" type="text/x-shellscript" innioasis:download_count="64" innioasis:asset_id="516914711"/>
     <content type="text"># Looking to get started with Updater, and custom firmware on your Innioasis Y1 or Y2 Please visit www.innioasis.app to get started. 
 Innioasis Updater can be used to automatically download firmware releases from the [Community Firmware Archive](https://innioasis.app/firmware.html), a community driven archival of the stock firmware releases posted on Google Drive by Innioasis, but also of custom firmware projects and releases.
@@ -3808,7 +3808,7 @@ Simply update to the latest version of Updater and when you connect a powered on
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:downloads>0</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/1.7.8/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="1416801" type="application/octet-stream" innioasis:download_count="13" innioasis:asset_id="312286271"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/1.7.8/installer.exe" title="installer.exe" length="264870688" type="application/x-msdownload" innioasis:download_count="56" innioasis:asset_id="312286277"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/1.7.8/installer.exe" title="installer.exe" length="264870688" type="application/x-msdownload" innioasis:download_count="57" innioasis:asset_id="312286277"/>
     <content type="text">&lt;img width=&quot;4294&quot; height=&quot;2069&quot; alt=&quot;presteps&quot; src=&quot;https://github.com/user-attachments/assets/8bed5607-a02e-4afc-8db8-8cb7b46e84f3&quot; /&gt;
 
 What&#x27;s new in 1.7.8?

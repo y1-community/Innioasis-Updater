@@ -130,8 +130,8 @@
         "url": "https://api.github.com/repos/ryan-specter/koensayr-auto/releases/assets/427486710"
       }
     ],
-    "mirror_downloads": 26,
-    "downloads": 227,
+    "mirror_downloads": 27,
+    "downloads": 228,
     "download_breakdown": {
       "tag": "2.4.0-koensayr-3.0.2",
       "mirrors": "y1-community/koensayr-auto-mirror",
@@ -177,7 +177,7 @@
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-linux-legacy.zip",
           "size": 330977937,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "macos",

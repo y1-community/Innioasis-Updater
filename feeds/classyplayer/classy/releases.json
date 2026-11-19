@@ -1,5 +1,132 @@
 [
   {
+    "id": 451185890,
+    "tag_name": "20261119-beta",
+    "name": "Classy 20261119 (Y1 beta)",
+    "body": "> [!WARNING]\r\n> **This is a beta.** It may have bugs that are not in the stable release. Players get it in **Settings \u2192 General \u2192 System Update \u2192 Update Channel \u2192 Beta**.\r\n\r\n### Classy Release\r\n\r\nAutomated build with full support for **Innioasis Y1** (Type A & Type B) and **Innioasis Y2**.\r\n\r\n#### \ud83d\udce6 Release Assets\r\n\r\n| File | Target Device | Notes |\r\n| :--- | :--- | :--- |\r\n| **`Classy-20261119-beta.apk`** | **Innioasis Y2** (Android 4.4) | Standalone launcher APK (sideload or install) |\r\n| **`Classy-20261119-beta-y1.apk`** | **Innioasis Y1** (Android 4.2) | Standalone launcher APK (sideload or install) |\r\n| **`update.json`** / **`update-y1.json`** | Y2 / Y1 | OTA update metadata for in-app updater |\r\n| **`rom_y2.zip`** | **Innioasis Y2** (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\r\n| **`rom_y1_type_a.zip`** | **Innioasis Y1** (Type A) | Flashable ROM for Y1 players with original firmware **2.0.0 or higher** |\r\n| **`rom_y1_type_b.zip`** | **Innioasis Y1** (Type B) | Flashable ROM for Y1 players with original firmware **below 2.0.0** |\r\n| **`SHA256SUMS.txt`** | All Files | SHA-256 integrity checksums |\r\n\r\n#### \u26a1 Flashing Instructions (SP Flash Tool)\r\n1. Extract the corresponding zip file for your device.\r\n2. Launch `flash_tool.exe` (or Linux `flash_tool`).\r\n3. Load the scatter file (`MT6582_Android_scatter.txt` for Y2, `MT6572_Android_scatter.txt` for Y1).\r\n4. Select **Firmware Upgrade** or **Download Only**.\r\n5. Power off the device completely, click **Download**, and connect the USB cable.\r\n\r\n---\r\n\r\n\r\n## What's Changed\r\n* chore(github): add bug report and feature request issue forms by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/124\r\n* chore(github): ask issue authors to write in their own words by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/125\r\n* fix(now-playing): draw the shuffle and repeat icons as on the iPod classic by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/126\r\n* Y1 support by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/118\r\n\r\n\r\n**Full Changelog**: https://github.com/ClassyPlayer/Classy/compare/20261118-beta...20261119-beta",
+    "draft": false,
+    "prerelease": true,
+    "created_at": "2026-11-19T10:18:08Z",
+    "published_at": "2026-11-19T10:27:47Z",
+    "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261119-beta",
+    "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 767236339,
+        "name": "Classy-20261119-beta-y1.apk",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/Classy-20261119-beta-y1.apk",
+        "size": 25384592,
+        "download_count": 1,
+        "content_type": "application/vnd.android.package-archive",
+        "created_at": "2026-11-19T10:27:48Z",
+        "updated_at": "2026-11-19T10:27:50Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/767236339"
+      },
+      {
+        "id": 767236354,
+        "name": "Classy-20261119-beta.apk",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/Classy-20261119-beta.apk",
+        "size": 25377876,
+        "download_count": 1,
+        "content_type": "application/vnd.android.package-archive",
+        "created_at": "2026-11-19T10:27:48Z",
+        "updated_at": "2026-11-19T10:27:50Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/767236354"
+      },
+      {
+        "id": 767236343,
+        "name": "rom_y1_type_a.zip",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/rom_y1_type_a.zip",
+        "size": 444556891,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-19T10:27:48Z",
+        "updated_at": "2026-11-19T10:28:05Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/767236343"
+      },
+      {
+        "id": 767236355,
+        "name": "rom_y1_type_b.zip",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/rom_y1_type_b.zip",
+        "size": 438314619,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-19T10:27:48Z",
+        "updated_at": "2026-11-19T10:28:05Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/767236355"
+      },
+      {
+        "id": 767236350,
+        "name": "rom_y2.zip",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/rom_y2.zip",
+        "size": 482936306,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-19T10:27:48Z",
+        "updated_at": "2026-11-19T10:28:06Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/767236350"
+      },
+      {
+        "id": 767236337,
+        "name": "SHA256SUMS.txt",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/SHA256SUMS.txt",
+        "size": 430,
+        "download_count": 1,
+        "content_type": "text/plain",
+        "created_at": "2026-11-19T10:27:48Z",
+        "updated_at": "2026-11-19T10:27:49Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/767236337"
+      },
+      {
+        "id": 767236341,
+        "name": "update-y1.json",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/update-y1.json",
+        "size": 357,
+        "download_count": 1,
+        "content_type": "application/json",
+        "created_at": "2026-11-19T10:27:48Z",
+        "updated_at": "2026-11-19T10:27:49Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/767236341"
+      },
+      {
+        "id": 767236336,
+        "name": "update.json",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/update.json",
+        "size": 348,
+        "download_count": 1,
+        "content_type": "application/json",
+        "created_at": "2026-11-19T10:27:48Z",
+        "updated_at": "2026-11-19T10:27:48Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/767236336"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "20261119-beta",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom_y1_type_a.zip",
+          "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/rom_y1_type_a.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y1_type_b.zip",
+          "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/rom_y1_type_b.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom_y2.zip",
+          "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/rom_y2.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
+  },
+  {
     "id": 450321151,
     "tag_name": "20261118-beta",
     "name": "Classy 20261118 (beta)",
@@ -17,7 +144,7 @@
         "name": "Classy-20261118-beta.apk",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261118-beta/Classy-20261118-beta.apk",
         "size": 25380174,
-        "download_count": 4,
+        "download_count": 5,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-11-18T17:24:32Z",
         "updated_at": "2026-11-18T17:24:33Z",
@@ -50,7 +177,7 @@
         "name": "update.json",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261118-beta/update.json",
         "size": 348,
-        "download_count": 4,
+        "download_count": 5,
         "content_type": "application/json",
         "created_at": "2026-11-18T17:24:32Z",
         "updated_at": "2026-11-18T17:24:32Z",
@@ -134,7 +261,7 @@
         "name": "Classy-20261117.apk",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261117/Classy-20261117.apk",
         "size": 25264576,
-        "download_count": 11,
+        "download_count": 14,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-11-17T19:16:55Z",
         "updated_at": "2026-11-17T19:16:56Z",
@@ -145,7 +272,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261117/rom_y2.zip",
         "size": 483284092,
-        "download_count": 24,
+        "download_count": 27,
         "content_type": "application/zip",
         "created_at": "2026-11-17T19:16:55Z",
         "updated_at": "2026-11-17T19:17:14Z",
@@ -167,15 +294,15 @@
         "name": "update.json",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261117/update.json",
         "size": 318,
-        "download_count": 13,
+        "download_count": 16,
         "content_type": "application/json",
         "created_at": "2026-11-17T19:16:55Z",
         "updated_at": "2026-11-17T19:16:55Z",
         "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/760307928"
       }
     ],
-    "mirror_downloads": 7,
-    "downloads": 31,
+    "mirror_downloads": 8,
+    "downloads": 35,
     "download_breakdown": {
       "tag": "20261117",
       "mirrors": "y1-community/classy-mirror",
@@ -183,7 +310,7 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261117/rom_y2.zip",
-          "downloads": 25,
+          "downloads": 28,
           "mirror_downloads": 1
         }
       ],
@@ -193,7 +320,7 @@
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261117/rom_y2-windows.zip",
           "size": 722169096,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "windows-legacy",
@@ -665,8 +792,8 @@
         "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/741612312"
       }
     ],
-    "mirror_downloads": 14,
-    "downloads": 31,
+    "mirror_downloads": 16,
+    "downloads": 33,
     "download_breakdown": {
       "tag": "y1-exp.2",
       "mirrors": "y1-community/classy-mirror",
@@ -697,7 +824,7 @@
           "name": "classy-y1-exp.2-type-a-windows-legacy.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-windows-legacy.zip",
           "size": 519828381,
-          "downloads": 1
+          "downloads": 3
         },
         {
           "platform": "linux",
@@ -930,7 +1057,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261112/rom_y2.zip",
         "size": 426796024,
-        "download_count": 105,
+        "download_count": 106,
         "content_type": "application/zip",
         "created_at": "2026-11-12T10:28:47Z",
         "updated_at": "2026-11-12T10:29:03Z",
@@ -960,7 +1087,7 @@
       }
     ],
     "mirror_downloads": 80,
-    "downloads": 185,
+    "downloads": 186,
     "download_breakdown": {
       "tag": "20261112",
       "mirrors": "y1-community/classy-mirror",
@@ -968,7 +1095,7 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261112/rom_y2.zip",
-          "downloads": 161,
+          "downloads": 162,
           "mirror_downloads": 56,
           "mirror_unallocated": 53
         }
@@ -1246,7 +1373,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261111/rom_y2.zip",
         "size": 482427581,
-        "download_count": 21,
+        "download_count": 22,
         "content_type": "application/zip",
         "created_at": "2026-11-11T08:47:00Z",
         "updated_at": "2026-11-11T08:47:17Z",
@@ -1276,7 +1403,7 @@
       }
     ],
     "mirror_downloads": 61,
-    "downloads": 82,
+    "downloads": 83,
     "download_breakdown": {
       "tag": "20261111",
       "mirrors": "y1-community/classy-mirror",
@@ -1284,7 +1411,7 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261111/rom_y2.zip",
-          "downloads": 65,
+          "downloads": 66,
           "mirror_downloads": 44,
           "mirror_unallocated": 42
         }
@@ -2149,7 +2276,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_y2.zip",
         "size": 458640295,
-        "download_count": 127,
+        "download_count": 128,
         "content_type": "application/zip",
         "created_at": "2026-10-17T11:12:32Z",
         "updated_at": "2026-10-17T11:12:48Z",
@@ -2179,7 +2306,7 @@
       }
     ],
     "mirror_downloads": 135,
-    "downloads": 262,
+    "downloads": 263,
     "download_breakdown": {
       "tag": "20261017",
       "mirrors": "y1-community/classy-mirror",
@@ -2187,7 +2314,7 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_y2.zip",
-          "downloads": 232,
+          "downloads": 233,
           "mirror_downloads": 105,
           "mirror_unallocated": 97
         }
@@ -2503,7 +2630,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom_y2.zip",
         "size": 459449940,
-        "download_count": 22,
+        "download_count": 23,
         "content_type": "application/zip",
         "created_at": "2026-10-11T20:35:53Z",
         "updated_at": "2026-10-11T20:36:15Z",
@@ -2532,8 +2659,8 @@
         "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/631746378"
       }
     ],
-    "mirror_downloads": 130,
-    "downloads": 152,
+    "mirror_downloads": 133,
+    "downloads": 156,
     "download_breakdown": {
       "tag": "20261011",
       "mirrors": "y1-community/classy-mirror",
@@ -2541,7 +2668,7 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom_y2.zip",
-          "downloads": 126,
+          "downloads": 127,
           "mirror_downloads": 104,
           "mirror_unallocated": 96
         }
@@ -2580,14 +2707,14 @@
           "name": "rom_y2-linux-legacy.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-linux-legacy.zip",
           "size": 458563817,
-          "downloads": 2
+          "downloads": 4
         },
         {
           "platform": "macos",
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-macos.zip",
           "size": 506825952,
-          "downloads": 6
+          "downloads": 7
         }
       ]
     }
@@ -3122,8 +3249,8 @@
         "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/599337233"
       }
     ],
-    "mirror_downloads": 125,
-    "downloads": 146,
+    "mirror_downloads": 126,
+    "downloads": 147,
     "download_breakdown": {
       "tag": "20260929",
       "mirrors": "y1-community/classy-mirror",
@@ -3142,7 +3269,7 @@
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-windows.zip",
           "size": 698341007,
-          "downloads": 6
+          "downloads": 7
         },
         {
           "platform": "windows-legacy",

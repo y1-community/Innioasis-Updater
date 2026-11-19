@@ -130,8 +130,8 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom/releases/assets/712344894"
       }
     ],
-    "mirror_downloads": 19,
-    "downloads": 35,
+    "mirror_downloads": 23,
+    "downloads": 39,
     "download_breakdown": {
       "tag": "MX2D-WVGA_TM-WV3.20-20250618",
       "mirrors": "y1-community/q3-stock-rom-mirror",
@@ -156,7 +156,7 @@
           "name": "rom_q3-windows-legacy.zip",
           "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-windows-legacy.zip",
           "size": 354607335,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux",

@@ -57,7 +57,7 @@
 <p>Use this skill to write or update GitHub Release descriptions on <code>ClassyPlayer/Classy</code> so every release starts with a human-readable changelog focused on user impact and features.</p>
 <h2 id="release-description-structure">Release Description Structure</h2>
 <p>Every GitHub release body must follow this exact structure:</p>
-<ol><li><strong>Human-readable changelog first</strong>:<ul><li>For a beta (a GitHub pre-release, tag <code>YYYYMMDD-beta</code> or <code>YYYYMMDD-beta.N</code>), the first line says it is a beta, for example: <code>This is a beta release. To get it on the player, choose Settings &gt; General &gt; System Update &gt; Update Channel &gt; Beta.</code> The bullets follow after a blank line.</li><li>Otherwise, start immediately with the changelog bullets (or a short one-sentence overview for major milestone releases, followed by bullets).</li><li>Do <strong>not</strong> include a top-level <code>### Classy Release</code> heading or &quot;Automated build with full support...&quot; boilerplate.</li><li>Focus on what changed for the user (features, UI changes, audio/hardware behavior, bug fixes) with light technical context where helpful (for example, <code>mtkbt</code> daemon, <code>libaudiocustparam.so</code>, <code>/system/app</code>, <code>.y1_thumbs_cache</code>).</li></ul></li><li><strong>Release assets table</strong>:<ul><li>Use sentence case with no emoji (<code>#### Release assets</code>).</li><li>Keep file names in inline code (<code>Classy-&lt;TAG&gt;.apk</code>, <code>update.json</code>, <code>rom_y2.zip</code>, <code>rom_y1_type_a.zip</code>, <code>rom_y1_type_b.zip</code>, <code>SHA256SUMS.txt</code>) without bold decoration on every cell.</li></ul></li><li><strong>Full changelog link</strong>:<ul><li>End with <code>Full changelog: https://github.com/ClassyPlayer/Classy/compare/&lt;PREV_TAG&gt;...&lt;TAG&gt;</code>.</li><li><strong>Never</strong> include the <code>Flashing Instructions (SP Flash Tool)</code> section or decorative <code>---</code> horizontal rules.</li></ul></li></ol>
+<ol><li><strong>Human-readable changelog first</strong>:<ul><li>For a beta (a GitHub pre-release, tag <code>YYYYMMDD-beta</code> or <code>YYYYMMDD-beta.N</code>), the first line says it is a beta, for example: <code>This is a beta release. To get it on the player, choose Settings &gt; General &gt; System Update &gt; Update Channel &gt; Beta.</code> The bullets follow after a blank line.</li><li>Otherwise, start immediately with the changelog bullets (or a short one-sentence overview for major milestone releases, followed by bullets).</li><li>Do <strong>not</strong> include a top-level <code>### Classy Release</code> heading or &quot;Automated build with full support...&quot; boilerplate.</li><li>Focus on what changed for the user (features, UI changes, audio/hardware behavior, bug fixes) with light technical context where helpful (for example, <code>mtkbt</code> daemon, <code>libaudiocustparam.so</code>, <code>/system/app</code>, <code>.y1_thumbs_cache</code>).</li></ul></li><li><strong>Release assets table</strong>:<ul><li>Use sentence case with no emoji (<code>#### Release assets</code>).</li><li>Keep file names in inline code (<code>Classy-&lt;TAG&gt;.apk</code>, <code>Classy-&lt;TAG&gt;-y1.apk</code>, <code>update.json</code>, <code>update-y1.json</code>, <code>rom_y2.zip</code>, <code>rom_y1_type_a.zip</code>, <code>rom_y1_type_b.zip</code>, <code>SHA256SUMS.txt</code>) without bold decoration on every cell.</li></ul></li><li><strong>Full changelog link</strong>:<ul><li>End with <code>Full changelog: https://github.com/ClassyPlayer/Classy/compare/&lt;PREV_TAG&gt;...&lt;TAG&gt;</code>.</li><li><strong>Never</strong> include the <code>Flashing Instructions (SP Flash Tool)</code> section or decorative <code>---</code> horizontal rules.</li></ul></li></ol>
 <h3 id="template">Template</h3>
 <pre><code class="language-markdown">- &lt;Bullet 1: user-facing feature or fix&gt;
 - &lt;Bullet 2: user-facing feature or fix&gt;
@@ -66,12 +66,14 @@
 
 | File | Target device | Notes |
 | :--- | :--- | :--- |
-| `Classy-&lt;TAG&gt;.apk` | Innioasis Y2 | Standalone launcher APK (sideload or install) |
-| `update.json` | Innioasis Y2 | OTA update metadata for in-app updater |
+| `Classy-&lt;TAG&gt;.apk` | Innioasis Y2 (Android 4.4) | Standalone launcher APK (sideload or install) |
+| `Classy-&lt;TAG&gt;-y1.apk` | Innioasis Y1 (Android 4.2) | Standalone launcher APK (sideload or install) |
+| `update.json` | Innioasis Y2 | OTA update metadata for the in-app updater |
+| `update-y1.json` | Innioasis Y1 | OTA update metadata for the in-app updater |
 | `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog &amp; clickwheel keylayout |
+| `rom_y1_type_a.zip` | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |
+| `rom_y1_type_b.zip` | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |
 | `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |
-
-Y1 firmware is not in this release. Y1 builds are in the Y1 experimental pre-releases.
 
 Full changelog: https://github.com/ClassyPlayer/Classy/compare/&lt;PREV_TAG&gt;...&lt;TAG&gt;</code></pre>
 <h2 id="tags-and-the-compare-range">Tags and the compare range</h2>

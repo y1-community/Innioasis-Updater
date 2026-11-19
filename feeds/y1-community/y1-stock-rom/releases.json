@@ -17,7 +17,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip",
         "size": 343742697,
-        "download_count": 290,
+        "download_count": 304,
         "content_type": "application/zip",
         "created_at": "2026-11-14T21:37:53Z",
         "updated_at": "2026-11-14T21:39:01Z",
@@ -28,7 +28,7 @@
         "name": "updater.jpg",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
         "size": 30612,
-        "download_count": 1326,
+        "download_count": 1383,
         "content_type": "image/jpeg",
         "created_at": "2026-11-14T02:48:48Z",
         "updated_at": "2026-11-14T02:48:49Z",
@@ -36,7 +36,7 @@
       }
     ],
     "mirror_downloads": 29,
-    "downloads": 319,
+    "downloads": 333,
     "download_breakdown": {
       "tag": "3.2.4-fm",
       "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -44,7 +44,7 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip",
-          "downloads": 293,
+          "downloads": 307,
           "mirror_downloads": 3
         }
       ],
@@ -112,7 +112,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/rom_y2.zip",
         "size": 355560849,
-        "download_count": 2248,
+        "download_count": 2249,
         "content_type": "application/zip",
         "created_at": "2026-09-13T13:05:57Z",
         "updated_at": "2026-09-13T13:10:01Z",
@@ -123,15 +123,15 @@
         "name": "updater.jpg",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg",
         "size": 30612,
-        "download_count": 2450,
+        "download_count": 2483,
         "content_type": "image/jpeg",
         "created_at": "2026-10-10T09:17:30Z",
         "updated_at": "2026-10-10T09:17:30Z",
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom/releases/assets/627525120"
       }
     ],
-    "mirror_downloads": 213,
-    "downloads": 2461,
+    "mirror_downloads": 214,
+    "downloads": 2463,
     "download_breakdown": {
       "tag": "3.2.1",
       "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -139,7 +139,7 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/rom_y2.zip",
-          "downloads": 2260,
+          "downloads": 2261,
           "mirror_downloads": 12
         }
       ],
@@ -149,7 +149,7 @@
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-windows.zip",
           "size": 656085923,
-          "downloads": 112
+          "downloads": 113
         },
         {
           "platform": "windows-legacy",
@@ -218,7 +218,7 @@
         "name": "system.img",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img",
         "size": 859826928,
-        "download_count": 685,
+        "download_count": 690,
         "content_type": "application/x-apple-diskimage",
         "created_at": "2026-11-02T20:10:34Z",
         "updated_at": "2026-11-02T20:14:19Z",
@@ -229,7 +229,7 @@
         "name": "updater.jpg",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
         "size": 30612,
-        "download_count": 2017,
+        "download_count": 2046,
         "content_type": "image/jpeg",
         "created_at": "2026-10-10T09:17:43Z",
         "updated_at": "2026-10-10T09:17:43Z",
@@ -324,7 +324,7 @@
         "name": "updater.jpg",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg",
         "size": 30612,
-        "download_count": 1723,
+        "download_count": 1752,
         "content_type": "image/jpeg",
         "created_at": "2026-10-10T09:17:57Z",
         "updated_at": "2026-10-10T09:17:57Z",
@@ -394,7 +394,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
         "size": 250125316,
-        "download_count": 8810,
+        "download_count": 8827,
         "content_type": "application/zip",
         "created_at": "2026-07-16T02:03:01Z",
         "updated_at": "2026-07-16T02:03:27Z",
@@ -405,15 +405,15 @@
         "name": "updater.jpg",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
         "size": 30612,
-        "download_count": 7473,
+        "download_count": 7555,
         "content_type": "image/jpeg",
         "created_at": "2026-10-10T09:19:27Z",
         "updated_at": "2026-10-10T09:19:27Z",
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom/releases/assets/627528645"
       }
     ],
-    "mirror_downloads": 533,
-    "downloads": 9343,
+    "mirror_downloads": 534,
+    "downloads": 9361,
     "download_breakdown": {
       "tag": "3.1.2",
       "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -421,7 +421,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
-          "downloads": 8823,
+          "downloads": 8840,
           "mirror_downloads": 13
         }
       ],
@@ -431,7 +431,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip",
           "size": 491537564,
-          "downloads": 317
+          "downloads": 318
         },
         {
           "platform": "windows-legacy",
@@ -500,15 +500,15 @@
         "name": "updater.jpg",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
         "size": 30612,
-        "download_count": 6727,
+        "download_count": 6800,
         "content_type": "image/jpeg",
         "created_at": "2026-10-10T09:18:17Z",
         "updated_at": "2026-10-10T09:18:17Z",
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom/releases/assets/627526526"
       }
     ],
-    "mirror_downloads": 418,
-    "downloads": 8459,
+    "mirror_downloads": 419,
+    "downloads": 8460,
     "download_breakdown": {
       "tag": "3.0.7",
       "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -561,7 +561,7 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-macos.zip",
           "size": 299845094,
-          "downloads": 81
+          "downloads": 82
         }
       ]
     }
@@ -595,7 +595,7 @@
         "name": "updater.jpg",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.2/updater.jpg",
         "size": 30612,
-        "download_count": 481,
+        "download_count": 484,
         "content_type": "image/jpeg",
         "created_at": "2026-10-10T09:18:30Z",
         "updated_at": "2026-10-10T09:18:30Z",
@@ -690,15 +690,15 @@
         "name": "updater.jpg",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/2.8.2/updater.jpg",
         "size": 30612,
-        "download_count": 470,
+        "download_count": 473,
         "content_type": "image/jpeg",
         "created_at": "2026-10-10T09:18:55Z",
         "updated_at": "2026-10-10T09:18:55Z",
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom/releases/assets/627527758"
       }
     ],
-    "mirror_downloads": 44,
-    "downloads": 5007,
+    "mirror_downloads": 46,
+    "downloads": 5009,
     "download_breakdown": {
       "tag": "2.8.2",
       "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -744,7 +744,7 @@
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-linux-legacy.zip",
           "size": 261506516,
-          "downloads": 2
+          "downloads": 4
         },
         {
           "platform": "macos",
@@ -891,15 +891,15 @@
         "name": "updater.jpg",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/updater.jpg",
         "size": 30612,
-        "download_count": 450,
+        "download_count": 453,
         "content_type": "image/jpeg",
         "created_at": "2026-10-10T09:17:17Z",
         "updated_at": "2026-10-10T09:17:18Z",
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom/releases/assets/627524721"
       }
     ],
-    "mirror_downloads": 42,
-    "downloads": 1555,
+    "mirror_downloads": 43,
+    "downloads": 1556,
     "download_breakdown": {
       "tag": "ADB-2.1.9",
       "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -924,7 +924,7 @@
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-windows-legacy.zip",
           "size": 244425879,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux",

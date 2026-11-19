@@ -61,7 +61,7 @@
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-macos.zip",
         "size": 300960097,
-        "download_count": 4,
+        "download_count": 5,
         "content_type": "application/zip",
         "created_at": "2026-11-12T20:12:15Z",
         "updated_at": "2026-11-12T20:12:28Z",
@@ -113,7 +113,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 28,
+    "downloads": 29,
     "download_breakdown": {
       "tag": "v1.1.0",
       "mirrors": "",
@@ -136,7 +136,7 @@
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-macos.zip",
-          "downloads": 4
+          "downloads": 5
         },
         {
           "name": "rom-windows-legacy.zip",

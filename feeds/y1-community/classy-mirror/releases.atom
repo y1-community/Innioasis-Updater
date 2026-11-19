@@ -83,14 +83,14 @@ Y1 firmware is not in this release. Y1 builds are in the Y1 experimental pre-rel
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/classy-mirror/releases/tag/20261117"/>
     <innioasis:tag_name>20261117</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>7</innioasis:downloads>
+    <innioasis:downloads>8</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261117/Classy-20261117.apk" title="Classy-20261117.apk" length="25264576" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="760813100"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261117/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="603902934" type="application/zip" innioasis:download_count="1" innioasis:asset_id="760811650"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261117/rom_y2-linux-legacy.zip" title="rom_y2-linux-legacy.zip" length="482344572" type="application/zip" innioasis:download_count="1" innioasis:asset_id="760811652"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261117/rom_y2-linux.zip" title="rom_y2-linux.zip" length="778998700" type="application/zip" innioasis:download_count="1" innioasis:asset_id="760811645"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261117/rom_y2-macos.zip" title="rom_y2-macos.zip" length="530606708" type="application/zip" innioasis:download_count="1" innioasis:asset_id="760812633"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261117/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="483930291" type="application/zip" innioasis:download_count="1" innioasis:asset_id="760811649"/>
-    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261117/rom_y2-windows.zip" title="rom_y2-windows.zip" length="722169096" type="application/zip" innioasis:download_count="1" innioasis:asset_id="760811646"/>
+    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261117/rom_y2-windows.zip" title="rom_y2-windows.zip" length="722169096" type="application/zip" innioasis:download_count="2" innioasis:asset_id="760811646"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261117/rom_y2.zip" title="rom_y2.zip" length="482568788" type="application/zip" innioasis:download_count="1" innioasis:asset_id="760813209"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261117/SHA256SUMS.txt" title="SHA256SUMS.txt" length="163" type="text/plain; charset=utf-8" innioasis:download_count="1" innioasis:asset_id="760813256"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261117/stats.txt" title="stats.txt" length="4287" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766088531"/>
@@ -391,13 +391,13 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261113-beta...2
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/classy-mirror/releases/tag/y1-exp.2"/>
     <innioasis:tag_name>y1-exp.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>14</innioasis:downloads>
+    <innioasis:downloads>16</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/Classy-20261112-exp.2-y1.apk" title="Classy-20261112-exp.2-y1.apk" length="25237181" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="742490261"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-linux-arm64.zip" title="classy-y1-exp.2-type-a-linux-arm64.zip" length="630292752" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742488273"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-linux-legacy.zip" title="classy-y1-exp.2-type-a-linux-legacy.zip" length="518242662" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742488275"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-linux.zip" title="classy-y1-exp.2-type-a-linux.zip" length="805388518" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742488272"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-macos.zip" title="classy-y1-exp.2-type-a-macos.zip" length="564701153" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742488808"/>
-    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-windows-legacy.zip" title="classy-y1-exp.2-type-a-windows-legacy.zip" length="519828381" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742488274"/>
+    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-windows-legacy.zip" title="classy-y1-exp.2-type-a-windows-legacy.zip" length="519828381" type="application/zip" innioasis:download_count="3" innioasis:asset_id="742488274"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-windows.zip" title="classy-y1-exp.2-type-a-windows.zip" length="758067194" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742488283"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a.zip" title="classy-y1-exp.2-type-a.zip" length="444984988" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742490262"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-linux-arm64.zip" title="classy-y1-exp.2-type-b-linux-arm64.zip" length="621471396" type="application/zip" innioasis:download_count="1" innioasis:asset_id="742489430"/>
@@ -1626,7 +1626,7 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026101
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/classy-mirror/releases/tag/20261011"/>
     <innioasis:tag_name>20261011</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>33</innioasis:downloads>
+    <innioasis:downloads>36</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/InniClassic-20261011.apk" title="InniClassic-20261011.apk" length="25249278" type="application/vnd.android.package-archive" innioasis:download_count="2" innioasis:asset_id="722242787"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="640056128" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741563625"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="528006032" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741563632"/>
@@ -1657,9 +1657,9 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026101
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_b-windows.zip" title="rom_y1_type_b-windows.zip" length="735688064" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741566648"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y1_type_b.zip" title="rom_y1_type_b.zip" length="422605872" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733388609"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="580122183" type="application/zip" innioasis:download_count="1" innioasis:asset_id="754815379"/>
-    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-linux-legacy.zip" title="rom_y2-linux-legacy.zip" length="458563817" type="application/zip" innioasis:download_count="1" innioasis:asset_id="754815384"/>
+    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-linux-legacy.zip" title="rom_y2-linux-legacy.zip" length="458563817" type="application/zip" innioasis:download_count="3" innioasis:asset_id="754815384"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-linux.zip" title="rom_y2-linux.zip" length="755217949" type="application/zip" innioasis:download_count="1" innioasis:asset_id="754815380"/>
-    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-macos.zip" title="rom_y2-macos.zip" length="506825952" type="application/zip" innioasis:download_count="1" innioasis:asset_id="754818511"/>
+    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-macos.zip" title="rom_y2-macos.zip" length="506825952" type="application/zip" innioasis:download_count="2" innioasis:asset_id="754818511"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="460149534" type="application/zip" innioasis:download_count="1" innioasis:asset_id="754815381"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2-windows.zip" title="rom_y2-windows.zip" length="698388345" type="application/zip" innioasis:download_count="1" innioasis:asset_id="754815382"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261011/rom_y2.zip" title="rom_y2.zip" length="458788029" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733388610"/>
@@ -2095,7 +2095,7 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026092
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/classy-mirror/releases/tag/20260929"/>
     <innioasis:tag_name>20260929</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>33</innioasis:downloads>
+    <innioasis:downloads>34</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20260929/InniClassic-20260929.apk" title="InniClassic-20260929.apk" length="25200732" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="722156845"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20260929/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="640037708" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741212855"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20260929/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="527987616" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741212857"/>
@@ -2130,7 +2130,7 @@ Full changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/2026092
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-linux.zip" title="rom_y2-linux.zip" length="755170611" type="application/zip" innioasis:download_count="1" innioasis:asset_id="754704198"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-macos.zip" title="rom_y2-macos.zip" length="506778613" type="application/zip" innioasis:download_count="1" innioasis:asset_id="754705889"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="460102202" type="application/zip" innioasis:download_count="1" innioasis:asset_id="754704195"/>
-    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-windows.zip" title="rom_y2-windows.zip" length="698341007" type="application/zip" innioasis:download_count="1" innioasis:asset_id="754704200"/>
+    <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2-windows.zip" title="rom_y2-windows.zip" length="698341007" type="application/zip" innioasis:download_count="2" innioasis:asset_id="754704200"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20260929/rom_y2.zip" title="rom_y2.zip" length="458740691" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733252906"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20260929/SHA256SUMS.txt" title="SHA256SUMS.txt" length="168" type="text/plain; charset=utf-8" innioasis:download_count="1" innioasis:asset_id="754707218"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20260929/stats.txt" title="stats.txt" length="6843" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="766086532"/>

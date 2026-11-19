@@ -35,8 +35,8 @@
         "url": "https://api.github.com/repos/y1-community/g5-stock-rom/releases/assets/712047709"
       }
     ],
-    "mirror_downloads": 9,
-    "downloads": 111,
+    "mirror_downloads": 12,
+    "downloads": 114,
     "download_breakdown": {
       "tag": "MX4_EN-V1.11-20260727",
       "mirrors": "y1-community/g5-stock-rom-mirror",
@@ -82,7 +82,7 @@
           "name": "rom_g5-macos.zip",
           "url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-macos.zip",
           "size": 2142541360,
-          "downloads": 1
+          "downloads": 4
         }
       ]
     }
