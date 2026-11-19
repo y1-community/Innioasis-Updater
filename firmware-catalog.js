@@ -726,7 +726,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
           "size": 30612,
-          "download_count": 7563,
+          "download_count": 7564,
           "content_type": "image/jpeg"
         }
       ]
@@ -813,7 +813,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
           "size": 30612,
-          "download_count": 6808,
+          "download_count": 6809,
           "content_type": "image/jpeg"
         }
       ]
@@ -3067,7 +3067,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/manifest.json",
           "size": 4245,
-          "download_count": 401,
+          "download_count": 402,
           "content_type": "application/json"
         },
         {
@@ -3075,7 +3075,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/manifest.sig",
           "size": 64,
-          "download_count": 395,
+          "download_count": 396,
           "content_type": "application/pgp-signature"
         },
         {
@@ -38440,7 +38440,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-10-15T03:03:06Z"
   },
   "schulzcode/y2linux": {
-    "downloads": 35175,
+    "downloads": 35177,
     "forks": 9,
     "release_count": 106,
     "stars": 25,
@@ -38600,6 +38600,13 @@ window.INNIOASIS_REPO_STATS = {
     "stars": 0,
     "updated_at": "2026-11-05T04:10:35Z"
   },
+  "y1-community/retailos-y1-mirror": {
+    "downloads": 0,
+    "forks": 0,
+    "release_count": 0,
+    "stars": 0,
+    "updated_at": ""
+  },
   "y1-community/rockbox-mirror": {
     "downloads": 871,
     "forks": 0,
@@ -38664,7 +38671,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T13:41:34Z"
   },
   "y1-community/y1-stock-rom": {
-    "downloads": 64799,
+    "downloads": 64801,
     "forks": 0,
     "release_count": 10,
     "stars": 6,

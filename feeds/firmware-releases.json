@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-19T12:57:04Z",
+  "generated_at": "2026-11-19T13:02:19Z",
   "manifest_url": "https://innioasis.app/slidia_manifest.xml",
   "firmware_list_url": "https://innioasis.app/firmware-list.html",
   "feed_urls": {
@@ -25,10 +25,12 @@
       "name": "iPod OS (Dev)",
       "brand": "Innioasis",
       "repo": "spirk0/retailos-y1",
+      "portable_zips": "y1-community/retailos-y1-mirror",
       "device": "Y1",
       "url": "https://github.com/spirk0/retailos-y1",
       "type": "img",
-      "handler": "Custom Firmware"
+      "handler": "Custom Firmware",
+      "post_install": "https://github.com/spirk0/retailos-y1#using-it"
     },
     {
       "name": "Original Software",
@@ -717,7 +719,7 @@
             "name": "updater.jpg",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
             "size": 30612,
-            "download_count": 7563,
+            "download_count": 7564,
             "content_type": "image/jpeg",
             "created_at": "2026-10-10T09:19:27Z",
             "updated_at": "2026-10-10T09:19:27Z",
@@ -812,7 +814,7 @@
             "name": "updater.jpg",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
             "size": 30612,
-            "download_count": 6808,
+            "download_count": 6809,
             "content_type": "image/jpeg",
             "created_at": "2026-10-10T09:18:17Z",
             "updated_at": "2026-10-10T09:18:17Z",
@@ -3294,7 +3296,7 @@
             "name": "manifest.json",
             "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/manifest.json",
             "size": 4245,
-            "download_count": 401,
+            "download_count": 402,
             "content_type": "application/json",
             "created_at": "2026-11-17T16:07:25Z",
             "updated_at": "2026-11-17T16:07:25Z",
@@ -3305,7 +3307,7 @@
             "name": "manifest.sig",
             "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/manifest.sig",
             "size": 64,
-            "download_count": 395,
+            "download_count": 396,
             "content_type": "application/pgp-signature",
             "created_at": "2026-11-17T16:07:26Z",
             "updated_at": "2026-11-17T16:07:26Z",
@@ -43971,15 +43973,15 @@
             "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733067856"
           },
           {
-            "id": 766048578,
+            "id": 767719164,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/stats.txt",
             "size": 3995,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:26:06Z",
-            "updated_at": "2026-11-19T03:26:06Z",
-            "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/766048578"
+            "created_at": "2026-11-19T13:02:29Z",
+            "updated_at": "2026-11-19T13:02:29Z",
+            "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/767719164"
           },
           {
             "id": 705987295,
@@ -44129,15 +44131,15 @@
             "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733055812"
           },
           {
-            "id": 766048424,
+            "id": 767719061,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/stats.txt",
             "size": 3993,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:26:04Z",
-            "updated_at": "2026-11-19T03:26:04Z",
-            "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/766048424"
+            "created_at": "2026-11-19T13:02:27Z",
+            "updated_at": "2026-11-19T13:02:27Z",
+            "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/767719061"
           },
           {
             "id": 706229285,
@@ -44287,15 +44289,15 @@
             "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733045698"
           },
           {
-            "id": 766048342,
+            "id": 767718934,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/stats.txt",
             "size": 3990,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:26:01Z",
-            "updated_at": "2026-11-19T03:26:01Z",
-            "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/766048342"
+            "created_at": "2026-11-19T13:02:25Z",
+            "updated_at": "2026-11-19T13:02:25Z",
+            "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/767718934"
           },
           {
             "id": 706224595,
@@ -44445,15 +44447,15 @@
             "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733034161"
           },
           {
-            "id": 766048244,
+            "id": 767718835,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/stats.txt",
             "size": 3984,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:25:58Z",
-            "updated_at": "2026-11-19T03:25:59Z",
-            "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/766048244"
+            "created_at": "2026-11-19T13:02:22Z",
+            "updated_at": "2026-11-19T13:02:22Z",
+            "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/767718835"
           },
           {
             "id": 706217904,
@@ -44603,15 +44605,15 @@
             "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733023028"
           },
           {
-            "id": 766048105,
+            "id": 767718726,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/stats.txt",
             "size": 4047,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:25:56Z",
-            "updated_at": "2026-11-19T03:25:56Z",
-            "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/766048105"
+            "created_at": "2026-11-19T13:02:20Z",
+            "updated_at": "2026-11-19T13:02:20Z",
+            "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/767718726"
           },
           {
             "id": 706212939,
@@ -44772,15 +44774,15 @@
             "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733012535"
           },
           {
-            "id": 766047964,
+            "id": 767718599,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/stats.txt",
             "size": 4172,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:25:53Z",
-            "updated_at": "2026-11-19T03:25:53Z",
-            "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/766047964"
+            "created_at": "2026-11-19T13:02:18Z",
+            "updated_at": "2026-11-19T13:02:18Z",
+            "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/767718599"
           },
           {
             "id": 706208356,
@@ -44882,6 +44884,7 @@
         }
       }
     ],
+    "y1-community/retailos-y1-mirror": [],
     "y1-community/g1-stock-rom-mirror": [
       {
         "id": 436724339,
@@ -44985,15 +44988,15 @@
             "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/717749746"
           },
           {
-            "id": 766036565,
+            "id": 767707648,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/stats.txt",
             "size": 4087,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:14Z",
-            "updated_at": "2026-11-19T03:22:14Z",
-            "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/766036565"
+            "created_at": "2026-11-19T12:58:36Z",
+            "updated_at": "2026-11-19T12:58:36Z",
+            "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/767707648"
           }
         ],
         "mirror_downloads": 0,
@@ -45143,15 +45146,15 @@
             "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/717730287"
           },
           {
-            "id": 766036463,
+            "id": 767707558,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/stats.txt",
             "size": 4080,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:12Z",
-            "updated_at": "2026-11-19T03:22:13Z",
-            "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/766036463"
+            "created_at": "2026-11-19T12:58:34Z",
+            "updated_at": "2026-11-19T12:58:34Z",
+            "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/767707558"
           }
         ],
         "mirror_downloads": 0,
@@ -45301,15 +45304,15 @@
             "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/717713241"
           },
           {
-            "id": 766036339,
+            "id": 767707470,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/stats.txt",
             "size": 4022,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:10Z",
-            "updated_at": "2026-11-19T03:22:10Z",
-            "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/766036339"
+            "created_at": "2026-11-19T12:58:32Z",
+            "updated_at": "2026-11-19T12:58:33Z",
+            "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/767707470"
           }
         ],
         "mirror_downloads": 0,
@@ -45459,15 +45462,15 @@
             "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/717696541"
           },
           {
-            "id": 766036232,
+            "id": 767707385,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/stats.txt",
             "size": 4080,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:08Z",
-            "updated_at": "2026-11-19T03:22:08Z",
-            "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/766036232"
+            "created_at": "2026-11-19T12:58:31Z",
+            "updated_at": "2026-11-19T12:58:31Z",
+            "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/767707385"
           }
         ],
         "mirror_downloads": 0,
@@ -45617,15 +45620,15 @@
             "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/717678114"
           },
           {
-            "id": 766036111,
+            "id": 767707293,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/stats.txt",
             "size": 4074,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:06Z",
-            "updated_at": "2026-11-19T03:22:06Z",
-            "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/766036111"
+            "created_at": "2026-11-19T12:58:29Z",
+            "updated_at": "2026-11-19T12:58:29Z",
+            "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/767707293"
           }
         ],
         "mirror_downloads": 0,
@@ -45775,15 +45778,15 @@
             "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/717658742"
           },
           {
-            "id": 766036023,
+            "id": 767707193,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/stats.txt",
             "size": 4012,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:04Z",
-            "updated_at": "2026-11-19T03:22:05Z",
-            "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/766036023"
+            "created_at": "2026-11-19T12:58:27Z",
+            "updated_at": "2026-11-19T12:58:27Z",
+            "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/767707193"
           }
         ],
         "mirror_downloads": 0,
@@ -80458,15 +80461,15 @@
             "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/763453465"
           },
           {
-            "id": 766036487,
+            "id": 767708746,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/stats.txt",
             "size": 4133,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:13Z",
-            "updated_at": "2026-11-19T03:22:13Z",
-            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/766036487"
+            "created_at": "2026-11-19T12:58:59Z",
+            "updated_at": "2026-11-19T12:58:59Z",
+            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/767708746"
           },
           {
             "id": 763453557,
@@ -80627,15 +80630,15 @@
             "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/759171757"
           },
           {
-            "id": 766036378,
+            "id": 767708633,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.0/stats.txt",
             "size": 4135,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:11Z",
-            "updated_at": "2026-11-19T03:22:11Z",
-            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/766036378"
+            "created_at": "2026-11-19T12:58:57Z",
+            "updated_at": "2026-11-19T12:58:57Z",
+            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/767708633"
           },
           {
             "id": 759172074,
@@ -80796,15 +80799,15 @@
             "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/754875921"
           },
           {
-            "id": 766036280,
+            "id": 767708538,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.1.2/stats.txt",
             "size": 4138,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:09Z",
-            "updated_at": "2026-11-19T03:22:09Z",
-            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/766036280"
+            "created_at": "2026-11-19T12:58:55Z",
+            "updated_at": "2026-11-19T12:58:55Z",
+            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/767708538"
           },
           {
             "id": 754876107,
@@ -80965,15 +80968,15 @@
             "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/754854647"
           },
           {
-            "id": 766036206,
+            "id": 767708459,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.1.1/stats.txt",
             "size": 4131,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:07Z",
-            "updated_at": "2026-11-19T03:22:08Z",
-            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/766036206"
+            "created_at": "2026-11-19T12:58:52Z",
+            "updated_at": "2026-11-19T12:58:53Z",
+            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/767708459"
           },
           {
             "id": 754854724,
@@ -81134,15 +81137,15 @@
             "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/754833738"
           },
           {
-            "id": 766036084,
+            "id": 767708359,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.1.0/stats.txt",
             "size": 4130,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:05Z",
-            "updated_at": "2026-11-19T03:22:06Z",
-            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/766036084"
+            "created_at": "2026-11-19T12:58:50Z",
+            "updated_at": "2026-11-19T12:58:51Z",
+            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/767708359"
           },
           {
             "id": 754833865,
@@ -81303,15 +81306,15 @@
             "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/754277922"
           },
           {
-            "id": 766036008,
+            "id": 767708269,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.5/stats.txt",
             "size": 4131,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:04Z",
-            "updated_at": "2026-11-19T03:22:04Z",
-            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/766036008"
+            "created_at": "2026-11-19T12:58:48Z",
+            "updated_at": "2026-11-19T12:58:48Z",
+            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/767708269"
           },
           {
             "id": 754278050,
@@ -82655,15 +82658,15 @@
             "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/706101039"
           },
           {
-            "id": 766035796,
+            "id": 767707925,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/stats.txt",
             "size": 4147,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:21:59Z",
-            "updated_at": "2026-11-19T03:21:59Z",
-            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/766035796"
+            "created_at": "2026-11-19T12:58:41Z",
+            "updated_at": "2026-11-19T12:58:41Z",
+            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/767707925"
           },
           {
             "id": 706101141,
@@ -82824,15 +82827,15 @@
             "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/706172992"
           },
           {
-            "id": 766035756,
+            "id": 767707818,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/stats.txt",
             "size": 4141,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:21:57Z",
-            "updated_at": "2026-11-19T03:21:57Z",
-            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/766035756"
+            "created_at": "2026-11-19T12:58:39Z",
+            "updated_at": "2026-11-19T12:58:39Z",
+            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/767707818"
           },
           {
             "id": 706173138,
@@ -82993,15 +82996,15 @@
             "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/706152267"
           },
           {
-            "id": 766035662,
+            "id": 767707723,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/stats.txt",
             "size": 4143,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:21:55Z",
-            "updated_at": "2026-11-19T03:21:56Z",
-            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/766035662"
+            "created_at": "2026-11-19T12:58:37Z",
+            "updated_at": "2026-11-19T12:58:37Z",
+            "url": "https://api.github.com/repos/y1-community/rondo-mirror/releases/assets/767707723"
           },
           {
             "id": 706152472,
@@ -83164,15 +83167,15 @@
             "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/733043515"
           },
           {
-            "id": 766037229,
+            "id": 767709791,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/stats.txt",
             "size": 4055,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:25Z",
-            "updated_at": "2026-11-19T03:22:26Z",
-            "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/766037229"
+            "created_at": "2026-11-19T12:59:27Z",
+            "updated_at": "2026-11-19T12:59:28Z",
+            "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/767709791"
           }
         ],
         "mirror_downloads": 0,
@@ -83322,15 +83325,15 @@
             "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/733031642"
           },
           {
-            "id": 766037057,
+            "id": 767709710,
             "name": "stats.txt",
             "browser_download_url": "https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/stats.txt",
             "size": 4055,
             "download_count": 0,
             "content_type": "text/plain; charset=utf-8",
-            "created_at": "2026-11-19T03:22:23Z",
-            "updated_at": "2026-11-19T03:22:23Z",
-            "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/766037057"
+            "created_at": "2026-11-19T12:59:25Z",
+            "updated_at": "2026-11-19T12:59:26Z",
+            "url": "https://api.github.com/repos/y1-community/koensayr-auto-mirror/releases/assets/767709710"
           }
         ],
         "mirror_downloads": 0,
@@ -122771,6 +122774,18 @@
       "pushed_at": "2026-11-19T12:03:38Z",
       "license": "GPL-2.0"
     },
+    "y1-community/retailos-y1-mirror": {
+      "full_name": "y1-community/retailos-y1-mirror",
+      "description": "",
+      "html_url": "https://github.com/y1-community/retailos-y1-mirror",
+      "default_branch": "main",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "open_issues_count": 0,
+      "updated_at": "",
+      "pushed_at": "",
+      "license": ""
+    },
     "y1-community/g1-stock-rom-mirror": {
       "full_name": "y1-community/g1-stock-rom-mirror",
       "description": "Portable flashing packages for y1-community/g1-stock-rom (G1)",
@@ -122864,7 +122879,7 @@
       "forks_count": 0,
       "open_issues_count": 0,
       "updated_at": "2026-11-12T14:35:24Z",
-      "pushed_at": "2026-11-19T03:25:58Z",
+      "pushed_at": "2026-11-19T13:02:48Z",
       "license": ""
     },
     "y1-community/rockbox-mirror": {
@@ -122996,7 +123011,7 @@
       "forks_count": 0,
       "open_issues_count": 0,
       "updated_at": "2026-11-12T13:38:47Z",
-      "pushed_at": "2026-11-19T03:25:23Z",
+      "pushed_at": "2026-11-19T13:02:17Z",
       "license": ""
     },
     "y1-community/y1-linux-rom-mirror": {
@@ -123044,7 +123059,7 @@
       "forks_count": 13,
       "open_issues_count": 1,
       "updated_at": "2026-11-18T23:37:51Z",
-      "pushed_at": "2026-11-19T12:57:38Z",
+      "pushed_at": "2026-11-19T13:01:58Z",
       "license": "GPL-3.0"
     }
   },
@@ -131937,6 +131952,19 @@
           }
         }
       }
+    },
+    "y1-community/retailos-y1-mirror": {
+      "version": 1,
+      "schema": 1,
+      "source_repo": "spirk0/retailos-y1",
+      "source_repos": [
+        "spirk0/retailos-y1"
+      ],
+      "mirror_repo": "y1-community/retailos-y1-mirror",
+      "fallback_repo": "ryan-specter/retailos-y1-mirror",
+      "updated_at": "2026-11-19T13:02:19Z",
+      "platforms": [],
+      "releases": {}
     },
     "y1-community/rockbox-mirror": {
       "version": 1,

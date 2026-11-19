@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<releases_backup generated_at="2026-11-19T12:57:04Z">
-  <repository name="y1-community/y1-stock-rom" downloads="64799" release_count="10" stars="6" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg" icon_dark="">
+<releases_backup generated_at="2026-11-19T13:02:19Z">
+  <repository name="y1-community/y1-stock-rom" downloads="64801" release_count="10" stars="6" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg" icon_dark="">
     <release id="444843295" tag_name="3.2.4-fm" name="Original System Software 3.2.4 for Innioasis Y2" published_at="2026-11-13T23:34:58Z" prerelease="false" html_url="https://github.com/y1-community/y1-stock-rom/releases/tag/3.2.4-fm" icon_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg" icon_dark_url="">
       <body>&quot;General performance and stability improvements.&quot;
 
@@ -40,7 +40,7 @@ This can be used to restore your Y2 back to its factory conditions and get thing
       <body>Features improved support for AirPods Pro 2, AirPods 3 and later</body>
       <assets>
         <asset id="478638297" name="rom.zip" size="250125316" download_count="8828" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip"/>
-        <asset id="627528645" name="updater.jpg" size="30612" download_count="7563" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg"/>
+        <asset id="627528645" name="updater.jpg" size="30612" download_count="7564" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg"/>
       </assets>
     </release>
     <release id="312645750" tag_name="3.0.7" name="System Software 3.0.7 for Innioasis Y1" published_at="2026-04-23T09:52:31Z" prerelease="false" html_url="https://github.com/y1-community/y1-stock-rom/releases/tag/3.0.7" icon_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg" icon_dark_url="">
@@ -51,7 +51,7 @@ This release has a new E-Book reading feature and a new theme named HoloFacet.
 Theme creators that haven&#x27;t previously implemented their eBook icons are advised to do so to retain theme compatibility.</body>
       <assets>
         <asset id="404575917" name="rom.zip" size="249544334" download_count="8041" content_type="application/x-zip-compressed" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/rom.zip"/>
-        <asset id="627526526" name="updater.jpg" size="30612" download_count="6808" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg"/>
+        <asset id="627526526" name="updater.jpg" size="30612" download_count="6809" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg"/>
       </assets>
     </release>
     <release id="269918612" tag_name="3.0.2" name="System Software 3.0.2" published_at="2025-12-12T15:15:38Z" prerelease="false" html_url="https://github.com/y1-community/y1-stock-rom/releases/tag/3.0.2" icon_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.0.2/updater.jpg" icon_dark_url="">
@@ -823,7 +823,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q5&gt;</body>
       </assets>
     </release>
   </repository>
-  <repository name="schulzcode/y2linux" downloads="35175" release_count="106" stars="25" icon="https://innioasis.app/assets/reborn_icon.jpg" icon_dark="">
+  <repository name="schulzcode/y2linux" downloads="35177" release_count="106" stars="25" icon="https://innioasis.app/assets/reborn_icon.jpg" icon_dark="">
     <release id="448874549" tag_name="baseline-263" name="Y2Linux 1.0 Beta 9.3.32" published_at="2026-11-17T16:07:58Z" prerelease="false" html_url="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-263" icon_url="https://innioasis.app/assets/reborn_icon.jpg" icon_dark_url="">
       <body>**Y2Linux 1.0 Beta 9.3.32**: Y2s with a newer memory chip can install it, and fixes for USB, the wheel click and films over Bluetooth.
 
@@ -896,8 +896,8 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
 </body>
       <assets>
         <asset id="759710282" name="bootimg.img.gz" size="7557251" download_count="121" content_type="application/gzip" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/bootimg.img.gz"/>
-        <asset id="759710284" name="manifest.json" size="4245" download_count="401" content_type="application/json" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/manifest.json"/>
-        <asset id="759710327" name="manifest.sig" size="64" download_count="395" content_type="application/pgp-signature" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/manifest.sig"/>
+        <asset id="759710284" name="manifest.json" size="4245" download_count="402" content_type="application/json" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/manifest.json"/>
+        <asset id="759710327" name="manifest.sig" size="64" download_count="396" content_type="application/pgp-signature" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/manifest.sig"/>
         <asset id="759710337" name="recovery.img.gz" size="7557276" download_count="113" content_type="application/gzip" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/recovery.img.gz"/>
         <asset id="759710386" name="rootfs.ext4.gz" size="53154659" download_count="111" content_type="application/gzip" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/rootfs.ext4.gz"/>
         <asset id="759710287" name="SHA256SUMS" size="945" download_count="4" content_type="application/octet-stream" browser_download_url="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/SHA256SUMS"/>
@@ -14128,7 +14128,7 @@ Features improved support for AirPods Pro 2, AirPods 3 and later
         <asset id="740773098" name="rom-windows-legacy.zip" size="253298741" download_count="2" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows-legacy.zip"/>
         <asset id="740773094" name="rom-windows.zip" size="491537564" download_count="211" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip"/>
         <asset id="733067856" name="rom.zip" size="249665668" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom.zip"/>
-        <asset id="766048578" name="stats.txt" size="3995" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/stats.txt"/>
+        <asset id="767719164" name="stats.txt" size="3995" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/stats.txt"/>
         <asset id="705987295" name="updater.jpg" size="30612" download_count="0" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/updater.jpg"/>
       </assets>
     </release>
@@ -14174,7 +14174,7 @@ Theme creators that haven&#x27;t previously implemented their eBook icons are ad
         <asset id="740759400" name="rom-windows-legacy.zip" size="253168689" download_count="2" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-windows-legacy.zip"/>
         <asset id="740759408" name="rom-windows.zip" size="491407506" download_count="179" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-windows.zip"/>
         <asset id="733055812" name="rom.zip" size="249535612" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom.zip"/>
-        <asset id="766048424" name="stats.txt" size="3993" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/stats.txt"/>
+        <asset id="767719061" name="stats.txt" size="3993" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/stats.txt"/>
         <asset id="706229285" name="updater.jpg" size="30612" download_count="0" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/updater.jpg"/>
       </assets>
     </release>
@@ -14225,7 +14225,7 @@ ADB is currently not enabled on builds newer than 2.1.9. This means that screens
         <asset id="740744721" name="rom-windows-legacy.zip" size="263128740" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-windows-legacy.zip"/>
         <asset id="740744714" name="rom-windows.zip" size="501367561" download_count="6" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-windows.zip"/>
         <asset id="733045698" name="rom.zip" size="259495668" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom.zip"/>
-        <asset id="766048342" name="stats.txt" size="3990" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/stats.txt"/>
+        <asset id="767718934" name="stats.txt" size="3990" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/stats.txt"/>
         <asset id="706224595" name="updater.jpg" size="30612" download_count="0" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/updater.jpg"/>
       </assets>
     </release>
@@ -14315,7 +14315,7 @@ Theme Installation: Default themes are now copied in the background to prevent c
         <asset id="740732184" name="rom-windows-legacy.zip" size="263092231" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-windows-legacy.zip"/>
         <asset id="740732173" name="rom-windows.zip" size="501331052" download_count="8" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-windows.zip"/>
         <asset id="733034161" name="rom.zip" size="234287667" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom.zip"/>
-        <asset id="766048244" name="stats.txt" size="3984" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/stats.txt"/>
+        <asset id="767718835" name="stats.txt" size="3984" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/stats.txt"/>
         <asset id="706217904" name="updater.jpg" size="30612" download_count="0" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/updater.jpg"/>
       </assets>
     </release>
@@ -14357,7 +14357,7 @@ If you installed a firmware update 2.0.0 or newer on your Y1 device and the scro
         <asset id="740716538" name="rom_type_b-windows-legacy.zip" size="241288440" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-windows-legacy.zip"/>
         <asset id="740716540" name="rom_type_b-windows.zip" size="479527243" download_count="8" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-windows.zip"/>
         <asset id="733023028" name="rom_type_b.zip" size="176316953" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b.zip"/>
-        <asset id="766048105" name="stats.txt" size="4047" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/stats.txt"/>
+        <asset id="767718726" name="stats.txt" size="4047" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/stats.txt"/>
         <asset id="706212939" name="updater.jpg" size="30612" download_count="0" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/updater.jpg"/>
       </assets>
     </release>
@@ -14400,7 +14400,7 @@ Adds Spanish language support.
         <asset id="740702313" name="rom-windows-legacy.zip" size="244425879" download_count="2" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-windows-legacy.zip"/>
         <asset id="740702317" name="rom-windows.zip" size="482664700" download_count="6" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-windows.zip"/>
         <asset id="733012535" name="rom.zip" size="240814743" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom.zip"/>
-        <asset id="766047964" name="stats.txt" size="4172" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/stats.txt"/>
+        <asset id="767718599" name="stats.txt" size="4172" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/stats.txt"/>
         <asset id="706208356" name="updater.jpg" size="30612" download_count="0" content_type="image/jpeg" browser_download_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/updater.jpg"/>
       </assets>
     </release>
@@ -14412,6 +14412,8 @@ Adds Spanish language support.
         <asset id="765479104" name="rom.zip" size="456631238" download_count="1" content_type="application/zip" browser_download_url="https://github.com/spirk0/retailos-y1/releases/download/init/rom.zip"/>
       </assets>
     </release>
+  </repository>
+  <repository name="y1-community/retailos-y1-mirror" downloads="0" release_count="0" stars="0" icon="" icon_dark="">
   </repository>
   <repository name="y1-community/g1-stock-rom-mirror" downloads="55" release_count="6" stars="0" icon="" icon_dark="">
     <release id="436724339" tag_name="MX3-G1-EN-WM-V5.01-20260805" name="Portable Flashing Package: MX3-G1-EN-WM-V5.01-20260805" published_at="2026-11-06T16:19:47Z" prerelease="false" html_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/tag/MX3-G1-EN-WM-V5.01-20260805" icon_url="" icon_dark_url="">
@@ -14476,7 +14478,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;
         <asset id="741134144" name="rom_g1-windows.zip" size="1958882629" download_count="8" content_type="application/zip" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-windows.zip"/>
         <asset id="717749744" name="rom_g1.zip" size="1645800503" download_count="2" content_type="application/zip" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip"/>
         <asset id="717749746" name="SHA256SUMS.MX3-G1-EN-WM-V5.01-20260805" size="78" download_count="1" content_type="application/octet-stream" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/SHA256SUMS.MX3-G1-EN-WM-V5.01-20260805"/>
-        <asset id="766036565" name="stats.txt" size="4087" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/stats.txt"/>
+        <asset id="767707648" name="stats.txt" size="4087" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/stats.txt"/>
       </assets>
     </release>
     <release id="436718010" tag_name="MX3-G1-EN-WM-V5.00-20260722" name="Portable Flashing Package: MX3-G1-EN-WM-V5.00-20260722" published_at="2026-11-06T16:13:50Z" prerelease="false" html_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/tag/MX3-G1-EN-WM-V5.00-20260722" icon_url="" icon_dark_url="">
@@ -14541,7 +14543,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;
         <asset id="741058534" name="rom_g1-windows.zip" size="1958841579" download_count="9" content_type="application/zip" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-windows.zip"/>
         <asset id="717730288" name="rom_g1.zip" size="1645759451" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1.zip"/>
         <asset id="717730287" name="SHA256SUMS.MX3-G1-EN-WM-V5.00-20260722" size="78" download_count="1" content_type="application/octet-stream" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/SHA256SUMS.MX3-G1-EN-WM-V5.00-20260722"/>
-        <asset id="766036463" name="stats.txt" size="4080" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/stats.txt"/>
+        <asset id="767707558" name="stats.txt" size="4080" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/stats.txt"/>
       </assets>
     </release>
     <release id="436711891" tag_name="MX3-9_G1_MULTI-V3.03-20260826" name="Portable Flashing Package: MX3-9_G1_MULTI-V3.03-20260826" published_at="2026-11-06T16:07:54Z" prerelease="false" html_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/tag/MX3-9_G1_MULTI-V3.03-20260826" icon_url="" icon_dark_url="">
@@ -14606,7 +14608,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;
         <asset id="740986798" name="rom_g1-windows.zip" size="1886307839" download_count="9" content_type="application/zip" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-windows.zip"/>
         <asset id="717713244" name="rom_g1.zip" size="1573225707" download_count="0" content_type="application/zip" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1.zip"/>
         <asset id="717713241" name="SHA256SUMS.MX3-9_G1_MULTI-V3.03-20260826" size="78" download_count="1" content_type="application/octet-stream" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/SHA256SUMS.MX3-9_G1_MULTI-V3.03-20260826"/>
-        <asset id="766036339" name="stats.txt" size="4022" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/stats.txt"/>
+        <asset id="767707470" name="stats.txt" size="4022" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/stats.txt"/>
       </assets>
     </release>
     <release id="436705770" tag_name="MX3-9_G1_MULTI-V3.01-20260720" name="Portable Flashing Package: MX3-9_G1_MULTI-V3.01-20260720" published_at="2026-11-06T16:01:52Z" prerelease="false" html_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/tag/MX3-9_G1_MULTI-V3.01-20260720" icon_url="" icon_dark_url="">
@@ -14671,7 +14673,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;
         <asset id="740910694" name="rom_g1-windows.zip" size="1886314770" download_count="5" content_type="application/zip" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-windows.zip"/>
         <asset id="717696543" name="rom_g1.zip" size="1573232640" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1.zip"/>
         <asset id="717696541" name="SHA256SUMS.MX3-9_G1_MULTI-V3.01-20260720" size="78" download_count="1" content_type="application/octet-stream" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/SHA256SUMS.MX3-9_G1_MULTI-V3.01-20260720"/>
-        <asset id="766036232" name="stats.txt" size="4080" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/stats.txt"/>
+        <asset id="767707385" name="stats.txt" size="4080" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/stats.txt"/>
       </assets>
     </release>
     <release id="436699728" tag_name="MX3-9_EN-V1.04-20260805" name="Portable Flashing Package: MX3-9_EN-V1.04-20260805" published_at="2026-11-06T15:56:02Z" prerelease="false" html_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/tag/MX3-9_EN-V1.04-20260805" icon_url="" icon_dark_url="">
@@ -14736,7 +14738,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;
         <asset id="740835398" name="rom_g1-windows.zip" size="1958429181" download_count="6" content_type="application/zip" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-windows.zip"/>
         <asset id="717678118" name="rom_g1.zip" size="1645347061" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1.zip"/>
         <asset id="717678114" name="SHA256SUMS.MX3-9_EN-V1.04-20260805" size="78" download_count="1" content_type="application/octet-stream" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/SHA256SUMS.MX3-9_EN-V1.04-20260805"/>
-        <asset id="766036111" name="stats.txt" size="4074" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/stats.txt"/>
+        <asset id="767707293" name="stats.txt" size="4074" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/stats.txt"/>
       </assets>
     </release>
     <release id="436693237" tag_name="MX3-9_EN-V1.03-20260707" name="Portable Flashing Package: MX3-9_EN-V1.03-20260707" published_at="2026-11-06T15:49:45Z" prerelease="false" html_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/tag/MX3-9_EN-V1.03-20260707" icon_url="" icon_dark_url="">
@@ -14801,7 +14803,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;
         <asset id="740761320" name="rom_g1-windows.zip" size="1958462369" download_count="4" content_type="application/zip" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-windows.zip"/>
         <asset id="717658744" name="rom_g1.zip" size="1645380249" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1.zip"/>
         <asset id="717658742" name="SHA256SUMS.MX3-9_EN-V1.03-20260707" size="78" download_count="0" content_type="application/octet-stream" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/SHA256SUMS.MX3-9_EN-V1.03-20260707"/>
-        <asset id="766036023" name="stats.txt" size="4012" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/stats.txt"/>
+        <asset id="767707193" name="stats.txt" size="4012" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/stats.txt"/>
       </assets>
     </release>
   </repository>
@@ -27995,7 +27997,7 @@ An update for the 4.0 firmware: Settings › System › Software update, the das
         <asset id="763451503" name="rom-windows.zip" size="771402260" download_count="2" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rom-windows.zip"/>
         <asset id="763453362" name="rom.zip" size="529527510" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rom.zip"/>
         <asset id="763453465" name="rondo-4.0.1.rondo" size="17434265" download_count="1" content_type="application/octet-stream" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rondo-4.0.1.rondo"/>
-        <asset id="766036487" name="stats.txt" size="4133" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/stats.txt"/>
+        <asset id="767708746" name="stats.txt" size="4133" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/stats.txt"/>
         <asset id="763453557" name="updater.png" size="12952" download_count="0" content_type="image/png" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/updater.png"/>
       </assets>
     </release>
@@ -28053,7 +28055,7 @@ For the **Y1, Type A**. A new firmware (number 4): **install it with Innioasis U
         <asset id="759165746" name="rom-windows.zip" size="771539420" download_count="3" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.0.0/rom-windows.zip"/>
         <asset id="759169938" name="rom.zip" size="529664668" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.0.0/rom.zip"/>
         <asset id="759171757" name="rondo-4.0.0.rondo" size="17284286" download_count="1" content_type="application/octet-stream" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.0.0/rondo-4.0.0.rondo"/>
-        <asset id="766036378" name="stats.txt" size="4135" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.0.0/stats.txt"/>
+        <asset id="767708633" name="stats.txt" size="4135" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.0.0/stats.txt"/>
         <asset id="759172074" name="updater.png" size="12952" download_count="0" content_type="image/png" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.0.0/updater.png"/>
       </assets>
     </release>
@@ -28115,7 +28117,7 @@ An update for the 3.0 firmware: Settings › System › Software update, the das
         <asset id="754872658" name="rom-windows.zip" size="771538807" download_count="10" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.2/rom-windows.zip"/>
         <asset id="754875524" name="rom.zip" size="529664161" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.2/rom.zip"/>
         <asset id="754875921" name="rondo-3.1.2.rondo" size="17284177" download_count="1" content_type="application/octet-stream" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.2/rondo-3.1.2.rondo"/>
-        <asset id="766036280" name="stats.txt" size="4138" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.2/stats.txt"/>
+        <asset id="767708538" name="stats.txt" size="4138" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.2/stats.txt"/>
         <asset id="754876107" name="updater.png" size="12952" download_count="0" content_type="image/png" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.2/updater.png"/>
       </assets>
     </release>
@@ -28171,7 +28173,7 @@ An update for the 3.0 firmware: Settings › System › Software update, the das
         <asset id="754850653" name="rom-windows.zip" size="771532359" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.1/rom-windows.zip"/>
         <asset id="754854159" name="rom.zip" size="529657715" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.1/rom.zip"/>
         <asset id="754854647" name="rondo-3.1.1.rondo" size="17283860" download_count="1" content_type="application/octet-stream" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.1/rondo-3.1.1.rondo"/>
-        <asset id="766036206" name="stats.txt" size="4131" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.1/stats.txt"/>
+        <asset id="767708459" name="stats.txt" size="4131" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.1/stats.txt"/>
         <asset id="754854724" name="updater.png" size="12952" download_count="0" content_type="image/png" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.1/updater.png"/>
       </assets>
     </release>
@@ -28233,7 +28235,7 @@ An update for the 3.0 firmware: Settings › System › Software update, the das
         <asset id="754829454" name="rom-windows.zip" size="771531335" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.0/rom-windows.zip"/>
         <asset id="754832638" name="rom.zip" size="529656689" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.0/rom.zip"/>
         <asset id="754833738" name="rondo-3.1.0.rondo" size="17283396" download_count="1" content_type="application/octet-stream" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.0/rondo-3.1.0.rondo"/>
-        <asset id="766036084" name="stats.txt" size="4130" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.0/stats.txt"/>
+        <asset id="767708359" name="stats.txt" size="4130" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.0/stats.txt"/>
         <asset id="754833865" name="updater.png" size="12952" download_count="0" content_type="image/png" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.1.0/updater.png"/>
       </assets>
     </release>
@@ -28294,7 +28296,7 @@ changes with it too (WhatsApp, Settings › Server, colored tiles): the update p
         <asset id="754276721" name="rom-windows.zip" size="771539750" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.5/rom-windows.zip"/>
         <asset id="754277784" name="rom.zip" size="529665105" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.5/rom.zip"/>
         <asset id="754277922" name="rondo-3.0.5.rondo" size="17281563" download_count="1" content_type="application/octet-stream" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.5/rondo-3.0.5.rondo"/>
-        <asset id="766036008" name="stats.txt" size="4131" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.5/stats.txt"/>
+        <asset id="767708269" name="stats.txt" size="4131" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.5/stats.txt"/>
         <asset id="754278050" name="updater.png" size="12952" download_count="0" content_type="image/png" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v3.0.5/updater.png"/>
       </assets>
     </release>
@@ -28763,7 +28765,7 @@ If your Y1 runs Rondo 1.0.1, **Settings › Software update**, **Install** in th
         <asset id="740741005" name="rom-windows.zip" size="769801395" download_count="10" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom-windows.zip"/>
         <asset id="733060709" name="rom.zip" size="527926760" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rom.zip"/>
         <asset id="706101039" name="rondo-1.0.2.apk" size="6423022" download_count="1" content_type="application/vnd.android.package-archive" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/rondo-1.0.2.apk"/>
-        <asset id="766035796" name="stats.txt" size="4147" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/stats.txt"/>
+        <asset id="767707925" name="stats.txt" size="4147" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/stats.txt"/>
         <asset id="706101141" name="updater.png" size="12952" download_count="1" content_type="image/png" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.2/updater.png"/>
       </assets>
     </release>
@@ -28838,7 +28840,7 @@ Only for the **Y1 Type A** (players that shipped with software 2.0.0 or later), 
         <asset id="740722774" name="rom-windows.zip" size="769801772" download_count="9" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom-windows.zip"/>
         <asset id="733041000" name="rom.zip" size="527927138" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rom.zip"/>
         <asset id="706172992" name="rondo-1.0.1.apk" size="6423015" download_count="1" content_type="application/vnd.android.package-archive" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/rondo-1.0.1.apk"/>
-        <asset id="766035756" name="stats.txt" size="4141" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/stats.txt"/>
+        <asset id="767707818" name="stats.txt" size="4141" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/stats.txt"/>
         <asset id="706173138" name="updater.png" size="12952" download_count="0" content_type="image/png" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.1/updater.png"/>
       </assets>
     </release>
@@ -28922,7 +28924,7 @@ The firmware is built with [`firmware/build.sh`](https://github.com/jarvissax/ro
         <asset id="740701900" name="rom-windows.zip" size="769802689" download_count="8" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom-windows.zip"/>
         <asset id="733021586" name="rom.zip" size="527928053" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rom.zip"/>
         <asset id="706152267" name="rondo-1.0.0.apk" size="6421197" download_count="1" content_type="application/vnd.android.package-archive" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/rondo-1.0.0.apk"/>
-        <asset id="766035662" name="stats.txt" size="4143" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/stats.txt"/>
+        <asset id="767707723" name="stats.txt" size="4143" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/stats.txt"/>
         <asset id="706152472" name="updater.png" size="12952" download_count="0" content_type="image/png" browser_download_url="https://github.com/y1-community/rondo-mirror/releases/download/v1.0.0/updater.png"/>
       </assets>
     </release>
@@ -29015,7 +29017,7 @@ adb shell rm -rf /data/data/com.innioasis.y1/code_cache/secondary-dexes/
         <asset id="740713815" name="rom-windows-legacy.zip" size="312615887" download_count="0" content_type="application/zip" browser_download_url="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-windows-legacy.zip"/>
         <asset id="740713827" name="rom-windows.zip" size="550854730" download_count="6" content_type="application/zip" browser_download_url="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom-windows.zip"/>
         <asset id="733043515" name="rom.zip" size="308982866" download_count="0" content_type="application/zip" browser_download_url="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/rom.zip"/>
-        <asset id="766037229" name="stats.txt" size="4055" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/stats.txt"/>
+        <asset id="767709791" name="stats.txt" size="4055" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.7/stats.txt"/>
       </assets>
     </release>
     <release id="432920526" tag_name="2.4.0-koensayr-3.0.2" name="Portable Flashing Package: 2.4.0-koensayr-3.0.2" published_at="2026-11-03T16:05:22Z" prerelease="false" html_url="https://github.com/y1-community/koensayr-auto-mirror/releases/tag/2.4.0-koensayr-3.0.2" icon_url="" icon_dark_url="">
@@ -29105,7 +29107,7 @@ adb shell rm -rf /data/data/com.innioasis.y1/code_cache/secondary-dexes/
         <asset id="740698011" name="rom-windows-legacy.zip" size="332563654" download_count="0" content_type="application/zip" browser_download_url="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-windows-legacy.zip"/>
         <asset id="740698008" name="rom-windows.zip" size="570802497" download_count="5" content_type="application/zip" browser_download_url="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom-windows.zip"/>
         <asset id="733031642" name="rom.zip" size="328930606" download_count="0" content_type="application/zip" browser_download_url="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/rom.zip"/>
-        <asset id="766037057" name="stats.txt" size="4055" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/stats.txt"/>
+        <asset id="767709710" name="stats.txt" size="4055" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/koensayr-auto-mirror/releases/download/2.4.0-koensayr-3.0.2/stats.txt"/>
       </assets>
     </release>
   </repository>

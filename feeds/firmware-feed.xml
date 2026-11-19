@@ -4,13 +4,13 @@
   <title>Innioasis and Timmkoo firmware releases</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware-list.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/firmware-feed.xml"/>
-  <updated>2026-11-19T12:57:04Z</updated>
+  <updated>2026-11-19T13:02:19Z</updated>
   <inni:schema_version>2</inni:schema_version>
   <inni:manifest_url>https://innioasis.app/slidia_manifest.xml</inni:manifest_url>
   <inni:firmware_list_url>https://innioasis.app/firmware-list.html</inni:firmware_list_url>
   <inni:packages>
     <inni:package name="Original Software" brand="Innioasis" repo="y1-community/y1-stock-rom" portable_zips="y1-community/y1-stock-rom-mirror" device="Y1" url="https://github.com/y1-community/y1-stock-rom" type="img" handler="Custom Firmware" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
-    <inni:package name="iPod OS (Dev)" brand="Innioasis" repo="spirk0/retailos-y1" device="Y1" url="https://github.com/spirk0/retailos-y1" type="img" handler="Custom Firmware"/>
+    <inni:package name="iPod OS (Dev)" brand="Innioasis" repo="spirk0/retailos-y1" portable_zips="y1-community/retailos-y1-mirror" device="Y1" url="https://github.com/spirk0/retailos-y1" type="img" handler="Custom Firmware" post_install="https://github.com/spirk0/retailos-y1#using-it"/>
     <inni:package name="Original Software" brand="Innioasis" repo="y1-community/y1-stock-rom" portable_zips="y1-community/y1-stock-rom-mirror" device="Y2" url="https://github.com/y1-community/y1-stock-rom" type="img" handler="Custom Firmware" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
     <inni:package name="Original Software" brand="Innioasis" repo="y1-community/g1-stock-rom" device="G1" url="https://github.com/y1-community/g1-stock-rom" type="img" handler="Custom Firmware" package_name="rom_g1.zip" portable_zips="y1-community/g1-stock-rom-mirror" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
     <inni:package name="Original Software" brand="Innioasis" repo="y1-community/g3-stock-rom" device="G3" url="https://github.com/y1-community/g3-stock-rom" type="img" handler="Custom Firmware" package_name="rom_g3.zip" portable_zips="y1-community/g3-stock-rom-mirror" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
@@ -1867,6 +1867,8 @@
           <inni:package platform="macos" name="rom_q5-macos.zip" url="https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-macos.zip" size="467470746" downloads="5"/>
         </inni:mirror_asset>
       </inni:release>
+    </inni:mirror>
+    <inni:mirror repo="y1-community/retailos-y1-mirror" source_repo="spirk0/retailos-y1" updated_at="2026-11-19T13:02:19Z">
     </inni:mirror>
     <inni:mirror repo="y1-community/rockbox-mirror" source_repo="rockbox-y1/rockbox" updated_at="2026-11-13T08:05:33Z">
       <inni:release tag="stable-v0.6.1" original_tag="stable-v0.6.1" mirror_tag="stable-v0.6.1" release_name="Portable Flashing Package: Rockbox-Y1 v0.6.1" published_at="2026-11-12T13:11:00Z">
