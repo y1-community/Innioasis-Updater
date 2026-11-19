@@ -39,7 +39,7 @@
         "name": "rom_y2-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux.zip",
         "size": 703706190,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-14T21:58:40Z",
         "updated_at": "2026-11-14T21:59:06Z",
@@ -113,7 +113,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 19,
+    "downloads": 20,
     "download_breakdown": {
       "tag": "3.2.4-fm",
       "mirrors": "",
@@ -131,7 +131,7 @@
         {
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom_y2-macos.zip",
@@ -683,7 +683,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip",
         "size": 491537564,
-        "download_count": 211,
+        "download_count": 213,
         "content_type": "application/zip",
         "created_at": "2026-11-12T19:21:23Z",
         "updated_at": "2026-11-12T19:22:20Z",
@@ -724,7 +724,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 330,
+    "downloads": 332,
     "download_breakdown": {
       "tag": "3.1.2",
       "mirrors": "",
@@ -757,7 +757,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip",
-          "downloads": 211
+          "downloads": 213
         },
         {
           "name": "rom.zip",
@@ -1451,7 +1451,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-linux.zip",
         "size": 539494304,
-        "download_count": 3,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-12T18:58:59Z",
         "updated_at": "2026-11-12T18:59:42Z",
@@ -1525,7 +1525,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 16,
+    "downloads": 17,
     "download_breakdown": {
       "tag": "ADB-2.1.9",
       "mirrors": "",
@@ -1543,7 +1543,7 @@
         {
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-linux.zip",
-          "downloads": 3
+          "downloads": 4
         },
         {
           "name": "rom-macos.zip",

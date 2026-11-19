@@ -17,7 +17,7 @@
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg",
         "size": 119710372,
-        "download_count": 570,
+        "download_count": 575,
         "content_type": "application/x-diskcopy",
         "created_at": "2026-11-11T00:21:08Z",
         "updated_at": "2026-11-11T00:21:31Z",
@@ -28,7 +28,7 @@
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/installer.exe",
         "size": 157480421,
-        "download_count": 897,
+        "download_count": 905,
         "content_type": "application/x-msdownload",
         "created_at": "2026-11-12T21:08:48Z",
         "updated_at": "2026-11-12T21:09:58Z",
@@ -204,7 +204,7 @@
         "name": "UpdaterCE.appimage",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage",
         "size": 306530808,
-        "download_count": 166,
+        "download_count": 168,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-12T13:56:45Z",
         "updated_at": "2026-11-12T13:59:00Z",
@@ -746,7 +746,7 @@
         "name": "flash_tool_linux.zip",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip",
         "size": 73234593,
-        "download_count": 426,
+        "download_count": 427,
         "content_type": "application/zip",
         "created_at": "2026-10-27T09:21:19Z",
         "updated_at": "2026-10-27T09:21:32Z",
@@ -765,7 +765,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 637,
+    "downloads": 638,
     "download_breakdown": {
       "tag": "flash_tool",
       "mirrors": "",
@@ -773,7 +773,7 @@
         {
           "name": "flash_tool_linux.zip",
           "url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip",
-          "downloads": 426
+          "downloads": 427
         },
         {
           "name": "flash_tool_windows.zip",

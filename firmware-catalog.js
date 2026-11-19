@@ -312,8 +312,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
       "icon_dark_url": "",
       "body": "\"General performance and stability improvements.\"\r\n\r\nThis is the software currently being shipped on Y2 retail units.\r\n\r\n(Innioasis have once again failed to release this as an update to existing users, nor do they actually post what changes their firmwares include - this firmware release was imaged from a retail Y2 unit purchased November 12 by the Community Firmware Archive and Updater CE maintainer - tested against both of Updater's installation methods: SP Flash Tool and MTKclient and the underlying tools themselves on a pre 3.2.4 and a 3.2.4 unit with success. Image was taken before any use of the player)",
-      "downloads": 341,
-      "mirror_downloads": 30,
+      "downloads": 352,
+      "mirror_downloads": 31,
       "download_breakdown": {
         "tag": "3.2.4-fm",
         "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -321,7 +321,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip",
-            "downloads": 314,
+            "downloads": 324,
             "mirror_downloads": 3
           }
         ],
@@ -345,7 +345,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux.zip",
             "size": 703706190,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
@@ -376,7 +376,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip",
           "size": 343742697,
-          "download_count": 311,
+          "download_count": 321,
           "content_type": "application/zip"
         },
         {
@@ -384,7 +384,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
           "size": 30612,
-          "download_count": 1403,
+          "download_count": 1431,
           "content_type": "image/jpeg"
         }
       ]
@@ -471,7 +471,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg",
           "size": 30612,
-          "download_count": 2492,
+          "download_count": 2499,
           "content_type": "image/jpeg"
         }
       ]
@@ -486,7 +486,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
       "icon_dark_url": "",
       "body": "This release adds FM Radio functionality to supported Y2 players, please note that some earlier Y2 revisions may not have the underlying functionality needed for FM Radio, there is an alternative release of 3.2.0 available for those in these circumstances.",
-      "downloads": 919,
+      "downloads": 920,
       "mirror_downloads": 182,
       "download_breakdown": {
         "tag": "3.2.0-fm",
@@ -495,7 +495,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/rom_y2.zip",
-            "downloads": 750,
+            "downloads": 751,
             "mirror_downloads": 13
           }
         ],
@@ -550,7 +550,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/rom_y2.zip",
           "size": 355558382,
-          "download_count": 737,
+          "download_count": 738,
           "content_type": "application/zip"
         },
         {
@@ -558,7 +558,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "system.img",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img",
           "size": 859826928,
-          "download_count": 691,
+          "download_count": 695,
           "content_type": "application/x-apple-diskimage"
         },
         {
@@ -566,7 +566,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
           "size": 30612,
-          "download_count": 2053,
+          "download_count": 2058,
           "content_type": "image/jpeg"
         }
       ]
@@ -639,7 +639,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg",
           "size": 30612,
-          "download_count": 1760,
+          "download_count": 1764,
           "content_type": "image/jpeg"
         }
       ]
@@ -654,8 +654,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
       "icon_dark_url": "",
       "body": "Features improved support for AirPods Pro 2, AirPods 3 and later",
-      "downloads": 9363,
-      "mirror_downloads": 534,
+      "downloads": 9368,
+      "mirror_downloads": 536,
       "download_breakdown": {
         "tag": "3.1.2",
         "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -663,7 +663,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
-            "downloads": 8842,
+            "downloads": 8845,
             "mirror_downloads": 13
           }
         ],
@@ -673,7 +673,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip",
             "size": 491537564,
-            "downloads": 318
+            "downloads": 320
           },
           {
             "platform": "windows-legacy",
@@ -718,7 +718,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
           "size": 250125316,
-          "download_count": 8829,
+          "download_count": 8832,
           "content_type": "application/zip"
         },
         {
@@ -726,7 +726,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
           "size": 30612,
-          "download_count": 7597,
+          "download_count": 7645,
           "content_type": "image/jpeg"
         }
       ]
@@ -813,7 +813,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
           "size": 30612,
-          "download_count": 6833,
+          "download_count": 6872,
           "content_type": "image/jpeg"
         }
       ]
@@ -1074,7 +1074,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/type-b-1.7.6/updater.jpg",
           "size": 30612,
-          "download_count": 269,
+          "download_count": 270,
           "content_type": "image/jpeg"
         }
       ]
@@ -1089,8 +1089,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/updater.jpg",
       "icon_dark_url": "",
       "body": "Adds Spanish language support.",
-      "downloads": 1556,
-      "mirror_downloads": 43,
+      "downloads": 1557,
+      "mirror_downloads": 44,
       "download_breakdown": {
         "tag": "ADB-2.1.9",
         "mirrors": "y1-community/y1-stock-rom-mirror",
@@ -1122,7 +1122,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-linux.zip",
             "size": 539494304,
-            "downloads": 6
+            "downloads": 7
           },
           {
             "platform": "linux-arm64",
@@ -1709,7 +1709,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
       "icon_dark_url": "",
       "body": "Original Innioasis G3 software **MX3-G3-EN-WM-V6.01-20260805**.\n\n- Model: **G3** (Innioasis)\n- Package: `rom_g3.zip`\n- Build tag: `MX3-G3-EN-WM-V6.01-20260805`\n- Build date: 2026-08-05\n\n## Install\n\n1. Download `rom_g3.zip` (every numbered volume if the release has more than one, then `cat rom_g3.zip.* > rom_g3.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g3.zip` | 1569.9 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G3>",
-      "downloads": 81,
+      "downloads": 82,
       "mirror_downloads": 30,
       "download_breakdown": {
         "tag": "MX3-G3-EN-WM-V6.01-20260805",
@@ -1718,7 +1718,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g3.zip",
             "url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3.zip",
-            "downloads": 54,
+            "downloads": 55,
             "mirror_downloads": 3
           }
         ],
@@ -1773,7 +1773,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g3.zip",
           "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3.zip",
           "size": 1646117102,
-          "download_count": 51,
+          "download_count": 52,
           "content_type": "application/octet-stream"
         },
         {
@@ -2995,7 +2995,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark_url": "",
       "body": "**Y2Linux 1.0 Beta 9.3.32**: Y2s with a newer memory chip can install it, and fixes for USB, the wheel click and films over Bluetooth.\n\n## What's new\n- **Clear Playlist** ([Y2Linux #103](https://github.com/SchulzCode/Y2Linux/issues/103)): hold Select on a playlist, Favorites too. It asks first; the songs stay in your library.\n- **Add to Playlist skips songs already in it** ([Y2Linux #106](https://github.com/SchulzCode/Y2Linux/issues/106)): adding a whole folder again just adds what's new (\"3 added to Road Trip, 12 already in it\").\n- **An album's page shows its year** ([Y2Linux #125](https://github.com/SchulzCode/Y2Linux/issues/125)): \"2019 \u00b7 12 songs \u00b7 48:10\".\n- **Play All and Shuffle All** on album and artist pages ([Y2Reborn #145](https://github.com/SchulzCode/Y2Reborn/issues/145)).\n- **For skin makers:** `{year}` ([#135](https://github.com/SchulzCode/Y2Reborn/issues/135)), `{page_title}` names the album or artist on their pages ([#144](https://github.com/SchulzCode/Y2Reborn/issues/144)), and `\"if\": \"scrollbar\"` in list rows ([#138](https://github.com/SchulzCode/Y2Reborn/issues/138)).\n\n## Fixed\n- **Stuck at \"Preparing storage\" on some new Y2s** ([Y2Reborn #130](https://github.com/SchulzCode/Y2Reborn/issues/130)). Some players have a memory chip with a larger security area; Y2Linux now finds its music area there as the stock firmware does.\n- **USB stayed dead until a restart** ([Y2Linux #117](https://github.com/SchulzCode/Y2Linux/issues/117)). If the connection drops during a copy, the player now sets it up again by itself; unplug and plug in again.\n- **The wheel clicked only on every other row** after a USB file transfer ([Y2Linux #127](https://github.com/SchulzCode/Y2Linux/issues/127)).\n- **Films ran ahead of the sound on Bluetooth** ([Y2Reborn #133](https://github.com/SchulzCode/Y2Reborn/issues/133)). The picture now waits for the headphones' delay. The time on Now Playing follows what you hear too.\n\n## Known issues\n- AirPods can stay silent after you walk out of range and come back; pause and play brings the sound back ([Y2Reborn #132](https://github.com/SchulzCode/Y2Reborn/issues/132)).\n- Something wrong? Send an error report (Settings \u2192 System \u2192 Error Reports). **Restore Previous System** (Settings \u2192 System \u2192 About, tap Version seven times, then Diagnostics) takes you back to the version you had, with your data kept.\n\nMore details in plain words: **[Beta 9.3.32 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.3.32.md)**.\n\n<!-- github-only -->\n\n## Already running Y2Linux\nSettings \u2192 System \u2192 Software Update \u2192 **Update Now**. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. (On Beta 9.2.8 and older: Settings \u2192 About & Updates \u2192 Check for Updates \u2192 **Update Now**.)\n\n## Install with the Innioasis Updater (easiest)\nThe community **Innioasis Updater CE** installs Y2Linux for you, on **Windows, macOS and Linux**. No SP Flash Tool needed.\n\n1. Download Innioasis Updater CE for your computer from [innioasis.app](https://innioasis.app/guide.html#download-updater) and open it.\n2. Choose **Y2**, then **Reborn (Y2Linux)** and the latest release.\n3. Click **Install / Restore**, switch the Y2 off and connect it when the updater asks. Wait until it confirms, then unplug.\n4. Connect the Y2 to the computer and **copy** `system.img` from the Innioasis Y2 firmware package v3.2.0 into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nStep-by-step guides for each computer: [Reborn (Y2Linux) install guide](https://innioasis.app/guides/reborn-y2linux-y2.html). The way back to stock is in the updater too: choose **Y2** and **Original Software**.\n\n## Install with SP Flash Tool\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.9.3.32-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md) \u00b7 Storage: [Storage](https://github.com/SchulzCode/Y2Linux/blob/main/docs/STORAGE.md) \u00b7 [Videos](https://github.com/SchulzCode/Y2Linux/blob/main/docs/VIDEO.md) \u00b7 [FM radio](https://github.com/SchulzCode/Y2Linux/blob/main/docs/FM-RADIO.md) \u00b7 [Wi-Fi Share](https://github.com/SchulzCode/Y2Linux/blob/main/docs/WIFI-SHARE.md) \u00b7 [Buttons](https://github.com/SchulzCode/Y2Linux/blob/main/docs/BUTTONS.md) \u00b7 [Audiobooks](https://github.com/SchulzCode/Y2Linux/blob/main/docs/AUDIOBOOKS.md) \u00b7 Headphone settings: [Headphone output](https://github.com/SchulzCode/Y2Linux/blob/main/docs/HEADPHONE-OUTPUT.md) \u00b7 [Error reports](https://github.com/SchulzCode/Y2Linux/blob/main/docs/ERROR-REPORTS.md) \u00b7 Skins: [skin guide](https://github.com/SchulzCode/Y2Reborn/blob/main/docs/skins.md)\n\n## How it was tested\nThe platform's full check and Reborn's tests passed, and so did the tests of the release images. New tests: the storage start of both chip layouts, USB set up again after an unbind, every wheel click after a stop, the position behind a long Bluetooth delay, the new skin values, the album line, Clear Playlist and songs already in a playlist. On a player running Beta 9.3.30 the click problem was reproduced, and holds of the volume buttons with the screen off worked. **Not tested on a player: a Y2 with the 4 MB RPMB chip, a USB unbind during a copy, films over Bluetooth, and this release itself.**\n\n## Files\n- `Y2Linux-1.0.0-beta.9.3.32-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 16900).\n- `Y2Linux-1.0.0-beta.9.3.32-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-263`. The video chip is driven by this project's own driver; no MediaTek video code is on the player. The speaker amplifier driver is Chris Hendrickson's GPL-2.0 AW87559 driver. The headphone profiles are AutoEq results (MIT, Jaakko Pasanen); their licence ships with them.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Awinic, Last.fm, AutoEq, Strawberry, MusicBee, HandBrake, FFmpeg or Google. Noto Sans CJK is licensed under the SIL Open Font License 1.1.\n\n<!-- /github-only -->\n\n<!-- github-only -->\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-third-party-a400ffbbbcb0.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-256/Y2Linux-sources-third-party-a400ffbbbcb0.tar) (attached to `baseline-256`), SHA-256 `a400ffbbbcb07dc08c1241e1f1ad89c5782b9ca40537f2c6e5e2735850b019ca`\n- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-120`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz) (attached to `baseline-120`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n<!-- /github-only -->\n",
-      "downloads": 137,
+      "downloads": 142,
       "mirror_downloads": 12,
       "download_breakdown": {
         "tag": "baseline-263",
@@ -3004,7 +3004,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.32-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/Y2Linux-1.0.0-beta.9.3.32-first-install.zip",
-            "downloads": 126,
+            "downloads": 131,
             "mirror_downloads": 1
           }
         ],
@@ -3059,7 +3059,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/bootimg.img.gz",
           "size": 7557251,
-          "download_count": 125,
+          "download_count": 128,
           "content_type": "application/gzip"
         },
         {
@@ -3067,7 +3067,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/manifest.json",
           "size": 4245,
-          "download_count": 421,
+          "download_count": 443,
           "content_type": "application/json"
         },
         {
@@ -3075,7 +3075,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/manifest.sig",
           "size": 64,
-          "download_count": 415,
+          "download_count": 437,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3083,7 +3083,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/recovery.img.gz",
           "size": 7557276,
-          "download_count": 117,
+          "download_count": 120,
           "content_type": "application/gzip"
         },
         {
@@ -3091,7 +3091,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/rootfs.ext4.gz",
           "size": 53154659,
-          "download_count": 115,
+          "download_count": 118,
           "content_type": "application/gzip"
         },
         {
@@ -3107,7 +3107,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.3.32-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-263/Y2Linux-1.0.0-beta.9.3.32-first-install.zip",
           "size": 69257210,
-          "download_count": 125,
+          "download_count": 130,
           "content_type": "application/zip"
         },
         {
@@ -3948,8 +3948,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark_url": "",
       "body": "**Y2Linux 1.0 Beta 9.3.25**: the Y2 plays videos. This is an early version of video playback: expect bugs, and please report them.\n\n## What's new\n- **Videos (early version)**. Copy video files onto Internal Storage or the SD card, the same way as songs; any folder works, and a folder of your own such as `Videos` keeps them together. After the next scan **Videos** appears on Home, with a picture of each film. A film plays on Now Playing: Play/Pause, Previous/Next, the wheel and the volume work as for a song, a button press shows the title and a time line, and a film goes on where you left it. The screen stays on while a film plays. Films never show up among your songs, albums or shuffles.\n- **Subtitles** show when the file carries a text track, or when a subtitle file with the same name lies beside the film (`Film.mkv` and `Film.srt`, `.ass`, `.ssa` or `.vtt`).\n- **The best format: MP4 with H.264 video and AAC sound, 640\u00d7360, up to 30 pictures a second.** The screen has 480\u00d7360 pixels, so a bigger picture looks no better, only fills the storage and uses more battery. About 1 Mbit/s is plenty: a two-hour film is then under 1 GB.\n- **What plays**: `.mp4` `.m4v` `.mov` `.mkv` `.webm` `.avi`. H.264 and MPEG-4 (Xvid, DivX) are decoded by the player's video chip, up to 1920\u00d71080. VP8, VP9, DivX 3 and H.263 are decoded by the processor and are only smooth at small sizes (about 640\u00d7360).\n- **What does not play**: H.265/HEVC, AV1, DTS sound, picture subtitles (DVD, Blu-ray), files with a picture and no sound. Convert such films first, and big ones too: see [Videos on the Y2](https://github.com/SchulzCode/Y2Linux/blob/main/docs/VIDEO.md) for a ready command and HandBrake settings.\n- **A song tagged \"Pop/Rock\" is now in Pop and in Rock** ([Y2Reborn #124](https://github.com/SchulzCode/Y2Reborn/issues/124)). Tagging programs that join several genres with \"/\" are understood; \"Singer/Songwriter\" stays one genre.\n\n## How fast it is (measured on one player)\n- H.264 1280\u00d7720 at 30 pictures a second and 1920\u00d71080 at 24: no picture dropped, the player used about 60 % of one of its four processor cores.\n- Xvid 1280\u00d7720 at 25 pictures a second: no picture dropped, 57 % of one core.\n- VP9 640\u00d7360: no picture dropped, 80 % of one core. Bigger VP9 files will stutter.\n\n## Known issues\n- **Video is new.** Sleep and wake while a film is open have not been tested, and nobody has measured how long the battery lasts with films. Leave Now Playing before you put the player to sleep if you see trouble.\n- Over Bluetooth the sound comes a little later than the picture (the headphones' own delay).\n- The first text subtitle and the default sound track are used; there is no menu to choose another or to turn subtitles off.\n- Skins show their own lists, but the film itself always uses Reborn's own screen.\n- Interlaced Xvid/DivX films and 10-bit H.264 are decoded by the processor and may stutter above DVD size.\n- On a card formatted as FAT32 a file can't be larger than 4 GB.\n- Everything listed for [Beta 9.3.24](https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-235) still applies.\n- Something wrong? Send an error report (Settings \u2192 System \u2192 Error Reports). **Restore Previous System** (Settings \u2192 System \u2192 About, tap Version seven times, then Diagnostics) takes you back to the version you had, with your data kept.\n\nMore details in plain words: **[Beta 9.3.25 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.3.25.md)**.\n\n<!-- github-only -->\n\n## Converting a film for the Y2\nWith [FFmpeg](https://ffmpeg.org) (free, every computer):\n\n```\nffmpeg -i film.mkv -vf \"scale=-2:360\" -r 30 -c:v libx264 -profile:v high -pix_fmt yuv420p -crf 23 -c:a aac -b:a 160k film.mp4\n```\n\nFor an old 4:3 film use `scale=480:360`. With [HandBrake](https://handbrake.fr): preset **Fast 480p30**, format MP4, video encoder H.264, and set the height to 360 under Dimensions. Keep the subtitle as a separate `.srt` file with the film's name, or add it as a text track; burnt-in picture subtitles from DVDs and Blu-rays do not show otherwise.\n\nA film converted like this needs roughly 8 MB a minute. Films up to 1920\u00d71080 play as they are when they use H.264 (8 bit) or Xvid/DivX; they only cost more battery and storage.\n\n## Already running Y2Linux\nSettings \u2192 System \u2192 Software Update \u2192 **Update Now**. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. (On Beta 9.2.8 and older: Settings \u2192 About & Updates \u2192 Check for Updates \u2192 **Update Now**.)\n\n## Install with the Innioasis Updater (easiest)\nThe community **Innioasis Updater CE** installs Y2Linux for you, on **Windows, macOS and Linux**. No SP Flash Tool needed.\n\n1. Download Innioasis Updater CE for your computer from [innioasis.app](https://innioasis.app/guide.html#download-updater) and open it.\n2. Choose **Y2**, then **Reborn (Y2Linux)** and the latest release.\n3. Click **Install / Restore**, switch the Y2 off and connect it when the updater asks. Wait until it confirms, then unplug.\n4. Connect the Y2 to the computer and **copy** `system.img` from the Innioasis Y2 firmware package v3.2.0 into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nStep-by-step guides for each computer: [Reborn (Y2Linux) install guide](https://innioasis.app/guides/reborn-y2linux-y2.html). The way back to stock is in the updater too: choose **Y2** and **Original Software**.\n\n## Install with SP Flash Tool\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.9.3.25-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md) \u00b7 Storage: [Storage](https://github.com/SchulzCode/Y2Linux/blob/main/docs/STORAGE.md) \u00b7 [Videos](https://github.com/SchulzCode/Y2Linux/blob/main/docs/VIDEO.md) \u00b7 [Audiobooks](https://github.com/SchulzCode/Y2Linux/blob/main/docs/AUDIOBOOKS.md) \u00b7 Headphone settings: [Headphone output](https://github.com/SchulzCode/Y2Linux/blob/main/docs/HEADPHONE-OUTPUT.md) \u00b7 [Error reports](https://github.com/SchulzCode/Y2Linux/blob/main/docs/ERROR-REPORTS.md) \u00b7 Skins: [skin guide](https://github.com/SchulzCode/Y2Reborn/blob/main/docs/skins.md)\n\n## How it was tested\nThe platform's full check and Reborn's tests passed, and so did the tests of the release images. On one player: this build was installed over the air; H.264 pictures from the video chip were compared with a software decoder and are identical (130 of 135 standard test streams and nine films); Xvid/DivX pictures differ from it by at most 5 of 255 brightness steps, which the format allows (ten films). Films were played in Reborn and checked by screen captures. Not tested: sleep and wake with a film open, battery life with films, damaged files, players with the other screen type.\n\n## Files\n- `Y2Linux-1.0.0-beta.9.3.25-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 16200).\n- `Y2Linux-1.0.0-beta.9.3.25-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-248`. The video chip is driven by this project's own driver; no MediaTek video code is on the player. The speaker amplifier driver is Chris Hendrickson's GPL-2.0 AW87559 driver. The headphone profiles are AutoEq results (MIT, Jaakko Pasanen); their licence ships with them.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Awinic, Last.fm, AutoEq, Strawberry, MusicBee, HandBrake, FFmpeg or Google. Noto Sans CJK is licensed under the SIL Open Font License 1.1.\n\n<!-- /github-only -->\n\n<!-- github-only -->\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-120`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz) (attached to `baseline-120`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n<!-- /github-only -->\n",
-      "downloads": 35,
-      "mirror_downloads": 25,
+      "downloads": 37,
+      "mirror_downloads": 27,
       "download_breakdown": {
         "tag": "baseline-248",
         "mirrors": "y1-community/y2linux-mirror",
@@ -3974,7 +3974,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.25-first-install-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-248/Y2Linux-1.0.0-beta.9.3.25-first-install-windows-legacy.zip",
             "size": 143667858,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
@@ -3988,7 +3988,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.25-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-248/Y2Linux-1.0.0-beta.9.3.25-first-install-linux-arm64.zip",
             "size": 254132176,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -4496,8 +4496,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark_url": "",
       "body": "**Y2Linux 1.0 Beta 9.3.21**: steadier Bluetooth on a weak signal, Wi-Fi on channels 12 and 13, battery and SD card fixes.\n\n## What's new\n- **Bluetooth keeps off your Wi-Fi's channel.** Both share one antenna; while Wi-Fi is connected, Bluetooth now leaves the Wi-Fi network's channels alone.\n- **FLAC and Opus songs have a bitrate** (skins can show it). For songs already in your library, run Settings \u2192 System \u2192 Reset & Maintenance \u2192 **Rebuild Music Library** once.\n\n## Fixed\n- **Bluetooth dropped out and then played fast** when the signal got weak (far from the headphones, a body in between). After a pause in the link the player sent everything it had missed in one burst. The music now simply continues where it stopped.\n- **Bluetooth headphones could go silent** after the player was busy for a moment. The player now always sends something while music is on, silence if need be.\n- **Starting music on slow Bluetooth headphones** could fail with an error although the headphones were about to answer. The player now waits longer for them.\n- **Wi-Fi networks on channel 12 or 13 never showed up.** The player now listens on these channels too; no setting needed.\n- **The battery was empty in the morning** on players whose Wi-Fi and Bluetooth never started: such a player could not go to sleep. It sleeps now.\n- **An exFAT SD card could freeze until a restart** when a damaged or half-copied file on it was read.\n\n## Known issues\n- A network on channel 12 or 13 may need a second scan to appear.\n- Far from the headphones the music still pauses when the signal is lost; it no longer rushes afterwards.\n- A charge-only USB cable only charges. If your computer doesn't see the player, try a cable that transfers data with a phone.\n- Skins with their own fonts (Luna XP, Winamp and others) show boxes instead of Chinese, Japanese and Korean titles.\n- After a sleep, Bluetooth headphones reconnect within a few seconds of waking. Headphones that went back to a phone meanwhile must be picked again in Settings \u2192 Bluetooth.\n- WPA3-only Wi-Fi networks can't be joined; a \"WPA2/WPA3 mixed\" setting on the router works.\n- One audiobook file longer than about 36 hours may not play or not show up; split it into parts of up to 30 hours.\n- Some players turned off by themselves during playback; the cause isn't found yet.\n- Something wrong? Send an error report (Settings \u2192 System \u2192 Error Reports). **Restore Previous System** (Settings \u2192 System \u2192 About, tap Version seven times, then Diagnostics) takes you back to the version you had, with your data kept.\n\nMore details in plain words: **[Beta 9.3.21 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.3.21.md)**.\n\n<!-- github-only -->\n\n## Already running Y2Linux\nSettings \u2192 System \u2192 Software Update \u2192 **Update Now**. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. (On Beta 9.2.8 and older: Settings \u2192 About & Updates \u2192 Check for Updates \u2192 **Update Now**.)\n\n## Install with the Innioasis Updater (easiest)\nThe community **Innioasis Updater CE** installs Y2Linux for you, on **Windows, macOS and Linux**. No SP Flash Tool needed.\n\n1. Download Innioasis Updater CE for your computer from [innioasis.app](https://innioasis.app/guide.html#download-updater) and open it.\n2. Choose **Y2**, then **Reborn (Y2Linux)** and the latest release.\n3. Click **Install / Restore**, switch the Y2 off and connect it when the updater asks. Wait until it confirms, then unplug.\n4. Connect the Y2 to the computer and **copy** `system.img` from the Innioasis Y2 firmware package v3.2.0 into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nStep-by-step guides for each computer: [Reborn (Y2Linux) install guide](https://innioasis.app/guides/reborn-y2linux-y2.html). The way back to stock is in the updater too: choose **Y2** and **Original Software**.\n\n## Install with SP Flash Tool\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.9.3.21-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md) \u00b7 Storage: [Storage](https://github.com/SchulzCode/Y2Linux/blob/main/docs/STORAGE.md) \u00b7 [Audiobooks](https://github.com/SchulzCode/Y2Linux/blob/main/docs/AUDIOBOOKS.md) \u00b7 Headphone settings: [Headphone output](https://github.com/SchulzCode/Y2Linux/blob/main/docs/HEADPHONE-OUTPUT.md) \u00b7 [Error reports](https://github.com/SchulzCode/Y2Linux/blob/main/docs/ERROR-REPORTS.md) \u00b7 Skins: [skin guide](https://github.com/SchulzCode/Y2Reborn/blob/main/docs/skins.md) (now with three example skins)\n\n## How it was tested\nOn a player with AirPods Pro: music over Bluetooth through play, a short and a long pause, a seek and several skips, with a packet every 23 milliseconds and never a gap over 40; Wi-Fi scanning and connecting; Bluetooth leaving the Wi-Fi channel within two seconds; every file on an exFAT card read without the freeze. The weak-signal fix was checked on a computer against pauses recorded on the player. New tests cover each change; the platform's full check, Reborn's workspace tests and the tests of the release images passed. Not yet tried: the weak-signal test with this release, joining a router on channel 12 or 13, other headphones than AirPods.\n\n## Files\n- `Y2Linux-1.0.0-beta.9.3.21-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 15700).\n- `Y2Linux-1.0.0-beta.9.3.21-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-232`. The speaker amplifier driver is Chris Hendrickson's GPL-2.0 AW87559 driver. The headphone profiles are AutoEq results (MIT, Jaakko Pasanen); their licence ships with them.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Awinic, Last.fm, AutoEq, Strawberry, MusicBee or Google. Noto Sans CJK is licensed under the SIL Open Font License 1.1.\n\n<!-- /github-only -->\n\n<!-- github-only -->\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-120`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz) (attached to `baseline-120`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n<!-- /github-only -->\n",
-      "downloads": 72,
-      "mirror_downloads": 59,
+      "downloads": 73,
+      "mirror_downloads": 60,
       "download_breakdown": {
         "tag": "baseline-232",
         "mirrors": "y1-community/y2linux-mirror",
@@ -4536,7 +4536,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.3.21-first-install-linux-arm64.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-232/Y2Linux-1.0.0-beta.9.3.21-first-install-linux-arm64.zip",
             "size": 252807903,
-            "downloads": 5
+            "downloads": 6
           },
           {
             "platform": "linux-legacy",
@@ -6021,8 +6021,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark_url": "",
       "body": "**Y2Linux 1.0 Beta 9.2.15: Settings scrolls smoothly with a large library.** Linux 6.18 and the native Reborn music player for the Innioasis Y2.\n\n## Already running Y2Linux\nSettings \u2192 System \u2192 Software Update \u2192 **Update Now** (on Beta 9.2.8 and older: Settings \u2192 About & Updates \u2192 Check for Updates \u2192 **Update Now**).\n\n## What changed\n- **Settings is fast again with a large library** (Y2Reborn #85, fixed by @mrtngamper in #86): since the Settings redesign in 9.2.10, the Settings page and Settings \u2192 Library counted every song on the player again for each picture drawn, so with tens of thousands of songs scrolling there lagged. They now use the count the player already keeps. Every other screen was checked the same way with 72 000 songs; none does this.\n\nBefore release: the platform's full check, Reborn's workspace tests (776; new, failing without the change: Settings and Settings \u2192 Library count the songs they are given) and the tests of the release images. On a computer with 72 000 songs, a Settings frame went from about 20 ms to under 0.01 ms. Installed on the developer's player by update from 9.2.14.\n\nWhat changed and why, in plain words: **[Beta 9.2.15 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.2.15.md)**. Everything from Beta 9.2.14 is included ([Beta 9.2.14 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.2.14.md)).\n\n## Install (from stock)\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.9.2.15-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md) \u00b7 Storage: [Storage](https://github.com/SchulzCode/Y2Linux/blob/main/docs/STORAGE.md) \u00b7 [Audiobooks](https://github.com/SchulzCode/Y2Linux/blob/main/docs/AUDIOBOOKS.md) \u00b7 Headphone settings: [Headphone output](https://github.com/SchulzCode/Y2Linux/blob/main/docs/HEADPHONE-OUTPUT.md) \u00b7 [Error reports](https://github.com/SchulzCode/Y2Linux/blob/main/docs/ERROR-REPORTS.md) \u00b7 Skins: [skin guide](https://github.com/SchulzCode/Y2Reborn/blob/main/docs/skins.md)\n\n## Known issues (beta)\n- Everything listed for Beta 9.0 still applies. If anything behaves differently from 9.2.14, send an error report (Settings \u2192 System \u2192 Error Reports); **Restore Previous System** (Settings \u2192 System \u2192 About, tap Version seven times, then Diagnostics) goes back to the version you had, with your data kept.\n- Battery life in sleep: about 2 mA overnight on the developer's player (estimated from the battery voltage); stock is about 1.3 mA.\n- Some players turned off by themselves during playback; the cause is not found yet. If yours does, start it again and send a report.\n- The speaker uses the same volume as the headphones; its loudest step is the stock speaker's. Start low the first time.\n- How loud the wheel click should be is a first guess; tell us if it is too loud or too soft.\n- BBC radio stations stream only in HLS, which the player does not play yet. FM radio is in the works for a later beta.\n\n## Files\n- `Y2Linux-1.0.0-beta.9.2.15-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 13100).\n- `Y2Linux-1.0.0-beta.9.2.15-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-206`. The speaker amplifier driver is Chris Hendrickson's GPL-2.0 AW87559 driver. The headphone profiles are AutoEq results (MIT, Jaakko Pasanen); their licence ships with them.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Awinic, Last.fm, AutoEq, Strawberry or Google. Noto Sans CJK is licensed under the SIL Open Font License 1.1. Details: [Beta 9.2.15 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.2.15.md).\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-third-party-a6aaa039273c.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-186/Y2Linux-sources-third-party-a6aaa039273c.tar) (attached to `baseline-186`), SHA-256 `a6aaa039273c141a32e9c392305e2c3f75a4b48077ec78576b8f2c2a735551fd`\n- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-120`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz) (attached to `baseline-120`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n",
-      "downloads": 102,
-      "mirror_downloads": 74,
+      "downloads": 103,
+      "mirror_downloads": 75,
       "download_breakdown": {
         "tag": "baseline-206",
         "mirrors": "y1-community/y2linux-mirror",
@@ -6040,7 +6040,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.15-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/Y2Linux-1.0.0-beta.9.2.15-first-install-windows.zip",
             "size": 379681993,
-            "downloads": 19
+            "downloads": 20
           },
           {
             "platform": "windows-legacy",
@@ -7236,8 +7236,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark_url": "",
       "body": "**Y2Linux 1.0 Beta 9.2.5: Wi-Fi finds your network again after a wake.** Linux 6.18 and the native Reborn music player for the Innioasis Y2.\n\n## Already running Y2Linux\nSettings \u2192 About & Updates \u2192 Check for Updates \u2192 **Update Now**.\n\n## What's fixed\n- **Wi-Fi that does not find your network after a wake** (#83): sometimes the Wi-Fi kept searching after the player woke up and never saw your network, and Connect said \"not found\"; only switching Wi-Fi off and on helped. When Wi-Fi has searched four times over a minute without seeing any saved network, the player now switches it off and on once by itself (at most every ten minutes until it connects). Your Wi-Fi setting stays as you set it.\n\nTested on the developer's player: installed over the air from Beta 9.2.4 and confirmed by the player itself; Wi-Fi switched off and on the way the player now does it reconnected in 12 s. Before release: the platform's full check (new tests for when Wi-Fi is switched off and on, and when never), Reborn's workspace tests and the tests of the release images.\n\nWhat changed and why, in plain words: **[Beta 9.2.5 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.2.5.md)**. Everything from Beta 9.2.4 is included ([Beta 9.2.4 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.2.4.md)).\n\n## Install (from stock)\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.9.2.5-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md) \u00b7 Storage: [Storage](https://github.com/SchulzCode/Y2Linux/blob/main/docs/STORAGE.md) \u00b7 [Audiobooks](https://github.com/SchulzCode/Y2Linux/blob/main/docs/AUDIOBOOKS.md) \u00b7 Headphone settings: [Headphone output](https://github.com/SchulzCode/Y2Linux/blob/main/docs/HEADPHONE-OUTPUT.md) \u00b7 [Error reports](https://github.com/SchulzCode/Y2Linux/blob/main/docs/ERROR-REPORTS.md) \u00b7 Skins: [skin guide](https://github.com/SchulzCode/Y2Reborn/blob/main/docs/skins.md)\n\n## Known issues (beta)\n- Everything listed for Beta 9.0 still applies. If anything behaves differently from 9.2.4, send an error report (Settings \u2192 Diagnostics); Settings \u2192 Diagnostics \u2192 **Restore Previous System** goes back to the version you had, with your data kept.\n- Battery life in sleep: about 2 mA overnight on the developer's player (estimated from the battery voltage); stock is about 1.3 mA.\n- Some players turned off by themselves during playback; the cause is not found yet. If yours does, start it again and send a report.\n- The speaker uses the same volume as the headphones; its loudest step is the stock speaker's. Start low the first time.\n- How loud the wheel click should be is a first guess; tell us if it is too loud or too soft.\n- BBC radio stations stream only in HLS, which the player does not play yet. FM radio is in the works for a later beta.\n\n## Files\n- `Y2Linux-1.0.0-beta.9.2.5-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 12100).\n- `Y2Linux-1.0.0-beta.9.2.5-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-196`. The speaker amplifier driver is Chris Hendrickson's GPL-2.0 AW87559 driver. The headphone profiles are AutoEq results (MIT, Jaakko Pasanen); their licence ships with them.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Awinic, Last.fm, AutoEq, Strawberry or Google. Noto Sans CJK is licensed under the SIL Open Font License 1.1. Details: [Beta 9.2.5 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.2.5.md).\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-third-party-a6aaa039273c.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-186/Y2Linux-sources-third-party-a6aaa039273c.tar) (attached to `baseline-186`), SHA-256 `a6aaa039273c141a32e9c392305e2c3f75a4b48077ec78576b8f2c2a735551fd`\n- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-120`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz) (attached to `baseline-120`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n",
-      "downloads": 90,
-      "mirror_downloads": 70,
+      "downloads": 91,
+      "mirror_downloads": 71,
       "download_breakdown": {
         "tag": "baseline-196",
         "mirrors": "y1-community/y2linux-mirror",
@@ -7255,7 +7255,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.9.2.5-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-196/Y2Linux-1.0.0-beta.9.2.5-first-install-windows.zip",
             "size": 379668813,
-            "downloads": 17
+            "downloads": 18
           },
           {
             "platform": "windows-legacy",
@@ -8189,8 +8189,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark_url": "",
       "body": "**Y2Linux 1.0 Beta 8.43: your requests for Reborn.** Linux 6.18 and the native Reborn music player for the Innioasis Y2.\n\n## Already running Y2Linux\nSettings \u2192 About & Updates \u2192 Check for Updates \u2192 **Update Now**.\n\n## What's new\n- **Choose what's on Home (#52, #55):** Settings \u2192 Customize \u2192 Home Menu now has a switch for Music, Playlists, Radio and Search too (Now Playing and Settings always stay). A hidden Playlists or Search is still at the end of Music.\n- **Go back to where the music came from (#60, #25):** Now Playing's menu (hold the center button) has **Go to Playlist**, Go to Folder, Go to Search, Go to Genre or Go to Songs, depending on where you started the music, and opens it with the playing song selected.\n- **Leaving Search is easy again (#51):** Cancel always leaves Search, also with text in the box, and holding Back while typing does too. Both go back to where you opened Search.\n- **No more duplicate albums (#45, #46):** an album where only some songs have the Album Artist tag is listed once.\n- **Albums by artist (#56):** Settings \u2192 Customize \u2192 **Album Order**: Title or Artist (then title). Cover Flow follows it.\n- **Faster scrolling in long lists (#30):** spin the wheel fast in Songs, Artists, Albums or Folders and it jumps letter by letter; the letter stays for a moment after you stop, so you can turn back without losing it.\n- **Cover Flow in light skins (#57):** the shelf under the covers now fades into the skin's background instead of black.\n- **Headphones unplugged (#62):** the player now says \"Headphones unplugged. Playback paused.\"\n- **More haptic feedback (#28):** a tick when a computer connects and while you hold Previous/Next to seek (with Haptics on in Customize).\n\nEverything from Beta 8.42 (sleep, large SD cards, report fixes, Wi-Fi and Bluetooth on players with empty factory partitions) is included. Thanks for all the requests!\n\n## Install (from stock)\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.8.43-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md) \u00b7 Storage: [Storage](https://github.com/SchulzCode/Y2Linux/blob/main/docs/STORAGE.md) \u00b7 [Audiobooks](https://github.com/SchulzCode/Y2Linux/blob/main/docs/AUDIOBOOKS.md) \u00b7 Headphone settings: [Headphone output](https://github.com/SchulzCode/Y2Linux/blob/main/docs/HEADPHONE-OUTPUT.md) \u00b7 [Error reports](https://github.com/SchulzCode/Y2Linux/blob/main/docs/ERROR-REPORTS.md)\n\n## Known issues (beta)\n- Wi-Fi and Bluetooth on players with empty factory partitions (#62) use the chip's default calibration; please send a report if the range is poor.\n- Some players turned off by themselves during playback; the cause is not found yet. If yours does, start it again and send a report.\n- While a large SD card is being checked (up to a few minutes), you can't copy music to it over USB yet.\n- The speaker uses the same volume as the headphones; its loudest step is the stock speaker's. Start low the first time.\n- Going back to a version older than 8.33 starts with an empty queue (your settings are kept).\n- Some car radios don't show the song and artist yet; we are looking into it.\n- In a very long single-file book, jumping to another chapter takes 2\u20133 seconds.\n- With very large libraries (100 000+ songs) a list can still take up to about a second the first time right after the player starts, and the first scan of such a card takes several minutes.\n- Battery life in sleep: about 2 mA overnight on the developer's player (estimated from the battery voltage); stock is about 1.3 mA.\n- BBC radio stations stream only in HLS, which the player does not play yet (planned for a later beta).\n- FM radio is in the works for a later beta.\n\n## Files\n- `Y2Linux-1.0.0-beta.8.43-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 11000).\n- `Y2Linux-1.0.0-beta.8.43-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-164`. The speaker amplifier driver is Chris Hendrickson's GPL-2.0 AW87559 driver. The headphone profiles are AutoEq results (MIT, Jaakko Pasanen); their licence ships with them.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Awinic, Last.fm, AutoEq, Strawberry or Google. Noto Sans CJK is licensed under the SIL Open Font License 1.1. Details: [Beta 8.43 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-8.43.md).\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-third-party-b24c80bffef1.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-third-party-b24c80bffef1.tar) (attached to `baseline-120`), SHA-256 `b24c80bffef118ebe6f08843ae51e8516dd9be04decc1e76e5063c4eb7a2b2ca`\n- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-120`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz) (attached to `baseline-120`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n",
-      "downloads": 112,
-      "mirror_downloads": 68,
+      "downloads": 113,
+      "mirror_downloads": 69,
       "download_breakdown": {
         "tag": "baseline-164",
         "mirrors": "y1-community/y2linux-mirror",
@@ -8236,7 +8236,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.8.43-first-install-linux-legacy.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-164/Y2Linux-1.0.0-beta.8.43-first-install-linux-legacy.zip",
             "size": 145431043,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
@@ -13081,7 +13081,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark_url": "",
       "body": "**Y2Linux 1.0 Beta 8.4: a fix for the dark screen after a restart.** Linux 6.18 and the native Reborn music player for the Innioasis Y2.\n\n## Already running Y2Linux\nSettings \u2192 About & Updates \u2192 Check for Updates \u2192 **Update Now**.\n\n## Fixed: a dark screen after a restart\n- A restart could leave one of the display's bus clocks switched off for the bootloader. The bootloader's logo then got stuck on the way to the screen, and Linux never got a picture: the screen stayed dark until you held Power for 10 s. After an update, the player then rolled the update back, because it could not confirm that the screen works.\n- Beta 8.4 switches that clock back on as the very last step of every restart, so the bootloader always starts the way it does after a cold start.\n- The first update to 8.4 restarts into the installer from your current version, so the install screen can still stay dark that one time; the update still installs. The restart into 8.4 itself already has the fix.\n\nEverything from Beta 8.3 is included.\n\n## Install (from stock)\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.8.4-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md)\n\n## Known issues (beta)\n- The restart fix is new and not yet confirmed over many restarts. If the screen ever stays dark, hold Power for 10 s and start again.\n- Battery life in sleep is not yet stock-like (about 8 mA vs stock 1.3 mA; some players draw more, [#42](https://github.com/SchulzCode/Y2Linux/issues/42)); the effect of Beta 8.1's panel power-down is being measured.\n- GC9503V players keep the old screen-off behaviour until a GC9503V owner has confirmed the new sequence ([#45](https://github.com/SchulzCode/Y2Linux/issues/45)).\n- The player cannot detect wired headphones yet; the jack plays whenever no Bluetooth headphones are connected.\n- The fast copy path has not yet been tested with the cable pulled mid-copy, across sleep, or with Windows Explorer.\n- Songs with several artists (\"A;B\") count as one artist; there is no Album Artist view yet.\n- FM radio is in the works for a later beta.\n\n## Files\n- `Y2Linux-1.0.0-beta.8.4-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 6700).\n- `Y2Linux-1.0.0-beta.8.4-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-90`.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis, MediaTek or Last.fm. Details: [Beta 8.4 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-8.4.md).\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-third-party-dce38ffdd9e0.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/Y2Linux-sources-third-party-dce38ffdd9e0.tar) (attached to `baseline-52`), SHA-256 `dce38ffdd9e0a2b5adf687e95c2a67c22ca355e10c430f879630fbf0d5ea7c1a`\n- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-75`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/linux-6.18.56.tar.xz) (attached to `baseline-52`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n",
-      "downloads": 103,
+      "downloads": 104,
       "mirror_downloads": 83,
       "download_breakdown": {
         "tag": "baseline-90",
@@ -13090,7 +13090,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.8.4-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install.zip",
-            "downloads": 36,
+            "downloads": 37,
             "mirror_downloads": 16
           }
         ],
@@ -13193,7 +13193,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.4-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install.zip",
           "size": 57845925,
-          "download_count": 20,
+          "download_count": 21,
           "content_type": "application/zip"
         },
         {
@@ -15789,8 +15789,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark_url": "",
       "body": "**Y2Linux 1.0 Beta 6: Playlists, and pause that really pauses.** Linux 6.18 and the native Reborn music player for the Innioasis Y2.\n\n## Already running Y2Linux\nSettings \u2192 About & Updates \u2192 Check for Updates \u2192 Download Update \u2192 **Restart and Install**.\n\n## What's new\n- **Playlists** (Home \u2192 Playlists):\n  - Your **.m3u / .m3u8** playlists from Internal Storage and the SD card, including ones exported by a computer (Windows, macOS or Linux paths are matched to your music).\n  - **Make and change them on the player:** New Playlist (named with the keyboard); **Add to Playlist\u2026** on any song, album, artist or Now Playing; **Remove**; **Move** a song with the wheel; Rename, Duplicate, Delete; **Save Queue as Playlist**.\n  - **Favorites** with a heart: add or remove a song from its menu or from Now Playing, which shows a heart for favorites.\n  - The file stays the playlist: changes are written back into it, so your computer sees them too. Songs the player can't find right now (SD card out) stay in the file and come back when they're there.\n- **Pause and play continue at once:** the player no longer restarts the song after a pause (it used to \"buffer\" for about a second, on Bluetooth and wired). After three minutes paused it rests the audio as before.\n- **Fast-forward / rewind** (hold Next / Previous) no longer shows \"audio reconfiguration is still pending\": the position runs while you hold, and the song continues from there when you let go.\n\nEverything from earlier betas (keyboard, search, Radio) is included.\n\n## Install (from stock)\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.6-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package onto the **Firmware** drive. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md)\n\n## Known issues (beta)\n- Playlists and the new pause were built and tested on the computer; this is their first release on the player.\n- Jumping to a new place in a song still takes about a second on Bluetooth.\n- FM radio is planned for the next beta.\n- Battery life in sleep is not yet stock-like (about 9 mA vs stock 1.3 mA). The player cannot detect wired headphones yet.\n\n## Files\n- `Y2Linux-1.0.0-beta.6-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 5600).\n- `Y2Linux-1.0.0-beta.6-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party sources and Linux source linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-57`.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis or MediaTek. Details: [Beta 6 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-6.md).\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-third-party-dce38ffdd9e0.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/Y2Linux-sources-third-party-dce38ffdd9e0.tar) (attached to `baseline-52`), SHA-256 `dce38ffdd9e0a2b5adf687e95c2a67c22ca355e10c430f879630fbf0d5ea7c1a`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/linux-6.18.56.tar.xz) (attached to `baseline-52`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n",
-      "downloads": 109,
-      "mirror_downloads": 88,
+      "downloads": 110,
+      "mirror_downloads": 89,
       "download_breakdown": {
         "tag": "baseline-57",
         "mirrors": "y1-community/y2linux-mirror",
@@ -15843,7 +15843,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.6-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-57/Y2Linux-1.0.0-beta.6-first-install-macos.zip",
             "size": 176935156,
-            "downloads": 25
+            "downloads": 26
           }
         ]
       },
@@ -16329,8 +16329,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark_url": "",
       "body": "**Y2Linux 1.0 Beta 4: internet radio.** Linux 6.18 and the native Reborn music player for the Innioasis Y2.\n\n## Already running Y2Linux\nSettings \u2192 About & Updates \u2192 Check for Updates \u2192 Download Update \u2192 **Restart and Install**.\n\n## What's new: Radio\nHome \u2192 **Radio** (needs Wi-Fi):\n- **Popular, Countries, Genres and Search** from the free community directory radio-browser.info, tens of thousands of stations. Search uses the wheel keyboard.\n- **Favorites:** hold Select on a station, or on Now Playing, and choose Add to Favorites. They are kept across restarts and updates.\n- **My Stations:** copy your own `.m3u` or `.pls` station lists into a folder named `Radio` on Internal Storage or the SD card.\n- **Now Playing** shows LIVE RADIO, the song the station announces, and how the connection is doing; a short Wi-Fi drop reconnects by itself.\n- MP3, AAC and Ogg streams. Stations that only offer HLS/DASH streams are not supported yet and are left out of the lists.\n- Under the hood, the music decoder still never touches the network: the player's own download tool receives the stream (with certificate checks) and hands over plain audio.\n\n## Install (from stock)\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.4-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package onto the **Firmware** drive. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md)\n\n## Known issues (beta)\n- Internet radio was built and tested on the computer, including real stations; this is its first release on the player.\n- Streaming keeps Wi-Fi busy: battery use is higher than for local music, and Bluetooth headphones may drop out more often while streaming (Wi-Fi and Bluetooth share one antenna on the Y2).\n- FM radio is planned for the next beta.\n- Battery life in sleep is not yet stock-like (about 9 mA vs stock 1.3 mA).\n- The player cannot detect wired headphones yet. Tested on one hardware revision and one player.\n\n## Files\n- `Y2Linux-1.0.0-beta.4-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 5300).\n- `Y2Linux-1.0.0-beta.4-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party sources and Linux source linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-53`.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis or MediaTek. Details: [Beta 4 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-4.md).\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-third-party-dce38ffdd9e0.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/Y2Linux-sources-third-party-dce38ffdd9e0.tar) (attached to `baseline-52`), SHA-256 `dce38ffdd9e0a2b5adf687e95c2a67c22ca355e10c430f879630fbf0d5ea7c1a`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/linux-6.18.56.tar.xz) (attached to `baseline-52`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n",
-      "downloads": 103,
-      "mirror_downloads": 83,
+      "downloads": 104,
+      "mirror_downloads": 84,
       "download_breakdown": {
         "tag": "baseline-53",
         "mirrors": "y1-community/y2linux-mirror",
@@ -16348,7 +16348,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-1.0.0-beta.4-first-install-windows.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-53/Y2Linux-1.0.0-beta.4-first-install-windows.zip",
             "size": 370080392,
-            "downloads": 23
+            "downloads": 24
           },
           {
             "platform": "windows-legacy",
@@ -16901,8 +16901,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark_url": "",
       "body": "Y2Linux Baseline 49 \u2014 ready-made images for a first install, and the update for players that already run Y2Linux.\n\n## Already running Y2Linux (46 or later)\nSettings \u2192 About & Updates \u2192 Check for Updates \u2192 Download Update \u2192 **Restart and Install**. Your Wi-Fi and Bluetooth firmware is kept automatically.\n\n## New install (from stock)\nYou need SP Flash Tool v5.2032, a USB cable, this release's **`Y2Linux-49-first-install.zip`** and the **Innioasis Y2 firmware package v3.2.0** from Innioasis.\n\n1. Unpack the Y2Linux zip and the Innioasis package.\n2. SP Flash Tool \u2192 Download Only \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download, connect the switched-off Y2; wait for the green tick.\n4. Unplug, press Power: Y2Linux and Reborn start.\n5. Connect the Y2 to the computer again and copy **`system.img` from the Innioasis package** to the **Firmware** drive. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 why RECOVERY is flashed: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md)\n\n## What's new\n- **No proprietary MediaTek firmware in any image.** Each player uses its owner's copy (kept across updates). The system images of releases 46\u201348 were removed because they contained it.\n- One-time flash package with the Y2 recovery image; afterwards everything updates over Wi-Fi.\n- Bluetooth codecs: SBC, AAC (fdk-aac-free, AAC-LC) and LDAC.\n- Headphone load measurement and two CS43131 driver fixes (thanks @samanz, #38); covers that load reliably, A\u2013Z sorting that ignores case, accents and \"The\", genre titles on the album grid (thanks @samanz, Y2Reborn #6\u2013#8).\n\n## Files\n- `Y2Linux-49-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 4900).\n- `Y2Linux-49-sources-*`: corresponding sources (Buildroot legal-info with package sources, patches and licences; the Linux 6.18.56 archive). Our own code is this repository and Y2Reborn at tag `baseline-49`.\n- `SHA256SUMS` for all of the above.\n\nKernel `6.18.56-y2linux-platform-v1-power-final-49`. Developer preview; use at your own risk. Not affiliated with Innioasis or MediaTek.\n",
-      "downloads": 106,
-      "mirror_downloads": 83,
+      "downloads": 107,
+      "mirror_downloads": 84,
       "download_breakdown": {
         "tag": "baseline-49",
         "mirrors": "y1-community/y2linux-mirror",
@@ -16955,7 +16955,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2Linux-49-first-install-macos.zip",
             "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-49/Y2Linux-49-first-install-macos.zip",
             "size": 176649994,
-            "downloads": 23
+            "downloads": 24
           }
         ]
       },
@@ -17205,8 +17205,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/jarvissax/rondo/releases/download/v4.0.1/updater.png",
       "icon_dark_url": "",
       "body": "\nAn update for the 4.0 firmware: Settings \u203a System \u203a Software update, the dashboard or the\n[update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as\n4.0.0 does.\n\n### New\n\n- **YouTube Music playlists download as playlists:** Download playlist saves its songs and a\n  playlist of them in Library \u203a Playlists, in YouTube's order and with the playlist's cover. A song\n  already on the card isn't downloaded twice, and downloading the playlist again brings it up to\n  date. Deleting it asks whether its songs go too. Now Playing's options download the song playing.\n- **Downloads pause and resume,** one or all, videos too, and go on after a restart or a power cut.\n  They wait by themselves while Wi-Fi is off, while the card is the computer's or full, and go on\n  afterwards. The dashboard has the same controls.\n- **Emoji on every keyboard,** each in its app's look: Rondo's own, YouTube's and YouTube Music's,\n  and WhatsApp's. Every emoji the Y1's emoji font draws, in tabs (recent ones, then Unicode's\n  groups), with skin tones, and found by name.\n- **WhatsApp's reaction bar:** a message's menu starts with \ud83d\udc4d \u2764\ufe0f \ud83d\ude02 \ud83d\ude2e \ud83d\ude22 \ud83d\ude4f, and + opens every emoji.\n\n### Fixed\n\n- **Voice messages that weren't sent:** one sent right after another WhatsApp action (marking a chat\n  read, a reaction, a text) could send garbage instead of the recording, or close WhatsApp and lose\n  it.\n- **Voice messages with a headset:** the Y1 can't use a headset's microphone, and a voice message\n  recorded with one held only a steady tone. With a headset in, Rondo now records from the Y1's own\n  microphone (inside, beside the jack).\n- **FM radio sounded doubled:** MediaTek's chip played the radio too, a moment ahead of Rondo's own.\n  Only Rondo's plays now.\n- **FM radio on the speaker:** choosing Speaker kept the sound in the headphones, or played only hiss.\n  The radio now plays from the speaker, with a volume of its own for each output. The headphones\n  play too: the Y1's speaker is fed from their amplifier, and they stay in as the antenna (the\n  Output setting says so).\n\n",
-      "downloads": 35,
-      "mirror_downloads": 8,
+      "downloads": 39,
+      "mirror_downloads": 9,
       "download_breakdown": {
         "tag": "v4.0.1",
         "mirrors": "y1-community/rondo-mirror",
@@ -17214,7 +17214,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/jarvissax/rondo/releases/download/v4.0.1/rom.zip",
-            "downloads": 28,
+            "downloads": 31,
             "mirror_downloads": 1
           }
         ],
@@ -17224,7 +17224,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rom-windows.zip",
             "size": 771402260,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -17269,7 +17269,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v4.0.1/rom.zip",
           "size": 529631161,
-          "download_count": 27,
+          "download_count": 30,
           "content_type": "application/zip"
         },
         {
@@ -17285,7 +17285,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v4.0.1/updater.png",
           "size": 12952,
-          "download_count": 51,
+          "download_count": 56,
           "content_type": "image/png"
         }
       ]
@@ -17380,7 +17380,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v4.0.0/updater.png",
           "size": 12952,
-          "download_count": 81,
+          "download_count": 83,
           "content_type": "image/png"
         }
       ]
@@ -17475,7 +17475,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.1.2/updater.png",
           "size": 12952,
-          "download_count": 102,
+          "download_count": 104,
           "content_type": "image/png"
         }
       ]
@@ -17570,7 +17570,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.1.1/updater.png",
           "size": 12952,
-          "download_count": 77,
+          "download_count": 79,
           "content_type": "image/png"
         }
       ]
@@ -17665,7 +17665,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.1.0/updater.png",
           "size": 12952,
-          "download_count": 73,
+          "download_count": 75,
           "content_type": "image/png"
         }
       ]
@@ -17760,7 +17760,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v3.0.5/updater.png",
           "size": 12952,
-          "download_count": 76,
+          "download_count": 78,
           "content_type": "image/png"
         }
       ]
@@ -18198,7 +18198,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.2/updater.png",
           "size": 12952,
-          "download_count": 346,
+          "download_count": 348,
           "content_type": "image/png"
         }
       ]
@@ -18293,7 +18293,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/updater.png",
           "size": 12952,
-          "download_count": 251,
+          "download_count": 253,
           "content_type": "image/png"
         }
       ]
@@ -18388,7 +18388,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png",
           "size": 12952,
-          "download_count": 315,
+          "download_count": 317,
           "content_type": "image/png"
         }
       ]
@@ -18405,7 +18405,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "",
-      "downloads": 819,
+      "downloads": 823,
       "mirror_downloads": 93,
       "download_breakdown": {
         "tag": "stable-v0.6.1",
@@ -18414,7 +18414,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
-            "downloads": 666,
+            "downloads": 670,
             "mirror_downloads": 1
           },
           {
@@ -18531,7 +18531,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
           "size": 581693789,
-          "download_count": 665,
+          "download_count": 669,
           "content_type": "application/zip"
         },
         {
@@ -19347,8 +19347,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "",
-      "downloads": 267,
-      "mirror_downloads": 90,
+      "downloads": 268,
+      "mirror_downloads": 91,
       "download_breakdown": {
         "tag": "nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5",
         "mirrors": "y1-community/rockbox-mirror",
@@ -19378,7 +19378,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom-windows.zip",
             "size": 845452690,
-            "downloads": 6
+            "downloads": 7
           },
           {
             "platform": "windows-legacy",
@@ -20797,8 +20797,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "New:\r\n- Support for devices that came with stock firmware 3.0.7\r\n- Black screen bug mitigations\r\n- Fixes plugins as start screen\r\n- Fixes audio not pausing on BT disconnect\r\n\r\nIf you have issues, try these steps:\r\n1. Full flash of the new ROM.\r\n2. Delete `.rockbox` on your SD card.\r\n3. Install any of the patched themes from here: https://github.com/rockbox-y1/themes/archive/refs/heads/patch.zip\r\n4. If you want to use any custom themes that worked for older Rockbox-Y1 versions, you will need to change paths in the theme files from `/.rockbox` to `/sdcard/.rockbox`\r\n5. Install font pack: https://download.rockbox.org/release/4.0/rockbox-fonts-4.0.zip",
-      "downloads": 2208,
-      "mirror_downloads": 68,
+      "downloads": 2211,
+      "mirror_downloads": 71,
       "download_breakdown": {
         "tag": "nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d",
         "mirrors": "y1-community/rockbox-mirror",
@@ -20856,7 +20856,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom-linux-legacy.zip",
             "size": 607456820,
-            "downloads": 1
+            "downloads": 4
           },
           {
             "platform": "macos",
@@ -21693,8 +21693,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "",
-      "downloads": 438,
-      "mirror_downloads": 150,
+      "downloads": 439,
+      "mirror_downloads": 151,
       "download_breakdown": {
         "tag": "nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d",
         "mirrors": "y1-community/rockbox-mirror",
@@ -21777,7 +21777,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_240p-macos.zip",
             "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p-macos.zip",
             "size": 578667827,
-            "downloads": 6
+            "downloads": 7
           },
           {
             "platform": "windows",
@@ -22930,7 +22930,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "# Rockbox Y2 V2.5\n\nV2.5 updates the Y2 dual-boot firmware to the official Innioasis **Stock 3.2FM**\nbaseline while retaining Rockbox and Stock boot routes.\n\n## What changed from V2\n\n- Stock mode is updated to version `3.2` from the 3.2FM firmware release.\n- Clean installs default to MacClassic-Dark with a black Rockbox title screen.\n- Boot presentation and route handoff were requalified to prevent persistent\n  upper-screen artifacts.\n- The Community Updater asset is now a complete 3.2FM-based full-ROM package,\n  compatible with the public updater's clean-install route.\n\n## Qualified V2.5 behavior\n\nThe five V2.5 firmware images have passed the full hands-on matrix on macOS and\nWindows:\n\n- Clean, responsive Rockbox root in about 28 seconds on normal cold boots.\n- Clean dark Rockbox title with no persistent upper artifacts.\n- Automatic screen timeout, centre wake, and power-button sleep/wake.\n- USB-storage mount, safe eject, clean return, and foreground retention.\n- Boot Settings switching between Rockbox and Stock.\n- Responsive Stock root reporting version `3.2` from Stock 3.2FM.\n- No microSD card required for installation or normal boot testing.\n\nThe exact public full-ROM archive passed clean Stock 3.2FM installation and the\ncomplete functional matrix on both macOS and Windows.\n\n## Exact public candidate\n\n| Asset | Bytes | SHA-256 |\n|---|---:|---|\n| `rom_y2.zip` | 361,644,736 | `bbdd139a9a52f90570ef04dec4aeb143a361a1d28a90f7be6d37d44c554bee9a` |\n\nThis archive contains the complete official Stock 3.2FM support set. UBOOT,\nBOOTIMG, RECOVERY, LOGO, and ANDROID are the exact V2.5 images already qualified\non both platforms. MBR, EBR1, EBR2, preloader, SEC_RO, cache, userdata, and the\nscatter remain byte-identical to the official 3.2FM baseline.\n\n## Important installation behavior\n\nV2.5 performs a clean full installation and erases internal user data. Back up\nfirst. On macOS, public Updater CE hands the install to the Innioasis Y2 Install\nTool. On Windows, Updater CE uses its full Y2 installation route. Follow every\nconnection prompt and wait for an explicit completion message.\n",
-      "downloads": 1386,
+      "downloads": 1392,
       "mirror_downloads": 65,
       "download_breakdown": {
         "tag": "v0.2.5-beta",
@@ -22939,7 +22939,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
-            "downloads": 1349,
+            "downloads": 1355,
             "mirror_downloads": 28
           }
         ],
@@ -23034,7 +23034,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox-y2-v2.5-release-square.png",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rockbox-y2-v2.5-release-square.png",
           "size": 1585171,
-          "download_count": 635,
+          "download_count": 636,
           "content_type": "image/png"
         },
         {
@@ -23042,7 +23042,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
           "size": 361644736,
-          "download_count": 1321,
+          "download_count": 1327,
           "content_type": "application/zip"
         },
         {
@@ -23073,8 +23073,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "# Y2 Rockbox Beta V2\n\nBeta V2 is a state-preserving update for Innioasis Y2 players on the official\nStock 3.1.7 lineage. This corrected release has passed separate end-to-end\nmacOS and Windows updater qualifications, complete readback verification, and\nthe full physical functional matrix.\n\n> **Manual-download release:** the files below are public for users who want to\n> download and verify them manually. Direct installation through the public\n> Updater CE catalogue is still pending\n> [Updater CE PR #45](https://github.com/y1-community/Innioasis-Updater/pull/45).\n> Downloading a ZIP manually does not make an old or generic updater safe; use\n> only an updater explicitly carrying the guarded Y2 Class A route.\n\n## Download the exact platform asset\n\n| Platform | Asset | Size | SHA-256 |\n|---|---|---:|---|\n| macOS | `Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip` | 361,774,260 | `409DDB4D2D18111FB8C3AB619F10F04B916B6B2A3FC04D1D38011324563F326A` |\n| Windows | `Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip` | 361,774,260 | `409DDB4D2D18111FB8C3AB619F10F04B916B6B2A3FC04D1D38011324563F326A` |\n\nDo not rename either archive to `rom_y2.zip`. Do not use the withdrawn Beta V2\narchives, the old `InnioasisUpdater_Setup_1.1.2.exe`, or a generic full-format\nroute. Follow `INSTALL-GUIDE.md` and use only an updater explicitly carrying the\nguarded Y2 Class A update path.\n\n## Highlights since Beta V1\n\n- Bluetooth access, pairing and A2DP playback from Rockbox and Stock.\n- Hold Previous/Next to seek; optional held-Volume track skipping.\n- Persistent time/date and independently adjustable Rockbox wheel vibration.\n- Stable Rockbox and Stock USB-storage lifecycle.\n- Cleaner boot presentation and reliable saved Rockbox/Stock routing.\n- Centre wake, long-Centre Now Playing context menu, and improved Back/Database navigation.\n- PictureFlow recovery and functional album carousel.\n\n## Physical acceptance\n\nBoth platform routes began from freshly restored official Stock 3.1.7, wrote\nonly UBOOT, BOOTIMG, RECOVERY, LOGO, and ANDROID, and completed mandatory\nreadback verification. After the required complete unplug and one unplugged\npinhole reset, Rockbox reached a clean responsive root in 28 seconds with no\nupper artifacts. Playback, controls, sleep/wake, USB, Stock, Boot Settings,\nsaved routes, and shutdown passed.\n\n## Known limitation and Beta V3\n\nThe final power-down animation can look imperfect; shutdown itself works. Beta\nV3 is expected to cover that presentation polish plus lyrics/theme diagnostics,\nhigh-resolution FLAC stability, DAC/wired-audio qualification, PictureFlow\npolish, and database/playlist presentation controls.\n",
-      "downloads": 290,
-      "mirror_downloads": 56,
+      "downloads": 292,
+      "mirror_downloads": 58,
       "download_breakdown": {
         "tag": "v0.2.0-beta",
         "mirrors": "y1-community/y2-rockbox-mirror",
@@ -23132,7 +23132,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip",
             "size": 481488362,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "windows",
@@ -23174,7 +23174,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-macos.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-macos.zip",
             "size": 481488368,
-            "downloads": 5
+            "downloads": 6
           }
         ]
       },
@@ -23295,8 +23295,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "Y2 Rockbox Beta v0.1.0 for the Innioasis Y2.\n\nThis beta uses the physically tested V88 firmware base. The release filename is new, but the firmware ZIP is byte-for-byte identical to the tested V88 package.\n\n## Important\n\nFlashing uses InnioasisUpdater 1.1.2 in full format-download mode and erases the complete player. Back up internal storage, microSD content, settings, playlists, and the complete `.rockbox` folder before flashing. Keep the official Y2 stock-recovery package available.\n\nRead `README-FIRST.txt` and the illustrated PDF guide before starting. Verify every download against `SHA256SUMS.txt`.\n\n## Physically tested\n\n- Rockbox and Stock cold-boot routes\n- Boot Settings save, verification, restart, and repeated cold boots\n- 15-minute audio playback and hardware controls\n- Sleep and wake\n- Theme selection and persistence\n- Internal-storage and microSD playback\n- USB storage transfer, safe eject, and automatic Rockbox return\n- Normal power off\n- Official-stock rollback\n\n## Beta limitations\n\n- Bluetooth playback is untested.\n- The both-volume fastboot chord did not open fastboot; do not rely on it.\n- Date/time changes did not persist during testing; the relationship to stock firmware is unresolved.\n- SNAZZ3 deliberately uses visible 30-pixel margins. This is theme layout, not display scaling.\n- The Windows updater executable is unsigned; verify its SHA-256 before running it.\n\n## Firmware SHA-256\n\n`40636D86943F6F0A1461B6D8C9285A1A50252253447B3DC7D11743533A88E4DE`\n\nThe release includes the complete corresponding source, GPL license, and project notice. Innioasis updater and firmware components remain third-party materials.",
-      "downloads": 1191,
-      "mirror_downloads": 163,
+      "downloads": 1193,
+      "mirror_downloads": 164,
       "download_breakdown": {
         "tag": "v0.1.0-beta",
         "mirrors": "y1-community/y2-rockbox-mirror",
@@ -23304,7 +23304,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/rom_y2.zip",
-            "downloads": 762,
+            "downloads": 763,
             "mirror_downloads": 10
           },
           {
@@ -23368,7 +23368,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-windows-legacy.zip",
             "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-windows-legacy.zip",
             "size": 436684551,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
@@ -23438,7 +23438,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/rom_y2.zip",
           "size": 366781486,
-          "download_count": 752,
+          "download_count": 753,
           "content_type": "application/zip"
         },
         {
@@ -23487,7 +23487,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "Solar Y2 ROM for Innioasis Y2 (MT6582 ATA). Built from 944d14b.",
-      "downloads": 129,
+      "downloads": 130,
       "mirror_downloads": 22,
       "download_breakdown": {
         "tag": "y2-release",
@@ -23496,7 +23496,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/y2-release/rom_y2.zip",
-            "downloads": 117,
+            "downloads": 118,
             "mirror_downloads": 10
           }
         ],
@@ -23551,7 +23551,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/y2-release/rom_y2.zip",
           "size": 443599332,
-          "download_count": 107,
+          "download_count": 108,
           "content_type": "application/zip"
         }
       ]
@@ -27574,8 +27574,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- b374289 Flow mode, LCD art filter, playlist move window, and misc improvements\n- 8479e8b Bump nightly version for next release.\n- 8ed4902 Bump nightly version for next release.\n- 5772329 Fix OTA catalog versionCode for timestamp release tags.\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n",
-      "downloads": 63,
-      "mirror_downloads": 33,
+      "downloads": 64,
+      "mirror_downloads": 34,
       "download_breakdown": {
         "tag": "nightly-20260630-0549",
         "mirrors": "y1-community/solar-mirror",
@@ -27627,7 +27627,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-linux-legacy.zip",
             "size": 527362165,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
@@ -30005,8 +30005,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "# Solar nightly-20260627-0209 (9e71c08) \u2014 initial nightly release, this is experimental, expect bugs, lots of them.\r\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\r\n## Recent commits\r\n\r\n- 9e71c08 Y1bridge.apk for future AVRCP implementation - thanks to @seanathanVT's Koensayr mod.\r\n- 0a6ee21 Nightly: media suite, Wi\u2011Fi/BT quick controls, and Y1 input polish.\r\n- 3c118d8 Fixes for Soulseek/Deezer playback, now playing improvements\r\n- 2895fe1 Adds toggles for online music services so they can be excluded from search results.",
-      "downloads": 76,
-      "mirror_downloads": 43,
+      "downloads": 78,
+      "mirror_downloads": 45,
       "download_breakdown": {
         "tag": "nightly-20260627-0209",
         "mirrors": "y1-community/solar-mirror",
@@ -30037,7 +30037,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-windows-legacy.zip",
             "size": 531355326,
-            "downloads": 0
+            "downloads": 2
           },
           {
             "platform": "linux",
@@ -31485,8 +31485,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "",
       "icon_dark_url": "",
       "body": "\r\nHere is what\u2019s new in this release:\r\n\r\n### \ud83c\udfb5 Audio & Media Upgrades\r\n\r\n* **Faster Lossless Playback:** Replaced the downsampling engine, so lossless audio files now start playing much faster!\r\n* **Improved Library Hierarchy:** Browsing structure is now updated to `Album Artist` > `Album` > `Track`.\r\n* **Cover Flow Stability:** Cover Flow is now sorted by artist name and operates much more stably.\r\n* **Radio Sleep Fix:** Fixed the annoying bug where FM radio sound would cut off when the screen turned off.\r\n* **Smarter File Scanning:** Optimized the media scan method for better performance.\r\n* **Podcast Episode Deletion:** You can now delete episodes directly within the Podcast menu.\r\n* **Video Playback Resume & Skip:** Added \"Resume from last played position\" and skip options for video playback.\r\n\r\n### \ud83c\udfa8 UI & Customization\r\n\r\n* **Player Screen Customization:** You can now fully apply custom themes to the main Player screen via the Theme Editor!\r\n* **Improved Text Visibility:** Adjusted text colors dynamically according to theme colors so everything stays readable.\r\n* **Status Bar Battery %:** Added actual percentage numbers to the status bar battery icon.\r\n* **Categorized Settings:** Reorganized the cluttered Settings menu into clean categories.\r\n* **Screen Color Filter:** Added a screen color filter feature for late-night listening.\r\n\r\n### \u2699\ufe0f Controls & System Improvements\r\n\r\n* **Force Reboot Shortcut:** Long-press the Play/Pause button for 5+ seconds to force restart the device.\r\n* **Quick Repeat Mode:** Long-press Play/Pause on the Player screen to quickly cycle through repeat modes.\r\n* **Power & Battery Stats:** Enhanced deep sleep / power management and added a dedicated Battery Usage Statistics screen.\r\n\r\n### \ud83c\udfae Bonus Features!\r\n\r\n* **Mini-Games Added:** Take a break and play **2048** or **FreeCell** directly on your device!\r\n\r\n---\r\n\r\n\ud83d\udd0d **Useful Links:**\r\n\r\n* \ud83d\udce6 **Download Latest Release:** [[[GitHub Release Link]](https://www.google.com/search?q=https://github.com/ismileblue/y1_launcher/releases)](https://www.google.com/search?q=https://github.com/ismileblue/y1_launcher/releases)\r\n* \ud83d\udcac **Feedback & Bug Reports:** Feel free to leave a comment below or open an issue on [[[GitHub Issues]](https://www.google.com/search?q=https://github.com/ismileblue/y1_launcher/issues)](https://www.google.com/search?q=https://github.com/ismileblue/y1_launcher/issues)!\r\n\r\n",
-      "downloads": 154,
-      "mirror_downloads": 73,
+      "downloads": 156,
+      "mirror_downloads": 75,
       "download_breakdown": {
         "tag": "launcher-v0.11.4",
         "mirrors": "y1-community/y1_launcher-mirror",
@@ -31523,7 +31523,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom-windows-legacy.zip",
             "size": 530472926,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
@@ -31621,7 +31621,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux-arm64.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_y2-linux-arm64.zip",
             "size": 564900955,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
@@ -32081,8 +32081,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "",
       "icon_dark_url": "",
       "body": "## \ud83c\udf89 JJ Launcher v0.10 is Finally Here!\r\n\r\nThanks to everyone's incredible interest and feedback, I am thrilled to finally release version 0.10! Thank you all so much for your continuous support and encouragement.\r\n\r\nSince the Radio and Audiobook features from the stock launcher aren't available when using custom launchers, I have built and integrated brand-new custom Radio and Audiobook features in this update. \r\n\r\nI also tried my best to incorporate the thoughtful feedback you all provided. Please understand that I couldn't list the usernames of everyone who gave such great suggestions, but I truly appreciate every single one of you!\r\n\r\n### \ud83d\ude80 Update Changelog (v0.10)\r\n\r\n* **Audio Engine Upgrade:** Replaced the audio playback engine from MediaPlayer to ExoPlayer *(Note: FLAC is still decoded via software)*.\r\n* **New Cover Flow:** Added a new Cover Flow visualizer.\r\n* **New Radio App:** Added a custom built-in Radio feature.\r\n* **New Audiobook App:** Added a custom built-in Audiobook feature.\r\n* **Multi-language Support:** Added support for English, Japanese, Chinese, Spanish, and Russian.\r\n* **Main Menu List View:** Main screen buttons can now be displayed in a list format.\r\n* **Album Thumbnails:** Added thumbnails to the album list view.\r\n* **Track Number Sorting:** The album list is now correctly sorted by track numbers.\r\n* **Focus Bug Fixed:** Fixed an issue where the UI navigation focus would be lost.\r\n* **Lyrics Support:** Added support for both embedded and external lyrics.\r\n* **New Audio Categories:** Added audio categorization by Year and Genre.\r\n* **Playback Speed Control:** Added fast playback support up to 2x speed *(excluding FLAC)*.\r\n* **10-Second Skip:** Added the ability to skip backward/forward by 10 seconds using the left/right buttons.\r\n* **Quick Add to Playlist:** You can now add a song to a playlist by long-pressing the Stop button on the player screen.\r\n* **Screen-Off Shortcut:** Added a screen-off shortcut by long-pressing the Center button *(Note: Not available in the file list view as it overlaps with the 'add to playlist' shortcut)*.\r\n* **Custom Main Buttons:** Added the ability for users to edit/customize the main screen buttons.\r\n* **Theme Backgrounds:** Added default background image support for themes.\r\n* **Clock Format:** Added an option to toggle between 12-hour and 24-hour clock formats.\r\n* **Default Theme Changed:** Updated the default theme for a fresh look.\r\n* **New List Theme:** Added a new list-style theme.\r\n* **Infinite Wheel Toggle:** Added an option to turn the infinite wheel scrolling on or off.\r\n* **General Improvements:** Various bug fixes and UI optimizations.\r\n\r\n### \ud83d\udccc Future Plans\r\nFor future versions, rather than focusing on adding new features, my main priority will be fixing bugs to ensure stable performance and expanding the variety of themes available.\r\n\r\nPlease continue to show your interest and support. Thank you! :D",
-      "downloads": 83,
-      "mirror_downloads": 42,
+      "downloads": 84,
+      "mirror_downloads": 43,
       "download_breakdown": {
         "tag": "launcher-v0.10",
         "mirrors": "y1-community/y1_launcher-mirror",
@@ -32141,7 +32141,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.10/rom-macos.zip",
             "size": 576600778,
-            "downloads": 7
+            "downloads": 8
           },
           {
             "platform": "windows",
@@ -32757,7 +32757,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "",
       "icon_dark_url": "",
       "body": "### Fixed\n- **Theme could silently revert to the default after connecting the device as USB Mass Storage** \u2014 the selected theme was persisted only as a numeric index into the SD card's theme folder listing, and that listing's order isn't guaranteed stable across a mount/unmount cycle (common FAT32 behavior). The saved index could end up pointing at a completely different theme once the card was reconnected. The theme's name is now saved alongside the index and resolved by name on startup \u2014 independent of scan order \u2014 with the old index kept only as a fallback for upgrades.\n- **`.scrobbler.log` declared its timestamps as `#TZ/UNKNOWN`** even though they're genuinely UTC (`System.currentTimeMillis()` is always UTC epoch time, regardless of the device's local timezone setting). Now correctly declared as `#TZ/UTC`, so any tool that imports the log trusts the timestamps instead of asking or guessing. Only affects newly created log files \u2014 an existing `.scrobbler.log`'s header isn't rewritten.\n- **On-screen keyboard was missing common punctuation**, making some Wi-Fi passwords (and anything else typed through it \u2014 podcast search, Last.fm login, etc.) impossible to enter. Added `; : , / \\ ( ) [ ] { } < > ' ~` `` ` `` and `|`.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.5.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.5.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "downloads": 714,
+      "downloads": 715,
       "mirror_downloads": 58,
       "download_breakdown": {
         "tag": "v1.4.5",
@@ -32766,7 +32766,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip",
-            "downloads": 667,
+            "downloads": 668,
             "mirror_downloads": 11
           }
         ],
@@ -32829,7 +32829,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip",
           "size": 463531481,
-          "download_count": 656,
+          "download_count": 657,
           "content_type": "application/zip"
         }
       ]
@@ -33774,7 +33774,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
       "body": "> [!WARNING]\r\n> **This is a beta.** It may have bugs that are not in the stable release. Players get it in **Settings \u2192 General \u2192 System Update \u2192 Update Channel \u2192 Beta**.\r\n\r\n### Classy Release\r\n\r\nAutomated build with full support for **Innioasis Y1** (Type A & Type B) and **Innioasis Y2**.\r\n\r\n#### \ud83d\udce6 Release Assets\r\n\r\n| File | Target Device | Notes |\r\n| :--- | :--- | :--- |\r\n| **`Classy-20261119-beta.apk`** | **Innioasis Y2** (Android 4.4) | Standalone launcher APK (sideload or install) |\r\n| **`Classy-20261119-beta-y1.apk`** | **Innioasis Y1** (Android 4.2) | Standalone launcher APK (sideload or install) |\r\n| **`update.json`** / **`update-y1.json`** | Y2 / Y1 | OTA update metadata for in-app updater |\r\n| **`rom_y2.zip`** | **Innioasis Y2** (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\r\n| **`rom_y1_type_a.zip`** | **Innioasis Y1** (Type A) | Flashable ROM for Y1 players with original firmware **2.0.0 or higher** |\r\n| **`rom_y1_type_b.zip`** | **Innioasis Y1** (Type B) | Flashable ROM for Y1 players with original firmware **below 2.0.0** |\r\n| **`SHA256SUMS.txt`** | All Files | SHA-256 integrity checksums |\r\n\r\n#### \u26a1 Flashing Instructions (SP Flash Tool)\r\n1. Extract the corresponding zip file for your device.\r\n2. Launch `flash_tool.exe` (or Linux `flash_tool`).\r\n3. Load the scatter file (`MT6582_Android_scatter.txt` for Y2, `MT6572_Android_scatter.txt` for Y1).\r\n4. Select **Firmware Upgrade** or **Download Only**.\r\n5. Power off the device completely, click **Download**, and connect the USB cable.\r\n\r\n---\r\n\r\n\r\n## What's Changed\r\n* chore(github): add bug report and feature request issue forms by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/124\r\n* chore(github): ask issue authors to write in their own words by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/125\r\n* fix(now-playing): draw the shuffle and repeat icons as on the iPod classic by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/126\r\n* Y1 support by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/118\r\n\r\n\r\n**Full Changelog**: https://github.com/ClassyPlayer/Classy/compare/20261118-beta...20261119-beta",
-      "downloads": 27,
+      "downloads": 29,
       "mirror_downloads": 21,
       "download_breakdown": {
         "tag": "20261119-beta",
@@ -33783,7 +33783,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y1_type_a.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/rom_y1_type_a.zip",
-            "downloads": 3,
+            "downloads": 5,
             "mirror_downloads": 1
           },
           {
@@ -33950,7 +33950,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y1_type_a.zip",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/rom_y1_type_a.zip",
           "size": 444556891,
-          "download_count": 2,
+          "download_count": 4,
           "content_type": "application/zip"
         },
         {
@@ -34108,7 +34108,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
       "body": "#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `Classy-20261117.apk` | Innioasis Y2 | Standalone launcher APK (sideload or install) |\n| `update.json` | Innioasis Y2 | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nY1 firmware is not in this release. Y1 builds are in the Y1 experimental pre-releases.\n\n\n## What's Changed\n* feat(playlists): show playlist songs with their cover, title and artist by @andsuor in https://github.com/ClassyPlayer/Classy/pull/84\n* fix(podcasts): play or open the chosen episode, not the last Music list by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/89\n* fix(library): skip hidden files and folders in the library scan, such as the macOS ._ files by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/90\n* fix(video): keep the screen on during a video, and fix the length and the diamond of the scrub bar by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/91\n* fix(player): make Repeat All play the whole list, not only the current song by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/88\n* feat(library): list each artist of a multi-artist tag on its own by @andsuor in https://github.com/ClassyPlayer/Classy/pull/85\n* docs(install): keep the file name of the release ROM and clear the Updater CE cache for a local install by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/92\n* feat(audio): add Settings \u2192 Playback \u2192 Mono Audio, which mixes left and right on both channels for one earbud by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/93\n* feat(playlists): show each song's length at the right of a playlist row by @andsuor in https://github.com/ClassyPlayer/Classy/pull/86\n* feat(playlists): keep playlists in Playlists on the microSD card so they can be copied from a computer by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/97\n* fix(podcasts): list the downloaded episodes of a channel when its feed does not load by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/96\n* fix(quiz): use FLAC songs in Music Quiz, and do not ask again a song whose clip does not play by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/95\n* feat(update): add a beta update channel by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/100\n* fix(podcasts): make Stream (Play) work over HTTPS on Android 4.4, and show why a stream fails by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/102\n* fix(update): do not offer a release with older code than the installed build by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/104\n* docs: shorten the README and add Files and limits to the website by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/105\n* fix(audio): mix FLAC files with Mono Audio, and play a Music Quiz clip with ExoPlayer when MediaPlayer cannot by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/103\n* fix(audio): keep ExoPlayer's buffer in one block that the player keeps, so that FLAC tracks do not stop at 0:00 on Android 4.4 by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/109\n* refactor(audio): play all music with ExoPlayer, and remove the MediaPlayer path of FLAC files and Music Quiz clips by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/110\n* docs(releasing): add the release cycle, the checks before a promotion and the gh commands by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/112\n* ci(release): publish no Y1 ROMs until main supports the Y1, and use the release-notes layout in the release template by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/113\n* feat(controls): add Settings \u2192 Controls \u2192 Letter Jump and Letter Jump Sensitivity, to turn off or tune the iPod letter jump by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/115\n\n## New Contributors\n* @andsuor made their first contribution in https://github.com/ClassyPlayer/Classy/pull/84\n\n**Full Changelog**: https://github.com/ClassyPlayer/Classy/compare/20261112...20261117",
-      "downloads": 37,
+      "downloads": 38,
       "mirror_downloads": 8,
       "download_breakdown": {
         "tag": "20261117",
@@ -34117,7 +34117,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261117/rom_y2.zip",
-            "downloads": 30,
+            "downloads": 31,
             "mirror_downloads": 1
           }
         ],
@@ -34180,7 +34180,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261117/rom_y2.zip",
           "size": 483284092,
-          "download_count": 29,
+          "download_count": 30,
           "content_type": "application/zip"
         },
         {
@@ -35295,7 +35295,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
       "body": "- The video overlay now hides while a video plays, and the centre button opens scrub mode.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `Classy-20261107-v2.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\n> Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.\n\nFull changelog: https://github.com/ClassyPlayer/Classy/compare/20261107...20261107-v2\n\n",
-      "downloads": 202,
+      "downloads": 203,
       "mirror_downloads": 114,
       "download_breakdown": {
         "tag": "20261107-v2",
@@ -35304,7 +35304,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y2.zip",
-            "downloads": 178,
+            "downloads": 179,
             "mirror_downloads": 90,
             "mirror_unallocated": 83
           }
@@ -35376,7 +35376,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y2.zip",
           "size": 482216428,
-          "download_count": 88,
+          "download_count": 89,
           "content_type": "application/zip"
         },
         {
@@ -35407,8 +35407,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
       "body": "- USB Drive mode was reworked. The player checks for a microSD card before sharing it (instead of waiting about 30 seconds), and Android no longer kills the app while the card is shared. A new Settings \u2192 Connectivity \u2192 USB Drive option lets you pick Ask, Always or Never when a cable is plugged in, and the music resumes after Eject only if it was playing before.\n- Videos play again on ROM installs, because the launcher's native libraries are now installed in `/system/lib`.\n- Android's notification icons and tickers no longer appear on top of the app.\n- The library scan progress text no longer says \"Do not turn off the screen.\"\n- Settings \u2192 Appearance \u2192 Background was removed, together with the hidden blurred background views behind it.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `Classy-20261107.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\n> Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.\n\nFull changelog: https://github.com/ClassyPlayer/Classy/compare/20261106...20261107\n\n",
-      "downloads": 128,
-      "mirror_downloads": 107,
+      "downloads": 130,
+      "mirror_downloads": 109,
       "download_breakdown": {
         "tag": "20261107",
         "mirrors": "y1-community/classy-mirror",
@@ -35455,7 +35455,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-linux-legacy.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-linux-legacy.zip",
             "size": 481292425,
-            "downloads": 2
+            "downloads": 4
           },
           {
             "platform": "macos",
@@ -35855,8 +35855,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
       "body": "The Biggest Release!\r\n\r\n- The entire application codebase has been rewritten from Java to 100% Kotlin, decomposing the monolithic main activity into dedicated domain managers, screen controllers, and an input router, backed by 16 regression test suites running in CI.\r\n- Audiobooks is now a dedicated top-level section on the main menu, with hierarchical Jellyfin sync (Author -> Book -> Chapter), cover art downloads, continuous bookmark persistence across reboots, full chapter playlist resume, and a unified split-screen layout.\r\n- The Videos section now provides a hierarchical browser for Movies, TV Series (with seasons and episodes), and raw directories, split-screen poster previews, Jellyfin video and thumbnail sync, and an automatic directory migration for existing files.\r\n- Music Quiz transitions to an endless survival mode with six questions per round, speed scaling down to five seconds, a between-round pause screen with a heart shop, a persistent top 10 leaderboard, and tiered year question distractors.\r\n- A new Recently Played Albums menu item beneath Cover Flow tracks up to 50 recently played albums with cover art, track counts, track-number-ordered browsing, and an option to clear playback history.\r\n- Device shutdown now saves the active queue and playback position, automatically restoring the player in a paused state at the exact track and timestamp after rebooting.\r\n- Playback cleanly pauses and rewinds to the first track when finishing an album with repeat turned off, while the library scanner now skips files smaller than 1KB and logs corrupt audio files.\r\n- Back navigation now preserves selected row focus and scroll position across the main menu, settings, playlists, and browser lists instead of resetting to the top item.\r\n- Split-screen pages in Music, Videos, and Audiobooks now share a unified 242dp status bar width matching the left navigation pane, while video browsing fixes eliminate poster clipping, top gaps, and double padding.\r\n- Now Playing album art now reliably updates on the main menu and music split panes during playback.\r\n- The theme catalog has been streamlined to Classic Light and Classic Dark, automatically cleaning up leftover assets from legacy themes during startup.\r\n- Physical buttons and wheel haptic feedback are now completely muted while the screen is off when Screen-Off Control is disabled, and the idle backlight sleep timer now stays synchronized with system settings.\r\n\r\n#### Release assets\r\n\r\n| File | Target device | Notes |\r\n| :--- | :--- | :--- |\r\n| `InniClassic-20261017.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\r\n| `update.json` | All devices | OTA update metadata for in-app updater |\r\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\r\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\r\n\n> Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.\n\r\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261013...20261017\n",
-      "downloads": 263,
-      "mirror_downloads": 135,
+      "downloads": 265,
+      "mirror_downloads": 137,
       "download_breakdown": {
         "tag": "20261017",
         "mirrors": "y1-community/classy-mirror",
@@ -35875,7 +35875,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y2-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261017/rom_y2-windows.zip",
             "size": 697586795,
-            "downloads": 6
+            "downloads": 8
           },
           {
             "platform": "windows-legacy",
@@ -37105,7 +37105,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "",
       "icon_dark_url": "",
       "body": "# Y2Player v2.5 - Search, FM Radio, Faster Navigation, and Playback Reliability\r\n\r\nVersion 2.5 brings whole-device search, FM radio support for compatible Y2 hardware, faster navigation through large libraries, more flexible sleep-timer controls, and a redesigned equalizer interface.\r\n\r\nThis release also addresses several reported problems involving screen-off playback, shuffle ordering, audiobook seeking, queue controls, embedded artwork, list wrapping, and general navigation.\r\n\r\n## Whole-Device Search\r\n\r\nSearch is now available directly from the main menu.\r\n\r\nThe new wheel-driven QWERTY keyboard searches across:\r\n\r\n- Songs\r\n- Albums\r\n- Artists\r\n- Playlists\r\n- Audiobooks\r\n\r\nTrack searches include title, artist, album, filename, genre, and composer metadata. Matching is accent-insensitive and supports multiple search terms, with exact and prefix matches ranked first.\r\n\r\nSearch results reuse the existing playback and browsing flows. Tracks can be played or opened through their context menus, while albums, artists, playlists, and audiobooks open their corresponding library views.\r\n\r\nThe interface was designed for the Y2\u2019s 480 \u00d7 360 display:\r\n\r\n- The keyboard remains visible at the bottom of the screen.\r\n- Two complete result rows remain visible above it.\r\n- The wheel moves through keys in QWERTY order.\r\n- Left and Right move within the current keyboard row.\r\n- Center enters the selected key.\r\n- Back deletes the previous character.\r\n- The Results key moves focus to the matching items.\r\n- Direct touch works on both keyboard keys and results.\r\n- Playback controls are suppressed while typing to prevent accidental track changes.\r\n\r\nSearch also has separate instructions before typing and a dedicated message when no results are found.\r\n\r\nTo keep it responsive with large libraries, searchable metadata is indexed once per active library. Recent queries are cached, and only the best 100 results are retained. In a synthetic 10,000-track benchmark, ordinary indexed queries completed in approximately 2\u20135 ms, while cached queries completed in approximately 0.02 ms.\r\n\r\n## FM Radio\r\n\r\nY2Player now includes support for the MediaTek MT6627 FM tuner found in newer FM-equipped Y2 hardware revisions.\r\n\r\nThe FM Radio interface supports:\r\n\r\n- Wheel-controlled frequency tuning\r\n- Previous and next station seeking\r\n- Frequency and signal information\r\n- Wired-headphone antenna detection\r\n- Tuner power control\r\n- Safe switching between music playback and FM audio\r\n- Proper tuner cleanup when leaving the FM screen\r\n\r\n### Important Y2 Hardware Notice\r\n\r\nInnioasis has confirmed that there are two Y2 hardware revisions.\r\n\r\nThe original Y2 batch does not contain the required FM radio hardware. These devices may be able to open the FM interface and tune frequencies, but they cannot receive a usable radio signal and will normally output only static.\r\n\r\nNewer Y2 units include the required FM circuitry and use the FM-enabled stock firmware.\r\n\r\nBecause many existing Y2 devices cannot receive FM, the FM Radio entry is hidden by default. Owners of compatible newer hardware can enable it under:\r\n\r\nSettings \u2192 Interface \u2192 FM Radio\r\n\r\nFlashing FM-enabled stock firmware cannot add the missing tuner circuitry to an original Y2. FM reception depends on the physical hardware revision, not only the installed firmware.\r\n\r\n## Faster Alphabet Navigation\r\n\r\nLarge alphabetically sorted libraries now support iPod-style alphabet scrolling.\r\n\r\nNormal and moderately fast wheel movement retain the existing precise scrolling behavior. Sustained fast movement activates an alphabet scrub mode with a large temporary `#` or `A\u2013Z` overlay.\r\n\r\nAlphabet scrolling is available where the visible order is genuinely alphabetical, including supported:\r\n\r\n- Song lists\r\n- Favorites\r\n- Artists\r\n- Albums sorted by title\r\n- Playlists\r\n- Filtered library views\r\n\r\nIt remains disabled for album track order, Recently Played, chronologically sorted albums, Queue, folders, settings, confirmation screens, and circular menus.\r\n\r\nThe first position for each letter is indexed once per visible list, so moving through a large library does not repeatedly scan every row.\r\n\r\n## Improved Sleep Timer\r\n\r\nThe sleep timer now opens a dedicated wheel-controlled selection screen instead of cycling through a small number of presets.\r\n\r\nAvailable choices include:\r\n\r\n- Off\r\n- End of track\r\n- End of album\r\n- End of queue\r\n- Every exact duration from 1 through 60 minutes\r\n\r\nReopening the Sleep Timer screen returns to the currently selected option.\r\n\r\nActive minute timers now show a live remaining-time countdown throughout the interface. Expired timers are cleared correctly instead of remaining visibly enabled after playback stops.\r\n\r\nEnd of Album and End of Queue follow the active playback collection and queue rather than using an approximate duration.\r\n\r\n## More Reliable Screen-Off Playback\r\n\r\nY2Player now holds a service-level playback wake lock throughout Preparing and Playing.\r\n\r\nPreviously, the decoder-level wake lock could be released during the brief asynchronous handoff between one completed track and the next. If the display was asleep at that exact moment, Android could suspend the CPU before the service completed the transition.\r\n\r\nThe new ownership closes that gap while still releasing the wake lock when playback is:\r\n\r\n- Paused\r\n- Idle\r\n- Stopped\r\n- In an error state\r\n- Shutting down\r\n\r\nThis fixes playback potentially stopping at the end of a track until the screen was turned back on.\r\n\r\n## Optional Seeking While Locked\r\n\r\nA new option allows the Y2\u2019s Left and Right buttons to seek while the device is locked instead of changing tracks or audiobook chapters.\r\n\r\nIt can be enabled under:\r\n\r\nSettings \u2192 Audio \u2192 Seeking \u2192 Seek When Locked\r\n\r\nWhen enabled, Left and Right use the configured held-seek interval. The option is disabled by default, and headset or Bluetooth transport controls retain their normal behavior.\r\n\r\n## Wake-Up Seek Fix\r\n\r\nA separate input-routing fix prevents a held seek button from being interpreted as multiple Previous or Next commands when the display wakes.\r\n\r\nWhen the unlocked activity is visible, it now has exclusive ownership of local keypad gestures. The vendor broadcast remains available as a screen-off fallback, while genuine headset and Bluetooth media commands remain unaffected.\r\n\r\nThis is particularly useful for audiobooks, where an interrupted seek could previously skip several chapters.\r\n\r\n## Correct Playback Order After Disabling Shuffle\r\n\r\nDisabling Shuffle now rebuilds the ordered continuation around the currently playing track.\r\n\r\nPreviously, turning Shuffle off after progressing through a playlist could restart or incorrectly arrange the remaining ordered playback.\r\n\r\nThe corrected behavior:\r\n\r\n- Keeps the current track active.\r\n- Restores the remaining playlist or collection order.\r\n- Preserves deliberately added Up Next tracks.\r\n- Keeps those Up Next entries ahead of the restored continuation.\r\n- Handles the final track and progressed shuffle sessions correctly.\r\n\r\n## Queue Control Fixes\r\n\r\nCenter-button behavior in Queue now matches other track lists.\r\n\r\nA short Center press opens the selected queue entry\u2019s action menu. Holding Center uses the corresponding long-press behavior without accidentally performing both actions.\r\n\r\nThis removes inconsistent behavior where Queue treated Center differently from Songs and other track views.\r\n\r\n## Redesigned Equalizer Controls\r\n\r\nEqualizer configuration has been redesigned around explicit wheel-controlled selection screens.\r\n\r\nPreset selection now displays a complete list instead of cycling blindly through available presets. The list includes Custom whenever individual band values are active.\r\n\r\nSelecting an equalizer band opens a dedicated dB value screen:\r\n\r\n- The current value is preselected.\r\n- Values use valid 1 dB steps within the range reported by the device.\r\n- Exact minimum and maximum values remain available.\r\n- Center applies the selected value and returns.\r\n- Back cancels without changing the band.\r\n- Left and Right retain their normal global playback behavior.\r\n\r\nThis replaces the previous short-press and long-press band adjustment system, making the current and resulting values much clearer.\r\n\r\n## Consistent List Wrapping\r\n\r\nThe Wrap Lists preference is now respected across all selectable screens.\r\n\r\nIt applies consistently to:\r\n\r\n- Library lists\r\n- Settings\r\n- Confirmation choices\r\n- Equalizer selectors\r\n- Circular action menus\r\n- Search keyboard navigation\r\n\r\nWhen Wrap Lists is disabled, selection stops at the beginning and end. When enabled, selection continues from the final item to the first and vice versa.\r\n\r\nQueue reordering remains intentionally bounded because that screen edits a target position rather than navigating an ordinary menu.\r\n\r\n## Improved Back Navigation\r\n\r\nHolding the Y2\u2019s top Back button now returns directly to the main menu, matching classic iPod behavior.\r\n\r\n- A short press returns one screen.\r\n- A held press clears the navigation stack and returns home.\r\n- Hold detection works with normal Android key repeats.\r\n- Release-based detection also supports firmware that does not emit repeat events.\r\n- The short Back action is suppressed after a recognized hold.\r\n\r\nBack also dismisses temporary alerts and status messages before navigating away. A second press performs the normal Back action.\r\n\r\nPersistent library, playback, Bluetooth, and diagnostic status information is not intercepted.\r\n\r\n## Artist Navigation Fix\r\n\r\nTrack Options \u2192 Browse Track \u2192 Go to Artist now opens the selected artist\u2019s album list.\r\n\r\nPreviously, this route bypassed the normal artist view and opened a flat list containing every song by that artist.\r\n\r\nThe corrected behavior now matches:\r\n\r\nMusic \u2192 Artists \u2192 Artist Albums\r\n\r\nGo to Album and existing featured-artist normalization remain unchanged.\r\n\r\n## Safer Embedded Artwork\r\n\r\nOversized or malformed embedded artwork is now rejected safely.\r\n\r\nPreviously, invalid artwork data could trigger an exception while constructing the artwork byte array and potentially crash Y2Player.\r\n\r\nThe native metadata bridge now:\r\n\r\n- Enforces the configured artwork-size limit before allocation.\r\n- Detects JNI allocation failures.\r\n- Clears the resulting exception safely.\r\n- Returns no artwork instead of bringing down the application.\r\n\r\nValid embedded and external artwork behavior is unchanged.\r\n\r\n## Cleaner Now Playing Footer\r\n\r\nThe permanent transition-mode item and its divider have been removed from the Now Playing footer.\r\n\r\nShuffle and Repeat remain on the left, while queue position remains right-aligned. This gives the footer a more balanced layout and removes information that did not need to remain visible continuously.\r\n\r\nThis is only a presentation change. Gapless playback, Crossfade, Crossfade Mode, their settings, and their playback behavior remain available.\r\n\r\n## USB Connection Feedback\r\n\r\nConnecting USB now produces a single perceptible haptic response when haptics are enabled and supported by the device.\r\n\r\nThe implementation uses the existing coalesced USB state instead of reacting independently to every Android power and USB broadcast.\r\n\r\nThe following do not cause duplicate vibrations:\r\n\r\n- Initial USB state detection\r\n- Repeated connected-state broadcasts\r\n- Power-state refreshes\r\n- Disconnecting the cable\r\n\r\n## Settings and Backup Compatibility\r\n\r\nThe following new preferences are included in Backup & Restore:\r\n\r\n- FM Radio main-menu visibility\r\n- Seek When Locked\r\n\r\nOlder backups remain compatible and receive safe defaults:\r\n\r\n- FM Radio is hidden.\r\n- Seek When Locked is disabled.\r\n\r\n## Validation\r\n\r\nVersion 2.5 has been checked with the complete debug unit-test suite and Android lint.\r\n\r\nThe latest validation completed successfully with more than 930 unit tests covering navigation, Search, FM state, playback, queue behavior, sleep timers, input routing, artwork, preferences, and backup compatibility.\r\n\r\n## Installation\r\n\r\nThe release provides the existing system-only update path as well as a complete `rom_y2.zip` package for the Innioasis Updater.\r\n\r\nFor the system-only method, use SP Flash Tool in Download Only mode with only the ANDROID partition selected, pointing to the supplied `system.img`.\r\n\r\nDo not select, format, or flash unrelated partitions.\r\n\r\nThe complete `rom_y2.zip` installation performs a full-device installation and erases user data. Before using it:\r\n\r\n1. Export a Y2Player backup.\r\n2. Copy the backup off the device.\r\n3. Copy any important music, playlists, diagnostics, and other files to a computer.\r\n4. Verify the supplied package checksum.\r\n5. Follow the installation instructions for the Y2 specifically.\r\n\r\nDo not use a Y1 package on a Y2.\r\n\r\n## Reporting Problems\r\n\r\nIf you encounter a problem, enable verbose diagnostics before reproducing it:\r\n\r\nSettings \u2192 System \u2192 Diagnostics \u2192 Verbose Diagnostics\r\n\r\nAfter reproducing the problem, export the report:\r\n\r\nSettings \u2192 System \u2192 Diagnostics \u2192 Export Diagnostics\r\n\r\nAttach the exported report to a GitHub issue and include:\r\n\r\n- Whether your Y2 is from the original or FM-enabled hardware batch\r\n- The audio format being played\r\n- Whether playback used the speaker, wired headphones, or Bluetooth\r\n- Whether Shuffle, Repeat, Crossfade, ReplayGain, or the equalizer was enabled\r\n- The exact screen and hardware-button sequence that produced the problem\r\n\r\nFor FM problems, also mention whether wired headphones were connected and whether FM works in the FM-enabled Innioasis stock firmware.\r\n\r\nThank you to everyone who submitted issues, tested builds, provided diagnostics, and helped investigate the Y2\u2019s different hardware revisions. Your reports directly shaped the Search interface, navigation improvements, timer redesign, playback fixes, and hardware compatibility behavior in this release.\r\n",
-      "downloads": 1229,
+      "downloads": 1230,
       "mirror_downloads": 40,
       "download_breakdown": {
         "tag": "Release2.5",
@@ -37114,7 +37114,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/rom_y2.zip",
-            "downloads": 1200,
+            "downloads": 1201,
             "mirror_downloads": 11
           }
         ],
@@ -37169,7 +37169,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/rom_y2.zip",
           "size": 296365314,
-          "download_count": 1189,
+          "download_count": 1190,
           "content_type": "application/zip"
         },
         {
@@ -37853,7 +37853,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/Leska1337/better-Y/raw/main/screenshots/plus_logo.png",
       "icon_dark_url": "",
       "body": "![Image](https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/themes_support.png \"Logo\")\r\n\r\nSettings marked with \u2699\ufe0f are new rows in the better-Y menu.\r\n\r\n### System\r\n\r\n<details>\r\n<summary>\u2699\ufe0f <b>Data backup</b> \u2014 settings, likes, playlists, bookmarks and reading progress</summary>\r\n<div>\r\n<p></p>\r\n\r\nUpdating the firmware with an updater wipes the user data, so in order to keep it after an update you can use \"Data backup\" button. \r\nIt saves everything to `/better-Y/backup/` on the SD card and you can load it back after you updated to a newer version.\r\n\r\nAlong with the better-Y settings, the archive keeps the theme, the stock settings, the library with\r\nplaylists, bookmarks and audiobook progress, the e-book reader progress. Bluetooth pairings can't be saved.\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary><b>Extended themes support</b> \u2014 screens that were previously hardcoded now use the theme designs</summary>\r\n<div>\r\n<p></p>\r\n\r\n- **USB connected**\r\n- **Loading windows**\r\n- **Equalizer**\r\n- **FM Radio**\r\n- **Photos**\r\n- **Wallpaper**\r\n- **Search** and the **on-screen keyboard**\r\n- **Brightness**\r\n- **Bluetooth**\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary><b>Equalizer now shows each band's level in dB instead of just \"-15\" and \"15\"</b></summary>\r\n<div>\r\n<p></p>\r\n\r\n<table border=\"0\" style=\"border-collapse: collapse; border: none;\">\r\n  <tr style=\"border: none; background: transparent; vertical-align: top;\">\r\n    <td width=\"400\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0 15px 0 0; width: 1px;\">\r\n      <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/equalizer.png\" alt=\"Updated equalizer window\" width=\"373\" style=\"display: block; max-width: none; margin: 0 auto;\">\r\n    </td>\r\n</table>\r\n\r\n</div>\r\n</details>\r\n\r\n<p>&#9679;&ensp;<b>Disabled scroll wheel sounds while the screen is off</b> \u2014 no more clicks in a pocket when Key lock is off</p>\r\n\r\n<p>&#9679;&ensp;<b>Fixed a bug where the song order was reset when a song was added to the queue</b></p>\r\n\r\n<p>&#9679;&ensp;<b>Files of better-Y on the SD card are sorted into folders</b> \u2014 <code>/better-Y/logs/</code> and <code>/better-Y/backup/</code></p>\r\n\r\n<p>&#9679;&ensp;<b>E-book \u2192 Local files no longer lists the files of the /better-Y/ folder</b>\r\n\r\n<p>&#9679;&ensp;<b>Translation fixes and some other minor\u00a0changes</b></p>\r\n\r\n### Now Playing\r\n\r\n<details>\r\n<summary>\u2699\ufe0f <b>Option to change text and lyrics color</b> \u2014 Light / Dark / Theme color</summary>\r\n<div>\r\n<p></p>\r\n\r\n<table border=\"0\" style=\"border-collapse: collapse; border: none; margin: 0; width: auto;\">\r\n  <!-- \u0412\u0415\u0420\u0425\u041d\u0418\u0419 \u0420\u042f\u0414: \u0414\u0412\u0415 \u041a\u0410\u0420\u0422\u0418\u041d\u041a\u0418 -->\r\n  <tr style=\"border: none; background: transparent; vertical-align: top;\">\r\n    <!-- \u041f\u0435\u0440\u0432\u0430\u044f \u043a\u043e\u043b\u043e\u043d\u043a\u0430 (\u0431\u0435\u0437 \u043e\u0442\u0441\u0442\u0443\u043f\u0430 \u0441\u043b\u0435\u0432\u0430) -->\r\n    <td width=\"400\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0 15px 0 0; width: 1px;\">\r\n      <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/color_change_1.png\" alt=\"Icons and text color changed to `Light`\" width=\"373\" style=\"display: block; max-width: none; margin: 0;\">\r\n      <div align=\"center\" style=\"padding-top: 8px; font-size: 14px; line-height: 1.4; text-align: center;\">\r\n        Icons and text color changed to `Light`\r\n      </div>\r\n    </td>\r\n    <!-- \u0412\u0442\u043e\u0440\u0430\u044f \u043a\u043e\u043b\u043e\u043d\u043a\u0430 -->\r\n    <td width=\"400\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0 0 0 15px; width: 1px;\">\r\n      <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/color_change_2.png\" alt=\"Icons and text color changed to `Theme color`\" width=\"373\" style=\"display: block; max-width: none; margin: 0;\">\r\n      <div align=\"center\" style=\"padding-top: 8px; font-size: 14px; line-height: 1.4; text-align: center;\">\r\n        Icons and text color changed to `Theme color`\r\n      </div>\r\n    </td>\r\n  </tr>\r\n\r\n  <!-- \u041e\u0422\u0421\u0422\u0423\u041f \u041c\u0415\u0416\u0414\u0423 \u0420\u042f\u0414\u0410\u041c\u0418 -->\r\n  <tr style=\"border: none; background: transparent; height: 20px;\">\r\n    <td colspan=\"2\" valign=\"top\" style=\"border: none; padding: 0;\"></td>\r\n  </tr>\r\n\r\n  <!-- \u041d\u0418\u0416\u041d\u0418\u0419 \u0420\u042f\u0414: \u0422\u0420\u0415\u0422\u042c\u042f \u041a\u0410\u0420\u0422\u0418\u041d\u041a\u0410 \u041f\u041e \u0426\u0415\u041d\u0422\u0420\u0423 \u041f\u0415\u0420\u0412\u042b\u0425 \u0414\u0412\u0423\u0425 -->\r\n  <tr style=\"border: none; background: transparent; vertical-align: top;\">\r\n    <td colspan=\"2\" align=\"center\" valign=\"top\" style=\"border: none; padding: 0; text-align: center;\">\r\n      <div style=\"display: inline-block; text-align: center;\">\r\n        <img src=\"https://github.com/Leska1337/better-Y/raw/v1.1.0/screenshots/color_change_3.png\" alt=\"Lyrics color changed to `Theme color`\" width=\"373\" style=\"display: block; max-width: none; margin: 0 auto;\">\r\n        <div align=\"center\" style=\"padding-top: 8px; font-size: 14px; line-height: 1.4; text-align: center;\">\r\n          Lyrics color changed to `Theme color`\r\n        </div>\r\n      </div>\r\n    </td>\r\n  </tr>\r\n</table>\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary>\u2699\ufe0f <b>Long artist/album scroll</b> \u2014 Off / Artists / Albums / Both</summary>\r\n<div>\r\n<p></p>\r\n\r\nLong artist and album lines in the player can now scroll too. Long song titles always scroll,\r\nregardless of the setting.\r\n\r\n</div>\r\n</details>\r\n\r\n### Menu\r\n\r\n<details>\r\n<summary><b>More sorting options</b> \u2014 in Folders and Audiobooks</summary>\r\n<div>\r\n<p></p>\r\n\r\n- **Music/Audiobooks/Videos \u2192 Folders** \u2014 \"Sort by File name\".\r\n- **Audiobooks \u2192 All audiobooks** and the chapters of a book \u2014 \"Sort by File name\".\r\n- **Audiobooks \u2192 Artists** and **Albums** \u2014 \"Sort by\" \u2192 A-Z / Z-A.\r\n\r\n</div>\r\n</details>\r\n\r\n<details>\r\n<summary><b>Photos section rework</b> \u2014 revised to reflect the changes and align with the other sections</summary>\r\n<div>\r\n<p></p>\r\n\r\n- \"Set as wallpaper\" is no longer offered for a folder.\r\n- Leaving a folder returns the grid to where it was, without scrolling down from the top.\r\n- Opening a folder or a picture no longer shows a loading window.\r\n\r\n</div>\r\n</details>\r\n\r\n<p>&#9679;&ensp;<b>Faster and even more responsive scrolling</b> \u2014 up to 4x faster</p>\r\n\r\n<p>&#9679;&ensp;<b>Queue, better-Y, Bluetooth, Themes gallery redesign</b></p>\r\n\r\n<p>&#9679;&ensp;<b>Folders are listed above files in Videos \u2192 Folders</b></p>\r\n\r\n<p>&#9679;&ensp;<b>New default folder and file icons in Folders</b> \u2014 they also follow the theme colors</p>\r\n\r\n<p>&#9679;&ensp;<b>The song number column fix</b> \u2014 no longer cuts off with wide theme fonts and dynamically changes depending on the theme's font size</p>\r\n\r\n<p>&#9679;&ensp;<b>\"MultiSelect\" is back in the menu while songs are selected</b></p>\r\n\r\n<p>&#9679;&ensp;<b>The alphabetical scroll letter no longer gets bigger with wide theme fonts</b></p>\r\n\r\n<p>&#9679;&ensp;<b>Settings and equalizer previews change right after a scroll</b> \u2014 without a delay</p>\r\n\r\n### Metadata\r\n\r\n<details>\r\n<summary><b>Tags of MP3s with big embedded covers are read correctly</b> \u2014 titles, album artist, disc number and the cover itself</summary>\r\n<div>\r\n<p></p>\r\n\r\nThe stock firmware refuses to read an ID3 tag larger than 3 MB and silently falls back to the old ID3v1\r\ntag. That tag has titles cut to 30 characters, no album artist, no disc\r\nnumber, no cover \u2014 and no text encoding, so Cyrillic turned into hieroglyphs.\r\n\r\nbetter-Y now reads such tags itself (ID3v2.2, 2.3 and 2.4). FLAC, M4A and OGG never had this\r\nproblem.\r\n\r\nA library scanned by an older version is fixed once by pressing \"Update library\": on its first run\r\nit re-reads every MP3 whose tag is over the limit, even if the file has not changed.\r\n\r\n</div>\r\n</details>\r\n\r\n> [!TIP]\r\n> If you're updating from version 1.0.0 and don't want to lose your user data (settings, likes, playlists, bookmarks and reading progress), there are instructions in the Update section on how to update without losing your user data. Starting with this version you can back up your data using `Data backup` button in the better-Y menu and load it back after you updated to a newer version using Updater CE or any other option.",
-      "downloads": 562,
+      "downloads": 564,
       "mirror_downloads": 65,
       "download_breakdown": {
         "tag": "v1.1.0",
@@ -37862,7 +37862,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/rom.zip",
-            "downloads": 512,
+            "downloads": 514,
             "mirror_downloads": 15
           }
         ],
@@ -37925,7 +37925,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/rom.zip",
           "size": 181243963,
-          "download_count": 497,
+          "download_count": 499,
           "content_type": "application/x-zip-compressed"
         }
       ]
@@ -38452,43 +38452,6 @@ window.INNIOASIS_HARDCODED_RELEASES = {
         }
       ]
     }
-  ],
-  "spirk0/retailos-y1": [
-    {
-      "id": 450700575,
-      "tag_name": "init",
-      "name": " retailOS for Y1",
-      "published_at": "2026-11-18T23:53:13Z",
-      "prerelease": false,
-      "html_url": "https://github.com/spirk0/retailos-y1/releases/tag/init",
-      "icon_url": "",
-      "icon_dark_url": "",
-      "body": "",
-      "downloads": 4,
-      "mirror_downloads": 0,
-      "download_breakdown": {
-        "tag": "init",
-        "mirrors": "",
-        "firmware": [
-          {
-            "name": "rom.zip",
-            "url": "https://github.com/spirk0/retailos-y1/releases/download/init/rom.zip",
-            "downloads": 4
-          }
-        ],
-        "portable": []
-      },
-      "assets": [
-        {
-          "id": 765479104,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/spirk0/retailos-y1/releases/download/init/rom.zip",
-          "size": 456631238,
-          "download_count": 4,
-          "content_type": "application/zip"
-        }
-      ]
-    }
   ]
 };
 
@@ -38514,14 +38477,14 @@ window.INNIOASIS_RELEASE_ICONS = {
 
 window.INNIOASIS_REPO_STATS = {
   "classyplayer/classy": {
-    "downloads": 2031,
+    "downloads": 2035,
     "forks": 4,
     "release_count": 29,
     "stars": 14,
     "updated_at": "2026-11-19T14:05:13Z"
   },
   "fabianzettl/inniclassic": {
-    "downloads": 2611,
+    "downloads": 2612,
     "forks": 6,
     "release_count": 13,
     "stars": 18,
@@ -38535,14 +38498,14 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-13T17:15:32Z"
   },
   "jarvissax/rondo": {
-    "downloads": 2542,
+    "downloads": 2566,
     "forks": 1,
     "release_count": 23,
     "stars": 3,
     "updated_at": "2026-11-17T06:08:34Z"
   },
   "leska1337/better-y": {
-    "downloads": 725,
+    "downloads": 727,
     "forks": 1,
     "release_count": 2,
     "stars": 8,
@@ -38556,7 +38519,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-15T07:13:47Z"
   },
   "rockbox-y1/rockbox": {
-    "downloads": 53955,
+    "downloads": 53959,
     "forks": 23,
     "release_count": 31,
     "stars": 86,
@@ -38570,35 +38533,28 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-10-15T03:03:06Z"
   },
   "schulzcode/y2linux": {
-    "downloads": 35229,
+    "downloads": 35288,
     "forks": 9,
     "release_count": 106,
     "stars": 25,
     "updated_at": "2026-11-16T15:02:08Z"
   },
   "schulzcode/y2player": {
-    "downloads": 2324,
+    "downloads": 2325,
     "forks": 4,
     "release_count": 10,
     "stars": 29,
     "updated_at": "2026-11-11T21:59:17Z"
   },
-  "spirk0/retailos-y1": {
-    "downloads": 4,
-    "forks": 1,
-    "release_count": 1,
-    "stars": 1,
-    "updated_at": "2026-11-19T13:53:59Z"
-  },
   "spycemagic/y2-rockbox": {
-    "downloads": 4594,
+    "downloads": 4602,
     "forks": 1,
     "release_count": 3,
     "stars": 15,
     "updated_at": "2026-11-08T02:25:53Z"
   },
   "thesolarproject/solar": {
-    "downloads": 5064,
+    "downloads": 5065,
     "forks": 9,
     "release_count": 48,
     "stars": 31,
@@ -38612,7 +38568,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T14:36:25Z"
   },
   "y1-community/classy-mirror": {
-    "downloads": 1036,
+    "downloads": 1040,
     "forks": 0,
     "release_count": 29,
     "stars": 0,
@@ -38633,7 +38589,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T16:18:09Z"
   },
   "y1-community/g3-stock-rom": {
-    "downloads": 218,
+    "downloads": 219,
     "forks": 0,
     "release_count": 6,
     "stars": 0,
@@ -38668,7 +38624,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T15:54:16Z"
   },
   "y1-community/innioasis-updater": {
-    "downloads": 70750,
+    "downloads": 70766,
     "forks": 13,
     "release_count": 74,
     "stars": 56,
@@ -38730,29 +38686,22 @@ window.INNIOASIS_REPO_STATS = {
     "stars": 0,
     "updated_at": "2026-11-05T04:10:35Z"
   },
-  "y1-community/retailos-y1-mirror": {
-    "downloads": 0,
-    "forks": 0,
-    "release_count": 0,
-    "stars": 0,
-    "updated_at": ""
-  },
   "y1-community/rockbox-mirror": {
-    "downloads": 872,
+    "downloads": 877,
     "forks": 0,
     "release_count": 25,
     "stars": 0,
     "updated_at": "2026-11-12T09:07:19Z"
   },
   "y1-community/rondo-mirror": {
-    "downloads": 237,
+    "downloads": 238,
     "forks": 0,
     "release_count": 16,
     "stars": 0,
     "updated_at": "2026-11-12T14:35:30Z"
   },
   "y1-community/solar-mirror": {
-    "downloads": 249,
+    "downloads": 252,
     "forks": 0,
     "release_count": 47,
     "stars": 0,
@@ -38766,7 +38715,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-05T04:11:50Z"
   },
   "y1-community/updater-ce-neo": {
-    "downloads": 1897,
+    "downloads": 1900,
     "forks": 1,
     "release_count": 5,
     "stars": 0,
@@ -38801,21 +38750,21 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T13:41:34Z"
   },
   "y1-community/y1-stock-rom": {
-    "downloads": 64898,
+    "downloads": 65048,
     "forks": 0,
     "release_count": 10,
     "stars": 6,
     "updated_at": "2026-10-27T10:14:24Z"
   },
   "y1-community/y1-stock-rom-mirror": {
-    "downloads": 1145,
+    "downloads": 1149,
     "forks": 0,
     "release_count": 10,
     "stars": 0,
     "updated_at": "2026-11-12T14:11:22Z"
   },
   "y1-community/y1_launcher-mirror": {
-    "downloads": 173,
+    "downloads": 176,
     "forks": 0,
     "release_count": 14,
     "stars": 0,
@@ -38836,14 +38785,14 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T13:38:47Z"
   },
   "y1-community/y2-rockbox-mirror": {
-    "downloads": 182,
+    "downloads": 185,
     "forks": 0,
     "release_count": 3,
     "stars": 0,
     "updated_at": "2026-11-12T15:05:05Z"
   },
   "y1-community/y2linux-mirror": {
-    "downloads": 3694,
+    "downloads": 3703,
     "forks": 0,
     "release_count": 103,
     "stars": 0,

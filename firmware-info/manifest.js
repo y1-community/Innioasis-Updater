@@ -75,13 +75,6 @@ window.INNIOASIS_README_PAGES = {
       "y2player-y2"
     ]
   },
-  "spirk0/retailos-y1": {
-    "name": "iPod OS (Dev)",
-    "page": "firmware-info/spirk0-retailos-y1.html",
-    "slugs": [
-      "ipod-os-dev-y1"
-    ]
-  },
   "spycemagic/y2-rockbox": {
     "name": "Rockbox",
     "page": "firmware-info/spycemagic-y2-rockbox.html",
