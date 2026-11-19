@@ -169,6 +169,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://innioasis.app/firmware-info/spirk0-retailos-y1.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://innioasis.app/firmware-info/spycemagic-y2-rockbox.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -5191,6 +5197,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://innioasis.app/post-install/spirk0-retailos-y1-docs-architecture.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://innioasis.app/post-install/spycemagic-y2-rockbox-00_project_docs-safety.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -6513,6 +6525,18 @@
   <url>
     <loc>https://innioasis.app/release-notes/inniclassic-y2/y1-exp.2.html</loc>
     <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://innioasis.app/release-notes/ipod-os-y1/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://innioasis.app/release-notes/ipod-os-y1/init.html</loc>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

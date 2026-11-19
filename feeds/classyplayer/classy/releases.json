@@ -1402,8 +1402,8 @@
         "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/734798527"
       }
     ],
-    "mirror_downloads": 61,
-    "downloads": 83,
+    "mirror_downloads": 62,
+    "downloads": 84,
     "download_breakdown": {
       "tag": "20261111",
       "mirrors": "y1-community/classy-mirror",
@@ -1443,7 +1443,7 @@
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261111/rom_y2-linux-arm64.zip",
           "size": 603046750,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux-legacy",

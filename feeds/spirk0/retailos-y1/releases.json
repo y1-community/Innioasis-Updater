@@ -1,0 +1,42 @@
+[
+  {
+    "id": 450700575,
+    "tag_name": "init",
+    "name": " retailOS for Y1",
+    "body": "",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-18T23:50:18Z",
+    "published_at": "2026-11-18T23:53:13Z",
+    "html_url": "https://github.com/spirk0/retailos-y1/releases/tag/init",
+    "icon_url": "",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 765479104,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/spirk0/retailos-y1/releases/download/init/rom.zip",
+        "size": 456631238,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-18T23:52:55Z",
+        "updated_at": "2026-11-18T23:53:12Z",
+        "url": "https://api.github.com/repos/spirk0/retailos-y1/releases/assets/765479104"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 1,
+    "download_breakdown": {
+      "tag": "init",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/spirk0/retailos-y1/releases/download/init/rom.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
+  }
+]

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en"><head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About iPod OS (Y1) - README.md - Innioasis Updater</title>
+  <meta name="description" content="Community firmware package for the Y1.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/firmware-info/spirk0-retailos-y1.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="About iPod OS (Y1) - README.md - Innioasis Updater">
+  <meta property="og:description" content="Community firmware package for the Y1.">
+  <meta property="og:url" content="https://innioasis.app/firmware-info/spirk0-retailos-y1.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261113readme">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261113readme">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page lumen-release-page" data-firmware-info data-repo="spirk0/retailos-y1">
+  <p class="lumen-doc-back"><a href="../firmware.html">← Firmware Downloads</a></p>
+  <header class="lumen-doc-head">
+    <div class="lumen-release-head"><span class="lumen-release-icon lumen-release-icon--generic" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></span><div class="lumen-release-titles"><p class="lumen-kicker">Firmware README · Y1</p><h1>About iPod OS</h1></div></div>
+    <p class="lumen-lead">Community firmware package for the Y1.</p>
+    <p class="lumen-meta">Also known as: README.md · spirk0/retailos-y1 · retailos-y1 · iPod OS · spirk0-retailos-y1</p>
+    <div class="lumen-release-tag-row"><span>Y1</span></div>
+    <div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../guide.html?model=Y1&amp;software=ipod-os-y1">Open the iPod OS guide</a><a class="lumen-button" href="../firmware.html?model=Y1&amp;software=ipod-os-y1">Install with Updater CE</a></div>
+  </header>
+  <section class="lumen-firmware-stats" aria-label="Project statistics"><div class="lumen-stat"><span class="lumen-stat-label">Downloads from Firmware Archive</span><strong class="lumen-stat-value" data-stat="downloads">1</strong></div></section>
+  <p class="lumen-meta" id="fi-stats-note"></p>
+  <article class="lumen-doc-body lumen-firmware-readme" id="fi-body"><h1 id="retailos-on-y1">retailOS on Y1</h1>
+<p>This is a shallow emulation layer for iPod 5.5 firmwares. Most of the code runs natively (since iPods and the Y1 share very similar processor architectures). A few things still needed emulation, such as the display, the input, audio,...</p>
+<p>Because of this it is not running at 100% speed and has some input delay.</p>
+<p>But it plays the music, podcasts and the audiobooks on the Y1, with the iPod&#x27;s menus, album covers, hold switch (MENU+PLAY) and backlight.</p>
+<h2 id="what-you-need">What you need</h2>
+<ul><li>An Innioasis Y1</li><li>The firmware file from Apple: <code>iPod_25.1.3.ipsw</code> (<code>iPod_20.1.3.ipsw</code> also works).<p>You should be able to find it with Google, Apple still hosts it.</p></li><li>The <code>rom.zip</code> from releases and <a href="https://github.com/bkerler/mtkclient" target="_blank" rel="noopener noreferrer">mtkclient</a> to flash it</li></ul>
+<h2 id="installation">Installation</h2>
+<ol><li>Install MTKClient: <a href="https://github.com/bkerler/mtkclient" target="_blank" rel="noopener noreferrer">https://github.com/bkerler/mtkclient</a></li><li>Download the latest firmware here: <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=ipod-os-y1">spirk0/retailos-y1</a> </li><li>Unpack the archive:</li></ol>
+<pre><code>mkdir rom &amp;&amp; cd rom
+unzip ../rom.zip</code></pre>
+<ol><li>Turn of the device, disconnect from the PC</li><li>Start the flashing process:</li></ol>
+<pre><code>cd rom
+python ../mtk.py w logo,uboot,bootimg,recovery,android,usrdata logo.bin,lk.bin,boot.img,recovery.img,system.img,userdata.img</code></pre>
+<ol><li>Connect the device via USB</li><li>Unplug the device when the process has finished</li><li>Power on the device</li></ol>
+<h2 id="using-it">Using it</h2>
+<ol><li>Find and download <code>iPod_25.1.3.ipsw</code></li><li>Put it on your SD card at <code>/sdcard/retailos/iPod_25.1.3.ipsw</code></li><li>Put your supported audio files (mp3, aac, wav, m4a, m4b, aiff) into these folders:<ul><li><code>/sdcard/Music/</code>: music</li><li><code>/sdcard/Podcasts/</code>: podcasts (the album tag is the name of the show)</li><li><code>/sdcard/Audiobooks/</code>: audiobooks</li></ul></li></ol>
+<p>Select &quot;Build database&quot; again after you add or delete audio files.</p>
+<h2 id="manual-install">Manual install</h2>
+<h3 id="build">Build</h3>
+<pre><code class="language-sh">./build-apk.sh</code></pre>
+<p>The result is <code>android-app/build/retailos-native.apk</code>.</p>
+<h3 id="install">Install</h3>
+<ol><li>Install the app:<p><code>adb install -r android-app/build/retailos-native.apk</code></p></li><li>Copy the firmware file into the folder <code>/sdcard/retailos/</code>:<p><code>adb push iPod_25.1.3.ipsw /sdcard/retailos/</code></p></li></ol>
+<h2 id="resources">Resources</h2>
+<p>This builds on a lot of information scattered throughout the internet, mostly these:</p>
+<p>Code:</p>
+<ul><li><a href="https://github.com/davidmonterocrespo24/qemu-ipod-classic" target="_blank" rel="noopener noreferrer">qemu-ipod-classic</a>:<p>a QEMU fork with a model of the iPod video (PP5022 devices, BCM2722 video chip). The device models of the native runner are ports of these models</p></li><li><a href="https://innioasis.app/firmware.html?model=Y1&amp;software=rockbox-y1">rockbox-y1</a>:<p>the github build workflow and setup instructions for mtkclient</p></li></ul>
+<p>Hardware Information:</p>
+<ul><li><a href="https://github.com/Rockbox/rockbox" target="_blank" rel="noopener noreferrer">Rockbox</a></li><li><a href="https://github.com/ndoo/ipod-emulator" target="_blank" rel="noopener noreferrer">ipod-emulator</a></li><li><a href="https://github.com/gtkpod/libgpod" target="_blank" rel="noopener noreferrer">libgpod</a></li><li><a href="http://www.ipodlinux.org/" target="_blank" rel="noopener noreferrer">iPodLinux wiki</a></li></ul>
+<h2 id="technical-documentation">Technical documentation</h2>
+<ul><li><a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fspirk0%2Fretailos-y1%2Fblob%2FHEAD%2Fdocs%2Farchitecture.md">docs/architecture.md</a>: how it works, basic concepts, what runs natively and what is emulated</li></ul></article>
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../firmware-info.js?v=20261104cite" defer></script>
+<script src="../nav.js?v=20261113noticefilter" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20261113blocklist" defer></script>
+</body></html>

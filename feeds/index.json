@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-14T16:57:36Z",
+  "generated_at": "2026-11-19T12:51:44Z",
   "manifest_url": "https://innioasis.app/slidia_manifest.xml",
   "firmware_list_url": "https://innioasis.app/firmware-list.html",
   "feeds": {
@@ -158,6 +158,12 @@
       "releases_atom": "https://innioasis.app/feeds/y1-community/y1-stock-rom-mirror/releases.atom",
       "repo_json": "https://innioasis.app/feeds/y1-community/y1-stock-rom-mirror/repo.json"
     },
+    "spirk0/retailos-y1": {
+      "repo": "spirk0/retailos-y1",
+      "releases_json": "https://innioasis.app/feeds/spirk0/retailos-y1/releases.json",
+      "releases_atom": "https://innioasis.app/feeds/spirk0/retailos-y1/releases.atom",
+      "repo_json": "https://innioasis.app/feeds/spirk0/retailos-y1/repo.json"
+    },
     "y1-community/g1-stock-rom-mirror": {
       "repo": "y1-community/g1-stock-rom-mirror",
       "releases_json": "https://innioasis.app/feeds/y1-community/g1-stock-rom-mirror/releases.json",
@@ -304,7 +310,7 @@
     },
     "y1-community/classy-mirror": {
       "source_repo": "ClassyPlayer/Classy",
-      "updated_at": "2026-11-13T23:02:32Z"
+      "updated_at": "2026-11-18T20:07:25Z"
     },
     "y1-community/g1-stock-rom-mirror": {
       "source_repo": "y1-community/g1-stock-rom",
@@ -316,7 +322,7 @@
     },
     "y1-community/g5-stock-rom-mirror": {
       "source_repo": "y1-community/g5-stock-rom",
-      "updated_at": "2026-11-14T12:04:13Z"
+      "updated_at": "2026-11-19T03:55:09Z"
     },
     "y1-community/inniclassic-mirror": {
       "source_repo": "FabianZettl/inniclassic",
@@ -344,7 +350,7 @@
     },
     "y1-community/rondo-mirror": {
       "source_repo": "jarvissax/rondo",
-      "updated_at": "2026-11-14T16:53:11Z"
+      "updated_at": "2026-11-18T13:10:02Z"
     },
     "y1-community/solar-mirror": {
       "source_repo": "thesolarproject/solar",
@@ -360,7 +366,7 @@
     },
     "y1-community/y1-stock-rom-mirror": {
       "source_repo": "y1-community/y1-stock-rom",
-      "updated_at": "2026-11-14T03:21:59Z"
+      "updated_at": "2026-11-14T21:59:12Z"
     },
     "y1-community/y1_launcher-mirror": {
       "source_repo": "ismileblue/y1_launcher",
@@ -376,7 +382,7 @@
     },
     "y1-community/y2linux-mirror": {
       "source_repo": "schulzcode/y2linux",
-      "updated_at": "2026-11-13T22:45:18Z"
+      "updated_at": "2026-11-17T22:04:00Z"
     },
     "y1-community/y2player-mirror": {
       "source_repo": "schulzcode/Y2Player",

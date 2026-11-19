@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Architecture - Innioasis Updater</title>
+  <meta name="description" content="Architecture This file describes how the app runs the iPod software on the Innioasis Y1. It also describes the main concepts and explains which parts run natively and whi">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/spirk0-retailos-y1-docs-architecture.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Architecture - Innioasis Updater">
+  <meta property="og:description" content="Architecture This file describes how the app runs the iPod software on the Innioasis Y1. It also describes the main concepts and explains which parts run natively and whi">
+  <meta property="og:url" content="https://innioasis.app/post-install/spirk0-retailos-y1-docs-architecture.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Architecture - Innioasis Updater">
+  <meta name="twitter:description" content="Architecture This file describes how the app runs the iPod software on the Innioasis Y1. It also describes the main concepts and explains which parts run natively and whi">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/spirk0-retailos-y1-docs-architecture.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/spirk0-retailos-y1-docs-architecture.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y1&amp;software=ipod-os-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · iPod OS · Y1</p><h1>Architecture</h1><p class="lumen-lead">Community firmware package for the Y1.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y1&amp;software=ipod-os-y1">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y1&amp;software=ipod-os-y1">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="architecture">Architecture</h1>
+<p>This file describes how the app runs the iPod software on the Innioasis Y1. It also describes the main concepts and explains which parts run natively and which parts the app emulates.</p>
+<h2 id="the-idea">The idea</h2>
+<p>The iPod 5G and 5.5G contain a PortalPlayer PP5022 chip. This chip has two ARM7TDMI cores: the CPU and the COP. The iPod also has 64 MB of SDRAM, 128 KB of fast internal RAM (IRAM), and a Broadcom BCM2722 video chip for the screen. The firmware, is ARM code (ARMv4T, ARM state) for these cores.</p>
+<p>The Innioasis Y1 has an ARMv7 processor (MT6572, Cortex-A7). An ARMv7 processor also runs the ARM instructions of the older cores. Therefore the Y1 runs the firmware instructions directly, without translation. A full emulator (QEMU) translates each block of guest code. On the 1 GHz Y1, QEMU needed more than 5 minutes for the first frame. The native runner shows the first frame after about 18 s. It plays music in real time.</p>
+<p>The runner emulates only what the Y1 cannot do natively for the firmware:</p>
+<ul><li>the privileged instructions (the firmware expects to be the operating<p>system, but the runner is a normal Linux process),</p></li><li>the iPod devices (registers at fixed addresses),</li><li>the interrupts, the second core, and the time.</li></ul>
+<h2 id="overview">Overview</h2>
+<pre><code> Innioasis Y1 (MT6572, Android 4.2)
+ +-----------------------------------------------------------------------+
+ | App &quot;iPod (native)&quot; (Java)              runner-native (C, as root)    |
+ |                                                                       |
+ | StartActivity                           retailOS code (the firmware): |
+ |  - IPSW -&gt; firmware.bin, osos.bin  ---&gt; runs natively                 |
+ |  - Build database -&gt; iTunesDB,          signal handlers: privileged   |
+ |    ArtworkDB, .ithmb, manifest          instructions, devices, IRQs   |
+ |                                         device models (PP5022,        |
+ | NativeActivity                          BCM2722, codec, power chip)   |
+ |  - keys, battery  --- stdin ----------&gt; click wheel, GPIO, PMU        |
+ |  - AudioTrack    &lt;--- stdout (PCM) ---- DMA + I2S                     |
+ |  - SurfaceView   &lt;--- frames.fifo ----- BCM2722 screen, events        |
+ |  - brightness, volume &lt;- (events) ----- backlight, codec              |
+ |  - SIGTERM (HOME) -------------------&gt;  hibernate: snap.bin           |
+ |                                                                       |
+ | /sdcard/retailos/disk, manifest.txt --&gt; virtual disk (FAT32, firmware)|
+ +-----------------------------------------------------------------------+</code></pre>
+<p>The app and the runner are two processes. The runner needs root (it runs through <code>su</code>). It maps the iPod memory at the iPod addresses, near address</p>
+<ol><li>Android does not permit this for a normal app (<code>mmap_min_addr</code>).</li></ol>
+<h2 id="the-app">The app</h2>
+<p>The app is plain Java for Android 4.2, without libraries (<code>android-app/app/src/main/java/org/retailos/</code>).</p>
+<table><thead><tr><th>Class</th><th>Task</th></tr></thead><tbody><tr><td><code>StartActivity</code></td><td>The start screen with &quot;Build database&quot; and &quot;Start iPod&quot;. The activity is also a home screen: as the default home screen it starts the iPod when the Y1 starts.</td></tr><tr><td><code>IpswSetup</code></td><td>Reads the IPSW (a ZIP file). Writes the firmware partition (<code>firmware.bin</code>) and the retailOS image (<code>osos.bin</code>).</td></tr><tr><td><code>MediaLibrary</code></td><td>Scans <code>/sdcard/Music</code>, <code>/sdcard/Podcasts</code>, <code>/sdcard/Audiobooks</code>. Reads the tags (<code>MediaMetadataRetriever</code>). Writes the database and the manifest.</td></tr><tr><td><code>ITunesDb</code></td><td>Writes the iTunesDB: the songs, the playlists, the podcasts.</td></tr><tr><td><code>ArtworkDb</code>, <code>CoverArt</code></td><td>Write the album covers: the ArtworkDB and the image files.</td></tr><tr><td><code>AudioInfo</code></td><td>Reads the sample rate from the audio file headers (MP3, MP4, WAV).</td></tr><tr><td><code>NativeActivity</code></td><td>Starts the runner. Connects the Y1 to the runner: keys, battery, screen, sound, brightness.</td></tr><tr><td><code>WheelMenu</code></td><td>The list of the start screen, for the click wheel.</td></tr></tbody></table>
+<h3 id="the-firmware-file">The firmware file</h3>
+<p>An IPSW is a ZIP file with a <code>Firmware-*</code> file: the iPod firmware partition. A directory in the IPSW (&quot;!ATA&quot; entries) lists the images: <code>osos</code> (retailOS), <code>rsrc</code> (a FAT12 volume with fonts and images), and <code>aupd</code> (the flash updater). The app writes the partition to <code>firmware.bin</code> and the <code>osos</code> image to <code>osos.bin</code>.</p>
+<p>The 5.5G file (<code>iPod_25.1.3.ipsw</code>) and the 5G file (<code>iPod_20.1.3.ipsw</code>) contain the same <code>osos</code> and <code>rsrc</code> bytes. Only the layout differs. The 5.5G file has a 2048-byte header before each image (one sector of the 5.5G disk). The 5G file has a 512-byte header. retailOS reads an image at its directory offset + 0x200 + its entry field. Therefore the app adds 0x600 to each directory offset of a 5.5G file (<code>IpswSetup.layout()</code>).</p>
+<h3 id="the-music-database">The music database</h3>
+<p>The iPod finds its music through <code>iPod_Control/iTunes/iTunesDB</code>, as iTunes writes the file. The app writes the same file:</p>
+<ul><li>a track record (<code>mhit</code>) for each file: tags, length, sample rate, media<p>type (song, podcast, audiobook), and the path in the iTunes form (<code>:iPod_Control:Music:F00:R00000.MP3</code>),</p></li><li>the master playlist, and the podcast playlists (grouped by show),</li><li>the album covers: <code>iPod_Control/Artwork/ArtworkDB</code> with the files<p><code>F1028_1.ithmb</code> (100x100) and <code>F1029_1.ithmb</code> (200x200), RGB565. A cover links to a track through the track database ID.</p></li></ul>
+<p>The audio files stay where they are. The manifest (<code>/sdcard/retailos/manifest.txt</code>) maps each iPod path to the real file. The runner shows the files to the iPod under the iPod paths.</p>
+<h3 id="the-y1-as-an-ipod">The Y1 as an iPod</h3>
+<p><code>NativeActivity</code> starts the runner with <code>su</code> and connects these channels:</p>
+<table><thead><tr><th>Channel</th><th>From</th><th>To</th><th>Content</th></tr></thead><tbody><tr><td>stdin</td><td>app</td><td>runner</td><td>One byte per key: wheel steps, button press and release, the hold switch, the battery state</td></tr><tr><td>stdout</td><td>runner</td><td>app</td><td>The audio: PCM, 16 bit, stereo, 44100 Hz. An <code>AudioTrack</code> plays it.</td></tr><tr><td><code>frames.fifo</code></td><td>runner</td><td>app</td><td>Each screen frame (320x240, RGB565). Events: the volume, the backlight level.</td></tr><tr><td>SIGTERM</td><td>app</td><td>runner</td><td>Hibernate: save the state and exit.</td></tr></tbody></table>
+<p>The Y1 keys become the iPod controls. The wheel turns the click wheel. The center button is SELECT. BACK is MENU. A held key is a held button (Android repeats a held key; the app sends one press and one release). BACK and PLAY together toggle the hold switch.</p>
+<p>The app copies the Y1 battery level and charger state to the iPod power chip. The app applies the iPod headphone volume to the <code>AudioTrack</code>. The app applies the iPod backlight level to the screen brightness. When the iPod backlight is off, the app dims the frame nearly to black.</p>
+<p>The <code>AudioTrack</code> buffer is 0.5 s, because the runner sends the samples in bursts (a screen update stops them for about 0.1 s). If the buffer runs empty during playback, the app makes the buffer longer, up to 1 s.</p>
+<h2 id="the-native-runner">The native runner</h2>
+<p>The runner is a C program (<code>native-runner/</code>). Build it with the Android NDK r10e. The runner loads <code>osos.bin</code> and starts it at the reset vector, as the iPod boot ROM does.</p>
+<h3 id="memory">Memory</h3>
+<p>The runner maps the iPod memory at the iPod addresses in its own process:</p>
+<ul><li>the 64 MB SDRAM at 0x10000000, and after the firmware remap also at 0x0<p>and at the alias addresses (shared memory, one copy),</p></li><li>the 128 KB IRAM at 0x40000000,</li><li>the boot ROM state: the NOR flash with the hardware revision, and the<p>SysInfo block in IRAM that the firmware reads at the start.</p></li></ul>
+<p>Therefore a load or a store of the firmware to its memory is a plain host access, at full speed. The device registers (0x60000000, 0x70000000, the IDE controller, the BCM2722) are not mapped. The kernel cannot map page 0 (the first 4 KB).</p>
+<h3 id="trap-and-emulate">Trap and emulate</h3>
+<p>What the processor cannot do for the firmware arrives in the runner as a signal:</p>
+<table><thead><tr><th>Signal</th><th>Cause</th><th>Handled by</th></tr></thead><tbody><tr><td>SIGILL</td><td>A privileged instruction (MRS, MSR, exception return). The loader replaces each one with a trap word when it loads the image.</td><td>The virtual CPU (<code>vcpu.c</code>): mode, interrupt masks, banked registers</td></tr><tr><td>SIGSEGV</td><td>An access to a device register, or code in page 0</td><td>The device models (<code>dev_*.c</code>)</td></tr><tr><td>SIGALRM</td><td>Each 1 ms</td><td>The timers: an interrupt can come while the firmware runs code that does not trap</td></tr></tbody></table>
+<p>A signal costs 20 to 40 µs on this kernel. Therefore after a trap the handler does not return at once. The handler runs the next instructions itself while more traps follow (run-ahead), with a template JIT (<code>jit.c</code>) or an interpreter (<code>interp.c</code>). An interrupt handler with its device accesses then costs one signal, not hundreds. Code that runs often in the handler (the firmware code ranges) keeps its JIT translation.</p>
+<h3 id="paravirtual-interrupt-masking">Paravirtual interrupt masking</h3>
+<p>The firmware masks the interrupts through two small functions, thousands of times per second. Each call had two privileged instructions, therefore two traps. The loader sends both functions to small stubs in host memory (<code>pv.c</code>). The stubs change a shadow copy of the interrupt masks without a trap. Only a change that lets a waiting interrupt in still traps.</p>
+<h3 id="interrupts-the-second-core-the-time">Interrupts, the second core, the time</h3>
+<ul><li>Interrupts are real ARM exceptions on the virtual CPU. The runner<p>delivers an IRQ or FIQ only when the virtual CPSR permits it. The firmware vectors, dispatcher and task switch run unchanged.</p></li><li>The COP (the second core) decodes the audio. The runner runs the COP on<p>the same thread: in slices through the JIT while the CPU is awake, and natively while the CPU sleeps.</p></li><li>Guest time is host time without the cost of the emulation (the handler<p>time and the kernel cost of each trap do not count). When the iPod waits, the runner moves guest time forward to the next timer instead of a sleep. Therefore guest time keeps pace with real time.</p></li></ul>
+<h3 id="device-models">Device models</h3>
+<p>The device models are ports of the QEMU models of the iPod video (<code>qemu-david</code>), with additions from Rockbox and from traces of the firmware:</p>
+<table><thead><tr><th>Model</th><th>File</th><th>Emulates</th></tr></thead><tbody><tr><td>SoC</td><td><code>dev_soc.c</code></td><td>Interrupt controller, timers, mailbox between the cores, processor control (sleep, wake), cache control, memory remap, clocks, click wheel, clicker, serial port</td></tr><tr><td>GPIO</td><td><code>dev_gpio.c</code></td><td>Ports A-L and their interrupts: the hold switch, the power pins (charger, FireWire power)</td></tr><tr><td>Backlight</td><td><code>dev_backlight.c</code></td><td>The LED driver (on, off, 32 levels)</td></tr><tr><td>DMA, I2S</td><td><code>dev_dma.c</code>, <code>dev_i2s.c</code></td><td>The audio path to the DAC: the samples go to stdout</td></tr><tr><td>I2C</td><td><code>dev_i2c.c</code></td><td>The PCF50605 power chip (battery ADC, charger) and the WM8758 codec (headphone volume)</td></tr><tr><td>IDE</td><td><code>dev_ide.c</code></td><td>The hard disk: reads from the virtual disk, writes to an overlay</td></tr><tr><td>BCM2722</td><td><code>dev_bcm.c</code></td><td>The video chip: the firmware VideoCore calls, surfaces, the frame on the screen</td></tr><tr><td>Frame stream</td><td><code>frameout.c</code></td><td>The frames and the events to the app</td></tr></tbody></table>
+<h3 id="the-virtual-disk">The virtual disk</h3>
+<p>The iPod sees a hard disk with two partitions (<code>vdisk.c</code>):</p>
+<ol><li>The firmware partition: <code>firmware.bin</code> from the IPSW.</li><li>A FAT32 volume. The runner makes the volume in memory from the folder<p><code>/sdcard/retailos/disk</code>, with the iPod own files (the database, the covers, notes, contacts). The manifest adds the music files at their iPod paths. The file data comes from the real files. Nothing is copied.</p></li></ol>
+<p>The disk has the size and the free space of the Y1 storage. The firmware writes stay in an overlay: the audio files are read-only for the iPod.</p>
+<h3 id="hibernate">Hibernate</h3>
+<p>When the app goes to the background (HOME), the app sends SIGTERM. The runner then saves its full state (<code>snap.bin</code>: CPU, COP, IRAM, the devices, the disk writes, the guest time, and the SDRAM in <code>guest-dram.bin</code>) and exits. The next start resumes from the snapshot in about 2 s, as a sleeping iPod wakes up: the language, the menu and the song continue. A new build of the runner or a new database makes a cold start.</p>
+<p>The firmware does not save its settings on the disk in this emulation. Therefore the settings stay only in the saved state.</p>
+<h2 id="what-runs-natively-and-what-is-emulated">What runs natively and what is emulated</h2>
+<table><thead><tr><th>Part</th><th>How it runs</th></tr></thead><tbody><tr><td>The firmware ordinary instructions (both cores): the menus, the database, the MP3/AAC decoder, the drawing</td><td>Natively, on the Y1 processor</td></tr><tr><td>Loads and stores to the iPod SDRAM and IRAM</td><td>Natively (the memory is mapped at the iPod addresses)</td></tr><tr><td>The firmware interrupt masking</td><td>Natively in paravirtual stubs, except a change that lets an interrupt in</td></tr><tr><td>Privileged instructions (MRS, MSR, exception return)</td><td>Emulated on the virtual CPU, after a trap</td></tr><tr><td>Code just after a trap, code in page 0</td><td>Emulated: JIT or interpreter in the signal handler</td></tr><tr><td>Interrupts, exceptions, task switches</td><td>The firmware own code, started by the runner on the virtual CPU</td></tr><tr><td>The second core (COP)</td><td>Natively while the CPU sleeps, otherwise through the JIT in slices</td></tr><tr><td>Device registers of the PP5022, BCM2722, I2C chips, disk</td><td>Emulated: device models</td></tr><tr><td>The boot ROM</td><td>Not run. The runner sets the state that the boot ROM leaves (NOR, SysInfo) and starts retailOS at its reset vector.</td></tr><tr><td>The LCD, the DAC, the backlight, the battery, the buttons</td><td>Replaced by the Y1: SurfaceView, AudioTrack, screen brightness, battery state, keys</td></tr><tr><td>The hard disk</td><td>Replaced by a virtual disk from a folder and the Y1 audio files</td></tr><tr><td>iTunes</td><td>Replaced by the app &quot;Build database&quot;</td></tr><tr><td>USB, FireWire data, video out, the dock</td><td>Not emulated (only the FireWire power pin, for the charger icon)</td></tr></tbody></table></article><p class="lumen-doc-footer-note">These are iPod OS's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=ipod-os-y1">spirk0's <em>iPod OS</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=spirk0%2Fretailos-y1&amp;software=ipod-os-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

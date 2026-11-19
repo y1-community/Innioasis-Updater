@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:innioasis="https://innioasis.app/ns/feeds/1.0">
+  <id>https://innioasis.app/feeds/spirk0/retailos-y1/releases.atom</id>
+  <title>Release notes from spirk0/retailos-y1</title>
+  <link rel="alternate" type="text/html" href="https://innioasis.app/firmware.html"/>
+  <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/spirk0/retailos-y1/releases.atom"/>
+  <updated>2026-11-18T23:53:13Z</updated>
+  <entry>
+    <id>tag:innioasis.app,2026:spirk0/retailos-y1/init</id>
+    <updated>2026-11-18T23:53:13Z</updated>
+    <published>2026-11-18T23:53:13Z</published>
+    <title> retailOS for Y1</title>
+    <link rel="alternate" type="text/html" href="https://github.com/spirk0/retailos-y1/releases/tag/init"/>
+    <innioasis:tag_name>init</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>1</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/spirk0/retailos-y1/releases/download/init/rom.zip" title="rom.zip" length="456631238" type="application/zip" innioasis:download_count="1" innioasis:asset_id="765479104"/>
+    <content type="text"></content>
+  </entry>
+</feed>
