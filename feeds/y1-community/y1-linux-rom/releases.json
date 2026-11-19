@@ -24,8 +24,8 @@
         "url": "https://api.github.com/repos/y1-community/y1-linux-rom/releases/assets/608039598"
       }
     ],
-    "mirror_downloads": 33,
-    "downloads": 104,
+    "mirror_downloads": 34,
+    "downloads": 105,
     "download_breakdown": {
       "tag": "0.0.1",
       "mirrors": "y1-community/y1-linux-rom-mirror",
@@ -78,7 +78,7 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-macos.zip",
           "size": 376006609,
-          "downloads": 5
+          "downloads": 6
         }
       ]
     }

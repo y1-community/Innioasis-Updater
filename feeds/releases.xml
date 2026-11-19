@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<releases_backup generated_at="2026-11-19T12:51:44Z">
+<releases_backup generated_at="2026-11-19T12:57:04Z">
   <repository name="y1-community/y1-stock-rom" downloads="64799" release_count="10" stars="6" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg" icon_dark="">
     <release id="444843295" tag_name="3.2.4-fm" name="Original System Software 3.2.4 for Innioasis Y2" published_at="2026-11-13T23:34:58Z" prerelease="false" html_url="https://github.com/y1-community/y1-stock-rom/releases/tag/3.2.4-fm" icon_url="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg" icon_dark_url="">
       <body>&quot;General performance and stability improvements.&quot;
@@ -15777,7 +15777,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q5&gt;
       </assets>
     </release>
   </repository>
-  <repository name="y1-community/y2linux-mirror" downloads="3684" release_count="103" stars="0" icon="" icon_dark="">
+  <repository name="y1-community/y2linux-mirror" downloads="3686" release_count="103" stars="0" icon="" icon_dark="">
     <release id="449253656" tag_name="baseline-263" name="Portable Flashing Package: Y2Linux 1.0 Beta 9.3.32" published_at="2026-11-17T22:03:41Z" prerelease="false" html_url="https://github.com/y1-community/y2linux-mirror/releases/tag/baseline-263" icon_url="" icon_dark_url="">
       <body>&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=schulzcode%2Fy2linux&amp;amp;tag=baseline-263#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y2linux-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -17379,7 +17379,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
         <asset id="741419099" name="Y2Linux-1.0.0-beta.9.3.19-first-install-linux.zip" size="427886295" download_count="5" content_type="application/zip" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-linux.zip"/>
         <asset id="741419298" name="Y2Linux-1.0.0-beta.9.3.19-first-install-macos.zip" size="187199032" download_count="11" content_type="application/zip" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-macos.zip"/>
         <asset id="741419098" name="Y2Linux-1.0.0-beta.9.3.19-first-install-windows-legacy.zip" size="142326211" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-windows-legacy.zip"/>
-        <asset id="741419092" name="Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip" size="380564924" download_count="7" content_type="application/zip" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip"/>
+        <asset id="741419092" name="Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip" size="380564924" download_count="8" content_type="application/zip" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip"/>
         <asset id="733501900" name="Y2Linux-1.0.0-beta.9.3.19-first-install.zip" size="67568391" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install.zip"/>
         <asset id="725783161" name="Y2Linux-1.0.0-beta.9.3.19-sources-buildroot-legal-info.tar" size="19312640" download_count="1" content_type="application/x-tar" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-sources-buildroot-legal-info.tar"/>
       </assets>
@@ -20811,7 +20811,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis or MediaTek. 
         <asset id="706229325" name="SHA256SUMS" size="826" download_count="1" content_type="application/octet-stream" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/SHA256SUMS"/>
         <asset id="766048800" name="stats.txt" size="5293" download_count="0" content_type="text/plain; charset=utf-8" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/stats.txt"/>
         <asset id="740757653" name="Y2Linux-1.0.0-beta.3-first-install-linux-arm64.zip" size="242234501" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux-arm64.zip"/>
-        <asset id="740757657" name="Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip" size="130184513" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip"/>
+        <asset id="740757657" name="Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip" size="130184513" download_count="2" content_type="application/zip" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip"/>
         <asset id="740757654" name="Y2Linux-1.0.0-beta.3-first-install-linux.zip" size="417330267" download_count="4" content_type="application/zip" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux.zip"/>
         <asset id="740757883" name="Y2Linux-1.0.0-beta.3-first-install-macos.zip" size="176643003" download_count="11" content_type="application/zip" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-macos.zip"/>
         <asset id="740757645" name="Y2Linux-1.0.0-beta.3-first-install-windows-legacy.zip" size="131770189" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-windows-legacy.zip"/>
@@ -34536,7 +34536,7 @@ Connect your Y2 and wait for install to finish.
       </assets>
     </release>
   </repository>
-  <repository name="y1-community/y1-linux-rom-mirror" downloads="8" release_count="1" stars="0" icon="" icon_dark="">
+  <repository name="y1-community/y1-linux-rom-mirror" downloads="9" release_count="1" stars="0" icon="" icon_dark="">
     <release id="432886028" tag_name="0.0.1" name="Portable Flashing Package: Linux ROM for Y1 Developers / Modders" published_at="2026-11-03T15:35:46Z" prerelease="false" html_url="https://github.com/y1-community/y1-linux-rom-mirror/releases/tag/0.0.1" icon_url="" icon_dark_url="">
       <body>&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=y1-community%2Fy1-linux-rom&amp;amp;tag=0.0.1#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-linux-rom-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -34573,7 +34573,7 @@ Credit to @palutenfan123 for building this.
         <asset id="740711711" name="rom-linux-arm64.zip" size="441598213" download_count="0" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-arm64.zip"/>
         <asset id="740711722" name="rom-linux-legacy.zip" size="329548151" download_count="0" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-legacy.zip"/>
         <asset id="740711708" name="rom-linux.zip" size="616693979" download_count="4" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux.zip"/>
-        <asset id="740712518" name="rom-macos.zip" size="376006609" download_count="0" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-macos.zip"/>
+        <asset id="740712518" name="rom-macos.zip" size="376006609" download_count="1" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-macos.zip"/>
         <asset id="740711709" name="rom-windows-legacy.zip" size="331133872" download_count="0" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-windows-legacy.zip"/>
         <asset id="740711705" name="rom-windows.zip" size="569372655" download_count="4" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-windows.zip"/>
         <asset id="733018829" name="rom.zip" size="269864762" download_count="0" content_type="application/zip" browser_download_url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom.zip"/>

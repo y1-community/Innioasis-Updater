@@ -4,13 +4,13 @@
   <title>Innioasis and Timmkoo firmware releases</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware-list.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/firmware-feed.xml"/>
-  <updated>2026-11-19T12:51:44Z</updated>
+  <updated>2026-11-19T12:57:04Z</updated>
   <inni:schema_version>2</inni:schema_version>
   <inni:manifest_url>https://innioasis.app/slidia_manifest.xml</inni:manifest_url>
   <inni:firmware_list_url>https://innioasis.app/firmware-list.html</inni:firmware_list_url>
   <inni:packages>
     <inni:package name="Original Software" brand="Innioasis" repo="y1-community/y1-stock-rom" portable_zips="y1-community/y1-stock-rom-mirror" device="Y1" url="https://github.com/y1-community/y1-stock-rom" type="img" handler="Custom Firmware" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
-    <inni:package name="iPod OS" brand="Innioasis" repo="spirk0/retailos-y1" device="Y1" url="https://github.com/spirk0/retailos-y1" type="img" handler="Custom Firmware"/>
+    <inni:package name="iPod OS (Dev)" brand="Innioasis" repo="spirk0/retailos-y1" device="Y1" url="https://github.com/spirk0/retailos-y1" type="img" handler="Custom Firmware"/>
     <inni:package name="Original Software" brand="Innioasis" repo="y1-community/y1-stock-rom" portable_zips="y1-community/y1-stock-rom-mirror" device="Y2" url="https://github.com/y1-community/y1-stock-rom" type="img" handler="Custom Firmware" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
     <inni:package name="Original Software" brand="Innioasis" repo="y1-community/g1-stock-rom" device="G1" url="https://github.com/y1-community/g1-stock-rom" type="img" handler="Custom Firmware" package_name="rom_g1.zip" portable_zips="y1-community/g1-stock-rom-mirror" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
     <inni:package name="Original Software" brand="Innioasis" repo="y1-community/g3-stock-rom" device="G3" url="https://github.com/y1-community/g3-stock-rom" type="img" handler="Custom Firmware" package_name="rom_g3.zip" portable_zips="y1-community/g3-stock-rom-mirror" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg"/>
@@ -3464,7 +3464,7 @@
           <inni:package platform="linux" name="rom-linux.zip" url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux.zip" size="616693979" downloads="7"/>
           <inni:package platform="linux-arm64" name="rom-linux-arm64.zip" url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-arm64.zip" size="441598213" downloads="1"/>
           <inni:package platform="linux-legacy" name="rom-linux-legacy.zip" url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-legacy.zip" size="329548151" downloads="1"/>
-          <inni:package platform="macos" name="rom-macos.zip" url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-macos.zip" size="376006609" downloads="5"/>
+          <inni:package platform="macos" name="rom-macos.zip" url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-macos.zip" size="376006609" downloads="6"/>
         </inni:mirror_asset>
       </inni:release>
     </inni:mirror>
@@ -4171,7 +4171,7 @@
       </inni:release>
       <inni:release tag="baseline-228" original_tag="baseline-228" mirror_tag="baseline-228" release_name="Portable Flashing Package: Y2Linux 1.0 Beta 9.3.19" published_at="2026-11-08T22:50:06Z">
         <inni:mirror_asset name="Y2Linux-1.0.0-beta.9.3.19-first-install.zip" tag="baseline-228" original_url="" original_size="67568391" mirror_original_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install.zip">
-          <inni:package platform="windows" name="Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip" size="380564924" downloads="18"/>
+          <inni:package platform="windows" name="Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip" size="380564924" downloads="19"/>
           <inni:package platform="windows-legacy" name="Y2Linux-1.0.0-beta.9.3.19-first-install-windows-legacy.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-windows-legacy.zip" size="142326211" downloads="1"/>
           <inni:package platform="linux" name="Y2Linux-1.0.0-beta.9.3.19-first-install-linux.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-linux.zip" size="427886295" downloads="9"/>
           <inni:package platform="linux-arm64" name="Y2Linux-1.0.0-beta.9.3.19-first-install-linux-arm64.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-linux-arm64.zip" size="252790529" downloads="3"/>
@@ -4849,7 +4849,7 @@
           <inni:package platform="windows-legacy" name="Y2Linux-1.0.0-beta.3-first-install-windows-legacy.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-windows-legacy.zip" size="131770189" downloads="2"/>
           <inni:package platform="linux" name="Y2Linux-1.0.0-beta.3-first-install-linux.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux.zip" size="417330267" downloads="13"/>
           <inni:package platform="linux-arm64" name="Y2Linux-1.0.0-beta.3-first-install-linux-arm64.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux-arm64.zip" size="242234501" downloads="4"/>
-          <inni:package platform="linux-legacy" name="Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip" size="130184513" downloads="2"/>
+          <inni:package platform="linux-legacy" name="Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip" size="130184513" downloads="3"/>
           <inni:package platform="macos" name="Y2Linux-1.0.0-beta.3-first-install-macos.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-macos.zip" size="176643003" downloads="24"/>
         </inni:mirror_asset>
         <inni:mirror_asset name="bootimg.img.gz" tag="baseline-52" original_url="" original_size="7505015" mirror_original_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/bootimg.img.gz">
@@ -8129,7 +8129,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <inni:repo>schulzcode/y2linux</inni:repo>
     <inni:tag_name>baseline-228</inni:tag_name>
     <inni:name>Y2Linux 1.0 Beta 9.3.19</inni:name>
-    <inni:downloads>115</inni:downloads>
+    <inni:downloads>116</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://innioasis.app/assets/reborn_icon.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/bootimg.img.gz" title="bootimg.img.gz" length="7539688" type="application/gzip"/>
@@ -14294,7 +14294,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis or MediaTek. 
     <inni:repo>schulzcode/y2linux</inni:repo>
     <inni:tag_name>baseline-52</inni:tag_name>
     <inni:name>Y2Linux 1.0 Beta 3</inni:name>
-    <inni:downloads>104</inni:downloads>
+    <inni:downloads>105</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://innioasis.app/assets/reborn_icon.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/bootimg.img.gz" title="bootimg.img.gz" length="7505015" type="application/gzip"/>
@@ -22658,7 +22658,7 @@ Connect your Y2 and wait for install to finish.</content>
     <inni:repo>y1-community/y1-linux-rom</inni:repo>
     <inni:tag_name>0.0.1</inni:tag_name>
     <inni:name>Linux ROM for Y1 Developers / Modders</inni:name>
-    <inni:downloads>104</inni:downloads>
+    <inni:downloads>105</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/y1-linux-rom/releases/download/0.0.1/rom.zip" title="rom.zip" length="270175226" type="application/zip"/>
     <content type="text">This is a release of Linux for the Innioasis Y1 intended for developers to create novel experiences on the Innioasis Y1 audio player.
@@ -26405,7 +26405,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <inni:repo>y1-community/y2linux-mirror</inni:repo>
     <inni:tag_name>baseline-228</inni:tag_name>
     <inni:name>Portable Flashing Package: Y2Linux 1.0 Beta 9.3.19</inni:name>
-    <inni:downloads>27</inni:downloads>
+    <inni:downloads>28</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/bootimg.img.gz" title="bootimg.img.gz" length="7539688" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/manifest.json" title="manifest.json" length="4238" type="application/json"/>
@@ -30164,7 +30164,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis or MediaTek. 
     <inni:repo>y1-community/y2linux-mirror</inni:repo>
     <inni:tag_name>baseline-52</inni:tag_name>
     <inni:name>Portable Flashing Package: Y2Linux 1.0 Beta 3</inni:name>
-    <inni:downloads>29</inni:downloads>
+    <inni:downloads>30</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/bootimg.img.gz" title="bootimg.img.gz" length="7505015" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/linux-6.18.56.tar.xz" title="linux-6.18.56.tar.xz" length="154807564" type="application/x-xz"/>
@@ -45238,7 +45238,7 @@ Connect your Y2 and wait for install to finish.
     <inni:repo>y1-community/y1-linux-rom-mirror</inni:repo>
     <inni:tag_name>0.0.1</inni:tag_name>
     <inni:name>Portable Flashing Package: Linux ROM for Y1 Developers / Modders</inni:name>
-    <inni:downloads>8</inni:downloads>
+    <inni:downloads>9</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="441598213" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="329548151" type="application/zip"/>

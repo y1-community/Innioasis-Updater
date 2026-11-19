@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T12:51:44Z",
+  "generated_at": "2026-11-19T12:57:04Z",
   "repos": {
     "y1-community/y1-stock-rom": {
       "repo": "y1-community/y1-stock-rom",
@@ -5423,8 +5423,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/725447739"
             }
           ],
-          "mirror_downloads": 56,
-          "downloads": 115,
+          "mirror_downloads": 57,
+          "downloads": 116,
           "download_breakdown": {
             "tag": "baseline-228",
             "mirrors": "y1-community/y2linux-mirror",
@@ -5442,7 +5442,7 @@
                 "name": "Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip",
                 "size": 380564924,
-                "downloads": 18
+                "downloads": 19
               },
               {
                 "platform": "windows-legacy",
@@ -19401,8 +19401,8 @@
               "url": "https://api.github.com/repos/SchulzCode/Y2Linux/releases/assets/644656938"
             }
           ],
-          "mirror_downloads": 83,
-          "downloads": 104,
+          "mirror_downloads": 84,
+          "downloads": 105,
           "download_breakdown": {
             "tag": "baseline-52",
             "mirrors": "y1-community/y2linux-mirror",
@@ -19448,7 +19448,7 @@
                 "name": "Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip",
                 "size": 130184513,
-                "downloads": 2
+                "downloads": 3
               },
               {
                 "platform": "macos",
@@ -43450,8 +43450,8 @@
               "url": "https://api.github.com/repos/y1-community/y1-linux-rom/releases/assets/608039598"
             }
           ],
-          "mirror_downloads": 33,
-          "downloads": 104,
+          "mirror_downloads": 34,
+          "downloads": 105,
           "download_breakdown": {
             "tag": "0.0.1",
             "mirrors": "y1-community/y1-linux-rom-mirror",
@@ -43504,7 +43504,7 @@
                 "name": "rom-macos.zip",
                 "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-macos.zip",
                 "size": 376006609,
-                "downloads": 5
+                "downloads": 6
               }
             ]
           }
@@ -45115,7 +45115,7 @@
         "downloads": 1,
         "release_count": 1,
         "stars": 0,
-        "forks": 0,
+        "forks": 1,
         "updated_at": "2026-11-18T21:18:51Z"
       },
       "repo_info": {
@@ -45124,7 +45124,7 @@
         "html_url": "https://github.com/spirk0/retailos-y1",
         "default_branch": "main",
         "stargazers_count": 0,
-        "forks_count": 0,
+        "forks_count": 1,
         "open_issues_count": 0,
         "updated_at": "2026-11-18T21:18:51Z",
         "pushed_at": "2026-11-19T12:03:38Z",
@@ -48527,7 +48527,7 @@
       "icon": "",
       "icon_dark": "",
       "stats": {
-        "downloads": 3684,
+        "downloads": 3686,
         "release_count": 103,
         "stars": 0,
         "forks": 0,
@@ -51641,7 +51641,7 @@
               "name": "Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip",
               "size": 380564924,
-              "download_count": 7,
+              "download_count": 8,
               "content_type": "application/zip",
               "created_at": "2026-11-12T23:03:22Z",
               "updated_at": "2026-11-12T23:03:42Z",
@@ -51671,7 +51671,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 27,
+          "downloads": 28,
           "download_breakdown": {
             "tag": "baseline-228",
             "mirrors": "",
@@ -51704,7 +51704,7 @@
               {
                 "name": "Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip",
-                "downloads": 7
+                "downloads": 8
               },
               {
                 "name": "Y2Linux-1.0.0-beta.9.3.19-first-install.zip",
@@ -59940,7 +59940,7 @@
               "name": "Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip",
               "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip",
               "size": 130184513,
-              "download_count": 1,
+              "download_count": 2,
               "content_type": "application/zip",
               "created_at": "2026-11-12T19:16:22Z",
               "updated_at": "2026-11-12T19:16:26Z",
@@ -60025,7 +60025,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 29,
+          "downloads": 30,
           "download_breakdown": {
             "tag": "baseline-52",
             "mirrors": "",
@@ -60038,7 +60038,7 @@
               {
                 "name": "Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip",
                 "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install-linux-legacy.zip",
-                "downloads": 1
+                "downloads": 2
               },
               {
                 "name": "Y2Linux-1.0.0-beta.3-first-install-linux.zip",
@@ -106060,7 +106060,7 @@
       "icon": "",
       "icon_dark": "",
       "stats": {
-        "downloads": 8,
+        "downloads": 9,
         "release_count": 1,
         "stars": 0,
         "forks": 0,
@@ -106130,7 +106130,7 @@
               "name": "rom-macos.zip",
               "browser_download_url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-macos.zip",
               "size": 376006609,
-              "download_count": 0,
+              "download_count": 1,
               "content_type": "application/zip",
               "created_at": "2026-11-12T19:01:57Z",
               "updated_at": "2026-11-12T19:02:08Z",
@@ -106182,7 +106182,7 @@
             }
           ],
           "mirror_downloads": 0,
-          "downloads": 8,
+          "downloads": 9,
           "download_breakdown": {
             "tag": "0.0.1",
             "mirrors": "",
@@ -106205,7 +106205,7 @@
               {
                 "name": "rom-macos.zip",
                 "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-macos.zip",
-                "downloads": 0
+                "downloads": 1
               },
               {
                 "name": "rom-windows-legacy.zip",
@@ -119493,7 +119493,7 @@
         "forks_count": 13,
         "open_issues_count": 1,
         "updated_at": "2026-11-18T23:37:51Z",
-        "pushed_at": "2026-11-19T12:51:36Z",
+        "pushed_at": "2026-11-19T12:57:38Z",
         "license": "GPL-3.0"
       },
       "releases": [
