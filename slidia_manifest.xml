@@ -41,7 +41,7 @@
 
 <package name="Original Software" brand="Innioasis" repo="y1-community/y1-stock-rom" portable_zips="y1-community/y1-stock-rom-mirror" device="Y1" url="https://github.com/y1-community/y1-stock-rom" type="img" handler="Custom Firmware" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg" />
 
-<package name="iPod OS (Dev)" brand="Innioasis" repo="spirk0/retailos-y1" portable_zips="y1-community/retailos-y1-mirror"  device="Y1" url="https://github.com/spirk0/retailos-y1" type="img" handler="Custom Firmware" />  
+<package name="iPod OS (Dev)" brand="Innioasis" repo="spirk0/retailos-y1" portable_zips="y1-community/retailos-y1-mirror"  device="Y1" url="https://github.com/spirk0/retailos-y1" type="img" handler="Custom Firmware" post_install="https://github.com/spirk0/retailos-y1#using-it" />  
   
 <package name="Original Software" brand="Innioasis" repo="y1-community/y1-stock-rom" portable_zips="y1-community/y1-stock-rom-mirror" device="Y2" url="https://github.com/y1-community/y1-stock-rom" type="img" handler="Custom Firmware" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg" />
 
