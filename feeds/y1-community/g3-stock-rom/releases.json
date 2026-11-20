@@ -17,7 +17,7 @@
         "name": "rom_g3.zip",
         "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3.zip",
         "size": 1646117102,
-        "download_count": 52,
+        "download_count": 53,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:45:59Z",
         "updated_at": "2026-11-05T05:48:36Z",
@@ -35,8 +35,8 @@
         "url": "https://api.github.com/repos/y1-community/g3-stock-rom/releases/assets/712241354"
       }
     ],
-    "mirror_downloads": 30,
-    "downloads": 82,
+    "mirror_downloads": 32,
+    "downloads": 85,
     "download_breakdown": {
       "tag": "MX3-G3-EN-WM-V6.01-20260805",
       "mirrors": "y1-community/g3-stock-rom-mirror",
@@ -44,7 +44,7 @@
         {
           "name": "rom_g3.zip",
           "url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3.zip",
-          "downloads": 55,
+          "downloads": 56,
           "mirror_downloads": 3
         }
       ],
@@ -54,7 +54,7 @@
           "name": "rom_g3-windows.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3-windows.zip",
           "size": 1959199230,
-          "downloads": 14
+          "downloads": 16
         },
         {
           "platform": "windows-legacy",
@@ -319,8 +319,8 @@
         "url": "https://api.github.com/repos/y1-community/g3-stock-rom/releases/assets/712197069"
       }
     ],
-    "mirror_downloads": 20,
-    "downloads": 37,
+    "mirror_downloads": 23,
+    "downloads": 40,
     "download_breakdown": {
       "tag": "MX3-9_G3_MULTI-V4.02-20260720",
       "mirrors": "y1-community/g3-stock-rom-mirror",
@@ -337,7 +337,7 @@
           "name": "rom_g3-windows.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3-windows.zip",
           "size": 1886580750,
-          "downloads": 4
+          "downloads": 7
         },
         {
           "platform": "windows-legacy",

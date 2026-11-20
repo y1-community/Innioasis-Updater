@@ -130,8 +130,8 @@
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712134111"
       }
     ],
-    "mirror_downloads": 32,
-    "downloads": 53,
+    "mirror_downloads": 40,
+    "downloads": 61,
     "download_breakdown": {
       "tag": "MX3-G1-EN-WM-V5.00-20260722",
       "mirrors": "y1-community/g1-stock-rom-mirror",
@@ -170,7 +170,7 @@
           "name": "rom_g1-linux-arm64.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-linux-arm64.zip",
           "size": 1831067137,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "linux-legacy",
@@ -184,7 +184,7 @@
           "name": "rom_g1-macos.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1-macos.zip",
           "size": 1765475518,
-          "downloads": 1
+          "downloads": 5
         }
       ]
     }

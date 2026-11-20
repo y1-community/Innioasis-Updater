@@ -13,9 +13,9 @@
     <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/y2-release"/>
     <innioasis:tag_name>y2-release</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>132</innioasis:downloads>
+    <innioasis:downloads>137</innioasis:downloads>
     <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/y2-release/rom_y2.zip" title="rom_y2.zip" length="443599332" type="application/zip" innioasis:download_count="110" innioasis:asset_id="668314215"/>
+    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/y2-release/rom_y2.zip" title="rom_y2.zip" length="443599332" type="application/zip" innioasis:download_count="115" innioasis:asset_id="668314215"/>
     <content type="text">Solar Y2 ROM for Innioasis Y2 (MT6582 ATA). Built from 944d14b.</content>
   </entry>
   <entry>
@@ -26,10 +26,10 @@
     <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/20260819-0956"/>
     <innioasis:tag_name>20260819-0956</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>1092</innioasis:downloads>
+    <innioasis:downloads>1093</innioasis:downloads>
     <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260819-0956/app-release.apk" title="app-release.apk" length="20001162" type="application/vnd.android.package-archive" innioasis:download_count="106" innioasis:asset_id="520682096"/>
-    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom.zip" title="rom.zip" length="981474469" type="application/zip" innioasis:download_count="978" innioasis:asset_id="520682097"/>
+    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom.zip" title="rom.zip" length="981474469" type="application/zip" innioasis:download_count="979" innioasis:asset_id="520682097"/>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom_a5.zip" title="rom_a5.zip" length="293722213" type="application/zip" innioasis:download_count="23" innioasis:asset_id="520682095"/>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom_type_b.zip" title="rom_type_b.zip" length="488296019" type="application/zip" innioasis:download_count="35" innioasis:asset_id="520682098"/>
     <content type="text">&gt; **Solar** is a custom firmware and launcher for the Innioasis Y1 — a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), **Stem Player** (stem separation powered by [Lalal.ai](https://www.lalal.ai)), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).
@@ -121,7 +121,7 @@ After installing for the first time please wait 10-15 minutes for your device to
     <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/20260702-1521"/>
     <innioasis:tag_name>20260702-1521</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>363</innioasis:downloads>
+    <innioasis:downloads>364</innioasis:downloads>
     <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260702-1521/app-release.apk" title="app-release.apk" length="12079527" type="application/vnd.android.package-archive" innioasis:download_count="23" innioasis:asset_id="464448954"/>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260702-1521/rom.zip" title="rom.zip" length="454799946" type="application/zip" innioasis:download_count="314" innioasis:asset_id="464448953"/>
@@ -390,7 +390,7 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/20260630-1125"/>
     <innioasis:tag_name>20260630-1125</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>66</innioasis:downloads>
+    <innioasis:downloads>68</innioasis:downloads>
     <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260630-1125/app-release.apk" title="app-release.apk" length="11915122" type="application/vnd.android.package-archive" innioasis:download_count="12" innioasis:asset_id="462100080"/>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260630-1125/rom.zip" title="rom.zip" length="454745977" type="application/zip" innioasis:download_count="18" innioasis:asset_id="462100083"/>
@@ -650,7 +650,7 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/20260630-0956"/>
     <innioasis:tag_name>20260630-0956</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>67</innioasis:downloads>
+    <innioasis:downloads>68</innioasis:downloads>
     <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260630-0956/app-release.apk" title="app-release.apk" length="11913474" type="application/vnd.android.package-archive" innioasis:download_count="14" innioasis:asset_id="462035279"/>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260630-0956/rom.zip" title="rom.zip" length="454786607" type="application/zip" innioasis:download_count="17" innioasis:asset_id="462035278"/>
@@ -870,7 +870,7 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/nightly-20260630-1120"/>
     <innioasis:tag_name>nightly-20260630-1120</innioasis:tag_name>
     <innioasis:prerelease>true</innioasis:prerelease>
-    <innioasis:downloads>55</innioasis:downloads>
+    <innioasis:downloads>56</innioasis:downloads>
     <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1120/app-release.apk" title="app-release.apk" length="11915334" type="application/vnd.android.package-archive" innioasis:download_count="14" innioasis:asset_id="462096105"/>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1120/rom.zip" title="rom.zip" length="454809965" type="application/zip" innioasis:download_count="14" innioasis:asset_id="462096104"/>
@@ -956,10 +956,10 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/nightly-20260630-1102"/>
     <innioasis:tag_name>nightly-20260630-1102</innioasis:tag_name>
     <innioasis:prerelease>true</innioasis:prerelease>
-    <innioasis:downloads>55</innioasis:downloads>
+    <innioasis:downloads>56</innioasis:downloads>
     <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1102/app-release.apk" title="app-release.apk" length="11914620" type="application/vnd.android.package-archive" innioasis:download_count="14" innioasis:asset_id="462084297"/>
-    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1102/rom.zip" title="rom.zip" length="454737470" type="application/zip" innioasis:download_count="14" innioasis:asset_id="462084298"/>
+    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1102/rom.zip" title="rom.zip" length="454737470" type="application/zip" innioasis:download_count="15" innioasis:asset_id="462084298"/>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1102/rom_type_b.zip" title="rom_type_b.zip" length="406537124" type="application/zip" innioasis:download_count="14" innioasis:asset_id="462084299"/>
     <content type="text">&gt; **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) — a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).
 
@@ -1174,7 +1174,7 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/nightly-20260630-0636"/>
     <innioasis:tag_name>nightly-20260630-0636</innioasis:tag_name>
     <innioasis:prerelease>true</innioasis:prerelease>
-    <innioasis:downloads>65</innioasis:downloads>
+    <innioasis:downloads>69</innioasis:downloads>
     <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0636/app-release.apk" title="app-release.apk" length="11908449" type="application/vnd.android.package-archive" innioasis:download_count="15" innioasis:asset_id="461889403"/>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0636/rom.zip" title="rom.zip" length="456326463" type="application/zip" innioasis:download_count="16" innioasis:asset_id="461889404"/>
@@ -1219,7 +1219,7 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/nightly-20260630-0549"/>
     <innioasis:tag_name>nightly-20260630-0549</innioasis:tag_name>
     <innioasis:prerelease>true</innioasis:prerelease>
-    <innioasis:downloads>64</innioasis:downloads>
+    <innioasis:downloads>65</innioasis:downloads>
     <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0549/app-release.apk" title="app-release.apk" length="11906835" type="application/vnd.android.package-archive" innioasis:download_count="15" innioasis:asset_id="461861913"/>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0549/rom.zip" title="rom.zip" length="454771254" type="application/zip" innioasis:download_count="15" innioasis:asset_id="461861914"/>
@@ -1401,7 +1401,7 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/20260629-0955"/>
     <innioasis:tag_name>20260629-0955</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>83</innioasis:downloads>
+    <innioasis:downloads>84</innioasis:downloads>
     <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260629-0955/app-release.apk" title="app-release.apk" length="11849739" type="application/vnd.android.package-archive" innioasis:download_count="15" innioasis:asset_id="460991186"/>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260629-0955/rom.zip" title="rom.zip" length="454768720" type="application/zip" innioasis:download_count="29" innioasis:asset_id="460991188"/>
@@ -1675,7 +1675,7 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/nightly-20260629-0926"/>
     <innioasis:tag_name>nightly-20260629-0926</innioasis:tag_name>
     <innioasis:prerelease>true</innioasis:prerelease>
-    <innioasis:downloads>75</innioasis:downloads>
+    <innioasis:downloads>76</innioasis:downloads>
     <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0926/app-release.apk" title="app-release.apk" length="11849728" type="application/vnd.android.package-archive" innioasis:download_count="16" innioasis:asset_id="460970810"/>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0926/rom.zip" title="rom.zip" length="454818619" type="application/zip" innioasis:download_count="16" innioasis:asset_id="460970808"/>
@@ -1765,7 +1765,7 @@ Features
     <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/nightly-20260628-1907"/>
     <innioasis:tag_name>nightly-20260628-1907</innioasis:tag_name>
     <innioasis:prerelease>true</innioasis:prerelease>
-    <innioasis:downloads>88</innioasis:downloads>
+    <innioasis:downloads>89</innioasis:downloads>
     <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1907/app-release.apk" title="app-release.apk" length="11821525" type="application/vnd.android.package-archive" innioasis:download_count="17" innioasis:asset_id="460434812"/>
     <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1907/rom.zip" title="rom.zip" length="454771450" type="application/zip" innioasis:download_count="28" innioasis:asset_id="460434814"/>
