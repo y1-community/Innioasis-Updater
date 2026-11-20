@@ -17,7 +17,7 @@
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/Innioasis.Updater.for.Mac.dmg",
         "size": 109169187,
-        "download_count": 4,
+        "download_count": 20,
         "content_type": "application/x-diskcopy",
         "created_at": "2026-11-20T18:22:11Z",
         "updated_at": "2026-11-20T18:22:28Z",
@@ -28,7 +28,7 @@
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/installer.exe",
         "size": 98082074,
-        "download_count": 11,
+        "download_count": 29,
         "content_type": "application/x-msdownload",
         "created_at": "2026-11-20T18:21:11Z",
         "updated_at": "2026-11-20T18:21:38Z",
@@ -204,7 +204,7 @@
         "name": "UpdaterCE.appimage",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/UpdaterCE.appimage",
         "size": 247458296,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-20T17:54:32Z",
         "updated_at": "2026-11-20T17:56:35Z",
@@ -735,7 +735,7 @@
         "name": "1.Install.Driver.First.and.Reboot.PC.exe",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe",
         "size": 9534578,
-        "download_count": 242,
+        "download_count": 245,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-11T14:32:18Z",
         "updated_at": "2026-11-11T14:32:21Z",
@@ -746,7 +746,7 @@
         "name": "flash_tool_linux.zip",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip",
         "size": 73234593,
-        "download_count": 464,
+        "download_count": 467,
         "content_type": "application/zip",
         "created_at": "2026-10-27T09:21:19Z",
         "updated_at": "2026-10-27T09:21:32Z",
@@ -757,7 +757,7 @@
         "name": "flash_tool_windows.zip",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_windows.zip",
         "size": 65386356,
-        "download_count": 246,
+        "download_count": 249,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-07T19:09:32Z",
         "updated_at": "2026-11-07T19:09:55Z",
@@ -765,7 +765,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 710,
+    "downloads": 716,
     "download_breakdown": {
       "tag": "flash_tool",
       "mirrors": "",
@@ -773,12 +773,12 @@
         {
           "name": "flash_tool_linux.zip",
           "url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip",
-          "downloads": 464
+          "downloads": 467
         },
         {
           "name": "flash_tool_windows.zip",
           "url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_windows.zip",
-          "downloads": 246
+          "downloads": 249
         }
       ],
       "portable": []

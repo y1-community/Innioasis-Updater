@@ -17,7 +17,7 @@
         "name": "rom_q5.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5.zip",
         "size": 337730694,
-        "download_count": 39,
+        "download_count": 40,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T06:34:50Z",
         "updated_at": "2026-11-05T06:35:23Z",
@@ -35,8 +35,8 @@
         "url": "https://api.github.com/repos/y1-community/q5-stock-rom/releases/assets/712350809"
       }
     ],
-    "mirror_downloads": 26,
-    "downloads": 65,
+    "mirror_downloads": 28,
+    "downloads": 68,
     "download_breakdown": {
       "tag": "MX2D_Q5D-WV3.28-20250619",
       "mirrors": "y1-community/q5-stock-rom-mirror",
@@ -44,7 +44,7 @@
         {
           "name": "rom_q5.zip",
           "url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5.zip",
-          "downloads": 39
+          "downloads": 40
         }
       ],
       "portable": [
@@ -60,20 +60,20 @@
           "name": "rom_q5-windows-legacy.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-windows-legacy.zip",
           "size": 416326288,
-          "downloads": 3
+          "downloads": 5
         },
         {
           "platform": "linux",
           "name": "rom_q5-linux.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-linux.zip",
-          "size": 642835113,
+          "size": 642779412,
           "downloads": 2
         },
         {
           "platform": "linux-arm64",
           "name": "rom_q5-linux-arm64.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-linux-arm64.zip",
-          "size": 467739116,
+          "size": 467683672,
           "downloads": 1
         },
         {
@@ -87,7 +87,7 @@
           "platform": "macos",
           "name": "rom_q5-macos.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-macos.zip",
-          "size": 503335595,
+          "size": 450654746,
           "downloads": 8
         }
       ]
@@ -111,7 +111,7 @@
         "name": "rom_q5.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5.zip",
         "size": 344107791,
-        "download_count": 21,
+        "download_count": 23,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T06:34:11Z",
         "updated_at": "2026-11-05T06:34:46Z",
@@ -129,8 +129,8 @@
         "url": "https://api.github.com/repos/y1-community/q5-stock-rom/releases/assets/712349373"
       }
     ],
-    "mirror_downloads": 19,
-    "downloads": 40,
+    "mirror_downloads": 21,
+    "downloads": 44,
     "download_breakdown": {
       "tag": "MX2-WVGA_TM-WV3.27-20250528",
       "mirrors": "y1-community/q5-stock-rom-mirror",
@@ -138,7 +138,7 @@
         {
           "name": "rom_q5.zip",
           "url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5.zip",
-          "downloads": 21
+          "downloads": 23
         }
       ],
       "portable": [
@@ -147,7 +147,7 @@
           "name": "rom_q5-windows.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-windows.zip",
           "size": 660866173,
-          "downloads": 8
+          "downloads": 10
         },
         {
           "platform": "windows-legacy",
@@ -160,14 +160,14 @@
           "platform": "linux",
           "name": "rom_q5-linux.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-linux.zip",
-          "size": 649136187,
+          "size": 649080486,
           "downloads": 3
         },
         {
           "platform": "linux-arm64",
           "name": "rom_q5-linux-arm64.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-linux-arm64.zip",
-          "size": 474040190,
+          "size": 473984746,
           "downloads": 1
         },
         {
@@ -181,7 +181,7 @@
           "platform": "macos",
           "name": "rom_q5-macos.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-macos.zip",
-          "size": 509636668,
+          "size": 456955819,
           "downloads": 5
         }
       ]
@@ -205,7 +205,7 @@
         "name": "rom_q5.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5.zip",
         "size": 344010052,
-        "download_count": 27,
+        "download_count": 28,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T06:33:33Z",
         "updated_at": "2026-11-05T06:34:07Z",
@@ -224,7 +224,7 @@
       }
     ],
     "mirror_downloads": 24,
-    "downloads": 51,
+    "downloads": 52,
     "download_breakdown": {
       "tag": "MX2-ES_Q5-WV5.02-20250619",
       "mirrors": "y1-community/q5-stock-rom-mirror",
@@ -232,7 +232,7 @@
         {
           "name": "rom_q5.zip",
           "url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5.zip",
-          "downloads": 34,
+          "downloads": 35,
           "mirror_downloads": 7
         }
       ],
@@ -255,14 +255,14 @@
           "platform": "linux",
           "name": "rom_q5-linux.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-linux.zip",
-          "size": 649106808,
+          "size": 649051107,
           "downloads": 2
         },
         {
           "platform": "linux-arm64",
           "name": "rom_q5-linux-arm64.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-linux-arm64.zip",
-          "size": 474010811,
+          "size": 473955367,
           "downloads": 1
         },
         {
@@ -276,7 +276,7 @@
           "platform": "macos",
           "name": "rom_q5-macos.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5-macos.zip",
-          "size": 509607289,
+          "size": 456926440,
           "downloads": 5
         }
       ]

@@ -487,7 +487,7 @@ Thank you to everyone who reported the queue, metadata, audiobook, browsing, and
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Player/releases/tag/RealeaseV2.2.2"/>
     <innioasis:tag_name>RealeaseV2.2.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>192</innioasis:downloads>
+    <innioasis:downloads>194</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/rom_y2.zip" title="rom_y2.zip" length="296538727" type="application/x-zip-compressed" innioasis:download_count="92" innioasis:asset_id="509095935"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/system.zip" title="system.zip" length="225531225" type="application/x-zip-compressed" innioasis:download_count="45" innioasis:asset_id="509095127"/>
     <content type="text">## 2.2.2 backup, artwork, and playback reliability
@@ -512,9 +512,9 @@ Thank you to everyone who reported the queue, metadata, audiobook, browsing, and
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Player/releases/tag/ReleaseV2.2.1"/>
     <innioasis:tag_name>ReleaseV2.2.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>206</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2.1/rom_y2.zip" title="rom_y2.zip" length="296506638" type="application/x-zip-compressed" innioasis:download_count="105" innioasis:asset_id="500356950"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2.1/system.img.zip" title="system.img.zip" length="225498405" type="application/x-zip-compressed" innioasis:download_count="50" innioasis:asset_id="500302691"/>
+    <innioasis:downloads>208</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2.1/rom_y2.zip" title="rom_y2.zip" length="296506638" type="application/x-zip-compressed" innioasis:download_count="106" innioasis:asset_id="500356950"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2.1/system.img.zip" title="system.img.zip" length="225498405" type="application/x-zip-compressed" innioasis:download_count="51" innioasis:asset_id="500302691"/>
     <content type="text"> # Y2Player v2.2.1 — Playback Stability, Improved Controls, and Now Playing Updates
 
   Version 2.2.1 focuses on feedback received after the 2.2 release. The largest changes address volume peaks, lock-screen playback, physical controls, queue reliability, and the Now Playing interface.
@@ -672,8 +672,8 @@ Thank you to everyone who reported the queue, metadata, audiobook, browsing, and
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Player/releases/tag/ReleaseV2.2"/>
     <innioasis:tag_name>ReleaseV2.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>78</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2/system.zip" title="system.zip" length="225481335" type="application/x-zip-compressed" innioasis:download_count="78" innioasis:asset_id="498000821"/>
+    <innioasis:downloads>79</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2/system.zip" title="system.zip" length="225481335" type="application/x-zip-compressed" innioasis:download_count="79" innioasis:asset_id="498000821"/>
     <content type="text"># Y2Player v2.2 - Interface Redesign, Audiobooks, and Library Browsing
 
 Version 2.1 focused on the library scanner and media engine. Version 2.2 is all about the user experience. The biggest additions are proper audiobook support and a redesigned menu system, alongside improvements to artist and album browsing, confirmation prompts for destructive actions, and a cleanup of comments throughout the codebase.
@@ -798,8 +798,8 @@ Y2Player can now export your listening history, making it easy to keep a record 
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Player/releases/tag/ReleaseV2.1"/>
     <innioasis:tag_name>ReleaseV2.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>80</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.1/system.zip" title="system.zip" length="225469939" type="application/x-zip-compressed" innioasis:download_count="80" innioasis:asset_id="494618908"/>
+    <innioasis:downloads>81</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.1/system.zip" title="system.zip" length="225469939" type="application/x-zip-compressed" innioasis:download_count="81" innioasis:asset_id="494618908"/>
     <content type="text"># Y2Player v2.1 — Library Scanner and Media Engine Improvements
 
 Version 2.1 is the result of a much deeper development effort than previous Y2Player updates. Its main focus is faster and more reliable library scanning, accompanied by several important metadata, playback-engine, playlist, and diagnostic improvements.
@@ -1027,8 +1027,8 @@ Feedback from real-world libraries is especially useful. If you have a large col
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Player/releases/tag/ReleaseV2.0"/>
     <innioasis:tag_name>ReleaseV2.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>69</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.0/system.zip" title="system.zip" length="329753589" type="application/x-zip-compressed" innioasis:download_count="69" innioasis:asset_id="492187077"/>
+    <innioasis:downloads>70</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.0/system.zip" title="system.zip" length="329753589" type="application/x-zip-compressed" innioasis:download_count="70" innioasis:asset_id="492187077"/>
     <content type="text">---
 
 **Small update!**
@@ -1139,8 +1139,8 @@ With FFmpeg at its core, Y2Player now has a modern, future-proof media foundatio
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Player/releases/tag/ReleaseV1.2"/>
     <innioasis:tag_name>ReleaseV1.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>71</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV1.2/system.zip" title="system.zip" length="330410840" type="application/x-zip-compressed" innioasis:download_count="71" innioasis:asset_id="490285927"/>
+    <innioasis:downloads>72</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV1.2/system.zip" title="system.zip" length="330410840" type="application/x-zip-compressed" innioasis:download_count="72" innioasis:asset_id="490285927"/>
     <content type="text"># Changelog
 
 ## 1.2
@@ -1239,8 +1239,8 @@ so it is not planned.
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Player/releases/tag/ReleaseV1.1"/>
     <innioasis:tag_name>ReleaseV1.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>49</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV1.1/system.zip" title="system.zip" length="330412470" type="application/x-zip-compressed" innioasis:download_count="49" innioasis:asset_id="489599263"/>
+    <innioasis:downloads>50</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV1.1/system.zip" title="system.zip" length="330412470" type="application/x-zip-compressed" innioasis:download_count="50" innioasis:asset_id="489599263"/>
     <content type="text"># Changelog
 
 ## 1.1
@@ -1286,8 +1286,8 @@ so it is not planned.
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Player/releases/tag/Release"/>
     <innioasis:tag_name>Release</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>68</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/Release/system.zip" title="system.zip" length="330410980" type="application/x-zip-compressed" innioasis:download_count="68" innioasis:asset_id="488799448"/>
+    <innioasis:downloads>69</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/Release/system.zip" title="system.zip" length="330410980" type="application/x-zip-compressed" innioasis:download_count="69" innioasis:asset_id="488799448"/>
     <content type="text">---
 
 # Y2Player v1.0
