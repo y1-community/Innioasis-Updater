@@ -562,7 +562,7 @@ Images: `ghcr.io/jarvissax/rondo-server:3.1.0` and `ghcr.io/jarvissax/rondo-upda
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:downloads>37</innioasis:downloads>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="160" innioasis:asset_id="735470143"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="161" innioasis:asset_id="735470143"/>
     <content type="text">**For the Innioasis Y1, Type A.** A new firmware: install `rom.zip` with **Innioasis Updater CE** (choose **Keep Data** to keep your settings when coming from 1.0). After that, Rondo updates itself over Wi-Fi from GitHub.
 
 Rondo 2.0 is rebuilt as a program of its own: Android&#x27;s app layer is gone, the Y1 starts straight into Rondo, and everything runs smoother at 60 frames a second.

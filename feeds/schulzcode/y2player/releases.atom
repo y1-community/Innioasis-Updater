@@ -13,8 +13,8 @@
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Player/releases/tag/Release2.5"/>
     <innioasis:tag_name>Release2.5</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>1243</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/rom_y2.zip" title="rom_y2.zip" length="296365314" type="application/zip" innioasis:download_count="1202" innioasis:asset_id="544807385"/>
+    <innioasis:downloads>1246</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/rom_y2.zip" title="rom_y2.zip" length="296365314" type="application/zip" innioasis:download_count="1205" innioasis:asset_id="544807385"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/system.img" title="system.img" length="369235868" type="application/octet-stream" innioasis:download_count="79" innioasis:asset_id="544805127"/>
     <content type="text"># Y2Player v2.5 - Search, FM Radio, Faster Navigation, and Playback Reliability
 
@@ -338,8 +338,8 @@ Thank you to everyone who submitted issues, tested builds, provided diagnostics,
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Player/releases/tag/ReleaseV2.3"/>
     <innioasis:tag_name>ReleaseV2.3</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>378</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.3/rom_y2.zip" title="rom_y2.zip" length="296556198" type="application/x-zip-compressed" innioasis:download_count="335" innioasis:asset_id="515579954"/>
+    <innioasis:downloads>379</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.3/rom_y2.zip" title="rom_y2.zip" length="296556198" type="application/x-zip-compressed" innioasis:download_count="336" innioasis:asset_id="515579954"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.3/system.img" title="system.img" length="369211292" type="application/octet-stream" innioasis:download_count="54" innioasis:asset_id="515584395"/>
     <content type="text"># Y2Player v2.3 - Up Next Queue, Library Browsing, and Menu Artwork
 
@@ -487,9 +487,9 @@ Thank you to everyone who reported the queue, metadata, audiobook, browsing, and
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Player/releases/tag/RealeaseV2.2.2"/>
     <innioasis:tag_name>RealeaseV2.2.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>194</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/rom_y2.zip" title="rom_y2.zip" length="296538727" type="application/x-zip-compressed" innioasis:download_count="92" innioasis:asset_id="509095935"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/system.zip" title="system.zip" length="225531225" type="application/x-zip-compressed" innioasis:download_count="45" innioasis:asset_id="509095127"/>
+    <innioasis:downloads>196</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/rom_y2.zip" title="rom_y2.zip" length="296538727" type="application/x-zip-compressed" innioasis:download_count="93" innioasis:asset_id="509095935"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/system.zip" title="system.zip" length="225531225" type="application/x-zip-compressed" innioasis:download_count="46" innioasis:asset_id="509095127"/>
     <content type="text">## 2.2.2 backup, artwork, and playback reliability
 
 - Added a versioned Backup &amp; Restore screen for settings, favorites, Y2Player-created playlists, audiobook progress, recent plays, the saved queue and session, and listening history.
