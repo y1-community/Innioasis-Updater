@@ -35,8 +35,8 @@
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712152060"
       }
     ],
-    "mirror_downloads": 69,
-    "downloads": 172,
+    "mirror_downloads": 74,
+    "downloads": 177,
     "download_breakdown": {
       "tag": "MX3-G1-EN-WM-V5.01-20260805",
       "mirrors": "y1-community/g1-stock-rom-mirror",
@@ -89,7 +89,7 @@
           "name": "rom_g1-macos.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-macos.zip",
           "size": 1765516569,
-          "downloads": 12
+          "downloads": 17
         }
       ]
     }
@@ -225,8 +225,8 @@
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712114674"
       }
     ],
-    "mirror_downloads": 21,
-    "downloads": 50,
+    "mirror_downloads": 23,
+    "downloads": 52,
     "download_breakdown": {
       "tag": "MX3-9_G1_MULTI-V3.03-20260826",
       "mirrors": "y1-community/g1-stock-rom-mirror",
@@ -243,7 +243,7 @@
           "name": "rom_g1-windows.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-windows.zip",
           "size": 1886307839,
-          "downloads": 11
+          "downloads": 13
         },
         {
           "platform": "windows-legacy",
@@ -509,8 +509,8 @@
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712063532"
       }
     ],
-    "mirror_downloads": 24,
-    "downloads": 58,
+    "mirror_downloads": 28,
+    "downloads": 62,
     "download_breakdown": {
       "tag": "MX3-9_EN-V1.03-20260707",
       "mirrors": "y1-community/g1-stock-rom-mirror",
@@ -556,7 +556,7 @@
           "name": "rom_g1-linux-legacy.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-linux-legacy.zip",
           "size": 1718637833,
-          "downloads": 1
+          "downloads": 5
         },
         {
           "platform": "macos",

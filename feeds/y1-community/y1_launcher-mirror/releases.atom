@@ -101,8 +101,8 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1_launcher-mirror/releases/tag/launcher-v0.8"/>
     <innioasis:tag_name>launcher-v0.8</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>7</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="641253938" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741302616"/>
+    <innioasis:downloads>8</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="641253938" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741302616"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="529203834" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741302624"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom-linux.zip" title="rom-linux.zip" length="816349704" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741302605"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom-macos.zip" title="rom-macos.zip" length="575662347" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741303434"/>
@@ -303,9 +303,9 @@ adb shell pm grant com.themoon.y1 android.permission.WRITE_SECURE_SETTINGS
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1_launcher-mirror/releases/tag/launcher-v0.5"/>
     <innioasis:tag_name>launcher-v0.5</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>11</innioasis:downloads>
+    <innioasis:downloads>12</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="641249908" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741229237"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="529199804" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741229238"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="529199804" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741229238"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-linux.zip" title="rom-linux.zip" length="816345674" type="application/zip" innioasis:download_count="4" innioasis:asset_id="741229234"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-macos.zip" title="rom-macos.zip" length="575658316" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741229760"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="530785519" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741229245"/>
@@ -680,10 +680,10 @@ adb shell pm grant com.themoon.y1 android.permission.WRITE_SECURE_SETTINGS
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1_launcher-mirror/releases/tag/launcher-v0.11.5"/>
     <innioasis:tag_name>launcher-v0.11.5</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>18</innioasis:downloads>
+    <innioasis:downloads>19</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="640921041" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741384265"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="528870949" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741384275"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-linux.zip" title="rom-linux.zip" length="816016807" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741384261"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-linux.zip" title="rom-linux.zip" length="816016807" type="application/zip" innioasis:download_count="2" innioasis:asset_id="741384261"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-macos.zip" title="rom-macos.zip" length="575329449" type="application/zip" innioasis:download_count="2" innioasis:asset_id="741384680"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="530456666" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741384263"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-windows.zip" title="rom-windows.zip" length="768695483" type="application/zip" innioasis:download_count="4" innioasis:asset_id="741384260"/>
@@ -775,7 +775,7 @@ Fixed an issue where FLAC files would not play in v0.11.4.
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1_launcher-mirror/releases/tag/launcher-v0.11.4"/>
     <innioasis:tag_name>launcher-v0.11.4</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>23</innioasis:downloads>
+    <innioasis:downloads>25</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="640937303" type="application/zip" innioasis:download_count="4" innioasis:asset_id="741151675"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="528887209" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741151689"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom-linux.zip" title="rom-linux.zip" length="816033069" type="application/zip" innioasis:download_count="1" innioasis:asset_id="741151677"/>
@@ -795,7 +795,7 @@ Fixed an issue where FLAC files would not play in v0.11.4.
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_y2-linux.zip" title="rom_y2-linux.zip" length="739996721" type="application/zip" innioasis:download_count="3" innioasis:asset_id="741155007"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_y2-macos.zip" title="rom_y2-macos.zip" length="491604723" type="application/zip" innioasis:download_count="3" innioasis:asset_id="741156432"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="444928306" type="application/zip" innioasis:download_count="0" innioasis:asset_id="741155002"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_y2-windows.zip" title="rom_y2-windows.zip" length="683167117" type="application/zip" innioasis:download_count="2" innioasis:asset_id="741155003"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_y2-windows.zip" title="rom_y2-windows.zip" length="683167117" type="application/zip" innioasis:download_count="4" innioasis:asset_id="741155003"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_y2.zip" title="rom_y2.zip" length="442624396" type="application/zip" innioasis:download_count="0" innioasis:asset_id="733158744"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/stats.txt" title="stats.txt" length="7549" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="770306038"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;

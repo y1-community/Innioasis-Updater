@@ -39,7 +39,7 @@
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-linux-legacy.zip",
         "size": 595424479,
-        "download_count": 3,
+        "download_count": 6,
         "content_type": "application/zip",
         "created_at": "2026-11-13T01:23:20Z",
         "updated_at": "2026-11-13T01:23:41Z",
@@ -83,7 +83,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-windows.zip",
         "size": 835249037,
-        "download_count": 43,
+        "download_count": 44,
         "content_type": "application/zip",
         "created_at": "2026-11-13T01:23:20Z",
         "updated_at": "2026-11-13T01:24:00Z",
@@ -201,7 +201,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 95,
+    "downloads": 99,
     "download_breakdown": {
       "tag": "stable-v0.6.1",
       "mirrors": "",
@@ -214,7 +214,7 @@
         {
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-linux-legacy.zip",
-          "downloads": 3
+          "downloads": 6
         },
         {
           "name": "rom-linux.zip",
@@ -234,7 +234,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-windows.zip",
-          "downloads": 43
+          "downloads": 44
         },
         {
           "name": "rom.zip",
@@ -314,7 +314,7 @@
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux-arm64.zip",
         "size": 711120328,
-        "download_count": 3,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-13T01:11:35Z",
         "updated_at": "2026-11-13T01:12:04Z",
@@ -487,7 +487,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 39,
+    "downloads": 40,
     "download_breakdown": {
       "tag": "nightly-a8c63c04f0030dca6bc193a437767e1838067b67",
       "mirrors": "",
@@ -495,7 +495,7 @@
         {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux-arm64.zip",
-          "downloads": 3
+          "downloads": 4
         },
         {
           "name": "rom-linux-legacy.zip",
@@ -655,7 +655,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-windows.zip",
         "size": 842355635,
-        "download_count": 27,
+        "download_count": 32,
         "content_type": "application/zip",
         "created_at": "2026-11-13T00:59:37Z",
         "updated_at": "2026-11-13T01:00:12Z",
@@ -773,7 +773,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 76,
+    "downloads": 81,
     "download_breakdown": {
       "tag": "stable-v0.6",
       "mirrors": "",
@@ -806,7 +806,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/rom-windows.zip",
-          "downloads": 27
+          "downloads": 32
         },
         {
           "name": "rom.zip",
@@ -861,7 +861,7 @@
     "id": 432921057,
     "tag_name": "type-b-base",
     "name": "Portable Flashing Package: Rockbox-Y1 Base ROM - Type B",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nUsed for building ROM releases\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"77fa02ca7a8697f3734b2633b2b8e9c84596cc46fbb9e012a179d9010b8941dc\",\"size\":712038348,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"dded6a0ae68dbdc5dd761c31df3740cd82315e95c5233868b046cb02de2229b0\",\"size\":473799509,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"0e89fbbc593778c87329277b93dec069875232818bfafd14986860569572c85d\",\"size\":759359672,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"f6766586c59ce70974651810efcf1ecc57b85b89c9851cbe55700130b6abccd4\",\"size\":584263906,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"b19dec8e95ec862013088c57bd658cb694373b505652dec8235ddbf85dd3040d\",\"size\":472213794,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"1df6f9547b273addb1f5022751100e28c270fa5936238b2a3d8573448777300a\",\"size\":518672307,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T20:05:07Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"937981c4c5f0ca78fe1d6a96137e8837d03aa5b98bff28da3a445101ac5149b4\",\"original_asset_sizes\":{\"rom.zip\":398956154},\"original_assets\":[\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":0,\"rom-linux-legacy.zip\":0,\"rom-linux.zip\":5,\"rom-macos.zip\":4,\"rom-windows-legacy.zip\":0,\"rom-windows.zip\":8,\"rom.zip\":10},\"generated_at\":\"2026-11-12T20:05:07Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188443285,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-b-base&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nUsed for building ROM releases\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"ee1e39e5136b40fa155cd4f52801f41d343c5eada56a4d93f4ecb11fcd05e750\",\"size\":712038348,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"e768ab241fc0815e9fdb49f55b2437e807171b009e5e7253edaa55032e652c6e\",\"size\":473799509,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"138d28f620173a37efd085af657e3892a4f52559314fd608e9ccbbf8c4c8567c\",\"size\":759359672,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"f403096a4a8aee45322746f9d53a118bf21974dbc11af229c933dbe0359fa080\",\"size\":584263906,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"562651a7804f37b22be08f507ffd57f6f8e1caa69eaaf8973c25902417972878\",\"size\":472213794,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"1097263d2c6935128f78baae99c63c41cdef1b6304f1cb0c5153f6415ef541dd\",\"size\":560808850,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-20T13:05:05Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"0d907560b4bc25641bde9559bb2b5f8e7d476401587558de5b2cc35c12fa4e72\",\"original_asset_sizes\":{\"rom.zip\":398956154},\"original_assets\":[\"rom.zip\"],\"platforms\":{\"linux\":\"5bca714a6e521774d6564198355f3f53b644160f1d9dd74d5761d1cf0fb003f7\",\"linux-arm64\":\"be5c197556d5268f0685a14eb1acb9e6491a45c8ee984d95bec4a475cf1c1893\",\"linux-legacy\":\"c2b78e844ac17daf6aa0ae3a8ccf699cb0c3ec75739eadb5ae50cd29f04987bf\",\"macos\":\"9bbb8cd3c0a1df525595593e7cd3defed25b4ec797ebad9e7efc7447a73d1689\",\"windows\":\"0e679d0fc4b829a6d015a8877bc2ba8d5d823046318328fb69c4aaf11915b628\",\"windows-legacy\":\"c06e498c4ceeada681cf542f85bb79591bfc9545a00671149569968988bbeda6\"},\"skipped\":[],\"source_fingerprint\":\"c1f3c19930b452f3a0dfc498623bd138a18bace46ce7b9fbf95bfb889d69726d\",\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":1,\"rom-linux-legacy.zip\":1,\"rom-linux.zip\":7,\"rom-macos.zip\":6,\"rom-windows-legacy.zip\":2,\"rom-windows.zip\":10,\"rom.zip\":11},\"generated_at\":\"2026-11-20T13:05:05Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188443285,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":161842998,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:39:43Z",
@@ -871,70 +871,70 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 740900969,
+        "id": 771860054,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-linux-arm64.zip",
         "size": 584263906,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T20:05:11Z",
-        "updated_at": "2026-11-12T20:05:32Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/740900969"
+        "created_at": "2026-11-20T13:05:13Z",
+        "updated_at": "2026-11-20T13:05:55Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771860054"
       },
       {
-        "id": 740900976,
+        "id": 771860046,
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-linux-legacy.zip",
         "size": 472213794,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T20:05:11Z",
-        "updated_at": "2026-11-12T20:05:28Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/740900976"
+        "created_at": "2026-11-20T13:05:13Z",
+        "updated_at": "2026-11-20T13:05:44Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771860046"
       },
       {
-        "id": 740900972,
+        "id": 771860021,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-linux.zip",
         "size": 759359672,
-        "download_count": 2,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T20:05:11Z",
-        "updated_at": "2026-11-12T20:05:36Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/740900972"
+        "created_at": "2026-11-20T13:05:12Z",
+        "updated_at": "2026-11-20T13:06:20Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771860021"
       },
       {
-        "id": 740902066,
+        "id": 771861751,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-macos.zip",
-        "size": 518672307,
-        "download_count": 1,
+        "size": 560808850,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T20:05:29Z",
-        "updated_at": "2026-11-12T20:05:44Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/740902066"
+        "created_at": "2026-11-20T13:05:45Z",
+        "updated_at": "2026-11-20T13:06:15Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771861751"
       },
       {
-        "id": 740900970,
+        "id": 771860061,
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-windows-legacy.zip",
         "size": 473799509,
-        "download_count": 2,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T20:05:11Z",
-        "updated_at": "2026-11-12T20:05:33Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/740900970"
+        "created_at": "2026-11-20T13:05:13Z",
+        "updated_at": "2026-11-20T13:05:44Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771860061"
       },
       {
-        "id": 740900994,
+        "id": 771860030,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-windows.zip",
         "size": 712038348,
-        "download_count": 2,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T20:05:11Z",
-        "updated_at": "2026-11-12T20:05:38Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/740900994"
+        "created_at": "2026-11-20T13:05:13Z",
+        "updated_at": "2026-11-20T13:05:59Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771860030"
       },
       {
         "id": 733036746,
@@ -948,19 +948,19 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733036746"
       },
       {
-        "id": 770285647,
+        "id": 771861754,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/stats.txt",
         "size": 3856,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-20T03:26:57Z",
-        "updated_at": "2026-11-20T03:26:58Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/770285647"
+        "created_at": "2026-11-20T13:05:45Z",
+        "updated_at": "2026-11-20T13:05:45Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771861754"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 10,
+    "downloads": 1,
     "download_breakdown": {
       "tag": "type-b-base",
       "mirrors": "",
@@ -968,32 +968,32 @@
         {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-linux-arm64.zip",
-          "downloads": 1
+          "downloads": 0
         },
         {
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-linux-legacy.zip",
-          "downloads": 1
+          "downloads": 0
         },
         {
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-linux.zip",
-          "downloads": 2
+          "downloads": 0
         },
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-macos.zip",
-          "downloads": 1
+          "downloads": 0
         },
         {
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-windows-legacy.zip",
-          "downloads": 2
+          "downloads": 0
         },
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/rom-windows.zip",
-          "downloads": 2
+          "downloads": 0
         },
         {
           "name": "rom.zip",
@@ -1008,7 +1008,7 @@
     "id": 432923376,
     "tag_name": "type-a-base",
     "name": "Portable Flashing Package: Rockbox-Y1 Base ROM - Type A",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nUsed for building ROM releases\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"9659ee072314ea403430736fdb70e03164e4cd845d83c60e041251ec06955c75\",\"size\":769041346,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"5cda93ea1c0cf6974cdee04c4be1ba9907844068c5a164a3a71ae469dfe8b175\",\"size\":530802507,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"ba53687b6dc5784ed116a2a0a38e9b8636d3217ffbc4dd329086cf19e885e820\",\"size\":816362670,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"bda7b7ea6a2ddf865e965cc013c2631a64265ee4785641e2ed05fa51a342b872\",\"size\":641266904,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"cd8a884c366ddbabb94bc7de375791b174b3f7adfed999054165b57aff9cf54f\",\"size\":529216790,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"3866888d13b5b329610b181d58313dea91e52378e542abc9aad12e7433acf820\",\"size\":575675308,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-12T20:10:42Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"cc1a96c5db954c0b3b2ae6e8fff4bc44e026ff904b5dc90155f716c4aa3e8ea0\",\"original_asset_sizes\":{\"rom.zip\":455959158},\"original_assets\":[\"rom.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":0,\"rom-linux-legacy.zip\":0,\"rom-linux.zip\":4,\"rom-macos.zip\":5,\"rom-windows-legacy.zip\":0,\"rom-windows.zip\":6,\"rom.zip\":0},\"generated_at\":\"2026-11-12T20:10:42Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188443285,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119710372,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=rockbox-y1%2Frockbox&amp;tag=type-a-base&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Frockbox-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/rockbox-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nUsed for building ROM releases\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"706293c458a41d4b33ecd094bc4580ff289cde165eb11b91750cd96d54397b7b\",\"size\":769041346,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"088417be8ee9aa57fe66dc6608b683fb3b7376a2ba9e921c75011f5d03629f07\",\"size\":530802507,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"89dbd9818443df2866eb860fbfc5b8ec5dc70b5a2753a06decfd14e4be8c6b99\",\"size\":816362670,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"9fb127103931dd1be7ba5c0f683562c468a8fe97de353e3568f87ad016e53bad\",\"size\":641266904,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"42c648b7963d5afb625b0ed599308cac9f45c92e6fae176e37f5566b8d4a0ccb\",\"size\":529216790,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"05625e7de25ae8b61279c95b3e20f9d604437de6db661b172cb2527f3d4a4af7\",\"size\":617811851,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-20T13:10:52Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"55e4bf2e1671245666ef1aa5df8bc8c63694100209eb91bd8e85ae05f9663720\",\"original_asset_sizes\":{\"rom.zip\":455959158},\"original_assets\":[\"rom.zip\"],\"platforms\":{\"linux\":\"f9427fa4cd331fe4e7660cf24a4843340f0a0703307320c21e4e8c89eb4ff6df\",\"linux-arm64\":\"1906e893f99488ce9b33f34a0082e7350b7a30890aa42c7c5eb590699cfb873f\",\"linux-legacy\":\"b2b5d97207fb58b3de076064361d5aba008db804160cbe7644d1c323c7290e92\",\"macos\":\"3e255fc6866b1605c8ba5141afa4ff69d4047b70d689eafd2d1f704ec892cbcb\",\"windows\":\"259915ebe39559dfccc233de0d3b2fb4f1f878c0eab78e2c86f48f2b14100810\",\"windows-legacy\":\"4df548a5e2fb40c9d7011eba4fe4e88f8123379966db06ce204c4b8b409e9a9d\"},\"skipped\":[],\"source_fingerprint\":\"5da836beea44eda0e709dae3d2084bd762927d5931fde3c4dc4a9843eccdd1d1\",\"stats\":{\"baseline\":{\"rom-linux-arm64.zip\":2,\"rom-linux-legacy.zip\":2,\"rom-linux.zip\":6,\"rom-macos.zip\":8,\"rom-windows-legacy.zip\":2,\"rom-windows.zip\":8,\"rom.zip\":1},\"generated_at\":\"2026-11-20T13:10:52Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":188443285,\"tag\":\"2.5.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":161842998,\"tag\":\"2.5.3\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:39:43Z",
@@ -1018,70 +1018,70 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 740919194,
+        "id": 771877831,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-linux-arm64.zip",
         "size": 641266904,
-        "download_count": 2,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T20:10:46Z",
-        "updated_at": "2026-11-12T20:11:13Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/740919194"
+        "created_at": "2026-11-20T13:10:57Z",
+        "updated_at": "2026-11-20T13:12:00Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771877831"
       },
       {
-        "id": 740919198,
+        "id": 771877840,
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-linux-legacy.zip",
         "size": 529216790,
-        "download_count": 2,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T20:10:46Z",
-        "updated_at": "2026-11-12T20:11:05Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/740919198"
+        "created_at": "2026-11-20T13:10:57Z",
+        "updated_at": "2026-11-20T13:11:45Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771877840"
       },
       {
-        "id": 740919197,
+        "id": 771877828,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-linux.zip",
         "size": 816362670,
-        "download_count": 2,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T20:10:46Z",
-        "updated_at": "2026-11-12T20:11:19Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/740919197"
+        "created_at": "2026-11-20T13:10:57Z",
+        "updated_at": "2026-11-20T13:11:58Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771877828"
       },
       {
-        "id": 740920327,
+        "id": 771880269,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-macos.zip",
-        "size": 575675308,
-        "download_count": 3,
+        "size": 617811851,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T20:11:05Z",
-        "updated_at": "2026-11-12T20:11:21Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/740920327"
+        "created_at": "2026-11-20T13:11:46Z",
+        "updated_at": "2026-11-20T13:12:13Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771880269"
       },
       {
-        "id": 740919195,
+        "id": 771877829,
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-windows-legacy.zip",
         "size": 530802507,
-        "download_count": 1,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T20:10:46Z",
-        "updated_at": "2026-11-12T20:11:05Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/740919195"
+        "created_at": "2026-11-20T13:10:57Z",
+        "updated_at": "2026-11-20T13:11:47Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771877829"
       },
       {
-        "id": 740919196,
+        "id": 771877836,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-windows.zip",
         "size": 769041346,
-        "download_count": 2,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-12T20:10:46Z",
-        "updated_at": "2026-11-12T20:11:07Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/740919196"
+        "created_at": "2026-11-20T13:10:57Z",
+        "updated_at": "2026-11-20T13:11:55Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771877836"
       },
       {
         "id": 733055840,
@@ -1095,19 +1095,19 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733055840"
       },
       {
-        "id": 770285708,
+        "id": 771880382,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/stats.txt",
         "size": 3852,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-20T03:26:59Z",
-        "updated_at": "2026-11-20T03:27:00Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/770285708"
+        "created_at": "2026-11-20T13:11:48Z",
+        "updated_at": "2026-11-20T13:11:48Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/771880382"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 13,
+    "downloads": 1,
     "download_breakdown": {
       "tag": "type-a-base",
       "mirrors": "",
@@ -1115,32 +1115,32 @@
         {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-linux-arm64.zip",
-          "downloads": 2
+          "downloads": 0
         },
         {
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-linux-legacy.zip",
-          "downloads": 2
+          "downloads": 0
         },
         {
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-linux.zip",
-          "downloads": 2
+          "downloads": 0
         },
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-macos.zip",
-          "downloads": 3
+          "downloads": 0
         },
         {
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-windows-legacy.zip",
-          "downloads": 1
+          "downloads": 0
         },
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/rom-windows.zip",
-          "downloads": 2
+          "downloads": 0
         },
         {
           "name": "rom.zip",
@@ -1235,7 +1235,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-windows.zip",
         "size": 846686810,
-        "download_count": 22,
+        "download_count": 23,
         "content_type": "application/zip",
         "created_at": "2026-11-12T22:39:33Z",
         "updated_at": "2026-11-12T22:39:58Z",
@@ -1353,7 +1353,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 46,
+    "downloads": 47,
     "download_breakdown": {
       "tag": "stable-v0.5",
       "mirrors": "",
@@ -1386,7 +1386,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-windows.zip",
-          "downloads": 22
+          "downloads": 23
         },
         {
           "name": "rom.zip",
@@ -1521,7 +1521,7 @@
         "name": "rom_240p-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-windows-legacy.zip",
         "size": 534670849,
-        "download_count": 1,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-12T22:03:07Z",
         "updated_at": "2026-11-12T22:03:24Z",
@@ -1826,7 +1826,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 34,
+    "downloads": 37,
     "download_breakdown": {
       "tag": "stable-v0.4",
       "mirrors": "",
@@ -1854,7 +1854,7 @@
         {
           "name": "rom_240p-windows-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/rom_240p-windows-legacy.zip",
-          "downloads": 1
+          "downloads": 4
         },
         {
           "name": "rom_240p-windows.zip",
@@ -2568,7 +2568,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-linux.zip",
         "size": 893872383,
-        "download_count": 3,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-12T23:37:43Z",
         "updated_at": "2026-11-12T23:38:08Z",
@@ -2719,7 +2719,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 41,
+    "downloads": 42,
     "download_breakdown": {
       "tag": "nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40",
       "mirrors": "",
@@ -2737,7 +2737,7 @@
         {
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom-linux.zip",
-          "downloads": 3
+          "downloads": 4
         },
         {
           "name": "rom-macos.zip",
@@ -6761,7 +6761,7 @@
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-linux-legacy.zip",
         "size": 607535382,
-        "download_count": 3,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-13T00:01:02Z",
         "updated_at": "2026-11-13T00:01:19Z",
@@ -6772,7 +6772,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-linux.zip",
         "size": 894681112,
-        "download_count": 3,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-13T00:01:02Z",
         "updated_at": "2026-11-13T00:01:25Z",
@@ -6923,7 +6923,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 42,
+    "downloads": 44,
     "download_breakdown": {
       "tag": "nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144",
       "mirrors": "",
@@ -6936,12 +6936,12 @@
         {
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-linux-legacy.zip",
-          "downloads": 3
+          "downloads": 4
         },
         {
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-linux.zip",
-          "downloads": 3
+          "downloads": 4
         },
         {
           "name": "rom-macos.zip",

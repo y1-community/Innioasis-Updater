@@ -276,7 +276,7 @@
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom-linux-arm64.zip",
         "size": 641253938,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-12T22:19:16Z",
         "updated_at": "2026-11-12T22:19:39Z",
@@ -438,7 +438,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 7,
+    "downloads": 8,
     "download_breakdown": {
       "tag": "launcher-v0.8",
       "mirrors": "",
@@ -446,7 +446,7 @@
         {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.8/rom-linux-arm64.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom-linux-legacy.zip",
@@ -805,7 +805,7 @@
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-linux-legacy.zip",
         "size": 529199804,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-12T21:53:46Z",
         "updated_at": "2026-11-12T21:54:04Z",
@@ -956,7 +956,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 11,
+    "downloads": 12,
     "download_breakdown": {
       "tag": "launcher-v0.5",
       "mirrors": "",
@@ -969,7 +969,7 @@
         {
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-linux-legacy.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom-linux.zip",
@@ -2076,7 +2076,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-linux.zip",
         "size": 816016807,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-12T22:49:41Z",
         "updated_at": "2026-11-12T22:50:05Z",
@@ -2293,7 +2293,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 18,
+    "downloads": 19,
     "download_breakdown": {
       "tag": "launcher-v0.11.5",
       "mirrors": "",
@@ -2311,7 +2311,7 @@
         {
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-linux.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom-macos.zip",
@@ -2634,7 +2634,7 @@
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_y2-windows.zip",
         "size": 683167117,
-        "download_count": 2,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-12T21:28:26Z",
         "updated_at": "2026-11-12T21:28:50Z",
@@ -2664,7 +2664,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 23,
+    "downloads": 25,
     "download_breakdown": {
       "tag": "launcher-v0.11.4",
       "mirrors": "",
@@ -2767,7 +2767,7 @@
         {
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.4/rom_y2-windows.zip",
-          "downloads": 2
+          "downloads": 4
         },
         {
           "name": "rom_y2.zip",
