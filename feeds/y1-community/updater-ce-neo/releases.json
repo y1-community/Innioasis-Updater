@@ -3,7 +3,7 @@
     "id": 452611826,
     "tag_name": "2.5.6",
     "name": "Updater CE 2.5.6",
-    "body": "Improved guidance during installs ",
+    "body": "In this release changes include:\r\n\r\nImproved guidance and onboarding for new and existing users, you'll be asked to install the drivers and reboot your computer when setting up the app for the first time on Windows to ensure the drivers are working as expected.\r\n\r\nKeep Settings and Media - Retains your player's settings and personal files/media where the firmware you're installing is compatible with your existing firmware*\r\n\r\nSupport for firmware installs with post-setup instructions - useful for\r\nOur newly added support for installing Y2Reborn and Rondo! (Mac and Linux users rejoice!)\r\nImproved guidance shown during firmware installs\r\nBetter error handling and troubleshooting guidance\r\ni18n fixes\r\nSupport for the full Innioasis and Timmkoo product line in Updater CE and Firmware Archive.\r\n\r\n*Where two firmwares are compatible with eachother, for example if coming from the original software to a newer version of the original software, or a mod of it like Better-Y or Koensayr",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-20T10:38:27Z",
@@ -105,7 +105,7 @@
         "name": "UpdaterCE-Linux-Portable.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6/UpdaterCE-Linux-Portable.zip",
         "size": 304010509,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-20T17:52:25Z",
         "updated_at": "2026-11-20T17:53:56Z",
@@ -149,7 +149,7 @@
         "name": "UpdaterCE-Linux-Portable-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6/UpdaterCE-Linux-Portable-arm64.zip",
         "size": 128026839,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-20T17:53:13Z",
         "updated_at": "2026-11-20T17:53:51Z",
@@ -193,15 +193,26 @@
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6/Innioasis.Updater.for.Mac.dmg",
         "size": 109169187,
-        "download_count": 0,
+        "download_count": 4,
         "content_type": "application/x-diskcopy",
         "created_at": "2026-11-20T18:12:11Z",
         "updated_at": "2026-11-20T18:12:32Z",
         "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/772834185"
+      },
+      {
+        "id": 772869765,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6/installer.exe",
+        "size": 98082074,
+        "download_count": 5,
+        "content_type": "application/x-msdownload",
+        "created_at": "2026-11-20T18:23:09Z",
+        "updated_at": "2026-11-20T18:23:37Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/772869765"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 4,
     "download_breakdown": {
       "tag": "2.5.6",
       "mirrors": "",
@@ -209,12 +220,12 @@
         {
           "name": "UpdaterCE-Linux-Portable.zip",
           "url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6/UpdaterCE-Linux-Portable.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "UpdaterCE-Linux-Portable-arm64.zip",
           "url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6/UpdaterCE-Linux-Portable-arm64.zip",
-          "downloads": 0
+          "downloads": 2
         }
       ],
       "portable": []
@@ -646,7 +657,7 @@
         "name": "UpdaterCE-Windows-Portable.zip.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/UpdaterCE-Windows-Portable.zip.zip",
         "size": 313278741,
-        "download_count": 166,
+        "download_count": 167,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-11T00:48:29Z",
         "updated_at": "2026-11-11T00:49:42Z",
@@ -665,7 +676,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 469,
+    "downloads": 470,
     "download_breakdown": {
       "tag": "2.5.4",
       "mirrors": "",
@@ -683,7 +694,7 @@
         {
           "name": "UpdaterCE-Windows-Portable.zip.zip",
           "url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/UpdaterCE-Windows-Portable.zip.zip",
-          "downloads": 166
+          "downloads": 167
         }
       ],
       "portable": []

@@ -72,7 +72,7 @@
         "name": "rom_q5-windows.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-windows.zip",
         "size": 654565099,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-20T12:06:47Z",
         "updated_at": "2026-11-20T12:07:28Z",
@@ -113,7 +113,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 1,
     "download_breakdown": {
       "tag": "MX2D_Q5D-WV3.28-20250619",
       "mirrors": "",
@@ -146,7 +146,7 @@
         {
           "name": "rom_q5-windows.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-windows.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom_q5.zip",
