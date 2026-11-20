@@ -17,7 +17,7 @@
         "name": "rom_g5.zip",
         "browser_download_url": "https://github.com/y1-community/g5-stock-rom/releases/download/MX4_EN-V1.11-20260727/rom_g5.zip",
         "size": 2048654340,
-        "download_count": 106,
+        "download_count": 107,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T04:21:09Z",
         "updated_at": "2026-11-05T04:24:41Z",
@@ -36,7 +36,7 @@
       }
     ],
     "mirror_downloads": 12,
-    "downloads": 118,
+    "downloads": 119,
     "download_breakdown": {
       "tag": "MX4_EN-V1.11-20260727",
       "mirrors": "y1-community/g5-stock-rom-mirror",
@@ -44,8 +44,9 @@
         {
           "name": "rom_g5.zip",
           "url": "https://github.com/y1-community/g5-stock-rom/releases/download/MX4_EN-V1.11-20260727/rom_g5.zip",
-          "downloads": 109,
-          "mirror_downloads": 3
+          "downloads": 114,
+          "mirror_downloads": 7,
+          "mirror_unallocated": 4
         }
       ],
       "portable": [
@@ -76,13 +77,6 @@
           "url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-linux-legacy.zip",
           "size": 2096082911,
           "downloads": 1
-        },
-        {
-          "platform": "macos",
-          "name": "rom_g5-macos.zip",
-          "url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-macos.zip",
-          "size": 2142541360,
-          "downloads": 4
         }
       ]
     }

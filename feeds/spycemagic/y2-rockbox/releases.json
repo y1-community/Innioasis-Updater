@@ -17,7 +17,7 @@
         "name": "INSTALL-GUIDE.md",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/INSTALL-GUIDE.md",
         "size": 4237,
-        "download_count": 89,
+        "download_count": 90,
         "content_type": "application/octet-stream",
         "created_at": "2026-09-29T12:14:45Z",
         "updated_at": "2026-09-29T12:14:45Z",
@@ -28,7 +28,7 @@
         "name": "LICENSE.txt",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/LICENSE.txt",
         "size": 15127,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-09-29T12:14:45Z",
         "updated_at": "2026-09-29T12:14:45Z",
@@ -39,7 +39,7 @@
         "name": "NOTICE.txt",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/NOTICE.txt",
         "size": 1010,
-        "download_count": 25,
+        "download_count": 26,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-09-29T12:14:46Z",
         "updated_at": "2026-09-29T12:14:46Z",
@@ -50,7 +50,7 @@
         "name": "README-FIRST.md",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/README-FIRST.md",
         "size": 1061,
-        "download_count": 50,
+        "download_count": 51,
         "content_type": "application/octet-stream",
         "created_at": "2026-09-29T12:14:45Z",
         "updated_at": "2026-09-29T12:14:45Z",
@@ -61,7 +61,7 @@
         "name": "RELEASE-NOTES.md",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/RELEASE-NOTES.md",
         "size": 2108,
-        "download_count": 32,
+        "download_count": 33,
         "content_type": "application/octet-stream",
         "created_at": "2026-09-29T12:25:03Z",
         "updated_at": "2026-09-29T12:25:03Z",
@@ -72,7 +72,7 @@
         "name": "rockbox-y2-v2.5-release-square.png",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rockbox-y2-v2.5-release-square.png",
         "size": 1585171,
-        "download_count": 660,
+        "download_count": 667,
         "content_type": "image/png",
         "created_at": "2026-09-29T12:14:46Z",
         "updated_at": "2026-09-29T12:14:47Z",
@@ -83,7 +83,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
         "size": 361644736,
-        "download_count": 1386,
+        "download_count": 1392,
         "content_type": "application/zip",
         "created_at": "2026-09-29T12:14:45Z",
         "updated_at": "2026-09-29T12:16:13Z",
@@ -94,7 +94,7 @@
         "name": "SHA256SUMS.txt",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/SHA256SUMS.txt",
         "size": 674,
-        "download_count": 28,
+        "download_count": 29,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-09-29T12:14:46Z",
         "updated_at": "2026-09-29T12:14:46Z",
@@ -105,15 +105,15 @@
         "name": "Y2-Rockbox-V2.5-Source.zip",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/Y2-Rockbox-V2.5-Source.zip",
         "size": 72256082,
-        "download_count": 43,
+        "download_count": 44,
         "content_type": "application/zip",
         "created_at": "2026-09-29T12:14:45Z",
         "updated_at": "2026-09-29T12:15:15Z",
         "url": "https://api.github.com/repos/SPYCEMAGIC/Y2-Rockbox/releases/assets/598138115"
       }
     ],
-    "mirror_downloads": 65,
-    "downloads": 1451,
+    "mirror_downloads": 68,
+    "downloads": 1460,
     "download_breakdown": {
       "tag": "v0.2.5-beta",
       "mirrors": "y1-community/y2-rockbox-mirror",
@@ -121,8 +121,8 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
-          "downloads": 1414,
-          "mirror_downloads": 28
+          "downloads": 1423,
+          "mirror_downloads": 31
         }
       ],
       "portable": [
@@ -144,14 +144,14 @@
           "platform": "linux",
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-linux.zip",
-          "size": 722048238,
+          "size": 662996928,
           "downloads": 10
         },
         {
           "platform": "linux-arm64",
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-linux-arm64.zip",
-          "size": 546952472,
+          "size": 487900931,
           "downloads": 1
         },
         {
@@ -165,7 +165,7 @@
           "platform": "macos",
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/rom_y2-macos.zip",
-          "size": 481360883,
+          "size": 523497426,
           "downloads": 5
         }
       ]
@@ -189,7 +189,7 @@
         "name": "INSTALL-GUIDE.md",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/INSTALL-GUIDE.md",
         "size": 2008,
-        "download_count": 174,
+        "download_count": 175,
         "content_type": "application/octet-stream",
         "created_at": "2026-09-06T12:31:14Z",
         "updated_at": "2026-09-06T12:31:14Z",
@@ -200,7 +200,7 @@
         "name": "LICENSE.txt",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/LICENSE.txt",
         "size": 15127,
-        "download_count": 21,
+        "download_count": 22,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-09-06T12:31:14Z",
         "updated_at": "2026-09-06T12:31:14Z",
@@ -211,7 +211,7 @@
         "name": "NOTICE.txt",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/NOTICE.txt",
         "size": 1010,
-        "download_count": 28,
+        "download_count": 29,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-09-06T12:31:14Z",
         "updated_at": "2026-09-06T12:31:14Z",
@@ -222,7 +222,7 @@
         "name": "README-FIRST.txt",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/README-FIRST.txt",
         "size": 925,
-        "download_count": 93,
+        "download_count": 94,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-09-06T12:31:14Z",
         "updated_at": "2026-09-06T12:31:14Z",
@@ -233,7 +233,7 @@
         "name": "RELEASE-NOTES.md",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/RELEASE-NOTES.md",
         "size": 1345,
-        "download_count": 27,
+        "download_count": 28,
         "content_type": "application/octet-stream",
         "created_at": "2026-09-06T12:31:14Z",
         "updated_at": "2026-09-06T12:31:14Z",
@@ -244,7 +244,7 @@
         "name": "rockbox-y2-beta-v2-release-portrait.png",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/rockbox-y2-beta-v2-release-portrait.png",
         "size": 2135412,
-        "download_count": 30,
+        "download_count": 31,
         "content_type": "image/png",
         "created_at": "2026-09-06T12:31:15Z",
         "updated_at": "2026-09-06T12:31:21Z",
@@ -255,7 +255,7 @@
         "name": "rockbox-y2-beta-v2-release-square.png",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/rockbox-y2-beta-v2-release-square.png",
         "size": 1758566,
-        "download_count": 39,
+        "download_count": 40,
         "content_type": "image/png",
         "created_at": "2026-09-06T12:31:15Z",
         "updated_at": "2026-09-06T12:31:20Z",
@@ -266,7 +266,7 @@
         "name": "SHA256SUMS.txt",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/SHA256SUMS.txt",
         "size": 1109,
-        "download_count": 30,
+        "download_count": 31,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-09-06T12:31:14Z",
         "updated_at": "2026-09-06T12:31:14Z",
@@ -277,7 +277,7 @@
         "name": "UPDATE-ONLY-MANIFEST.json",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/UPDATE-ONLY-MANIFEST.json",
         "size": 1304,
-        "download_count": 31,
+        "download_count": 32,
         "content_type": "application/json",
         "created_at": "2026-09-06T12:31:14Z",
         "updated_at": "2026-09-06T12:31:14Z",
@@ -288,7 +288,7 @@
         "name": "UPDATER-FORMATS.md",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/UPDATER-FORMATS.md",
         "size": 1095,
-        "download_count": 51,
+        "download_count": 52,
         "content_type": "application/octet-stream",
         "created_at": "2026-09-06T12:31:14Z",
         "updated_at": "2026-09-06T12:31:14Z",
@@ -299,7 +299,7 @@
         "name": "Y2-Rockbox-Beta-v0.2.0-Source.zip",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Source.zip",
         "size": 72561786,
-        "download_count": 50,
+        "download_count": 51,
         "content_type": "application/zip",
         "created_at": "2026-09-06T12:31:14Z",
         "updated_at": "2026-09-06T12:33:06Z",
@@ -310,7 +310,7 @@
         "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip",
         "size": 361774260,
-        "download_count": 87,
+        "download_count": 89,
         "content_type": "application/zip",
         "created_at": "2026-09-06T12:31:14Z",
         "updated_at": "2026-09-06T12:37:59Z",
@@ -321,15 +321,15 @@
         "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip",
         "size": 361774260,
-        "download_count": 147,
+        "download_count": 149,
         "content_type": "application/zip",
         "created_at": "2026-09-06T12:31:15Z",
         "updated_at": "2026-09-06T12:38:01Z",
         "url": "https://api.github.com/repos/SPYCEMAGIC/Y2-Rockbox/releases/assets/547171189"
       }
     ],
-    "mirror_downloads": 58,
-    "downloads": 292,
+    "mirror_downloads": 59,
+    "downloads": 297,
     "download_breakdown": {
       "tag": "v0.2.0-beta",
       "mirrors": "y1-community/y2-rockbox-mirror",
@@ -337,13 +337,13 @@
         {
           "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip",
           "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip",
-          "downloads": 103,
-          "mirror_downloads": 16
+          "downloads": 106,
+          "mirror_downloads": 17
         },
         {
           "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip",
           "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip",
-          "downloads": 147
+          "downloads": 149
         }
       ],
       "portable": [
@@ -365,14 +365,14 @@
           "platform": "linux",
           "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux.zip",
-          "size": 722175634,
+          "size": 663124324,
           "downloads": 2
         },
         {
           "platform": "linux-arm64",
           "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-linux-arm64.zip",
-          "size": 547079868,
+          "size": 488028327,
           "downloads": 0
         },
         {
@@ -386,7 +386,7 @@
           "platform": "macos",
           "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY-macos.zip",
-          "size": 481488362,
+          "size": 523624905,
           "downloads": 4
         },
         {
@@ -407,14 +407,14 @@
           "platform": "linux",
           "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux.zip",
-          "size": 722175634,
+          "size": 663124324,
           "downloads": 3
         },
         {
           "platform": "linux-arm64",
           "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-linux-arm64.zip",
-          "size": 547079868,
+          "size": 488028327,
           "downloads": 0
         },
         {
@@ -428,7 +428,7 @@
           "platform": "macos",
           "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-macos.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY-macos.zip",
-          "size": 481488368,
+          "size": 523624911,
           "downloads": 6
         }
       ]
@@ -452,7 +452,7 @@
         "name": "InnioasisUpdater_Setup_1.1.2.exe",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/InnioasisUpdater_Setup_1.1.2.exe",
         "size": 76812094,
-        "download_count": 138,
+        "download_count": 139,
         "content_type": "application/x-msdownload",
         "created_at": "2026-07-29T08:53:07Z",
         "updated_at": "2026-07-29T08:54:16Z",
@@ -463,7 +463,7 @@
         "name": "LICENSE.txt",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/LICENSE.txt",
         "size": 15407,
-        "download_count": 25,
+        "download_count": 26,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-07-29T08:53:07Z",
         "updated_at": "2026-07-29T08:53:07Z",
@@ -474,7 +474,7 @@
         "name": "NOTICE.txt",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/NOTICE.txt",
         "size": 1010,
-        "download_count": 25,
+        "download_count": 26,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-07-29T08:53:08Z",
         "updated_at": "2026-07-29T08:53:08Z",
@@ -485,7 +485,7 @@
         "name": "README-FIRST.txt",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/README-FIRST.txt",
         "size": 3453,
-        "download_count": 88,
+        "download_count": 89,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-07-29T08:53:06Z",
         "updated_at": "2026-07-29T08:53:06Z",
@@ -496,7 +496,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/rom_y2.zip",
         "size": 366781486,
-        "download_count": 760,
+        "download_count": 763,
         "content_type": "application/zip",
         "created_at": "2026-09-29T12:16:31Z",
         "updated_at": "2026-09-29T12:17:45Z",
@@ -507,7 +507,7 @@
         "name": "SHA256SUMS.txt",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/SHA256SUMS.txt",
         "size": 650,
-        "download_count": 49,
+        "download_count": 50,
         "content_type": "text/plain; charset=utf-8",
         "created_at": "2026-07-29T08:53:07Z",
         "updated_at": "2026-07-29T08:53:07Z",
@@ -518,7 +518,7 @@
         "name": "Y2-Rockbox-Beta-v0.1.0-Guide.pdf",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-Guide.pdf",
         "size": 1061516,
-        "download_count": 120,
+        "download_count": 121,
         "content_type": "application/pdf",
         "created_at": "2026-07-29T08:53:06Z",
         "updated_at": "2026-07-29T08:53:11Z",
@@ -529,7 +529,7 @@
         "name": "Y2-Rockbox-Beta-v0.1.0-Source.zip",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-Source.zip",
         "size": 68049228,
-        "download_count": 72,
+        "download_count": 73,
         "content_type": "application/zip",
         "created_at": "2026-07-29T08:53:06Z",
         "updated_at": "2026-07-29T08:55:00Z",
@@ -540,15 +540,15 @@
         "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip",
         "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip",
         "size": 366781486,
-        "download_count": 276,
+        "download_count": 278,
         "content_type": "application/zip",
         "created_at": "2026-07-29T08:55:08Z",
         "updated_at": "2026-07-29T09:00:07Z",
         "url": "https://api.github.com/repos/SPYCEMAGIC/Y2-Rockbox/releases/assets/493824493"
       }
     ],
-    "mirror_downloads": 165,
-    "downloads": 1201,
+    "mirror_downloads": 167,
+    "downloads": 1208,
     "download_breakdown": {
       "tag": "v0.1.0-beta",
       "mirrors": "y1-community/y2-rockbox-mirror",
@@ -556,13 +556,13 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/rom_y2.zip",
-          "downloads": 770,
+          "downloads": 773,
           "mirror_downloads": 10
         },
         {
           "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip",
           "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip",
-          "downloads": 276
+          "downloads": 278
         }
       ],
       "portable": [
@@ -571,7 +571,7 @@
           "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
           "size": 674923390,
-          "downloads": 54
+          "downloads": 55
         },
         {
           "platform": "windows-legacy",
@@ -584,14 +584,14 @@
           "platform": "linux",
           "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux.zip",
-          "size": 726943291,
+          "size": 663193404,
           "downloads": 8
         },
         {
           "platform": "linux-arm64",
           "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-linux-arm64.zip",
-          "size": 551848052,
+          "size": 488097407,
           "downloads": 0
         },
         {
@@ -613,7 +613,7 @@
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-windows.zip",
           "size": 674923390,
-          "downloads": 57
+          "downloads": 58
         },
         {
           "platform": "windows-legacy",
@@ -626,14 +626,14 @@
           "platform": "linux",
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-linux.zip",
-          "size": 726943291,
+          "size": 663193404,
           "downloads": 10
         },
         {
           "platform": "linux-arm64",
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-linux-arm64.zip",
-          "size": 551848052,
+          "size": 488097407,
           "downloads": 2
         },
         {
