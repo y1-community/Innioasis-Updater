@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-21T08:57:32Z",
+  "generated_at": "2026-11-21T09:02:08Z",
   "manifest_url": "https://innioasis.app/slidia_manifest.xml",
   "firmware_list_url": "https://innioasis.app/firmware-list.html",
   "feeds": {
@@ -254,6 +254,12 @@
       "releases_atom": "https://innioasis.app/feeds/norocoral/nugget-y1/releases.atom",
       "repo_json": "https://innioasis.app/feeds/norocoral/nugget-y1/repo.json"
     },
+    "y1-community/nugget-y1-mirror": {
+      "repo": "y1-community/nugget-y1-mirror",
+      "releases_json": "https://innioasis.app/feeds/y1-community/nugget-y1-mirror/releases.json",
+      "releases_atom": "https://innioasis.app/feeds/y1-community/nugget-y1-mirror/releases.atom",
+      "repo_json": "https://innioasis.app/feeds/y1-community/nugget-y1-mirror/repo.json"
+    },
     "y1-community/y2player-mirror": {
       "repo": "y1-community/y2player-mirror",
       "releases_json": "https://innioasis.app/feeds/y1-community/y2player-mirror/releases.json",
@@ -335,6 +341,10 @@
     "y1-community/lithium-mirror": {
       "source_repo": "NoahDomingues/Lithium",
       "updated_at": "2026-11-14T04:58:18Z"
+    },
+    "y1-community/nugget-y1-mirror": {
+      "source_repo": "norocoral/nugget-y1",
+      "updated_at": "2026-11-21T09:02:08Z"
     },
     "y1-community/q3-stock-rom-mirror": {
       "source_repo": "y1-community/q3-stock-rom",
