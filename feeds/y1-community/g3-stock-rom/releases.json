@@ -17,7 +17,7 @@
         "name": "rom_g3.zip",
         "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3.zip",
         "size": 1646117102,
-        "download_count": 65,
+        "download_count": 67,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:45:59Z",
         "updated_at": "2026-11-05T05:48:36Z",
@@ -36,7 +36,7 @@
       }
     ],
     "mirror_downloads": 38,
-    "downloads": 103,
+    "downloads": 105,
     "download_breakdown": {
       "tag": "MX3-G3-EN-WM-V6.01-20260805",
       "mirrors": "y1-community/g3-stock-rom-mirror",
@@ -44,7 +44,7 @@
         {
           "name": "rom_g3.zip",
           "url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3.zip",
-          "downloads": 71,
+          "downloads": 73,
           "mirror_downloads": 6
         }
       ],
@@ -67,14 +67,14 @@
           "platform": "linux",
           "name": "rom_g3-linux.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3-linux.zip",
-          "size": 1947469244,
+          "size": 1947583308,
           "downloads": 3
         },
         {
           "platform": "linux-arm64",
           "name": "rom_g3-linux-arm64.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3-linux-arm64.zip",
-          "size": 1772373247,
+          "size": 1772488866,
           "downloads": 2
         },
         {
@@ -88,7 +88,7 @@
           "platform": "macos",
           "name": "rom_g3-macos.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3-macos.zip",
-          "size": 1807969713,
+          "size": 1755406462,
           "downloads": 6
         }
       ]
@@ -112,7 +112,7 @@
         "name": "rom_g3.zip",
         "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3.zip",
         "size": 1646115909,
-        "download_count": 25,
+        "download_count": 26,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:39:20Z",
         "updated_at": "2026-11-05T05:41:55Z",
@@ -131,7 +131,7 @@
       }
     ],
     "mirror_downloads": 12,
-    "downloads": 37,
+    "downloads": 38,
     "download_breakdown": {
       "tag": "MX3-G3-EN-WM-V6.00-20260722",
       "mirrors": "y1-community/g3-stock-rom-mirror",
@@ -139,7 +139,7 @@
         {
           "name": "rom_g3.zip",
           "url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3.zip",
-          "downloads": 25
+          "downloads": 26
         }
       ],
       "portable": [
@@ -161,14 +161,14 @@
           "platform": "linux",
           "name": "rom_g3-linux.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3-linux.zip",
-          "size": 1947412348,
+          "size": 1947582113,
           "downloads": 1
         },
         {
           "platform": "linux-arm64",
           "name": "rom_g3-linux-arm64.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3-linux-arm64.zip",
-          "size": 1772316608,
+          "size": 1772487671,
           "downloads": 1
         },
         {
@@ -182,7 +182,7 @@
           "platform": "macos",
           "name": "rom_g3-macos.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3-macos.zip",
-          "size": 1755287670,
+          "size": 1755405268,
           "downloads": 3
         }
       ]
@@ -206,7 +206,7 @@
         "name": "rom_g3.zip",
         "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3.zip",
         "size": 1573503257,
-        "download_count": 22,
+        "download_count": 23,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:32:32Z",
         "updated_at": "2026-11-05T05:35:12Z",
@@ -225,7 +225,7 @@
       }
     ],
     "mirror_downloads": 32,
-    "downloads": 54,
+    "downloads": 55,
     "download_breakdown": {
       "tag": "MX3-9_G3_MULTI-V4.03-20260826",
       "mirrors": "y1-community/g3-stock-rom-mirror",
@@ -233,7 +233,7 @@
         {
           "name": "rom_g3.zip",
           "url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3.zip",
-          "downloads": 33,
+          "downloads": 34,
           "mirror_downloads": 11
         }
       ],
@@ -256,14 +256,14 @@
           "platform": "linux",
           "name": "rom_g3-linux.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3-linux.zip",
-          "size": 1874799700,
+          "size": 1874969465,
           "downloads": 2
         },
         {
           "platform": "linux-arm64",
           "name": "rom_g3-linux-arm64.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3-linux-arm64.zip",
-          "size": 1699703960,
+          "size": 1699875023,
           "downloads": 4
         },
         {
@@ -277,7 +277,7 @@
           "platform": "macos",
           "name": "rom_g3-macos.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3-macos.zip",
-          "size": 1682675019,
+          "size": 1682792617,
           "downloads": 2
         }
       ]
@@ -301,7 +301,7 @@
         "name": "rom_g3.zip",
         "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3.zip",
         "size": 1573498618,
-        "download_count": 20,
+        "download_count": 21,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:26:06Z",
         "updated_at": "2026-11-05T05:28:34Z",
@@ -320,7 +320,7 @@
       }
     ],
     "mirror_downloads": 23,
-    "downloads": 43,
+    "downloads": 44,
     "download_breakdown": {
       "tag": "MX3-9_G3_MULTI-V4.02-20260720",
       "mirrors": "y1-community/g3-stock-rom-mirror",
@@ -328,7 +328,7 @@
         {
           "name": "rom_g3.zip",
           "url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3.zip",
-          "downloads": 20
+          "downloads": 21
         }
       ],
       "portable": [
@@ -350,14 +350,14 @@
           "platform": "linux",
           "name": "rom_g3-linux.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3-linux.zip",
-          "size": 1874795063,
+          "size": 1874964828,
           "downloads": 2
         },
         {
           "platform": "linux-arm64",
           "name": "rom_g3-linux-arm64.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3-linux-arm64.zip",
-          "size": 1699699323,
+          "size": 1699870386,
           "downloads": 1
         },
         {
@@ -371,7 +371,7 @@
           "platform": "macos",
           "name": "rom_g3-macos.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3-macos.zip",
-          "size": 1682670381,
+          "size": 1682787979,
           "downloads": 2
         }
       ]
@@ -395,7 +395,7 @@
         "name": "rom_g3.zip",
         "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3.zip",
         "size": 1645622491,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:19:33Z",
         "updated_at": "2026-11-05T05:22:06Z",
@@ -414,7 +414,7 @@
       }
     ],
     "mirror_downloads": 28,
-    "downloads": 47,
+    "downloads": 48,
     "download_breakdown": {
       "tag": "MX3-9_EN_G3-V2.04-20260805",
       "mirrors": "y1-community/g3-stock-rom-mirror",
@@ -422,7 +422,7 @@
         {
           "name": "rom_g3.zip",
           "url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3.zip",
-          "downloads": 30,
+          "downloads": 31,
           "mirror_downloads": 11
         }
       ],
@@ -445,14 +445,14 @@
           "platform": "linux",
           "name": "rom_g3-linux.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3-linux.zip",
-          "size": 1946918930,
+          "size": 1947088695,
           "downloads": 2
         },
         {
           "platform": "linux-arm64",
           "name": "rom_g3-linux-arm64.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3-linux-arm64.zip",
-          "size": 1771823190,
+          "size": 1771994253,
           "downloads": 1
         },
         {
@@ -466,7 +466,7 @@
           "platform": "macos",
           "name": "rom_g3-macos.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3-macos.zip",
-          "size": 1754794251,
+          "size": 1754911849,
           "downloads": 6
         }
       ]
@@ -490,7 +490,7 @@
         "name": "rom_g3.zip",
         "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3.zip",
         "size": 1645637673,
-        "download_count": 21,
+        "download_count": 22,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:12:29Z",
         "updated_at": "2026-11-05T05:15:02Z",
@@ -509,7 +509,7 @@
       }
     ],
     "mirror_downloads": 27,
-    "downloads": 48,
+    "downloads": 49,
     "download_breakdown": {
       "tag": "MX3-9_EN_G3-V2.03-20260709",
       "mirrors": "y1-community/g3-stock-rom-mirror",
@@ -517,7 +517,7 @@
         {
           "name": "rom_g3.zip",
           "url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3.zip",
-          "downloads": 32,
+          "downloads": 33,
           "mirror_downloads": 11
         }
       ],
@@ -540,14 +540,14 @@
           "platform": "linux",
           "name": "rom_g3-linux.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3-linux.zip",
-          "size": 1946934110,
+          "size": 1947103875,
           "downloads": 1
         },
         {
           "platform": "linux-arm64",
           "name": "rom_g3-linux-arm64.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3-linux-arm64.zip",
-          "size": 1771838370,
+          "size": 1772009433,
           "downloads": 1
         },
         {
@@ -561,7 +561,7 @@
           "platform": "macos",
           "name": "rom_g3-macos.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3-macos.zip",
-          "size": 1754809432,
+          "size": 1754927030,
           "downloads": 3
         }
       ]

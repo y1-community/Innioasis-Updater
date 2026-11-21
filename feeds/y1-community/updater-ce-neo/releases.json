@@ -17,7 +17,7 @@
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6/installer.exe",
         "size": 98082074,
-        "download_count": 21,
+        "download_count": 28,
         "content_type": "application/x-msdownload",
         "created_at": "2026-11-20T18:23:09Z",
         "updated_at": "2026-11-20T18:23:37Z",
@@ -39,7 +39,7 @@
         "name": "UpdaterCE.appimage",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6/UpdaterCE.appimage",
         "size": 247626232,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-20T21:57:20Z",
         "updated_at": "2026-11-20T21:59:45Z",
@@ -94,7 +94,7 @@
         "name": "UpdaterCE-Linux-Portable.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6/UpdaterCE-Linux-Portable.zip",
         "size": 304182716,
-        "download_count": 0,
+        "download_count": 17,
         "content_type": "application/zip",
         "created_at": "2026-11-20T21:57:21Z",
         "updated_at": "2026-11-20T21:59:12Z",
@@ -138,7 +138,7 @@
         "name": "UpdaterCE-Linux-Portable-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6/UpdaterCE-Linux-Portable-arm64.zip",
         "size": 128199037,
-        "download_count": 0,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-11-20T21:58:05Z",
         "updated_at": "2026-11-20T21:58:52Z",
@@ -212,7 +212,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 35,
     "download_breakdown": {
       "tag": "2.5.6",
       "mirrors": "",
@@ -220,12 +220,12 @@
         {
           "name": "UpdaterCE-Linux-Portable.zip",
           "url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6/UpdaterCE-Linux-Portable.zip",
-          "downloads": 0
+          "downloads": 17
         },
         {
           "name": "UpdaterCE-Linux-Portable-arm64.zip",
           "url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6/UpdaterCE-Linux-Portable-arm64.zip",
-          "downloads": 0
+          "downloads": 18
         }
       ],
       "portable": []
@@ -657,7 +657,7 @@
         "name": "UpdaterCE-Windows-Portable.zip.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/UpdaterCE-Windows-Portable.zip.zip",
         "size": 313278741,
-        "download_count": 171,
+        "download_count": 174,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-11T00:48:29Z",
         "updated_at": "2026-11-11T00:49:42Z",
@@ -676,7 +676,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 474,
+    "downloads": 477,
     "download_breakdown": {
       "tag": "2.5.4",
       "mirrors": "",
@@ -694,7 +694,7 @@
         {
           "name": "UpdaterCE-Windows-Portable.zip.zip",
           "url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.4/UpdaterCE-Windows-Portable.zip.zip",
-          "downloads": 171
+          "downloads": 174
         }
       ],
       "portable": []

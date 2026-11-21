@@ -28,7 +28,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/rom.zip",
         "size": 181243963,
-        "download_count": 513,
+        "download_count": 514,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-09-25T18:43:13Z",
         "updated_at": "2026-09-25T18:46:53Z",
@@ -36,7 +36,7 @@
       }
     ],
     "mirror_downloads": 68,
-    "downloads": 581,
+    "downloads": 582,
     "download_breakdown": {
       "tag": "v1.1.0",
       "mirrors": "y1-community/better-y-mirror",
@@ -44,7 +44,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/rom.zip",
-          "downloads": 529,
+          "downloads": 530,
           "mirror_downloads": 16
         }
       ],
@@ -67,14 +67,14 @@
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux.zip",
-          "size": 482540436,
+          "size": 482710201,
           "downloads": 17
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-arm64.zip",
-          "size": 307444696,
+          "size": 307615759,
           "downloads": 2
         },
         {
@@ -88,7 +88,7 @@
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-macos.zip",
-          "size": 290415791,
+          "size": 290533389,
           "downloads": 11
         }
       ]
@@ -112,7 +112,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/Leska1337/better-Y/releases/download/v1.0.0/rom.zip",
         "size": 181072948,
-        "download_count": 197,
+        "download_count": 198,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-09-04T04:45:14Z",
         "updated_at": "2026-09-04T04:45:59Z",
@@ -120,7 +120,7 @@
       }
     ],
     "mirror_downloads": 35,
-    "downloads": 232,
+    "downloads": 233,
     "download_breakdown": {
       "tag": "v1.0.0",
       "mirrors": "y1-community/better-y-mirror",
@@ -128,7 +128,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/Leska1337/better-Y/releases/download/v1.0.0/rom.zip",
-          "downloads": 197
+          "downloads": 198
         }
       ],
       "portable": [
@@ -150,14 +150,14 @@
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux.zip",
-          "size": 482121333,
+          "size": 482291098,
           "downloads": 16
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux-arm64.zip",
-          "size": 307025593,
+          "size": 307196656,
           "downloads": 2
         },
         {
@@ -171,7 +171,7 @@
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-macos.zip",
-          "size": 289996674,
+          "size": 290114272,
           "downloads": 6
         }
       ]
