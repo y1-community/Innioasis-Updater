@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Power Management: Innioasis Y1 - Innioasis Updater</title>
+  <meta name="description" content="🌐 한국어 kr/POWER MANAGEMENT.md English Power Management: Innioasis Y1 This document describes the power management mechanisms implemented in the Nugget Linux environment an">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-power_management.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Power Management: Innioasis Y1 - Innioasis Updater">
+  <meta property="og:description" content="🌐 한국어 kr/POWER MANAGEMENT.md English Power Management: Innioasis Y1 This document describes the power management mechanisms implemented in the Nugget Linux environment an">
+  <meta property="og:url" content="https://innioasis.app/post-install/norocoral-nugget-y1-docs-power_management.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Power Management: Innioasis Y1 - Innioasis Updater">
+  <meta name="twitter:description" content="🌐 한국어 kr/POWER MANAGEMENT.md English Power Management: Innioasis Y1 This document describes the power management mechanisms implemented in the Nugget Linux environment an">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-power_management.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-power_management.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y1&amp;software=nugget-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Nugget · Y1</p><h1>Power Management: Innioasis Y1</h1><p class="lumen-lead">Community firmware package for the Y1.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y1&amp;software=nugget-y1">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y1&amp;software=nugget-y1">Install guide</a></div></header><article class="lumen-doc-body"><p>🌐 <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2Fkr%2FPOWER_MANAGEMENT.md">한국어</a> | <strong>English</strong></p>
+<h1 id="power-management-innioasis-y1">Power Management: Innioasis Y1</h1>
+<p>This document describes the power management mechanisms implemented in the Nugget Linux environment and <code>liby1</code> on the MediaTek MT6572 / MT6323 hardware platform.</p>
+<hr>
+<h2 id="1-kernel-suspend--wakelock-architecture">1. Kernel Suspend &amp; Wakelock Architecture</h2>
+<p>Downstream MediaTek kernel 3.4.67 uses Android <code>earlysuspend</code> and <code>wakelock</code> sysfs interfaces (<code>/sys/power/state</code>, <code>/sys/power/wake_lock</code>, <code>/sys/power/wake_unlock</code>).</p>
+<h3 id="11-display-early-suspend-vs-full-mem-suspend">1.1 Display Early-Suspend vs. Full <code>mem</code> Suspend</h3>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; Active: rockbox_active locked, state=&quot;on&quot;
+    Active --&gt; EarlySuspend: y1_display_enter_early_suspend()
+    EarlySuspend --&gt; MemSuspend: y1_power_set_idle_sleep(true)
+    MemSuspend --&gt; Active: Wake IRQ + y1_power_set_idle_sleep(false) + y1_display_exit_early_suspend()
+    EarlySuspend --&gt; Active: y1_display_exit_early_suspend()</code></pre>
+<ul><li><strong>Early-Suspend (<code>y1_display_enter_early_suspend()</code>):</strong><ul><li>Acquires <code>&quot;rockbox_active&quot;</code> in <code>/sys/power/wake_lock</code> and writes <code>&quot;mem\n&quot;</code> to <code>/sys/power/state</code>.</li><li>Because a userspace wakelock is held, kernel <code>earlysuspend</code> handlers power down the display controller, backlight, touch scan, and GPU without freezing userspace processes (used during screen-off audio playback).</li></ul></li><li><strong>Full <code>mem</code> Suspend (<code>y1_power_set_idle_sleep(true)</code>):</strong><ul><li>Skipped if USB Mass Storage is attached (<code>y1_usb_is_storage_attached()</code>).</li><li>Unlocks <code>&quot;rockbox_active&quot;</code> and <code>&quot;y1play&quot;</code> in <code>/sys/power/wake_unlock</code> and writes <code>&quot;mem\n&quot;</code> to <code>/sys/power/state</code>, allowing the kernel to enter <code>mem</code> suspend (RAM retention, userspace frozen) when audio DMA is idle.</li></ul></li><li><strong>Resume (<code>y1_power_set_idle_sleep(false)</code> + <code>y1_display_exit_early_suspend()</code>):</strong><ul><li>Re-acquires <code>&quot;rockbox_active&quot;</code> in <code>/sys/power/wake_lock</code> and writes <code>&quot;on\n&quot;</code> to <code>/sys/power/state</code>.</li></ul></li></ul>
+<h3 id="12-audio-playback-wakelock--spm-deep-idle">1.2 Audio Playback Wakelock &amp; SPM Deep-Idle</h3>
+<ul><li><code>y1_audio_wake_lock(true)</code> / <code>y1_audio_wake_lock(false)</code> holds or releases <code>&quot;y1play&quot;</code> in <code>/sys/power/wake_lock</code> / <code>/sys/power/wake_unlock</code> so <code>mem</code> suspend is prevented while audio playback is active.</li><li><code>y1_audio_set_deep_idle(false)</code> disables MT6572 SPM CPU powerdown while AFE DL1 DMA is running so DMA transfers are not interrupted; <code>y1_audio_set_deep_idle(true)</code> re-enables it when audio stops.</li></ul>
+<hr>
+<h2 id="2-cpu-frequency--core-hotplug-control">2. CPU Frequency &amp; Core Hotplug Control</h2>
+<h3 id="21-kernel-sysfs-interfaces">2.1 Kernel Sysfs Interfaces</h3>
+<ul><li>Frequency governor/speed: <code>/sys/devices/system/cpu/cpu0/cpufreq/</code> (<code>scaling_governor</code>, <code>scaling_setspeed</code>)</li><li>Core 1 hotplug: <code>/sys/devices/system/cpu/cpu1/online</code> (<code>0</code> = offline, <code>1</code> = online)</li></ul>
+<h3 id="22-liby1-cpu-modes-enum-y1cpumodeid">2.2 <code>liby1</code> CPU Modes (<code>enum y1_cpu_mode_id</code>)</h3>
+<table><thead><tr><th style="text-align:left">Mode</th><th style="text-align:left">Constant</th><th style="text-align:left">Behavior</th></tr></thead><tbody><tr><td style="text-align:left">Dynamic</td><td style="text-align:left"><code>Y1_CPU_MODE_DYNAMIC</code> (<code>0</code>)</td><td style="text-align:left"><code>ondemand</code> governor (598 MHz – 1001 MHz)</td></tr><tr><td style="text-align:left">Powersave</td><td style="text-align:left"><code>Y1_CPU_MODE_POWERSAVE</code> (<code>1</code>)</td><td style="text-align:left">Fixed 598 MHz</td></tr><tr><td style="text-align:left">Balanced</td><td style="text-align:left"><code>Y1_CPU_MODE_BALANCED</code> (<code>2</code>)</td><td style="text-align:left">Fixed 1001 MHz</td></tr><tr><td style="text-align:left">Performance</td><td style="text-align:left"><code>Y1_CPU_MODE_PERFORMANCE</code> (<code>3</code>)</td><td style="text-align:left">Fixed 1196 MHz</td></tr><tr><td style="text-align:left">Turbo</td><td style="text-align:left"><code>Y1_CPU_MODE_TURBO</code> (<code>4</code>)</td><td style="text-align:left">Fixed 1300 MHz</td></tr></tbody></table>
+<ul><li><code>y1_cpu_set_dual_core(bool dual_core)</code> enables or offlines CPU1 via <code>/sys/devices/system/cpu/cpu1/online</code>.</li><li><code>y1_cpu_set_screen_off_clamp(bool screen_off)</code> clamps CPU frequency and offlines CPU1 when the display is off.</li><li><code>y1_cpu_boost_for_conversion(bool enable)</code> temporarily raises CPU frequency/cores during bulk database or artwork processing and restores the prior mode when disabled.</li></ul>
+<hr>
+<h2 id="3-peripheral-power-down-when-idle">3. Peripheral Power-Down When Idle</h2>
+<ul><li><strong>Display Eco Mode:</strong> <code>y1_fb_set_eco_mode(true)</code> writes <code>/proc/dispsys/eco_mode</code>.</li><li><strong>Touch Scanning:</strong> <code>y1_input_set_touch_scanning(false)</code> disables touch-wheel scanning via <code>/proc/tpd_keys_enable</code>.</li><li><strong>Audio Analog Stage:</strong> Closing <code>/dev/eac</code> (<code>y1_audio_close()</code>) powers down the MT6323 headphone amplifier and DAC bias after draining settling samples.</li></ul></article><p class="lumen-doc-footer-note">These are Nugget's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=nugget-y1">norocoral's <em>Nugget</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=norocoral%2Fnugget-y1&amp;software=nugget-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

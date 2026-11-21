@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iPod 5.5G USB 모드 및 양방향 iTunes 동기화 엔진 - Innioasis Updater</title>
+  <meta name="description" content="🌐 English ../IPOD SYNC.md 한국어 iPod 5.5G USB 모드 및 양방향 iTunes 동기화 엔진 Nugget for Innioasis Y1은 기기 내에서 동작하는 양방향 동기화 엔진과 Apple iPod 5.5세대Enhanced Video 하드웨어 스푸핑 서브시스템을 탑재하고 있습">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-ipod_sync.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="iPod 5.5G USB 모드 및 양방향 iTunes 동기화 엔진 - Innioasis Updater">
+  <meta property="og:description" content="🌐 English ../IPOD SYNC.md 한국어 iPod 5.5G USB 모드 및 양방향 iTunes 동기화 엔진 Nugget for Innioasis Y1은 기기 내에서 동작하는 양방향 동기화 엔진과 Apple iPod 5.5세대Enhanced Video 하드웨어 스푸핑 서브시스템을 탑재하고 있습">
+  <meta property="og:url" content="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-ipod_sync.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="iPod 5.5G USB 모드 및 양방향 iTunes 동기화 엔진 - Innioasis Updater">
+  <meta name="twitter:description" content="🌐 English ../IPOD SYNC.md 한국어 iPod 5.5G USB 모드 및 양방향 iTunes 동기화 엔진 Nugget for Innioasis Y1은 기기 내에서 동작하는 양방향 동기화 엔진과 Apple iPod 5.5세대Enhanced Video 하드웨어 스푸핑 서브시스템을 탑재하고 있습">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-ipod_sync.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-ipod_sync.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y1&amp;software=nugget-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Nugget · Y1</p><h1>iPod 5.5G USB 모드 및 양방향 iTunes 동기화 엔진</h1><p class="lumen-lead">Community firmware package for the Y1.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y1&amp;software=nugget-y1">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y1&amp;software=nugget-y1">Install guide</a></div></header><article class="lumen-doc-body"><p>🌐 <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2FIPOD_SYNC.md">English</a> | <strong>한국어</strong></p>
+<h1 id="ipod-55g-usb----itunes">iPod 5.5G USB 모드 및 양방향 iTunes 동기화 엔진</h1>
+<p>Nugget for Innioasis Y1은 기기 내에서 동작하는 양방향 동기화 엔진과 Apple iPod 5.5세대(Enhanced Video) 하드웨어 스푸핑 서브시스템을 탑재하고 있습니다.</p>
+<p>이를 통해 Innioasis Y1을 <strong>Apple iTunes(Windows 및 macOS)</strong>, <strong>macOS Finder / 음악 앱</strong>, 또는 서드파티 관리 프로그램(<strong>libgpod</strong>, <strong>Foobar2000 foo_dop</strong>, <strong>MediaMonkey</strong>, <strong>Clementine</strong>)에 연결했을 때 정품 80GB iPod Video(5.5세대, 모델명 <code>MA448</code> / <code>MA450</code>)로 완벽하게 인식됩니다.</p>
+<pre><code class="language-mermaid">flowchart LR
+    subgraph HOST[&quot;호스트 컴퓨터 (Mac / PC / Linux)&quot;]
+        ITUNES[&quot;Apple iTunes / Finder / 음악 앱 / libgpod&quot;]
+    end
+
+    subgraph USB_LAYER[&quot;하드웨어 USB 가젯 (MT6572)&quot;]
+        GADGET[&quot;Android USB 가젯 (05ac:1209)
+        Apple iPod 5.5G 디스크립터 및 SCSI LUN&quot;]
+    end
+
+    subgraph Y1_ENGINE[&quot;Y1 양방향 동기화 엔진 (/bin/ipod_sync)&quot;]
+        PRE[&quot;연결 전 동기화 (Pre-Connect)
+        Rockbox -&gt; iTunes
+        재생 횟수, 별점, 북마크, OTG 전송&quot;]
+        POST[&quot;연결 해제 후 동기화 (Post-Disconnect)
+        iTunes -&gt; Rockbox
+        TagCache .tcd, 앨범아트, 비디오 DB, M3U8&quot;]
+        BOOST[&quot;CPU 터보 고정
+        1.30 GHz 듀얼코어 퍼포먼스&quot;]
+    end
+
+    subgraph STORAGE[&quot;MicroSD 카드 (/mnt/sdcard)&quot;]
+        IPOD_DIR[&quot;/iPod_Control/
+        iTunesDB, ArtworkDB, Play Counts&quot;]
+        RB_DIR[&quot;/.rockbox/
+        TagCache database_*.tcd, config.cfg&quot;]
+        PL_DIR[&quot;/Playlists/*.m3u8&quot;]
+        VDB[&quot;/.system/video_db.dat 및 /Videos&quot;]
+    end
+
+    HOST &lt;--&gt;|고속 USB 2.0| USB_LAYER
+    USB_LAYER &lt;--&gt; GADGET
+    PRE --&gt;|재생 기록 및 OTG 쓰기| IPOD_DIR
+    IPOD_DIR --&gt;|iTunesDB 및 ArtworkDB 읽기| POST
+    POST --&gt;|TagCache 생성| RB_DIR
+    POST --&gt;|플레이리스트 내보내기| PL_DIR
+    POST --&gt;|MP4 비디오 등록| VDB
+    BOOST -.-&gt;|변환 중 CPU 부스트| Y1_ENGINE</code></pre>
+<hr>
+<h2>목차</h2>
+<ol><li><a href="#1-하드웨어-스푸핑-ipod-55세대-enhanced">하드웨어 스푸핑 (iPod 5.5세대 Enhanced)</a></li><li><a href="#2-양방향-동기화-아키텍처">양방향 동기화 아키텍처</a><ul><li><a href="#21-연결-전-단계-rockbox--itunes">2.1 연결 전 단계 (Rockbox → iTunes)</a></li><li><a href="#22-연결-해제-후-단계-itunes--rockbox">2.2 연결 해제 후 단계 (iTunes → Rockbox)</a></li></ul></li><li><a href="#3-구성-요소-및-메타데이터-변환-상세">구성 요소 및 메타데이터 변환 상세</a><ul><li><a href="#31-tagcache-바이너리-데이터베이스-생성">3.1 TagCache 바이너리 데이터베이스 생성</a></li><li><a href="#32-앨범-아트-및-비디오-썸네일-추출">3.2 앨범 아트 및 비디오 썸네일 추출</a></li><li><a href="#33-비디오-서브시스템-통합-video_dbdat">3.3 비디오 서브시스템 통합 (<code>video_db.dat</code>)</a></li><li><a href="#34-플레이리스트-및-실시간-스마트-재생목록-규칙-m3u8">3.4 플레이리스트 및 실시간 스마트 재생목록 규칙 (<code>.m3u8</code>)</a></li><li><a href="#35-재생-횟수-별점-및-즉석-재생목록-otg">3.5 재생 횟수, 별점 및 즉석 재생목록 (OTG)</a></li></ul></li><li><a href="#4-cpu-클럭-및-듀얼코어-터보-고정">CPU 클럭 및 듀얼코어 터보 고정</a></li><li><a href="#5-사용자-설정-및-환경-구성">사용자 설정 및 환경 구성</a></li><li><a href="#6-독립-cli-유틸리티-binipod_sync">독립 CLI 유틸리티 (<code>/bin/ipod_sync</code>)</a></li><li><a href="#7-호스트-호환성-가이드">호스트 호환성 가이드</a></li></ol>
+<hr>
+<h2 id="1---ipod-55-enhanced">1. 하드웨어 스푸핑 (iPod 5.5세대 Enhanced)</h2>
+<p><strong>iPod USB 모드</strong>가 활성화되면 Linux 커널 가젯 드라이버가 MediaTek 기본 USB 디스크립터를 정품 Apple iPod 5.5세대 파라미터로 대체합니다:</p>
+<table><thead><tr><th style="text-align:left">파라미터</th><th style="text-align:left">값</th><th style="text-align:left">의미 / 호환성</th></tr></thead><tbody><tr><td style="text-align:left"><strong>USB 벤더 ID (VID)</strong></td><td style="text-align:left"><code>0x05ac</code></td><td style="text-align:left">Apple, Inc.</td></tr><tr><td style="text-align:left"><strong>USB 프로덕트 ID (PID)</strong></td><td style="text-align:left"><code>0x1209</code></td><td style="text-align:left">iPod Video 5.5세대 (Enhanced)</td></tr><tr><td style="text-align:left"><strong>장치 릴리즈 (bcdDevice)</strong></td><td style="text-align:left"><code>0x0002</code></td><td style="text-align:left">펌웨어 1.2 / 1.3 프로토콜 리비전</td></tr><tr><td style="text-align:left"><strong>제조사 문자열</strong></td><td style="text-align:left"><code>Apple</code></td><td style="text-align:left">Apple Mobile Device Service 인식 필수 항목</td></tr><tr><td style="text-align:left"><strong>제품명 문자열</strong></td><td style="text-align:left"><code>iPod</code></td><td style="text-align:left">Apple 표준 USB 식별자</td></tr><tr><td style="text-align:left"><strong>USB 시리얼 번호</strong></td><td style="text-align:left"><code>000A270019B48C1F</code> (또는 지속성 16진수 GUID)</td><td style="text-align:left"><code>/iPod_Control/Device/SysInfo</code> 기반 생성</td></tr><tr><td style="text-align:left"><strong>SCSI Vendor / Inquiry</strong></td><td style="text-align:left"><code>&quot;Apple   iPod            1.62&quot;</code></td><td style="text-align:left">대용량 저장소 LUN을 정품 iPod 디스크로 식별</td></tr><tr><td style="text-align:left"><strong>기기 모델 번호</strong></td><td style="text-align:left"><code>MA448</code> / <code>MA450</code> (80GB 블랙 / 화이트)</td><td style="text-align:left"><code>SysInfoExtended</code> XML 프로퍼티로 보고</td></tr></tbody></table>
+<h3>기기 초기화 파일</h3>
+<p>USB 케이블이 연결되면 <code>liby1</code>은 필요한 디렉터리와 식별 파일을 자동으로 구성합니다:</p>
+<ul><li><code>/iPod_Control/Device/SysInfo</code>: 보드 리비전(<code>0x000C0005</code>), 일련번호, FireWire GUID, 패밀리 ID(<code>0x0000000C</code>) 기록.</li><li><code>/iPod_Control/Device/SysInfoExtended</code>: 펌웨어 기능, 지원 이미지 포맷(포맷 1027, 1031, 1055, 1060), 비디오 프로파일 XML 리스트.</li><li>루트 심볼릭 링크: 대소문자 구분 호환성을 위해 <code>/ipod_control</code>, <code>/IPOD_CONTROL</code>을 <code>/mnt/sdcard/iPod_Control</code>로 연결.</li></ul>
+<hr>
+<h2 id="2">2. 양방향 동기화 아키텍처</h2>
+<p>동기화 파이프라인은 완전한 <strong>양방향</strong>이며, PC 측 별도 에이전트 프로그램 없이 Y1 기기의 듀얼코어 프로세서에서 자체 구동됩니다.</p>
+<h3 id="21----rockbox--itunes">2.1 연결 전 단계 (Rockbox → iTunes)</h3>
+<p>Y1이 PC에 연결되거나 부트로더 메뉴에서 5번(USB Mass Storage)을 선택했을 때, PC에 USB 저장소가 마운트되기 직전에 <code>y1_ipod_sync_pre_connect()</code>가 실행됩니다:</p>
+<ol><li><strong>CPU 1300 MHz 듀얼코어 터보 잠금</strong>: 호스트 열거(Enumeration) 지연을 방지하기 위해 최대 성능으로 신속하게 처리합니다.</li><li><strong>Rockbox 런타임 재생 지표 수집</strong>: Rockbox 런타임 데이터베이스가 기록한 재생 횟수, 마지막 재생 시각, 별점을 로드합니다.</li><li><strong><code>/iPod_Control/iTunes/Play Counts</code> 생성</strong>:<ul><li><code>0x60</code> 바이트 크기의 Apple <code>mhdp</code> 헤더를 생성합니다.</li><li>변경된 트랙마다 <code>0x1c</code> 바이트 재생 레코드를 기록하여 재생 횟수 델타(증가분), Mac 에포크 타임스탬프, 북마크 위치(밀리초), 별점을 저장합니다.</li></ul></li><li><strong><code>iTunesDB</code> <code>mhit</code> 레코드 직접 패치</strong>: <code>iTunesDB</code>를 직접 파싱하는 프로그램들을 위해 별점 및 북마크 위치를 인플레이스(in-place)로 패치합니다.</li><li><strong>즉석 재생목록 (On-The-Go) 내보내기</strong>:<ul><li>Rockbox에서 생성된 큐/OTG 재생목록을 읽어 <code>/iPod_Control/iTunes/OTGPlaylistInfo</code>(<code>mhpo</code> 포맷)로 내보냅니다.</li><li>iTunes와 동기화 시 기기에서 담은 노래들을 새 재생목록으로 가져올 수 있습니다.</li></ul></li><li><strong>버퍼 플러시 및 캐시 동기화</strong>: <code>sync()</code>를 호출하여 파일시스템 일관성을 확보한 후 호스트에 블록 디바이스를 노출합니다.</li><li><strong>USB 가젯 활성화</strong>: 호스트 PC가 SD 카드를 마운트할 수 있도록 허용합니다.</li></ol>
+<h3 id="22-----itunes--rockbox">2.2 연결 해제 후 단계 (iTunes → Rockbox)</h3>
+<p>PC에서 볼륨을 언마운트(꺼내기)하거나 USB 케이블을 분리하면:</p>
+<ol><li><strong>USB 가젯 분리 및 캐시 드롭</strong>: 저장소 LUN을 언바인드하고 <code>/proc/sys/vm/drop_caches</code>에 <code>3</code>을 기록하여 지연 캐시를 제거합니다.</li><li><strong><code>iTunesDB</code> 수정 시간 검사</strong>: 연결 전 기록된 파일 수정 시각과 비교하여 변경 사항이 없으면 무거운 변환 작업을 즉시 건너뜁니다.</li><li><strong>CPU 1300 MHz 듀얼코어 터보 잠금</strong>: 초고속 변환 처리를 위해 2개 코어를 최고 클럭으로 활성화합니다.</li><li><strong><code>iTunesDB</code> 구문 분석</strong>: 음악, 팟캐스트, 오디오북, 비디오 트랙 메타데이터 및 파일 경로(콜론 <code>:</code> 경로를 POSIX <code>/mnt/sdcard/...</code> 경로로 변환)를 읽습니다.</li><li><strong>앨범 아트 및 비디오 썸네일 디코딩</strong>: <code>ArtworkDB</code> 및 연관된 <code>.ithmb</code> 컨테이너 파일을 읽어 이미지 데이터를 추출합니다.</li><li><strong>Rockbox <code>TagCache</code> 바이너리 생성</strong>: <code>/.rockbox/</code> 디렉터리에 <code>.tcd</code> 데이터베이스를 직접 빌드하여, 부팅 후 수동 &quot;데이터베이스 업데이트&quot; 스캔 없이 즉시 아티스트/앨범별 탐색이 가능합니다.</li><li><strong>비디오 데이터베이스 병합</strong>: 동영상 트랙(영화, 뮤직비디오, TV 프로그램)을 <code>/.system/video_db.dat</code>에 등록하여 Y1 하드웨어 가속 비디오 플레이어에서 즉시 감상할 수 있습니다.</li><li><strong>재생목록 및 스마트 재생목록 변환</strong>: 표준 재생목록 및 스마트 규칙을 <code>/Playlists/</code> 폴더 내 UTF-8 <code>.m3u8</code> 파일로 생성합니다.</li><li><strong>메모리 내 TagCache 즉시 리로드</strong>: 재부팅 없이 Rockbox 재생 엔진이 새 데이터베이스를 바로 읽도록 시그널을 전달합니다.</li></ol>
+<hr>
+<h2 id="3">3. 구성 요소 및 메타데이터 변환 상세</h2>
+<h3 id="31-tagcache">3.1 TagCache 바이너리 데이터베이스 생성</h3>
+<p>Rockbox는 고유의 바이너리 TagCache 형식(<code>database_*.tcd</code>)을 사용합니다. Y1 동기화 엔진은 완벽하게 호환되는 데이터베이스를 즉석에서 생성합니다:</p>
+<ul><li><strong>포맷 버전</strong>: <code>0x54434811</code> (Rockbox TagCache 2.12 규격).</li><li><strong>태그 수</strong>: 24개 표준 태그(아티스트, 앨범, 제목, 장르, 트랙번호, 연도, 디스크번호, 파일명, 경로, 작곡가, 코멘트, 앨범아티스트, 그룹 등).</li><li><strong>청크 크기</strong>: 4바이트 해시 정렬 및 청크당 8개 항목.</li><li><strong>폴백 로직</strong>: <code>AlbumArtist</code>가 비어있을 경우 <code>Artist</code>로 자동 보정하며, 클래식/팟캐스트 그룹핑을 Rockbox <code>Grouping</code> 태그에 매핑합니다.</li></ul>
+<h3 id="32">3.2 앨범 아트 및 비디오 썸네일 추출</h3>
+<p>iTunes는 앨범 아트를 독자 규격의 픽셀 스트림인 <code>.ithmb</code> 파일에 보관합니다:</p>
+<ol><li><strong>Rockbox용 커버 아트</strong>:<ul><li>포맷 <code>1027</code>(100x100 RGB565) 또는 <code>1055</code>(320x320 RGB565)를 탐색합니다.</li><li>24비트 무압축 Windows Bitmap(<code>.bmp</code>)으로 변환합니다.</li><li>트랙과 같은 디렉터리(<code>cover.bmp</code> 또는 트랙명 기반 <code>.bmp</code>)에 저장하여 Rockbox 앨범아트 로더가 즉시 로드하도록 합니다.</li></ul></li><li><strong>Y1 비디오 플레이어용 썸네일</strong>:<ul><li>포맷 <code>1031</code>(96x72 RGB565) 썸네일을 추출합니다.</li><li>Rockbox 표준 <code>rockbox_crc32()</code> 알고리즘으로 동영상 경로의 빅엔디언 CRC32를 계산합니다:<p>$$\text{다항식} = \mathtt{0x04C11DB7}, \quad \text{초기값} = \mathtt{0xFFFFFFFF}, \quad \text{최종 XOR 없음}$$</p></li><li><code>/.rockbox/video_thumbs/&lt;CRC32_HEX&gt;.rgb</code>로 저장하여 비디오 목록 탐색 시 렉 없이 즉시 표시합니다.</li></ul></li></ol>
+<h3 id="33----videodbdat">3.3 비디오 서브시스템 통합 (<code>video_db.dat</code>)</h3>
+<p>iTunes에서 MP4/M4V 동영상을 동기화하면:</p>
+<ul><li><code>/mnt/sdcard/.system/video_db.dat</code>에 동영상 메타데이터를 자동 등록합니다.</li><li>제목, 재생 시간, 해상도 및 시리즈/에피소드 정보가 보존됩니다.</li><li>Y1 <strong>비디오 플레이어</strong> 앱 및 Rockbox 비디오 플러그인에서 별도 스캔 없이 바로 재생할 수 있습니다.</li></ul>
+<h3 id="34-------m3u8">3.4 플레이리스트 및 실시간 스마트 재생목록 규칙 (<code>.m3u8</code>)</h3>
+<p><code>iTunesDB</code>에 저장된 재생목록(<code>mhyp</code>)은 <code>/Playlists/</code> 디렉터리에 UTF-8 <code>.m3u8</code> 파일로 변환됩니다:</p>
+<ul><li><strong>폴더 재생목록</strong>: iTunes 재생목록 폴더 구조를 감지하여 하위 디렉터리로 계층 구조를 그대로 보존합니다.</li><li><strong>스마트 재생목록 (<code>SLst</code>)</strong>:<ul><li>엔진이 <code>SLst</code> 바이트코드를 실시간으로 파싱합니다.</li><li>조건문(<code>AND</code> / <code>OR</code>), 트랙 개수 제한(예: &quot;노래 100개로 제한&quot;), 장르/아티스트 필터, 재생 횟수 조건, 별점 필터를 연산하여 최신 목록으로 내보냅니다.</li></ul></li></ul>
+<h3 id="35-------otg">3.5 재생 횟수, 별점 및 즉석 재생목록 (OTG)</h3>
+<ul><li><strong>별점 동기화</strong>:<ul><li>Rockbox: <code>0</code>(평가 없음) 또는 <code>1~5</code>개 별점.</li><li>iTunes: <code>0~100</code> 스케일(<code>20</code> = 별 1개, <code>40</code> = 별 2개, <code>60</code> = 별 3개, <code>80</code> = 별 4개, <code>100</code> = 별 5개).</li><li>양방향 스케일 변환을 통해 기기와 PC 양쪽에서 별점이 완벽하게 유지됩니다.</li></ul></li><li><strong>북마크 이어듣기</strong>: Y1에서 듣다 멈춘 위치(ms)가 iTunes로 전송되어 데스크톱에서도 이어서 들을 수 있습니다.</li><li><strong>재생 횟수</strong>: 델타(증가분) 방식 기록을 통해 마스터 재생 카운트를 덮어쓰지 않고 정확하게 누적합니다.</li></ul>
+<hr>
+<h2 id="4-cpu">4. CPU 클럭 및 듀얼코어 터보 고정</h2>
+<p>수천 곡의 메타데이터 변환, <code>.ithmb</code> 이미지 디코딩, TagCache 해싱은 연산량이 큽니다. 일반 재생 중 배터리 소모를 최소화하면서도 동기화 변환 시간을 단축하기 위해 <code>liby1</code>의 <strong>참조 카운팅 터보 부스트</strong>(<code>y1_cpu_boost_for_conversion</code>)를 적용합니다:</p>
+<pre><code class="language-c">// 변환을 위한 최대 성능 터보 모드 활성화
+y1_cpu_boost_for_conversion(true);
+
+/*
+ * 1. CPU0 거버너 -&gt; &quot;performance&quot;
+ * 2. CPU0 클럭   -&gt; &quot;1300000&quot; (1.30 GHz)
+ * 3. CPU1 코어   -&gt; &quot;1&quot; (코어 1 강제 활성화)
+ * 4. CPU1 거버너 -&gt; &quot;performance&quot;
+ * 5. MediaTek 핫플러그 비활성화 (코어 오프라인 방지)
+ */
+
+// 고속 변환 수행...
+
+// 작업 완료 후 기존 클럭 및 거버너로 자동 복원
+y1_cpu_boost_for_conversion(false);</code></pre>
+<p>변환 중에는 화면에 실시간 진행률이 표시됩니다:</p>
+<pre><code>[====================&gt;        ] 72%
+Converting: Album Art (342/480)...</code></pre>
+<hr>
+<h2 id="5">5. 사용자 설정 및 환경 구성</h2>
+<p>iPod USB 모드는 기본 활성화되어 있으며, 화면 메뉴 또는 설정 파일에서 언제든지 전환할 수 있습니다.</p>
+<h3 id="1-rockbox-ui">1. Rockbox UI 설정</h3>
+<ul><li>진입 경로: <strong>설정 → 일반 설정 → 시스템 → Innioasis Y1 설정 → iPod USB 모드</strong></li><li>선택 옵션: <strong>예 (iPod 5.5세대)</strong> / <strong>아니오 (일반 대용량 저장소)</strong></li><li><strong>아니오</strong>로 설정할 경우 MediaTek 기본 USB 저장소(<code>0e8d:0001</code> / <code>Y1 Rockbox Player</code>)로 동작합니다.</li></ul>
+<h3 id="2">2. 설정 파일 구성</h3>
+<ul><li><strong>Rockbox 설정 파일</strong>: <code>/.rockbox/config.cfg</code><p><code></code>`ini y1 ipod usb mode: on <code></code>`</p></li><li><strong>시스템 플래그 (initramfs 확인용)</strong>: <code>/.system/ipod_usb_mode</code><ul><li><code>1</code>: 활성화</li><li><code>0</code>: 비활성화</li></ul></li></ul>
+<hr>
+<h2 id="6--cli--binipodsync">6. 독립 CLI 유틸리티 (<code>/bin/ipod_sync</code>)</h2>
+<p>동기화 엔진은 루트 파일시스템 내 경량 네이티브 바이너리(<code>/bin/ipod_sync</code>)로 빌드되어 제공됩니다:</p>
+<pre><code class="language-bash"># iPod 디렉터리 구조 및 기기 식별 파일 초기화
+/bin/ipod_sync init
+
+# 연결 전 동기화 실행 (Rockbox -&gt; iTunes)
+/bin/ipod_sync pre
+
+# 연결 해제 후 변환 실행 (iTunes -&gt; Rockbox)
+/bin/ipod_sync post</code></pre>
+<p>쉘 스크립트나 터미널 세션, 커스텀 애플리케이션에서 직접 호출하여 활용할 수 있습니다.</p>
+<hr>
+<h2 id="7">7. 호스트 호환성 가이드</h2>
+<table><thead><tr><th style="text-align:left">호스트 플랫폼</th><th style="text-align:left">지원 소프트웨어</th><th style="text-align:left">특징</th></tr></thead><tbody><tr><td style="text-align:left"><strong>Windows 10 / 11</strong></td><td style="text-align:left">Apple iTunes 12.x (독립설치형 / 스토어형)</td><td style="text-align:left">음악, 비디오, 플레이리스트, 앨범아트, 재생기록 완벽 동기화</td></tr><tr><td style="text-align:left"><strong>Windows (전체)</strong></td><td style="text-align:left">Foobar2000 + <code>foo_dop</code> 컴포넌트</td><td style="text-align:left">매우 가볍고 강력한 iPod 동기화 지원</td></tr><tr><td style="text-align:left"><strong>Windows (전체)</strong></td><td style="text-align:left">MediaMonkey 4 / 5</td><td style="text-align:left">iPod 완벽 인식 및 동기화 지원</td></tr><tr><td style="text-align:left"><strong>macOS (Mojave 이하)</strong></td><td style="text-align:left">Apple iTunes</td><td style="text-align:left">네이티브 iPod 동기화 지원</td></tr><tr><td style="text-align:left"><strong>macOS (Catalina ~ Sequoia)</strong></td><td style="text-align:left">Apple 음악 앱 / Finder</td><td style="text-align:left">Finder 사이드바에서 iPod 장비로 직접 관리</td></tr><tr><td style="text-align:left"><strong>Linux (전체 배포판)</strong></td><td style="text-align:left"><code>libgpod</code> / Rhythmbox / Clementine</td><td style="text-align:left"><code>iTunesDB</code> 및 앨범아트 완벽 읽기/쓰기</td></tr><tr><td style="text-align:left"><strong>크로스 플랫폼</strong></td><td style="text-align:left">MusicBee, Strawberry Music Player</td><td style="text-align:left">표준 Apple iPod 대용량 저장소로 자동 인식</td></tr></tbody></table>
+<hr>
+<h2 id="8-windows--itunes">8. Windows 및 iTunes 문제 해결 가이드</h2>
+<p>Windows에서 장치 드라이버는 정상적으로 설치되었으나 iTunes 화면에 iPod 아이콘이 나타나지 않는 경우:</p>
+<ol><li><strong>MicroSD FAT32 파일 시스템 요구사항</strong>:<ul><li>Windows용 Apple iTunes는 클래식 iPod에 대해 <strong>FAT32</strong> 파일 시스템만을 지원합니다.</li><li>만약 MicroSD 카드가 <strong>exFAT</strong> 또는 NTFS로 포맷되어 있다면 탐색기에는 드라이브가 마운트되지만 iTunes는 이를 iPod으로 인식하지 않고 무시합니다.</li><li><strong>해결 방법</strong>: MicroSD 카드를 FAT32로 포맷하십시오 (32GB 초과 카드는 <em>GUIFormat</em> / <em>FAT32 Format</em> 등의 유틸리티 사용 권장).</li></ul></li><li><strong>Apple iTunes 독립 데스크톱 설치 프로그램 권장</strong>:<ul><li>마이크로소프트 스토어(MS Store) 버전의 iTunes는 샌드박스 정책으로 인해 <code>iPod Support Service</code> 백그라운드 권한이나 USB 리디렉션 드라이버가 누락되는 경우가 많습니다.</li><li><strong>해결 방법</strong>: Apple 공식 웹사이트에서 제공하는 독립 실행형 64비트 설치 프로그램(<code>iTunes64Setup.exe</code>)을 설치하십시오. <code>services.msc</code>에서 <code>Apple Mobile Device Support</code> 및 <code>iPod Support</code> 서비스가 실행 중인지 확인하십시오.</li></ul></li><li><strong>장치 관리자(Device Manager) 확인 (단일 LUN vs 2x 드라이브)</strong>:<ul><li><strong>디스크 드라이브</strong> 항목에 <strong>정확히 1개의</strong> <code>Apple___ iPod____________ USB Device</code>가 표시되어야 합니다.</li><li><strong>범용 직렬 버스 컨트롤러</strong> 항목에는 <code>USB 대용량 저장 장치(USB Mass Storage Device)</code>로 표시되는 것이 iPod Classic/Video 5.5G (<code>05ac:1209</code>)의 정상 동작입니다.</li><li>만약 <strong><code>2x Apple___ iPod____________ USB Device</code></strong> 로 중복 표시되는 경우:</li><li>미디어텍 MT6572 커널은 <code>nluns = 2</code>로 하드코딩되어 있습니다. 커널의 <code>f_mass_storage.c</code>에서 <code>bicr == 0</code>일 때 USB <code>GET_MAX_LUN</code> 제어 요청이 <code>max_lun = nluns - 1 = 1</code>을 반환하여 호스트에게 2개의 LUN(0과 1)이 존재한다고 알립니다. 두 LUN 모두 동일한 Inquiry 문자열을 공유하므로 장치 관리자에 2개의 디스크 장치가 생성됩니다.</li><li>iTunes의 <code>iPodService</code>는 다중 LUN을 가진 USB 저장 장치를 감지하면 정품 iPod이 아닌 멀티 카드 리더기나 가상 드라이브로 판별하여 동기화를 즉시 거부합니다.</li><li>최신 Nugget에서는 <code>bicr</code> 값을 <code>2</code>로 설정합니다. 미디어텍 커널 내부 로직에 의해:</li></ul></li><li><strong>단일 LUN (Single-LUN) 아키텍처 및 BICR = 2</strong>:<ul><li>Nugget은 iPod USB 모드 활성화 시 <code>bicr = 2</code>를 통해 <code>GET_MAX_LUN = 0</code>을 엄격히 강제하여 호스트에 오직 LUN0만 노출시킵니다.</li></ul></li></ol></article><p class="lumen-doc-footer-note">These are Nugget's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=nugget-y1">norocoral's <em>Nugget</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=norocoral%2Fnugget-y1&amp;software=nugget-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

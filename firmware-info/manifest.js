@@ -47,6 +47,13 @@ window.INNIOASIS_README_PAGES = {
       "lithium-android-7-q5"
     ]
   },
+  "norocoral/nugget-y1": {
+    "name": "Nugget",
+    "page": "firmware-info/norocoral-nugget-y1.html",
+    "slugs": [
+      "nugget-y1"
+    ]
+  },
   "rockbox-y1/rockbox": {
     "name": "Rockbox",
     "page": "firmware-info/rockbox-y1-rockbox.html",

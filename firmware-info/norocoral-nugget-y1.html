@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en"><head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Nugget (Y1) - README.md - Innioasis Updater</title>
+  <meta name="description" content="Community firmware package for the Y1.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/firmware-info/norocoral-nugget-y1.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="About Nugget (Y1) - README.md - Innioasis Updater">
+  <meta property="og:description" content="Community firmware package for the Y1.">
+  <meta property="og:url" content="https://innioasis.app/firmware-info/norocoral-nugget-y1.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261113readme">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261113readme">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page lumen-release-page" data-firmware-info data-repo="norocoral/nugget-y1">
+  <p class="lumen-doc-back"><a href="../firmware.html">← Firmware Downloads</a></p>
+  <header class="lumen-doc-head">
+    <div class="lumen-release-head"><span class="lumen-release-icon" aria-hidden="true"><img src="https://norocoral.github.io/y1/inupdater/icn.png" width="40" height="40" alt="" loading="lazy" style="width:40px;height:40px;object-fit:cover;border-radius:10px;display:block;"></span><div class="lumen-release-titles"><p class="lumen-kicker">Firmware README · Y1</p><h1>About Nugget</h1></div></div>
+    <p class="lumen-lead">Community firmware package for the Y1.</p>
+    <p class="lumen-meta">Also known as: README.md · norocoral/nugget-y1 · nugget-y1 · Nugget · norocoral-nugget-y1</p>
+    <div class="lumen-release-tag-row"><span>Y1</span></div>
+    <div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../guide.html?model=Y1&amp;software=nugget-y1">Open the Nugget guide</a><a class="lumen-button" href="../firmware.html?model=Y1&amp;software=nugget-y1">Install with Updater CE</a></div>
+  </header>
+  <section class="lumen-firmware-stats" aria-label="Project statistics"><div class="lumen-stat"><span class="lumen-stat-label">Downloads from Firmware Archive</span><strong class="lumen-stat-value" data-stat="downloads">103</strong></div></section>
+  <p class="lumen-meta" id="fi-stats-note"></p>
+  <article class="lumen-doc-body lumen-firmware-readme" id="fi-body"><img width="1440" height="1080" alt="hero1" src="https://github.com/user-attachments/assets/10e1d348-e75f-4271-a893-6ff63120375e" />
+<p>🌐 <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2FkrREADME.md">한국어</a> | <strong>English</strong></p>
+<h1 id="nugget-for-innioasis-y1">Nugget for Innioasis Y1</h1>
+<p><a href="#hardware-specifications"><img src="https://img.shields.io/badge/Platform-MediaTek%20MT6572-orange.svg" alt="Platform" loading="lazy" decoding="async"></a></p>
+<p>Nugget for Y1 is an open-source custom firmware for the Innioasis Y1 digital audio player. It replaces Android entirely with a minimal downstream Linux kernel (3.4.67). It has a developer library, so developers can create their own experiences natively.</p>
+<hr>
+<h2 id="technical-comparison">Technical Comparison</h2>
+<table><thead><tr><th style="text-align:left">Area</th><th style="text-align:left">Stock Android</th><th style="text-align:left">Rockbox on Android</th><th style="text-align:left">Nugget for Y1 (Hosted Linux)</th></tr></thead><tbody><tr><td style="text-align:left">OS / Runtime</td><td style="text-align:left">Android (MediaTek MT6572 userland, Zygote/Dalvik)</td><td style="text-align:left">Rockbox APK running inside Android userland</td><td style="text-align:left">Minimal Linux initramfs (kernel 3.4.67) booting directly into Hosted Rockbox (<code>PID 1 /init</code>)</td></tr><tr><td style="text-align:left">Audio Output Path</td><td style="text-align:left">Android AudioFlinger -&gt; Android audio HAL -&gt; <code>/dev/eac</code></td><td style="text-align:left">Android AudioFlinger (<code>AudioTrack</code>/OpenSL) -&gt; Android audio HAL -&gt; <code>/dev/eac</code></td><td style="text-align:left">Direct <code>/dev/eac</code> writes from <code>pcm-eac.c</code> (bypasses AudioFlinger)</td></tr><tr><td style="text-align:left">Sample Rate Handling</td><td style="text-align:left">Resampled/mixed by AudioFlinger</td><td style="text-align:left">Resampled/mixed by AudioFlinger</td><td style="text-align:left">Direct 44.1 kHz and 48 kHz hardware rate switching</td></tr><tr><td style="text-align:left">Volume / Gain Control</td><td style="text-align:left">Android audio stream steps + MT6323 analog PGA</td><td style="text-align:left">Rockbox software volume + Android media stream</td><td style="text-align:left">Rockbox logarithmic volume mapped to PCM attenuation + MT6323 analog PGA (<code>0x70a</code>)</td></tr><tr><td style="text-align:left">Bluetooth Audio</td><td style="text-align:left">Android Bluetooth stack (Bluedroid)</td><td style="text-align:left">Android Bluetooth stack (Bluedroid)</td><td style="text-align:left">MediaTek <code>stp_uart_launcher</code> + <code>mtk_wmt_bt</code> + BlueZ/A2DP (SBC)</td></tr><tr><td style="text-align:left">Power / Suspend</td><td style="text-align:left">Android <code>earlysuspend</code> + <code>wakelock</code> (<code>mem</code> suspend)</td><td style="text-align:left">Android <code>earlysuspend</code> + <code>wakelock</code> (<code>mem</code> suspend)</td><td style="text-align:left">Direct <code>wakelock</code> / <code>earlysuspend</code> + <code>/sys/power/state</code> (<code>mem</code> suspend) + CPU hotplug/governor control</td></tr><tr><td style="text-align:left">Display Resolution</td><td style="text-align:left">480x360</td><td style="text-align:left">Depends on APK build (typically 480x360)</td><td style="text-align:left">480x360 native with runtime 320x240 scaling mode</td></tr><tr><td style="text-align:left">Key Lock (HOLD)</td><td style="text-align:left">None</td><td style="text-align:left">Rockbox key lock</td><td style="text-align:left">Rockbox key lock with double-click MENU toggle, Hold Light, lock backlight rules, and selective key exemptions</td></tr><tr><td style="text-align:left">USB Modes</td><td style="text-align:left">MTP / Android USB Mass Storage</td><td style="text-align:left">MTP / Android USB Mass Storage (via OS)</td><td style="text-align:left">USB Mass Storage and optional Apple iPod 5.5G emulation (<code>ipod_vpd.ko</code>, disabled by default)</td></tr><tr><td style="text-align:left">iTunes Integration</td><td style="text-align:left">None</td><td style="text-align:left">None</td><td style="text-align:left">Optional <code>iTunesDB</code> / <code>ArtworkDB</code> / <code>.ithmb</code> TagCache &amp; playlist parsing, <code>Play Counts</code> / <code>OTGPlaylistInfo</code> writing</td></tr><tr><td style="text-align:left">Dual Boot</td><td style="text-align:left">Stock OS only</td><td style="text-align:left">Android app</td><td style="text-align:left">Pre-boot menu supporting Rockbox, MeUI, custom user binary, and stock Android handoff</td></tr></tbody></table>
+<hr>
+<h2 id="technical-documentation">Technical Documentation</h2>
+<p>Subsystem specifications, architecture notes, and reverse-engineering documentation are located in <a href="https://github.com/norocoral/nugget-y1/blob/HEAD/docs/" target="_blank" rel="noopener noreferrer"><code>docs/</code></a>:</p>
+<ul><li><a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2FIPOD_SYNC.md">iPod 5.5G USB Mode &amp; iTunes Integration</a>: <code>ipod_vpd.ko</code> EVPD spoofing, <code>iTunesDB</code> TagCache loading, <code>.ithmb</code> artwork decoding, <code>Play Counts</code>/<code>OTGPlaylistInfo</code> writing, and USB gadget configuration.</li><li><a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2FTECHNICAL_FINDINGS.md">Technical Findings</a>: Hardware interfaces, <code>/dev/eac</code> audio driver, PMIC registers, power tuning, boot measurements, and input event behavior.</li><li><a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2FARCHITECTURE.md">System Architecture</a>: Architecture block diagrams, boot sequence, storage layout, and HAL mapping.</li><li><a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2FAUDIO_SUBSYSTEM.md">Audio Subsystem</a>: MediaTek EAC driver, pop mitigation, clock switching, and gain staging.</li><li><a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2FPOWER_MANAGEMENT.md">Power Management</a>: Suspend/wakelock handling, CPU frequency governors, core hotplugging, and Always-On Display (AOD).</li></ul>
+<hr>
+<h2 id="installation">Installation</h2>
+<h3 id="recommended-nugget-y1-tool">Recommended: Nugget Y1 Tool</h3>
+<p>Automated installation tool: <a href="https://github.com/norocoral/nugget-y1-tool" target="_blank" rel="noopener noreferrer">https://github.com/norocoral/nugget-y1-tool</a></p>
+<h3 id="manual-installation">Manual Installation</h3>
+<ol><li>Obtain <code>boot_rockbox.img</code> and <code>rockbox_sdcard.zip</code>.</li><li>Flash <code>boot_rockbox.img</code> to the <code>boot</code> partition using:<ul><li>SP Flash Tool: Load MT6572 scatter, check <code>BOOTIMG</code>, select <code>boot_rockbox.img</code>, click Download, and connect Y1 holding Volume Down.</li><li>Fastboot / python-mtk:<p><code></code>`bash python mtk.py w boot boot_rockbox.img <code></code>`</p></li></ul></li><li>Format MicroSD card as FAT32 or exFAT.</li><li>Extract <code>rockbox_sdcard.zip</code> directly to the card root so that <code>.rockbox</code> is located at the top level.</li><li>Insert card into the Y1 and power on.</li></ol>
+<hr>
+<h2 id="building-from-source">Building from Source</h2>
+<h3 id="prerequisites-ubuntu--debian--wsl">Prerequisites (Ubuntu / Debian / WSL)</h3>
+<pre><code class="language-bash">sudo apt update
+sudo apt install -y build-essential gcc-arm-linux-gnueabihf python3 python3-pip zip curl</code></pre>
+<h3 id="required-external-assets">Required External Assets</h3>
+<ol><li><strong>Stock <code>boot.img</code> (for kernel &amp; Android dual-boot ramdisk):</strong><p>Download the Y1 Type A stock ROM (rom.zip), extract <code>boot.img</code>, and place it at <code>stock_rom/boot.img</code> (or set <code>STOCK_BOOT=/path/to/boot.img</code>).</p></li><li><strong>Rockbox Source (if building with Rockbox):</strong><p>Clone <code>https://github.com/norocoral/rockbox</code> next to this repository (<code>../rockbox</code>) or set <code>ROCKBOX_SRC=/path/to/rockbox</code>. To build only the ROM/SDK without Rockbox, run <code>./build.sh --no-rockbox</code>.</p></li></ol>
+<h3 id="build-command">Build Command</h3>
+<pre><code class="language-bash">./build.sh</code></pre>
+<p>The build script will:</p>
+<ol><li>Extract vendor kernel from <code>!stock_rom/boot.img</code> if not already present.</li><li>Compile custom PID 1 C <code>/init</code> and <code>unmute_eac</code> utilities with ARM hard-float GCC.</li><li>Convert splash screen PNG assets into raw 32-bit framebuffer files.</li><li>Compile Hosted Rockbox for the Innioasis Y1 (<code>build_y1/</code>).</li><li>Package <code>.rockbox</code> SD card assets into <code>rockbox_sdcard.zip</code>.</li><li>Assemble minimal initramfs ramdisk and package flashable <code>boot_rockbox.img</code> with MediaTek headers.</li></ol>
+<p><em>Note: Proprietary MediaTek binaries (<code>bt_blobs/</code>, <code>stock_unpacked/</code>, <code>logo.bin</code>) are excluded from Git to maintain open-source compliance.</em></p>
+<hr>
+<h3 id="dual-boot-subsystem--bootloader-menu">Dual-Boot Subsystem &amp; Bootloader Menu</h3>
+<p>Android partitions on the internal eMMC (<code>SYSTEM</code>, <code>DATA</code>, <code>CACHE</code>) are left unmodified, allowing dual-booting alongside Android:</p>
+<ul><li><strong>Bootloader Menu:</strong><ul><li>Runs at startup before Rockbox is launched.</li><li>Available entries:</li><li><strong>Pick 1: Rockbox</strong> — Boots Rockbox from the MicroSD card.</li><li><strong>Pick 2: MeUI</strong> — Launches MeUI when <code>.meui/meui</code> is present.</li><li><strong>Pick 3: User Software</strong> — Launches a user binary when <code>.custom/launch</code> is present.</li><li><strong>Pick 4: Android</strong> — Clears BCB flags, unpacks the stock ramdisk, mounts <code>SYSTEM</code>/<code>DATA</code>/<code>CACHE</code>, and execs Android <code>init</code> as PID 1.</li><li><strong>Pick 5: Shut down</strong> — Powers off the device.</li><li><strong>Pick 6: USB Mass Storage</strong> — Enables USB Mass Storage from the bootloader; pressing any button exits USB mode and returns to the menu.</li><li><strong>Pick 7: Linux terminal (USB)</strong> — Starts USB serial root shells on <code>/dev/ttyGS0</code> and <code>/dev/ttyGS1</code>.</li><li><strong>Pick 8: Debug Info</strong> — Writes a compact diagnostic report (<code>debuginfoYYYYMMDD_HHMMSS.txt</code>) to the MicroSD card root.</li><li><strong>Navigation:</strong> Click Wheel or <strong>Left / Right</strong> selects an entry; <strong>Center</strong> or <strong>Play</strong> confirms.</li><li><strong>Hardware Override:</strong> Holding <strong>MENU</strong> during boot forces the Bootloader Menu to appear regardless of settings.</li><li><strong>Settings Toggle:</strong> <code>Settings -&gt; Nugget -&gt; Bootloader Menu</code> (<code>Yes</code> / <code>No</code>).</li></ul></li><li><strong>Reboot to Android from Rockbox:</strong><ul><li><code>Settings -&gt; Nugget -&gt; Reboot to Android</code> flushes buffers and hands off to stock Android.</li></ul></li></ul>
+<hr>
+<h2 id="linked-repositories">Linked repositories</h2>
+<p>Rockbox: <a href="https://github.com/norocoral/rockbox" target="_blank" rel="noopener noreferrer">https://github.com/norocoral/rockbox</a> Installer: <a href="https://github.com/norocoral/nugget-y1-tool" target="_blank" rel="noopener noreferrer">https://github.com/norocoral/nugget-y1-tool</a></p>
+<hr>
+<h2 id="license">License</h2>
+<p>Not affiliated with Innioasis.</p>
+<h2 id="transparency">Transparency</h2>
+<p>The reverse engineering, drivers, and boot code in this repository were generated with AI assistance (Google Antigravity).</p></article>
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../firmware-info.js?v=20261104cite" defer></script>
+<script src="../nav.js?v=20261113noticefilter" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20261113blocklist" defer></script>
+</body></html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>기술 분석 보고서: Innioasis Y1 (MT6572) 호스티드 리눅스 포트 - Innioasis Updater</title>
+  <meta name="description" content="🌐 한국어 English ../TECHNICAL FINDINGS.md 기술 분석 보고서: Innioasis Y1 MT6572 호스티드 리눅스 포트 이 문서는 다운스트림 리눅스 커널 3.4.67 기반 Innioasis Y1 호스티드 Rockbox 포트의 기술 아키텍처, 리버스 엔지니어링된 하드웨어 인터페이">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-technical_findings.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="기술 분석 보고서: Innioasis Y1 (MT6572) 호스티드 리눅스 포트 - Innioasis Updater">
+  <meta property="og:description" content="🌐 한국어 English ../TECHNICAL FINDINGS.md 기술 분석 보고서: Innioasis Y1 MT6572 호스티드 리눅스 포트 이 문서는 다운스트림 리눅스 커널 3.4.67 기반 Innioasis Y1 호스티드 Rockbox 포트의 기술 아키텍처, 리버스 엔지니어링된 하드웨어 인터페이">
+  <meta property="og:url" content="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-technical_findings.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="기술 분석 보고서: Innioasis Y1 (MT6572) 호스티드 리눅스 포트 - Innioasis Updater">
+  <meta name="twitter:description" content="🌐 한국어 English ../TECHNICAL FINDINGS.md 기술 분석 보고서: Innioasis Y1 MT6572 호스티드 리눅스 포트 이 문서는 다운스트림 리눅스 커널 3.4.67 기반 Innioasis Y1 호스티드 Rockbox 포트의 기술 아키텍처, 리버스 엔지니어링된 하드웨어 인터페이">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-technical_findings.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-technical_findings.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y1&amp;software=nugget-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Nugget · Y1</p><h1>기술 분석 보고서: Innioasis Y1 (MT6572) 호스티드 리눅스 포트</h1><p class="lumen-lead">Community firmware package for the Y1.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y1&amp;software=nugget-y1">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y1&amp;software=nugget-y1">Install guide</a></div></header><article class="lumen-doc-body"><p>🌐 <strong>한국어</strong> | <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2FTECHNICAL_FINDINGS.md">English</a></p>
+<h1 id="innioasis-y1-mt6572">기술 분석 보고서: Innioasis Y1 (MT6572) 호스티드 리눅스 포트</h1>
+<p>이 문서는 다운스트림 리눅스 커널 3.4.67 기반 Innioasis Y1 호스티드 Rockbox 포트의 기술 아키텍처, 리버스 엔지니어링된 하드웨어 인터페이스, 서브시스템 구현 및 버그 수정 사항을 상세히 기록합니다.</p>
+<hr>
+<h2 id="1">1. 하드웨어 사양 및 드라이버 인터페이스</h2>
+<table><thead><tr><th style="text-align:left">서브시스템</th><th style="text-align:left">하드웨어 구성 요소</th><th style="text-align:left">커널 인터페이스 / 디바이스 노드</th></tr></thead><tbody><tr><td style="text-align:left">SoC</td><td style="text-align:left">MediaTek MT6572 (2x Cortex-A7 @ 1.2 GHz, 28nm)</td><td style="text-align:left">다운스트림 리눅스 3.4.67</td></tr><tr><td style="text-align:left">PMIC / 오디오 코덱</td><td style="text-align:left">MediaTek MT6323</td><td style="text-align:left"><code>/dev/eac</code>, <code>/sys/devices/platform/mt-pmic</code></td></tr><tr><td style="text-align:left">RAM</td><td style="text-align:left">512 MB LPDDR2</td><td style="text-align:left">표준 리눅스 가상 메모리</td></tr><tr><td style="text-align:left">내부 스토리지</td><td style="text-align:left">4 GB eMMC (<code>mmcblk0</code>)</td><td style="text-align:left">Rockbox에서 파티션 테이블 무시</td></tr><tr><td style="text-align:left">외부 스토리지</td><td style="text-align:left">MicroSD 슬롯 (<code>mmcblk1p1</code>)</td><td style="text-align:left"><code>/dev/block/mmcblk1p1</code> (<code>/mnt/sdcard</code>에 마운트)</td></tr><tr><td style="text-align:left">디스플레이</td><td style="text-align:left">2.8&quot; TFT LCD (480x360 네이티브, 32bpp BGRA)</td><td style="text-align:left"><code>/dev/fb0</code></td></tr><tr><td style="text-align:left">입력 장치</td><td style="text-align:left">정전식 클릭 휠 + 5개 택트 키</td><td style="text-align:left"><code>/dev/input/event0</code> ~ <code>/dev/input/event3</code></td></tr><tr><td style="text-align:left">헤드폰 단자</td><td style="text-align:left">3.5mm 스테레오 단자 (MFB 훅 및 삽입 감지 스위치 내장)</td><td style="text-align:left"><code>/sys/class/switch/h2w</code>, <code>/dev/input/event*</code></td></tr><tr><td style="text-align:left">USB</td><td style="text-align:left">Micro-USB OTG / 가젯</td><td style="text-align:left">ConfigFS 가젯 (<code>g_mass_storage</code>)</td></tr></tbody></table>
+<hr>
+<h2 id="2---deveac">2. 오디오 서브시스템 (<code>/dev/eac</code>)</h2>
+<h3 id="21">2.1 인터페이스 및 데이터 흐름</h3>
+<p>MT6572의 ALSA 서브시스템은 다운스트림 MediaTek 커널에서 대부분 우회되며, 향상된 오디오 컨트롤러 문자 디바이스(<code>/dev/eac</code>)가 직접 사용됩니다.</p>
+<ul><li>포맷: 16비트 부호 있는 인터리브 스테레오 PCM (리틀 엔디언), 프레임당 4바이트.</li><li>지원 하드웨어 샘플 레이트: 44,100 Hz 및 48,000 Hz.</li><li>입출력: <code>/dev/eac</code>에 대한 블로킹 <code>write()</code> 호출. 링 버퍼 용량은 8,192바이트(2,048 스테레오 프레임, 44.1 kHz에서 약 46.4ms 버퍼 지연)로 설정.</li><li>오디오 스레드 우선순위: 실시간 우선순위 80의 <code>SCHED_FIFO</code>.</li></ul>
+<h3 id="22">2.2 오디오 팝 및 클릭 노이즈 제거</h3>
+<p>테스트 과정에서 트랙 전환, 샘플 레이트 변경 및 볼륨 조절 시 뚜렷한 음향 팝 노이즈가 발생함을 확인했습니다.</p>
+<h4>근본 원인</h4>
+<ol><li><strong>클록 분주기 불연속성:</strong> MT6323 DAC 복원 필터가 동작 중인 상태에서 44.1 kHz와 48.0 kHz 간 PLL 분주기를 전환하면 급격한 DC 과도 전압 스파이크가 발생함.</li><li><strong>버퍼 플러시 절단:</strong> DMA 버퍼를 비우지 않고 오디오 재생을 중단하여 앰프 전원이 차단되기 전 출력단에 잔류 전압 오프셋이 남음.</li><li><strong>FM 라디오 신호선 공유:</strong> 아날로그 라디오 신호 경로가 앰프 바이어스 라인을 공유하여 디지털 오디오 상태 변경 중 라인 간섭이 유입됨.</li></ol>
+<h4>해결 조치</h4>
+<ul><li><strong>안정화 램프(Settling Ramp):</strong> 오디오 정지 또는 트랙 전환 시, 디바이스를 닫거나 샘플 레이트 IOCTL을 호출하기 전에 진폭 0의 디지털 무음($0x0000$) 256샘플을 <code>/dev/eac</code>에 미리 공급.</li><li><strong>하드웨어 음소거 시퀀싱:</strong> PLL 재구성 전에 아날로그 헤드폰 앰프 라인을 음소거하고, 유효한 오디오 프레임이 DMA에 큐잉된 후에만 음소거를 해제.</li><li><strong>게인 스테이징:</strong> 소프트 블록 레벨 디더링 보간을 적용하여 디지털 감쇠로 -74 dBFS까지 볼륨을 조절. MT6323 아날로그 게인은 0 dB에서 +12 dB 헤드룸 내에서 유지하여 디지털 클리핑을 원천 방지.</li></ul>
+<hr>
+<h2 id="3">3. 전원 관리 및 대기 전류</h2>
+<h3 id="31">3.1 문제: 극심한 유휴 상태 배터리 소모</h3>
+<p>기기를 유휴 상태(화면 꺼짐, 음악 정지, 진단 로깅 비활성화)로 9시간 방치 시 배터리가 100% 소진되는 현상 발생.</p>
+<h3 id="32">3.2 근본 원인 분석</h3>
+<ol><li><strong>CPU 동작 속도 고정:</strong> 기본 거버너가 디스플레이 절전 시 저클록 P-State로 진입하지 않아 CPU 0이 1196 MHz에 고정되거나 불규칙하게 동작함.</li><li><strong>보조 코어 누설 전류:</strong> Cortex-A7 코어 1이 CPU 핫플러그로 완전 차단되지 않고 WFI(Wait-For-Interrupt) 모드에 잔류함.</li><li><strong>SPM 딥 슬립 진입 불가:</strong> 활성 드라이버들이 유지하는 웨이크록 및 주변장치 클록 인에이블 신호로 인해 MediaTek 시스템 전원 관리자(SPM)가 유휴 절전 상태에 진입하지 못함.</li><li><strong>오디오 단 정지 전류:</strong> 오디오 출력이 멈춘 상태에서도 MT6323 차지 펌프와 헤드폰 앰프 바이어스가 계속 켜져 있음.</li><li><strong>스토리지 라이트백 주기:</strong> 리눅스 가상 메모리의 기본 5초 더티 라이트백 주기로 인해 eMMC/SD 버스가 주기적으로 기상함.</li></ol>
+<h3 id="33">3.3 해결 조치</h3>
+<ul><li><strong>화면 꺼짐 시 주파수 스케일링:</strong><ul><li>백라이트가 꺼지면 <code>/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed</code>를 통해 CPU 0을 598 MHz로 낮춤.</li><li><code>echo 0 &gt; /sys/devices/system/cpu/cpu1/online</code> 명령으로 CPU 1을 오프라인으로 전환하여 보조 코어 전원을 완전히 차단.</li></ul></li><li><strong>오디오 정지 시 제로 정지 전류 구현:</strong><ul><li>오디오 정지 시 <code>/dev/eac</code>를 닫아 아날로그 헤드폰 앰프 및 DAC 바이어스 라인의 전원을 내림.</li></ul></li><li><strong>가상 메모리 플러시 튜닝:</strong><ul><li><code>/proc/sys/vm/dirty_writeback_centisecs</code> 주기를 12000(120초)으로 연장.</li><li>MMC 호스트 컨트롤러 전반에 런타임 PM(Runtime PM) 활성화.</li></ul></li><li><strong>SPM 딥 아이들(Deep Idle) 및 즉각적인 기상 반응성:</strong><ul><li>커널 Suspend-to-RAM(<code>mem</code>) 대신 MT6572 SPM Deep Idle(<code>/sys/power/dpidle_state</code> = 1, <code>cpupdn 1</code>)을 사용. Suspend-to-RAM 모드는 정전식 터치 컨트롤러를 중단시키고 입력 인터럽트를 비활성화하여 대기 상태에서 센터 버튼으로 기기를 깨울 수 없는 문제가 있었음. SPM Deep Idle은 터치 센서 스캔을 유지하여 센터 버튼 즉시 기상을 지원하면서도 동일한 &lt; 5 mA 초저전력 대기 전류를 달성함.</li></ul></li><li><strong>최종 결과:</strong><ul><li>대기 전류가 기존 약 120 mA에서 5 mA 미만으로 대폭 감소.</li><li>활성 오디오 재생 배터리 지속 시간이 약 50시간에 도달.</li></ul></li></ul>
+<hr>
+<h2 id="4">4. 부팅 시간 최적화</h2>
+<h3 id="41">4.1 구간별 소요 시간 비교</h3>
+<table><thead><tr><th style="text-align:left">단계</th><th style="text-align:left">최적화 전</th><th style="text-align:left">최적화 후</th><th style="text-align:left">단축 시간</th></tr></thead><tbody><tr><td style="text-align:left">리눅스 커널 초기화</td><td style="text-align:left">2200 ms</td><td style="text-align:left">2200 ms</td><td style="text-align:left">0 ms</td></tr><tr><td style="text-align:left">initramfs: CPU 거버너 / 초기 설정</td><td style="text-align:left">350 ms</td><td style="text-align:left">50 ms</td><td style="text-align:left">-300 ms</td></tr><tr><td style="text-align:left">initramfs: MicroSD 카드 감지</td><td style="text-align:left">1100 ms</td><td style="text-align:left">280 ms</td><td style="text-align:left">-820 ms</td></tr><tr><td style="text-align:left">initramfs: 프레임버퍼 스플래시 및 링크 구성</td><td style="text-align:left">420 ms</td><td style="text-align:left">80 ms</td><td style="text-align:left">-340 ms</td></tr><tr><td style="text-align:left">Rockbox 바이너리 재배치</td><td style="text-align:left">850 ms</td><td style="text-align:left">420 ms</td><td style="text-align:left">-430 ms</td></tr><tr><td style="text-align:left">Rockbox 코어 및 UI 초기화</td><td style="text-align:left">1450 ms</td><td style="text-align:left">850 ms</td><td style="text-align:left">-600 ms</td></tr><tr><td style="text-align:left"><strong>전체 콜드 부팅 시간</strong></td><td style="text-align:left"><strong>6370 ms</strong></td><td style="text-align:left"><strong>3880 ms</strong></td><td style="text-align:left"><strong>-2490 ms (약 40% 단축)</strong></td></tr></tbody></table>
+<h3 id="42">4.2 최적화 구현 사항</h3>
+<ol><li><strong>초기 부팅 CPU 부스트:</strong><ul><li><code>initramfs/init.c</code>의 <code>boost_cpu_for_boot()</code>를 통해 파일시스템 마운트 전에 두 Cortex-A7 코어를 1.2 GHz 성능 거버너 모드로 기동.</li><li>UI 설정 완료 후 Rockbox가 <code>y1_boot_boost_finish()</code>를 호출할 때까지 부스트를 유지하여 사용자 지정 CPU 프로필로 원활하게 전환.</li></ul></li><li><strong>반응형 MicroSD 폴링:</strong><ul><li>100ms 정적 대기 방식을 <code>/proc/partitions</code>에 대한 10ms 주기 반응형 폴링 방식으로 교체.</li><li>드라이버 등록 후 10~30ms 이내에 카드 인식이 완료됨.</li></ul></li><li><strong>프레임버퍼 및 심볼릭 링크 중복 제거:</strong><ul><li>화면 상태 추적(<code>current_displayed_screen</code>)을 통해 불필요한 RAW 화면 덮어쓰기 제거.</li><li><code>link_sdcard_to_root()</code>에서 <code>readlink()</code>를 검사하여 이미 존재하는 링크 생성 단계 생략.</li></ul></li><li><strong>부팅 스플래시 화면 연속성 유지:</strong><ul><li><code>apps/main.c</code>의 <code>show_logo_boot()</code>가 <code>y1_display_raw_screen(&quot;boot&quot;)</code>를 호출하여 UI가 준비되기 전에 기본 Rockbox 로고가 부팅 스플래시를 덮어쓰지 않도록 개선.</li></ul></li></ol>
+<hr>
+<h2 id="5">5. 입력 시스템 및 동작 매핑</h2>
+<h3 id="51">5.1 이벤트 노드 및 버튼 매핑 코드</h3>
+<p>리눅스 입력 이벤트가 다음과 같이 매핑됩니다:</p>
+<ul><li>센터 버튼: <code>KEY_ENTER</code> / <code>BTN_SELECT</code></li><li>상단 (메뉴): <code>KEY_BACK</code> / <code>KEY_ESC</code></li><li>하단 (재생/일시정지): <code>KEY_PLAYPAUSE</code></li><li>좌측 (이전 곡): <code>KEY_PREVIOUSSONG</code> / <code>KEY_REWIND</code></li><li>우측 (다음 곡): <code>KEY_NEXTSONG</code> / <code>KEY_FASTFORWARD</code></li><li>헤드폰 리모컨: <code>accdet</code> 드라이버 기반 <code>KEY_MEDIA</code> / <code>BTN_0</code></li></ul>
+<h3 id="52">5.2 이전 곡 / 되감기 일관성 버그 수정</h3>
+<ul><li><strong>문제점:</strong> 고급 키 잠금 모드 및 MFB 리모컨 입력 시, 재생 진행 상태와 무관하게 이전 버튼을 누르면 즉시 이전 트랙으로 건너뛰는 현상이 발생함. 표준 Rockbox WPS 동작은 재생 시간이 3초 이상($\ge 3\text{초}$)인 경우 트랙/큐 시작 위치로 되감고, 3초 미만($&lt; 3\text{초}$)일 때만 이전 곡으로 이동해야 함. 또한 키 잠금 상태에서 탐색(Seek) 시 조기 트랙 건너뛰기 이벤트가 방출됨.</li><li><strong>수정 내용:</strong> <code>apps/misc.c</code>에서 <code>BUTTON_MULTIMEDIA_PREV</code> 처리 시 <code>id3-&gt;elapsed &gt;= DEFAULT_SKIP_THRESH</code>(3000ms) 여부를 검사하도록 수정. <code>apps/action.c</code>에서는 키 잠금 상태의 버튼 누름 이벤트가 탐색 중 초기 다운 상태를 흡수하고 네이티브 <code>ACTION_WPS_SEEK*</code> 액션을 발행하도록 하여 WPS 상태 화면이 정확히 표시되도록 수정.</li></ul>
+<h3 id="53-ipod-classic-hold">5.3 iPod Classic HOLD 서브시스템, 백라이트 규칙 및 입력 가로채기 아키텍처</h3>
+<p>물리적 기계식 HOLD 스위치가 없는 하드웨어 환경에서 오리지널 iPod Classic 고유의 직관적 잠금 UX를 완벽하게 재현하기 위해 다음과 같은 아키텍처를 구현했습니다:</p>
+<ol><li><strong>동적 소프트웨어 키 잠금 (HOLD) 상태 머신:</strong><ul><li><code>firmware/target/hosted/innioasis/y1/button-y1.c</code>에서 상단 MENU 버튼(<code>KEY_BACK</code> / <code>KEY_ESC</code>)을 감지하는 커스텀 입력 인터셉터 구현:</li><li>잠금 상태(HOLD)에서는 MENU 더블 클릭(<code>MENU_HOLD_DOUBLECLICK_MS = 350ms</code>)을 감지하여 잠금을 해제하며, 주머니 속에서의 단일 클릭 입력은 안전하게 차단(드롭)하여 원치 않는 화면 켜짐을 방지합니다.</li><li>잠금 해제 상태에서는 단일 클릭이 <code>MENU_NORMAL_DOUBLECLICK_MS = 120ms</code> 만에 즉각 방출되어 메뉴 뒤로 가기 조작 시의 딜레이를 완전히 제거하였으며, 길게 누르기(<code>MENU_LONGPRESS_MS = 280ms</code>)로 Rockbox 퀵 스크린을 엽니다. 더블 클릭 시 즉시 잠금 상태로 진입합니다.</li><li>잠금 상태 전환 시 합성 <code>BUTTON_REMOTE_HOLD</code> / <code>BUTTON_HOLD</code> 이벤트를 발생시켜 <code>apps/action.c</code>의 <code>do_key_lock()</code>을 구동합니다.</li></ul></li><li><strong>잠금 모드 백라이트 전환의 즉각적인 동기화:</strong><ul><li>기존에는 HOLD 진입 후에도 이전 일반 화면 꺼짐 타이머가 유지되어 타임아웃 불일치 버그가 존재했습니다.</li><li><code>firmware/backlight.c</code> 및 <code>apps/action.c</code>에서 <code>do_key_lock()</code>이 호출될 때 <code>backlight_hold_changed(bool hold)</code>를 트리거하도록 개선했습니다. <code>backlight_get_current_timeout()</code>은 <code>backlight_on_button_hold != 1</code> 및 재생 규칙에 따라 <code>global_settings.backlight_timeout</code>과 <code>global_settings.backlight_timeout_on_hold</code>를 동적으로 전환하며 타이머를 즉시 재설정합니다.</li></ul></li><li><strong>잠금 모드 백라이트 규칙 및 최대 5시간 확장:</strong><ul><li><code>global_settings.backlight_on_hold_rules</code> 설정을 도입하여 잠금 중 백라이트 유지 조건 지원:</li><li><code>BACKLIGHT_HOLD_RULES_ALWAYS</code>: 음악 재생 여부와 무관하게 버튼 입력 시 항상 백라이트 점등.</li><li><code>BACKLIGHT_HOLD_RULES_PLAYING</code>: 현재 오디오가 재생 중일 때만 백라이트 점등.</li><li><code>BACKLIGHT_HOLD_RULES_WPS</code>: 현재 재생 화면(WPS)에 머무를 때만 백라이트 점등.</li><li><code>backlight_on_button_hold_timeout</code> 옵션 테이블을 최대 5시간(18,000초)까지 38개 구간으로 대폭 확장하여 독서나 장시간 디스플레이 확인을 지원합니다.</li></ul></li><li><strong>첫 번째 키 입력 시 백라이트 점등 vs 명령 즉시 실행:</strong><ul><li>잠금 해제 상태에서 화면이 꺼졌을 때, <code>global_settings.first_keypress_backlight_only</code>를 통해 반응 방식을 제어합니다:</li><li><code>아니오 (No)</code> <em>(기본값)</em>: <code>action.c</code>에서 버튼 이벤트를 차단하지 않고 그대로 통과시켜, 다음 곡 넘김이나 재생/일시정지 등의 명령을 즉각 실행하면서 동시에 백라이트를 켭니다.</li><li><code>예 (Yes)</code>: 첫 번째 키 입력을 가로채어 명령을 차단(<code>ACTION_NONE</code>)하고 백라이트만 켭니다. 이후 화면이 켜진 상태에서 누르는 키만 명령을 실행합니다.</li><li>잠금(HOLD) 상태에서는 <code>global_settings.backlight_on_button_hold</code>(<em>홀드 라이트</em>) 설정에 따라 버튼 입력 시 명령 실행 없이 화면 백라이트만 켜거나(<code>켜짐</code>), 주머니 속 완전 암전 모드(<code>꺼짐</code>)를 유지합니다.</li></ul></li></ol>
+<hr>
+<h2 id="6-usb">6. USB 가젯 및 충전 전용 모드 전환</h2>
+<ul><li>대용량 저장소: <code>/sys/class/android_usb/android0/f_mass_storage/</code>를 통해 <code>/dev/block/mmcblk1</code>(또는 <code>mmcblk1p1</code>)을 노출하는 리눅스 USB 가젯 서브시스템에 의해 관리됨.</li><li>충전 전용 모드: <code>apps/gui/usb_screen.c</code>에서 센터 버튼을 1초간 누르고 있으면(<code>BUTTON_SELECT</code>, 반복 시간 $\ge 1000\text{ ms}$) USB 대용량 저장소 가젯을 종료하고 SD 카드를 Rockbox 전용 읽기/쓰기 모드로 다시 마운트하여 충전 중 음악 감상이 가능하도록 구현.</li><li>호스트 PC 마운트 해제 및 재연결 버그 수정:<ul><li><strong>문제점:</strong> 호스트 PC에서 기기를 안전하게 제거(LoEj 비트가 설정된 SCSI <code>START_STOP</code> 명령)할 때 다운스트림 리눅스 커널의 <code>f_mass_storage</code> 드라이버가 백업 파일을 닫으면서(<code>fsg_lun_close</code>) <code>lun0/file</code>을 빈 문자열로 지워버림. 이후 케이블을 다시 연결해도 <code>lun0/file</code>이 비어 있어 윈도우에서 빈 카드 리더기(&quot;USB 드라이브에 디스크를 넣으십시오&quot;)로 인식되는 문제 발생.</li><li><strong>수정 내용:</strong> <code>firmware/target/hosted/innioasis/y1/usb-y1.c</code>에서 USB 슬레이브 모드 진입(<code>usb_enable(true)</code> / <code>disk_unmount_all()</code>) 시마다 <code>y1_usb_attach_storage()</code>가 <code>/dev/block/mmcblk1</code>을 동적으로 검사하여 <code>lun0/file</code>에 다시 바인딩하도록 수정. <code>apps/gui/usb_screen.c</code>에서는 <code>y1_usb_check_host_ejected()</code>가 <code>lun0/file</code>을 감시하여 호스트 PC가 볼륨을 안전 제거하면 기기가 즉시 충전 전용 모드로 전환되고 가젯 바인딩을 해제하여 Rockbox 재생 화면으로 복귀하도록 구현.</li></ul></li></ul>
+<hr>
+<h2 id="7-mediatek">7. MediaTek 독점 파일 제외 정책</h2>
+<p>오픈 소스 라이선스를 준수하기 위한 조치:</p>
+<ul><li>독점 바이너리 블롭(<code>bt_blobs/</code>, <code>stock_unpacked/</code>, <code>logo.bin</code> 및 모든 <code>*.ko</code> 커널 모듈)은 <code>.gitignore</code>를 통해 Git 추적에서 제외.</li><li>커스텀 소스 코드, 리버스 엔지니어링 유틸리티(<code>unmute_eac.c</code>, <code>mkbootimg_mtk.py</code>), 빌드 스크립트 및 Rockbox 타깃 드라이버는 온전히 형상 관리됨.</li><li>빌드 오케스트레이터(<code>build.py</code> / <code>build.sh</code>)는 빌드 수행 시 <code>!stock_rom/boot.img</code>로부터 필요한 커널 바이너리를 동적으로 자동 추출함.</li></ul>
+<hr>
+<h2 id="8">8. 샘플 레이트 전환 및 위상 정렬 왜곡 버그</h2>
+<h3 id="81">8.1 증상</h3>
+<p>서로 다른 샘플 레이트를 가진 음원(예: 44.1 kHz $\leftrightarrow$ 48.0 kHz) 간에 빠른 전환을 반복할 경우 음질이 눈에 띄게 왜곡되는 현상이 나타남. 전체적인 재생 볼륨(RMS)은 유지되나 사운드가 점점 탁해지고, 보컬의 중앙 음상이 실종되며, 음장감이 저 멀리 뒤로 물러나 안개 속으로 들어간 듯한 소리가 발생함.</p>
+<h3 id="82">8.2 근본 원인</h3>
+<ol><li><strong>부분 쓰기(Partial Write) 시 스테레오 프레임 정렬 파괴:</strong><p><code>pcm_worker</code> 쓰기 루프가 기존에 불완전 바이트 카운트를 <code>written &amp;= ~3</code>으로 버림 처리했음. 이로 인해 커널 원형 버퍼는 정렬되지 않은 바이트 수만큼 진행되었으나 사용자 공간 버퍼 카운터는 버림 처리된 수치만큼 진행됨. 다음 쓰기 시 2바이트 어긋난 홀수 바운더리에서 쓰기가 시작되어 좌/우 스테레오 채널이 뒤바뀌고 한쪽 채널이 1샘플($d \approx 22.7\,\mu\text{s}$) 지연됨. 채널 간 위상 차이로 인해 심각한 센터 채널 상쇄 및 빗살 필터링이 유발됨.</p></li><li><strong>PMIC FIR 보간기 내부 상태 손상:</strong><p>PMIC 다운링크(<code>0x4014</code>) 및 마스터(<code>0x4000</code>)가 활성화된 상태에서 PMIC NewIF(<code>0x4024</code>) 및 PMIC 코덱 DL(<code>0x4002</code>)에 새 클록 분주비를 덮어씀으로써 MT6323 내부 FIR 디지털 필터 상태 머신이 손상됨.</p></li><li><strong>PMIC CDC 동기화 트리거 고착:</strong><p><code>top_ctl_trigger()</code>에서 <code>toggle = ((~val) &lt;&lt; 8) &amp; 0x300</code> 표현식이 <code>0x4016</code>의 비트 0과 1이 0으로 읽히는 하드웨어 특성상 비트 8과 9를 토글하지 못해 부팅 이후 CDC 클록 재동기화가 영구 불능 상태가 됨.</p></li><li><strong>커널 링 버퍼 잔류 프레임 누출:</strong><p>32 KB 코히런트 DL1 버퍼를 리셋하지 않고 클록 주파수를 변경하여 이전 곡의 잔류 오디오 프레임이 어긋난 오프셋 상태에서 새로운 속도로 출력됨.</p></li></ol>
+<h3 id="83">8.3 세부 해결 내용</h3>
+<ul><li><strong>프레임 정렬 보장:</strong> <code>written &amp; 3 != 0</code>인 경우 제로 패딩(<code>4 - unaligned</code> 바이트)을 <code>/dev/eac</code>에 직접 기록하여 링 버퍼의 정렬을 강제 복원. 사용자 버퍼 포인터는 <code>written + pad_len</code>만큼 전진시켜 이후 모든 프레임이 4바이트 정렬을 유지하도록 조치.</li><li><strong>PMIC 게이팅 및 FIR 리셋:</strong> <code>sink_set_freq()</code> 호출 시 레이트 레지스터를 변경하기 전에 <code>0x4014</code>와 <code>0x4000</code>을 비활성화하고, PMIC 디지털 게인(<code>0x4006</code>, <code>0x4008</code>)을 리셋한 후 마스터 제어를 깔끔하게 재가동함.</li><li><strong>DL1 링 버퍼 재할당:</strong> 샘플 레이트 변경 시 <code>AUDDRV_FREE_DL1_BUF</code>, <code>AUDDRV_ALLOCATE_DL1_BUF</code>, <code>SET_MEMIF_FP</code>를 호출하여 커널 읽기/쓰기 포인터를 0으로 초기화.</li><li><strong>CDC 트리거 XOR 토글:</strong> <code>pcm-eac.c</code> 및 <code>unmute_eac.c</code>의 <code>top_ctl_trigger()</code>에서 <code>(val ^ 0x300) &amp; 0x300</code> 연산 방식을 적용.</li><li><strong>동시성 잠금 보호:</strong> <code>sink_set_freq()</code>를 <code>sink_lock()</code> / <code>sink_unlock()</code>으로 잠그고 <code>pcm_mtx</code> 보호 하에 <code>pcm_data</code>를 안전하게 비우도록 처리.</li></ul></article><p class="lumen-doc-footer-note">These are Nugget's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=nugget-y1">norocoral's <em>Nugget</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=norocoral%2Fnugget-y1&amp;software=nugget-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

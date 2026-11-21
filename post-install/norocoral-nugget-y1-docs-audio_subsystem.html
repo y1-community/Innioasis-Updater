@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audio Subsystem: MediaTek EAC & MT6323 - Innioasis Updater</title>
+  <meta name="description" content="🌐 한국어 kr/AUDIO SUBSYSTEM.md English Audio Subsystem: MediaTek EAC & MT6323 This document details the audio hardware architecture, driver interface, sample rate switching,">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-audio_subsystem.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Audio Subsystem: MediaTek EAC & MT6323 - Innioasis Updater">
+  <meta property="og:description" content="🌐 한국어 kr/AUDIO SUBSYSTEM.md English Audio Subsystem: MediaTek EAC & MT6323 This document details the audio hardware architecture, driver interface, sample rate switching,">
+  <meta property="og:url" content="https://innioasis.app/post-install/norocoral-nugget-y1-docs-audio_subsystem.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Audio Subsystem: MediaTek EAC & MT6323 - Innioasis Updater">
+  <meta name="twitter:description" content="🌐 한국어 kr/AUDIO SUBSYSTEM.md English Audio Subsystem: MediaTek EAC & MT6323 This document details the audio hardware architecture, driver interface, sample rate switching,">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-audio_subsystem.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-audio_subsystem.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y1&amp;software=nugget-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Nugget · Y1</p><h1>Audio Subsystem: MediaTek EAC &amp; MT6323</h1><p class="lumen-lead">Community firmware package for the Y1.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y1&amp;software=nugget-y1">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y1&amp;software=nugget-y1">Install guide</a></div></header><article class="lumen-doc-body"><p>🌐 <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2Fkr%2FAUDIO_SUBSYSTEM.md">한국어</a> | <strong>English</strong></p>
+<h1 id="audio-subsystem-mediatek-eac--mt6323">Audio Subsystem: MediaTek EAC &amp; MT6323</h1>
+<p>This document details the audio hardware architecture, driver interface, sample rate switching, transient pop mitigation, and gain staging on the Innioasis Y1 hosted Rockbox port.</p>
+<hr>
+<h2 id="1-hardware-signal-path">1. Hardware Signal Path</h2>
+<pre><code class="language-mermaid">flowchart LR
+    RB[&quot;Rockbox Codec Engine\n(16-bit Stereo PCM)&quot;]
+    DEV[&quot;/dev/eac\n(MediaTek EAC Device Node)&quot;]
+    DSP[&quot;MT6572 Audio DSP\n(I2S Digital Filters)&quot;]
+    PMIC[&quot;MT6323 PMIC\n(Stereo DAC &amp; Headphone Amp)&quot;]
+    HP[&quot;3.5mm Headphone Jack\n(accdet Sensing)&quot;]
+
+    RB --&gt;|write PCM frames| DEV
+    DEV --&gt;|DMA FIFO| DSP
+    DSP --&gt;|I2S Bus| PMIC
+    PMIC --&gt;|Analog Out| HP</code></pre>
+<hr>
+<h2 id="2-kernel-interface-deveac">2. Kernel Interface: <code>/dev/eac</code></h2>
+<p>Downstream MediaTek kernel 3.4.67 routes digital PCM audio through the Enhanced Audio Controller character device (<code>/dev/eac</code>) instead of standard ALSA PCM devices.</p>
+<h3 id="21-configuration-parameters">2.1 Configuration Parameters</h3>
+<ul><li>Sample Rates: 44,100 Hz and 48,000 Hz native hardware clocking.</li><li>Encoding: 16-bit signed integer (<code>int16_t</code>), little-endian, stereo interleaved (L, R, L, R...).</li><li>Frame Size: 4 bytes per stereo sample pair.</li><li>Buffer Depth: 8,192 bytes (2,048 stereo frames, ~46.4ms buffer latency at 44.1 kHz).</li><li>Thread Scheduling: <code>SCHED_FIFO</code> real-time priority 80.</li></ul>
+<hr>
+<h2 id="3-transient-pop--click-elimination">3. Transient Pop &amp; Click Elimination</h2>
+<h3 id="31-failure-mechanisms">3.1 Failure Mechanisms</h3>
+<ol><li><strong>PLL Divisor Shifts:</strong> Switching audio clocks between 44.1 kHz and 48.0 kHz abruptly disrupted the MT6323 delta-sigma modulator, causing DC offset steps.</li><li><strong>Buffer Flush Truncation:</strong> Halting audio without draining the FIFO left the output biased away from 0V, generating a transient click when the amplifier powered down.</li><li><strong>FM Radio Sharing:</strong> Shared analog paths caused line interference during digital audio initialization.</li></ol>
+<h3 id="32-implemented-fixes">3.2 Implemented Fixes</h3>
+<ul><li><strong>Digital Settling Buffer:</strong> Before closing the audio device or altering sample rate dividers, 256 samples of zero-amplitude PCM ($0x0000$) are written to <code>/dev/eac</code> to allow the analog reconstruction filters to settle to neutral ground.</li><li><strong>Hardware Mute Sequencing:</strong> The analog headphone amplifier line is muted prior to PLL clock changes, and unmuted only after valid frames pre-fill the DMA ring buffer.</li><li><strong>Identical Rate Bypass:</strong> Track transitions with identical sample rates bypass driver reconfiguration entirely for seamless gapless playback.</li></ul>
+<hr>
+<h2 id="4-gain-staging--volume-control">4. Gain Staging &amp; Volume Control</h2>
+<p>Gain management combines digital attenuation with analog PGA control:</p>
+<ul><li><strong>Digital Gain:</strong> Software PCM attenuation up to 0 dBFS (avoiding digital clipping).</li><li><strong>Analog Headphone PGA (<code>MT6323_AUDTOP_CON5</code>, <code>0x70a</code>):</strong> <code>y1_audio_set_hp_analog_gain(idx_l, idx_r)</code> writes 3-bit gain indices (<code>0..7</code>, 2 dB/step) to bits <code>[14:12]</code> (L) and <code>[10:8]</code> (R) while preserving headphone mux/power bits <code>[4:0]</code> (<code>0x0014</code>).</li></ul>
+<hr>
+<h2 id="5-headphone-detection">5. Headphone Detection</h2>
+<p>The 3.5mm jack state is exposed by the <code>accdet</code> driver via <code>/sys/class/switch/h2w/state</code>:</p>
+<ul><li><code>0</code>: No jack inserted</li><li><code>1</code>: 4-pole TRRS headset (with microphone)</li><li><code>2</code>: 3-pole TRS headphones</li></ul>
+<p><code>liby1</code> exposes <code>y1_jack_get_raw_state()</code>, <code>y1_jack_is_inserted()</code>, and <code>y1_jack_has_mic()</code>. Inline remote button events (MFB) are delivered via the <code>ACCDET</code> <code>/dev/input/event*</code> device, with debounce tuned by <code>y1_pmic_tune_accdet_debounce()</code>.</p>
+<hr>
+<h2 id="6-sample-rate-switching--inter-channel-phase-synchronization">6. Sample Rate Switching &amp; Inter-Channel Phase Synchronization</h2>
+<h3 id="61-frequency-switching-audio-degradation">6.1 Frequency Switching Audio Degradation</h3>
+<p>Repeated switching between tracks of different sample rates (e.g., 44.1 kHz $\leftrightarrow$ 48.0 kHz) led to progressive audio quality loss: vocals lost center presence, high frequencies suffered comb filtering, and the stereo image collapsed into a diffuse background reverberation (&quot;muddier sound getting further away&quot;) despite unchanged RMS level.</p>
+<h3 id="62-root-cause-analysis">6.2 Root Cause Analysis</h3>
+<ol><li><strong>Inter-Channel Frame Alignment Desynchronization (<code>pcm_worker</code>):</strong><p>When <code>write(eac_fd)</code> returned a partial byte count (non-multiple of 4), <code>written &amp;= ~3</code> stripped unaligned bytes from the user-space counter while the kernel circular buffer advanced by the unaligned count. On the subsequent write iteration, the user-space buffer offset started at a 2-byte misaligned boundary, swapping Left and Right channels and introducing a 1-sample inter-channel time delay ($d = 1 / f_s \approx 22.7\,\mu\text{s}$). With successive rate transitions, this phase shift accumulated, producing severe comb filtering and destructive center-channel cancellation.</p></li><li><strong>PMIC FIR Reconstruction Filter Corruption:</strong><p>Reconfiguring <code>AFE_PMIC_NEWIF_CFG0</code> (0x108), <code>AFE_I2S_CON1</code> (0x34), PMIC NewIF frequency (<code>0x4024</code>), and PMIC Codec rate (<code>0x4002</code>) while PMIC Downlink (<code>0x4014</code>) and PMIC Audio Digital Master (<code>0x4000</code>) were active disrupted the internal FIR decimation and interpolation filter delay lines in the MT6323, corrupting the reconstruction filter state.</p></li><li><strong>Stuck PMIC CDC Clock Sync Trigger:</strong><p>The function <code>top_ctl_trigger()</code> calculated <code>toggle = ((~val) &lt;&lt; 8) &amp; 0x300</code> using register <code>0x4016</code>. Because bits 0 and 1 of <code>0x4016</code> read zero, shifting by 8 produced a constant <code>0x300</code>, preventing the necessary clock sync edge on subsequent transitions.</p></li><li><strong>Kernel Ring Buffer Stale Data &amp; Unaligned Pointers:</strong><p>Changing clock rates without resetting the 32 KB coherent DL1 DMA buffer left stale samples from the previous song playing at the new clock rate and allowed kernel read/write pointers to begin at arbitrary non-zero offsets. Concurrently, <code>sink_set_freq()</code> ran without holding <code>sink_lock()</code>, allowing <code>pcm_worker</code> to write audio data during hardware register programming.</p></li></ol>
+<h3 id="63-implementation">6.3 Implementation</h3>
+<ul><li><strong>Zero-Padding Frame Alignment:</strong> In <code>pcm_worker</code>, when <code>written &amp; 3 != 0</code>, zero padding (<code>4 - unaligned</code> bytes) is written directly to <code>/dev/eac</code> to restore the kernel ring buffer to a 4-byte boundary. User-space pointers advance by the full frame size (<code>written + pad_len</code>), maintaining 4-byte stereo alignment and eliminating channel swapping or phase delay.</li><li><strong>PMIC Gating:</strong> In <code>sink_set_freq()</code>, PMIC downlink (<code>0x4014</code>) and master (<code>0x4000</code>) are gated to 0 before altering sample rate dividers, and re-enabled after registers and digital gain (<code>0x4006</code>, <code>0x4008</code> = 0 dB) are settled.</li><li><strong>Ring Buffer Pointer Reset:</strong> On sample rate changes, <code>AUDDRV_FREE_DL1_BUF</code>, <code>AUDDRV_ALLOCATE_DL1_BUF</code>, and <code>SET_MEMIF_FP</code> reset kernel circular buffer pointers to 0.</li><li><strong>Toggling CDC Clock Trigger:</strong> In <code>pcm-eac.c</code> and <code>unmute_eac.c</code>, <code>top_ctl_trigger()</code> toggles clock sync bits using <code>(val ^ 0x300) &amp; 0x300</code>.</li><li><strong>Concurrency Locking:</strong> <code>sink_set_freq()</code> is wrapped in <code>sink_lock()</code> and <code>sink_unlock()</code>, clearing <code>pcm_data</code> under <code>pcm_mtx</code> so Rockbox feeds newly aligned frames only after hardware stabilization.</li></ul></article><p class="lumen-doc-footer-note">These are Nugget's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=nugget-y1">norocoral's <em>Nugget</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=norocoral%2Fnugget-y1&amp;software=nugget-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

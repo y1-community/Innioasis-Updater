@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>System Architecture: Innioasis Y1 Hosted Linux Port - Innioasis Updater</title>
+  <meta name="description" content="🌐 한국어 kr/ARCHITECTURE.md English System Architecture: Innioasis Y1 Hosted Linux Port This document details the software architecture, process model, boot lifecycle, and s">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-architecture.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="System Architecture: Innioasis Y1 Hosted Linux Port - Innioasis Updater">
+  <meta property="og:description" content="🌐 한국어 kr/ARCHITECTURE.md English System Architecture: Innioasis Y1 Hosted Linux Port This document details the software architecture, process model, boot lifecycle, and s">
+  <meta property="og:url" content="https://innioasis.app/post-install/norocoral-nugget-y1-docs-architecture.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="System Architecture: Innioasis Y1 Hosted Linux Port - Innioasis Updater">
+  <meta name="twitter:description" content="🌐 한국어 kr/ARCHITECTURE.md English System Architecture: Innioasis Y1 Hosted Linux Port This document details the software architecture, process model, boot lifecycle, and s">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-architecture.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-architecture.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y1&amp;software=nugget-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Nugget · Y1</p><h1>System Architecture: Innioasis Y1 Hosted Linux Port</h1><p class="lumen-lead">Community firmware package for the Y1.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y1&amp;software=nugget-y1">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y1&amp;software=nugget-y1">Install guide</a></div></header><article class="lumen-doc-body"><p>🌐 <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2Fkr%2FARCHITECTURE.md">한국어</a> | <strong>English</strong></p>
+<h1 id="system-architecture-innioasis-y1-hosted-linux-port">System Architecture: Innioasis Y1 Hosted Linux Port</h1>
+<p>This document details the software architecture, process model, boot lifecycle, and storage layout of the Innioasis Y1 Rockbox port and <code>liby1</code> Hardware SDK on minimal downstream Linux.</p>
+<hr>
+<h2 id="1-system-block-diagram">1. System Block Diagram</h2>
+<pre><code class="language-mermaid">flowchart TD
+    subgraph HW[&quot;Hardware Layer&quot;]
+        CPU[&quot;MT6572 Dual Cortex-A7 (1.2 GHz)&quot;]
+        PMIC[&quot;MT6323 PMIC &amp; DAC&quot;]
+        LCD[&quot;2.8 inch LCD (480x360 BGRA)&quot;]
+        SD[&quot;MicroSD Card (mmcblk1p1)&quot;]
+        BTN[&quot;Keypad &amp; Capacitive Wheel&quot;]
+        JACK[&quot;3.5mm Headphone Jack (accdet)&quot;]
+        WIFI_BT[&quot;MT6627 BT / FM Radio&quot;]
+    end
+
+    subgraph KERNEL[&quot;Downstream Linux Kernel 3.4.67&quot;]
+        K_EAC[&quot;/dev/eac Audio Device&quot;]
+        K_FB[&quot;/dev/fb0 Framebuffer&quot;]
+        K_EV[&quot;/dev/input/event* Nodes&quot;]
+        K_MMC[&quot;mmc_block &amp; Filesystem Drivers&quot;]
+        K_CPU[&quot;cpufreq &amp; Hotplug Subsystem&quot;]
+        K_FM[&quot;/dev/fm Tuner Device&quot;]
+        K_USB[&quot;Android USB Gadget (android0)&quot;]
+    end
+
+    subgraph INITRAMFS[&quot;Initramfs (PID 1 /init)&quot;]
+        INIT_BOOST[&quot;Boot CPU Clock Boost (1.2 GHz Dual-Core)&quot;]
+        INIT_STORAGE[&quot;Reactive MicroSD Mount (/mnt/sdcard)&quot;]
+        INIT_MENU[&quot;Graphical Bootloader Menu (Nugget / Android / Poweroff / USB)&quot;]
+        INIT_EXEC[&quot;Handoff to Rockbox or Standalone App&quot;]
+    end
+
+    subgraph LIBY1[&quot;liby1 Hardware Abstraction Layer (liby1.a / liby1.so)&quot;]
+        Y1_CORE[&quot;Core, Sysfs, Battery, Power &amp; Logging&quot;]
+        Y1_DISP[&quot;Framebuffer (480x360 Native / 320x240 Scaled), Backlight, Suspend&quot;]
+        Y1_CPU[&quot;CPU Governors, Dual-Core Hotplug, Screen-Off Clamp&quot;]
+        Y1_INP[&quot;Click-Wheel, Tactile Keys, ACCDET Headphone Jack&quot;]
+        Y1_AUDIO[&quot;EAC DL1 DMA, MT6323 PMIC DAC &amp; HP Amp, Mic ADC&quot;]
+        Y1_TUNER[&quot;MT6627 FM Radio Control&quot;]
+        Y1_USB[&quot;USB Mass Storage Gadget Control&quot;]
+    end
+
+    subgraph APPS[&quot;Application Space&quot;]
+        RB[&quot;Hosted Rockbox Process (/mnt/sdcard/.rockbox/rockbox)&quot;]
+        CUSTOM_APP[&quot;Custom Standalone C App (/mnt/sdcard/.system/app)&quot;]
+    end
+
+    HW --&gt; KERNEL
+    KERNEL --&gt; INITRAMFS
+    INITRAMFS --&gt; APPS
+    APPS --&gt; LIBY1
+    LIBY1 --&gt; KERNEL</code></pre>
+<hr>
+<h2 id="2-boot-sequence--process-lifecycle">2. Boot Sequence &amp; Process Lifecycle</h2>
+<pre><code class="language-mermaid">sequenceDiagram
+    autonumber
+    participant LK as MediaTek Little Kernel (LK)
+    participant K as Linux Kernel (3.4.67)
+    participant I as PID 1 (/init in C)
+    participant SD as MicroSD Card (mmcblk1p1)
+    participant APP as Rockbox or Custom App
+
+    LK-&gt;&gt;K: Transfer execution with MTK ATAGs
+    K-&gt;&gt;K: Initialize SoC drivers, clocks, memory
+    K-&gt;&gt;I: Execute /init from initramfs
+    I-&gt;&gt;I: boost_cpu_for_boot() -&gt; Both cores @ 1.2 GHz performance
+    I-&gt;&gt;I: Mount /proc, /sys, /dev
+    I-&gt;&gt;I: Display /etc/boot.raw to /dev/fb0
+    I-&gt;&gt;SD: Reactive poll for mmcblk1p1 (10ms interval)
+    alt MicroSD Card Detected
+        I-&gt;&gt;SD: Mount mmcblk1p1 to /mnt/sdcard
+        I-&gt;&gt;I: Create symlink /.system -&gt; /mnt/sdcard/.system
+        alt Bootloader Menu Enabled or MENU button held
+            I-&gt;&gt;I: Display Bootloader Menu (Nugget / Android / Poweroff / USB)
+            opt Android Selected
+                I-&gt;&gt;I: Clean rootfs &amp; extract ramdisk_android.cpio.gz -&gt; execve(&quot;/init&quot;)
+            end
+            opt USB Selected
+                I-&gt;&gt;I: Attach mmcblk1p1 to USB LUN0 for PC file sync
+            end
+        end
+        alt Custom App Present
+            I-&gt;&gt;APP: execve(&quot;/mnt/sdcard/.system/app&quot;)
+        else Standard Rockbox
+            I-&gt;&gt;APP: execve(&quot;/mnt/sdcard/.rockbox/rockbox&quot;)
+        end
+    else Card Missing or Unreadable
+        I-&gt;&gt;I: Display /etc/sdcard.raw and wait
+    end
+    APP-&gt;&gt;APP: Initialize via liby1 (display, input, audio, CPU profile)
+    APP-&gt;&gt;APP: Enter main event and playback loop</code></pre>
+<hr>
+<h2 id="3-storage-hierarchy--partitioning">3. Storage Hierarchy &amp; Partitioning</h2>
+<p>The hardware contains internal eMMC (<code>mmcblk0</code>) and external MicroSD (<code>mmcblk1</code>).</p>
+<h3 id="31-partition-scheme">3.1 Partition Scheme</h3>
+<ul><li><code>mmcblk0</code> (Internal eMMC): Contains stock MediaTek partitions (<code>BOOTIMG</code>, <code>RECOVERY</code>, <code>LOGO</code>, <code>SYSTEM</code>, <code>CACHE</code>, <code>DATA</code>). Nugget OS overwrites only the <code>BOOTIMG</code> partition with <code>boot_nugget.img</code> (6 MiB max). The rest of eMMC is left untouched.</li><li><code>mmcblk1p1</code> (External MicroSD): Formatted as FAT32, exFAT, NTFS, or ext4. Houses system libraries, hardware SDK assets, and application data:</li></ul>
+<pre><code class="language-text">/mnt/sdcard/
+|-- .system/                      # System, hardware, and developer files (symlinked to /.system)
+|   |-- lib/
+|   |   |-- liby1.so              # Dynamic liby1 hardware abstraction library
+|   |   |-- liby1.a               # Static liby1 library
+|   |   `-- liby1video.so         # NEON H.264/AAC hardware video decoder
+|   |-- include/
+|   |   `-- liby1.h               # Public C header
+|   |-- bin/
+|   |   `-- ffmpeg                # Static ARM FFmpeg binary (optional)
+|   |-- bt/                       # Bluetooth modules &amp; firmware
+|   |-- bt_paired.dat             # Paired devices database
+|   |-- ramdisk_android.cpio.gz   # Stock Android ramdisk for dual-boot
+|   |-- y1_debug.txt              # Hardware diagnostic log
+|   |-- system.cfg                # Bootloader menu configuration
+|   |-- *.raw                     # Splash and bootloader menu screens
+|   `-- app                       # Optional standalone user executable
+|-- .rockbox/                     # Rockbox-only assets
+|   |-- rockbox                   # ELF ARM hard-float executable
+|   |-- codecs/                   # Audio decoders (.codec)
+|   |-- rocks/                    # Plugins and viewers (.rock, .ovl)
+|   |-- fonts/                    # UI fonts (.fnt, .fnticons)
+|   |-- themes/                   # Theme configurations (.cfg)
+|   |-- wps/                      # While Playing Screen skins (.wps, .sbs)
+|   `-- config.cfg                # Rockbox persisted settings
+|-- Videos/                       # Video files
+`-- Music/                        # Music library</code></pre>
+<hr>
+<h2 id="4-hardware-abstraction-layer-liby1-mapping">4. Hardware Abstraction Layer (<code>liby1</code>) Mapping</h2>
+<table><thead><tr><th style="text-align:left">Subsystem</th><th style="text-align:left"><code>liby1</code> Module</th><th style="text-align:left">Technical Role</th></tr></thead><tbody><tr><td style="text-align:left">Core / Power / Battery</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_core.c"><code>hosted_linux_port/liby1/src/y1_core.c</code></a></td><td style="text-align:left">System initialization, MT6323 PMIC register access, battery telemetry, and <code>/mnt/sdcard/.system/y1_debug.txt</code> logging.</td></tr><tr><td style="text-align:left">Display &amp; Backlight</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_display.c"><code>hosted_linux_port/liby1/src/y1_display.c</code></a></td><td style="text-align:left">Framebuffer writing (<code>/dev/graphics/fb0</code>), 480x360 native, 320x240 classic bilinear upscaler, and kernel early suspend.</td></tr><tr><td style="text-align:left">CPU Frequency &amp; Hotplug</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_cpu.c"><code>hosted_linux_port/liby1/src/y1_cpu.c</code></a></td><td style="text-align:left">cpufreq scaling (598MHz powersave to 1.3GHz turbo), CPU1 core offlining, and screen-off clamp.</td></tr><tr><td style="text-align:left">Input &amp; Click-Wheel</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_input.c"><code>hosted_linux_port/liby1/src/y1_input.c</code></a></td><td style="text-align:left">Translates <code>evdev</code> events from click wheel, tactile buttons, and ACCDET 3.5mm headphone jack.</td></tr><tr><td style="text-align:left">Audio Subsystem</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_audio.c"><code>hosted_linux_port/liby1/src/y1_audio.c</code></a></td><td style="text-align:left"><code>/dev/eac</code> AFE DL1 DMA setup, MT6323 PMIC DAC &amp; Headphone Amp gain staging, 4-byte frame alignment, and deep-idle SPM powerdown gating.</td></tr><tr><td style="text-align:left">FM Radio Tuner</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_tuner.c"><code>hosted_linux_port/liby1/src/y1_tuner.c</code></a></td><td style="text-align:left">MT6627 FM radio control via <code>/dev/fm</code> ioctls.</td></tr><tr><td style="text-align:left">USB Gadget</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_usb.c"><code>hosted_linux_port/liby1/src/y1_usb.c</code></a></td><td style="text-align:left">Android USB Mass Storage LUN0 bind/unbind for PC music transfer.</td></tr></tbody></table></article><p class="lumen-doc-footer-note">These are Nugget's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=nugget-y1">norocoral's <em>Nugget</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=norocoral%2Fnugget-y1&amp;software=nugget-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

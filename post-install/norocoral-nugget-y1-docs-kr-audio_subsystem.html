@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>오디오 서브시스템: MediaTek EAC & MT6323 - Innioasis Updater</title>
+  <meta name="description" content="🌐 한국어 English ../AUDIO SUBSYSTEM.md 오디오 서브시스템: MediaTek EAC & MT6323 이 문서는 Innioasis Y1 호스티드 록박스Hosted Rockbox 포트의 오디오 하드웨어 아키텍처, 드라이버 인터페이스, 샘플 레이트 전환, 과도 팝 노이즈 억제 및 게인">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-audio_subsystem.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="오디오 서브시스템: MediaTek EAC & MT6323 - Innioasis Updater">
+  <meta property="og:description" content="🌐 한국어 English ../AUDIO SUBSYSTEM.md 오디오 서브시스템: MediaTek EAC & MT6323 이 문서는 Innioasis Y1 호스티드 록박스Hosted Rockbox 포트의 오디오 하드웨어 아키텍처, 드라이버 인터페이스, 샘플 레이트 전환, 과도 팝 노이즈 억제 및 게인">
+  <meta property="og:url" content="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-audio_subsystem.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="오디오 서브시스템: MediaTek EAC & MT6323 - Innioasis Updater">
+  <meta name="twitter:description" content="🌐 한국어 English ../AUDIO SUBSYSTEM.md 오디오 서브시스템: MediaTek EAC & MT6323 이 문서는 Innioasis Y1 호스티드 록박스Hosted Rockbox 포트의 오디오 하드웨어 아키텍처, 드라이버 인터페이스, 샘플 레이트 전환, 과도 팝 노이즈 억제 및 게인">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-audio_subsystem.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-audio_subsystem.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y1&amp;software=nugget-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Nugget · Y1</p><h1>오디오 서브시스템: MediaTek EAC &amp; MT6323</h1><p class="lumen-lead">Community firmware package for the Y1.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y1&amp;software=nugget-y1">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y1&amp;software=nugget-y1">Install guide</a></div></header><article class="lumen-doc-body"><p>🌐 <strong>한국어</strong> | <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2FAUDIO_SUBSYSTEM.md">English</a></p>
+<h1 id="mediatek-eac--mt6323">오디오 서브시스템: MediaTek EAC &amp; MT6323</h1>
+<p>이 문서는 Innioasis Y1 호스티드 록박스(Hosted Rockbox) 포트의 오디오 하드웨어 아키텍처, 드라이버 인터페이스, 샘플 레이트 전환, 과도 팝 노이즈 억제 및 게인 스테이징(Gain Staging)에 대해 상세히 다룹니다.</p>
+<hr>
+<h2 id="1">1. 하드웨어 신호 경로</h2>
+<pre><code class="language-mermaid">flowchart LR
+    RB[&quot;Rockbox 코덱 엔진\n(16비트 스테레오 PCM)&quot;]
+    DEV[&quot;/dev/eac\n(MediaTek EAC 디바이스 노드)&quot;]
+    DSP[&quot;MT6572 오디오 DSP\n(I2S 디지털 필터)&quot;]
+    PMIC[&quot;MT6323 PMIC\n(스테레오 DAC 및 헤드폰 앰프)&quot;]
+    HP[&quot;3.5mm 헤드폰 잭\n(accdet 감지)&quot;]
+
+    RB --&gt;|PCM 프레임 기록| DEV
+    DEV --&gt;|DMA FIFO| DSP
+    DSP --&gt;|I2S 버스| PMIC
+    PMIC --&gt;|아날로그 출력| HP</code></pre>
+<hr>
+<h2 id="2---deveac">2. 커널 인터페이스: <code>/dev/eac</code></h2>
+<p>다운스트림 미디어텍 커널 3.4.67은 표준 ALSA PCM 디바이스 대신 향상된 오디오 컨트롤러(Enhanced Audio Controller) 문자 디바이스(<code>/dev/eac</code>)를 통해 디지털 PCM 오디오를 라우팅합니다.</p>
+<h3 id="21">2.1 구성 파라미터</h3>
+<ul><li>샘플 레이트: 44,100 Hz 및 48,000 Hz 네이티브 하드웨어 클록킹 지원.</li><li>인코딩: 16비트 부호 있는 정수(<code>int16_t</code>), 리틀 엔디언, 스테레오 인터리브(L, R, L, R...).</li><li>프레임 크기: 스테레오 샘플 쌍당 4바이트.</li><li>버퍼 깊이: 8,192바이트 (2,048 스테레오 프레임, 44.1 kHz 기준 버퍼 지연 시간 약 46.4ms).</li><li>스레드 스케줄링: 실시간 우선순위 80의 <code>SCHED_FIFO</code>.</li></ul>
+<hr>
+<h2 id="3">3. 과도 팝 및 클릭 노이즈 제거</h2>
+<h3 id="31">3.1 노이즈 발생 메커니즘</h3>
+<ol><li><strong>PLL 분주기 전환:</strong> 44.1 kHz와 48.0 kHz 간 오디오 클록 전환 시 MT6323 델타-시그마 변조기가 급작스럽게 교란되어 DC 오프셋 전압 단차가 발생.</li><li><strong>버퍼 플러시 절단:</strong> FIFO를 비우지 않고 오디오 출력을 중단하면 출력이 0V가 아닌 상태로 편향되어 앰프 전원이 꺼질 때 과도 클릭 노이즈가 발생.</li><li><strong>FM 라디오 신호 경로 공유:</strong> 공유 아날로그 라인으로 인해 디지털 오디오 초기화 중 라인 간섭 발생.</li></ol>
+<h3 id="32">3.2 구현된 해결책</h3>
+<ul><li><strong>디지털 안정화 버퍼:</strong> 오디오 디바이스를 닫거나 샘플 레이트 분주기를 변경하기 전에 진폭 0의 PCM($0x0000$) 256샘플을 <code>/dev/eac</code>에 기록하여 아날로그 복원 필터가 중립 접지(Neutral Ground)로 안착할 수 있도록 유도.</li><li><strong>하드웨어 음소거 시퀀싱:</strong> PLL 클록 변경 전에 아날로그 헤드폰 앰프 라인을 음소거하고, 유효한 프레임이 DMA 링 버퍼에 미리 채워진 후에만 음소거를 해제.</li><li><strong>동일 샘플레이트 바이패스:</strong> 동일한 샘플 레이트를 사용하는 트랙 간 전환 시 드라이버 재구성을 완전히 건너뛰어 끊김 없는 갭리스(Gapless) 재생을 구현.</li></ul>
+<hr>
+<h2 id="4">4. 게인 스테이징 및 볼륨 제어</h2>
+<p>게인 제어는 디지털 감쇠와 아날로그 PGA 제어를 결합하여 처리됩니다:</p>
+<ul><li><strong>디지털 게인:</strong> 디지털 클리핑을 방지하기 위해 최대 0 dBFS 이하의 소프트웨어 PCM 감쇠를 적용합니다.</li><li><strong>아날로그 헤드폰 PGA (<code>MT6323_AUDTOP_CON5</code>, <code>0x70a</code>):</strong> <code>y1_audio_set_hp_analog_gain(idx_l, idx_r)</code>는 헤드폰 mux/전원 비트 <code>[4:0]</code> (<code>0x0014</code>)을 유지한 채 비트 <code>[14:12]</code> (L) 및 <code>[10:8]</code> (R)에 3비트 게인 인덱스(<code>0..7</code>, 스텝당 2 dB)를 기록합니다.</li></ul>
+<hr>
+<h2 id="5">5. 헤드폰 감지</h2>
+<p>3.5mm 잭 상태는 <code>accdet</code> 드라이버가 <code>/sys/class/switch/h2w/state</code>를 통해 노출합니다:</p>
+<ul><li><code>0</code>: 미연결</li><li><code>1</code>: 4극 TRRS 헤드셋 (마이크 포함)</li><li><code>2</code>: 3극 TRS 헤드폰</li></ul>
+<p><code>liby1</code>은 <code>y1_jack_get_raw_state()</code>, <code>y1_jack_is_inserted()</code>, <code>y1_jack_has_mic()</code>를 제공합니다. 인라인 리모컨 버튼 이벤트(MFB)는 <code>ACCDET</code> <code>/dev/input/event*</code> 디바이스로 전달되며, 디바운스는 <code>y1_pmic_tune_accdet_debounce()</code>로 조정됩니다.</p>
+<hr>
+<h2 id="6">6. 샘플 레이트 전환 및 채널 간 위상 동기화</h2>
+<h3 id="61">6.1 주파수 전환 시 음질 저하 문제</h3>
+<p>서로 다른 샘플 레이트(예: 44.1 kHz $\leftrightarrow$ 48.0 kHz)의 트랙을 반복해서 전환할 경우 점진적인 음질 저하가 발생했습니다. RMS 음량 수치는 동일함에도 보컬의 중앙 음상이 사라지고, 고주파 대역에 빗살 필터링(Comb Filtering)이 걸리며, 스테레오 이미지가 산만한 배경 잔향으로 붕괴(&quot;소리가 점점 먹먹해지며 멀어지는 현상&quot;)했습니다.</p>
+<h3 id="62">6.2 근본 원인 분석</h3>
+<ol><li><strong>채널 간 프레임 정렬 불일치 (<code>pcm_worker</code>):</strong><p><code>write(eac_fd)</code>가 4의 배수가 아닌 부분 바이트 수를 반환했을 때, <code>written &amp;= ~3</code> 코드가 사용자 공간 카운터에서는 정렬되지 않은 바이트를 잘라냈지만 커널 원형 버퍼는 정렬되지 않은 바이트 수만큼 진행되었습니다. 다음 쓰기 반복 주기에서 사용자 공간 버퍼 오프셋이 2바이트 어긋난 경계에서 시작되어 좌우 채널이 반전되고 1샘플 상당의 채널 간 시간 지연($d = 1 / f_s \approx 22.7\,\mu\text{s}$)이 발생했습니다. 샘플 레이트가 전환될 때마다 이 위상 편차가 누적되어 극심한 빗살 필터링과 파괴적인 센터 채널 상쇄가 발생했습니다.</p></li><li><strong>PMIC FIR 복원 필터 손상:</strong><p>PMIC 다운링크(<code>0x4014</code>) 및 PMIC 오디오 디지털 마스터(<code>0x4000</code>)가 활성화된 상태에서 <code>AFE_PMIC_NEWIF_CFG0</code>(0x108), <code>AFE_I2S_CON1</code>(0x34), PMIC NewIF 주파수(<code>0x4024</code>), PMIC 코덱 레이트(<code>0x4002</code>)를 재구성하여 MT6323 내부의 FIR 데시메이션 및 보간 필터 지연 라인이 엉키고 복원 필터 상태가 손상되었습니다.</p></li><li><strong>PMIC CDC 클록 동기화 트리거 고착:</strong><p><code>top_ctl_trigger()</code> 함수가 레지스터 <code>0x4016</code>을 읽어 <code>toggle = ((~val) &lt;&lt; 8) &amp; 0x300</code>을 계산했습니다. 그러나 <code>0x4016</code>의 비트 0과 1이 항상 0으로 읽히기 때문에 8비트 시프트 연산 시 항상 고정값 <code>0x300</code>이 출력되어 후속 전환 시 필수적인 클록 동기화 엣지가 발생하지 않았습니다.</p></li><li><strong>커널 링 버퍼 잔류 데이터 및 포인터 불일치:</strong><p>32 KB 코히런트 DL1 DMA 버퍼를 리셋하지 않고 클록 레이트를 변경하여 이전 곡의 잔류 샘플이 새 클록 속도로 재생되고 커널 읽기/쓰기 포인터가 임의의 0이 아닌 오프셋에서 시작되었습니다. 동시에 <code>sink_set_freq()</code>가 <code>sink_lock()</code>을 획득하지 않고 실행되어 하드웨어 레지스터 설정 도중 <code>pcm_worker</code>가 오디오 데이터를 기록하는 경합 상태가 발생했습니다.</p></li></ol>
+<h3 id="63">6.3 구현된 해결책</h3>
+<ul><li><strong>제로 패딩 프레임 정렬:</strong> <code>pcm_worker</code>에서 <code>written &amp; 3 != 0</code>일 때, 제로 패딩(<code>4 - unaligned</code> 바이트)을 <code>/dev/eac</code>에 직접 기록하여 커널 링 버퍼를 4바이트 경계로 복원합니다. 사용자 공간 포인터는 전체 프레임 크기(<code>written + pad_len</code>)만큼 전진하여 4바이트 스테레오 정렬을 유지하고 채널 반전 및 위상 지연을 원천 차단합니다.</li><li><strong>PMIC 게이팅:</strong> <code>sink_set_freq()</code>에서 샘플 레이트 분주기를 변경하기 전에 PMIC 다운링크(<code>0x4014</code>)와 마스터(<code>0x4000</code>)를 0으로 게이팅하고, 레지스터 및 디지털 게인(<code>0x4006</code>, <code>0x4008</code> = 0 dB) 설정이 안정화된 후 다시 활성화합니다.</li><li><strong>링 버퍼 포인터 초기화:</strong> 샘플 레이트 전환 시 <code>AUDDRV_FREE_DL1_BUF</code>, <code>AUDDRV_ALLOCATE_DL1_BUF</code>, <code>SET_MEMIF_FP</code>를 호출하여 커널 원형 버퍼 포인터를 0으로 초기화합니다.</li><li><strong>CDC 클록 트리거 토글:</strong> <code>pcm-eac.c</code> 및 <code>unmute_eac.c</code>에서 <code>top_ctl_trigger()</code>가 <code>(val ^ 0x300) &amp; 0x300</code>을 사용하여 클록 동기화 비트를 토글하도록 수정했습니다.</li><li><strong>동시성 잠금:</strong> <code>sink_set_freq()</code>를 <code>sink_lock()</code> 및 <code>sink_unlock()</code>으로 감싸고 <code>pcm_mtx</code> 보호 하에 <code>pcm_data</code>를 비워 하드웨어가 안정화된 후에만 새롭게 정렬된 프레임이 공급되도록 보장합니다.</li></ul></article><p class="lumen-doc-footer-note">These are Nugget's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=nugget-y1">norocoral's <em>Nugget</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=norocoral%2Fnugget-y1&amp;software=nugget-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

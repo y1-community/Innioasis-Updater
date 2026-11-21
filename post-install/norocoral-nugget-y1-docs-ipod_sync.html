@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iPod 5.5G USB Mode & Native iTunes Integration - Innioasis Updater</title>
+  <meta name="description" content="🌐 한국어 kr/IPOD SYNC.md English iPod 5.5G USB Mode & Native iTunes Integration Nugget for Innioasis Y1 includes native iTunes database integration built directly into Rockb">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-ipod_sync.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="iPod 5.5G USB Mode & Native iTunes Integration - Innioasis Updater">
+  <meta property="og:description" content="🌐 한국어 kr/IPOD SYNC.md English iPod 5.5G USB Mode & Native iTunes Integration Nugget for Innioasis Y1 includes native iTunes database integration built directly into Rockb">
+  <meta property="og:url" content="https://innioasis.app/post-install/norocoral-nugget-y1-docs-ipod_sync.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="iPod 5.5G USB Mode & Native iTunes Integration - Innioasis Updater">
+  <meta name="twitter:description" content="🌐 한국어 kr/IPOD SYNC.md English iPod 5.5G USB Mode & Native iTunes Integration Nugget for Innioasis Y1 includes native iTunes database integration built directly into Rockb">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-ipod_sync.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-ipod_sync.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y1&amp;software=nugget-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Nugget · Y1</p><h1>iPod 5.5G USB Mode &amp; Native iTunes Integration</h1><p class="lumen-lead">Community firmware package for the Y1.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y1&amp;software=nugget-y1">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y1&amp;software=nugget-y1">Install guide</a></div></header><article class="lumen-doc-body"><p>🌐 <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2Fkr%2FIPOD_SYNC.md">한국어</a> | <strong>English</strong></p>
+<h1 id="ipod-55g-usb-mode--native-itunes-integration">iPod 5.5G USB Mode &amp; Native iTunes Integration</h1>
+<p>Nugget for Innioasis Y1 includes <strong>native iTunes database integration</strong> built directly into Rockbox via <code>liby1</code>, paired with Apple iPod 5.5G (Enhanced) hardware spoofing (<code>patch_kernel_ipod.py</code> + <code>ipod_vpd.ko</code>).</p>
+<p>This allows the Innioasis Y1 to connect directly to <strong>Apple iTunes (Windows &amp; macOS)</strong>, <strong>macOS Finder / Apple Music</strong>, or third-party managers (<strong>libgpod</strong>, <strong>Foobar2000 foo_dop</strong>, <strong>MediaMonkey</strong>, <strong>Clementine</strong>) as an authentic 80GB iPod Video (5.5th Generation, Model <code>MA448</code> / <code>MA450</code>), while Rockbox reads <code>iTunesDB</code>, <code>ArtworkDB</code>, <code>.ithmb</code> artwork, and playlists directly in memory <strong>without writing translated <code>.tcd</code>, <code>.bmp</code>, or <code>.m3u8</code> files to the SD card</strong>.</p>
+<pre><code class="language-mermaid">flowchart LR
+    subgraph HOST[&quot;Host Computer (Mac / PC / Linux)&quot;]
+        ITUNES[&quot;Apple iTunes / Finder / Music App / libgpod&quot;]
+    end
+
+    subgraph USB_LAYER[&quot;Hardware USB Gadget (MT6572)&quot;]
+        GADGET[&quot;Android USB Gadget (05ac:1209)
+        Single-LUN, Config 2, ipod_vpd.ko EVPD XML&quot;]
+    end
+
+    subgraph Y1_ENGINE[&quot;Native iTunes Engine (liby1 + Rockbox)&quot;]
+        INCOMING[&quot;Native Readers (RAM-only)
+        iTunesDB -&gt; tcramcache.hdr
+        ArtworkDB + .ithmb -&gt; RGB565
+        Playlists &amp; Smart Playlists (SLst)&quot;]
+        OUTGOING[&quot;Live Writers
+        Play Counts (mhdp)
+        Ratings, Bookmarks, OTG Favorites (mhpo)&quot;]
+    end
+
+    subgraph STORAGE[&quot;MicroSD Card (/mnt/sdcard)&quot;]
+        IPOD_DIR[&quot;/iPod_Control/
+        iTunesDB, ArtworkDB, F*.ithmb
+        Play Counts, OTGPlaylistInfo&quot;]
+    end
+
+    HOST &lt;--&gt;|High-Speed USB 2.0 (tuned mmcblk1)| USB_LAYER
+    USB_LAYER &lt;--&gt; GADGET
+    IPOD_DIR --&gt;|Read Directly in RAM| INCOMING
+    OUTGOING --&gt;|Write Live on Play/Rate/Fav| IPOD_DIR</code></pre>
+<hr>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol><li><a href="#1-hardware-spoofing-ipod-55g-enhanced">Hardware Spoofing (iPod 5.5G Enhanced)</a></li><li><a href="#2-bidirectional-sync-architecture">Bidirectional Sync Architecture</a><ul><li><a href="#21-pre-connect-phase-rockbox--itunes">2.1 Pre-Connect Phase (Rockbox → iTunes)</a></li><li><a href="#22-post-disconnect-phase-itunes--rockbox">2.2 Post-Disconnect Phase (iTunes → Rockbox)</a></li></ul></li><li><a href="#3-component--metadata-conversion-details">Component &amp; Metadata Conversion Details</a><ul><li><a href="#31-tagcache-binary-database-generation">3.1 TagCache Binary Database Generation</a></li><li><a href="#32-album-artwork--video-thumbnail-extraction">3.2 Album Artwork &amp; Video Thumbnail Extraction</a></li><li><a href="#33-video-subsystem-integration-video_dbdat">3.3 Video Subsystem Integration (<code>video_db.dat</code>)</a></li><li><a href="#34-playlists--live-smart-playlist-rules-m3u8">3.4 Playlists &amp; Live Smart Playlist Rules (<code>.m3u8</code>)</a></li><li><a href="#35-play-counts-ratings--on-the-go-otg-playlists">3.5 Play Counts, Ratings &amp; On-The-Go (OTG) Playlists</a></li></ul></li><li><a href="#4-cpu-frequency--dual-core-turbo-locking">CPU Frequency &amp; Dual-Core Turbo Locking</a></li><li><a href="#5-user-settings--configuration">User Settings &amp; Configuration</a></li><li><a href="#6-standalone-cli-tool-binipod_sync">Standalone CLI Tool (<code>/bin/ipod_sync</code>)</a></li><li><a href="#7-host-compatibility-guide">Host Compatibility Guide</a></li></ol>
+<hr>
+<h2 id="1-hardware-spoofing-ipod-55g-enhanced">1. Hardware Spoofing (iPod 5.5G Enhanced)</h2>
+<p>When <strong>iPod USB Mode</strong> is active, the Linux kernel gadget subsystem overrides the standard MediaTek USB descriptors with Apple iPod 5.5G identification parameters:</p>
+<table><thead><tr><th style="text-align:left">Parameter</th><th style="text-align:left">Value</th><th style="text-align:left">Meaning / Compatibility</th></tr></thead><tbody><tr><td style="text-align:left"><strong>USB Vendor ID (VID)</strong></td><td style="text-align:left"><code>0x05ac</code></td><td style="text-align:left">Apple, Inc.</td></tr><tr><td style="text-align:left"><strong>USB Product ID (PID)</strong></td><td style="text-align:left"><code>0x1209</code></td><td style="text-align:left">iPod Video 5.5G (Enhanced)</td></tr><tr><td style="text-align:left"><strong>Device Release (bcdDevice)</strong></td><td style="text-align:left"><code>0x0002</code></td><td style="text-align:left">Firmware 1.2 / 1.3 protocol revision</td></tr><tr><td style="text-align:left"><strong>Manufacturer String</strong></td><td style="text-align:left"><code>Apple</code></td><td style="text-align:left">Required for Apple Mobile Device Service</td></tr><tr><td style="text-align:left"><strong>Product String</strong></td><td style="text-align:left"><code>iPod</code></td><td style="text-align:left">Standard Apple USB identifier</td></tr><tr><td style="text-align:left"><strong>USB Serial Number</strong></td><td style="text-align:left"><code>000A270019B48C1F</code> (or persistent hex GUID)</td><td style="text-align:left">Derived from <code>/iPod_Control/Device/SysInfo</code></td></tr><tr><td style="text-align:left"><strong>SCSI Vendor / Inquiry</strong></td><td style="text-align:left"><code>&quot;Apple   iPod            1.62&quot;</code></td><td style="text-align:left">Identifies mass storage LUN as an authentic Apple iPod disk</td></tr><tr><td style="text-align:left"><strong>Device Model</strong></td><td style="text-align:left"><code>MA448</code> / <code>MA450</code> (80GB Black / White)</td><td style="text-align:left">Reported in <code>SysInfoExtended</code> XML</td></tr></tbody></table>
+<h3 id="device-initialization-files">Device Initialization Files</h3>
+<p>When the USB cable is attached, <code>liby1</code> ensures the existence of required Apple directory trees and device definition files:</p>
+<ul><li><code>/iPod_Control/Device/SysInfo</code>: Contains board revision (<code>0x000C0005</code>), serial number, FireWire GUID, and family ID (<code>0x0000000C</code>).</li><li><code>/iPod_Control/Device/SysInfoExtended</code>: XML property list containing firmware capabilities, supported image formats (Format 1027, 1031, 1055, 1060), and video playback profiles.</li><li>Root Symlinks: Case-insensitive symlinks (<code>/ipod_control</code>, <code>/IPOD_CONTROL</code>) mapping to <code>/mnt/sdcard/iPod_Control</code> to satisfy legacy syncing tools.</li></ul>
+<hr>
+<h2 id="2-native-itunes-architecture-zero-translation">2. Native iTunes Architecture (Zero-Translation)</h2>
+<p>Instead of translating <code>iTunesDB</code> into <code>.tcd</code> / <code>.bmp</code> / <code>.m3u8</code> files on disk, Rockbox reads and writes Apple&#x27;s native files directly via <code>liby1</code>:</p>
+<h3 id="21-incoming-itunes--rockbox-ram-only">2.1 Incoming (iTunes → Rockbox, RAM-Only)</h3>
+<ol><li><strong>Direct <code>iTunesDB</code> → TagCache RAM (<code>tcramcache.hdr</code>)</strong>: <code>apps/tagcache.c</code> calls <code>y1_ipod_native_load_ramcache()</code> on boot and after USB disconnect, populating Rockbox&#x27;s in-memory TagCache directly from <code>/iPod_Control/iTunes/iTunesDB</code> without writing <code>database_*.tcd</code> files.</li><li><strong>On-the-Fly <code>ArtworkDB</code> + <code>.ithmb</code> Decoding</strong>: <code>apps/recorder/albumart.c</code> and <code>apps/buffering.c</code> resolve virtual <code>ithmb://</code> cover art paths and decode RGB565 artwork from <code>/iPod_Control/Artwork/ArtworkDB</code> and <code>F*.ithmb</code> directly into Rockbox&#x27;s bitmap buffer.</li><li><strong>In-Memory Playlists &amp; Smart Playlists (<code>SLst</code>)</strong>: <code>apps/root_menu.c</code> exposes <code>iTunesDB</code> standard playlists and live-evaluated <code>SLst</code> smart playlists directly inside Rockbox&#x27;s Playlist Catalog.</li></ol>
+<h3 id="22-outgoing-rockbox--itunes-live-writes">2.2 Outgoing (Rockbox → iTunes, Live Writes)</h3>
+<ol><li><strong>Live <code>Play Counts</code> (<code>mhdp</code>)</strong>: As tracks finish (<code>apps/tagtree.c</code>) or star ratings/bookmarks change (<code>apps/onplay.c</code>), <code>y1_ipod_native_record_play()</code> and <code>y1_ipod_native_record_rating()</code> update <code>/iPod_Control/iTunes/Play Counts</code> immediately (preserving existing star ratings on untouched tracks).</li><li><strong>Live <code>OTGPlaylistInfo</code> (<code>mhpo</code>) Favorites</strong>: The <strong>Toggle Favorite</strong> action in Rockbox&#x27;s WPS context menu (<code>apps/onplay.c</code>) calls <code>y1_ipod_native_record_favorite()</code>, writing <code>/iPod_Control/iTunes/OTGPlaylistInfo</code> so iTunes imports queued favorites on next sync.</li><li><strong>USB Attach/Detach Invalidation</strong>: <code>usb-y1.c</code> ensures device files, invalidates the in-memory cache on USB attach/eject, and triggers a TagCache RAM reload on disconnect.</li></ol>
+<hr>
+<h2 id="3-component--kernel-spoofing-details">3. Component &amp; Kernel Spoofing Details</h2>
+<h3 id="31-kernel-usb--scsi-evpd-spoofing-patchkernelipodpy--ipodvpdko">3.1 Kernel USB &amp; SCSI EVPD Spoofing (<code>patch_kernel_ipod.py</code> + <code>ipod_vpd.ko</code>)</h3>
+<ul><li><strong><code>patch_kernel_ipod.py</code></strong> patches the MT6572 kernel for authentic iPod 5.5G enumeration:<ul><li>Single LUN (<code>MaxLUN = 0</code>), 16-bit SCSI INQUIRY <code>AllocationLength</code> clamp, space-padded <code>&quot;Apple   iPod            1.62&quot;</code> standard inquiry, and <code>bNumConfigurations = 2</code> (Config 2 for Apple Mobile Device / Finder support).</li></ul></li><li><strong><code>ipod_vpd.ko</code></strong> (loaded dynamically when <code>y1_ipod_usb_mode</code> is ON) serves SCSI INQUIRY EVPD pages (<code>0x00</code>, <code>0xC0</code>, <code>0xC2..0xFF</code>) containing the <code>SysInfoExtended</code> XML descriptor required by iTunes (Windows) and Finder/Music.app (macOS).</li></ul>
+<h3 id="32-usb-20-mass-storage-speed-tuning-y1usbtuneperformance">3.2 USB 2.0 Mass Storage Speed Tuning (<code>y1_usb_tune_performance</code>)</h3>
+<p>When USB Mass Storage is attached, <code>y1_usb.c</code> (and <code>initramfs/init.c</code>) automatically tunes the MicroSD block queue and CPU:</p>
+<ul><li>Switches <code>/sys/block/mmcblk1/queue/scheduler</code> to <code>noop</code> (fallback <code>deadline</code>).</li><li>Raises <code>read_ahead_kb</code> to <code>2048</code>, <code>nr_requests</code> to <code>512</code>, and <code>max_sectors_kb</code> up to <code>min(max_hw_sectors_kb, 512)</code>.</li><li>Disables <code>iostats</code> and <code>add_random</code> overhead and enables <code>nofua = 1</code> on LUN0.</li><li>Locks both Cortex-A7 cores at 1.3 GHz (<code>performance</code> governor) + <code>/proc/cpufreq/usb_raise_freq = 1</code> while attached, and restores previous settings on detach/eject.</li></ul>
+<hr>
+<h2 id="4-cpu-frequency--dual-core-turbo-locking">4. CPU Frequency &amp; Dual-Core Turbo Locking</h2>
+<p>Conversion of thousands of tracks, <code>.ithmb</code> image decoding, and TagCache hashing are computationally heavy. To maximize battery life during normal playback while keeping sync times fast, <code>liby1</code> implements a <strong>refcounted turbo boost</strong> (<code>y1_cpu_boost_for_conversion</code>):</p>
+<pre><code class="language-c">// Lock CPU to maximum performance
+y1_cpu_boost_for_conversion(true);
+
+/*
+ * 1. CPU0 scaling_governor -&gt; &quot;performance&quot;
+ * 2. CPU0 scaling_setspeed  -&gt; &quot;1300000&quot; (1.30 GHz)
+ * 3. CPU1 online            -&gt; &quot;1&quot; (Core 1 forced online)
+ * 4. CPU1 scaling_governor -&gt; &quot;performance&quot;
+ * 5. MediaTek hotplug       -&gt; disabled (prevents kernel from offlining Core 1)
+ */
+
+// Perform synchronization...
+
+// Restore previous frequency and governor automatically
+y1_cpu_boost_for_conversion(false);</code></pre>
+<p>During conversion, the device displays real-time progress on the LCD:</p>
+<pre><code>[====================&gt;        ] 72%
+Converting: Album Art (342/480)...</code></pre>
+<hr>
+<h2 id="5-user-settings--configuration">5. User Settings &amp; Configuration</h2>
+<p>iPod USB Mode is enabled by default and can be toggled via software or configuration files.</p>
+<h3 id="1-rockbox-ui-settings">1. Rockbox UI Settings</h3>
+<ul><li>Navigate to: <strong>Settings → General Settings → System → Innioasis Y1 Settings → iPod USB Mode</strong></li><li>Options: <strong>Yes (iPod 5.5G)</strong> / <strong>No (Standard Mass Storage)</strong></li><li>When set to <strong>No</strong>, the Y1 presents itself as a standard MediaTek USB mass storage device (<code>0e8d:0001</code> / <code>Y1 Rockbox Player</code>).</li></ul>
+<h3 id="2-configuration-files">2. Configuration Files</h3>
+<ul><li><strong>Rockbox Config</strong>: <code>/.rockbox/config.cfg</code><p><code></code>`ini y1 ipod usb mode: on <code></code>`</p></li><li><strong>System Flag (checked by initramfs)</strong>: <code>/.system/ipod_usb_mode</code><ul><li><code>1</code>: Enabled</li><li><code>0</code>: Disabled</li></ul></li></ul>
+<hr>
+<h2 id="55-how-to-use-after-syncing-with-itunes">5.5 How to Use After Syncing with iTunes</h2>
+<p>Once you eject/unplug the Y1 from iTunes (or macOS Finder / Music), Rockbox automatically invalidates and reloads its in-memory database from <code>/iPod_Control/iTunes/iTunesDB</code>—<strong>no manual &quot;Update Database&quot; scan is required</strong>.</p>
+<ol><li><strong>Browse Music, Artists, Albums, Genres:</strong><ul><li>Open <strong>Database</strong> from the Rockbox Main Menu.</li><li><em>(Do not use <strong>Files</strong>, because iTunes stores audio under scrambled paths like <code>/iPod_Control/Music/F00/ABCD.mp3</code>; <strong>Database</strong> displays all iTunes metadata directly from <code>iTunesDB</code> in RAM.)</em></li></ul></li><li><strong>Browse iTunes Playlists &amp; Smart Playlists:</strong><ul><li>Open <strong>Playlists</strong> from the Rockbox Main Menu to browse standard <code>iTunesDB</code> playlists and live-evaluated smart playlists (<code>SLst</code>). Select a playlist to start playback immediately.</li></ul></li><li><strong>Album Artwork:</strong><ul><li>Displayed automatically on the While Playing Screen (WPS) and in supported themes directly from <code>ArtworkDB</code> and <code>F*.ithmb</code>.</li></ul></li><li><strong>Play Counts, Star Ratings &amp; Favorites (Synced Back to iTunes):</strong><ul><li><strong>Play Counts:</strong> Automatically recorded to <code>/iPod_Control/iTunes/Play Counts</code> as tracks finish playing.</li><li><strong>Star Ratings:</strong> On the WPS, open the Context Menu (hold <strong>Select</strong>) → <strong>Set Rating</strong> (updates <code>Play Counts</code>).</li><li><strong>Favorites (OTG):</strong> On the WPS, open the Context Menu → <strong>Toggle Favorite</strong> (writes <code>/iPod_Control/iTunes/OTGPlaylistInfo</code> for iTunes to import on next sync).</li></ul></li></ol>
+<hr>
+<h2 id="6-standalone-cli-tool-binipodsync">6. Standalone CLI Tool (<code>/bin/ipod_sync</code>)</h2>
+<p>A lightweight initialization binary is installed at <code>/bin/ipod_sync</code> inside the rootfs:</p>
+<pre><code class="language-bash"># Initialize iPod directory hierarchy and device descriptors (SysInfo / SysInfoExtended)
+/bin/ipod_sync init</code></pre>
+<p>This utility can be invoked from <code>initramfs</code>, shell scripts, or custom applications.</p>
+<hr>
+<h2 id="7-host-compatibility-guide">7. Host Compatibility Guide</h2>
+<table><thead><tr><th style="text-align:left">Host Platform</th><th style="text-align:left">Supported Software</th><th style="text-align:left">Notes</th></tr></thead><tbody><tr><td style="text-align:left"><strong>Windows 10 / 11</strong></td><td style="text-align:left">Apple iTunes 12.x (Desktop &amp; Store)</td><td style="text-align:left">Full sync: Music, Videos, Playlists, Artwork, Play Counts</td></tr><tr><td style="text-align:left"><strong>Windows (All)</strong></td><td style="text-align:left">Foobar2000 + <code>foo_dop</code></td><td style="text-align:left">Excellent lightweight iPod management component</td></tr><tr><td style="text-align:left"><strong>Windows (All)</strong></td><td style="text-align:left">MediaMonkey 4 / 5</td><td style="text-align:left">Full iPod sync support</td></tr><tr><td style="text-align:left"><strong>macOS (Mojave &amp; earlier)</strong></td><td style="text-align:left">Apple iTunes</td><td style="text-align:left">Native iPod synchronization</td></tr><tr><td style="text-align:left"><strong>macOS (Catalina to Sequoia)</strong></td><td style="text-align:left">Apple Music / Finder</td><td style="text-align:left">Syncs directly through Finder sidebar as an iPod</td></tr><tr><td style="text-align:left"><strong>Linux (All distributions)</strong></td><td style="text-align:left"><code>libgpod</code> / Rhythmbox / Clementine</td><td style="text-align:left">Full support for reading/writing <code>iTunesDB</code> and artwork</td></tr><tr><td style="text-align:left"><strong>Cross-Platform</strong></td><td style="text-align:left">MusicBee, Strawberry Music Player</td><td style="text-align:left">Detects device as an Apple iPod mass storage device</td></tr></tbody></table>
+<hr>
+<h2 id="8-windows--itunes-troubleshooting-guide">8. Windows &amp; iTunes Troubleshooting Guide</h2>
+<p>If Windows detects the device and installs drivers, but iTunes does not show the iPod icon:</p>
+<ol><li><strong>FAT32 Filesystem Requirement</strong>:<ul><li>Apple iTunes on Windows <strong>only</strong> supports classic iPods formatted with <strong>FAT32</strong>.</li><li>If your MicroSD card is formatted as <strong>exFAT</strong> or NTFS, Windows will mount it in File Explorer, but iTunes will deliberately ignore it.</li><li><strong>Solution</strong>: Format the MicroSD card as FAT32 (using tools like <em>GUIFormat</em> / <em>FAT32 Format</em> for cards larger than 32GB).</li></ul></li><li><strong>Standalone Apple iTunes Desktop Installer</strong>:<ul><li>The Microsoft Store version of iTunes often lacks background <code>iPod Support Service</code> permissions or USB redirection drivers.</li><li><strong>Solution</strong>: Install the standalone Apple 64-bit installer (<code>iTunes64Setup.exe</code> from Apple&#x27;s official download page). Ensure <code>Apple Mobile Device Support</code> and <code>iPod Support</code> are running in <code>services.msc</code>.</li></ul></li><li><strong>Check Device Manager (Single LUN vs 2x Drives)</strong>:<ul><li>Under <strong>Disk drives</strong>, the drive must appear as <strong>exactly one</strong> <code>Apple___ iPod____________ USB Device</code>.</li><li>Under <strong>Universal Serial Bus controllers</strong>, it appears as <code>USB Mass Storage Device</code> (standard for iPod Classic/Video 5.5G <code>05ac:1209</code>).</li><li>If it previously appeared as <strong><code>2x Apple___ iPod____________ USB Device</code></strong>:</li><li>The MediaTek MT6572 kernel hardcodes <code>nluns = 2</code>. In MediaTek&#x27;s <code>f_mass_storage.c</code>, when <code>bicr == 0</code>, the USB <code>GET_MAX_LUN</code> request calculates <code>max_lun = nluns - 1 = 1</code>, telling the host that two LUNs (0 and 1) exist. Both LUNs shared the inquiry string, producing 2 identical disk drives in Device Manager.</li><li>When iTunes detects a USB mass storage device with multiple LUNs, <code>iPodService</code> rejects the device as an unsupported multi-card reader, as authentic iPods only possess a single LUN.</li><li>In latest Nugget, <code>bicr</code> is set to <code>2</code>. In MediaTek&#x27;s kernel:</li></ul></li><li><strong>Single-LUN Architecture &amp; BICR = 2</strong>:<ul><li>Nugget strictly forces <code>GET_MAX_LUN = 0</code> via <code>bicr = 2</code> when iPod USB mode is active. Only LUN0 is exposed to the USB host.</li></ul></li></ol></article><p class="lumen-doc-footer-note">These are Nugget's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=nugget-y1">norocoral's <em>Nugget</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=norocoral%2Fnugget-y1&amp;software=nugget-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

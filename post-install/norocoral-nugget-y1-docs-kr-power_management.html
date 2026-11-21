@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>전원 관리: Innioasis Y1 - Innioasis Updater</title>
+  <meta name="description" content="🌐 한국어 English ../POWER MANAGEMENT.md 전원 관리: Innioasis Y1 본 문서는 MediaTek MT6572 / MT6323 하드웨어 플랫폼에서 Nugget 리눅스 환경 및 liby1 이 구현하는 전원 관리 메커니즘을 설명합니다. --- 1. 커널 절전 및 Wakelock">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-power_management.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="전원 관리: Innioasis Y1 - Innioasis Updater">
+  <meta property="og:description" content="🌐 한국어 English ../POWER MANAGEMENT.md 전원 관리: Innioasis Y1 본 문서는 MediaTek MT6572 / MT6323 하드웨어 플랫폼에서 Nugget 리눅스 환경 및 liby1 이 구현하는 전원 관리 메커니즘을 설명합니다. --- 1. 커널 절전 및 Wakelock">
+  <meta property="og:url" content="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-power_management.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="전원 관리: Innioasis Y1 - Innioasis Updater">
+  <meta name="twitter:description" content="🌐 한국어 English ../POWER MANAGEMENT.md 전원 관리: Innioasis Y1 본 문서는 MediaTek MT6572 / MT6323 하드웨어 플랫폼에서 Nugget 리눅스 환경 및 liby1 이 구현하는 전원 관리 메커니즘을 설명합니다. --- 1. 커널 절전 및 Wakelock">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-power_management.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-power_management.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y1&amp;software=nugget-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Nugget · Y1</p><h1>전원 관리: Innioasis Y1</h1><p class="lumen-lead">Community firmware package for the Y1.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y1&amp;software=nugget-y1">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y1&amp;software=nugget-y1">Install guide</a></div></header><article class="lumen-doc-body"><p>🌐 <strong>한국어</strong> | <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2FPOWER_MANAGEMENT.md">English</a></p>
+<h1 id="innioasis-y1">전원 관리: Innioasis Y1</h1>
+<p>본 문서는 MediaTek MT6572 / MT6323 하드웨어 플랫폼에서 Nugget 리눅스 환경 및 <code>liby1</code>이 구현하는 전원 관리 메커니즘을 설명합니다.</p>
+<hr>
+<h2 id="1----wakelock">1. 커널 절전 및 Wakelock 아키텍처</h2>
+<p>다운스트림 리눅스 커널 3.4.67은 안드로이드 <code>earlysuspend</code> 및 <code>wakelock</code> sysfs 인터페이스(<code>/sys/power/state</code>, <code>/sys/power/wake_lock</code>, <code>/sys/power/wake_unlock</code>)를 사용합니다.</p>
+<h3 id="11--early-suspend-vs--mem">1.1 디스플레이 Early-Suspend vs. 전체 <code>mem</code> 절전</h3>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; Active: rockbox_active 잠금, state=&quot;on&quot;
+    Active --&gt; EarlySuspend: y1_display_enter_early_suspend()
+    EarlySuspend --&gt; MemSuspend: y1_power_set_idle_sleep(true)
+    MemSuspend --&gt; Active: 웨이크 IRQ + y1_power_set_idle_sleep(false) + y1_display_exit_early_suspend()
+    EarlySuspend --&gt; Active: y1_display_exit_early_suspend()</code></pre>
+<ul><li><strong>Early-Suspend (<code>y1_display_enter_early_suspend()</code>):</strong><ul><li><code>/sys/power/wake_lock</code>에 <code>&quot;rockbox_active&quot;</code>를 획득한 상태에서 <code>/sys/power/state</code>에 <code>&quot;mem\n&quot;</code>을 기록합니다.</li><li>유저스페이스 wakelock이 유지되므로 커널 <code>earlysuspend</code> 핸들러가 유저스페이스 프로세스를 정지시키지 않고 디스플레이 컨트롤러, 백라이트, 터치 스캔, GPU 전원만 차단합니다(화면이 꺼진 상태의 오디오 재생에 사용).</li></ul></li><li><strong>전체 <code>mem</code> 절전 (<code>y1_power_set_idle_sleep(true)</code>):</strong><ul><li>USB 대용량 저장소가 연결된 경우(<code>y1_usb_is_storage_attached()</code>)에는 건너뜁니다.</li><li><code>/sys/power/wake_unlock</code>에서 <code>&quot;rockbox_active&quot;</code> 및 <code>&quot;y1play&quot;</code>를 해제하고 <code>/sys/power/state</code>에 <code>&quot;mem\n&quot;</code>을 기록하여 오디오 DMA가 유휴 상태일 때 커널이 <code>mem</code> 절전(RAM 유지, 유저스페이스 동결)에 진입할 수 있도록 합니다.</li></ul></li><li><strong>복귀 (<code>y1_power_set_idle_sleep(false)</code> + <code>y1_display_exit_early_suspend()</code>):</strong><ul><li><code>/sys/power/wake_lock</code>에 <code>&quot;rockbox_active&quot;</code>를 다시 획득하고 <code>/sys/power/state</code>에 <code>&quot;on\n&quot;</code>을 기록합니다.</li></ul></li></ul>
+<h3 id="12---wakelock--spm-deep-idle">1.2 오디오 재생 Wakelock 및 SPM Deep-Idle</h3>
+<ul><li><code>y1_audio_wake_lock(true)</code> / <code>y1_audio_wake_lock(false)</code>는 오디오 재생 중 <code>mem</code> 절전 진입을 방지하기 위해 <code>&quot;y1play&quot;</code> wakelock을 획득/해제합니다.</li><li><code>y1_audio_set_deep_idle(false)</code>는 AFE DL1 DMA가 동작하는 동안 DMA 언더런이 발생하지 않도록 MT6572 SPM CPU 전원 차단을 비활성화하며, 오디오가 정지하면 <code>y1_audio_set_deep_idle(true)</code>로 다시 허용합니다.</li></ul>
+<hr>
+<h2 id="2-cpu">2. CPU 주파수 및 코어 핫플러그 제어</h2>
+<h3 id="21--sysfs">2.1 커널 Sysfs 인터페이스</h3>
+<ul><li>주파수 거버너/속도: <code>/sys/devices/system/cpu/cpu0/cpufreq/</code> (<code>scaling_governor</code>, <code>scaling_setspeed</code>)</li><li>코어 1 핫플러그: <code>/sys/devices/system/cpu/cpu1/online</code> (<code>0</code> = 오프라인, <code>1</code> = 온라인)</li></ul>
+<h3 id="22-liby1-cpu--enum-y1cpumodeid">2.2 <code>liby1</code> CPU 모드 (<code>enum y1_cpu_mode_id</code>)</h3>
+<table><thead><tr><th style="text-align:left">모드</th><th style="text-align:left">상수</th><th style="text-align:left">동작</th></tr></thead><tbody><tr><td style="text-align:left">Dynamic</td><td style="text-align:left"><code>Y1_CPU_MODE_DYNAMIC</code> (<code>0</code>)</td><td style="text-align:left"><code>ondemand</code> 거버너 (598 MHz – 1001 MHz)</td></tr><tr><td style="text-align:left">Powersave</td><td style="text-align:left"><code>Y1_CPU_MODE_POWERSAVE</code> (<code>1</code>)</td><td style="text-align:left">고정 598 MHz</td></tr><tr><td style="text-align:left">Balanced</td><td style="text-align:left"><code>Y1_CPU_MODE_BALANCED</code> (<code>2</code>)</td><td style="text-align:left">고정 1001 MHz</td></tr><tr><td style="text-align:left">Performance</td><td style="text-align:left"><code>Y1_CPU_MODE_PERFORMANCE</code> (<code>3</code>)</td><td style="text-align:left">고정 1196 MHz</td></tr><tr><td style="text-align:left">Turbo</td><td style="text-align:left"><code>Y1_CPU_MODE_TURBO</code> (<code>4</code>)</td><td style="text-align:left">고정 1300 MHz</td></tr></tbody></table>
+<ul><li><code>y1_cpu_set_dual_core(bool dual_core)</code>는 <code>/sys/devices/system/cpu/cpu1/online</code>을 통해 CPU1을 활성화하거나 오프라인합니다.</li><li><code>y1_cpu_set_screen_off_clamp(bool screen_off)</code>는 화면이 꺼졌을 때 CPU 주파수를 제한하고 CPU1을 오프라인합니다.</li><li><code>y1_cpu_boost_for_conversion(bool enable)</code>은 대용량 데이터베이스 또는 앨범아트 처리 중 일시적으로 CPU 클록/코어를 상향하고 비활성화 시 이전 모드를 복원합니다.</li></ul>
+<hr>
+<h2 id="3">3. 유휴 시 주변 장치 전원 차단</h2>
+<ul><li><strong>디스플레이 에코 모드:</strong> <code>y1_fb_set_eco_mode(true)</code>는 <code>/proc/dispsys/eco_mode</code>를 설정합니다.</li><li><strong>터치 스캔:</strong> <code>y1_input_set_touch_scanning(false)</code>는 <code>/proc/tpd_keys_enable</code>을 통해 터치 휠 스캔을 비활성화합니다.</li><li><strong>오디오 아날로그 스테이지:</strong> <code>/dev/eac</code>를 닫을 때(<code>y1_audio_close()</code>) 안정화 샘플을 출력한 후 MT6323 헤드폰 앰프 및 DAC 바이어스 전원을 차단합니다.</li></ul></article><p class="lumen-doc-footer-note">These are Nugget's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=nugget-y1">norocoral's <em>Nugget</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=norocoral%2Fnugget-y1&amp;software=nugget-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

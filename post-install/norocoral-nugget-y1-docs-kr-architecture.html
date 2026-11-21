@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>시스템 아키텍처: Innioasis Y1 호스티드 리눅스 포트 - Innioasis Updater</title>
+  <meta name="description" content="🌐 한국어 English ../ARCHITECTURE.md 시스템 아키텍처: Innioasis Y1 호스티드 리눅스 포트 이 문서는 최소 구성 다운스트림 리눅스 기반 Innioasis Y1 Rockbox 포트 및 liby1 하드웨어 SDK의 소프트웨어 아키텍처, 프로세스 모델, 부팅 수명 주기, 스토리지">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-architecture.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="시스템 아키텍처: Innioasis Y1 호스티드 리눅스 포트 - Innioasis Updater">
+  <meta property="og:description" content="🌐 한국어 English ../ARCHITECTURE.md 시스템 아키텍처: Innioasis Y1 호스티드 리눅스 포트 이 문서는 최소 구성 다운스트림 리눅스 기반 Innioasis Y1 Rockbox 포트 및 liby1 하드웨어 SDK의 소프트웨어 아키텍처, 프로세스 모델, 부팅 수명 주기, 스토리지">
+  <meta property="og:url" content="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-architecture.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="시스템 아키텍처: Innioasis Y1 호스티드 리눅스 포트 - Innioasis Updater">
+  <meta name="twitter:description" content="🌐 한국어 English ../ARCHITECTURE.md 시스템 아키텍처: Innioasis Y1 호스티드 리눅스 포트 이 문서는 최소 구성 다운스트림 리눅스 기반 Innioasis Y1 Rockbox 포트 및 liby1 하드웨어 SDK의 소프트웨어 아키텍처, 프로세스 모델, 부팅 수명 주기, 스토리지">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-architecture.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-architecture.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y1&amp;software=nugget-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Nugget · Y1</p><h1>시스템 아키텍처: Innioasis Y1 호스티드 리눅스 포트</h1><p class="lumen-lead">Community firmware package for the Y1.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y1&amp;software=nugget-y1">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y1&amp;software=nugget-y1">Install guide</a></div></header><article class="lumen-doc-body"><p>🌐 <strong>한국어</strong> | <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fnorocoral%2Fnugget-y1%2Fblob%2FHEAD%2Fdocs%2FARCHITECTURE.md">English</a></p>
+<h1 id="innioasis-y1">시스템 아키텍처: Innioasis Y1 호스티드 리눅스 포트</h1>
+<p>이 문서는 최소 구성 다운스트림 리눅스 기반 Innioasis Y1 Rockbox 포트 및 <code>liby1</code> 하드웨어 SDK의 소프트웨어 아키텍처, 프로세스 모델, 부팅 수명 주기, 스토리지 계층 구조를 상세히 설명합니다.</p>
+<hr>
+<h2 id="1">1. 시스템 블록 다이어그램</h2>
+<pre><code class="language-mermaid">flowchart TD
+    subgraph HW[&quot;하드웨어 계층&quot;]
+        CPU[&quot;MT6572 듀얼 Cortex-A7 (1.2 GHz)&quot;]
+        PMIC[&quot;MT6323 PMIC &amp; DAC&quot;]
+        LCD[&quot;2.8인치 LCD (480x360 BGRA)&quot;]
+        SD[&quot;MicroSD 카드 (mmcblk1p1)&quot;]
+        BTN[&quot;키패드 및 정전식 휠&quot;]
+        JACK[&quot;3.5mm 이어폰 단자 (accdet)&quot;]
+        WIFI_BT[&quot;MT6627 BT / FM 라디오&quot;]
+    end
+
+    subgraph KERNEL[&quot;다운스트림 리눅스 커널 3.4.67&quot;]
+        K_EAC[&quot;/dev/eac 오디오 장치&quot;]
+        K_FB[&quot;/dev/fb0 프레임버퍼&quot;]
+        K_EV[&quot;/dev/input/event* 노드&quot;]
+        K_MMC[&quot;mmc_block 및 파일시스템 드라이버&quot;]
+        K_CPU[&quot;cpufreq 및 핫플러그 서브시스템&quot;]
+        K_FM[&quot;/dev/fm 튜너 장치&quot;]
+        K_USB[&quot;안드로이드 USB 가젯 (android0)&quot;]
+    end
+
+    subgraph INITRAMFS[&quot;Initramfs (PID 1 /init)&quot;]
+        INIT_BOOST[&quot;부팅 CPU 클록 부스트 (1.2 GHz 듀얼 코어)&quot;]
+        INIT_STORAGE[&quot;반응형 MicroSD 마운트 (/mnt/sdcard)&quot;]
+        INIT_MENU[&quot;그래픽 부트로더 메뉴 (Nugget / Android / Poweroff / USB)&quot;]
+        INIT_EXEC[&quot;Rockbox 또는 독립형 앱으로 제어권 전환&quot;]
+    end
+
+    subgraph LIBY1[&quot;liby1 하드웨어 추상화 계층 (liby1.a / liby1.so)&quot;]
+        Y1_CORE[&quot;코어, Sysfs, 배터리, 전원 및 로깅&quot;]
+        Y1_DISP[&quot;프레임버퍼 (480x360 네이티브 / 320x240 스케일러), 백라이트, 절전&quot;]
+        Y1_CPU[&quot;CPU 거버너, 듀얼코어 핫플러그, 화면 꺼짐 클램프&quot;]
+        Y1_INP[&quot;클릭 휠, 택타일 키, ACCDET 이어폰 단자&quot;]
+        Y1_AUDIO[&quot;EAC DL1 DMA, MT6323 PMIC DAC &amp; 헤드폰 앰프, 마이크 ADC&quot;]
+        Y1_TUNER[&quot;MT6627 FM 라디오 제어&quot;]
+        Y1_USB[&quot;USB 대용량 저장소 가젯 제어&quot;]
+    end
+
+    subgraph APPS[&quot;애플리케이션 공간&quot;]
+        RB[&quot;호스티드 Rockbox 프로세스 (/mnt/sdcard/.rockbox/rockbox)&quot;]
+        CUSTOM_APP[&quot;독립형 커스텀 C 앱 (/mnt/sdcard/.system/app)&quot;]
+    end
+
+    HW --&gt; KERNEL
+    KERNEL --&gt; INITRAMFS
+    INITRAMFS --&gt; APPS
+    APPS --&gt; LIBY1
+    LIBY1 --&gt; KERNEL</code></pre>
+<hr>
+<h2 id="2">2. 부팅 시퀀스 및 프로세스 수명 주기</h2>
+<pre><code class="language-mermaid">sequenceDiagram
+    autonumber
+    participant LK as MediaTek Little Kernel (LK)
+    participant K as 리눅스 커널 (3.4.67)
+    participant I as PID 1 (C 언어 /init)
+    participant SD as MicroSD 카드 (mmcblk1p1)
+    participant APP as Rockbox 또는 커스텀 앱
+
+    LK-&gt;&gt;K: MTK ATAGs를 전달하며 커널 실행
+    K-&gt;&gt;K: SoC 드라이버, 클록, 메모리 초기화
+    K-&gt;&gt;I: initramfs의 /init 실행
+    I-&gt;&gt;I: boost_cpu_for_boot() -&gt; 두 코어 모두 1.2 GHz 성능 모드
+    I-&gt;&gt;I: /proc, /sys, /dev 마운트
+    I-&gt;&gt;I: /etc/boot.raw 화면을 /dev/fb0에 출력
+    I-&gt;&gt;SD: mmcblk1p1 반응형 폴링 (10ms 주기)
+    alt MicroSD 카드 감지됨
+        I-&gt;&gt;SD: mmcblk1p1을 /mnt/sdcard에 마운트
+        I-&gt;&gt;I: 심볼릭 링크 /.system -&gt; /mnt/sdcard/.system 생성
+        alt 부트로더 메뉴 활성화 또는 MENU 버튼 누름 감지
+            I-&gt;&gt;I: 부트로더 메뉴 표시 (Nugget / Android / Poweroff / USB)
+            opt Android 선택 시
+                I-&gt;&gt;I: rootfs 정리 및 ramdisk_android.cpio.gz 압축 해제 -&gt; execve(&quot;/init&quot;)
+            end
+            opt USB 선택 시
+                I-&gt;&gt;I: PC 파일 전송을 위해 mmcblk1p1을 USB LUN0에 연결
+            end
+        end
+        alt 커스텀 앱 존재 시
+            I-&gt;&gt;APP: execve(&quot;/mnt/sdcard/.system/app&quot;)
+        else 표준 Rockbox 실행
+            I-&gt;&gt;APP: execve(&quot;/mnt/sdcard/.rockbox/rockbox&quot;)
+        end
+    else 카드 없음 또는 인식 불가
+        I-&gt;&gt;I: /etc/sdcard.raw 화면 출력 후 대기
+    end
+    APP-&gt;&gt;APP: liby1을 통한 하드웨어 초기화 (화면, 입력, 오디오, CPU 프로필)
+    APP-&gt;&gt;APP: 메인 이벤트 루프 및 재생 진입</code></pre>
+<hr>
+<h2 id="3">3. 스토리지 계층 구조 및 파티션</h2>
+<p>하드웨어에는 내부 eMMC(<code>mmcblk0</code>)와 외장 MicroSD(<code>mmcblk1</code>)가 있습니다.</p>
+<h3 id="31">3.1 파티션 구성</h3>
+<ul><li><code>mmcblk0</code> (내부 eMMC): 순정 MediaTek 파티션(<code>BOOTIMG</code>, <code>RECOVERY</code>, <code>LOGO</code>, <code>SYSTEM</code>, <code>CACHE</code>, <code>DATA</code>)을 포함합니다. Nugget OS는 <code>BOOTIMG</code> 파티션만 <code>boot_nugget.img</code>(최대 6 MiB)로 덮어쓰며, eMMC의 나머지 영역은 마운트하지 않고 보존합니다.</li><li><code>mmcblk1p1</code> (외장 MicroSD): FAT32, exFAT, NTFS 또는 ext4로 포맷됩니다. 시스템 라이브러리, 하드웨어 SDK 자산, 사용자 애플리케이션 데이터를 저장합니다:</li></ul>
+<pre><code class="language-text">/mnt/sdcard/
+|-- .system/                      # 시스템, 하드웨어 및 개발자 라이브러리 (/.system에 심볼릭 링크됨)
+|   |-- lib/
+|   |   |-- liby1.so              # liby1 동적 공유 라이브러리
+|   |   |-- liby1.a               # liby1 정적 라이브러리
+|   |   `-- liby1video.so         # NEON H.264/AAC 하드웨어 비디오 디코더
+|   |-- include/
+|   |   `-- liby1.h               # 공개 C 헤더 파일
+|   |-- bin/
+|   |   `-- ffmpeg                # 정적 ARM FFmpeg 실행 파일 (선택 사항)
+|   |-- bt/                       # 블루투스 커널 모듈 및 펌웨어
+|   |-- bt_paired.dat             # 페어링된 기기 데이터베이스
+|   |-- ramdisk_android.cpio.gz   # 듀얼 부팅용 순정 안드로이드 램디스크
+|   |-- y1_debug.txt              # 하드웨어 진단 로그
+|   |-- system.cfg                # 부트로더 메뉴 설정 파일
+|   |-- *.raw                     # 스플래시 및 부트로더 메뉴 화면 파일
+|   `-- app                       # 부팅 시 즉시 실행 가능한 독립형 사용자 애플리케이션
+|-- .rockbox/                     # 순수 Rockbox 전용 자산 디렉터리
+|   |-- rockbox                   # ELF ARM hard-float 실행 파일
+|   |-- codecs/                   # 오디오 디코더 (.codec)
+|   |-- rocks/                    # 플러그인 (.rock, .ovl)
+|   |-- fonts/                    # UI 글꼴 (.fnt, .fnticons)
+|   |-- themes/                   # 테마 설정 (.cfg)
+|   |-- wps/                      # 재생 화면 스킨 (.wps, .sbs)
+|   `-- config.cfg                # Rockbox 설정 파일
+|-- Videos/                       # 비디오 파일 디렉터리
+`-- Music/                        # 음악 라이브러리</code></pre>
+<hr>
+<h2 id="4----liby1">4. 하드웨어 추상화 계층 (<code>liby1</code>) 매핑</h2>
+<table><thead><tr><th style="text-align:left">서브시스템</th><th style="text-align:left"><code>liby1</code> 모듈</th><th style="text-align:left">기술적 역할</th></tr></thead><tbody><tr><td style="text-align:left">코어 / 전원 / 배터리</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_core.c"><code>hosted_linux_port/liby1/src/y1_core.c</code></a></td><td style="text-align:left">시스템 전역 초기화, MT6323 PMIC 레지스터 접근, 배터리 텔레메트리, <code>/mnt/sdcard/.system/y1_debug.txt</code> 진단 로깅.</td></tr><tr><td style="text-align:left">디스플레이 및 백라이트</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_display.c"><code>hosted_linux_port/liby1/src/y1_display.c</code></a></td><td style="text-align:left">프레임버퍼 쓰기 (<code>/dev/graphics/fb0</code>), 480x360 네이티브, 320x240 클래식 양선형 업스케일러, 커널 조기 일시정지(<code>early_suspend</code>).</td></tr><tr><td style="text-align:left">CPU 주파수 및 핫플러그</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_cpu.c"><code>hosted_linux_port/liby1/src/y1_cpu.c</code></a></td><td style="text-align:left">cpufreq 주파수 제어 (598MHz 저전력 ~ 1.3GHz 터보), CPU1 코어 오프라인화, 화면 꺼짐 클램프.</td></tr><tr><td style="text-align:left">입력 및 클릭 휠</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_input.c"><code>hosted_linux_port/liby1/src/y1_input.c</code></a></td><td style="text-align:left">클릭 휠, 택타일 버튼, ACCDET 3.5mm 이어폰 단자에서 들어오는 <code>evdev</code> 이벤트 수신 및 매핑.</td></tr><tr><td style="text-align:left">오디오 서브시스템</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_audio.c"><code>hosted_linux_port/liby1/src/y1_audio.c</code></a></td><td style="text-align:left"><code>/dev/eac</code> AFE DL1 DMA 설정, MT6323 PMIC DAC 및 헤드폰 앰프 게인 제어, 4바이트 프레임 정렬, 딥 아이들 SPM 파워다운 제어.</td></tr><tr><td style="text-align:left">FM 라디오 튜너</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_tuner.c"><code>hosted_linux_port/liby1/src/y1_tuner.c</code></a></td><td style="text-align:left"><code>/dev/fm</code> ioctl을 통한 MT6627 FM 라디오 주파수 튜닝 및 신호 수신.</td></tr><tr><td style="text-align:left">USB 가젯</td><td style="text-align:left"><a href="file:///c:/Users/dakirb/Documents/rom/!rockbox_fromsource/rockbox-master/rockbox-master/hosted_linux_port/liby1/src/y1_usb.c"><code>hosted_linux_port/liby1/src/y1_usb.c</code></a></td><td style="text-align:left">PC 음악/파일 전송을 위한 Android USB Mass Storage LUN0 바인딩 및 분리.</td></tr></tbody></table></article><p class="lumen-doc-footer-note">These are Nugget's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=nugget-y1">norocoral's <em>Nugget</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=norocoral%2Fnugget-y1&amp;software=nugget-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

@@ -1,0 +1,562 @@
+[
+  {
+    "id": 453538595,
+    "tag_name": "2.1.2",
+    "name": "2.1.2",
+    "body": "**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/2.1.1...2.1.2\r\n\r\n- Added Innioasis CE updater support\r\n- Fixed iTunes DB Rockbox bugs.\r\n- Added on device debug info\r\n- Coverflow rockbox improvement",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-21T08:09:48Z",
+    "published_at": "2026-11-21T08:12:06Z",
+    "html_url": "https://github.com/norocoral/nugget-y1/releases/tag/2.1.2",
+    "icon_url": "https://norocoral.github.io/y1/inupdater/icn.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 774889833,
+        "name": "boot_nugget.img",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/boot_nugget.img",
+        "size": 5976064,
+        "download_count": 1,
+        "content_type": "image/img",
+        "created_at": "2026-11-21T08:10:53Z",
+        "updated_at": "2026-11-21T08:10:54Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/774889833"
+      },
+      {
+        "id": 774889862,
+        "name": "liby1-sdk.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/liby1-sdk.zip",
+        "size": 100684,
+        "download_count": 2,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-11-21T08:10:54Z",
+        "updated_at": "2026-11-21T08:10:54Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/774889862"
+      },
+      {
+        "id": 774889876,
+        "name": "rockbox_sdcard.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/rockbox_sdcard.zip",
+        "size": 7753746,
+        "download_count": 2,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-11-21T08:10:54Z",
+        "updated_at": "2026-11-21T08:10:55Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/774889876"
+      },
+      {
+        "id": 774889792,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/rom.zip",
+        "size": 5936242,
+        "download_count": 1,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-11-21T08:10:51Z",
+        "updated_at": "2026-11-21T08:10:53Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/774889792"
+      },
+      {
+        "id": 774889827,
+        "name": "sha256sums.txt",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/sha256sums.txt",
+        "size": 321,
+        "download_count": 3,
+        "content_type": "text/plain",
+        "created_at": "2026-11-21T08:10:53Z",
+        "updated_at": "2026-11-21T08:10:53Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/774889827"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 5,
+    "download_breakdown": {
+      "tag": "2.1.2",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "liby1-sdk.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/liby1-sdk.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rockbox_sdcard.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/rockbox_sdcard.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/rom.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
+  },
+  {
+    "id": 451751384,
+    "tag_name": "2.1.1",
+    "name": "2.1.1",
+    "body": "**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/2.1...2.1.1\r\n\r\nAdd debugging mode.\r\nAccess in Bootpicker menu -> Debug Info.\r\nYou may use it for attaching when creating issues.",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-19T18:27:20Z",
+    "published_at": "2026-11-19T18:29:52Z",
+    "html_url": "https://github.com/norocoral/nugget-y1/releases/tag/2.1.1",
+    "icon_url": "https://norocoral.github.io/y1/inupdater/icn.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 768786256,
+        "name": "boot_nugget.img",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.1/boot_nugget.img",
+        "size": 5974016,
+        "download_count": 9,
+        "content_type": "image/img",
+        "created_at": "2026-11-19T18:27:52Z",
+        "updated_at": "2026-11-19T18:27:53Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/768786256"
+      },
+      {
+        "id": 768786342,
+        "name": "liby1-sdk.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.1/liby1-sdk.zip",
+        "size": 99696,
+        "download_count": 6,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-11-19T18:27:53Z",
+        "updated_at": "2026-11-19T18:27:54Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/768786342"
+      },
+      {
+        "id": 768786362,
+        "name": "rockbox_sdcard.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.1/rockbox_sdcard.zip",
+        "size": 7742810,
+        "download_count": 5,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-11-19T18:27:54Z",
+        "updated_at": "2026-11-19T18:27:55Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/768786362"
+      },
+      {
+        "id": 768786393,
+        "name": "sha256sums.txt",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.1/sha256sums.txt",
+        "size": 247,
+        "download_count": 2,
+        "content_type": "text/plain",
+        "created_at": "2026-11-19T18:27:55Z",
+        "updated_at": "2026-11-19T18:27:55Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/768786393"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 11,
+    "download_breakdown": {
+      "tag": "2.1.1",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "liby1-sdk.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.1/liby1-sdk.zip",
+          "downloads": 6
+        },
+        {
+          "name": "rockbox_sdcard.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.1/rockbox_sdcard.zip",
+          "downloads": 5
+        }
+      ],
+      "portable": []
+    }
+  },
+  {
+    "id": 450582919,
+    "tag_name": "2.1",
+    "name": "2.1",
+    "body": "- iPod sync support\r\n- Battery improvement \r\n- Bluetooth improvement\r\n- USB 2.0 high speed fixes\r\n\r\n**Full Changelog**: https://github.com/norocoral/nugget-y1/commits/2.1",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-18T21:24:03Z",
+    "published_at": "2026-11-18T21:33:02Z",
+    "html_url": "https://github.com/norocoral/nugget-y1/releases/tag/2.1",
+    "icon_url": "https://norocoral.github.io/y1/inupdater/icn.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 765080620,
+        "name": "boot_nugget.img",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1/boot_nugget.img",
+        "size": 5969920,
+        "download_count": 7,
+        "content_type": "image/img",
+        "created_at": "2026-11-18T21:31:30Z",
+        "updated_at": "2026-11-18T21:31:54Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/765080620"
+      },
+      {
+        "id": 765082182,
+        "name": "liby1-sdk.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1/liby1-sdk.zip",
+        "size": 99696,
+        "download_count": 1,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-11-18T21:31:54Z",
+        "updated_at": "2026-11-18T21:31:55Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/765082182"
+      },
+      {
+        "id": 765082216,
+        "name": "rockbox_sdcard.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1/rockbox_sdcard.zip",
+        "size": 7649904,
+        "download_count": 8,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-11-18T21:31:55Z",
+        "updated_at": "2026-11-18T21:32:12Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/765082216"
+      },
+      {
+        "id": 765083274,
+        "name": "sha256sums.txt",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1/sha256sums.txt",
+        "size": 247,
+        "download_count": 1,
+        "content_type": "text/plain",
+        "created_at": "2026-11-18T21:32:12Z",
+        "updated_at": "2026-11-18T21:32:13Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/765083274"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 9,
+    "download_breakdown": {
+      "tag": "2.1",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "liby1-sdk.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1/liby1-sdk.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rockbox_sdcard.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1/rockbox_sdcard.zip",
+          "downloads": 8
+        }
+      ],
+      "portable": []
+    }
+  },
+  {
+    "id": 424763570,
+    "tag_name": "1.33",
+    "name": "1.33",
+    "body": "**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/1.31...1.33\r\n\r\nVarious updates\r\n\r\n- Improved battery life\r\n- Rockpod features\r\n  - Dynamic colors\r\n  - Cover flow\r\n- View transitions\r\n- Keyclick settings\r\n- Custom sounds\r\n- Bluetooth Receiver (experimental) \r\n- Faster boot times\r\n- USB charge only mode",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-10-26T14:36:24Z",
+    "published_at": "2026-10-26T21:01:39Z",
+    "html_url": "https://github.com/norocoral/nugget-y1/releases/tag/1.33",
+    "icon_url": "https://norocoral.github.io/y1/inupdater/icn.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 679456324,
+        "name": "boot_rockbox.img",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.33/boot_rockbox.img",
+        "size": 5750784,
+        "download_count": 10,
+        "content_type": "image/img",
+        "created_at": "2026-10-26T20:58:52Z",
+        "updated_at": "2026-10-26T20:58:54Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/679456324"
+      },
+      {
+        "id": 679456405,
+        "name": "logo.bin",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.33/logo.bin",
+        "size": 98733,
+        "download_count": 10,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-10-26T20:58:54Z",
+        "updated_at": "2026-10-26T20:58:54Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/679456405"
+      },
+      {
+        "id": 679456415,
+        "name": "rockbox_sdcard.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.33/rockbox_sdcard.zip",
+        "size": 6499219,
+        "download_count": 10,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-10-26T20:58:54Z",
+        "updated_at": "2026-10-26T20:58:55Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/679456415"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 10,
+    "download_breakdown": {
+      "tag": "1.33",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rockbox_sdcard.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/1.33/rockbox_sdcard.zip",
+          "downloads": 10
+        }
+      ],
+      "portable": []
+    }
+  },
+  {
+    "id": 418415834,
+    "tag_name": "1.31",
+    "name": "1.31",
+    "body": "**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/1.3...1.31\r\n\r\nPatch release to support the Nugget installer",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-10-20T13:09:07Z",
+    "published_at": "2026-10-20T13:11:38Z",
+    "html_url": "https://github.com/norocoral/nugget-y1/releases/tag/1.31",
+    "icon_url": "https://norocoral.github.io/y1/inupdater/icn.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 659369833,
+        "name": "boot_rockbox.img",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.31/boot_rockbox.img",
+        "size": 5718016,
+        "download_count": 3,
+        "content_type": "image/img",
+        "created_at": "2026-10-20T13:11:32Z",
+        "updated_at": "2026-10-20T13:11:33Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/659369833"
+      },
+      {
+        "id": 659369882,
+        "name": "logo.bin",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.31/logo.bin",
+        "size": 98733,
+        "download_count": 3,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-10-20T13:11:33Z",
+        "updated_at": "2026-10-20T13:11:34Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/659369882"
+      },
+      {
+        "id": 659369883,
+        "name": "rockbox_sdcard.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.31/rockbox_sdcard.zip",
+        "size": 14575873,
+        "download_count": 3,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-10-20T13:11:34Z",
+        "updated_at": "2026-10-20T13:11:35Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/659369883"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 3,
+    "download_breakdown": {
+      "tag": "1.31",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rockbox_sdcard.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/1.31/rockbox_sdcard.zip",
+          "downloads": 3
+        }
+      ],
+      "portable": []
+    }
+  },
+  {
+    "id": 418382446,
+    "tag_name": "1.3",
+    "name": "1.3",
+    "body": "**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/1.2...1.3\r\n\r\n# New Architecture\r\n\r\nThe BOOTIMG is the bootstrap for the hosted Linux system, not the Rockbox application. It still contains the Linux kernel and a small initramfs with PID 1, hardware startup support, and the runtime libraries needed to start the SD-card executable.\r\n\r\n<img width=\"565\" height=\"859\" alt=\"image\" src=\"https://github.com/user-attachments/assets/23fa1437-e4bb-45b7-b58b-4664e70cced2\" />\r\n\r\nThe Rockbox executable is packaged as .rockbox/rockbox in rockbox_sdcard.zip, alongside the usual codecs, plugins, themes, and other Rockbox files. Startup requires that executable to be present and executable on the mounted physical MicroSD; a copy on internal storage or another partition won\u2019t satisfy the check. Missing files keep the device in the wait screen instead of starting Rockbox.\r\n\r\nbuild.sh prepares the SD archive and stages its contents outside the initramfs. build.py checks that the archive contains the executable, and the initramfs packer rejects any rockbox executable or .rockbox tree so they can\u2019t accidentally end up in BOOTIMG.\r\n\r\nThe BOOTIMG is not a literal bare-metal bootloader: Linux and its minimal startup/runtime support still live there. Rockbox itself and its user-facing system files run from the SD card.\r\n\r\n",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-10-20T12:33:09Z",
+    "published_at": "2026-10-20T12:37:54Z",
+    "html_url": "https://github.com/norocoral/nugget-y1/releases/tag/1.3",
+    "icon_url": "https://norocoral.github.io/y1/inupdater/icn.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 659294246,
+        "name": "boot_rockbox.img",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.3/boot_rockbox.img",
+        "size": 5718016,
+        "download_count": 2,
+        "content_type": "image/img",
+        "created_at": "2026-10-20T12:37:48Z",
+        "updated_at": "2026-10-20T12:37:50Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/659294246"
+      },
+      {
+        "id": 659294332,
+        "name": "logo.bin",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.3/logo.bin",
+        "size": 98733,
+        "download_count": 1,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-10-20T12:37:50Z",
+        "updated_at": "2026-10-20T12:37:50Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/659294332"
+      },
+      {
+        "id": 659294344,
+        "name": "rockbox_sdcard.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.3/rockbox_sdcard.zip",
+        "size": 14575832,
+        "download_count": 2,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-10-20T12:37:50Z",
+        "updated_at": "2026-10-20T12:37:51Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/659294344"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 2,
+    "download_breakdown": {
+      "tag": "1.3",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rockbox_sdcard.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/1.3/rockbox_sdcard.zip",
+          "downloads": 2
+        }
+      ],
+      "portable": []
+    }
+  },
+  {
+    "id": 417672086,
+    "tag_name": "1.2",
+    "name": "1.2",
+    "body": "**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/1.0...1.2\r\n\r\n- Bluetooth support",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-10-19T19:27:33Z",
+    "published_at": "2026-10-19T19:38:12Z",
+    "html_url": "https://github.com/norocoral/nugget-y1/releases/tag/1.2",
+    "icon_url": "https://norocoral.github.io/y1/inupdater/icn.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 657237863,
+        "name": "boot_rockbox.img",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.2/boot_rockbox.img",
+        "size": 6266880,
+        "download_count": 2,
+        "content_type": "image/img",
+        "created_at": "2026-10-19T19:38:47Z",
+        "updated_at": "2026-10-19T19:38:48Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/657237863"
+      },
+      {
+        "id": 657237911,
+        "name": "logo.bin",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.2/logo.bin",
+        "size": 98733,
+        "download_count": 0,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-10-19T19:38:48Z",
+        "updated_at": "2026-10-19T19:38:49Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/657237911"
+      },
+      {
+        "id": 657237922,
+        "name": "rockbox_sdcard.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.2/rockbox_sdcard.zip",
+        "size": 14636478,
+        "download_count": 2,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-10-19T19:38:49Z",
+        "updated_at": "2026-10-19T19:38:50Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/657237922"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 2,
+    "download_breakdown": {
+      "tag": "1.2",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rockbox_sdcard.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/1.2/rockbox_sdcard.zip",
+          "downloads": 2
+        }
+      ],
+      "portable": []
+    }
+  },
+  {
+    "id": 416685574,
+    "tag_name": "1.0",
+    "name": "1.0",
+    "body": "# Warning: Experimental\r\n\r\n# Nugget for Innioasis Y1 - Release v1.0.0\r\n\r\n**Nugget for Y1** is a custom firmware for the **Innioasis Y1** (MediaTek MT6572) that completely eliminates Android in favor of a lean, optimized downstream Linux kernel and native Hosted Rockbox.\r\n\r\n---\r\n\r\n## Highlights & Features\r\n\r\n- \ud83d\udd0b **2.5x Battery Life:** Up to ~50 hours of continuous audio playback (compared to ~20 hours on Rockbox-for-Android and ~30 hours on stock Android firmware).\r\n- \u26a1 **Instant Boot:** Powers on directly into Rockbox in under 10 seconds.\r\n- \ud83c\udfb5 **High-Fidelity Lossless Audio:**\r\n  - Direct hardware PCM sink via MT6572 `/dev/eac` and MT6323 PMIC DAC.\r\n  - Dynamic sample rate switching: bit-perfect native playback for both **44.1 kHz** and **48 kHz** tracks without pitch or speed distortion.\r\n  - Real-time audio thread priority (`SCHED_FIFO` 80) and 4-byte frame alignment preventing jitter, underruns, or channel phase slips.\r\n  - Authentic Rockbox logarithmic volume scale (-74 dB to +6 dB in 1 dB steps) with digital clipping protection ($\\le 0\\text{ dB}$) and full +12dB hardware analog headphone amplifier gain.\r\n- \ud83d\udda5\ufe0f **Dual Screen Resolutions:**\r\n  - **Normal (480x360):** Native 1:1 hardware resolution.\r\n  - **Classic (320x240 stretched):** Nearest-neighbor full-screen scaling for native iPod Classic Rockbox themes.\r\n  - Configurable in `Settings -> General Settings -> System -> Screen Resolution` (applies on next manual reboot).\r\n- \ud83d\udd12 **Automatic HOLD Mode & Advanced Key Lock:**\r\n  - **Auto-Hold:** Whenever the backlight turns off (via timeout or pressing the Power button), the device automatically enters HOLD mode.\r\n  - **Advanced Key Lock:** Settings in `Settings -> General Settings -> System -> Advanced Key Lock` are applied while the screen is off (e.g. keep Volume or Play/Pause buttons active in your pocket). All other buttons are silently blocked without waking the screen.\r\n  - **Instant Unhold:** Simply press the **Center button** to unhold and wake up the screen. The wake press is cleanly swallowed to avoid unintended clicks.\r\n  - **Context Menu:** Long-pressing Center for ~1s opens the Context Menu smoothly when awake.\r\n- \ud83d\udcbe **MicroSD & USB Storage:**\r\n  - Exclusive physical MicroSD card discovery (`mmcblk1`), excluding Android eMMC clutter.\r\n  - Supports FAT32, exFAT (SDXC 256GB+), NTFS, and ext4, including multi-partition cards.\r\n  - MicroSD mounted as `/` (`PIVOT_ROOT`) for full `.rock` plugin and game compatibility.\r\n  - Built-in USB Mass Storage gadget allows drag-and-drop music and theme transfer directly from Windows, Mac, or Linux.\r\n- \ud83d\uddbc\ufe0f **Hardware Status Screens:**\r\n  - `boot.png` hardware bootscreen on startup.\r\n  - `sdcard.png` alert if MicroSD card or `.rockbox` directory is missing (with USB Mass Storage active to add files).\r\n  - Native Rockbox USB screen during file transfer.\r\n  - Automatic continuation once issues are resolved.\r\n\r\n---\r\n\r\n## Release Assets\r\n\r\n| File | Size | Description |\r\n| :--- | :--- | :--- |\r\n| `boot_rockbox.img` | 6,092,800 bytes | Flashable boot image (kernel + initramfs) for the `boot` (`BOOTIMG`) partition. Fits within 6MB partition limit. |\r\n| `rockbox_sdcard.zip` | ~14.4 MB | SD card root files (`.rockbox` directory with all audio codecs, plugins, fonts, themes, and screen assets). |\r\n| `SHA256SUMS.txt` | Text | SHA-256 verification checksums for all release binaries. |\r\n\r\n### SHA-256 Checksums\r\n```text\r\n484ad91d5ecc9760c391179b141978a314c02af01934fea874c9f9096adccccd  boot_rockbox.img\r\n225c5ca7f1ee5eebc414514024cc2c947ac604777f37197d3b140c1e1c66562d  rockbox_sdcard.zip\r\n```\r\n\r\n---\r\n\r\n## Quick Installation Guide\r\n\r\n### Step 1: Flash the Boot Image\r\n1. Power off your Innioasis Y1 completely.\r\n2. Flash `boot_rockbox.img` to the `boot` partition using either:\r\n   - **Innioasis Updater CE:** Select *Nugget for Y1* and follow on-screen instructions.\r\n   - **SP Flash Tool:** Load your MT6572 scatter file, check only `boot` (or `BOOTIMG`), select `boot_rockbox.img`, click **Download**, and connect the powered-off device while holding Volume Down.\r\n   - **Fastboot / python-mtk / mtkclient:**\r\n     ```bash\r\n     python mtk.py w boot boot_rockbox.img\r\n     ```\r\n\r\n### Step 2: Prepare Your MicroSD Card\r\n1. Format your MicroSD card as **FAT32** or **exFAT**.\r\n2. Extract `rockbox_sdcard.zip` directly to the root of the MicroSD card so that `.rockbox` is located at:\r\n   ```text\r\n   (MicroSD Root)/\r\n   \u251c\u2500\u2500 .rockbox/\r\n   \u2502   \u251c\u2500\u2500 codecs/\r\n   \u2502   \u251c\u2500\u2500 rocks/\r\n   \u2502   \u251c\u2500\u2500 fonts/\r\n   \u2502   \u251c\u2500\u2500 themes/\r\n   \u2502   \u2514\u2500\u2500 ...\r\n   \u2514\u2500\u2500 Music/\r\n   ```\r\n3. Insert the card into your Innioasis Y1.\r\n\r\n### Step 3: Power On & Enjoy\r\n1. Power on your Innioasis Y1. The Nugget bootscreen will appear and load into Rockbox in ~8 seconds.\r\n2. Connect USB to your PC anytime to manage your music and themes via USB Mass Storage.\r\n\r\n---\r\n\r\n## Keypad & Button Reference\r\n\r\n| Action | Control | Notes |\r\n| :--- | :--- | :--- |\r\n| **Scroll / Navigate** | Click Wheel | Clockwise = Next/Down, Counter-Clockwise = Prev/Up |\r\n| **Select / OK** | Center Button (Short Press) | Activates selected menu item / opens folder |\r\n| **Context Menu** | Center Button (Hold ~1s) | Opens track/file context menu |\r\n| **HOLD Mode (Lock)** | Center Button (Hold 5s) | Locks keypad with `Key lock on` notification |\r\n| **UNHOLD Mode (Unlock)** | Center (Hold 5s) $\\to$ Click Center | Prompts `Click Center to unlock`, then 1 click to unlock |\r\n| **Wake Screen** | Any Button | Turns backlight ON without triggering actions |\r\n| **Back / Menu** | Top Menu Button (Short Press) | Navigates back / returns to parent menu |\r\n| **Quick Screen** | Top Menu Button (Long Press) | Opens Rockbox Quick Screen settings |\r\n| **Play / Pause** | Bottom Play Button (Short Press) | Toggles playback |\r\n| **Stop Playback** | Bottom Play Button (Long Press) | Stops audio playback |\r\n| **Previous / Skip Back** | Left Button | Skip to previous track / seek back |\r\n| **Next / Skip Forward** | Right Button | Skip to next track / seek forward |\r\n| **Volume Up / Down** | Side Volume Buttons | 1 dB steps (-74 dB to +6 dB) |\r\n| **Power Off / Sleep** | Power Button | Native power management / auto-sleep timers |\r\n\r\n",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-10-18T20:05:36Z",
+    "published_at": "2026-10-18T20:16:13Z",
+    "html_url": "https://github.com/norocoral/nugget-y1/releases/tag/1.0",
+    "icon_url": "https://norocoral.github.io/y1/inupdater/icn.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 654386750,
+        "name": "boot_rockbox.img",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.0/boot_rockbox.img",
+        "size": 6092800,
+        "download_count": 3,
+        "content_type": "image/img",
+        "created_at": "2026-10-18T20:16:05Z",
+        "updated_at": "2026-10-18T20:16:06Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/654386750"
+      },
+      {
+        "id": 654386780,
+        "name": "rockbox_sdcard.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.0/rockbox_sdcard.zip",
+        "size": 14436481,
+        "download_count": 2,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-10-18T20:16:06Z",
+        "updated_at": "2026-10-18T20:16:07Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/654386780"
+      },
+      {
+        "id": 654386725,
+        "name": "SHA256SUMS.txt",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.0/SHA256SUMS.txt",
+        "size": 169,
+        "download_count": 1,
+        "content_type": "text/plain",
+        "created_at": "2026-10-18T20:16:05Z",
+        "updated_at": "2026-10-18T20:16:05Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/654386725"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 2,
+    "download_breakdown": {
+      "tag": "1.0",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rockbox_sdcard.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/1.0/rockbox_sdcard.zip",
+          "downloads": 2
+        }
+      ],
+      "portable": []
+    }
+  }
+]
