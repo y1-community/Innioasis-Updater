@@ -68,9 +68,9 @@
 
 <package name="Reborn" brand="Innioasis" repo="schulzcode/y2linux" portable_zips="y1-community/y2linux-mirror" device="Y2" url="https://github.com/schulzcode/y2linux" type="img" post_install="https://innioasis.app/y2reborn_wifibt.html" handler="Custom Firmware" icon="https://innioasis.app/assets/reborn_icon.jpg" install_first="y1-community/y1-stock-rom" install_first_when="classyplayer/classy,FabianZettl/Inniclassic,thesolarproject/solar,y1-community/y2-ata-rom,ismileblue/y1_launcher" install_first_once="true" />
 
-<package name="Rockbox" brand="Innioasis" repo="rockbox-y1/rockbox" portable_zips="y1-community/rockbox-mirror" device="Y1" url="https://github.com/rockbox-y1/rockbox" type="img" icon="https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png" handler="Custom Firmware" />
+<package name="Rockbox" brand="Innioasis" repo="rockbox-y1/rockbox" is_rockbox_android_port="true" portable_zips="y1-community/rockbox-mirror" device="Y1" url="https://github.com/rockbox-y1/rockbox" type="img" icon="https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png" handler="Custom Firmware" />
 
-<package name="Rockbox" brand="Innioasis" repo="spycemagic/y2-rockbox" portable_zips="y1-community/y2-rockbox-mirror" device="Y2" url="https://github.com/spycemagic/y2-rockbox" icon="https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png" type="img" handler="Custom Firmware" />
+<package name="Rockbox" brand="Innioasis" repo="spycemagic/y2-rockbox" is_rockbox_android_port="true" rb_themes_path_fix="true" portable_zips="y1-community/y2-rockbox-mirror" device="Y2" url="https://github.com/spycemagic/y2-rockbox" icon="https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png" type="img" handler="Custom Firmware" />
 
 <package name="Rondo" brand="Innioasis" repo="jarvissax/rondo" portable_zips="y1-community/rondo-mirror" device="Y1" url="https://github.com/jarvissax/rondo" post_install="https://github.com/jarvissax/rondo/blob/main/docs/install.md#first-start" icon="https://innioasis.app/assets/rondo_icon.jpg" type="img" handler="Custom Firmware" />
 
