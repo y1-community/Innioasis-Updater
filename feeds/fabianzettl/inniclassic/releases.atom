@@ -173,7 +173,7 @@ Full changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG
     <link rel="alternate" type="text/html" href="https://github.com/FabianZettl/inniclassic/releases/tag/v1.3.2"/>
     <innioasis:tag_name>v1.3.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>236</innioasis:downloads>
+    <innioasis:downloads>237</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.3.2/InniClassic-1.3.2.apk" title="InniClassic-1.3.2.apk" length="27222719" type="application/vnd.android.package-archive" innioasis:download_count="34" innioasis:asset_id="520762401"/>
     <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.3.2/rom.zip" title="rom.zip" length="463770674" type="application/zip" innioasis:download_count="187" innioasis:asset_id="520762400"/>
     <content type="text">Small follow-up polish release.
@@ -260,9 +260,9 @@ Full changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG
     <link rel="alternate" type="text/html" href="https://github.com/FabianZettl/inniclassic/releases/tag/v1.2.0"/>
     <innioasis:tag_name>v1.2.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>172</innioasis:downloads>
+    <innioasis:downloads>173</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/InniClassic-1.2.0.apk" title="InniClassic-1.2.0.apk" length="31349729" type="application/vnd.android.package-archive" innioasis:download_count="28" innioasis:asset_id="491900121"/>
-    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/rom.zip" title="rom.zip" length="463513542" type="application/zip" innioasis:download_count="124" innioasis:asset_id="491900122"/>
+    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/rom.zip" title="rom.zip" length="463513542" type="application/zip" innioasis:download_count="125" innioasis:asset_id="491900122"/>
     <content type="text">Video playback, gapless playback, and a full visual consistency pass across every screen.
 
 ### Added
@@ -298,9 +298,9 @@ Full changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG
     <link rel="alternate" type="text/html" href="https://github.com/FabianZettl/inniclassic/releases/tag/v1.1.2"/>
     <innioasis:tag_name>v1.1.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>105</innioasis:downloads>
+    <innioasis:downloads>106</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/InniClassic-1.1.2.apk" title="InniClassic-1.1.2.apk" length="7020639" type="application/vnd.android.package-archive" innioasis:download_count="21" innioasis:asset_id="490752766"/>
-    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/rom.zip" title="rom.zip" length="457809513" type="application/zip" innioasis:download_count="54" innioasis:asset_id="490752767"/>
+    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/rom.zip" title="rom.zip" length="457809513" type="application/zip" innioasis:download_count="55" innioasis:asset_id="490752767"/>
     <content type="text">Bug-fix release based on more Reddit feedback from multiple users.
 
 ### Fixed
@@ -329,9 +329,9 @@ Full changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG
     <link rel="alternate" type="text/html" href="https://github.com/FabianZettl/inniclassic/releases/tag/v1.1.1"/>
     <innioasis:tag_name>v1.1.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>97</innioasis:downloads>
+    <innioasis:downloads>98</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.1.1/InniClassic-1.1.1.apk" title="InniClassic-1.1.1.apk" length="8795490" type="application/vnd.android.package-archive" innioasis:download_count="28" innioasis:asset_id="489365718"/>
-    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.1.1/rom.zip" title="rom.zip" length="457676727" type="application/zip" innioasis:download_count="61" innioasis:asset_id="489512937"/>
+    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.1.1/rom.zip" title="rom.zip" length="457676727" type="application/zip" innioasis:download_count="62" innioasis:asset_id="489512937"/>
     <content type="text">The project is now named **InniClassic** (still based on and credited to [JJ Launcher](https://github.com/ismileblue/y1_launcher) — see README). Same 1.1.1 build as before, no functional version bump for the rename itself.
 
 ### 🆕 Now installable as a full ROM
