@@ -9095,7 +9095,7 @@
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y2-macos.zip",
         "size": 496379676,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-21T04:19:42Z",
         "updated_at": "2026-11-21T04:19:59Z",
@@ -9169,7 +9169,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 41,
+    "downloads": 43,
     "download_breakdown": {
       "tag": "20261012",
       "mirrors": "",
@@ -9332,7 +9332,7 @@
         {
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261012/rom_y2-macos.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "rom_y2-windows-legacy.zip",

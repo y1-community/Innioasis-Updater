@@ -560,7 +560,7 @@ Images: `ghcr.io/jarvissax/rondo-server:3.1.0` and `ghcr.io/jarvissax/rondo-upda
     <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v2.0.0"/>
     <innioasis:tag_name>v2.0.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>37</innioasis:downloads>
+    <innioasis:downloads>38</innioasis:downloads>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="162" innioasis:asset_id="735470143"/>
     <content type="text">**For the Innioasis Y1, Type A.** A new firmware: install `rom.zip` with **Innioasis Updater CE** (choose **Keep Data** to keep your settings when coming from 1.0). After that, Rondo updates itself over Wi-Fi from GitHub.
