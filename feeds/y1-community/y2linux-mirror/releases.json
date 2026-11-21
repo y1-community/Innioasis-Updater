@@ -3263,7 +3263,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.21-first-install-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-232/Y2Linux-1.0.0-beta.9.3.21-first-install-linux-arm64.zip",
         "size": 193921912,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-21T08:02:14Z",
         "updated_at": "2026-11-21T08:02:22Z",
@@ -3359,7 +3359,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1,
+    "downloads": 3,
     "download_breakdown": {
       "tag": "baseline-232",
       "mirrors": "",
@@ -3367,7 +3367,7 @@
         {
           "name": "Y2Linux-1.0.0-beta.9.3.21-first-install-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-232/Y2Linux-1.0.0-beta.9.3.21-first-install-linux-arm64.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "Y2Linux-1.0.0-beta.9.3.21-first-install-linux-legacy.zip",
@@ -22299,7 +22299,7 @@
         "name": "Y2Linux-1.0.0-beta.8.16-first-install-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-113/Y2Linux-1.0.0-beta.8.16-first-install-windows-legacy.zip",
         "size": 146376465,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-20T13:24:46Z",
         "updated_at": "2026-11-20T13:24:52Z",
@@ -22340,7 +22340,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1,
+    "downloads": 2,
     "download_breakdown": {
       "tag": "baseline-113",
       "mirrors": "",
@@ -22368,7 +22368,7 @@
         {
           "name": "Y2Linux-1.0.0-beta.8.16-first-install-windows-legacy.zip",
           "url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-113/Y2Linux-1.0.0-beta.8.16-first-install-windows-legacy.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "Y2Linux-1.0.0-beta.8.16-first-install-windows.zip",

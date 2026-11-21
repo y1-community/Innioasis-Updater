@@ -2067,7 +2067,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-linux.zip",
         "size": 828474684,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-12T19:17:01Z",
         "updated_at": "2026-11-12T19:17:37Z",
@@ -2152,7 +2152,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 16,
+    "downloads": 17,
     "download_breakdown": {
       "tag": "v2.0.0",
       "mirrors": "",
@@ -2170,7 +2170,7 @@
         {
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v2.0.0/rom-linux.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "rom-macos.zip",

@@ -13,10 +13,10 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/rockbox-mirror/releases/tag/stable-v0.6.1"/>
     <innioasis:tag_name>stable-v0.6.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>7</innioasis:downloads>
+    <innioasis:downloads>9</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rockbox.apk" title="rockbox.apk" length="16533880" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="741791209"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="648588604" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774772922"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="595424479" type="application/zip" innioasis:download_count="0" innioasis:asset_id="773407544"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="595424479" type="application/zip" innioasis:download_count="2" innioasis:asset_id="773407544"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-linux.zip" title="rom-linux.zip" length="823681883" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774772921"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-macos.zip" title="rom-macos.zip" length="631410442" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774772923"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="597010196" type="application/zip" innioasis:download_count="3" innioasis:asset_id="773407543"/>
@@ -84,12 +84,12 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/rockbox-mirror/releases/tag/nightly-a8c63c04f0030dca6bc193a437767e1838067b67"/>
     <innioasis:tag_name>nightly-a8c63c04f0030dca6bc193a437767e1838067b67</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>3</innioasis:downloads>
+    <innioasis:downloads>5</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rockbox.apk" title="rockbox.apk" length="16533880" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="731254814"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="652234337" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774762200"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="599070364" type="application/zip" innioasis:download_count="0" innioasis:asset_id="772930244"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-linux.zip" title="rom-linux.zip" length="827327616" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774762203"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-macos.zip" title="rom-macos.zip" length="635056168" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774762199"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-macos.zip" title="rom-macos.zip" length="635056168" type="application/zip" innioasis:download_count="2" innioasis:asset_id="774762199"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="600656077" type="application/zip" innioasis:download_count="0" innioasis:asset_id="772930239"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom-windows.zip" title="rom-windows.zip" length="838894770" type="application/zip" innioasis:download_count="0" innioasis:asset_id="772930245"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/rom.zip" title="rom.zip" length="584544833" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733417876"/>
@@ -804,13 +804,13 @@ And many bug fixes and general UI/UX improvements. A big thanks to all the contr
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/rockbox-mirror/releases/tag/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b"/>
     <innioasis:tag_name>nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>3</innioasis:downloads>
+    <innioasis:downloads>4</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rockbox.apk" title="rockbox.apk" length="16439605" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707402961"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="660681653" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774682888"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="607517672" type="application/zip" innioasis:download_count="0" innioasis:asset_id="772630018"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-linux.zip" title="rom-linux.zip" length="835774932" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774682889"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-macos.zip" title="rom-macos.zip" length="643503483" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774682892"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="609103387" type="application/zip" innioasis:download_count="0" innioasis:asset_id="772630007"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="609103387" type="application/zip" innioasis:download_count="1" innioasis:asset_id="772630007"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom-windows.zip" title="rom-windows.zip" length="847342086" type="application/zip" innioasis:download_count="0" innioasis:asset_id="772630017"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom.zip" title="rom.zip" length="534368316" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733359890"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b-linux-arm64.zip" title="rom_type_b-linux-arm64.zip" length="576863280" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774682893"/>
@@ -1651,11 +1651,11 @@ Also:
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/rockbox-mirror/releases/tag/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144"/>
     <innioasis:tag_name>nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>3</innioasis:downloads>
+    <innioasis:downloads>5</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rockbox.apk" title="rockbox.apk" length="16439605" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="707418552"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="660699355" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774693355"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="607535382" type="application/zip" innioasis:download_count="0" innioasis:asset_id="772670271"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-linux.zip" title="rom-linux.zip" length="835792634" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774693358"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-linux.zip" title="rom-linux.zip" length="835792634" type="application/zip" innioasis:download_count="2" innioasis:asset_id="774693358"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-macos.zip" title="rom-macos.zip" length="643521185" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774693361"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="609121097" type="application/zip" innioasis:download_count="0" innioasis:asset_id="772670269"/>
     <link rel="enclosure" href="https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom-windows.zip" title="rom-windows.zip" length="847359788" type="application/zip" innioasis:download_count="0" innioasis:asset_id="772670274"/>
