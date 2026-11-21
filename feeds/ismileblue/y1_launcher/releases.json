@@ -80,8 +80,8 @@
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541305498"
       }
     ],
-    "mirror_downloads": 76,
-    "downloads": 329,
+    "mirror_downloads": 77,
+    "downloads": 330,
     "download_breakdown": {
       "tag": "launcher-v0.11.6hotfix4",
       "mirrors": "y1-community/y1_launcher-mirror",
@@ -223,7 +223,7 @@
           "name": "rom_y2-linux-legacy.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6hotfix4/rom_y2-linux-legacy.zip",
           "size": 443485041,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "macos",

@@ -14,8 +14,8 @@
     <innioasis:tag_name>2.5.6.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:downloads>18</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="109241507" type="application/x-diskcopy" innioasis:download_count="24" innioasis:asset_id="774240903"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/installer.exe" title="installer.exe" length="98082074" type="application/x-msdownload" innioasis:download_count="122" innioasis:asset_id="772863076"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="109241507" type="application/x-diskcopy" innioasis:download_count="29" innioasis:asset_id="774240903"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/installer.exe" title="installer.exe" length="98095751" type="application/x-msdownload" innioasis:download_count="5" innioasis:asset_id="775069105"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/run_linux.sh" title="run_linux.sh" length="53935" type="application/x-sh" innioasis:download_count="0" innioasis:asset_id="774245979"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/run_linux.sh.sha256" title="run_linux.sh.sha256" length="79" type="application/octet-stream" innioasis:download_count="0" innioasis:asset_id="774246015"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/UpdaterCE-arm64.appimage" title="UpdaterCE-arm64.appimage" length="114268680" type="application/octet-stream" innioasis:download_count="0" innioasis:asset_id="774243172"/>
@@ -31,8 +31,8 @@
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/UpdaterCE-Lite.tar.gz" title="UpdaterCE-Lite.tar.gz" length="228627684" type="application/x-gtar" innioasis:download_count="0" innioasis:asset_id="774245740"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/UpdaterCE-Lite.tar.gz.sha256" title="UpdaterCE-Lite.tar.gz.sha256" length="88" type="application/octet-stream" innioasis:download_count="0" innioasis:asset_id="774245939"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/UpdaterCE-Windows-Portable.zip" title="UpdaterCE-Windows-Portable.zip" length="279830502" type="application/x-zip-compressed" innioasis:download_count="18" innioasis:asset_id="741098862"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/UpdaterCE.appimage" title="UpdaterCE.appimage" length="247679480" type="application/octet-stream" innioasis:download_count="3" innioasis:asset_id="774243170"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/UpdaterCE.appimage.sha256" title="UpdaterCE.appimage.sha256" length="85" type="application/octet-stream" innioasis:download_count="0" innioasis:asset_id="774243171"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/UpdaterCE.appimage" title="UpdaterCE.appimage" length="247679480" type="application/octet-stream" innioasis:download_count="4" innioasis:asset_id="774243170"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.1/UpdaterCE.appimage.sha256" title="UpdaterCE.appimage.sha256" length="85" type="application/octet-stream" innioasis:download_count="1" innioasis:asset_id="774243171"/>
     <content type="text">In this release changes include:
 
 Improved guidance and onboarding for new and existing users, you&#x27;ll be asked to install the drivers and reboot your computer when setting up the app for the first time on Windows to ensure the drivers are working as expected. 
@@ -72,7 +72,7 @@ Support for the full Innioasis and Timmkoo product line in Updater CE and Firmwa
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/UpdaterCE-Lite.tar.gz" title="UpdaterCE-Lite.tar.gz" length="228627596" type="application/x-gtar" innioasis:download_count="0" innioasis:asset_id="773891157"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/UpdaterCE-Lite.tar.gz.sha256" title="UpdaterCE-Lite.tar.gz.sha256" length="88" type="application/octet-stream" innioasis:download_count="0" innioasis:asset_id="773893654"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/UpdaterCE.appimage" title="UpdaterCE.appimage" length="247626232" type="application/octet-stream" innioasis:download_count="1" innioasis:asset_id="773893681"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/UpdaterCE.appimage.sha256" title="UpdaterCE.appimage.sha256" length="85" type="application/octet-stream" innioasis:download_count="0" innioasis:asset_id="773893786"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/UpdaterCE.appimage.sha256" title="UpdaterCE.appimage.sha256" length="85" type="application/octet-stream" innioasis:download_count="1" innioasis:asset_id="773893786"/>
     <content type="text">Innioasis Updater CE 2.5.6 release assets for Linux</content>
   </entry>
   <entry>
@@ -334,10 +334,10 @@ curl -fsSL https://innioasis.app/run_linux.sh | bash
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/Innioasis-Updater/releases/tag/flash_tool"/>
     <innioasis:tag_name>flash_tool</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>748</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe" title="1.Install.Driver.First.and.Reboot.PC.exe" length="9534578" type="application/octet-stream" innioasis:download_count="261" innioasis:asset_id="735816514"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip" title="flash_tool_linux.zip" length="73234593" type="application/zip" innioasis:download_count="483" innioasis:asset_id="681078297"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_windows.zip" title="flash_tool_windows.zip" length="65386356" type="application/x-zip-compressed" innioasis:download_count="265" innioasis:asset_id="721659465"/>
+    <innioasis:downloads>757</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe" title="1.Install.Driver.First.and.Reboot.PC.exe" length="9534578" type="application/octet-stream" innioasis:download_count="266" innioasis:asset_id="735816514"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip" title="flash_tool_linux.zip" length="73234593" type="application/zip" innioasis:download_count="487" innioasis:asset_id="681078297"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_windows.zip" title="flash_tool_windows.zip" length="65386356" type="application/x-zip-compressed" innioasis:download_count="270" innioasis:asset_id="721659465"/>
     <content type="text"></content>
   </entry>
   <entry>
