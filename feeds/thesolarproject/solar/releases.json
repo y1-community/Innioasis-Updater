@@ -2170,14 +2170,14 @@
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux.zip",
-          "size": 755551612,
+          "size": 755600380,
           "downloads": 4
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux-arm64.zip",
-          "size": 580457170,
+          "size": 580507101,
           "downloads": 1
         },
         {
@@ -2191,7 +2191,7 @@
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-macos.zip",
-          "size": 563374781,
+          "size": 563328923,
           "downloads": 2
         },
         {
@@ -2212,14 +2212,14 @@
           "platform": "linux",
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-linux.zip",
-          "size": 707185177,
+          "size": 707233945,
           "downloads": 2
         },
         {
           "platform": "linux-arm64",
           "name": "rom_type_b-linux-arm64.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-linux-arm64.zip",
-          "size": 532090735,
+          "size": 532140666,
           "downloads": 0
         },
         {
@@ -2233,7 +2233,7 @@
           "platform": "macos",
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-macos.zip",
-          "size": 515008352,
+          "size": 514962494,
           "downloads": 2
         }
       ]
@@ -2268,7 +2268,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1005/rom.zip",
         "size": 454750593,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/zip",
         "created_at": "2026-06-30T10:09:22Z",
         "updated_at": "2026-06-30T10:09:35Z",
@@ -2279,7 +2279,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1005/rom_type_b.zip",
         "size": 410355530,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/zip",
         "created_at": "2026-06-30T10:09:21Z",
         "updated_at": "2026-06-30T10:09:34Z",
@@ -2287,7 +2287,7 @@
       }
     ],
     "mirror_downloads": 33,
-    "downloads": 68,
+    "downloads": 70,
     "download_breakdown": {
       "tag": "20260630-1005",
       "mirrors": "y1-community/solar-mirror",
@@ -2295,13 +2295,13 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1005/rom.zip",
-          "downloads": 25,
+          "downloads": 26,
           "mirror_downloads": 7
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1005/rom_type_b.zip",
-          "downloads": 24,
+          "downloads": 25,
           "mirror_downloads": 7
         }
       ],
@@ -2331,7 +2331,7 @@
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-linux-arm64.zip",
-          "size": 639384023,
+          "size": 580498032,
           "downloads": 0
         },
         {
@@ -2422,7 +2422,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-0956/rom.zip",
         "size": 454786607,
-        "download_count": 19,
+        "download_count": 20,
         "content_type": "application/zip",
         "created_at": "2026-06-30T10:00:05Z",
         "updated_at": "2026-06-30T10:00:20Z",
@@ -2433,7 +2433,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-0956/rom_type_b.zip",
         "size": 407483884,
-        "download_count": 16,
+        "download_count": 17,
         "content_type": "application/zip",
         "created_at": "2026-06-30T10:00:05Z",
         "updated_at": "2026-06-30T10:00:18Z",
@@ -2441,7 +2441,7 @@
       }
     ],
     "mirror_downloads": 37,
-    "downloads": 72,
+    "downloads": 74,
     "download_breakdown": {
       "tag": "20260630-0956",
       "mirrors": "y1-community/solar-mirror",
@@ -2449,13 +2449,13 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0956/rom.zip",
-          "downloads": 26,
+          "downloads": 27,
           "mirror_downloads": 7
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0956/rom_type_b.zip",
-          "downloads": 23,
+          "downloads": 24,
           "mirror_downloads": 7
         }
       ],

@@ -48,10 +48,10 @@ window.INNIOASIS_README_PAGES = {
     ]
   },
   "norocoral/nugget-y1": {
-    "name": "Nugget",
+    "name": "Nugget (Rockbox 240p)",
     "page": "firmware-info/norocoral-nugget-y1.html",
     "slugs": [
-      "nugget-y1"
+      "nugget-rockbox-240p-y1"
     ]
   },
   "rockbox-y1/rockbox": {
