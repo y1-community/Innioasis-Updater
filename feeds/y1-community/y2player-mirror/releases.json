@@ -17,7 +17,7 @@
         "name": "rom_y2-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux-arm64.zip",
         "size": 372694011,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-21T11:14:08Z",
         "updated_at": "2026-11-21T11:14:27Z",
@@ -90,15 +90,15 @@
         "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/706225308"
       },
       {
-        "id": 775320725,
+        "id": 776445996,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/stats.txt",
         "size": 4060,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T11:14:09Z",
-        "updated_at": "2026-11-21T11:14:09Z",
-        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/775320725"
+        "created_at": "2026-11-21T18:14:58Z",
+        "updated_at": "2026-11-21T18:14:59Z",
+        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/776445996"
       },
       {
         "id": 706225314,
@@ -113,7 +113,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1,
+    "downloads": 2,
     "download_breakdown": {
       "tag": "ReleaseV2.3",
       "mirrors": "",
@@ -121,7 +121,7 @@
         {
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux-arm64.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom_y2-linux-legacy.zip",
@@ -248,15 +248,15 @@
         "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/706211320"
       },
       {
-        "id": 775307219,
+        "id": 776445826,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/stats.txt",
         "size": 4301,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T11:08:59Z",
-        "updated_at": "2026-11-21T11:08:59Z",
-        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/775307219"
+        "created_at": "2026-11-21T18:14:54Z",
+        "updated_at": "2026-11-21T18:14:54Z",
+        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/776445826"
       },
       {
         "id": 733016720,
@@ -411,15 +411,15 @@
         "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/733058408"
       },
       {
-        "id": 775327147,
+        "id": 776446063,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/stats.txt",
         "size": 4065,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T11:16:39Z",
-        "updated_at": "2026-11-21T11:16:39Z",
-        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/775327147"
+        "created_at": "2026-11-21T18:15:01Z",
+        "updated_at": "2026-11-21T18:15:01Z",
+        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/776446063"
       },
       {
         "id": 706112700,
@@ -569,15 +569,15 @@
         "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/706217855"
       },
       {
-        "id": 775314323,
+        "id": 776445908,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/stats.txt",
         "size": 4293,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T11:11:33Z",
-        "updated_at": "2026-11-21T11:11:33Z",
-        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/775314323"
+        "created_at": "2026-11-21T18:14:56Z",
+        "updated_at": "2026-11-21T18:14:56Z",
+        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/776445908"
       },
       {
         "id": 733031811,

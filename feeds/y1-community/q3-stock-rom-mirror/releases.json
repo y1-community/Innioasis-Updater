@@ -101,15 +101,15 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/717630694"
       },
       {
-        "id": 775342548,
+        "id": 776439527,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/stats.txt",
         "size": 4015,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T11:23:01Z",
-        "updated_at": "2026-11-21T11:23:01Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/775342548"
+        "created_at": "2026-11-21T18:12:29Z",
+        "updated_at": "2026-11-21T18:12:29Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/776439527"
       }
     ],
     "mirror_downloads": 0,
@@ -259,15 +259,15 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/717626003"
       },
       {
-        "id": 775336214,
+        "id": 776439364,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/stats.txt",
         "size": 4078,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T11:20:29Z",
-        "updated_at": "2026-11-21T11:20:29Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/775336214"
+        "created_at": "2026-11-21T18:12:26Z",
+        "updated_at": "2026-11-21T18:12:27Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/776439364"
       }
     ],
     "mirror_downloads": 0,
@@ -377,7 +377,7 @@
         "name": "rom_q3-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-windows-legacy.zip",
         "size": 360561868,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-20T13:05:31Z",
         "updated_at": "2026-11-20T13:05:54Z",
@@ -417,19 +417,19 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/717621424"
       },
       {
-        "id": 775330005,
+        "id": 776439272,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/stats.txt",
         "size": 4013,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T11:17:44Z",
-        "updated_at": "2026-11-21T11:17:44Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/775330005"
+        "created_at": "2026-11-21T18:12:24Z",
+        "updated_at": "2026-11-21T18:12:24Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/776439272"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1,
+    "downloads": 2,
     "download_breakdown": {
       "tag": "MX2-ES-WV4.01-20250619",
       "mirrors": "",
@@ -457,7 +457,7 @@
         {
           "name": "rom_q3-windows-legacy.zip",
           "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-windows-legacy.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom_q3-windows.zip",

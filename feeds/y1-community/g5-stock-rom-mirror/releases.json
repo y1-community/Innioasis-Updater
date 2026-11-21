@@ -3,7 +3,7 @@
     "id": 445036394,
     "tag_name": "MX4_EN-V1.11-20260727",
     "name": "Portable Flashing Package: MX4_EN-V1.11-20260727",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fg5-stock-rom&amp;tag=MX4_EN-V1.11-20260727#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/g5-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**G5 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fg5-stock-rom&amp;tag=MX4_EN-V1.11-20260727&amp;asset=rom_g5.zip&amp;platform=windows&amp;mirror=y1-community%2Fg5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/g5-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for G5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fg5-stock-rom&amp;tag=MX4_EN-V1.11-20260727&amp;asset=rom_g5.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fg5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/g5-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for G5 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fg5-stock-rom&amp;tag=MX4_EN-V1.11-20260727&amp;asset=rom_g5.zip&amp;platform=linux&amp;mirror=y1-community%2Fg5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/g5-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for G5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fg5-stock-rom&amp;tag=MX4_EN-V1.11-20260727&amp;asset=rom_g5.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fg5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/g5-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for G5 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fg5-stock-rom&amp;tag=MX4_EN-V1.11-20260727&amp;asset=rom_g5.zip&amp;platform=macos&amp;mirror=y1-community%2Fg5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/g5-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for G5 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Innioasis G5 software **MX4_EN-V1.11-20260727**.\n\n- Model: **G5** (Innioasis)\n- Package: `rom_g5.zip`\n- Build tag: `MX4_EN-V1.11-20260727`\n- Build date: 2026-07-27\n\n## Install\n\n1. Download `rom_g5.zip` (every numbered volume if the release has more than one, then `cat rom_g5.zip.* > rom_g5.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g5.zip` | 1953.7 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G5>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"G5\",\"name\":\"rom_g5-windows.zip\",\"platform\":\"windows\",\"sha256\":\"2c1c5bc25d697274031e4f0ec47ecf6f031b198e29cfe8454cd403beddc064f8\",\"size\":2088208244,\"source_asset\":\"rom_g5.zip\",\"type\":\"Stock\"},{\"model\":\"G5\",\"name\":\"rom_g5-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"b0cba571ab54b7e8a82b4b0ad1fd4b103e547b3834ab5270840efe966d4e56f5\",\"size\":2097668626,\"source_asset\":\"rom_g5.zip\",\"type\":\"Stock\"},{\"model\":\"G5\",\"name\":\"rom_g5-linux.zip\",\"platform\":\"linux\",\"sha256\":\"2544f7d6eace0def5b0ad1a09b888f5fceb69554e3ab3c837572125b325dba8c\",\"size\":2096082089,\"source_asset\":\"rom_g5.zip\",\"type\":\"Stock\"},{\"model\":\"G5\",\"name\":\"rom_g5-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"6a0bf087cbbed642723ee709bed8749c9f832420cbdb36b4bb8fa69665ce3acd\",\"size\":2096082911,\"source_asset\":\"rom_g5.zip\",\"type\":\"Stock\"},{\"model\":\"G5\",\"name\":\"rom_g5-macos.zip\",\"platform\":\"macos\",\"sha256\":\"a2332bfafe6c6ee9abee79e3599dcbecf8452d4b80b08921b52aee4c564d5a17\",\"size\":2132068794,\"source_asset\":\"rom_g5.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-21T04:07:54Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[\"rom_g5-linux-arm64.zip is 2149247172 bytes, over the 2147483648 byte GitHub asset limit\"],\"fingerprint\":\"1cf4c93a119a86673583bd9d2b0cf47e23abf4f669357f40fb53ce8837ab2494\",\"original_asset_sizes\":{\"SHA256SUMS.MX4_EN-V1.11-20260727\":78,\"rom_g5.zip\":2048654340},\"original_assets\":[\"rom_g5.zip\",\"SHA256SUMS.MX4_EN-V1.11-20260727\"],\"platforms\":{\"linux\":\"3f9b7aaf4c9d7bb9ad54b63700a4d54c7451fb2289d8da50434930949baa2da1\",\"linux-arm64\":\"2811f531f3365b699f064eef19131df3cc492bf5d7841ecdea5ce52ea8951608\",\"linux-legacy\":\"2630a6e0fe813ad9abb7be5d4e37504301906f4e49d2cd1893a791b4283279a2\",\"macos\":\"6d0a825b48ac2e71b09383e6d62acce05ebe8911417499043b4654be07c75b6b\",\"windows\":\"09b358499dbde9c75a990f60d23c6397971461bc373acffd0a1cd07b23e7bc46\",\"windows-legacy\":\"2b489fe098763799461c8ee003b3091e1d2d442051ba15233e115896536d98ca\"},\"skipped\":[],\"source_fingerprint\":\"530562e9de3ce0d9be8f62d40187a00724b5f073e77d84ec4cb12aa84f57b7c6\",\"stats\":{\"baseline\":{\"SHA256SUMS.MX4_EN-V1.11-20260727\":2,\"rom_g5-linux-legacy.zip\":1,\"rom_g5-linux.zip\":1,\"rom_g5-macos.zip\":4,\"rom_g5-windows-legacy.zip\":1,\"rom_g5-windows.zip\":2,\"rom_g5.zip\":2},\"generated_at\":\"2026-11-21T04:07:54Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128250301,\"tag\":\"2.5.6\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109241507,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fg5-stock-rom&amp;tag=MX4_EN-V1.11-20260727#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/g5-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**G5 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fg5-stock-rom&amp;tag=MX4_EN-V1.11-20260727&amp;asset=rom_g5.zip&amp;platform=windows&amp;mirror=y1-community%2Fg5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/g5-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for G5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fg5-stock-rom&amp;tag=MX4_EN-V1.11-20260727&amp;asset=rom_g5.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fg5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/g5-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for G5 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fg5-stock-rom&amp;tag=MX4_EN-V1.11-20260727&amp;asset=rom_g5.zip&amp;platform=linux&amp;mirror=y1-community%2Fg5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/g5-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for G5 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fg5-stock-rom&amp;tag=MX4_EN-V1.11-20260727&amp;asset=rom_g5.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fg5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/g5-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for G5 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fg5-stock-rom&amp;tag=MX4_EN-V1.11-20260727&amp;asset=rom_g5.zip&amp;platform=macos&amp;mirror=y1-community%2Fg5-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/g5-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for G5 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Innioasis G5 software **MX4_EN-V1.11-20260727**.\n\n- Model: **G5** (Innioasis)\n- Package: `rom_g5.zip`\n- Build tag: `MX4_EN-V1.11-20260727`\n- Build date: 2026-07-27\n\n## Install\n\n1. Download `rom_g5.zip` (every numbered volume if the release has more than one, then `cat rom_g5.zip.* > rom_g5.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g5.zip` | 1953.7 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G5>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"G5\",\"name\":\"rom_g5-windows.zip\",\"platform\":\"windows\",\"sha256\":\"b1fe1285c2195c6595ab32ab8e38dcfc719bc84ca9c2c303788e2fa7a29764d6\",\"size\":2088208244,\"source_asset\":\"rom_g5.zip\",\"type\":\"Stock\"},{\"model\":\"G5\",\"name\":\"rom_g5-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"41a0a374c83d1f137e1fd1041c449554e61c5f065183975ae53f9e693a637ed9\",\"size\":2097668626,\"source_asset\":\"rom_g5.zip\",\"type\":\"Stock\"},{\"model\":\"G5\",\"name\":\"rom_g5-linux.zip\",\"platform\":\"linux\",\"sha256\":\"a0d18d573dc6778036a3e281f67a585c0584c3a6fd48337122544ac88165c9a7\",\"size\":2096082089,\"source_asset\":\"rom_g5.zip\",\"type\":\"Stock\"},{\"model\":\"G5\",\"name\":\"rom_g5-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"e3c3219d7b7dcf16a98054fc870752455d48c4e7de59004c292a6fa902921850\",\"size\":2096082911,\"source_asset\":\"rom_g5.zip\",\"type\":\"Stock\"},{\"model\":\"G5\",\"name\":\"rom_g5-macos.zip\",\"platform\":\"macos\",\"sha256\":\"1a702c8e8bcc27ad517d5570603af0264c6f6af042d773e94fa6e2f29ff3dc28\",\"size\":2132068794,\"source_asset\":\"rom_g5.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-21T18:44:02Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[\"rom_g5-linux-arm64.zip is 2149247172 bytes, over the 2147483648 byte GitHub asset limit\"],\"fingerprint\":\"802743eb51d26287c12201e0128ae72d9c08dfa2a5c63513f51d02bbb28cfd2b\",\"original_asset_sizes\":{\"SHA256SUMS.MX4_EN-V1.11-20260727\":78,\"rom_g5.zip\":2048654340},\"original_assets\":[\"rom_g5.zip\",\"SHA256SUMS.MX4_EN-V1.11-20260727\"],\"platforms\":{\"linux\":\"3f9b7aaf4c9d7bb9ad54b63700a4d54c7451fb2289d8da50434930949baa2da1\",\"linux-arm64\":\"07022ab4d34a268dff5c33ca590976226ae13d1a33c62ea4538a41555ab706df\",\"linux-legacy\":\"2630a6e0fe813ad9abb7be5d4e37504301906f4e49d2cd1893a791b4283279a2\",\"macos\":\"6d0a825b48ac2e71b09383e6d62acce05ebe8911417499043b4654be07c75b6b\",\"windows\":\"09b358499dbde9c75a990f60d23c6397971461bc373acffd0a1cd07b23e7bc46\",\"windows-legacy\":\"2b489fe098763799461c8ee003b3091e1d2d442051ba15233e115896536d98ca\"},\"skipped\":[],\"source_fingerprint\":\"530562e9de3ce0d9be8f62d40187a00724b5f073e77d84ec4cb12aa84f57b7c6\",\"stats\":{\"baseline\":{\"SHA256SUMS.MX4_EN-V1.11-20260727\":2,\"rom_g5-linux-legacy.zip\":1,\"rom_g5-linux.zip\":1,\"rom_g5-macos.zip\":4,\"rom_g5-windows-legacy.zip\":1,\"rom_g5-windows.zip\":2,\"rom_g5.zip\":2},\"generated_at\":\"2026-11-21T18:44:02Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128250301,\"tag\":\"2.5.6.1\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109241507,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-11T22:56:49Z",
@@ -13,59 +13,59 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 774365891,
+        "id": 776521536,
         "name": "rom_g5-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-linux-legacy.zip",
         "size": 2096082911,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-21T04:08:02Z",
-        "updated_at": "2026-11-21T04:11:03Z",
-        "url": "https://api.github.com/repos/y1-community/g5-stock-rom-mirror/releases/assets/774365891"
+        "created_at": "2026-11-21T18:44:12Z",
+        "updated_at": "2026-11-21T18:46:05Z",
+        "url": "https://api.github.com/repos/y1-community/g5-stock-rom-mirror/releases/assets/776521536"
       },
       {
-        "id": 774365883,
+        "id": 776521532,
         "name": "rom_g5-linux.zip",
         "browser_download_url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-linux.zip",
         "size": 2096082089,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-21T04:08:02Z",
-        "updated_at": "2026-11-21T04:11:12Z",
-        "url": "https://api.github.com/repos/y1-community/g5-stock-rom-mirror/releases/assets/774365883"
+        "created_at": "2026-11-21T18:44:12Z",
+        "updated_at": "2026-11-21T18:46:18Z",
+        "url": "https://api.github.com/repos/y1-community/g5-stock-rom-mirror/releases/assets/776521532"
       },
       {
-        "id": 774365888,
+        "id": 776521540,
         "name": "rom_g5-macos.zip",
         "browser_download_url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-macos.zip",
         "size": 2132068794,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-21T04:08:02Z",
-        "updated_at": "2026-11-21T04:11:26Z",
-        "url": "https://api.github.com/repos/y1-community/g5-stock-rom-mirror/releases/assets/774365888"
+        "created_at": "2026-11-21T18:44:12Z",
+        "updated_at": "2026-11-21T18:45:33Z",
+        "url": "https://api.github.com/repos/y1-community/g5-stock-rom-mirror/releases/assets/776521540"
       },
       {
-        "id": 774365878,
+        "id": 776521537,
         "name": "rom_g5-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-windows-legacy.zip",
         "size": 2097668626,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-21T04:08:01Z",
-        "updated_at": "2026-11-21T04:11:18Z",
-        "url": "https://api.github.com/repos/y1-community/g5-stock-rom-mirror/releases/assets/774365878"
+        "created_at": "2026-11-21T18:44:12Z",
+        "updated_at": "2026-11-21T18:46:16Z",
+        "url": "https://api.github.com/repos/y1-community/g5-stock-rom-mirror/releases/assets/776521537"
       },
       {
-        "id": 774365887,
+        "id": 776521538,
         "name": "rom_g5-windows.zip",
         "browser_download_url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/rom_g5-windows.zip",
         "size": 2088208244,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-21T04:08:02Z",
-        "updated_at": "2026-11-21T04:11:23Z",
-        "url": "https://api.github.com/repos/y1-community/g5-stock-rom-mirror/releases/assets/774365887"
+        "created_at": "2026-11-21T18:44:12Z",
+        "updated_at": "2026-11-21T18:46:31Z",
+        "url": "https://api.github.com/repos/y1-community/g5-stock-rom-mirror/releases/assets/776521538"
       },
       {
         "id": 746404365,
@@ -90,15 +90,15 @@
         "url": "https://api.github.com/repos/y1-community/g5-stock-rom-mirror/releases/assets/746405052"
       },
       {
-        "id": 774373820,
+        "id": 776525139,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/g5-stock-rom-mirror/releases/download/MX4_EN-V1.11-20260727/stats.txt",
         "size": 3746,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T04:11:04Z",
-        "updated_at": "2026-11-21T04:11:04Z",
-        "url": "https://api.github.com/repos/y1-community/g5-stock-rom-mirror/releases/assets/774373820"
+        "created_at": "2026-11-21T18:45:34Z",
+        "updated_at": "2026-11-21T18:45:35Z",
+        "url": "https://api.github.com/repos/y1-community/g5-stock-rom-mirror/releases/assets/776525139"
       }
     ],
     "mirror_downloads": 0,
