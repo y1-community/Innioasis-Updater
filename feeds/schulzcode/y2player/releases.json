@@ -17,7 +17,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/rom_y2.zip",
         "size": 296365314,
-        "download_count": 1235,
+        "download_count": 1238,
         "content_type": "application/zip",
         "created_at": "2026-09-04T19:37:37Z",
         "updated_at": "2026-09-04T19:38:42Z",
@@ -28,15 +28,15 @@
         "name": "system.img",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/system.img",
         "size": 369235868,
-        "download_count": 79,
+        "download_count": 80,
         "content_type": "application/octet-stream",
         "created_at": "2026-09-04T19:35:24Z",
         "updated_at": "2026-09-04T19:37:34Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Player/releases/assets/544805127"
       }
     ],
-    "mirror_downloads": 47,
-    "downloads": 1282,
+    "mirror_downloads": 48,
+    "downloads": 1286,
     "download_breakdown": {
       "tag": "Release2.5",
       "mirrors": "y1-community/y2player-mirror",
@@ -44,8 +44,8 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/rom_y2.zip",
-          "downloads": 1247,
-          "mirror_downloads": 12
+          "downloads": 1251,
+          "mirror_downloads": 13
         }
       ],
       "portable": [
@@ -53,7 +53,7 @@
           "platform": "windows",
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-windows.zip",
-          "size": 549876744,
+          "size": 426544931,
           "downloads": 14
         },
         {
@@ -67,14 +67,14 @@
           "platform": "linux",
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-linux.zip",
-          "size": 547892287,
+          "size": 548106810,
           "downloads": 6
         },
         {
           "platform": "linux-arm64",
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-linux-arm64.zip",
-          "size": 372797106,
+          "size": 373013572,
           "downloads": 1
         },
         {
@@ -88,7 +88,7 @@
           "platform": "macos",
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-macos.zip",
-          "size": 347696514,
+          "size": 347858488,
           "downloads": 10
         }
       ]
@@ -112,7 +112,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.3/rom_y2.zip",
         "size": 296556198,
-        "download_count": 342,
+        "download_count": 343,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-08-15T10:12:58Z",
         "updated_at": "2026-08-15T10:14:01Z",
@@ -123,15 +123,15 @@
         "name": "system.img",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.3/system.img",
         "size": 369211292,
-        "download_count": 54,
+        "download_count": 55,
         "content_type": "application/octet-stream",
         "created_at": "2026-08-15T10:19:25Z",
         "updated_at": "2026-08-15T10:20:42Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Player/releases/assets/515584395"
       }
     ],
-    "mirror_downloads": 44,
-    "downloads": 386,
+    "mirror_downloads": 45,
+    "downloads": 388,
     "download_breakdown": {
       "tag": "ReleaseV2.3",
       "mirrors": "y1-community/y2player-mirror",
@@ -139,8 +139,8 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.3/rom_y2.zip",
-          "downloads": 358,
-          "mirror_downloads": 16
+          "downloads": 360,
+          "mirror_downloads": 17
         }
       ],
       "portable": [
@@ -148,7 +148,7 @@
           "platform": "windows",
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-windows.zip",
-          "size": 549846164,
+          "size": 426514351,
           "downloads": 11
         },
         {
@@ -162,14 +162,14 @@
           "platform": "linux",
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux.zip",
-          "size": 547861707,
+          "size": 548076230,
           "downloads": 6
         },
         {
           "platform": "linux-arm64",
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux-arm64.zip",
-          "size": 372766526,
+          "size": 372982992,
           "downloads": 2
         },
         {
@@ -183,7 +183,7 @@
           "platform": "macos",
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-macos.zip",
-          "size": 347665934,
+          "size": 347827908,
           "downloads": 5
         }
       ]
@@ -207,7 +207,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/rom_y2.zip",
         "size": 296538727,
-        "download_count": 99,
+        "download_count": 100,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-08-10T18:20:03Z",
         "updated_at": "2026-08-10T18:21:10Z",
@@ -218,15 +218,15 @@
         "name": "system.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/system.zip",
         "size": 225531225,
-        "download_count": 52,
+        "download_count": 54,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-08-10T18:19:10Z",
         "updated_at": "2026-08-10T18:20:00Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Player/releases/assets/509095127"
       }
     ],
-    "mirror_downloads": 57,
-    "downloads": 208,
+    "mirror_downloads": 58,
+    "downloads": 212,
     "download_breakdown": {
       "tag": "RealeaseV2.2.2",
       "mirrors": "y1-community/y2player-mirror",
@@ -234,13 +234,13 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/rom_y2.zip",
-          "downloads": 115,
-          "mirror_downloads": 16
+          "downloads": 117,
+          "mirror_downloads": 17
         },
         {
           "name": "system.zip",
           "url": "https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/system.zip",
-          "downloads": 62,
+          "downloads": 64,
           "mirror_downloads": 10
         }
       ],
@@ -249,7 +249,7 @@
           "platform": "windows",
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-windows.zip",
-          "size": 549828695,
+          "size": 426496882,
           "downloads": 12
         },
         {
@@ -263,14 +263,14 @@
           "platform": "linux",
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-linux.zip",
-          "size": 547844238,
+          "size": 548058761,
           "downloads": 6
         },
         {
           "platform": "linux-arm64",
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-linux-arm64.zip",
-          "size": 372749057,
+          "size": 372965523,
           "downloads": 4
         },
         {
@@ -284,7 +284,7 @@
           "platform": "macos",
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-macos.zip",
-          "size": 347648465,
+          "size": 347810439,
           "downloads": 5
         }
       ]
@@ -308,7 +308,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2.1/rom_y2.zip",
         "size": 296506638,
-        "download_count": 112,
+        "download_count": 113,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-08-03T17:48:17Z",
         "updated_at": "2026-08-03T17:49:23Z",
@@ -319,15 +319,15 @@
         "name": "system.img.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2.1/system.img.zip",
         "size": 225498405,
-        "download_count": 57,
+        "download_count": 58,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-08-03T16:53:01Z",
         "updated_at": "2026-08-03T16:53:53Z",
         "url": "https://api.github.com/repos/SchulzCode/Y2Player/releases/assets/500302691"
       }
     ],
-    "mirror_downloads": 52,
-    "downloads": 221,
+    "mirror_downloads": 53,
+    "downloads": 224,
     "download_breakdown": {
       "tag": "ReleaseV2.2.1",
       "mirrors": "y1-community/y2player-mirror",
@@ -335,13 +335,13 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2.1/rom_y2.zip",
-          "downloads": 128,
-          "mirror_downloads": 16
+          "downloads": 130,
+          "mirror_downloads": 17
         },
         {
           "name": "system.img.zip",
           "url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2.1/system.img.zip",
-          "downloads": 67,
+          "downloads": 68,
           "mirror_downloads": 10
         }
       ],
@@ -350,7 +350,7 @@
           "platform": "windows",
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-windows.zip",
-          "size": 549796608,
+          "size": 426464795,
           "downloads": 12
         },
         {
@@ -364,14 +364,14 @@
           "platform": "linux",
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux.zip",
-          "size": 547812151,
+          "size": 548026674,
           "downloads": 4
         },
         {
           "platform": "linux-arm64",
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux-arm64.zip",
-          "size": 372716970,
+          "size": 372933436,
           "downloads": 1
         },
         {
@@ -385,7 +385,7 @@
           "platform": "macos",
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-macos.zip",
-          "size": 347616378,
+          "size": 347778352,
           "downloads": 6
         }
       ]
@@ -409,7 +409,7 @@
         "name": "system.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2/system.zip",
         "size": 225481335,
-        "download_count": 92,
+        "download_count": 95,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-08-01T15:10:30Z",
         "updated_at": "2026-08-01T15:11:21Z",
@@ -417,7 +417,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 92,
+    "downloads": 95,
     "download_breakdown": {
       "tag": "ReleaseV2.2",
       "mirrors": "",
@@ -425,7 +425,7 @@
         {
           "name": "system.zip",
           "url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2/system.zip",
-          "downloads": 92
+          "downloads": 95
         }
       ],
       "portable": []
@@ -449,7 +449,7 @@
         "name": "system.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.1/system.zip",
         "size": 225469939,
-        "download_count": 93,
+        "download_count": 96,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-07-29T22:48:34Z",
         "updated_at": "2026-07-29T22:49:23Z",
@@ -457,7 +457,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 93,
+    "downloads": 96,
     "download_breakdown": {
       "tag": "ReleaseV2.1",
       "mirrors": "",
@@ -465,7 +465,7 @@
         {
           "name": "system.zip",
           "url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.1/system.zip",
-          "downloads": 93
+          "downloads": 96
         }
       ],
       "portable": []
@@ -489,7 +489,7 @@
         "name": "system.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.0/system.zip",
         "size": 329753589,
-        "download_count": 82,
+        "download_count": 85,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-07-28T02:32:11Z",
         "updated_at": "2026-07-28T02:33:22Z",
@@ -497,7 +497,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 82,
+    "downloads": 85,
     "download_breakdown": {
       "tag": "ReleaseV2.0",
       "mirrors": "",
@@ -505,7 +505,7 @@
         {
           "name": "system.zip",
           "url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.0/system.zip",
-          "downloads": 82
+          "downloads": 85
         }
       ],
       "portable": []
@@ -529,7 +529,7 @@
         "name": "system.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV1.2/system.zip",
         "size": 330410840,
-        "download_count": 84,
+        "download_count": 87,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-07-26T11:07:04Z",
         "updated_at": "2026-07-26T11:08:14Z",
@@ -537,7 +537,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 84,
+    "downloads": 87,
     "download_breakdown": {
       "tag": "ReleaseV1.2",
       "mirrors": "",
@@ -545,7 +545,7 @@
         {
           "name": "system.zip",
           "url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV1.2/system.zip",
-          "downloads": 84
+          "downloads": 87
         }
       ],
       "portable": []
@@ -569,7 +569,7 @@
         "name": "system.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV1.1/system.zip",
         "size": 330412470,
-        "download_count": 62,
+        "download_count": 65,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-07-25T17:05:05Z",
         "updated_at": "2026-07-25T17:06:16Z",
@@ -577,7 +577,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 62,
+    "downloads": 65,
     "download_breakdown": {
       "tag": "ReleaseV1.1",
       "mirrors": "",
@@ -585,7 +585,7 @@
         {
           "name": "system.zip",
           "url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV1.1/system.zip",
-          "downloads": 62
+          "downloads": 65
         }
       ],
       "portable": []
@@ -609,7 +609,7 @@
         "name": "system.zip",
         "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/Release/system.zip",
         "size": 330410980,
-        "download_count": 82,
+        "download_count": 85,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-07-24T20:35:17Z",
         "updated_at": "2026-07-24T20:36:27Z",
@@ -617,7 +617,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 82,
+    "downloads": 85,
     "download_breakdown": {
       "tag": "Release",
       "mirrors": "",
@@ -625,7 +625,7 @@
         {
           "name": "system.zip",
           "url": "https://github.com/SchulzCode/Y2Player/releases/download/Release/system.zip",
-          "downloads": 82
+          "downloads": 85
         }
       ],
       "portable": []

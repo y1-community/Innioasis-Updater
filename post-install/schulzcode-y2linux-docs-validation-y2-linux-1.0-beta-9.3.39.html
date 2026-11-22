@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.39: the cover stays while you seek, and films that can't play say so - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.39: the cover stays while you seek, and films that can't play say so Release 1.0.0-beta.9.3.39 , Y2Reborn 1.0.0-beta.9.3.39 , kernel 6.18.56-y2linux-">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.39.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.39: the cover stays while you seek, and films that can't play say so - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.39: the cover stays while you seek, and films that can't play say so Release 1.0.0-beta.9.3.39 , Y2Reborn 1.0.0-beta.9.3.39 , kernel 6.18.56-y2linux-">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.39.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.39: the cover stays while you seek, and films that can't play say so - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.39: the cover stays while you seek, and films that can't play say so Release 1.0.0-beta.9.3.39 , Y2Reborn 1.0.0-beta.9.3.39 , kernel 6.18.56-y2linux-">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.39.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.39.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.39: the cover stays while you seek, and films that can&#x27;t play say so</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9339-the-cover-stays-while-you-seek-and-films-that-cant-play-say-so">Y2Linux 1.0 Beta 9.3.39: the cover stays while you seek, and films that can&#x27;t play say so</h1>
+<p>Release <code>1.0.0-beta.9.3.39</code>, Y2Reborn <code>1.0.0-beta.9.3.39</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.39</code>, update sequence 18000, root <code>2026.08-platform-v1.298</code>. Published as GitHub release <code>baseline-275</code> (build 275; test build 274 came before it on the developer&#x27;s player). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.38.md">Beta 9.3.38</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p>Two fixes. Seeking within a song (holding Next or Previous) no longer blanks the cover and no longer flashes &quot;Starting…&quot; (<a href="https://github.com/SchulzCode/Y2Reborn/issues/151" target="_blank" rel="noopener noreferrer">Y2Reborn #151</a>, fixed by jonasevcik in <a href="https://github.com/SchulzCode/Y2Reborn/pull/154" target="_blank" rel="noopener noreferrer">#154</a>). And a film in a picture format the player cannot show (HEVC/H.265, AV1 and others) is no longer listed among your songs: it stands in Videos and says it can&#x27;t play.</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>The cover stays while seeking</strong> (#151, thanks to jonasevcik): the cover on Now Playing and Home turned into the<p>music note for about half a second after every seek, and the quality line showed an orange &quot;Starting…&quot;. Now both stay, also when Play continues a paused song. The short blank when a <em>different</em> song starts is not changed yet.</p></li><li><strong>The restored song&#x27;s cover survives Play</strong> (#150): the cover shown for the song a restart brought back now stays<p>when you press Play, and it is fetched again once the SD card is ready.</p></li><li><strong>Films the player cannot show</strong> (reported on Reddit): an MP4 or MKV with an HEVC (H.265) picture, the usual format<p>of anime episodes, was read as its sound alone and appeared among the songs. Now it is a film: Videos lists it as &quot;Can&#x27;t play · HEVC (H.265)&quot; (or AV1, MPEG-2, …), and selecting it says to convert it to H.264 MP4 instead of playing. It never appears among songs, albums, shuffles or on Last.fm. After the update the player reads every file&#x27;s details once in the background, so files already in your library move to Videos by themselves.</p></li></ul>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>Tests</strong>: the platform&#x27;s full check, Reborn&#x27;s tests and the tests of the release images passed. New tests: the<p>same song keeps its cover and another song, another occurrence of it or a station logo do not; &quot;Starting…&quot; only for a song opened for the first time; an HEVC film is read as a film without a picture, an H.264 film as a film, a song&#x27;s embedded cover stays a song; the Videos note and message.</p></li><li><strong>On the developer&#x27;s player</strong>, the screen filmed at 10 pictures a second while seeking in a 3-minute MP3 with an<p>embedded cover: Beta 9.3.38 showed the note instead of the cover in 12 of 40 pictures (three seeks); with the fix 0 of 40, and 0 of 50 with &quot;Starting…&quot; never shown when seeking like a held button. An HEVC test film was read as <code>hevc/aac</code>, listed in Videos as &quot;Can&#x27;t play · HEVC (H.265)&quot;, and selecting it showed the message and played nothing.</p></li><li><strong>Not tested on a player</strong>: AV1 and the other formats (they take the same path), a library of thousands of songs<p>being read again after the update.</p></li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<ul><li>After the update the player reads every file&#x27;s details once in the background (as after Beta 9.3.33&#x27;s year);<p>on a very large library the first minutes are a little slower.</p></li><li>When a new song starts, its cover still takes a moment to appear.</li><li>Everything listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.34.md%23known-issues&amp;anchor=known-issues">Beta 9.3.34</a> still applies.</li></ul>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>#151 / #154 (jonasevcik, rebase-merged): <code>Runtime::art_owner</code> (queue entry + library id) and<p><code>runtime::keeps_art</code>: <code>load()</code> keeps <code>art</code> for the same owner; <code>AppModel::reopening</code> set by <code>apply_seek</code>, ended by <code>TrackStarted</code>, a boundary or <code>load()</code>; <code>views_playing::starting</code>. #150 follow-up: <code>restored_picture</code> returns the owner, <code>track_art::sources_changed</code>.</p></li><li>Films: <code>rb_video_unplayable_codec</code> (<code>reborn-media/native/video.c</code>: HEVC, AV1, VVC, MPEG-1/2, VC-1, WMV1–3,<p>MS-MPEG4 v1/v2, Theora, FLV1, VP6, ProRes, RealVideo); <code>admit_streams</code> and <code>extract_metadata</code> name such a file <code>&quot;&lt;picture&gt;/&lt;sound&gt;&quot;</code> with no artwork; <code>Track::video_codec</code>, <code>Track::video_playable</code>; Videos <code>unplayable_note</code> / <code>unplayable_message</code>; <code>METADATA_REVISION</code> 6. Fixtures <code>film-hevc.mp4</code>, <code>film-h264.mp4</code> (<code>tools/build/fixtures.py --films</code>).</p></li><li>Images built from Linux <code>a3794d82</code>, Reborn <code>9d2930a</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

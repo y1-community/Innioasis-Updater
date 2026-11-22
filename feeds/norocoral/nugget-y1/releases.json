@@ -1,5 +1,156 @@
 [
   {
+    "id": 454761429,
+    "tag_name": "2.1.4",
+    "name": "2.1.4",
+    "body": "**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/2.1.3...2.1.4\r\n\r\n1. Add MeUI\r\n2. Add ConfigApp and replace old bootpick\r\n3. Add logo.bin\r\n4. Add AAC support for bluetooth\r\n5. Add experimental Wi-Fi support",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-22T21:24:19Z",
+    "published_at": "2026-11-22T21:26:14Z",
+    "html_url": "https://github.com/norocoral/nugget-y1/releases/tag/2.1.4",
+    "icon_url": "https://norocoral.github.io/y1/inupdater/icn.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 780511225,
+        "name": "boot_nugget.img",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.4/boot_nugget.img",
+        "size": 5976064,
+        "download_count": 2,
+        "content_type": "image/img",
+        "created_at": "2026-11-22T21:25:34Z",
+        "updated_at": "2026-11-22T21:25:34Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/780511225"
+      },
+      {
+        "id": 780510995,
+        "name": "liby1-sdk.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.4/liby1-sdk.zip",
+        "size": 333065,
+        "download_count": 3,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-11-22T21:25:29Z",
+        "updated_at": "2026-11-22T21:25:30Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/780510995"
+      },
+      {
+        "id": 780511042,
+        "name": "logo.bin",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.4/logo.bin",
+        "size": 98733,
+        "download_count": 1,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-22T21:25:30Z",
+        "updated_at": "2026-11-22T21:25:30Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/780511042"
+      },
+      {
+        "id": 780511060,
+        "name": "rockbox_sdcard.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.4/rockbox_sdcard.zip",
+        "size": 38078831,
+        "download_count": 4,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-11-22T21:25:30Z",
+        "updated_at": "2026-11-22T21:25:33Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/780511060"
+      },
+      {
+        "id": 780511192,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.4/rom.zip",
+        "size": 6023285,
+        "download_count": 4,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-11-22T21:25:33Z",
+        "updated_at": "2026-11-22T21:25:33Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/780511192"
+      },
+      {
+        "id": 780511208,
+        "name": "sha256sums.txt",
+        "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.4/sha256sums.txt",
+        "size": 321,
+        "download_count": 2,
+        "content_type": "text/plain",
+        "created_at": "2026-11-22T21:25:33Z",
+        "updated_at": "2026-11-22T21:25:34Z",
+        "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/780511208"
+      }
+    ],
+    "mirror_downloads": 11,
+    "downloads": 22,
+    "download_breakdown": {
+      "tag": "2.1.4",
+      "mirrors": "y1-community/nugget-y1-mirror",
+      "firmware": [
+        {
+          "name": "liby1-sdk.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.4/liby1-sdk.zip",
+          "downloads": 4,
+          "mirror_downloads": 1
+        },
+        {
+          "name": "rockbox_sdcard.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.4/rockbox_sdcard.zip",
+          "downloads": 5,
+          "mirror_downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.4/rom.zip",
+          "downloads": 5,
+          "mirror_downloads": 1
+        }
+      ],
+      "portable": [
+        {
+          "platform": "windows",
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-windows.zip",
+          "size": 195823543,
+          "downloads": 2
+        },
+        {
+          "platform": "windows-legacy",
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-windows-legacy.zip",
+          "size": 80916631,
+          "downloads": 1
+        },
+        {
+          "platform": "linux",
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-linux.zip",
+          "size": 307877188,
+          "downloads": 1
+        },
+        {
+          "platform": "linux-arm64",
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-linux-arm64.zip",
+          "size": 132783950,
+          "downloads": 1
+        },
+        {
+          "platform": "linux-legacy",
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-linux-legacy.zip",
+          "size": 79330962,
+          "downloads": 1
+        },
+        {
+          "platform": "macos",
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-macos.zip",
+          "size": 115333628,
+          "downloads": 2
+        }
+      ]
+    }
+  },
+  {
     "id": 453998648,
     "tag_name": "2.1.3",
     "name": "2.1.3",
@@ -17,7 +168,7 @@
         "name": "boot_nugget.img",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.3/boot_nugget.img",
         "size": 5976064,
-        "download_count": 6,
+        "download_count": 7,
         "content_type": "image/img",
         "created_at": "2026-11-21T21:32:07Z",
         "updated_at": "2026-11-21T21:32:08Z",
@@ -28,7 +179,7 @@
         "name": "liby1-sdk.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.3/liby1-sdk.zip",
         "size": 106964,
-        "download_count": 8,
+        "download_count": 9,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-21T21:32:08Z",
         "updated_at": "2026-11-21T21:32:08Z",
@@ -39,7 +190,7 @@
         "name": "rockbox_sdcard.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.3/rockbox_sdcard.zip",
         "size": 7847123,
-        "download_count": 17,
+        "download_count": 18,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-21T21:32:04Z",
         "updated_at": "2026-11-21T21:32:06Z",
@@ -50,7 +201,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.3/rom.zip",
         "size": 5936447,
-        "download_count": 48,
+        "download_count": 51,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-21T21:32:06Z",
         "updated_at": "2026-11-21T21:32:07Z",
@@ -61,15 +212,15 @@
         "name": "sha256sums.txt",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.3/sha256sums.txt",
         "size": 321,
-        "download_count": 3,
+        "download_count": 4,
         "content_type": "text/plain",
         "created_at": "2026-11-21T21:32:07Z",
         "updated_at": "2026-11-21T21:32:07Z",
         "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/776935398"
       }
     ],
-    "mirror_downloads": 9,
-    "downloads": 82,
+    "mirror_downloads": 18,
+    "downloads": 96,
     "download_breakdown": {
       "tag": "2.1.3",
       "mirrors": "y1-community/nugget-y1-mirror",
@@ -77,20 +228,20 @@
         {
           "name": "liby1-sdk.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.3/liby1-sdk.zip",
-          "downloads": 9,
-          "mirror_downloads": 1
+          "downloads": 11,
+          "mirror_downloads": 2
         },
         {
           "name": "rockbox_sdcard.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.3/rockbox_sdcard.zip",
-          "downloads": 18,
-          "mirror_downloads": 1
+          "downloads": 20,
+          "mirror_downloads": 2
         },
         {
           "name": "rom.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.3/rom.zip",
-          "downloads": 49,
-          "mirror_downloads": 1
+          "downloads": 53,
+          "mirror_downloads": 2
         }
       ],
       "portable": [
@@ -98,43 +249,43 @@
           "platform": "windows",
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-windows.zip",
-          "size": 319020021,
-          "downloads": 1
+          "size": 195736508,
+          "downloads": 2
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-windows-legacy.zip",
-          "size": 80781296,
-          "downloads": 1
+          "size": 80829596,
+          "downloads": 2
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-linux.zip",
-          "size": 307527330,
-          "downloads": 1
+          "size": 307790153,
+          "downloads": 2
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-linux-arm64.zip",
-          "size": 132432149,
-          "downloads": 1
+          "size": 132696915,
+          "downloads": 2
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-linux-legacy.zip",
-          "size": 79195627,
-          "downloads": 1
+          "size": 79243927,
+          "downloads": 2
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-macos.zip",
-          "size": 115036403,
-          "downloads": 1
+          "size": 115246603,
+          "downloads": 2
         }
       ]
     }
@@ -157,7 +308,7 @@
         "name": "boot_nugget.img",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/boot_nugget.img",
         "size": 5976064,
-        "download_count": 7,
+        "download_count": 8,
         "content_type": "image/img",
         "created_at": "2026-11-21T08:10:53Z",
         "updated_at": "2026-11-21T08:10:54Z",
@@ -168,7 +319,7 @@
         "name": "liby1-sdk.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/liby1-sdk.zip",
         "size": 100684,
-        "download_count": 9,
+        "download_count": 10,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-21T08:10:54Z",
         "updated_at": "2026-11-21T08:10:54Z",
@@ -179,7 +330,7 @@
         "name": "rockbox_sdcard.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/rockbox_sdcard.zip",
         "size": 7753746,
-        "download_count": 14,
+        "download_count": 15,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-21T08:10:54Z",
         "updated_at": "2026-11-21T08:10:55Z",
@@ -190,7 +341,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/rom.zip",
         "size": 5936242,
-        "download_count": 24,
+        "download_count": 25,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-21T08:10:51Z",
         "updated_at": "2026-11-21T08:10:53Z",
@@ -201,15 +352,15 @@
         "name": "sha256sums.txt",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/sha256sums.txt",
         "size": 321,
-        "download_count": 4,
+        "download_count": 5,
         "content_type": "text/plain",
         "created_at": "2026-11-21T08:10:53Z",
         "updated_at": "2026-11-21T08:10:53Z",
         "url": "https://api.github.com/repos/norocoral/nugget-y1/releases/assets/774889827"
       }
     ],
-    "mirror_downloads": 9,
-    "downloads": 56,
+    "mirror_downloads": 18,
+    "downloads": 68,
     "download_breakdown": {
       "tag": "2.1.2",
       "mirrors": "y1-community/nugget-y1-mirror",
@@ -217,20 +368,20 @@
         {
           "name": "liby1-sdk.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/liby1-sdk.zip",
-          "downloads": 10,
-          "mirror_downloads": 1
+          "downloads": 12,
+          "mirror_downloads": 2
         },
         {
           "name": "rockbox_sdcard.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/rockbox_sdcard.zip",
-          "downloads": 15,
-          "mirror_downloads": 1
+          "downloads": 17,
+          "mirror_downloads": 2
         },
         {
           "name": "rom.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.2/rom.zip",
-          "downloads": 25,
-          "mirror_downloads": 1
+          "downloads": 27,
+          "mirror_downloads": 2
         }
       ],
       "portable": [
@@ -238,43 +389,43 @@
           "platform": "windows",
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-windows.zip",
-          "size": 319019898,
-          "downloads": 1
+          "size": 195736383,
+          "downloads": 2
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-windows-legacy.zip",
-          "size": 80781173,
-          "downloads": 1
+          "size": 80829471,
+          "downloads": 2
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-linux.zip",
-          "size": 307527207,
-          "downloads": 1
+          "size": 307790028,
+          "downloads": 2
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-linux-arm64.zip",
-          "size": 132432026,
-          "downloads": 1
+          "size": 132696790,
+          "downloads": 2
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-linux-legacy.zip",
-          "size": 79195502,
-          "downloads": 1
+          "size": 79243800,
+          "downloads": 2
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-macos.zip",
-          "size": 115036280,
-          "downloads": 1
+          "size": 115246479,
+          "downloads": 2
         }
       ]
     }
@@ -308,7 +459,7 @@
         "name": "liby1-sdk.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.1/liby1-sdk.zip",
         "size": 99696,
-        "download_count": 15,
+        "download_count": 17,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-19T18:27:53Z",
         "updated_at": "2026-11-19T18:27:54Z",
@@ -319,7 +470,7 @@
         "name": "rockbox_sdcard.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.1/rockbox_sdcard.zip",
         "size": 7742810,
-        "download_count": 14,
+        "download_count": 16,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-19T18:27:54Z",
         "updated_at": "2026-11-19T18:27:55Z",
@@ -338,7 +489,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 29,
+    "downloads": 33,
     "download_breakdown": {
       "tag": "2.1.1",
       "mirrors": "",
@@ -346,12 +497,12 @@
         {
           "name": "liby1-sdk.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.1/liby1-sdk.zip",
-          "downloads": 15
+          "downloads": 17
         },
         {
           "name": "rockbox_sdcard.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.1/rockbox_sdcard.zip",
-          "downloads": 14
+          "downloads": 16
         }
       ],
       "portable": []
@@ -386,7 +537,7 @@
         "name": "liby1-sdk.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1/liby1-sdk.zip",
         "size": 99696,
-        "download_count": 10,
+        "download_count": 12,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-18T21:31:54Z",
         "updated_at": "2026-11-18T21:31:55Z",
@@ -397,7 +548,7 @@
         "name": "rockbox_sdcard.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1/rockbox_sdcard.zip",
         "size": 7649904,
-        "download_count": 18,
+        "download_count": 20,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-18T21:31:55Z",
         "updated_at": "2026-11-18T21:32:12Z",
@@ -416,7 +567,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 28,
+    "downloads": 32,
     "download_breakdown": {
       "tag": "2.1",
       "mirrors": "",
@@ -424,12 +575,12 @@
         {
           "name": "liby1-sdk.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1/liby1-sdk.zip",
-          "downloads": 10
+          "downloads": 12
         },
         {
           "name": "rockbox_sdcard.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1/rockbox_sdcard.zip",
-          "downloads": 18
+          "downloads": 20
         }
       ],
       "portable": []
@@ -475,7 +626,7 @@
         "name": "rockbox_sdcard.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.33/rockbox_sdcard.zip",
         "size": 6499219,
-        "download_count": 19,
+        "download_count": 21,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-10-26T20:58:54Z",
         "updated_at": "2026-10-26T20:58:55Z",
@@ -483,7 +634,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 19,
+    "downloads": 21,
     "download_breakdown": {
       "tag": "1.33",
       "mirrors": "",
@@ -491,7 +642,7 @@
         {
           "name": "rockbox_sdcard.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/1.33/rockbox_sdcard.zip",
-          "downloads": 19
+          "downloads": 21
         }
       ],
       "portable": []
@@ -537,7 +688,7 @@
         "name": "rockbox_sdcard.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.31/rockbox_sdcard.zip",
         "size": 14575873,
-        "download_count": 12,
+        "download_count": 14,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-10-20T13:11:34Z",
         "updated_at": "2026-10-20T13:11:35Z",
@@ -545,7 +696,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 12,
+    "downloads": 14,
     "download_breakdown": {
       "tag": "1.31",
       "mirrors": "",
@@ -553,7 +704,7 @@
         {
           "name": "rockbox_sdcard.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/1.31/rockbox_sdcard.zip",
-          "downloads": 12
+          "downloads": 14
         }
       ],
       "portable": []
@@ -599,7 +750,7 @@
         "name": "rockbox_sdcard.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.3/rockbox_sdcard.zip",
         "size": 14575832,
-        "download_count": 11,
+        "download_count": 13,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-10-20T12:37:50Z",
         "updated_at": "2026-10-20T12:37:51Z",
@@ -607,7 +758,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 11,
+    "downloads": 13,
     "download_breakdown": {
       "tag": "1.3",
       "mirrors": "",
@@ -615,7 +766,7 @@
         {
           "name": "rockbox_sdcard.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/1.3/rockbox_sdcard.zip",
-          "downloads": 11
+          "downloads": 13
         }
       ],
       "portable": []
@@ -661,7 +812,7 @@
         "name": "rockbox_sdcard.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.2/rockbox_sdcard.zip",
         "size": 14636478,
-        "download_count": 11,
+        "download_count": 13,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-10-19T19:38:49Z",
         "updated_at": "2026-10-19T19:38:50Z",
@@ -669,7 +820,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 11,
+    "downloads": 13,
     "download_breakdown": {
       "tag": "1.2",
       "mirrors": "",
@@ -677,7 +828,7 @@
         {
           "name": "rockbox_sdcard.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/1.2/rockbox_sdcard.zip",
-          "downloads": 11
+          "downloads": 13
         }
       ],
       "portable": []
@@ -712,7 +863,7 @@
         "name": "rockbox_sdcard.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/1.0/rockbox_sdcard.zip",
         "size": 14436481,
-        "download_count": 11,
+        "download_count": 13,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-10-18T20:16:06Z",
         "updated_at": "2026-10-18T20:16:07Z",
@@ -731,7 +882,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 11,
+    "downloads": 13,
     "download_breakdown": {
       "tag": "1.0",
       "mirrors": "",
@@ -739,7 +890,7 @@
         {
           "name": "rockbox_sdcard.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/1.0/rockbox_sdcard.zip",
-          "downloads": 11
+          "downloads": 13
         }
       ],
       "portable": []

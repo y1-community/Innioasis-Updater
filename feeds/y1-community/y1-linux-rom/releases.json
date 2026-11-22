@@ -17,7 +17,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/y1-linux-rom/releases/download/0.0.1/rom.zip",
         "size": 270175226,
-        "download_count": 87,
+        "download_count": 88,
         "content_type": "application/zip",
         "created_at": "2026-10-03T15:28:17Z",
         "updated_at": "2026-10-03T15:28:48Z",
@@ -25,7 +25,7 @@
       }
     ],
     "mirror_downloads": 38,
-    "downloads": 125,
+    "downloads": 126,
     "download_breakdown": {
       "tag": "0.0.1",
       "mirrors": "y1-community/y1-linux-rom-mirror",
@@ -33,7 +33,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/y1-community/y1-linux-rom/releases/download/0.0.1/rom.zip",
-          "downloads": 97,
+          "downloads": 98,
           "mirror_downloads": 10
         }
       ],
@@ -42,7 +42,7 @@
           "platform": "windows",
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-windows.zip",
-          "size": 569372655,
+          "size": 446040842,
           "downloads": 10
         },
         {
@@ -56,14 +56,14 @@
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux.zip",
-          "size": 557879918,
+          "size": 558094441,
           "downloads": 7
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-arm64.zip",
-          "size": 382784737,
+          "size": 383001203,
           "downloads": 1
         },
         {
@@ -77,7 +77,7 @@
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-macos.zip",
-          "size": 365388772,
+          "size": 365550746,
           "downloads": 7
         }
       ]

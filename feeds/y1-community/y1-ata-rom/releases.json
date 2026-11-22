@@ -17,7 +17,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip",
         "size": 533410269,
-        "download_count": 493,
+        "download_count": 494,
         "content_type": "application/zip",
         "created_at": "2026-07-15T13:30:29Z",
         "updated_at": "2026-07-15T13:31:31Z",
@@ -28,7 +28,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip",
         "size": 475393744,
-        "download_count": 283,
+        "download_count": 284,
         "content_type": "application/zip",
         "created_at": "2026-07-15T13:32:55Z",
         "updated_at": "2026-07-15T13:33:44Z",
@@ -36,7 +36,7 @@
       }
     ],
     "mirror_downloads": 103,
-    "downloads": 879,
+    "downloads": 881,
     "download_breakdown": {
       "tag": "0.1",
       "mirrors": "y1-community/y1-ata-rom-mirror",
@@ -44,13 +44,13 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip",
-          "downloads": 503,
+          "downloads": 504,
           "mirror_downloads": 10
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip",
-          "downloads": 293,
+          "downloads": 294,
           "mirror_downloads": 10
         }
       ],
@@ -59,7 +59,7 @@
           "platform": "windows",
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom-windows.zip",
-          "size": 767237724,
+          "size": 643905911,
           "downloads": 25
         },
         {
@@ -73,14 +73,14 @@
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom-linux.zip",
-          "size": 765253267,
+          "size": 765467790,
           "downloads": 8
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom-linux-arm64.zip",
-          "size": 590158086,
+          "size": 590374552,
           "downloads": 8
         },
         {
@@ -94,14 +94,14 @@
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom-macos.zip",
-          "size": 565057481,
+          "size": 565219455,
           "downloads": 9
         },
         {
           "platform": "windows",
           "name": "rom_type_b-windows.zip",
           "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom_type_b-windows.zip",
-          "size": 710234720,
+          "size": 586902907,
           "downloads": 5
         },
         {
@@ -115,14 +115,14 @@
           "platform": "linux",
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom_type_b-linux.zip",
-          "size": 708250263,
+          "size": 708464786,
           "downloads": 5
         },
         {
           "platform": "linux-arm64",
           "name": "rom_type_b-linux-arm64.zip",
           "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom_type_b-linux-arm64.zip",
-          "size": 533155082,
+          "size": 533371548,
           "downloads": 3
         },
         {
@@ -136,7 +136,7 @@
           "platform": "macos",
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom_type_b-macos.zip",
-          "size": 508054483,
+          "size": 508216457,
           "downloads": 5
         }
       ]

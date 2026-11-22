@@ -79,7 +79,7 @@
     subgraph INITRAMFS[&quot;Initramfs (PID 1 /init)&quot;]
         INIT_BOOST[&quot;부팅 CPU 클록 부스트 (1.2 GHz 듀얼 코어)&quot;]
         INIT_STORAGE[&quot;반응형 MicroSD 마운트 (/mnt/sdcard)&quot;]
-        INIT_MENU[&quot;그래픽 부트로더 메뉴 (Nugget / Android / Poweroff / USB)&quot;]
+        INIT_MENU[&quot;ConfigApp 부팅 메뉴 (--bootmenu) / SD 미인식 텍스트 GUI&quot;]
         INIT_EXEC[&quot;Rockbox 또는 독립형 앱으로 제어권 전환&quot;]
     end
 
@@ -90,6 +90,7 @@
         Y1_INP[&quot;클릭 휠, 택타일 키, ACCDET 이어폰 단자&quot;]
         Y1_AUDIO[&quot;EAC DL1 DMA, MT6323 PMIC DAC &amp; 헤드폰 앰프, 마이크 ADC&quot;]
         Y1_TUNER[&quot;MT6627 FM 라디오 제어&quot;]
+        Y1_BT_WIFI[&quot;MT6572 CONNSYS 블루투스 (A2DP) 및 Wi-Fi&quot;]
         Y1_USB[&quot;USB 대용량 저장소 가젯 제어&quot;]
     end
 
@@ -124,7 +125,7 @@
         I-&gt;&gt;SD: mmcblk1p1을 /mnt/sdcard에 마운트
         I-&gt;&gt;I: 심볼릭 링크 /.system -&gt; /mnt/sdcard/.system 생성
         alt 부트로더 메뉴 활성화 또는 MENU 버튼 누름 감지
-            I-&gt;&gt;I: 부트로더 메뉴 표시 (Nugget / Android / Poweroff / USB)
+            I-&gt;&gt;I: ConfigApp (--bootmenu) 실행
             opt Android 선택 시
                 I-&gt;&gt;I: rootfs 정리 및 ramdisk_android.cpio.gz 압축 해제 -&gt; execve(&quot;/init&quot;)
             end
