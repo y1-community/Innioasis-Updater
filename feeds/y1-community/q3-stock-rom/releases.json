@@ -35,8 +35,8 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom/releases/assets/712346082"
       }
     ],
-    "mirror_downloads": 23,
-    "downloads": 57,
+    "mirror_downloads": 25,
+    "downloads": 59,
     "download_breakdown": {
       "tag": "MX2E-WVGA_TM-WV3.23-20250528",
       "mirrors": "y1-community/q3-stock-rom-mirror",
@@ -68,7 +68,7 @@
           "name": "rom_q3-linux.zip",
           "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-linux.zip",
           "size": 587246956,
-          "downloads": 2
+          "downloads": 4
         },
         {
           "platform": "linux-arm64",
@@ -130,8 +130,8 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom/releases/assets/712344894"
       }
     ],
-    "mirror_downloads": 25,
-    "downloads": 48,
+    "mirror_downloads": 26,
+    "downloads": 49,
     "download_breakdown": {
       "tag": "MX2D-WVGA_TM-WV3.20-20250618",
       "mirrors": "y1-community/q3-stock-rom-mirror",
@@ -184,7 +184,7 @@
           "name": "rom_q3-macos.zip",
           "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-macos.zip",
           "size": 389007534,
-          "downloads": 4
+          "downloads": 5
         }
       ]
     }

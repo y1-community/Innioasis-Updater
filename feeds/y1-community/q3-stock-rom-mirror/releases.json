@@ -39,7 +39,7 @@
         "name": "rom_q3-linux.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-linux.zip",
         "size": 587246956,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-21T11:23:01Z",
         "updated_at": "2026-11-21T11:23:20Z",
@@ -101,19 +101,19 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/717630694"
       },
       {
-        "id": 776439527,
+        "id": 777197570,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/stats.txt",
         "size": 4015,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T18:12:29Z",
-        "updated_at": "2026-11-21T18:12:29Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/776439527"
+        "created_at": "2026-11-21T23:25:19Z",
+        "updated_at": "2026-11-21T23:25:19Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/777197570"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 2,
     "download_breakdown": {
       "tag": "MX2E-WVGA_TM-WV3.23-20250528",
       "mirrors": "",
@@ -131,7 +131,7 @@
         {
           "name": "rom_q3-linux.zip",
           "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-linux.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "rom_q3-macos.zip",
@@ -208,7 +208,7 @@
         "name": "rom_q3-macos.zip",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-macos.zip",
         "size": 389007534,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-21T03:58:26Z",
         "updated_at": "2026-11-21T03:58:39Z",
@@ -259,19 +259,19 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/717626003"
       },
       {
-        "id": 776439364,
+        "id": 777197495,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/stats.txt",
         "size": 4078,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T18:12:26Z",
-        "updated_at": "2026-11-21T18:12:27Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/776439364"
+        "created_at": "2026-11-21T23:25:17Z",
+        "updated_at": "2026-11-21T23:25:17Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/777197495"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 1,
     "download_breakdown": {
       "tag": "MX2D-WVGA_TM-WV3.20-20250618",
       "mirrors": "",
@@ -294,7 +294,7 @@
         {
           "name": "rom_q3-macos.zip",
           "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-macos.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom_q3-windows-legacy.zip",
@@ -417,15 +417,15 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/717621424"
       },
       {
-        "id": 776439272,
+        "id": 777197435,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/stats.txt",
         "size": 4013,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T18:12:24Z",
-        "updated_at": "2026-11-21T18:12:24Z",
-        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/776439272"
+        "created_at": "2026-11-21T23:25:14Z",
+        "updated_at": "2026-11-21T23:25:15Z",
+        "url": "https://api.github.com/repos/y1-community/q3-stock-rom-mirror/releases/assets/777197435"
       }
     ],
     "mirror_downloads": 0,
