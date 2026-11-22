@@ -3,7 +3,7 @@
     "id": 454050916,
     "tag_name": "2.1.3",
     "name": "Portable Flashing Package: 2.1.3",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/2.1.2...2.1.3\r\n\r\n- Fix edge cases for iPod DB/Syncing\r\n- Rockbox QoL UI changes\r\n- Fix poor volume adjustment\r\n- Add Bluetooth AAC codec\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"05c3b7cd46b8a749139bfc52da62be548e72d0361b5e7fb830bf57e4205051be\",\"size\":319020021,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"4d0bbb27e5776436b5adedf48f28a3ae3e41c9f932c1d4d76b7481e525b69066\",\"size\":80781296,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"5fc904301c0d1b575f3f00a7dc508bd67f9200635d9de1eaab48a92d40cca3f1\",\"size\":366341391,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"81b6a633a90be178365438a96849100e1125dfd99769f83e7477ce67f51c399d\",\"size\":132430133,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"dc2b3c4f6061b1f7dcf87f2d89a275fc3dfc19abd2b7f4dc9eb9188e7f608c6b\",\"size\":79195627,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"7ffd69b77e16864f64bd438b11932b277ae5e7e934e8e0888e90ac60536c9ef3\",\"size\":115181674,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-22T11:15:04Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"bc76a0146409ed5a480a89b2c5fcd8582068476bf4aae5de9c4ccff977f761f5\",\"original_asset_sizes\":{\"boot_nugget.img\":5976064,\"liby1-sdk.zip\":105758,\"rockbox_sdcard.zip\":7803056,\"rom.zip\":5937905,\"sha256sums.txt\":321},\"original_assets\":[\"boot_nugget.img\",\"liby1-sdk.zip\",\"rockbox_sdcard.zip\",\"rom.zip\",\"sha256sums.txt\"],\"platforms\":{\"linux\":\"cc7550a0575da7680dca832c2dd2870672cde00f7b74a3f56a571259e898b76e\",\"linux-arm64\":\"4101a2bdcd2c0c1595edcdb8a3b33133572786cec45d7db6183a4f132972f153\",\"linux-legacy\":\"b701b4d22c0ac702a6ac2074c9f1c9bb3de6d1c109c6eb85610b94edbf0969bf\",\"macos\":\"16dee78727ebae3c6e6b23e9a019f7d405864a35d4bcc169154db5cc80d0ee26\",\"windows\":\"277176e02023cf50e2b58d60512723e727197c74cb8461f70a0e73dcc73f5ca8\",\"windows-legacy\":\"2dd6a66b26496b16fa70e97d41bd899ecb067dfe9c2cd95783ef21db8d14d3c6\"},\"skipped\":[{\"name\":\"liby1-sdk.zip\",\"reason\":\"no scatter file\"},{\"name\":\"rockbox_sdcard.zip\",\"reason\":\"no scatter file\"}],\"source_fingerprint\":\"2f87aeec13b1980ebcd988b0d6e8d24c6017aeb3be9e69beb656952598ab3aa3\",\"stats\":{\"baseline\":{\"boot_nugget.img\":0,\"liby1-sdk.zip\":0,\"rockbox_sdcard.zip\":0,\"rom-linux-arm64.zip\":1,\"rom-linux-legacy.zip\":0,\"rom-linux.zip\":1,\"rom-macos.zip\":0,\"rom-windows-legacy.zip\":0,\"rom-windows.zip\":0,\"rom.zip\":0,\"sha256sums.txt\":0},\"generated_at\":\"2026-11-22T11:15:04Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128321309,\"tag\":\"2.5.6.1\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109241507,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.3&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/2.1.2...2.1.3\r\n\r\n- Fix edge cases for iPod DB/Syncing\r\n- Rockbox QoL UI changes\r\n- Fix poor volume adjustment\r\n- Add Bluetooth AAC codec\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"05c3b7cd46b8a749139bfc52da62be548e72d0361b5e7fb830bf57e4205051be\",\"size\":319020021,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"4d0bbb27e5776436b5adedf48f28a3ae3e41c9f932c1d4d76b7481e525b69066\",\"size\":80781296,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"0e95ac53caed68453992ac06d65868d5cc74fbddc691df813b320cdd0fea634b\",\"size\":307527330,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"5d180406d91b9c11685c4f90843a59427cc63c5a08701e28449e4e68de82a0b0\",\"size\":132432149,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"dc2b3c4f6061b1f7dcf87f2d89a275fc3dfc19abd2b7f4dc9eb9188e7f608c6b\",\"size\":79195627,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"5ceb348a059a67de4dea764d8eef4dc0db2dd1056ffde8b249242b8bb5108319\",\"size\":115036403,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-22T16:23:26Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"0718d26a91812ae9d1918e5f01b1048baf2ae70189b65718128e771d63b02638\",\"original_asset_sizes\":{\"boot_nugget.img\":5976064,\"liby1-sdk.zip\":105758,\"rockbox_sdcard.zip\":7803056,\"rom.zip\":5937905,\"sha256sums.txt\":321},\"original_assets\":[\"boot_nugget.img\",\"liby1-sdk.zip\",\"rockbox_sdcard.zip\",\"rom.zip\",\"sha256sums.txt\"],\"platforms\":{\"linux\":\"7a25f043d252c4276a6564110b9e4fdf7072bfcbd6a58aee2452caa2c46c3324\",\"linux-arm64\":\"867cb6cb1732be13f2b2f1587ab9352db1046bb77aba6d82f996bd000847d03b\",\"linux-legacy\":\"b701b4d22c0ac702a6ac2074c9f1c9bb3de6d1c109c6eb85610b94edbf0969bf\",\"macos\":\"fa3052ad21da54445fb84a28a137c4c01ce1b7e47e6e84ec03f2def9f1b97bff\",\"windows\":\"277176e02023cf50e2b58d60512723e727197c74cb8461f70a0e73dcc73f5ca8\",\"windows-legacy\":\"2dd6a66b26496b16fa70e97d41bd899ecb067dfe9c2cd95783ef21db8d14d3c6\"},\"skipped\":[{\"name\":\"liby1-sdk.zip\",\"reason\":\"no scatter file\"},{\"name\":\"rockbox_sdcard.zip\",\"reason\":\"no scatter file\"}],\"source_fingerprint\":\"2f87aeec13b1980ebcd988b0d6e8d24c6017aeb3be9e69beb656952598ab3aa3\",\"stats\":{\"baseline\":{\"boot_nugget.img\":0,\"liby1-sdk.zip\":0,\"rockbox_sdcard.zip\":0,\"rom-linux-arm64.zip\":1,\"rom-linux-legacy.zip\":0,\"rom-linux.zip\":1,\"rom-macos.zip\":1,\"rom-windows-legacy.zip\":0,\"rom-windows.zip\":0,\"rom.zip\":0,\"sha256sums.txt\":0},\"generated_at\":\"2026-11-22T16:23:26Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304306838,\"tag\":\"2.5.6.1\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128322905,\"tag\":\"2.5.6.1\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109096332,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-21T23:10:53Z",
@@ -46,15 +46,15 @@
         "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/777167751"
       },
       {
-        "id": 778804087,
+        "id": 779664831,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-linux-arm64.zip",
-        "size": 132430133,
+        "size": 132432149,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-22T11:15:06Z",
-        "updated_at": "2026-11-22T11:15:09Z",
-        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/778804087"
+        "created_at": "2026-11-22T16:23:27Z",
+        "updated_at": "2026-11-22T16:23:31Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/779664831"
       },
       {
         "id": 777167534,
@@ -68,26 +68,26 @@
         "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/777167534"
       },
       {
-        "id": 778804077,
+        "id": 779664835,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-linux.zip",
-        "size": 366341391,
+        "size": 307527330,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-22T11:15:06Z",
-        "updated_at": "2026-11-22T11:15:16Z",
-        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/778804077"
+        "created_at": "2026-11-22T16:23:28Z",
+        "updated_at": "2026-11-22T16:23:36Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/779664835"
       },
       {
-        "id": 777167692,
+        "id": 779664833,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-macos.zip",
-        "size": 115181674,
-        "download_count": 1,
+        "size": 115036403,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-21T23:12:58Z",
-        "updated_at": "2026-11-21T23:13:01Z",
-        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/777167692"
+        "created_at": "2026-11-22T16:23:28Z",
+        "updated_at": "2026-11-22T16:23:31Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/779664833"
       },
       {
         "id": 777167533,
@@ -134,19 +134,19 @@
         "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/777168133"
       },
       {
-        "id": 778804080,
+        "id": 779664834,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/stats.txt",
-        "size": 4988,
+        "size": 4989,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T11:15:06Z",
-        "updated_at": "2026-11-22T11:15:06Z",
-        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/778804080"
+        "created_at": "2026-11-22T16:23:28Z",
+        "updated_at": "2026-11-22T16:23:28Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/779664834"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 7,
+    "downloads": 6,
     "download_breakdown": {
       "tag": "2.1.3",
       "mirrors": "",
@@ -179,7 +179,7 @@
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-macos.zip",
-          "downloads": 1
+          "downloads": 0
         },
         {
           "name": "rom-windows-legacy.zip",
@@ -204,7 +204,7 @@
     "id": 453657807,
     "tag_name": "2.1.2",
     "name": "Portable Flashing Package: 2.1.2",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/2.1.1...2.1.2\r\n\r\n- Added Innioasis CE updater support\r\n- Fixed iTunes DB Rockbox bugs.\r\n- Added on device debug info\r\n- Coverflow rockbox improvement\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"7a07f6078395ee26284a4c1e4680f9bb7fb9d240295297eef598e3e646e104c0\",\"size\":319019898,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"84322cc241b052db255f50e8f4b844e63df0d4e098b1288a2a014926297f1890\",\"size\":80781173,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"c7e87c8f5be99fb0422262075177b78a3c4763c62ac44929d3c281f1fb7899ac\",\"size\":366341268,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"89bcea2690232213c3fd7f4bf51b20486b6941b98eba809bfb65e3d6d21adfa7\",\"size\":132430010,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"1c2efd50b85b5fbe1d7bc5bf31716c48b3f8bb08c501a48834ed81bb9c9ecb56\",\"size\":79195502,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"eb3f2a8436dbb6b941052ca42d82e3c6758a822762170cfcdc0ffc7b5d89d940\",\"size\":115181551,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-22T11:13:33Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"1595bf54f54cf6b2f3a5fe1c74129816b6e3205ae793f81f1e7d3d7a396601c5\",\"original_asset_sizes\":{\"boot_nugget.img\":5976064,\"liby1-sdk.zip\":99408,\"rockbox_sdcard.zip\":7709312,\"rom.zip\":5937782,\"sha256sums.txt\":321},\"original_assets\":[\"boot_nugget.img\",\"liby1-sdk.zip\",\"rockbox_sdcard.zip\",\"rom.zip\",\"sha256sums.txt\"],\"platforms\":{\"linux\":\"a854aff62df4e585c893a1ea062c4aa0f67f0a00dd8606ccc9911021cae5acad\",\"linux-arm64\":\"b01ba339961d0dd06172227d222a79e9f8a13ea13567c6ef64caa874dc6a0a04\",\"linux-legacy\":\"59c60adca0a5babf9cd877f1a72bd97c258c05ed0281b6a59e5af5ffc95389b9\",\"macos\":\"9ec9a6d752515f778581f4ca2d5cb3179cfec0b9ed1a81d986a7805d401fe2ae\",\"windows\":\"440d52bc1ad151770212c86629536e18493582ae05e3269026324fa1c9a4ef59\",\"windows-legacy\":\"7ce3bb361cb2edc2393613978533089e10846142b9038cfc042fec36b78d94d2\"},\"skipped\":[{\"name\":\"liby1-sdk.zip\",\"reason\":\"no scatter file\"},{\"name\":\"rockbox_sdcard.zip\",\"reason\":\"no scatter file\"}],\"source_fingerprint\":\"955b081b329566180e60031f580f32651932379cf2f5dafe7ad1f99429b9f752\",\"stats\":{\"baseline\":{\"boot_nugget.img\":0,\"liby1-sdk.zip\":0,\"rockbox_sdcard.zip\":0,\"rom-linux-arm64.zip\":1,\"rom-linux-legacy.zip\":0,\"rom-linux.zip\":1,\"rom-macos.zip\":0,\"rom-windows-legacy.zip\":0,\"rom-windows.zip\":0,\"rom.zip\":0,\"sha256sums.txt\":0},\"generated_at\":\"2026-11-22T11:13:33Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":364426302,\"tag\":\"2.5.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128321309,\"tag\":\"2.5.6.1\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109241507,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.2&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/2.1.1...2.1.2\r\n\r\n- Added Innioasis CE updater support\r\n- Fixed iTunes DB Rockbox bugs.\r\n- Added on device debug info\r\n- Coverflow rockbox improvement\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"7a07f6078395ee26284a4c1e4680f9bb7fb9d240295297eef598e3e646e104c0\",\"size\":319019898,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"84322cc241b052db255f50e8f4b844e63df0d4e098b1288a2a014926297f1890\",\"size\":80781173,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"29eec80b8ee24627dc4264e08780b365812a087a92ebde1038688b40c190b47e\",\"size\":307527207,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"ae286eeb01d9e5237840e74b60a6751ef52a86fa96c2894e5a2035ff685a58cb\",\"size\":132432026,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"1c2efd50b85b5fbe1d7bc5bf31716c48b3f8bb08c501a48834ed81bb9c9ecb56\",\"size\":79195502,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"d1f9d6d2bcc8d267c9fe1e36b4c04d92a03fe27f395b5d587950947b95b38ca1\",\"size\":115036280,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-22T16:21:58Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"99cc80562a598606708d3d51b6b3bba6d38bd51d47724c086ebf3608cafe46f5\",\"original_asset_sizes\":{\"boot_nugget.img\":5976064,\"liby1-sdk.zip\":99408,\"rockbox_sdcard.zip\":7709312,\"rom.zip\":5937782,\"sha256sums.txt\":321},\"original_assets\":[\"boot_nugget.img\",\"liby1-sdk.zip\",\"rockbox_sdcard.zip\",\"rom.zip\",\"sha256sums.txt\"],\"platforms\":{\"linux\":\"678b60ef634e11db4b4048bd2048662040f7921c8a314ee0ed9766c2064774ee\",\"linux-arm64\":\"0a8e14f3059dc57642e19c4bc097fd23d59be94c0a9ce9cbe013eaca904501fd\",\"linux-legacy\":\"59c60adca0a5babf9cd877f1a72bd97c258c05ed0281b6a59e5af5ffc95389b9\",\"macos\":\"c5c6ab65b9461c918914fac7e6d7340dfb1ab3ac279d748b27e18249ad2160ce\",\"windows\":\"440d52bc1ad151770212c86629536e18493582ae05e3269026324fa1c9a4ef59\",\"windows-legacy\":\"7ce3bb361cb2edc2393613978533089e10846142b9038cfc042fec36b78d94d2\"},\"skipped\":[{\"name\":\"liby1-sdk.zip\",\"reason\":\"no scatter file\"},{\"name\":\"rockbox_sdcard.zip\",\"reason\":\"no scatter file\"}],\"source_fingerprint\":\"955b081b329566180e60031f580f32651932379cf2f5dafe7ad1f99429b9f752\",\"stats\":{\"baseline\":{\"boot_nugget.img\":0,\"liby1-sdk.zip\":0,\"rockbox_sdcard.zip\":0,\"rom-linux-arm64.zip\":1,\"rom-linux-legacy.zip\":0,\"rom-linux.zip\":1,\"rom-macos.zip\":1,\"rom-windows-legacy.zip\":0,\"rom-windows.zip\":0,\"rom.zip\":0,\"sha256sums.txt\":0},\"generated_at\":\"2026-11-22T16:21:58Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304306838,\"tag\":\"2.5.6.1\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128322905,\"tag\":\"2.5.6.1\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109096332,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-21T11:55:03Z",
@@ -247,15 +247,15 @@
         "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/775430630"
       },
       {
-        "id": 778800212,
+        "id": 779660215,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-linux-arm64.zip",
-        "size": 132430010,
+        "size": 132432026,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-22T11:13:37Z",
-        "updated_at": "2026-11-22T11:13:41Z",
-        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/778800212"
+        "created_at": "2026-11-22T16:22:00Z",
+        "updated_at": "2026-11-22T16:22:04Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/779660215"
       },
       {
         "id": 775430296,
@@ -269,26 +269,26 @@
         "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/775430296"
       },
       {
-        "id": 778800213,
+        "id": 779660217,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-linux.zip",
-        "size": 366341268,
+        "size": 307527207,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-22T11:13:37Z",
-        "updated_at": "2026-11-22T11:13:47Z",
-        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/778800213"
+        "created_at": "2026-11-22T16:22:00Z",
+        "updated_at": "2026-11-22T16:22:08Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/779660217"
       },
       {
-        "id": 775430560,
+        "id": 779660214,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-macos.zip",
-        "size": 115181551,
-        "download_count": 1,
+        "size": 115036280,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-21T11:57:07Z",
-        "updated_at": "2026-11-21T11:57:12Z",
-        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/775430560"
+        "created_at": "2026-11-22T16:22:00Z",
+        "updated_at": "2026-11-22T16:22:04Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/779660214"
       },
       {
         "id": 775430298,
@@ -335,19 +335,19 @@
         "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/775431074"
       },
       {
-        "id": 778800225,
+        "id": 779660218,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/stats.txt",
         "size": 4989,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T11:13:37Z",
-        "updated_at": "2026-11-22T11:13:37Z",
-        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/778800225"
+        "created_at": "2026-11-22T16:22:00Z",
+        "updated_at": "2026-11-22T16:22:00Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/779660218"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 7,
+    "downloads": 6,
     "download_breakdown": {
       "tag": "2.1.2",
       "mirrors": "",
@@ -380,7 +380,7 @@
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-macos.zip",
-          "downloads": 1
+          "downloads": 0
         },
         {
           "name": "rom-windows-legacy.zip",

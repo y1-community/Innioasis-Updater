@@ -5709,7 +5709,7 @@
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-macos.zip",
         "size": 519081998,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-21T04:33:39Z",
         "updated_at": "2026-11-21T04:34:03Z",
@@ -5783,7 +5783,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 34,
+    "downloads": 35,
     "download_breakdown": {
       "tag": "20261107",
       "mirrors": "",
@@ -5946,7 +5946,7 @@
         {
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-macos.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom_y2-windows-legacy.zip",
@@ -8871,7 +8871,7 @@
         "name": "rom_y2-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2-linux-legacy.zip",
         "size": 458606726,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-16T12:56:52Z",
         "updated_at": "2026-11-16T12:58:21Z",
@@ -8967,7 +8967,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 31,
+    "downloads": 32,
     "download_breakdown": {
       "tag": "20261013",
       "mirrors": "",
@@ -9120,7 +9120,7 @@
         {
           "name": "rom_y2-linux-legacy.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2-linux-legacy.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom_y2-linux.zip",
@@ -14179,7 +14179,7 @@
     "id": 437877048,
     "tag_name": "20260927",
     "name": "Portable Flashing Package: InniClassic 20260927",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927&amp;asset=rom_y2.zip&amp;platform=windows&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927&amp;asset=rom_y2.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y2 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927&amp;asset=rom_y2.zip&amp;platform=linux&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927&amp;asset=rom_y2.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y2 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927&amp;asset=rom_y2.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y2 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927&amp;asset=rom_y2.zip&amp;platform=macos&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nFirst release with support for the Innioasis Y2 alongside the Innioasis Y1 (Type A and Type B).\n\n- Music, audiobooks, and videos are now indexed across both internal storage (`/storage/sdcard0`) and the removable microSD card (`/storage/sdcard1`).\n- A background SD card monitor watches for unexpected microSD disconnects, such as after unplugging from USB, and remounts the card automatically before refreshing your library. This also fixes a crash loop during media indexing and stops the monitor from touching internal storage.\n- The Y2 capacitive click wheel (`mtk-tpd-kpd`) is mapped to standard left and right scroll navigation across all menus and lists.\n- FM radio now works on the Y2. Opening the radio sets tuner device permissions, stops background stock radio apps that would otherwise lock `/dev/fm`, and keeps Airplane Mode from blocking the tuner.\n- Automated builds produce flashable ROM packages for the Y2, Y1 Type A, and Y1 Type B, along with a standalone APK.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20260927.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\n> Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/v1.5.0...20260927\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"rom_y2-windows.zip\",\"platform\":\"windows\",\"sha256\":\"e52c829b17ad79dbd99eeff22eb5cdb1b56b6d5b8a2cde4f32538c2b05ea9247\",\"size\":683647143,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"dfa6de8d7359bafc08cacfe4d30a5784179c10526255879aa5ca782e1b1002b1\",\"size\":445408338,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux.zip\",\"platform\":\"linux\",\"sha256\":\"96258319310181c6f4a401b6d964947f6854bc25e0866c2a2023c73d54019826\",\"size\":681660938,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"1de630f4f86bab8dd2685b85d3388af79048ea2e22be16a6a98ef6335685635e\",\"size\":506565489,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"cc0eaa642ec0795219c8b6f64d55b697475dda13b8f79a14074b3ef1641372d4\",\"size\":443822619,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-macos.zip\",\"platform\":\"macos\",\"sha256\":\"7b42a87d24ced245b036468b31e885cb9cfb87369a3173868d1ed531a44b7529\",\"size\":481612182,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-22T11:15:00Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"58c6882473fd0b6ca3f7c0c0c1437aba8865a91122aa9746a3d6cbb7570201b0\",\"original_asset_sizes\":{\"InniClassic-20260927.apk\":25186490,\"SHA256SUMS.txt\":168,\"rom_y2.zip\":444046827},\"original_assets\":[\"InniClassic-20260927.apk\",\"rom_y2.zip\",\"SHA256SUMS.txt\"],\"platforms\":{\"linux\":\"33910db04b81f64e88aa8879fcb16abb037e348c3712232e208065d958da05be\",\"linux-arm64\":\"8f81314b4102011a3e54535ac8ff0a4a2d456473e6afcdd7cd060aaa4b63a3fb\",\"linux-legacy\":\"6c8ac9e8cf80fc5a5d6c343f3011213e2339a04a34f318f133cb166c793649fc\",\"macos\":\"b229367da2aef10359966079aeb200cca3be84cfa0d790d6e696b87e94d424cb\",\"windows\":\"aab54426a3c3629b757909df3a123c607fb7c70f07ffb309d1e520a65b4ed23b\",\"windows-legacy\":\"85c21a5b05f4a26f1f00735cbf0d33bb5c2e377ca9825382b7d8893c916a3627\"},\"skipped\":[],\"source_fingerprint\":\"6d2fca6de9f40e57abdac9b77572d5bc33d0857c6485b8183f6705aba1799716\",\"stats\":{\"baseline\":{\"InniClassic-20260927.apk\":7,\"SHA256SUMS.txt\":7,\"rom-linux-arm64.zip\":3,\"rom-linux-legacy.zip\":1,\"rom-linux.zip\":5,\"rom-macos.zip\":5,\"rom-windows-legacy.zip\":1,\"rom-windows.zip\":5,\"rom.zip\":5,\"rom_type_b-linux-arm64.zip\":3,\"rom_type_b-linux-legacy.zip\":1,\"rom_type_b-linux.zip\":5,\"rom_type_b-macos.zip\":5,\"rom_type_b-windows-legacy.zip\":1,\"rom_type_b-windows.zip\":5,\"rom_type_b.zip\":3,\"rom_y1_type_a-linux-arm64.zip\":3,\"rom_y1_type_a-linux-legacy.zip\":1,\"rom_y1_type_a-linux.zip\":5,\"rom_y1_type_a-macos.zip\":5,\"rom_y1_type_a-windows-legacy.zip\":1,\"rom_y1_type_a-windows.zip\":5,\"rom_y1_type_a.zip\":0,\"rom_y1_type_b-linux-arm64.zip\":3,\"rom_y1_type_b-linux-legacy.zip\":1,\"rom_y1_type_b-linux.zip\":5,\"rom_y1_type_b-macos.zip\":5,\"rom_y1_type_b-windows-legacy.zip\":1,\"rom_y1_type_b-windows.zip\":5,\"rom_y1_type_b.zip\":2,\"rom_y2-linux-arm64.zip\":12,\"rom_y2-linux-legacy.zip\":3,\"rom_y2-linux.zip\":14,\"rom_y2-macos.zip\":9,\"rom_y2-windows-legacy.zip\":3,\"rom_y2-windows.zip\":8,\"rom_y2.zip\":6},\"generated_at\":\"2026-11-22T11:15:00Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304305267,\"tag\":\"2.5.6.1\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128321309,\"tag\":\"2.5.6.1\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109241507,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927&amp;asset=rom_y2.zip&amp;platform=windows&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927&amp;asset=rom_y2.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y2 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927&amp;asset=rom_y2.zip&amp;platform=linux&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927&amp;asset=rom_y2.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y2 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927&amp;asset=rom_y2.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y2 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260927&amp;asset=rom_y2.zip&amp;platform=macos&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nFirst release with support for the Innioasis Y2 alongside the Innioasis Y1 (Type A and Type B).\n\n- Music, audiobooks, and videos are now indexed across both internal storage (`/storage/sdcard0`) and the removable microSD card (`/storage/sdcard1`).\n- A background SD card monitor watches for unexpected microSD disconnects, such as after unplugging from USB, and remounts the card automatically before refreshing your library. This also fixes a crash loop during media indexing and stops the monitor from touching internal storage.\n- The Y2 capacitive click wheel (`mtk-tpd-kpd`) is mapped to standard left and right scroll navigation across all menus and lists.\n- FM radio now works on the Y2. Opening the radio sets tuner device permissions, stops background stock radio apps that would otherwise lock `/dev/fm`, and keeps Airplane Mode from blocking the tuner.\n- Automated builds produce flashable ROM packages for the Y2, Y1 Type A, and Y1 Type B, along with a standalone APK.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20260927.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\n> Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/v1.5.0...20260927\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"rom_y2-windows.zip\",\"platform\":\"windows\",\"sha256\":\"e52c829b17ad79dbd99eeff22eb5cdb1b56b6d5b8a2cde4f32538c2b05ea9247\",\"size\":683647143,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"dfa6de8d7359bafc08cacfe4d30a5784179c10526255879aa5ca782e1b1002b1\",\"size\":445408338,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux.zip\",\"platform\":\"linux\",\"sha256\":\"149335162bdf7ba8c8a54ccddeb9bf6a989f508619c04925a7d3d06a1ac77ffe\",\"size\":681662686,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"91fdec41d3ad16ad012933b3ba2247490fb659f1aafb27350a08d269922d5600\",\"size\":506567505,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"cc0eaa642ec0795219c8b6f64d55b697475dda13b8f79a14074b3ef1641372d4\",\"size\":443822619,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-macos.zip\",\"platform\":\"macos\",\"sha256\":\"064597f1675d8fddc46626a53e17cc71dd2443cc9304c0f636f7444f69e0b833\",\"size\":481466911,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-22T16:25:37Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"8f6b51bb24b9f50f109c7ae397cd49d7a2c2a7276b1c1f68b5fbcd141e337f20\",\"original_asset_sizes\":{\"InniClassic-20260927.apk\":25186490,\"SHA256SUMS.txt\":168,\"rom_y2.zip\":444046827},\"original_assets\":[\"InniClassic-20260927.apk\",\"rom_y2.zip\",\"SHA256SUMS.txt\"],\"platforms\":{\"linux\":\"cf2be1f716e084bec39627b13719383053b902177585343bfb277a06c4be796a\",\"linux-arm64\":\"bd3fdfba600ba24b7e7af25952d6f80b4e0a8be46f08e09159fd663f1bbaa899\",\"linux-legacy\":\"6c8ac9e8cf80fc5a5d6c343f3011213e2339a04a34f318f133cb166c793649fc\",\"macos\":\"2cd255d6791db879e0c0c866857d8efb61f1e028209150c6cd8a1213f8c5159e\",\"windows\":\"aab54426a3c3629b757909df3a123c607fb7c70f07ffb309d1e520a65b4ed23b\",\"windows-legacy\":\"85c21a5b05f4a26f1f00735cbf0d33bb5c2e377ca9825382b7d8893c916a3627\"},\"skipped\":[],\"source_fingerprint\":\"6d2fca6de9f40e57abdac9b77572d5bc33d0857c6485b8183f6705aba1799716\",\"stats\":{\"baseline\":{\"InniClassic-20260927.apk\":7,\"SHA256SUMS.txt\":7,\"rom-linux-arm64.zip\":3,\"rom-linux-legacy.zip\":1,\"rom-linux.zip\":5,\"rom-macos.zip\":5,\"rom-windows-legacy.zip\":1,\"rom-windows.zip\":5,\"rom.zip\":5,\"rom_type_b-linux-arm64.zip\":3,\"rom_type_b-linux-legacy.zip\":1,\"rom_type_b-linux.zip\":5,\"rom_type_b-macos.zip\":5,\"rom_type_b-windows-legacy.zip\":1,\"rom_type_b-windows.zip\":5,\"rom_type_b.zip\":3,\"rom_y1_type_a-linux-arm64.zip\":3,\"rom_y1_type_a-linux-legacy.zip\":1,\"rom_y1_type_a-linux.zip\":5,\"rom_y1_type_a-macos.zip\":5,\"rom_y1_type_a-windows-legacy.zip\":1,\"rom_y1_type_a-windows.zip\":5,\"rom_y1_type_a.zip\":0,\"rom_y1_type_b-linux-arm64.zip\":3,\"rom_y1_type_b-linux-legacy.zip\":1,\"rom_y1_type_b-linux.zip\":5,\"rom_y1_type_b-macos.zip\":5,\"rom_y1_type_b-windows-legacy.zip\":1,\"rom_y1_type_b-windows.zip\":5,\"rom_y1_type_b.zip\":2,\"rom_y2-linux-arm64.zip\":13,\"rom_y2-linux-legacy.zip\":3,\"rom_y2-linux.zip\":15,\"rom_y2-macos.zip\":11,\"rom_y2-windows-legacy.zip\":3,\"rom_y2-windows.zip\":8,\"rom_y2.zip\":6},\"generated_at\":\"2026-11-22T16:25:37Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304306838,\"tag\":\"2.5.6.1\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128322905,\"tag\":\"2.5.6.1\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109096332,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-07T22:06:05Z",
@@ -14508,15 +14508,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/733064761"
       },
       {
-        "id": 778803959,
+        "id": 779672134,
         "name": "rom_y2-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-linux-arm64.zip",
-        "size": 506565489,
-        "download_count": 1,
+        "size": 506567505,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-22T11:15:03Z",
-        "updated_at": "2026-11-22T11:15:23Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/778803959"
+        "created_at": "2026-11-22T16:25:42Z",
+        "updated_at": "2026-11-22T16:25:54Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/779672134"
       },
       {
         "id": 754648471,
@@ -14530,26 +14530,26 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/754648471"
       },
       {
-        "id": 778803956,
+        "id": 779672137,
         "name": "rom_y2-linux.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-linux.zip",
-        "size": 681660938,
-        "download_count": 1,
+        "size": 681662686,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-22T11:15:03Z",
-        "updated_at": "2026-11-22T11:15:26Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/778803956"
+        "created_at": "2026-11-22T16:25:42Z",
+        "updated_at": "2026-11-22T16:25:58Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/779672137"
       },
       {
-        "id": 774347456,
+        "id": 779672133,
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-macos.zip",
-        "size": 481612182,
-        "download_count": 2,
+        "size": 481466911,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-21T03:59:27Z",
-        "updated_at": "2026-11-21T03:59:44Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/774347456"
+        "created_at": "2026-11-22T16:25:42Z",
+        "updated_at": "2026-11-22T16:25:55Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/779672133"
       },
       {
         "id": 754648473,
@@ -14596,19 +14596,19 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/754649964"
       },
       {
-        "id": 778803958,
+        "id": 779672135,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/stats.txt",
         "size": 6786,
-        "download_count": 2,
+        "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T11:15:03Z",
-        "updated_at": "2026-11-22T11:15:03Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/778803958"
+        "created_at": "2026-11-22T16:25:42Z",
+        "updated_at": "2026-11-22T16:25:42Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/779672135"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 59,
+    "downloads": 55,
     "download_breakdown": {
       "tag": "20260927",
       "mirrors": "",
@@ -14756,7 +14756,7 @@
         {
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-linux-arm64.zip",
-          "downloads": 1
+          "downloads": 0
         },
         {
           "name": "rom_y2-linux-legacy.zip",
@@ -14766,12 +14766,12 @@
         {
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-linux.zip",
-          "downloads": 1
+          "downloads": 0
         },
         {
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-macos.zip",
-          "downloads": 2
+          "downloads": 0
         },
         {
           "name": "rom_y2-windows-legacy.zip",
@@ -15435,7 +15435,7 @@
     "id": 437880462,
     "tag_name": "20260928-build.6",
     "name": "Portable Flashing Package: InniClassic 20260928 (Build 6)",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6&amp;asset=rom_y2.zip&amp;platform=windows&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6&amp;asset=rom_y2.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y2 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6&amp;asset=rom_y2.zip&amp;platform=linux&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6&amp;asset=rom_y2.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y2 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6&amp;asset=rom_y2.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y2 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6&amp;asset=rom_y2.zip&amp;platform=macos&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n- Removed Android's Safe Media Volume cap in both the app and the ROM so headphone volume can reach 100% without stopping at the system warning limit. You can also tap or drag the on-screen volume bar to change the volume directly.\n- Added a full Polish translation and improved how bundled language files load on startup.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20260928-build.6.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\n> Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260928...20260928-build.6\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"rom_y2-windows.zip\",\"platform\":\"windows\",\"sha256\":\"09e7581856b9081dcc0c44d45e7132243eff6fe6ae21938d150498662b907d8a\",\"size\":698355815,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"2d8c2089efe537fc9c17f0619ef71f7b041fce940a04ee7a37e72751cb85f093\",\"size\":460117010,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux.zip\",\"platform\":\"linux\",\"sha256\":\"7030fc634260af427ba1f06f579672ebadb9b259af31c06b6c6ee0848f96830c\",\"size\":696369610,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"5e5b050ad38a7709f007a785a91c2ebad1ef1b31a0618fc9be15362c2964bd97\",\"size\":521274161,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"e20c2629caf7d73eb89766c1276faefe2d5dbca0af9ef53db4c39588dba3f5a1\",\"size\":458531291,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-macos.zip\",\"platform\":\"macos\",\"sha256\":\"78ef9407ba5336dc910cffc8546e226d3756df533e6a5342b2141fd63364ab51\",\"size\":496320847,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-22T11:17:39Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"18c6a7cc6f08642bb3b373c101bb978d88880a332d8140dd2e52ff1e8e6c718f\",\"original_asset_sizes\":{\"InniClassic-20260928-build.6.apk\":25200586,\"SHA256SUMS.txt\":176,\"rom_y2.zip\":458755483,\"update.json\":341},\"original_assets\":[\"InniClassic-20260928-build.6.apk\",\"rom_y2.zip\",\"SHA256SUMS.txt\",\"update.json\"],\"platforms\":{\"linux\":\"9a6203969e22dcd9a0cafee497006842b2b70515266a12709483e68ae7e911e8\",\"linux-arm64\":\"777d58e104ca0610baec1f8721aee0160db6cafd75a03a6a4e72bcc0cffea79e\",\"linux-legacy\":\"240812d6d773b290b6a8c19480ee07c53749fb676a0995616159ca241261df87\",\"macos\":\"ebbd1bc2f5ba9d0ba4bc2b726eb657cdc4a6cbc8d715493788e2f899962690a6\",\"windows\":\"d44b8b5d17463e1e1145f5d4da9b49480d08362cbb5464da77adc0c1fab1f535\",\"windows-legacy\":\"bab021026bf1dd69e7b087b904a470c98d10f8cda32018de0ae1d2361524e4e3\"},\"skipped\":[],\"source_fingerprint\":\"beeb6cd2f8f7361a1b1288d916f8084a4a02d7d56481cc8fc1c7c00fb4750cd7\",\"stats\":{\"baseline\":{\"InniClassic-20260928-build.6.apk\":7,\"SHA256SUMS.txt\":7,\"rom-linux-arm64.zip\":3,\"rom-linux-legacy.zip\":1,\"rom-linux.zip\":5,\"rom-macos.zip\":5,\"rom-windows-legacy.zip\":1,\"rom-windows.zip\":5,\"rom.zip\":3,\"rom_type_b-linux-arm64.zip\":3,\"rom_type_b-linux-legacy.zip\":1,\"rom_type_b-linux.zip\":5,\"rom_type_b-macos.zip\":5,\"rom_type_b-windows-legacy.zip\":1,\"rom_type_b-windows.zip\":5,\"rom_type_b.zip\":3,\"rom_y1_type_a-linux-arm64.zip\":3,\"rom_y1_type_a-linux-legacy.zip\":1,\"rom_y1_type_a-linux.zip\":5,\"rom_y1_type_a-macos.zip\":5,\"rom_y1_type_a-windows-legacy.zip\":1,\"rom_y1_type_a-windows.zip\":5,\"rom_y1_type_a.zip\":2,\"rom_y1_type_b-linux-arm64.zip\":3,\"rom_y1_type_b-linux-legacy.zip\":1,\"rom_y1_type_b-linux.zip\":5,\"rom_y1_type_b-macos.zip\":5,\"rom_y1_type_b-windows-legacy.zip\":1,\"rom_y1_type_b-windows.zip\":5,\"rom_y1_type_b.zip\":2,\"rom_y2-linux-arm64.zip\":10,\"rom_y2-linux-legacy.zip\":3,\"rom_y2-linux.zip\":11,\"rom_y2-macos.zip\":12,\"rom_y2-windows-legacy.zip\":3,\"rom_y2-windows.zip\":7,\"rom_y2.zip\":6,\"update.json\":7},\"generated_at\":\"2026-11-22T11:17:39Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304305267,\"tag\":\"2.5.6.1\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128321309,\"tag\":\"2.5.6.1\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109241507,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6&amp;asset=rom_y2.zip&amp;platform=windows&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6&amp;asset=rom_y2.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y2 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6&amp;asset=rom_y2.zip&amp;platform=linux&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6&amp;asset=rom_y2.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y2 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6&amp;asset=rom_y2.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y2 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=ClassyPlayer%2FClassy&amp;tag=20260928-build.6&amp;asset=rom_y2.zip&amp;platform=macos&amp;mirror=y1-community%2Fclassy-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/classy-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n- Removed Android's Safe Media Volume cap in both the app and the ROM so headphone volume can reach 100% without stopping at the system warning limit. You can also tap or drag the on-screen volume bar to change the volume directly.\n- Added a full Polish translation and improved how bundled language files load on startup.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20260928-build.6.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\n> Y1 firmware is not in this release: this build does not support the Innioasis Y1. Y1 builds are in the Y1 experimental pre-releases.\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260928...20260928-build.6\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"rom_y2-windows.zip\",\"platform\":\"windows\",\"sha256\":\"09e7581856b9081dcc0c44d45e7132243eff6fe6ae21938d150498662b907d8a\",\"size\":698355815,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"2d8c2089efe537fc9c17f0619ef71f7b041fce940a04ee7a37e72751cb85f093\",\"size\":460117010,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux.zip\",\"platform\":\"linux\",\"sha256\":\"8daca16c8ac5541532fe63be90e924266b97f04d28d89b73dab7b6048285626a\",\"size\":696371358,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"a72a387de11ec5411d59db7639573a37a21f5f2b64013457bf6bc91af7c94aca\",\"size\":521276177,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"e20c2629caf7d73eb89766c1276faefe2d5dbca0af9ef53db4c39588dba3f5a1\",\"size\":458531291,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-macos.zip\",\"platform\":\"macos\",\"sha256\":\"c6695eb1fd549a779837a6533ea86572e58d98824fdad9a20db1016ee6c7c8a0\",\"size\":496175576,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-22T16:28:00Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"9ec8a68e9e83fabe21e133896f5be98eeda82c29640f0774fd8aa9424f7f4d92\",\"original_asset_sizes\":{\"InniClassic-20260928-build.6.apk\":25200586,\"SHA256SUMS.txt\":176,\"rom_y2.zip\":458755483,\"update.json\":341},\"original_assets\":[\"InniClassic-20260928-build.6.apk\",\"rom_y2.zip\",\"SHA256SUMS.txt\",\"update.json\"],\"platforms\":{\"linux\":\"676a10f873c98ebea71ba1a2b7524f917744dedead34573281d2f9a1c9f7fd38\",\"linux-arm64\":\"ed5dc377a7b2ebb4e39023f93cf54fbcc19651a1eb61181b552d07d4bf1aceb6\",\"linux-legacy\":\"240812d6d773b290b6a8c19480ee07c53749fb676a0995616159ca241261df87\",\"macos\":\"f484b79466ceb6763d84a74693524c63598e1fe443f7514496af776bfd951903\",\"windows\":\"d44b8b5d17463e1e1145f5d4da9b49480d08362cbb5464da77adc0c1fab1f535\",\"windows-legacy\":\"bab021026bf1dd69e7b087b904a470c98d10f8cda32018de0ae1d2361524e4e3\"},\"skipped\":[],\"source_fingerprint\":\"beeb6cd2f8f7361a1b1288d916f8084a4a02d7d56481cc8fc1c7c00fb4750cd7\",\"stats\":{\"baseline\":{\"InniClassic-20260928-build.6.apk\":7,\"SHA256SUMS.txt\":7,\"rom-linux-arm64.zip\":3,\"rom-linux-legacy.zip\":1,\"rom-linux.zip\":5,\"rom-macos.zip\":5,\"rom-windows-legacy.zip\":1,\"rom-windows.zip\":5,\"rom.zip\":3,\"rom_type_b-linux-arm64.zip\":3,\"rom_type_b-linux-legacy.zip\":1,\"rom_type_b-linux.zip\":5,\"rom_type_b-macos.zip\":5,\"rom_type_b-windows-legacy.zip\":1,\"rom_type_b-windows.zip\":5,\"rom_type_b.zip\":3,\"rom_y1_type_a-linux-arm64.zip\":3,\"rom_y1_type_a-linux-legacy.zip\":1,\"rom_y1_type_a-linux.zip\":5,\"rom_y1_type_a-macos.zip\":5,\"rom_y1_type_a-windows-legacy.zip\":1,\"rom_y1_type_a-windows.zip\":5,\"rom_y1_type_a.zip\":2,\"rom_y1_type_b-linux-arm64.zip\":3,\"rom_y1_type_b-linux-legacy.zip\":1,\"rom_y1_type_b-linux.zip\":5,\"rom_y1_type_b-macos.zip\":5,\"rom_y1_type_b-windows-legacy.zip\":1,\"rom_y1_type_b-windows.zip\":5,\"rom_y1_type_b.zip\":2,\"rom_y2-linux-arm64.zip\":11,\"rom_y2-linux-legacy.zip\":3,\"rom_y2-linux.zip\":12,\"rom_y2-macos.zip\":14,\"rom_y2-windows-legacy.zip\":3,\"rom_y2-windows.zip\":7,\"rom_y2.zip\":6,\"update.json\":7},\"generated_at\":\"2026-11-22T16:28:00Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304306838,\"tag\":\"2.5.6.1\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128322905,\"tag\":\"2.5.6.1\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109096332,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-07T22:06:05Z",
@@ -15764,15 +15764,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/733135096"
       },
       {
-        "id": 778810711,
+        "id": 779679512,
         "name": "rom_y2-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-linux-arm64.zip",
-        "size": 521274161,
-        "download_count": 1,
+        "size": 521276177,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-22T11:17:42Z",
-        "updated_at": "2026-11-22T11:18:00Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/778810711"
+        "created_at": "2026-11-22T16:28:02Z",
+        "updated_at": "2026-11-22T16:28:15Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/779679512"
       },
       {
         "id": 754667204,
@@ -15786,26 +15786,26 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/754667204"
       },
       {
-        "id": 778810690,
+        "id": 779679513,
         "name": "rom_y2-linux.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-linux.zip",
-        "size": 696369610,
-        "download_count": 1,
+        "size": 696371358,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-22T11:17:42Z",
-        "updated_at": "2026-11-22T11:18:04Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/778810690"
+        "created_at": "2026-11-22T16:28:02Z",
+        "updated_at": "2026-11-22T16:28:21Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/779679513"
       },
       {
-        "id": 774352287,
+        "id": 779679507,
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-macos.zip",
-        "size": 496320847,
-        "download_count": 2,
+        "size": 496175576,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-21T04:01:37Z",
-        "updated_at": "2026-11-21T04:02:06Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/774352287"
+        "created_at": "2026-11-22T16:28:02Z",
+        "updated_at": "2026-11-22T16:28:13Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/779679507"
       },
       {
         "id": 754667203,
@@ -15852,15 +15852,15 @@
         "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/754669352"
       },
       {
-        "id": 778810689,
+        "id": 779679509,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/stats.txt",
         "size": 6974,
-        "download_count": 2,
+        "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T11:17:42Z",
-        "updated_at": "2026-11-22T11:17:42Z",
-        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/778810689"
+        "created_at": "2026-11-22T16:28:02Z",
+        "updated_at": "2026-11-22T16:28:02Z",
+        "url": "https://api.github.com/repos/y1-community/classy-mirror/releases/assets/779679509"
       },
       {
         "id": 722123547,
@@ -15875,7 +15875,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 59,
+    "downloads": 55,
     "download_breakdown": {
       "tag": "20260928-build.6",
       "mirrors": "",
@@ -16023,7 +16023,7 @@
         {
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-linux-arm64.zip",
-          "downloads": 1
+          "downloads": 0
         },
         {
           "name": "rom_y2-linux-legacy.zip",
@@ -16033,12 +16033,12 @@
         {
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-linux.zip",
-          "downloads": 1
+          "downloads": 0
         },
         {
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-macos.zip",
-          "downloads": 2
+          "downloads": 0
         },
         {
           "name": "rom_y2-windows-legacy.zip",

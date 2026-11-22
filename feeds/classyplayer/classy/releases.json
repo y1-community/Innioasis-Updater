@@ -39,7 +39,7 @@
         "name": "rom_y1_type_a.zip",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261122-beta/rom_y1_type_a.zip",
         "size": 445894765,
-        "download_count": 14,
+        "download_count": 16,
         "content_type": "application/zip",
         "created_at": "2026-11-22T04:37:57Z",
         "updated_at": "2026-11-22T04:38:13Z",
@@ -102,7 +102,7 @@
       }
     ],
     "mirror_downloads": 45,
-    "downloads": 66,
+    "downloads": 68,
     "download_breakdown": {
       "tag": "20261122-beta",
       "mirrors": "y1-community/classy-mirror",
@@ -110,7 +110,7 @@
         {
           "name": "rom_y1_type_a.zip",
           "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261122-beta/rom_y1_type_a.zip",
-          "downloads": 16,
+          "downloads": 18,
           "mirror_downloads": 2
         },
         {
@@ -2433,8 +2433,8 @@
         "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/720263964"
       }
     ],
-    "mirror_downloads": 118,
-    "downloads": 148,
+    "mirror_downloads": 119,
+    "downloads": 149,
     "download_breakdown": {
       "tag": "20261107",
       "mirrors": "y1-community/classy-mirror",
@@ -2488,7 +2488,7 @@
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261107/rom_y2-macos.zip",
           "size": 519081998,
-          "downloads": 7
+          "downloads": 8
         }
       ]
     }
@@ -3067,8 +3067,8 @@
         "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/636618058"
       }
     ],
-    "mirror_downloads": 138,
-    "downloads": 189,
+    "mirror_downloads": 139,
+    "downloads": 190,
     "download_breakdown": {
       "tag": "20261013",
       "mirrors": "y1-community/classy-mirror",
@@ -3115,7 +3115,7 @@
           "name": "rom_y2-linux-legacy.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261013/rom_y2-linux-legacy.zip",
           "size": 458606726,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "macos",
@@ -4162,14 +4162,14 @@
           "platform": "linux",
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-linux.zip",
-          "size": 696369610,
+          "size": 696371358,
           "downloads": 12
         },
         {
           "platform": "linux-arm64",
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-linux-arm64.zip",
-          "size": 521274161,
+          "size": 521276177,
           "downloads": 11
         },
         {
@@ -4183,7 +4183,7 @@
           "platform": "macos",
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20260928-build.6/rom_y2-macos.zip",
-          "size": 496320847,
+          "size": 496175576,
           "downloads": 14
         }
       ]
@@ -4269,14 +4269,14 @@
           "platform": "linux",
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-linux.zip",
-          "size": 681660938,
+          "size": 681662686,
           "downloads": 15
         },
         {
           "platform": "linux-arm64",
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-linux-arm64.zip",
-          "size": 506565489,
+          "size": 506567505,
           "downloads": 13
         },
         {
@@ -4290,7 +4290,7 @@
           "platform": "macos",
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20260927/rom_y2-macos.zip",
-          "size": 481612182,
+          "size": 481466911,
           "downloads": 11
         }
       ]

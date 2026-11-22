@@ -17,7 +17,7 @@
         "name": "better-Y_3.1.2_v1.1.0.apk",
         "browser_download_url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/better-Y_3.1.2_v1.1.0.apk",
         "size": 60200797,
-        "download_count": 36,
+        "download_count": 37,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-09-25T18:48:06Z",
         "updated_at": "2026-09-25T18:49:30Z",
@@ -67,14 +67,14 @@
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux.zip",
-          "size": 482831638,
+          "size": 482833386,
           "downloads": 17
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-arm64.zip",
-          "size": 307736189,
+          "size": 307738205,
           "downloads": 2
         },
         {
@@ -88,7 +88,7 @@
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-macos.zip",
-          "size": 290487531,
+          "size": 290342260,
           "downloads": 11
         }
       ]
@@ -150,14 +150,14 @@
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux.zip",
-          "size": 482412535,
+          "size": 482414283,
           "downloads": 16
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-linux-arm64.zip",
-          "size": 307317086,
+          "size": 307319102,
           "downloads": 2
         },
         {
@@ -171,7 +171,7 @@
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-macos.zip",
-          "size": 290068414,
+          "size": 289923143,
           "downloads": 6
         }
       ]

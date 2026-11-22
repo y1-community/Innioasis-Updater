@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Translating Rondo - Innioasis Updater</title>
+  <meta name="description" content="Translating Rondo Rondo speaks English and Spanish. Every text it shows, on the Y1, on its dashboard and on the server's admin page, lives in one file per language in lan">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/jarvissax-rondo-docs-translating.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Translating Rondo - Innioasis Updater">
+  <meta property="og:description" content="Translating Rondo Rondo speaks English and Spanish. Every text it shows, on the Y1, on its dashboard and on the server's admin page, lives in one file per language in lan">
+  <meta property="og:url" content="https://innioasis.app/post-install/jarvissax-rondo-docs-translating.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Translating Rondo - Innioasis Updater">
+  <meta name="twitter:description" content="Translating Rondo Rondo speaks English and Spanish. Every text it shows, on the Y1, on its dashboard and on the server's admin page, lives in one file per language in lan">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/jarvissax-rondo-docs-translating.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/jarvissax-rondo-docs-translating.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y1&amp;software=rondo-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Rondo · Y1</p><h1>Translating Rondo</h1><p class="lumen-lead">A lightweight, custom audio operating system for the Innioasis Y1.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y1&amp;software=rondo-y1">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y1&amp;software=rondo-y1">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="translating-rondo">Translating Rondo</h1>
+<p>Rondo speaks English and Spanish. Every text it shows, on the Y1, on its dashboard and on the server&#x27;s admin page, lives in one file per language in <a href="https://github.com/jarvissax/rondo/blob/HEAD/lang" target="_blank" rel="noopener noreferrer"><code>lang/</code></a>:</p>
+<table><thead><tr><th>File</th><th>Language</th></tr></thead><tbody><tr><td><a href="https://github.com/jarvissax/rondo/blob/HEAD/lang/en.json" target="_blank" rel="noopener noreferrer"><code>lang/en.json</code></a></td><td>English: the source of every text, and what Rondo falls back to</td></tr><tr><td><a href="https://github.com/jarvissax/rondo/blob/HEAD/lang/es.json" target="_blank" rel="noopener noreferrer"><code>lang/es.json</code></a></td><td>Español</td></tr></tbody></table>
+<p>Fixing a translation is a one-file pull request. Adding a language is one new file. You don&#x27;t need a Y1 or a build: a check script tells you when something doesn&#x27;t fit, and the dashboard and the admin page run on your computer with your changes.</p>
+<h2 id="what-a-language-file-looks-like">What a language file looks like</h2>
+<pre><code class="language-json">{
+  &quot;_name&quot;: &quot;Español&quot;,
+  &quot;device&quot;: {
+    &quot;settings.language&quot;: &quot;Idioma&quot;,
+    &quot;settings.theme.menuShown&quot;: &quot;{shown} de {total} visibles&quot;,
+    &quot;library.songCount&quot;: { &quot;one&quot;: &quot;{count} canción&quot;, &quot;other&quot;: &quot;{count} canciones&quot; }
+  },
+  &quot;dashboard&quot;: { &quot;…&quot;: &quot;…&quot; },
+  &quot;admin&quot;: { &quot;…&quot;: &quot;…&quot; }
+}</code></pre>
+<ul><li><strong><code>_name</code></strong> is the language&#x27;s name in that language (&quot;Español&quot;, &quot;Deutsch&quot;). The language pickers<p>show it.</p></li><li><strong>Three sections</strong>, one for each place Rondo shows text: <code>device</code> (the Y1 itself), <code>dashboard</code><p>(the web page the Y1 serves while Settings › Dashboard is open) and <code>admin</code> (the Rondo server&#x27;s admin page).</p></li><li><strong>Keys</strong> (<code>settings.language</code>) name a text and where it&#x27;s used. They never change in a<p>translation; only the text on the right does.</p></li><li><strong>Blanks</strong> in braces, like <code>{count}</code>, <code>{name}</code> or <code>{total}</code>, are filled in by Rondo. Keep each<p>blank the English has, spelled the same; move them wherever your language needs them (<code>&quot;{month} {day}&quot;</code> in English is <code>&quot;{day} {month}&quot;</code> in Spanish).</p></li><li><strong>Plural forms</strong>: a text with a number in it can have one text per plural form, chosen by<p><code>{count}</code>. English and Spanish use <code>one</code> and <code>other</code>; your language may need others from <a href="https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html" target="_blank" rel="noopener noreferrer">CLDR&#x27;s list</a> (<code>zero</code>, <code>two</code>, <code>few</code>, <code>many</code>). Every plural text needs <code>other</code>. A form may leave <code>{count}</code> out (<code>&quot;one&quot;: &quot;Una canción&quot;</code>).</p></li><li><strong>Markup</strong>: a few dashboard and admin texts have <code>&lt;b&gt;…&lt;/b&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;code&gt;</code> or <code>&lt;br&gt;</code> in<p>them. Keep the same tags, around the words that need them in your language.</p></li><li><code>\n</code> is a line break (a few texts on the Y1 have two lines). <code>…</code> is one character (the ellipsis),<p>as are <code>’</code>, <code>“</code>, <code>”</code>, <code>·</code> and <code>›</code>.</p></li></ul>
+<p>Anything a language doesn&#x27;t have yet shows in English, so a half-finished language still works.</p>
+<h2 id="fixing-a-translation">Fixing a translation</h2>
+<ol><li>Find the text in your language&#x27;s file: search it for the words you saw (or search<p><code>lang/en.json</code> for the English, then the key in your language&#x27;s file).</p></li><li>Change the text on the right of the key. Keep the blanks and the markup.</li><li>Run the check (needs <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">Node.js</a> 22 or newer, nothing else):</li></ol>
+<pre><code class="language-bash">   node tools/lang/check.mjs</code></pre>
+<ol><li>Open a pull request with that one file.</li></ol>
+<h2 id="adding-a-language">Adding a language</h2>
+<ol><li>Copy <code>lang/en.json</code> to <code>lang/&lt;code&gt;.json</code>, named by the language&#x27;s code: <code>de</code>, <code>fr</code>, <code>tr</code>, or with<p>its region where it matters (<code>pt-BR</code>, <code>zh-TW</code>).</p></li><li>Set <code>_name</code> to the language&#x27;s own name, then translate every text. Start with the <code>device</code><p>section: it&#x27;s what people see first.</p></li><li>Run <code>node tools/lang/check.mjs</code> until it has nothing to say. It tells you about a missing text, a<p>blank that doesn&#x27;t match English, a key English doesn&#x27;t have, or broken JSON.</p></li><li>Open a pull request. The new language shows in every picker by itself.</li></ol>
+<p>Two things need a developer, so mention them in the pull request if your language has them:</p>
+<ul><li><strong>Plural forms besides <code>one</code> and <code>other</code>.</strong> The dashboard and the admin page take the rules from<p>the browser. The Y1 has its own table in <code>native/core/lang.cpp</code> (<code>pluralForm()</code>); it already knows French, Russian, Ukrainian, Polish, Czech, Slovak and the languages without plurals.</p></li><li><strong>Writing that runs right to left</strong> (Arabic, Persian, Hebrew). The Y1 lays text out left to right<p>for now.</p></li></ul>
+<p>The Y1&#x27;s font is Roboto, with the Y1&#x27;s own fonts for Chinese, Japanese, Korean, Arabic and others.</p>
+<h2 id="seeing-it-without-a-y1">Seeing it without a Y1</h2>
+<p>The dashboard and the admin page run on your computer with mock servers that read <code>lang/</code> on every reload, so an edit shows the moment you reload the page.</p>
+<p><strong>The dashboard</strong>, with the Rondo set to your language:</p>
+<pre><code class="language-bash">node tools/dashboard-mock/server.mjs --lang es</code></pre>
+<p>Open <a href="http://localhost:8090" target="_blank" rel="noopener noreferrer">http://localhost:8090</a> and type the pairing code the terminal prints. The Settings page has the Language choice, as on the Y1.</p>
+<p><strong>The admin page</strong>:</p>
+<pre><code class="language-bash">node tools/admin-mock/server.mjs</code></pre>
+<p>Open <a href="http://localhost:8095/admin/" target="_blank" rel="noopener noreferrer">http://localhost:8095/admin/</a> and choose the language under the sign-in form (or, signed in with the password the terminal prints, under Admin account). It starts in your browser&#x27;s language when Rondo has it.</p>
+<p><strong>The Y1&#x27;s own texts</strong> need a Y1 to see in place (Settings › Language). Its screen is 480 × 360 and its rows are short: a text that doesn&#x27;t fit ends in &quot;…&quot;, so prefer the shorter way of saying it, especially for titles (about 22 characters) and the values at the right of a row (about 12).</p>
+<h2 id="for-developers-adding-a-text">For developers: adding a text</h2>
+<p>Every text goes through the catalog; none is written in the code.</p>
+<ul><li><strong>The Y1</strong> (C++): <code>tr(&quot;settings.language&quot;)</code>, `tr(&quot;settings.theme.menuShown&quot;, {{&quot;shown&quot;, n},<p>{&quot;total&quot;, m}})<code>,</code>tr(&quot;library.songCount&quot;, {{&quot;count&quot;, n}})<code>(</code>native/core/lang.h`). Call it where the text is shown, never in a static initializer. <code>native/services</code>, <code>native/player</code> and <code>native/direct</code> run in processes of their own and don&#x27;t translate: their texts are translated where the shell shows them. The few words direct mode and the Rondo server put into YouTube&#x27;s answers themselves (<code>feed.*</code>: &quot;49 songs&quot;, &quot;Liked Music&quot;) are in the <code>device</code> section too, said in the language each request names (<code>say()</code> in <code>native/direct/innertube.h</code> and <code>server/src/lang.ts</code>).</p></li><li><strong>The dashboard and the admin page</strong> (JavaScript): <code>t(&#x27;key&#x27;, {count: n})</code> for text,<p><code>te(&#x27;key&#x27;)</code> inside HTML templates (escaped), <code>th(&#x27;key&#x27;)</code> for a text with its own markup, and <code>data-i18n=&quot;key&quot;</code>, <code>data-i18n-html=&quot;key&quot;</code>, <code>data-i18n-attr=&quot;aria-label:key&quot;</code> in the HTML (keep the English in the HTML too; the check makes sure it matches <code>lang/en.json</code>).</p></li><li>Add the English to <code>lang/en.json</code> and the text to every other language file. Build sentences as<p>one text with blanks, never from pieces (<code>&quot;{count} songs&quot;</code>, not <code>n + &quot; songs&quot;</code>): word order differs between languages.</p></li><li><code>node tools/lang/check.mjs</code> runs in CI and in the server&#x27;s tests; <code>--format</code> sorts English&#x27;s keys<p>and puts every language in English&#x27;s order, <code>--unused</code> lists English texts no code names.</p></li></ul>
+<h2 id="spanish">Spanish</h2>
+<p>Spanish is neutral Spanish, with <em>tú</em>, and the words Rondo uses for its own things:</p>
+<table><thead><tr><th>English</th><th>Español</th><th></th><th>English</th><th>Español</th></tr></thead><tbody><tr><td>Settings</td><td>Ajustes</td><td></td><td>Playlists</td><td>Listas</td></tr><tr><td>Now Playing</td><td>Reproduciendo</td><td></td><td>Shuffle</td><td>Aleatorio</td></tr><tr><td>Library</td><td>Biblioteca</td><td></td><td>Queue</td><td>Cola</td></tr><tr><td>Songs</td><td>Canciones</td><td></td><td>Lyrics</td><td>Letra</td></tr><tr><td>Albums</td><td>Álbumes</td><td></td><td>Downloads</td><td>Descargas</td></tr><tr><td>the card</td><td>la tarjeta</td><td></td><td>Dashboard</td><td>Panel</td></tr><tr><td>Headphones</td><td>Auriculares</td><td></td><td>Speaker</td><td>Altavoz</td></tr><tr><td>Sign in</td><td>Iniciar sesión</td><td></td><td>Pair</td><td>Vincular</td></tr></tbody></table></article><p class="lumen-doc-footer-note">These are Rondo's own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=rondo-y1">jarvissax's <em>Rondo</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=jarvissax%2Frondo&amp;software=rondo-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

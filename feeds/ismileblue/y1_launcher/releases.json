@@ -287,7 +287,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom.zip",
         "size": 456271826,
-        "download_count": 594,
+        "download_count": 596,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:31Z",
         "updated_at": "2026-09-02T13:15:45Z",
@@ -317,7 +317,7 @@
       }
     ],
     "mirror_downloads": 94,
-    "downloads": 1259,
+    "downloads": 1261,
     "download_breakdown": {
       "tag": "launcher-v0.11.6",
       "mirrors": "y1-community/y1_launcher-mirror",
@@ -325,7 +325,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom.zip",
-          "downloads": 604,
+          "downloads": 606,
           "mirror_downloads": 10
         },
         {
@@ -743,8 +743,8 @@
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200058"
       }
     ],
-    "mirror_downloads": 67,
-    "downloads": 125,
+    "mirror_downloads": 68,
+    "downloads": 126,
     "download_breakdown": {
       "tag": "launcher-v0.9",
       "mirrors": "y1-community/y1_launcher-mirror",
@@ -803,7 +803,7 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom-macos.zip",
           "size": 565188826,
-          "downloads": 17
+          "downloads": 18
         },
         {
           "platform": "windows",
@@ -2270,14 +2270,14 @@
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom-linux.zip",
-          "size": 757530870,
+          "size": 757532618,
           "downloads": 6
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom-linux-arm64.zip",
-          "size": 582435421,
+          "size": 582437437,
           "downloads": 0
         },
         {
@@ -2291,7 +2291,7 @@
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom-macos.zip",
-          "size": 565186756,
+          "size": 565041485,
           "downloads": 8
         },
         {
@@ -2312,14 +2312,14 @@
           "platform": "linux",
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom_type_b-linux.zip",
-          "size": 700715966,
+          "size": 700717714,
           "downloads": 2
         },
         {
           "platform": "linux-arm64",
           "name": "rom_type_b-linux-arm64.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom_type_b-linux-arm64.zip",
-          "size": 525620517,
+          "size": 525622533,
           "downloads": 0
         },
         {
@@ -2333,7 +2333,7 @@
           "platform": "macos",
           "name": "rom_type_b-macos.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.1/rom_type_b-macos.zip",
-          "size": 508371858,
+          "size": 508226587,
           "downloads": 6
         }
       ]

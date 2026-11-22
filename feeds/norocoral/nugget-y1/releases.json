@@ -50,7 +50,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.3/rom.zip",
         "size": 5936447,
-        "download_count": 31,
+        "download_count": 35,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-21T21:32:06Z",
         "updated_at": "2026-11-21T21:32:07Z",
@@ -69,7 +69,7 @@
       }
     ],
     "mirror_downloads": 9,
-    "downloads": 60,
+    "downloads": 64,
     "download_breakdown": {
       "tag": "2.1.3",
       "mirrors": "y1-community/nugget-y1-mirror",
@@ -89,7 +89,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.3/rom.zip",
-          "downloads": 32,
+          "downloads": 36,
           "mirror_downloads": 1
         }
       ],
@@ -112,14 +112,14 @@
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-linux.zip",
-          "size": 366341391,
+          "size": 307527330,
           "downloads": 1
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-linux-arm64.zip",
-          "size": 132430133,
+          "size": 132432149,
           "downloads": 1
         },
         {
@@ -133,7 +133,7 @@
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-macos.zip",
-          "size": 115181674,
+          "size": 115036403,
           "downloads": 1
         }
       ]
@@ -252,14 +252,14 @@
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-linux.zip",
-          "size": 366341268,
+          "size": 307527207,
           "downloads": 1
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-linux-arm64.zip",
-          "size": 132430010,
+          "size": 132432026,
           "downloads": 1
         },
         {
@@ -273,7 +273,7 @@
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-macos.zip",
-          "size": 115181551,
+          "size": 115036280,
           "downloads": 1
         }
       ]
