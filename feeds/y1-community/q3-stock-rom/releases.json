@@ -35,8 +35,8 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom/releases/assets/712346082"
       }
     ],
-    "mirror_downloads": 25,
-    "downloads": 59,
+    "mirror_downloads": 26,
+    "downloads": 60,
     "download_breakdown": {
       "tag": "MX2E-WVGA_TM-WV3.23-20250528",
       "mirrors": "y1-community/q3-stock-rom-mirror",
@@ -75,7 +75,7 @@
           "name": "rom_q3-linux-arm64.zip",
           "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3-linux-arm64.zip",
           "size": 412153677,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "linux-legacy",
@@ -130,8 +130,8 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom/releases/assets/712344894"
       }
     ],
-    "mirror_downloads": 26,
-    "downloads": 49,
+    "mirror_downloads": 28,
+    "downloads": 51,
     "download_breakdown": {
       "tag": "MX2D-WVGA_TM-WV3.20-20250618",
       "mirrors": "y1-community/q3-stock-rom-mirror",
@@ -177,7 +177,7 @@
           "name": "rom_q3-linux-legacy.zip",
           "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3-linux-legacy.zip",
           "size": 353021620,
-          "downloads": 1
+          "downloads": 3
         },
         {
           "platform": "macos",
@@ -225,8 +225,8 @@
         "url": "https://api.github.com/repos/y1-community/q3-stock-rom/releases/assets/712344035"
       }
     ],
-    "mirror_downloads": 16,
-    "downloads": 46,
+    "mirror_downloads": 17,
+    "downloads": 47,
     "download_breakdown": {
       "tag": "MX2-ES-WV4.01-20250619",
       "mirrors": "y1-community/q3-stock-rom-mirror",
@@ -264,7 +264,7 @@
           "name": "rom_q3-linux-arm64.zip",
           "url": "https://github.com/y1-community/q3-stock-rom-mirror/releases/download/MX2-ES-WV4.01-20250619/rom_q3-linux-arm64.zip",
           "size": 412140248,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "linux-legacy",

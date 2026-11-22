@@ -90,15 +90,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733453409"
       },
       {
-        "id": 777192824,
+        "id": 778182435,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/y2-release/stats.txt",
         "size": 3872,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:23:13Z",
-        "updated_at": "2026-11-21T23:23:13Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777192824"
+        "created_at": "2026-11-22T06:54:51Z",
+        "updated_at": "2026-11-22T06:54:51Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778182435"
       }
     ],
     "mirror_downloads": 0,
@@ -237,15 +237,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733454301"
       },
       {
-        "id": 777192675,
+        "id": 778182293,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/stats.txt",
         "size": 3860,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:23:09Z",
-        "updated_at": "2026-11-21T23:23:09Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777192675"
+        "created_at": "2026-11-22T06:54:48Z",
+        "updated_at": "2026-11-22T06:54:48Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778182293"
       }
     ],
     "mirror_downloads": 0,
@@ -384,15 +384,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733473172"
       },
       {
-        "id": 777192600,
+        "id": 778182237,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/stats.txt",
         "size": 3844,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:23:06Z",
-        "updated_at": "2026-11-21T23:23:07Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777192600"
+        "created_at": "2026-11-22T06:54:46Z",
+        "updated_at": "2026-11-22T06:54:47Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778182237"
       }
     ],
     "mirror_downloads": 0,
@@ -619,15 +619,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733433850"
       },
       {
-        "id": 777192283,
+        "id": 778181999,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/stats.txt",
         "size": 5899,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:23:00Z",
-        "updated_at": "2026-11-21T23:23:00Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777192283"
+        "created_at": "2026-11-22T06:54:41Z",
+        "updated_at": "2026-11-22T06:54:42Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778181999"
       }
     ],
     "mirror_downloads": 0,
@@ -889,15 +889,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733454585"
       },
       {
-        "id": 777192102,
+        "id": 778181794,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:56Z",
-        "updated_at": "2026-11-21T23:22:56Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777192102"
+        "created_at": "2026-11-22T06:54:38Z",
+        "updated_at": "2026-11-22T06:54:38Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778181794"
       }
     ],
     "mirror_downloads": 0,
@@ -1053,7 +1053,7 @@
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-windows-legacy.zip",
         "size": 528997543,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-21T00:28:00Z",
         "updated_at": "2026-11-21T00:28:49Z",
@@ -1064,7 +1064,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-windows.zip",
         "size": 767236370,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-21T00:28:00Z",
         "updated_at": "2026-11-21T00:28:40Z",
@@ -1159,19 +1159,19 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733389170"
       },
       {
-        "id": 777191199,
+        "id": 778180919,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:32Z",
-        "updated_at": "2026-11-21T23:22:32Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777191199"
+        "created_at": "2026-11-22T06:54:21Z",
+        "updated_at": "2026-11-22T06:54:22Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180919"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 2,
     "download_breakdown": {
       "tag": "nightly-20260630-1236",
       "mirrors": "",
@@ -1199,12 +1199,12 @@
         {
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-windows-legacy.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-windows.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom.zip",
@@ -1429,15 +1429,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733397304"
       },
       {
-        "id": 777191074,
+        "id": 778180853,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:29Z",
-        "updated_at": "2026-11-21T23:22:30Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777191074"
+        "created_at": "2026-11-22T06:54:20Z",
+        "updated_at": "2026-11-22T06:54:20Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180853"
       }
     ],
     "mirror_downloads": 0,
@@ -1582,7 +1582,7 @@
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-macos.zip",
         "size": 563383454,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-21T08:24:07Z",
         "updated_at": "2026-11-21T08:24:41Z",
@@ -1699,19 +1699,19 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733393650"
       },
       {
-        "id": 777190988,
+        "id": 778180806,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:27Z",
-        "updated_at": "2026-11-21T23:22:27Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777190988"
+        "created_at": "2026-11-22T06:54:18Z",
+        "updated_at": "2026-11-22T06:54:19Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180806"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 2,
     "download_breakdown": {
       "tag": "nightly-20260630-1120",
       "mirrors": "",
@@ -1734,7 +1734,7 @@
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-macos.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "rom-windows-legacy.zip",
@@ -1969,15 +1969,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733389958"
       },
       {
-        "id": 777190906,
+        "id": 778180756,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:25Z",
-        "updated_at": "2026-11-21T23:22:25Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777190906"
+        "created_at": "2026-11-22T06:54:17Z",
+        "updated_at": "2026-11-22T06:54:17Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180756"
       }
     ],
     "mirror_downloads": 0,
@@ -2239,15 +2239,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733390942"
       },
       {
-        "id": 777190838,
+        "id": 778180698,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:23Z",
-        "updated_at": "2026-11-21T23:22:23Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777190838"
+        "created_at": "2026-11-22T06:54:15Z",
+        "updated_at": "2026-11-22T06:54:16Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180698"
       }
     ],
     "mirror_downloads": 0,
@@ -2509,15 +2509,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733373565"
       },
       {
-        "id": 777190744,
+        "id": 778180636,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:21Z",
-        "updated_at": "2026-11-21T23:22:21Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777190744"
+        "created_at": "2026-11-22T06:54:14Z",
+        "updated_at": "2026-11-22T06:54:14Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180636"
       }
     ],
     "mirror_downloads": 0,
@@ -2629,7 +2629,7 @@
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-linux-arm64.zip",
         "size": 580496425,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-21T12:36:48Z",
         "updated_at": "2026-11-21T12:37:16Z",
@@ -2779,19 +2779,19 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733363550"
       },
       {
-        "id": 777190641,
+        "id": 778180582,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:19Z",
-        "updated_at": "2026-11-21T23:22:19Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777190641"
+        "created_at": "2026-11-22T06:54:12Z",
+        "updated_at": "2026-11-22T06:54:13Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180582"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 2,
     "download_breakdown": {
       "tag": "nightly-20260630-1024",
       "mirrors": "",
@@ -2799,7 +2799,7 @@
         {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-linux-arm64.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "rom-linux-legacy.zip",
@@ -3049,15 +3049,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733370286"
       },
       {
-        "id": 777190551,
+        "id": 778180523,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/stats.txt",
         "size": 5897,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:17Z",
-        "updated_at": "2026-11-21T23:22:17Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777190551"
+        "created_at": "2026-11-22T06:54:11Z",
+        "updated_at": "2026-11-22T06:54:11Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180523"
       }
     ],
     "mirror_downloads": 0,
@@ -3319,15 +3319,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733368994"
       },
       {
-        "id": 777190469,
+        "id": 778180459,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:14Z",
-        "updated_at": "2026-11-21T23:22:15Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777190469"
+        "created_at": "2026-11-22T06:54:09Z",
+        "updated_at": "2026-11-22T06:54:09Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180459"
       }
     ],
     "mirror_downloads": 0,
@@ -3589,15 +3589,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733364021"
       },
       {
-        "id": 777190398,
+        "id": 778180394,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/stats.txt",
         "size": 5897,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:12Z",
-        "updated_at": "2026-11-21T23:22:13Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777190398"
+        "created_at": "2026-11-22T06:54:08Z",
+        "updated_at": "2026-11-22T06:54:08Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180394"
       }
     ],
     "mirror_downloads": 0,
@@ -3764,7 +3764,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-windows.zip",
         "size": 767186709,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-20T22:25:49Z",
         "updated_at": "2026-11-20T22:26:56Z",
@@ -3859,19 +3859,19 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733364966"
       },
       {
-        "id": 777190325,
+        "id": 778180327,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/stats.txt",
         "size": 5896,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:10Z",
-        "updated_at": "2026-11-21T23:22:10Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777190325"
+        "created_at": "2026-11-22T06:54:06Z",
+        "updated_at": "2026-11-22T06:54:07Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180327"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 1,
     "download_breakdown": {
       "tag": "nightly-20260630-0549",
       "mirrors": "",
@@ -3904,7 +3904,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-windows.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom.zip",
@@ -4129,15 +4129,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733337295"
       },
       {
-        "id": 777189696,
+        "id": 778180005,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/stats.txt",
         "size": 5898,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:21:57Z",
-        "updated_at": "2026-11-21T23:21:57Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777189696"
+        "created_at": "2026-11-22T06:53:58Z",
+        "updated_at": "2026-11-22T06:53:58Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180005"
       }
     ],
     "mirror_downloads": 0,
@@ -4260,7 +4260,7 @@
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux-legacy.zip",
         "size": 528912622,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-20T20:59:06Z",
         "updated_at": "2026-11-20T20:59:53Z",
@@ -4399,19 +4399,19 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733330605"
       },
       {
-        "id": 777189600,
+        "id": 778179879,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/stats.txt",
         "size": 5899,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:21:55Z",
-        "updated_at": "2026-11-21T23:21:55Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777189600"
+        "created_at": "2026-11-22T06:53:57Z",
+        "updated_at": "2026-11-22T06:53:57Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778179879"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1,
+    "downloads": 2,
     "download_breakdown": {
       "tag": "nightly-20260629-1609",
       "mirrors": "",
@@ -4424,7 +4424,7 @@
         {
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux-legacy.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom-linux.zip",
@@ -4563,7 +4563,7 @@
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-windows-legacy.zip",
         "size": 528964765,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-20T20:47:07Z",
         "updated_at": "2026-11-20T20:48:00Z",
@@ -4669,19 +4669,19 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733295073"
       },
       {
-        "id": 777189492,
+        "id": 778179791,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/stats.txt",
-        "size": 5896,
+        "size": 5898,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:21:53Z",
-        "updated_at": "2026-11-21T23:21:53Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777189492"
+        "created_at": "2026-11-22T06:53:55Z",
+        "updated_at": "2026-11-22T06:53:56Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778179791"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 3,
     "download_breakdown": {
       "tag": "nightly-20260629-1444",
       "mirrors": "",
@@ -4709,7 +4709,7 @@
         {
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-windows-legacy.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom-windows.zip",
@@ -4939,15 +4939,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733270083"
       },
       {
-        "id": 777189374,
+        "id": 778179733,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/stats.txt",
         "size": 5900,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:21:51Z",
-        "updated_at": "2026-11-21T23:21:51Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777189374"
+        "created_at": "2026-11-22T06:53:54Z",
+        "updated_at": "2026-11-22T06:53:54Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778179733"
       }
     ],
     "mirror_downloads": 0,
@@ -5209,15 +5209,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733248273"
       },
       {
-        "id": 777189236,
+        "id": 778179646,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/stats.txt",
         "size": 5899,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:21:48Z",
-        "updated_at": "2026-11-21T23:21:49Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777189236"
+        "created_at": "2026-11-22T06:53:53Z",
+        "updated_at": "2026-11-22T06:53:53Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778179646"
       }
     ],
     "mirror_downloads": 0,
@@ -5479,15 +5479,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733226857"
       },
       {
-        "id": 777189094,
+        "id": 778179578,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/stats.txt",
         "size": 5898,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:21:46Z",
-        "updated_at": "2026-11-21T23:21:46Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777189094"
+        "created_at": "2026-11-22T06:53:51Z",
+        "updated_at": "2026-11-22T06:53:51Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778179578"
       }
     ],
     "mirror_downloads": 0,
@@ -5749,15 +5749,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733200261"
       },
       {
-        "id": 777188973,
+        "id": 778179518,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/stats.txt",
         "size": 5898,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:21:44Z",
-        "updated_at": "2026-11-21T23:21:44Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777188973"
+        "created_at": "2026-11-22T06:53:50Z",
+        "updated_at": "2026-11-22T06:53:50Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778179518"
       }
     ],
     "mirror_downloads": 0,
@@ -6019,15 +6019,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733173894"
       },
       {
-        "id": 777188888,
+        "id": 778179458,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/stats.txt",
         "size": 5899,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:21:41Z",
-        "updated_at": "2026-11-21T23:21:42Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777188888"
+        "created_at": "2026-11-22T06:53:48Z",
+        "updated_at": "2026-11-22T06:53:48Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778179458"
       }
     ],
     "mirror_downloads": 0,
@@ -6194,7 +6194,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-windows.zip",
         "size": 767176187,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-20T19:10:09Z",
         "updated_at": "2026-11-20T19:11:26Z",
@@ -6289,19 +6289,19 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733084347"
       },
       {
-        "id": 777188621,
+        "id": 778179294,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/stats.txt",
         "size": 5899,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:21:35Z",
-        "updated_at": "2026-11-21T23:21:35Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777188621"
+        "created_at": "2026-11-22T06:53:44Z",
+        "updated_at": "2026-11-22T06:53:44Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778179294"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 1,
     "download_breakdown": {
       "tag": "nightly-20260627-0304",
       "mirrors": "",
@@ -6334,7 +6334,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-windows.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom.zip",
@@ -6442,7 +6442,7 @@
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-macos.zip",
         "size": 565755534,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-21T06:32:16Z",
         "updated_at": "2026-11-21T06:32:54Z",
@@ -6559,19 +6559,19 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733054385"
       },
       {
-        "id": 777188519,
+        "id": 778179235,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/stats.txt",
         "size": 5898,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:21:33Z",
-        "updated_at": "2026-11-21T23:21:33Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777188519"
+        "created_at": "2026-11-22T06:53:42Z",
+        "updated_at": "2026-11-22T06:53:43Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778179235"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 1,
     "download_breakdown": {
       "tag": "nightly-20260627-0209",
       "mirrors": "",
@@ -6594,7 +6594,7 @@
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-macos.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom-windows-legacy.zip",
@@ -6906,15 +6906,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733465201"
       },
       {
-        "id": 777192761,
+        "id": 778182354,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260819-0956/stats.txt",
-        "size": 7729,
+        "size": 7730,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:23:11Z",
-        "updated_at": "2026-11-21T23:23:11Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777192761"
+        "created_at": "2026-11-22T06:54:49Z",
+        "updated_at": "2026-11-22T06:54:49Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778182354"
       }
     ],
     "mirror_downloads": 0,
@@ -7277,15 +7277,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733489850"
       },
       {
-        "id": 777192528,
+        "id": 778182138,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/stats.txt",
         "size": 7486,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:23:04Z",
-        "updated_at": "2026-11-21T23:23:05Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777192528"
+        "created_at": "2026-11-22T06:54:45Z",
+        "updated_at": "2026-11-22T06:54:45Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778182138"
       }
     ],
     "mirror_downloads": 0,
@@ -7476,7 +7476,7 @@
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-windows-legacy.zip",
         "size": 528986738,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-21T06:05:07Z",
         "updated_at": "2026-11-21T06:05:34Z",
@@ -7582,19 +7582,19 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733464776"
       },
       {
-        "id": 777192434,
+        "id": 778182058,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/stats.txt",
         "size": 5894,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:23:02Z",
-        "updated_at": "2026-11-21T23:23:02Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777192434"
+        "created_at": "2026-11-22T06:54:43Z",
+        "updated_at": "2026-11-22T06:54:43Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778182058"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 1,
     "download_breakdown": {
       "tag": "20260702-1521",
       "mirrors": "",
@@ -7622,7 +7622,7 @@
         {
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-windows-legacy.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom-windows.zip",
@@ -7852,15 +7852,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733438577"
       },
       {
-        "id": 777192194,
+        "id": 778181903,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/stats.txt",
         "size": 5894,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:58Z",
-        "updated_at": "2026-11-21T23:22:58Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777192194"
+        "created_at": "2026-11-22T06:54:40Z",
+        "updated_at": "2026-11-22T06:54:40Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778181903"
       }
     ],
     "mirror_downloads": 0,
@@ -8122,15 +8122,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733447356"
       },
       {
-        "id": 777192050,
+        "id": 778181741,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/stats.txt",
         "size": 5894,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:53Z",
-        "updated_at": "2026-11-21T23:22:54Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777192050"
+        "created_at": "2026-11-22T06:54:37Z",
+        "updated_at": "2026-11-22T06:54:37Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778181741"
       }
     ],
     "mirror_downloads": 0,
@@ -8392,15 +8392,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733438433"
       },
       {
-        "id": 777191968,
+        "id": 778181656,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/stats.txt",
         "size": 5889,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:51Z",
-        "updated_at": "2026-11-21T23:22:51Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777191968"
+        "created_at": "2026-11-22T06:54:35Z",
+        "updated_at": "2026-11-22T06:54:35Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778181656"
       }
     ],
     "mirror_downloads": 0,
@@ -8662,15 +8662,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733440246"
       },
       {
-        "id": 777191891,
+        "id": 778181575,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:49Z",
-        "updated_at": "2026-11-21T23:22:49Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777191891"
+        "created_at": "2026-11-22T06:54:34Z",
+        "updated_at": "2026-11-22T06:54:34Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778181575"
       }
     ],
     "mirror_downloads": 0,
@@ -8932,15 +8932,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733413372"
       },
       {
-        "id": 777191807,
+        "id": 778181491,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:47Z",
-        "updated_at": "2026-11-21T23:22:47Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777191807"
+        "created_at": "2026-11-22T06:54:32Z",
+        "updated_at": "2026-11-22T06:54:32Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778181491"
       }
     ],
     "mirror_downloads": 0,
@@ -9202,15 +9202,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733412899"
       },
       {
-        "id": 777191723,
+        "id": 778181415,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:44Z",
-        "updated_at": "2026-11-21T23:22:45Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777191723"
+        "created_at": "2026-11-22T06:54:31Z",
+        "updated_at": "2026-11-22T06:54:31Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778181415"
       }
     ],
     "mirror_downloads": 0,
@@ -9472,15 +9472,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733425220"
       },
       {
-        "id": 777191601,
+        "id": 778181311,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/stats.txt",
         "size": 5889,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:42Z",
-        "updated_at": "2026-11-21T23:22:43Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777191601"
+        "created_at": "2026-11-22T06:54:29Z",
+        "updated_at": "2026-11-22T06:54:29Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778181311"
       }
     ],
     "mirror_downloads": 0,
@@ -9614,7 +9614,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-linux.zip",
         "size": 755591311,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-21T13:16:49Z",
         "updated_at": "2026-11-21T13:17:21Z",
@@ -9742,19 +9742,19 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733416059"
       },
       {
-        "id": 777191486,
+        "id": 778181214,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:40Z",
-        "updated_at": "2026-11-21T23:22:40Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777191486"
+        "created_at": "2026-11-22T06:54:27Z",
+        "updated_at": "2026-11-22T06:54:28Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778181214"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1,
+    "downloads": 2,
     "download_breakdown": {
       "tag": "20260630-1005",
       "mirrors": "",
@@ -9772,7 +9772,7 @@
         {
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-linux.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom-macos.zip",
@@ -10012,15 +10012,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733413179"
       },
       {
-        "id": 777191415,
+        "id": 778181110,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:38Z",
-        "updated_at": "2026-11-21T23:22:38Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777191415"
+        "created_at": "2026-11-22T06:54:26Z",
+        "updated_at": "2026-11-22T06:54:26Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778181110"
       }
     ],
     "mirror_downloads": 0,
@@ -10282,15 +10282,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733414035"
       },
       {
-        "id": 777191344,
+        "id": 778181026,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/stats.txt",
         "size": 5888,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:36Z",
-        "updated_at": "2026-11-21T23:22:36Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777191344"
+        "created_at": "2026-11-22T06:54:24Z",
+        "updated_at": "2026-11-22T06:54:25Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778181026"
       }
     ],
     "mirror_downloads": 0,
@@ -10552,15 +10552,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733393810"
       },
       {
-        "id": 777191272,
+        "id": 778180968,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/stats.txt",
         "size": 5889,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:34Z",
-        "updated_at": "2026-11-21T23:22:34Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777191272"
+        "created_at": "2026-11-22T06:54:23Z",
+        "updated_at": "2026-11-22T06:54:23Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180968"
       }
     ],
     "mirror_downloads": 0,
@@ -10727,7 +10727,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-windows.zip",
         "size": 767129873,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-20T22:13:23Z",
         "updated_at": "2026-11-20T22:14:47Z",
@@ -10822,19 +10822,19 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733352477"
       },
       {
-        "id": 777190237,
+        "id": 778180289,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/stats.txt",
-        "size": 5894,
+        "size": 5895,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:08Z",
-        "updated_at": "2026-11-21T23:22:08Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777190237"
+        "created_at": "2026-11-22T06:54:05Z",
+        "updated_at": "2026-11-22T06:54:05Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180289"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 3,
     "download_breakdown": {
       "tag": "20260629-1615",
       "mirrors": "",
@@ -10867,7 +10867,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-windows.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom.zip",
@@ -11092,15 +11092,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733336401"
       },
       {
-        "id": 777190130,
+        "id": 778180231,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/stats.txt",
         "size": 5892,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:06Z",
-        "updated_at": "2026-11-21T23:22:06Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777190130"
+        "created_at": "2026-11-22T06:54:04Z",
+        "updated_at": "2026-11-22T06:54:04Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180231"
       }
     ],
     "mirror_downloads": 0,
@@ -11362,15 +11362,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733339678"
       },
       {
-        "id": 777190029,
+        "id": 778180182,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/stats.txt",
         "size": 5891,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:04Z",
-        "updated_at": "2026-11-21T23:22:04Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777190029"
+        "created_at": "2026-11-22T06:54:02Z",
+        "updated_at": "2026-11-22T06:54:03Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180182"
       }
     ],
     "mirror_downloads": 0,
@@ -11632,15 +11632,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733338577"
       },
       {
-        "id": 777189926,
+        "id": 778180142,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/stats.txt",
         "size": 5891,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:22:02Z",
-        "updated_at": "2026-11-21T23:22:02Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777189926"
+        "created_at": "2026-11-22T06:54:01Z",
+        "updated_at": "2026-11-22T06:54:01Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180142"
       }
     ],
     "mirror_downloads": 0,
@@ -11902,15 +11902,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733336583"
       },
       {
-        "id": 777189814,
+        "id": 778180078,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/stats.txt",
         "size": 5891,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:21:59Z",
-        "updated_at": "2026-11-21T23:22:00Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777189814"
+        "created_at": "2026-11-22T06:53:59Z",
+        "updated_at": "2026-11-22T06:54:00Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778180078"
       }
     ],
     "mirror_downloads": 0,
@@ -12172,15 +12172,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733146954"
       },
       {
-        "id": 777188804,
+        "id": 778179413,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/stats.txt",
         "size": 5897,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:21:39Z",
-        "updated_at": "2026-11-21T23:21:39Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777188804"
+        "created_at": "2026-11-22T06:53:47Z",
+        "updated_at": "2026-11-22T06:53:47Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778179413"
       }
     ],
     "mirror_downloads": 0,
@@ -12442,15 +12442,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/733113876"
       },
       {
-        "id": 777188709,
+        "id": 778179343,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/stats.txt",
-        "size": 5894,
+        "size": 5895,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-21T23:21:37Z",
-        "updated_at": "2026-11-21T23:21:37Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/777188709"
+        "created_at": "2026-11-22T06:53:45Z",
+        "updated_at": "2026-11-22T06:53:45Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/778179343"
       }
     ],
     "mirror_downloads": 0,

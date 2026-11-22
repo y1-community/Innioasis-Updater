@@ -17,7 +17,7 @@
         "name": "rom_g1.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip",
         "size": 1645800503,
-        "download_count": 116,
+        "download_count": 118,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:05:06Z",
         "updated_at": "2026-11-05T05:07:52Z",
@@ -35,8 +35,8 @@
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712152060"
       }
     ],
-    "mirror_downloads": 76,
-    "downloads": 192,
+    "mirror_downloads": 78,
+    "downloads": 196,
     "download_breakdown": {
       "tag": "MX3-G1-EN-WM-V5.01-20260805",
       "mirrors": "y1-community/g1-stock-rom-mirror",
@@ -44,7 +44,7 @@
         {
           "name": "rom_g1.zip",
           "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip",
-          "downloads": 133,
+          "downloads": 135,
           "mirror_downloads": 17
         }
       ],
@@ -61,7 +61,7 @@
           "name": "rom_g1-windows-legacy.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-windows-legacy.zip",
           "size": 1720643810,
-          "downloads": 1
+          "downloads": 3
         },
         {
           "platform": "linux",
@@ -319,8 +319,8 @@
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712098603"
       }
     ],
-    "mirror_downloads": 28,
-    "downloads": 51,
+    "mirror_downloads": 31,
+    "downloads": 54,
     "download_breakdown": {
       "tag": "MX3-9_G1_MULTI-V3.01-20260720",
       "mirrors": "y1-community/g1-stock-rom-mirror",
@@ -373,7 +373,7 @@
           "name": "rom_g1-macos.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-macos.zip",
           "size": 1682476142,
-          "downloads": 1
+          "downloads": 4
         }
       ]
     }

@@ -51,7 +51,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6hotfix4/rom.zip",
         "size": 456284202,
-        "download_count": 90,
+        "download_count": 91,
         "content_type": "application/zip",
         "created_at": "2026-09-02T14:37:00Z",
         "updated_at": "2026-09-02T14:37:16Z",
@@ -81,7 +81,7 @@
       }
     ],
     "mirror_downloads": 79,
-    "downloads": 335,
+    "downloads": 336,
     "download_breakdown": {
       "tag": "launcher-v0.11.6hotfix4",
       "mirrors": "y1-community/y1_launcher-mirror",
@@ -89,7 +89,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6hotfix4/rom.zip",
-          "downloads": 100,
+          "downloads": 101,
           "mirror_downloads": 10
         },
         {
@@ -287,7 +287,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom.zip",
         "size": 456271826,
-        "download_count": 591,
+        "download_count": 592,
         "content_type": "application/zip",
         "created_at": "2026-09-02T13:15:31Z",
         "updated_at": "2026-09-02T13:15:45Z",
@@ -316,8 +316,8 @@
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200520"
       }
     ],
-    "mirror_downloads": 93,
-    "downloads": 1253,
+    "mirror_downloads": 94,
+    "downloads": 1255,
     "download_breakdown": {
       "tag": "launcher-v0.11.6",
       "mirrors": "y1-community/y1_launcher-mirror",
@@ -325,7 +325,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom.zip",
-          "downloads": 601,
+          "downloads": 602,
           "mirror_downloads": 10
         },
         {
@@ -375,7 +375,7 @@
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom-linux-legacy.zip",
           "size": 528867673,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "macos",
@@ -1172,8 +1172,8 @@
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541199798"
       }
     ],
-    "mirror_downloads": 58,
-    "downloads": 112,
+    "mirror_downloads": 59,
+    "downloads": 113,
     "download_breakdown": {
       "tag": "launcher-v0.5",
       "mirrors": "y1-community/y1_launcher-mirror",
@@ -1211,7 +1211,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.5/rom-linux.zip",
           "size": 757457196,
-          "downloads": 6
+          "downloads": 7
         },
         {
           "platform": "linux-arm64",
@@ -2594,7 +2594,7 @@
         "name": "Y1_Themes.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/v0.8/Y1_Themes.zip",
         "size": 819854,
-        "download_count": 52,
+        "download_count": 53,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-06-24T13:57:26Z",
         "updated_at": "2026-06-24T13:57:27Z",
@@ -2602,7 +2602,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 52,
+    "downloads": 53,
     "download_breakdown": {
       "tag": "v0.8",
       "mirrors": "",
@@ -2610,7 +2610,7 @@
         {
           "name": "Y1_Themes.zip",
           "url": "https://github.com/ismileblue/y1_launcher/releases/download/v0.8/Y1_Themes.zip",
-          "downloads": 52
+          "downloads": 53
         }
       ],
       "portable": []
@@ -2679,7 +2679,7 @@
         "name": "Y1_Themes.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/v0.5/Y1_Themes.zip",
         "size": 339264,
-        "download_count": 49,
+        "download_count": 50,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-06-15T09:09:30Z",
         "updated_at": "2026-06-15T09:09:31Z",
@@ -2687,7 +2687,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 49,
+    "downloads": 50,
     "download_breakdown": {
       "tag": "v0.5",
       "mirrors": "",
@@ -2695,7 +2695,7 @@
         {
           "name": "Y1_Themes.zip",
           "url": "https://github.com/ismileblue/y1_launcher/releases/download/v0.5/Y1_Themes.zip",
-          "downloads": 49
+          "downloads": 50
         }
       ],
       "portable": []

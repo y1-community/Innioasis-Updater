@@ -13,15 +13,15 @@
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-268"/>
     <innioasis:tag_name>baseline-268</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>124</innioasis:downloads>
+    <innioasis:downloads>143</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/bootimg.img.gz" title="bootimg.img.gz" length="7557238" type="application/gzip" innioasis:download_count="113" innioasis:asset_id="769638780"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/manifest.json" title="manifest.json" length="4244" type="application/json" innioasis:download_count="433" innioasis:asset_id="769638782"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/manifest.sig" title="manifest.sig" length="64" type="application/pgp-signature" innioasis:download_count="431" innioasis:asset_id="769638811"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/recovery.img.gz" title="recovery.img.gz" length="7557265" type="application/gzip" innioasis:download_count="113" innioasis:asset_id="769638816"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/rootfs.ext4.gz" title="rootfs.ext4.gz" length="53214399" type="application/gzip" innioasis:download_count="112" innioasis:asset_id="769638847"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/bootimg.img.gz" title="bootimg.img.gz" length="7557238" type="application/gzip" innioasis:download_count="123" innioasis:asset_id="769638780"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/manifest.json" title="manifest.json" length="4244" type="application/json" innioasis:download_count="495" innioasis:asset_id="769638782"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/manifest.sig" title="manifest.sig" length="64" type="application/pgp-signature" innioasis:download_count="493" innioasis:asset_id="769638811"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/recovery.img.gz" title="recovery.img.gz" length="7557265" type="application/gzip" innioasis:download_count="123" innioasis:asset_id="769638816"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/rootfs.ext4.gz" title="rootfs.ext4.gz" length="53214399" type="application/gzip" innioasis:download_count="122" innioasis:asset_id="769638847"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream" innioasis:download_count="4" innioasis:asset_id="769638787"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/Y2Linux-1.0.0-beta.9.3.35-first-install.zip" title="Y2Linux-1.0.0-beta.9.3.35-first-install.zip" length="69341582" type="application/zip" innioasis:download_count="112" innioasis:asset_id="769638779"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/Y2Linux-1.0.0-beta.9.3.35-first-install.zip" title="Y2Linux-1.0.0-beta.9.3.35-first-install.zip" length="69341582" type="application/zip" innioasis:download_count="129" innioasis:asset_id="769638779"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-268/Y2Linux-1.0.0-beta.9.3.35-sources-buildroot-legal-info.tar" title="Y2Linux-1.0.0-beta.9.3.35-sources-buildroot-legal-info.tar" length="19312640" type="application/x-tar" innioasis:download_count="3" innioasis:asset_id="769638786"/>
     <content type="text">**Y2Linux 1.0 Beta 9.3.35**: a light look for Reborn, What&#x27;s New on the player, and better cover colours.
 
@@ -594,7 +594,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-256"/>
     <innioasis:tag_name>baseline-256</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>54</innioasis:downloads>
+    <innioasis:downloads>58</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-256/bootimg.img.gz" title="bootimg.img.gz" length="7557914" type="application/gzip" innioasis:download_count="15" innioasis:asset_id="744163700"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-256/manifest.json" title="manifest.json" length="4247" type="application/json" innioasis:download_count="24" innioasis:asset_id="744163772"/>
@@ -602,7 +602,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-256/recovery.img.gz" title="recovery.img.gz" length="7557931" type="application/gzip" innioasis:download_count="15" innioasis:asset_id="744163894"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-256/rootfs.ext4.gz" title="rootfs.ext4.gz" length="53056348" type="application/gzip" innioasis:download_count="15" innioasis:asset_id="744164155"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-256/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream" innioasis:download_count="5" innioasis:asset_id="744163704"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install.zip" title="Y2Linux-1.0.0-beta.9.3.28-first-install.zip" length="69171549" type="application/zip" innioasis:download_count="18" innioasis:asset_id="744163702"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-first-install.zip" title="Y2Linux-1.0.0-beta.9.3.28-first-install.zip" length="69171549" type="application/zip" innioasis:download_count="20" innioasis:asset_id="744163702"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-256/Y2Linux-1.0.0-beta.9.3.28-sources-buildroot-legal-info.tar" title="Y2Linux-1.0.0-beta.9.3.28-sources-buildroot-legal-info.tar" length="19312640" type="application/x-tar" innioasis:download_count="4" innioasis:asset_id="744163706"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-256/Y2Linux-sources-third-party-a400ffbbbcb0.tar" title="Y2Linux-sources-third-party-a400ffbbbcb0.tar" length="381696000" type="application/x-tar" innioasis:download_count="4" innioasis:asset_id="744163705"/>
     <content type="text">**Y2Linux 1.0 Beta 9.3.28**: a fast Audiobooks list for big collections, and films that keep playing their picture.
@@ -674,7 +674,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-254"/>
     <innioasis:tag_name>baseline-254</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>84</innioasis:downloads>
+    <innioasis:downloads>86</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-254/bootimg.img.gz" title="bootimg.img.gz" length="7557824" type="application/gzip" innioasis:download_count="70" innioasis:asset_id="741456425"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-254/manifest.json" title="manifest.json" length="4246" type="application/json" innioasis:download_count="168" innioasis:asset_id="741456431"/>
@@ -758,7 +758,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-251"/>
     <innioasis:tag_name>baseline-251</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>50</innioasis:downloads>
+    <innioasis:downloads>54</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-251/bootimg.img.gz" title="bootimg.img.gz" length="7557909" type="application/gzip" innioasis:download_count="22" innioasis:asset_id="741239157"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-251/manifest.json" title="manifest.json" length="4246" type="application/json" innioasis:download_count="37" innioasis:asset_id="741239161"/>
@@ -949,7 +949,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-235"/>
     <innioasis:tag_name>baseline-235</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>140</innioasis:downloads>
+    <innioasis:downloads>141</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/bootimg.img.gz" title="bootimg.img.gz" length="7539486" type="application/gzip" innioasis:download_count="81" innioasis:asset_id="736437194"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-235/manifest.json" title="manifest.json" length="4240" type="application/json" innioasis:download_count="229" innioasis:asset_id="736437197"/>
@@ -1220,7 +1220,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-232"/>
     <innioasis:tag_name>baseline-232</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>88</innioasis:downloads>
+    <innioasis:downloads>93</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-232/bootimg.img.gz" title="bootimg.img.gz" length="7539542" type="application/gzip" innioasis:download_count="25" innioasis:asset_id="731641396"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-232/manifest.json" title="manifest.json" length="4239" type="application/json" innioasis:download_count="38" innioasis:asset_id="731641451"/>
@@ -1228,7 +1228,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-232/recovery.img.gz" title="recovery.img.gz" length="7539556" type="application/gzip" innioasis:download_count="25" innioasis:asset_id="731641581"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-232/rootfs.ext4.gz" title="rootfs.ext4.gz" length="51670057" type="application/gzip" innioasis:download_count="24" innioasis:asset_id="731641866"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-232/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream" innioasis:download_count="9" innioasis:asset_id="731641393"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-232/Y2Linux-1.0.0-beta.9.3.21-first-install.zip" title="Y2Linux-1.0.0-beta.9.3.21-first-install.zip" length="67745625" type="application/zip" innioasis:download_count="20" innioasis:asset_id="731641401"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-232/Y2Linux-1.0.0-beta.9.3.21-first-install.zip" title="Y2Linux-1.0.0-beta.9.3.21-first-install.zip" length="67745625" type="application/zip" innioasis:download_count="21" innioasis:asset_id="731641401"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-232/Y2Linux-1.0.0-beta.9.3.21-sources-buildroot-legal-info.tar" title="Y2Linux-1.0.0-beta.9.3.21-sources-buildroot-legal-info.tar" length="19312640" type="application/x-tar" innioasis:download_count="9" innioasis:asset_id="731641392"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-232/Y2Linux-sources-third-party-56072b79d912.tar" title="Y2Linux-sources-third-party-56072b79d912.tar" length="381655040" type="application/x-tar" innioasis:download_count="9" innioasis:asset_id="731641397"/>
     <content type="text">**Y2Linux 1.0 Beta 9.3.21**: steadier Bluetooth on a weak signal, Wi-Fi on channels 12 and 13, battery and SD card fixes.
@@ -1490,7 +1490,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-227"/>
     <innioasis:tag_name>baseline-227</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>85</innioasis:downloads>
+    <innioasis:downloads>86</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/bootimg.img.gz" title="bootimg.img.gz" length="7539745" type="application/gzip" innioasis:download_count="29" innioasis:asset_id="725157336"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/manifest.json" title="manifest.json" length="4240" type="application/json" innioasis:download_count="45" innioasis:asset_id="725157333"/>
@@ -1581,7 +1581,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-225"/>
     <innioasis:tag_name>baseline-225</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>89</innioasis:downloads>
+    <innioasis:downloads>90</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-225/bootimg.img.gz" title="bootimg.img.gz" length="7539226" type="application/gzip" innioasis:download_count="57" innioasis:asset_id="724214127"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-225/manifest.json" title="manifest.json" length="4238" type="application/json" innioasis:download_count="92" innioasis:asset_id="724214126"/>
@@ -2139,7 +2139,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-205"/>
     <innioasis:tag_name>baseline-205</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>111</innioasis:downloads>
+    <innioasis:downloads>112</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/bootimg.img.gz" title="bootimg.img.gz" length="7539358" type="application/gzip" innioasis:download_count="28" innioasis:asset_id="699169171"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/manifest.json" title="manifest.json" length="4237" type="application/json" innioasis:download_count="32" innioasis:asset_id="699169174"/>
@@ -2147,7 +2147,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/recovery.img.gz" title="recovery.img.gz" length="7539381" type="application/gzip" innioasis:download_count="28" innioasis:asset_id="699169217"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/rootfs.ext4.gz" title="rootfs.ext4.gz" length="50769612" type="application/gzip" innioasis:download_count="28" innioasis:asset_id="699169247"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream" innioasis:download_count="23" innioasis:asset_id="699169173"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/Y2Linux-1.0.0-beta.9.2.14-first-install.zip" title="Y2Linux-1.0.0-beta.9.2.14-first-install.zip" length="66843837" type="application/zip" innioasis:download_count="31" innioasis:asset_id="699169175"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/Y2Linux-1.0.0-beta.9.2.14-first-install.zip" title="Y2Linux-1.0.0-beta.9.2.14-first-install.zip" length="66843837" type="application/zip" innioasis:download_count="32" innioasis:asset_id="699169175"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/Y2Linux-1.0.0-beta.9.2.14-sources-buildroot-legal-info.tar" title="Y2Linux-1.0.0-beta.9.2.14-sources-buildroot-legal-info.tar" length="19302400" type="application/x-tar" innioasis:download_count="23" innioasis:asset_id="699169170"/>
     <content type="text">**Y2Linux 1.0 Beta 9.2.14: Bluetooth stays connected while you change stations.** Linux 6.18 and the native Reborn music player for the Innioasis Y2.
 
@@ -2861,7 +2861,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-193"/>
     <innioasis:tag_name>baseline-193</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>103</innioasis:downloads>
+    <innioasis:downloads>104</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-193/bootimg.img.gz" title="bootimg.img.gz" length="7539252" type="application/gzip" innioasis:download_count="32" innioasis:asset_id="695493707"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-193/manifest.json" title="manifest.json" length="4234" type="application/json" innioasis:download_count="42" innioasis:asset_id="695493708"/>
@@ -2931,7 +2931,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Aw
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-191"/>
     <innioasis:tag_name>baseline-191</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>109</innioasis:downloads>
+    <innioasis:downloads>112</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-191/bootimg.img.gz" title="bootimg.img.gz" length="7538896" type="application/gzip" innioasis:download_count="48" innioasis:asset_id="693934507"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-191/manifest.json" title="manifest.json" length="4228" type="application/json" innioasis:download_count="105" innioasis:asset_id="693934508"/>
@@ -3952,7 +3952,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, La
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-134"/>
     <innioasis:tag_name>baseline-134</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>100</innioasis:downloads>
+    <innioasis:downloads>101</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-134/bootimg.img.gz" title="bootimg.img.gz" length="7529652" type="application/gzip" innioasis:download_count="25" innioasis:asset_id="672999770"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-134/manifest.json" title="manifest.json" length="4265" type="application/json" innioasis:download_count="30" innioasis:asset_id="672999771"/>
@@ -4095,7 +4095,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, La
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-129"/>
     <innioasis:tag_name>baseline-129</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>96</innioasis:downloads>
+    <innioasis:downloads>97</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-129/bootimg.img.gz" title="bootimg.img.gz" length="7529435" type="application/gzip" innioasis:download_count="22" innioasis:asset_id="672008970"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-129/manifest.json" title="manifest.json" length="4265" type="application/json" innioasis:download_count="23" innioasis:asset_id="672008971"/>
@@ -4372,7 +4372,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, La
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-125"/>
     <innioasis:tag_name>baseline-125</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>96</innioasis:downloads>
+    <innioasis:downloads>98</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-125/bootimg.img.gz" title="bootimg.img.gz" length="7529575" type="application/gzip" innioasis:download_count="31" innioasis:asset_id="669529686"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-125/manifest.json" title="manifest.json" length="4264" type="application/json" innioasis:download_count="40" innioasis:asset_id="669529690"/>
@@ -4577,7 +4577,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, La
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-122"/>
     <innioasis:tag_name>baseline-122</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>101</innioasis:downloads>
+    <innioasis:downloads>103</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-122/bootimg.img.gz" title="bootimg.img.gz" length="7527744" type="application/gzip" innioasis:download_count="25" innioasis:asset_id="667182144"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-122/manifest.json" title="manifest.json" length="4264" type="application/json" innioasis:download_count="34" innioasis:asset_id="667182145"/>
@@ -5365,7 +5365,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, La
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-106"/>
     <innioasis:tag_name>baseline-106</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>105</innioasis:downloads>
+    <innioasis:downloads>106</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-106/bootimg.img.gz" title="bootimg.img.gz" length="7521336" type="application/gzip" innioasis:download_count="36" innioasis:asset_id="657586981"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-106/manifest.json" title="manifest.json" length="4232" type="application/json" innioasis:download_count="62" innioasis:asset_id="657586983"/>
@@ -5772,7 +5772,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, La
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-90"/>
     <innioasis:tag_name>baseline-90</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>115</innioasis:downloads>
+    <innioasis:downloads>117</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-90/bootimg.img.gz" title="bootimg.img.gz" length="7522443" type="application/gzip" innioasis:download_count="22" innioasis:asset_id="653669480"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-90/manifest.json" title="manifest.json" length="4227" type="application/json" innioasis:download_count="23" innioasis:asset_id="653669484"/>
@@ -6036,7 +6036,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek or 
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-75"/>
     <innioasis:tag_name>baseline-75</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>114</innioasis:downloads>
+    <innioasis:downloads>115</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/bootimg.img.gz" title="bootimg.img.gz" length="7509162" type="application/gzip" innioasis:download_count="21" innioasis:asset_id="653209566"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/manifest.json" title="manifest.json" length="1397" type="application/json" innioasis:download_count="22" innioasis:asset_id="653209593"/>
@@ -6304,7 +6304,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek or 
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-71"/>
     <innioasis:tag_name>baseline-71</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>117</innioasis:downloads>
+    <innioasis:downloads>118</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/bootimg.img.gz" title="bootimg.img.gz" length="7506039" type="application/gzip" innioasis:download_count="23" innioasis:asset_id="648598915"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/manifest.json" title="manifest.json" length="1396" type="application/json" innioasis:download_count="25" innioasis:asset_id="648598912"/>
@@ -6882,7 +6882,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis or MediaTek. 
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-60"/>
     <innioasis:tag_name>baseline-60</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>107</innioasis:downloads>
+    <innioasis:downloads>108</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/bootimg.img.gz" title="bootimg.img.gz" length="7505005" type="application/gzip" innioasis:download_count="23" innioasis:asset_id="645454287"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/manifest.json" title="manifest.json" length="1396" type="application/json" innioasis:download_count="26" innioasis:asset_id="645454285"/>
@@ -7398,7 +7398,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis or MediaTek. 
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-52"/>
     <innioasis:tag_name>baseline-52</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>117</innioasis:downloads>
+    <innioasis:downloads>118</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/bootimg.img.gz" title="bootimg.img.gz" length="7505015" type="application/gzip" innioasis:download_count="22" innioasis:asset_id="644656937"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/linux-6.18.56.tar.xz" title="linux-6.18.56.tar.xz" length="154807564" type="application/x-xz" innioasis:download_count="23" innioasis:asset_id="644656999"/>
@@ -7457,7 +7457,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis or MediaTek. 
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-51"/>
     <innioasis:tag_name>baseline-51</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>115</innioasis:downloads>
+    <innioasis:downloads>116</innioasis:downloads>
     <innioasis:icon_url>https://innioasis.app/assets/reborn_icon.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/bootimg.img.gz" title="bootimg.img.gz" length="7505227" type="application/gzip" innioasis:download_count="22" innioasis:asset_id="644370701"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/manifest.json" title="manifest.json" length="1460" type="application/json" innioasis:download_count="24" innioasis:asset_id="644370700"/>
@@ -7465,7 +7465,7 @@ Beta software: use at your own risk. Not affiliated with Innioasis or MediaTek. 
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/recovery.img.gz" title="recovery.img.gz" length="7505246" type="application/gzip" innioasis:download_count="22" innioasis:asset_id="644370712"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/rootfs.ext4.gz" title="rootfs.ext4.gz" length="41029511" type="application/gzip" innioasis:download_count="22" innioasis:asset_id="644370720"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/SHA256SUMS" title="SHA256SUMS" length="744" type="application/octet-stream" innioasis:download_count="21" innioasis:asset_id="644370749"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-first-install.zip" title="Y2Linux-1.0.0-beta.2-first-install.zip" length="57042092" type="application/zip" innioasis:download_count="27" innioasis:asset_id="644370751"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-first-install.zip" title="Y2Linux-1.0.0-beta.2-first-install.zip" length="57042092" type="application/zip" innioasis:download_count="28" innioasis:asset_id="644370751"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-sources-buildroot-legal-info.tar" title="Y2Linux-1.0.0-beta.2-sources-buildroot-legal-info.tar" length="379750400" type="application/x-tar" innioasis:download_count="21" innioasis:asset_id="644370821"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-sources-linux-6.18.56.tar.xz" title="Y2Linux-1.0.0-beta.2-sources-linux-6.18.56.tar.xz" length="154807564" type="application/x-xz" innioasis:download_count="20" innioasis:asset_id="644371139"/>
     <content type="text">**Y2Linux 1.0 Beta 2: Bluetooth and Wi-Fi fixes, and the audio output now follows your headphones.** Linux 6.18 and the native Reborn music player for the Innioasis Y2.
