@@ -41,7 +41,7 @@
 
 <package name="Original Software" brand="Innioasis" repo="y1-community/y1-stock-rom" portable_zips="y1-community/y1-stock-rom-mirror" device="Y1" url="https://github.com/y1-community/y1-stock-rom" type="img" handler="Custom Firmware" icon="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg" />
 
-<package name="Nugget (Rock8ox 240p + 360p)" brand="Innioasis" repo="norocoral/nugget-y1" portable_zips="y1-community/nugget-y1-mirror" device="Y1" url="https://github.com/norocoral/nugget-y1" type="img" handler="Custom Firmware" post_install="https://norocoral.github.io/y1/inupdater/ftu/index.html" icon="https://norocoral.github.io/y1/inupdater/icn.png" description="Nugget for Y1 makes your Innioasis Y1 last longer, be faster and easier to use with Rockbox. Based on Linux, running Rockbox, it's stable and open." />
+<package name="Nugget (Rock8ox 240p + 360p)" brand="Innioasis" repo="norocoral/nugget-y1" is_240p_themes="true" portable_zips="y1-community/nugget-y1-mirror" device="Y1" url="https://github.com/norocoral/nugget-y1" type="img" handler="Custom Firmware" post_install="https://norocoral.github.io/y1/inupdater/ftu/index.html" icon="https://norocoral.github.io/y1/inupdater/icn.png" description="Nugget for Y1 makes your Innioasis Y1 last longer, be faster and easier to use with Rockbox. Based on Linux, running Rockbox, it's stable and open." />
 
 <package name="Rockbox" brand="Innioasis" repo="rockbox-y1/rockbox" is_rockbox_android_port="true" portable_zips="y1-community/rockbox-mirror" device="Y1" url="https://github.com/rockbox-y1/rockbox" type="img" icon="https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png" handler="Custom Firmware" />
 
