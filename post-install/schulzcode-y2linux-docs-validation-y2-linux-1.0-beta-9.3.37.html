@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.37: even fewer wakeups while music plays with the screen off - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.37: even fewer wakeups while music plays with the screen off Release 1.0.0-beta.9.3.37 , Y2Reborn 1.0.0-beta.9.3.37 , kernel 6.18.56-y2linux-1.0.0-be">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.37.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.37: even fewer wakeups while music plays with the screen off - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.37: even fewer wakeups while music plays with the screen off Release 1.0.0-beta.9.3.37 , Y2Reborn 1.0.0-beta.9.3.37 , kernel 6.18.56-y2linux-1.0.0-be">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.37.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.37: even fewer wakeups while music plays with the screen off - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.37: even fewer wakeups while music plays with the screen off Release 1.0.0-beta.9.3.37 , Y2Reborn 1.0.0-beta.9.3.37 , kernel 6.18.56-y2linux-1.0.0-be">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.37.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.37.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.37: even fewer wakeups while music plays with the screen off</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9337-even-fewer-wakeups-while-music-plays-with-the-screen-off">Y2Linux 1.0 Beta 9.3.37: even fewer wakeups while music plays with the screen off</h1>
+<p>Release <code>1.0.0-beta.9.3.37</code>, Y2Reborn <code>1.0.0-beta.9.3.37</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.37</code>, update sequence 17700, root <code>2026.08-platform-v1.295</code>. Published as GitHub release <code>baseline-272</code> (build 272; test builds 270 and 271 came before it on the developer&#x27;s player). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.36.md">Beta 9.3.36</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p>Beta 9.3.36 let three of the four cores switch off while music plays with the screen dark (<a href="https://github.com/SchulzCode/Y2Reborn/issues/176" target="_blank" rel="noopener noreferrer">Y2Reborn #176</a>). This release follows up: the player was profiled on wired output and on AirPods, and five places that woke the processor more often than needed were changed. With the screen off, the processor now wakes about 70 % less often than on Beta 9.3.35. Nothing changes in what you hear or in any setting.</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>Reborn waits longer with the screen off.</strong> While music plays in the dark, Reborn&#x27;s main loop looks around twice a<p>second instead of twenty times. Buttons, Bluetooth and the headphone controls still wake it at once; during the last seconds of a sleep timer it goes back to quick steps so the fade-out stays smooth.</p></li><li><strong>The headphone output asks for music less often.</strong> It now takes music in blocks of 23 ms instead of 12 ms, with<p>the same amount kept in reserve, so volume and pause react as quickly as before.</p></li><li><strong>The decoder hands over bigger pieces.</strong> MP3, AAC and Opus came one tiny frame at a time (about 40 a second); the<p>decoder now fills a whole block. The sound is the same, sample for sample.</p></li><li><strong>The decoder rests while it is ahead.</strong> It waits about one block when the queue is full, and a stop, skip or seek<p>wakes it at once.</p></li><li><strong>The output waits one whole period.</strong> Its wait was a little shorter than one period of audio, so it woke twice<p>per period. Now once.</p></li></ul>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>Tests</strong>: the platform&#x27;s full check, Reborn&#x27;s tests and the tests of the release images passed. New tests: the<p>main loop&#x27;s wait in dark playback and near a sleep-timer fade, whole decoder blocks for MP3, AAC and Opus with positions in order, the decoder woken early from a full-queue wait, and the output&#x27;s wait for one period.</p></li><li><strong>On the developer&#x27;s player</strong> (build 272, screen off, one core, about 5 minutes per run, one run each, on USB):</li></ul>
+<table><thead><tr><th></th><th>Beta 9.3.35</th><th>Beta 9.3.36</th><th>Beta 9.3.37</th></tr></thead><tbody><tr><td>Speaker: context switches per second</td><td>912</td><td>429</td><td>274</td></tr><tr><td>Speaker: interrupts per second</td><td>821</td><td>379</td><td>218</td></tr><tr><td>AirPods (AAC): audio thread wakeups per second</td><td></td><td>87</td><td>44</td></tr><tr><td>AirPods (AAC): decoder thread wakeups per second</td><td></td><td>57</td><td>25</td></tr><tr><td>AirPods (AAC): timer interrupts per second</td><td></td><td>272</td><td>198</td></tr><tr><td>Stutters (audio underruns)</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>
+<p>  Skipping, seeking, pausing, resuming, volume, wheel clicks while paused and waking the screen all worked with one   core. A skip takes about half a second with the screen lit or dark, as before.</p>
+<ul><li><strong>Not tested</strong>: a battery or current measurement (the Y2 has no current sensor), LDAC and SBC, internet radio and<p>films.</p></li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<ul><li>If music stutters with the screen off, please send an error report (Settings → System → Error Reports) right<p>after it happens.</p></li><li>Everything listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.34.md%23known-issues&amp;anchor=known-issues">Beta 9.3.34</a> still applies.</li></ul>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>Main loop: <code>main_loop_interval</code> returns <code>DARK_PLAYBACK_INTERVAL</code> (500 ms) while playing dark; <code>sleep_fade_near</code><p>caps the wait at 50 ms from one second before a sleep-timer fade.</p></li><li>Wired PCM: 4 periods of 1024 frames in the same 4096-frame ring (<code>reborn-audio/native/audio.c</code>); Bluetooth stays<p>8 × 1024.</p></li><li>Decoder: <code>rb_media_read</code> fills the caller&#x27;s 4096-frame block (<code>reborn-media/native/media.c</code>), position of the first<p>sample, a decode error after a partial block returned by the next read (<code>deferred_error</code>).</p></li><li>Full-queue wait: <code>queue_poll_interval</code> up to 100 ms with <code>thread::park_timeout</code>; <code>Playback::wake_decoder</code> unparks<p>the decoder thread after every epoch store and decoder command.</p></li><li>Output wait: <code>ready_wait_ms</code> = one period + 5 ms, 20–40 ms (<code>reborn-audio/src/native.rs</code>).</li><li>Profiled and left as they are: the limiter (with the developer&#x27;s AutoEq profile its worst-case peak is +3.4 dBFS,<p>so skipping it would change the sound), the AAC encoder (no afterburner already), and the Bluetooth driver&#x27;s per-packet work item (about 43 a second).</p></li><li>Images built from Linux <code>bac18ae4</code>, Reborn <code>556f4c2</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

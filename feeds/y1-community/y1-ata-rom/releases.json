@@ -17,7 +17,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip",
         "size": 533410269,
-        "download_count": 491,
+        "download_count": 493,
         "content_type": "application/zip",
         "created_at": "2026-07-15T13:30:29Z",
         "updated_at": "2026-07-15T13:31:31Z",
@@ -28,7 +28,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip",
         "size": 475393744,
-        "download_count": 282,
+        "download_count": 283,
         "content_type": "application/zip",
         "created_at": "2026-07-15T13:32:55Z",
         "updated_at": "2026-07-15T13:33:44Z",
@@ -36,7 +36,7 @@
       }
     ],
     "mirror_downloads": 103,
-    "downloads": 876,
+    "downloads": 879,
     "download_breakdown": {
       "tag": "0.1",
       "mirrors": "y1-community/y1-ata-rom-mirror",
@@ -44,13 +44,13 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip",
-          "downloads": 501,
+          "downloads": 503,
           "mirror_downloads": 10
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip",
-          "downloads": 292,
+          "downloads": 293,
           "mirror_downloads": 10
         }
       ],
@@ -73,14 +73,14 @@
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom-linux.zip",
-          "size": 765251519,
+          "size": 765253267,
           "downloads": 8
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom-linux-arm64.zip",
-          "size": 590156070,
+          "size": 590158086,
           "downloads": 8
         },
         {
@@ -115,14 +115,14 @@
           "platform": "linux",
           "name": "rom_type_b-linux.zip",
           "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom_type_b-linux.zip",
-          "size": 708248515,
+          "size": 708250263,
           "downloads": 5
         },
         {
           "platform": "linux-arm64",
           "name": "rom_type_b-linux-arm64.zip",
           "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom_type_b-linux-arm64.zip",
-          "size": 533153066,
+          "size": 533155082,
           "downloads": 3
         },
         {
