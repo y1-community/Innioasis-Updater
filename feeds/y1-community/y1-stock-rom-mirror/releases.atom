@@ -115,7 +115,7 @@ General performance and stability improvements
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/tag/3.2.0-fm"/>
     <innioasis:tag_name>3.2.0-fm</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>6</innioasis:downloads>
+    <innioasis:downloads>7</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/updater.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="469425549" type="application/zip" innioasis:download_count="0" innioasis:asset_id="775134328"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-linux-legacy.zip" title="rom_y2-linux-legacy.zip" length="416261452" type="application/zip" innioasis:download_count="0" innioasis:asset_id="771689920"/>
@@ -123,9 +123,9 @@ General performance and stability improvements
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-macos.zip" title="rom_y2-macos.zip" length="452247350" type="application/zip" innioasis:download_count="0" innioasis:asset_id="774367068"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="417847167" type="application/zip" innioasis:download_count="0" innioasis:asset_id="771689919"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows.zip" title="rom_y2-windows.zip" length="656085982" type="application/zip" innioasis:download_count="1" innioasis:asset_id="771689932"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2.zip" title="rom_y2.zip" length="354935460" type="application/zip" innioasis:download_count="2" innioasis:asset_id="733100021"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2.zip" title="rom_y2.zip" length="354935460" type="application/zip" innioasis:download_count="3" innioasis:asset_id="733100021"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/stats.txt" title="stats.txt" length="4198" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="777709095"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/system.img" title="system.img" length="859826928" type="application/vnd.efi.img" innioasis:download_count="1" innioasis:asset_id="706246494"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/system.img" title="system.img" length="859826928" type="application/vnd.efi.img" innioasis:download_count="2" innioasis:asset_id="706246494"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="0" innioasis:asset_id="706248301"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.2.0-fm#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -209,15 +209,15 @@ This can be used to restore your Y2 back to its factory conditions and get thing
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/tag/3.1.2"/>
     <innioasis:tag_name>3.1.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>10</innioasis:downloads>
+    <innioasis:downloads>16</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/updater.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="314385411" type="application/zip" innioasis:download_count="0" innioasis:asset_id="775128010"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="251713026" type="application/zip" innioasis:download_count="0" innioasis:asset_id="771672732"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux.zip" title="rom-linux.zip" length="489478690" type="application/zip" innioasis:download_count="2" innioasis:asset_id="775128015"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux.zip" title="rom-linux.zip" length="489478690" type="application/zip" innioasis:download_count="3" innioasis:asset_id="775128015"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-macos.zip" title="rom-macos.zip" length="289502585" type="application/zip" innioasis:download_count="1" innioasis:asset_id="774360786"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="253298741" type="application/zip" innioasis:download_count="1" innioasis:asset_id="771672712"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip" title="rom-windows.zip" length="491537564" type="application/zip" innioasis:download_count="5" innioasis:asset_id="771672734"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom.zip" title="rom.zip" length="249665668" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733067856"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="253298741" type="application/zip" innioasis:download_count="2" innioasis:asset_id="771672712"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip" title="rom-windows.zip" length="491537564" type="application/zip" innioasis:download_count="7" innioasis:asset_id="771672734"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom.zip" title="rom.zip" length="249665668" type="application/zip" innioasis:download_count="3" innioasis:asset_id="733067856"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/stats.txt" title="stats.txt" length="3995" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="777706086"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="0" innioasis:asset_id="705987295"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;

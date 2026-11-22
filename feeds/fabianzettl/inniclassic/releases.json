@@ -985,8 +985,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/489512937"
       }
     ],
-    "mirror_downloads": 36,
-    "downloads": 100,
+    "mirror_downloads": 38,
+    "downloads": 102,
     "download_breakdown": {
       "tag": "v1.1.1",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -1004,7 +1004,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-windows.zip",
           "size": 770114692,
-          "downloads": 12
+          "downloads": 14
         },
         {
           "platform": "windows-legacy",

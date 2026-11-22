@@ -552,8 +552,8 @@
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200576"
       }
     ],
-    "mirror_downloads": 84,
-    "downloads": 213,
+    "mirror_downloads": 85,
+    "downloads": 214,
     "download_breakdown": {
       "tag": "launcher-v0.11.5",
       "mirrors": "y1-community/y1_launcher-mirror",
@@ -604,7 +604,7 @@
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.5/rom-linux-arm64.zip",
           "size": 582035050,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "linux-legacy",
@@ -743,8 +743,8 @@
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200058"
       }
     ],
-    "mirror_downloads": 65,
-    "downloads": 121,
+    "mirror_downloads": 67,
+    "downloads": 123,
     "download_breakdown": {
       "tag": "launcher-v0.9",
       "mirrors": "y1-community/y1_launcher-mirror",
@@ -782,7 +782,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.9/rom-linux.zip",
           "size": 757460272,
-          "downloads": 3
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
@@ -1029,8 +1029,8 @@
         "url": "https://api.github.com/repos/ismileblue/y1_launcher/releases/assets/541200083"
       }
     ],
-    "mirror_downloads": 59,
-    "downloads": 115,
+    "mirror_downloads": 60,
+    "downloads": 116,
     "download_breakdown": {
       "tag": "launcher-v0.6",
       "mirrors": "y1-community/y1_launcher-mirror",
@@ -1082,7 +1082,7 @@
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.6/rom-linux-legacy.zip",
           "size": 529171626,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "macos",
@@ -2594,7 +2594,7 @@
         "name": "Y1_Themes.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/v0.8/Y1_Themes.zip",
         "size": 819854,
-        "download_count": 53,
+        "download_count": 54,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-06-24T13:57:26Z",
         "updated_at": "2026-06-24T13:57:27Z",
@@ -2602,7 +2602,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 53,
+    "downloads": 54,
     "download_breakdown": {
       "tag": "v0.8",
       "mirrors": "",
@@ -2610,7 +2610,7 @@
         {
           "name": "Y1_Themes.zip",
           "url": "https://github.com/ismileblue/y1_launcher/releases/download/v0.8/Y1_Themes.zip",
-          "downloads": 53
+          "downloads": 54
         }
       ],
       "portable": []
@@ -2679,7 +2679,7 @@
         "name": "Y1_Themes.zip",
         "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/v0.5/Y1_Themes.zip",
         "size": 339264,
-        "download_count": 50,
+        "download_count": 51,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-06-15T09:09:30Z",
         "updated_at": "2026-06-15T09:09:31Z",
@@ -2687,7 +2687,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 50,
+    "downloads": 51,
     "download_breakdown": {
       "tag": "v0.5",
       "mirrors": "",
@@ -2695,7 +2695,7 @@
         {
           "name": "Y1_Themes.zip",
           "url": "https://github.com/ismileblue/y1_launcher/releases/download/v0.5/Y1_Themes.zip",
-          "downloads": 50
+          "downloads": 51
         }
       ],
       "portable": []

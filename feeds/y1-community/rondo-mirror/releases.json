@@ -1751,7 +1751,7 @@
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-windows-legacy.zip",
         "size": 533412745,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-12T19:40:30Z",
         "updated_at": "2026-11-12T19:41:07Z",
@@ -1814,7 +1814,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 25,
+    "downloads": 26,
     "download_breakdown": {
       "tag": "v3.0.2",
       "mirrors": "",
@@ -1842,7 +1842,7 @@
         {
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v3.0.2/rom-windows-legacy.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom-windows.zip",

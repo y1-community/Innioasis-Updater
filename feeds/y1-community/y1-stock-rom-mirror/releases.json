@@ -399,7 +399,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2.zip",
         "size": 354935460,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-10T21:55:57Z",
         "updated_at": "2026-11-10T21:56:25Z",
@@ -421,7 +421,7 @@
         "name": "system.img",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/system.img",
         "size": 859826928,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/vnd.efi.img",
         "created_at": "2026-11-03T16:17:09Z",
         "updated_at": "2026-11-03T16:18:21Z",
@@ -440,7 +440,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 6,
+    "downloads": 7,
     "download_breakdown": {
       "tag": "3.2.0-fm",
       "mirrors": "",
@@ -478,7 +478,7 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2.zip",
-          "downloads": 2
+          "downloads": 3
         }
       ],
       "portable": []
@@ -650,7 +650,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux.zip",
         "size": 489478690,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-21T09:57:21Z",
         "updated_at": "2026-11-21T09:57:44Z",
@@ -672,7 +672,7 @@
         "name": "rom-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows-legacy.zip",
         "size": 253298741,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-20T12:01:53Z",
         "updated_at": "2026-11-20T12:02:02Z",
@@ -683,7 +683,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip",
         "size": 491537564,
-        "download_count": 5,
+        "download_count": 7,
         "content_type": "application/zip",
         "created_at": "2026-11-20T12:01:53Z",
         "updated_at": "2026-11-20T12:02:08Z",
@@ -694,7 +694,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom.zip",
         "size": 249665668,
-        "download_count": 1,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-10T21:46:10Z",
         "updated_at": "2026-11-10T21:46:21Z",
@@ -724,7 +724,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 10,
+    "downloads": 16,
     "download_breakdown": {
       "tag": "3.1.2",
       "mirrors": "",
@@ -742,7 +742,7 @@
         {
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "rom-macos.zip",
@@ -752,17 +752,17 @@
         {
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows-legacy.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip",
-          "downloads": 5
+          "downloads": 7
         },
         {
           "name": "rom.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom.zip",
-          "downloads": 1
+          "downloads": 3
         }
       ],
       "portable": []

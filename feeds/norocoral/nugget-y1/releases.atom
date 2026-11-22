@@ -13,13 +13,13 @@
     <link rel="alternate" type="text/html" href="https://github.com/norocoral/nugget-y1/releases/tag/2.1.3"/>
     <innioasis:tag_name>2.1.3</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>27</innioasis:downloads>
+    <innioasis:downloads>33</innioasis:downloads>
     <innioasis:icon_url>https://norocoral.github.io/y1/inupdater/icn.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.3/boot_nugget.img" title="boot_nugget.img" length="5976064" type="image/img" innioasis:download_count="2" innioasis:asset_id="776935407"/>
     <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.3/liby1-sdk.zip" title="liby1-sdk.zip" length="106964" type="application/x-zip-compressed" innioasis:download_count="4" innioasis:asset_id="776935439"/>
-    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.3/rockbox_sdcard.zip" title="rockbox_sdcard.zip" length="7847123" type="application/x-zip-compressed" innioasis:download_count="6" innioasis:asset_id="776935318"/>
-    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.3/rom.zip" title="rom.zip" length="5936447" type="application/x-zip-compressed" innioasis:download_count="8" innioasis:asset_id="776935382"/>
-    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.3/sha256sums.txt" title="sha256sums.txt" length="321" type="text/plain" innioasis:download_count="2" innioasis:asset_id="776935398"/>
+    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.3/rockbox_sdcard.zip" title="rockbox_sdcard.zip" length="7847123" type="application/x-zip-compressed" innioasis:download_count="8" innioasis:asset_id="776935318"/>
+    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.3/rom.zip" title="rom.zip" length="5936447" type="application/x-zip-compressed" innioasis:download_count="12" innioasis:asset_id="776935382"/>
+    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.3/sha256sums.txt" title="sha256sums.txt" length="321" type="text/plain" innioasis:download_count="3" innioasis:asset_id="776935398"/>
     <content type="text">**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/2.1.2...2.1.3
 
 - Fix edge cases for iPod DB/Syncing
@@ -101,7 +101,7 @@ You may use it for attaching when creating issues.</content>
     <innioasis:downloads>16</innioasis:downloads>
     <innioasis:icon_url>https://norocoral.github.io/y1/inupdater/icn.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/1.33/boot_rockbox.img" title="boot_rockbox.img" length="5750784" type="image/img" innioasis:download_count="10" innioasis:asset_id="679456324"/>
-    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/1.33/logo.bin" title="logo.bin" length="98733" type="application/octet-stream" innioasis:download_count="10" innioasis:asset_id="679456405"/>
+    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/1.33/logo.bin" title="logo.bin" length="98733" type="application/octet-stream" innioasis:download_count="11" innioasis:asset_id="679456405"/>
     <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/1.33/rockbox_sdcard.zip" title="rockbox_sdcard.zip" length="6499219" type="application/x-zip-compressed" innioasis:download_count="16" innioasis:asset_id="679456415"/>
     <content type="text">**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/1.31...1.33
 

@@ -35,8 +35,8 @@
         "url": "https://api.github.com/repos/y1-community/g3-stock-rom/releases/assets/712241354"
       }
     ],
-    "mirror_downloads": 40,
-    "downloads": 115,
+    "mirror_downloads": 42,
+    "downloads": 117,
     "download_breakdown": {
       "tag": "MX3-G3-EN-WM-V6.01-20260805",
       "mirrors": "y1-community/g3-stock-rom-mirror",
@@ -82,14 +82,14 @@
           "name": "rom_g3-linux-legacy.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3-linux-legacy.zip",
           "size": 1719374698,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "macos",
           "name": "rom_g3-macos.zip",
           "url": "https://github.com/y1-community/g3-stock-rom-mirror/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3-macos.zip",
           "size": 1755360604,
-          "downloads": 6
+          "downloads": 7
         }
       ]
     }
