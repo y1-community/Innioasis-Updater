@@ -17,15 +17,15 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip",
         "size": 662798399,
-        "download_count": 292,
+        "download_count": 294,
         "content_type": "application/zip",
         "created_at": "2026-07-15T14:01:39Z",
         "updated_at": "2026-07-15T14:02:53Z",
         "url": "https://api.github.com/repos/y1-community/y2-ata-rom/releases/assets/477998702"
       }
     ],
-    "mirror_downloads": 30,
-    "downloads": 322,
+    "mirror_downloads": 31,
+    "downloads": 325,
     "download_breakdown": {
       "tag": "y2-ata",
       "mirrors": "y1-community/y2-ata-rom-mirror",
@@ -33,7 +33,7 @@
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip",
-          "downloads": 301,
+          "downloads": 303,
           "mirror_downloads": 9
         }
       ],
@@ -50,7 +50,7 @@
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/rom_y2-linux-arm64.zip",
           "size": 486476568,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "macos",

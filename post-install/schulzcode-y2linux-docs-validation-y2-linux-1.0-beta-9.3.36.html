@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.36: less work for the processor while music plays with the screen off - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.36: less work for the processor while music plays with the screen off Release 1.0.0-beta.9.3.36 , Y2Reborn 1.0.0-beta.9.3.36 , kernel 6.18.56-y2linux">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.36.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.36: less work for the processor while music plays with the screen off - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.36: less work for the processor while music plays with the screen off Release 1.0.0-beta.9.3.36 , Y2Reborn 1.0.0-beta.9.3.36 , kernel 6.18.56-y2linux">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.36.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.36: less work for the processor while music plays with the screen off - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.36: less work for the processor while music plays with the screen off Release 1.0.0-beta.9.3.36 , Y2Reborn 1.0.0-beta.9.3.36 , kernel 6.18.56-y2linux">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.36.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.36.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.36: less work for the processor while music plays with the screen off</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9336-less-work-for-the-processor-while-music-plays-with-the-screen-off">Y2Linux 1.0 Beta 9.3.36: less work for the processor while music plays with the screen off</h1>
+<p>Release <code>1.0.0-beta.9.3.36</code>, Y2Reborn <code>1.0.0-beta.9.3.36</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.36</code>, update sequence 17400, root <code>2026.08-platform-v1.292</code>. Published as GitHub release <code>baseline-269</code> (build 269). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.35.md">Beta 9.3.35</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p>Most listening happens with the screen off. jonasevcik looked at what keeps the processor busy then and proposed three changes (<a href="https://github.com/SchulzCode/Y2Reborn/issues/176" target="_blank" rel="noopener noreferrer">Y2Reborn #176</a>), with the code. All three are in this release. On the developer&#x27;s player the processor now wakes about half as often during dark playback, and three of its four cores switch off while the music plays. Nothing changes in what you hear or in any setting.</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>The processor changes its speed less often.</strong> It used to re-decide its speed almost every millisecond, which<p>meant about a hundred speed changes a second during playback. It now decides every 25 ms. When you use the player, it still speeds up at once.</p></li><li><strong>The music decoder waits calmly when it is ahead.</strong> While the audio queue was full, the decoder checked it 200<p>times a second. It now checks about once per block of audio, and the queue still holds plenty of music in reserve.</p></li><li><strong>Three cores switch off during playback with the screen off.</strong> Before, any music kept all four cores on. Now,<p>with the screen dark, ordinary playback runs on one core. Waking the screen, pressing a button, a library scan, a file transfer, the heavy-playback mode and real load bring the other cores back at once, as before. Deep idle is still not used while music plays. If music ever stutters on one core, the player keeps all cores on for the next five minutes.</p></li></ul>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>Tests</strong>: the platform&#x27;s full check, Reborn&#x27;s tests and the tests of the release images passed. New tests: the<p>25 ms setting (also when deep idle is not admitted; nothing written without the setting), the decoder wait, the five-minute hold after a stutter, and the parking rules for playback (Python host tests of the kernel decision).</p></li><li><strong>On the developer&#x27;s player</strong> (build 269, an MP3 on the speaker, Wi-Fi on, connected to USB, screen off, each<p>window about 5 minutes, one run each):</p></li></ul>
+<table><thead><tr><th></th><th>Beta 9.3.35</th><th>9.3.36, cores kept on</th><th>9.3.36</th></tr></thead><tbody><tr><td>Cores online</td><td>4</td><td>4</td><td>1</td></tr><tr><td>Context switches per second</td><td>912</td><td>489</td><td>429</td></tr><tr><td>Interrupts per second</td><td>821</td><td>486</td><td>379</td></tr><tr><td>Timer interrupts per second</td><td>433</td><td>264</td><td>235</td></tr><tr><td>Speed changes per second</td><td>117</td><td>28</td><td>28</td></tr><tr><td>Stutters (audio underruns)</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>
+<p>  With one core: skipping, seeking and changing the volume kept playing without a stutter; waking the screen   brought all four cores back at once, and they switched off again about 100 s after the screen went dark.</p>
+<ul><li><strong>jonasevcik&#x27;s own runs</strong> (Bluetooth AAC, on battery): 1,960 → 1,066 context switches a second and a battery<p>voltage that fell more slowly with each change (see the issue).</p></li><li><strong>Not tested</strong>: a battery or current measurement on the developer&#x27;s player (the Y2 has no current sensor),<p>Bluetooth headphones on one core on the developer&#x27;s player, LDAC, internet radio, high-resolution files, and films (films keep the screen on, so all cores stay on).</p></li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<ul><li>If music stutters with the screen off since this version, please send an error report (Settings → System → Error<p>Reports) right after it happens.</p></li><li>Everything listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.34.md%23known-issues&amp;anchor=known-issues">Beta 9.3.34</a> still applies.</li></ul>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>25 ms: <code>y2-platform cpu-idle-policy start</code> writes <code>25000</code> to<p><code>/sys/devices/system/cpu/cpufreq/schedutil/rate_limit_us</code> once per boot (also when DORMANT is skipped) and records the readback as <code>rate_limit_us</code> in <code>/run/y2/cpu-idle-policy.json</code> (<code>commands/cpu_idle.rs</code>; proposed as a boot script, moved into the existing boot policy).</p></li><li>Decoder wait: Reborn <code>playback/stream.rs</code> <code>queue_poll_interval</code> (one block, clamped 5–25 ms).</li><li>Parking: <code>kernel/platform/workload.c</code> treats a live <code>PlaybackNormal</code> lease as soft for the parking coordinator<p>while the backlight is dark (renewals no longer restore; the DORMANT idle blocker is unchanged); <code>system-idle-policy.h</code> allows 800 ‰ time above 598 MHz under that lease (load ≤ 400 mcores and the burst guard still decide). Run-time switch <code>/sys/module/workload/parameters/soft_playback</code> (<code>Y</code>; <code>0</code> keeps the old rule).</p></li><li>Stutter hold: Reborn <code>reborn_platform::workload::XrunGuard</code> publishes <code>PlaybackHeavy</code> for 300 s after the<p><code>audio_xruns</code> counter moves.</p></li><li>Contributor commits kept with their author (Linux <code>6e08db6a</code>, Reborn <code>2955c94</code>, <code>bd0adda</code>); Linux <code>04b9d6e0</code> for<p>the boot policy.</p></li><li>Images built from Linux <code>ccc5d6fd</code>, Reborn <code>d2642bf</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+
