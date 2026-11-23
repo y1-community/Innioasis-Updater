@@ -1338,12 +1338,12 @@
 
     function toolbarCandidates() {
         return [
-            "support_toolbar.html?v=20261110panel",
-            "../support_toolbar.html?v=20261110panel",
-            "../../support_toolbar.html?v=20261110panel",
-            "../../../support_toolbar.html?v=20261110panel",
-            "https://innioasis.app/support_toolbar.html?v=20261110panel",
-            "https://themes.innioasis.app/support_toolbar.html?v=20261110panel",
+            "support_toolbar.html?v=20261123donatecompletion",
+            "../support_toolbar.html?v=20261123donatecompletion",
+            "../../support_toolbar.html?v=20261123donatecompletion",
+            "../../../support_toolbar.html?v=20261123donatecompletion",
+            "https://innioasis.app/support_toolbar.html?v=20261123donatecompletion",
+            "https://themes.innioasis.app/support_toolbar.html?v=20261123donatecompletion",
         ];
     }
 
@@ -1528,7 +1528,7 @@
         if (global.InnioasisDownloads || document.getElementById("site-downloads-script")) return;
         var node = document.createElement("script");
         node.id = "site-downloads-script";
-        node.src = siteBase() + "site-downloads.js?v=20261117fallback3";
+        node.src = siteBase() + "site-downloads.js?v=20261123donatecompletion";
         node.defer = true;
         document.head.appendChild(node);
     }
@@ -1586,6 +1586,43 @@
         document.head.appendChild(node);
     }
     loadSiteDownloadChoices();
+
+    function isDonationsDisabledNow() {
+        if (document.documentElement && document.documentElement.classList.contains("y1-donations-off")) return true;
+        if (typeof global.isY1DonationsDisabled === "function" && global.isY1DonationsDisabled()) return true;
+        try {
+            if (global.localStorage && global.localStorage.getItem("innioasis-donations-off") === "1") return true;
+        } catch (_) {}
+        try {
+            if (global.INNIOASIS_EXPERIMENT && typeof global.INNIOASIS_EXPERIMENT.get === "function" && global.INNIOASIS_EXPERIMENT.get() === "ads") {
+                return true;
+            }
+        } catch (_) {}
+        return false;
+    }
+
+    if (typeof global.openY1DonatePanel !== "function") {
+        global.openY1DonatePanel = function (options) {
+            if (isDonationsDisabledNow()) return false;
+            global._y1PendingDonateOpen = options || true;
+            if (typeof global.y1LoadSupportToolbar === "function") {
+                void global.y1LoadSupportToolbar();
+            }
+            return true;
+        };
+    }
+
+    if (typeof global.Y1SupportNote !== "function") {
+        global.Y1SupportNote = function (kind, details) {
+            if (isDonationsDisabledNow()) return false;
+            var payload = details && typeof details === "object" ? Object.assign({}, details) : {};
+            if (kind && !payload.action) payload.action = String(kind);
+            if (typeof global.openY1DonatePanel === "function") {
+                return global.openY1DonatePanel(payload);
+            }
+            return false;
+        };
+    }
 
     global.y1LoadSupportToolbar = loadSupportToolbar;
 })(typeof window !== "undefined" ? window : globalThis);
