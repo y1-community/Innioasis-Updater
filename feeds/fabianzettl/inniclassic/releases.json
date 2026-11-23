@@ -1,5 +1,56 @@
 [
   {
+    "id": 455515751,
+    "tag_name": "v1.4.6",
+    "name": "InniClassic 1.4.6",
+    "body": "UI pass ported from the Classy fork: drawn chevrons and ticks in lists, iPod-style play/pause icon, redrawn shuffle/repeat icons, two-column About screen, low-battery warnings (10 % banner, 2 % Please charge).\n\nFixes:\n- Settings and theme could be lost after Settings \u2192 Power Off (#9, #19): the filesystem is now synced before shutdown.\n- Bundled themes are reinstalled when the theme folder is empty.\n- Stronger vibration pulses for Weak and Normal (#21).\n\nrom.zip is for the Innioasis Updater (keep the filename); the APK is for updating an existing install. Full list in CHANGELOG.md.",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-23T14:10:09Z",
+    "published_at": "2026-11-23T14:12:20Z",
+    "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.6",
+    "icon_url": "",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 783197414,
+        "name": "InniClassic-1.4.6.apk",
+        "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.6/InniClassic-1.4.6.apk",
+        "size": 27370044,
+        "download_count": 1,
+        "content_type": "application/vnd.android.package-archive",
+        "created_at": "2026-11-23T14:10:49Z",
+        "updated_at": "2026-11-23T14:11:00Z",
+        "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/783197414"
+      },
+      {
+        "id": 783197424,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.6/rom.zip",
+        "size": 463683550,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-23T14:10:49Z",
+        "updated_at": "2026-11-23T14:12:19Z",
+        "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/783197424"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 1,
+    "download_breakdown": {
+      "tag": "v1.4.6",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.6/rom.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
+  },
+  {
     "id": 399111592,
     "tag_name": "v1.4.5",
     "name": "InniClassic 1.4.5",
@@ -17,7 +68,7 @@
         "name": "InniClassic-1.4.5.apk",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/InniClassic-1.4.5.apk",
         "size": 30017796,
-        "download_count": 89,
+        "download_count": 90,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-09-29T12:14:46Z",
         "updated_at": "2026-09-29T12:14:56Z",
@@ -28,15 +79,15 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip",
         "size": 463531481,
-        "download_count": 694,
+        "download_count": 711,
         "content_type": "application/zip",
         "created_at": "2026-09-29T12:14:46Z",
         "updated_at": "2026-09-29T12:16:11Z",
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/598138138"
       }
     ],
-    "mirror_downloads": 69,
-    "downloads": 763,
+    "mirror_downloads": 86,
+    "downloads": 797,
     "download_breakdown": {
       "tag": "v1.4.5",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -44,7 +95,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip",
-          "downloads": 707,
+          "downloads": 724,
           "mirror_downloads": 13
         }
       ],
@@ -54,21 +105,21 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows.zip",
           "size": 652644612,
-          "downloads": 25
+          "downloads": 28
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows-legacy.zip",
           "size": 537737584,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux.zip",
           "size": 764698211,
-          "downloads": 11
+          "downloads": 15
         },
         {
           "platform": "linux-arm64",
@@ -82,14 +133,14 @@
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-legacy.zip",
           "size": 536151869,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-macos.zip",
           "size": 572154532,
-          "downloads": 10
+          "downloads": 13
         }
       ]
     }
@@ -112,7 +163,7 @@
         "name": "InniClassic-1.4.4.apk",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/InniClassic-1.4.4.apk",
         "size": 30000629,
-        "download_count": 22,
+        "download_count": 23,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-09-29T11:56:08Z",
         "updated_at": "2026-09-29T11:56:19Z",
@@ -123,15 +174,15 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/rom.zip",
         "size": 463523953,
-        "download_count": 50,
+        "download_count": 51,
         "content_type": "application/zip",
         "created_at": "2026-09-29T11:56:08Z",
         "updated_at": "2026-09-29T11:57:37Z",
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/598101368"
       }
     ],
-    "mirror_downloads": 50,
-    "downloads": 100,
+    "mirror_downloads": 56,
+    "downloads": 107,
     "download_breakdown": {
       "tag": "v1.4.4",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -139,7 +190,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/rom.zip",
-          "downloads": 60,
+          "downloads": 61,
           "mirror_downloads": 10
         }
       ],
@@ -163,14 +214,14 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux.zip",
           "size": 764689344,
-          "downloads": 11
+          "downloads": 14
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-arm64.zip",
           "size": 589596106,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux-legacy",
@@ -207,7 +258,7 @@
         "name": "InniClassic-1.4.3.apk",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.3/InniClassic-1.4.3.apk",
         "size": 29869268,
-        "download_count": 44,
+        "download_count": 45,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-09-22T19:29:31Z",
         "updated_at": "2026-09-22T19:29:41Z",
@@ -218,7 +269,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.3/rom.zip",
         "size": 463538077,
-        "download_count": 173,
+        "download_count": 174,
         "content_type": "application/zip",
         "created_at": "2026-09-22T19:29:31Z",
         "updated_at": "2026-09-22T19:31:03Z",
@@ -226,7 +277,7 @@
       }
     ],
     "mirror_downloads": 54,
-    "downloads": 227,
+    "downloads": 228,
     "download_breakdown": {
       "tag": "v1.4.3",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -234,7 +285,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.3/rom.zip",
-          "downloads": 183,
+          "downloads": 184,
           "mirror_downloads": 10
         }
       ],
@@ -302,7 +353,7 @@
         "name": "InniClassic-1.4.2.apk",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.2/InniClassic-1.4.2.apk",
         "size": 27225340,
-        "download_count": 48,
+        "download_count": 49,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-09-02T09:38:56Z",
         "updated_at": "2026-09-02T09:39:06Z",
@@ -313,15 +364,15 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.2/rom.zip",
         "size": 463673525,
-        "download_count": 292,
+        "download_count": 293,
         "content_type": "application/zip",
         "created_at": "2026-09-02T09:38:56Z",
         "updated_at": "2026-09-02T09:40:26Z",
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/540948764"
       }
     ],
-    "mirror_downloads": 48,
-    "downloads": 340,
+    "mirror_downloads": 62,
+    "downloads": 355,
     "download_breakdown": {
       "tag": "v1.4.2",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -329,7 +380,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.2/rom.zip",
-          "downloads": 302,
+          "downloads": 303,
           "mirror_downloads": 10
         }
       ],
@@ -346,7 +397,7 @@
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-windows-legacy.zip",
           "size": 537873512,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "linux",
@@ -360,21 +411,21 @@
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux-arm64.zip",
           "size": 589740903,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux-legacy.zip",
           "size": 536287797,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-macos.zip",
           "size": 572290462,
-          "downloads": 7
+          "downloads": 10
         }
       ]
     }
@@ -397,7 +448,7 @@
         "name": "InniClassic-1.4.1.apk",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.1/InniClassic-1.4.1.apk",
         "size": 27225053,
-        "download_count": 34,
+        "download_count": 35,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-08-28T16:04:54Z",
         "updated_at": "2026-08-28T16:05:04Z",
@@ -408,15 +459,15 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.1/rom.zip",
         "size": 463673952,
-        "download_count": 169,
+        "download_count": 170,
         "content_type": "application/zip",
         "created_at": "2026-08-28T16:04:54Z",
         "updated_at": "2026-08-28T16:06:23Z",
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/534032001"
       }
     ],
-    "mirror_downloads": 104,
-    "downloads": 273,
+    "mirror_downloads": 110,
+    "downloads": 280,
     "download_breakdown": {
       "tag": "v1.4.1",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -424,7 +475,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.1/rom.zip",
-          "downloads": 202,
+          "downloads": 203,
           "mirror_downloads": 33
         }
       ],
@@ -434,7 +485,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-windows.zip",
           "size": 652780068,
-          "downloads": 21
+          "downloads": 25
         },
         {
           "platform": "windows-legacy",
@@ -462,7 +513,7 @@
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-linux-legacy.zip",
           "size": 536287323,
-          "downloads": 2
+          "downloads": 4
         },
         {
           "platform": "macos",
@@ -492,7 +543,7 @@
         "name": "InniClassic-1.3.2.apk",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.2/InniClassic-1.3.2.apk",
         "size": 27222719,
-        "download_count": 35,
+        "download_count": 36,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-08-19T11:31:52Z",
         "updated_at": "2026-08-19T11:32:03Z",
@@ -503,15 +554,15 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.2/rom.zip",
         "size": 463770674,
-        "download_count": 193,
+        "download_count": 194,
         "content_type": "application/zip",
         "created_at": "2026-08-19T11:31:52Z",
         "updated_at": "2026-08-19T11:33:33Z",
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/520762400"
       }
     ],
-    "mirror_downloads": 57,
-    "downloads": 250,
+    "mirror_downloads": 64,
+    "downloads": 258,
     "download_breakdown": {
       "tag": "v1.3.2",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -519,7 +570,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.2/rom.zip",
-          "downloads": 203,
+          "downloads": 204,
           "mirror_downloads": 10
         }
       ],
@@ -536,7 +587,7 @@
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-windows-legacy.zip",
           "size": 537967425,
-          "downloads": 2
+          "downloads": 6
         },
         {
           "platform": "linux",
@@ -564,7 +615,7 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-macos.zip",
           "size": 572384375,
-          "downloads": 8
+          "downloads": 11
         }
       ]
     }
@@ -587,7 +638,7 @@
         "name": "InniClassic-1.3.1.apk",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.1/InniClassic-1.3.1.apk",
         "size": 27222661,
-        "download_count": 28,
+        "download_count": 29,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-08-03T17:34:17Z",
         "updated_at": "2026-08-03T17:35:16Z",
@@ -598,15 +649,15 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.1/rom.zip",
         "size": 463770936,
-        "download_count": 277,
+        "download_count": 278,
         "content_type": "application/zip",
         "created_at": "2026-08-03T17:34:17Z",
         "updated_at": "2026-08-03T17:38:16Z",
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/500343475"
       }
     ],
-    "mirror_downloads": 54,
-    "downloads": 331,
+    "mirror_downloads": 57,
+    "downloads": 335,
     "download_breakdown": {
       "tag": "v1.3.1",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -614,7 +665,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.1/rom.zip",
-          "downloads": 287,
+          "downloads": 288,
           "mirror_downloads": 10
         }
       ],
@@ -652,7 +703,7 @@
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-linux-legacy.zip",
           "size": 536381645,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "macos",
@@ -682,7 +733,7 @@
         "name": "InniClassic-1.3.0.apk",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.0/InniClassic-1.3.0.apk",
         "size": 27221900,
-        "download_count": 31,
+        "download_count": 32,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-07-29T06:52:56Z",
         "updated_at": "2026-07-29T06:53:11Z",
@@ -693,15 +744,15 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.0/rom.zip",
         "size": 463775055,
-        "download_count": 208,
+        "download_count": 212,
         "content_type": "application/zip",
         "created_at": "2026-07-29T06:52:56Z",
         "updated_at": "2026-07-29T06:55:00Z",
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/493714045"
       }
     ],
-    "mirror_downloads": 47,
-    "downloads": 255,
+    "mirror_downloads": 54,
+    "downloads": 266,
     "download_breakdown": {
       "tag": "v1.3.0",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -709,7 +760,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.0/rom.zip",
-          "downloads": 218,
+          "downloads": 222,
           "mirror_downloads": 10
         }
       ],
@@ -733,7 +784,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux.zip",
           "size": 764933309,
-          "downloads": 9
+          "downloads": 13
         },
         {
           "platform": "linux-arm64",
@@ -747,7 +798,7 @@
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux-legacy.zip",
           "size": 536386965,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "macos",
@@ -777,7 +828,7 @@
         "name": "InniClassic-1.2.0.apk",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/InniClassic-1.2.0.apk",
         "size": 31349729,
-        "download_count": 29,
+        "download_count": 30,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-07-27T20:35:35Z",
         "updated_at": "2026-07-27T20:35:45Z",
@@ -788,15 +839,15 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/rom.zip",
         "size": 463513542,
-        "download_count": 130,
+        "download_count": 134,
         "content_type": "application/zip",
         "created_at": "2026-07-27T20:35:35Z",
         "updated_at": "2026-07-27T20:37:04Z",
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/491900122"
       }
     ],
-    "mirror_downloads": 48,
-    "downloads": 178,
+    "mirror_downloads": 60,
+    "downloads": 194,
     "download_breakdown": {
       "tag": "v1.2.0",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -804,7 +855,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/rom.zip",
-          "downloads": 140,
+          "downloads": 144,
           "mirror_downloads": 10
         }
       ],
@@ -821,21 +872,21 @@
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows-legacy.zip",
           "size": 537712923,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux.zip",
           "size": 764673552,
-          "downloads": 9
+          "downloads": 12
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-arm64.zip",
           "size": 589580314,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux-legacy",
@@ -849,7 +900,7 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-macos.zip",
           "size": 572129873,
-          "downloads": 8
+          "downloads": 11
         }
       ]
     }
@@ -872,7 +923,7 @@
         "name": "InniClassic-1.1.2.apk",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/InniClassic-1.1.2.apk",
         "size": 7020639,
-        "download_count": 22,
+        "download_count": 23,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-07-26T22:43:48Z",
         "updated_at": "2026-07-26T22:43:51Z",
@@ -883,15 +934,15 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/rom.zip",
         "size": 457809513,
-        "download_count": 62,
+        "download_count": 63,
         "content_type": "application/zip",
         "created_at": "2026-07-26T22:43:48Z",
         "updated_at": "2026-07-26T22:45:11Z",
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/490752767"
       }
     ],
-    "mirror_downloads": 54,
-    "downloads": 116,
+    "mirror_downloads": 60,
+    "downloads": 123,
     "download_breakdown": {
       "tag": "v1.1.2",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -899,7 +950,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/rom.zip",
-          "downloads": 72,
+          "downloads": 73,
           "mirror_downloads": 10
         }
       ],
@@ -930,7 +981,7 @@
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-arm64.zip",
           "size": 583848746,
-          "downloads": 2
+          "downloads": 5
         },
         {
           "platform": "linux-legacy",
@@ -944,7 +995,7 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-macos.zip",
           "size": 566398305,
-          "downloads": 9
+          "downloads": 12
         }
       ]
     }
@@ -967,7 +1018,7 @@
         "name": "InniClassic-1.1.1.apk",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.1/InniClassic-1.1.1.apk",
         "size": 8795490,
-        "download_count": 29,
+        "download_count": 30,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-07-25T10:26:24Z",
         "updated_at": "2026-07-25T10:26:28Z",
@@ -978,15 +1029,15 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.1/rom.zip",
         "size": 457676727,
-        "download_count": 67,
+        "download_count": 68,
         "content_type": "application/zip",
         "created_at": "2026-07-25T14:50:07Z",
         "updated_at": "2026-07-25T14:51:29Z",
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/489512937"
       }
     ],
-    "mirror_downloads": 38,
-    "downloads": 105,
+    "mirror_downloads": 53,
+    "downloads": 121,
     "download_breakdown": {
       "tag": "v1.1.1",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -994,7 +1045,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.1/rom.zip",
-          "downloads": 77,
+          "downloads": 78,
           "mirror_downloads": 10
         }
       ],
@@ -1011,35 +1062,35 @@
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-windows-legacy.zip",
           "size": 531875845,
-          "downloads": 0
+          "downloads": 3
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux.zip",
           "size": 758836478,
-          "downloads": 8
+          "downloads": 11
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux-arm64.zip",
           "size": 583743240,
-          "downloads": 0
+          "downloads": 3
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux-legacy.zip",
           "size": 530290128,
-          "downloads": 0
+          "downloads": 3
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-macos.zip",
           "size": 566292774,
-          "downloads": 6
+          "downloads": 9
         }
       ]
     }
@@ -1062,7 +1113,7 @@
         "name": "JJLauncherClassic-1.1.0.apk",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.0/JJLauncherClassic-1.1.0.apk",
         "size": 6891463,
-        "download_count": 23,
+        "download_count": 24,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-07-23T07:19:57Z",
         "updated_at": "2026-07-23T07:19:58Z",
@@ -1096,7 +1147,7 @@
         "name": "JJLauncherClassic-1.0.0.apk",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.0.0/JJLauncherClassic-1.0.0.apk",
         "size": 6872425,
-        "download_count": 31,
+        "download_count": 32,
         "content_type": "application/vnd.android.package-archive",
         "created_at": "2026-07-21T10:23:13Z",
         "updated_at": "2026-07-21T10:23:15Z",

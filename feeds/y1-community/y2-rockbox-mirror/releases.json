@@ -167,15 +167,15 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706116543"
       },
       {
-        "id": 781413443,
+        "id": 783336789,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/stats.txt",
         "size": 5051,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T03:45:32Z",
-        "updated_at": "2026-11-23T03:45:32Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/781413443"
+        "created_at": "2026-11-23T14:51:30Z",
+        "updated_at": "2026-11-23T14:51:30Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/783336789"
       },
       {
         "id": 706114042,
@@ -358,15 +358,15 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706230074"
       },
       {
-        "id": 781413188,
+        "id": 783336597,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/stats.txt",
         "size": 7769,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T03:45:30Z",
-        "updated_at": "2026-11-23T03:45:30Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/781413188"
+        "created_at": "2026-11-23T14:51:27Z",
+        "updated_at": "2026-11-23T14:51:27Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/783336597"
       },
       {
         "id": 706230077,
@@ -731,7 +731,7 @@
         "name": "rom_y2-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-linux-legacy.zip",
         "size": 435300772,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:10:24Z",
         "updated_at": "2026-11-22T22:10:42Z",
@@ -742,7 +742,7 @@
         "name": "rom_y2-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-linux.zip",
         "size": 663847116,
-        "download_count": 0,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:09:53Z",
         "updated_at": "2026-11-22T22:10:21Z",
@@ -753,7 +753,7 @@
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-macos.zip",
         "size": 471303332,
-        "download_count": 0,
+        "download_count": 5,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:10:24Z",
         "updated_at": "2026-11-22T22:10:41Z",
@@ -804,15 +804,15 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706215317"
       },
       {
-        "id": 781413114,
+        "id": 783336410,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/stats.txt",
         "size": 6944,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T03:45:29Z",
-        "updated_at": "2026-11-23T03:45:29Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/781413114"
+        "created_at": "2026-11-23T14:51:24Z",
+        "updated_at": "2026-11-23T14:51:24Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/783336410"
       },
       {
         "id": 706215320,
@@ -915,7 +915,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 12,
     "download_breakdown": {
       "tag": "v0.1.0-beta",
       "mirrors": "",
@@ -928,17 +928,17 @@
         {
           "name": "rom_y2-linux-legacy.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-linux-legacy.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-linux.zip",
-          "downloads": 0
+          "downloads": 4
         },
         {
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/rom_y2-macos.zip",
-          "downloads": 0
+          "downloads": 5
         },
         {
           "name": "rom_y2-windows-legacy.zip",

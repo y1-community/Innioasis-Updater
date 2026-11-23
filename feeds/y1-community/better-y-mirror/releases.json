@@ -28,7 +28,7 @@
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-arm64.zip",
         "size": 308009639,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:04:55Z",
         "updated_at": "2026-11-22T22:05:05Z",
@@ -83,7 +83,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows.zip",
         "size": 371049278,
-        "download_count": 1,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:04:55Z",
         "updated_at": "2026-11-22T22:05:07Z",
@@ -101,19 +101,19 @@
         "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/706111766"
       },
       {
-        "id": 781414966,
+        "id": 783340619,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/stats.txt",
         "size": 4034,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T03:46:15Z",
-        "updated_at": "2026-11-23T03:46:16Z",
-        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/781414966"
+        "created_at": "2026-11-23T14:52:41Z",
+        "updated_at": "2026-11-23T14:52:41Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/783340619"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 3,
+    "downloads": 8,
     "download_breakdown": {
       "tag": "v1.1.0",
       "mirrors": "",
@@ -121,7 +121,7 @@
         {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux-arm64.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "rom-linux-legacy.zip",
@@ -146,7 +146,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-windows.zip",
-          "downloads": 1
+          "downloads": 4
         },
         {
           "name": "rom.zip",
@@ -208,7 +208,7 @@
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-macos.zip",
         "size": 290140023,
-        "download_count": 0,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:01:57Z",
         "updated_at": "2026-11-22T22:02:04Z",
@@ -230,7 +230,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-windows.zip",
         "size": 370630181,
-        "download_count": 0,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:01:47Z",
         "updated_at": "2026-11-22T22:01:59Z",
@@ -248,19 +248,19 @@
         "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/733008365"
       },
       {
-        "id": 781414902,
+        "id": 783340460,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/stats.txt",
-        "size": 3785,
+        "size": 3789,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T03:46:14Z",
-        "updated_at": "2026-11-23T03:46:14Z",
-        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/781414902"
+        "created_at": "2026-11-23T14:52:38Z",
+        "updated_at": "2026-11-23T14:52:39Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/783340460"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 8,
     "download_breakdown": {
       "tag": "v1.0.0",
       "mirrors": "",
@@ -283,7 +283,7 @@
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-macos.zip",
-          "downloads": 0
+          "downloads": 4
         },
         {
           "name": "rom-windows-legacy.zip",
@@ -293,7 +293,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/rom-windows.zip",
-          "downloads": 0
+          "downloads": 4
         },
         {
           "name": "rom.zip",

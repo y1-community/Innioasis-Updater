@@ -52,6 +52,28 @@
 <div id="nav-root"></div>
 <main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y1&amp;software=inniclassic-y1">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Inniclassic · Y1</p><h1>Changelog</h1><p class="lumen-lead">A classic-style Y1 Software.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y1&amp;software=inniclassic-y1">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y1&amp;software=inniclassic-y1">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="changelog">Changelog</h1>
 <p>All notable changes to InniClassic (formerly &quot;JJ Launcher Classic Version&quot;) are documented here. This project is based on JJ Launcher <code>0.11</code>; this changelog covers only what changed on top of that base.</p>
+<h2 id="150---2026-11-23">[1.5.0] - 2026-11-23</h2>
+<h3 id="added">Added</h3>
+<ul><li><strong>Letter Jump</strong> and <strong>Letter Jump Sensitivity</strong> (Settings): turn the letter jump on a fast wheel turn off, or choose High/Normal/Low.</li><li><strong>Multiple artists in one tag:</strong> a track artist like &quot;A; B&quot; is listed under A and under B in Artists.</li></ul>
+<h2 id="149---2026-11-23">[1.4.9] - 2026-11-23</h2>
+<h3 id="added">Added</h3>
+<ul><li><strong>Power Off in the Now Playing hold-menu</strong> (long-press Play/Pause), with the same confirmation as in Settings (#20).</li></ul>
+<h2 id="148---2026-11-23">[1.4.8] - 2026-11-23</h2>
+<h3 id="added">Added</h3>
+<ul><li><strong>Mono Audio</strong> (Settings): mixes left and right into both channels, for listening with one earbud. Applies to tracks played through the ExoPlayer path.</li></ul>
+<h2 id="147---2026-11-23">[1.4.7] - 2026-11-23</h2>
+<h3 id="changed">Changed</h3>
+<ul><li><strong>Chevron arrows</strong> in the main menu, Music/Videos lists and category lists are now the thin drawn chevron (as in Settings).</li><li><strong>Bluetooth list</strong> shows the connected device with the drawn tick.</li></ul>
+<h3 id="added">Added</h3>
+<ul><li><strong>Battery Percentage</strong> setting (Settings): shows the level inside the battery icon, with the charging bolt next to the digits.</li></ul>
+<h2 id="146---2026-11-23">[1.4.6] - 2026-11-23</h2>
+<p>UI pass ported from the Classy fork.</p>
+<h3 id="changed">Changed</h3>
+<ul><li><strong>Lists:</strong> settings rows use a thin drawn chevron instead of the text &quot;〉&quot;; Theme, Language, EQ and Wi-Fi lists show the current choice as a drawn tick in a fixed column instead of a green &quot;✔&quot; prefix.</li><li><strong>Status bar:</strong> iPod-style solid play/pause icons.</li><li><strong>Now Playing:</strong> shuffle/repeat icons redrawn (Tabler style).</li><li><strong>About:</strong> now a scrollable two-column list (Songs, Videos, Albums, Artists, capacity, available, version, model).</li></ul>
+<h3 id="added">Added</h3>
+<ul><li><strong>Low-battery warnings:</strong> a banner at 10 % and a &quot;Please charge&quot; screen at 2 %; any key closes them.</li></ul>
+<h3 id="fixed">Fixed</h3>
+<ul><li><strong>Settings/theme could be lost after Settings → Power Off</strong> — the filesystem is now synced before shutdown (#9, #19).</li></ul>
 <h2 id="145---2026-09-30">[1.4.5] - 2026-09-30</h2>
 <h3 id="fixed">Fixed</h3>
 <ul><li><strong>Theme could silently revert to the default after connecting the device as USB Mass Storage</strong> — the selected theme was persisted only as a numeric index into the SD card&#x27;s theme folder listing, and that listing&#x27;s order isn&#x27;t guaranteed stable across a mount/unmount cycle (common FAT32 behavior). The saved index could end up pointing at a completely different theme once the card was reconnected. The theme&#x27;s name is now saved alongside the index and resolved by name on startup — independent of scan order — with the old index kept only as a fallback for upgrades.</li><li><strong><code>.scrobbler.log</code> declared its timestamps as <code>#TZ/UNKNOWN</code></strong> even though they&#x27;re genuinely UTC (<code>System.currentTimeMillis()</code> is always UTC epoch time, regardless of the device&#x27;s local timezone setting). Now correctly declared as <code>#TZ/UTC</code>, so any tool that imports the log trusts the timestamps instead of asking or guessing. Only affects newly created log files — an existing <code>.scrobbler.log</code>&#x27;s header isn&#x27;t rewritten.</li><li><strong>On-screen keyboard was missing common punctuation</strong>, making some Wi-Fi passwords (and anything else typed through it — podcast search, Last.fm login, etc.) impossible to enter. Added <code>; : , / \ ( ) [ ] { } &lt; &gt; &#x27; ~ \</code><code>and</code>|`.</li></ul>

@@ -28,7 +28,7 @@
         "name": "rom_y2-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux-legacy.zip",
         "size": 310021598,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:01:44Z",
         "updated_at": "2026-11-22T22:02:01Z",
@@ -39,7 +39,7 @@
         "name": "rom_y2-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux.zip",
         "size": 548076230,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:01:44Z",
         "updated_at": "2026-11-22T22:02:06Z",
@@ -50,7 +50,7 @@
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-macos.zip",
         "size": 347827908,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:01:56Z",
         "updated_at": "2026-11-22T22:02:08Z",
@@ -72,7 +72,7 @@
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-windows.zip",
         "size": 426514351,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:01:44Z",
         "updated_at": "2026-11-22T22:02:08Z",
@@ -90,15 +90,15 @@
         "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/706225308"
       },
       {
-        "id": 781272198,
+        "id": 782926584,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/stats.txt",
         "size": 4060,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T02:48:00Z",
-        "updated_at": "2026-11-23T02:48:00Z",
-        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/781272198"
+        "created_at": "2026-11-23T12:48:38Z",
+        "updated_at": "2026-11-23T12:48:38Z",
+        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/782926584"
       },
       {
         "id": 706225314,
@@ -113,7 +113,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1,
+    "downloads": 13,
     "download_breakdown": {
       "tag": "ReleaseV2.3",
       "mirrors": "",
@@ -126,17 +126,17 @@
         {
           "name": "rom_y2-linux-legacy.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux-legacy.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-macos.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_y2-windows-legacy.zip",
@@ -146,7 +146,7 @@
         {
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-windows.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_y2.zip",
@@ -175,7 +175,7 @@
         "name": "rom_y2-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux-arm64.zip",
         "size": 372933436,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T21:52:49Z",
         "updated_at": "2026-11-22T21:53:05Z",
@@ -186,7 +186,7 @@
         "name": "rom_y2-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux-legacy.zip",
         "size": 309972048,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T21:52:49Z",
         "updated_at": "2026-11-22T21:53:01Z",
@@ -197,7 +197,7 @@
         "name": "rom_y2-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux.zip",
         "size": 548026674,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T21:52:49Z",
         "updated_at": "2026-11-22T21:53:18Z",
@@ -230,7 +230,7 @@
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-windows.zip",
         "size": 426464795,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T21:52:49Z",
         "updated_at": "2026-11-22T21:53:14Z",
@@ -248,15 +248,15 @@
         "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/706211320"
       },
       {
-        "id": 781272135,
+        "id": 782926292,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/stats.txt",
         "size": 4301,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T02:47:57Z",
-        "updated_at": "2026-11-23T02:47:57Z",
-        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/781272135"
+        "created_at": "2026-11-23T12:48:34Z",
+        "updated_at": "2026-11-23T12:48:34Z",
+        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/782926292"
       },
       {
         "id": 733016720,
@@ -271,7 +271,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1,
+    "downloads": 13,
     "download_breakdown": {
       "tag": "ReleaseV2.2.1",
       "mirrors": "",
@@ -279,17 +279,17 @@
         {
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux-arm64.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_y2-linux-legacy.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux-legacy.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_y2-linux.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-linux.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_y2-macos.zip",
@@ -304,7 +304,7 @@
         {
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.2.1/rom_y2-windows.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_y2.zip",
@@ -338,7 +338,7 @@
         "name": "rom_y2-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-linux-arm64.zip",
         "size": 373013572,
-        "download_count": 0,
+        "download_count": 4,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:05:55Z",
         "updated_at": "2026-11-22T22:06:16Z",
@@ -393,7 +393,7 @@
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-windows.zip",
         "size": 426544931,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:05:55Z",
         "updated_at": "2026-11-22T22:06:15Z",
@@ -411,15 +411,15 @@
         "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/733058408"
       },
       {
-        "id": 781272242,
+        "id": 782926681,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/stats.txt",
         "size": 4067,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T02:48:01Z",
-        "updated_at": "2026-11-23T02:48:01Z",
-        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/781272242"
+        "created_at": "2026-11-23T12:48:40Z",
+        "updated_at": "2026-11-23T12:48:41Z",
+        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/782926681"
       },
       {
         "id": 706112700,
@@ -434,7 +434,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1,
+    "downloads": 8,
     "download_breakdown": {
       "tag": "Release2.5",
       "mirrors": "",
@@ -442,7 +442,7 @@
         {
           "name": "rom_y2-linux-arm64.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-linux-arm64.zip",
-          "downloads": 0
+          "downloads": 4
         },
         {
           "name": "rom_y2-linux-legacy.zip",
@@ -467,7 +467,7 @@
         {
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/Release2.5/rom_y2-windows.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_y2.zip",
@@ -529,7 +529,7 @@
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-macos.zip",
         "size": 347810439,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T21:57:47Z",
         "updated_at": "2026-11-22T21:57:58Z",
@@ -551,7 +551,7 @@
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-windows.zip",
         "size": 426496882,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T21:57:29Z",
         "updated_at": "2026-11-22T21:57:47Z",
@@ -569,15 +569,15 @@
         "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/706217855"
       },
       {
-        "id": 781272170,
+        "id": 782926447,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/stats.txt",
         "size": 4294,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T02:47:58Z",
-        "updated_at": "2026-11-23T02:47:58Z",
-        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/781272170"
+        "created_at": "2026-11-23T12:48:36Z",
+        "updated_at": "2026-11-23T12:48:36Z",
+        "url": "https://api.github.com/repos/y1-community/y2player-mirror/releases/assets/782926447"
       },
       {
         "id": 733031811,
@@ -592,7 +592,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 1,
+    "downloads": 7,
     "download_breakdown": {
       "tag": "RealeaseV2.2.2",
       "mirrors": "",
@@ -615,7 +615,7 @@
         {
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-macos.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_y2-windows-legacy.zip",
@@ -625,7 +625,7 @@
         {
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y2player-mirror/releases/download/RealeaseV2.2.2/rom_y2-windows.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_y2.zip",
