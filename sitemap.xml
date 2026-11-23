@@ -8245,12 +8245,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://innioasis.app/release-notes/original-g5/mx4_en-v1.11-20260727-macos.html</loc>
-    <lastmod>2026-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://innioasis.app/release-notes/original-g5/mx4_en-v1.11-20260727-windows.html</loc>
     <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
@@ -10707,6 +10701,24 @@
   <url>
     <loc>https://innioasis.app/release-notes/reborn-y2linux-y2/baseline-273.html</loc>
     <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://innioasis.app/release-notes/reborn-y2linux-y2/baseline-275-linux.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://innioasis.app/release-notes/reborn-y2linux-y2/baseline-275-macos.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://innioasis.app/release-notes/reborn-y2linux-y2/baseline-275-windows.html</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

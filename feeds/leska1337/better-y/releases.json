@@ -28,15 +28,15 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/rom.zip",
         "size": 181243963,
-        "download_count": 540,
+        "download_count": 544,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-09-25T18:43:13Z",
         "updated_at": "2026-09-25T18:46:53Z",
         "url": "https://api.github.com/repos/Leska1337/better-Y/releases/assets/588998617"
       }
     ],
-    "mirror_downloads": 71,
-    "downloads": 611,
+    "mirror_downloads": 72,
+    "downloads": 616,
     "download_breakdown": {
       "tag": "v1.1.0",
       "mirrors": "y1-community/better-y-mirror",
@@ -44,7 +44,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/rom.zip",
-          "downloads": 557,
+          "downloads": 561,
           "mirror_downloads": 17
         }
       ],
@@ -68,7 +68,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux.zip",
           "size": 483102877,
-          "downloads": 17
+          "downloads": 18
         },
         {
           "platform": "linux-arm64",

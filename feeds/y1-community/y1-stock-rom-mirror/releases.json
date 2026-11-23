@@ -3,7 +3,7 @@
     "id": 444982675,
     "tag_name": "3.2.4-fm",
     "name": "Portable Flashing Package: Original System Software 3.2.4 for Innioasis Y2",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm&amp;asset=rom_y2.zip&amp;platform=windows&amp;mirror=y1-community%2Fy1-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm&amp;asset=rom_y2.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fy1-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y2 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm&amp;asset=rom_y2.zip&amp;platform=linux&amp;mirror=y1-community%2Fy1-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm&amp;asset=rom_y2.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fy1-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y2 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm&amp;asset=rom_y2.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fy1-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y2 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm&amp;asset=rom_y2.zip&amp;platform=macos&amp;mirror=y1-community%2Fy1-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n\"General performance and stability improvements.\"\r\n\r\nThis is the software currently being shipped on Y2 retail units.\r\n\r\n(Innioasis have once again failed to release this as an update to existing users, nor do they actually post what changes their firmwares include - this firmware release was imaged from a retail Y2 unit purchased November 12 by the Community Firmware Archive and Updater CE maintainer - tested against both of Updater's installation methods: SP Flash Tool and MTKclient and the underlying tools themselves on a pre 3.2.4 and a 3.2.4 unit with success. Image was taken before any use of the player)\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"rom_y2-windows.zip\",\"platform\":\"windows\",\"sha256\":\"4cf280d03db130674292a45d0d659ea592635a5353240fee93633e8e91c85a04\",\"size\":656384866,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"240cfff5d784c965fbae53f2ad4f05b7a11cc994aec4e47784c55c08726c0d49\",\"size\":418146053,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux.zip\",\"platform\":\"linux\",\"sha256\":\"4184f6df12fe6002a748c1de8150747fbdbd574e76f4df6678e78de15f3be779\",\"size\":644892129,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"b69bd0e6b375960fc731b93a10fe53c5129585689d72b7d4ef11378d14df5a2a\",\"size\":469796948,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"5bfa2d11502a187cd70e5d913ce827d23b64373c206d077770507894d5873402\",\"size\":416560338,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-macos.zip\",\"platform\":\"macos\",\"sha256\":\"394f0e475e1d8cc05a79a6a25a451f1f2bc4d045b5870c6e39603a58064f6f1c\",\"size\":452400962,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-22T19:17:54Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"eae96b6801d342818c8534334cb6f244988f5b1a4067bef4aaf709891eb65c5d\",\"original_asset_sizes\":{\"rom_y2.zip\":343306718,\"updater.jpg\":30612},\"original_assets\":[\"rom_y2.zip\",\"updater.jpg\"],\"platforms\":{\"linux\":\"6f6558ff175edda5b9563091ddb93c153c330db4d69f287ccb282ff1973c2108\",\"linux-arm64\":\"15dafe2b97bf89704ed1b6ef93a229cd87f1c6c3ab32a3eb9decafdb3abf0c53\",\"linux-legacy\":\"df7fed224dd88f02e81d7e4305929c45e8677c5050d0d81a6fada904494aaf06\",\"macos\":\"6e76930176e69402b010f7fdf058739ea7035c3971d764c9ae7a95cbe3e3da2a\",\"windows\":\"2e1ec20e2460fcf2e4c24953ccd1846e4d06ed5b5bf63c2f227c6ec088ea6fff\",\"windows-legacy\":\"a9c507c4ce27ac0b8dc85da94c2f549ab910355b7e863355b19304b572242761\"},\"skipped\":[],\"source_fingerprint\":\"2fe24ee4e650f0303e1ebec67cbe9bd2c64d72e865050e0b27d820fd37b4712d\",\"stats\":{\"baseline\":{\"rom_y2-linux-arm64.zip\":2,\"rom_y2-linux-legacy.zip\":1,\"rom_y2-linux.zip\":5,\"rom_y2-macos.zip\":4,\"rom_y2-windows-legacy.zip\":1,\"rom_y2-windows.zip\":5,\"rom_y2.zip\":1,\"updater.jpg\":0},\"generated_at\":\"2026-11-22T19:17:54Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304306838,\"tag\":\"2.5.6.1\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128322905,\"tag\":\"2.5.6.1\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109096332,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm&amp;asset=rom_y2.zip&amp;platform=windows&amp;mirror=y1-community%2Fy1-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm&amp;asset=rom_y2.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fy1-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y2 \u00b7 Stock - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm&amp;asset=rom_y2.zip&amp;platform=linux&amp;mirror=y1-community%2Fy1-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm&amp;asset=rom_y2.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fy1-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y2 \u00b7 Stock - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm&amp;asset=rom_y2.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fy1-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y2 \u00b7 Stock - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=y1-community%2Fy1-stock-rom&amp;tag=3.2.4-fm&amp;asset=rom_y2.zip&amp;platform=macos&amp;mirror=y1-community%2Fy1-stock-rom-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n\"General performance and stability improvements.\"\r\n\r\nThis is the software currently being shipped on Y2 retail units.\r\n\r\n(Innioasis have once again failed to release this as an update to existing users, nor do they actually post what changes their firmwares include - this firmware release was imaged from a retail Y2 unit purchased November 12 by the Community Firmware Archive and Updater CE maintainer - tested against both of Updater's installation methods: SP Flash Tool and MTKclient and the underlying tools themselves on a pre 3.2.4 and a 3.2.4 unit with success. Image was taken before any use of the player)\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"rom_y2-windows.zip\",\"platform\":\"windows\",\"sha256\":\"68d398e1731d6b2d4ed0500f68aae093d37a18bb968cd2184b2a709ba727ed0b\",\"size\":533077427,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"2d8ef624b7097bcc9166fd3d25a6606cc27b1d16225e268b1d68c06a1aa5b637\",\"size\":418170427,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux.zip\",\"platform\":\"linux\",\"sha256\":\"b5209f22fd86086210a83a20b64034cd4f87da1d3fd54597f569e19c883ed678\",\"size\":645131026,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"4246ed5b6c154bf33c91eb34f50b5f1fb463b154905a54c03bcaa13de91440a3\",\"size\":470037788,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"29261c637de4ea71281f3dfbc790e7c542af128ece58852f131fbdb932580479\",\"size\":416584712,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-macos.zip\",\"platform\":\"macos\",\"sha256\":\"c8056beef7044054093642d6d7504c9db542310fffcad71036ea3400d26e09c2\",\"size\":452587240,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-22T22:40:23Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"6fb50430605fbda6c8306574c4613a13653f6ff448ce6f11fa51462534350dc7\",\"original_asset_sizes\":{\"rom_y2.zip\":343306718,\"updater.jpg\":30612},\"original_assets\":[\"rom_y2.zip\",\"updater.jpg\"],\"platforms\":{\"linux\":\"659c8e2eee36422eef6d0902b7e2f3c254ee135891f7371a7662deaa2728d551\",\"linux-arm64\":\"45a76a9b30b3df12194efe0ad72caa1caee1c6ff372bea62670bec758d1688d2\",\"linux-legacy\":\"99d01ad8a3b6b81bc258c31651323c82aee2c768fcf41e1015664f14d297da6e\",\"macos\":\"589f78ef12f8f765ab4a55bc600fa37a94e561f7d84272581e023e43eec662e2\",\"windows\":\"e8169a87ff087c06a1791ebc9fa75de6526998838b17ac841a18fd5431b19438\",\"windows-legacy\":\"7577d520b6226e57903fd5d0f4a12ff66f827ff1a28ec98fc971b1a1798a8f8a\"},\"skipped\":[],\"source_fingerprint\":\"f8ee5b962c5d35b9f724268e96a226ae0a5aed9da9c5fbc2707bc727fd56d5b7\",\"stats\":{\"baseline\":{\"rom_y2-linux-arm64.zip\":2,\"rom_y2-linux-legacy.zip\":4,\"rom_y2-linux.zip\":5,\"rom_y2-macos.zip\":6,\"rom_y2-windows-legacy.zip\":3,\"rom_y2-windows.zip\":19,\"rom_y2.zip\":3,\"updater.jpg\":0},\"generated_at\":\"2026-11-22T22:40:23Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304524245,\"tag\":\"2.5.6.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128540618,\"tag\":\"2.5.6.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109258325,\"tag\":\"2.5.6.5\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":189956744,\"tag\":\"2.5.6.5\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":17} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-12T19:35:04Z",
@@ -13,70 +13,70 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 780170418,
+        "id": 780698344,
         "name": "rom_y2-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux-arm64.zip",
-        "size": 469796948,
+        "size": 470037788,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-22T19:17:55Z",
-        "updated_at": "2026-11-22T19:18:11Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780170418"
+        "created_at": "2026-11-22T22:40:25Z",
+        "updated_at": "2026-11-22T22:40:40Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780698344"
       },
       {
-        "id": 748901214,
+        "id": 780698352,
         "name": "rom_y2-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux-legacy.zip",
-        "size": 416560338,
-        "download_count": 3,
-        "content_type": "application/zip",
-        "created_at": "2026-11-14T21:58:40Z",
-        "updated_at": "2026-11-14T21:58:57Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/748901214"
-      },
-      {
-        "id": 780170422,
-        "name": "rom_y2-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux.zip",
-        "size": 644892129,
+        "size": 416584712,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-22T19:17:56Z",
-        "updated_at": "2026-11-22T19:18:12Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780170422"
+        "created_at": "2026-11-22T22:40:25Z",
+        "updated_at": "2026-11-22T22:40:40Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780698352"
       },
       {
-        "id": 778904223,
+        "id": 780698347,
+        "name": "rom_y2-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux.zip",
+        "size": 645131026,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:40:25Z",
+        "updated_at": "2026-11-22T22:40:44Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780698347"
+      },
+      {
+        "id": 780698903,
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-macos.zip",
-        "size": 452400962,
-        "download_count": 2,
+        "size": 452587240,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-22T11:54:42Z",
-        "updated_at": "2026-11-22T11:55:07Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/778904223"
+        "created_at": "2026-11-22T22:40:40Z",
+        "updated_at": "2026-11-22T22:40:57Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780698903"
       },
       {
-        "id": 748901216,
+        "id": 780698356,
         "name": "rom_y2-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-windows-legacy.zip",
-        "size": 418146053,
-        "download_count": 2,
+        "size": 418170427,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-14T21:58:40Z",
-        "updated_at": "2026-11-14T21:58:59Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/748901216"
+        "created_at": "2026-11-22T22:40:25Z",
+        "updated_at": "2026-11-22T22:40:40Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780698356"
       },
       {
-        "id": 748901215,
+        "id": 780698354,
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-windows.zip",
-        "size": 656384866,
-        "download_count": 14,
+        "size": 533077427,
+        "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-14T21:58:40Z",
-        "updated_at": "2026-11-14T21:59:09Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/748901215"
+        "created_at": "2026-11-22T22:40:25Z",
+        "updated_at": "2026-11-22T22:40:44Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780698354"
       },
       {
         "id": 748901986,
@@ -90,15 +90,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/748901986"
       },
       {
-        "id": 780224423,
+        "id": 781006501,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/stats.txt",
         "size": 4004,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T19:38:29Z",
-        "updated_at": "2026-11-22T19:38:30Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780224423"
+        "created_at": "2026-11-23T00:52:10Z",
+        "updated_at": "2026-11-23T00:52:10Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/781006501"
       },
       {
         "id": 746136286,
@@ -113,7 +113,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 23,
+    "downloads": 2,
     "download_breakdown": {
       "tag": "3.2.4-fm",
       "mirrors": "",
@@ -126,7 +126,7 @@
         {
           "name": "rom_y2-linux-legacy.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-linux-legacy.zip",
-          "downloads": 3
+          "downloads": 0
         },
         {
           "name": "rom_y2-linux.zip",
@@ -136,17 +136,17 @@
         {
           "name": "rom_y2-macos.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-macos.zip",
-          "downloads": 2
+          "downloads": 0
         },
         {
           "name": "rom_y2-windows-legacy.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-windows-legacy.zip",
-          "downloads": 2
+          "downloads": 0
         },
         {
           "name": "rom_y2-windows.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-windows.zip",
-          "downloads": 14
+          "downloads": 0
         },
         {
           "name": "rom_y2.zip",
@@ -248,15 +248,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733117227"
       },
       {
-        "id": 780686408,
+        "id": 781006438,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/stats.txt",
         "size": 4078,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:35:16Z",
-        "updated_at": "2026-11-22T22:35:16Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780686408"
+        "created_at": "2026-11-23T00:52:08Z",
+        "updated_at": "2026-11-23T00:52:08Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/781006438"
       },
       {
         "id": 705968796,
@@ -406,15 +406,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733100021"
       },
       {
-        "id": 780672402,
+        "id": 781006355,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/stats.txt",
         "size": 4198,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:29:45Z",
-        "updated_at": "2026-11-22T22:29:45Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780672402"
+        "created_at": "2026-11-23T00:52:06Z",
+        "updated_at": "2026-11-23T00:52:06Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/781006355"
       },
       {
         "id": 706246494,
@@ -639,7 +639,7 @@
         "name": "rom-linux-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux-legacy.zip",
         "size": 251737396,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:22:47Z",
         "updated_at": "2026-11-22T22:23:00Z",
@@ -661,7 +661,7 @@
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-macos.zip",
         "size": 289543590,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:22:57Z",
         "updated_at": "2026-11-22T22:23:05Z",
@@ -683,7 +683,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip",
         "size": 368230121,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:22:47Z",
         "updated_at": "2026-11-22T22:23:00Z",
@@ -701,15 +701,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733067856"
       },
       {
-        "id": 780654965,
+        "id": 781004279,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/stats.txt",
         "size": 3995,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:22:59Z",
-        "updated_at": "2026-11-22T22:22:59Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780654965"
+        "created_at": "2026-11-23T00:51:11Z",
+        "updated_at": "2026-11-23T00:51:11Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/781004279"
       },
       {
         "id": 705987295,
@@ -724,7 +724,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 3,
+    "downloads": 9,
     "download_breakdown": {
       "tag": "3.1.2",
       "mirrors": "",
@@ -737,7 +737,7 @@
         {
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux-legacy.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom-linux.zip",
@@ -747,7 +747,7 @@
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-macos.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom-windows-legacy.zip",
@@ -757,7 +757,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip",
-          "downloads": 0
+          "downloads": 2
         },
         {
           "name": "rom.zip",
@@ -859,15 +859,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733055812"
       },
       {
-        "id": 780643485,
+        "id": 781004205,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/stats.txt",
         "size": 3993,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:18:46Z",
-        "updated_at": "2026-11-22T22:18:47Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780643485"
+        "created_at": "2026-11-23T00:51:08Z",
+        "updated_at": "2026-11-23T00:51:09Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/781004205"
       },
       {
         "id": 706229285,
@@ -1017,15 +1017,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733045698"
       },
       {
-        "id": 780632909,
+        "id": 781004144,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/stats.txt",
         "size": 3990,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:14:28Z",
-        "updated_at": "2026-11-22T22:14:29Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780632909"
+        "created_at": "2026-11-23T00:51:06Z",
+        "updated_at": "2026-11-23T00:51:07Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/781004144"
       },
       {
         "id": 706224595,
@@ -1175,15 +1175,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733034161"
       },
       {
-        "id": 780623771,
+        "id": 781004044,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/stats.txt",
         "size": 3984,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:10:07Z",
-        "updated_at": "2026-11-22T22:10:07Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780623771"
+        "created_at": "2026-11-23T00:51:04Z",
+        "updated_at": "2026-11-23T00:51:04Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/781004044"
       },
       {
         "id": 706217904,
@@ -1333,15 +1333,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733023028"
       },
       {
-        "id": 780612794,
+        "id": 781003972,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/stats.txt",
         "size": 4047,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:05:53Z",
-        "updated_at": "2026-11-22T22:05:53Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780612794"
+        "created_at": "2026-11-23T00:51:02Z",
+        "updated_at": "2026-11-23T00:51:02Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/781003972"
       },
       {
         "id": 706212939,
@@ -1502,15 +1502,15 @@
         "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/733012535"
       },
       {
-        "id": 780601617,
+        "id": 781003911,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/stats.txt",
         "size": 4172,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:01:52Z",
-        "updated_at": "2026-11-22T22:01:52Z",
-        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/780601617"
+        "created_at": "2026-11-23T00:51:00Z",
+        "updated_at": "2026-11-23T00:51:00Z",
+        "url": "https://api.github.com/repos/y1-community/y1-stock-rom-mirror/releases/assets/781003911"
       },
       {
         "id": 706208356,

@@ -39,7 +39,7 @@
         "name": "rom_q5-linux.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-linux.zip",
         "size": 643329529,
-        "download_count": 0,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:13:55Z",
         "updated_at": "2026-11-22T22:14:12Z",
@@ -101,19 +101,19 @@
         "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/717631990"
       },
       {
-        "id": 780632310,
+        "id": 781010900,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/stats.txt",
         "size": 4019,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:14:10Z",
-        "updated_at": "2026-11-22T22:14:10Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/780632310"
+        "created_at": "2026-11-23T00:54:18Z",
+        "updated_at": "2026-11-23T00:54:18Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/781010900"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 3,
     "download_breakdown": {
       "tag": "MX2D_Q5D-WV3.28-20250619",
       "mirrors": "",
@@ -131,7 +131,7 @@
         {
           "name": "rom_q5-linux.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5-linux.zip",
-          "downloads": 0
+          "downloads": 3
         },
         {
           "name": "rom_q5-macos.zip",
@@ -197,7 +197,7 @@
         "name": "rom_q5-linux.zip",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-linux.zip",
         "size": 649630601,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:08:36Z",
         "updated_at": "2026-11-22T22:08:52Z",
@@ -259,19 +259,19 @@
         "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/717627010"
       },
       {
-        "id": 780620977,
+        "id": 781010828,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/stats.txt",
         "size": 4079,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:08:51Z",
-        "updated_at": "2026-11-22T22:08:51Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/780620977"
+        "created_at": "2026-11-23T00:54:16Z",
+        "updated_at": "2026-11-23T00:54:16Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/781010828"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 2,
+    "downloads": 3,
     "download_breakdown": {
       "tag": "MX2-WVGA_TM-WV3.27-20250528",
       "mirrors": "",
@@ -289,7 +289,7 @@
         {
           "name": "rom_q5-linux.zip",
           "url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5-linux.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom_q5-macos.zip",
@@ -417,15 +417,15 @@
         "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/717622292"
       },
       {
-        "id": 780605550,
+        "id": 781010775,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/q5-stock-rom-mirror/releases/download/MX2-ES_Q5-WV5.02-20250619/stats.txt",
         "size": 4075,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:03:25Z",
-        "updated_at": "2026-11-22T22:03:25Z",
-        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/780605550"
+        "created_at": "2026-11-23T00:54:14Z",
+        "updated_at": "2026-11-23T00:54:14Z",
+        "url": "https://api.github.com/repos/y1-community/q5-stock-rom-mirror/releases/assets/781010775"
       }
     ],
     "mirror_downloads": 0,

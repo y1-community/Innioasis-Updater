@@ -50,7 +50,7 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux.zip",
         "size": 483102877,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:04:55Z",
         "updated_at": "2026-11-22T22:05:06Z",
@@ -101,19 +101,19 @@
         "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/706111766"
       },
       {
-        "id": 780676543,
+        "id": 781414966,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/stats.txt",
         "size": 4034,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:31:07Z",
-        "updated_at": "2026-11-22T22:31:07Z",
-        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/780676543"
+        "created_at": "2026-11-23T03:46:15Z",
+        "updated_at": "2026-11-23T03:46:16Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/781414966"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 2,
+    "downloads": 3,
     "download_breakdown": {
       "tag": "v1.1.0",
       "mirrors": "",
@@ -131,7 +131,7 @@
         {
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.1.0/rom-linux.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom-macos.zip",
@@ -248,15 +248,15 @@
         "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/733008365"
       },
       {
-        "id": 780676381,
+        "id": 781414902,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/better-y-mirror/releases/download/v1.0.0/stats.txt",
         "size": 3785,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:31:05Z",
-        "updated_at": "2026-11-22T22:31:05Z",
-        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/780676381"
+        "created_at": "2026-11-23T03:46:14Z",
+        "updated_at": "2026-11-23T03:46:14Z",
+        "url": "https://api.github.com/repos/y1-community/better-y-mirror/releases/assets/781414902"
       }
     ],
     "mirror_downloads": 0,

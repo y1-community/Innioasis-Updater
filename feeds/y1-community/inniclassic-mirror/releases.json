@@ -3,7 +3,7 @@
     "id": 432886914,
     "tag_name": "v1.4.5",
     "name": "Portable Flashing Package: InniClassic 1.4.5",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n### Fixed\n- **Theme could silently revert to the default after connecting the device as USB Mass Storage** \u2014 the selected theme was persisted only as a numeric index into the SD card's theme folder listing, and that listing's order isn't guaranteed stable across a mount/unmount cycle (common FAT32 behavior). The saved index could end up pointing at a completely different theme once the card was reconnected. The theme's name is now saved alongside the index and resolved by name on startup \u2014 independent of scan order \u2014 with the old index kept only as a fallback for upgrades.\n- **`.scrobbler.log` declared its timestamps as `#TZ/UNKNOWN`** even though they're genuinely UTC (`System.currentTimeMillis()` is always UTC epoch time, regardless of the device's local timezone setting). Now correctly declared as `#TZ/UTC`, so any tool that imports the log trusts the timestamps instead of asking or guessing. Only affects newly created log files \u2014 an existing `.scrobbler.log`'s header isn't rewritten.\n- **On-screen keyboard was missing common punctuation**, making some Wi-Fi passwords (and anything else typed through it \u2014 podcast search, Last.fm login, etc.) impossible to enter. Added `; : , / \\ ( ) [ ] { } < > ' ~` `` ` `` and `|`.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.5.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.5.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"95771feee3b0e600d991f15163c48f370e1b77aa796ee7c8f80ad8e7a4db4b44\",\"size\":775976425,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"4ca0d3e7b60f2e88d780feb1d3da760c92bc6db8957c4b6970d28e5fa2747ddb\",\"size\":537737584,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"812c04676ea974a28811ca1d59b5c4f4f1d9e1355e1877d5e425de1f64c2dc5f\",\"size\":764483688,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"9c9a42cfaf026c26828ffd0a8082aea9b252dca141f3c06efcac79d74f911ebc\",\"size\":589388507,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"849a7af1225744bd605b3ebf1aac5405e4cdd163d6c91399eb54cbe2a2a3a532\",\"size\":536151869,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"906480144e1f55c5a632dd3412fc863b9bfb33ed3ed254c43963311380e52c70\",\"size\":571992558,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-22T15:53:48Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"bce930a86e82410b89e2cffa6d9f4547186fedb07f21d440e3aad644352aae43\",\"original_asset_sizes\":{\"InniClassic-1.4.5.apk\":30017796,\"rom.zip\":462894253},\"original_assets\":[\"InniClassic-1.4.5.apk\",\"rom.zip\"],\"platforms\":{\"linux\":\"bf78bdce1cc2a345ba77c6b4c20f7e9b9e77f3a824f546c2b28473b5fff5612a\",\"linux-arm64\":\"a92e4efb28499126607bf2f92ce92a7f7f5f1b535589db5f73fea67c4284e1e0\",\"linux-legacy\":\"afa628d912c53c75d6bf94e370e2aa7fb8c055733337023f7d8f37c3408b7285\",\"macos\":\"685f37420b63bfae60641e5972badf1d8cc93bfc0899a55f734e3b74aec56ad1\",\"windows\":\"5326aac003240cf2d680c3ab76e0633abf07d45e396edb00b2906707ca164c81\",\"windows-legacy\":\"ec82ff77c459b13713ecc31fe0948bbc956431ce1923d7794bb4c6528c5e4e25\"},\"skipped\":[],\"source_fingerprint\":\"c46fcc98e178f3244e8da49b3168f113d6f93a0e59225cbc580573a04464b4fd\",\"stats\":{\"baseline\":{\"InniClassic-1.4.5.apk\":15,\"rom-linux-arm64.zip\":6,\"rom-linux-legacy.zip\":2,\"rom-linux.zip\":11,\"rom-macos.zip\":10,\"rom-windows-legacy.zip\":2,\"rom-windows.zip\":19,\"rom.zip\":11},\"generated_at\":\"2026-11-22T15:53:48Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304306838,\"tag\":\"2.5.6.1\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128322905,\"tag\":\"2.5.6.1\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109096332,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.5&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n### Fixed\n- **Theme could silently revert to the default after connecting the device as USB Mass Storage** \u2014 the selected theme was persisted only as a numeric index into the SD card's theme folder listing, and that listing's order isn't guaranteed stable across a mount/unmount cycle (common FAT32 behavior). The saved index could end up pointing at a completely different theme once the card was reconnected. The theme's name is now saved alongside the index and resolved by name on startup \u2014 independent of scan order \u2014 with the old index kept only as a fallback for upgrades.\n- **`.scrobbler.log` declared its timestamps as `#TZ/UNKNOWN`** even though they're genuinely UTC (`System.currentTimeMillis()` is always UTC epoch time, regardless of the device's local timezone setting). Now correctly declared as `#TZ/UTC`, so any tool that imports the log trusts the timestamps instead of asking or guessing. Only affects newly created log files \u2014 an existing `.scrobbler.log`'s header isn't rewritten.\n- **On-screen keyboard was missing common punctuation**, making some Wi-Fi passwords (and anything else typed through it \u2014 podcast search, Last.fm login, etc.) impossible to enter. Added `; : , / \\ ( ) [ ] { } < > ' ~` `` ` `` and `|`.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.5.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.5.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"2096f8b7e184d0796dcbc9864dc12494eaa542430318e3bfad997b2709fe0337\",\"size\":652644612,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"d0434e2c92101607f275040a67e695364e031b1279ef8a769e0709e4cde7e8f2\",\"size\":537737584,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"4ce9f25f390274b47261e02975d8978008a06c0a3fd4d92efa7d41cc13b80ae4\",\"size\":764698211,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"704ae7998f3009ca5d4de84f0ea3cf78bca549665067ee2e3c5c6955b9d0cc64\",\"size\":589604973,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"80c88b9e1a3e7346707e890f1aaa7cae07cd8857815fa60baaab4f4ebf9e3a89\",\"size\":536151869,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"968baa0c53108f466a3d5fc791bec213b9e9916d2ef578961f51e6e10bdb3a23\",\"size\":572154532,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-22T22:54:31Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"c3213a28df72ce6f01e22fc790ee70456b7bf105e29f44f243fefbae81b107a8\",\"original_asset_sizes\":{\"InniClassic-1.4.5.apk\":30017796,\"rom.zip\":462894253},\"original_assets\":[\"InniClassic-1.4.5.apk\",\"rom.zip\"],\"platforms\":{\"linux\":\"4752a33074df3c1cbdf87527097778eecd77c262752334ea9fa8a565ae27fba0\",\"linux-arm64\":\"167b507a9081adb4ff55c811671528e2c4844f7772107b6d15e31888c99506c7\",\"linux-legacy\":\"a3fb864d6bca53fa2a42f074902afac9efb0c51d00e6c373996083ef8e83183b\",\"macos\":\"0408ec3baf527e2799b1d066667fba175af68a2b43e0dae74c00ef82b8491c9c\",\"windows\":\"6c2e108d06021bd3b82f9d0bf2e9ff10aa202c1e314bcb532240b020c62ee15a\",\"windows-legacy\":\"cdb176e24cfb3e2b6241e151ddab8761c850c414f7e81258f9cca516b478bc35\"},\"skipped\":[],\"source_fingerprint\":\"f6950a8dd06d17ddf0f9a3a4c016a4e7fbc8e624731c5d7de1d8062e3cb6b0ed\",\"stats\":{\"baseline\":{\"InniClassic-1.4.5.apk\":16,\"rom-linux-arm64.zip\":6,\"rom-linux-legacy.zip\":2,\"rom-linux.zip\":11,\"rom-macos.zip\":10,\"rom-windows-legacy.zip\":2,\"rom-windows.zip\":25,\"rom.zip\":12},\"generated_at\":\"2026-11-22T22:54:31Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304524245,\"tag\":\"2.5.6.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128540618,\"tag\":\"2.5.6.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109258325,\"tag\":\"2.5.6.5\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":189956744,\"tag\":\"2.5.6.5\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":17} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:20:41Z",
@@ -24,6 +24,72 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706114458"
       },
       {
+        "id": 780733275,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-arm64.zip",
+        "size": 589604973,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:54:35Z",
+        "updated_at": "2026-11-22T22:55:30Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780733275"
+      },
+      {
+        "id": 780733283,
+        "name": "rom-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-legacy.zip",
+        "size": 536151869,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:54:35Z",
+        "updated_at": "2026-11-22T22:55:22Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780733283"
+      },
+      {
+        "id": 780733287,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux.zip",
+        "size": 764698211,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:54:35Z",
+        "updated_at": "2026-11-22T22:55:36Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780733287"
+      },
+      {
+        "id": 780735581,
+        "name": "rom-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-macos.zip",
+        "size": 572154532,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:55:22Z",
+        "updated_at": "2026-11-22T22:55:46Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780735581"
+      },
+      {
+        "id": 780733282,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows-legacy.zip",
+        "size": 537737584,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:54:35Z",
+        "updated_at": "2026-11-22T22:55:21Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780733282"
+      },
+      {
+        "id": 780733278,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows.zip",
+        "size": 652644612,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:54:35Z",
+        "updated_at": "2026-11-22T22:55:26Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780733278"
+      },
+      {
         "id": 733154599,
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom.zip",
@@ -35,112 +101,31 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733154599"
       },
       {
-        "id": 772062722,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows.zip",
-        "size": 775976425,
-        "download_count": 6,
-        "content_type": "application/zip",
-        "created_at": "2026-11-20T14:07:53Z",
-        "updated_at": "2026-11-20T14:08:24Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/772062722"
-      },
-      {
-        "id": 772062723,
-        "name": "rom-linux-legacy.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-legacy.zip",
-        "size": 536151869,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-20T14:07:53Z",
-        "updated_at": "2026-11-20T14:08:10Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/772062723"
-      },
-      {
-        "id": 772062727,
-        "name": "rom-windows-legacy.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows-legacy.zip",
-        "size": 537737584,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-20T14:07:53Z",
-        "updated_at": "2026-11-20T14:08:09Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/772062727"
-      },
-      {
-        "id": 779573359,
-        "name": "rom-linux-arm64.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-arm64.zip",
-        "size": 589388507,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T15:53:51Z",
-        "updated_at": "2026-11-22T15:54:26Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/779573359"
-      },
-      {
-        "id": 779573368,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux.zip",
-        "size": 764483688,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T15:53:51Z",
-        "updated_at": "2026-11-22T15:54:34Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/779573368"
-      },
-      {
-        "id": 779573369,
-        "name": "rom-macos.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-macos.zip",
-        "size": 571992558,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T15:53:51Z",
-        "updated_at": "2026-11-22T15:54:29Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/779573369"
-      },
-      {
-        "id": 780111903,
+        "id": 781269849,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/stats.txt",
         "size": 4042,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T18:57:23Z",
-        "updated_at": "2026-11-22T18:57:23Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780111903"
+        "created_at": "2026-11-23T02:46:51Z",
+        "updated_at": "2026-11-23T02:46:51Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/781269849"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 7,
+    "downloads": 1,
     "download_breakdown": {
       "tag": "v1.4.5",
       "mirrors": "",
       "firmware": [
         {
-          "name": "rom.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom.zip",
-          "downloads": 1
-        },
-        {
-          "name": "rom-windows.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows.zip",
-          "downloads": 6
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-arm64.zip",
+          "downloads": 0
         },
         {
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-legacy.zip",
-          "downloads": 0
-        },
-        {
-          "name": "rom-windows-legacy.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows-legacy.zip",
-          "downloads": 0
-        },
-        {
-          "name": "rom-linux-arm64.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-arm64.zip",
           "downloads": 0
         },
         {
@@ -152,6 +137,21 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-macos.zip",
           "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom.zip",
+          "downloads": 1
         }
       ],
       "portable": []
@@ -161,7 +161,7 @@
     "id": 432948615,
     "tag_name": "v1.4.4",
     "name": "Portable Flashing Package: InniClassic 1.4.4",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nA hardware-input overhaul: a real Hold/lock switch, a proper video/music handoff, and a round of Now Playing and Videos polish.\n\n### Added\n- **Hold (key lock)** \u2014 hold Center for 0.8s to lock the wheel/buttons (and physically turn the display off); hold Center again to unlock. This is the real fix for \"screen wakes up randomly in my pocket\": instead of guessing which button presses are accidental, you can now lock input entirely, matching the real iPod Classic's Hold switch.\n- **Toggle Favorite is back in the Now Playing hold-menu** (long-press Play/Pause) \u2014 caught and fixed before release: the redesigned Center gesture handling below removed the old \"double-click Center\" favorite shortcut without anywhere else to reach it.\n\n### Fixed\n- **Video Play/Pause was starting music instead of pausing the video.** Two compounding bugs: the hardware media-button receiver didn't know about video and would call the music player regardless of what was on screen (with \"Screen Off Control\" enabled), and opening a video didn't stop any music that was already playing. Both fixed.\n- **Videos list ignored the wheel/Center** in some cases \u2014 the screen was unconditionally swallowing every key before the shared list-navigation code could see it.\n- **Now Playing wheel seeking** is now a real preview-then-confirm: turning the wheel in Seek mode moves a pending position in 5-second steps without touching actual playback, applied only once you press Center again. The preview no longer gets silently overwritten by the background progress update.\n- Center-button handling is now centralized in one place \u2014 fixes a hold sometimes also registering as a select, and holding Center no longer opens the song menu or toggles video seek mode (that's long Play/Pause and short Center respectively now).\n- Pausing on the Classic theme no longer dims the album artwork or leaves a leftover audio-format overlay on screen; the selected Now Playing bottom-bar mode survives a pause/resume.\n- Removed a duplicate progress-callback registration.\n\n### Changed\n- More compact Now Playing progress/volume bars, fixed-width time labels, and evenly spaced rating marks.\n- Video now seeks via Previous/Next (\u00b110s); the wheel is volume-only during video playback.\n- Classic Videos list shares the same background/row styling as every other list.\n\nFull engineering write-up: [`docs/release-review-1.4.4.md`](https://github.com/FabianZettl/inniclassic/blob/master/docs/release-review-1.4.4.md).\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.4.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.4.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"253f1f86a56805632b8a0a593a75f23306c704d423fcc2907b3589ad32c70775\",\"size\":775967558,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"c2c41a158b8215c1844543adedfd3be4445d4bd78898338c72d21bdb3c3611b5\",\"size\":537728715,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"0267b47f5e8f3ebc866396c604a6efd54165219e3a95bb4f5e64b8641e13f7e4\",\"size\":764474821,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"02f7a90021c577ceec053d417360af57c9d9db0853932f20851518c7344388cb\",\"size\":589379640,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"499c153f67a723d7ff8e4c645ed4c5871dfc59dd4c47254f4af76a111e3f4fed\",\"size\":536143000,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"704a4e77fb7adddfd189681a2e5f2b9609dc2cadd7a7bb10909a8ae6d82f507e\",\"size\":571983690,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-22T15:50:39Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"26e8a6b90522d82ed7043a6d5b3444b5dd94547ee8a9f0273b31b42d46c82302\",\"original_asset_sizes\":{\"InniClassic-1.4.4.apk\":30000629,\"rom.zip\":462885386},\"original_assets\":[\"InniClassic-1.4.4.apk\",\"rom.zip\"],\"platforms\":{\"linux\":\"6c48e1137201cbdeefd4495da8e09250fe58016062792737b7fe7e489d1daf10\",\"linux-arm64\":\"4288525bcfcfaed0baa9d1dc4a2cbdaa72076813c55cef3ceee331aad00ed518\",\"linux-legacy\":\"11e0c4bc1e96c0bcb7d7ae30494f7bf35ace4a28f6b6255b36187fdb121c6fa8\",\"macos\":\"01d7d9bde1417781b26595311ccfbb8b2918322fe9f6072c380f2d6f6e4ba1f2\",\"windows\":\"41927eba718ab34f88d5f17b5ab0c1add1b23d6b149eba7fdb680ceea7394e41\",\"windows-legacy\":\"3c07d82698d2987fdc84e88653f7525b32b2644d7ff9d25f712a4fdccd77f013\"},\"skipped\":[],\"source_fingerprint\":\"97f249fc6fe59355c88c6731b508716cc2e135b00d05d8378cf50d98d22f6eff\",\"stats\":{\"baseline\":{\"InniClassic-1.4.4.apk\":15,\"rom-linux-arm64.zip\":2,\"rom-linux-legacy.zip\":2,\"rom-linux.zip\":11,\"rom-macos.zip\":9,\"rom-windows-legacy.zip\":2,\"rom-windows.zip\":12,\"rom.zip\":10},\"generated_at\":\"2026-11-22T15:50:39Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304306838,\"tag\":\"2.5.6.1\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128322905,\"tag\":\"2.5.6.1\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109096332,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.4&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nA hardware-input overhaul: a real Hold/lock switch, a proper video/music handoff, and a round of Now Playing and Videos polish.\n\n### Added\n- **Hold (key lock)** \u2014 hold Center for 0.8s to lock the wheel/buttons (and physically turn the display off); hold Center again to unlock. This is the real fix for \"screen wakes up randomly in my pocket\": instead of guessing which button presses are accidental, you can now lock input entirely, matching the real iPod Classic's Hold switch.\n- **Toggle Favorite is back in the Now Playing hold-menu** (long-press Play/Pause) \u2014 caught and fixed before release: the redesigned Center gesture handling below removed the old \"double-click Center\" favorite shortcut without anywhere else to reach it.\n\n### Fixed\n- **Video Play/Pause was starting music instead of pausing the video.** Two compounding bugs: the hardware media-button receiver didn't know about video and would call the music player regardless of what was on screen (with \"Screen Off Control\" enabled), and opening a video didn't stop any music that was already playing. Both fixed.\n- **Videos list ignored the wheel/Center** in some cases \u2014 the screen was unconditionally swallowing every key before the shared list-navigation code could see it.\n- **Now Playing wheel seeking** is now a real preview-then-confirm: turning the wheel in Seek mode moves a pending position in 5-second steps without touching actual playback, applied only once you press Center again. The preview no longer gets silently overwritten by the background progress update.\n- Center-button handling is now centralized in one place \u2014 fixes a hold sometimes also registering as a select, and holding Center no longer opens the song menu or toggles video seek mode (that's long Play/Pause and short Center respectively now).\n- Pausing on the Classic theme no longer dims the album artwork or leaves a leftover audio-format overlay on screen; the selected Now Playing bottom-bar mode survives a pause/resume.\n- Removed a duplicate progress-callback registration.\n\n### Changed\n- More compact Now Playing progress/volume bars, fixed-width time labels, and evenly spaced rating marks.\n- Video now seeks via Previous/Next (\u00b110s); the wheel is volume-only during video playback.\n- Classic Videos list shares the same background/row styling as every other list.\n\nFull engineering write-up: [`docs/release-review-1.4.4.md`](https://github.com/FabianZettl/inniclassic/blob/master/docs/release-review-1.4.4.md).\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.4.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.4.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"9b518d5c0a51844a097f3b2161539c96d53cfdea44cc6eababf9454f8edb8fcd\",\"size\":652635745,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"2bff8a221c46f5e65fb2010197424bff79e09261c8980bc4e336cc200ccbb684\",\"size\":537728715,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"eb9df001062a98f8e683450cb80ed3c79bebf4802cd0dce9099d4be84c1f79b4\",\"size\":764689344,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"fd3dad1d7151d5c55ba13d81a3ba3d3221ce0ba7242e031c03e9ffe5d6b67595\",\"size\":589596106,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"72b899ee892c031d91ba0d9872ed99154defb171276ba7a7481bc5db87d0ed6a\",\"size\":536143000,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"48c4d9c85ecd70389c5e60e597c4643bf419e1e290dfd1f71af102b45742e266\",\"size\":572145664,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-22T22:48:17Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"1d7222b7045752c544e3491a7525e6512853189a1adc50c7c648fd019f4d6e88\",\"original_asset_sizes\":{\"InniClassic-1.4.4.apk\":30000629,\"rom.zip\":462885386},\"original_assets\":[\"InniClassic-1.4.4.apk\",\"rom.zip\"],\"platforms\":{\"linux\":\"3fb48503fb04a9afbede66aba44a9aa76f5a433393d24592f45de70ff57675ee\",\"linux-arm64\":\"09617e5b7fddfe2c2825a1421fbe0e7932d077d87071879484d0b4a61341889e\",\"linux-legacy\":\"250bfd572990e38069198ebcea999f6d7cf3333f71d761a1ffa7d72e6677fbaa\",\"macos\":\"85f6f8516fc6fb6721fba46046d89dfe5e7a004e0e7f3c7a7260574a5265d6e7\",\"windows\":\"0b69f681a2e5b0791e7a54dd1fbadecf207787dc7880d97acc90ad4420c29338\",\"windows-legacy\":\"d843c0c7c5ea00f06964e52bfea563989140fe18fc567027e943ff7dbf2480f7\"},\"skipped\":[],\"source_fingerprint\":\"61eef2490f63c52b3e8b373a621a287e59494445d16f431c2751ccd1bad1c1f9\",\"stats\":{\"baseline\":{\"InniClassic-1.4.4.apk\":16,\"rom-linux-arm64.zip\":2,\"rom-linux-legacy.zip\":3,\"rom-linux.zip\":11,\"rom-macos.zip\":9,\"rom-windows-legacy.zip\":3,\"rom-windows.zip\":12,\"rom.zip\":10},\"generated_at\":\"2026-11-22T22:48:17Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304524245,\"tag\":\"2.5.6.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128540618,\"tag\":\"2.5.6.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109258325,\"tag\":\"2.5.6.5\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":189956744,\"tag\":\"2.5.6.5\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":17} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:12Z",
@@ -182,6 +182,72 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706288406"
       },
       {
+        "id": 780719121,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-arm64.zip",
+        "size": 589596106,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:48:21Z",
+        "updated_at": "2026-11-22T22:49:11Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780719121"
+      },
+      {
+        "id": 780719123,
+        "name": "rom-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-legacy.zip",
+        "size": 536143000,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:48:21Z",
+        "updated_at": "2026-11-22T22:49:08Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780719123"
+      },
+      {
+        "id": 780719126,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux.zip",
+        "size": 764689344,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:48:21Z",
+        "updated_at": "2026-11-22T22:49:15Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780719126"
+      },
+      {
+        "id": 780720797,
+        "name": "rom-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-macos.zip",
+        "size": 572145664,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:49:07Z",
+        "updated_at": "2026-11-22T22:49:27Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780720797"
+      },
+      {
+        "id": 780719124,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows-legacy.zip",
+        "size": 537728715,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:48:21Z",
+        "updated_at": "2026-11-22T22:49:07Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780719124"
+      },
+      {
+        "id": 780719112,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows.zip",
+        "size": 652635745,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:48:21Z",
+        "updated_at": "2026-11-22T22:49:10Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780719112"
+      },
+      {
         "id": 733139078,
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom.zip",
@@ -193,107 +259,31 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733139078"
       },
       {
-        "id": 772039249,
-        "name": "rom-linux-legacy.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-legacy.zip",
-        "size": 536143000,
-        "download_count": 1,
-        "content_type": "application/zip",
-        "created_at": "2026-11-20T14:01:13Z",
-        "updated_at": "2026-11-20T14:01:31Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/772039249"
-      },
-      {
-        "id": 772039264,
-        "name": "rom-windows-legacy.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows-legacy.zip",
-        "size": 537728715,
-        "download_count": 1,
-        "content_type": "application/zip",
-        "created_at": "2026-11-20T14:01:13Z",
-        "updated_at": "2026-11-20T14:01:32Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/772039264"
-      },
-      {
-        "id": 772039288,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows.zip",
-        "size": 775967558,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-20T14:01:13Z",
-        "updated_at": "2026-11-20T14:01:33Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/772039288"
-      },
-      {
-        "id": 779563872,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux.zip",
-        "size": 764474821,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T15:50:42Z",
-        "updated_at": "2026-11-22T15:51:22Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/779563872"
-      },
-      {
-        "id": 779563873,
-        "name": "rom-linux-arm64.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-arm64.zip",
-        "size": 589379640,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T15:50:42Z",
-        "updated_at": "2026-11-22T15:51:16Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/779563873"
-      },
-      {
-        "id": 779563876,
-        "name": "rom-macos.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-macos.zip",
-        "size": 571983690,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T15:50:42Z",
-        "updated_at": "2026-11-22T15:51:18Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/779563876"
-      },
-      {
-        "id": 780111697,
+        "id": 781269761,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/stats.txt",
-        "size": 4036,
+        "size": 4037,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T18:57:20Z",
-        "updated_at": "2026-11-22T18:57:21Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780111697"
+        "created_at": "2026-11-23T02:46:49Z",
+        "updated_at": "2026-11-23T02:46:49Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/781269761"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 2,
+    "downloads": 0,
     "download_breakdown": {
       "tag": "v1.4.4",
       "mirrors": "",
       "firmware": [
         {
-          "name": "rom.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom.zip",
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-arm64.zip",
           "downloads": 0
         },
         {
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-legacy.zip",
-          "downloads": 1
-        },
-        {
-          "name": "rom-windows-legacy.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows-legacy.zip",
-          "downloads": 1
-        },
-        {
-          "name": "rom-windows.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows.zip",
           "downloads": 0
         },
         {
@@ -302,13 +292,23 @@
           "downloads": 0
         },
         {
-          "name": "rom-linux-arm64.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-arm64.zip",
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-macos.zip",
           "downloads": 0
         },
         {
-          "name": "rom-macos.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-macos.zip",
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom.zip",
           "downloads": 0
         }
       ],
@@ -319,7 +319,7 @@
     "id": 432945204,
     "tag_name": "v1.4.3",
     "name": "Portable Flashing Package: InniClassic 1.4.3",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nA theme-consistency pass plus a round of real correctness/security fixes underneath, including a Last.fm crash and a Wireless PC Upload path-traversal issue.\n\n### Changed\n- **Classic themes tightened up**: edge-to-edge, tighter main-menu rows; consistent 21dp bold list type; saturated blue selection gradient shared by both the dynamic menus and library lists; silver status-bar gradient, darker secondary text, and more compact chevrons.\n- Battery silhouette is more rectangular, and battery percentage is now clamped to 0\u2013100.\n- Main Menu, Cover Flow, Wi-Fi and equalizer views now use generated Android view IDs with a stable logical-key mapping instead of ad hoc constants.\n\n### Fixed\n- **Last.fm scrobbling could crash its background worker outright** \u2014 the pending-scrobble queue called `JSONArray.remove(int)`, which doesn't exist on the Y1's Android API 17 (added in API 19). Also, Last.fm can return HTTP 200 with an API-level error payload, which was previously treated as a successful scrobble and silently dropped instead of retried.\n- **Wireless PC Upload (the web server) had a path-traversal weakness** \u2014 file operations now canonicalize and confine paths to the shared root, reject cross-origin writes, and render filenames as plain text. Interrupted uploads now write to a temp file and atomically replace the target only once complete, so a dropped connection can no longer corrupt an existing file. Server connections now have timeouts and a bounded worker pool; shutdown properly closes active sockets.\n- Recycled album rows in the library list could show a stale cover thumbnail if an in-flight request finished after the row was recycled for a different album.\n- Removed a duplicate broadcast-receiver registration and duplicate manifest permission entries; added the newer Android receiver-flags overload with an API 17 fallback and additional Bluetooth/location permission checks.\n- Sound Check no longer calls an API-19-only method unguarded on this API-17 device.\n- Launcher icons switched from WebP to PNG for reliable API 17 rendering; fixed a malformed vector icon path.\n- Audiobook bookmark saving now checks the playlist index is still valid before writing.\n\nFull engineering write-up: [`docs/release-review-1.4.3.md`](https://github.com/FabianZettl/inniclassic/blob/master/docs/release-review-1.4.3.md).\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.3.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.3.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"b95a1a6de862226d01400232bbca8c80d91e53c5a17f1ac8b71311d61e68731d\",\"size\":775973691,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"e39492ca72d2f2fca84ec9bec7cf12df53bb54057fb9d164751921c3998db497\",\"size\":537734848,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"0ece0a428324413e134c99ee6d2b7c504a611da073038301ee1efeaa54bdc53f\",\"size\":764480954,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"da0ba3962d912d7931f99b5879f188c1d687b48f2b95784627e3cc3debe6306f\",\"size\":589385773,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"13a2b69c3d920edef01530384234f04428aef2cdbed0257abea40c3e2910a0c8\",\"size\":536149133,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"290fbd7263772e3a31dbc3f78f43727d38473aa4e54f4487136795c0ef4b0084\",\"size\":571989824,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-22T15:47:21Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"1197744efb4cd8b940eefe0c71b808f3ea5c8715326b46d96ff63c35b855ac3a\",\"original_asset_sizes\":{\"InniClassic-1.4.3.apk\":29869268,\"rom.zip\":462891519},\"original_assets\":[\"InniClassic-1.4.3.apk\",\"rom.zip\"],\"platforms\":{\"linux\":\"2d396ed02ad6ae53e99b965dfab9fb05f65817ce1210666487bbbe4414aa0266\",\"linux-arm64\":\"9d914a3498d51f8b6f9c4b4506aa4c8f158768ac3f953d65e250bcc197cdab84\",\"linux-legacy\":\"0f4696a2036dbae0339a43909b85dc01c102b5ea0d3a6508ee87bba18cda7a48\",\"macos\":\"53e9700c68625fe13aaf5380b5f908c10881fa623ecf7300a6ee1af0270b0e61\",\"windows\":\"6b4027ad58d42f2c6f27f6e581aeadab497527205808b9be7d490c147ebcd531\",\"windows-legacy\":\"bbdd5a143c3cd93865fef897b478682994da91ba73a50118da0a391ad78583b8\"},\"skipped\":[],\"source_fingerprint\":\"9fc0079399882303a2df8133660a55e482679c04d5a0eab85a0dc910c892b54d\",\"stats\":{\"baseline\":{\"InniClassic-1.4.3.apk\":15,\"rom-linux-arm64.zip\":3,\"rom-linux-legacy.zip\":2,\"rom-linux.zip\":10,\"rom-macos.zip\":9,\"rom-windows-legacy.zip\":2,\"rom-windows.zip\":11,\"rom.zip\":10},\"generated_at\":\"2026-11-22T15:47:21Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304306838,\"tag\":\"2.5.6.1\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128322905,\"tag\":\"2.5.6.1\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109096332,\"tag\":\"2.5.6.1\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip.zip\",\"size\":313278741,\"tag\":\"2.5.4\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":16} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=FabianZettl%2Finniclassic&amp;tag=v1.4.3&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Finniclassic-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/inniclassic-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nA theme-consistency pass plus a round of real correctness/security fixes underneath, including a Last.fm crash and a Wireless PC Upload path-traversal issue.\n\n### Changed\n- **Classic themes tightened up**: edge-to-edge, tighter main-menu rows; consistent 21dp bold list type; saturated blue selection gradient shared by both the dynamic menus and library lists; silver status-bar gradient, darker secondary text, and more compact chevrons.\n- Battery silhouette is more rectangular, and battery percentage is now clamped to 0\u2013100.\n- Main Menu, Cover Flow, Wi-Fi and equalizer views now use generated Android view IDs with a stable logical-key mapping instead of ad hoc constants.\n\n### Fixed\n- **Last.fm scrobbling could crash its background worker outright** \u2014 the pending-scrobble queue called `JSONArray.remove(int)`, which doesn't exist on the Y1's Android API 17 (added in API 19). Also, Last.fm can return HTTP 200 with an API-level error payload, which was previously treated as a successful scrobble and silently dropped instead of retried.\n- **Wireless PC Upload (the web server) had a path-traversal weakness** \u2014 file operations now canonicalize and confine paths to the shared root, reject cross-origin writes, and render filenames as plain text. Interrupted uploads now write to a temp file and atomically replace the target only once complete, so a dropped connection can no longer corrupt an existing file. Server connections now have timeouts and a bounded worker pool; shutdown properly closes active sockets.\n- Recycled album rows in the library list could show a stale cover thumbnail if an in-flight request finished after the row was recycled for a different album.\n- Removed a duplicate broadcast-receiver registration and duplicate manifest permission entries; added the newer Android receiver-flags overload with an API 17 fallback and additional Bluetooth/location permission checks.\n- Sound Check no longer calls an API-19-only method unguarded on this API-17 device.\n- Launcher icons switched from WebP to PNG for reliable API 17 rendering; fixed a malformed vector icon path.\n- Audiobook bookmark saving now checks the playlist index is still valid before writing.\n\nFull engineering write-up: [`docs/release-review-1.4.3.md`](https://github.com/FabianZettl/inniclassic/blob/master/docs/release-review-1.4.3.md).\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.3.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.3.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"8cd114cbd7c8c5e1df5c6551dec4d633a85d333b2728a3e493334e63d0f0fe48\",\"size\":652641878,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"83a20737044a90560de2ec5d436c4baddf8b0e2214a5da7bf5ea9a9c996ba9f4\",\"size\":537734848,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"53070d87c7c9c7ac452544e34608be133395e18338b590807b94123592dc3100\",\"size\":764695477,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"0890a6d8bb0575553cfad95bbb2cec3e591cca6b267a0cd0e6fba930e36e4362\",\"size\":589602239,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"41ca5df50c8fc1afccc9ed2c9d04f267baf37a3d4c685c9226849a0fec5ffe2b\",\"size\":536149133,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"825d80309d7547ec39d218a2b2a6deba295abcfeaa78290e994adc28e9441eeb\",\"size\":572151798,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-22T22:41:49Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"d43fe6bac1d421f7694b4af94b8fc2f9e593af1fc8968b5e3b714572fc5cec60\",\"original_asset_sizes\":{\"InniClassic-1.4.3.apk\":29869268,\"rom.zip\":462891519},\"original_assets\":[\"InniClassic-1.4.3.apk\",\"rom.zip\"],\"platforms\":{\"linux\":\"0ce845836869eeb52db656a09cf5792dcc3303090e29cd3e64655143e41366bf\",\"linux-arm64\":\"7bf54255dfe0346fe0925692706d6700b1b66263d0d3754be50d7d38387d63af\",\"linux-legacy\":\"48ddc78f23843887494be59e953403352f49f00abcc612409310ed701a92d612\",\"macos\":\"7f00a89b3ffd0f72b0cc558bb173f5d1ecc1657c89961facf0e1b54e120e150e\",\"windows\":\"fcaab3c67b5685065254cc049a08639748a7717f98053309d8b4897aa357bddb\",\"windows-legacy\":\"70f508ec08a69a591d03a7e71f56133483b6c089ebe7a6e896215f76dde1f2cb\"},\"skipped\":[],\"source_fingerprint\":\"41630fccc6f3a721078fa44df4709794b2bb53bfd814b286fe65f715f93c0b2f\",\"stats\":{\"baseline\":{\"InniClassic-1.4.3.apk\":16,\"rom-linux-arm64.zip\":3,\"rom-linux-legacy.zip\":3,\"rom-linux.zip\":10,\"rom-macos.zip\":9,\"rom-windows-legacy.zip\":3,\"rom-windows.zip\":15,\"rom.zip\":10},\"generated_at\":\"2026-11-22T22:41:49Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304524245,\"tag\":\"2.5.6.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128540618,\"tag\":\"2.5.6.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109258325,\"tag\":\"2.5.6.5\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":189956744,\"tag\":\"2.5.6.5\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":17} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:12Z",
@@ -340,6 +340,72 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706278249"
       },
       {
+        "id": 780701723,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux-arm64.zip",
+        "size": 589602239,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:41:52Z",
+        "updated_at": "2026-11-22T22:42:50Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780701723"
+      },
+      {
+        "id": 780701711,
+        "name": "rom-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux-legacy.zip",
+        "size": 536149133,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:41:52Z",
+        "updated_at": "2026-11-22T22:42:49Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780701711"
+      },
+      {
+        "id": 780701719,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux.zip",
+        "size": 764695477,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:41:52Z",
+        "updated_at": "2026-11-22T22:43:01Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780701719"
+      },
+      {
+        "id": 780704048,
+        "name": "rom-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-macos.zip",
+        "size": 572151798,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:42:45Z",
+        "updated_at": "2026-11-22T22:43:12Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780704048"
+      },
+      {
+        "id": 780701721,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows-legacy.zip",
+        "size": 537734848,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:41:52Z",
+        "updated_at": "2026-11-22T22:42:44Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780701721"
+      },
+      {
+        "id": 780701716,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows.zip",
+        "size": 652641878,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:41:52Z",
+        "updated_at": "2026-11-22T22:42:53Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780701716"
+      },
+      {
         "id": 733124104,
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom.zip",
@@ -351,112 +417,31 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733124104"
       },
       {
-        "id": 772015437,
-        "name": "rom-windows-legacy.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows-legacy.zip",
-        "size": 537734848,
-        "download_count": 1,
-        "content_type": "application/zip",
-        "created_at": "2026-11-20T13:54:31Z",
-        "updated_at": "2026-11-20T13:54:53Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/772015437"
-      },
-      {
-        "id": 772015450,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows.zip",
-        "size": 775973691,
-        "download_count": 4,
-        "content_type": "application/zip",
-        "created_at": "2026-11-20T13:54:32Z",
-        "updated_at": "2026-11-20T13:55:01Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/772015450"
-      },
-      {
-        "id": 772015452,
-        "name": "rom-linux-legacy.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux-legacy.zip",
-        "size": 536149133,
-        "download_count": 1,
-        "content_type": "application/zip",
-        "created_at": "2026-11-20T13:54:32Z",
-        "updated_at": "2026-11-20T13:54:50Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/772015452"
-      },
-      {
-        "id": 779554534,
-        "name": "rom-macos.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-macos.zip",
-        "size": 571989824,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T15:47:23Z",
-        "updated_at": "2026-11-22T15:47:58Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/779554534"
-      },
-      {
-        "id": 779554536,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux.zip",
-        "size": 764480954,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T15:47:24Z",
-        "updated_at": "2026-11-22T15:48:13Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/779554536"
-      },
-      {
-        "id": 779554540,
-        "name": "rom-linux-arm64.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux-arm64.zip",
-        "size": 589385773,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T15:47:24Z",
-        "updated_at": "2026-11-22T15:47:54Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/779554540"
-      },
-      {
-        "id": 780111548,
+        "id": 781269652,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/stats.txt",
         "size": 4040,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T18:57:18Z",
-        "updated_at": "2026-11-22T18:57:18Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780111548"
+        "created_at": "2026-11-23T02:46:47Z",
+        "updated_at": "2026-11-23T02:46:47Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/781269652"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 6,
+    "downloads": 1,
     "download_breakdown": {
       "tag": "v1.4.3",
       "mirrors": "",
       "firmware": [
         {
-          "name": "rom.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom.zip",
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux-arm64.zip",
           "downloads": 0
-        },
-        {
-          "name": "rom-windows-legacy.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows-legacy.zip",
-          "downloads": 1
-        },
-        {
-          "name": "rom-windows.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows.zip",
-          "downloads": 4
         },
         {
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux-legacy.zip",
-          "downloads": 1
-        },
-        {
-          "name": "rom-macos.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-macos.zip",
           "downloads": 0
         },
         {
@@ -465,8 +450,23 @@
           "downloads": 0
         },
         {
-          "name": "rom-linux-arm64.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux-arm64.zip",
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom.zip",
           "downloads": 0
         }
       ],
@@ -498,6 +498,72 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706270799"
       },
       {
+        "id": 780687301,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux-arm64.zip",
+        "size": 589740903,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:35:38Z",
+        "updated_at": "2026-11-22T22:36:33Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780687301"
+      },
+      {
+        "id": 780687305,
+        "name": "rom-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux-legacy.zip",
+        "size": 536287797,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:35:38Z",
+        "updated_at": "2026-11-22T22:36:26Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780687305"
+      },
+      {
+        "id": 780687303,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux.zip",
+        "size": 764834141,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:35:38Z",
+        "updated_at": "2026-11-22T22:36:36Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780687303"
+      },
+      {
+        "id": 780689323,
+        "name": "rom-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-macos.zip",
+        "size": 572290462,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:36:27Z",
+        "updated_at": "2026-11-22T22:36:45Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780689323"
+      },
+      {
+        "id": 780687298,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-windows-legacy.zip",
+        "size": 537873512,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:35:38Z",
+        "updated_at": "2026-11-22T22:36:28Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780687298"
+      },
+      {
+        "id": 780687306,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-windows.zip",
+        "size": 652780542,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:35:38Z",
+        "updated_at": "2026-11-22T22:36:31Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780687306"
+      },
+      {
         "id": 733108756,
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom.zip",
@@ -509,26 +575,15 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733108756"
       },
       {
-        "id": 779544874,
-        "name": "rom-macos.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-macos.zip",
-        "size": 572128488,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T15:44:09Z",
-        "updated_at": "2026-11-22T15:44:46Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/779544874"
-      },
-      {
-        "id": 780111418,
+        "id": 781269534,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/stats.txt",
         "size": 4040,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T18:57:15Z",
-        "updated_at": "2026-11-22T18:57:16Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780111418"
+        "created_at": "2026-11-23T02:46:45Z",
+        "updated_at": "2026-11-23T02:46:45Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/781269534"
       }
     ],
     "mirror_downloads": 0,
@@ -538,13 +593,38 @@
       "mirrors": "",
       "firmware": [
         {
-          "name": "rom.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom.zip",
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux-arm64.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux.zip",
           "downloads": 0
         },
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom.zip",
           "downloads": 0
         }
       ],
@@ -576,28 +656,6 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706260049"
       },
       {
-        "id": 733094971,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom.zip",
-        "size": 463029711,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:54:20Z",
-        "updated_at": "2026-11-10T21:54:41Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733094971"
-      },
-      {
-        "id": 780671780,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-windows.zip",
-        "size": 652780068,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T22:29:28Z",
-        "updated_at": "2026-11-22T22:30:21Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780671780"
-      },
-      {
         "id": 780671782,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-linux-arm64.zip",
@@ -624,22 +682,11 @@
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-linux.zip",
         "size": 764833667,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:29:28Z",
         "updated_at": "2026-11-22T22:30:23Z",
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780671784"
-      },
-      {
-        "id": 780671785,
-        "name": "rom-windows-legacy.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-windows-legacy.zip",
-        "size": 537873040,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T22:29:28Z",
-        "updated_at": "2026-11-22T22:30:13Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780671785"
       },
       {
         "id": 780673440,
@@ -653,33 +700,56 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780673440"
       },
       {
-        "id": 780673468,
+        "id": 780671785,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-windows-legacy.zip",
+        "size": 537873040,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:29:28Z",
+        "updated_at": "2026-11-22T22:30:13Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780671785"
+      },
+      {
+        "id": 780671780,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-windows.zip",
+        "size": 652780068,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:29:28Z",
+        "updated_at": "2026-11-22T22:30:21Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780671780"
+      },
+      {
+        "id": 733094971,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom.zip",
+        "size": 463029711,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T21:54:20Z",
+        "updated_at": "2026-11-10T21:54:41Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733094971"
+      },
+      {
+        "id": 781269433,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/stats.txt",
         "size": 4043,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:30:14Z",
-        "updated_at": "2026-11-22T22:30:14Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780673468"
+        "created_at": "2026-11-23T02:46:42Z",
+        "updated_at": "2026-11-23T02:46:43Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/781269433"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 2,
     "download_breakdown": {
       "tag": "v1.4.1",
       "mirrors": "",
       "firmware": [
-        {
-          "name": "rom.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom.zip",
-          "downloads": 0
-        },
-        {
-          "name": "rom-windows.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-windows.zip",
-          "downloads": 0
-        },
         {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-linux-arm64.zip",
@@ -693,6 +763,11 @@
         {
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-linux.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-macos.zip",
           "downloads": 0
         },
         {
@@ -701,8 +776,13 @@
           "downloads": 0
         },
         {
-          "name": "rom-macos.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-macos.zip",
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom.zip",
           "downloads": 0
         }
       ],
@@ -734,15 +814,15 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706252600"
       },
       {
-        "id": 733081696,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom.zip",
-        "size": 463124096,
+        "id": 780655452,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-linux-arm64.zip",
+        "size": 589834816,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-10T21:50:01Z",
-        "updated_at": "2026-11-10T21:50:18Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733081696"
+        "created_at": "2026-11-22T22:23:11Z",
+        "updated_at": "2026-11-22T22:23:56Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780655452"
       },
       {
         "id": 780655450,
@@ -756,48 +836,15 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780655450"
       },
       {
-        "id": 780655451,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-windows.zip",
-        "size": 652874455,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T22:23:11Z",
-        "updated_at": "2026-11-22T22:24:02Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780655451"
-      },
-      {
-        "id": 780655452,
-        "name": "rom-linux-arm64.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-linux-arm64.zip",
-        "size": 589834816,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T22:23:11Z",
-        "updated_at": "2026-11-22T22:23:56Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780655452"
-      },
-      {
         "id": 780655454,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-linux.zip",
         "size": 764928054,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:23:11Z",
         "updated_at": "2026-11-22T22:24:05Z",
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780655454"
-      },
-      {
-        "id": 780655457,
-        "name": "rom-windows-legacy.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-windows-legacy.zip",
-        "size": 537967425,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T22:23:12Z",
-        "updated_at": "2026-11-22T22:23:58Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780655457"
       },
       {
         "id": 780657361,
@@ -811,26 +858,59 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780657361"
       },
       {
-        "id": 780657454,
+        "id": 780655457,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-windows-legacy.zip",
+        "size": 537967425,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:23:12Z",
+        "updated_at": "2026-11-22T22:23:58Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780655457"
+      },
+      {
+        "id": 780655451,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-windows.zip",
+        "size": 652874455,
+        "download_count": 2,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:23:11Z",
+        "updated_at": "2026-11-22T22:24:02Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780655451"
+      },
+      {
+        "id": 733081696,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom.zip",
+        "size": 463124096,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T21:50:01Z",
+        "updated_at": "2026-11-10T21:50:18Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733081696"
+      },
+      {
+        "id": 781269381,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/stats.txt",
-        "size": 4038,
+        "size": 4040,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:23:57Z",
-        "updated_at": "2026-11-22T22:23:57Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780657454"
+        "created_at": "2026-11-23T02:46:40Z",
+        "updated_at": "2026-11-23T02:46:40Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/781269381"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 0,
+    "downloads": 3,
     "download_breakdown": {
       "tag": "v1.3.2",
       "mirrors": "",
       "firmware": [
         {
-          "name": "rom.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom.zip",
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-linux-arm64.zip",
           "downloads": 0
         },
         {
@@ -839,18 +919,13 @@
           "downloads": 0
         },
         {
-          "name": "rom-windows.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-windows.zip",
-          "downloads": 0
-        },
-        {
-          "name": "rom-linux-arm64.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-linux-arm64.zip",
-          "downloads": 0
-        },
-        {
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-macos.zip",
           "downloads": 0
         },
         {
@@ -859,8 +934,13 @@
           "downloads": 0
         },
         {
-          "name": "rom-macos.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-macos.zip",
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-windows.zip",
+          "downloads": 2
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom.zip",
           "downloads": 0
         }
       ],
@@ -892,28 +972,6 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706244738"
       },
       {
-        "id": 733066859,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom.zip",
-        "size": 463124033,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:45:48Z",
-        "updated_at": "2026-11-10T21:46:06Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733066859"
-      },
-      {
-        "id": 780639586,
-        "name": "rom-windows-legacy.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-windows-legacy.zip",
-        "size": 537967362,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T22:17:04Z",
-        "updated_at": "2026-11-22T22:17:52Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780639586"
-      },
-      {
         "id": 780639587,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-linux-arm64.zip",
@@ -923,28 +981,6 @@
         "created_at": "2026-11-22T22:17:04Z",
         "updated_at": "2026-11-22T22:18:02Z",
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780639587"
-      },
-      {
-        "id": 780639593,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-windows.zip",
-        "size": 652874390,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T22:17:04Z",
-        "updated_at": "2026-11-22T22:17:57Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780639593"
-      },
-      {
-        "id": 780639596,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-linux.zip",
-        "size": 764927989,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T22:17:04Z",
-        "updated_at": "2026-11-22T22:17:57Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780639596"
       },
       {
         "id": 780639597,
@@ -958,6 +994,17 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780639597"
       },
       {
+        "id": 780639596,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-linux.zip",
+        "size": 764927989,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:17:04Z",
+        "updated_at": "2026-11-22T22:17:57Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780639596"
+      },
+      {
         "id": 780641167,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-macos.zip",
@@ -969,15 +1016,48 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780641167"
       },
       {
-        "id": 780641349,
+        "id": 780639586,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-windows-legacy.zip",
+        "size": 537967362,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:17:04Z",
+        "updated_at": "2026-11-22T22:17:52Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780639586"
+      },
+      {
+        "id": 780639593,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-windows.zip",
+        "size": 652874390,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:17:04Z",
+        "updated_at": "2026-11-22T22:17:57Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780639593"
+      },
+      {
+        "id": 733066859,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom.zip",
+        "size": 463124033,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T21:45:48Z",
+        "updated_at": "2026-11-10T21:46:06Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733066859"
+      },
+      {
+        "id": 781269323,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/stats.txt",
         "size": 4040,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:17:53Z",
-        "updated_at": "2026-11-22T22:17:53Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780641349"
+        "created_at": "2026-11-23T02:46:38Z",
+        "updated_at": "2026-11-23T02:46:38Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/781269323"
       }
     ],
     "mirror_downloads": 0,
@@ -987,28 +1067,8 @@
       "mirrors": "",
       "firmware": [
         {
-          "name": "rom.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom.zip",
-          "downloads": 0
-        },
-        {
-          "name": "rom-windows-legacy.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-windows-legacy.zip",
-          "downloads": 0
-        },
-        {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-linux-arm64.zip",
-          "downloads": 0
-        },
-        {
-          "name": "rom-windows.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-windows.zip",
-          "downloads": 0
-        },
-        {
-          "name": "rom-linux.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-linux.zip",
           "downloads": 0
         },
         {
@@ -1017,8 +1077,28 @@
           "downloads": 0
         },
         {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-linux.zip",
+          "downloads": 0
+        },
+        {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom.zip",
           "downloads": 0
         }
       ],
@@ -1050,39 +1130,6 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706235542"
       },
       {
-        "id": 733053514,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom.zip",
-        "size": 463129351,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:41:24Z",
-        "updated_at": "2026-11-10T21:41:53Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733053514"
-      },
-      {
-        "id": 780625189,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows.zip",
-        "size": 652879710,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T22:10:48Z",
-        "updated_at": "2026-11-22T22:11:38Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780625189"
-      },
-      {
-        "id": 780625193,
-        "name": "rom-linux.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux.zip",
-        "size": 764933309,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T22:10:48Z",
-        "updated_at": "2026-11-22T22:11:44Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780625193"
-      },
-      {
         "id": 780625196,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux-arm64.zip",
@@ -1092,17 +1139,6 @@
         "created_at": "2026-11-22T22:10:48Z",
         "updated_at": "2026-11-22T22:11:38Z",
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780625196"
-      },
-      {
-        "id": 780625197,
-        "name": "rom-windows-legacy.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows-legacy.zip",
-        "size": 537972682,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T22:10:48Z",
-        "updated_at": "2026-11-22T22:11:38Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780625197"
       },
       {
         "id": 780625198,
@@ -1116,6 +1152,17 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780625198"
       },
       {
+        "id": 780625193,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux.zip",
+        "size": 764933309,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:10:48Z",
+        "updated_at": "2026-11-22T22:11:44Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780625193"
+      },
+      {
         "id": 780626919,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-macos.zip",
@@ -1127,15 +1174,48 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780626919"
       },
       {
-        "id": 780627009,
+        "id": 780625197,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows-legacy.zip",
+        "size": 537972682,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:10:48Z",
+        "updated_at": "2026-11-22T22:11:38Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780625197"
+      },
+      {
+        "id": 780625189,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows.zip",
+        "size": 652879710,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:10:48Z",
+        "updated_at": "2026-11-22T22:11:38Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780625189"
+      },
+      {
+        "id": 733053514,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom.zip",
+        "size": 463129351,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T21:41:24Z",
+        "updated_at": "2026-11-10T21:41:53Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733053514"
+      },
+      {
+        "id": 781269201,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/stats.txt",
         "size": 4038,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:11:38Z",
-        "updated_at": "2026-11-22T22:11:39Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780627009"
+        "created_at": "2026-11-23T02:46:36Z",
+        "updated_at": "2026-11-23T02:46:36Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/781269201"
       }
     ],
     "mirror_downloads": 0,
@@ -1145,28 +1225,8 @@
       "mirrors": "",
       "firmware": [
         {
-          "name": "rom.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom.zip",
-          "downloads": 0
-        },
-        {
-          "name": "rom-windows.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows.zip",
-          "downloads": 0
-        },
-        {
-          "name": "rom-linux.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux.zip",
-          "downloads": 0
-        },
-        {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux-arm64.zip",
-          "downloads": 0
-        },
-        {
-          "name": "rom-windows-legacy.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows-legacy.zip",
           "downloads": 0
         },
         {
@@ -1175,8 +1235,28 @@
           "downloads": 0
         },
         {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux.zip",
+          "downloads": 0
+        },
+        {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom.zip",
           "downloads": 0
         }
       ],
@@ -1208,17 +1288,6 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706227512"
       },
       {
-        "id": 733040134,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom.zip",
-        "size": 462869594,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:37:05Z",
-        "updated_at": "2026-11-10T21:37:20Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733040134"
-      },
-      {
         "id": 780608852,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-arm64.zip",
@@ -1228,17 +1297,6 @@
         "created_at": "2026-11-22T22:04:33Z",
         "updated_at": "2026-11-22T22:05:18Z",
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780608852"
-      },
-      {
-        "id": 780608860,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows.zip",
-        "size": 652619953,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T22:04:33Z",
-        "updated_at": "2026-11-22T22:05:24Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780608860"
       },
       {
         "id": 780608862,
@@ -1263,17 +1321,6 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780608864"
       },
       {
-        "id": 780608865,
-        "name": "rom-windows-legacy.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows-legacy.zip",
-        "size": 537712923,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T22:04:33Z",
-        "updated_at": "2026-11-22T22:05:19Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780608865"
-      },
-      {
         "id": 780611032,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-macos.zip",
@@ -1285,15 +1332,48 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780611032"
       },
       {
-        "id": 780611089,
+        "id": 780608865,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows-legacy.zip",
+        "size": 537712923,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:04:33Z",
+        "updated_at": "2026-11-22T22:05:19Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780608865"
+      },
+      {
+        "id": 780608860,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows.zip",
+        "size": 652619953,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T22:04:33Z",
+        "updated_at": "2026-11-22T22:05:24Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780608860"
+      },
+      {
+        "id": 733040134,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom.zip",
+        "size": 462869594,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T21:37:05Z",
+        "updated_at": "2026-11-10T21:37:20Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733040134"
+      },
+      {
+        "id": 781269154,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/stats.txt",
         "size": 4038,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T22:05:20Z",
-        "updated_at": "2026-11-22T22:05:20Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780611089"
+        "created_at": "2026-11-23T02:46:34Z",
+        "updated_at": "2026-11-23T02:46:34Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/781269154"
       }
     ],
     "mirror_downloads": 0,
@@ -1303,18 +1383,8 @@
       "mirrors": "",
       "firmware": [
         {
-          "name": "rom.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom.zip",
-          "downloads": 0
-        },
-        {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-arm64.zip",
-          "downloads": 0
-        },
-        {
-          "name": "rom-windows.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows.zip",
           "downloads": 0
         },
         {
@@ -1328,13 +1398,23 @@
           "downloads": 0
         },
         {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-macos.zip",
+          "downloads": 0
+        },
+        {
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows-legacy.zip",
           "downloads": 0
         },
         {
-          "name": "rom-macos.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-macos.zip",
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom.zip",
           "downloads": 0
         }
       ],
@@ -1366,28 +1446,6 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706218788"
       },
       {
-        "id": 733027759,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom.zip",
-        "size": 457138028,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:32:49Z",
-        "updated_at": "2026-11-10T21:33:07Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733027759"
-      },
-      {
-        "id": 780593075,
-        "name": "rom-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows.zip",
-        "size": 646888385,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T21:58:17Z",
-        "updated_at": "2026-11-22T21:59:20Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780593075"
-      },
-      {
         "id": 780593077,
         "name": "rom-linux-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-arm64.zip",
@@ -1408,17 +1466,6 @@
         "created_at": "2026-11-22T21:58:17Z",
         "updated_at": "2026-11-22T21:59:15Z",
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780593079"
-      },
-      {
-        "id": 780593080,
-        "name": "rom-windows-legacy.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows-legacy.zip",
-        "size": 531981353,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-22T21:58:17Z",
-        "updated_at": "2026-11-22T21:59:12Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780593080"
       },
       {
         "id": 780593081,
@@ -1443,15 +1490,48 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780594439"
       },
       {
-        "id": 780595202,
+        "id": 780593080,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows-legacy.zip",
+        "size": 531981353,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T21:58:17Z",
+        "updated_at": "2026-11-22T21:59:12Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780593080"
+      },
+      {
+        "id": 780593075,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows.zip",
+        "size": 646888385,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T21:58:17Z",
+        "updated_at": "2026-11-22T21:59:20Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780593075"
+      },
+      {
+        "id": 733027759,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom.zip",
+        "size": 457138028,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T21:32:49Z",
+        "updated_at": "2026-11-10T21:33:07Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733027759"
+      },
+      {
+        "id": 781269093,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/stats.txt",
         "size": 4037,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T21:59:13Z",
-        "updated_at": "2026-11-22T21:59:13Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780595202"
+        "created_at": "2026-11-23T02:46:32Z",
+        "updated_at": "2026-11-23T02:46:32Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/781269093"
       }
     ],
     "mirror_downloads": 0,
@@ -1460,16 +1540,6 @@
       "tag": "v1.1.2",
       "mirrors": "",
       "firmware": [
-        {
-          "name": "rom.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom.zip",
-          "downloads": 0
-        },
-        {
-          "name": "rom-windows.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows.zip",
-          "downloads": 0
-        },
         {
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-arm64.zip",
@@ -1481,11 +1551,6 @@
           "downloads": 0
         },
         {
-          "name": "rom-windows-legacy.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows-legacy.zip",
-          "downloads": 0
-        },
-        {
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux.zip",
           "downloads": 0
@@ -1493,6 +1558,21 @@
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows-legacy.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom.zip",
           "downloads": 0
         }
       ],
@@ -1524,26 +1604,15 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/706209922"
       },
       {
-        "id": 733012967,
-        "name": "rom.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom.zip",
-        "size": 457032472,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-10T21:28:21Z",
-        "updated_at": "2026-11-10T21:28:39Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733012967"
-      },
-      {
-        "id": 780576441,
-        "name": "rom-windows-legacy.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-windows-legacy.zip",
-        "size": 531875845,
+        "id": 780576450,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux-arm64.zip",
+        "size": 583743240,
         "download_count": 0,
         "content_type": "application/zip",
         "created_at": "2026-11-22T21:51:58Z",
-        "updated_at": "2026-11-22T21:52:46Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780576441"
+        "updated_at": "2026-11-22T21:52:45Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780576450"
       },
       {
         "id": 780576447,
@@ -1568,15 +1637,26 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780576449"
       },
       {
-        "id": 780576450,
-        "name": "rom-linux-arm64.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux-arm64.zip",
-        "size": 583743240,
+        "id": 780578091,
+        "name": "rom-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-macos.zip",
+        "size": 566292774,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-22T21:52:46Z",
+        "updated_at": "2026-11-22T21:53:08Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780578091"
+      },
+      {
+        "id": 780576441,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-windows-legacy.zip",
+        "size": 531875845,
         "download_count": 0,
         "content_type": "application/zip",
         "created_at": "2026-11-22T21:51:58Z",
-        "updated_at": "2026-11-22T21:52:45Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780576450"
+        "updated_at": "2026-11-22T21:52:46Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780576441"
       },
       {
         "id": 780576451,
@@ -1590,26 +1670,26 @@
         "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780576451"
       },
       {
-        "id": 780578091,
-        "name": "rom-macos.zip",
-        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-macos.zip",
-        "size": 566292774,
+        "id": 733012967,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom.zip",
+        "size": 457032472,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-22T21:52:46Z",
-        "updated_at": "2026-11-22T21:53:08Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780578091"
+        "created_at": "2026-11-10T21:28:21Z",
+        "updated_at": "2026-11-10T21:28:39Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/733012967"
       },
       {
-        "id": 780578103,
+        "id": 781269003,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/stats.txt",
         "size": 4035,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-22T21:52:47Z",
-        "updated_at": "2026-11-22T21:52:47Z",
-        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/780578103"
+        "created_at": "2026-11-23T02:46:30Z",
+        "updated_at": "2026-11-23T02:46:30Z",
+        "url": "https://api.github.com/repos/y1-community/inniclassic-mirror/releases/assets/781269003"
       }
     ],
     "mirror_downloads": 0,
@@ -1619,13 +1699,8 @@
       "mirrors": "",
       "firmware": [
         {
-          "name": "rom.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom.zip",
-          "downloads": 0
-        },
-        {
-          "name": "rom-windows-legacy.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-windows-legacy.zip",
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux-arm64.zip",
           "downloads": 0
         },
         {
@@ -1639,8 +1714,13 @@
           "downloads": 0
         },
         {
-          "name": "rom-linux-arm64.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux-arm64.zip",
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-macos.zip",
+          "downloads": 0
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-windows-legacy.zip",
           "downloads": 0
         },
         {
@@ -1649,8 +1729,8 @@
           "downloads": 0
         },
         {
-          "name": "rom-macos.zip",
-          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-macos.zip",
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom.zip",
           "downloads": 0
         }
       ],
