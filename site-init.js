@@ -1338,12 +1338,12 @@
 
     function toolbarCandidates() {
         return [
-            "support_toolbar.html?v=20261123donatecompletion",
-            "../support_toolbar.html?v=20261123donatecompletion",
-            "../../support_toolbar.html?v=20261123donatecompletion",
-            "../../../support_toolbar.html?v=20261123donatecompletion",
-            "https://innioasis.app/support_toolbar.html?v=20261123donatecompletion",
-            "https://themes.innioasis.app/support_toolbar.html?v=20261123donatecompletion",
+            "support_toolbar.html?v=20261123donatecompletion2",
+            "../support_toolbar.html?v=20261123donatecompletion2",
+            "../../support_toolbar.html?v=20261123donatecompletion2",
+            "../../../support_toolbar.html?v=20261123donatecompletion2",
+            "https://innioasis.app/support_toolbar.html?v=20261123donatecompletion2",
+            "https://themes.innioasis.app/support_toolbar.html?v=20261123donatecompletion2",
         ];
     }
 

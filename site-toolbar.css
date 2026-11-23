@@ -1974,6 +1974,10 @@ body.site-dock-mode:has(#y1-site-dock-privacy-slot #y1-privacy-settings-btn) > #
     display: flex !important;
 }
 
+#support-toolbar-container.y1-toolbar-hidden.y1-modal-overlay-active .y1-site-dock-wrap {
+    display: block !important;
+}
+
 #support-toolbar-container.y1-toolbar-hidden.y1-modal-overlay-active #y1-site-dock-bar {
     display: none !important;
 }
