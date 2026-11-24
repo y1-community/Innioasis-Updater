@@ -1,7 +1,9 @@
 # Polish (pl) glossary and style guide
 
-Used for the reviewed Polish catalog (`i18n/reviewed/pl.json`). Anyone editing
-Polish copy should follow it so the site reads as one voice.
+The Polish catalog (`i18n/catalogs/pl.json`) was reviewed against this guide.
+Anyone editing Polish copy should follow it so the site reads as one voice.
+Edit the catalog directly: `translate.py` only fills in missing strings and
+never overwrites existing ones unless it is run with `--force`.
 
 ## Audience and tone
 
