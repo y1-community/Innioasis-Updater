@@ -79,6 +79,10 @@
 
 <package name="JJ Launcher" brand="Innioasis" repo="ismileblue/y1_launcher" portable_zips="y1-community/y1_launcher-mirror" device="Y1" url="https://github.com/ismileblue/y1_launcher" type="img" handler="Custom Firmware" />
 
+<package name="Solar" brand="Innioasis" repo="thesolarproject/solar"  device="Y1" url="https://github.com/thesolarproject/solar" type="img" handler="Custom Firmware" icon="https://raw.githubusercontent.com/thesolarproject/solar/main/app/src/main/assets/logo/square_full_logo_colour.png" />
+
+<package name="Solar" brand="Innioasis" repo="thesolarproject/solar"  device="Y2" url="https://github.com/thesolarproject/solar" type="img" handler="Custom Firmware" icon="https://raw.githubusercontent.com/thesolarproject/solar/main/app/src/main/assets/logo/square_full_logo_colour.png" />
+
 <!-- <package name="JJ Launcher" brand="Innioasis" repo="ismileblue/y1_launcher" portable_zips="y1-community/y1_launcher-mirror" device="Y2" url="https://github.com/ismileblue/y1_launcher" type="img" handler="Custom Firmware" /> -->
 
 <package name="inniclassic" brand="Innioasis" repo="FabianZettl/inniclassic" portable_zips="y1-community/inniclassic-mirror" device="Y1" url="https://github.com/FabianZettl/inniclassic" type="img" handler="Custom Firmware"  />
