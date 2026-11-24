@@ -28,15 +28,15 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.5.1/rom.zip",
         "size": 463691912,
-        "download_count": 14,
+        "download_count": 27,
         "content_type": "application/zip",
         "created_at": "2026-11-23T15:08:39Z",
         "updated_at": "2026-11-23T15:11:53Z",
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/783393828"
       }
     ],
-    "mirror_downloads": 7,
-    "downloads": 21,
+    "mirror_downloads": 9,
+    "downloads": 36,
     "download_breakdown": {
       "tag": "v1.5.1",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -44,7 +44,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.5.1/rom.zip",
-          "downloads": 15,
+          "downloads": 28,
           "mirror_downloads": 1
         }
       ],
@@ -54,7 +54,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.5.1/rom-windows.zip",
           "size": 652801010,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "windows-legacy",
@@ -68,7 +68,7 @@
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.5.1/rom-linux.zip",
           "size": 764854609,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "linux-arm64",
@@ -130,8 +130,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/598138138"
       }
     ],
-    "mirror_downloads": 88,
-    "downloads": 799,
+    "mirror_downloads": 93,
+    "downloads": 804,
     "download_breakdown": {
       "tag": "v1.4.5",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -149,21 +149,21 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows.zip",
           "size": 652644612,
-          "downloads": 28
+          "downloads": 29
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-windows-legacy.zip",
           "size": 537737584,
-          "downloads": 5
+          "downloads": 6
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux.zip",
           "size": 764698211,
-          "downloads": 15
+          "downloads": 16
         },
         {
           "platform": "linux-arm64",
@@ -177,14 +177,14 @@
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-legacy.zip",
           "size": 536151869,
-          "downloads": 6
+          "downloads": 7
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-macos.zip",
           "size": 572154532,
-          "downloads": 13
+          "downloads": 14
         }
       ]
     }
@@ -225,8 +225,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/598101368"
       }
     ],
-    "mirror_downloads": 56,
-    "downloads": 107,
+    "mirror_downloads": 64,
+    "downloads": 115,
     "download_breakdown": {
       "tag": "v1.4.4",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -234,8 +234,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/rom.zip",
-          "downloads": 61,
-          "mirror_downloads": 10
+          "downloads": 62,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -244,42 +244,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows.zip",
           "size": 652635745,
-          "downloads": 12
+          "downloads": 13
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-windows-legacy.zip",
           "size": 537728715,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux.zip",
           "size": 764689344,
-          "downloads": 14
+          "downloads": 15
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-arm64.zip",
           "size": 589596106,
-          "downloads": 5
+          "downloads": 6
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-linux-legacy.zip",
           "size": 536143000,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.4/rom-macos.zip",
           "size": 572145664,
-          "downloads": 9
+          "downloads": 11
         }
       ]
     }
@@ -320,8 +320,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/582091803"
       }
     ],
-    "mirror_downloads": 54,
-    "downloads": 228,
+    "mirror_downloads": 62,
+    "downloads": 236,
     "download_breakdown": {
       "tag": "v1.4.3",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -329,8 +329,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.3/rom.zip",
-          "downloads": 184,
-          "mirror_downloads": 10
+          "downloads": 185,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -339,42 +339,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows.zip",
           "size": 652641878,
-          "downloads": 16
+          "downloads": 17
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-windows-legacy.zip",
           "size": 537734848,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux.zip",
           "size": 764695477,
-          "downloads": 10
+          "downloads": 11
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux-arm64.zip",
           "size": 589602239,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-linux-legacy.zip",
           "size": 536149133,
-          "downloads": 3
+          "downloads": 5
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.3/rom-macos.zip",
           "size": 572151798,
-          "downloads": 9
+          "downloads": 10
         }
       ]
     }
@@ -415,8 +415,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/540948764"
       }
     ],
-    "mirror_downloads": 63,
-    "downloads": 356,
+    "mirror_downloads": 70,
+    "downloads": 363,
     "download_breakdown": {
       "tag": "v1.4.2",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -424,8 +424,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.2/rom.zip",
-          "downloads": 303,
-          "mirror_downloads": 10
+          "downloads": 304,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -434,42 +434,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-windows.zip",
           "size": 652780542,
-          "downloads": 13
+          "downloads": 14
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-windows-legacy.zip",
           "size": 537873512,
-          "downloads": 6
+          "downloads": 7
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux.zip",
           "size": 764834141,
-          "downloads": 12
+          "downloads": 13
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux-arm64.zip",
           "size": 589740903,
-          "downloads": 5
+          "downloads": 6
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-linux-legacy.zip",
           "size": 536287797,
-          "downloads": 6
+          "downloads": 7
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-macos.zip",
           "size": 572290462,
-          "downloads": 11
+          "downloads": 12
         }
       ]
     }
@@ -510,8 +510,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/534032001"
       }
     ],
-    "mirror_downloads": 110,
-    "downloads": 280,
+    "mirror_downloads": 117,
+    "downloads": 287,
     "download_breakdown": {
       "tag": "v1.4.1",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -519,8 +519,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.1/rom.zip",
-          "downloads": 203,
-          "mirror_downloads": 33
+          "downloads": 204,
+          "mirror_downloads": 34
         }
       ],
       "portable": [
@@ -529,42 +529,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-windows.zip",
           "size": 652780068,
-          "downloads": 25
+          "downloads": 26
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-windows-legacy.zip",
           "size": 537873040,
-          "downloads": 7
+          "downloads": 8
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-linux.zip",
           "size": 764833667,
-          "downloads": 20
+          "downloads": 21
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-linux-arm64.zip",
           "size": 589740429,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-linux-legacy.zip",
           "size": 536287323,
-          "downloads": 4
+          "downloads": 5
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.1/rom-macos.zip",
           "size": 572289988,
-          "downloads": 18
+          "downloads": 19
         }
       ]
     }
@@ -605,8 +605,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/520762400"
       }
     ],
-    "mirror_downloads": 64,
-    "downloads": 258,
+    "mirror_downloads": 71,
+    "downloads": 265,
     "download_breakdown": {
       "tag": "v1.3.2",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -614,8 +614,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.2/rom.zip",
-          "downloads": 204,
-          "mirror_downloads": 10
+          "downloads": 205,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -624,42 +624,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-windows.zip",
           "size": 652874455,
-          "downloads": 21
+          "downloads": 22
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-windows-legacy.zip",
           "size": 537967425,
-          "downloads": 6
+          "downloads": 7
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-linux.zip",
           "size": 764928054,
-          "downloads": 10
+          "downloads": 11
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-linux-arm64.zip",
           "size": 589834816,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-linux-legacy.zip",
           "size": 536381710,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.2/rom-macos.zip",
           "size": 572384375,
-          "downloads": 11
+          "downloads": 12
         }
       ]
     }
@@ -700,8 +700,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/500343475"
       }
     ],
-    "mirror_downloads": 57,
-    "downloads": 335,
+    "mirror_downloads": 64,
+    "downloads": 342,
     "download_breakdown": {
       "tag": "v1.3.1",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -709,8 +709,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.1/rom.zip",
-          "downloads": 288,
-          "mirror_downloads": 10
+          "downloads": 289,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -719,42 +719,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-windows.zip",
           "size": 652874390,
-          "downloads": 13
+          "downloads": 14
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-windows-legacy.zip",
           "size": 537967362,
-          "downloads": 4
+          "downloads": 5
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-linux.zip",
           "size": 764927989,
-          "downloads": 10
+          "downloads": 11
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-linux-arm64.zip",
           "size": 589834751,
-          "downloads": 6
+          "downloads": 7
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-linux-legacy.zip",
           "size": 536381645,
-          "downloads": 5
+          "downloads": 6
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.1/rom-macos.zip",
           "size": 572384310,
-          "downloads": 9
+          "downloads": 10
         }
       ]
     }
@@ -795,8 +795,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/493714045"
       }
     ],
-    "mirror_downloads": 54,
-    "downloads": 266,
+    "mirror_downloads": 61,
+    "downloads": 273,
     "download_breakdown": {
       "tag": "v1.3.0",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -804,8 +804,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.0/rom.zip",
-          "downloads": 222,
-          "mirror_downloads": 10
+          "downloads": 223,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -814,42 +814,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows.zip",
           "size": 652879710,
-          "downloads": 12
+          "downloads": 13
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-windows-legacy.zip",
           "size": 537972682,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux.zip",
           "size": 764933309,
-          "downloads": 13
+          "downloads": 14
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux-arm64.zip",
           "size": 589840071,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-linux-legacy.zip",
           "size": 536386965,
-          "downloads": 5
+          "downloads": 6
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.3.0/rom-macos.zip",
           "size": 572389630,
-          "downloads": 8
+          "downloads": 9
         }
       ]
     }
@@ -890,8 +890,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/491900122"
       }
     ],
-    "mirror_downloads": 60,
-    "downloads": 194,
+    "mirror_downloads": 67,
+    "downloads": 201,
     "download_breakdown": {
       "tag": "v1.2.0",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -899,8 +899,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/rom.zip",
-          "downloads": 144,
-          "mirror_downloads": 10
+          "downloads": 145,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -909,42 +909,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows.zip",
           "size": 652619953,
-          "downloads": 13
+          "downloads": 14
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-windows-legacy.zip",
           "size": 537712923,
-          "downloads": 5
+          "downloads": 6
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux.zip",
           "size": 764673552,
-          "downloads": 12
+          "downloads": 13
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-arm64.zip",
           "size": 589580314,
-          "downloads": 5
+          "downloads": 6
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-linux-legacy.zip",
           "size": 536127208,
-          "downloads": 4
+          "downloads": 5
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.2.0/rom-macos.zip",
           "size": 572129873,
-          "downloads": 11
+          "downloads": 12
         }
       ]
     }
@@ -985,8 +985,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/490752767"
       }
     ],
-    "mirror_downloads": 60,
-    "downloads": 123,
+    "mirror_downloads": 67,
+    "downloads": 130,
     "download_breakdown": {
       "tag": "v1.1.2",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -994,8 +994,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/rom.zip",
-          "downloads": 73,
-          "mirror_downloads": 10
+          "downloads": 74,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -1004,42 +1004,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows.zip",
           "size": 646888385,
-          "downloads": 14
+          "downloads": 15
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-windows-legacy.zip",
           "size": 531981353,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux.zip",
           "size": 758941984,
-          "downloads": 13
+          "downloads": 14
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-arm64.zip",
           "size": 583848746,
-          "downloads": 5
+          "downloads": 6
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-linux-legacy.zip",
           "size": 530395638,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.2/rom-macos.zip",
           "size": 566398305,
-          "downloads": 12
+          "downloads": 13
         }
       ]
     }
@@ -1080,8 +1080,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/489512937"
       }
     ],
-    "mirror_downloads": 53,
-    "downloads": 121,
+    "mirror_downloads": 60,
+    "downloads": 128,
     "download_breakdown": {
       "tag": "v1.1.1",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -1089,8 +1089,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.1/rom.zip",
-          "downloads": 78,
-          "mirror_downloads": 10
+          "downloads": 79,
+          "mirror_downloads": 11
         }
       ],
       "portable": [
@@ -1099,42 +1099,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-windows.zip",
           "size": 646782879,
-          "downloads": 14
+          "downloads": 15
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-windows-legacy.zip",
           "size": 531875845,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux.zip",
           "size": 758836478,
-          "downloads": 11
+          "downloads": 12
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux-arm64.zip",
           "size": 583743240,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-linux-legacy.zip",
           "size": 530290128,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.1.1/rom-macos.zip",
           "size": 566292774,
-          "downloads": 9
+          "downloads": 10
         }
       ]
     }

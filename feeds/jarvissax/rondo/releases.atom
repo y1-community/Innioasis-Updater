@@ -4,7 +4,60 @@
   <title>Release notes from jarvissax/rondo</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/jarvissax/rondo/releases.atom"/>
-  <updated>2026-11-22T15:30:56Z</updated>
+  <updated>2026-11-24T06:25:02Z</updated>
+  <entry>
+    <id>tag:innioasis.app,2026:jarvissax/rondo/v4.1.1</id>
+    <updated>2026-11-24T06:25:02Z</updated>
+    <published>2026-11-24T06:25:02Z</published>
+    <title>Rondo 4.1.1</title>
+    <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v4.1.1"/>
+    <innioasis:tag_name>v4.1.1</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>6</innioasis:downloads>
+    <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v4.1.1/updater.png</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.1.1/rom.zip" title="rom.zip" length="529416978" type="application/zip" innioasis:download_count="6" innioasis:asset_id="785988353"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.1.1/rondo-4.1.1.rondo" title="rondo-4.1.1.rondo" length="17531339" type="application/octet-stream" innioasis:download_count="5" innioasis:asset_id="785974390"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.1.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="8" innioasis:asset_id="785988365"/>
+    <content type="text">An update for the 4.0 firmware: Settings › System › Software update, the dashboard or the
+[update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as
+4.1.0 does; WhatsApp&#x27;s own words come in your language with server 3.6.1.
+
+### New
+
+- **Turn the Y1 off from the main menu** ([#6](https://github.com/jarvissax/rondo/issues/6)): hold
+  center there for 2 seconds. A bar fills while you hold; let go sooner and nothing happens. The Y1
+  has no power button of its own (center only switches it on), so until now shutting down took
+  Settings › System › Shut down. Holding center everywhere else still opens the options.
+- **The update page speaks Spanish:** it starts in the browser&#x27;s language when Rondo has it, with a
+  language picker.
+
+### Fixed
+
+- **Now Playing&#x27;s cover with Large text** ([#7](https://github.com/jarvissax/rondo/issues/7)): at the
+  largest text size the cover never came, only the note in its place. It&#x27;s there at every size now,
+  and on a Y1 that tried Large before, the covers come back by themselves.
+- **The guides named a Power button the Y1 doesn&#x27;t have.** They now say how to turn it off.
+
+</content>
+  </entry>
+  <entry>
+    <id>tag:innioasis.app,2026:jarvissax/rondo/server-v3.6.1</id>
+    <updated>2026-11-24T06:26:05Z</updated>
+    <published>2026-11-24T06:26:05Z</published>
+    <title>Rondo server 3.6.1</title>
+    <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/server-v3.6.1"/>
+    <innioasis:tag_name>server-v3.6.1</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>0</innioasis:downloads>
+    <innioasis:icon_url>https://innioasis.app/assets/rondo_icon.jpg</innioasis:icon_url>
+    <content type="text">
+- **WhatsApp&#x27;s words in the Rondo&#x27;s language:** what the server writes itself for a WhatsApp chat
+  comes in the language the Rondo speaks: a chat&#x27;s last message (&quot;Foto&quot;, &quot;Mensaje de voz 0:12&quot;),
+  what a reply quotes, &quot;Tú&quot;, &quot;Alguien&quot; and &quot;Grupo&quot;, a contact or a poll without a name, and why a
+  message wasn&#x27;t sent. Quotes received before keep their English words.
+
+</content>
+  </entry>
   <entry>
     <id>tag:innioasis.app,2026:jarvissax/rondo/v4.1.0</id>
     <updated>2026-11-22T15:30:56Z</updated>
@@ -13,11 +66,11 @@
     <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v4.1.0"/>
     <innioasis:tag_name>v4.1.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>45</innioasis:downloads>
+    <innioasis:downloads>51</innioasis:downloads>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v4.1.0/updater.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.1.0/rom.zip" title="rom.zip" length="529427429" type="application/zip" innioasis:download_count="34" innioasis:asset_id="779513569"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.1.0/rom.zip" title="rom.zip" length="529427429" type="application/zip" innioasis:download_count="40" innioasis:asset_id="779513569"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.1.0/rondo-4.1.0.rondo" title="rondo-4.1.0.rondo" length="17527612" type="application/octet-stream" innioasis:download_count="5" innioasis:asset_id="779507029"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.1.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="66" innioasis:asset_id="779513573"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.1.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="74" innioasis:asset_id="779513573"/>
     <content type="text">An update for the 4.0 firmware: Settings › System › Software update, the dashboard or the
 [update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as
 4.0.3 does; YouTube through your server comes in your language with server 3.6.0.
@@ -71,11 +124,11 @@
     <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v4.0.3"/>
     <innioasis:tag_name>v4.0.3</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>42</innioasis:downloads>
+    <innioasis:downloads>44</innioasis:downloads>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v4.0.3/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.3/rom.zip" title="rom.zip" length="529630108" type="application/zip" innioasis:download_count="30" innioasis:asset_id="775943220"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.3/rondo-4.0.3.rondo" title="rondo-4.0.3.rondo" length="17434834" type="application/octet-stream" innioasis:download_count="5" innioasis:asset_id="775937608"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.3/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="83" innioasis:asset_id="775943218"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.3/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="88" innioasis:asset_id="775943218"/>
     <content type="text">An update for the 4.0 firmware: Settings › System › Software update, the dashboard or the
 [update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as
 4.0.2 does.
@@ -102,7 +155,7 @@
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v4.0.2/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.2/rom.zip" title="rom.zip" length="529633262" type="application/zip" innioasis:download_count="7" innioasis:asset_id="775815118"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.2/rondo-4.0.2.rondo" title="rondo-4.0.2.rondo" length="17434913" type="application/octet-stream" innioasis:download_count="6" innioasis:asset_id="775809129"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="45" innioasis:asset_id="775815112"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="50" innioasis:asset_id="775815112"/>
     <content type="text">
 An update for the 4.0 firmware: Settings › System › Software update, the dashboard or the
 [update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as
@@ -135,7 +188,7 @@ An update for the 4.0 firmware: Settings › System › Software update, the das
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v4.0.1/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.1/rom.zip" title="rom.zip" length="529631161" type="application/zip" innioasis:download_count="79" innioasis:asset_id="763323134"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.1/rondo-4.0.1.rondo" title="rondo-4.0.1.rondo" length="17434265" type="application/octet-stream" innioasis:download_count="8" innioasis:asset_id="763315656"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="168" innioasis:asset_id="763323132"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="172" innioasis:asset_id="763323132"/>
     <content type="text">
 An update for the 4.0 firmware: Settings › System › Software update, the dashboard or the
 [update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as
@@ -180,11 +233,11 @@ An update for the 4.0 firmware: Settings › System › Software update, the das
     <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v4.0.0"/>
     <innioasis:tag_name>v4.0.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>64</innioasis:downloads>
+    <innioasis:downloads>66</innioasis:downloads>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v4.0.0/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.0/rom.zip" title="rom.zip" length="529762843" type="application/zip" innioasis:download_count="47" innioasis:asset_id="759019957"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.0/rondo-4.0.0.rondo" title="rondo-4.0.0.rondo" length="17284286" type="application/octet-stream" innioasis:download_count="6" innioasis:asset_id="759011872"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="149" innioasis:asset_id="759019959"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="153" innioasis:asset_id="759019959"/>
     <content type="text">For the **Y1, Type A**. A new firmware (number 4): **install it with Innioasis Updater CE**, with **Keep my settings** so your settings, Wi-Fi networks, server connection and paired headphones stay. Software update on 3.x shows 4.0.0 but can&#x27;t install it. Works with Rondo server 3.1.0 or newer.
 
 ### Battery
@@ -212,11 +265,11 @@ An update for the 4.0 firmware: Settings › System › Software update, the das
     <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v3.1.2"/>
     <innioasis:tag_name>v3.1.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>50</innioasis:downloads>
+    <innioasis:downloads>54</innioasis:downloads>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.1.2/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.1.2/rom.zip" title="rom.zip" length="529766730" type="application/zip" innioasis:download_count="26" innioasis:asset_id="754776453"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.1.2/rondo-3.1.2.rondo" title="rondo-3.1.2.rondo" length="17284177" type="application/octet-stream" innioasis:download_count="5" innioasis:asset_id="754769069"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.1.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="171" innioasis:asset_id="754776450"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.1.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="176" innioasis:asset_id="754776450"/>
     <content type="text">
 An update for the 3.0 firmware: Settings › System › Software update, the dashboard or the
 [update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as
@@ -253,7 +306,7 @@ An update for the 3.0 firmware: Settings › System › Software update, the das
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.1.1/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.1.1/rom.zip" title="rom.zip" length="529764548" type="application/zip" innioasis:download_count="13" innioasis:asset_id="754610065"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.1.1/rondo-3.1.1.rondo" title="rondo-3.1.1.rondo" length="17283860" type="application/octet-stream" innioasis:download_count="5" innioasis:asset_id="754600778"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.1.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="147" innioasis:asset_id="754610068"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.1.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="151" innioasis:asset_id="754610068"/>
     <content type="text">An update for the 3.0 firmware: Settings › System › Software update, the dashboard or the
 [update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as
 3.1.0 does; Rondo server 3.5.1 fixes WhatsApp&#x27;s unread counts and shows mentions by name.
@@ -279,11 +332,11 @@ An update for the 3.0 firmware: Settings › System › Software update, the das
     <link rel="alternate" type="text/html" href="https://github.com/jarvissax/rondo/releases/tag/v3.1.0"/>
     <innioasis:tag_name>v3.1.0</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>32</innioasis:downloads>
+    <innioasis:downloads>36</innioasis:downloads>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.1.0/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.1.0/rom.zip" title="rom.zip" length="529772302" type="application/zip" innioasis:download_count="12" innioasis:asset_id="754449234"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.1.0/rondo-3.1.0.rondo" title="rondo-3.1.0.rondo" length="17283396" type="application/octet-stream" innioasis:download_count="5" innioasis:asset_id="754442952"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.1.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="145" innioasis:asset_id="754449229"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.1.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="149" innioasis:asset_id="754449229"/>
     <content type="text">An update for the 3.0 firmware: Settings › System › Software update, the dashboard or the
 [update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as
 3.0.5 does.
@@ -319,7 +372,7 @@ An update for the 3.0 firmware: Settings › System › Software update, the das
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.0.5/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.5/rom.zip" title="rom.zip" length="529770848" type="application/zip" innioasis:download_count="13" innioasis:asset_id="753932986"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.5/rondo-3.0.5.rondo" title="rondo-3.0.5.rondo" length="17281563" type="application/octet-stream" innioasis:download_count="5" innioasis:asset_id="753927084"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.5/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="144" innioasis:asset_id="753932990"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.5/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="149" innioasis:asset_id="753932990"/>
     <content type="text">An update for the 3.0 firmware: Settings › System › Software update, the dashboard or the
 [update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as
 3.0.4 does; WhatsApp needs your server at 3.3.0, and reacting at 3.4.0. A Rondo still on 3.0.3 gets [3.0.4](https://github.com/jarvissax/rondo/releases/tag/v3.0.4)&#x27;s
@@ -427,7 +480,7 @@ changes with it too (WhatsApp, Settings › Server, colored tiles): the update p
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:downloads>8</innioasis:downloads>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.0.4/updater.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.4/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="31" innioasis:asset_id="751564016"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.4/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="32" innioasis:asset_id="751564016"/>
     <content type="text">**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. It works with Rondo server 3.1.0 or newer; WhatsApp needs your own server at [Rondo server 3.3.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.3.0) or newer (its admin page offers it).
 
 **New**
@@ -479,7 +532,7 @@ The full list is in [CHANGELOG.md](https://github.com/jarvissax/rondo/blob/main/
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:downloads>27</innioasis:downloads>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="136" innioasis:asset_id="748024900"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.3/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="137" innioasis:asset_id="748024900"/>
     <content type="text">**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it to [Rondo server 3.2.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.2.0) (its admin page offers it) so YouTube Music downloads get their year and track number; 3.1.0 works for everything else.
 
 **New**
@@ -536,7 +589,7 @@ Images: `ghcr.io/jarvissax/rondo-server:3.2.0` and `ghcr.io/jarvissax/rondo-upda
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:downloads>44</innioasis:downloads>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="161" innioasis:asset_id="739289680"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v3.0.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="162" innioasis:asset_id="739289680"/>
     <content type="text">**For the Innioasis Y1, Type A, on the Rondo 3.0 firmware.** An update you can install over Wi-Fi. With your own server, update it once to [Rondo server 3.1.0](https://github.com/jarvissax/rondo/releases/tag/server-v3.1.0) (its admin page offers it); from then on, Rondo and the server update apart.
 
 - **Downloads are about three times faster.** A YouTube download now comes in four parts at once: a 10-minute 720p video took 50 seconds instead of 145, a two-hour episode about 8 minutes.
@@ -680,7 +733,7 @@ Images: `ghcr.io/jarvissax/rondo-server:3.1.0` and `ghcr.io/jarvissax/rondo-upda
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:downloads>53</innioasis:downloads>
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="164" innioasis:asset_id="735470143"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v2.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="167" innioasis:asset_id="735470143"/>
     <content type="text">**For the Innioasis Y1, Type A.** A new firmware: install `rom.zip` with **Innioasis Updater CE** (choose **Keep Data** to keep your settings when coming from 1.0). After that, Rondo updates itself over Wi-Fi from GitHub.
 
 Rondo 2.0 is rebuilt as a program of its own: Android&#x27;s app layer is gone, the Y1 starts straight into Rondo, and everything runs smoother at 60 frames a second.
@@ -709,7 +762,7 @@ Files: `rondo-2.0.0.rondo` is the signed update bundle; `rom.zip` (the firmware)
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v1.0.2/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.2/rom.zip" title="rom.zip" length="528028371" type="application/zip" innioasis:download_count="81" innioasis:asset_id="704945383"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.2/rondo-1.0.2.apk" title="rondo-1.0.2.apk" length="6423022" type="application/vnd.android.package-archive" innioasis:download_count="27" innioasis:asset_id="704898289"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="419" innioasis:asset_id="704945379"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.2/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="423" innioasis:asset_id="704945379"/>
     <content type="text">Rondo 1.0.2 is about the server: it now updates itself with one click from its admin page. **Nothing changes on the Y1 itself**; it still offers this version as an update so the Y1 and the server stay on the same number.
 
 ## What&#x27;s new
@@ -756,7 +809,7 @@ If your Y1 runs Rondo 1.0.1, **Settings › Software update**, **Install** in th
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v1.0.1/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.1/rom.zip" title="rom.zip" length="528031354" type="application/zip" innioasis:download_count="36" innioasis:asset_id="704788605"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.1/rondo-1.0.1.apk" title="rondo-1.0.1.apk" length="6423015" type="application/vnd.android.package-archive" innioasis:download_count="24" innioasis:asset_id="704784362"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="316" innioasis:asset_id="704788606"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.1/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="321" innioasis:asset_id="704788606"/>
     <content type="text">A small update to Rondo for the **Innioasis Y1, Type A**. If your Y1 already runs Rondo, it installs over the one you have in about a minute, and everything stays: settings, Wi-Fi, server connection, playlists and music.
 
 ## What&#x27;s new
@@ -804,7 +857,7 @@ Only for the **Y1 Type A** (players that shipped with software 2.0.0 or later), 
     <innioasis:icon_url>https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.0/rom.zip" title="rom.zip" length="528038771" type="application/zip" innioasis:download_count="39" innioasis:asset_id="701648157"/>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.0/rondo-1.0.0.apk" title="rondo-1.0.0.apk" length="6421197" type="application/vnd.android.package-archive" innioasis:download_count="25" innioasis:asset_id="701646360"/>
-    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="385" innioasis:asset_id="701647593"/>
+    <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png" title="updater.png" length="12952" type="image/png" innioasis:download_count="389" innioasis:asset_id="701647593"/>
     <content type="text">Rondo is now a firmware for the Innioasis Y1: the Y1 starts straight into Rondo&#x27;s click-wheel menus, with nothing else on it.
 
 **For the Y1, Type A only** (players that shipped with software 2.0.0 or later). Not for the Type B or the Y2.

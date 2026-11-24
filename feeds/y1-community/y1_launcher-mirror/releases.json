@@ -1738,7 +1738,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom-windows.zip",
         "size": 645360394,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-23T01:15:07Z",
         "updated_at": "2026-11-23T01:16:07Z",
@@ -1922,7 +1922,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 26,
+    "downloads": 27,
     "download_breakdown": {
       "tag": "launcher-v0.11.6",
       "mirrors": "",
@@ -1955,7 +1955,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1_launcher-mirror/releases/download/launcher-v0.11.6/rom-windows.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom.zip",
