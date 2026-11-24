@@ -2462,8 +2462,12 @@
             if (!release) return "";
             var payload = escapeHtml(JSON.stringify(downloadBreakdown(release, item, tag)));
             return '<div class="lumen-meta lumen-download-count lumen-download-stats">' +
-                '<button type="button" class="lumen-download-stats__figure" data-download-stats="' + payload + '" aria-haspopup="dialog">Downloads: ' +
-                escapeHtml(formatDownloadCount(releaseDownloadTotal(release))) + '</button>' +
+                '<button type="button" class="lumen-download-stats__figure" data-download-stats="' + payload + '" aria-haspopup="dialog">' +
+                /* Label and number are separate nodes so the label is one catalog
+                   string ("Downloads:") instead of a new string for every count. */
+                '<span class="lumen-download-stats__label">Downloads:</span> ' +
+                '<span class="lumen-download-stats__value" translate="no" data-i18n-skip>' +
+                escapeHtml(formatDownloadCount(releaseDownloadTotal(release))) + '</span></button>' +
                 '<button type="button" class="lumen-download-stats__info" aria-haspopup="dialog" aria-label="Download figures and breakdown" title="Download figures and breakdown">i</button>' +
                 '</div>';
         }
