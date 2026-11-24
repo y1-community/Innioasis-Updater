@@ -52,6 +52,9 @@
 <div id="nav-root"></div>
 <main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../post-install/index.html">← All documentation</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · jj-launcher-classic</p><h1>Changelog</h1><p class="lumen-lead">Documentation published by FabianZettl/jj-launcher-classic.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../post-install/index.html">All documentation →</a><a class="lumen-button" href="../post-install/index.html">All documentation</a></div></header><article class="lumen-doc-body"><h1 id="changelog">Changelog</h1>
 <p>All notable changes to InniClassic (formerly &quot;JJ Launcher Classic Version&quot;) are documented here. This project is based on JJ Launcher <code>0.11</code>; this changelog covers only what changed on top of that base.</p>
+<h2 id="151---2026-11-23">[1.5.1] - 2026-11-23</h2>
+<h3 id="fixed">Fixed</h3>
+<ul><li><strong>Theme fell back to Dark after a restart or shutdown (#19):</strong> if the SD card was not mounted yet when the app started, the saved theme was not found. The app now keeps retrying for about 30 seconds and switches back to the saved theme as soon as the theme folder is there.</li></ul>
 <h2 id="150---2026-11-23">[1.5.0] - 2026-11-23</h2>
 <h3 id="added">Added</h3>
 <ul><li><strong>Letter Jump</strong> and <strong>Letter Jump Sensitivity</strong> (Settings): turn the letter jump on a fast wheel turn off, or choose High/Normal/Low.</li><li><strong>Multiple artists in one tag:</strong> a track artist like &quot;A; B&quot; is listed under A and under B in Artists.</li></ul>

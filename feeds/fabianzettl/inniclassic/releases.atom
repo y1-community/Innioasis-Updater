@@ -4,26 +4,40 @@
   <title>Release notes from FabianZettl/inniclassic</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/fabianzettl/inniclassic/releases.atom"/>
-  <updated>2026-11-23T14:12:20Z</updated>
+  <updated>2026-11-23T15:11:54Z</updated>
   <entry>
-    <id>tag:innioasis.app,2026:FabianZettl/inniclassic/v1.4.6</id>
-    <updated>2026-11-23T14:12:20Z</updated>
-    <published>2026-11-23T14:12:20Z</published>
-    <title>InniClassic 1.4.6</title>
-    <link rel="alternate" type="text/html" href="https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.6"/>
-    <innioasis:tag_name>v1.4.6</innioasis:tag_name>
+    <id>tag:innioasis.app,2026:FabianZettl/inniclassic/v1.5.1</id>
+    <updated>2026-11-23T15:11:54Z</updated>
+    <published>2026-11-23T15:11:54Z</published>
+    <title>InniClassic 1.5.1</title>
+    <link rel="alternate" type="text/html" href="https://github.com/FabianZettl/inniclassic/releases/tag/v1.5.1"/>
+    <innioasis:tag_name>v1.5.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>1</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.6/InniClassic-1.4.6.apk" title="InniClassic-1.4.6.apk" length="27370044" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="783197414"/>
-    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.6/rom.zip" title="rom.zip" length="463683550" type="application/zip" innioasis:download_count="1" innioasis:asset_id="783197424"/>
-    <content type="text">UI pass ported from the Classy fork: drawn chevrons and ticks in lists, iPod-style play/pause icon, redrawn shuffle/repeat icons, two-column About screen, low-battery warnings (10 % banner, 2 % Please charge).
+    <innioasis:downloads>21</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.5.1/InniClassic-1.5.1.apk" title="InniClassic-1.5.1.apk" length="27372760" type="application/vnd.android.package-archive" innioasis:download_count="2" innioasis:asset_id="783393826"/>
+    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.5.1/rom.zip" title="rom.zip" length="463691912" type="application/zip" innioasis:download_count="14" innioasis:asset_id="783393828"/>
+    <content type="text">Everything since 1.4.5: the Classy UI pass and a round of fixes.
 
-Fixes:
-- Settings and theme could be lost after Settings → Power Off (#9, #19): the filesystem is now synced before shutdown.
-- Bundled themes are reinstalled when the theme folder is empty.
-- Stronger vibration pulses for Weak and Normal (#21).
+**UI**
+- Drawn chevrons and ticks in lists and menus (Settings, main menu, Music/Videos, Theme/Language/EQ/Wi-Fi/Bluetooth)
+- iPod-style play/pause icon, redrawn shuffle/repeat icons
+- Two-column About screen
+- Low-battery warnings (10 % banner, 2 % Please charge)
+- Battery Percentage setting (level inside the battery icon)
 
-rom.zip is for the Innioasis Updater (keep the filename); the APK is for updating an existing install. Full list in CHANGELOG.md.</content>
+**New**
+- Power Off in the Now Playing hold-menu (long-press Play/Pause) (#20)
+- Mono Audio setting
+- Letter Jump and Letter Jump Sensitivity settings
+- Track artists like &quot;A; B&quot; are listed under each artist
+
+**Fixes**
+- Saved theme is restored when the SD card mounts late after boot (#19)
+- Settings are synced to disk before Settings → Power Off (#9, #19)
+- Bundled themes are reinstalled when the theme folder is empty
+- Stronger vibration for Weak/Normal (#21)
+
+rom.zip is for the Innioasis Updater (keep the filename); the APK updates an existing install. Details in CHANGELOG.md.</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:FabianZettl/inniclassic/v1.4.5</id>
@@ -33,7 +47,7 @@ rom.zip is for the Innioasis Updater (keep the filename); the APK is for updatin
     <link rel="alternate" type="text/html" href="https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.5"/>
     <innioasis:tag_name>v1.4.5</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>797</innioasis:downloads>
+    <innioasis:downloads>799</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/InniClassic-1.4.5.apk" title="InniClassic-1.4.5.apk" length="30017796" type="application/vnd.android.package-archive" innioasis:download_count="90" innioasis:asset_id="598138137"/>
     <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip" title="rom.zip" length="463531481" type="application/zip" innioasis:download_count="711" innioasis:asset_id="598138138"/>
     <content type="text">### Fixed
@@ -131,7 +145,7 @@ Full changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG
     <link rel="alternate" type="text/html" href="https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.2"/>
     <innioasis:tag_name>v1.4.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>355</innioasis:downloads>
+    <innioasis:downloads>356</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.2/InniClassic-1.4.2.apk" title="InniClassic-1.4.2.apk" length="27225340" type="application/vnd.android.package-archive" innioasis:download_count="49" innioasis:asset_id="540948765"/>
     <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.4.2/rom.zip" title="rom.zip" length="463673525" type="application/zip" innioasis:download_count="293" innioasis:asset_id="540948764"/>
     <content type="text">Theme-consistency and Podcasts fixes from user feedback.

@@ -1,53 +1,97 @@
 [
   {
-    "id": 455515751,
-    "tag_name": "v1.4.6",
-    "name": "InniClassic 1.4.6",
-    "body": "UI pass ported from the Classy fork: drawn chevrons and ticks in lists, iPod-style play/pause icon, redrawn shuffle/repeat icons, two-column About screen, low-battery warnings (10 % banner, 2 % Please charge).\n\nFixes:\n- Settings and theme could be lost after Settings \u2192 Power Off (#9, #19): the filesystem is now synced before shutdown.\n- Bundled themes are reinstalled when the theme folder is empty.\n- Stronger vibration pulses for Weak and Normal (#21).\n\nrom.zip is for the Innioasis Updater (keep the filename); the APK is for updating an existing install. Full list in CHANGELOG.md.",
+    "id": 455588101,
+    "tag_name": "v1.5.1",
+    "name": "InniClassic 1.5.1",
+    "body": "Everything since 1.4.5: the Classy UI pass and a round of fixes.\n\n**UI**\n- Drawn chevrons and ticks in lists and menus (Settings, main menu, Music/Videos, Theme/Language/EQ/Wi-Fi/Bluetooth)\n- iPod-style play/pause icon, redrawn shuffle/repeat icons\n- Two-column About screen\n- Low-battery warnings (10 % banner, 2 % Please charge)\n- Battery Percentage setting (level inside the battery icon)\n\n**New**\n- Power Off in the Now Playing hold-menu (long-press Play/Pause) (#20)\n- Mono Audio setting\n- Letter Jump and Letter Jump Sensitivity settings\n- Track artists like \"A; B\" are listed under each artist\n\n**Fixes**\n- Saved theme is restored when the SD card mounts late after boot (#19)\n- Settings are synced to disk before Settings \u2192 Power Off (#9, #19)\n- Bundled themes are reinstalled when the theme folder is empty\n- Stronger vibration for Weak/Normal (#21)\n\nrom.zip is for the Innioasis Updater (keep the filename); the APK updates an existing install. Details in CHANGELOG.md.",
     "draft": false,
     "prerelease": false,
-    "created_at": "2026-11-23T14:10:09Z",
-    "published_at": "2026-11-23T14:12:20Z",
-    "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.6",
+    "created_at": "2026-11-23T15:03:31Z",
+    "published_at": "2026-11-23T15:11:54Z",
+    "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.5.1",
     "icon_url": "",
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 783197414,
-        "name": "InniClassic-1.4.6.apk",
-        "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.6/InniClassic-1.4.6.apk",
-        "size": 27370044,
-        "download_count": 1,
+        "id": 783393826,
+        "name": "InniClassic-1.5.1.apk",
+        "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.5.1/InniClassic-1.5.1.apk",
+        "size": 27372760,
+        "download_count": 2,
         "content_type": "application/vnd.android.package-archive",
-        "created_at": "2026-11-23T14:10:49Z",
-        "updated_at": "2026-11-23T14:11:00Z",
-        "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/783197414"
+        "created_at": "2026-11-23T15:08:39Z",
+        "updated_at": "2026-11-23T15:08:59Z",
+        "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/783393826"
       },
       {
-        "id": 783197424,
+        "id": 783393828,
         "name": "rom.zip",
-        "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.6/rom.zip",
-        "size": 463683550,
-        "download_count": 1,
+        "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.5.1/rom.zip",
+        "size": 463691912,
+        "download_count": 14,
         "content_type": "application/zip",
-        "created_at": "2026-11-23T14:10:49Z",
-        "updated_at": "2026-11-23T14:12:19Z",
-        "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/783197424"
+        "created_at": "2026-11-23T15:08:39Z",
+        "updated_at": "2026-11-23T15:11:53Z",
+        "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/783393828"
       }
     ],
-    "mirror_downloads": 0,
-    "downloads": 1,
+    "mirror_downloads": 7,
+    "downloads": 21,
     "download_breakdown": {
-      "tag": "v1.4.6",
-      "mirrors": "",
+      "tag": "v1.5.1",
+      "mirrors": "y1-community/inniclassic-mirror",
       "firmware": [
         {
           "name": "rom.zip",
-          "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.6/rom.zip",
-          "downloads": 1
+          "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.5.1/rom.zip",
+          "downloads": 15,
+          "mirror_downloads": 1
         }
       ],
-      "portable": []
+      "portable": [
+        {
+          "platform": "windows",
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.5.1/rom-windows.zip",
+          "size": 652801010,
+          "downloads": 1
+        },
+        {
+          "platform": "windows-legacy",
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.5.1/rom-windows-legacy.zip",
+          "size": 537893982,
+          "downloads": 1
+        },
+        {
+          "platform": "linux",
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.5.1/rom-linux.zip",
+          "size": 764854609,
+          "downloads": 1
+        },
+        {
+          "platform": "linux-arm64",
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.5.1/rom-linux-arm64.zip",
+          "size": 589761371,
+          "downloads": 1
+        },
+        {
+          "platform": "linux-legacy",
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.5.1/rom-linux-legacy.zip",
+          "size": 536308265,
+          "downloads": 1
+        },
+        {
+          "platform": "macos",
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.5.1/rom-macos.zip",
+          "size": 572310930,
+          "downloads": 1
+        }
+      ]
     }
   },
   {
@@ -86,8 +130,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/598138138"
       }
     ],
-    "mirror_downloads": 86,
-    "downloads": 797,
+    "mirror_downloads": 88,
+    "downloads": 799,
     "download_breakdown": {
       "tag": "v1.4.5",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -95,8 +139,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip",
-          "downloads": 724,
-          "mirror_downloads": 13
+          "downloads": 725,
+          "mirror_downloads": 14
         }
       ],
       "portable": [
@@ -126,7 +170,7 @@
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.5/rom-linux-arm64.zip",
           "size": 589604973,
-          "downloads": 6
+          "downloads": 7
         },
         {
           "platform": "linux-legacy",
@@ -371,8 +415,8 @@
         "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/540948764"
       }
     ],
-    "mirror_downloads": 62,
-    "downloads": 355,
+    "mirror_downloads": 63,
+    "downloads": 356,
     "download_breakdown": {
       "tag": "v1.4.2",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -425,7 +469,7 @@
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/inniclassic-mirror/releases/download/v1.4.2/rom-macos.zip",
           "size": 572290462,
-          "downloads": 10
+          "downloads": 11
         }
       ]
     }

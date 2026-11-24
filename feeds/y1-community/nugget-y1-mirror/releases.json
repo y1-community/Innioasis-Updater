@@ -1,5 +1,217 @@
 [
   {
+    "id": 456205457,
+    "tag_name": "2.1.4.1",
+    "name": "Portable Flashing Package: 2.1.4.1",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.4.1#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y1 \u00b7 Type A**\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.4.1&amp;asset=rom.zip&amp;platform=windows&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.4.1&amp;asset=rom.zip&amp;platform=windows-legacy&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-windows-legacy.svg\" width=\"400\" alt=\"Download .zip for Windows 7 for Y1 \u00b7 Type A - XP/7/8.1 \u00b7 SP Flash Tool guide\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.4.1&amp;asset=rom.zip&amp;platform=linux&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.4.1&amp;asset=rom.zip&amp;platform=linux-arm64&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for Y1 \u00b7 Type A - portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.4.1&amp;asset=rom.zip&amp;platform=linux-legacy&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-linux-legacy.svg\" width=\"400\" alt=\"Download .zip for 32-bit Linux for Y1 \u00b7 Type A - pre-AppImage \u00b7 SP Flash Tool\"></a>\n  <a href=\"https://innioasis.app/firmware.html?repo=norocoral%2Fnugget-y1&amp;tag=2.1.4.1&amp;asset=rom.zip&amp;platform=macos&amp;mirror=y1-community%2Fnugget-y1-mirror\"><img src=\"https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/2.1.4...2.1.4.1\r\n\r\n1. Update battery icon\r\n2. Add rockbox display off patches\r\n3. Allow switching between software while in another software in configui\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"3b75b3674f92cdfdb236b6b91eece07f87c1f4d01072f5ed380a088ad9e30dc5\",\"size\":195822168,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows-legacy.zip\",\"platform\":\"windows-legacy\",\"sha256\":\"27cf6bbbe12ed809dd6e29bb9826716cf1a87a0fad75482d6183ae43b5636690\",\"size\":80915262,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"88d54226da694e3404771faaa52a1bbf36b8d43796fd5c09dc3d8a3b8c07bac5\",\"size\":307875813,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"b47c509f582dda95659e45b7b2fecc830bf281676a9d5624fcc1278f0de53ac8\",\"size\":132782575,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-linux-legacy.zip\",\"platform\":\"linux-legacy\",\"sha256\":\"d8142441b6b2611febd79fd9251b403e41b9055d3293cb520beced072324daa9\",\"size\":79329591,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"64e09b3c84d22ab6c39564bd449bf88d5b391e6534871d26ac3480c0eadcd212\",\"size\":115332254,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"}],\"built_at\":\"2026-11-24T01:40:34Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-windows-legacy.svg\",\"size\":1536},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-linux-legacy.svg\",\"size\":1538},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"966f6f02dcb36e957c29655e37021d28a71e942e1adfd10c080068f76cd8f426\",\"original_asset_sizes\":{\"boot_nugget.img\":5976064,\"liby1-sdk.zip\":331427,\"logo.bin\":98733,\"rockbox_sdcard.zip\":37961888,\"rom.zip\":6023537,\"sha256sums.txt\":321},\"original_assets\":[\"boot_nugget.img\",\"liby1-sdk.zip\",\"logo.bin\",\"rockbox_sdcard.zip\",\"rom.zip\",\"sha256sums.txt\"],\"platforms\":{\"linux\":\"2ce27545cce95ec0a5abf5569588869c884320af4327358b32dc0408a2036981\",\"linux-arm64\":\"c884bcd0e052b4ab7c30fa2b9bfcc1e449e905d4537709d61bdc98241b6ab9e9\",\"linux-legacy\":\"89081317c4610acd6527c5325b78011efc92037a3c2fbc046861963f1fa1df56\",\"macos\":\"77040ecf8f922f847f9bf7fff37afc526d42cd1c407e345f0d714549a288d718\",\"windows\":\"7e92c62245d1fcc9b1644ed31ebaf31404272d10b0069ba967d7fe803f2ee50b\",\"windows-legacy\":\"f142ff92ebd991972bc51ff956184adbc48829fb628d1848362dc7e488f041c2\"},\"skipped\":[{\"name\":\"liby1-sdk.zip\",\"reason\":\"no scatter file\"},{\"name\":\"rockbox_sdcard.zip\",\"reason\":\"no scatter file\"}],\"source_fingerprint\":\"a19f6a9ba80d3d20d4d960442db91fb10e29092ce42eab0fbcd17e44a6709007\",\"stats\":{\"baseline\":{},\"generated_at\":\"2026-11-24T01:40:34Z\",\"retired\":{}},\"updater\":{\"linux\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":304524245,\"tag\":\"2.5.6.5\"},\"linux-arm64\":{\"driver\":null,\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":128540618,\"tag\":\"2.5.6.5\"},\"linux-legacy\":{\"driver\":null,\"name\":\"flash_tool_linux.zip\",\"size\":73234593,\"tag\":\"flash_tool\"},\"macos\":{\"driver\":null,\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":109258325,\"tag\":\"2.5.6.5\"},\"windows\":{\"driver\":null,\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":189956744,\"tag\":\"2.5.6.5\"},\"windows-legacy\":{\"driver\":{\"digest\":\"sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98\",\"id\":735816514,\"name\":\"1.Install.Driver.First.and.Reboot.PC.exe\",\"repo\":\"y1-community/innioasis-updater\",\"size\":9534578,\"tag\":\"flash_tool\",\"updated_at\":\"2026-11-11T14:32:21Z\",\"url\":\"https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe\"},\"name\":\"flash_tool_windows.zip\",\"size\":65386356,\"tag\":\"flash_tool\"}},\"v\":17} -->\n",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-24T01:38:54Z",
+    "published_at": "2026-11-24T01:40:35Z",
+    "html_url": "https://github.com/y1-community/nugget-y1-mirror/releases/tag/2.1.4.1",
+    "icon_url": "",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 785269351,
+        "name": "boot_nugget.img",
+        "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/boot_nugget.img",
+        "size": 5976064,
+        "download_count": 1,
+        "content_type": "application/vnd.efi.img",
+        "created_at": "2026-11-24T01:40:43Z",
+        "updated_at": "2026-11-24T01:40:44Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785269351"
+      },
+      {
+        "id": 785269401,
+        "name": "liby1-sdk.zip",
+        "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/liby1-sdk.zip",
+        "size": 331427,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-24T01:40:44Z",
+        "updated_at": "2026-11-24T01:40:44Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785269401"
+      },
+      {
+        "id": 785269469,
+        "name": "logo.bin",
+        "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/logo.bin",
+        "size": 98733,
+        "download_count": 0,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-24T01:40:45Z",
+        "updated_at": "2026-11-24T01:40:45Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785269469"
+      },
+      {
+        "id": 785269486,
+        "name": "rockbox_sdcard.zip",
+        "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rockbox_sdcard.zip",
+        "size": 37961888,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-24T01:40:45Z",
+        "updated_at": "2026-11-24T01:40:47Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785269486"
+      },
+      {
+        "id": 785269056,
+        "name": "rom-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-linux-arm64.zip",
+        "size": 132782575,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-24T01:40:37Z",
+        "updated_at": "2026-11-24T01:40:45Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785269056"
+      },
+      {
+        "id": 785269064,
+        "name": "rom-linux-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-linux-legacy.zip",
+        "size": 79329591,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-24T01:40:37Z",
+        "updated_at": "2026-11-24T01:40:43Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785269064"
+      },
+      {
+        "id": 785269059,
+        "name": "rom-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-linux.zip",
+        "size": 307875813,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-24T01:40:37Z",
+        "updated_at": "2026-11-24T01:40:52Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785269059"
+      },
+      {
+        "id": 785269336,
+        "name": "rom-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-macos.zip",
+        "size": 115332254,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-24T01:40:43Z",
+        "updated_at": "2026-11-24T01:40:48Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785269336"
+      },
+      {
+        "id": 785269060,
+        "name": "rom-windows-legacy.zip",
+        "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-windows-legacy.zip",
+        "size": 80915262,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-24T01:40:37Z",
+        "updated_at": "2026-11-24T01:40:43Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785269060"
+      },
+      {
+        "id": 785269062,
+        "name": "rom-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-windows.zip",
+        "size": 195822168,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-24T01:40:37Z",
+        "updated_at": "2026-11-24T01:40:48Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785269062"
+      },
+      {
+        "id": 785269794,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom.zip",
+        "size": 6023537,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-24T01:40:52Z",
+        "updated_at": "2026-11-24T01:40:53Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785269794"
+      },
+      {
+        "id": 785269799,
+        "name": "sha256sums.txt",
+        "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/sha256sums.txt",
+        "size": 321,
+        "download_count": 1,
+        "content_type": "text/plain; charset=utf-8",
+        "created_at": "2026-11-24T01:40:53Z",
+        "updated_at": "2026-11-24T01:40:53Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785269799"
+      },
+      {
+        "id": 785352717,
+        "name": "stats.txt",
+        "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/stats.txt",
+        "size": 5111,
+        "download_count": 0,
+        "content_type": "text/plain; charset=utf-8",
+        "created_at": "2026-11-24T02:15:43Z",
+        "updated_at": "2026-11-24T02:15:43Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785352717"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 9,
+    "download_breakdown": {
+      "tag": "2.1.4.1",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "liby1-sdk.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/liby1-sdk.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rockbox_sdcard.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rockbox_sdcard.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-arm64.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-linux-arm64.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux-legacy.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-linux-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-linux.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-linux.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-macos.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-macos.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows-legacy.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-windows-legacy.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom-windows.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-windows.zip",
+          "downloads": 1
+        },
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
+  },
+  {
     "id": 454781926,
     "tag_name": "2.1.4",
     "name": "Portable Flashing Package: 2.1.4",
@@ -145,15 +357,15 @@
         "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/780603244"
       },
       {
-        "id": 783320111,
+        "id": 785352614,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/stats.txt",
         "size": 5111,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T14:46:15Z",
-        "updated_at": "2026-11-23T14:46:16Z",
-        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/783320111"
+        "created_at": "2026-11-24T02:15:40Z",
+        "updated_at": "2026-11-24T02:15:40Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785352614"
       }
     ],
     "mirror_downloads": 0,
@@ -346,15 +558,15 @@
         "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/777168133"
       },
       {
-        "id": 783319967,
+        "id": 785352533,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/stats.txt",
         "size": 4994,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T14:46:13Z",
-        "updated_at": "2026-11-23T14:46:13Z",
-        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/783319967"
+        "created_at": "2026-11-24T02:15:37Z",
+        "updated_at": "2026-11-24T02:15:37Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785352533"
       }
     ],
     "mirror_downloads": 0,
@@ -547,15 +759,15 @@
         "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/775431074"
       },
       {
-        "id": 783319702,
+        "id": 785352447,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/stats.txt",
         "size": 4993,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T14:46:09Z",
-        "updated_at": "2026-11-23T14:46:10Z",
-        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/783319702"
+        "created_at": "2026-11-24T02:15:34Z",
+        "updated_at": "2026-11-24T02:15:35Z",
+        "url": "https://api.github.com/repos/y1-community/nugget-y1-mirror/releases/assets/785352447"
       }
     ],
     "mirror_downloads": 0,

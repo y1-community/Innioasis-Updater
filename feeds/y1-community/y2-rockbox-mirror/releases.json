@@ -167,15 +167,15 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706116543"
       },
       {
-        "id": 783336789,
+        "id": 785357297,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.5-beta/stats.txt",
         "size": 5051,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T14:51:30Z",
-        "updated_at": "2026-11-23T14:51:30Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/783336789"
+        "created_at": "2026-11-24T02:17:45Z",
+        "updated_at": "2026-11-24T02:17:45Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/785357297"
       },
       {
         "id": 706114042,
@@ -358,15 +358,15 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706230074"
       },
       {
-        "id": 783336597,
+        "id": 785357230,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.2.0-beta/stats.txt",
         "size": 7769,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T14:51:27Z",
-        "updated_at": "2026-11-23T14:51:27Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/783336597"
+        "created_at": "2026-11-24T02:17:43Z",
+        "updated_at": "2026-11-24T02:17:43Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/785357230"
       },
       {
         "id": 706230077,
@@ -804,15 +804,15 @@
         "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/706215317"
       },
       {
-        "id": 783336410,
+        "id": 785357161,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/stats.txt",
         "size": 6944,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-23T14:51:24Z",
-        "updated_at": "2026-11-23T14:51:24Z",
-        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/783336410"
+        "created_at": "2026-11-24T02:17:41Z",
+        "updated_at": "2026-11-24T02:17:42Z",
+        "url": "https://api.github.com/repos/y1-community/y2-rockbox-mirror/releases/assets/785357161"
       },
       {
         "id": 706215320,
@@ -896,7 +896,7 @@
         "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
         "size": 551793517,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-22T22:09:24Z",
         "updated_at": "2026-11-22T22:09:52Z",
@@ -915,7 +915,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 12,
+    "downloads": 13,
     "download_breakdown": {
       "tag": "v0.1.0-beta",
       "mirrors": "",
@@ -983,7 +983,7 @@
         {
           "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
           "url": "https://github.com/y1-community/y2-rockbox-mirror/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater-windows.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip",
