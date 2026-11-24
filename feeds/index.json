@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-24T15:22:29Z",
+  "generated_at": "2026-11-24T16:51:16Z",
   "manifest_url": "https://innioasis.app/slidia_manifest.xml",
   "firmware_list_url": "https://innioasis.app/firmware-list.html",
   "feeds": {
@@ -248,6 +248,12 @@
       "releases_atom": "https://innioasis.app/feeds/y1-community/y1_launcher-mirror/releases.atom",
       "repo_json": "https://innioasis.app/feeds/y1-community/y1_launcher-mirror/repo.json"
     },
+    "y1-community/solar-mirror": {
+      "repo": "y1-community/solar-mirror",
+      "releases_json": "https://innioasis.app/feeds/y1-community/solar-mirror/releases.json",
+      "releases_atom": "https://innioasis.app/feeds/y1-community/solar-mirror/releases.atom",
+      "repo_json": "https://innioasis.app/feeds/y1-community/solar-mirror/repo.json"
+    },
     "y1-community/inniclassic-mirror": {
       "repo": "y1-community/inniclassic-mirror",
       "releases_json": "https://innioasis.app/feeds/y1-community/inniclassic-mirror/releases.json",
@@ -354,7 +360,11 @@
     },
     "y1-community/rondo-mirror": {
       "source_repo": "jarvissax/rondo",
-      "updated_at": "2026-11-24T11:44:36Z"
+      "updated_at": "2026-11-24T15:59:03Z"
+    },
+    "y1-community/solar-mirror": {
+      "source_repo": "thesolarproject/solar",
+      "updated_at": "2026-11-23T07:49:58Z"
     },
     "y1-community/y1-ata-rom-mirror": {
       "source_repo": "y1-community/y1-ata-rom",

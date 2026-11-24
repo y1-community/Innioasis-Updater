@@ -46,8 +46,8 @@
         "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/787373673"
       }
     ],
-    "mirror_downloads": 0,
-    "downloads": 5,
+    "mirror_downloads": 6,
+    "downloads": 11,
     "download_breakdown": {
       "tag": "v4.1.2",
       "mirrors": "y1-community/rondo-mirror",
@@ -55,7 +55,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/jarvissax/rondo/releases/download/v4.1.2/rom.zip",
-          "downloads": 5
+          "downloads": 6,
+          "mirror_downloads": 1
         }
       ],
       "portable": [
@@ -71,35 +72,35 @@
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-windows-legacy.zip",
           "size": 532951850,
-          "downloads": 0
+          "downloads": 1
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-linux.zip",
           "size": 769420769,
-          "downloads": 0
+          "downloads": 1
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-linux-arm64.zip",
           "size": 594327531,
-          "downloads": 0
+          "downloads": 1
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-linux-legacy.zip",
           "size": 531366135,
-          "downloads": 0
+          "downloads": 1
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-macos.zip",
           "size": 569172345,
-          "downloads": 0
+          "downloads": 1
         }
       ]
     }
@@ -144,15 +145,15 @@
         "name": "updater.png",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v4.1.1/updater.png",
         "size": 12952,
-        "download_count": 15,
+        "download_count": 16,
         "content_type": "image/png",
         "created_at": "2026-11-24T06:27:10Z",
         "updated_at": "2026-11-24T06:27:10Z",
         "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/785988365"
       }
     ],
-    "mirror_downloads": 0,
-    "downloads": 6,
+    "mirror_downloads": 7,
+    "downloads": 13,
     "download_breakdown": {
       "tag": "v4.1.1",
       "mirrors": "y1-community/rondo-mirror",
@@ -160,7 +161,8 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/jarvissax/rondo/releases/download/v4.1.1/rom.zip",
-          "downloads": 6
+          "downloads": 7,
+          "mirror_downloads": 1
         }
       ],
       "portable": [
@@ -169,42 +171,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-windows.zip",
           "size": 647875922,
-          "downloads": 0
+          "downloads": 1
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-windows-legacy.zip",
           "size": 532968882,
-          "downloads": 0
+          "downloads": 1
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-linux.zip",
           "size": 769437801,
-          "downloads": 0
+          "downloads": 1
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-linux-arm64.zip",
           "size": 594344563,
-          "downloads": 0
+          "downloads": 1
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-linux-legacy.zip",
           "size": 531383167,
-          "downloads": 0
+          "downloads": 1
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-macos.zip",
           "size": 569189379,
-          "downloads": 0
+          "downloads": 1
         }
       ]
     }
@@ -271,15 +273,15 @@
         "name": "updater.png",
         "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v4.1.0/updater.png",
         "size": 12952,
-        "download_count": 80,
+        "download_count": 81,
         "content_type": "image/png",
         "created_at": "2026-11-22T15:32:44Z",
         "updated_at": "2026-11-22T15:32:44Z",
         "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/779513573"
       }
     ],
-    "mirror_downloads": 11,
-    "downloads": 51,
+    "mirror_downloads": 17,
+    "downloads": 57,
     "download_breakdown": {
       "tag": "v4.1.0",
       "mirrors": "y1-community/rondo-mirror",
@@ -297,42 +299,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.0/rom-windows.zip",
           "size": 647886503,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.0/rom-windows-legacy.zip",
           "size": 532979463,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.0/rom-linux.zip",
           "size": 769448382,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.0/rom-linux-arm64.zip",
           "size": 594355144,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.0/rom-linux-legacy.zip",
           "size": 531393746,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.0/rom-macos.zip",
           "size": 569199958,
-          "downloads": 2
+          "downloads": 3
         }
       ]
     }
@@ -406,8 +408,8 @@
         "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/775943218"
       }
     ],
-    "mirror_downloads": 14,
-    "downloads": 44,
+    "mirror_downloads": 20,
+    "downloads": 50,
     "download_breakdown": {
       "tag": "v4.0.3",
       "mirrors": "y1-community/rondo-mirror",
@@ -425,42 +427,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.3/rom-windows.zip",
           "size": 648095084,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.3/rom-windows-legacy.zip",
           "size": 533188044,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.3/rom-linux.zip",
           "size": 769656963,
-          "downloads": 4
+          "downloads": 5
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.3/rom-linux-arm64.zip",
           "size": 594563725,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.3/rom-linux-legacy.zip",
           "size": 531602329,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.3/rom-macos.zip",
           "size": 569408540,
-          "downloads": 2
+          "downloads": 3
         }
       ]
     }
@@ -512,8 +514,8 @@
         "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/775815112"
       }
     ],
-    "mirror_downloads": 11,
-    "downloads": 18,
+    "mirror_downloads": 17,
+    "downloads": 24,
     "download_breakdown": {
       "tag": "v4.0.2",
       "mirrors": "y1-community/rondo-mirror",
@@ -531,42 +533,42 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.2/rom-windows.zip",
           "size": 648095384,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.2/rom-windows-legacy.zip",
           "size": 533188344,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.2/rom-linux.zip",
           "size": 769657263,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.2/rom-linux-arm64.zip",
           "size": 594564025,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.2/rom-linux-legacy.zip",
           "size": 531602629,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "macos",
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.2/rom-macos.zip",
           "size": 569408840,
-          "downloads": 2
+          "downloads": 3
         }
       ]
     }
@@ -618,8 +620,8 @@
         "url": "https://api.github.com/repos/jarvissax/rondo/releases/assets/763323132"
       }
     ],
-    "mirror_downloads": 24,
-    "downloads": 103,
+    "mirror_downloads": 29,
+    "downloads": 108,
     "download_breakdown": {
       "tag": "v4.0.1",
       "mirrors": "y1-community/rondo-mirror",
@@ -637,35 +639,35 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rom-windows.zip",
           "size": 648094386,
-          "downloads": 8
+          "downloads": 9
         },
         {
           "platform": "windows-legacy",
           "name": "rom-windows-legacy.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rom-windows-legacy.zip",
           "size": 533187346,
-          "downloads": 2
+          "downloads": 3
         },
         {
           "platform": "linux",
           "name": "rom-linux.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rom-linux.zip",
           "size": 769656265,
-          "downloads": 5
+          "downloads": 6
         },
         {
           "platform": "linux-arm64",
           "name": "rom-linux-arm64.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rom-linux-arm64.zip",
           "size": 594563027,
-          "downloads": 3
+          "downloads": 4
         },
         {
           "platform": "linux-legacy",
           "name": "rom-linux-legacy.zip",
           "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rom-linux-legacy.zip",
           "size": 531601631,
-          "downloads": 1
+          "downloads": 2
         },
         {
           "platform": "macos",

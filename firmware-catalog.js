@@ -312,7 +312,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
       "icon_dark_url": "",
       "body": "\"General performance and stability improvements.\"\r\n\r\nThis is the software currently being shipped on Y2 retail units.\r\n\r\n(Innioasis have once again failed to release this as an update to existing users, nor do they actually post what changes their firmwares include - this firmware release was imaged from a retail Y2 unit purchased November 12 by the Community Firmware Archive and Updater CE maintainer - tested against both of Updater's installation methods: SP Flash Tool and MTKclient and the underlying tools themselves on a pre 3.2.4 and a 3.2.4 unit with success. Image was taken before any use of the player)",
-      "downloads": 797,
+      "downloads": 799,
       "mirror_downloads": 53,
       "download_breakdown": {
         "tag": "3.2.4-fm",
@@ -321,7 +321,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip",
-            "downloads": 749,
+            "downloads": 751,
             "mirror_downloads": 5
           }
         ],
@@ -376,7 +376,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip",
           "size": 343742697,
-          "download_count": 744,
+          "download_count": 746,
           "content_type": "application/zip"
         },
         {
@@ -384,7 +384,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
           "size": 30612,
-          "download_count": 2853,
+          "download_count": 2868,
           "content_type": "image/jpeg"
         }
       ]
@@ -399,7 +399,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg",
       "icon_dark_url": "",
       "body": "General performance and stability improvements",
-      "downloads": 2526,
+      "downloads": 2527,
       "mirror_downloads": 252,
       "download_breakdown": {
         "tag": "3.2.1",
@@ -408,7 +408,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/rom_y2.zip",
-            "downloads": 2288,
+            "downloads": 2289,
             "mirror_downloads": 14
           }
         ],
@@ -463,7 +463,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/rom_y2.zip",
           "size": 355560849,
-          "download_count": 2274,
+          "download_count": 2275,
           "content_type": "application/zip"
         },
         {
@@ -471,7 +471,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg",
           "size": 30612,
-          "download_count": 2915,
+          "download_count": 2921,
           "content_type": "image/jpeg"
         }
       ]
@@ -486,7 +486,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
       "icon_dark_url": "",
       "body": "This release adds FM Radio functionality to supported Y2 players, please note that some earlier Y2 revisions may not have the underlying functionality needed for FM Radio, there is an alternative release of 3.2.0 available for those in these circumstances.",
-      "downloads": 1004,
+      "downloads": 1005,
       "mirror_downloads": 212,
       "download_breakdown": {
         "tag": "3.2.0-fm",
@@ -495,7 +495,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/rom_y2.zip",
-            "downloads": 811,
+            "downloads": 812,
             "mirror_downloads": 19
           }
         ],
@@ -550,7 +550,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/rom_y2.zip",
           "size": 355558382,
-          "download_count": 792,
+          "download_count": 793,
           "content_type": "application/zip"
         },
         {
@@ -558,7 +558,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "system.img",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img",
           "size": 859826928,
-          "download_count": 825,
+          "download_count": 826,
           "content_type": "application/x-apple-diskimage"
         },
         {
@@ -566,7 +566,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
           "size": 30612,
-          "download_count": 2423,
+          "download_count": 2428,
           "content_type": "image/jpeg"
         }
       ]
@@ -639,7 +639,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg",
           "size": 30612,
-          "download_count": 2141,
+          "download_count": 2146,
           "content_type": "image/jpeg"
         }
       ]
@@ -654,7 +654,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
       "icon_dark_url": "",
       "body": "Features improved support for AirPods Pro 2, AirPods 3 and later",
-      "downloads": 9898,
+      "downloads": 9901,
       "mirror_downloads": 585,
       "download_breakdown": {
         "tag": "3.1.2",
@@ -663,7 +663,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
-            "downloads": 9333,
+            "downloads": 9336,
             "mirror_downloads": 20
           }
         ],
@@ -718,7 +718,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
           "size": 250125316,
-          "download_count": 9313,
+          "download_count": 9316,
           "content_type": "application/zip"
         },
         {
@@ -726,7 +726,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
           "size": 30612,
-          "download_count": 9562,
+          "download_count": 9584,
           "content_type": "image/jpeg"
         }
       ]
@@ -813,7 +813,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
           "size": 30612,
-          "download_count": 8394,
+          "download_count": 8410,
           "content_type": "image/jpeg"
         }
       ]
@@ -2231,8 +2231,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
       "icon_dark_url": "",
       "body": "Original Innioasis G5 software **MX4_EN-V1.11-20260727**.\n\n- Model: **G5** (Innioasis)\n- Package: `rom_g5.zip`\n- Build tag: `MX4_EN-V1.11-20260727`\n- Build date: 2026-07-27\n\n## Install\n\n1. Download `rom_g5.zip` (every numbered volume if the release has more than one, then `cat rom_g5.zip.* > rom_g5.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g5.zip` | 1953.7 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G5>",
-      "downloads": 158,
-      "mirror_downloads": 21,
+      "downloads": 159,
+      "mirror_downloads": 22,
       "download_breakdown": {
         "tag": "MX4_EN-V1.11-20260727",
         "mirrors": "y1-community/g5-stock-rom-mirror",
@@ -2240,8 +2240,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g5.zip",
             "url": "https://github.com/y1-community/g5-stock-rom/releases/download/MX4_EN-V1.11-20260727/rom_g5.zip",
-            "downloads": 151,
-            "mirror_downloads": 14,
+            "downloads": 152,
+            "mirror_downloads": 15,
             "mirror_unallocated": 10
           }
         ],
@@ -2976,7 +2976,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://innioasis.app/assets/reborn_icon.jpg",
       "icon_dark_url": "",
       "body": "**Y2Linux 1.0 Beta 9.3.39**: the cover stays while you seek, and films that can't play say so.\n\n## Fixed\n- **The cover stays while seeking** ([Y2Reborn #151](https://github.com/SchulzCode/Y2Reborn/issues/151), thanks to jonasevcik): holding Next or Previous no longer blanks the cover on Now Playing and Home, and the quality line no longer flashes \"Starting\u2026\". The cover shown after a restart also stays when you press Play.\n- **Films the player can't show** are no longer listed among your songs: an MP4 or MKV with an HEVC (H.265) picture, common for anime episodes, or AV1 and similar, now stands in Videos as \"Can't play \u00b7 HEVC (H.265)\", and selecting it tells you to convert it to H.264 MP4 ([video guide](https://github.com/SchulzCode/Y2Linux/blob/main/docs/VIDEO.md)).\n\n## Known issues\n- After the update the player reads every file's details once in the background; on a very large library the first minutes are a little slower. When a new song starts, its cover still takes a moment to appear. Something else wrong? Send an error report right after it happens (Settings \u2192 System \u2192 Error Reports). **Restore Previous System** (Settings \u2192 System \u2192 About, tap Version seven times, then Diagnostics) takes you back to the version you had, with your data kept.\n\nMore details in plain words: **[Beta 9.3.39 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.3.39.md)**.\n\n<!-- github-only -->\n\n## Already running Y2Linux\nSettings \u2192 System \u2192 Software Update \u2192 **Update Now**. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. (On Beta 9.2.8 and older: Settings \u2192 About & Updates \u2192 Check for Updates \u2192 **Update Now**.)\n\n## Install with the Innioasis Updater (easiest)\nThe community **Innioasis Updater CE** installs Y2Linux for you, on **Windows, macOS and Linux**. No SP Flash Tool needed.\n\n1. Download Innioasis Updater CE for your computer from [innioasis.app](https://innioasis.app/guide.html#download-updater) and open it.\n2. Choose **Y2**, then **Reborn (Y2Linux)** and the latest release.\n3. Click **Install / Restore**, switch the Y2 off and connect it when the updater asks. Wait until it confirms, then unplug.\n4. Connect the Y2 to the computer and **copy** `system.img` from the Innioasis Y2 firmware package v3.2.0 into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nStep-by-step guides for each computer: [Reborn (Y2Linux) install guide](https://innioasis.app/guides/reborn-y2linux-y2.html). The way back to stock is in the updater too: choose **Y2** and **Original Software**.\n\n## Install with SP Flash Tool\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.9.3.39-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md) \u00b7 Storage: [Storage](https://github.com/SchulzCode/Y2Linux/blob/main/docs/STORAGE.md) \u00b7 [Videos](https://github.com/SchulzCode/Y2Linux/blob/main/docs/VIDEO.md) \u00b7 [FM radio](https://github.com/SchulzCode/Y2Linux/blob/main/docs/FM-RADIO.md) \u00b7 [Wi-Fi Share](https://github.com/SchulzCode/Y2Linux/blob/main/docs/WIFI-SHARE.md) \u00b7 [Buttons](https://github.com/SchulzCode/Y2Linux/blob/main/docs/BUTTONS.md) \u00b7 [Audiobooks](https://github.com/SchulzCode/Y2Linux/blob/main/docs/AUDIOBOOKS.md) \u00b7 Headphone settings: [Headphone output](https://github.com/SchulzCode/Y2Linux/blob/main/docs/HEADPHONE-OUTPUT.md) \u00b7 [Error reports](https://github.com/SchulzCode/Y2Linux/blob/main/docs/ERROR-REPORTS.md) \u00b7 Skins: [skin guide](https://github.com/SchulzCode/Y2Reborn/blob/main/docs/skins.md)\n\n## How it was tested\nThe platform's full check and Reborn's tests passed, and so did the tests of the release images. New tests cover keeping the cover for the same song, \"Starting\u2026\" only for a new song, and HEVC and H.264 test films. On the developer's player the screen was filmed while seeking: Beta 9.3.38 showed the note instead of the cover in 12 of 40 pictures, this release in none (0 of 40, and 0 of 50 when seeking like a held button). An HEVC test film was listed in Videos as \"Can't play\" and selecting it showed the message. **Not tested on a player: AV1 and the other formats, and a library of thousands of songs being read again.**\n\n## Files\n- `Y2Linux-1.0.0-beta.9.3.39-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 18000).\n- `Y2Linux-1.0.0-beta.9.3.39-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-275`. The video chip is driven by this project's own driver; no MediaTek video code is on the player. The speaker amplifier driver is Chris Hendrickson's GPL-2.0 AW87559 driver. The headphone profiles are AutoEq results (MIT, Jaakko Pasanen); their licence ships with them.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Awinic, Last.fm, AutoEq, Strawberry, MusicBee, HandBrake, FFmpeg or Google. Noto Sans CJK is licensed under the SIL Open Font License 1.1.\n\n<!-- /github-only -->\n\n<!-- github-only -->\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-third-party-c696742fae20.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-267/Y2Linux-sources-third-party-c696742fae20.tar) (attached to `baseline-267`), SHA-256 `c696742fae203e3ff8806e5c4ea8295a6cfa45f1945c2cfe03a763076780b9f1`\n- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-120`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz) (attached to `baseline-120`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n<!-- /github-only -->\n",
-      "downloads": 145,
+      "downloads": 148,
       "mirror_downloads": 10,
       "download_breakdown": {
         "tag": "baseline-275",
@@ -2985,7 +2985,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "Y2Linux-1.0.0-beta.9.3.39-first-install.zip",
             "url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-275/Y2Linux-1.0.0-beta.9.3.39-first-install.zip",
-            "downloads": 136,
+            "downloads": 139,
             "mirror_downloads": 1
           }
         ],
@@ -3048,7 +3048,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-275/manifest.json",
           "size": 4246,
-          "download_count": 458,
+          "download_count": 464,
           "content_type": "application/json"
         },
         {
@@ -3056,7 +3056,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-275/manifest.sig",
           "size": 64,
-          "download_count": 456,
+          "download_count": 462,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3064,7 +3064,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-275/recovery.img.gz",
           "size": 7558276,
-          "download_count": 128,
+          "download_count": 129,
           "content_type": "application/gzip"
         },
         {
@@ -3072,7 +3072,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-275/rootfs.ext4.gz",
           "size": 53460992,
-          "download_count": 128,
+          "download_count": 129,
           "content_type": "application/gzip"
         },
         {
@@ -3088,7 +3088,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.3.39-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-275/Y2Linux-1.0.0-beta.9.3.39-first-install.zip",
           "size": 69579474,
-          "download_count": 135,
+          "download_count": 138,
           "content_type": "application/zip"
         },
         {
@@ -18139,8 +18139,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/jarvissax/rondo/releases/download/v4.1.2/updater.png",
       "icon_dark_url": "",
       "body": "An update for the 4.0 firmware: Settings \u203a System \u203a Software update, the dashboard or the\n[update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as\n4.1.1 does; it needs no server update.\n\n### New\n\n- **Audiobooks** (Library \u203a Audiobooks): the books on the card, **Continue listening** first, each\n  with its cover, author and time left. A book is everything in an `Audiobooks` folder (the stock\n  firmware's, so its books carry over), any `.m4b`, or files tagged *Audiobook*; a folder of files\n  is one book, its disc folders included. Books stay out of Songs, Shuffle songs, Artists, Albums,\n  Genres and Organize.\n  - **Where you stopped** is kept for every book, and a resume starts a few seconds earlier after\n    a pause (more after a long one).\n  - **Next and Previous move by chapter** (an `.m4b`'s chapters, or each file of a folder); a book\n    without chapters skips 30 seconds forward and 15 back.\n  - **Speed** from 0.75\u00d7 to 3\u00d7, the voice's pitch kept, remembered per book.\n  - **Bookmarks**, **Mark as finished**, and Now Playing with the chapter and the time left in it\n    and in the book. A `cover.jpg` in a book's folder is its cover; Library's search finds books.\n  - **Your music waits:** a book plays as its own queue, and the music comes back where it was when\n    the book ends or with **Back to your music**.\n- **Sleep timer**, for music too, in Now Playing's options: 15 to 60 minutes, or the end of the\n  song or chapter, with a 10-second fade.\n- **The dashboard** has Audiobooks too (progress, chapters, bookmarks, speed, uploads into\n  `Audiobooks`), and the sleep timer on its Overview.\n\n### Changed\n\n- **Settings \u203a Language** is now above System.\n- **The dashboard's Library on a phone:** its buttons wrap instead of running off the screen, and\n  the sections show their icons, the chosen one with its name.\n",
-      "downloads": 5,
-      "mirror_downloads": 0,
+      "downloads": 11,
+      "mirror_downloads": 6,
       "download_breakdown": {
         "tag": "v4.1.2",
         "mirrors": "y1-community/rondo-mirror",
@@ -18148,7 +18148,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/jarvissax/rondo/releases/download/v4.1.2/rom.zip",
-            "downloads": 5
+            "downloads": 6,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -18164,35 +18165,35 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-windows-legacy.zip",
             "size": 532951850,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-linux.zip",
             "size": 769420769,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-linux-arm64.zip",
             "size": 594327531,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-linux-legacy.zip",
             "size": 531366135,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-macos.zip",
             "size": 569172345,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -18233,8 +18234,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/jarvissax/rondo/releases/download/v4.1.1/updater.png",
       "icon_dark_url": "",
       "body": "An update for the 4.0 firmware: Settings \u203a System \u203a Software update, the dashboard or the\n[update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as\n4.1.0 does; WhatsApp's own words come in your language with server 3.6.1.\n\n### New\n\n- **Turn the Y1 off from the main menu** ([#6](https://github.com/jarvissax/rondo/issues/6)): hold\n  center there for 2 seconds. A bar fills while you hold; let go sooner and nothing happens. The Y1\n  has no power button of its own (center only switches it on), so until now shutting down took\n  Settings \u203a System \u203a Shut down. Holding center everywhere else still opens the options.\n- **The update page speaks Spanish:** it starts in the browser's language when Rondo has it, with a\n  language picker.\n\n### Fixed\n\n- **Now Playing's cover with Large text** ([#7](https://github.com/jarvissax/rondo/issues/7)): at the\n  largest text size the cover never came, only the note in its place. It's there at every size now,\n  and on a Y1 that tried Large before, the covers come back by themselves.\n- **The guides named a Power button the Y1 doesn't have.** They now say how to turn it off.\n\n",
-      "downloads": 6,
-      "mirror_downloads": 0,
+      "downloads": 13,
+      "mirror_downloads": 7,
       "download_breakdown": {
         "tag": "v4.1.1",
         "mirrors": "y1-community/rondo-mirror",
@@ -18242,7 +18243,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/jarvissax/rondo/releases/download/v4.1.1/rom.zip",
-            "downloads": 6
+            "downloads": 7,
+            "mirror_downloads": 1
           }
         ],
         "portable": [
@@ -18251,42 +18253,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-windows.zip",
             "size": 647875922,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-windows-legacy.zip",
             "size": 532968882,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-linux.zip",
             "size": 769437801,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-linux-arm64.zip",
             "size": 594344563,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-linux-legacy.zip",
             "size": 531383167,
-            "downloads": 0
+            "downloads": 1
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-macos.zip",
             "size": 569189379,
-            "downloads": 0
+            "downloads": 1
           }
         ]
       },
@@ -18312,7 +18314,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v4.1.1/updater.png",
           "size": 12952,
-          "download_count": 15,
+          "download_count": 16,
           "content_type": "image/png"
         }
       ]
@@ -18347,8 +18349,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/jarvissax/rondo/releases/download/v4.1.0/updater.png",
       "icon_dark_url": "",
       "body": "An update for the 4.0 firmware: Settings \u203a System \u203a Software update, the dashboard or the\n[update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as\n4.0.3 does; YouTube through your server comes in your language with server 3.6.0.\n\n### New\n\n- **Rondo speaks Spanish** ([#5](https://github.com/jarvissax/rondo/issues/5)), and any language\n  someone adds. The very first start asks for the language before anything else, as the stock\n  firmware does; Settings \u203a Language changes it at any time, at once, without a restart. A Rondo\n  updated from an earlier version asks once too. The dashboard speaks the Y1's language and can\n  change it from its Settings page. English stays the default.\n- **YouTube and YouTube Music in your language too:** what YouTube itself writes (home and shelf\n  names, view counts, \"2 days ago\", playlist names) comes in the language Rondo speaks: directly from\n  the Y1 at once, and through your Rondo server once it runs 3.6.0 (an older one keeps answering in\n  English). Search stays in English, so it finds what it always found.\n- **Every text in one file per language** (`lang/en.json`, `lang/es.json`): fixing a translation\n  or adding a language is one file, and needs no Y1. [Translating Rondo](docs/translating.md) says\n  how, including how to see the dashboard in your language on your own computer.\n",
-      "downloads": 51,
-      "mirror_downloads": 11,
+      "downloads": 57,
+      "mirror_downloads": 17,
       "download_breakdown": {
         "tag": "v4.1.0",
         "mirrors": "y1-community/rondo-mirror",
@@ -18366,42 +18368,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.0/rom-windows.zip",
             "size": 647886503,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.0/rom-windows-legacy.zip",
             "size": 532979463,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.0/rom-linux.zip",
             "size": 769448382,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.0/rom-linux-arm64.zip",
             "size": 594355144,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.0/rom-linux-legacy.zip",
             "size": 531393746,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.1.0/rom-macos.zip",
             "size": 569199958,
-            "downloads": 2
+            "downloads": 3
           }
         ]
       },
@@ -18427,7 +18429,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v4.1.0/updater.png",
           "size": 12952,
-          "download_count": 80,
+          "download_count": 81,
           "content_type": "image/png"
         }
       ]
@@ -18462,8 +18464,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/jarvissax/rondo/releases/download/v4.0.3/updater.png",
       "icon_dark_url": "",
       "body": "An update for the 4.0 firmware: Settings \u203a System \u203a Software update, the dashboard or the\n[update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as\n4.0.2 does.\n\n### Fixed\n\n- **The Rondo server that kept going \"Unreachable\":** since 4.0.1, once a WhatsApp chat was marked\n  read or a message or reaction was sent, some of the Y1's requests to the server after it went out\n  wrong and the server turned them down. Settings \u203a Server said \"Unreachable\", WhatsApp said the\n  server was too old for it, and YouTube and YouTube Music said \"not found\", on and off. Every\n  request now goes out as it should.\n\n",
-      "downloads": 44,
-      "mirror_downloads": 14,
+      "downloads": 50,
+      "mirror_downloads": 20,
       "download_breakdown": {
         "tag": "v4.0.3",
         "mirrors": "y1-community/rondo-mirror",
@@ -18481,42 +18483,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.3/rom-windows.zip",
             "size": 648095084,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.3/rom-windows-legacy.zip",
             "size": 533188044,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.3/rom-linux.zip",
             "size": 769656963,
-            "downloads": 4
+            "downloads": 5
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.3/rom-linux-arm64.zip",
             "size": 594563725,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.3/rom-linux-legacy.zip",
             "size": 531602329,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.3/rom-macos.zip",
             "size": 569408540,
-            "downloads": 2
+            "downloads": 3
           }
         ]
       },
@@ -18557,8 +18559,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/jarvissax/rondo/releases/download/v4.0.2/updater.png",
       "icon_dark_url": "",
       "body": "\nAn update for the 4.0 firmware: Settings \u203a System \u203a Software update, the dashboard or the\n[update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as\n4.0.1 does.\n\n### Fixed\n\n- **Bluetooth headphones that paired but didn't connect:** right after pairing, or when you chose\n  paired headphones, the Bluetooth screen started looking for devices again while they connected,\n  and the connection gave up after a few seconds (\"not connected\"). Nothing is searched for now\n  while headphones pair or connect, so they connect right after pairing.\n- **Headphones that didn't come back by themselves:** after a search, the Y1 stopped accepting\n  connections until Bluetooth was turned off and on, so headphones taken out of their case or\n  switched on again couldn't reconnect to it. The Y1 now stays open to them, and it no longer shows\n  itself to every phone around while Bluetooth is on.\n- **Headphones that started loud:** each time headphones connected, they took the volume of the\n  speaker or the wired headphones, and earbuds taken out of their case start playing at once. They\n  now keep a volume of their own: the one you last set while they were connected.\n",
-      "downloads": 18,
-      "mirror_downloads": 11,
+      "downloads": 24,
+      "mirror_downloads": 17,
       "download_breakdown": {
         "tag": "v4.0.2",
         "mirrors": "y1-community/rondo-mirror",
@@ -18576,42 +18578,42 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.2/rom-windows.zip",
             "size": 648095384,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.2/rom-windows-legacy.zip",
             "size": 533188344,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.2/rom-linux.zip",
             "size": 769657263,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.2/rom-linux-arm64.zip",
             "size": 594564025,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.2/rom-linux-legacy.zip",
             "size": 531602629,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
             "name": "rom-macos.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.2/rom-macos.zip",
             "size": 569408840,
-            "downloads": 2
+            "downloads": 3
           }
         ]
       },
@@ -18652,8 +18654,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/jarvissax/rondo/releases/download/v4.0.1/updater.png",
       "icon_dark_url": "",
       "body": "\nAn update for the 4.0 firmware: Settings \u203a System \u203a Software update, the dashboard or the\n[update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as\n4.0.0 does.\n\n### New\n\n- **YouTube Music playlists download as playlists:** Download playlist saves its songs and a\n  playlist of them in Library \u203a Playlists, in YouTube's order and with the playlist's cover. A song\n  already on the card isn't downloaded twice, and downloading the playlist again brings it up to\n  date. Deleting it asks whether its songs go too. Now Playing's options download the song playing.\n- **Downloads pause and resume,** one or all, videos too, and go on after a restart or a power cut.\n  They wait by themselves while Wi-Fi is off, while the card is the computer's or full, and go on\n  afterwards. The dashboard has the same controls.\n- **Emoji on every keyboard,** each in its app's look: Rondo's own, YouTube's and YouTube Music's,\n  and WhatsApp's. Every emoji the Y1's emoji font draws, in tabs (recent ones, then Unicode's\n  groups), with skin tones, and found by name.\n- **WhatsApp's reaction bar:** a message's menu starts with \ud83d\udc4d \u2764\ufe0f \ud83d\ude02 \ud83d\ude2e \ud83d\ude22 \ud83d\ude4f, and + opens every emoji.\n\n### Fixed\n\n- **Voice messages that weren't sent:** one sent right after another WhatsApp action (marking a chat\n  read, a reaction, a text) could send garbage instead of the recording, or close WhatsApp and lose\n  it.\n- **Voice messages with a headset:** the Y1 can't use a headset's microphone, and a voice message\n  recorded with one held only a steady tone. With a headset in, Rondo now records from the Y1's own\n  microphone (inside, beside the jack).\n- **FM radio sounded doubled:** MediaTek's chip played the radio too, a moment ahead of Rondo's own.\n  Only Rondo's plays now.\n- **FM radio on the speaker:** choosing Speaker kept the sound in the headphones, or played only hiss.\n  The radio now plays from the speaker, with a volume of its own for each output. The headphones\n  play too: the Y1's speaker is fed from their amplifier, and they stay in as the antenna (the\n  Output setting says so).\n\n",
-      "downloads": 103,
-      "mirror_downloads": 24,
+      "downloads": 108,
+      "mirror_downloads": 29,
       "download_breakdown": {
         "tag": "v4.0.1",
         "mirrors": "y1-community/rondo-mirror",
@@ -18671,35 +18673,35 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom-windows.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rom-windows.zip",
             "size": 648094386,
-            "downloads": 8
+            "downloads": 9
           },
           {
             "platform": "windows-legacy",
             "name": "rom-windows-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rom-windows-legacy.zip",
             "size": 533187346,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "linux",
             "name": "rom-linux.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rom-linux.zip",
             "size": 769656265,
-            "downloads": 5
+            "downloads": 6
           },
           {
             "platform": "linux-arm64",
             "name": "rom-linux-arm64.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rom-linux-arm64.zip",
             "size": 594563027,
-            "downloads": 3
+            "downloads": 4
           },
           {
             "platform": "linux-legacy",
             "name": "rom-linux-legacy.zip",
             "url": "https://github.com/y1-community/rondo-mirror/releases/download/v4.0.1/rom-linux-legacy.zip",
             "size": 531601631,
-            "downloads": 1
+            "downloads": 2
           },
           {
             "platform": "macos",
@@ -19852,7 +19854,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "",
-      "downloads": 1378,
+      "downloads": 1379,
       "mirror_downloads": 156,
       "download_breakdown": {
         "tag": "stable-v0.6.1",
@@ -19861,7 +19863,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
-            "downloads": 1124,
+            "downloads": 1125,
             "mirror_downloads": 3
           },
           {
@@ -19978,7 +19980,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
           "size": 581693789,
-          "download_count": 1121,
+          "download_count": 1122,
           "content_type": "application/zip"
         },
         {
@@ -24036,7 +24038,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "Used for building ROM releases",
-      "downloads": 8670,
+      "downloads": 8675,
       "mirror_downloads": 34,
       "download_breakdown": {
         "tag": "type-a-base",
@@ -24045,7 +24047,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/type-a-base/rom.zip",
-            "downloads": 8639,
+            "downloads": 8644,
             "mirror_downloads": 3
           }
         ],
@@ -24100,7 +24102,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/type-a-base/rom.zip",
           "size": 456613744,
-          "download_count": 8636,
+          "download_count": 8641,
           "content_type": "application/zip"
         }
       ]
@@ -24115,7 +24117,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "Used for building ROM releases\r\n\r\n",
-      "downloads": 8384,
+      "downloads": 8389,
       "mirror_downloads": 44,
       "download_breakdown": {
         "tag": "type-b-base",
@@ -24124,7 +24126,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/type-b-base/rom.zip",
-            "downloads": 8353,
+            "downloads": 8358,
             "mirror_downloads": 13
           }
         ],
@@ -24179,7 +24181,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/type-b-base/rom.zip",
           "size": 399460715,
-          "download_count": 8340,
+          "download_count": 8345,
           "content_type": "application/zip"
         }
       ]
@@ -24377,7 +24379,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "# Rockbox Y2 V2.5\n\nV2.5 updates the Y2 dual-boot firmware to the official Innioasis **Stock 3.2FM**\nbaseline while retaining Rockbox and Stock boot routes.\n\n## What changed from V2\n\n- Stock mode is updated to version `3.2` from the 3.2FM firmware release.\n- Clean installs default to MacClassic-Dark with a black Rockbox title screen.\n- Boot presentation and route handoff were requalified to prevent persistent\n  upper-screen artifacts.\n- The Community Updater asset is now a complete 3.2FM-based full-ROM package,\n  compatible with the public updater's clean-install route.\n\n## Qualified V2.5 behavior\n\nThe five V2.5 firmware images have passed the full hands-on matrix on macOS and\nWindows:\n\n- Clean, responsive Rockbox root in about 28 seconds on normal cold boots.\n- Clean dark Rockbox title with no persistent upper artifacts.\n- Automatic screen timeout, centre wake, and power-button sleep/wake.\n- USB-storage mount, safe eject, clean return, and foreground retention.\n- Boot Settings switching between Rockbox and Stock.\n- Responsive Stock root reporting version `3.2` from Stock 3.2FM.\n- No microSD card required for installation or normal boot testing.\n\nThe exact public full-ROM archive passed clean Stock 3.2FM installation and the\ncomplete functional matrix on both macOS and Windows.\n\n## Exact public candidate\n\n| Asset | Bytes | SHA-256 |\n|---|---:|---|\n| `rom_y2.zip` | 361,644,736 | `bbdd139a9a52f90570ef04dec4aeb143a361a1d28a90f7be6d37d44c554bee9a` |\n\nThis archive contains the complete official Stock 3.2FM support set. UBOOT,\nBOOTIMG, RECOVERY, LOGO, and ANDROID are the exact V2.5 images already qualified\non both platforms. MBR, EBR1, EBR2, preloader, SEC_RO, cache, userdata, and the\nscatter remain byte-identical to the official 3.2FM baseline.\n\n## Important installation behavior\n\nV2.5 performs a clean full installation and erases internal user data. Back up\nfirst. On macOS, public Updater CE hands the install to the Innioasis Y2 Install\nTool. On Windows, Updater CE uses its full Y2 installation route. Follow every\nconnection prompt and wait for an explicit completion message.\n",
-      "downloads": 1712,
+      "downloads": 1716,
       "mirror_downloads": 78,
       "download_breakdown": {
         "tag": "v0.2.5-beta",
@@ -24386,7 +24388,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
-            "downloads": 1668,
+            "downloads": 1672,
             "mirror_downloads": 34
           }
         ],
@@ -24481,7 +24483,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox-y2-v2.5-release-square.png",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rockbox-y2-v2.5-release-square.png",
           "size": 1585171,
-          "download_count": 785,
+          "download_count": 788,
           "content_type": "image/png"
         },
         {
@@ -24489,7 +24491,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
           "size": 361644736,
-          "download_count": 1634,
+          "download_count": 1638,
           "content_type": "application/zip"
         },
         {
@@ -24934,19 +24936,63 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "",
-      "downloads": 55,
-      "mirror_downloads": 0,
+      "downloads": 75,
+      "mirror_downloads": 20,
       "download_breakdown": {
         "tag": "y2-base",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/y2-base/rom_y2.zip",
-            "downloads": 55
+            "downloads": 62,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom_y2-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-windows.zip",
+            "size": 752289273,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_y2-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-windows-legacy.zip",
+            "size": 637382239,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom_y2-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-linux.zip",
+            "size": 873851152,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_y2-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-linux-arm64.zip",
+            "size": 698757914,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_y2-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-linux-legacy.zip",
+            "size": 635796520,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom_y2-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/y2-base/rom_y2-macos.zip",
+            "size": 673602743,
+            "downloads": 1
+          }
+        ]
       },
       "assets": [
         {
@@ -24969,19 +25015,63 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "",
-      "downloads": 79,
-      "mirror_downloads": 0,
+      "downloads": 107,
+      "mirror_downloads": 28,
       "download_breakdown": {
         "tag": "type-a-base",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/type-a-base/rom.zip",
-            "downloads": 79
+            "downloads": 86,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-windows.zip",
+            "size": 1098735322,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-windows-legacy.zip",
+            "size": 983828288,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-linux.zip",
+            "size": 1220297201,
+            "downloads": 5
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-linux-arm64.zip",
+            "size": 1045203963,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-linux-legacy.zip",
+            "size": 982242571,
+            "downloads": 4
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/type-a-base/rom-macos.zip",
+            "size": 1020048810,
+            "downloads": 3
+          }
+        ]
       },
       "assets": [
         {
@@ -25004,21 +25094,23 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "Solar is not yet stable for everyday use - we recommend using this only if you're willing to face bugs and report issues at github.com/thesolarproject/solar/issues\r\n\r\nIn this release we have:\r\n\r\nYouTube video and music streaming / downloads\r\nNavidrome integration with music playback\r\nImproved performance in Flow (cover flow) view\r\n\r\nAfter installing for the first time please wait 10-15 minutes for your device to reboot and take itself through its first-time setup process.",
-      "downloads": 1091,
-      "mirror_downloads": 0,
+      "downloads": 1153,
+      "mirror_downloads": 62,
       "download_breakdown": {
         "tag": "20260716-0131",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260716-0131/rom.zip",
-            "downloads": 833
+            "downloads": 840,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260716-0131/rom_type_b.zip",
-            "downloads": 35
+            "downloads": 42,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_y2.zip",
@@ -25026,7 +25118,134 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "downloads": 223
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-windows.zip",
+            "size": 661779125,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-windows-legacy.zip",
+            "size": 546872113,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-linux.zip",
+            "size": 783341004,
+            "downloads": 6
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-linux-arm64.zip",
+            "size": 608247766,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-linux-legacy.zip",
+            "size": 545286396,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom-macos.zip",
+            "size": 583092586,
+            "downloads": 1
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-windows.zip",
+            "size": 662798016,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-windows-legacy.zip",
+            "size": 547891020,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-linux.zip",
+            "size": 784359895,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-linux-arm64.zip",
+            "size": 609266657,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-linux-legacy.zip",
+            "size": 546305305,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_type_b-macos.zip",
+            "size": 584111483,
+            "downloads": 1
+          },
+          {
+            "platform": "windows",
+            "name": "rom_y2-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-windows.zip",
+            "size": 752289293,
+            "downloads": 6
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_y2-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-windows-legacy.zip",
+            "size": 637382287,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom_y2-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-linux.zip",
+            "size": 873851172,
+            "downloads": 6
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_y2-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-linux-arm64.zip",
+            "size": 698757934,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_y2-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-linux-legacy.zip",
+            "size": 635796570,
+            "downloads": 4
+          },
+          {
+            "platform": "macos",
+            "name": "rom_y2-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260716-0131/rom_y2-macos.zip",
+            "size": 673602757,
+            "downloads": 3
+          }
+        ]
       },
       "assets": [
         {
@@ -25065,24 +25284,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "Solar is not yet stable for everyday use - we recommend using this only if you're willing to face bugs and report issues at github.com/thesolarproject/solar/issues\r\n\r\n\r\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://innioasis.com/pages/y1) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support and a Stem Player clone.\r\n\r\n### Features\r\n\r\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\r\n- YouTube \u2014 Play / Download videos and music from YouTube\r\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\r\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\r\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1/Y2 firmware\r\n\r\n\r\n## Assets\r\n\r\n- `app-release.apk` \u2014 signed Solar launcher\r\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\r\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\r\n\r\n## Recent commits\r\n\r\n- f681052 Harden OTA PAT preflight and add manual solar-update sync workflow.\r\n- 92cf168 Unify Cover Flow layout, stamp builds from UTC start time, and harden CI OTA.\r\n- ceafe7f Morph home menu album art into Flow and harden OTA publish.\r\n- ba735c4 Flow handoff polish, screen transitions, and Solar Development support experiment.\r\n- 6040935 Bump stable version for next release.\r\n- 5e1c4a6 Fix podcast playback speed parameter application and update default album art UI effects\r\n- f76ba80 Offload play queue file IO from onResume to background thread\r\n- 8ed2e24 Trigger library scan and theme reload when SD card mounts (e.g. after disabling USB storage)\r\n- 9b7b72d Fix redundant title in release notes\r\n- 9f8bfba Fix USB connection dialog flow and SystemUI suppression lag\r\n",
-      "downloads": 364,
-      "mirror_downloads": 0,
+      "downloads": 405,
+      "mirror_downloads": 41,
       "download_breakdown": {
         "tag": "20260702-1521",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260702-1521/rom.zip",
-            "downloads": 337
+            "downloads": 344,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260702-1521/rom_type_b.zip",
-            "downloads": 27
+            "downloads": 34,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-windows.zip",
+            "size": 644023830,
+            "downloads": 6
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-windows-legacy.zip",
+            "size": 529116812,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-linux.zip",
+            "size": 756077429,
+            "downloads": 6
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-linux-arm64.zip",
+            "size": 580984191,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-linux-legacy.zip",
+            "size": 527531095,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom-macos.zip",
+            "size": 563533665,
+            "downloads": 3
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-windows.zip",
+            "size": 596970490,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-windows-legacy.zip",
+            "size": 482063490,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-linux.zip",
+            "size": 709024089,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-linux-arm64.zip",
+            "size": 533930851,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-linux-legacy.zip",
+            "size": 480477775,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260702-1521/rom_type_b-macos.zip",
+            "size": 516480332,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25150,24 +25456,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "Solar is not yet stable for everyday use - we recommend using this only if you're willing to face bugs and report issues at github.com/thesolarproject/solar/issues\r\n\r\n\r\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://innioasis.com/pages/y1) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support and a Stem Player clone.\r\n\r\n### Features\r\n\r\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\r\n- \ud83d\udcfa **YouTube** \u2014 Play / Download videos and music from YouTube\r\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\r\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\r\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1/Y2 firmware\r\n\r\n## Assets\r\n\r\n- `app-release.apk` \u2014 signed Solar launcher\r\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\r\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\r\n\r\n## Recent commits\r\n\r\n- d11c9da Merge main: unified Cover Flow, build timestamp CI, OTA hardening.\r\n- 92cf168 Unify Cover Flow layout, stamp builds from UTC start time, and harden CI OTA.\r\n- 4e161aa Merge main: home\u2192Flow morph, marquee fix, OTA preflight.\r\n- ceafe7f Morph home menu album art into Flow and harden OTA publish.\r\n- 24d3740 Merge branch 'main' into nightly\r\n- ba735c4 Flow handoff polish, screen transitions, and Solar Development support experiment.\r\n- 6040935 Bump stable version for next release.\r\n- 51ae704 Bump nightly version for next release.\r\n- e7b33af Merge branch 'main' into nightly\r\n- 5e1c4a6 Fix podcast playback speed parameter application and update default album art UI effects\r\n",
-      "downloads": 94,
-      "mirror_downloads": 0,
+      "downloads": 140,
+      "mirror_downloads": 46,
       "download_breakdown": {
         "tag": "nightly-20260702-1512",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260702-1512/rom.zip",
-            "downloads": 75
+            "downloads": 82,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260702-1512/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 26,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-windows.zip",
+            "size": 644006852,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-windows-legacy.zip",
+            "size": 529099834,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-linux.zip",
+            "size": 756060451,
+            "downloads": 6
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-linux-arm64.zip",
+            "size": 580967213,
+            "downloads": 5
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-linux-legacy.zip",
+            "size": 527514117,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom-macos.zip",
+            "size": 563516681,
+            "downloads": 5
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-windows.zip",
+            "size": 595629599,
+            "downloads": 2
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-windows-legacy.zip",
+            "size": 480722599,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-linux.zip",
+            "size": 707683198,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-linux-arm64.zip",
+            "size": 532589960,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-linux-legacy.zip",
+            "size": 479136884,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260702-1512/rom_type_b-macos.zip",
+            "size": 515139435,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25206,24 +25599,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "Solar is not yet stable for everyday use - we recommend using this only if you're willing to face bugs and report issues at github.com/thesolarproject/solar/issues\r\n\r\n    Solar is a custom firmware and launcher for the [Innioasis Y1](https://innioasis.com/pages/y1) \u2014 a full interface replacement with podcast downloads, a global quick menu, Reach (Deezer + Soulseek), Y1 theme support and a Stem Player clone.\r\n\r\nFeatures\r\n\r\n    \ud83c\udfb5 Reach \u2014 search, play and download music from Deezer and Soulseek\r\n    YouTube \u2014 Play / Download videos and music from YouTube\r\n    \ud83c\udf99\ufe0f Podcasts \u2014 search and download episodes to your Y1 over the internet\r\n    \u26a1 Quick menu \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\r\n    \ud83c\udfa8 Y1 themes \u2014 install and apply themes from the original Y1/Y2 firmware\r\n\r\n## Assets\r\n\r\n- `app-release.apk` \u2014 signed Solar launcher\r\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\r\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\r\n\r\n## Recent commits\r\n\r\n- ba735c4 Flow handoff polish, screen transitions, and Solar Development support experiment.\r\n- 6040935 Bump stable version for next release.\r\n- 5e1c4a6 Fix podcast playback speed parameter application and update default album art UI effects\r\n- f76ba80 Offload play queue file IO from onResume to background thread\r\n- 8ed2e24 Trigger library scan and theme reload when SD card mounts (e.g. after disabling USB storage)\r\n- 9b7b72d Fix redundant title in release notes\r\n- 9f8bfba Fix USB connection dialog flow and SystemUI suppression lag\r\n- c439a87 Bump stable version for next release.\r\n- 0112bc8 Merge remote main\r\n- 879f287 Pause focus polling after user handles USB dialog\r\n",
-      "downloads": 156,
-      "mirror_downloads": 0,
+      "downloads": 194,
+      "mirror_downloads": 38,
       "download_breakdown": {
         "tag": "20260701-1453",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260701-1453/rom.zip",
-            "downloads": 134
+            "downloads": 141,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260701-1453/rom_type_b.zip",
-            "downloads": 22
+            "downloads": 29,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-windows.zip",
+            "size": 643967597,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-windows-legacy.zip",
+            "size": 529060581,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-linux.zip",
+            "size": 756021196,
+            "downloads": 6
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-linux-arm64.zip",
+            "size": 580927958,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-linux-legacy.zip",
+            "size": 527474864,
+            "downloads": 2
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom-macos.zip",
+            "size": 563477419,
+            "downloads": 3
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-windows.zip",
+            "size": 595628421,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-windows-legacy.zip",
+            "size": 480721421,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-linux.zip",
+            "size": 707682020,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-linux-arm64.zip",
+            "size": 532588782,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-linux-legacy.zip",
+            "size": 479135706,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260701-1453/rom_type_b-macos.zip",
+            "size": 515138250,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25262,24 +25742,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "Solar is not yet stable for everyday use - we recommend using this only if you're willing to face bugs and report issues at github.com/thesolarproject/solar/issues\r\n\r\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://innioasis.com/pages/y1) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support and a Stem Player clone.\r\n\r\n### Features\r\n\r\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\r\n- \ud83d\udcfa **YouTube** \u2014 Play / Download videos and music from YouTube\r\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\r\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\r\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1/Y2 firmware\r\n## Assets\r\n\r\n- `app-release.apk` \u2014 signed Solar launcher\r\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\r\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\r\n\r\n## Recent commits\r\n\r\n- 24d3740 Merge branch 'main' into nightly\r\n- ba735c4 Flow handoff polish, screen transitions, and Solar Development support experiment.\r\n- 6040935 Bump stable version for next release.\r\n- 51ae704 Bump nightly version for next release.\r\n- e7b33af Merge branch 'main' into nightly\r\n- 5e1c4a6 Fix podcast playback speed parameter application and update default album art UI effects\r\n- 7025188 Merge branch 'main' into nightly\r\n- f76ba80 Offload play queue file IO from onResume to background thread\r\n- e8455dd Merge main into nightly\r\n- 8ed2e24 Trigger library scan and theme reload when SD card mounts (e.g. after disabling USB storage)\r\n",
-      "downloads": 46,
-      "mirror_downloads": 0,
+      "downloads": 86,
+      "mirror_downloads": 40,
       "download_breakdown": {
         "tag": "nightly-20260701-1454",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260701-1454/rom.zip",
-            "downloads": 27
+            "downloads": 34,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260701-1454/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 26,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-windows.zip",
+            "size": 644000448,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-windows-legacy.zip",
+            "size": 529093432,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-linux.zip",
+            "size": 756054047,
+            "downloads": 6
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-linux-arm64.zip",
+            "size": 580960809,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-linux-legacy.zip",
+            "size": 527507715,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom-macos.zip",
+            "size": 563510264,
+            "downloads": 4
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-windows.zip",
+            "size": 596797913,
+            "downloads": 2
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-windows-legacy.zip",
+            "size": 481890913,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-linux.zip",
+            "size": 708851512,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-linux-arm64.zip",
+            "size": 533758274,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-linux-legacy.zip",
+            "size": 480305198,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260701-1454/rom_type_b-macos.zip",
+            "size": 516307736,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25318,24 +25885,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 5e1c4a6 Fix podcast playback speed parameter application and update default album art UI effects\n- f76ba80 Offload play queue file IO from onResume to background thread\n- 8ed2e24 Trigger library scan and theme reload when SD card mounts (e.g. after disabling USB storage)\n- 9b7b72d Fix redundant title in release notes\n- 9f8bfba Fix USB connection dialog flow and SystemUI suppression lag\n- c439a87 Bump stable version for next release.\n- 0112bc8 Merge remote main\n- 879f287 Pause focus polling after user handles USB dialog\n- f7ec9f6 Bump stable version for next release.\n- e29192f Bump nightly version for next release.\n",
-      "downloads": 149,
-      "mirror_downloads": 0,
+      "downloads": 188,
+      "mirror_downloads": 39,
       "download_breakdown": {
         "tag": "20260630-1236",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1236/rom.zip",
-            "downloads": 128
+            "downloads": 135,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1236/rom_type_b.zip",
-            "downloads": 21
+            "downloads": 28,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-windows.zip",
+            "size": 644028798,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-windows-legacy.zip",
+            "size": 529121784,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-linux.zip",
+            "size": 756082397,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-linux-arm64.zip",
+            "size": 580989159,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-linux-legacy.zip",
+            "size": 527536067,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom-macos.zip",
+            "size": 563538622,
+            "downloads": 5
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-windows.zip",
+            "size": 595859927,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-windows-legacy.zip",
+            "size": 480952931,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-linux.zip",
+            "size": 707913526,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-linux-arm64.zip",
+            "size": 532820288,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-linux-legacy.zip",
+            "size": 479367216,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1236/rom_type_b-macos.zip",
+            "size": 515369757,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25374,24 +26028,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 0112bc8 Merge remote main\n- 879f287 Pause focus polling after user handles USB dialog\n- f7ec9f6 Bump stable version for next release.\n- e29192f Bump nightly version for next release.\n- fbeb34f Merge main: polling pause, deezer fix, track dedup\n- 4104500 Pause polling on dismiss, remove Deezer playlist for local files, fix track dedup\n- f6186f2 Bump nightly version for next release.\n- d09a9a7 Bump stable version for next release.\n- e508467 Merge main: rapid focus polling, theme cache\n- 42fdfba Rapid focus polling while charging, theme cache on internal storage\n",
-      "downloads": 48,
-      "mirror_downloads": 0,
+      "downloads": 91,
+      "mirror_downloads": 43,
       "download_breakdown": {
         "tag": "20260630-1125",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1125/rom.zip",
-            "downloads": 28
+            "downloads": 35,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1125/rom_type_b.zip",
-            "downloads": 20
+            "downloads": 27,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-windows.zip",
+            "size": 643961183,
+            "downloads": 7
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-windows-legacy.zip",
+            "size": 529054169,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-linux.zip",
+            "size": 756014782,
+            "downloads": 6
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-linux-arm64.zip",
+            "size": 580921544,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-linux-legacy.zip",
+            "size": 527468452,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom-macos.zip",
+            "size": 563471008,
+            "downloads": 2
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-windows.zip",
+            "size": 595592959,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-windows-legacy.zip",
+            "size": 480685963,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-linux.zip",
+            "size": 707646558,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-linux-arm64.zip",
+            "size": 532553320,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-linux-legacy.zip",
+            "size": 479100248,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1125/rom_type_b-macos.zip",
+            "size": 515102790,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25430,24 +26171,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 4104500 Pause polling on dismiss, remove Deezer playlist for local files, fix track dedup\n- d09a9a7 Bump stable version for next release.\n- 42fdfba Rapid focus polling while charging, theme cache on internal storage\n- 63509f8 Bump stable version for next release.\n- a10011b USB focus: fire moveTaskToFront + HOME key simultaneously\n- 888576d Fix SystemUI crash: re-enable UsbStorageActivity on startup\n- 5ccf993 Soulseek version interest, diagnostic log sharing, rich release notes, USB fix\n- 3fc45b4 Bump stable version for next release.\n- 62356a2 Suppress system USB dialog via pm disable, auto-disable Rockbox on startup\n- 3c22bf4 Bump stable version for next release.\n",
-      "downloads": 46,
-      "mirror_downloads": 0,
+      "downloads": 94,
+      "mirror_downloads": 48,
       "download_breakdown": {
         "tag": "20260630-1120",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1120/rom.zip",
-            "downloads": 27
+            "downloads": 34,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1120/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 26,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-windows.zip",
+            "size": 643980569,
+            "downloads": 6
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-windows-legacy.zip",
+            "size": 529073555,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-linux.zip",
+            "size": 756034168,
+            "downloads": 7
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-linux-arm64.zip",
+            "size": 580940930,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-linux-legacy.zip",
+            "size": 527487838,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom-macos.zip",
+            "size": 563490393,
+            "downloads": 5
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-windows.zip",
+            "size": 595596552,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-windows-legacy.zip",
+            "size": 480689556,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-linux.zip",
+            "size": 707650151,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-linux-arm64.zip",
+            "size": 532556913,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-linux-legacy.zip",
+            "size": 479103841,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1120/rom_type_b-macos.zip",
+            "size": 515106382,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25486,24 +26314,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 42fdfba Rapid focus polling while charging, theme cache on internal storage\n- 63509f8 Bump stable version for next release.\n- a10011b USB focus: fire moveTaskToFront + HOME key simultaneously\n- 888576d Fix SystemUI crash: re-enable UsbStorageActivity on startup\n- 5ccf993 Soulseek version interest, diagnostic log sharing, rich release notes, USB fix\n- 3fc45b4 Bump stable version for next release.\n- 62356a2 Suppress system USB dialog via pm disable, auto-disable Rockbox on startup\n- 3c22bf4 Bump stable version for next release.\n- 180f1e8 Fix USB dialog suppression: defer hasWindowFocus check to execution time\n- 9a260b0 Bump stable version for next release.\n",
-      "downloads": 43,
-      "mirror_downloads": 0,
+      "downloads": 89,
+      "mirror_downloads": 46,
       "download_breakdown": {
         "tag": "20260630-1110",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1110/rom.zip",
-            "downloads": 23
+            "downloads": 30,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1110/rom_type_b.zip",
-            "downloads": 20
+            "downloads": 27,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-windows.zip",
+            "size": 643968164,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-windows-legacy.zip",
+            "size": 529061150,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-linux.zip",
+            "size": 756021763,
+            "downloads": 7
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-linux-arm64.zip",
+            "size": 580928525,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-linux-legacy.zip",
+            "size": 527475433,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom-macos.zip",
+            "size": 563477988,
+            "downloads": 3
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-windows.zip",
+            "size": 595925626,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-windows-legacy.zip",
+            "size": 481018630,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-linux.zip",
+            "size": 707979225,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-linux-arm64.zip",
+            "size": 532885987,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-linux-legacy.zip",
+            "size": 479432915,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1110/rom_type_b-macos.zip",
+            "size": 515435456,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25542,24 +26457,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- a10011b USB focus: fire moveTaskToFront + HOME key simultaneously\n- 888576d Fix SystemUI crash: re-enable UsbStorageActivity on startup\n- 5ccf993 Soulseek version interest, diagnostic log sharing, rich release notes, USB fix\n- 3fc45b4 Bump stable version for next release.\n- 62356a2 Suppress system USB dialog via pm disable, auto-disable Rockbox on startup\n- 3c22bf4 Bump stable version for next release.\n- 180f1e8 Fix USB dialog suppression: defer hasWindowFocus check to execution time\n- 9a260b0 Bump stable version for next release.\n- 2e8efb6 Fix USB SystemUI crashes, album track ordering, themed USB screen, solarConfig overrides\n- 9158189 Bump stable version for next release.\n",
-      "downloads": 41,
-      "mirror_downloads": 0,
+      "downloads": 80,
+      "mirror_downloads": 39,
       "download_breakdown": {
         "tag": "20260630-1102",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1102/rom.zip",
-            "downloads": 22
+            "downloads": 29,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1102/rom_type_b.zip",
-            "downloads": 19
+            "downloads": 26,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-windows.zip",
+            "size": 643982370,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-windows-legacy.zip",
+            "size": 529075356,
+            "downloads": 2
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-linux.zip",
+            "size": 756035969,
+            "downloads": 7
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-linux-arm64.zip",
+            "size": 580942731,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-linux-legacy.zip",
+            "size": 527489639,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom-macos.zip",
+            "size": 563492195,
+            "downloads": 2
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-windows.zip",
+            "size": 600542244,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-windows-legacy.zip",
+            "size": 485635248,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-linux.zip",
+            "size": 712595843,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-linux-arm64.zip",
+            "size": 537502605,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-linux-legacy.zip",
+            "size": 484049533,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1102/rom_type_b-macos.zip",
+            "size": 520052075,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25598,24 +26600,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 62356a2 Suppress system USB dialog via pm disable, auto-disable Rockbox on startup\n- 3c22bf4 Bump stable version for next release.\n- 180f1e8 Fix USB dialog suppression: defer hasWindowFocus check to execution time\n- 9a260b0 Bump stable version for next release.\n- 2e8efb6 Fix USB SystemUI crashes, album track ordering, themed USB screen, solarConfig overrides\n- 9158189 Bump stable version for next release.\n- 32e45d2 Merge branch 'nightly' into main\n- 14a251d feat: Add track number sorting for albums and podcast-exclusive playback speed\n- bfe0262 Bump stable version for next release.\n- 1a3132c Bump nightly version for next release.\n",
-      "downloads": 41,
-      "mirror_downloads": 0,
+      "downloads": 83,
+      "mirror_downloads": 42,
       "download_breakdown": {
         "tag": "20260630-1023",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1023/rom.zip",
-            "downloads": 21
+            "downloads": 28,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1023/rom_type_b.zip",
-            "downloads": 20
+            "downloads": 27,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-windows.zip",
+            "size": 643965795,
+            "downloads": 7
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-windows-legacy.zip",
+            "size": 529058781,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux.zip",
+            "size": 756019394,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux-arm64.zip",
+            "size": 580926156,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-linux-legacy.zip",
+            "size": 527473064,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom-macos.zip",
+            "size": 563475620,
+            "downloads": 5
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-windows.zip",
+            "size": 595599360,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-windows-legacy.zip",
+            "size": 480692364,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-linux.zip",
+            "size": 707652959,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-linux-arm64.zip",
+            "size": 532559721,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-linux-legacy.zip",
+            "size": 479106649,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1023/rom_type_b-macos.zip",
+            "size": 515109191,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25654,24 +26743,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 180f1e8 Fix USB dialog suppression: defer hasWindowFocus check to execution time\n- 9a260b0 Bump stable version for next release.\n- 2e8efb6 Fix USB SystemUI crashes, album track ordering, themed USB screen, solarConfig overrides\n- 9158189 Bump stable version for next release.\n- 32e45d2 Merge branch 'nightly' into main\n- 14a251d feat: Add track number sorting for albums and podcast-exclusive playback speed\n- bfe0262 Bump stable version for next release.\n- 1a3132c Bump nightly version for next release.\n- e2e231a Merge nightly: flow mode, LCD art filter, playlist move window\n- b374289 Flow mode, LCD art filter, playlist move window, and misc improvements\n",
-      "downloads": 48,
-      "mirror_downloads": 0,
+      "downloads": 90,
+      "mirror_downloads": 42,
       "download_breakdown": {
         "tag": "20260630-1005",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1005/rom.zip",
-            "downloads": 26
+            "downloads": 33,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-1005/rom_type_b.zip",
-            "downloads": 22
+            "downloads": 29,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-windows.zip",
+            "size": 643956726,
+            "downloads": 7
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-windows-legacy.zip",
+            "size": 529049712,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-linux.zip",
+            "size": 756010325,
+            "downloads": 6
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-linux-arm64.zip",
+            "size": 580917087,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-linux-legacy.zip",
+            "size": 527463995,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom-macos.zip",
+            "size": 563466550,
+            "downloads": 3
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-windows.zip",
+            "size": 599709588,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-windows-legacy.zip",
+            "size": 484802592,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-linux.zip",
+            "size": 711763187,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-linux-arm64.zip",
+            "size": 536669949,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-linux-legacy.zip",
+            "size": 483216877,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-1005/rom_type_b-macos.zip",
+            "size": 519219418,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25710,24 +26886,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 2e8efb6 Fix USB SystemUI crashes, album track ordering, themed USB screen, solarConfig overrides\n- 9158189 Bump stable version for next release.\n- 32e45d2 Merge branch 'nightly' into main\n- 14a251d feat: Add track number sorting for albums and podcast-exclusive playback speed\n- bfe0262 Bump stable version for next release.\n- 1a3132c Bump nightly version for next release.\n- e2e231a Merge nightly: flow mode, LCD art filter, playlist move window\n- b374289 Flow mode, LCD art filter, playlist move window, and misc improvements\n- 8479e8b Bump nightly version for next release.\n- 215ccd1 Bump stable version for next release.\n",
-      "downloads": 45,
-      "mirror_downloads": 0,
+      "downloads": 96,
+      "mirror_downloads": 51,
       "download_breakdown": {
         "tag": "20260630-0956",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0956/rom.zip",
-            "downloads": 24
+            "downloads": 31,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0956/rom_type_b.zip",
-            "downloads": 21
+            "downloads": 28,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-windows.zip",
+            "size": 644004193,
+            "downloads": 8
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-windows-legacy.zip",
+            "size": 529097179,
+            "downloads": 4
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-linux.zip",
+            "size": 756057792,
+            "downloads": 8
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-linux-arm64.zip",
+            "size": 580964554,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-linux-legacy.zip",
+            "size": 527511462,
+            "downloads": 4
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom-macos.zip",
+            "size": 563514017,
+            "downloads": 5
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-windows.zip",
+            "size": 596861485,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-windows-legacy.zip",
+            "size": 481954489,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-linux.zip",
+            "size": 708915084,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-linux-arm64.zip",
+            "size": 533821846,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-linux-legacy.zip",
+            "size": 480368774,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0956/rom_type_b-macos.zip",
+            "size": 516371315,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25766,24 +27029,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 32e45d2 Merge branch 'nightly' into main\n- 14a251d feat: Add track number sorting for albums and podcast-exclusive playback speed\n- bfe0262 Bump stable version for next release.\n- 1a3132c Bump nightly version for next release.\n- e2e231a Merge nightly: flow mode, LCD art filter, playlist move window\n- b374289 Flow mode, LCD art filter, playlist move window, and misc improvements\n- 8479e8b Bump nightly version for next release.\n- 215ccd1 Bump stable version for next release.\n- 8ed4902 Bump nightly version for next release.\n- 5772329 Fix OTA catalog versionCode for timestamp release tags.\n",
-      "downloads": 47,
-      "mirror_downloads": 0,
+      "downloads": 90,
+      "mirror_downloads": 43,
       "download_breakdown": {
         "tag": "20260630-0636",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0636/rom.zip",
-            "downloads": 26
+            "downloads": 33,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0636/rom_type_b.zip",
-            "downloads": 21
+            "downloads": 28,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-windows.zip",
+            "size": 644038157,
+            "downloads": 7
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-windows-legacy.zip",
+            "size": 529131143,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-linux.zip",
+            "size": 756091756,
+            "downloads": 6
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-linux-arm64.zip",
+            "size": 580998518,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-linux-legacy.zip",
+            "size": 527545426,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom-macos.zip",
+            "size": 563547983,
+            "downloads": 3
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-windows.zip",
+            "size": 599686700,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-windows-legacy.zip",
+            "size": 484779704,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-linux.zip",
+            "size": 711740299,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-linux-arm64.zip",
+            "size": 536647061,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-linux-legacy.zip",
+            "size": 483193989,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0636/rom_type_b-macos.zip",
+            "size": 519196532,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25822,24 +27172,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- e2e231a Merge nightly: flow mode, LCD art filter, playlist move window\n- b374289 Flow mode, LCD art filter, playlist move window, and misc improvements\n- 8479e8b Bump nightly version for next release.\n- 215ccd1 Bump stable version for next release.\n- 8ed4902 Bump nightly version for next release.\n- 5772329 Fix OTA catalog versionCode for timestamp release tags.\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n",
-      "downloads": 47,
-      "mirror_downloads": 0,
+      "downloads": 92,
+      "mirror_downloads": 45,
       "download_breakdown": {
         "tag": "20260630-0550",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0550/rom.zip",
-            "downloads": 24
+            "downloads": 31,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260630-0550/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 30,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-windows.zip",
+            "size": 644007412,
+            "downloads": 6
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-windows-legacy.zip",
+            "size": 529100398,
+            "downloads": 4
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-linux.zip",
+            "size": 756061011,
+            "downloads": 6
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-linux-arm64.zip",
+            "size": 580967773,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-linux-legacy.zip",
+            "size": 527514681,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom-macos.zip",
+            "size": 563517236,
+            "downloads": 5
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-windows.zip",
+            "size": 596868342,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-windows-legacy.zip",
+            "size": 481961346,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-linux.zip",
+            "size": 708921941,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-linux-arm64.zip",
+            "size": 533828703,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-linux-legacy.zip",
+            "size": 480375631,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260630-0550/rom_type_b-macos.zip",
+            "size": 516378172,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25878,24 +27315,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- e7b33af Merge branch 'main' into nightly\n- 5e1c4a6 Fix podcast playback speed parameter application and update default album art UI effects\n- 7025188 Merge branch 'main' into nightly\n- f76ba80 Offload play queue file IO from onResume to background thread\n- e8455dd Merge main into nightly\n- 8ed2e24 Trigger library scan and theme reload when SD card mounts (e.g. after disabling USB storage)\n- d9ee052 Fix redundant title in release notes\n- 382d742 Fix USB connection dialog flow and SystemUI suppression lag\n- 9b7b72d Fix redundant title in release notes\n- 9f8bfba Fix USB connection dialog flow and SystemUI suppression lag\n",
-      "downloads": 53,
-      "mirror_downloads": 0,
+      "downloads": 91,
+      "mirror_downloads": 38,
       "download_breakdown": {
         "tag": "nightly-20260630-1236",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1236/rom.zip",
-            "downloads": 29
+            "downloads": 36,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1236/rom_type_b.zip",
-            "downloads": 24
+            "downloads": 31,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-windows.zip",
+            "size": 644034631,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-windows-legacy.zip",
+            "size": 529127617,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-linux.zip",
+            "size": 756088230,
+            "downloads": 5
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-linux-arm64.zip",
+            "size": 580994992,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-linux-legacy.zip",
+            "size": 527541900,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom-macos.zip",
+            "size": 563544449,
+            "downloads": 3
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-windows.zip",
+            "size": 596890909,
+            "downloads": 2
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-windows-legacy.zip",
+            "size": 481983913,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-linux.zip",
+            "size": 708944508,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-linux-arm64.zip",
+            "size": 533851270,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-linux-legacy.zip",
+            "size": 480398198,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1236/rom_type_b-macos.zip",
+            "size": 516400733,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -25934,24 +27458,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 879f287 Pause focus polling after user handles USB dialog\n- e29192f Bump nightly version for next release.\n- fbeb34f Merge main: polling pause, deezer fix, track dedup\n- 4104500 Pause polling on dismiss, remove Deezer playlist for local files, fix track dedup\n- f6186f2 Bump nightly version for next release.\n- d09a9a7 Bump stable version for next release.\n- e508467 Merge main: rapid focus polling, theme cache\n- 42fdfba Rapid focus polling while charging, theme cache on internal storage\n- e5e0f8c Bump nightly version for next release.\n- 63509f8 Bump stable version for next release.\n",
-      "downloads": 46,
-      "mirror_downloads": 0,
+      "downloads": 87,
+      "mirror_downloads": 41,
       "download_breakdown": {
         "tag": "nightly-20260630-1125",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1125/rom.zip",
-            "downloads": 24
+            "downloads": 31,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1125/rom_type_b.zip",
-            "downloads": 22
+            "downloads": 29,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-windows.zip",
+            "size": 644030186,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-windows-legacy.zip",
+            "size": 529123172,
+            "downloads": 4
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-linux.zip",
+            "size": 756083785,
+            "downloads": 5
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-linux-arm64.zip",
+            "size": 580990547,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-linux-legacy.zip",
+            "size": 527537455,
+            "downloads": 2
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom-macos.zip",
+            "size": 563540002,
+            "downloads": 3
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-windows.zip",
+            "size": 596852331,
+            "downloads": 2
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-windows-legacy.zip",
+            "size": 481945335,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-linux.zip",
+            "size": 708905930,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-linux-arm64.zip",
+            "size": 533812692,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-linux-legacy.zip",
+            "size": 480359620,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1125/rom_type_b-macos.zip",
+            "size": 516362153,
+            "downloads": 1
+          }
+        ]
       },
       "assets": [
         {
@@ -25990,24 +27601,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- fbeb34f Merge main: polling pause, deezer fix, track dedup\n- 4104500 Pause polling on dismiss, remove Deezer playlist for local files, fix track dedup\n- f6186f2 Bump nightly version for next release.\n- d09a9a7 Bump stable version for next release.\n- e508467 Merge main: rapid focus polling, theme cache\n- 42fdfba Rapid focus polling while charging, theme cache on internal storage\n- e5e0f8c Bump nightly version for next release.\n- 63509f8 Bump stable version for next release.\n- 12a897c Merge main: dual USB focus reclaim\n- a10011b USB focus: fire moveTaskToFront + HOME key simultaneously\n",
-      "downloads": 47,
-      "mirror_downloads": 0,
+      "downloads": 83,
+      "mirror_downloads": 36,
       "download_breakdown": {
         "tag": "nightly-20260630-1120",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1120/rom.zip",
-            "downloads": 25
+            "downloads": 32,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1120/rom_type_b.zip",
-            "downloads": 22
+            "downloads": 29,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-windows.zip",
+            "size": 644020332,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-windows-legacy.zip",
+            "size": 529113318,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-linux.zip",
+            "size": 756073931,
+            "downloads": 5
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-linux-arm64.zip",
+            "size": 580980693,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-linux-legacy.zip",
+            "size": 527527601,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom-macos.zip",
+            "size": 563530150,
+            "downloads": 3
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-windows.zip",
+            "size": 596846411,
+            "downloads": 2
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-windows-legacy.zip",
+            "size": 481939415,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-linux.zip",
+            "size": 708900010,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-linux-arm64.zip",
+            "size": 533806772,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-linux-legacy.zip",
+            "size": 480353700,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1120/rom_type_b-macos.zip",
+            "size": 516356235,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -26046,24 +27744,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- e508467 Merge main: rapid focus polling, theme cache\n- 42fdfba Rapid focus polling while charging, theme cache on internal storage\n- e5e0f8c Bump nightly version for next release.\n- 63509f8 Bump stable version for next release.\n- 12a897c Merge main: dual USB focus reclaim\n- a10011b USB focus: fire moveTaskToFront + HOME key simultaneously\n- 1ef8bf4 Merge remote nightly\n- 0d9bb51 Merge main: fix SystemUI crash from leftover pm disable\n- 888576d Fix SystemUI crash: re-enable UsbStorageActivity on startup\n- 26daccc Bump nightly version for next release.\n",
-      "downloads": 46,
-      "mirror_downloads": 0,
+      "downloads": 83,
+      "mirror_downloads": 37,
       "download_breakdown": {
         "tag": "nightly-20260630-1110",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1110/rom.zip",
-            "downloads": 24
+            "downloads": 31,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1110/rom_type_b.zip",
-            "downloads": 22
+            "downloads": 29,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-windows.zip",
+            "size": 644005853,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-windows-legacy.zip",
+            "size": 529098839,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-linux.zip",
+            "size": 756059452,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-linux-arm64.zip",
+            "size": 580966214,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-linux-legacy.zip",
+            "size": 527513122,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom-macos.zip",
+            "size": 563515670,
+            "downloads": 5
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-windows.zip",
+            "size": 596972428,
+            "downloads": 2
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-windows-legacy.zip",
+            "size": 482065432,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-linux.zip",
+            "size": 709026027,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-linux-arm64.zip",
+            "size": 533932789,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-linux-legacy.zip",
+            "size": 480479717,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1110/rom_type_b-macos.zip",
+            "size": 516482251,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -26102,24 +27887,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 12a897c Merge main: dual USB focus reclaim\n- a10011b USB focus: fire moveTaskToFront + HOME key simultaneously\n- 1ef8bf4 Merge remote nightly\n- 0d9bb51 Merge main: fix SystemUI crash from leftover pm disable\n- 888576d Fix SystemUI crash: re-enable UsbStorageActivity on startup\n- 26daccc Bump nightly version for next release.\n- aa6bf2e Merge remote nightly\n- 8784f4f Merge main: version interest, diagnostic log sharing, rich release notes, USB fix\n- 5ccf993 Soulseek version interest, diagnostic log sharing, rich release notes, USB fix\n- 535f0f8 Bump nightly version for next release.\n",
-      "downloads": 47,
-      "mirror_downloads": 0,
+      "downloads": 81,
+      "mirror_downloads": 34,
       "download_breakdown": {
         "tag": "nightly-20260630-1102",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1102/rom.zip",
-            "downloads": 25
+            "downloads": 32,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1102/rom_type_b.zip",
-            "downloads": 22
+            "downloads": 29,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-windows.zip",
+            "size": 643953018,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-windows-legacy.zip",
+            "size": 529046004,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-linux.zip",
+            "size": 756006617,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-linux-arm64.zip",
+            "size": 580913379,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-linux-legacy.zip",
+            "size": 527460287,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom-macos.zip",
+            "size": 563462835,
+            "downloads": 4
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-windows.zip",
+            "size": 595905068,
+            "downloads": 2
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-windows-legacy.zip",
+            "size": 480998072,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-linux.zip",
+            "size": 707958667,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-linux-arm64.zip",
+            "size": 532865429,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-linux-legacy.zip",
+            "size": 479412357,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1102/rom_type_b-macos.zip",
+            "size": 515414891,
+            "downloads": 1
+          }
+        ]
       },
       "assets": [
         {
@@ -26158,24 +28030,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- aa6bf2e Merge remote nightly\n- 8784f4f Merge main: version interest, diagnostic log sharing, rich release notes, USB fix\n- 5ccf993 Soulseek version interest, diagnostic log sharing, rich release notes, USB fix\n- 535f0f8 Bump nightly version for next release.\n- 3fc45b4 Bump stable version for next release.\n- 0343b3e Merge remote nightly\n- 6b94068 Merge main: suppress system USB via pm disable, auto-disable Rockbox\n- 62356a2 Suppress system USB dialog via pm disable, auto-disable Rockbox on startup\n- 80f2e7c Bump nightly version for next release.\n- 3c22bf4 Bump stable version for next release.\n",
-      "downloads": 45,
-      "mirror_downloads": 0,
+      "downloads": 84,
+      "mirror_downloads": 39,
       "download_breakdown": {
         "tag": "nightly-20260630-1035",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1035/rom.zip",
-            "downloads": 23
+            "downloads": 30,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1035/rom_type_b.zip",
-            "downloads": 22
+            "downloads": 29,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-windows.zip",
+            "size": 644074382,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-windows-legacy.zip",
+            "size": 529167368,
+            "downloads": 2
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-linux.zip",
+            "size": 756127981,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-linux-arm64.zip",
+            "size": 581034743,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-linux-legacy.zip",
+            "size": 527581651,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom-macos.zip",
+            "size": 563584200,
+            "downloads": 6
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-windows.zip",
+            "size": 600564604,
+            "downloads": 2
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-windows-legacy.zip",
+            "size": 485657608,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-linux.zip",
+            "size": 712618203,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-linux-arm64.zip",
+            "size": 537524965,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-linux-legacy.zip",
+            "size": 484071893,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1035/rom_type_b-macos.zip",
+            "size": 520074428,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -26214,24 +28173,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 0343b3e Merge remote nightly\n- 6b94068 Merge main: suppress system USB via pm disable, auto-disable Rockbox\n- 62356a2 Suppress system USB dialog via pm disable, auto-disable Rockbox on startup\n- 80f2e7c Bump nightly version for next release.\n- 3c22bf4 Bump stable version for next release.\n- 2715b7f Merge remote nightly\n- aeb148e Merge main: fix USB dialog suppression timing\n- 180f1e8 Fix USB dialog suppression: defer hasWindowFocus check to execution time\n- d9bc4e0 Bump nightly version for next release.\n- 9a260b0 Bump stable version for next release.\n",
-      "downloads": 49,
-      "mirror_downloads": 0,
+      "downloads": 90,
+      "mirror_downloads": 41,
       "download_breakdown": {
         "tag": "nightly-20260630-1024",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1024/rom.zip",
-            "downloads": 26
+            "downloads": 33,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1024/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 30,
+            "mirror_downloads": 7
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-windows.zip",
+            "size": 643955119,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-windows-legacy.zip",
+            "size": 529048105,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-linux.zip",
+            "size": 756008718,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-linux-arm64.zip",
+            "size": 580915480,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-linux-legacy.zip",
+            "size": 527462388,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom-macos.zip",
+            "size": 563464937,
+            "downloads": 5
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-windows.zip",
+            "size": 596898070,
+            "downloads": 2
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-windows-legacy.zip",
+            "size": 481991074,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-linux.zip",
+            "size": 708951669,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-linux-arm64.zip",
+            "size": 533858431,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-linux-legacy.zip",
+            "size": 480405359,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1024/rom_type_b-macos.zip",
+            "size": 516407894,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -26270,24 +28316,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 2715b7f Merge remote nightly\n- aeb148e Merge main: fix USB dialog suppression timing\n- 180f1e8 Fix USB dialog suppression: defer hasWindowFocus check to execution time\n- d9bc4e0 Bump nightly version for next release.\n- 9a260b0 Bump stable version for next release.\n- 835fd26 Merge remote nightly with USB fixes, track ordering, solarConfig\n- 2e8efb6 Fix USB SystemUI crashes, album track ordering, themed USB screen, solarConfig overrides\n- 9158189 Bump stable version for next release.\n- 9b91760 Bump nightly version for next release.\n- 32e45d2 Merge branch 'nightly' into main\n",
-      "downloads": 47,
-      "mirror_downloads": 0,
+      "downloads": 92,
+      "mirror_downloads": 45,
       "download_breakdown": {
         "tag": "nightly-20260630-1005",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1005/rom.zip",
-            "downloads": 24
+            "downloads": 32,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1005/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 31,
+            "mirror_downloads": 8
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-windows.zip",
+            "size": 645522025,
+            "downloads": 6
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-windows-legacy.zip",
+            "size": 530615011,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-linux.zip",
+            "size": 757575624,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-linux-arm64.zip",
+            "size": 582482386,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-linux-legacy.zip",
+            "size": 529029294,
+            "downloads": 2
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom-macos.zip",
+            "size": 565031841,
+            "downloads": 4
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-windows.zip",
+            "size": 595561763,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-windows-legacy.zip",
+            "size": 480654767,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-linux.zip",
+            "size": 707615362,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-linux-arm64.zip",
+            "size": 532522124,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-linux-legacy.zip",
+            "size": 479069052,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-1005/rom_type_b-macos.zip",
+            "size": 515071585,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -26326,24 +28459,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 835fd26 Merge remote nightly with USB fixes, track ordering, solarConfig\n- 2e8efb6 Fix USB SystemUI crashes, album track ordering, themed USB screen, solarConfig overrides\n- 9158189 Bump stable version for next release.\n- 9b91760 Bump nightly version for next release.\n- 32e45d2 Merge branch 'nightly' into main\n- 14a251d feat: Add track number sorting for albums and podcast-exclusive playback speed\n- bfe0262 Bump stable version for next release.\n- 1a3132c Bump nightly version for next release.\n- e2e231a Merge nightly: flow mode, LCD art filter, playlist move window\n- b374289 Flow mode, LCD art filter, playlist move window, and misc improvements\n",
-      "downloads": 49,
-      "mirror_downloads": 0,
+      "downloads": 94,
+      "mirror_downloads": 45,
       "download_breakdown": {
         "tag": "nightly-20260630-0957",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0957/rom.zip",
-            "downloads": 26
+            "downloads": 34,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0957/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 31,
+            "mirror_downloads": 8
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-windows.zip",
+            "size": 643954598,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-windows-legacy.zip",
+            "size": 529047584,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-linux.zip",
+            "size": 756008197,
+            "downloads": 5
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-linux-arm64.zip",
+            "size": 580914959,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-linux-legacy.zip",
+            "size": 527461867,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom-macos.zip",
+            "size": 563464415,
+            "downloads": 4
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-windows.zip",
+            "size": 589358120,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-windows-legacy.zip",
+            "size": 474451124,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-linux.zip",
+            "size": 701411719,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-linux-arm64.zip",
+            "size": 526318481,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-linux-legacy.zip",
+            "size": 472865409,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0957/rom_type_b-macos.zip",
+            "size": 508867943,
+            "downloads": 3
+          }
+        ]
       },
       "assets": [
         {
@@ -26382,24 +28602,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 14a251d feat: Add track number sorting for albums and podcast-exclusive playback speed\n- 1a3132c Bump nightly version for next release.\n- b374289 Flow mode, LCD art filter, playlist move window, and misc improvements\n- 8479e8b Bump nightly version for next release.\n- 8ed4902 Bump nightly version for next release.\n- 5772329 Fix OTA catalog versionCode for timestamp release tags.\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n",
-      "downloads": 49,
-      "mirror_downloads": 0,
+      "downloads": 96,
+      "mirror_downloads": 47,
       "download_breakdown": {
         "tag": "nightly-20260630-0636",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0636/rom.zip",
-            "downloads": 26
+            "downloads": 34,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0636/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 31,
+            "mirror_downloads": 8
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-windows.zip",
+            "size": 645539970,
+            "downloads": 7
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-windows-legacy.zip",
+            "size": 530632956,
+            "downloads": 2
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-linux.zip",
+            "size": 757593569,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-linux-arm64.zip",
+            "size": 582500331,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-linux-legacy.zip",
+            "size": 529047239,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom-macos.zip",
+            "size": 565049788,
+            "downloads": 3
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-windows.zip",
+            "size": 595682405,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-windows-legacy.zip",
+            "size": 480775409,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-linux.zip",
+            "size": 707736004,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-linux-arm64.zip",
+            "size": 532642766,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-linux-legacy.zip",
+            "size": 479189694,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0636/rom_type_b-macos.zip",
+            "size": 515192229,
+            "downloads": 3
+          }
+        ]
       },
       "assets": [
         {
@@ -26438,24 +28745,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- b374289 Flow mode, LCD art filter, playlist move window, and misc improvements\n- 8479e8b Bump nightly version for next release.\n- 8ed4902 Bump nightly version for next release.\n- 5772329 Fix OTA catalog versionCode for timestamp release tags.\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n",
-      "downloads": 49,
-      "mirror_downloads": 0,
+      "downloads": 94,
+      "mirror_downloads": 45,
       "download_breakdown": {
         "tag": "nightly-20260630-0549",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0549/rom.zip",
-            "downloads": 26
+            "downloads": 33,
+            "mirror_downloads": 7
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0549/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 31,
+            "mirror_downloads": 8
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-windows.zip",
+            "size": 643984968,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-windows-legacy.zip",
+            "size": 529077954,
+            "downloads": 4
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-linux.zip",
+            "size": 756038567,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-linux-arm64.zip",
+            "size": 580945329,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-linux-legacy.zip",
+            "size": 527492237,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-macos.zip",
+            "size": 563494784,
+            "downloads": 5
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-windows.zip",
+            "size": 595856306,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-windows-legacy.zip",
+            "size": 480949310,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-linux.zip",
+            "size": 707909905,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-linux-arm64.zip",
+            "size": 532816667,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-linux-legacy.zip",
+            "size": 479363595,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-macos.zip",
+            "size": 515366128,
+            "downloads": 3
+          }
+        ]
       },
       "assets": [
         {
@@ -26494,24 +28888,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 5772329 Fix OTA catalog versionCode for timestamp release tags.\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- b78f65f Bump stable version for next release.\n- 0b3ef24 Bump nightly version for next release.\n",
-      "downloads": 106,
-      "mirror_downloads": 0,
+      "downloads": 159,
+      "mirror_downloads": 53,
       "download_breakdown": {
         "tag": "20260629-1615",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-1615/rom.zip",
-            "downloads": 83
+            "downloads": 91,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-1615/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 31,
+            "mirror_downloads": 8
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-windows.zip",
+            "size": 643928134,
+            "downloads": 8
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-windows-legacy.zip",
+            "size": 529021120,
+            "downloads": 2
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-linux.zip",
+            "size": 755981733,
+            "downloads": 6
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-linux-arm64.zip",
+            "size": 580888495,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-linux-legacy.zip",
+            "size": 527435403,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-macos.zip",
+            "size": 563437957,
+            "downloads": 6
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-windows.zip",
+            "size": 599659130,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-windows-legacy.zip",
+            "size": 484752134,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-linux.zip",
+            "size": 711712729,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-linux-arm64.zip",
+            "size": 536619491,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-linux-legacy.zip",
+            "size": 483166419,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-macos.zip",
+            "size": 519168959,
+            "downloads": 4
+          }
+        ]
       },
       "assets": [
         {
@@ -26550,24 +29031,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- b78f65f Bump stable version for next release.\n- 0b3ef24 Bump nightly version for next release.\n- b16a7fe Trigger nightly CI build after main merge.\n",
-      "downloads": 50,
-      "mirror_downloads": 0,
+      "downloads": 100,
+      "mirror_downloads": 50,
       "download_breakdown": {
         "tag": "20260629-1610",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-1610/rom.zip",
-            "downloads": 27
+            "downloads": 35,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-1610/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 31,
+            "mirror_downloads": 8
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-windows.zip",
+            "size": 643982223,
+            "downloads": 7
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-windows-legacy.zip",
+            "size": 529075209,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux.zip",
+            "size": 756035822,
+            "downloads": 8
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux-arm64.zip",
+            "size": 580942584,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux-legacy.zip",
+            "size": 527489492,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-macos.zip",
+            "size": 563492047,
+            "downloads": 4
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-windows.zip",
+            "size": 596827538,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-windows-legacy.zip",
+            "size": 481920542,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-linux.zip",
+            "size": 708881137,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-linux-arm64.zip",
+            "size": 533787899,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-linux-legacy.zip",
+            "size": 480334827,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-macos.zip",
+            "size": 516337368,
+            "downloads": 3
+          }
+        ]
       },
       "assets": [
         {
@@ -26606,24 +29174,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "# Solar 0.6 (d4880a6) \u2014 stable\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- b78f65f Bump stable version for next release.\n- 0b3ef24 Bump nightly version for next release.\n- b16a7fe Trigger nightly CI build after main merge.\n- 106051f Merge branch 'nightly' into main\n- 19b3a51 Bump nightly version for next release.\n- 5e70de5 Add playlist picker, Deezer queue/fallback ARL, and fix home menu rebuild race.\n- 2d8a415 Bump stable version for next release.\n",
-      "downloads": 67,
-      "mirror_downloads": 0,
+      "downloads": 118,
+      "mirror_downloads": 51,
       "download_breakdown": {
         "tag": "20260629-1444",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-1444/rom.zip",
-            "downloads": 44
+            "downloads": 52,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-1444/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 31,
+            "mirror_downloads": 8
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-windows.zip",
+            "size": 643981085,
+            "downloads": 6
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-windows-legacy.zip",
+            "size": 529074071,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-linux.zip",
+            "size": 756034684,
+            "downloads": 8
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-linux-arm64.zip",
+            "size": 580941446,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-linux-legacy.zip",
+            "size": 527488354,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-macos.zip",
+            "size": 563490908,
+            "downloads": 6
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-windows.zip",
+            "size": 595671323,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-windows-legacy.zip",
+            "size": 480764327,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-linux.zip",
+            "size": 707724922,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-linux-arm64.zip",
+            "size": 532631684,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-linux-legacy.zip",
+            "size": 479178612,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-macos.zip",
+            "size": 515181152,
+            "downloads": 3
+          }
+        ]
       },
       "assets": [
         {
@@ -26662,24 +29317,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "# Solar 0.5 (106051f) \u2014 stable\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 106051f Merge branch 'nightly' into main\n- 19b3a51 Bump nightly version for next release.\n- 5e70de5 Add playlist picker, Deezer queue/fallback ARL, and fix home menu rebuild race.\n- 2d8a415 Bump stable version for next release.\n- b308ec3 Bump nightly version for next release.\n- 41a0b76 Bump nightly version for next release.\n- f14f0e3 Merge origin/nightly: integrate remote nightly version bump.\n- 119bbee Bump stable version for next release.\n- b618ab0 Merge origin/main: integrate remote stable version bump.\n- ca827ee Bump nightly version for next release.\n",
-      "downloads": 61,
-      "mirror_downloads": 0,
+      "downloads": 111,
+      "mirror_downloads": 50,
       "download_breakdown": {
         "tag": "20260629-0955",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-0955/rom.zip",
-            "downloads": 38
+            "downloads": 46,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-0955/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 31,
+            "mirror_downloads": 8
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-windows.zip",
+            "size": 643971683,
+            "downloads": 6
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-windows-legacy.zip",
+            "size": 529064669,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-linux.zip",
+            "size": 756025282,
+            "downloads": 8
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-linux-arm64.zip",
+            "size": 580932044,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-linux-legacy.zip",
+            "size": 527478952,
+            "downloads": 2
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-macos.zip",
+            "size": 563481507,
+            "downloads": 4
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-windows.zip",
+            "size": 596843354,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-windows-legacy.zip",
+            "size": 481936358,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-linux.zip",
+            "size": 708896953,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-linux-arm64.zip",
+            "size": 533803715,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-linux-legacy.zip",
+            "size": 480350643,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-macos.zip",
+            "size": 516353184,
+            "downloads": 3
+          }
+        ]
       },
       "assets": [
         {
@@ -26718,24 +29460,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "# Solar 0.4 (119bbee) \u2014 stable\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 119bbee Bump stable version for next release.\n- b618ab0 Merge origin/main: integrate remote stable version bump.\n- e50ff5b Bump stable version for next release.\n- 4acbf04 Merge main into nightly: align stable version bumps and repo cleanup.\n- ad966c9 Move chat room mode toggles into scrollable list headers; default status bar match off.\n- c72c963 Nightly: default Match Status Bar off and fix Reach wheel navigation.\n- 5d8f10b Nightly: Reach browse fixes, library perf, and Y1 input polish.\n- 9d462f8 Bump stable version for next release.\n- 0bd5aa2 Merge nightly: Y1 prev/next keymap and Rockbox first-boot disable.\n- 9ede623 Fix Y1 prev/next keymap and disable Rockbox on Solar ROM first boot.\n",
-      "downloads": 54,
-      "mirror_downloads": 0,
+      "downloads": 110,
+      "mirror_downloads": 56,
       "download_breakdown": {
         "tag": "20260629-0057",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-0057/rom.zip",
-            "downloads": 31
+            "downloads": 39,
+            "mirror_downloads": 8
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260629-0057/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 31,
+            "mirror_downloads": 8
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-windows.zip",
+            "size": 644000933,
+            "downloads": 9
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-windows-legacy.zip",
+            "size": 529093919,
+            "downloads": 2
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux.zip",
+            "size": 756054532,
+            "downloads": 8
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux-arm64.zip",
+            "size": 580961294,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux-legacy.zip",
+            "size": 527508202,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-macos.zip",
+            "size": 563510757,
+            "downloads": 6
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-windows.zip",
+            "size": 595887218,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-windows-legacy.zip",
+            "size": 480980222,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-linux.zip",
+            "size": 707940817,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-linux-arm64.zip",
+            "size": 532847579,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-linux-legacy.zip",
+            "size": 479394507,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-macos.zip",
+            "size": 515397048,
+            "downloads": 3
+          }
+        ]
       },
       "assets": [
         {
@@ -26774,24 +29603,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 8ed4902 Bump nightly version for next release.\n- 5772329 Fix OTA catalog versionCode for timestamp release tags.\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- b78f65f Bump stable version for next release.\n",
-      "downloads": 61,
-      "mirror_downloads": 0,
+      "downloads": 111,
+      "mirror_downloads": 50,
       "download_breakdown": {
         "tag": "nightly-20260629-1616",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1616/rom.zip",
-            "downloads": 37
+            "downloads": 46,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1616/rom_type_b.zip",
-            "downloads": 24
+            "downloads": 33,
+            "mirror_downloads": 9
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-windows.zip",
+            "size": 643994710,
+            "downloads": 7
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-windows-legacy.zip",
+            "size": 529087696,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-linux.zip",
+            "size": 756048309,
+            "downloads": 5
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-linux-arm64.zip",
+            "size": 580955071,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-linux-legacy.zip",
+            "size": 527501979,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-macos.zip",
+            "size": 563504527,
+            "downloads": 4
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-windows.zip",
+            "size": 596875056,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-windows-legacy.zip",
+            "size": 481968060,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-linux.zip",
+            "size": 708928655,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-linux-arm64.zip",
+            "size": 533835417,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-linux-legacy.zip",
+            "size": 480382345,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-macos.zip",
+            "size": 516384879,
+            "downloads": 2
+          }
+        ]
       },
       "assets": [
         {
@@ -26830,24 +29746,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- 83eb519 Bump nightly version for next release.\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- 0b3ef24 Bump nightly version for next release.\n- b16a7fe Trigger nightly CI build after main merge.\n- 19b3a51 Bump nightly version for next release.\n- 5e70de5 Add playlist picker, Deezer queue/fallback ARL, and fix home menu rebuild race.\n- b308ec3 Bump nightly version for next release.\n- 41a0b76 Bump nightly version for next release.\n",
-      "downloads": 50,
-      "mirror_downloads": 0,
+      "downloads": 101,
+      "mirror_downloads": 51,
       "download_breakdown": {
         "tag": "nightly-20260629-1609",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1609/rom.zip",
-            "downloads": 26
+            "downloads": 35,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1609/rom_type_b.zip",
-            "downloads": 24
+            "downloads": 33,
+            "mirror_downloads": 9
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-windows.zip",
+            "size": 645535425,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-windows-legacy.zip",
+            "size": 530628411,
+            "downloads": 2
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux.zip",
+            "size": 757589024,
+            "downloads": 7
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux-arm64.zip",
+            "size": 582495786,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux-legacy.zip",
+            "size": 529042694,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-macos.zip",
+            "size": 565045242,
+            "downloads": 6
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-windows.zip",
+            "size": 595885426,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-windows-legacy.zip",
+            "size": 480978430,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-linux.zip",
+            "size": 707939025,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-linux-arm64.zip",
+            "size": 532845787,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-linux-legacy.zip",
+            "size": 479392715,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-macos.zip",
+            "size": 515395249,
+            "downloads": 4
+          }
+        ]
       },
       "assets": [
         {
@@ -26886,24 +29889,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- 0b3ef24 Bump nightly version for next release.\n- b16a7fe Trigger nightly CI build after main merge.\n- 19b3a51 Bump nightly version for next release.\n- 5e70de5 Add playlist picker, Deezer queue/fallback ARL, and fix home menu rebuild race.\n- b308ec3 Bump nightly version for next release.\n- 41a0b76 Bump nightly version for next release.\n- f14f0e3 Merge origin/nightly: integrate remote nightly version bump.\n- ca827ee Bump nightly version for next release.\n",
-      "downloads": 51,
-      "mirror_downloads": 0,
+      "downloads": 102,
+      "mirror_downloads": 51,
       "download_breakdown": {
         "tag": "nightly-20260629-1444",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1444/rom.zip",
-            "downloads": 27
+            "downloads": 36,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1444/rom_type_b.zip",
-            "downloads": 24
+            "downloads": 33,
+            "mirror_downloads": 9
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-windows.zip",
+            "size": 644001853,
+            "downloads": 7
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-windows-legacy.zip",
+            "size": 529094839,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-linux.zip",
+            "size": 756055452,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-linux-arm64.zip",
+            "size": 580962214,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-linux-legacy.zip",
+            "size": 527509122,
+            "downloads": 2
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom-macos.zip",
+            "size": 563511669,
+            "downloads": 5
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-windows.zip",
+            "size": 596857137,
+            "downloads": 3
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-windows-legacy.zip",
+            "size": 481950141,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-linux.zip",
+            "size": 708910736,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-linux-arm64.zip",
+            "size": 533817498,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-linux-legacy.zip",
+            "size": 480364426,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1444/rom_type_b-macos.zip",
+            "size": 516366959,
+            "downloads": 3
+          }
+        ]
       },
       "assets": [
         {
@@ -26942,24 +30032,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- b16a7fe Trigger nightly CI build after main merge.\n- 19b3a51 Bump nightly version for next release.\n- 5e70de5 Add playlist picker, Deezer queue/fallback ARL, and fix home menu rebuild race.\n- b308ec3 Bump nightly version for next release.\n- 41a0b76 Bump nightly version for next release.\n- f14f0e3 Merge origin/nightly: integrate remote nightly version bump.\n- ca827ee Bump nightly version for next release.\n- 4acbf04 Merge main into nightly: align stable version bumps and repo cleanup.\n- ad966c9 Move chat room mode toggles into scrollable list headers; default status bar match off.\n- c72c963 Nightly: default Match Status Bar off and fix Reach wheel navigation.\n",
-      "downloads": 49,
-      "mirror_downloads": 0,
+      "downloads": 104,
+      "mirror_downloads": 55,
       "download_breakdown": {
         "tag": "nightly-20260629-0955",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0955/rom.zip",
-            "downloads": 25
+            "downloads": 34,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0955/rom_type_b.zip",
-            "downloads": 24
+            "downloads": 33,
+            "mirror_downloads": 9
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-windows.zip",
+            "size": 645522892,
+            "downloads": 6
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-windows-legacy.zip",
+            "size": 530615878,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-linux.zip",
+            "size": 757576491,
+            "downloads": 6
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-linux-arm64.zip",
+            "size": 582483253,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-linux-legacy.zip",
+            "size": 529030161,
+            "downloads": 4
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom-macos.zip",
+            "size": 565032709,
+            "downloads": 7
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-windows.zip",
+            "size": 596904486,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-windows-legacy.zip",
+            "size": 481997490,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-linux.zip",
+            "size": 708958085,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-linux-arm64.zip",
+            "size": 533864847,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-linux-legacy.zip",
+            "size": 480411775,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0955/rom_type_b-macos.zip",
+            "size": 516414309,
+            "downloads": 4
+          }
+        ]
       },
       "assets": [
         {
@@ -26998,24 +30175,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 5e70de5 Add playlist picker, Deezer queue/fallback ARL, and fix home menu rebuild race.\n- b308ec3 Bump nightly version for next release.\n- 41a0b76 Bump nightly version for next release.\n- f14f0e3 Merge origin/nightly: integrate remote nightly version bump.\n- ca827ee Bump nightly version for next release.\n- 4acbf04 Merge main into nightly: align stable version bumps and repo cleanup.\n- ad966c9 Move chat room mode toggles into scrollable list headers; default status bar match off.\n- c72c963 Nightly: default Match Status Bar off and fix Reach wheel navigation.\n- 5d8f10b Nightly: Reach browse fixes, library perf, and Y1 input polish.\n- 73b2676 Bump nightly version for next release.\n",
-      "downloads": 51,
-      "mirror_downloads": 0,
+      "downloads": 105,
+      "mirror_downloads": 54,
       "download_breakdown": {
         "tag": "nightly-20260629-0926",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0926/rom.zip",
-            "downloads": 27
+            "downloads": 36,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0926/rom_type_b.zip",
-            "downloads": 24
+            "downloads": 33,
+            "mirror_downloads": 9
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-windows.zip",
+            "size": 644026248,
+            "downloads": 6
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-windows-legacy.zip",
+            "size": 529119234,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-linux.zip",
+            "size": 756079847,
+            "downloads": 5
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-linux-arm64.zip",
+            "size": 580986609,
+            "downloads": 2
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-linux-legacy.zip",
+            "size": 527533517,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom-macos.zip",
+            "size": 563536066,
+            "downloads": 7
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-windows.zip",
+            "size": 599656092,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-windows-legacy.zip",
+            "size": 484749096,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-linux.zip",
+            "size": 711709691,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-linux-arm64.zip",
+            "size": 536616453,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-linux-legacy.zip",
+            "size": 483163381,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0926/rom_type_b-macos.zip",
+            "size": 519165916,
+            "downloads": 4
+          }
+        ]
       },
       "assets": [
         {
@@ -27054,24 +30318,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 41a0b76 Bump nightly version for next release.\n- f14f0e3 Merge origin/nightly: integrate remote nightly version bump.\n- ca827ee Bump nightly version for next release.\n- 4acbf04 Merge main into nightly: align stable version bumps and repo cleanup.\n- ad966c9 Move chat room mode toggles into scrollable list headers; default status bar match off.\n- c72c963 Nightly: default Match Status Bar off and fix Reach wheel navigation.\n- 5d8f10b Nightly: Reach browse fixes, library perf, and Y1 input polish.\n- 73b2676 Bump nightly version for next release.\n- 0bd5aa2 Merge nightly: Y1 prev/next keymap and Rockbox first-boot disable.\n- 9ede623 Fix Y1 prev/next keymap and disable Rockbox on Solar ROM first boot.\n",
-      "downloads": 49,
-      "mirror_downloads": 0,
+      "downloads": 106,
+      "mirror_downloads": 57,
       "download_breakdown": {
         "tag": "nightly-20260629-0057",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0057/rom.zip",
-            "downloads": 25
+            "downloads": 34,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0057/rom_type_b.zip",
-            "downloads": 24
+            "downloads": 33,
+            "mirror_downloads": 9
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-windows.zip",
+            "size": 644004079,
+            "downloads": 8
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-windows-legacy.zip",
+            "size": 529097065,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-linux.zip",
+            "size": 756057678,
+            "downloads": 7
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-linux-arm64.zip",
+            "size": 580964440,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-linux-legacy.zip",
+            "size": 527511348,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom-macos.zip",
+            "size": 563513895,
+            "downloads": 5
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-windows.zip",
+            "size": 596866851,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-windows-legacy.zip",
+            "size": 481959855,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-linux.zip",
+            "size": 708920450,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-linux-arm64.zip",
+            "size": 533827212,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-linux-legacy.zip",
+            "size": 480374140,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-0057/rom_type_b-macos.zip",
+            "size": 516376673,
+            "downloads": 4
+          }
+        ]
       },
       "assets": [
         {
@@ -27110,24 +30461,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 9ede623 Fix Y1 prev/next keymap and disable Rockbox on Solar ROM first boot.\n- 41c2bff Bump nightly version for next release.\n- a642085 Fix prev/next controlling playback in global context menu.\n- ec28f6f Bump nightly version for next release.\n- 9a0047e Merge branch 'main' into nightly\n- 621712e Bump nightly version for next release.\n- 9e71c08 Vendor Koensayr AVRCP patches and Y1Bridge.apk for CI ROM builds.\n- a3e41f8 Fix ROM build sed permission denied on mtk-kpd.kl patch.\n- 0a6ee21 Nightly: media suite, Wi\u2011Fi/BT quick controls, and Y1 input polish.\n- f35399f Bump nightly version for next release.\n",
-      "downloads": 62,
-      "mirror_downloads": 0,
+      "downloads": 116,
+      "mirror_downloads": 54,
       "download_breakdown": {
         "tag": "nightly-20260628-1907",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1907/rom.zip",
-            "downloads": 37
+            "downloads": 46,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1907/rom_type_b.zip",
-            "downloads": 25
+            "downloads": 34,
+            "mirror_downloads": 9
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-windows.zip",
+            "size": 643975589,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-windows-legacy.zip",
+            "size": 529068575,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-linux.zip",
+            "size": 756029188,
+            "downloads": 5
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-linux-arm64.zip",
+            "size": 580935950,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-linux-legacy.zip",
+            "size": 527482860,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom-macos.zip",
+            "size": 563485406,
+            "downloads": 7
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-windows.zip",
+            "size": 596783901,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-windows-legacy.zip",
+            "size": 481876905,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-linux.zip",
+            "size": 708837500,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-linux-arm64.zip",
+            "size": 533744262,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-linux-legacy.zip",
+            "size": 480291190,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1907/rom_type_b-macos.zip",
+            "size": 516293724,
+            "downloads": 4
+          }
+        ]
       },
       "assets": [
         {
@@ -27166,24 +30604,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- a642085 Fix prev/next controlling playback in global context menu.\n- ec28f6f Bump nightly version for next release.\n- 9a0047e Merge branch 'main' into nightly\n- 621712e Bump nightly version for next release.\n- 9e71c08 Vendor Koensayr AVRCP patches and Y1Bridge.apk for CI ROM builds.\n- a3e41f8 Fix ROM build sed permission denied on mtk-kpd.kl patch.\n- 0a6ee21 Nightly: media suite, Wi\u2011Fi/BT quick controls, and Y1 input polish.\n- f35399f Bump nightly version for next release.\n- 3c118d8 Fix gapless Reach/Deezer playback at 100% and split Now Playing metadata lines.\n- 53dd405 Bump stable version for next release.\n",
-      "downloads": 50,
-      "mirror_downloads": 0,
+      "downloads": 106,
+      "mirror_downloads": 56,
       "download_breakdown": {
         "tag": "nightly-20260628-1014",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1014/rom.zip",
-            "downloads": 26
+            "downloads": 35,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1014/rom_type_b.zip",
-            "downloads": 24
+            "downloads": 33,
+            "mirror_downloads": 9
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-windows.zip",
+            "size": 643937773,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-windows-legacy.zip",
+            "size": 529030759,
+            "downloads": 2
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-linux.zip",
+            "size": 755991372,
+            "downloads": 7
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-linux-arm64.zip",
+            "size": 580898134,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-linux-legacy.zip",
+            "size": 527445044,
+            "downloads": 3
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom-macos.zip",
+            "size": 563447590,
+            "downloads": 8
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-windows.zip",
+            "size": 599179225,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-windows-legacy.zip",
+            "size": 484272229,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-linux.zip",
+            "size": 711232824,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-linux-arm64.zip",
+            "size": 536139586,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-linux-legacy.zip",
+            "size": 482686514,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260628-1014/rom_type_b-macos.zip",
+            "size": 518689048,
+            "downloads": 4
+          }
+        ]
       },
       "assets": [
         {
@@ -27222,24 +30747,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "# Solar 0.2 (9c40a2d) \u2014 stable\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 9c40a2d Delete cloudflare directory\n- 8fd7735 Delete .cursor/rules directory\n- 21690e6 Bump stable version for next release.\n- c6c0bbe Merge pull request #5 from thesolarproject/nightly\n- 9a0047e Merge branch 'main' into nightly\n- 621712e Bump nightly version for next release.\n- 9e71c08 Vendor Koensayr AVRCP patches and Y1Bridge.apk for CI ROM builds.\n- a3e41f8 Fix ROM build sed permission denied on mtk-kpd.kl patch.\n- 0a6ee21 Nightly: media suite, Wi\u2011Fi/BT quick controls, and Y1 input polish.\n- f35399f Bump nightly version for next release.\n",
-      "downloads": 64,
-      "mirror_downloads": 0,
+      "downloads": 190,
+      "mirror_downloads": 126,
       "download_breakdown": {
         "tag": "20260628-1014",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260628-1014/rom.zip",
-            "downloads": 37
+            "downloads": 67,
+            "mirror_downloads": 30
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260628-1014/rom_type_b.zip",
-            "downloads": 27
+            "downloads": 53,
+            "mirror_downloads": 26
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-windows.zip",
+            "size": 643963012,
+            "downloads": 16
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-windows-legacy.zip",
+            "size": 529055998,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-linux.zip",
+            "size": 756016611,
+            "downloads": 12
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-linux-arm64.zip",
+            "size": 580923373,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-linux-legacy.zip",
+            "size": 527470283,
+            "downloads": 4
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom-macos.zip",
+            "size": 563472836,
+            "downloads": 9
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-windows.zip",
+            "size": 596943077,
+            "downloads": 10
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-windows-legacy.zip",
+            "size": 482036081,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-linux.zip",
+            "size": 708996676,
+            "downloads": 8
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-linux-arm64.zip",
+            "size": 533903438,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-linux-legacy.zip",
+            "size": 480450366,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260628-1014/rom_type_b-macos.zip",
+            "size": 516452907,
+            "downloads": 7
+          }
+        ]
       },
       "assets": [
         {
@@ -27278,24 +30890,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "# Solar 0.1 (c6c0bbe) \u2014 stable\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- c6c0bbe Merge pull request #5 from thesolarproject/nightly\n- 9a0047e Merge branch 'main' into nightly\n- 621712e Bump nightly version for next release.\n- 9e71c08 Vendor Koensayr AVRCP patches and Y1Bridge.apk for CI ROM builds.\n- a3e41f8 Fix ROM build sed permission denied on mtk-kpd.kl patch.\n- 0a6ee21 Nightly: media suite, Wi\u2011Fi/BT quick controls, and Y1 input polish.\n- f35399f Bump nightly version for next release.\n- 3c118d8 Fix gapless Reach/Deezer playback at 100% and split Now Playing metadata lines.\n- 53dd405 Bump stable version for next release.\n- c9c9d52 Bump nightly version for next release.\n",
-      "downloads": 70,
-      "mirror_downloads": 0,
+      "downloads": 133,
+      "mirror_downloads": 63,
       "download_breakdown": {
         "tag": "20260627-0304",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260627-0304/rom.zip",
-            "downloads": 43
+            "downloads": 52,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/20260627-0304/rom_type_b.zip",
-            "downloads": 27
+            "downloads": 36,
+            "mirror_downloads": 9
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-windows.zip",
+            "size": 644042616,
+            "downloads": 10
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-windows-legacy.zip",
+            "size": 529135602,
+            "downloads": 1
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-linux.zip",
+            "size": 756096215,
+            "downloads": 10
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-linux-arm64.zip",
+            "size": 581002977,
+            "downloads": 3
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-linux-legacy.zip",
+            "size": 527549885,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom-macos.zip",
+            "size": 563552441,
+            "downloads": 8
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-windows.zip",
+            "size": 596840787,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-windows-legacy.zip",
+            "size": 481933791,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-linux.zip",
+            "size": 708894386,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-linux-arm64.zip",
+            "size": 533801148,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-linux-legacy.zip",
+            "size": 480348076,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/20260627-0304/rom_type_b-macos.zip",
+            "size": 516350618,
+            "downloads": 3
+          }
+        ]
       },
       "assets": [
         {
@@ -27334,24 +31033,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 9a0047e Merge branch 'main' into nightly\n- 621712e Bump nightly version for next release.\n- 9e71c08 Vendor Koensayr AVRCP patches and Y1Bridge.apk for CI ROM builds.\n- a3e41f8 Fix ROM build sed permission denied on mtk-kpd.kl patch.\n- 0a6ee21 Nightly: media suite, Wi\u2011Fi/BT quick controls, and Y1 input polish.\n- f35399f Bump nightly version for next release.\n- 3c118d8 Fix gapless Reach/Deezer playback at 100% and split Now Playing metadata lines.\n- 53dd405 Bump stable version for next release.\n- c9c9d52 Bump nightly version for next release.\n- 6249506 Merge nightly: Reach service enable toggles.\n",
-      "downloads": 51,
-      "mirror_downloads": 0,
+      "downloads": 105,
+      "mirror_downloads": 54,
       "download_breakdown": {
         "tag": "nightly-20260627-0304",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0304/rom.zip",
-            "downloads": 26
+            "downloads": 35,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0304/rom_type_b.zip",
-            "downloads": 25
+            "downloads": 34,
+            "mirror_downloads": 9
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-windows.zip",
+            "size": 643974448,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-windows-legacy.zip",
+            "size": 529067434,
+            "downloads": 3
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-linux.zip",
+            "size": 756028047,
+            "downloads": 7
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-linux-arm64.zip",
+            "size": 580934809,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-linux-legacy.zip",
+            "size": 527481717,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom-macos.zip",
+            "size": 563484265,
+            "downloads": 7
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-windows.zip",
+            "size": 596893894,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-windows-legacy.zip",
+            "size": 481986898,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-linux.zip",
+            "size": 708947493,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-linux-arm64.zip",
+            "size": 533854255,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-linux-legacy.zip",
+            "size": 480401183,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0304/rom_type_b-macos.zip",
+            "size": 516403717,
+            "downloads": 4
+          }
+        ]
       },
       "assets": [
         {
@@ -27390,24 +31176,111 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png",
       "icon_dark_url": "",
       "body": "# Solar nightly-20260627-0209 (9e71c08) \u2014 initial nightly release, this is experimental, expect bugs, lots of them.\r\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\r\n## Recent commits\r\n\r\n- 9e71c08 Y1bridge.apk for future AVRCP implementation - thanks to @seanathanVT's Koensayr mod.\r\n- 0a6ee21 Nightly: media suite, Wi\u2011Fi/BT quick controls, and Y1 input polish.\r\n- 3c118d8 Fixes for Soulseek/Deezer playback, now playing improvements\r\n- 2895fe1 Adds toggles for online music services so they can be excluded from search results.",
-      "downloads": 52,
-      "mirror_downloads": 0,
+      "downloads": 103,
+      "mirror_downloads": 51,
       "download_breakdown": {
         "tag": "nightly-20260627-0209",
-        "mirrors": "",
+        "mirrors": "y1-community/solar-mirror",
         "firmware": [
           {
             "name": "rom.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0209/rom.zip",
-            "downloads": 29
+            "downloads": 38,
+            "mirror_downloads": 9
           },
           {
             "name": "rom_type_b.zip",
             "url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0209/rom_type_b.zip",
-            "downloads": 23
+            "downloads": 32,
+            "mirror_downloads": 9
           }
         ],
-        "portable": []
+        "portable": [
+          {
+            "platform": "windows",
+            "name": "rom-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-windows.zip",
+            "size": 646392412,
+            "downloads": 5
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-windows-legacy.zip",
+            "size": 531485398,
+            "downloads": 2
+          },
+          {
+            "platform": "linux",
+            "name": "rom-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-linux.zip",
+            "size": 758446011,
+            "downloads": 7
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-linux-arm64.zip",
+            "size": 583352773,
+            "downloads": 1
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-linux-legacy.zip",
+            "size": 529899681,
+            "downloads": 1
+          },
+          {
+            "platform": "macos",
+            "name": "rom-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom-macos.zip",
+            "size": 565902230,
+            "downloads": 5
+          },
+          {
+            "platform": "windows",
+            "name": "rom_type_b-windows.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-windows.zip",
+            "size": 598877712,
+            "downloads": 4
+          },
+          {
+            "platform": "windows-legacy",
+            "name": "rom_type_b-windows-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-windows-legacy.zip",
+            "size": 483970716,
+            "downloads": 0
+          },
+          {
+            "platform": "linux",
+            "name": "rom_type_b-linux.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-linux.zip",
+            "size": 710931311,
+            "downloads": 4
+          },
+          {
+            "platform": "linux-arm64",
+            "name": "rom_type_b-linux-arm64.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-linux-arm64.zip",
+            "size": 535838073,
+            "downloads": 0
+          },
+          {
+            "platform": "linux-legacy",
+            "name": "rom_type_b-linux-legacy.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-linux-legacy.zip",
+            "size": 482385001,
+            "downloads": 0
+          },
+          {
+            "platform": "macos",
+            "name": "rom_type_b-macos.zip",
+            "url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260627-0209/rom_type_b-macos.zip",
+            "size": 518387536,
+            "downloads": 4
+          }
+        ]
       },
       "assets": [
         {
@@ -31202,7 +35075,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
       "body": "This is a beta release. To get it on the player, choose Settings > General > System Update > Update Channel > Beta.\n\n- With List Glide on, the arrow now moves with the highlight as one whole arrow, also on fast scrolls.\n- All lists show the arrow only on the selected row. Settings rows no longer show a grey arrow on each row, and every Settings row that opens a page or a list of values now shows it when selected (Theme, Language, USB Drive and others had none before).\n- The selected row of Artists, Genres and the song lists shows its arrow again.\n- The top level of Settings shows the album cover on the right, as the main menu does.\n- Settings > Menus > Music Menu Items can now reorder the Music menu, as Main Menu Items does for the main menu: hold a row, turn the wheel to move it, and push the centre button to put it down. Your saved order and hidden items stay.\n- The Web Server screen shows a QR code of its address while it runs, so a phone camera opens the file browser, which now also shows the microSD card.\n- Lyrics stored in MP3 tags are found also after a large cover and with more tag variants, and the same tag reader gives the year and the Play On album id.\n- Add to Queue and Shuffle Play from an album's hold menu use the same track order as the album screen.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `Classy-20261124-beta.apk` | Innioasis Y2 (Android 4.4) | Standalone launcher APK (sideload or install) |\n| `Classy-20261124-beta-y1.apk` | Innioasis Y1 (Android 4.2) | Standalone launcher APK (sideload or install) |\n| `update.json` | Innioasis Y2 | OTA update metadata for the in-app updater |\n| `update-y1.json` | Innioasis Y1 | OTA update metadata for the in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/ClassyPlayer/Classy/compare/20261123-beta...20261124-beta\n",
-      "downloads": 32,
+      "downloads": 33,
       "mirror_downloads": 21,
       "download_breakdown": {
         "tag": "20261124-beta",
@@ -31223,7 +35096,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261124-beta/rom_y2.zip",
-            "downloads": 3,
+            "downloads": 4,
             "mirror_downloads": 1
           }
         ],
@@ -31394,7 +35267,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261124-beta/rom_y2.zip",
           "size": 483202102,
-          "download_count": 2,
+          "download_count": 3,
           "content_type": "application/zip"
         },
         {
@@ -32126,8 +35999,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
       "body": "> [!WARNING]\r\n> **This is a beta.** It may have bugs that are not in the stable release. Players get it in **Settings \u2192 General \u2192 System Update \u2192 Update Channel \u2192 Beta**.\r\n\r\n### Classy Release\r\n\r\nAutomated build with full support for **Innioasis Y1** (Type A & Type B) and **Innioasis Y2**.\r\n\r\n#### \ud83d\udce6 Release Assets\r\n\r\n| File | Target Device | Notes |\r\n| :--- | :--- | :--- |\r\n| **`Classy-20261119-beta.apk`** | **Innioasis Y2** (Android 4.4) | Standalone launcher APK (sideload or install) |\r\n| **`Classy-20261119-beta-y1.apk`** | **Innioasis Y1** (Android 4.2) | Standalone launcher APK (sideload or install) |\r\n| **`update.json`** / **`update-y1.json`** | Y2 / Y1 | OTA update metadata for in-app updater |\r\n| **`rom_y2.zip`** | **Innioasis Y2** (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\r\n| **`rom_y1_type_a.zip`** | **Innioasis Y1** (Type A) | Flashable ROM for Y1 players with original firmware **2.0.0 or higher** |\r\n| **`rom_y1_type_b.zip`** | **Innioasis Y1** (Type B) | Flashable ROM for Y1 players with original firmware **below 2.0.0** |\r\n| **`SHA256SUMS.txt`** | All Files | SHA-256 integrity checksums |\r\n\r\n#### \u26a1 Flashing Instructions (SP Flash Tool)\r\n1. Extract the corresponding zip file for your device.\r\n2. Launch `flash_tool.exe` (or Linux `flash_tool`).\r\n3. Load the scatter file (`MT6582_Android_scatter.txt` for Y2, `MT6572_Android_scatter.txt` for Y1).\r\n4. Select **Firmware Upgrade** or **Download Only**.\r\n5. Power off the device completely, click **Download**, and connect the USB cable.\r\n\r\n---\r\n\r\n\r\n## What's Changed\r\n* chore(github): add bug report and feature request issue forms by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/124\r\n* chore(github): ask issue authors to write in their own words by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/125\r\n* fix(now-playing): draw the shuffle and repeat icons as on the iPod classic by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/126\r\n* Y1 support by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/118\r\n\r\n\r\n**Full Changelog**: https://github.com/ClassyPlayer/Classy/compare/20261118-beta...20261119-beta",
-      "downloads": 122,
-      "mirror_downloads": 73,
+      "downloads": 123,
+      "mirror_downloads": 74,
       "download_breakdown": {
         "tag": "20261119-beta",
         "mirrors": "y1-community/classy-mirror",
@@ -32157,7 +36030,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
             "name": "rom_y1_type_a-windows.zip",
             "url": "https://github.com/y1-community/classy-mirror/releases/download/20261119-beta/rom_y1_type_a-windows.zip",
             "size": 633650788,
-            "downloads": 2
+            "downloads": 3
           },
           {
             "platform": "windows-legacy",
@@ -37723,7 +41596,7 @@ window.INNIOASIS_RELEASE_ICONS = {
 
 window.INNIOASIS_REPO_STATS = {
   "classyplayer/classy": {
-    "downloads": 2888,
+    "downloads": 2889,
     "forks": 6,
     "release_count": 33,
     "stars": 15,
@@ -37744,7 +41617,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-24T05:36:51Z"
   },
   "jarvissax/rondo": {
-    "downloads": 3843,
+    "downloads": 3845,
     "forks": 1,
     "release_count": 30,
     "stars": 5,
@@ -37772,7 +41645,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-20T08:26:54Z"
   },
   "rockbox-y1/rockbox": {
-    "downloads": 55675,
+    "downloads": 55686,
     "forks": 23,
     "release_count": 31,
     "stars": 87,
@@ -37786,7 +41659,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-10-15T03:03:06Z"
   },
   "schulzcode/y2linux": {
-    "downloads": 41812,
+    "downloads": 41829,
     "forks": 9,
     "release_count": 113,
     "stars": 31,
@@ -37800,7 +41673,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-24T10:24:52Z"
   },
   "spycemagic/y2-rockbox": {
-    "downloads": 5209,
+    "downloads": 5216,
     "forks": 1,
     "release_count": 3,
     "stars": 15,
@@ -37821,7 +41694,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-22T17:23:36Z"
   },
   "y1-community/classy-mirror": {
-    "downloads": 1281,
+    "downloads": 1282,
     "forks": 0,
     "release_count": 33,
     "stars": 0,
@@ -37863,7 +41736,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-05T04:15:40Z"
   },
   "y1-community/g5-stock-rom-mirror": {
-    "downloads": 2,
+    "downloads": 5,
     "forks": 0,
     "release_count": 1,
     "stars": 0,
@@ -37877,7 +41750,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T15:54:16Z"
   },
   "y1-community/innioasis-updater": {
-    "downloads": 69981,
+    "downloads": 69925,
     "forks": 15,
     "release_count": 75,
     "stars": 56,
@@ -37954,11 +41827,18 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T09:07:19Z"
   },
   "y1-community/rondo-mirror": {
-    "downloads": 298,
+    "downloads": 341,
     "forks": 0,
     "release_count": 21,
     "stars": 0,
     "updated_at": "2026-11-12T14:35:30Z"
+  },
+  "y1-community/solar-mirror": {
+    "downloads": 364,
+    "forks": 0,
+    "release_count": 47,
+    "stars": 0,
+    "updated_at": "2026-11-12T14:01:41Z"
   },
   "y1-community/sr1-stock-rom": {
     "downloads": 38,
@@ -37968,7 +41848,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-05T04:11:50Z"
   },
   "y1-community/updater-ce-neo": {
-    "downloads": 2293,
+    "downloads": 2181,
     "forks": 1,
     "release_count": 6,
     "stars": 0,
@@ -38003,7 +41883,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T13:41:34Z"
   },
   "y1-community/y1-stock-rom": {
-    "downloads": 72531,
+    "downloads": 72608,
     "forks": 0,
     "release_count": 10,
     "stars": 6,
