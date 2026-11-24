@@ -4,66 +4,7 @@
   <title>Release notes from thesolarproject/solar</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/thesolarproject/solar/releases.atom"/>
-  <updated>2026-09-28T16:36:49Z</updated>
-  <entry>
-    <id>tag:innioasis.app,2026:thesolarproject/solar/y2-release</id>
-    <updated>2026-09-28T16:36:49Z</updated>
-    <published>2026-09-28T16:36:49Z</published>
-    <title>Solar Y2 ROM v20261023-0720</title>
-    <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/y2-release"/>
-    <innioasis:tag_name>y2-release</innioasis:tag_name>
-    <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>160</innioasis:downloads>
-    <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/y2-release/rom_y2.zip" title="rom_y2.zip" length="443599332" type="application/zip" innioasis:download_count="160" innioasis:asset_id="668314215"/>
-    <content type="text">Solar Y2 ROM for Innioasis Y2 (MT6582 ATA). Built from 944d14b.</content>
-  </entry>
-  <entry>
-    <id>tag:innioasis.app,2026:thesolarproject/solar/20260819-0956</id>
-    <updated>2026-08-19T10:06:38Z</updated>
-    <published>2026-08-19T10:06:38Z</published>
-    <title>20260819-0956</title>
-    <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/20260819-0956"/>
-    <innioasis:tag_name>20260819-0956</innioasis:tag_name>
-    <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>1092</innioasis:downloads>
-    <innioasis:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260819-0956/app-release.apk" title="app-release.apk" length="20001162" type="application/vnd.android.package-archive" innioasis:download_count="109" innioasis:asset_id="520682096"/>
-    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom.zip" title="rom.zip" length="981474469" type="application/zip" innioasis:download_count="1023" innioasis:asset_id="520682097"/>
-    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom_a5.zip" title="rom_a5.zip" length="293722213" type="application/zip" innioasis:download_count="28" innioasis:asset_id="520682095"/>
-    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom_type_b.zip" title="rom_type_b.zip" length="488296019" type="application/zip" innioasis:download_count="41" innioasis:asset_id="520682098"/>
-    <content type="text">&gt; **Solar** is a custom firmware and launcher for the Innioasis Y1 — a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), **Stem Player** (stem separation powered by [Lalal.ai](https://www.lalal.ai)), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).
-
-### Features
-
-- 🎛️ **Stem Player** — Gen1-style vocal/drums/bass/melody mixing on the wheel; separate local tracks with **Lalal.ai** stem separation (cache local stems; mash up 1–3 songs)
-- 🎵 **Reach** — search, play and download music from Deezer and Soulseek
-- 🎙️ **Podcasts** — search and download episodes to your Y1 over the internet
-- ⚡ **Quick menu** — global context menu for playback, queue, Wi‑Fi, Bluetooth, and more
-- 🎨 **Y1 themes** — install and apply themes from the original Y1 firmware
-
-## Assets
-
-- `app-release.apk` — signed Solar launcher
-- `rom.zip` — Y1 type A ATA firmware (2.0.0+, MT6572, SP Flash Tool included)
-- `rom_type_b.zip` — Y1 type B ATA firmware (before 2.0.0, MT6572, SP Flash Tool included)
-- `rom_y2.zip` — Y2 ATA firmware (MT6582, desparsed ext4, permissive root)
-- `rom_a5.zip` — Timmkoo A5 ATA firmware (MT6572, A5 keylayouts, family pin, SP Flash Tool included, no Rockbox bake)
-
-## Recent commits
-
-- 63a4857 Merge pull request #75 from thesolarproject/optimize-fm-presets-db-3443063346962454810
-- 508e91b Fix N+1 database updates in FmPresetStore by wrapping inserts and updates in database transactions.
-- 5f51eae Bump stable version for next release.
-- e5b4829 Merge pull request #71 from thesolarproject/fix-queue-performance-mix-rows-3017496182364856590
-- 6802496 Fix performance issues when viewing the playback queue with stems/Mix rows enabled.
-- 27a819e Bump stable version for next release.
-- 33331da Align Y2 verifier with Solar-only ROMs
-- 230fb40 Fit ROM userdata images to scatter partitions
-- 4a2fe2f Fix writable ext4 mounts for noninteractive ROM builds
-- 9f487c6 Sync latest Solar launcher and ROM build work
-</content>
-  </entry>
+  <updated>2026-07-26T17:43:35Z</updated>
   <entry>
     <id>tag:innioasis.app,2026:thesolarproject/solar/y2-base</id>
     <updated>2026-07-26T17:43:35Z</updated>

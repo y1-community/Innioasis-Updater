@@ -4,7 +4,7 @@
   <title>Innioasis and Timmkoo firmware releases</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware-list.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/firmware-feed.xml"/>
-  <updated>2026-11-24T15:22:29Z</updated>
+  <updated>2026-11-24T16:06:42Z</updated>
   <inni:schema_version>2</inni:schema_version>
   <inni:manifest_url>https://innioasis.app/slidia_manifest.xml</inni:manifest_url>
   <inni:firmware_list_url>https://innioasis.app/firmware-list.html</inni:firmware_list_url>
@@ -25,6 +25,8 @@
     <inni:package name="Rondo" brand="Innioasis" repo="jarvissax/rondo" portable_zips="y1-community/rondo-mirror" device="Y1" url="https://github.com/jarvissax/rondo" post_install="https://github.com/jarvissax/rondo/blob/main/docs/install.md#first-start" icon="https://innioasis.app/assets/rondo_icon.jpg" type="img" handler="Custom Firmware"/>
     <inni:package name="Koensayr" brand="Innioasis" repo="ryan-specter/koensayr-auto" portable_zips="y1-community/koensayr-auto-mirror" derivative="y1-community/y1-stock-rom" device="Y1" url="https://github.com/ryan-specter/koensayr-auto" type="img" handler="Custom Firmware" icon="https://avatars.githubusercontent.com/u/10089013"/>
     <inni:package name="JJ Launcher" brand="Innioasis" repo="ismileblue/y1_launcher" portable_zips="y1-community/y1_launcher-mirror" device="Y1" url="https://github.com/ismileblue/y1_launcher" type="img" handler="Custom Firmware"/>
+    <inni:package name="Solar" brand="Innioasis" repo="thesolarproject/solar" device="Y1" url="https://github.com/thesolarproject/solar" type="img" handler="Custom Firmware" icon="https://raw.githubusercontent.com/thesolarproject/solar/main/app/src/main/assets/logo/square_full_logo_colour.png"/>
+    <inni:package name="Solar" brand="Innioasis" repo="thesolarproject/solar" device="Y2" url="https://github.com/thesolarproject/solar" type="img" handler="Custom Firmware" icon="https://raw.githubusercontent.com/thesolarproject/solar/main/app/src/main/assets/logo/square_full_logo_colour.png"/>
     <inni:package name="inniclassic" brand="Innioasis" repo="FabianZettl/inniclassic" portable_zips="y1-community/inniclassic-mirror" device="Y1" url="https://github.com/FabianZettl/inniclassic" type="img" handler="Custom Firmware"/>
     <inni:package name="Classy" brand="Innioasis" repo="ClassyPlayer/Classy" PMT_format_needed="true" portable_zips="y1-community/classy-mirror" device="Y2" url="https://github.com/ClassyPlayer/Classy" type="img" icon="https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png" handler="Custom Firmware"/>
     <inni:package name="Classy" brand="Innioasis" repo="ClassyPlayer/Classy" PMT_format_needed="true" portable_zips="y1-community/classy-mirror" device="Y1" url="https://github.com/ClassyPlayer/Classy" type="img" icon="https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png" handler="Custom Firmware" package_name_y1="rom_y1_type_a.zip" package_name_y1_type_b="rom_y1_type_b.zip"/>
@@ -68,20 +70,20 @@
           <inni:package platform="macos" name="rom_y1_type_a-macos.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_a-macos.zip" size="553319498" downloads="1"/>
         </inni:mirror_asset>
         <inni:mirror_asset name="rom_y1_type_b.zip" tag="20261124-beta" original_url="" original_size="437959229" mirror_original_url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_b.zip">
-          <inni:package platform="windows" name="rom_y1_type_b-windows.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_b-windows.zip" size="627756050" downloads="0"/>
-          <inni:package platform="windows-legacy" name="rom_y1_type_b-windows-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_b-windows-legacy.zip" size="512849078" downloads="0"/>
-          <inni:package platform="linux" name="rom_y1_type_b-linux.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_b-linux.zip" size="739809649" downloads="0"/>
-          <inni:package platform="linux-arm64" name="rom_y1_type_b-linux-arm64.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_b-linux-arm64.zip" size="564716411" downloads="0"/>
-          <inni:package platform="linux-legacy" name="rom_y1_type_b-linux-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_b-linux-legacy.zip" size="511263359" downloads="0"/>
-          <inni:package platform="macos" name="rom_y1_type_b-macos.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_b-macos.zip" size="547265921" downloads="0"/>
+          <inni:package platform="windows" name="rom_y1_type_b-windows.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_b-windows.zip" size="627756050" downloads="1"/>
+          <inni:package platform="windows-legacy" name="rom_y1_type_b-windows-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_b-windows-legacy.zip" size="512849078" downloads="1"/>
+          <inni:package platform="linux" name="rom_y1_type_b-linux.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_b-linux.zip" size="739809649" downloads="1"/>
+          <inni:package platform="linux-arm64" name="rom_y1_type_b-linux-arm64.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_b-linux-arm64.zip" size="564716411" downloads="1"/>
+          <inni:package platform="linux-legacy" name="rom_y1_type_b-linux-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_b-linux-legacy.zip" size="511263359" downloads="1"/>
+          <inni:package platform="macos" name="rom_y1_type_b-macos.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y1_type_b-macos.zip" size="547265921" downloads="1"/>
         </inni:mirror_asset>
         <inni:mirror_asset name="rom_y2.zip" tag="20261124-beta" original_url="" original_size="482512317" mirror_original_url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y2.zip">
-          <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y2-windows.zip" size="598827264" downloads="0"/>
-          <inni:package platform="windows-legacy" name="rom_y2-windows-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y2-windows-legacy.zip" size="483920272" downloads="0"/>
-          <inni:package platform="linux" name="rom_y2-linux.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y2-linux.zip" size="720389143" downloads="0"/>
-          <inni:package platform="linux-arm64" name="rom_y2-linux-arm64.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y2-linux-arm64.zip" size="545295905" downloads="0"/>
-          <inni:package platform="linux-legacy" name="rom_y2-linux-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y2-linux-legacy.zip" size="482334553" downloads="0"/>
-          <inni:package platform="macos" name="rom_y2-macos.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y2-macos.zip" size="520140766" downloads="0"/>
+          <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y2-windows.zip" size="598827264" downloads="1"/>
+          <inni:package platform="windows-legacy" name="rom_y2-windows-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y2-windows-legacy.zip" size="483920272" downloads="1"/>
+          <inni:package platform="linux" name="rom_y2-linux.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y2-linux.zip" size="720389143" downloads="1"/>
+          <inni:package platform="linux-arm64" name="rom_y2-linux-arm64.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y2-linux-arm64.zip" size="545295905" downloads="1"/>
+          <inni:package platform="linux-legacy" name="rom_y2-linux-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y2-linux-legacy.zip" size="482334553" downloads="1"/>
+          <inni:package platform="macos" name="rom_y2-macos.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/rom_y2-macos.zip" size="520140766" downloads="1"/>
         </inni:mirror_asset>
       </inni:release>
       <inni:release tag="20261123-beta" original_tag="20261123-beta" mirror_tag="20261123-beta" release_name="Portable Flashing Package: Classy 20261123 (beta)" published_at="2026-11-23T17:04:08Z">
@@ -102,7 +104,7 @@
           <inni:package platform="macos" name="rom_y1_type_b-macos.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261123-beta/rom_y1_type_b-macos.zip" size="547231042" downloads="1"/>
         </inni:mirror_asset>
         <inni:mirror_asset name="rom_y2.zip" tag="20261123-beta" original_url="" original_size="482840510" mirror_original_url="https://github.com/y1-community/classy-mirror/releases/download/20261123-beta/rom_y2.zip">
-          <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261123-beta/rom_y2-windows.zip" size="599155457" downloads="1"/>
+          <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261123-beta/rom_y2-windows.zip" size="599155457" downloads="2"/>
           <inni:package platform="windows-legacy" name="rom_y2-windows-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261123-beta/rom_y2-windows-legacy.zip" size="484248465" downloads="1"/>
           <inni:package platform="linux" name="rom_y2-linux.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261123-beta/rom_y2-linux.zip" size="720717336" downloads="1"/>
           <inni:package platform="linux-arm64" name="rom_y2-linux-arm64.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261123-beta/rom_y2-linux-arm64.zip" size="545624098" downloads="1"/>
@@ -156,7 +158,7 @@
         <inni:mirror_asset name="rom_y2.zip" tag="20261120-beta" original_url="" original_size="482940887" mirror_original_url="https://github.com/y1-community/classy-mirror/releases/download/20261120-beta/rom_y2.zip">
           <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261120-beta/rom_y2-windows.zip" size="599255832" downloads="2"/>
           <inni:package platform="windows-legacy" name="rom_y2-windows-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261120-beta/rom_y2-windows-legacy.zip" size="484348836" downloads="4"/>
-          <inni:package platform="linux" name="rom_y2-linux.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261120-beta/rom_y2-linux.zip" size="720817711" downloads="3"/>
+          <inni:package platform="linux" name="rom_y2-linux.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261120-beta/rom_y2-linux.zip" size="720817711" downloads="4"/>
           <inni:package platform="linux-arm64" name="rom_y2-linux-arm64.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261120-beta/rom_y2-linux-arm64.zip" size="545724473" downloads="4"/>
           <inni:package platform="linux-legacy" name="rom_y2-linux-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261120-beta/rom_y2-linux-legacy.zip" size="482763119" downloads="2"/>
           <inni:package platform="macos" name="rom_y2-macos.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261120-beta/rom_y2-macos.zip" size="520569336" downloads="3"/>
@@ -176,8 +178,8 @@
           <inni:package platform="windows-legacy" name="rom_y1_type_b-windows-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261119-beta/rom_y1_type_b-windows-legacy.zip" size="512661833" downloads="2"/>
           <inni:package platform="linux" name="rom_y1_type_b-linux.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261119-beta/rom_y1_type_b-linux.zip" size="739622402" downloads="5"/>
           <inni:package platform="linux-arm64" name="rom_y1_type_b-linux-arm64.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261119-beta/rom_y1_type_b-linux-arm64.zip" size="564529164" downloads="5"/>
-          <inni:package platform="linux-legacy" name="rom_y1_type_b-linux-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261119-beta/rom_y1_type_b-linux-legacy.zip" size="511076114" downloads="1"/>
-          <inni:package platform="macos" name="rom_y1_type_b-macos.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261119-beta/rom_y1_type_b-macos.zip" size="547078671" downloads="4"/>
+          <inni:package platform="linux-legacy" name="rom_y1_type_b-linux-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261119-beta/rom_y1_type_b-linux-legacy.zip" size="511076114" downloads="2"/>
+          <inni:package platform="macos" name="rom_y1_type_b-macos.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261119-beta/rom_y1_type_b-macos.zip" size="547078671" downloads="5"/>
         </inni:mirror_asset>
         <inni:mirror_asset name="rom_y2.zip" tag="20261119-beta" original_url="" original_size="482233737" mirror_original_url="https://github.com/y1-community/classy-mirror/releases/download/20261119-beta/rom_y2.zip">
           <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/classy-mirror/releases/download/20261119-beta/rom_y2-windows.zip" size="598548690" downloads="2"/>
@@ -278,7 +280,7 @@
         <inni:mirror_asset name="classy-y1-exp.2-type-b.zip" tag="y1-exp.2" original_url="" original_size="436163632" mirror_original_url="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b.zip">
           <inni:package platform="windows" name="classy-y1-exp.2-type-b-windows.zip" url="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-windows.zip" size="625960475" downloads="3"/>
           <inni:package platform="windows-legacy" name="classy-y1-exp.2-type-b-windows-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-windows-legacy.zip" size="511053479" downloads="3"/>
-          <inni:package platform="linux" name="classy-y1-exp.2-type-b-linux.zip" url="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-linux.zip" size="738014074" downloads="4"/>
+          <inni:package platform="linux" name="classy-y1-exp.2-type-b-linux.zip" url="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-linux.zip" size="738014074" downloads="5"/>
           <inni:package platform="linux-arm64" name="classy-y1-exp.2-type-b-linux-arm64.zip" url="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-linux-arm64.zip" size="562920836" downloads="4"/>
           <inni:package platform="linux-legacy" name="classy-y1-exp.2-type-b-linux-legacy.zip" url="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-linux-legacy.zip" size="509467762" downloads="3"/>
           <inni:package platform="macos" name="classy-y1-exp.2-type-b-macos.zip" url="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-b-macos.zip" size="545470328" downloads="4"/>
@@ -2645,7 +2647,17 @@
         </inni:mirror_asset>
       </inni:release>
     </inni:mirror>
-    <inni:mirror repo="y1-community/rondo-mirror" source_repo="jarvissax/rondo" updated_at="2026-11-24T11:44:36Z">
+    <inni:mirror repo="y1-community/rondo-mirror" source_repo="jarvissax/rondo" updated_at="2026-11-24T15:59:03Z">
+      <inni:release tag="v4.1.2" original_tag="v4.1.2" mirror_tag="v4.1.2" release_name="Portable Flashing Package: Rondo 4.1.2" published_at="2026-11-24T13:43:26Z">
+        <inni:mirror_asset name="rom.zip" tag="v4.1.2" original_url="" original_size="529292010" mirror_original_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom.zip">
+          <inni:package platform="windows" name="rom-windows.zip" url="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-windows.zip" size="647858890" downloads="0"/>
+          <inni:package platform="windows-legacy" name="rom-windows-legacy.zip" url="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-windows-legacy.zip" size="532951850" downloads="0"/>
+          <inni:package platform="linux" name="rom-linux.zip" url="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-linux.zip" size="769420769" downloads="0"/>
+          <inni:package platform="linux-arm64" name="rom-linux-arm64.zip" url="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-linux-arm64.zip" size="594327531" downloads="0"/>
+          <inni:package platform="linux-legacy" name="rom-linux-legacy.zip" url="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-linux-legacy.zip" size="531366135" downloads="0"/>
+          <inni:package platform="macos" name="rom-macos.zip" url="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-macos.zip" size="569172345" downloads="0"/>
+        </inni:mirror_asset>
+      </inni:release>
       <inni:release tag="v4.1.1" original_tag="v4.1.1" mirror_tag="v4.1.1" release_name="Portable Flashing Package: Rondo 4.1.1" published_at="2026-11-24T06:25:02Z">
         <inni:mirror_asset name="rom.zip" tag="v4.1.1" original_url="" original_size="529309046" mirror_original_url="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom.zip">
           <inni:package platform="windows" name="rom-windows.zip" url="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-windows.zip" size="647875922" downloads="0"/>
@@ -2875,7 +2887,7 @@
           <inni:package platform="linux" name="rom-linux.zip" url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux.zip" size="558094441" downloads="7"/>
           <inni:package platform="linux-arm64" name="rom-linux-arm64.zip" url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-arm64.zip" size="383001203" downloads="4"/>
           <inni:package platform="linux-legacy" name="rom-linux-legacy.zip" url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-legacy.zip" size="329548151" downloads="2"/>
-          <inni:package platform="macos" name="rom-macos.zip" url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-macos.zip" size="365550746" downloads="7"/>
+          <inni:package platform="macos" name="rom-macos.zip" url="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-macos.zip" size="365550746" downloads="8"/>
         </inni:mirror_asset>
       </inni:release>
     </inni:mirror>
@@ -2892,7 +2904,7 @@
       </inni:release>
       <inni:release tag="3.2.1" original_tag="3.2.1" mirror_tag="3.2.1" release_name="Portable Flashing Package: System Software 3.2.1 for Innioasis Y2" published_at="2026-09-13T13:11:31Z">
         <inni:mirror_asset name="rom_y2.zip" tag="3.2.1" original_url="" original_size="354935543" mirror_original_url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2.zip">
-          <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-windows.zip" size="532778480" downloads="132"/>
+          <inni:package platform="windows" name="rom_y2-windows.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-windows.zip" size="532778480" downloads="133"/>
           <inni:package platform="windows-legacy" name="rom_y2-windows-legacy.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-windows-legacy.zip" size="417871478" downloads="7"/>
           <inni:package platform="linux" name="rom_y2-linux.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-linux.zip" size="644832079" downloads="39"/>
           <inni:package platform="linux-arm64" name="rom_y2-linux-arm64.zip" url="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-linux-arm64.zip" size="469738841" downloads="3"/>
@@ -3347,7 +3359,7 @@
           <inni:package platform="linux" name="Y2Linux-1.0.0-beta.9.3.39-first-install-linux.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-275/Y2Linux-1.0.0-beta.9.3.39-first-install-linux.zip" size="371165556" downloads="1"/>
           <inni:package platform="linux-arm64" name="Y2Linux-1.0.0-beta.9.3.39-first-install-linux-arm64.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-275/Y2Linux-1.0.0-beta.9.3.39-first-install-linux-arm64.zip" size="196072318" downloads="1"/>
           <inni:package platform="linux-legacy" name="Y2Linux-1.0.0-beta.9.3.39-first-install-linux-legacy.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-275/Y2Linux-1.0.0-beta.9.3.39-first-install-linux-legacy.zip" size="142619294" downloads="1"/>
-          <inni:package platform="macos" name="Y2Linux-1.0.0-beta.9.3.39-first-install-macos.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-275/Y2Linux-1.0.0-beta.9.3.39-first-install-macos.zip" size="178621906" downloads="1"/>
+          <inni:package platform="macos" name="Y2Linux-1.0.0-beta.9.3.39-first-install-macos.zip" url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-275/Y2Linux-1.0.0-beta.9.3.39-first-install-macos.zip" size="178621906" downloads="2"/>
         </inni:mirror_asset>
         <inni:mirror_asset name="bootimg.img.gz" tag="baseline-275" original_url="" original_size="7558258" mirror_original_url="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-275/bootimg.img.gz">
         </inni:mirror_asset>
@@ -5409,7 +5421,7 @@
     <inni:repo>y1-community/y1-stock-rom</inni:repo>
     <inni:tag_name>3.2.4-fm</inni:tag_name>
     <inni:name>Original System Software 3.2.4 for Innioasis Y2</inni:name>
-    <inni:downloads>795</inni:downloads>
+    <inni:downloads>797</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip" title="rom_y2.zip" length="343742697" type="application/zip"/>
@@ -5429,7 +5441,7 @@ This is the software currently being shipped on Y2 retail units.
     <inni:repo>y1-community/y1-stock-rom</inni:repo>
     <inni:tag_name>3.2.1</inni:tag_name>
     <inni:name>System Software 3.2.1 for Innioasis Y2</inni:name>
-    <inni:downloads>2525</inni:downloads>
+    <inni:downloads>2526</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/rom_y2.zip" title="rom_y2.zip" length="355560849" type="application/zip"/>
@@ -5480,7 +5492,7 @@ This can be used to restore your Y2 back to its factory conditions and get thing
     <inni:repo>y1-community/y1-stock-rom</inni:repo>
     <inni:tag_name>3.1.2</inni:tag_name>
     <inni:name>Original System Software 3.1.2 for Innioasis Y1</inni:name>
-    <inni:downloads>9897</inni:downloads>
+    <inni:downloads>9898</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip" title="rom.zip" length="250125316" type="application/zip"/>
@@ -6499,7 +6511,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q5&gt;</content>
     <inni:repo>schulzcode/y2linux</inni:repo>
     <inni:tag_name>baseline-275</inni:tag_name>
     <inni:name>Y2Linux 1.0 Beta 9.3.39</inni:name>
-    <inni:downloads>143</inni:downloads>
+    <inni:downloads>145</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://innioasis.app/assets/reborn_icon.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-275/bootimg.img.gz" title="bootimg.img.gz" length="7558258" type="application/gzip"/>
@@ -14742,7 +14754,7 @@ Assets: `manifest.json` + `manifest.sig` (Ed25519, key `platform-v1-release-2026
     <inni:repo>jarvissax/rondo</inni:repo>
     <inni:tag_name>v4.1.2</inni:tag_name>
     <inni:name>Rondo 4.1.2</inni:name>
-    <inni:downloads>3</inni:downloads>
+    <inni:downloads>5</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/jarvissax/rondo/releases/download/v4.1.2/updater.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/jarvissax/rondo/releases/download/v4.1.2/rom.zip" title="rom.zip" length="529387207" type="application/zip"/>
@@ -15743,7 +15755,7 @@ The firmware is built with [`firmware/build.sh`](https://github.com/jarvissax/ro
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>stable-v0.6.1</inni:tag_name>
     <inni:name> Rockbox-Y1 v0.6.1</inni:name>
-    <inni:downloads>1377</inni:downloads>
+    <inni:downloads>1378</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rockbox.apk" title="rockbox.apk" length="16533880" type="application/vnd.android.package-archive"/>
@@ -15779,7 +15791,7 @@ The firmware is built with [`firmware/build.sh`](https://github.com/jarvissax/ro
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>stable-v0.6</inni:tag_name>
     <inni:name>Rockbox-Y1 v0.6</inni:name>
-    <inni:downloads>1278</inni:downloads>
+    <inni:downloads>1279</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/rockbox.apk" title="rockbox.apk" length="16537976" type="application/vnd.android.package-archive"/>
@@ -16322,7 +16334,7 @@ And many bug fixes and general UI/UX improvements. A big thanks to all the contr
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>type-a-base</inni:tag_name>
     <inni:name>Rockbox-Y1 Base ROM - Type A</inni:name>
-    <inni:downloads>8667</inni:downloads>
+    <inni:downloads>8670</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/type-a-base/rom.zip" title="rom.zip" length="456613744" type="application/zip"/>
@@ -16337,7 +16349,7 @@ And many bug fixes and general UI/UX improvements. A big thanks to all the contr
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>type-b-base</inni:tag_name>
     <inni:name>Rockbox-Y1 Base ROM - Type B</inni:name>
-    <inni:downloads>8381</inni:downloads>
+    <inni:downloads>8384</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/type-b-base/rom.zip" title="rom.zip" length="399460715" type="application/zip"/>
@@ -16696,69 +16708,6 @@ Read `README-FIRST.txt` and the illustrated PDF guide before starting. Verify ev
 `40636D86943F6F0A1461B6D8C9285A1A50252253447B3DC7D11743533A88E4DE`
 
 The release includes the complete corresponding source, GPL license, and project notice. Innioasis updater and firmware components remain third-party materials.</content>
-  </entry>
-  <entry>
-    <id>tag:innioasis.app,2026:thesolarproject/solar/y2-release</id>
-    <updated>2026-09-28T16:36:49Z</updated>
-    <published>2026-09-28T16:36:49Z</published>
-    <title>Solar Y2 ROM v20261023-0720</title>
-    <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/y2-release"/>
-    <inni:repo>thesolarproject/solar</inni:repo>
-    <inni:tag_name>y2-release</inni:tag_name>
-    <inni:name>Solar Y2 ROM v20261023-0720</inni:name>
-    <inni:downloads>160</inni:downloads>
-    <inni:prerelease>false</inni:prerelease>
-    <inni:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</inni:icon_url>
-    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/y2-release/rom_y2.zip" title="rom_y2.zip" length="443599332" type="application/zip"/>
-    <content type="text">Solar Y2 ROM for Innioasis Y2 (MT6582 ATA). Built from 944d14b.</content>
-  </entry>
-  <entry>
-    <id>tag:innioasis.app,2026:thesolarproject/solar/20260819-0956</id>
-    <updated>2026-08-19T10:06:38Z</updated>
-    <published>2026-08-19T10:06:38Z</published>
-    <title>20260819-0956</title>
-    <link rel="alternate" type="text/html" href="https://github.com/thesolarproject/solar/releases/tag/20260819-0956"/>
-    <inni:repo>thesolarproject/solar</inni:repo>
-    <inni:tag_name>20260819-0956</inni:tag_name>
-    <inni:name>20260819-0956</inni:name>
-    <inni:downloads>1092</inni:downloads>
-    <inni:prerelease>false</inni:prerelease>
-    <inni:icon_url>https://github.com/thesolarproject/solar/raw/main/app/src/main/assets/logo/square_full_logo_colour.png</inni:icon_url>
-    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260819-0956/app-release.apk" title="app-release.apk" length="20001162" type="application/vnd.android.package-archive"/>
-    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom.zip" title="rom.zip" length="981474469" type="application/zip"/>
-    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom_a5.zip" title="rom_a5.zip" length="293722213" type="application/zip"/>
-    <link rel="enclosure" href="https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom_type_b.zip" title="rom_type_b.zip" length="488296019" type="application/zip"/>
-    <content type="text">&gt; **Solar** is a custom firmware and launcher for the Innioasis Y1 — a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), **Stem Player** (stem separation powered by [Lalal.ai](https://www.lalal.ai)), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).
-
-### Features
-
-- 🎛️ **Stem Player** — Gen1-style vocal/drums/bass/melody mixing on the wheel; separate local tracks with **Lalal.ai** stem separation (cache local stems; mash up 1–3 songs)
-- 🎵 **Reach** — search, play and download music from Deezer and Soulseek
-- 🎙️ **Podcasts** — search and download episodes to your Y1 over the internet
-- ⚡ **Quick menu** — global context menu for playback, queue, Wi‑Fi, Bluetooth, and more
-- 🎨 **Y1 themes** — install and apply themes from the original Y1 firmware
-
-## Assets
-
-- `app-release.apk` — signed Solar launcher
-- `rom.zip` — Y1 type A ATA firmware (2.0.0+, MT6572, SP Flash Tool included)
-- `rom_type_b.zip` — Y1 type B ATA firmware (before 2.0.0, MT6572, SP Flash Tool included)
-- `rom_y2.zip` — Y2 ATA firmware (MT6582, desparsed ext4, permissive root)
-- `rom_a5.zip` — Timmkoo A5 ATA firmware (MT6572, A5 keylayouts, family pin, SP Flash Tool included, no Rockbox bake)
-
-## Recent commits
-
-- 63a4857 Merge pull request #75 from thesolarproject/optimize-fm-presets-db-3443063346962454810
-- 508e91b Fix N+1 database updates in FmPresetStore by wrapping inserts and updates in database transactions.
-- 5f51eae Bump stable version for next release.
-- e5b4829 Merge pull request #71 from thesolarproject/fix-queue-performance-mix-rows-3017496182364856590
-- 6802496 Fix performance issues when viewing the playback queue with stems/Mix rows enabled.
-- 27a819e Bump stable version for next release.
-- 33331da Align Y2 verifier with Solar-only ROMs
-- 230fb40 Fit ROM userdata images to scatter partitions
-- 4a2fe2f Fix writable ext4 mounts for noninteractive ROM builds
-- 9f487c6 Sync latest Solar launcher and ROM build work
-</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:thesolarproject/solar/y2-base</id>
@@ -18889,7 +18838,7 @@ Features
     <inni:repo>ismileblue/y1_launcher</inni:repo>
     <inni:tag_name>launcher-v0.11.6</inni:tag_name>
     <inni:name>JJ Launcher ROM v0.11.6</inni:name>
-    <inni:downloads>1306</inni:downloads>
+    <inni:downloads>1307</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom.zip" title="rom.zip" length="456271826" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom_type_b.zip" title="rom_type_b.zip" length="399777849" type="application/zip"/>
@@ -20225,7 +20174,7 @@ See [CHANGELOG.md](https://github.com/FabianZettl/jj-launcher-classic/blob/maste
     <inni:repo>ClassyPlayer/Classy</inni:repo>
     <inni:tag_name>20261124-beta</inni:tag_name>
     <inni:name>Classy 20261124 (beta)</inni:name>
-    <inni:downloads>17</inni:downloads>
+    <inni:downloads>32</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261124-beta/Classy-20261124-beta-y1.apk" title="Classy-20261124-beta-y1.apk" length="25576610" type="application/vnd.android.package-archive"/>
@@ -20272,7 +20221,7 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261123-beta...2
     <inni:repo>ClassyPlayer/Classy</inni:repo>
     <inni:tag_name>20261123-beta</inni:tag_name>
     <inni:name>Classy 20261123 (beta)</inni:name>
-    <inni:downloads>45</inni:downloads>
+    <inni:downloads>46</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261123-beta/Classy-20261123-beta-y1.apk" title="Classy-20261123-beta-y1.apk" length="25536543" type="application/vnd.android.package-archive"/>
@@ -20365,7 +20314,7 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261120-beta...2
     <inni:repo>ClassyPlayer/Classy</inni:repo>
     <inni:tag_name>20261120-beta</inni:tag_name>
     <inni:name>Classy 20261120 (beta)</inni:name>
-    <inni:downloads>128</inni:downloads>
+    <inni:downloads>129</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261120-beta/Classy-20261120-beta-y1.apk" title="Classy-20261120-beta-y1.apk" length="25651865" type="application/vnd.android.package-archive"/>
@@ -20421,7 +20370,7 @@ Enable books and photos in Settings → Menus → Main Menu Items
     <inni:repo>ClassyPlayer/Classy</inni:repo>
     <inni:tag_name>20261119-beta</inni:tag_name>
     <inni:name>Classy 20261119 (Y1 beta)</inni:name>
-    <inni:downloads>120</inni:downloads>
+    <inni:downloads>122</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261119-beta/Classy-20261119-beta-y1.apk" title="Classy-20261119-beta-y1.apk" length="25384592" type="application/vnd.android.package-archive"/>
@@ -20686,7 +20635,7 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261113-beta...2
     <inni:repo>ClassyPlayer/Classy</inni:repo>
     <inni:tag_name>y1-exp.2</inni:tag_name>
     <inni:name>Y1 experimental 2 (20261112-exp.2-y1)</inni:name>
-    <inni:downloads>100</inni:downloads>
+    <inni:downloads>101</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/y1-exp.2/Classy-20261112-exp.2-y1.apk" title="Classy-20261112-exp.2-y1.apk" length="25237181" type="application/vnd.android.package-archive"/>
@@ -23002,7 +22951,7 @@ adb shell rm -rf /data/data/com.innioasis.y1/code_cache/secondary-dexes/
     <inni:repo>Leska1337/better-Y</inni:repo>
     <inni:tag_name>v1.1.0</inni:tag_name>
     <inni:name>Version 1.1.0</inni:name>
-    <inni:downloads>636</inni:downloads>
+    <inni:downloads>637</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/Leska1337/better-Y/raw/main/screenshots/plus_logo.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/Leska1337/better-Y/releases/download/v1.1.0/better-Y_3.1.2_v1.1.0.apk" title="better-Y_3.1.2_v1.1.0.apk" length="60200797" type="application/vnd.android.package-archive"/>
@@ -23257,7 +23206,7 @@ Connect your Y2 and wait for install to finish.</content>
     <inni:repo>y1-community/y1-linux-rom</inni:repo>
     <inni:tag_name>0.0.1</inni:tag_name>
     <inni:name>Linux ROM for Y1 Developers / Modders</inni:name>
-    <inni:downloads>135</inni:downloads>
+    <inni:downloads>136</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/y1-linux-rom/releases/download/0.0.1/rom.zip" title="rom.zip" length="270175226" type="application/zip"/>
     <content type="text">This is a release of Linux for the Innioasis Y1 intended for developers to create novel experiences on the Innioasis Y1 audio player.
@@ -23328,7 +23277,7 @@ This is the software currently being shipped on Y2 retail units.
     <inni:repo>y1-community/y1-stock-rom-mirror</inni:repo>
     <inni:tag_name>3.2.1</inni:tag_name>
     <inni:name>Portable Flashing Package: System Software 3.2.1 for Innioasis Y2</inni:name>
-    <inni:downloads>17</inni:downloads>
+    <inni:downloads>18</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="469738841" type="application/zip"/>
@@ -27966,7 +27915,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=Q5&gt;
     <inni:repo>y1-community/y2linux-mirror</inni:repo>
     <inni:tag_name>baseline-275</inni:tag_name>
     <inni:name>Portable Flashing Package: Y2Linux 1.0 Beta 9.3.39</inni:name>
-    <inni:downloads>9</inni:downloads>
+    <inni:downloads>10</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-275/bootimg.img.gz" title="bootimg.img.gz" length="7558258" type="application/gzip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y2linux-mirror/releases/download/baseline-275/manifest.json" title="manifest.json" length="4246" type="application/json"/>
@@ -39971,6 +39920,87 @@ The release includes the complete corresponding source, GPL license, and project
 </content>
   </entry>
   <entry>
+    <id>tag:innioasis.app,2026:y1-community/rondo-mirror/v4.1.2</id>
+    <updated>2026-11-24T15:57:04Z</updated>
+    <published>2026-11-24T15:57:04Z</published>
+    <title>Portable Flashing Package: Rondo 4.1.2</title>
+    <link rel="alternate" type="text/html" href="https://github.com/y1-community/rondo-mirror/releases/tag/v4.1.2"/>
+    <inni:repo>y1-community/rondo-mirror</inni:repo>
+    <inni:tag_name>v4.1.2</inni:tag_name>
+    <inni:name>Portable Flashing Package: Rondo 4.1.2</inni:name>
+    <inni:downloads>0</inni:downloads>
+    <inni:prerelease>false</inni:prerelease>
+    <inni:icon_url>https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/updater.png</inni:icon_url>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="594327531" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="531366135" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-linux.zip" title="rom-linux.zip" length="769420769" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-macos.zip" title="rom-macos.zip" length="569172345" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="532951850" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom-windows.zip" title="rom-windows.zip" length="647858890" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rom.zip" title="rom.zip" length="529292010" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/rondo-4.1.2.rondo" title="rondo-4.1.2.rondo" length="17642813" type="application/octet-stream"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/stats.txt" title="stats.txt" length="2454" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.2/updater.png" title="updater.png" length="12952" type="image/png"/>
+    <content type="text">&lt;p align=&quot;center&quot;&gt;
+  &lt;a href=&quot;https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;amp;tag=v4.1.2#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+### Downloads
+
+**Y1 · Type A**
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;a href=&quot;https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;amp;tag=v4.1.2&amp;amp;asset=rom.zip&amp;amp;platform=windows&amp;amp;mirror=y1-community%2Frondo-mirror&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows.svg&quot; width=&quot;400&quot; alt=&quot;Download .zip for Windows for Y1 · Type A - x86-64 · portable package&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;amp;tag=v4.1.2&amp;amp;asset=rom.zip&amp;amp;platform=windows-legacy&amp;amp;mirror=y1-community%2Frondo-mirror&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-windows-legacy.svg&quot; width=&quot;400&quot; alt=&quot;Download .zip for Windows 7 for Y1 · Type A - XP/7/8.1 · SP Flash Tool guide&quot;&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;a href=&quot;https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;amp;tag=v4.1.2&amp;amp;asset=rom.zip&amp;amp;platform=linux&amp;amp;mirror=y1-community%2Frondo-mirror&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux.svg&quot; width=&quot;400&quot; alt=&quot;Download .zip for Linux for Y1 · Type A - x86-64 · portable package&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;amp;tag=v4.1.2&amp;amp;asset=rom.zip&amp;amp;platform=linux-arm64&amp;amp;mirror=y1-community%2Frondo-mirror&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-arm64.svg&quot; width=&quot;400&quot; alt=&quot;Download .zip for Linux arm64 for Y1 · Type A - portable package&quot;&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;a href=&quot;https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;amp;tag=v4.1.2&amp;amp;asset=rom.zip&amp;amp;platform=linux-legacy&amp;amp;mirror=y1-community%2Frondo-mirror&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-linux-legacy.svg&quot; width=&quot;400&quot; alt=&quot;Download .zip for 32-bit Linux for Y1 · Type A - pre-AppImage · SP Flash Tool&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://innioasis.app/firmware.html?repo=jarvissax%2Frondo&amp;amp;tag=v4.1.2&amp;amp;asset=rom.zip&amp;amp;platform=macos&amp;amp;mirror=y1-community%2Frondo-mirror&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-macos.svg&quot; width=&quot;400&quot; alt=&quot;Download .zip for macOS 12+ for Y1 · Type A - Intel + Apple silicon&quot;&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+---
+
+An update for the 4.0 firmware: Settings › System › Software update, the dashboard or the
+[update page](https://jarvissax.github.io/rondo/). It works with Rondo server 3.1.0 or newer, as
+4.1.1 does; it needs no server update.
+
+### New
+
+- **Audiobooks** (Library › Audiobooks): the books on the card, **Continue listening** first, each
+  with its cover, author and time left. A book is everything in an `Audiobooks` folder (the stock
+  firmware&#x27;s, so its books carry over), any `.m4b`, or files tagged *Audiobook*; a folder of files
+  is one book, its disc folders included. Books stay out of Songs, Shuffle songs, Artists, Albums,
+  Genres and Organize.
+  - **Where you stopped** is kept for every book, and a resume starts a few seconds earlier after
+    a pause (more after a long one).
+  - **Next and Previous move by chapter** (an `.m4b`&#x27;s chapters, or each file of a folder); a book
+    without chapters skips 30 seconds forward and 15 back.
+  - **Speed** from 0.75× to 3×, the voice&#x27;s pitch kept, remembered per book.
+  - **Bookmarks**, **Mark as finished**, and Now Playing with the chapter and the time left in it
+    and in the book. A `cover.jpg` in a book&#x27;s folder is its cover; Library&#x27;s search finds books.
+  - **Your music waits:** a book plays as its own queue, and the music comes back where it was when
+    the book ends or with **Back to your music**.
+- **Sleep timer**, for music too, in Now Playing&#x27;s options: 15 to 60 minutes, or the end of the
+  song or chapter, with a 10-second fade.
+- **The dashboard** has Audiobooks too (progress, chapters, bookmarks, speed, uploads into
+  `Audiobooks`), and the sleep timer on its Overview.
+
+### Changed
+
+- **Settings › Language** is now above System.
+- **The dashboard&#x27;s Library on a phone:** its buttons wrap instead of running off the screen, and
+  the sections show their icons, the chosen one with its name.
+
+&lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;23ae966be7d62b8023481c02fd3dc4c8c790755e4019e8f0e4fb3dd7a0764a66&quot;,&quot;size&quot;:647858890,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;0018dff0890ba68f375ef1d2cdf4e86f3aaf34106e084759a0b2c25e7eaf769d&quot;,&quot;size&quot;:532951850,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;4849b787da209b3f311798ea624b74de87e4b0d50be67d1e03dadbc8691ed5fc&quot;,&quot;size&quot;:769420769,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux-arm64.zip&quot;,&quot;platform&quot;:&quot;linux-arm64&quot;,&quot;sha256&quot;:&quot;152c60b408be3212c6b0a394a32fb01ef25e13a814cbf994d267c36b13fa363b&quot;,&quot;size&quot;:594327531,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;48c603cca58d667e73dcd9e066fbf6d08aa12c991dec83dc2d16753aa15ac41d&quot;,&quot;size&quot;:531366135,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;4e562cfbd4db713ba65ac375e72c0148d32372d7beb11de43e0d6f16c984d058&quot;,&quot;size&quot;:569172345,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;}],&quot;built_at&quot;:&quot;2026-11-24T15:57:02Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-arm64.svg&quot;,&quot;size&quot;:1510},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[],&quot;fingerprint&quot;:&quot;51e7e6272df4df099620af4d1f09fa17fe161bd4392d1c79100f630ca4a57161&quot;,&quot;original_asset_sizes&quot;:{&quot;rom.zip&quot;:529292010,&quot;rondo-4.1.2.rondo&quot;:17642813,&quot;updater.png&quot;:12952},&quot;original_assets&quot;:[&quot;rom.zip&quot;,&quot;rondo-4.1.2.rondo&quot;,&quot;updater.png&quot;],&quot;platforms&quot;:{&quot;linux&quot;:&quot;66811c5b7fd092169ffce18f9b748219070495cc9ff0799d15fc2eda353cf77e&quot;,&quot;linux-arm64&quot;:&quot;248a4405b1eab46d2b57fc9d336053e74243b7d963e38279894bf65b12eb8ffc&quot;,&quot;linux-legacy&quot;:&quot;7d303e2171ae5313e9261d6a874bc4e8b95aa4c59e270390ff99f4e422243958&quot;,&quot;macos&quot;:&quot;011fbc018047c9295ecade46dc6234d9b5c664a2cd0f67be47757ba92ff322a7&quot;,&quot;windows&quot;:&quot;23da7beece2d5ca4aca0b8f7f5a28f0a581ecd04d4276ac8d8077d1e21dc030f&quot;,&quot;windows-legacy&quot;:&quot;c796dea233568103b3738a4e84aea5ac701e5b6a72700e3280013abbfe7c4cff&quot;},&quot;skipped&quot;:[],&quot;source_fingerprint&quot;:&quot;2535763fdb766adc9ae03f2e15382c62a709ef2263a45c2c975ed2fdcd2d076a&quot;,&quot;stats&quot;:{&quot;baseline&quot;:{},&quot;generated_at&quot;:&quot;2026-11-24T15:57:02Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable.zip&quot;,&quot;size&quot;:304524245,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:128540618,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:109258325,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Windows-Portable.zip&quot;,&quot;size&quot;:189956744,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:17} --&gt;
+</content>
+  </entry>
+  <entry>
     <id>tag:innioasis.app,2026:y1-community/rondo-mirror/v4.1.1</id>
     <updated>2026-11-24T11:43:10Z</updated>
     <published>2026-11-24T11:43:10Z</published>
@@ -39990,7 +40020,7 @@ The release includes the complete corresponding source, GPL license, and project
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom-windows.zip" title="rom-windows.zip" length="647875922" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rom.zip" title="rom.zip" length="529309046" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/rondo-4.1.1.rondo" title="rondo-4.1.1.rondo" length="17531339" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/stats.txt" title="stats.txt" length="2454" type="text/plain; charset=utf-8"/>
+    <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/stats.txt" title="stats.txt" length="4008" type="text/plain; charset=utf-8"/>
     <link rel="enclosure" href="https://github.com/y1-community/rondo-mirror/releases/download/v4.1.1/updater.png" title="updater.png" length="12952" type="image/png"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=jarvissax%2Frondo&amp;amp;tag=v4.1.1#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/rondo-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -43748,7 +43778,7 @@ Full changelog: [CHANGELOG.md](https://github.com/FabianZettl/inniclassic/blob/m
     <inni:repo>y1-community/classy-mirror</inni:repo>
     <inni:tag_name>20261124-beta</inni:tag_name>
     <inni:name>Portable Flashing Package: Classy 20261124 (beta)</inni:name>
-    <inni:downloads>6</inni:downloads>
+    <inni:downloads>21</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/Classy-20261124-beta-y1.apk" title="Classy-20261124-beta-y1.apk" length="25576610" type="application/vnd.android.package-archive"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261124-beta/Classy-20261124-beta.apk" title="Classy-20261124-beta.apk" length="25572784" type="application/vnd.android.package-archive"/>
@@ -43874,7 +43904,7 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261123-beta...2
     <inni:repo>y1-community/classy-mirror</inni:repo>
     <inni:tag_name>20261123-beta</inni:tag_name>
     <inni:name>Portable Flashing Package: Classy 20261123 (beta)</inni:name>
-    <inni:downloads>21</inni:downloads>
+    <inni:downloads>22</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261123-beta/Classy-20261123-beta-y1.apk" title="Classy-20261123-beta-y1.apk" length="25536543" type="application/vnd.android.package-archive"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261123-beta/Classy-20261123-beta.apk" title="Classy-20261123-beta.apk" length="25530039" type="application/vnd.android.package-archive"/>
@@ -44125,7 +44155,7 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261120-beta...2
     <inni:repo>y1-community/classy-mirror</inni:repo>
     <inni:tag_name>20261120-beta</inni:tag_name>
     <inni:name>Portable Flashing Package: Classy 20261120 (beta)</inni:name>
-    <inni:downloads>22</inni:downloads>
+    <inni:downloads>23</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261120-beta/Classy-20261120-beta-y1.apk" title="Classy-20261120-beta-y1.apk" length="25651865" type="application/vnd.android.package-archive"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261120-beta/Classy-20261120-beta.apk" title="Classy-20261120-beta.apk" length="25645361" type="application/vnd.android.package-archive"/>
@@ -44261,7 +44291,7 @@ Enable books and photos in Settings → Menus → Main Menu Items
     <inni:repo>y1-community/classy-mirror</inni:repo>
     <inni:tag_name>20261119-beta</inni:tag_name>
     <inni:name>Portable Flashing Package: Classy 20261119 (Y1 beta)</inni:name>
-    <inni:downloads>25</inni:downloads>
+    <inni:downloads>27</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261119-beta/Classy-20261119-beta-y1.apk" title="Classy-20261119-beta-y1.apk" length="25384592" type="application/vnd.android.package-archive"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/20261119-beta/Classy-20261119-beta.apk" title="Classy-20261119-beta.apk" length="25377876" type="application/vnd.android.package-archive"/>
@@ -44787,7 +44817,7 @@ Full changelog: https://github.com/ClassyPlayer/Classy/compare/20261113-beta...2
     <inni:repo>y1-community/classy-mirror</inni:repo>
     <inni:tag_name>y1-exp.2</inni:tag_name>
     <inni:name>Portable Flashing Package: Y1 experimental 2 (20261112-exp.2-y1)</inni:name>
-    <inni:downloads>23</inni:downloads>
+    <inni:downloads>24</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/Classy-20261112-exp.2-y1.apk" title="Classy-20261112-exp.2-y1.apk" length="25237181" type="application/vnd.android.package-archive"/>
     <link rel="enclosure" href="https://github.com/y1-community/classy-mirror/releases/download/y1-exp.2/classy-y1-exp.2-type-a-linux-arm64.zip" title="classy-y1-exp.2-type-a-linux-arm64.zip" length="571742192" type="application/zip"/>
@@ -48212,7 +48242,7 @@ Connect your Y2 and wait for install to finish.
     <inni:repo>y1-community/y1-linux-rom-mirror</inni:repo>
     <inni:tag_name>0.0.1</inni:tag_name>
     <inni:name>Portable Flashing Package: Linux ROM for Y1 Developers / Modders</inni:name>
-    <inni:downloads>6</inni:downloads>
+    <inni:downloads>7</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="383001203" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-linux-rom-mirror/releases/download/0.0.1/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="329548151" type="application/zip"/>
@@ -48264,7 +48294,7 @@ Credit to @palutenfan123 for building this.
     <inni:repo>y1-community/updater-ce-neo</inni:repo>
     <inni:tag_name>2.5.6.5</inni:tag_name>
     <inni:name>Updater CE 2.5.6.5</inni:name>
-    <inni:downloads>148</inni:downloads>
+    <inni:downloads>151</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/installer.exe" title="installer.exe" length="98323238" type="application/x-msdownload"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="109258325" type="application/octet-stream"/>
@@ -48792,7 +48822,7 @@ curl -fsSL https://innioasis.app/run_linux.sh | bash
     <inni:repo>y1-community/Innioasis-Updater</inni:repo>
     <inni:tag_name>flash_tool</inni:tag_name>
     <inni:name>flash_tool</inni:name>
-    <inni:downloads>932</inni:downloads>
+    <inni:downloads>934</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe" title="1.Install.Driver.First.and.Reboot.PC.exe" length="9534578" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip" title="flash_tool_linux.zip" length="73234593" type="application/zip"/>
