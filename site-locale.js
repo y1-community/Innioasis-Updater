@@ -31,7 +31,7 @@
     "use strict";
 
     var DEFAULT_LOCALE = "en";
-    var RUNTIME_VERSION = "20261124fixes1";
+    var RUNTIME_VERSION = "20261124fixes2";
     /* Catalogs are re-fetched under a new URL when their content changes.
        Without this a returning visitor keeps the copy they cached, so a
        language whose catalog was just completed still reads as English. */
@@ -677,8 +677,11 @@
         "article.lumen-doc-body",
         ".lumen-notice-view"
     ].join(", ");
-    var DYNAMIC_CACHE_KEY = "innioasis-dynamic-translations-v2";
-    try { global.localStorage.removeItem("innioasis-dynamic-translations"); } catch (_) {}
+    var DYNAMIC_CACHE_KEY = "innioasis-dynamic-translations-v3";
+    try {
+        global.localStorage.removeItem("innioasis-dynamic-translations");
+        global.localStorage.removeItem("innioasis-dynamic-translations-v2");
+    } catch (_) {}
     var DYNAMIC_MAX_REQUESTS = 800;
     /* Missing strings share a request. A few batches run together so the
        visible page finishes without opening a connection per string. */
@@ -785,9 +788,13 @@
         "g"
     );
 
+    var dynamicPlaceholderPattern = /\{[A-Za-z0-9_]+\}/g;
     function maskBrands(text) {
         var found = [];
-        var masked = String(text).replace(dynamicBrandPattern, function (match, prefix, brand) {
+        var masked = String(text).replace(dynamicPlaceholderPattern, function (token) {
+            found.push(token);
+            return "[[" + (found.length - 1) + "]]";
+        }).replace(dynamicBrandPattern, function (match, prefix, brand) {
             found.push(brand);
             return prefix + "[[" + (found.length - 1) + "]]";
         });
