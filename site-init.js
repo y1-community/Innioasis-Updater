@@ -61,6 +61,10 @@
             try { colour = global.getComputedStyle(root).getPropertyValue("--lumen-theme-color").trim(); } catch (_) {}
             if (colour) meta.setAttribute("content", colour);
         }
+        /* Recompute accent heading tokens when switching between dark and light. */
+        if (root && root.getAttribute("data-accent") && typeof applyAccent === "function") {
+            applyAccent(root.getAttribute("data-accent"), false);
+        }
         return effective;
     }
 
@@ -513,6 +517,7 @@
             body.style.removeProperty("--accent");
             body.style.removeProperty("--primary");
             body.style.removeProperty("--primary-dark");
+            body.style.removeProperty("--lumen-on-accent");
         }
     }
 
@@ -531,25 +536,27 @@
         style.textContent = [
             ".step-number,.progress-step .step-number,.lumen-step-number{",
             "background:var(--lumen-accent,#2563eb)!important;",
-            "color:var(--lumen-on-accent,#fff)!important;",
+            "color:var(--lumen-on-accent,var(--lumen-ink,#04070e))!important;",
             "border-color:var(--lumen-accent,#2563eb)!important;}",
             ".progress-step.active .step-number,.progress-step.completed .step-number{",
             "background:var(--lumen-accent,#2563eb)!important;",
-            "color:var(--lumen-on-accent,#fff)!important;}",
+            "color:var(--lumen-on-accent,var(--lumen-ink,#04070e))!important;}",
             ".lumen-steps li::before{",
             "background:var(--lumen-accent,#2563eb)!important;",
-            "color:var(--lumen-on-accent,#fff)!important;}",
+            "color:var(--lumen-on-accent,var(--lumen-ink,#04070e))!important;}",
             ".btn-primary,.btn.primary,.button-primary,.btn--primary,.lumen-btn-primary,a.btn-primary{",
             "background:var(--lumen-accent,#2563eb)!important;",
             "border-color:var(--lumen-accent-strong,var(--lumen-accent,#2563eb))!important;",
-            "color:var(--lumen-on-accent,#fff)!important;}",
+            "color:var(--lumen-on-accent,var(--lumen-ink,#04070e))!important;}",
             ".lumen-progress>span,.progress-bar>span,.lumen-bar>span{",
             "background:var(--lumen-accent,#2563eb)!important;}",
             ".lumen-tab.is-active,.tab.is-active,.lumen-chip.is-active,.chip.is-active{",
             "border-color:var(--lumen-accent,#2563eb)!important;",
             "color:var(--lumen-accent,#2563eb)!important;}",
             "a.btn,button.btn,.lumen-button--primary,.btn-primary,.gallery-action-row>.btn{",
-            "color:var(--lumen-on-accent,#fff)!important;}",
+            "color:var(--lumen-on-accent,var(--lumen-ink,#04070e))!important;}",
+            "a.btn:hover,button.btn:hover,.lumen-button--primary:hover,.btn-primary:hover,.gallery-action-row>.btn:hover{",
+            "color:var(--lumen-on-accent-strong,var(--lumen-on-accent,var(--lumen-ink,#04070e)))!important;}",
             "h1,.site-display,.lumen-brand-title,.lumen-site-switcher-item-copy strong{",
             "color:var(--lumen-accent-ink,var(--lumen-accent,#2563eb));",
             "text-shadow:var(--lumen-accent-glow,none);}",
@@ -671,8 +678,8 @@
         };
         var luminance = 0.2126 * channel(0) + 0.7152 * channel(2) + 0.0722 * channel(4);
         var onWhite = 1.05 / (luminance + 0.05);
-        var onBlack = (luminance + 0.05) / 0.05;
-        return onBlack >= onWhite ? "#0a0b0f" : "#ffffff";
+        var onDark = (luminance + 0.05) / (0.0024 + 0.05);
+        return onDark >= onWhite ? "#04070e" : "#ffffff";
     }
 
     function accentLuminance(hex) {
@@ -796,7 +803,7 @@
                    on dark mustard. Moving 14% toward the ink keeps the accent's
                    hue and keeps its own ink readable on top. */
                 var ink = accentInk(hex);
-                var strong = accentMix(hex, ink === "#0a0b0f" ? "#000000" : "#ffffff", 0.14);
+                var strong = accentMix(hex, ink === "#04070e" ? "#000000" : "#ffffff", 0.14);
                 var textTokens = accentTextTokens(hex);
                 root.style.setProperty("--lumen-accent-strong", strong);
                 root.style.setProperty("--lumen-on-accent-strong", accentInk(strong));

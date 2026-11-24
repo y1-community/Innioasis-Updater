@@ -978,8 +978,8 @@ body.y1-donate-panel-open .y1-dock-goal-layer {
 
 .y1-donate-smallprint {
     margin: 0;
-    color: var(--lumen-faint, #8995aa);
-    font-size: .76rem;
+    color: var(--lumen-muted, #b4bfca);
+    font-size: max(.85rem, 12.5px);
     line-height: 1.45;
 }
 
@@ -1118,8 +1118,8 @@ body.y1-donate-panel-open .y1-dock-goal-layer {
 
 .y1-privacy-note {
     margin: 0 0 4px;
-    color: var(--lumen-faint, #8995aa);
-    font-size: 0.76rem;
+    color: var(--lumen-muted, #b4bfca);
+    font-size: max(.85rem, 12.5px);
     line-height: 1.45;
 }
 

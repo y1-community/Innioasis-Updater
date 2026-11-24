@@ -11,8 +11,8 @@
     --lumen-panel-soft: oklch(24% .028 258);
     --lumen-paper: oklch(96% .012 250);
     --lumen-text: oklch(94% .014 250);
-    --lumen-muted: oklch(72% .026 250);
-    --lumen-faint: oklch(58% .025 250);
+    --lumen-muted: oklch(80% .020 250);
+    --lumen-faint: oklch(73% .022 250);
     --lumen-accent: oklch(76% .115 245);
     --lumen-accent-strong: oklch(68% .15 245);
     --lumen-accent-wash: oklch(38% .07 245 / .32);
@@ -39,7 +39,8 @@
     --lumen-space-7: 3rem;
     --lumen-space-8: 5rem;
     --lumen-ease: cubic-bezier(.2, .8, .2, 1);
-    --lumen-on-accent: oklch(99% .004 250);
+    --lumen-on-accent: oklch(13% .018 260);
+    --lumen-on-accent-strong: oklch(13% .018 260);
     --lumen-scrim: oklch(8% .012 260 / .72);
     --lumen-shadow: 0 18px 50px oklch(6% .01 260 / .55);
     --lumen-gold: #e8c56a;
@@ -54,7 +55,7 @@
     --site-bg-elevated: #12141c;
     --site-bg-card: rgba(255, 255, 255, 0.04);
     --site-text: #f5f6fa;
-    --site-muted: #9aa0b8;
+    --site-muted: #b4bfca;
     --site-accent: #6b9fff;
     --site-border: rgba(255, 255, 255, 0.12);
     --site-border-hover: rgba(255, 255, 255, 0.24);
@@ -68,7 +69,7 @@
     --bg-dark: #0a0b0f;
     --bg-card: rgba(255, 255, 255, 0.04);
     --text-primary: #f5f6fa;
-    --text-secondary: #9aa0b8;
+    --text-secondary: #b4bfca;
     --primary: var(--lumen-accent);
     --primary-dark: var(--lumen-accent-strong);
 }
@@ -81,8 +82,8 @@
     --lumen-panel-soft: oklch(96% .012 250);
     --lumen-paper: oklch(18% .018 260);
     --lumen-text: oklch(18% .018 260);
-    --lumen-muted: oklch(43% .03 250);
-    --lumen-faint: oklch(52% .025 250);
+    --lumen-muted: oklch(38% .03 250);
+    --lumen-faint: oklch(45% .026 250);
     --lumen-accent: oklch(48% .16 245);
     --lumen-accent-strong: oklch(42% .17 245);
     --lumen-accent-wash: oklch(88% .06 245 / .72);
@@ -92,6 +93,7 @@
     --lumen-line: oklch(20% .02 260 / .14);
     --lumen-line-strong: oklch(20% .02 260 / .28);
     --lumen-on-accent: oklch(99% .004 250);
+    --lumen-on-accent-strong: oklch(99% .004 250);
     --lumen-scrim: oklch(98% .006 250 / .82);
     --lumen-shadow: 0 18px 50px oklch(20% .02 260 / .16);
     --lumen-gold: #8a610f;
@@ -136,6 +138,7 @@
     --lumen-line: #ffffff;
     --lumen-line-strong: #ffffff;
     --lumen-on-accent: #000000;
+    --lumen-on-accent-strong: #000000;
     --lumen-scrim: #000000;
     --lumen-shadow: none;
     --lumen-gold: #fde047;
@@ -169,8 +172,8 @@
     --lumen-panel-soft: #181b28;
     --lumen-paper: #e9f0f5;
     --lumen-text: #e9f0f5;
-    --lumen-muted: #aab8c8;
-    --lumen-faint: #7e8b9c;
+    --lumen-muted: #b8c6d6;
+    --lumen-faint: #98a7ba;
     --lumen-accent: #ff1e3c;
     --lumen-accent-strong: #ff3352;
     --lumen-accent-wash: rgba(255, 30, 60, .18);
@@ -180,6 +183,7 @@
     --lumen-line: rgba(35, 230, 224, .25);
     --lumen-line-strong: rgba(35, 230, 224, .55);
     --lumen-on-accent: #06060b;
+    --lumen-on-accent-strong: #06060b;
     --lumen-scrim: rgba(6, 6, 11, .82);
     --lumen-shadow: 0 0 18px rgba(255, 30, 60, .35);
     --lumen-gold: #ffb500;

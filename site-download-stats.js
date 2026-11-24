@@ -28,7 +28,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261117stats7";
+    var VERSION = "20261124stats9";
 
     /* The firmware ZIP is no longer offered as a file here: a reader installs
        the release through Updater CE, and this is the line that says how many
@@ -309,25 +309,25 @@
             ".dl-stats__head h2{margin:0;font:700 1.05rem/1.3 var(--lumen-display,system-ui,sans-serif);flex:1;min-width:0;}",
             ".dl-stats__close{border:0;background:none;color:var(--lumen-muted,#9aa3b5);font:700 20px/1 system-ui,sans-serif;cursor:pointer;padding:0 .15rem;}",
             ".dl-stats__close:hover{color:var(--lumen-text,#fff);}",
-            ".dl-stats__total{margin:0 0 .8rem;color:var(--lumen-muted,#9aa3b5);font-size:12.5px;}",
+            ".dl-stats__total{margin:0 0 .8rem;color:var(--lumen-muted,#b4bfca);font-size:13.5px;}",
             ".dl-stats__total strong{color:var(--lumen-accent,#6b9fff);font-size:1.15rem;}",
             ".dl-stats h3{margin:.9rem 0 .35rem;font:700 .92rem/1.3 var(--lumen-display,system-ui,sans-serif);}",
             ".dl-stats__list{list-style:none;margin:0;padding:0;display:grid;gap:.3rem;}",
-            ".dl-stats__row{display:flex;align-items:baseline;gap:.6rem;padding:.4rem .55rem;border:1px solid var(--lumen-line,rgba(255,255,255,.1));border-radius:9px;background:var(--lumen-panel-soft,var(--lumen-panel,#1b2030));}",
+            ".dl-stats__row{display:flex;align-items:baseline;gap:.6rem;padding:.45rem .6rem;border:1px solid var(--lumen-line,rgba(255,255,255,.1));border-radius:9px;background:var(--lumen-panel-soft,var(--lumen-panel,#1b2030));}",
             ".dl-stats__copy{flex:1;min-width:0;}",
             ".dl-stats__name{display:block;font-weight:600;overflow-wrap:anywhere;}",
-            ".dl-stats__meta{display:block;color:var(--lumen-muted,#9aa3b5);font-size:11.5px;overflow-wrap:anywhere;}",
+            ".dl-stats__meta{display:block;color:var(--lumen-muted,#b4bfca);font-size:12.5px;overflow-wrap:anywhere;}",
             ".dl-stats__count{flex:0 0 auto;font-variant-numeric:tabular-nums;font-weight:700;color:var(--lumen-accent,#6b9fff);}",
-            ".dl-stats__cta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:.1rem 0 .2rem;padding:.55rem .6rem;border:1px solid var(--lumen-line,rgba(255,255,255,.1));border-radius:10px;background:var(--lumen-panel-soft,var(--lumen-panel,#1b2030));}",
-            ".dl-stats__install{display:inline-flex;align-items:center;padding:.4rem .75rem;border-radius:999px;background:var(--lumen-accent,#6b9fff);color:#0b0e14;font:700 12.5px/1.3 var(--lumen-body,system-ui,sans-serif);text-decoration:none;}",
-            ".dl-stats__install:hover{filter:brightness(1.08);}",
+            ".dl-stats__cta{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem;margin:.1rem 0 .2rem;padding:.6rem .65rem;border:1px solid var(--lumen-line,rgba(255,255,255,.1));border-radius:10px;background:var(--lumen-panel-soft,var(--lumen-panel,#1b2030));}",
+            "body.site-themes-app a.dl-stats__install,a.dl-stats__install,.dl-stats__install{display:inline-flex;align-items:center;padding:.45rem .85rem;border-radius:999px;background:var(--lumen-accent,#6fb8f5);color:var(--lumen-on-accent,var(--lumen-ink,#04070e));font:700 13px/1.3 var(--lumen-body,system-ui,sans-serif);text-decoration:none;}",
+            "body.site-themes-app a.dl-stats__install:hover,a.dl-stats__install:hover,.dl-stats__install:hover{background:var(--lumen-accent-strong,var(--lumen-accent,#339fee));color:var(--lumen-on-accent-strong,var(--lumen-on-accent,var(--lumen-ink,#04070e)));}",
             ".dl-stats__install:focus-visible{outline:2px solid var(--lumen-text,#fff);outline-offset:2px;}",
-            ".dl-stats__cta-note{margin:0;flex:1 1 12rem;min-width:0;color:var(--lumen-muted,#9aa3b5);font-size:11.5px;}",
+            ".dl-stats__cta-note{margin:0;flex:1 1 12rem;min-width:0;color:var(--lumen-muted,#b4bfca);font-size:13px;line-height:1.45;}",
             ".dl-stats__list--firmware{margin-top:.85rem;}",
             ".dl-stats__row--firmware{border-style:dashed;}",
-            ".dl-stats__row a.dl-stats__get{flex:0 0 auto;font-size:11.5px;color:var(--lumen-accent,#6b9fff);}",
-            ".dl-stats__empty{margin:.2rem 0;color:var(--lumen-muted,#9aa3b5);font-size:12px;}",
-            ".dl-stats__note{margin:.85rem 0 0;color:var(--lumen-muted,#9aa3b5);font-size:11.5px;}",
+            ".dl-stats__row a.dl-stats__get{flex:0 0 auto;font-size:13px;font-weight:600;color:var(--lumen-accent,#6b9fff);}",
+            ".dl-stats__empty{margin:.2rem 0;color:var(--lumen-muted,#b4bfca);font-size:13px;}",
+            ".dl-stats__note{margin:.85rem 0 0;color:var(--lumen-muted,#b4bfca);font-size:12.5px;line-height:1.45;}",
             "@media (max-width:520px){.dl-stats{padding:.9rem;border-radius:14px;}.dl-stats__row{flex-wrap:wrap;}}",
             "@media (prefers-reduced-motion:reduce){.dl-stats-overlay{backdrop-filter:none;}}"
         ].join("");
@@ -358,17 +358,40 @@
         return wrap;
     }
 
+    function noTranslateSpan(text, className) {
+        var node = el("span", className, text);
+        node.setAttribute("translate", "no");
+        node.setAttribute("data-i18n-skip", "");
+        return node;
+    }
+
+    function countNode(value) {
+        var wrap = el("span", "dl-stats__count");
+        wrap.appendChild(el("span", "dl-stats__count-label", "Downloads:"));
+        wrap.appendChild(doc.createTextNode(" "));
+        wrap.appendChild(noTranslateSpan(fmt(value), "dl-stats__count-value"));
+        return wrap;
+    }
+
     /* One portable install package: the file the reader can actually take
        away for the computer they are on. */
     function row(entry) {
         var item = el("li", "dl-stats__row");
         var copy = el("div", "dl-stats__copy");
         copy.appendChild(el("span", "dl-stats__name", label(entry.platform)));
-        var meta = (entry.name || "portable package") +
-            (entry.size ? " · " + size(entry.size) : "");
-        copy.appendChild(el("span", "dl-stats__meta", meta));
+        var meta = el("span", "dl-stats__meta");
+        if (entry.name) {
+            meta.appendChild(noTranslateSpan(String(entry.name)));
+        } else {
+            meta.appendChild(el("span", null, "portable package"));
+        }
+        if (entry.size) {
+            meta.appendChild(doc.createTextNode(" \u00b7 "));
+            meta.appendChild(noTranslateSpan(size(entry.size)));
+        }
+        copy.appendChild(meta);
         item.appendChild(copy);
-        item.appendChild(el("span", "dl-stats__count", fmt(entry.downloads) + " downloads"));
+        item.appendChild(countNode(entry.downloads));
         if (entry.url) {
             var link = el("a", "dl-stats__get", "Download");
             link.href = entry.url;
@@ -394,13 +417,21 @@
         var item = el("li", "dl-stats__row dl-stats__row--firmware");
         var copy = el("div", "dl-stats__copy");
         copy.appendChild(el("span", "dl-stats__name", FIRMWARE_FOOT_LABEL));
-        var meta = names.join(", ");
-        if (mirror) {
-            meta += (meta ? " · " : "") + "includes " + fmt(mirror) + " from the mirror copy";
+        if (names.length || mirror) {
+            var meta = el("span", "dl-stats__meta");
+            if (names.length) {
+                meta.appendChild(noTranslateSpan(names.join(", ")));
+            }
+            if (mirror) {
+                if (names.length) meta.appendChild(doc.createTextNode(" \u00b7 "));
+                meta.appendChild(el("span", null, "Includes from mirror:"));
+                meta.appendChild(doc.createTextNode(" "));
+                meta.appendChild(noTranslateSpan(fmt(mirror)));
+            }
+            copy.appendChild(meta);
         }
-        if (meta) copy.appendChild(el("span", "dl-stats__meta", meta));
         item.appendChild(copy);
-        item.appendChild(el("span", "dl-stats__count", fmt(total) + " downloads"));
+        item.appendChild(countNode(total));
         return item;
     }
 
@@ -447,6 +478,70 @@
         return (mb / 1024).toFixed(2) + " GB";
     }
 
+    function isTranslatableSoftwareName(name) {
+        var value = String(name || "").trim();
+        return /^Original Software$/i.test(value) ||
+            /^Android\b/i.test(value) ||
+            /^Linux for\b/i.test(value);
+    }
+
+    /* Render the dialog heading as separate nodes so ROM names, version tags
+       and model codes are never sent through translation, and the version sits
+       directly after the software name ("Classy 20261117 (Y2)"). Older
+       payloads that only carry a combined title string are parsed into the
+       same parts. */
+    function buildTitle(breakdown) {
+        var heading = el("h2");
+        heading.id = "dl-stats-title";
+        var software = String(breakdown && breakdown.software || "").trim();
+        var model = String(breakdown && breakdown.model || "").trim();
+        var tag = String(breakdown && breakdown.tag || "").trim();
+
+        if (!software && breakdown && breakdown.title) {
+            var raw = String(breakdown.title).trim();
+            var modernMatch = raw.match(/^(.+?)\s+([^\s()]+)\s+\(([A-Za-z0-9-]+)\)\s+[\u2014-]\s+Download figures$/i);
+            var legacyMatch = !modernMatch && raw.match(/^(.+?)\s+for\s+([A-Za-z0-9-]+)\s+([^\s]+)\s+download figures$/i);
+            if (modernMatch) {
+                software = modernMatch[1].trim();
+                tag = tag || modernMatch[2].trim();
+                model = model || modernMatch[3].trim();
+            } else if (legacyMatch) {
+                software = legacyMatch[1].trim();
+                model = model || legacyMatch[2].trim();
+                tag = tag || legacyMatch[3].trim();
+            } else {
+                var simpleMatch = raw.match(/^(.+?)\s+([^\s]+)\s+(?:[\u2014-]\s+)?download figures$/i);
+                if (simpleMatch) {
+                    software = simpleMatch[1].trim();
+                    tag = tag || simpleMatch[2].trim();
+                }
+            }
+        }
+
+        if (software) {
+            heading.appendChild(
+                isTranslatableSoftwareName(software)
+                    ? el("span", null, software)
+                    : noTranslateSpan(software)
+            );
+            if (tag) {
+                heading.appendChild(doc.createTextNode(" "));
+                heading.appendChild(noTranslateSpan(tag));
+            }
+            if (model) {
+                heading.appendChild(doc.createTextNode(" ("));
+                heading.appendChild(noTranslateSpan(model));
+                heading.appendChild(doc.createTextNode(")"));
+            }
+            heading.appendChild(doc.createTextNode(" \u2014 "));
+            heading.appendChild(el("span", null, "Download figures"));
+            return heading;
+        }
+
+        heading.appendChild(el("span", null, "Download figures"));
+        return heading;
+    }
+
     function build(breakdown, trigger) {
         var panel = el("div", "dl-stats");
         panel.setAttribute("role", "dialog");
@@ -454,8 +549,7 @@
         panel.setAttribute("aria-labelledby", "dl-stats-title");
 
         var head = el("div", "dl-stats__head");
-        var title = el("h2", null, breakdown.title || "Download figures");
-        title.id = "dl-stats-title";
+        var title = buildTitle(breakdown);
         head.appendChild(title);
         var close = el("button", "dl-stats__close", "\u00d7");
         close.type = "button";
@@ -464,7 +558,12 @@
         panel.appendChild(head);
 
         var total = el("p", "dl-stats__total");
-        total.innerHTML = "Combined downloads: <strong>" + fmt(totalOf(breakdown)) + "</strong>";
+        total.appendChild(el("span", null, "Combined downloads:"));
+        total.appendChild(doc.createTextNode(" "));
+        var totalNum = el("strong", null, fmt(totalOf(breakdown)));
+        totalNum.setAttribute("translate", "no");
+        totalNum.setAttribute("data-i18n-skip", "");
+        total.appendChild(totalNum);
         panel.appendChild(total);
 
         /* The way in comes first, where the rom.zip row used to be: install

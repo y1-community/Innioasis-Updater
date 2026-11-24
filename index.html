@@ -78,7 +78,7 @@
       font-weight: 700;
       letter-spacing: normal;
       background: var(--lumen-accent);
-      color: var(--lumen-ink) !important;
+      color: var(--lumen-on-accent, var(--lumen-ink)) !important;
       border-radius: 999px;
       flex: 0 0 auto;
     }
@@ -119,17 +119,17 @@
     .lumen-announcement-cta:hover {
       border-color: var(--lumen-accent);
       background: var(--lumen-accent);
-      color: var(--lumen-ink) !important;
+      color: var(--lumen-on-accent, var(--lumen-ink)) !important;
       transform: translateY(-1px);
     }
     .lumen-announcement-cta--install {
       background: var(--lumen-accent);
       border-color: var(--lumen-accent);
-      color: var(--lumen-ink) !important;
+      color: var(--lumen-on-accent, var(--lumen-ink)) !important;
     }
     .lumen-announcement-cta--install:hover {
       opacity: 0.92;
-      color: var(--lumen-ink) !important;
+      color: var(--lumen-on-accent-strong, var(--lumen-on-accent, var(--lumen-ink))) !important;
       background: var(--lumen-accent-strong);
       transform: translateY(-1px);
     }
