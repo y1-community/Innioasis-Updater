@@ -17,7 +17,7 @@
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/Innioasis.Updater.for.Mac.dmg",
         "size": 109258325,
-        "download_count": 126,
+        "download_count": 136,
         "content_type": "application/x-diskcopy",
         "created_at": "2026-11-22T20:38:05Z",
         "updated_at": "2026-11-22T20:38:29Z",
@@ -28,44 +28,11 @@
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/installer.exe",
         "size": 98323238,
-        "download_count": 272,
+        "download_count": 306,
         "content_type": "application/x-msdownload",
         "created_at": "2026-11-22T20:52:29Z",
         "updated_at": "2026-11-22T20:52:56Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/780426157"
-      },
-      {
-        "id": 780449836,
-        "name": "UpdaterCE-Windows-Portable.zip",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Windows-Portable.zip",
-        "size": 189956744,
-        "download_count": 1,
-        "content_type": "application/x-zip-compressed",
-        "created_at": "2026-11-22T21:01:30Z",
-        "updated_at": "2026-11-22T21:04:05Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/780449836"
-      },
-      {
-        "id": 788023949,
-        "name": "UpdaterCE-arm64.appimage",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-arm64.appimage",
-        "size": 114379272,
-        "download_count": 0,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-11-24T16:50:39Z",
-        "updated_at": "2026-11-24T16:52:28Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788023949"
-      },
-      {
-        "id": 788023952,
-        "name": "run_linux.sh.sha256",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/run_linux.sh.sha256",
-        "size": 79,
-        "download_count": 0,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-11-24T16:50:39Z",
-        "updated_at": "2026-11-24T16:50:40Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788023952"
       },
       {
         "id": 788023953,
@@ -79,15 +46,26 @@
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788023953"
       },
       {
-        "id": 788023956,
-        "name": "UpdaterCE.appimage.sha256",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE.appimage.sha256",
-        "size": 85,
+        "id": 788023952,
+        "name": "run_linux.sh.sha256",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/run_linux.sh.sha256",
+        "size": 79,
         "download_count": 0,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-24T16:50:39Z",
         "updated_at": "2026-11-24T16:50:40Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788023956"
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788023952"
+      },
+      {
+        "id": 788023949,
+        "name": "UpdaterCE-arm64.appimage",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-arm64.appimage",
+        "size": 114379272,
+        "download_count": 0,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-24T16:50:39Z",
+        "updated_at": "2026-11-24T16:52:28Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788023949"
       },
       {
         "id": 788024032,
@@ -99,50 +77,6 @@
         "created_at": "2026-11-24T16:50:40Z",
         "updated_at": "2026-11-24T16:50:41Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788024032"
-      },
-      {
-        "id": 788024037,
-        "name": "UpdaterCE-Linux-Portable.tar.gz",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Linux-Portable.tar.gz",
-        "size": 302453464,
-        "download_count": 0,
-        "content_type": "application/x-gtar",
-        "created_at": "2026-11-24T16:50:41Z",
-        "updated_at": "2026-11-24T16:52:24Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788024037"
-      },
-      {
-        "id": 788024041,
-        "name": "UpdaterCE-Linux-Portable.tar.gz.sha256",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Linux-Portable.tar.gz.sha256",
-        "size": 98,
-        "download_count": 0,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-11-24T16:50:41Z",
-        "updated_at": "2026-11-24T16:50:41Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788024041"
-      },
-      {
-        "id": 788024101,
-        "name": "UpdaterCE-Linux-Portable.zip.sha256",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Linux-Portable.zip.sha256",
-        "size": 95,
-        "download_count": 0,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-11-24T16:50:42Z",
-        "updated_at": "2026-11-24T16:50:42Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788024101"
-      },
-      {
-        "id": 788024102,
-        "name": "UpdaterCE-Linux-Portable.zip",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Linux-Portable.zip",
-        "size": 304397377,
-        "download_count": 0,
-        "content_type": "application/zip",
-        "created_at": "2026-11-24T16:50:42Z",
-        "updated_at": "2026-11-24T16:52:25Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788024102"
       },
       {
         "id": 788024191,
@@ -189,6 +123,61 @@
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788030582"
       },
       {
+        "id": 788024037,
+        "name": "UpdaterCE-Linux-Portable.tar.gz",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Linux-Portable.tar.gz",
+        "size": 302453464,
+        "download_count": 0,
+        "content_type": "application/x-gtar",
+        "created_at": "2026-11-24T16:50:41Z",
+        "updated_at": "2026-11-24T16:52:24Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788024037"
+      },
+      {
+        "id": 788024041,
+        "name": "UpdaterCE-Linux-Portable.tar.gz.sha256",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Linux-Portable.tar.gz.sha256",
+        "size": 98,
+        "download_count": 0,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-24T16:50:41Z",
+        "updated_at": "2026-11-24T16:50:41Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788024041"
+      },
+      {
+        "id": 788024102,
+        "name": "UpdaterCE-Linux-Portable.zip",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Linux-Portable.zip",
+        "size": 304397377,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-24T16:50:42Z",
+        "updated_at": "2026-11-24T16:52:25Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788024102"
+      },
+      {
+        "id": 788024101,
+        "name": "UpdaterCE-Linux-Portable.zip.sha256",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Linux-Portable.zip.sha256",
+        "size": 95,
+        "download_count": 0,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-24T16:50:42Z",
+        "updated_at": "2026-11-24T16:50:42Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788024101"
+      },
+      {
+        "id": 788030637,
+        "name": "UpdaterCE-Lite.tar.gz",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Lite.tar.gz",
+        "size": 228617765,
+        "download_count": 0,
+        "content_type": "application/x-gtar",
+        "created_at": "2026-11-24T16:52:20Z",
+        "updated_at": "2026-11-24T16:52:58Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788030637"
+      },
+      {
         "id": 788030828,
         "name": "UpdaterCE-Lite.tar.gz.sha256",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Lite.tar.gz.sha256",
@@ -198,6 +187,39 @@
         "created_at": "2026-11-24T16:52:25Z",
         "updated_at": "2026-11-24T16:52:25Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788030828"
+      },
+      {
+        "id": 780449836,
+        "name": "UpdaterCE-Windows-Portable.zip",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Windows-Portable.zip",
+        "size": 189956744,
+        "download_count": 1,
+        "content_type": "application/x-zip-compressed",
+        "created_at": "2026-11-22T21:01:30Z",
+        "updated_at": "2026-11-22T21:04:05Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/780449836"
+      },
+      {
+        "id": 788023950,
+        "name": "UpdaterCE.appimage",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE.appimage",
+        "size": 247806456,
+        "download_count": 5,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-24T16:50:39Z",
+        "updated_at": "2026-11-24T16:53:04Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788023950"
+      },
+      {
+        "id": 788023956,
+        "name": "UpdaterCE.appimage.sha256",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE.appimage.sha256",
+        "size": 85,
+        "download_count": 0,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-24T16:50:39Z",
+        "updated_at": "2026-11-24T16:50:40Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/788023956"
       }
     ],
     "mirror_downloads": 0,
@@ -207,9 +229,9 @@
       "mirrors": "",
       "firmware": [
         {
-          "name": "UpdaterCE-Windows-Portable.zip",
-          "url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Windows-Portable.zip",
-          "downloads": 1
+          "name": "UpdaterCE-Linux-Portable-arm64.zip",
+          "url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Linux-Portable-arm64.zip",
+          "downloads": 0
         },
         {
           "name": "UpdaterCE-Linux-Portable.zip",
@@ -217,9 +239,9 @@
           "downloads": 0
         },
         {
-          "name": "UpdaterCE-Linux-Portable-arm64.zip",
-          "url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Linux-Portable-arm64.zip",
-          "downloads": 0
+          "name": "UpdaterCE-Windows-Portable.zip",
+          "url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6.5/UpdaterCE-Windows-Portable.zip",
+          "downloads": 1
         }
       ],
       "portable": []
@@ -238,39 +260,6 @@
     "icon_url": "",
     "icon_dark_url": "",
     "assets": [
-      {
-        "id": 773889248,
-        "name": "UpdaterCE-arm64.appimage.sha256",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/UpdaterCE-arm64.appimage.sha256",
-        "size": 91,
-        "download_count": 0,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-11-21T00:36:54Z",
-        "updated_at": "2026-11-21T00:36:55Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/773889248"
-      },
-      {
-        "id": 773889250,
-        "name": "UpdaterCE-arm64.appimage",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/UpdaterCE-arm64.appimage",
-        "size": 114219528,
-        "download_count": 0,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-11-21T00:36:54Z",
-        "updated_at": "2026-11-21T00:38:57Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/773889250"
-      },
-      {
-        "id": 773889251,
-        "name": "UpdaterCE-Linux-Portable-arm64.tar.gz",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/UpdaterCE-Linux-Portable-arm64.tar.gz",
-        "size": 126266610,
-        "download_count": 0,
-        "content_type": "application/x-gtar",
-        "created_at": "2026-11-21T00:36:54Z",
-        "updated_at": "2026-11-21T00:38:59Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/773889251"
-      },
       {
         "id": 773889260,
         "name": "run_linux.sh",
@@ -292,6 +281,39 @@
         "created_at": "2026-11-21T00:36:55Z",
         "updated_at": "2026-11-21T00:36:55Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/773889265"
+      },
+      {
+        "id": 773889250,
+        "name": "UpdaterCE-arm64.appimage",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/UpdaterCE-arm64.appimage",
+        "size": 114219528,
+        "download_count": 0,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-21T00:36:54Z",
+        "updated_at": "2026-11-21T00:38:57Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/773889250"
+      },
+      {
+        "id": 773889248,
+        "name": "UpdaterCE-arm64.appimage.sha256",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/UpdaterCE-arm64.appimage.sha256",
+        "size": 91,
+        "download_count": 0,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-21T00:36:54Z",
+        "updated_at": "2026-11-21T00:36:55Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/773889248"
+      },
+      {
+        "id": 773889251,
+        "name": "UpdaterCE-Linux-Portable-arm64.tar.gz",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.6/UpdaterCE-Linux-Portable-arm64.tar.gz",
+        "size": 126266610,
+        "download_count": 0,
+        "content_type": "application/x-gtar",
+        "created_at": "2026-11-21T00:36:54Z",
+        "updated_at": "2026-11-21T00:38:59Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/773889251"
       },
       {
         "id": 773889283,
@@ -471,6 +493,17 @@
     "icon_dark_url": "",
     "assets": [
       {
+        "id": 689639023,
+        "name": "Innioasis.Updater.for.Mac.dmg",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.7/Innioasis.Updater.for.Mac.dmg",
+        "size": 154209498,
+        "download_count": 280,
+        "content_type": "application/x-diskcopy",
+        "created_at": "2026-10-29T19:20:24Z",
+        "updated_at": "2026-10-29T19:20:50Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/689639023"
+      },
+      {
         "id": 688792855,
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.7/installer.exe",
@@ -491,17 +524,6 @@
         "created_at": "2026-10-29T15:13:03Z",
         "updated_at": "2026-10-29T15:13:53Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/688949138"
-      },
-      {
-        "id": 689639023,
-        "name": "Innioasis.Updater.for.Mac.dmg",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.7/Innioasis.Updater.for.Mac.dmg",
-        "size": 154209498,
-        "download_count": 280,
-        "content_type": "application/x-diskcopy",
-        "created_at": "2026-10-29T19:20:24Z",
-        "updated_at": "2026-10-29T19:20:50Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/689639023"
       }
     ],
     "mirror_downloads": 0,
@@ -538,17 +560,6 @@
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/608063290"
       },
       {
-        "id": 608063931,
-        "name": "run_linux.sh",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.6/run_linux.sh",
-        "size": 87903,
-        "download_count": 457,
-        "content_type": "text/x-shellscript",
-        "created_at": "2026-10-03T15:44:16Z",
-        "updated_at": "2026-10-03T15:44:17Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/608063931"
-      },
-      {
         "id": 666644030,
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.6/installer.exe",
@@ -558,6 +569,17 @@
         "created_at": "2026-10-22T18:02:17Z",
         "updated_at": "2026-10-22T18:03:50Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/666644030"
+      },
+      {
+        "id": 608063931,
+        "name": "run_linux.sh",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.6/run_linux.sh",
+        "size": 87903,
+        "download_count": 457,
+        "content_type": "text/x-shellscript",
+        "created_at": "2026-10-03T15:44:16Z",
+        "updated_at": "2026-10-03T15:44:17Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/608063931"
       }
     ],
     "mirror_downloads": 0,
@@ -583,17 +605,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 584600685,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.5/installer.exe",
-        "size": 264870688,
-        "download_count": 934,
-        "content_type": "application/x-msdownload",
-        "created_at": "2026-09-23T21:18:57Z",
-        "updated_at": "2026-09-23T21:22:07Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/584600685"
-      },
-      {
         "id": 584600767,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.5/Innioasis.Updater.for.Mac.dmg",
@@ -603,6 +614,17 @@
         "created_at": "2026-09-23T21:19:00Z",
         "updated_at": "2026-09-23T21:22:07Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/584600767"
+      },
+      {
+        "id": 584600685,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.5/installer.exe",
+        "size": 264870688,
+        "download_count": 934,
+        "content_type": "application/x-msdownload",
+        "created_at": "2026-09-23T21:18:57Z",
+        "updated_at": "2026-09-23T21:22:07Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/584600685"
       },
       {
         "id": 584601397,
@@ -639,17 +661,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 520237990,
-        "name": "run_linux.sh",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.4/run_linux.sh",
-        "size": 87903,
-        "download_count": 1080,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-08-19T01:51:45Z",
-        "updated_at": "2026-08-19T01:51:45Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/520237990"
-      },
-      {
         "id": 520238058,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.4/Innioasis.Updater.for.Mac.dmg",
@@ -670,6 +681,17 @@
         "created_at": "2026-08-19T01:51:55Z",
         "updated_at": "2026-08-19T01:52:44Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/520238168"
+      },
+      {
+        "id": 520237990,
+        "name": "run_linux.sh",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.4/run_linux.sh",
+        "size": 87903,
+        "download_count": 1080,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-08-19T01:51:45Z",
+        "updated_at": "2026-08-19T01:51:45Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/520237990"
       }
     ],
     "mirror_downloads": 0,
@@ -751,17 +773,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 498237175,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.2/installer.exe",
-        "size": 264870688,
-        "download_count": 127,
-        "content_type": "application/x-msdownload",
-        "created_at": "2026-08-01T20:25:09Z",
-        "updated_at": "2026-08-01T20:27:44Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/498237175"
-      },
-      {
         "id": 498238552,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.2/Innioasis.Updater.for.Mac.dmg",
@@ -771,6 +782,17 @@
         "created_at": "2026-08-01T20:27:23Z",
         "updated_at": "2026-08-01T20:27:24Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/498238552"
+      },
+      {
+        "id": 498237175,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.2/installer.exe",
+        "size": 264870688,
+        "download_count": 127,
+        "content_type": "application/x-msdownload",
+        "created_at": "2026-08-01T20:25:09Z",
+        "updated_at": "2026-08-01T20:27:44Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/498237175"
       },
       {
         "id": 498238748,
@@ -807,17 +829,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 491631261,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.1/installer.exe",
-        "size": 264870688,
-        "download_count": 755,
-        "content_type": "application/x-msdownload",
-        "created_at": "2026-07-27T15:48:27Z",
-        "updated_at": "2026-07-27T15:48:57Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/491631261"
-      },
-      {
         "id": 491634076,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.1/Innioasis.Updater.for.Mac.dmg",
@@ -827,6 +838,17 @@
         "created_at": "2026-07-27T15:51:22Z",
         "updated_at": "2026-07-27T15:51:23Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/491634076"
+      },
+      {
+        "id": 491631261,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.1/installer.exe",
+        "size": 264870688,
+        "download_count": 755,
+        "content_type": "application/x-msdownload",
+        "created_at": "2026-07-27T15:48:27Z",
+        "updated_at": "2026-07-27T15:48:57Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/491631261"
       },
       {
         "id": 491634364,
@@ -863,17 +885,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 490388170,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.0/installer.exe",
-        "size": 264870688,
-        "download_count": 130,
-        "content_type": "application/x-msdownload",
-        "created_at": "2026-07-26T13:41:36Z",
-        "updated_at": "2026-07-26T13:42:04Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/490388170"
-      },
-      {
         "id": 490388625,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.0/Innioasis.Updater.for.Mac.dmg",
@@ -883,6 +894,17 @@
         "created_at": "2026-07-26T13:42:23Z",
         "updated_at": "2026-07-26T13:42:24Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/490388625"
+      },
+      {
+        "id": 490388170,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.0/installer.exe",
+        "size": 264870688,
+        "download_count": 130,
+        "content_type": "application/x-msdownload",
+        "created_at": "2026-07-26T13:41:36Z",
+        "updated_at": "2026-07-26T13:42:04Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/490388170"
       },
       {
         "id": 490388858,
@@ -919,11 +941,22 @@
     "icon_dark_url": "",
     "assets": [
       {
+        "id": 735816514,
+        "name": "1.Install.Driver.First.and.Reboot.PC.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe",
+        "size": 9534578,
+        "download_count": 355,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-11T14:32:18Z",
+        "updated_at": "2026-11-11T14:32:21Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/735816514"
+      },
+      {
         "id": 681078297,
         "name": "flash_tool_linux.zip",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip",
         "size": 73234593,
-        "download_count": 577,
+        "download_count": 579,
         "content_type": "application/zip",
         "created_at": "2026-10-27T09:21:19Z",
         "updated_at": "2026-10-27T09:21:32Z",
@@ -934,26 +967,15 @@
         "name": "flash_tool_windows.zip",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_windows.zip",
         "size": 65386356,
-        "download_count": 357,
+        "download_count": 359,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-07T19:09:32Z",
         "updated_at": "2026-11-07T19:09:55Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/721659465"
-      },
-      {
-        "id": 735816514,
-        "name": "1.Install.Driver.First.and.Reboot.PC.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe",
-        "size": 9534578,
-        "download_count": 353,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-11-11T14:32:18Z",
-        "updated_at": "2026-11-11T14:32:21Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/735816514"
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 934,
+    "downloads": 938,
     "download_breakdown": {
       "tag": "flash_tool",
       "mirrors": "",
@@ -961,12 +983,12 @@
         {
           "name": "flash_tool_linux.zip",
           "url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip",
-          "downloads": 577
+          "downloads": 579
         },
         {
           "name": "flash_tool_windows.zip",
           "url": "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_windows.zip",
-          "downloads": 357
+          "downloads": 359
         }
       ],
       "portable": []
@@ -985,17 +1007,6 @@
     "icon_url": "",
     "icon_dark_url": "",
     "assets": [
-      {
-        "id": 478780314,
-        "name": "run_linux.sh",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.10/run_linux.sh",
-        "size": 91280,
-        "download_count": 179,
-        "content_type": "text/x-shellscript",
-        "created_at": "2026-07-16T04:52:21Z",
-        "updated_at": "2026-07-16T04:54:16Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/478780314"
-      },
       {
         "id": 478781742,
         "name": "Innioasis.Updater.for.Mac.dmg",
@@ -1017,6 +1028,17 @@
         "created_at": "2026-07-16T04:55:11Z",
         "updated_at": "2026-07-16T04:55:34Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/478782149"
+      },
+      {
+        "id": 478780314,
+        "name": "run_linux.sh",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.10/run_linux.sh",
+        "size": 91280,
+        "download_count": 179,
+        "content_type": "text/x-shellscript",
+        "created_at": "2026-07-16T04:52:21Z",
+        "updated_at": "2026-07-16T04:54:16Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/478780314"
       }
     ],
     "mirror_downloads": 0,
@@ -1053,17 +1075,6 @@
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/462332296"
       },
       {
-        "id": 462332318,
-        "name": "run_linux.sh",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.9/run_linux.sh",
-        "size": 91280,
-        "download_count": 304,
-        "content_type": "application/x-shellscript",
-        "created_at": "2026-06-30T16:41:02Z",
-        "updated_at": "2026-06-30T16:42:48Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/462332318"
-      },
-      {
         "id": 462333016,
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.9/installer.exe",
@@ -1073,6 +1084,17 @@
         "created_at": "2026-06-30T16:42:12Z",
         "updated_at": "2026-06-30T16:42:48Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/462333016"
+      },
+      {
+        "id": 462332318,
+        "name": "run_linux.sh",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.9/run_linux.sh",
+        "size": 91280,
+        "download_count": 304,
+        "content_type": "application/x-shellscript",
+        "created_at": "2026-06-30T16:41:02Z",
+        "updated_at": "2026-06-30T16:42:48Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/462332318"
       }
     ],
     "mirror_downloads": 0,
@@ -1154,15 +1176,15 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 460993629,
-        "name": "run_linux.sh",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.7/run_linux.sh",
-        "size": 91280,
+        "id": 460994615,
+        "name": "Innioasis.Updater.for.Mac.dmg",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.7/Innioasis.Updater.for.Mac.dmg",
+        "size": 1389069,
         "download_count": 0,
-        "content_type": "application/x-shellscript",
-        "created_at": "2026-06-29T10:01:49Z",
+        "content_type": "application/octet-stream",
+        "created_at": "2026-06-29T10:02:37Z",
         "updated_at": "2026-06-29T10:02:51Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/460993629"
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/460994615"
       },
       {
         "id": 460993701,
@@ -1176,15 +1198,15 @@
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/460993701"
       },
       {
-        "id": 460994615,
-        "name": "Innioasis.Updater.for.Mac.dmg",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.7/Innioasis.Updater.for.Mac.dmg",
-        "size": 1389069,
+        "id": 460993629,
+        "name": "run_linux.sh",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.7/run_linux.sh",
+        "size": 91280,
         "download_count": 0,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-06-29T10:02:37Z",
+        "content_type": "application/x-shellscript",
+        "created_at": "2026-06-29T10:01:49Z",
         "updated_at": "2026-06-29T10:02:51Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/460994615"
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/460993629"
       }
     ],
     "mirror_downloads": 0,
@@ -1210,17 +1232,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 448113938,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.6/installer.exe",
-        "size": 264870688,
-        "download_count": 1584,
-        "content_type": "application/x-msdownload",
-        "created_at": "2026-06-15T11:32:52Z",
-        "updated_at": "2026-06-15T11:33:19Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/448113938"
-      },
-      {
         "id": 448115420,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.6/Innioasis.Updater.for.Mac.dmg",
@@ -1230,6 +1241,17 @@
         "created_at": "2026-06-15T11:34:55Z",
         "updated_at": "2026-06-15T11:34:56Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/448115420"
+      },
+      {
+        "id": 448113938,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.6/installer.exe",
+        "size": 264870688,
+        "download_count": 1584,
+        "content_type": "application/x-msdownload",
+        "created_at": "2026-06-15T11:32:52Z",
+        "updated_at": "2026-06-15T11:33:19Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/448113938"
       },
       {
         "id": 448115610,
@@ -1266,17 +1288,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 448097246,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.5/installer.exe",
-        "size": 264870688,
-        "download_count": 2,
-        "content_type": "application/x-msdownload",
-        "created_at": "2026-06-15T11:06:58Z",
-        "updated_at": "2026-06-15T11:07:29Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/448097246"
-      },
-      {
         "id": 448105099,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.5/Innioasis.Updater.for.Mac.dmg",
@@ -1286,6 +1297,17 @@
         "created_at": "2026-06-15T11:19:21Z",
         "updated_at": "2026-06-15T11:19:22Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/448105099"
+      },
+      {
+        "id": 448097246,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.5/installer.exe",
+        "size": 264870688,
+        "download_count": 2,
+        "content_type": "application/x-msdownload",
+        "created_at": "2026-06-15T11:06:58Z",
+        "updated_at": "2026-06-15T11:07:29Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/448097246"
       },
       {
         "id": 448105170,
@@ -1333,17 +1355,6 @@
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/434012784"
       },
       {
-        "id": 434012828,
-        "name": "run_linux.sh",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.3/run_linux.sh",
-        "size": 91280,
-        "download_count": 336,
-        "content_type": "text/x-sh",
-        "created_at": "2026-05-30T21:12:44Z",
-        "updated_at": "2026-05-30T21:12:44Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/434012828"
-      },
-      {
         "id": 434012925,
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.3/installer.exe",
@@ -1353,6 +1364,17 @@
         "created_at": "2026-05-30T21:12:56Z",
         "updated_at": "2026-05-30T21:13:22Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/434012925"
+      },
+      {
+        "id": 434012828,
+        "name": "run_linux.sh",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.3/run_linux.sh",
+        "size": 91280,
+        "download_count": 336,
+        "content_type": "text/x-sh",
+        "created_at": "2026-05-30T21:12:44Z",
+        "updated_at": "2026-05-30T21:12:44Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/434012828"
       }
     ],
     "mirror_downloads": 0,
@@ -1378,17 +1400,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 433995029,
-        "name": "run_linux.sh",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.2/run_linux.sh",
-        "size": 91280,
-        "download_count": 4,
-        "content_type": "application/x-shellscript",
-        "created_at": "2026-05-30T20:28:47Z",
-        "updated_at": "2026-05-30T20:29:13Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/433995029"
-      },
-      {
         "id": 433995170,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.2/Innioasis.Updater.for.Mac.dmg",
@@ -1409,6 +1420,17 @@
         "created_at": "2026-05-30T20:29:29Z",
         "updated_at": "2026-05-30T20:29:59Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/433995371"
+      },
+      {
+        "id": 433995029,
+        "name": "run_linux.sh",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.2/run_linux.sh",
+        "size": 91280,
+        "download_count": 4,
+        "content_type": "application/x-shellscript",
+        "created_at": "2026-05-30T20:28:47Z",
+        "updated_at": "2026-05-30T20:29:13Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/433995029"
       }
     ],
     "mirror_downloads": 0,
@@ -1434,17 +1456,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 433970533,
-        "name": "run_linux.sh",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.1/run_linux.sh",
-        "size": 91280,
-        "download_count": 1,
-        "content_type": "application/x-shellscript",
-        "created_at": "2026-05-30T19:29:12Z",
-        "updated_at": "2026-05-30T19:31:01Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/433970533"
-      },
-      {
         "id": 433970569,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.1/Innioasis.Updater.for.Mac.dmg",
@@ -1465,6 +1476,17 @@
         "created_at": "2026-05-30T19:29:47Z",
         "updated_at": "2026-05-30T19:30:15Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/433970738"
+      },
+      {
+        "id": 433970533,
+        "name": "run_linux.sh",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9.1/run_linux.sh",
+        "size": 91280,
+        "download_count": 1,
+        "content_type": "application/x-shellscript",
+        "created_at": "2026-05-30T19:29:12Z",
+        "updated_at": "2026-05-30T19:31:01Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/433970533"
       }
     ],
     "mirror_downloads": 0,
@@ -1490,15 +1512,15 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 431959353,
-        "name": "run_linux.sh",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9/run_linux.sh",
-        "size": 91280,
-        "download_count": 7,
-        "content_type": "application/x-shellscript",
-        "created_at": "2026-05-28T09:54:41Z",
-        "updated_at": "2026-05-28T09:55:37Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/431959353"
+        "id": 431959884,
+        "name": "Innioasis.Updater.for.Mac.dmg",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9/Innioasis.Updater.for.Mac.dmg",
+        "size": 1389069,
+        "download_count": 37,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-05-28T09:55:28Z",
+        "updated_at": "2026-05-28T09:55:29Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/431959884"
       },
       {
         "id": 431959411,
@@ -1512,15 +1534,15 @@
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/431959411"
       },
       {
-        "id": 431959884,
-        "name": "Innioasis.Updater.for.Mac.dmg",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9/Innioasis.Updater.for.Mac.dmg",
-        "size": 1389069,
-        "download_count": 37,
-        "content_type": "application/octet-stream",
-        "created_at": "2026-05-28T09:55:28Z",
-        "updated_at": "2026-05-28T09:55:29Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/431959884"
+        "id": 431959353,
+        "name": "run_linux.sh",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.9/run_linux.sh",
+        "size": 91280,
+        "download_count": 7,
+        "content_type": "application/x-shellscript",
+        "created_at": "2026-05-28T09:54:41Z",
+        "updated_at": "2026-05-28T09:55:37Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/431959353"
       }
     ],
     "mirror_downloads": 0,
@@ -1591,17 +1613,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 414159684,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.8/installer.exe",
-        "size": 264870688,
-        "download_count": 2260,
-        "content_type": "application/x-msdownload",
-        "created_at": "2026-05-07T06:24:02Z",
-        "updated_at": "2026-05-07T06:24:28Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/414159684"
-      },
-      {
         "id": 414159804,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.8/Innioasis.Updater.for.Mac.dmg",
@@ -1611,6 +1622,17 @@
         "created_at": "2026-05-07T06:24:21Z",
         "updated_at": "2026-05-07T06:24:22Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/414159804"
+      },
+      {
+        "id": 414159684,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.8/installer.exe",
+        "size": 264870688,
+        "download_count": 2261,
+        "content_type": "application/x-msdownload",
+        "created_at": "2026-05-07T06:24:02Z",
+        "updated_at": "2026-05-07T06:24:28Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/414159684"
       }
     ],
     "mirror_downloads": 0,
@@ -1726,17 +1748,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 408134973,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.7.7/installer.exe",
-        "size": 264870688,
-        "download_count": 3,
-        "content_type": "application/x-msdownload",
-        "created_at": "2026-04-29T10:41:02Z",
-        "updated_at": "2026-04-29T10:41:31Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/408134973"
-      },
-      {
         "id": 408135652,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.7.7/Innioasis.Updater.for.Mac.dmg",
@@ -1746,6 +1757,17 @@
         "created_at": "2026-04-29T10:42:09Z",
         "updated_at": "2026-04-29T10:42:09Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/408135652"
+      },
+      {
+        "id": 408134973,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.7.7/installer.exe",
+        "size": 264870688,
+        "download_count": 3,
+        "content_type": "application/x-msdownload",
+        "created_at": "2026-04-29T10:41:02Z",
+        "updated_at": "2026-04-29T10:41:31Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/408134973"
       }
     ],
     "mirror_downloads": 0,
@@ -1816,17 +1838,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 404585365,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.7.5/installer.exe",
-        "size": 264870688,
-        "download_count": 313,
-        "content_type": "application/x-msdownload",
-        "created_at": "2026-04-24T16:12:01Z",
-        "updated_at": "2026-04-24T16:12:26Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/404585365"
-      },
-      {
         "id": 404585677,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.7.5/Innioasis.Updater.for.Mac.dmg",
@@ -1836,6 +1847,17 @@
         "created_at": "2026-04-24T16:12:32Z",
         "updated_at": "2026-04-24T16:12:33Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/404585677"
+      },
+      {
+        "id": 404585365,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.7.5/installer.exe",
+        "size": 264870688,
+        "download_count": 313,
+        "content_type": "application/x-msdownload",
+        "created_at": "2026-04-24T16:12:01Z",
+        "updated_at": "2026-04-24T16:12:26Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/404585365"
       }
     ],
     "mirror_downloads": 0,
@@ -1861,17 +1883,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 403336160,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.7.4/installer.exe",
-        "size": 264870688,
-        "download_count": 84,
-        "content_type": "application/x-msdownload",
-        "created_at": "2026-04-23T10:33:29Z",
-        "updated_at": "2026-04-23T10:33:54Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/403336160"
-      },
-      {
         "id": 403336426,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.7.4/Innioasis.Updater.for.Mac.dmg",
@@ -1881,6 +1892,17 @@
         "created_at": "2026-04-23T10:33:44Z",
         "updated_at": "2026-04-23T10:33:44Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/403336426"
+      },
+      {
+        "id": 403336160,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.7.4/installer.exe",
+        "size": 264870688,
+        "download_count": 84,
+        "content_type": "application/x-msdownload",
+        "created_at": "2026-04-23T10:33:29Z",
+        "updated_at": "2026-04-23T10:33:54Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/403336160"
       }
     ],
     "mirror_downloads": 0,
@@ -2131,17 +2153,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 364022280,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.6.1/installer.exe",
-        "size": 264870688,
-        "download_count": 227,
-        "content_type": "application/x-msdownload",
-        "created_at": "2026-02-28T09:24:34Z",
-        "updated_at": "2026-02-28T09:25:16Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/364022280"
-      },
-      {
         "id": 364113175,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.6.1/Innioasis.Updater.for.Mac.dmg",
@@ -2151,6 +2162,17 @@
         "created_at": "2026-02-28T13:51:40Z",
         "updated_at": "2026-02-28T13:51:41Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/364113175"
+      },
+      {
+        "id": 364022280,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.6.1/installer.exe",
+        "size": 264870688,
+        "download_count": 227,
+        "content_type": "application/x-msdownload",
+        "created_at": "2026-02-28T09:24:34Z",
+        "updated_at": "2026-02-28T09:25:16Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/364022280"
       }
     ],
     "mirror_downloads": 0,
@@ -2221,17 +2243,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 334459809,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.5.1/installer.exe",
-        "size": 264870688,
-        "download_count": 12690,
-        "content_type": "application/x-msdownload",
-        "created_at": "2025-12-30T12:09:53Z",
-        "updated_at": "2025-12-30T12:10:45Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/334459809"
-      },
-      {
         "id": 334460028,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.5.1/Innioasis.Updater.for.Mac.dmg",
@@ -2241,6 +2252,17 @@
         "created_at": "2025-12-30T12:10:39Z",
         "updated_at": "2025-12-30T12:10:40Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/334460028"
+      },
+      {
+        "id": 334459809,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.5.1/installer.exe",
+        "size": 264870688,
+        "download_count": 12690,
+        "content_type": "application/x-msdownload",
+        "created_at": "2025-12-30T12:09:53Z",
+        "updated_at": "2025-12-30T12:10:45Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/334459809"
       }
     ],
     "mirror_downloads": 0,
@@ -2266,17 +2288,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 327023148,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.5/installer.exe",
-        "size": 264870688,
-        "download_count": 3040,
-        "content_type": "application/octet-stream",
-        "created_at": "2025-12-10T19:44:31Z",
-        "updated_at": "2025-12-10T19:45:00Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/327023148"
-      },
-      {
         "id": 327023225,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.5/Innioasis.Updater.for.Mac.dmg",
@@ -2286,6 +2297,17 @@
         "created_at": "2025-12-10T19:45:00Z",
         "updated_at": "2025-12-10T19:45:00Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/327023225"
+      },
+      {
+        "id": 327023148,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.5/installer.exe",
+        "size": 264870688,
+        "download_count": 3040,
+        "content_type": "application/octet-stream",
+        "created_at": "2025-12-10T19:44:31Z",
+        "updated_at": "2025-12-10T19:45:00Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/327023148"
       }
     ],
     "mirror_downloads": 0,
@@ -2311,17 +2333,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 323312388,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.4/installer.exe",
-        "size": 264870688,
-        "download_count": 507,
-        "content_type": "application/x-msdownload",
-        "created_at": "2025-12-02T09:29:47Z",
-        "updated_at": "2025-12-02T09:30:15Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/323312388"
-      },
-      {
         "id": 323312618,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.4/Innioasis.Updater.for.Mac.dmg",
@@ -2331,6 +2342,17 @@
         "created_at": "2025-12-02T09:30:15Z",
         "updated_at": "2025-12-02T09:30:15Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/323312618"
+      },
+      {
+        "id": 323312388,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.4/installer.exe",
+        "size": 264870688,
+        "download_count": 507,
+        "content_type": "application/x-msdownload",
+        "created_at": "2025-12-02T09:29:47Z",
+        "updated_at": "2025-12-02T09:30:15Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/323312388"
       }
     ],
     "mirror_downloads": 0,
@@ -2356,17 +2378,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 322610389,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.6/installer.exe",
-        "size": 264870688,
-        "download_count": 87,
-        "content_type": "application/x-msdownload",
-        "created_at": "2025-11-30T20:41:57Z",
-        "updated_at": "2025-11-30T20:42:27Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/322610389"
-      },
-      {
         "id": 322610456,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.6/Innioasis.Updater.for.Mac.dmg",
@@ -2376,6 +2387,17 @@
         "created_at": "2025-11-30T20:42:27Z",
         "updated_at": "2025-11-30T20:42:27Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/322610456"
+      },
+      {
+        "id": 322610389,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.6/installer.exe",
+        "size": 264870688,
+        "download_count": 87,
+        "content_type": "application/x-msdownload",
+        "created_at": "2025-11-30T20:41:57Z",
+        "updated_at": "2025-11-30T20:42:27Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/322610389"
       }
     ],
     "mirror_downloads": 0,
@@ -2401,17 +2423,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 322547833,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.5/installer.exe",
-        "size": 264870688,
-        "download_count": 16,
-        "content_type": "application/octet-stream",
-        "created_at": "2025-11-30T15:33:18Z",
-        "updated_at": "2025-11-30T15:33:45Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/322547833"
-      },
-      {
         "id": 322547862,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.5/Innioasis.Updater.for.Mac.dmg",
@@ -2421,6 +2432,17 @@
         "created_at": "2025-11-30T15:33:45Z",
         "updated_at": "2025-11-30T15:33:46Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/322547862"
+      },
+      {
+        "id": 322547833,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.5/installer.exe",
+        "size": 264870688,
+        "download_count": 16,
+        "content_type": "application/octet-stream",
+        "created_at": "2025-11-30T15:33:18Z",
+        "updated_at": "2025-11-30T15:33:45Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/322547833"
       }
     ],
     "mirror_downloads": 0,
@@ -2446,17 +2468,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 321545892,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.4/installer.exe",
-        "size": 264870688,
-        "download_count": 192,
-        "content_type": "application/octet-stream",
-        "created_at": "2025-11-27T16:26:37Z",
-        "updated_at": "2025-11-27T16:27:03Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/321545892"
-      },
-      {
         "id": 321546088,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.4/Innioasis.Updater.for.Mac.dmg",
@@ -2466,6 +2477,17 @@
         "created_at": "2025-11-27T16:27:03Z",
         "updated_at": "2025-11-27T16:27:04Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/321546088"
+      },
+      {
+        "id": 321545892,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.4/installer.exe",
+        "size": 264870688,
+        "download_count": 192,
+        "content_type": "application/octet-stream",
+        "created_at": "2025-11-27T16:26:37Z",
+        "updated_at": "2025-11-27T16:27:03Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/321545892"
       }
     ],
     "mirror_downloads": 0,
@@ -2491,17 +2513,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 320164576,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.3/installer.exe",
-        "size": 264870688,
-        "download_count": 200,
-        "content_type": "application/octet-stream",
-        "created_at": "2025-11-24T08:26:14Z",
-        "updated_at": "2025-11-24T08:26:45Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/320164576"
-      },
-      {
         "id": 320164677,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.3/Innioasis.Updater.for.Mac.dmg",
@@ -2511,6 +2522,17 @@
         "created_at": "2025-11-24T08:26:45Z",
         "updated_at": "2025-11-24T08:26:45Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/320164677"
+      },
+      {
+        "id": 320164576,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.3/installer.exe",
+        "size": 264870688,
+        "download_count": 200,
+        "content_type": "application/octet-stream",
+        "created_at": "2025-11-24T08:26:14Z",
+        "updated_at": "2025-11-24T08:26:45Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/320164576"
       }
     ],
     "mirror_downloads": 0,
@@ -2536,17 +2558,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 319261162,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.2/installer.exe",
-        "size": 264870688,
-        "download_count": 126,
-        "content_type": "application/octet-stream",
-        "created_at": "2025-11-21T14:53:22Z",
-        "updated_at": "2025-11-21T14:53:49Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/319261162"
-      },
-      {
         "id": 319261263,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.2/Innioasis.Updater.for.Mac.dmg",
@@ -2556,6 +2567,17 @@
         "created_at": "2025-11-21T14:53:49Z",
         "updated_at": "2025-11-21T14:53:50Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/319261263"
+      },
+      {
+        "id": 319261162,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.2/installer.exe",
+        "size": 264870688,
+        "download_count": 126,
+        "content_type": "application/octet-stream",
+        "created_at": "2025-11-21T14:53:22Z",
+        "updated_at": "2025-11-21T14:53:49Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/319261162"
       }
     ],
     "mirror_downloads": 0,
@@ -2581,17 +2603,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 318271585,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.1/installer.exe",
-        "size": 264870688,
-        "download_count": 150,
-        "content_type": "application/x-msdownload",
-        "created_at": "2025-11-19T09:01:27Z",
-        "updated_at": "2025-11-19T09:01:53Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/318271585"
-      },
-      {
         "id": 318272049,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.1/Innioasis.Updater.for.Mac.dmg",
@@ -2601,6 +2612,17 @@
         "created_at": "2025-11-19T09:01:53Z",
         "updated_at": "2025-11-19T09:01:54Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/318272049"
+      },
+      {
+        "id": 318271585,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.3.1/installer.exe",
+        "size": 264870688,
+        "download_count": 150,
+        "content_type": "application/x-msdownload",
+        "created_at": "2025-11-19T09:01:27Z",
+        "updated_at": "2025-11-19T09:01:53Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/318271585"
       }
     ],
     "mirror_downloads": 0,
@@ -3166,17 +3188,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 315205934,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.8.2.1/installer.exe",
-        "size": 264870688,
-        "download_count": 5,
-        "content_type": "application/x-msdownload",
-        "created_at": "2025-11-11T19:13:03Z",
-        "updated_at": "2025-11-11T19:13:30Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/315205934"
-      },
-      {
         "id": 315206246,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.8.2.1/Innioasis.Updater.for.Mac.dmg",
@@ -3186,6 +3197,17 @@
         "created_at": "2025-11-11T19:13:30Z",
         "updated_at": "2025-11-11T19:13:31Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/315206246"
+      },
+      {
+        "id": 315205934,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.8.2.1/installer.exe",
+        "size": 264870688,
+        "download_count": 5,
+        "content_type": "application/x-msdownload",
+        "created_at": "2025-11-11T19:13:03Z",
+        "updated_at": "2025-11-11T19:13:30Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/315205934"
       }
     ],
     "mirror_downloads": 0,
@@ -3346,17 +3368,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 313067106,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.8.0/installer.exe",
-        "size": 264870688,
-        "download_count": 131,
-        "content_type": "application/x-msdownload",
-        "created_at": "2025-11-06T00:10:49Z",
-        "updated_at": "2025-11-06T00:11:18Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/313067106"
-      },
-      {
         "id": 313067239,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.8.0/Innioasis.Updater.for.Mac.dmg",
@@ -3366,6 +3377,17 @@
         "created_at": "2025-11-06T00:11:28Z",
         "updated_at": "2025-11-06T00:11:29Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/313067239"
+      },
+      {
+        "id": 313067106,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.8.0/installer.exe",
+        "size": 264870688,
+        "download_count": 131,
+        "content_type": "application/x-msdownload",
+        "created_at": "2025-11-06T00:10:49Z",
+        "updated_at": "2025-11-06T00:11:18Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/313067106"
       }
     ],
     "mirror_downloads": 0,
@@ -3616,17 +3638,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 306127623,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.7.4/installer.exe",
-        "size": 264870688,
-        "download_count": 2,
-        "content_type": "application/x-msdownload",
-        "created_at": "2025-10-19T13:05:07Z",
-        "updated_at": "2025-10-19T13:05:32Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/306127623"
-      },
-      {
         "id": 306127626,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.7.4/Innioasis.Updater.for.Mac.dmg",
@@ -3636,6 +3647,17 @@
         "created_at": "2025-10-19T13:05:10Z",
         "updated_at": "2025-10-19T13:05:11Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/306127626"
+      },
+      {
+        "id": 306127623,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.7.4/installer.exe",
+        "size": 264870688,
+        "download_count": 2,
+        "content_type": "application/x-msdownload",
+        "created_at": "2025-10-19T13:05:07Z",
+        "updated_at": "2025-10-19T13:05:32Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/306127623"
       }
     ],
     "mirror_downloads": 0,
@@ -3661,17 +3683,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 302396733,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.7.3/installer.exe",
-        "size": 264870688,
-        "download_count": 367,
-        "content_type": "application/x-msdownload",
-        "created_at": "2025-10-09T16:49:12Z",
-        "updated_at": "2025-10-09T16:50:23Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/302396733"
-      },
-      {
         "id": 303007716,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.7.3/Innioasis.Updater.for.Mac.dmg",
@@ -3681,6 +3692,17 @@
         "created_at": "2025-10-11T07:42:03Z",
         "updated_at": "2025-10-11T07:42:08Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/303007716"
+      },
+      {
+        "id": 302396733,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.7.3/installer.exe",
+        "size": 264870688,
+        "download_count": 367,
+        "content_type": "application/x-msdownload",
+        "created_at": "2025-10-09T16:49:12Z",
+        "updated_at": "2025-10-09T16:50:23Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/302396733"
       }
     ],
     "mirror_downloads": 0,
@@ -3852,26 +3874,26 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 285370538,
-        "name": "only.download.from.innioasis.app.msi",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.6.0/only.download.from.innioasis.app.msi",
-        "size": 6348800,
-        "download_count": 882,
-        "content_type": "application/octet-stream",
-        "created_at": "2025-08-23T03:16:35Z",
-        "updated_at": "2025-09-14T08:19:06Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/285370538"
+        "id": 289678818,
+        "name": "Innioasis.Updater.-.Windows.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.6.0/Innioasis.Updater.-.Windows.exe",
+        "size": 264870688,
+        "download_count": 1213,
+        "content_type": "application/x-msdownload",
+        "created_at": "2025-09-04T16:49:16Z",
+        "updated_at": "2025-09-04T16:49:44Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/289678818"
       },
       {
-        "id": 285371175,
-        "name": "only.download.from.innioasis.app.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.6.0/only.download.from.innioasis.app.exe",
-        "size": 9534578,
-        "download_count": 956,
-        "content_type": "application/x-msdownload",
-        "created_at": "2025-08-23T03:19:35Z",
-        "updated_at": "2025-09-14T08:19:06Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/285371175"
+        "id": 298994295,
+        "name": "Innioasis.Updater.for.Mac.dmg",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.6.0/Innioasis.Updater.for.Mac.dmg",
+        "size": 1457727,
+        "download_count": 23,
+        "content_type": "application/x-apple-diskimage",
+        "created_at": "2025-09-30T18:19:14Z",
+        "updated_at": "2025-09-30T18:19:15Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/298994295"
       },
       {
         "id": 287762626,
@@ -3885,6 +3907,28 @@
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/287762626"
       },
       {
+        "id": 285371175,
+        "name": "only.download.from.innioasis.app.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.6.0/only.download.from.innioasis.app.exe",
+        "size": 9534578,
+        "download_count": 956,
+        "content_type": "application/x-msdownload",
+        "created_at": "2025-08-23T03:19:35Z",
+        "updated_at": "2025-09-14T08:19:06Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/285371175"
+      },
+      {
+        "id": 285370538,
+        "name": "only.download.from.innioasis.app.msi",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.6.0/only.download.from.innioasis.app.msi",
+        "size": 6348800,
+        "download_count": 882,
+        "content_type": "application/octet-stream",
+        "created_at": "2025-08-23T03:16:35Z",
+        "updated_at": "2025-09-14T08:19:06Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/285370538"
+      },
+      {
         "id": 288113432,
         "name": "only.download.from.innioasis.app.zip",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.6.0/only.download.from.innioasis.app.zip",
@@ -3894,28 +3938,6 @@
         "created_at": "2025-08-31T13:06:53Z",
         "updated_at": "2025-09-14T08:19:06Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/288113432"
-      },
-      {
-        "id": 289678818,
-        "name": "Innioasis.Updater.-.Windows.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.6.0/Innioasis.Updater.-.Windows.exe",
-        "size": 264870688,
-        "download_count": 1213,
-        "content_type": "application/x-msdownload",
-        "created_at": "2025-09-04T16:49:16Z",
-        "updated_at": "2025-09-04T16:49:44Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/289678818"
-      },
-      {
-        "id": 291726506,
-        "name": "patch.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.6.0/patch.exe",
-        "size": 264870688,
-        "download_count": 40,
-        "content_type": "application/octet-stream",
-        "created_at": "2025-09-10T11:52:28Z",
-        "updated_at": "2025-09-10T11:52:52Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/291726506"
       },
       {
         "id": 292207287,
@@ -3929,15 +3951,15 @@
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/292207287"
       },
       {
-        "id": 298994295,
-        "name": "Innioasis.Updater.for.Mac.dmg",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.6.0/Innioasis.Updater.for.Mac.dmg",
-        "size": 1457727,
-        "download_count": 23,
-        "content_type": "application/x-apple-diskimage",
-        "created_at": "2025-09-30T18:19:14Z",
-        "updated_at": "2025-09-30T18:19:15Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/298994295"
+        "id": 291726506,
+        "name": "patch.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.6.0/patch.exe",
+        "size": 264870688,
+        "download_count": 40,
+        "content_type": "application/octet-stream",
+        "created_at": "2025-09-10T11:52:28Z",
+        "updated_at": "2025-09-10T11:52:52Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/291726506"
       }
     ],
     "mirror_downloads": 0,
@@ -3969,17 +3991,6 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 322563701,
-        "name": "installer.exe",
-        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.0.0/installer.exe",
-        "size": 264870688,
-        "download_count": 8,
-        "content_type": "application/x-msdownload",
-        "created_at": "2025-11-30T17:04:38Z",
-        "updated_at": "2025-11-30T17:05:05Z",
-        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/322563701"
-      },
-      {
         "id": 322563778,
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.0.0/Innioasis.Updater.for.Mac.dmg",
@@ -3989,6 +4000,17 @@
         "created_at": "2025-11-30T17:05:05Z",
         "updated_at": "2025-11-30T17:05:05Z",
         "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/322563778"
+      },
+      {
+        "id": 322563701,
+        "name": "installer.exe",
+        "browser_download_url": "https://github.com/y1-community/Innioasis-Updater/releases/download/1.0.0/installer.exe",
+        "size": 264870688,
+        "download_count": 9,
+        "content_type": "application/x-msdownload",
+        "created_at": "2025-11-30T17:04:38Z",
+        "updated_at": "2025-11-30T17:05:05Z",
+        "url": "https://api.github.com/repos/y1-community/Innioasis-Updater/releases/assets/322563701"
       }
     ],
     "mirror_downloads": 0,
