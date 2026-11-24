@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261124started1";
+    var VERSION = "20261124progress1";
     /* Archives, installers and app images all stream in-page. A driver or app
        download is often the one a reader most wants a speed and time-left for,
        so it deserves the same progress card as a firmware ZIP. Phone packages
@@ -872,7 +872,9 @@
         job.total = Number.isFinite(length) && length > 0 ? length : 0;
         job.status = "running";
         paint(job);
-        notifyDownloadStarted(job, false);
+        /* Keep the inline progress card visible while the file streams;
+           the donation appeal modal opens below once saveBlob/writer finishes
+           and delivers the completed file to the browser. */
 
         var chunks = writer ? null : [];
         var reader = null;
