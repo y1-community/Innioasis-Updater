@@ -129,32 +129,36 @@
        excluded: its download is the original rom zip (or the Type B build),
        because the portable package wraps a desktop flash tool. */
     function platformKey() {
-        if (platformCache) return platformCache;
-        /* Windows XP through 8.1 and 32-bit Windows cannot run Updater CE, so
-           the flash-tool bundle is the only package that works there. The
-           verdict comes from site-legacy.js, which reads the user agent once
-           for the whole site; until it loads, the standard build is used. */
+        /* Windows XP through 8.1, 32-bit Windows and 32-bit Linux cannot run
+           Updater CE, so the flash-tool bundle is the only package that works
+           there. Always check INNIOASIS_LEGACY before any cached non-legacy
+           result so late updates never stay stuck on a standard build. */
         var legacy = legacyKey();
         if (legacy) {
             platformCache = Promise.resolve(legacy);
             return platformCache;
         }
+        if (platformCache) return platformCache;
         platformCache = (async function () {
             var ua = navigator.userAgent || "";
             var plat = navigator.platform || "";
-            var mac = /Mac/i.test(plat) || /Macintosh/i.test(ua);
+            var win = /Windows/i.test(ua) || (!/Mac|Linux/i.test(ua) && /Win/i.test(plat));
+            var mac = !win && (/Macintosh|Mac OS X/i.test(ua) || (!/Linux/i.test(ua) && /Mac/i.test(plat)));
             if (mac) return "macos";
-            var win = /Win/i.test(plat);
-            var linux = /Linux/i.test(plat) && !/Android/i.test(ua);
+            var linux = !win && !mac && ((/Linux|X11/i.test(ua) || /Linux/i.test(plat)) && !/Android/i.test(ua));
             if (!win && !linux) return "";
 
             var arch = "";
             if (navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === "function") {
                 try {
-                    var data = await navigator.userAgentData.getHighEntropyValues(["architecture", "bitness"]);
-                    var reported = String((data && data.architecture) || "").toLowerCase();
-                    if (reported.indexOf("arm") !== -1) arch = "arm64";
-                    else if (reported.indexOf("x86") !== -1) arch = String(data.bitness) === "32" ? "x86" : "x86-64";
+                    var data = await navigator.userAgentData.getHighEntropyValues(["architecture", "bitness", "platform"]);
+                    var hintPlat = String((data && data.platform) || navigator.userAgentData.platform || "").toLowerCase();
+                    var matchesOs = !hintPlat || (win && hintPlat.indexOf("win") !== -1) || (linux && hintPlat.indexOf("linux") !== -1);
+                    if (matchesOs) {
+                        var reported = String((data && data.architecture) || "").toLowerCase();
+                        if (reported.indexOf("arm") !== -1) arch = "arm64";
+                        else if (reported.indexOf("x86") !== -1) arch = String(data.bitness) === "32" ? "x86" : "x86-64";
+                    }
                 } catch (_) {}
             }
             if (!arch) {
@@ -541,6 +545,9 @@
         link.rel = "noopener";
         document.body.appendChild(link);
         link.click();
+        if (typeof window.openY1DonatePanel === "function") {
+            try { window.openY1DonatePanel({ action: "download_started", fileName: saveName || "" }); } catch (_) {}
+        }
         setTimeout(function () {
             if (link.parentNode) link.parentNode.removeChild(link);
         }, 1000);
@@ -568,6 +575,9 @@
         var isCrossOrigin = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0;
         if (isCrossOrigin) {
             downloadFrame().src = href;
+            if (typeof window.openY1DonatePanel === "function") {
+                try { window.openY1DonatePanel({ action: "download_started", fileName: saveName || "" }); } catch (_) {}
+            }
             return;
         }
         var link = document.createElement("a");
@@ -577,6 +587,9 @@
         link.rel = "noopener";
         document.body.appendChild(link);
         link.click();
+        if (typeof window.openY1DonatePanel === "function") {
+            try { window.openY1DonatePanel({ action: "download_started", fileName: saveName || "" }); } catch (_) {}
+        }
         setTimeout(function () {
             if (link.parentNode) link.parentNode.removeChild(link);
         }, 1000);

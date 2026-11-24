@@ -28,12 +28,41 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261124stats9";
+    var VERSION = "20261124stats10";
 
     /* The firmware ZIP is no longer offered as a file here: a reader installs
        the release through Updater CE, and this is the line that says how many
        times that has happened. */
     var FIRMWARE_FOOT_LABEL = "Downloads from Updater CE";
+
+    var LEGACY_PLATFORMS = { "windows-legacy": true, "linux-legacy": true };
+
+    function legacyKey() {
+        try {
+            var marker = global.INNIOASIS_LEGACY;
+            return marker && marker.isLegacy ? String(marker.platformKey || "windows-legacy") : "";
+        } catch (_) {
+            return "";
+        }
+    }
+
+    function visiblePortable(list) {
+        var legacy = legacyKey();
+        var sorted = (list || []).slice().sort(function (a, b) {
+            if (legacy) {
+                var aMatch = a && a.platform === legacy ? 0 : 1;
+                var bMatch = b && b.platform === legacy ? 0 : 1;
+                if (aMatch !== bMatch) return aMatch - bMatch;
+            }
+            var ai = PLATFORM_ORDER.indexOf(a && a.platform);
+            var bi = PLATFORM_ORDER.indexOf(b && b.platform);
+            return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+        });
+        if (legacy) return sorted;
+        return sorted.filter(function (entry) {
+            return !(entry && LEGACY_PLATFORMS[entry.platform]);
+        });
+    }
 
     /* The order a reader thinks in: the usual desktop first, the legacy
        builds after the platform they belong to. */
@@ -297,11 +326,10 @@
         style.id = "site-download-stats-styles";
         style.textContent = [
             ".lumen-download-stats{display:inline-flex;align-items:center;gap:.35rem;flex-wrap:wrap;margin:.15rem 0;}",
-            ".lumen-download-stats__figure{border:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;}",
-            ".lumen-download-stats__figure:hover{color:var(--lumen-accent,#6b9fff);}",
-            ".lumen-download-stats__figure:focus-visible,.lumen-download-stats__info:focus-visible{outline:2px solid var(--lumen-accent,#6b9fff);outline-offset:2px;border-radius:6px;}",
-            ".lumen-download-stats__info{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;padding:0;border:1px solid var(--lumen-line-strong,rgba(255,255,255,.28));border-radius:999px;background:none;color:var(--lumen-muted,#9aa3b5);font:700 11px/1 var(--lumen-body,system-ui,sans-serif);cursor:pointer;}",
-            ".lumen-download-stats__info:hover{color:var(--lumen-text,#fff);border-color:currentColor;}",
+            ".lumen-download-stats__figure{border:0;background:none;padding:0;font:inherit;color:inherit;cursor:inherit;text-decoration:none;}",
+            ".lumen-download-stats__figure:hover{color:inherit;text-decoration:none;}",
+            ".lumen-download-stats__figure:focus-visible{outline:2px solid var(--lumen-accent,#6b9fff);outline-offset:2px;border-radius:6px;}",
+            ".lumen-download-stats__info{display:none!important;}",
             ".dl-stats-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:1.1rem;background:rgba(6,8,13,.66);backdrop-filter:blur(3px);}",
             ".dl-stats-overlay[hidden]{display:none!important;}",
             ".dl-stats{box-sizing:border-box;width:min(560px,100%);max-height:min(86vh,760px);overflow:auto;padding:1.1rem 1.15rem 1rem;border:1px solid var(--lumen-line-strong,rgba(255,255,255,.2));border-radius:16px;background:var(--lumen-panel,#161a24);color:var(--lumen-text,#f4f6fb);font:400 13.5px/1.5 var(--lumen-body,system-ui,sans-serif);box-shadow:0 24px 60px rgba(0,0,0,.45);}",
@@ -319,8 +347,8 @@
             ".dl-stats__meta{display:block;color:var(--lumen-muted,#b4bfca);font-size:12.5px;overflow-wrap:anywhere;}",
             ".dl-stats__count{flex:0 0 auto;font-variant-numeric:tabular-nums;font-weight:700;color:var(--lumen-accent,#6b9fff);}",
             ".dl-stats__cta{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem;margin:.1rem 0 .2rem;padding:.6rem .65rem;border:1px solid var(--lumen-line,rgba(255,255,255,.1));border-radius:10px;background:var(--lumen-panel-soft,var(--lumen-panel,#1b2030));}",
-            "body.site-themes-app a.dl-stats__install,a.dl-stats__install,.dl-stats__install{display:inline-flex;align-items:center;padding:.45rem .85rem;border-radius:999px;background:var(--lumen-accent,#6fb8f5);color:var(--lumen-on-accent,var(--lumen-ink,#04070e));font:700 13px/1.3 var(--lumen-body,system-ui,sans-serif);text-decoration:none;}",
-            "body.site-themes-app a.dl-stats__install:hover,a.dl-stats__install:hover,.dl-stats__install:hover{background:var(--lumen-accent-strong,var(--lumen-accent,#339fee));color:var(--lumen-on-accent-strong,var(--lumen-on-accent,var(--lumen-ink,#04070e)));}",
+            "body.site-themes-app a.dl-stats__install,a.dl-stats__install,.dl-stats__install{display:inline-flex;align-items:center;padding:.45rem .85rem;border-radius:999px;background:var(--lumen-accent,#6fb8f5);color:var(--lumen-on-accent,var(--lumen-ink,#04070e))!important;font:700 13px/1.3 var(--lumen-body,system-ui,sans-serif);text-decoration:none!important;}",
+            "body.site-themes-app a.dl-stats__install:hover,a.dl-stats__install:hover,.dl-stats__install:hover{background:var(--lumen-accent-strong,var(--lumen-accent,#339fee));color:var(--lumen-on-accent-strong,var(--lumen-on-accent,var(--lumen-ink,#04070e)))!important;}",
             ".dl-stats__install:focus-visible{outline:2px solid var(--lumen-text,#fff);outline-offset:2px;}",
             ".dl-stats__cta-note{margin:0;flex:1 1 12rem;min-width:0;color:var(--lumen-muted,#b4bfca);font-size:13px;line-height:1.45;}",
             ".dl-stats__list--firmware{margin-top:.85rem;}",
@@ -460,9 +488,35 @@
 
     function cta(breakdown, trigger) {
         var wrap = el("div", "dl-stats__cta");
-        var link = el("a", "dl-stats__install", "Install this easily with Updater");
-        link.href = guideHref(breakdown, trigger);
-        wrap.appendChild(link);
+        var legacy = legacyKey();
+        if (legacy) {
+            var match = (breakdown && Array.isArray(breakdown.portable) ? breakdown.portable : []).find(function (entry) {
+                return entry && entry.platform === legacy && entry.url;
+            });
+            var link;
+            if (match) {
+                link = el("a", "dl-stats__install", "Download ZIP Installer");
+                link.href = match.url;
+                link.setAttribute("download", match.name || "");
+                link.setAttribute("data-legacy-zip-cta", "1");
+                link.rel = "noopener noreferrer nofollow";
+                wrap.appendChild(link);
+                wrap.appendChild(el("p", "dl-stats__cta-note",
+                    legacy === "linux-legacy"
+                        ? "Includes the firmware and portable installer for 32-bit Linux."
+                        : "Includes the firmware and SP Flash Tool so you can install on this computer."));
+            } else {
+                link = el("a", "dl-stats__install", "See legacy install guide");
+                link.href = legacy === "linux-legacy" ? "linux-legacy.html" : "windows-legacy.html";
+                wrap.appendChild(link);
+                wrap.appendChild(el("p", "dl-stats__cta-note",
+                    "Updater CE cannot run on this system. Use a portable ZIP installer package instead."));
+            }
+            return wrap;
+        }
+        var installLink = el("a", "dl-stats__install", "Install this easily with Updater");
+        installLink.href = guideHref(breakdown, trigger);
+        wrap.appendChild(installLink);
         wrap.appendChild(el("p", "dl-stats__cta-note",
             "Updater CE fetches this release for your player and walks you through the install."));
         return wrap;
@@ -574,11 +628,7 @@
             return entry && typeof entry === "object";
         });
 
-        var portable = (breakdown.portable || []).slice().sort(function (a, b) {
-            var ai = PLATFORM_ORDER.indexOf(a.platform);
-            var bi = PLATFORM_ORDER.indexOf(b.platform);
-            return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
-        });
+        var portable = visiblePortable(breakdown.portable);
         panel.appendChild(section("Portable install packages"));
         if (portable.length) {
             var pit = el("ul", "dl-stats__list");
@@ -694,6 +744,19 @@
         if (!trigger || trigger.getAttribute("data-download-stats-ready") === "1") return;
         trigger.setAttribute("data-download-stats-ready", "1");
         trigger.setAttribute("aria-haspopup", "dialog");
+        /* Normalize any pre-rendered "Downloads: 1,234" button copy to
+           "Downloaded 1,234 times" so older cached/static pages match too. */
+        if (trigger.classList && trigger.classList.contains("lumen-download-stats__figure")) {
+            var rawText = (trigger.textContent || "").trim();
+            var legacyMatch = /^Downloads:\s*([\d,]+)$/i.exec(rawText);
+            if (legacyMatch) {
+                var countText = legacyMatch[1];
+                var countNum = parseInt(countText.replace(/,/g, ""), 10) || 0;
+                trigger.innerHTML = '<span class="lumen-download-stats__label">Downloaded</span> ' +
+                    '<span class="lumen-download-stats__value" translate="no" data-i18n-skip>' + countText + '</span> ' +
+                    '<span class="lumen-download-stats__unit">' + (countNum === 1 ? "time" : "times") + '</span>';
+            }
+        }
         if (!trigger.getAttribute("aria-label")) {
             trigger.setAttribute("aria-label", (trigger.textContent || "Download figures").trim() +
                 " — open the download figures and breakdown");

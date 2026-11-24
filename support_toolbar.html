@@ -650,7 +650,7 @@
         <button class="y1-donate-close" type="button" data-donate-close aria-label="Close donation options" style="position: static; flex-shrink: 0; margin-left: 8px;">×</button>
       </div>
 
-      <p class="y1-donate-panel-intro" id="y1-donate-panel-intro" data-i18n-skip="true" translate="no">Hi, I'm Ryan. I build Innioasis Updater CE, this firmware archive, and the Themes Gallery. I pay for them myself so they stay free for everyone.</p>
+      <p class="y1-donate-panel-intro" id="y1-donate-panel-intro" data-i18n-skip="true" translate="no">Hi, I'm Ryan. Alongside a small group of contributors, I put evenings and weekends into developing and running Updater CE, the Themes Gallery, and the Firmware Archive — your support helps us keep building and maintaining these projects for everyone.</p>
 
       <div class="y1-donate-grid">
         <a class="y1-donate-btn y1-donate-btn--kofi" href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer">
@@ -1405,29 +1405,22 @@
   }
 
   var GENERAL_APPEAL_POOL = [
-    "Donations directly help me support my family and fund the test devices that make this free service possible for everyone. If this tool saved you time or rescued your player today, please consider a small donation, it truly means the world to us.",
-    "The servers behind the downloads are paid for out of pocket. A coffee keeps them online for the next owner.",
-    "Every release here is built in evenings and weekends. A small donation buys more of that time.",
-    "Solely self- and donations-funded, with no paid tier. Mostly paid for out of pocket, with help from people this helped.",
-    "Donations buy the test players and cables used to check each release before anyone installs it.",
-    "Thousands of downloads go out every month. Donations pay for the servers that deliver them.",
-    "Donations pay the running costs of Updater CE, the Themes Gallery and the community firmware archive. Whatever you can add helps.",
-    "A few dollars goes a long way here: it covers hundreds of downloads.",
-    "Bugs get fixed because someone stayed up testing your exact model. A donation keeps that going.",
-    "No company behind this, just one developer, a workbench and a donation page. Everything goes to running costs.",
-    "The tools, the guides and the archive are all free. A tip funds the next feature.",
-    "If this worked for you, pass the kindness on. It keeps the project free for whoever comes next.",
-    "Some of the players this supports were written off as broken. A donation keeps the rescue service running.",
-    "No subscription, no deadline, just a page like this one. Give only if it helped.",
-    "One person answers the questions, writes the guides and pays the bills. Donations make that sustainable.",
-    "Files vanish when a hosting company shuts down. Donations keep the copies that rescued your player online.",
-    "One coffee roughly covers the cost of a download. It keeps the next fix within reach."
+    "Donations directly support the people putting in evenings and weekends to develop and maintain Updater CE, the Themes Gallery, and the Firmware Archive — and help fund the test players that make every release safe for your device. If our work helped you today, even a small gift truly means the world to us.",
+    "Real people spend hours every week testing firmware, fixing bugs, and keeping Updater CE, the Themes Gallery, and the Firmware Archive running smoothly. Your support helps us keep showing up and building for this community.",
+    "Every update to Updater CE, every build in the Firmware Archive, and every improvement to the Themes Gallery comes from real time and care after work and on weekends. Pitching in helps us keep all three projects moving forward.",
+    "Behind Updater CE, the Themes Gallery, and the Firmware Archive are real people buying test hardware, answering support questions, and maintaining the servers so players stay alive. If this helped your player, we'd be deeply grateful for your support.",
+    "Keeping Updater CE, the Themes Gallery, and the Firmware Archive online and actively developed takes real work and real out-of-pocket costs — from servers to test players bought specifically to check each release. Whatever you can share genuinely keeps us going.",
+    "We put a huge amount of care into developing Updater CE, curating the Themes Gallery, and preserving the Firmware Archive so your player keeps getting better. A small donation helps us keep developing and running all three projects.",
+    "When a tricky bug gets fixed or a bricked player comes back to life, it's because someone stayed up late testing that exact model on real hardware. Supporting us helps fund the hours, servers, and test devices behind Updater CE, the Themes Gallery, and the Firmware Archive.",
+    "Maintaining Updater CE, the Themes Gallery, and the Firmware Archive is a labour of love built by people who care deeply about these players. If our tools saved you time or brought your player back to life, consider chipping in to help us keep building.",
+    "Many of the players we support were written off as broken until someone put in the work to archive their firmware and build a safe installer. Your donation directly helps us keep running and improving Updater CE, the Themes Gallery, and the Firmware Archive.",
+    "From answering questions and writing guides to hosting mirrors and testing every build on real devices, a huge amount of human effort goes into Updater CE, the Themes Gallery, and the Firmware Archive. Your generosity helps make that work sustainable."
   ];
 
   var FAMILY_APPEAL_POOL = [
-    "Ryan and his partner are expecting a baby. Donations towards the project's running costs and our new family are massively appreciated.",
-    "There's a new arrival on the way in Ryan's house. Every donation towards the servers and our growing family means a great deal.",
-    "Ryan and his partner are getting ready for their child. If this tool has been useful, a donation for the running costs and our growing family would help more than you know."
+    "Ryan and his partner are expecting a baby while continuing to develop and run Updater CE, the Themes Gallery, and the Firmware Archive. Any donation towards our projects' running costs and our growing family is massively appreciated.",
+    "There's a new arrival on the way in Ryan's house. Every gift that helps support our growing family and the hard work that keeps Updater CE, the Themes Gallery, and the Firmware Archive running means more than we can say.",
+    "Ryan and his partner are getting ready for their child while pouring time into Updater CE, the Themes Gallery, and the Firmware Archive. If our work helped your player today, supporting the projects and our growing family would help more than you know."
   ];
 
   var FAMILY_COHORT_STORAGE_KEY = "y1_family_appeal_cohort";
@@ -1792,21 +1785,29 @@
         : _t("Removal request sent");
       text = _t("We logged your removal request for a maintainer to review before anything changes. If our community tools have been useful, you can support the project below.");
       if (linkUrl && !linkLabel) linkLabel = _t("Track this request");
+    } else if (action === "download_started") {
+      var startedLabel = displayFile || quotedName;
+      title = startedLabel
+        ? _t("Download started: {name}", { name: startedLabel })
+        : _t("Your download has started");
+      text = startedLabel
+        ? _t("Your download of {name} has started. Real people put hours of hard work into developing and running Updater CE, the Themes Gallery, and the Firmware Archive — if our work helps you today, please consider supporting us below.", { name: startedLabel })
+        : _t("Your download has started. Real people put hours of hard work into developing and running Updater CE, the Themes Gallery, and the Firmware Archive — if our work helps you today, please consider supporting us below.");
     } else if (action === "file_download") {
       var label = displayFile || quotedName;
       title = label
         ? _t("Downloaded {name}!", { name: label })
         : _t("Download complete!");
       text = label
-        ? _t("We finished downloading {name} directly to your device with no paywalls or ad links. If this helped your player, a small donation below helps cover servers and test devices.", { name: label })
-        : _t("We finished your download directly to your device with no paywalls or ad links. If this helped your player, a small donation below helps cover servers and test devices.");
+        ? _t("{name} has finished downloading to your device. Real people put hours of hard work into developing and running Updater CE, the Themes Gallery, and the Firmware Archive — if this helped your player, please consider supporting us below.", { name: label })
+        : _t("Your download has finished. Real people put hours of hard work into developing and running Updater CE, the Themes Gallery, and the Firmware Archive — if this helped your player, please consider supporting us below.");
     } else {
       title = rawName
         ? _t("Theme {name} downloaded!", { name: quotedName })
         : _t("Theme downloaded!");
       text = rawName
-        ? _t("We packaged and downloaded {name} as a ready-to-install ZIP. Copy its folder into your player\u2019s Themes folder to install. If the Themes Gallery saved you time, a small donation below helps keep it free.", { name: quotedName })
-        : _t("We packaged and downloaded your theme as a ready-to-install ZIP. Copy its folder into your player\u2019s Themes folder to install. If the Themes Gallery saved you time, a small donation below helps keep it free.");
+        ? _t("We packaged and downloaded {name} as a ready-to-install ZIP. Copy its folder into your player\u2019s Themes folder to install. Real people put hours of care into developing and running the Themes Gallery, Updater CE, and the Firmware Archive — if our work helped you today, please consider supporting us below.", { name: quotedName })
+        : _t("We packaged and downloaded your theme as a ready-to-install ZIP. Copy its folder into your player\u2019s Themes folder to install. Real people put hours of care into developing and running the Themes Gallery, Updater CE, and the Firmware Archive — if our work helped you today, please consider supporting us below.");
     }
 
     return {
@@ -2093,8 +2094,8 @@
           }
         : {
             desktop: weekCount === 1
-              ? _t("{count} supporter has helped us this week  -  join them to keep downloads free for everyone.", { count: 1 })
-              : _t("{count} supporters have helped us this week  -  join them to keep downloads free for everyone.", { count: weekCount }),
+              ? _t("{count} supporter has helped us this week  -  join them in supporting the people behind Updater CE, the Themes Gallery, and the Firmware Archive.", { count: 1 })
+              : _t("{count} supporters have helped us this week  -  join them in supporting the people behind Updater CE, the Themes Gallery, and the Firmware Archive.", { count: weekCount }),
             mobile: weekCount === 1
               ? _t("{count} supporter helped us this week  -  join them", { count: 1 })
               : _t("{count} supporters helped us this week  -  join them", { count: weekCount }),
@@ -2104,13 +2105,13 @@
       var generalPhrases = goal.met
         ? [
             {
-              desktop: _t("Solely self- and donations-funded, and still mostly paid for out of pocket  -  thank you to everyone who chipped in!"),
-              mobile: _t("Solely self- and donations-funded  -  thank you!"),
+              desktop: _t("Thank you to everyone who pitched in  -  your kindness keeps Updater CE, the Themes Gallery, and the Firmware Archive going!"),
+              mobile: _t("Thank you for supporting Updater CE, Themes & Archive!"),
               isTarget: false
             },
             {
-              desktop: _t("Every extra coffee funds future tool mirrors and development."),
-              mobile: _t("Extra donations fund future mirrors & development"),
+              desktop: _t("Every extra gift helps the people behind Updater CE, the Themes Gallery, and the Firmware Archive keep building."),
+              mobile: _t("Extra gifts help us keep building Updater CE & Themes"),
               isTarget: false
             }
           ]
@@ -2130,29 +2131,29 @@
               isTarget: true
             },
             {
-              desktop: _t("Small gifts of $3 to $5 cover about 15% of what this project really costs; most of the rest goes on players bought to test."),
-              mobile: _t("Small $3–$5 gifts cover about 15% of real costs"),
+              desktop: _t("Real people spend evenings and weekends developing Updater CE, the Themes Gallery, and the Firmware Archive  -  your support keeps us going."),
+              mobile: _t("Help the people behind Updater CE, Themes & Archive"),
               isTarget: false
             },
             {
-              desktop: _t("Saved your player with a free firmware download? Consider buying us a coffee."),
-              mobile: _t("Saved your player? Buy us a coffee to keep us online"),
+              desktop: _t("Saved your player or found a great theme? A small gift helps us keep developing and running these projects."),
+              mobile: _t("Help us keep developing Updater CE, Themes & Archive"),
               isTarget: false
             },
             {
-              desktop: _t("The price of a coffee or two keeps our download servers online this month."),
-              mobile: _t("A coffee or two keeps our servers online this month"),
+              desktop: _t("From testing builds on real players to keeping the Firmware Archive online, your donations power all of our community projects."),
+              mobile: _t("Your support powers Updater CE, Themes & Archive"),
               isTarget: false
             },
             {
-              desktop: _t("Solely self- and donations-funded, with no paywalls  -  chip in $3 towards test players and servers."),
-              mobile: _t("Self- and donations-funded  -  chip in $3 to support us"),
+              desktop: _t("Donations fund the test players, servers, and hard work that keep Updater CE, the Themes Gallery, and the Firmware Archive alive."),
+              mobile: _t("Support the work behind Updater CE, Themes & Archive"),
               isTarget: false
             },
             supporterPhrase,
             {
-              desktop: _t("If 1 in 50 visitors bought us a coffee, we'd cover most of a test player this month."),
-              mobile: _t("If 1 in 50 visitors bought a coffee, we'd cover a test player"),
+              desktop: _t("Every donation helps real developers keep improving Updater CE, the Themes Gallery, and the Firmware Archive."),
+              mobile: _t("Chip in to support the developers behind these projects"),
               isTarget: false
             }
           ];

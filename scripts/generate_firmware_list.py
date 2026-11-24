@@ -359,19 +359,18 @@ def download_breakdown(release: dict, item: dict, portable: list[dict],
 
 
 def stats_markup(breakdown: dict) -> str:
-    """The figure plus its (i) button, both carrying the same breakdown."""
+    """Plain-text download count ('Downloaded N times') that still opens the breakdown modal on click."""
     payload = esc(json.dumps(breakdown, ensure_ascii=False, separators=(",", ":")))
     total = int(breakdown.get("total") or 0)
+    unit = "time" if total == 1 else "times"
     return (
         '<div class="lumen-meta lumen-download-count lumen-download-stats">'
         '<button type="button" class="lumen-download-stats__figure" data-download-stats="%s" '
-        'aria-haspopup="dialog"><span class="lumen-download-stats__label">Downloads:</span> '
-        '<span class="lumen-download-stats__value" translate="no" data-i18n-skip>%s</span></button>'
-        '<button type="button" class="lumen-download-stats__info" '
-        'aria-haspopup="dialog" aria-label="Download figures and breakdown" '
-        'title="Download figures and breakdown">i</button>'
+        'aria-haspopup="dialog"><span class="lumen-download-stats__label">Downloaded</span> '
+        '<span class="lumen-download-stats__value" translate="no" data-i18n-skip>%s</span> '
+        '<span class="lumen-download-stats__unit">%s</span></button>'
         '</div>'
-    ) % (payload, format(total, ",d"))
+    ) % (payload, format(total, ",d"), unit)
 
 
 def repo_owner(repo: str) -> str:
@@ -710,7 +709,7 @@ def render_page(feed: dict, software: list[dict]) -> tuple[str, list[dict]]:
         'title="Firmware releases">' % SITE,
         '<link rel="alternate" type="application/json" href="%s/feeds/firmware-releases.json" '
         'title="Firmware release data">' % SITE,
-        '<script src="site-download-stats.js?v=20261124stats9" defer></script>',
+        '<script src="site-download-stats.js?v=20261124stats10" defer></script>',
         '<script type="application/ld+json">%s</script>'
         % json.dumps(graph, ensure_ascii=False, separators=(",", ":")),
     ]

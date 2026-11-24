@@ -617,7 +617,9 @@ Restored on the same tokens as every other control on the site. */
    High contrast is the exception: it uses the system ink so the badge
    still reads when the page is forced to Canvas and CanvasText. */
 body.site-themes-app a.lumen-updater-button,
-a.lumen-updater-button {
+body.site-themes-app button.lumen-updater-button,
+a.lumen-updater-button,
+button.lumen-updater-button {
     display: inline-flex;
     align-items: center;
     gap: .55rem;
@@ -628,11 +630,15 @@ a.lumen-updater-button {
     background: #000;
     color: #fff !important;
     text-decoration: none !important;
+    font: inherit;
+    cursor: pointer;
     box-shadow: 0 1px 0 rgba(0, 0, 0, .25);
     transition: transform .18s var(--lumen-ease), filter .18s var(--lumen-ease);
 }
 body.site-themes-app a.lumen-updater-button:hover,
-a.lumen-updater-button:hover {
+body.site-themes-app button.lumen-updater-button:hover,
+a.lumen-updater-button:hover,
+button.lumen-updater-button:hover {
     transform: translateY(-1px);
     filter: brightness(1.15);
     color: #fff !important;
@@ -641,24 +647,51 @@ a.lumen-updater-button:hover {
 }
 .lumen-updater-button img, .lumen-updater-summary img { display: block; flex: 0 0 auto; width: 26px; height: 26px; border-radius: 6px; }
 .lumen-updater-button span, .lumen-updater-summary span { display: grid; gap: .05rem; text-align: left; }
+.lumen-updater-button .lumen-legacy-zip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+}
+.lumen-updater-button .lumen-legacy-zip-icon svg { display: block; width: 17px; height: 17px; }
 body.site-themes-app a.lumen-updater-button strong,
+body.site-themes-app button.lumen-updater-button strong,
 .lumen-updater-button strong, .lumen-updater-summary strong { color: #fff !important; font-size: .92rem; font-weight: 700; line-height: 1.05; letter-spacing: -.02em; }
 body.site-themes-app a.lumen-updater-button small,
+body.site-themes-app button.lumen-updater-button small,
 .lumen-updater-button small, .lumen-updater-summary small { color: rgba(255, 255, 255, .78) !important; font-size: .62rem; font-weight: 500; line-height: 1.1; letter-spacing: .01em; }
 :root[data-theme="high-contrast"] a.lumen-updater-button,
 :root[data-lumen-theme="high-contrast"] a.lumen-updater-button,
+:root[data-theme="high-contrast"] button.lumen-updater-button,
+:root[data-lumen-theme="high-contrast"] button.lumen-updater-button,
 :root[data-theme="high-contrast"] body.site-themes-app a.lumen-updater-button,
-:root[data-lumen-theme="high-contrast"] body.site-themes-app a.lumen-updater-button {
+:root[data-lumen-theme="high-contrast"] body.site-themes-app a.lumen-updater-button,
+:root[data-theme="high-contrast"] body.site-themes-app button.lumen-updater-button,
+:root[data-lumen-theme="high-contrast"] body.site-themes-app button.lumen-updater-button {
     background: Canvas;
     border-color: CanvasText;
     color: CanvasText !important;
     box-shadow: none;
     filter: none;
 }
+:root[data-theme="high-contrast"] .lumen-legacy-zip-icon,
+:root[data-lumen-theme="high-contrast"] .lumen-legacy-zip-icon {
+    background: transparent;
+    color: CanvasText;
+}
 :root[data-theme="high-contrast"] a.lumen-updater-button strong,
 :root[data-lumen-theme="high-contrast"] a.lumen-updater-button strong,
+:root[data-theme="high-contrast"] button.lumen-updater-button strong,
+:root[data-lumen-theme="high-contrast"] button.lumen-updater-button strong,
 :root[data-theme="high-contrast"] a.lumen-updater-button small,
-:root[data-lumen-theme="high-contrast"] a.lumen-updater-button small {
+:root[data-lumen-theme="high-contrast"] a.lumen-updater-button small,
+:root[data-theme="high-contrast"] button.lumen-updater-button small,
+:root[data-lumen-theme="high-contrast"] button.lumen-updater-button small {
     color: CanvasText !important;
 }
 .lumen-updater-button--table { min-height: 40px; padding: .28rem .62rem .28rem .32rem; }
@@ -1637,39 +1670,21 @@ body.site-themes-app #footer-root {
 }
 
 /* —— Firmware download breakdown ————————————————————————————————————————
-   The number is the control and the small i is the discoverable duplicate. —— */
+   Plain-text count with no clickable cue; clicking still opens the breakdown. —— */
 .lumen-stat-breakdown {
-    cursor: pointer;
-    text-decoration: underline dotted;
-    text-underline-offset: .18em;
+    cursor: inherit;
+    text-decoration: none;
 }
-.lumen-stat-breakdown:hover,
-.lumen-stat-breakdown:focus-visible {
-    color: var(--lumen-accent);
+.lumen-stat-breakdown:hover {
+    color: inherit;
     outline: none;
+}
+.lumen-stat-breakdown:focus-visible {
+    outline: 2px solid var(--lumen-accent);
+    outline-offset: 2px;
 }
 .lumen-stat-info {
-    display: inline-grid;
-    place-items: center;
-    width: 1.35rem;
-    height: 1.35rem;
-    margin-inline-start: .35rem;
-    padding: 0;
-    border: 1px solid var(--lumen-line);
-    border-radius: 50%;
-    background: transparent;
-    color: var(--lumen-muted);
-    font: inherit;
-    font-size: .72rem;
-    font-weight: 700;
-    line-height: 1;
-    cursor: pointer;
-}
-.lumen-stat-info:hover,
-.lumen-stat-info:focus-visible {
-    border-color: var(--lumen-accent);
-    color: var(--lumen-accent);
-    outline: none;
+    display: none !important;
 }
 html.lumen-stats-modal-open { overflow: hidden; }
 .lumen-stats-modal {

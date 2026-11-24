@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261117fallback3";
+    var VERSION = "20261124started1";
     /* Archives, installers and app images all stream in-page. A driver or app
        download is often the one a reader most wants a speed and time-left for,
        so it deserves the same progress card as a firmware ZIP. Phone packages
@@ -630,6 +630,26 @@
         }, 5000);
     }
 
+    function notifyDownloadStarted(job, fallbackToToast) {
+        if (!job || job.startedNotified) return false;
+        job.startedNotified = true;
+        var opened = false;
+        if (typeof global.openY1DonatePanel === "function") {
+            try {
+                opened = global.openY1DonatePanel({
+                    action: "download_started",
+                    fileName: job.name,
+                    themeName: job.name,
+                    isApp: APP_DOWNLOAD_URL.test(String(job.url || job.directUrl || ""))
+                }) === true;
+            } catch (_) {
+                opened = false;
+            }
+        }
+        if (!opened && fallbackToToast) showStarted();
+        return opened;
+    }
+
     function fallbackToBrowser(job, direct) {
         if (!job || job.fallbackStarted) return;
         job.fallbackStarted = true;
@@ -655,7 +675,7 @@
         var triggered = false;
         try { link.click(); triggered = true; }
         catch (_) { try { global.location.assign(direct); triggered = true; } catch (__) {} }
-        if (triggered) showStarted();
+        if (triggered) notifyDownloadStarted(job, true);
         setTimeout(function () {
             if (link.parentNode) link.parentNode.removeChild(link);
         }, 60000);
@@ -852,6 +872,7 @@
         job.total = Number.isFinite(length) && length > 0 ? length : 0;
         job.status = "running";
         paint(job);
+        notifyDownloadStarted(job, false);
 
         var chunks = writer ? null : [];
         var reader = null;
@@ -940,13 +961,17 @@
         job.status = "done";
         paint(job);
         if (typeof global.openY1DonatePanel === "function") {
-            setTimeout(function () {
-                global.openY1DonatePanel({
-                    action: "file_download",
-                    fileName: job.name,
-                    themeName: job.name
-                });
-            }, 350);
+            var donatePanel = doc.getElementById("y1-donate-panel");
+            var panelAlreadyOpen = Boolean(donatePanel && !donatePanel.hidden);
+            if (!job.startedNotified || panelAlreadyOpen) {
+                setTimeout(function () {
+                    global.openY1DonatePanel({
+                        action: "file_download",
+                        fileName: job.name,
+                        themeName: job.name
+                    });
+                }, 350);
+            }
         }
         finish(job);
     }

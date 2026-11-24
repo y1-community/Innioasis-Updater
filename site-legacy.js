@@ -46,7 +46,7 @@
         "linux-legacy": "linux-legacy.html"
     };
     var OS_PLATFORM = { "windows-legacy": "windows", "linux-legacy": "linux" };
-    var UPDATER_TEXT = /updater\s*(ce|installer|2\.)/i;
+    var UPDATER_TEXT = /updater\s*(ce|installer|2\.)|get\s+(?:it|.{1,40})\s+(?:in|on)\s+updater\b/i;
     var ICON = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 7.2v7"/><path d="m8.9 11.3 3.1 3.1 3.1-3.1"/><path d="M8.4 17.1h7.2"/></svg>';
 
     var VERSION_NAMES = {
@@ -63,7 +63,7 @@
     function windowsBits(ua) {
         if (/arm64|aarch64/i.test(ua)) return 64;
         if (/wow64|win64|x64|amd64|x86_64/i.test(ua)) return 64;
-        if (/win32|i686|i386|i586/i.test(ua)) return 32;
+        if (/win32|i[3-6]86|x86(?![-_]?64)/i.test(ua)) return 32;
         return 0;
     }
 
@@ -81,16 +81,24 @@
     }
 
     function detectWindows(ua) {
-        if (!/windows/i.test(ua)) return null;
+        if (!/windows|win9[58]|win 9x/i.test(ua)) return null;
         var match = /Windows NT (\d+\.\d+)/i.exec(ua);
-        if (!match) return null;
+        if (!match) {
+            if (/windows\s*(95|98|me|ce)|win9[58]|win 9x/i.test(ua)) {
+                return legacyState("windows", "Older Windows", 32, "version");
+            }
+            return null;
+        }
         var nt = match[1];
+        var major = parseFloat(nt);
         var bits = windowsBits(ua);
         var name = VERSION_NAMES[nt] || ("Windows NT " + nt);
-        if (nt !== "10.0") return legacyState("windows", name, bits, "version");
-        /* Windows 10/11: the browser cannot report the build number, so only a
-           clearly 32-bit browser is treated as unable to run Updater CE. */
-        if (bits === 32) return legacyState("windows", name, 32, "bits");
+        if (nt !== "10.0" && !(major > 10)) return legacyState("windows", name, bits || 32, "version");
+        /* Windows 10/11: every 64-bit desktop browser includes Win64, x64,
+           WOW64, amd64, x86_64 or arm64; omitting all of them (e.g. 32-bit
+           Firefox or Chrome on 32-bit Windows 10) indicates a 32-bit system
+           that cannot run Updater CE. */
+        if (bits === 32 || bits === 0) return legacyState("windows", name, 32, "bits");
         return { isLegacy: false, system: "windows", name: name, bits: bits, nt: nt };
     }
 
@@ -99,11 +107,12 @@
        such in the user agent and in navigator.platform; an unknown or 64-bit
        one is left alone. */
     function detectLinux(ua, nav) {
-        if (/android/i.test(ua)) return null;
+        if (/android|windows|macintosh|mac os x/i.test(ua)) return null;
         var platform = String(nav.platform || "");
-        var linux = /linux|ubuntu|debian|fedora|x11/i.test(platform) || /linux/i.test(ua);
+        var linux = /linux|x11/i.test(ua) || /linux|ubuntu|debian|fedora|x11/i.test(platform);
         if (!linux) return null;
-        if (/i[3-6]86/i.test(platform) || /i[3-6]86/i.test(ua)) {
+        var linux64 = /x86_64|amd64|aarch64|arm64/i.test(ua);
+        if (/i[3-6]86|armv[67]l?|armhf/i.test(ua) || (!linux64 && /i[3-6]86/i.test(platform))) {
             return legacyState("linux", "32-bit Linux", 32, "bits");
         }
         return { isLegacy: false, system: "linux", name: "Linux", bits: windowsBits(ua) };
@@ -113,13 +122,17 @@
         var nav = global.navigator || {};
         var ua = String(nav.userAgent || "");
         /* Windows Phone and other mobile shells are not this audience. */
-        if (/windows phone|iemobile|mobile/i.test(ua)) return null;
+        if (/windows phone|iemobile|mobile|android|iphone|ipad|ipod/i.test(ua)) return null;
         return detectWindows(ua) || detectLinux(ua, nav);
     }
 
     var state = detect();
 
     function publish(current) {
+        var prevKey = global.INNIOASIS_LEGACY && global.INNIOASIS_LEGACY.isLegacy
+            ? String(global.INNIOASIS_LEGACY.platformKey || "")
+            : "";
+        var prevBits = global.INNIOASIS_LEGACY ? Number(global.INNIOASIS_LEGACY.bits || 0) : 0;
         global.INNIOASIS_LEGACY = current && current.isLegacy ? {
             isLegacy: true,
             platformKey: current.platformKey,
@@ -130,39 +143,55 @@
             bits: current.bits,
             reason: current.reason
         } : null;
-        if (global.InnioasisLegacy && current) {
-            global.InnioasisLegacy.platformKey = current.platformKey || "";
-            global.InnioasisLegacy.label = current.label || "";
+        if (global.InnioasisLegacy) {
+            global.InnioasisLegacy.platformKey = current && current.isLegacy ? (current.platformKey || "") : "";
+            global.InnioasisLegacy.label = current && current.isLegacy ? (current.label || "") : "";
+        }
+        var nextKey = global.INNIOASIS_LEGACY ? String(global.INNIOASIS_LEGACY.platformKey || "") : "";
+        var nextBits = global.INNIOASIS_LEGACY ? Number(global.INNIOASIS_LEGACY.bits || 0) : 0;
+        if (prevKey !== nextKey || prevBits !== nextBits) {
+            try {
+                global.dispatchEvent(new CustomEvent("innioasis-legacy-change", { detail: global.INNIOASIS_LEGACY }));
+            } catch (_) {}
         }
     }
 
     publish(state);
 
-    /* Chromium can report the browser bitness on request, which settles the
-       cases the user agent leaves out: a 32-bit browser on 64-bit Windows 10,
-       and a 32-bit browser on a distribution whose user agent claims x86_64.
-       The call is skipped for every other visitor. */
+    /* Chromium can report the OS platform version and bitness on request,
+       settling cases a reduced user agent leaves out (e.g. a Chromium build
+       on Windows 7/8/8.1 whose UA was frozen to Windows NT 10.0, or a 32-bit
+       system). Skip if Client Hints disagree with a spoofed UA platform. */
     function upgradeFromUserAgentData() {
         var uaData = global.navigator && global.navigator.userAgentData;
         if (!uaData || typeof uaData.getHighEntropyValues !== "function") return;
         var pending;
         try {
-            pending = uaData.getHighEntropyValues(["bitness", "architecture"]);
+            pending = uaData.getHighEntropyValues(["bitness", "architecture", "platformVersion", "platform"]);
         } catch (_) {
             return;
         }
         Promise.resolve(pending).then(function (data) {
             if (!data) return;
-            var bits = Number(data.bitness);
-            if (bits !== 32 && bits !== 64) return;
             var found = detect();
             if (!found) return;
+            var hintPlatform = String(data.platform || uaData.platform || "").toLowerCase();
+            if (hintPlatform && found.system === "windows" && hintPlatform.indexOf("win") === -1) return;
+            if (hintPlatform && found.system === "linux" && hintPlatform.indexOf("linux") === -1) return;
+            var bits = Number(data.bitness);
+            if (found.system === "windows" && !found.isLegacy && data.platformVersion) {
+                var pvMajor = parseInt(String(data.platformVersion).split(".")[0], 10);
+                if (!isNaN(pvMajor) && pvMajor < 1) {
+                    var pvMinor = parseInt(String(data.platformVersion).split(".")[1] || "0", 10);
+                    var legacyName = pvMinor === 1 ? "Windows 7" : pvMinor === 2 ? "Windows 8" : pvMinor === 3 ? "Windows 8.1" : "Older Windows";
+                    state = legacyState("windows", legacyName, bits === 32 || bits === 64 ? bits : found.bits, "version");
+                    publish(state);
+                    init();
+                    return;
+                }
+            }
+            if (bits !== 32 && bits !== 64) return;
             if (found.isLegacy) {
-                /* Already legacy on the version. The browser can still report
-                   the bitness the user agent leaves out, so the package is
-                   named "Windows 7 32-bit" instead of just "Windows 7". */
-                /* found.bits is 0 when the user agent left the bitness out;
-                   the reported value fills it in rather than being ignored. */
                 if (found.bits === bits) return;
                 state = legacyState(found.system, found.name, bits, found.reason);
                 publish(state);
@@ -172,8 +201,6 @@
             if (bits !== 32) return;
             var system = String(data.architecture || "").toLowerCase().indexOf("arm") !== -1 ? "" : found.system;
             if (!system) return;
-            /* Only a 32-bit browser on the platform itself counts: a 64-bit
-               kernel with a 32-bit browser is still a 32-bit userland. */
             state = legacyState(system, found.name, 32, "bits");
             publish(state);
             init();
@@ -276,9 +303,12 @@
        can actually use. Anchors that already download a zip are left to the
        firmware table, which resolves the legacy build itself. */
     function swapUpdaterCtas() {
+        var onFirmwareList = /\/firmware(-list)?(_[a-zA-Z0-9_-]+)?\.html$/i.test(String(global.location && global.location.pathname || ""));
         each("main a, main button", function (node) {
             if (node.getAttribute("data-legacy-browse") === "1") return;
             if (node.getAttribute("data-legacy-cta") === "1") return;
+            if (node.getAttribute("data-legacy-zip-cta") === "1") return;
+            if (node.classList && (node.classList.contains("lumen-legacy-zip-button") || node.classList.contains("lumen-zip-download-button"))) return;
             if (inChrome(node)) return;
             if (node.closest && node.closest("[data-platform-detect]")) return;
             var text = String(node.textContent || "").replace(/\s+/g, " ").trim();
@@ -288,8 +318,15 @@
             if (/(windows|linux)-legacy\.html/i.test(href)) return;
             node.setAttribute("data-legacy-cta", "1");
             node.setAttribute("data-legacy-original-label", text);
-            node.textContent = "Portable firmware packages";
-            node.setAttribute("href", absolute(LIST));
+            if (onFirmwareList) {
+                node.textContent = state.system === "windows"
+                    ? "How to install with SP Flash Tool"
+                    : "32-bit Linux install guide";
+                node.setAttribute("href", absolute(guideFor()));
+            } else {
+                node.textContent = "Portable firmware packages";
+                node.setAttribute("href", absolute(LIST));
+            }
             node.removeAttribute("download");
             node.removeAttribute("target");
         });

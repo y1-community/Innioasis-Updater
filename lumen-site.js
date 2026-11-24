@@ -245,6 +245,10 @@
         if (!release) return null;
         var sources = [release.name, release.tag_name];
         for (var i = 0; i < sources.length; i += 1) {
+            var versions = extractSemverTuples(sources[i]);
+            if (versions.length && !(versions[0].length === 1 && versions[0][0] >= 1000)) {
+                return versions[0];
+            }
             var version = displayVersion(sources[i]);
             if (!version || !/^\d+(\.\d+)*$/.test(version)) continue;
             var tuple = version.split(".").map(function (part) { return Number(part); });
@@ -428,11 +432,11 @@
     /* A calendar stamp written into a release tag: YYYYMMDD with an optional
        HHMM time. Older builds are sometimes republished on GitHub months
        after they shipped, so this stamp, not the GitHub published date, is
-       what orders them. Returns 0 when the tag carries no real date. */
-    function tagDateStamp(tag) {
+       what orders them. Returns { stamp, start, end } or null. */
+    function matchTagDateStamp(tag) {
         var text = String(tag == null ? "" : tag);
-        var match = text.match(/(^|[^0-9])((?:19|20)\d{2})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(?:[-_.]?(\d{2})(\d{2}))?(?!\d)/);
-        if (!match) return 0;
+        var match = text.match(/(^|[^0-9])((?:19|20)\d{2})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(?:[-_.]?([01]\d|2[0-3])([0-5]\d))?(?!\d)/);
+        if (!match) return null;
         var year = Number(match[2]);
         var month = Number(match[3]);
         var day = Number(match[4]);
@@ -440,37 +444,124 @@
         var minute = match[6] ? Number(match[6]) : 0;
         var stamp = Date.UTC(year, month - 1, day, hour, minute);
         var check = new Date(stamp);
-        if (check.getUTCFullYear() !== year || check.getUTCMonth() !== month - 1 || check.getUTCDate() !== day) return 0;
-        return stamp;
+        if (check.getUTCFullYear() !== year || check.getUTCMonth() !== month - 1 || check.getUTCDate() !== day) return null;
+        return {
+            stamp: stamp,
+            start: match.index + match[1].length,
+            end: match.index + match[0].length
+        };
+    }
+
+    function tagDateStamp(tag) {
+        var found = matchTagDateStamp(tag);
+        return found ? found.stamp : 0;
+    }
+
+    /* Pull every dotted numeric version out of a release tag or title after
+       stripping hex commit hashes and calendar datestamps. Handles feature
+       suffixes (3.2.4-fm), glued hotfixes (v0.11.6hotfix4), release prefixes
+       (Release2.5, ReleaseV2.3, MX2-ES_Q5-WV5.02-20250619) and compound tags
+       (2.4.0-koensayr-3.0.7). */
+    function extractSemverTuples(text) {
+        var clean = String(text == null ? "" : text).replace(/-[a-f0-9]{16,}!?$/, "");
+        var stamp = matchTagDateStamp(clean);
+        if (stamp) {
+            clean = clean.slice(0, stamp.start) + " " + clean.slice(stamp.end);
+        }
+        var out = [];
+        var re = /(?:^|[^0-9.])(?:(?:reale?ase)\s*)?(?:w?v\.?)?(\d+(?:\.\d+)+)/gi;
+        var m;
+        while ((m = re.exec(clean)) !== null) {
+            var parts = m[1].split(".").map(function (part) { return Number(part); });
+            out.push(parts);
+        }
+        return out;
+    }
+
+    /* Dotted semantic version written at the start, end or middle of a
+       release title (e.g. "Y2Linux 1.0 Beta 9.3.39", "Y2Player V1.0",
+       "Rockbox-Y1 v0.2"). Used when the tag itself carries no dotted version. */
+    function extractTitleSemver(title) {
+        var text = String(title == null ? "" : title).trim();
+        if (!text) return null;
+        var token = "[vV]?\\d+\\.\\d+(?:\\.\\d+)*(?:[-+][0-9A-Za-z][0-9A-Za-z.+-]*|[0-9]*[A-Za-z]+\\d*)?";
+        var patterns = [
+            new RegExp("^(" + token + ")(?=$|[\\s:;,()\\[\\]\\u2013\\u2014-])"),
+            new RegExp("(?:^|[\\s:;,()\\[\\]\\u2013\\u2014-])(" + token + ")(?=[.,;:!?'\"\\)\\]\\u201d\\u2019]*$)"),
+            new RegExp("(?:^|\\s)(" + token + ")(?=$|\\s)")
+        ];
+        for (var i = 0; i < patterns.length; i += 1) {
+            var match = text.match(patterns[i]);
+            if (match) {
+                var num = match[1].match(/\d+(?:\.\d+)+/);
+                if (num) return num[0].split(".").map(function (part) { return Number(part); });
+            }
+        }
+        return null;
+    }
+
+    /* Suffix rank for releases sharing the same core version or calendar day:
+       hotfixes (v0.11.6hotfix4) sort above plain releases (v0.11.6), which
+       sort above pre-releases (rc > preview/pre > beta > alpha > exp > nightly). */
+    function releaseSuffixRank(text) {
+        var clean = String(text == null ? "" : text).replace(/-[a-f0-9]{16,}!?$/, "");
+        var stamp = matchTagDateStamp(clean);
+        if (stamp) {
+            clean = clean.slice(0, stamp.start) + " " + clean.slice(stamp.end);
+        }
+        var lower = clean.toLowerCase();
+        var hotfix = lower.match(/(?:hotfix|hf|patch|rev)[._-]?(\d{1,4})?/);
+        if (hotfix) {
+            return [1, hotfix[1] ? Number(hotfix[1]) : 1, 0];
+        }
+        var pre = lower.match(/(?:^|[^a-z])(rc|preview|pre|beta|alpha|exp|nightly|dev)(?:[._-]?(\d{1,4})(?!\d))?/);
+        if (pre) {
+            var stages = { rc: 4, preview: 3, pre: 3, beta: 2, alpha: 1, exp: 0, nightly: -1, dev: -2 };
+            return [-1, stages[pre[1]] || 0, pre[2] ? Number(pre[2]) : 0];
+        }
+        return [0, 0, 0];
     }
 
     /* Sortable key for a release so newer builds come first, mirroring the
-       Updater app's _release_sort_key: a tag-embedded calendar stamp
-       (YYYYMMDD, optionally with HHMM) sorts highest, then the semantic
-       version tuple, then the GitHub published date as the tiebreaker, then
-       the tag name. Releases with no usable version sort below the versioned
-       ones. */
+       Updater app's release_sort_key: a tag-embedded calendar stamp (YYYYMMDD,
+       optionally with HHMM) sorts highest, then the primary and secondary
+       semantic version tuples (supporting suffixed tags like 3.2.4-fm,
+       hotfixes like v0.11.6hotfix4, and title versions for baseline-* tags),
+       then the suffix rank, then the GitHub published date as tiebreaker, then
+       the tag name. Releases with no usable version sort below versioned ones. */
     function releaseSortKey(release) {
         var tag = (release && release.tag_name) || "";
-        var version = displayVersion(tag);
+        var name = (release && release.name) || "";
         var tagTimestamp = tagDateStamp(tag);
-        var semver = null;
-        if (!tagTimestamp && /^\d+(\.\d+)*$/.test(version)) {
-            semver = version.split(".").map(function (part) { return Number(part); });
+        var semvers = extractSemverTuples(tag);
+        var primary = semvers.length ? semvers[0] : null;
+        var secondary = semvers.length > 1 ? semvers[1] : null;
+        if (!primary) {
+            var version = displayVersion(tag);
+            if (!tagTimestamp && /^\d+(\.\d+)*$/.test(version)) {
+                var parsedTag = version.split(".").map(function (part) { return Number(part); });
+                if (!(parsedTag.length === 1 && parsedTag[0] >= 1000)) primary = parsedTag;
+            }
         }
+        var fromTag = !!(tagTimestamp || primary);
+        if (!fromTag) {
+            primary = extractTitleSemver(name);
+            if (!primary) tagTimestamp = tagDateStamp(name);
+        }
+        var hasKey = (tagTimestamp || primary) ? 1 : 0;
+        var rank = hasKey ? releaseSuffixRank(fromTag ? tag : name) : [0, 0, 0];
         var published = 0;
         if (release && release.published_at) {
             var parsed = Date.parse(release.published_at);
             if (!isNaN(parsed)) published = parsed;
         }
-        return [tagTimestamp || semver ? 1 : 0, tagTimestamp, semver || [], published, tag.toLowerCase()];
+        return [hasKey, tagTimestamp, primary || [], secondary || [], rank, published, tag.toLowerCase()];
     }
 
-    /* Compare two releaseSortKey arrays, newest first. Elements 0-2 are
-       numeric or numeric arrays, element 3 is the published date, and the
-       tag name breaks any remaining tie. */
+    /* Compare two releaseSortKey arrays, newest first. Elements 0-5 are
+       numeric or numeric arrays, and element 6 (tag name) breaks any tie. */
     function compareReleaseKeys(a, b) {
-        for (var i = 0; i < 4; i += 1) {
+        for (var i = 0; i < 6; i += 1) {
             var left = a[i];
             var right = b[i];
             if (Array.isArray(left) && Array.isArray(right)) {
@@ -484,7 +575,7 @@
                 return left - right;
             }
         }
-        return a[4].localeCompare(b[4]);
+        return a[6].localeCompare(b[6]);
     }
 
     /* GitHub access tokens from config.ini. Entries may be stored with or
@@ -1004,12 +1095,14 @@
 
     function detectPlatform() {
         if (!isComputerBrowser()) return null;
-        var ua = navigator.userAgent || "";
-        var platform = (navigator.userAgentData && navigator.userAgentData.platform) || ua;
-        var p = (platform + " " + ua).toLowerCase();
-        if (p.indexOf("win") !== -1) return "windows";
-        if (p.indexOf("mac") !== -1) return "macos";
-        if (p.indexOf("linux") !== -1 || p.indexOf("x11") !== -1) return "linux";
+        var ua = (navigator.userAgent || "").toLowerCase();
+        if (ua.indexOf("win") !== -1) return "windows";
+        if (ua.indexOf("macintosh") !== -1 || ua.indexOf("mac os x") !== -1) return "macos";
+        if (ua.indexOf("linux") !== -1 || ua.indexOf("x11") !== -1) return "linux";
+        var platform = ((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "").toLowerCase();
+        if (platform.indexOf("win") !== -1) return "windows";
+        if (platform.indexOf("mac") !== -1) return "macos";
+        if (platform.indexOf("linux") !== -1 || platform.indexOf("x11") !== -1) return "linux";
         return null;
     }
 
@@ -1532,8 +1625,8 @@
        the release's own filename in Downloads on every path. */
     function releaseFileName(name, fallback) {
         var base = String(name || fallback || "rom.zip").split(/[?#]/)[0].split("/").pop();
-        base = base.replace(/[-_](?:windows|win|macos|mac|linux|android|darwin)(?:[-_](?:x64|amd64|x86[-_]?64|arm64|aarch64))?(?=\.zip$)/i, "");
-        base = base.replace(/[-_](?:x64|amd64|x86[-_]?64|arm64|aarch64)(?=\.zip$)/i, "");
+        base = base.replace(/[-_](?:windows|win|macos|mac|linux|android|darwin)(?:[-_](?:x64|amd64|x86[-_]?64|arm64|aarch64|legacy))?(?=\.zip$)/i, "");
+        base = base.replace(/[-_](?:x64|amd64|x86[-_]?64|arm64|aarch64|legacy)(?=\.zip$)/i, "");
         if (!/\.zip$/i.test(base)) base = fallback || "rom.zip";
         return base;
     }
@@ -1757,6 +1850,9 @@
             var isCrossOrigin = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0;
             if (isCrossOrigin) {
                 downloadFrame().src = href;
+                if (typeof window.openY1DonatePanel === "function") {
+                    try { window.openY1DonatePanel({ action: "download_started", fileName: saveName || "" }); } catch (_) {}
+                }
                 markCompleted(saveName, osLabel, false);
                 return;
             }
@@ -1770,6 +1866,9 @@
             setTimeout(function () {
                 if (link.parentNode) link.parentNode.removeChild(link);
             }, 1000);
+            if (typeof window.openY1DonatePanel === "function") {
+                try { window.openY1DonatePanel({ action: "download_started", fileName: saveName || "" }); } catch (_) {}
+            }
             markCompleted(saveName, osLabel, false);
         }
 
@@ -2465,16 +2564,66 @@
 
         function downloadStatsHtml(release, item, tag) {
             if (!release) return "";
+            var totalCount = releaseDownloadTotal(release);
+            var unit = totalCount === 1 ? "time" : "times";
             var payload = escapeHtml(JSON.stringify(downloadBreakdown(release, item, tag)));
             return '<div class="lumen-meta lumen-download-count lumen-download-stats">' +
                 '<button type="button" class="lumen-download-stats__figure" data-download-stats="' + payload + '" aria-haspopup="dialog">' +
-                /* Label and number are separate nodes so the label is one catalog
-                   string ("Downloads:") instead of a new string for every count. */
-                '<span class="lumen-download-stats__label">Downloads:</span> ' +
+                /* Label and number stay separate nodes so translation catalogs
+                   do not generate a separate string for every count. */
+                '<span class="lumen-download-stats__label">Downloaded</span> ' +
                 '<span class="lumen-download-stats__value" translate="no" data-i18n-skip>' +
-                escapeHtml(formatDownloadCount(releaseDownloadTotal(release))) + '</span></button>' +
-                '<button type="button" class="lumen-download-stats__info" aria-haspopup="dialog" aria-label="Download figures and breakdown" title="Download figures and breakdown">i</button>' +
+                escapeHtml(formatDownloadCount(totalCount)) + '</span> ' +
+                '<span class="lumen-download-stats__unit">' + unit + '</span></button>' +
                 '</div>';
+        }
+
+        function primaryZipAssetFor(release, item) {
+            if (!release || !item) return null;
+            var rowType = typeForItem(item);
+            var names = packageNamesFor(item, rowType);
+            var assets = zipAssets(release, item.model);
+            var primaryAsset = null;
+            for (var z = 0; z < MODEL_ZIPS.length; z++) {
+                var entry = MODEL_ZIPS[z];
+                if (rowType && entry.type && entry.type !== rowType) continue;
+                if (names.indexOf(entry.name) !== -1) {
+                    var found = assets.find(function (a) { return a.name && a.name.toLowerCase() === entry.name; });
+                    if (found) { primaryAsset = found; break; }
+                }
+            }
+            if (!primaryAsset && assets.length) {
+                primaryAsset = assets.find(function (a) {
+                    var an = (a.name || "").toLowerCase();
+                    var assetType = zipType(an);
+                    if (rowType && assetType && assetType !== rowType) return false;
+                    return names.indexOf(an) !== -1 || an === (item.packageName || "").toLowerCase() || an.indexOf(item.model.toLowerCase()) !== -1;
+                }) || (rowType ? null : assets[0]);
+            }
+            return primaryAsset;
+        }
+
+        function legacyPortableAssetFor(release, primaryAsset, legacyKey) {
+            if (!release || !legacyKey) return null;
+            var known = release.download_breakdown;
+            var list = known && Array.isArray(known.portable) ? known.portable : [];
+            if (!list.length) return null;
+            var suffix = portableSuffix(legacyKey);
+            var wantedName = primaryAsset && primaryAsset.name && suffix
+                ? String(primaryAsset.name).replace(/\.zip$/i, "").toLowerCase() + suffix
+                : "";
+            var exact = null;
+            var fallback = null;
+            for (var i = 0; i < list.length; i++) {
+                var entry = list[i];
+                if (!entry || !entry.url) continue;
+                var plat = String(entry.platform || "").toLowerCase();
+                var name = String(entry.name || "").toLowerCase();
+                if (plat !== legacyKey && (!suffix || name.indexOf(suffix) === -1)) continue;
+                if (wantedName && name === wantedName) { exact = entry; break; }
+                if (!fallback) fallback = entry;
+            }
+            return exact || fallback;
         }
 
         function releaseRows(release, item, state) {
@@ -2518,35 +2667,46 @@
                 : '';
             var guideUrl = 'guide.html?model=' + encodeURIComponent(item.model) + '&software=' + encodeURIComponent(item.slug);
             var listedInManifest = manifestRepoListed(item);
-            var updater = listedInManifest
-                ? '<a class="lumen-updater-button lumen-updater-button--table" href="' + guideUrl + '" aria-label="Install ' + escapeHtml(item.name) + ' for ' + escapeHtml(item.model) + ' with Innioasis Updater"><img src="assets/icon.ico" width="28" height="28" alt=""><span><strong>Get it on Updater</strong><small>with guided install</small></span></a>'
-                : '';
-
+            var legacyKey = legacyPortableKey();
+            var primaryAsset = release ? primaryZipAssetFor(release, item) : null;
+            var updater = '';
             var zipBtn = '';
-            /* If Get on Updater is available, omit the rectangular zip button;
-               the zip is accessible via the release details dropdown instead. */
-            if (release && !listedInManifest) {
-                var rowType = typeForItem(item);
-                var names = packageNamesFor(item, rowType);
-                var assets = zipAssets(release, item.model);
-                var primaryAsset = null;
-                for (var z = 0; z < MODEL_ZIPS.length; z++) {
-                    var entry = MODEL_ZIPS[z];
-                    if (rowType && entry.type && entry.type !== rowType) continue;
-                    if (names.indexOf(entry.name) !== -1) {
-                        var found = assets.find(function (a) { return a.name && a.name.toLowerCase() === entry.name; });
-                        if (found) { primaryAsset = found; break; }
-                    }
+
+            if (legacyKey) {
+                /* Older Windows (XP/Vista/7/8/8.1), 32-bit Windows and 32-bit
+                   Linux cannot run Updater CE: replace the prominent Get it on
+                   Updater badge with a matching Download ZIP Installer badge
+                   that downloads the legacy portable SP Flash Tool package. */
+                if (release && primaryAsset) {
+                    var legacyAsset = legacyPortableAssetFor(release, primaryAsset, legacyKey);
+                    var legacySubtitle = legacyKey === "linux-legacy" ? "portable Linux installer" : "with SP Flash Tool";
+                    var legacyAria = "Download ZIP Installer for " + item.name + " on " + item.model;
+                    updater = '<button type="button" class="lumen-updater-button lumen-updater-button--table lumen-legacy-zip-button"' +
+                        ' data-legacy-zip-cta="1"' +
+                        ' data-platform="' + escapeHtml(legacyKey) + '"' +
+                        ' data-zip-url="' + escapeHtml(primaryAsset.browser_download_url) + '"' +
+                        (legacyAsset && legacyAsset.url ? ' data-legacy-zip-url="' + escapeHtml(legacyAsset.url) + '"' : '') +
+                        ' data-zip-name="' + escapeHtml(legacyAsset && legacyAsset.name ? legacyAsset.name : primaryAsset.name) + '"' +
+                        ' data-release-tag="' + escapeHtml(release.tag_name || release.name || "release") + '"' +
+                        ' data-item-repo="' + escapeHtml(item.repo || "") + '"' +
+                        ' data-item-name="' + escapeHtml(item.name) + '"' +
+                        ' data-item-model="' + escapeHtml(item.model) + '"' +
+                        ' data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '"' +
+                        ' aria-label="' + escapeHtml(legacyAria) + '">' +
+                        '<span class="lumen-legacy-zip-icon" aria-hidden="true">' +
+                        '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M5 19h14"/></svg>' +
+                        '</span>' +
+                        '<span><strong>Download ZIP Installer</strong><small>' + escapeHtml(legacySubtitle) + '</small></span>' +
+                        '</button>';
                 }
-                if (!primaryAsset && assets.length) {
-                    primaryAsset = assets.find(function (a) {
-                        var an = (a.name || "").toLowerCase();
-                        var assetType = zipType(an);
-                        if (rowType && assetType && assetType !== rowType) return false;
-                        return names.indexOf(an) !== -1 || an === (item.packageName || "").toLowerCase() || an.indexOf(item.model.toLowerCase()) !== -1;
-                    }) || (rowType ? null : assets[0]);
-                }
-                if (primaryAsset) {
+            } else {
+                updater = listedInManifest
+                    ? '<a class="lumen-updater-button lumen-updater-button--table" href="' + guideUrl + '" aria-label="Get ' + escapeHtml(item.name) + ' for ' + escapeHtml(item.model) + ' on Innioasis Updater"><img src="assets/icon.ico" width="28" height="28" alt=""><span><strong>Get it on Updater</strong><small>with guided install</small></span></a>'
+                    : '';
+
+                /* If Get on Updater is available, omit the rectangular zip button;
+                   the zip is accessible via the release details dropdown instead. */
+                if (release && !listedInManifest && primaryAsset) {
                     zipBtn = ' <button type="button" class="lumen-zip-download-button lumen-zip-download-button--table" data-zip-url="' + escapeHtml(primaryAsset.browser_download_url) + '" data-zip-name="' + escapeHtml(primaryAsset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "release") + '" data-item-repo="' + escapeHtml(item.repo || "") + '" data-item-name="' + escapeHtml(item.name) + '" data-item-model="' + escapeHtml(item.model) + '" data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '" aria-label="Download standalone ' + escapeHtml(primaryAsset.name) + ' ZIP package">' +
                         '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16h12M10 3v9m0 0l-3.5-3.5M10 12l3.5-3.5"/></svg>' +
                         '<span><strong>Download ZIP</strong><small>standalone package</small></span>' +
@@ -2557,7 +2717,7 @@
             /* A project the manifest does not list ships as a standalone ZIP
                only. Say what opens that ZIP, so a reader does not have to guess
                whether the file is useful without Updater CE. */
-            var standaloneNote = listedInManifest ? ''
+            var standaloneNote = (listedInManifest || legacyKey) ? ''
                 : '<span class="lumen-meta lumen-standalone-note" style="flex-basis:100%;display:block;">Works with Updater CE, or the software install ZIP built for your computer.</span>';
 
             var downloadsMeta = release
@@ -2936,9 +3096,10 @@
         /* One anchor click, nothing held by the page: the request goes to the
            browser's own downloader and the file streams into Downloads with
            the browser's progress, retry and resume. */
-        function startBrowserDownload(url) {
+        function startBrowserDownload(url, saveName) {
             var link = document.createElement("a");
             link.href = url;
+            if (saveName) link.download = saveName;
             link.rel = "noopener";
             link.setAttribute("data-direct-download", "1");
             (document.body || document.documentElement).appendChild(link);
@@ -2946,6 +3107,10 @@
             setTimeout(function () {
                 if (link.parentNode) link.parentNode.removeChild(link);
             }, 2000);
+            if (typeof window.openY1DonatePanel === "function") {
+                var name = saveName || String(url || "").split(/[?#]/)[0].split("/").pop() || "";
+                try { window.openY1DonatePanel({ action: "download_started", fileName: name }); } catch (_) {}
+            }
         }
 
         /* Downloads hand straight back to the browser. Nothing is prevented,
@@ -2955,6 +3120,20 @@
            <button data-zip-url> with no href of its own, so it is given an
            anchor to click; every other control is a link whose own href the
            browser already downloads. */
+        function syncLegacyDirectoryUi() {
+            var legacy = legacyPortableKey();
+            var releaseTable = table.closest ? table.closest("table") : null;
+            var installHead = releaseTable ? releaseTable.querySelector("thead th:nth-child(2)") : null;
+            if (installHead) {
+                installHead.textContent = legacy ? "Download ZIP Installer" : "Install with Updater CE";
+            }
+        }
+        syncLegacyDirectoryUi();
+        window.addEventListener("innioasis-legacy-change", function () {
+            syncLegacyDirectoryUi();
+            render();
+        });
+
         function handleZipDownloadClick(event) {
             /* A scripted anchor click is how the download module hands a file
                to the browser. Hearing it as a reader click started a second
@@ -2963,10 +3142,10 @@
                pointer or keyboard click may start a package job. */
             if (event.isTrusted === false) return;
             if (event.defaultPrevented || event.button !== 0) return;
-            var btn = event.target && event.target.closest ? event.target.closest(".lumen-zip-download-button, .lumen-zip-text-link, a[data-zip-url], a[href*='rom.zip'], a[href$='.zip']") : null;
+            var btn = event.target && event.target.closest ? event.target.closest(".lumen-zip-download-button, .lumen-legacy-zip-button, .lumen-zip-text-link, a[data-zip-url], a[href*='rom.zip'], a[href$='.zip']") : null;
             if (!btn || btn.hasAttribute("data-direct-download") || btn.hasAttribute("data-site-download-direct")) return;
             var href = btn.getAttribute("href") || "";
-            var zipUrl = btn.getAttribute("data-zip-url") || href;
+            var zipUrl = btn.getAttribute("data-legacy-zip-url") || btn.getAttribute("data-zip-url") || href;
             if (!zipUrl || !/\.zip/i.test(zipUrl)) return;
             /* The same click bubbles through the table and the document, and
                both listeners are this function. Resolving twice fetched the
@@ -2976,6 +3155,7 @@
             /* The control may be an anchor; never let the browser navigate to
                the package while the page is starting its own transfer. */
             if (event.preventDefault) event.preventDefault();
+            var downloadName = btn.getAttribute("data-zip-name") || "rom.zip";
             /* The catalog's control is a button, so the inline module cannot
                see it through its anchor handler. Give it the button itself:
                the module opens the save picker now and shows the floating
@@ -2990,21 +3170,21 @@
                     return preparePortableZip(btn, zipUrl).then(function (portableUrl) {
                         return {
                             url: portableUrl || zipUrl,
-                            name: btn.getAttribute("data-zip-name") || "rom.zip"
+                            name: downloadName
                         };
                     });
-                }, zipUrl, btn, btn.getAttribute("data-zip-name") || "rom.zip");
+                }, zipUrl, btn, downloadName);
                 return;
             }
             preparePortableZip(btn, zipUrl).then(function (portableUrl) {
                 if (!portableUrl) {
-                    if (!href) startBrowserDownload(zipUrl);
+                    if (!href) startBrowserDownload(zipUrl, downloadName);
                     return;
                 }
                 /* Same-origin proxy first: its Content-Disposition keeps the
                    release's name when the browser saves the file. */
-                proxyHrefIfUsable(portableUrl, btn.getAttribute("data-zip-name") || "rom.zip")
-                    .then(function (target) { startBrowserDownload(target || portableUrl); });
+                proxyHrefIfUsable(portableUrl, downloadName)
+                    .then(function (target) { startBrowserDownload(target || portableUrl, downloadName); });
             });
         }
 
@@ -3014,8 +3194,14 @@
            never repeats a request the pointer already started. */
         function preparePortableZip(btn, zipUrl) {
             if (btn._portableZip) return btn._portableZip;
+            var directLegacy = btn.getAttribute("data-legacy-zip-url") || "";
+            if (directLegacy && legacyPortableKey()) {
+                btn._portableZip = Promise.resolve(directLegacy);
+                return btn._portableZip;
+            }
             var releaseTag = btn.getAttribute("data-release-tag") || "";
-            var assetName = btn.getAttribute("data-zip-name") || String(zipUrl || "").split("/").pop() || "rom.zip";
+            var rawName = btn.getAttribute("data-zip-name") || String(zipUrl || "").split("/").pop() || "rom.zip";
+            var assetName = releaseFileName(rawName, "rom.zip");
             btn._portableZip = portableZipsFor(btn).then(function (portableZips) {
                 if (!portableZips || !releaseTag) return "";
                 return resolvePortableZip(portableZips, releaseTag, assetName).then(function (portable) {

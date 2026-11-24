@@ -1345,12 +1345,12 @@
 
     function toolbarCandidates() {
         return [
-            "support_toolbar.html?v=20261123donatecompletion2",
-            "../support_toolbar.html?v=20261123donatecompletion2",
-            "../../support_toolbar.html?v=20261123donatecompletion2",
-            "../../../support_toolbar.html?v=20261123donatecompletion2",
-            "https://innioasis.app/support_toolbar.html?v=20261123donatecompletion2",
-            "https://themes.innioasis.app/support_toolbar.html?v=20261123donatecompletion2",
+            "support_toolbar.html?v=20261124appeals1",
+            "../support_toolbar.html?v=20261124appeals1",
+            "../../support_toolbar.html?v=20261124appeals1",
+            "../../../support_toolbar.html?v=20261124appeals1",
+            "https://innioasis.app/support_toolbar.html?v=20261124appeals1",
+            "https://themes.innioasis.app/support_toolbar.html?v=20261124appeals1",
         ];
     }
 
@@ -1508,15 +1508,20 @@
         /* Pages and scripts that ask for a download by URL get the same
            browser download, so no caller is left without its file. */
         global.InnioasisDownloads = {
-            version: "20261110direct",
+            version: "20261124direct",
             start: function (url, anchor, name) {
+                var target = unwrap(url);
                 var link = document.createElement("a");
-                link.href = unwrap(url);
+                link.href = target;
                 link.download = name || "";
                 link.rel = "noopener";
                 link.setAttribute("data-direct-download", "");
                 (document.body || document.documentElement).appendChild(link);
                 link.click();
+                if (typeof global.openY1DonatePanel === "function") {
+                    var fileName = name || String(target || "").split(/[?#]/)[0].split("/").pop() || "";
+                    try { global.openY1DonatePanel({ action: "download_started", fileName: fileName }); } catch (_) {}
+                }
                 setTimeout(function () {
                     if (link.parentNode) link.parentNode.removeChild(link);
                 }, 3000);
@@ -1527,7 +1532,12 @@
 
         document.addEventListener("click", function (event) {
             if (event.defaultPrevented || event.button !== 0) return;
-            handBack(anchorOf(event.target));
+            var link = anchorOf(event.target);
+            if (handBack(link) && typeof global.openY1DonatePanel === "function") {
+                var href = link.getAttribute("href") || "";
+                var fileName = link.getAttribute("download") || String(href).split(/[?#]/)[0].split("/").pop() || "";
+                try { global.openY1DonatePanel({ action: "download_started", fileName: fileName }); } catch (_) {}
+            }
         }, true);
     }
 
@@ -1535,7 +1545,7 @@
         if (global.InnioasisDownloads || document.getElementById("site-downloads-script")) return;
         var node = document.createElement("script");
         node.id = "site-downloads-script";
-        node.src = siteBase() + "site-downloads.js?v=20261123donatecompletion";
+        node.src = siteBase() + "site-downloads.js?v=20261124started1";
         node.defer = true;
         document.head.appendChild(node);
     }
@@ -1545,6 +1555,76 @@
        the transfer and gives each job its own progress bar. */
     if (global.InnioasisInlineDownloads === false) installDirectDownloads();
     else loadSiteDownloads();
+
+    /* Detect Windows XP/Vista/7/8/8.1, 32-bit Windows (including 32-bit
+       Windows 10) and 32-bit Linux synchronously before any page script
+       renders firmware buttons, avoiding the race where dynamically deferred
+       site-legacy.js executes after lumen-site.js or site-platform.js. */
+    function detectInitialLegacy() {
+        if (global.INNIOASIS_LEGACY && global.INNIOASIS_LEGACY.isLegacy) return;
+        var nav = global.navigator || {};
+        var ua = String(nav.userAgent || "");
+        if (/windows phone|iemobile|mobile|android|iphone|ipad|ipod/i.test(ua)) return;
+        var VERSION_NAMES = {
+            "5.0": "Windows 2000",
+            "5.1": "Windows XP",
+            "5.2": "Windows XP x64",
+            "6.0": "Windows Vista",
+            "6.1": "Windows 7",
+            "6.2": "Windows 8",
+            "6.3": "Windows 8.1",
+            "10.0": "Windows 10 or 11"
+        };
+        function makeLegacy(system, name, bits, reason) {
+            var key = system + "-legacy";
+            return {
+                isLegacy: true,
+                platformKey: key,
+                label: system === "windows" ? "Windows XP/7/8 (32/64-bit)" : "32-bit Linux",
+                system: system,
+                version: name,
+                name: name,
+                bits: bits,
+                reason: reason
+            };
+        }
+        var found = null;
+        if (/windows|win9[58]|win 9x/i.test(ua)) {
+            var ntMatch = /Windows NT (\d+\.\d+)/i.exec(ua);
+            var is64 = /arm64|aarch64|wow64|win64|x64|amd64|x86_64/i.test(ua);
+            var is32 = /win32|i[3-6]86|x86(?![-_]?64)/i.test(ua);
+            var bits = is64 ? 64 : (is32 ? 32 : 0);
+            if (!ntMatch) {
+                if (/windows\s*(95|98|me|ce)|win9[58]|win 9x/i.test(ua)) {
+                    found = makeLegacy("windows", "Older Windows", 32, "version");
+                }
+            } else {
+                var nt = ntMatch[1];
+                var major = parseFloat(nt);
+                var name = VERSION_NAMES[nt] || ("Windows NT " + nt);
+                if (nt !== "10.0" && !(major > 10)) {
+                    found = makeLegacy("windows", name, bits || 32, "version");
+                } else if (bits === 32 || !is64) {
+                    /* Every 64-bit Windows 10/11 browser includes Win64, x64,
+                       WOW64, amd64, x86_64, or arm64; omitting all of them
+                       (e.g. 32-bit Firefox/Chrome on 32-bit Windows 10) means
+                       a 32-bit Windows system that cannot run Updater CE. */
+                    found = makeLegacy("windows", name, 32, "bits");
+                }
+            }
+        } else if (!/macintosh|mac os x/i.test(ua)) {
+            var plat = String(nav.platform || "");
+            var isLinux = /linux|x11/i.test(ua) || /linux|ubuntu|debian|fedora|x11/i.test(plat);
+            if (isLinux) {
+                var linux64 = /x86_64|amd64|aarch64|arm64/i.test(ua);
+                if (/i[3-6]86|armv[67]l?|armhf/i.test(ua) || (!linux64 && /i[3-6]86/i.test(plat))) {
+                    found = makeLegacy("linux", "32-bit Linux", 32, "bits");
+                }
+            }
+        }
+        global.INNIOASIS_LEGACY = found;
+    }
+    detectInitialLegacy();
 
     /* Windows XP/Vista/7/8/8.1 and 32-bit Windows cannot run Updater CE, so
        that visit gets the portable SP Flash Tool route instead of install
@@ -1564,7 +1644,7 @@
         } catch (_) {}
         var node = document.createElement("script");
         node.id = "site-legacy-script";
-        node.src = base + "site-legacy.js?v=20261117legacy1";
+        node.src = base + "site-legacy.js?v=20261124legacy2";
         node.defer = true;
         document.head.appendChild(node);
     }
@@ -1588,7 +1668,7 @@
         } catch (_) {}
         var node = document.createElement("script");
         node.id = "site-download-choices-script";
-        node.src = base + "site-download-choices.js?v=20261111zip";
+        node.src = base + "site-download-choices.js?v=20261124zip2";
         node.defer = true;
         document.head.appendChild(node);
     }

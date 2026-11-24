@@ -115,40 +115,126 @@ def tag_slug(tag: str) -> str:
 
 
 TAG_STAMP_RE = re.compile(
-    r"(^|[^0-9])((?:19|20)\d{2})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(?:[-_.]?(\d{2})(\d{2}))?(?!\d)"
+    r"(^|[^0-9])((?:19|20)\d{2})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(?:[-_.]?([01]\d|2[0-3])([0-5]\d))?(?!\d)"
 )
 TAG_SEMVER_RE = re.compile(
-    r"(?:^|[^0-9A-Za-z])v?(\d+(?:\.\d+)+)(?![0-9A-Za-z])", re.IGNORECASE
+    r"(?:^|[^0-9.])(?:(?:reale?ase)\s*)?(?:w?v\.?)?(\d+(?:\.\d+)+)", re.IGNORECASE
 )
+_TITLE_VER_TOKEN = r"[vV]?\d+\.\d+(?:\.\d+)*(?:[-+][0-9A-Za-z][0-9A-Za-z.+-]*|[0-9]*[A-Za-z]+\d*)?"
+_TITLE_VER_PATTERNS = (
+    re.compile(r"^(" + _TITLE_VER_TOKEN + r")(?=$|[\s:;,()\[\]\u2013\u2014-])"),
+    re.compile(r"(?:^|[\s:;,()\[\]\u2013\u2014-])(" + _TITLE_VER_TOKEN + r")(?=[.,;:!?'\"\)\]\u201d\u2019]*$)"),
+    re.compile(r"(?:^|\s)(" + _TITLE_VER_TOKEN + r")(?=$|\s)"),
+)
+_HOTFIX_SUFFIX_RE = re.compile(r"(?:hotfix|hf|patch|rev)[._-]?(\d{1,4})?", re.IGNORECASE)
+_PRE_SUFFIX_RE = re.compile(
+    r"(?:^|[^a-z])(rc|preview|pre|beta|alpha|exp|nightly|dev)(?:[._-]?(\d{1,4})(?!\d))?",
+    re.IGNORECASE,
+)
+_PRE_STAGE_ORDER = {
+    "rc": 4,
+    "preview": 3,
+    "pre": 3,
+    "beta": 2,
+    "alpha": 1,
+    "exp": 0,
+    "nightly": -1,
+    "dev": -2,
+}
+
+
+def _match_tag_stamp(text: str) -> tuple[int, tuple[int, int] | None]:
+    match = TAG_STAMP_RE.search(str(text or ""))
+    if not match:
+        return 0, None
+    year, month, day = int(match.group(2)), int(match.group(3)), int(match.group(4))
+    hour = int(match.group(5) or 0)
+    minute = int(match.group(6) or 0)
+    try:
+        value = dt.datetime(year, month, day, hour, minute, tzinfo=dt.timezone.utc)
+        return int(value.timestamp()), (match.start(2), match.end())
+    except ValueError:
+        return 0, None
+
+
+def _extract_semver_tuples(text: str) -> list[tuple[int, ...]]:
+    clean = re.sub(r"-[a-f0-9]{16,}!?$", "", str(text or ""))
+    _, span = _match_tag_stamp(clean)
+    if span:
+        clean = clean[: span[0]] + " " + clean[span[1] :]
+    out: list[tuple[int, ...]] = []
+    for match in TAG_SEMVER_RE.finditer(clean):
+        parts = tuple(int(part) for part in match.group(1).split("."))
+        out.append(parts)
+    return out
+
+
+def _extract_title_semver(name: str) -> tuple[int, ...] | None:
+    text = str(name or "").strip()
+    if not text:
+        return None
+    for pat in _TITLE_VER_PATTERNS:
+        match = pat.search(text)
+        if match:
+            num = re.search(r"\d+(?:\.\d+)+", match.group(1))
+            if num:
+                return tuple(int(part) for part in num.group(0).split("."))
+    return None
+
+
+def _release_suffix_rank(text: str) -> tuple[int, int, int]:
+    clean = re.sub(r"-[a-f0-9]{16,}!?$", "", str(text or ""))
+    _, span = _match_tag_stamp(clean)
+    if span:
+        clean = clean[: span[0]] + " " + clean[span[1] :]
+    lower = clean.lower()
+    hotfix = _HOTFIX_SUFFIX_RE.search(lower)
+    if hotfix:
+        return (1, int(hotfix.group(1) or 1), 0)
+    pre = _PRE_SUFFIX_RE.search(lower)
+    if pre:
+        return (-1, _PRE_STAGE_ORDER.get(pre.group(1), 0), int(pre.group(2) or 0))
+    return (0, 0, 0)
+
+
+def _pad_semver(parts: tuple[int, ...] | None, width: int = 5) -> tuple[int, ...]:
+    if not parts:
+        return (0,) * width
+    return parts[:width] + (0,) * max(0, width - len(parts))
 
 
 def release_sort_key(release: dict) -> tuple:
-    """Newest-first key: tag calendar stamp, then semantic version, then the
-    GitHub published date as a tiebreaker.
+    """Newest-first key: tag calendar stamp, then primary/secondary semantic
+    version (handling suffixed tags like 3.2.4-fm, hotfixes like
+    v0.11.6hotfix4, and title versions for baseline-* tags), then suffix rank,
+    then the GitHub published date as a tiebreaker.
 
     A release republished months after it shipped carries a later GitHub
     date than a newer build, so ``published_at`` must never lead the order.
     """
     tag = str((release or {}).get("tag_name") or "")
-    stamp = 0
-    match = TAG_STAMP_RE.search(tag)
-    if match:
-        year, month, day = int(match.group(2)), int(match.group(3)), int(match.group(4))
-        hour = int(match.group(5) or 0)
-        minute = int(match.group(6) or 0)
-        try:
-            value = dt.datetime(year, month, day, hour, minute, tzinfo=dt.timezone.utc)
-            stamp = int(value.timestamp())
-        except ValueError:
-            stamp = 0
-    semver: tuple = ()
-    if not stamp:
-        version = TAG_SEMVER_RE.search(tag)
-        if version:
-            parts = [int(part) for part in version.group(1).split(".")][:4]
-            semver = tuple(parts) + (0,) * (4 - len(parts))
+    name = str((release or {}).get("name") or "")
+    stamp, _ = _match_tag_stamp(tag)
+    semvers = _extract_semver_tuples(tag)
+    primary = semvers[0] if semvers else None
+    secondary = semvers[1] if len(semvers) > 1 else None
+    from_tag = bool(stamp or primary)
+    if not from_tag:
+        primary = _extract_title_semver(name)
+        if not primary:
+            stamp, _ = _match_tag_stamp(name)
+    has_key = 1 if (stamp or primary) else 0
+    rank = _release_suffix_rank(tag if from_tag else name) if has_key else (0, 0, 0)
     published = str((release or {}).get("published_at") or "")
-    return (1 if stamp or semver else 0, stamp, semver, published, tag.lower())
+    return (
+        has_key,
+        stamp,
+        _pad_semver(primary),
+        _pad_semver(secondary),
+        rank,
+        published,
+        tag.lower(),
+    )
 
 
 def software_slug(name: str, device: str) -> str:
