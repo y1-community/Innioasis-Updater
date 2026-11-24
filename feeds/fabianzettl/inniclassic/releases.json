@@ -1,5 +1,56 @@
 [
   {
+    "id": 456915471,
+    "tag_name": "v1.5.2",
+    "name": "InniClassic 1.5.2",
+    "body": "**Fixed**\n- Battery Percentage is now a readable text to the left of the battery icon instead of tiny digits inside it (#23)\n\n**New (community PRs)**\n- FM radio keeps playing when the display times out (#13, thanks lskr-dev)\n- Optional RDS station name and radio text (#12, thanks lskr-dev)\n\nIncludes everything from 1.5.1. rom.zip is for the Innioasis Updater (keep the filename); the APK updates an existing install.",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-24T14:55:49Z",
+    "published_at": "2026-11-24T14:58:32Z",
+    "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.5.2",
+    "icon_url": "",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 787623893,
+        "name": "InniClassic-1.5.2.apk",
+        "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.5.2/InniClassic-1.5.2.apk",
+        "size": 27376621,
+        "download_count": 1,
+        "content_type": "application/vnd.android.package-archive",
+        "created_at": "2026-11-24T14:57:03Z",
+        "updated_at": "2026-11-24T14:57:13Z",
+        "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/787623893"
+      },
+      {
+        "id": 787623878,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.5.2/rom.zip",
+        "size": 463695576,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-24T14:57:03Z",
+        "updated_at": "2026-11-24T14:58:31Z",
+        "url": "https://api.github.com/repos/FabianZettl/inniclassic/releases/assets/787623878"
+      }
+    ],
+    "mirror_downloads": 0,
+    "downloads": 1,
+    "download_breakdown": {
+      "tag": "v1.5.2",
+      "mirrors": "",
+      "firmware": [
+        {
+          "name": "rom.zip",
+          "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.5.2/rom.zip",
+          "downloads": 1
+        }
+      ],
+      "portable": []
+    }
+  },
+  {
     "id": 455588101,
     "tag_name": "v1.5.1",
     "name": "InniClassic 1.5.1",
@@ -28,7 +79,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.5.1/rom.zip",
         "size": 463691912,
-        "download_count": 27,
+        "download_count": 28,
         "content_type": "application/zip",
         "created_at": "2026-11-23T15:08:39Z",
         "updated_at": "2026-11-23T15:11:53Z",
@@ -36,7 +87,7 @@
       }
     ],
     "mirror_downloads": 9,
-    "downloads": 36,
+    "downloads": 37,
     "download_breakdown": {
       "tag": "v1.5.1",
       "mirrors": "y1-community/inniclassic-mirror",
@@ -44,7 +95,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.5.1/rom.zip",
-          "downloads": 28,
+          "downloads": 29,
           "mirror_downloads": 1
         }
       ],

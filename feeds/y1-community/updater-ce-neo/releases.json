@@ -17,7 +17,7 @@
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/installer.exe",
         "size": 98323238,
-        "download_count": 57,
+        "download_count": 58,
         "content_type": "application/x-msdownload",
         "created_at": "2026-11-22T20:54:58Z",
         "updated_at": "2026-11-22T20:55:37Z",
@@ -28,7 +28,7 @@
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/Innioasis.Updater.for.Mac.dmg",
         "size": 109258325,
-        "download_count": 10,
+        "download_count": 11,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-22T20:55:02Z",
         "updated_at": "2026-11-22T20:56:07Z",
@@ -873,7 +873,7 @@
         "name": "flash_tool_linux.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/flash_tool/flash_tool_linux.zip",
         "size": 67786907,
-        "download_count": 26,
+        "download_count": 27,
         "content_type": "application/zip",
         "created_at": "2026-09-07T13:13:02Z",
         "updated_at": "2026-09-07T13:13:13Z",
@@ -892,7 +892,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 26,
+    "downloads": 27,
     "download_breakdown": {
       "tag": "flash_tool",
       "mirrors": "",
@@ -900,7 +900,7 @@
         {
           "name": "flash_tool_linux.zip",
           "url": "https://github.com/y1-community/updater-ce-neo/releases/download/flash_tool/flash_tool_linux.zip",
-          "downloads": 26
+          "downloads": 27
         }
       ],
       "portable": []

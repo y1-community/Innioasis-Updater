@@ -4,7 +4,27 @@
   <title>Release notes from FabianZettl/inniclassic</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/fabianzettl/inniclassic/releases.atom"/>
-  <updated>2026-11-23T15:11:54Z</updated>
+  <updated>2026-11-24T14:58:32Z</updated>
+  <entry>
+    <id>tag:innioasis.app,2026:FabianZettl/inniclassic/v1.5.2</id>
+    <updated>2026-11-24T14:58:32Z</updated>
+    <published>2026-11-24T14:58:32Z</published>
+    <title>InniClassic 1.5.2</title>
+    <link rel="alternate" type="text/html" href="https://github.com/FabianZettl/inniclassic/releases/tag/v1.5.2"/>
+    <innioasis:tag_name>v1.5.2</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>1</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.5.2/InniClassic-1.5.2.apk" title="InniClassic-1.5.2.apk" length="27376621" type="application/vnd.android.package-archive" innioasis:download_count="1" innioasis:asset_id="787623893"/>
+    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.5.2/rom.zip" title="rom.zip" length="463695576" type="application/zip" innioasis:download_count="1" innioasis:asset_id="787623878"/>
+    <content type="text">**Fixed**
+- Battery Percentage is now a readable text to the left of the battery icon instead of tiny digits inside it (#23)
+
+**New (community PRs)**
+- FM radio keeps playing when the display times out (#13, thanks lskr-dev)
+- Optional RDS station name and radio text (#12, thanks lskr-dev)
+
+Includes everything from 1.5.1. rom.zip is for the Innioasis Updater (keep the filename); the APK updates an existing install.</content>
+  </entry>
   <entry>
     <id>tag:innioasis.app,2026:FabianZettl/inniclassic/v1.5.1</id>
     <updated>2026-11-23T15:11:54Z</updated>
@@ -13,9 +33,9 @@
     <link rel="alternate" type="text/html" href="https://github.com/FabianZettl/inniclassic/releases/tag/v1.5.1"/>
     <innioasis:tag_name>v1.5.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>36</innioasis:downloads>
+    <innioasis:downloads>37</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.5.1/InniClassic-1.5.1.apk" title="InniClassic-1.5.1.apk" length="27372760" type="application/vnd.android.package-archive" innioasis:download_count="2" innioasis:asset_id="783393826"/>
-    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.5.1/rom.zip" title="rom.zip" length="463691912" type="application/zip" innioasis:download_count="27" innioasis:asset_id="783393828"/>
+    <link rel="enclosure" href="https://github.com/FabianZettl/inniclassic/releases/download/v1.5.1/rom.zip" title="rom.zip" length="463691912" type="application/zip" innioasis:download_count="28" innioasis:asset_id="783393828"/>
     <content type="text">Everything since 1.4.5: the Classy UI pass and a round of fixes.
 
 **UI**

@@ -14,8 +14,8 @@
     <innioasis:tag_name>2.5.6.5</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
     <innioasis:downloads>148</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/installer.exe" title="installer.exe" length="98323238" type="application/x-msdownload" innioasis:download_count="57" innioasis:asset_id="780433246"/>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="109258325" type="application/octet-stream" innioasis:download_count="10" innioasis:asset_id="780433487"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/installer.exe" title="installer.exe" length="98323238" type="application/x-msdownload" innioasis:download_count="58" innioasis:asset_id="780433246"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="109258325" type="application/octet-stream" innioasis:download_count="11" innioasis:asset_id="780433487"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/UpdaterCE-arm64.appimage" title="UpdaterCE-arm64.appimage" length="114539016" type="application/octet-stream" innioasis:download_count="0" innioasis:asset_id="780437317"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/run_linux.sh.sha256" title="run_linux.sh.sha256" length="79" type="application/octet-stream" innioasis:download_count="1" innioasis:asset_id="780437319"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/run_linux.sh" title="run_linux.sh" length="53935" type="application/x-sh" innioasis:download_count="0" innioasis:asset_id="780437321"/>
@@ -156,8 +156,8 @@ Support for the full Innioasis and Timmkoo product line in Updater CE and Firmwa
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/updater-ce-neo/releases/tag/flash_tool"/>
     <innioasis:tag_name>flash_tool</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>26</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/flash_tool/flash_tool_linux.zip" title="flash_tool_linux.zip" length="67786907" type="application/zip" innioasis:download_count="26" innioasis:asset_id="548814370"/>
+    <innioasis:downloads>27</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/flash_tool/flash_tool_linux.zip" title="flash_tool_linux.zip" length="67786907" type="application/zip" innioasis:download_count="27" innioasis:asset_id="548814370"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/flash_tool/UpdaterCE2.5Test.AppImage" title="UpdaterCE2.5Test.AppImage" length="220924408" type="application/octet-stream" innioasis:download_count="8" innioasis:asset_id="655934273"/>
     <content type="text"></content>
   </entry>
