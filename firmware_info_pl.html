@@ -26,87 +26,332 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Plik README oprogramowania sprzętowego - Innioasis Archiwum oprogramowania sprzętowego</title>
-  <meta name="description" content="Przeczytaj plik README projektu oprogramowania sprzętowego społeczności ze statystykami dotyczącymi wydań i trasą instalacji narzędzia Updater CE, bez opuszczania witryny Innioasis.">
+  <title>README firmware - Archiwum firmware Innioasis</title>
+  <meta name="description" content="Przeczytaj README projektu firmware ze społeczności, ze statystykami wydań i drogą instalacji przez Updater CE – bez opuszczania strony Innioasis.">
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://innioasis.app/firmware_info_pl.html">
   <link rel="icon" href="y1_illustration.png">
-  <link rel="stylesheet" href="site-theme.css?v=20261109theme">
-  <link rel="stylesheet" href="lumen.css?v=20261116layout">
+  <link rel="stylesheet" href="site-theme.css?v=20261124fixes1">
+  <link rel="stylesheet" href="lumen.css?v=20261124fixes1">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
-  <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261124fixes1">
   <link rel="stylesheet" href="docs-viewer.css?v=20261113readme">
-  <script src="site-init.js?v=20261117fallback3" defer></script>
+  <script src="site-init.js?v=20261124fixes1" defer></script>
   <script src="firmware-info/manifest.js"></script>
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/firmware_info.html">
   <link rel="alternate" hreflang="en" href="https://innioasis.app/firmware_info.html">
-  <link rel="alternate" hreflang="de" href="https://innioasis.app/firmware_info_de.html">
-  <link rel="alternate" hreflang="ja" href="https://innioasis.app/firmware_info_ja.html">
-  <link rel="alternate" hreflang="es" href="https://innioasis.app/firmware_info_es.html">
-  <link rel="alternate" hreflang="fr" href="https://innioasis.app/firmware_info_fr.html">
-  <link rel="alternate" hreflang="it" href="https://innioasis.app/firmware_info_it.html">
-  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/firmware_info_pt-BR.html">
-  <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/firmware_info_pt-PT.html">
-  <link rel="alternate" hreflang="ru" href="https://innioasis.app/firmware_info_ru.html">
-  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/firmware_info_zh-CN.html">
-  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/firmware_info_zh-TW.html">
-  <link rel="alternate" hreflang="ko" href="https://innioasis.app/firmware_info_ko.html">
+  <link rel="alternate" hreflang="aa" href="https://innioasis.app/firmware_info_aa.html">
+  <link rel="alternate" hreflang="ab" href="https://innioasis.app/firmware_info_ab.html">
+  <link rel="alternate" hreflang="ace" href="https://innioasis.app/firmware_info_ace.html">
+  <link rel="alternate" hreflang="ach" href="https://innioasis.app/firmware_info_ach.html">
+  <link rel="alternate" hreflang="af" href="https://innioasis.app/firmware_info_af.html">
+  <link rel="alternate" hreflang="ak" href="https://innioasis.app/firmware_info_ak.html">
+  <link rel="alternate" hreflang="alz" href="https://innioasis.app/firmware_info_alz.html">
+  <link rel="alternate" hreflang="am" href="https://innioasis.app/firmware_info_am.html">
   <link rel="alternate" hreflang="ar" href="https://innioasis.app/firmware_info_ar.html">
-  <link rel="alternate" hreflang="nl" href="https://innioasis.app/firmware_info_nl.html">
-  <link rel="alternate" hreflang="pl" href="https://innioasis.app/firmware_info_pl.html">
-  <link rel="alternate" hreflang="tr" href="https://innioasis.app/firmware_info_tr.html">
-  <link rel="alternate" hreflang="uk" href="https://innioasis.app/firmware_info_uk.html">
-  <link rel="alternate" hreflang="vi" href="https://innioasis.app/firmware_info_vi.html">
-  <link rel="alternate" hreflang="th" href="https://innioasis.app/firmware_info_th.html">
-  <link rel="alternate" hreflang="id" href="https://innioasis.app/firmware_info_id.html">
+  <link rel="alternate" hreflang="as" href="https://innioasis.app/firmware_info_as.html">
+  <link rel="alternate" hreflang="av" href="https://innioasis.app/firmware_info_av.html">
+  <link rel="alternate" hreflang="awa" href="https://innioasis.app/firmware_info_awa.html">
+  <link rel="alternate" hreflang="ay" href="https://innioasis.app/firmware_info_ay.html">
+  <link rel="alternate" hreflang="az" href="https://innioasis.app/firmware_info_az.html">
+  <link rel="alternate" hreflang="ba" href="https://innioasis.app/firmware_info_ba.html">
+  <link rel="alternate" hreflang="bal" href="https://innioasis.app/firmware_info_bal.html">
+  <link rel="alternate" hreflang="ban" href="https://innioasis.app/firmware_info_ban.html">
+  <link rel="alternate" hreflang="bbc" href="https://innioasis.app/firmware_info_bbc.html">
+  <link rel="alternate" hreflang="bci" href="https://innioasis.app/firmware_info_bci.html">
+  <link rel="alternate" hreflang="be" href="https://innioasis.app/firmware_info_be.html">
+  <link rel="alternate" hreflang="bem" href="https://innioasis.app/firmware_info_bem.html">
+  <link rel="alternate" hreflang="ber" href="https://innioasis.app/firmware_info_ber.html">
+  <link rel="alternate" hreflang="ber-Latn" href="https://innioasis.app/firmware_info_ber-Latn.html">
+  <link rel="alternate" hreflang="bew" href="https://innioasis.app/firmware_info_bew.html">
+  <link rel="alternate" hreflang="bg" href="https://innioasis.app/firmware_info_bg.html">
+  <link rel="alternate" hreflang="bho" href="https://innioasis.app/firmware_info_bho.html">
+  <link rel="alternate" hreflang="bik" href="https://innioasis.app/firmware_info_bik.html">
+  <link rel="alternate" hreflang="bm" href="https://innioasis.app/firmware_info_bm.html">
+  <link rel="alternate" hreflang="bm-Nkoo" href="https://innioasis.app/firmware_info_bm-Nkoo.html">
+  <link rel="alternate" hreflang="bn" href="https://innioasis.app/firmware_info_bn.html">
+  <link rel="alternate" hreflang="bo" href="https://innioasis.app/firmware_info_bo.html">
+  <link rel="alternate" hreflang="br" href="https://innioasis.app/firmware_info_br.html">
+  <link rel="alternate" hreflang="bs" href="https://innioasis.app/firmware_info_bs.html">
+  <link rel="alternate" hreflang="bts" href="https://innioasis.app/firmware_info_bts.html">
+  <link rel="alternate" hreflang="btx" href="https://innioasis.app/firmware_info_btx.html">
+  <link rel="alternate" hreflang="bua" href="https://innioasis.app/firmware_info_bua.html">
+  <link rel="alternate" hreflang="ca" href="https://innioasis.app/firmware_info_ca.html">
+  <link rel="alternate" hreflang="ce" href="https://innioasis.app/firmware_info_ce.html">
+  <link rel="alternate" hreflang="ceb" href="https://innioasis.app/firmware_info_ceb.html">
+  <link rel="alternate" hreflang="cgg" href="https://innioasis.app/firmware_info_cgg.html">
+  <link rel="alternate" hreflang="ch" href="https://innioasis.app/firmware_info_ch.html">
+  <link rel="alternate" hreflang="chk" href="https://innioasis.app/firmware_info_chk.html">
+  <link rel="alternate" hreflang="chm" href="https://innioasis.app/firmware_info_chm.html">
+  <link rel="alternate" hreflang="ckb" href="https://innioasis.app/firmware_info_ckb.html">
+  <link rel="alternate" hreflang="cnh" href="https://innioasis.app/firmware_info_cnh.html">
+  <link rel="alternate" hreflang="co" href="https://innioasis.app/firmware_info_co.html">
+  <link rel="alternate" hreflang="crh" href="https://innioasis.app/firmware_info_crh.html">
+  <link rel="alternate" hreflang="crh-Latn" href="https://innioasis.app/firmware_info_crh-Latn.html">
+  <link rel="alternate" hreflang="crs" href="https://innioasis.app/firmware_info_crs.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/firmware_info_cs.html">
+  <link rel="alternate" hreflang="cv" href="https://innioasis.app/firmware_info_cv.html">
+  <link rel="alternate" hreflang="cy" href="https://innioasis.app/firmware_info_cy.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/firmware_info_da.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/firmware_info_de.html">
+  <link rel="alternate" hreflang="din" href="https://innioasis.app/firmware_info_din.html">
+  <link rel="alternate" hreflang="doi" href="https://innioasis.app/firmware_info_doi.html">
+  <link rel="alternate" hreflang="dov" href="https://innioasis.app/firmware_info_dov.html">
+  <link rel="alternate" hreflang="dv" href="https://innioasis.app/firmware_info_dv.html">
+  <link rel="alternate" hreflang="dyu" href="https://innioasis.app/firmware_info_dyu.html">
+  <link rel="alternate" hreflang="dz" href="https://innioasis.app/firmware_info_dz.html">
+  <link rel="alternate" hreflang="ee" href="https://innioasis.app/firmware_info_ee.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/firmware_info_el.html">
+  <link rel="alternate" hreflang="en-GB" href="https://innioasis.app/firmware_info_en-GB.html">
+  <link rel="alternate" hreflang="en-US" href="https://innioasis.app/firmware_info_en-US.html">
+  <link rel="alternate" hreflang="eo" href="https://innioasis.app/firmware_info_eo.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/firmware_info_es.html">
+  <link rel="alternate" hreflang="et" href="https://innioasis.app/firmware_info_et.html">
+  <link rel="alternate" hreflang="eu" href="https://innioasis.app/firmware_info_eu.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/firmware_info_fa.html">
+  <link rel="alternate" hreflang="fa-AF" href="https://innioasis.app/firmware_info_fa-AF.html">
+  <link rel="alternate" hreflang="ff" href="https://innioasis.app/firmware_info_ff.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/firmware_info_fi.html">
+  <link rel="alternate" hreflang="fil" href="https://innioasis.app/firmware_info_fil.html">
+  <link rel="alternate" hreflang="fj" href="https://innioasis.app/firmware_info_fj.html">
+  <link rel="alternate" hreflang="fo" href="https://innioasis.app/firmware_info_fo.html">
+  <link rel="alternate" hreflang="fon" href="https://innioasis.app/firmware_info_fon.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/firmware_info_fr.html">
+  <link rel="alternate" hreflang="fr-CA" href="https://innioasis.app/firmware_info_fr-CA.html">
+  <link rel="alternate" hreflang="fur" href="https://innioasis.app/firmware_info_fur.html">
+  <link rel="alternate" hreflang="fy" href="https://innioasis.app/firmware_info_fy.html">
+  <link rel="alternate" hreflang="ga" href="https://innioasis.app/firmware_info_ga.html">
+  <link rel="alternate" hreflang="gaa" href="https://innioasis.app/firmware_info_gaa.html">
+  <link rel="alternate" hreflang="gd" href="https://innioasis.app/firmware_info_gd.html">
+  <link rel="alternate" hreflang="gl" href="https://innioasis.app/firmware_info_gl.html">
+  <link rel="alternate" hreflang="gn" href="https://innioasis.app/firmware_info_gn.html">
+  <link rel="alternate" hreflang="gom" href="https://innioasis.app/firmware_info_gom.html">
+  <link rel="alternate" hreflang="gu" href="https://innioasis.app/firmware_info_gu.html">
+  <link rel="alternate" hreflang="gv" href="https://innioasis.app/firmware_info_gv.html">
+  <link rel="alternate" hreflang="ha" href="https://innioasis.app/firmware_info_ha.html">
+  <link rel="alternate" hreflang="haw" href="https://innioasis.app/firmware_info_haw.html">
   <link rel="alternate" hreflang="he" href="https://innioasis.app/firmware_info_he.html">
   <link rel="alternate" hreflang="hi" href="https://innioasis.app/firmware_info_hi.html">
-  <link rel="alternate" hreflang="cs" href="https://innioasis.app/firmware_info_cs.html">
-  <link rel="alternate" hreflang="el" href="https://innioasis.app/firmware_info_el.html">
-  <link rel="alternate" hreflang="sv" href="https://innioasis.app/firmware_info_sv.html">
-  <link rel="alternate" hreflang="fa" href="https://innioasis.app/firmware_info_fa.html">
-  <link rel="alternate" hreflang="da" href="https://innioasis.app/firmware_info_da.html">
-  <link rel="alternate" hreflang="fi" href="https://innioasis.app/firmware_info_fi.html">
+  <link rel="alternate" hreflang="hil" href="https://innioasis.app/firmware_info_hil.html">
+  <link rel="alternate" hreflang="hmn" href="https://innioasis.app/firmware_info_hmn.html">
+  <link rel="alternate" hreflang="hr" href="https://innioasis.app/firmware_info_hr.html">
+  <link rel="alternate" hreflang="hrx" href="https://innioasis.app/firmware_info_hrx.html">
+  <link rel="alternate" hreflang="ht" href="https://innioasis.app/firmware_info_ht.html">
   <link rel="alternate" hreflang="hu" href="https://innioasis.app/firmware_info_hu.html">
+  <link rel="alternate" hreflang="hy" href="https://innioasis.app/firmware_info_hy.html">
+  <link rel="alternate" hreflang="iba" href="https://innioasis.app/firmware_info_iba.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/firmware_info_id.html">
+  <link rel="alternate" hreflang="ig" href="https://innioasis.app/firmware_info_ig.html">
+  <link rel="alternate" hreflang="ilo" href="https://innioasis.app/firmware_info_ilo.html">
+  <link rel="alternate" hreflang="is" href="https://innioasis.app/firmware_info_is.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/firmware_info_it.html">
+  <link rel="alternate" hreflang="iu" href="https://innioasis.app/firmware_info_iu.html">
+  <link rel="alternate" hreflang="iu-Latn" href="https://innioasis.app/firmware_info_iu-Latn.html">
+  <link rel="alternate" hreflang="iw" href="https://innioasis.app/firmware_info_iw.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/firmware_info_ja.html">
+  <link rel="alternate" hreflang="jam" href="https://innioasis.app/firmware_info_jam.html">
+  <link rel="alternate" hreflang="jv" href="https://innioasis.app/firmware_info_jv.html">
+  <link rel="alternate" hreflang="jw" href="https://innioasis.app/firmware_info_jw.html">
+  <link rel="alternate" hreflang="ka" href="https://innioasis.app/firmware_info_ka.html">
+  <link rel="alternate" hreflang="kac" href="https://innioasis.app/firmware_info_kac.html">
+  <link rel="alternate" hreflang="kek" href="https://innioasis.app/firmware_info_kek.html">
+  <link rel="alternate" hreflang="kg" href="https://innioasis.app/firmware_info_kg.html">
+  <link rel="alternate" hreflang="kha" href="https://innioasis.app/firmware_info_kha.html">
+  <link rel="alternate" hreflang="kk" href="https://innioasis.app/firmware_info_kk.html">
+  <link rel="alternate" hreflang="kl" href="https://innioasis.app/firmware_info_kl.html">
+  <link rel="alternate" hreflang="km" href="https://innioasis.app/firmware_info_km.html">
+  <link rel="alternate" hreflang="kn" href="https://innioasis.app/firmware_info_kn.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/firmware_info_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/firmware_info_kr.html">
+  <link rel="alternate" hreflang="kri" href="https://innioasis.app/firmware_info_kri.html">
+  <link rel="alternate" hreflang="ktu" href="https://innioasis.app/firmware_info_ktu.html">
+  <link rel="alternate" hreflang="ku" href="https://innioasis.app/firmware_info_ku.html">
+  <link rel="alternate" hreflang="kv" href="https://innioasis.app/firmware_info_kv.html">
+  <link rel="alternate" hreflang="ky" href="https://innioasis.app/firmware_info_ky.html">
+  <link rel="alternate" hreflang="la" href="https://innioasis.app/firmware_info_la.html">
+  <link rel="alternate" hreflang="lb" href="https://innioasis.app/firmware_info_lb.html">
+  <link rel="alternate" hreflang="lg" href="https://innioasis.app/firmware_info_lg.html">
+  <link rel="alternate" hreflang="li" href="https://innioasis.app/firmware_info_li.html">
+  <link rel="alternate" hreflang="lij" href="https://innioasis.app/firmware_info_lij.html">
+  <link rel="alternate" hreflang="lmo" href="https://innioasis.app/firmware_info_lmo.html">
+  <link rel="alternate" hreflang="ln" href="https://innioasis.app/firmware_info_ln.html">
+  <link rel="alternate" hreflang="lo" href="https://innioasis.app/firmware_info_lo.html">
+  <link rel="alternate" hreflang="lt" href="https://innioasis.app/firmware_info_lt.html">
+  <link rel="alternate" hreflang="ltg" href="https://innioasis.app/firmware_info_ltg.html">
+  <link rel="alternate" hreflang="lua" href="https://innioasis.app/firmware_info_lua.html">
+  <link rel="alternate" hreflang="luo" href="https://innioasis.app/firmware_info_luo.html">
+  <link rel="alternate" hreflang="lus" href="https://innioasis.app/firmware_info_lus.html">
+  <link rel="alternate" hreflang="lv" href="https://innioasis.app/firmware_info_lv.html">
+  <link rel="alternate" hreflang="mad" href="https://innioasis.app/firmware_info_mad.html">
+  <link rel="alternate" hreflang="mai" href="https://innioasis.app/firmware_info_mai.html">
+  <link rel="alternate" hreflang="mak" href="https://innioasis.app/firmware_info_mak.html">
+  <link rel="alternate" hreflang="mam" href="https://innioasis.app/firmware_info_mam.html">
+  <link rel="alternate" hreflang="mfe" href="https://innioasis.app/firmware_info_mfe.html">
+  <link rel="alternate" hreflang="mg" href="https://innioasis.app/firmware_info_mg.html">
+  <link rel="alternate" hreflang="mh" href="https://innioasis.app/firmware_info_mh.html">
+  <link rel="alternate" hreflang="mi" href="https://innioasis.app/firmware_info_mi.html">
+  <link rel="alternate" hreflang="min" href="https://innioasis.app/firmware_info_min.html">
+  <link rel="alternate" hreflang="mk" href="https://innioasis.app/firmware_info_mk.html">
+  <link rel="alternate" hreflang="ml" href="https://innioasis.app/firmware_info_ml.html">
+  <link rel="alternate" hreflang="mn" href="https://innioasis.app/firmware_info_mn.html">
+  <link rel="alternate" hreflang="mni-Mtei" href="https://innioasis.app/firmware_info_mni-Mtei.html">
+  <link rel="alternate" hreflang="mr" href="https://innioasis.app/firmware_info_mr.html">
+  <link rel="alternate" hreflang="ms" href="https://innioasis.app/firmware_info_ms.html">
+  <link rel="alternate" hreflang="ms-Arab" href="https://innioasis.app/firmware_info_ms-Arab.html">
+  <link rel="alternate" hreflang="mt" href="https://innioasis.app/firmware_info_mt.html">
+  <link rel="alternate" hreflang="mwr" href="https://innioasis.app/firmware_info_mwr.html">
+  <link rel="alternate" hreflang="my" href="https://innioasis.app/firmware_info_my.html">
+  <link rel="alternate" hreflang="ndc-ZW" href="https://innioasis.app/firmware_info_ndc-ZW.html">
+  <link rel="alternate" hreflang="ne" href="https://innioasis.app/firmware_info_ne.html">
+  <link rel="alternate" hreflang="new" href="https://innioasis.app/firmware_info_new.html">
+  <link rel="alternate" hreflang="nhe" href="https://innioasis.app/firmware_info_nhe.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/firmware_info_nl.html">
   <link rel="alternate" hreflang="no" href="https://innioasis.app/firmware_info_no.html">
+  <link rel="alternate" hreflang="nr" href="https://innioasis.app/firmware_info_nr.html">
+  <link rel="alternate" hreflang="nso" href="https://innioasis.app/firmware_info_nso.html">
+  <link rel="alternate" hreflang="nus" href="https://innioasis.app/firmware_info_nus.html">
+  <link rel="alternate" hreflang="ny" href="https://innioasis.app/firmware_info_ny.html">
+  <link rel="alternate" hreflang="oc" href="https://innioasis.app/firmware_info_oc.html">
+  <link rel="alternate" hreflang="om" href="https://innioasis.app/firmware_info_om.html">
+  <link rel="alternate" hreflang="or" href="https://innioasis.app/firmware_info_or.html">
+  <link rel="alternate" hreflang="os" href="https://innioasis.app/firmware_info_os.html">
+  <link rel="alternate" hreflang="pa" href="https://innioasis.app/firmware_info_pa.html">
+  <link rel="alternate" hreflang="pa-Arab" href="https://innioasis.app/firmware_info_pa-Arab.html">
+  <link rel="alternate" hreflang="pag" href="https://innioasis.app/firmware_info_pag.html">
+  <link rel="alternate" hreflang="pam" href="https://innioasis.app/firmware_info_pam.html">
+  <link rel="alternate" hreflang="pap" href="https://innioasis.app/firmware_info_pap.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/firmware_info_pl.html">
+  <link rel="alternate" hreflang="ps" href="https://innioasis.app/firmware_info_ps.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/firmware_info_pt.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/firmware_info_pt-PT.html">
+  <link rel="alternate" hreflang="qu" href="https://innioasis.app/firmware_info_qu.html">
+  <link rel="alternate" hreflang="rn" href="https://innioasis.app/firmware_info_rn.html">
   <link rel="alternate" hreflang="ro" href="https://innioasis.app/firmware_info_ro.html">
+  <link rel="alternate" hreflang="rom" href="https://innioasis.app/firmware_info_rom.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/firmware_info_ru.html">
+  <link rel="alternate" hreflang="rw" href="https://innioasis.app/firmware_info_rw.html">
+  <link rel="alternate" hreflang="sa" href="https://innioasis.app/firmware_info_sa.html">
+  <link rel="alternate" hreflang="sah" href="https://innioasis.app/firmware_info_sah.html">
+  <link rel="alternate" hreflang="sat" href="https://innioasis.app/firmware_info_sat.html">
+  <link rel="alternate" hreflang="sat-Latn" href="https://innioasis.app/firmware_info_sat-Latn.html">
+  <link rel="alternate" hreflang="scn" href="https://innioasis.app/firmware_info_scn.html">
+  <link rel="alternate" hreflang="sd" href="https://innioasis.app/firmware_info_sd.html">
+  <link rel="alternate" hreflang="se" href="https://innioasis.app/firmware_info_se.html">
+  <link rel="alternate" hreflang="sg" href="https://innioasis.app/firmware_info_sg.html">
+  <link rel="alternate" hreflang="shn" href="https://innioasis.app/firmware_info_shn.html">
+  <link rel="alternate" hreflang="si" href="https://innioasis.app/firmware_info_si.html">
+  <link rel="alternate" hreflang="sk" href="https://innioasis.app/firmware_info_sk.html">
+  <link rel="alternate" hreflang="sl" href="https://innioasis.app/firmware_info_sl.html">
+  <link rel="alternate" hreflang="sm" href="https://innioasis.app/firmware_info_sm.html">
+  <link rel="alternate" hreflang="sn" href="https://innioasis.app/firmware_info_sn.html">
+  <link rel="alternate" hreflang="so" href="https://innioasis.app/firmware_info_so.html">
+  <link rel="alternate" hreflang="sq" href="https://innioasis.app/firmware_info_sq.html">
+  <link rel="alternate" hreflang="sr" href="https://innioasis.app/firmware_info_sr.html">
+  <link rel="alternate" hreflang="ss" href="https://innioasis.app/firmware_info_ss.html">
+  <link rel="alternate" hreflang="st" href="https://innioasis.app/firmware_info_st.html">
+  <link rel="alternate" hreflang="su" href="https://innioasis.app/firmware_info_su.html">
+  <link rel="alternate" hreflang="sus" href="https://innioasis.app/firmware_info_sus.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/firmware_info_sv.html">
+  <link rel="alternate" hreflang="sw" href="https://innioasis.app/firmware_info_sw.html">
+  <link rel="alternate" hreflang="szl" href="https://innioasis.app/firmware_info_szl.html">
+  <link rel="alternate" hreflang="ta" href="https://innioasis.app/firmware_info_ta.html">
+  <link rel="alternate" hreflang="tcy" href="https://innioasis.app/firmware_info_tcy.html">
+  <link rel="alternate" hreflang="te" href="https://innioasis.app/firmware_info_te.html">
+  <link rel="alternate" hreflang="tet" href="https://innioasis.app/firmware_info_tet.html">
+  <link rel="alternate" hreflang="tg" href="https://innioasis.app/firmware_info_tg.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/firmware_info_th.html">
+  <link rel="alternate" hreflang="ti" href="https://innioasis.app/firmware_info_ti.html">
+  <link rel="alternate" hreflang="tiv" href="https://innioasis.app/firmware_info_tiv.html">
+  <link rel="alternate" hreflang="tk" href="https://innioasis.app/firmware_info_tk.html">
+  <link rel="alternate" hreflang="tl" href="https://innioasis.app/firmware_info_tl.html">
+  <link rel="alternate" hreflang="tn" href="https://innioasis.app/firmware_info_tn.html">
+  <link rel="alternate" hreflang="to" href="https://innioasis.app/firmware_info_to.html">
+  <link rel="alternate" hreflang="tpi" href="https://innioasis.app/firmware_info_tpi.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/firmware_info_tr.html">
+  <link rel="alternate" hreflang="trp" href="https://innioasis.app/firmware_info_trp.html">
+  <link rel="alternate" hreflang="ts" href="https://innioasis.app/firmware_info_ts.html">
+  <link rel="alternate" hreflang="tt" href="https://innioasis.app/firmware_info_tt.html">
+  <link rel="alternate" hreflang="tum" href="https://innioasis.app/firmware_info_tum.html">
+  <link rel="alternate" hreflang="ty" href="https://innioasis.app/firmware_info_ty.html">
+  <link rel="alternate" hreflang="tyv" href="https://innioasis.app/firmware_info_tyv.html">
+  <link rel="alternate" hreflang="udm" href="https://innioasis.app/firmware_info_udm.html">
+  <link rel="alternate" hreflang="ug" href="https://innioasis.app/firmware_info_ug.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/firmware_info_uk.html">
+  <link rel="alternate" hreflang="ur" href="https://innioasis.app/firmware_info_ur.html">
+  <link rel="alternate" hreflang="uz" href="https://innioasis.app/firmware_info_uz.html">
+  <link rel="alternate" hreflang="ve" href="https://innioasis.app/firmware_info_ve.html">
+  <link rel="alternate" hreflang="vec" href="https://innioasis.app/firmware_info_vec.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/firmware_info_vi.html">
+  <link rel="alternate" hreflang="war" href="https://innioasis.app/firmware_info_war.html">
+  <link rel="alternate" hreflang="wo" href="https://innioasis.app/firmware_info_wo.html">
+  <link rel="alternate" hreflang="xh" href="https://innioasis.app/firmware_info_xh.html">
+  <link rel="alternate" hreflang="yi" href="https://innioasis.app/firmware_info_yi.html">
+  <link rel="alternate" hreflang="yo" href="https://innioasis.app/firmware_info_yo.html">
+  <link rel="alternate" hreflang="yua" href="https://innioasis.app/firmware_info_yua.html">
+  <link rel="alternate" hreflang="yue" href="https://innioasis.app/firmware_info_yue.html">
+  <link rel="alternate" hreflang="zap" href="https://innioasis.app/firmware_info_zap.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/firmware_info_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/firmware_info_zh-TW.html">
+  <link rel="alternate" hreflang="zu" href="https://innioasis.app/firmware_info_zu.html">
+  <link rel="alternate" hreflang="ar-SA" href="https://innioasis.app/firmware_info_ar-SA.html">
+  <link rel="alternate" hreflang="bn-IN" href="https://innioasis.app/firmware_info_bn-IN.html">
+  <link rel="alternate" hreflang="de-AT" href="https://innioasis.app/firmware_info_de-AT.html">
+  <link rel="alternate" hreflang="de-CH" href="https://innioasis.app/firmware_info_de-CH.html">
+  <link rel="alternate" hreflang="en-AU" href="https://innioasis.app/firmware_info_en-AU.html">
+  <link rel="alternate" hreflang="en-CA" href="https://innioasis.app/firmware_info_en-CA.html">
+  <link rel="alternate" hreflang="en-IN" href="https://innioasis.app/firmware_info_en-IN.html">
+  <link rel="alternate" hreflang="en-NZ" href="https://innioasis.app/firmware_info_en-NZ.html">
+  <link rel="alternate" hreflang="es-419" href="https://innioasis.app/firmware_info_es-419.html">
+  <link rel="alternate" hreflang="es-AR" href="https://innioasis.app/firmware_info_es-AR.html">
+  <link rel="alternate" hreflang="es-ES" href="https://innioasis.app/firmware_info_es-ES.html">
+  <link rel="alternate" hreflang="es-MX" href="https://innioasis.app/firmware_info_es-MX.html">
+  <link rel="alternate" hreflang="fr-BE" href="https://innioasis.app/firmware_info_fr-BE.html">
+  <link rel="alternate" hreflang="fr-CH" href="https://innioasis.app/firmware_info_fr-CH.html">
+  <link rel="alternate" hreflang="it-CH" href="https://innioasis.app/firmware_info_it-CH.html">
+  <link rel="alternate" hreflang="nl-BE" href="https://innioasis.app/firmware_info_nl-BE.html">
+  <link rel="alternate" hreflang="pa-PK" href="https://innioasis.app/firmware_info_pa-PK.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/firmware_info_pt-BR.html">
+  <link rel="alternate" hreflang="sr-Latn" href="https://innioasis.app/firmware_info_sr-Latn.html">
+  <link rel="alternate" hreflang="sw-KE" href="https://innioasis.app/firmware_info_sw-KE.html">
+  <link rel="alternate" hreflang="zh-HK" href="https://innioasis.app/firmware_info_zh-HK.html">
   <!-- i18n-hreflang-end -->
 </head>
 <body class="site-themes-app">
   <a class="lumen-skip-link" href="#main">Przejdź do treści</a>
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide lumen-doc-page lumen-release-page" data-firmware-info>
-    <p class="lumen-doc-back"><a href="firmware_pl.html">← Pobieranie oprogramowania sprzętowego</a></p>
+    <p class="lumen-doc-back"><a href="firmware_pl.html">← Pliki firmware do pobrania</a></p>
     <header class="lumen-doc-head">
       <div class="lumen-release-head">
         <span class="lumen-release-icon lumen-release-icon--generic" id="fi-icon" data-generic='<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>' aria-hidden="true"></span>
         <div class="lumen-release-titles">
-          <p class="lumen-kicker" id="fi-kicker">Plik README oprogramowania sprzętowego</p>
+          <p class="lumen-kicker" id="fi-kicker">README firmware</p>
           <h1 id="fi-title">O tym projekcie</h1>
         </div>
       </div>
-      <p class="lumen-lead" id="fi-lead">Własny plik README projektu, pokazany tutaj, dzięki czemu możesz przeczytać o oprogramowaniu bez opuszczania witryny.</p>
-      <p class="lumen-meta" id="fi-readme-line">Znany również jako: README.md</p>
+      <p class="lumen-lead" id="fi-lead">Własny plik README projektu, pokazany tutaj, żebyś mógł(-a) poczytać o firmware bez opuszczania strony.</p>
+      <p class="lumen-meta" id="fi-readme-line">Znany także jako: README.md</p>
       <div class="lumen-release-tag-row" id="fi-meta"></div>
       <div class="lumen-doc-actions" id="fi-actions"></div>
     </header>
 
-    <section class="lumen-firmware-stats" aria-label="Pliki do pobrania z archiwum oprogramowania sprzętowego">
-      <div class="lumen-stat"><span class="lumen-stat-label">Pliki do pobrania z archiwum oprogramowania sprzętowego</span><strong class="lumen-stat-value" data-stat="downloads">—</strong></div>
+    <section class="lumen-firmware-stats" aria-label="Pliki do pobrania z archiwum firmware">
+      <div class="lumen-stat"><span class="lumen-stat-label">Pliki do pobrania z archiwum firmware</span><strong class="lumen-stat-value" data-stat="downloads">—</strong></div>
     </section>
     <p class="lumen-meta" id="fi-stats-note"></p>
 
     <article class="lumen-doc-body lumen-firmware-readme" id="fi-body" aria-live="polite">
-      <p class="lumen-doc-status">Ładowanie projektu README…</p>
+      <p class="lumen-doc-status">Wczytywanie pliku README projektu…</p>
     </article>
   </main>
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
   <script src="firmware-catalog.js?v=20261106mirror" defer></script>
   <script src="docs-viewer.js?v=20261114order1" defer></script>
-  <script src="firmware-info.js?v=20261104cite" defer></script>
-  <script src="nav.js?v=20261114links1" defer></script>
+  <script src="mirror-stats.js?v=20261111stats" defer></script>
+  <script src="firmware-info.js?v=20261111stats" defer></script>
+  <script src="nav.js?v=20261124fixes1" defer></script>
   <script src="site-i18n.js?v=20261113blocklist" defer></script>
-<script src="site-locale.js?v=20261111i18nfix" defer></script></body>
+<script src="site-locale.js?v=20261124fixes1" defer></script></body>
 </html>

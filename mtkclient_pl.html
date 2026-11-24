@@ -26,75 +26,315 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MTKClient &amp; Low-Level Recovery Guide - Innioasis &amp; Timmkoo - Innioasis Firmware Downloads</title>
-  <meta name="description" content="Low-level MediaTek recovery, bootloader unbrick instructions, and driver diagnostics for Innioasis and Timmkoo players using MTKClient and SP Flash Tool.">
+  <title>MTKClient i niskopoziomowe odzyskiwanie - poradnik - Innioasis i Timmkoo - Innioasis Firmware Downloads</title>
+  <meta name="description" content="Niskopoziomowe odzyskiwanie MediaTek, instrukcje ratowania bootloadera i diagnostyka sterowników dla odtwarzaczy Innioasis i Timmkoo z użyciem MTKClient i SP Flash Tool.">
   <link rel="canonical" href="https://innioasis.app/mtkclient_pl.html">
   <link rel="icon" href="y1_illustration.png">
-  <link rel="stylesheet" href="site-theme.css?v=20261109theme">
-  <link rel="stylesheet" href="lumen.css?v=20261110picker">
+  <link rel="stylesheet" href="site-theme.css?v=20261124fixes1">
+  <link rel="stylesheet" href="lumen.css?v=20261124fixes1">
   <link rel="stylesheet" href="site-pages.css?v=20261019d">
-  <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261117fallback3" defer></script>
-<meta property="og:site_name" content="Innioasis Aktualizacje oprogramowania">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/mtkclient.html">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261124fixes1">
+  <script src="site-init.js?v=20261124fixes1" defer></script>
+<meta property="og:site_name" content="Aktualizacje oprogramowania Innioasis">  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/mtkclient.html">
   <link rel="alternate" hreflang="en" href="https://innioasis.app/mtkclient.html">
-  <link rel="alternate" hreflang="de" href="https://innioasis.app/mtkclient_de.html">
-  <link rel="alternate" hreflang="ja" href="https://innioasis.app/mtkclient_ja.html">
-  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/mtkclient_ja.html">
-  <link rel="alternate" hreflang="jp" href="https://innioasis.app/mtkclient_jp.html">
-  <link rel="alternate" hreflang="es" href="https://innioasis.app/mtkclient_es.html">
-  <link rel="alternate" hreflang="es-419" href="https://innioasis.app/mtkclient_es-419.html">
-  <link rel="alternate" hreflang="fr" href="https://innioasis.app/mtkclient_fr.html">
-  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/mtkclient_zh-CN.html">
-  <link rel="alternate" hreflang="zh" href="https://innioasis.app/mtkclient_zh.html">
-  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/mtkclient_zh-TW.html">
-  <link rel="alternate" hreflang="ru" href="https://innioasis.app/mtkclient_ru.html">
-  <link rel="alternate" hreflang="pt" href="https://innioasis.app/mtkclient_pt.html">
-  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/mtkclient_pt-BR.html">
-  <link rel="alternate" hreflang="it" href="https://innioasis.app/mtkclient_it.html">
-  <link rel="alternate" hreflang="ko" href="https://innioasis.app/mtkclient_ko.html">
+  <link rel="alternate" hreflang="aa" href="https://innioasis.app/mtkclient_aa.html">
+  <link rel="alternate" hreflang="ab" href="https://innioasis.app/mtkclient_ab.html">
+  <link rel="alternate" hreflang="ace" href="https://innioasis.app/mtkclient_ace.html">
+  <link rel="alternate" hreflang="ach" href="https://innioasis.app/mtkclient_ach.html">
+  <link rel="alternate" hreflang="af" href="https://innioasis.app/mtkclient_af.html">
+  <link rel="alternate" hreflang="ak" href="https://innioasis.app/mtkclient_ak.html">
+  <link rel="alternate" hreflang="alz" href="https://innioasis.app/mtkclient_alz.html">
+  <link rel="alternate" hreflang="am" href="https://innioasis.app/mtkclient_am.html">
   <link rel="alternate" hreflang="ar" href="https://innioasis.app/mtkclient_ar.html">
-  <link rel="alternate" hreflang="hi" href="https://innioasis.app/mtkclient_hi.html">
-  <link rel="alternate" hreflang="nl" href="https://innioasis.app/mtkclient_nl.html">
-  <link rel="alternate" hreflang="pl" href="https://innioasis.app/mtkclient_pl.html">
-  <link rel="alternate" hreflang="tr" href="https://innioasis.app/mtkclient_tr.html">
-  <link rel="alternate" hreflang="uk" href="https://innioasis.app/mtkclient_uk.html">
-  <link rel="alternate" hreflang="vi" href="https://innioasis.app/mtkclient_vi.html">
-  <link rel="alternate" hreflang="th" href="https://innioasis.app/mtkclient_th.html">
-  <link rel="alternate" hreflang="id" href="https://innioasis.app/mtkclient_id.html">
-  <link rel="alternate" hreflang="sv" href="https://innioasis.app/mtkclient_sv.html">
-  <link rel="alternate" hreflang="no" href="https://innioasis.app/mtkclient_no.html">
-  <link rel="alternate" hreflang="da" href="https://innioasis.app/mtkclient_da.html">
-  <link rel="alternate" hreflang="fi" href="https://innioasis.app/mtkclient_fi.html">
-  <link rel="alternate" hreflang="cs" href="https://innioasis.app/mtkclient_cs.html">
-  <link rel="alternate" hreflang="el" href="https://innioasis.app/mtkclient_el.html">
-  <link rel="alternate" hreflang="hu" href="https://innioasis.app/mtkclient_hu.html">
-  <link rel="alternate" hreflang="ro" href="https://innioasis.app/mtkclient_ro.html">
-  <link rel="alternate" hreflang="he" href="https://innioasis.app/mtkclient_he.html">
+  <link rel="alternate" hreflang="as" href="https://innioasis.app/mtkclient_as.html">
+  <link rel="alternate" hreflang="av" href="https://innioasis.app/mtkclient_av.html">
+  <link rel="alternate" hreflang="awa" href="https://innioasis.app/mtkclient_awa.html">
+  <link rel="alternate" hreflang="ay" href="https://innioasis.app/mtkclient_ay.html">
+  <link rel="alternate" hreflang="az" href="https://innioasis.app/mtkclient_az.html">
+  <link rel="alternate" hreflang="ba" href="https://innioasis.app/mtkclient_ba.html">
+  <link rel="alternate" hreflang="bal" href="https://innioasis.app/mtkclient_bal.html">
+  <link rel="alternate" hreflang="ban" href="https://innioasis.app/mtkclient_ban.html">
+  <link rel="alternate" hreflang="bbc" href="https://innioasis.app/mtkclient_bbc.html">
+  <link rel="alternate" hreflang="bci" href="https://innioasis.app/mtkclient_bci.html">
+  <link rel="alternate" hreflang="be" href="https://innioasis.app/mtkclient_be.html">
+  <link rel="alternate" hreflang="bem" href="https://innioasis.app/mtkclient_bem.html">
+  <link rel="alternate" hreflang="ber" href="https://innioasis.app/mtkclient_ber.html">
+  <link rel="alternate" hreflang="ber-Latn" href="https://innioasis.app/mtkclient_ber-Latn.html">
+  <link rel="alternate" hreflang="bew" href="https://innioasis.app/mtkclient_bew.html">
+  <link rel="alternate" hreflang="bg" href="https://innioasis.app/mtkclient_bg.html">
+  <link rel="alternate" hreflang="bho" href="https://innioasis.app/mtkclient_bho.html">
+  <link rel="alternate" hreflang="bik" href="https://innioasis.app/mtkclient_bik.html">
+  <link rel="alternate" hreflang="bm" href="https://innioasis.app/mtkclient_bm.html">
+  <link rel="alternate" hreflang="bm-Nkoo" href="https://innioasis.app/mtkclient_bm-Nkoo.html">
   <link rel="alternate" hreflang="bn" href="https://innioasis.app/mtkclient_bn.html">
+  <link rel="alternate" hreflang="bo" href="https://innioasis.app/mtkclient_bo.html">
+  <link rel="alternate" hreflang="br" href="https://innioasis.app/mtkclient_br.html">
+  <link rel="alternate" hreflang="bs" href="https://innioasis.app/mtkclient_bs.html">
+  <link rel="alternate" hreflang="bts" href="https://innioasis.app/mtkclient_bts.html">
+  <link rel="alternate" hreflang="btx" href="https://innioasis.app/mtkclient_btx.html">
+  <link rel="alternate" hreflang="bua" href="https://innioasis.app/mtkclient_bua.html">
+  <link rel="alternate" hreflang="ca" href="https://innioasis.app/mtkclient_ca.html">
+  <link rel="alternate" hreflang="ce" href="https://innioasis.app/mtkclient_ce.html">
+  <link rel="alternate" hreflang="ceb" href="https://innioasis.app/mtkclient_ceb.html">
+  <link rel="alternate" hreflang="cgg" href="https://innioasis.app/mtkclient_cgg.html">
+  <link rel="alternate" hreflang="ch" href="https://innioasis.app/mtkclient_ch.html">
+  <link rel="alternate" hreflang="chk" href="https://innioasis.app/mtkclient_chk.html">
+  <link rel="alternate" hreflang="chm" href="https://innioasis.app/mtkclient_chm.html">
+  <link rel="alternate" hreflang="ckb" href="https://innioasis.app/mtkclient_ckb.html">
+  <link rel="alternate" hreflang="cnh" href="https://innioasis.app/mtkclient_cnh.html">
+  <link rel="alternate" hreflang="co" href="https://innioasis.app/mtkclient_co.html">
+  <link rel="alternate" hreflang="crh" href="https://innioasis.app/mtkclient_crh.html">
+  <link rel="alternate" hreflang="crh-Latn" href="https://innioasis.app/mtkclient_crh-Latn.html">
+  <link rel="alternate" hreflang="crs" href="https://innioasis.app/mtkclient_crs.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/mtkclient_cs.html">
+  <link rel="alternate" hreflang="cv" href="https://innioasis.app/mtkclient_cv.html">
+  <link rel="alternate" hreflang="cy" href="https://innioasis.app/mtkclient_cy.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/mtkclient_da.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/mtkclient_de.html">
+  <link rel="alternate" hreflang="din" href="https://innioasis.app/mtkclient_din.html">
+  <link rel="alternate" hreflang="doi" href="https://innioasis.app/mtkclient_doi.html">
+  <link rel="alternate" hreflang="dov" href="https://innioasis.app/mtkclient_dov.html">
+  <link rel="alternate" hreflang="dv" href="https://innioasis.app/mtkclient_dv.html">
+  <link rel="alternate" hreflang="dyu" href="https://innioasis.app/mtkclient_dyu.html">
+  <link rel="alternate" hreflang="dz" href="https://innioasis.app/mtkclient_dz.html">
+  <link rel="alternate" hreflang="ee" href="https://innioasis.app/mtkclient_ee.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/mtkclient_el.html">
+  <link rel="alternate" hreflang="en-GB" href="https://innioasis.app/mtkclient_en-GB.html">
+  <link rel="alternate" hreflang="en-US" href="https://innioasis.app/mtkclient_en-US.html">
+  <link rel="alternate" hreflang="eo" href="https://innioasis.app/mtkclient_eo.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/mtkclient_es.html">
+  <link rel="alternate" hreflang="et" href="https://innioasis.app/mtkclient_et.html">
+  <link rel="alternate" hreflang="eu" href="https://innioasis.app/mtkclient_eu.html">
   <link rel="alternate" hreflang="fa" href="https://innioasis.app/mtkclient_fa.html">
+  <link rel="alternate" hreflang="fa-AF" href="https://innioasis.app/mtkclient_fa-AF.html">
+  <link rel="alternate" hreflang="ff" href="https://innioasis.app/mtkclient_ff.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/mtkclient_fi.html">
+  <link rel="alternate" hreflang="fil" href="https://innioasis.app/mtkclient_fil.html">
+  <link rel="alternate" hreflang="fj" href="https://innioasis.app/mtkclient_fj.html">
+  <link rel="alternate" hreflang="fo" href="https://innioasis.app/mtkclient_fo.html">
+  <link rel="alternate" hreflang="fon" href="https://innioasis.app/mtkclient_fon.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/mtkclient_fr.html">
+  <link rel="alternate" hreflang="fr-CA" href="https://innioasis.app/mtkclient_fr-CA.html">
+  <link rel="alternate" hreflang="fur" href="https://innioasis.app/mtkclient_fur.html">
+  <link rel="alternate" hreflang="fy" href="https://innioasis.app/mtkclient_fy.html">
+  <link rel="alternate" hreflang="ga" href="https://innioasis.app/mtkclient_ga.html">
+  <link rel="alternate" hreflang="gaa" href="https://innioasis.app/mtkclient_gaa.html">
+  <link rel="alternate" hreflang="gd" href="https://innioasis.app/mtkclient_gd.html">
+  <link rel="alternate" hreflang="gl" href="https://innioasis.app/mtkclient_gl.html">
+  <link rel="alternate" hreflang="gn" href="https://innioasis.app/mtkclient_gn.html">
+  <link rel="alternate" hreflang="gom" href="https://innioasis.app/mtkclient_gom.html">
+  <link rel="alternate" hreflang="gu" href="https://innioasis.app/mtkclient_gu.html">
+  <link rel="alternate" hreflang="gv" href="https://innioasis.app/mtkclient_gv.html">
+  <link rel="alternate" hreflang="ha" href="https://innioasis.app/mtkclient_ha.html">
+  <link rel="alternate" hreflang="haw" href="https://innioasis.app/mtkclient_haw.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/mtkclient_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/mtkclient_hi.html">
+  <link rel="alternate" hreflang="hil" href="https://innioasis.app/mtkclient_hil.html">
+  <link rel="alternate" hreflang="hmn" href="https://innioasis.app/mtkclient_hmn.html">
+  <link rel="alternate" hreflang="hr" href="https://innioasis.app/mtkclient_hr.html">
+  <link rel="alternate" hreflang="hrx" href="https://innioasis.app/mtkclient_hrx.html">
+  <link rel="alternate" hreflang="ht" href="https://innioasis.app/mtkclient_ht.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/mtkclient_hu.html">
+  <link rel="alternate" hreflang="hy" href="https://innioasis.app/mtkclient_hy.html">
+  <link rel="alternate" hreflang="iba" href="https://innioasis.app/mtkclient_iba.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/mtkclient_id.html">
+  <link rel="alternate" hreflang="ig" href="https://innioasis.app/mtkclient_ig.html">
+  <link rel="alternate" hreflang="ilo" href="https://innioasis.app/mtkclient_ilo.html">
+  <link rel="alternate" hreflang="is" href="https://innioasis.app/mtkclient_is.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/mtkclient_it.html">
+  <link rel="alternate" hreflang="iu" href="https://innioasis.app/mtkclient_iu.html">
+  <link rel="alternate" hreflang="iu-Latn" href="https://innioasis.app/mtkclient_iu-Latn.html">
+  <link rel="alternate" hreflang="iw" href="https://innioasis.app/mtkclient_iw.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/mtkclient_ja.html">
+  <link rel="alternate" hreflang="jam" href="https://innioasis.app/mtkclient_jam.html">
+  <link rel="alternate" hreflang="jv" href="https://innioasis.app/mtkclient_jv.html">
+  <link rel="alternate" hreflang="jw" href="https://innioasis.app/mtkclient_jw.html">
+  <link rel="alternate" hreflang="ka" href="https://innioasis.app/mtkclient_ka.html">
+  <link rel="alternate" hreflang="kac" href="https://innioasis.app/mtkclient_kac.html">
+  <link rel="alternate" hreflang="kek" href="https://innioasis.app/mtkclient_kek.html">
+  <link rel="alternate" hreflang="kg" href="https://innioasis.app/mtkclient_kg.html">
+  <link rel="alternate" hreflang="kha" href="https://innioasis.app/mtkclient_kha.html">
+  <link rel="alternate" hreflang="kk" href="https://innioasis.app/mtkclient_kk.html">
+  <link rel="alternate" hreflang="kl" href="https://innioasis.app/mtkclient_kl.html">
+  <link rel="alternate" hreflang="km" href="https://innioasis.app/mtkclient_km.html">
+  <link rel="alternate" hreflang="kn" href="https://innioasis.app/mtkclient_kn.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/mtkclient_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/mtkclient_kr.html">
+  <link rel="alternate" hreflang="kri" href="https://innioasis.app/mtkclient_kri.html">
+  <link rel="alternate" hreflang="ktu" href="https://innioasis.app/mtkclient_ktu.html">
+  <link rel="alternate" hreflang="ku" href="https://innioasis.app/mtkclient_ku.html">
+  <link rel="alternate" hreflang="kv" href="https://innioasis.app/mtkclient_kv.html">
+  <link rel="alternate" hreflang="ky" href="https://innioasis.app/mtkclient_ky.html">
+  <link rel="alternate" hreflang="la" href="https://innioasis.app/mtkclient_la.html">
+  <link rel="alternate" hreflang="lb" href="https://innioasis.app/mtkclient_lb.html">
+  <link rel="alternate" hreflang="lg" href="https://innioasis.app/mtkclient_lg.html">
+  <link rel="alternate" hreflang="li" href="https://innioasis.app/mtkclient_li.html">
+  <link rel="alternate" hreflang="lij" href="https://innioasis.app/mtkclient_lij.html">
+  <link rel="alternate" hreflang="lmo" href="https://innioasis.app/mtkclient_lmo.html">
+  <link rel="alternate" hreflang="ln" href="https://innioasis.app/mtkclient_ln.html">
+  <link rel="alternate" hreflang="lo" href="https://innioasis.app/mtkclient_lo.html">
+  <link rel="alternate" hreflang="lt" href="https://innioasis.app/mtkclient_lt.html">
+  <link rel="alternate" hreflang="ltg" href="https://innioasis.app/mtkclient_ltg.html">
+  <link rel="alternate" hreflang="lua" href="https://innioasis.app/mtkclient_lua.html">
+  <link rel="alternate" hreflang="luo" href="https://innioasis.app/mtkclient_luo.html">
+  <link rel="alternate" hreflang="lus" href="https://innioasis.app/mtkclient_lus.html">
+  <link rel="alternate" hreflang="lv" href="https://innioasis.app/mtkclient_lv.html">
+  <link rel="alternate" hreflang="mad" href="https://innioasis.app/mtkclient_mad.html">
+  <link rel="alternate" hreflang="mai" href="https://innioasis.app/mtkclient_mai.html">
+  <link rel="alternate" hreflang="mak" href="https://innioasis.app/mtkclient_mak.html">
+  <link rel="alternate" hreflang="mam" href="https://innioasis.app/mtkclient_mam.html">
+  <link rel="alternate" hreflang="mfe" href="https://innioasis.app/mtkclient_mfe.html">
+  <link rel="alternate" hreflang="mg" href="https://innioasis.app/mtkclient_mg.html">
+  <link rel="alternate" hreflang="mh" href="https://innioasis.app/mtkclient_mh.html">
+  <link rel="alternate" hreflang="mi" href="https://innioasis.app/mtkclient_mi.html">
+  <link rel="alternate" hreflang="min" href="https://innioasis.app/mtkclient_min.html">
+  <link rel="alternate" hreflang="mk" href="https://innioasis.app/mtkclient_mk.html">
+  <link rel="alternate" hreflang="ml" href="https://innioasis.app/mtkclient_ml.html">
+  <link rel="alternate" hreflang="mn" href="https://innioasis.app/mtkclient_mn.html">
+  <link rel="alternate" hreflang="mni-Mtei" href="https://innioasis.app/mtkclient_mni-Mtei.html">
+  <link rel="alternate" hreflang="mr" href="https://innioasis.app/mtkclient_mr.html">
   <link rel="alternate" hreflang="ms" href="https://innioasis.app/mtkclient_ms.html">
+  <link rel="alternate" hreflang="ms-Arab" href="https://innioasis.app/mtkclient_ms-Arab.html">
+  <link rel="alternate" hreflang="mt" href="https://innioasis.app/mtkclient_mt.html">
+  <link rel="alternate" hreflang="mwr" href="https://innioasis.app/mtkclient_mwr.html">
+  <link rel="alternate" hreflang="my" href="https://innioasis.app/mtkclient_my.html">
+  <link rel="alternate" hreflang="ndc-ZW" href="https://innioasis.app/mtkclient_ndc-ZW.html">
+  <link rel="alternate" hreflang="ne" href="https://innioasis.app/mtkclient_ne.html">
+  <link rel="alternate" hreflang="new" href="https://innioasis.app/mtkclient_new.html">
+  <link rel="alternate" hreflang="nhe" href="https://innioasis.app/mtkclient_nhe.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/mtkclient_nl.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/mtkclient_no.html">
+  <link rel="alternate" hreflang="nr" href="https://innioasis.app/mtkclient_nr.html">
+  <link rel="alternate" hreflang="nso" href="https://innioasis.app/mtkclient_nso.html">
+  <link rel="alternate" hreflang="nus" href="https://innioasis.app/mtkclient_nus.html">
+  <link rel="alternate" hreflang="ny" href="https://innioasis.app/mtkclient_ny.html">
+  <link rel="alternate" hreflang="oc" href="https://innioasis.app/mtkclient_oc.html">
+  <link rel="alternate" hreflang="om" href="https://innioasis.app/mtkclient_om.html">
+  <link rel="alternate" hreflang="or" href="https://innioasis.app/mtkclient_or.html">
+  <link rel="alternate" hreflang="os" href="https://innioasis.app/mtkclient_os.html">
+  <link rel="alternate" hreflang="pa" href="https://innioasis.app/mtkclient_pa.html">
+  <link rel="alternate" hreflang="pa-Arab" href="https://innioasis.app/mtkclient_pa-Arab.html">
+  <link rel="alternate" hreflang="pag" href="https://innioasis.app/mtkclient_pag.html">
+  <link rel="alternate" hreflang="pam" href="https://innioasis.app/mtkclient_pam.html">
+  <link rel="alternate" hreflang="pap" href="https://innioasis.app/mtkclient_pap.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/mtkclient_pl.html">
+  <link rel="alternate" hreflang="ps" href="https://innioasis.app/mtkclient_ps.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/mtkclient_pt.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/mtkclient_pt-PT.html">
+  <link rel="alternate" hreflang="qu" href="https://innioasis.app/mtkclient_qu.html">
+  <link rel="alternate" hreflang="rn" href="https://innioasis.app/mtkclient_rn.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/mtkclient_ro.html">
+  <link rel="alternate" hreflang="rom" href="https://innioasis.app/mtkclient_rom.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/mtkclient_ru.html">
+  <link rel="alternate" hreflang="rw" href="https://innioasis.app/mtkclient_rw.html">
+  <link rel="alternate" hreflang="sa" href="https://innioasis.app/mtkclient_sa.html">
+  <link rel="alternate" hreflang="sah" href="https://innioasis.app/mtkclient_sah.html">
+  <link rel="alternate" hreflang="sat" href="https://innioasis.app/mtkclient_sat.html">
+  <link rel="alternate" hreflang="sat-Latn" href="https://innioasis.app/mtkclient_sat-Latn.html">
+  <link rel="alternate" hreflang="scn" href="https://innioasis.app/mtkclient_scn.html">
+  <link rel="alternate" hreflang="sd" href="https://innioasis.app/mtkclient_sd.html">
+  <link rel="alternate" hreflang="se" href="https://innioasis.app/mtkclient_se.html">
+  <link rel="alternate" hreflang="sg" href="https://innioasis.app/mtkclient_sg.html">
+  <link rel="alternate" hreflang="shn" href="https://innioasis.app/mtkclient_shn.html">
+  <link rel="alternate" hreflang="si" href="https://innioasis.app/mtkclient_si.html">
+  <link rel="alternate" hreflang="sk" href="https://innioasis.app/mtkclient_sk.html">
+  <link rel="alternate" hreflang="sl" href="https://innioasis.app/mtkclient_sl.html">
+  <link rel="alternate" hreflang="sm" href="https://innioasis.app/mtkclient_sm.html">
+  <link rel="alternate" hreflang="sn" href="https://innioasis.app/mtkclient_sn.html">
+  <link rel="alternate" hreflang="so" href="https://innioasis.app/mtkclient_so.html">
+  <link rel="alternate" hreflang="sq" href="https://innioasis.app/mtkclient_sq.html">
+  <link rel="alternate" hreflang="sr" href="https://innioasis.app/mtkclient_sr.html">
+  <link rel="alternate" hreflang="ss" href="https://innioasis.app/mtkclient_ss.html">
+  <link rel="alternate" hreflang="st" href="https://innioasis.app/mtkclient_st.html">
+  <link rel="alternate" hreflang="su" href="https://innioasis.app/mtkclient_su.html">
+  <link rel="alternate" hreflang="sus" href="https://innioasis.app/mtkclient_sus.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/mtkclient_sv.html">
+  <link rel="alternate" hreflang="sw" href="https://innioasis.app/mtkclient_sw.html">
+  <link rel="alternate" hreflang="szl" href="https://innioasis.app/mtkclient_szl.html">
+  <link rel="alternate" hreflang="ta" href="https://innioasis.app/mtkclient_ta.html">
+  <link rel="alternate" hreflang="tcy" href="https://innioasis.app/mtkclient_tcy.html">
+  <link rel="alternate" hreflang="te" href="https://innioasis.app/mtkclient_te.html">
+  <link rel="alternate" hreflang="tet" href="https://innioasis.app/mtkclient_tet.html">
+  <link rel="alternate" hreflang="tg" href="https://innioasis.app/mtkclient_tg.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/mtkclient_th.html">
+  <link rel="alternate" hreflang="ti" href="https://innioasis.app/mtkclient_ti.html">
+  <link rel="alternate" hreflang="tiv" href="https://innioasis.app/mtkclient_tiv.html">
+  <link rel="alternate" hreflang="tk" href="https://innioasis.app/mtkclient_tk.html">
+  <link rel="alternate" hreflang="tl" href="https://innioasis.app/mtkclient_tl.html">
+  <link rel="alternate" hreflang="tn" href="https://innioasis.app/mtkclient_tn.html">
+  <link rel="alternate" hreflang="to" href="https://innioasis.app/mtkclient_to.html">
+  <link rel="alternate" hreflang="tpi" href="https://innioasis.app/mtkclient_tpi.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/mtkclient_tr.html">
+  <link rel="alternate" hreflang="trp" href="https://innioasis.app/mtkclient_trp.html">
+  <link rel="alternate" hreflang="ts" href="https://innioasis.app/mtkclient_ts.html">
+  <link rel="alternate" hreflang="tt" href="https://innioasis.app/mtkclient_tt.html">
+  <link rel="alternate" hreflang="tum" href="https://innioasis.app/mtkclient_tum.html">
+  <link rel="alternate" hreflang="ty" href="https://innioasis.app/mtkclient_ty.html">
+  <link rel="alternate" hreflang="tyv" href="https://innioasis.app/mtkclient_tyv.html">
+  <link rel="alternate" hreflang="udm" href="https://innioasis.app/mtkclient_udm.html">
+  <link rel="alternate" hreflang="ug" href="https://innioasis.app/mtkclient_ug.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/mtkclient_uk.html">
+  <link rel="alternate" hreflang="ur" href="https://innioasis.app/mtkclient_ur.html">
+  <link rel="alternate" hreflang="uz" href="https://innioasis.app/mtkclient_uz.html">
+  <link rel="alternate" hreflang="ve" href="https://innioasis.app/mtkclient_ve.html">
+  <link rel="alternate" hreflang="vec" href="https://innioasis.app/mtkclient_vec.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/mtkclient_vi.html">
+  <link rel="alternate" hreflang="war" href="https://innioasis.app/mtkclient_war.html">
+  <link rel="alternate" hreflang="wo" href="https://innioasis.app/mtkclient_wo.html">
+  <link rel="alternate" hreflang="xh" href="https://innioasis.app/mtkclient_xh.html">
+  <link rel="alternate" hreflang="yi" href="https://innioasis.app/mtkclient_yi.html">
+  <link rel="alternate" hreflang="yo" href="https://innioasis.app/mtkclient_yo.html">
+  <link rel="alternate" hreflang="yua" href="https://innioasis.app/mtkclient_yua.html">
+  <link rel="alternate" hreflang="yue" href="https://innioasis.app/mtkclient_yue.html">
+  <link rel="alternate" hreflang="zap" href="https://innioasis.app/mtkclient_zap.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/mtkclient_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/mtkclient_zh-TW.html">
+  <link rel="alternate" hreflang="zu" href="https://innioasis.app/mtkclient_zu.html">
+  <link rel="alternate" hreflang="ar-SA" href="https://innioasis.app/mtkclient_ar-SA.html">
+  <link rel="alternate" hreflang="bn-IN" href="https://innioasis.app/mtkclient_bn-IN.html">
+  <link rel="alternate" hreflang="de-AT" href="https://innioasis.app/mtkclient_de-AT.html">
+  <link rel="alternate" hreflang="de-CH" href="https://innioasis.app/mtkclient_de-CH.html">
+  <link rel="alternate" hreflang="en-AU" href="https://innioasis.app/mtkclient_en-AU.html">
+  <link rel="alternate" hreflang="en-CA" href="https://innioasis.app/mtkclient_en-CA.html">
+  <link rel="alternate" hreflang="en-IN" href="https://innioasis.app/mtkclient_en-IN.html">
+  <link rel="alternate" hreflang="en-NZ" href="https://innioasis.app/mtkclient_en-NZ.html">
+  <link rel="alternate" hreflang="es-419" href="https://innioasis.app/mtkclient_es-419.html">
+  <link rel="alternate" hreflang="es-AR" href="https://innioasis.app/mtkclient_es-AR.html">
+  <link rel="alternate" hreflang="es-ES" href="https://innioasis.app/mtkclient_es-ES.html">
+  <link rel="alternate" hreflang="es-MX" href="https://innioasis.app/mtkclient_es-MX.html">
+  <link rel="alternate" hreflang="fr-BE" href="https://innioasis.app/mtkclient_fr-BE.html">
+  <link rel="alternate" hreflang="fr-CH" href="https://innioasis.app/mtkclient_fr-CH.html">
+  <link rel="alternate" hreflang="it-CH" href="https://innioasis.app/mtkclient_it-CH.html">
+  <link rel="alternate" hreflang="nl-BE" href="https://innioasis.app/mtkclient_nl-BE.html">
+  <link rel="alternate" hreflang="pa-PK" href="https://innioasis.app/mtkclient_pa-PK.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/mtkclient_pt-BR.html">
+  <link rel="alternate" hreflang="sr-Latn" href="https://innioasis.app/mtkclient_sr-Latn.html">
+  <link rel="alternate" hreflang="sw-KE" href="https://innioasis.app/mtkclient_sw-KE.html">
+  <link rel="alternate" hreflang="zh-HK" href="https://innioasis.app/mtkclient_zh-HK.html">
+  <!-- i18n-hreflang-end -->
 </head>
 <body class="site-themes-app">
   <a class="lumen-skip-link" href="#main">Przejdź do treści</a>
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">Advanced Diagnostics · MediaTek</p>
-      <h1>MTKClient &amp; Unbrick Diagnostics</h1>
-      <p class="lead">MTKClient is the underlying open-source MediaTek flashing engine used by Innioasis Updater CE. If a player becomes unresponsive or fails standard flashing, use these recovery diagnostics.</p>
+      <p class="lumen-kicker">Zaawansowana diagnostyka · MediaTek</p>
+      <h1>MTKClient i diagnostyka przy ratowaniu urządzenia</h1>
+      <p class="lead">MTKClient to otwartoźródłowy silnik do wgrywania firmware na układach MediaTek, na którym działa Innioasis Updater CE. Jeśli odtwarzacz przestanie odpowiadać albo zwykłe wgrywanie się nie powiedzie, skorzystaj z tej diagnostyki odzyskiwania.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="troubleshooting_pl.html">General Troubleshooting</a>
-        <a class="lumen-button" href="drivers_pl.html">Driver Setup Notes</a>
+        <a class="lumen-button lumen-button--primary" href="troubleshooting_pl.html">Ogólne rozwiązywanie problemów</a>
+        <a class="lumen-button" href="drivers_pl.html">Uwagi o konfiguracji sterownika</a>
       </div>
-    </header><section class="lumen-guide-section"><div class="lumen-callout"><p class="lumen-kicker">Zacznij od Innioasis Updater</p><h2>Try the guided route before the low-level one</h2><p>Updater does it in one pass. Pick the software, follow the steps on screen, and you are done. It also tells you when a fix or a new release lands.</p></div></section>
+    </header><section class="lumen-guide-section"><div class="lumen-callout"><p class="lumen-kicker">Zacznij od Innioasis Updater</p><h2>Zacznij od prowadzonej ścieżki, zanim sięgniesz po niskopoziomową</h2><p>Updater robi wszystko za jednym razem. Wybierz oprogramowanie, postępuj zgodnie z krokami na ekranie i gotowe. Informuje też, gdy pojawi się poprawka lub nowe wydanie.</p></div></section>
 
     <section class="lumen-guide-section" aria-labelledby="brom-title">
-      <h2 id="brom-title">Understanding BootROM (BROM) Mode</h2>
-      <p>When powered completely down, the MediaTek MT6572 / MT6580 processor listens on the USB bus for a handshake packet before loading the primary bootloader. If a corrupted flash occurs, BROM mode allows a full recovery rewrite.</p>
+      <h2 id="brom-title">Czym jest tryb BootROM (BROM)</h2>
+      <p>Gdy odtwarzacz jest całkowicie wyłączony, procesor MediaTek MT6572 / MT6580 nasłuchuje na magistrali USB pakietu uzgadniania, zanim wczyta główny bootloader. Jeśli wgrywanie uszkodzi system, tryb BROM pozwala na pełne odzyskanie przez ponowny zapis.</p>
     </section>
   </main>
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
-  <script src="nav.js?v=20261114links1" defer></script>
-<script src="site-locale.js?v=20261111i18nfix" defer></script></body>
+  <script src="nav.js?v=20261124fixes1" defer></script>
+<script src="site-locale.js?v=20261124fixes1" defer></script></body>
 </html>

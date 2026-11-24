@@ -1,24 +1,3 @@
-<!-- Google Tag Manager (GA4) -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'granted',
-    functionality_storage: 'granted',
-    security_storage: 'granted',
-    wait_for_update: 500
-  });
-</script>
-<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
-
 <!-- Community shortcuts. The support panel opens when a visitor chooses Donate. -->
 <style>
   /* Keep the injected donation modal self-contained when a cached page has an
@@ -58,7 +37,7 @@
     position: fixed !important;
     inset: 0 !important;
     z-index: 10000 !important;
-    background: transparent !important;
+    background: rgba(4, 7, 14, 0.6) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     pointer-events: auto !important;
@@ -94,6 +73,14 @@
     gap: 4px 8px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+  }
+  #support-toolbar-container .y1-privacy-save,
+  #support-toolbar-container .y1-donate-close {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
   #support-toolbar-container .y1-dock-secondary-line {
     display: flex !important;
@@ -171,6 +158,22 @@
       max-height: calc(100dvh - 130px) !important;
     }
   }
+  /* The panel surface must live here as well as in site-toolbar.css: a page
+     that still has an older stylesheet cached gets the injected overlay with
+     no background, border or padding, and the article behind it shows through
+     the dialog. These rules are deliberately not !important so a light or
+     high-contrast theme can still recolour the surface. */
+  #support-toolbar-container .y1-donate-panel,
+  #support-toolbar-container .y1-privacy-panel,
+  .y1-donate-panel,
+  .y1-privacy-panel {
+    background: linear-gradient(145deg, var(--lumen-panel, #17243a), var(--lumen-panel-soft, #1a1e28));
+    border: 1px solid var(--lumen-line-strong, rgba(159, 193, 255, 0.35));
+    border-radius: 18px;
+    padding: 20px 20px 16px;
+    color: var(--lumen-text, #d9e0ef);
+    box-shadow: 0 18px 52px rgba(0, 0, 0, 0.55);
+  }
   #support-toolbar-container .y1-contributor-stream-box {
     box-sizing: border-box;
     width: 100%;
@@ -235,6 +238,96 @@
   }
   html.y1-region-ru #support-toolbar-container .y1-donate-btn--boosty {
     display: inline-flex !important;
+  }
+  /* Completion / success confirmation shown inside the donations appeal modal
+     after a download, Studio upload, Studio ZIP save, direct install, etc. */
+  #support-toolbar-container .y1-donate-completion-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0 0 14px;
+    padding: 12px 14px;
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(16, 185, 129, 0.45);
+    border-radius: 12px;
+    color: var(--lumen-paper, #fff);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.12);
+    opacity: 1;
+  }
+  #support-toolbar-container .y1-donate-completion-notice[hidden] {
+    display: none !important;
+  }
+  #support-toolbar-container .y1-donate-completion-icon {
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+    color: #34d399;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  #support-toolbar-container .y1-donate-completion-content {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  #support-toolbar-container .y1-donate-completion-title {
+    display: block;
+    font-size: 0.96rem;
+    font-weight: 750;
+    color: #34d399;
+    margin-bottom: 3px;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+  }
+  #support-toolbar-container .y1-donate-completion-text {
+    margin: 0;
+    font-size: 0.86rem;
+    line-height: 1.48;
+    color: var(--lumen-text, #e5ecf8);
+    overflow-wrap: break-word;
+  }
+  #support-toolbar-container .y1-donate-completion-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    color: #6ee7b7;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  #support-toolbar-container .y1-donate-completion-link:hover,
+  #support-toolbar-container .y1-donate-completion-link:focus-visible {
+    color: #a7f3d0;
+  }
+  #support-toolbar-container .y1-donate-completion-link[hidden] {
+    display: none !important;
+  }
+  :root[data-lumen-theme="light"] #support-toolbar-container .y1-donate-completion-notice {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(5, 150, 105, 0.42);
+    color: #0f172a;
+  }
+  :root[data-lumen-theme="light"] #support-toolbar-container .y1-donate-completion-icon,
+  :root[data-lumen-theme="light"] #support-toolbar-container .y1-donate-completion-title {
+    color: #047857;
+  }
+  :root[data-lumen-theme="light"] #support-toolbar-container .y1-donate-completion-text {
+    color: #1e293b;
+  }
+  :root[data-lumen-theme="light"] #support-toolbar-container .y1-donate-completion-link {
+    color: #065f46;
+  }
+  #support-toolbar-container.y1-toolbar-hidden.y1-modal-overlay-active {
+    display: flex !important;
+  }
+  #support-toolbar-container.y1-toolbar-hidden.y1-modal-overlay-active .y1-site-dock-wrap {
+    display: block !important;
+  }
+  #support-toolbar-container.y1-toolbar-hidden.y1-modal-overlay-active #y1-site-dock-bar {
+    display: none !important;
   }
   #support-toolbar-container .y1-donate-btn:hover,
   #support-toolbar-container .y1-donate-btn:focus-visible {
@@ -318,6 +411,8 @@
   html.y1-donations-off #y1-dock-secondary-line,
   html.y1-donations-off #y1-dock-goal-layer,
   html.y1-donations-off .y1-donate-trigger,
+  html.y1-donations-off #support-toolbar-container .y1-donate-trigger,
+  html.y1-donations-off #support-toolbar-container[data-dock-density] .y1-donate-trigger,
   html.y1-donations-off #y1-donate-panel,
   html.y1-donations-off .y1-contributor-stream-box,
   html.y1-donations-off [data-toolbar-thank-you-open],
@@ -384,7 +479,7 @@
   }
   .y1-dock-reopen-icon {
     display: block !important;
-    color: #ff5e5b !important;
+    color: var(--lumen-accent, #ff5e5b) !important;
   }
   .site-locale-throbber {
     display: none;
@@ -409,22 +504,150 @@
   @media (prefers-reduced-motion: reduce) {
     .site-locale-throbber { animation: none; opacity: .6; }
   }
+
+  /* =====================================================================
+     Adaptive dock density (2026-11 responsive pass)
+
+     The bottom dock is a fixed bar whose height comes out of the viewport.
+     On square handhelds (BlackBerry Passport, Unihertz Titan/Elite, folding
+     flip phones) and short browser windows a full two-line dock can eat a
+     fifth of the screen, so density steps down in this order:
+
+       full    every control, including the running-costs goal line
+       compact goal line off, small/large text buttons folded, tighter rows
+       minimal icon-only Donate/Privacy/Language, goal line off
+
+     Priority is fixed: Donate, Privacy and Language stay reachable at every
+     density. Keep this list in sync with docs/RESPONSIVE_AUDIT.md; Antigravity
+     and Buffy both edit this block.
+     ===================================================================== */
+  #support-toolbar-container .y1-site-dock-bar {
+    padding-top: 6px !important;
+    padding-inline: max(12px, env(safe-area-inset-left, 0px)) max(12px, env(safe-area-inset-right, 0px)) !important;
+  }
+
+  /* compact & minimal: keep priority controls and font sizing reachable */
+  #support-toolbar-container[data-dock-density="compact"] .y1-dock-goal-layer,
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-goal-layer,
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-sep {
+    display: none !important;
+  }
+
+  /* minimal: icons only, so priority controls and community links fit a single row on any smartphone. */
+  #support-toolbar-container[data-dock-density="minimal"] .y1-site-dock-bar {
+    padding-top: 4px !important;
+    padding-bottom: max(4px, env(safe-area-inset-bottom, 4px)) !important;
+    padding-inline: max(8px, env(safe-area-inset-left, 8px)) max(8px, env(safe-area-inset-right, 8px)) !important;
+  }
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-buttons-layer {
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    gap: 2px 4px !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-link,
+  #support-toolbar-container[data-dock-density="minimal"] .site-locale-dock-btn {
+    font-size: 0 !important;
+    padding: 6px 8px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+  #support-toolbar-container[data-dock-density="minimal"] .y1-font-control {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+  }
+  #support-toolbar-container[data-dock-density="minimal"] .y1-font-btn {
+    font-size: 0.78rem !important;
+    font-weight: 800 !important;
+    padding: 4px 6px !important;
+    min-width: 26px !important;
+    min-height: 36px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+  #support-toolbar-container[data-dock-density="minimal"] .site-locale-dock-btn {
+    margin-inline-start: 0 !important;
+  }
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-link .y1-dock-icon,
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-link svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-close-btn {
+    min-width: 40px !important;
+    min-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Every density keeps finger-sized hit areas. The goal line is a clickable
+     row too, so it needs the same 40px minimum as the buttons. */
+  #support-toolbar-container .y1-dock-secondary-line {
+    min-height: 40px !important;
+    padding-block: 4px !important;
+  }
+  #support-toolbar-container .y1-dock-close-btn {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Every density keeps finger-sized hit areas (WCAG 2.5.8 asks for 24px,
+     Apple and Material both recommend 44px). */
+  #support-toolbar-container .y1-dock-link,
+  #support-toolbar-container .y1-font-btn,
+  #support-toolbar-container .site-locale-dock-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Reserve the dock's height so page footers never sit underneath it and no
+     scroll jump appears when the density tier changes. */
+  body:not(.y1-dock-closed) {
+    padding-bottom: var(--y1-dock-space, 0px);
+  }
 </style>
 <div id="support-toolbar-container">
   <div class="y1-dock-backdrop" data-dock-backdrop hidden></div>
   <div class="y1-site-dock-wrap">
     <div class="y1-donate-panel" id="y1-donate-panel" role="dialog" aria-modal="false" aria-labelledby="y1-donate-title" hidden>
 
+      <!-- Completion / Success Notice (shown when opened after a download, upload, save, or direct install) -->
+      <div class="y1-donate-completion-notice" id="y1-donate-completion-notice" role="status" aria-live="polite" hidden>
+        <div class="y1-donate-completion-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" width="20" height="20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="y1-donate-completion-content">
+          <strong class="y1-donate-completion-title" id="y1-donate-completion-title"></strong>
+          <p class="y1-donate-completion-text" id="y1-donate-completion-text"></p>
+          <a class="y1-donate-completion-link" id="y1-donate-completion-link" href="#" target="_blank" rel="noopener noreferrer" hidden></a>
+        </div>
+      </div>
+
       <!-- Developer Header: Avatar + Headline -->
       <div class="y1-developer-profile-wrap" style="margin: 0 0 12px; display: flex; align-items: center; justify-content: space-between; gap: 14px;">
         <div style="display: flex; align-items: center; gap: 14px; min-width: 0; flex: 1;">
-          <img class="y1-developer-avatar" id="y1-developer-avatar-img" src="/assets/developer.png?v=20260831" loading="eager" decoding="async" onerror="if(!this.dataset.t1){this.dataset.t1='1';this.src='/assets/developer.png';}else if(!this.dataset.t2){this.dataset.t2='1';this.src='/assets/developer.png';}else{this.src='https://innioasis.app/assets/developer.png';this.onerror=null;}" alt="Ryan (programista)" width="64" height="64" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; display: block; border: 2px solid rgba(255, 255, 255, 0.2);">
+          <img class="y1-developer-avatar" id="y1-developer-avatar-img" src="/assets/developer.png?v=20260831" loading="eager" decoding="async" onerror="if(!this.dataset.t1){this.dataset.t1='1';this.src='/assets/developer.png';}else if(!this.dataset.t2){this.dataset.t2='1';this.src='/assets/developer.png';}else{this.src='https://innioasis.app/assets/developer.png';this.onerror=null;}" alt="Ryan (deweloper)" width="64" height="64" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; display: block; border: 2px solid rgba(255, 255, 255, 0.2);">
           <div style="display: flex; flex-direction: column; justify-content: center; min-width: 0;">
-            <h2 class="y1-donate-panel-hook" id="y1-donate-title" style="margin: 0 0 3px 0; font-size: 1.55rem; line-height: 1.15; font-weight: 700; max-width: none;"><span>To zajmie ciebie.</span></h2>
+            <h2 class="y1-donate-panel-hook" id="y1-donate-title" style="margin: 0 0 3px 0; font-size: 1.55rem; line-height: 1.15; font-weight: 700; max-width: none;"><span>Potrzebujemy Ciebie.</span></h2>
             <small id="y1-donate-subhead" style="color: var(--lumen-muted, #9aa3b5); font-weight: 600; font-size: 0.85rem; line-height: 1.3;">Nasze projekty opierają się na darowiznach</small>
           </div>
         </div>
-        <button class="y1-donate-close" type="button" data-donate-close aria-label="Zamknij opcje darowizn" style="position: static; flex-shrink: 0; margin-left: 8px;">×</button>
+        <button class="y1-donate-close" type="button" data-donate-close aria-label="Zamknij opcje wpłat" style="position: static; flex-shrink: 0; margin-left: 8px;">×</button>
       </div>
 
       <p class="y1-donate-panel-intro" id="y1-donate-panel-intro" data-i18n-skip="true" translate="no">Hi, I'm Ryan. I build Innioasis Updater CE, this firmware archive, and the Themes Gallery. I pay for them myself so they stay free for everyone.</p>
@@ -432,7 +655,7 @@
       <div class="y1-donate-grid">
         <a class="y1-donate-btn y1-donate-btn--kofi" href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer">
           <img class="y1-donate-btn-icon" src="/assets/icon_kofi.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/assets/icon_kofi.png';" data-method-icon="icon_kofi.png" width="20" height="20" alt="">
-          Przekaż darowiznę na Ko-fi
+          Wesprzyj na Ko-fi
         </a>
         <a class="y1-donate-btn y1-donate-btn--bmac" href="https://buymeacoffee.com/ryanspecter" target="_blank" rel="noopener noreferrer">
           <img class="y1-donate-btn-icon" src="/assets/icon_kofi.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/assets/icon_kofi.png';" data-method-icon="icon_kofi.png" width="20" height="20" alt="">
@@ -440,28 +663,28 @@
         </a>
         <a class="y1-donate-btn y1-donate-btn--paypal" href="https://paypal.me/ryanspecter282" target="_blank" rel="noopener noreferrer">
           <img class="y1-donate-btn-icon" src="/assets/icon_paypal.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/assets/icon_paypal.png';" data-method-icon="icon_paypal.png" width="20" height="20" alt="">
-          Przekaż darowiznę do PayPal
+          Wesprzyj przez PayPal
         </a>
         <a class="y1-donate-btn y1-donate-btn--revolut" href="https://revolut.me/rspecter" target="_blank" rel="noopener noreferrer">
           <img class="y1-donate-btn-icon" src="/assets/icon_revolut.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/assets/icon_revolut.png';" data-method-icon="icon_revolut.png" width="20" height="20" alt="">
-          Przekaż darowiznę do Revolut
+          Wesprzyj przez Revolut
         </a>
         <a class="y1-donate-btn y1-donate-btn--patreon" href="https://www.patreon.com/ryanspecter" target="_blank" rel="noopener noreferrer">
           <img class="y1-donate-btn-icon" src="/assets/icon_patreon.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/assets/icon_patreon.png';" data-method-icon="icon_patreon.png" width="20" height="20" alt="">
-          Przekaż darowiznę do Patreon
+          Wesprzyj przez Patreon
         </a>
         <a class="y1-donate-btn y1-donate-btn--boosty" href="https://boosty.to/ryanspecter" target="_blank" rel="noopener noreferrer" hidden>
-          Przekaż darowiznę na Boosty
+          Wesprzyj na Boosty
         </a>
       </div>
 
       <!-- Honeygain Free Contribution (de-emphasised small link) -->
-      <p class="y1-donate-alt-link">Lub <a href="https://join.honeygain.com/ITSRY2B5D7" target="_blank" rel="noopener noreferrer">pomoc za darmo z Honeygain</a> (zarób 3 USD, dzieląc 100 MB przepustowości)</p>
+      <p class="y1-donate-alt-link">Lub <a href="https://join.honeygain.com/ITSRY2B5D7" target="_blank" rel="noopener noreferrer">pomóż za darmo z Honeygain</a> (zarobisz 3 USD za udostępnienie 100 MB łącza)</p>
 
       <!-- Crypto Collapsible -->
       <div class="y1-crypto-dropdown">
         <button class="y1-crypto-toggle" type="button" data-crypto-toggle aria-expanded="false" aria-controls="y1-crypto-panel">
-          <span>Pokaż opcje kryptowalut · BTC, ETH, SHIB</span>
+          <span>Pokaż opcje kryptowalutowe · BTC, ETH, SHIB</span>
           <svg class="y1-crypto-toggle-arrow" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
         </button>
         <div class="y1-crypto-panel" id="y1-crypto-panel" hidden>
@@ -488,12 +711,12 @@
       <div style="margin: 14px 0 6px; text-align: center;">
         <button type="button" class="y1-donate-btn y1-donate-supporters-btn" data-toolbar-thank-you-open style="width: 100%; justify-content: center; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.9rem; font-weight: 600; padding: 9px 12px; border-radius: 8px; cursor: pointer; color: inherit; display: inline-flex; align-items: center; gap: 8px;">
           <span>❤️</span>
-          <span>Dziękujemy naszym Wspierającym</span>
+          <span>Dziękujemy naszym wspierającym</span>
         </button>
       </div>
 
       <label class="y1-donate-optout"><input type="checkbox" data-donations-optout><span>Nie pokazuj więcej próśb o darowiznę</span></label>
-      <p class="y1-donate-smallprint" style="margin-top: 14px;">Wsparcie dla Aktualizatora i Galerii Motywów poprzez Ko-fi, Buy Me a Coffee, PayPal, Revolut lub Patreon. <a href="credits_pl.html" style="color: inherit; text-decoration: underline;">Zobacz naszą pełną publiczną księgę dawców i zebrane pieniądze →</a></p>
+      <p class="y1-donate-smallprint" style="margin-top: 14px;">Wesprzyj Updater i Galerię motywów przez Ko-fi, Buy Me a Coffee, PayPal, Revolut lub Patreon. <a href="credits_pl.html" style="color: inherit; text-decoration: underline;">Zobacz pełną publiczną księgę darczyńców i zebrane środki →</a></p>
     </div>
 
     <div class="y1-privacy-panel" id="y1-privacy-panel" role="dialog" aria-modal="false" aria-labelledby="y1-privacy-title" hidden>
@@ -502,34 +725,41 @@
           <p class="y1-donate-panel-title">Twoja prywatność w Innioasis.app</p>
           <h2 class="y1-donate-panel-hook" id="y1-privacy-title">Analityka i prywatność</h2>
         </div>
-        <button class="y1-donate-close" type="button" data-privacy-close aria-label="Zamknij informację o ochronie prywatności">×</button>
+        <button class="y1-donate-close" type="button" data-privacy-close aria-label="Zamknij informację o prywatności">×</button>
       </div>
             <div class="y1-privacy-body" style="max-height: 60vh; overflow-y: auto;">
-        <p><strong>Innioasis.app używa Cloudflare i Google Analytics (GTM) do optymalizacji wydajności, ochrony przed atakami i pomiaru wykorzystania witryny.</strong> Analityczne pliki cookie są opcjonalne. Nigdy nie sprzedajemy Twoich danych osobowych.</p>
+        <p><strong>Innioasis.app korzysta z Cloudflare i Google Analytics (GTM), aby optymalizować wydajność, chronić przed atakami i mierzyć użycie strony.</strong> Pliki cookie analityczne są opcjonalne. Nigdy nie sprzedajemy Twoich danych osobowych.</p>
         <p>Zarządzaj zapisanymi preferencjami:</p>
-        <div class="y1-privacy-options" aria-label="Co witryna może zapamiętać">
+        <div class="y1-privacy-options" aria-label="Co strona może zapamiętać">
+          <label class="y1-privacy-option" data-privacy-analytics-row>
+            <span class="y1-privacy-option-label"><strong>Telemetria analityczna i wydajnościowa</strong><small>Zbieramy tylko to, co niezbędne (optymalizacja ruchu i tras; nie zależy nam na danych) - wybierz Tylko niezbędne lub Wyłączone.</small></span>
+            <select class="y1-privacy-select" data-privacy-analytics aria-label="Ustawienia analityki" style="background:rgba(255,255,255,0.08); color:inherit; border:1px solid rgba(255,255,255,0.22); border-radius:8px; padding:0.35rem 0.6rem; font-size:0.85rem; font-weight:600; cursor:pointer;">
+              <option value="essential">Tylko niezbędne</option>
+              <option value="off">Wyłączone</option>
+            </select>
+          </label>
           <label class="y1-privacy-option">
-            <span class="y1-privacy-option-label"><strong>Pamiętaj o odpowiedziach na pytania przewodnika</strong><small>Zapisuje pytanie „Czy to było przydatne?” opinie na temat przewodników.</small></span>
+            <span class="y1-privacy-option-label"><strong>Zapamiętuj odpowiedzi w ankiecie pod poradnikami</strong><small>Zapisuje Twoje odpowiedzi na pytanie „Czy to było przydatne?” pod poradnikami.</small></span>
             <input type="checkbox" class="y1-privacy-toggle" data-privacy-feedback>
           </label>
           <label class="y1-privacy-option">
-            <span class="y1-privacy-option-label"><strong>Pamiętaj o wyborze nocnych kompilacji</strong><small>Pokazuje wersje wstępne i wersje nocne na liście oprogramowania sprzętowego.</small></span>
+            <span class="y1-privacy-option-label"><strong>Zapamiętaj wybór wersji nightly</strong><small>Pokazuje wersje przedpremierowe i nightly na liście firmware.</small></span>
             <input type="checkbox" class="y1-privacy-toggle" data-privacy-nightly>
           </label>
           <label class="y1-privacy-option" data-privacy-donations-row hidden>
-            <span class="y1-privacy-option-label"><strong>Pokaż wsparcie społeczności i koszty bieżące</strong><small>Przywraca cele paska narzędzi i linki do darowizn.</small></span>
+            <span class="y1-privacy-option-label"><strong>Pokazuj prośby o wsparcie społeczności i koszty utrzymania</strong><small>Przywraca cele na pasku narzędzi i linki do wpłat.</small></span>
             <input type="checkbox" class="y1-privacy-toggle" data-privacy-donations>
           </label>
         </div>
         <p class="y1-privacy-status" data-privacy-status role="status" aria-live="polite"></p>
-        <p class="y1-privacy-note" style="font-size: 0.78rem; opacity: 0.8; margin-top: 8px;">Motyw, rozmiar czcionki i preferencje językowe są przechowywane lokalnie w Twojej przeglądarce. Linki zewnętrzne do platform społecznościowych działają zgodnie z ich odpowiednimi politykami.</p>
+        <p class="y1-privacy-note" style="font-size: 0.78rem; opacity: 0.8; margin-top: 8px;">Preferencje motywu, rozmiaru czcionki i języka są przechowywane lokalnie w przeglądarce. Linki zewnętrzne do platform społeczności podlegają ich własnym zasadom.</p>
       </div>
       <div class="y1-privacy-actions">
-        <button type="button" class="y1-privacy-save" data-privacy-save>Zapisz wybory</button>
+        <button type="button" class="y1-privacy-save" data-privacy-save>Zapisz wybór</button>
       </div>
     </div>
 
-    <nav class="y1-site-dock-bar" id="y1-site-dock-bar" aria-label="Skróty witryny">
+    <nav class="y1-site-dock-bar" id="y1-site-dock-bar" aria-label="Skróty do stron">
       <div class="y1-dock-buttons-layer" id="y1-dock-buttons-layer">
         <a class="y1-dock-link" href="https://reddit.com/r/innioasis" target="_blank" rel="noopener noreferrer"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>Reddit</a>
         <span class="y1-dock-sep" aria-hidden="true">·</span>
@@ -539,12 +769,11 @@
         <span class="y1-dock-sep" aria-hidden="true" data-donations-appeal>·</span>
         <button class="y1-dock-link y1-privacy-trigger" type="button" data-privacy-open aria-expanded="false" aria-controls="y1-privacy-panel"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Prywatność</button>
         <span class="y1-dock-sep" aria-hidden="true">·</span>
-        <button class="y1-dock-link site-locale-dock-btn" type="button" data-locale-open aria-haspopup="dialog" aria-controls="site-locale-panel" title="Język"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"></path></svg><span class="site-locale-toggle-label">Język</span><span class="site-locale-throbber" aria-hidden="true"></span></button>
-        <span class="y1-dock-sep" aria-hidden="true">·</span>
-        <span class="y1-font-control" role="group" aria-label="Dostosuj rozmiar tekstu">
-          <button class="y1-dock-link y1-font-btn y1-font-btn--small" type="button" data-font-down aria-label="Mniejszy tekst">A-</button>
-          <button class="y1-dock-link y1-font-btn y1-font-btn--reset" type="button" data-font-reset aria-label="Zresetuj rozmiar tekstu">A</button>
-          <button class="y1-dock-link y1-font-btn y1-font-btn--large" type="button" data-font-up aria-label="Większy tekst">+</button>
+        <span class="y1-font-control" role="group" aria-label="Zmień rozmiar tekstu i język">
+          <button class="y1-dock-link y1-font-btn y1-font-btn--small" type="button" data-font-down aria-label="Mniejszy tekst">A−</button>
+          <button class="y1-dock-link y1-font-btn y1-font-btn--reset" type="button" data-font-reset aria-label="Przywróć domyślny rozmiar tekstu">A</button>
+          <button class="y1-dock-link y1-font-btn y1-font-btn--large" type="button" data-font-up aria-label="Większy tekst">A+</button>
+          <button class="y1-dock-link site-locale-dock-btn" type="button" data-locale-open aria-haspopup="dialog" aria-controls="site-locale-panel" title="Język" style="margin-inline-start: 4px;"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"></path></svg><span class="site-locale-toggle-label">Język</span><span class="site-locale-throbber" aria-hidden="true"></span></button>
         </span>
         <span class="y1-dock-sep" aria-hidden="true">·</span>
         <button class="y1-dock-link y1-dock-close-btn" type="button" data-dock-close aria-label="Zamknij dolny pasek narzędzi" title="Zamknij pasek narzędzi" style="font-size: 1.25rem; line-height: 1; padding: 0 5px; cursor: pointer; background: transparent; border: none; color: inherit; opacity: 0.72; transition: opacity 0.15s ease;">&times;</button>
@@ -554,7 +783,7 @@
         <div class="y1-dock-secondary-goal-view" id="y1-dock-secondary-goal-view">
           <span class="y1-dock-secondary-text" id="y1-dock-secondary-text" data-i18n-skip="true" translate="no">
             <span class="y1-dock-text-desktop">You've helped us raise $0 of our $10 costs for today.</span>
-            <span class="y1-dock-text-mobile">Pomogłeś nam zebrać 0 USD z dzisiejszych 10 USD kosztów.</span>
+            <span class="y1-dock-text-mobile">Pomogłeś nam zebrać $0 z $10 dziennych kosztów.</span>
           </span>
           <div class="y1-dock-secondary-bar-wrap" id="y1-dock-secondary-bar-wrap" aria-hidden="true"><div class="y1-dock-secondary-bar-fill" id="y1-dock-secondary-bar-fill"></div></div>
         </div>
@@ -578,18 +807,18 @@
   </div>
   <div class="y1-toolbar-thank-you-overlay" id="y1-toolbar-thank-you-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="y1-toolbar-thank-you-title">
     <div class="y1-toolbar-thank-you-stage">
-      <p class="y1-toolbar-thank-you-eyebrow"><a href="credits_pl.html" style="color: inherit; text-decoration: underline;">Innioasis Updater CE · Kredyty</a></p>
+      <p class="y1-toolbar-thank-you-eyebrow"><a href="credits_pl.html" style="color: inherit; text-decoration: underline;">Innioasis Updater CE · Autorzy</a></p>
       <h2 id="y1-toolbar-thank-you-title">Dziękuję.</h2>
-      <p class="y1-toolbar-thank-you-subtitle">Ten projekt powstał, ponieważ ludzie zdecydowali się pomóc. Dziękujemy za utrzymanie archiwum, narzędzi i społeczności w ruchu.</p>
+      <p class="y1-toolbar-thank-you-subtitle">Ten projekt istnieje, bo ludzie postanowili pomóc. Dziękujemy za to, że archiwum, narzędzia i społeczność nadal się rozwijają.</p>
       <div class="y1-toolbar-thank-you-names" id="y1-toolbar-thank-you-names" aria-live="polite" data-i18n-skip="true" translate="no"><p>Loading supporters…</p></div>
-      <p class="y1-toolbar-thank-you-footer">Każdy wkład, duży czy mały, ma znaczenie.</p>
+      <p class="y1-toolbar-thank-you-footer">Liczy się każdy wkład, duży czy mały.</p>
       <div style="display: flex; gap: 8px; justify-content: center; margin-top: 14px; flex-wrap: wrap;">
-        <a href="credits_pl.html" class="y1-toolbar-thank-you-close" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; background: #10b981; color: #03140d; border-color: #10b981;">Pełne kredyty i księga →</a>
+        <a href="credits_pl.html" class="y1-toolbar-thank-you-close" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; background: #10b981; color: #03140d; border-color: #10b981;">Pełne podziękowania i rejestr →</a>
         <button type="button" class="y1-toolbar-thank-you-close" data-toolbar-thank-you-close>Zamknij</button>
       </div>    </div>
   </div>
 </div>
-<button class="y1-dock-reopen" id="y1-dock-reopen" type="button" data-dock-reopen aria-controls="support-toolbar-container" aria-label="Otwórz pasek narzędzi witryny" title="Otwórz pasek narzędzi witryny" hidden><svg class="y1-dock-reopen-icon" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+<button class="y1-dock-reopen" id="y1-dock-reopen" type="button" data-dock-reopen aria-controls="support-toolbar-container" aria-label="Otwórz pasek narzędzi strony" title="Otwórz pasek narzędzi strony" hidden><svg class="y1-dock-reopen-icon" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
 <script>
 
 (function () {
@@ -602,20 +831,54 @@
     });
   }
 
+  var dockRemote = {};
+  var dockPending = {};
+  var dockRefreshTimer = null;
+  function scheduleDockRefresh() {
+    if (dockRefreshTimer) return;
+    dockRefreshTimer = setTimeout(function () {
+      dockRefreshTimer = null;
+      if (typeof renderGoalAndDonors === "function" && lastDonations && lastDonations.length) {
+        renderGoalAndDonors(lastDonations);
+      }
+    }, 150);
+  }
   function _t(str, params) {
     if (!str) return "";
     var res = str;
     if (window.InnioasisLocale && typeof window.InnioasisLocale.translate === "function") {
       var tr = window.InnioasisLocale.translate(str);
-      if (tr !== undefined && tr !== null && tr !== "") res = tr;
+      if (tr && tr !== str) res = tr;
+    }
+    if (res === str && dockRemote[str] && dockRemote[str] !== str) res = dockRemote[str];
+    var locale = "";
+    try { locale = (window.InnioasisLocale && window.InnioasisLocale.locale) || ""; } catch (_) {}
+    if (res === str && locale && !/^en(-|$)/.test(locale) && !dockPending[str] &&
+        window.InnioasisLocale && typeof window.InnioasisLocale.translateRemote === "function") {
+      dockPending[str] = true;
+      window.InnioasisLocale.translateRemote(str).then(function (translated) {
+        dockPending[str] = false;
+        if (translated && translated !== str) dockRemote[str] = translated;
+        scheduleDockRefresh();
+      });
     }
     return params ? _interpolate(res, params) : res;
   }
+  window.addEventListener("site-locale-ready", scheduleDockRefresh);
+  window.addEventListener("site-locale-change", scheduleDockRefresh);
+  window.addEventListener("y1-locale-change", scheduleDockRefresh);
 
   var consent = window.INNIOASIS_PRIVACY;
 
   function donationsOff() {
-    return typeof window.isY1DonationsDisabled === "function" ? window.isY1DonationsDisabled() : false;
+    if (document.documentElement && document.documentElement.classList.contains("y1-donations-off")) return true;
+    if (typeof window.isY1DonationsDisabled === "function" && window.isY1DonationsDisabled()) return true;
+    try {
+      if (window.INNIOASIS_EXPERIMENT && typeof window.INNIOASIS_EXPERIMENT.get === "function" && window.INNIOASIS_EXPERIMENT.get() === "ads") {
+        return true;
+      }
+    } catch (_) {}
+    return false;
   }
 
   var RU_TIMEZONES = {
@@ -965,11 +1228,7 @@
         var name = document.createElement("span");
         name.className = "y1-toolbar-thank-you-name";
         name.textContent = entry.name;
-        var amount = document.createElement("span");
-        amount.className = "y1-toolbar-thank-you-amount";
-        amount.textContent = toolbarThankYouAmount(entry);
         item.appendChild(name);
-        item.appendChild(amount);
         thankYouNames.appendChild(item);
       });
     }
@@ -1076,20 +1335,61 @@
   var DEFAULT_FONT_SCALE = 0.8;
   var fontScale = DEFAULT_FONT_SCALE;
   try {
-    var storedScale = parseFloat(localStorage.getItem(FONT_KEY) || "");
-    if (storedScale >= 0.7 && storedScale <= 1.6) fontScale = storedScale;
+    var p = new URLSearchParams(window.location.search);
+    var urlFs = p.get("fontSize") || p.get("fontScale") || p.get("font-scale") || p.get("fs") || p.get("lumen-font-scale");
+    if (urlFs) {
+      var v = parseFloat(String(urlFs).replace("%", ""));
+      if (v > 10) v = v / 100;
+      if (v >= 0.7 && v <= 1.6) fontScale = +(v.toFixed(2));
+    } else {
+      var storedScale = parseFloat(localStorage.getItem(FONT_KEY) || "");
+      if (storedScale >= 0.7 && storedScale <= 1.6) {
+        if (storedScale === 1 && localStorage.getItem("lumen-font-scale-default-80") !== "1") storedScale = DEFAULT_FONT_SCALE;
+        fontScale = +(storedScale.toFixed(2));
+      }
+    }
   } catch (_) {}
   function applyFontScale() {
     document.documentElement.style.setProperty("--lumen-font-scale", String(fontScale));
+    document.documentElement.setAttribute("data-font-scale", String(fontScale));
     try { localStorage.setItem(FONT_KEY, String(fontScale)); } catch (_) {}
+    try {
+      var d = new Date(); d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
+      var host = window.location.hostname || "";
+      var domain = /(^|\.)innioasis\.app$/i.test(host) ? "; domain=.innioasis.app" : "";
+      document.cookie = FONT_KEY + "=" + fontScale + "; expires=" + d.toUTCString() + "; path=/" + domain + "; SameSite=Lax";
+    } catch (_) {}
     var live = document.getElementById("y1-font-live");
     if (live) live.textContent = "Text size " + Math.round(fontScale * 100) + "%";
+    try {
+      window.dispatchEvent(new CustomEvent("y1-font-scale-change", { detail: { fontScale: fontScale } }));
+    } catch (_) {}
+    try {
+      if (window.history && window.history.replaceState) {
+        var u = new URL(window.location.href);
+        var changed = false;
+        ["fontSize", "fontScale", "font-scale", "fs", "lumen-font-scale"].forEach(function(k) {
+          if (u.searchParams.has(k)) {
+            u.searchParams.delete(k);
+            changed = true;
+          }
+        });
+        if (changed) {
+          var qs = u.searchParams.toString();
+          window.history.replaceState(null, "", u.pathname + (qs ? "?" + qs : "") + u.hash);
+        }
+      }
+    } catch (_) {}
   }
   var fontDown = document.querySelector("[data-font-down]");
   var fontReset = document.querySelector("[data-font-reset]");
   var fontUp = document.querySelector("[data-font-up]");
   if (fontDown) fontDown.addEventListener("click", function () { fontScale = Math.max(0.7, +(fontScale - 0.1).toFixed(2)); applyFontScale(); });
-  if (fontReset) fontReset.addEventListener("click", function () { fontScale = 1; applyFontScale(); });
+  if (fontReset) fontReset.addEventListener("click", function () {
+    if (fontScale === DEFAULT_FONT_SCALE) fontScale = 1.2;
+    else fontScale = DEFAULT_FONT_SCALE;
+    applyFontScale();
+  });
   if (fontUp) fontUp.addEventListener("click", function () { fontScale = Math.min(1.6, +(fontScale + 0.1).toFixed(2)); applyFontScale(); });
   applyFontScale();
 
@@ -1202,11 +1502,34 @@
     return pickFromPool(GENERAL_APPEAL_POOL);
   }
 
+  var lastDonateOpenAt = 0;
+
+  function syncModalOverlayState() {
+    var container = document.getElementById("support-toolbar-container");
+    if (!container) return;
+    var anyOpen = Boolean((donatePanel && !donatePanel.hidden) || (privacyPanel && !privacyPanel.hidden));
+    if (container.classList.contains("y1-toolbar-hidden")) {
+      container.classList.toggle("y1-modal-overlay-active", anyOpen);
+      if (anyOpen) {
+        container.style.removeProperty("display");
+        container.removeAttribute("aria-hidden");
+      } else {
+        container.style.setProperty("display", "none", "important");
+        container.setAttribute("aria-hidden", "true");
+      }
+    } else {
+      container.classList.remove("y1-modal-overlay-active");
+    }
+  }
+
   function setPanel(panel, button, value, closeButton) {
+    if (!panel) return;
     if (value && panel === donatePanel && donationsOff()) return;
     if (value && panel === donatePanel) {
       var introEl = document.getElementById("y1-donate-panel-intro");
       if (introEl) introEl.innerHTML = getRotatingAppealCopy();
+      if (donationsOptOut) donationsOptOut.checked = false;
+      lastDonateOpenAt = Date.now();
     }
     panel.hidden = !value;
     panel.classList.toggle("is-open", value);
@@ -1215,14 +1538,22 @@
       panel.scrollTop = 0;
     }
     document.body.classList.toggle("y1-donate-panel-open", value && panel === donatePanel);
-    button.setAttribute("aria-expanded", value ? "true" : "false");
-    if (value && closeButton) closeButton.focus();
+    if (button && typeof button.setAttribute === "function") {
+      button.setAttribute("aria-expanded", value ? "true" : "false");
+    }
+    if (value && closeButton && typeof closeButton.focus === "function") closeButton.focus();
     syncBackdrop();
+    syncModalOverlayState();
   }
 
   function prefillToggles() {
     var prefs = (consent && consent.read) ? consent.read() : null;
     if (privacyStatus) privacyStatus.textContent = "";
+    var analyticsSelect = document.querySelector("[data-privacy-analytics]");
+    if (analyticsSelect) {
+      var isOff = prefs && (prefs.analytics === false || prefs.analytics === "off");
+      analyticsSelect.value = isOff ? "off" : "essential";
+    }
     if (feedbackToggle) feedbackToggle.checked = prefs ? prefs.feedback !== false : true;
     if (nightlyToggle) nightlyToggle.checked = prefs ? prefs.nightly !== false : true;
     if (donationsToggle) donationsToggle.checked = !donationsOff();
@@ -1276,11 +1607,28 @@
       reenabledDonations = donationsOff() && !disableDonations;
       window.setY1DonationsDisabled(disableDonations);
     }
+    var analyticsSelect = document.querySelector("[data-privacy-analytics]");
+    var analyticsVal = analyticsSelect ? analyticsSelect.value : "essential";
+    var analyticsActive = analyticsVal !== "off";
     if (consent && consent.save) {
       consent.save({
         feedback: feedbackToggle ? feedbackToggle.checked : true,
-        nightly: nightlyToggle ? nightlyToggle.checked : true
+        nightly: nightlyToggle ? nightlyToggle.checked : true,
+        analytics: analyticsActive ? "essential" : "off"
       });
+    }
+    if (!analyticsActive) {
+      try {
+        window['ga-disable-GTM-TNDGC37L'] = true;
+        if (typeof window.gtag === 'function') {
+          window.gtag('consent', 'update', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+        }
+      } catch (_) {}
     }
     /* Say so, rather than silently closing and leaving the visitor to guess
        whether anything happened. The panel closes a beat later so the
@@ -1362,27 +1710,189 @@
     if (img.complete && img.naturalWidth === 0) useFallback();
   });
 
-  donateOpen.addEventListener("click", function () {
-    var opening = donatePanel.hidden;
-    if (opening) rotateDeveloperAvatar();
-    setPanel(privacyPanel, privacyOpen, false);
-    setPanel(donatePanel, donateOpen, opening, donateClose);
-  });
-  privacyOpen.addEventListener("click", function () {
-    var opening = privacyPanel.hidden;
+  function clearCompletionNotice() {
+    var noticeBox = document.getElementById("y1-donate-completion-notice");
+    var noticeLink = document.getElementById("y1-donate-completion-link");
+    if (noticeBox) {
+      noticeBox.hidden = true;
+      noticeBox.style.display = "none";
+    }
+    if (noticeLink) {
+      noticeLink.hidden = true;
+      noticeLink.href = "#";
+      noticeLink.textContent = "";
+    }
+  }
+
+  function formatCompletionNotice(options) {
+    if (!options || (typeof options !== "object" && typeof options !== "string")) return null;
+    var opts = typeof options === "string" ? { action: options } : options;
+    var action = String(opts.action || opts.kind || "").trim().toLowerCase();
+    if (!action && !opts.title && !opts.message) return null;
+
+    var rawName = String(opts.themeName || opts.name || "").trim();
+    var rawFile = String(opts.fileName || "").trim();
+    var count = Number(opts.count || 0) || 0;
+    var quotedName = rawName ? ("\u201c" + rawName + "\u201d") : "";
+    var displayFile = rawFile || (rawName ? (rawName + ".zip") : "");
+    var linkUrl = opts.linkUrl ? String(opts.linkUrl).trim() : (opts.prUrl ? String(opts.prUrl).trim() : "");
+    var linkLabel = opts.linkLabel ? String(opts.linkLabel).trim() : "";
+
+    var title = "";
+    var text = "";
+
+    if (action === "install" || action === "direct_install") {
+      title = rawName
+        ? _t("Theme {name} installed!", { name: quotedName })
+        : _t("Theme installed!");
+      text = rawName
+        ? _t("We installed {name} directly onto your player over USB. If Direct Install and the Themes Gallery saved you time, a small donation below helps keep these free tools online.", { name: quotedName })
+        : _t("We installed your theme directly onto your player over USB. If Direct Install and the Themes Gallery saved you time, a small donation below helps keep these free tools online.");
+    } else if (action === "bulk_install" || action === "bulk_update") {
+      title = count === 1
+        ? _t("1 theme updated on your player!")
+        : (count > 1
+          ? _t("{count} themes updated on your player!", { count: count })
+          : _t("On-device themes updated!"));
+      text = count > 0
+        ? _t("We refreshed {count} theme(s) directly on your player over USB. If Direct Install and the Themes Gallery saved you time, a small donation below helps keep these free tools online.", { count: count })
+        : _t("We refreshed your on-device themes directly over USB. If Direct Install and the Themes Gallery saved you time, a small donation below helps keep these free tools online.");
+    } else if (action === "save" || action === "studio_save") {
+      title = rawName
+        ? _t("Saved {name} as a ZIP!", { name: quotedName })
+        : _t("Theme ZIP saved!");
+      text = displayFile
+        ? _t("Theme Studio packaged and saved {file} to your device — copy it into your player\u2019s Themes folder to install. If Theme Studio helped you build your theme, a small donation below helps keep it free.", { file: displayFile })
+        : _t("Theme Studio packaged and saved your theme ZIP — copy it into your player\u2019s Themes folder to install. If Theme Studio helped you build your theme, a small donation below helps keep it free.");
+    } else if (action === "submission" || action === "upload" || action === "studio_upload") {
+      title = rawName
+        ? _t("Theme {name} submitted!", { name: quotedName })
+        : _t("Theme submitted for review!");
+      text = rawName
+        ? _t("We packaged {name} and submitted it to the Themes Gallery. Once automated checks pass, it goes live automatically. If Theme Studio and free gallery hosting helped you share your work, consider supporting us below.", { name: quotedName })
+        : _t("We packaged your theme and submitted it to the Themes Gallery. Once automated checks pass, it goes live automatically. If Theme Studio and free gallery hosting helped you share your work, consider supporting us below.");
+      if (linkUrl && !linkLabel) linkLabel = _t("Track your submission");
+    } else if (action === "update" || action === "studio_update") {
+      title = rawName
+        ? _t("Update for {name} submitted!", { name: quotedName })
+        : _t("Theme update submitted!");
+      text = rawName
+        ? _t("We packaged your update for {name} and queued a pull request for a maintainer to review and publish. If Theme Studio and the Themes Gallery saved you time, a small donation below helps keep them running.", { name: quotedName })
+        : _t("We packaged your theme update and queued a pull request for a maintainer to review and publish. If Theme Studio and the Themes Gallery saved you time, a small donation below helps keep them running.");
+      if (linkUrl && !linkLabel) linkLabel = _t("Track your update");
+    } else if (action === "listing" || action === "metadata") {
+      title = rawName
+        ? _t("Listing update for {name} sent!", { name: quotedName })
+        : _t("Listing update sent!");
+      text = _t("We prepared and queued your updated listing details for a maintainer to review before they go live. If the Themes Gallery helps showcase your themes, a small donation below helps cover hosting.");
+      if (linkUrl && !linkLabel) linkLabel = _t("Track this request");
+    } else if (action === "removal") {
+      title = rawName
+        ? _t("Removal request for {name} sent", { name: quotedName })
+        : _t("Removal request sent");
+      text = _t("We logged your removal request for a maintainer to review before anything changes. If our community tools have been useful, you can support the project below.");
+      if (linkUrl && !linkLabel) linkLabel = _t("Track this request");
+    } else if (action === "file_download") {
+      var label = displayFile || quotedName;
+      title = label
+        ? _t("Downloaded {name}!", { name: label })
+        : _t("Download complete!");
+      text = label
+        ? _t("We finished downloading {name} directly to your device with no paywalls or ad links. If this helped your player, a small donation below helps cover servers and test devices.", { name: label })
+        : _t("We finished your download directly to your device with no paywalls or ad links. If this helped your player, a small donation below helps cover servers and test devices.");
+    } else {
+      title = rawName
+        ? _t("Theme {name} downloaded!", { name: quotedName })
+        : _t("Theme downloaded!");
+      text = rawName
+        ? _t("We packaged and downloaded {name} as a ready-to-install ZIP. Copy its folder into your player\u2019s Themes folder to install. If the Themes Gallery saved you time, a small donation below helps keep it free.", { name: quotedName })
+        : _t("We packaged and downloaded your theme as a ready-to-install ZIP. Copy its folder into your player\u2019s Themes folder to install. If the Themes Gallery saved you time, a small donation below helps keep it free.");
+    }
+
+    return {
+      title: opts.title ? String(opts.title) : title,
+      text: opts.message ? String(opts.message) : text,
+      linkUrl: linkUrl,
+      linkLabel: linkLabel || (linkUrl ? _t("Track this request") : "")
+    };
+  }
+
+  function closeDonatePanel() {
+    clearCompletionNotice();
     setPanel(donatePanel, donateOpen, false);
-    if (opening) { prefillToggles(); syncDonationsOption(); }
-    setPanel(privacyPanel, privacyOpen, opening, privacyClose);
-  });
-  if (donateClose) donateClose.addEventListener("click", function () { setPanel(donatePanel, donateOpen, false); });
+  }
+
+  function openDonatePanel(options) {
+    if (donationsOff()) return false;
+    var noticeBox = document.getElementById("y1-donate-completion-notice");
+    var noticeTitle = document.getElementById("y1-donate-completion-title");
+    var noticeText = document.getElementById("y1-donate-completion-text");
+    var noticeLink = document.getElementById("y1-donate-completion-link");
+    var notice = formatCompletionNotice(options);
+
+    if (notice && noticeBox) {
+      if (noticeTitle) noticeTitle.textContent = notice.title;
+      if (noticeText) noticeText.textContent = notice.text;
+      if (noticeLink) {
+        if (notice.linkUrl) {
+          noticeLink.href = notice.linkUrl;
+          noticeLink.textContent = notice.linkLabel + " \u2192";
+          noticeLink.hidden = false;
+        } else {
+          noticeLink.hidden = true;
+          noticeLink.href = "#";
+          noticeLink.textContent = "";
+        }
+      }
+      noticeBox.hidden = false;
+      noticeBox.style.display = "flex";
+    } else {
+      clearCompletionNotice();
+    }
+
+    rotateDeveloperAvatar();
+    setPanel(privacyPanel, privacyOpen, false);
+    setPanel(donatePanel, donateOpen, true, donateClose);
+    return true;
+  }
+
+  window.openY1DonatePanel = openDonatePanel;
+  window.closeY1DonatePanel = closeDonatePanel;
+  window.Y1SupportNote = function (kind, details) {
+    if (donationsOff()) return false;
+    var payload = details && typeof details === "object" ? Object.assign({}, details) : {};
+    if (kind && !payload.action) payload.action = String(kind);
+    return openDonatePanel(payload);
+  };
+
+  if (donateOpen) {
+    donateOpen.addEventListener("click", function () {
+      var opening = donatePanel.hidden;
+      if (opening) {
+        openDonatePanel();
+      } else {
+        closeDonatePanel();
+      }
+    });
+  }
+  if (privacyOpen) {
+    privacyOpen.addEventListener("click", function () {
+      var opening = privacyPanel.hidden;
+      closeDonatePanel();
+      if (opening) { prefillToggles(); syncDonationsOption(); }
+      setPanel(privacyPanel, privacyOpen, opening, privacyClose);
+    });
+  }
+  if (donateClose) donateClose.addEventListener("click", function () { closeDonatePanel(); });
   if (donationsOptOut) {
     donationsOptOut.addEventListener("change", function () {
       if (!donationsOptOut.checked) return;
       if (typeof window.setY1DonationsDisabled === "function") window.setY1DonationsDisabled(true);
       else document.documentElement.classList.add("y1-donations-off");
-      setPanel(donatePanel, donateOpen, false);
+      closeDonatePanel();
     });
   }
+  document.addEventListener("y1-close-donate-panel", closeDonatePanel);
   if (privacyClose) privacyClose.addEventListener("click", function () {
     setPanel(privacyPanel, privacyOpen, false);
   });
@@ -1415,7 +1925,7 @@
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
-      if (!donatePanel.hidden) setPanel(donatePanel, donateOpen, false);
+      if (!donatePanel.hidden) closeDonatePanel();
       if (!privacyPanel.hidden) {
         setPanel(privacyPanel, privacyOpen, false);
       }
@@ -1430,13 +1940,13 @@
                  (event.target.closest && (event.target.closest("#y1-dock-ticker-wrap") || event.target.closest("#y1-dock-goal-layer")));
     if (inside) return;
     if (backdrop && event.target === backdrop) {
-      if (!donatePanel.hidden) setPanel(donatePanel, donateOpen, false);
+      if (!donatePanel.hidden) closeDonatePanel();
       if (!privacyPanel.hidden) {
         setPanel(privacyPanel, privacyOpen, false);
       }
       return;
     }
-    if (!donatePanel.hidden) setPanel(donatePanel, donateOpen, false);
+    if (!donatePanel.hidden && Date.now() - lastDonateOpenAt > 250) closeDonatePanel();
     if (!privacyPanel.hidden) {
       setPanel(privacyPanel, privacyOpen, false);
     }
@@ -1458,16 +1968,21 @@
     container.style.setProperty("display", "none", "important");
     container.setAttribute("aria-hidden", "true");
     setDockReopenVisible(true);
+    syncModalOverlayState();
+    try { sessionStorage.setItem("y1-dock-dismissed", "1"); } catch (_) {}
+    if (typeof setSharedCookie === "function") setSharedCookie("innioasis-dock", "closed", 365);
   }
 
   function showSupportToolbar() {
     var container = document.getElementById("support-toolbar-container");
     if (!container) return;
     container.classList.remove("y1-toolbar-hidden");
+    container.classList.remove("y1-modal-overlay-active");
     container.style.removeProperty("display");
     container.removeAttribute("aria-hidden");
     setDockReopenVisible(false);
-    try { sessionStorage.removeItem("y1-dock-dismissed"); } catch (_) {}
+    try { sessionStorage.setItem("y1-dock-dismissed", "0"); } catch (_) {}
+    if (typeof setSharedCookie === "function") setSharedCookie("innioasis-dock", "open", 365);
     var closeBtn = document.querySelector("[data-dock-close]");
     if (closeBtn && typeof closeBtn.focus === "function") closeBtn.focus();
   }
@@ -1492,6 +2007,18 @@
       hideSupportToolbar();
     }
   } catch (_) {
+  }
+
+  if (window.location.hash === "#donate") {
+    openDonatePanel();
+  }
+
+  if (window._y1PendingDonateOpen) {
+    var pendingDonate = window._y1PendingDonateOpen;
+    window._y1PendingDonateOpen = null;
+    setTimeout(function () {
+      openDonatePanel(pendingDonate === true ? null : pendingDonate);
+    }, 60);
   }
 
   (function () {
@@ -1640,10 +2167,26 @@
 
       var states = [];
       var phraseIdx = 0;
+      /* Say which period the ask covers. Without it a visitor reads "a coffee
+         keeps the servers online" and never learns whether the shortfall is
+         today's, this week's or this month's. The long lines are prose, so the
+         period rides along as a short tag rather than being spliced into a
+         sentence that translators would have to reorder. */
+      function periodTag() {
+        if (!goal || !goal.periodPhrase) return "";
+        return " · " + _t(goal.periodPhrase);
+      }
+
       function nextPhrase() {
         var p = rotatingPhrases[phraseIdx % rotatingPhrases.length];
         phraseIdx++;
-        return makeGoalState(p);
+        var state = makeGoalState(p);
+        var tag = periodTag();
+        if (tag && !p.isTarget) {
+          state.desktop = (state.desktop || "") + tag;
+          state.mobile = (state.mobile || "") + tag;
+        }
+        return state;
       }
 
       if (targetPhrase) states.push(makeGoalState(targetPhrase));
@@ -1792,6 +2335,47 @@
     if (!dt || isNaN(dt.getTime())) return null;
     try { dt.hasTime = hasTime; } catch (_) {}
     return dt;
+  }
+
+  /* English keeps the day-first wording ("2nd June", "1st January 2025");
+     every other language gets its own date pattern from Intl. */
+  function donorLocale() {
+    try {
+      if (window.InnioasisLocale && window.InnioasisLocale.locale) return String(window.InnioasisLocale.locale);
+    } catch (_) {}
+    var lang = document.documentElement.getAttribute("lang");
+    if (lang) return lang;
+    try { return navigator.language || navigator.userLanguage || "en"; } catch (_) {}
+    return "en";
+  }
+
+  function englishDayOrdinal(day) {
+    var rem100 = day % 100;
+    if (rem100 >= 11 && rem100 <= 13) return day + "th";
+    if (day % 10 === 1) return day + "st";
+    if (day % 10 === 2) return day + "nd";
+    if (day % 10 === 3) return day + "rd";
+    return day + "th";
+  }
+
+  var ENGLISH_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+  function formatDonorDate(dt, withYear) {
+    if (!dt) return "";
+    var locale = donorLocale();
+    try {
+      if (/^en\b/i.test(locale)) {
+        var month = ENGLISH_MONTHS[dt.getMonth()];
+        try {
+          month = new Intl.DateTimeFormat("en-GB", { month: "long" }).format(dt);
+        } catch (_) {}
+        return englishDayOrdinal(dt.getDate()) + " " + month + (withYear ? " " + dt.getFullYear() : "");
+      }
+      return new Intl.DateTimeFormat(locale, withYear
+        ? { day: "numeric", month: "long", year: "numeric" }
+        : { day: "numeric", month: "long" }).format(dt);
+    } catch (_) {}
+    return englishDayOrdinal(dt.getDate()) + " " + ENGLISH_MONTHS[dt.getMonth()] + (withYear ? " " + dt.getFullYear() : "");
   }
 
   /* "2 weeks ago" in the reader's language comes from Intl.RelativeTimeFormat,
@@ -2133,28 +2717,25 @@
     var metScope = null;
     var dailyMet = shownBy.daily >= targets.daily;
     var weeklyMet = shownBy.weekly >= targets.weekly;
-    /* The month's own figure is forced on the first day, when the month has
-       just started, and on the last three days when something came in today.
-       A closing day with no donations falls back to the daily rung, which is
-       measured against today alone. Every other day starts at the daily rung,
-       however much the month has already raised. */
-    var monthSummary = dayOfMonth === 1 ||
-      (dayOfMonth > daysInMonth - 3 && raisedBy.daily > 0);
-    /* A quiet day leads with the daily rung even when the month is already
-       covered, because it is measured against today's donations alone. The
-       month summary only wins on the first day and on closing days that
-       brought something in today. */
-    if (monthSummary) {
-      if (shownBy.monthly >= targets.monthly) metScope = "monthly";
-      else scope = "monthly";
-    } else if (!dailyMet) {
+    var monthlyMet = shownBy.monthly >= targets.monthly;
+    /* On days where there are less than $10 in donations (or local currency equivalent),
+       always display the daily costs target as it has not been met, even when weekly
+       or monthly costs targets have been met.
+       When $10 or more has been raised today, users are shown the weekly or monthly goal
+       if they have not been met. */
+    if (!dailyMet) {
       scope = "daily";
-    } else if (shownBy.monthly >= targets.monthly) {
-      metScope = "monthly";
-    } else if (!weeklyMet) {
-      scope = "weekly";
     } else {
-      scope = "monthly";
+      var monthSummary = dayOfMonth === 1 || dayOfMonth > daysInMonth - 3;
+      if (monthSummary && !monthlyMet) {
+        scope = "monthly";
+      } else if (!weeklyMet) {
+        scope = "weekly";
+      } else if (!monthlyMet) {
+        scope = "monthly";
+      } else {
+        metScope = "monthly";
+      }
     }
     var symbol = fxSymbol(code);
     if (!scope) {
@@ -2359,8 +2940,7 @@
         if (event.target && (event.target.tagName.toLowerCase() === "a" || event.target.closest("a"))) {
           return;
         }
-        setPanel(privacyPanel, privacyOpen, false);
-        setPanel(donatePanel, donateOpen, true, donateClose);
+        openDonatePanel();
       });
     }
 
@@ -2650,4 +3230,105 @@
   })();
 
 </script>
-<script src="site-locale.js?v=20261111i18nfix" defer></script>
+
+<script id="y1-dock-density">
+(function () {
+  "use strict";
+  /* Bottom dock density controller.
+     Reads the viewport (never the dock's own height) so the tier cannot
+     oscillate when a tier change shrinks the bar. Publishes the bar height as
+     --y1-dock-space so the page can keep its footer clear of the dock. */
+  var DOCK_ID = "support-toolbar-container";
+
+  function tierFor(vw, vh) {
+    var shortest = Math.min(vw, vh);
+    var ratio = vw / Math.max(vh, 1);
+    var square = ratio > 0.82 && ratio < 1.22;
+    if (vw <= 560 || vh <= 480 || (square && shortest <= 640)) return "minimal";
+    if (vw <= 900 || vh <= 700 || square) return "compact";
+    return "full";
+  }
+
+  function apply() {
+    var dock = document.getElementById(DOCK_ID);
+    if (!dock) return false;
+    if (!dock.getAttribute("data-dock-density-ready")) {
+      dock.setAttribute("data-dock-density-ready", "1");
+      var observer = window.ResizeObserver ? new ResizeObserver(publishSpace) : null;
+      if (observer) observer.observe(dock);
+      window.addEventListener("resize", schedule, { passive: true });
+      window.addEventListener("orientationchange", schedule, { passive: true });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(publishSpace, function () {});
+    }
+    var vw = window.innerWidth;
+    var vh = window.innerHeight;
+    var next = tierFor(vw, vh);
+    if (dock.getAttribute("data-dock-density") !== next) {
+      dock.setAttribute("data-dock-density", next);
+      publishSpace();
+    }
+    return true;
+  }
+
+  function publishSpace() {
+    var dock = document.getElementById(DOCK_ID);
+    var root = document.documentElement;
+    if (!dock || dock.classList.contains("y1-toolbar-hidden")) {
+      root.style.setProperty("--y1-dock-space", "0px");
+      return;
+    }
+    /* #support-toolbar-container is a fixed wrapper whose only child is also
+       fixed, so it measures 0. Reserve the real bar's height instead. */
+    var bar = dock.querySelector(".y1-site-dock-wrap") || dock;
+    /* Clear the bar's real footprint: its top edge to the viewport bottom,
+       plus breathing room. Using the rect handles the bar's own bottom offset. */
+    var rect = bar.getBoundingClientRect();
+    var height = Math.max(0, window.innerHeight - rect.top) + 12;
+    if (height > 0) {
+      var bottomGap = parseFloat(getComputedStyle(dock).marginBottom) || 0;
+      root.style.setProperty("--y1-dock-space", Math.ceil(height + bottomGap + 8) + "px");
+    }
+  }
+
+  var queued = false;
+  function schedule() {
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function () {
+      queued = false;
+      apply();
+      publishSpace();
+    });
+  }
+
+  /* viewport-fit=cover unlocks env(safe-area-inset-*) on iOS. Pages that
+     already declare it are left alone. */
+  function ensureViewportFit() {
+    var meta = document.querySelector('meta[name="viewport"]');
+    if (!meta) return;
+    if (!/viewport-fit/.test(meta.content)) {
+      meta.content = meta.content + ", viewport-fit=cover";
+    }
+  }
+
+  function boot() {
+    ensureViewportFit();
+    if (apply()) return;
+    /* The toolbar is injected after DOMContentLoaded; wait for it, but never
+       poll forever on pages that have no dock. */
+    var attempts = 0;
+    var timer = window.setInterval(function () {
+      attempts += 1;
+      if (apply() || attempts > 100) window.clearInterval(timer);
+    }, 100);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot, { once: true });
+  } else {
+    boot();
+  }
+  window.addEventListener("load", schedule, { once: true });
+})();
+</script>
+<script src="site-locale.js?v=20261124fixes1" defer></script>

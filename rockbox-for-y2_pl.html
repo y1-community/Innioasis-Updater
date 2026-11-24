@@ -26,113 +26,357 @@
   <meta name="author" content="Ryan Specter &amp; Innioasis Community">
   <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rockbox dla Y2 (Rockbox-Y2): przegląd, kompilacje i przewodnik instalacji</title>
-  <meta name="description" content="Rockbox dla Y2, Rockbox-Y2 i rockbox-y2 odnoszą się do portu oprogramowania sprzętowego społeczności Rockbox dla Innioasis Y2. Dowiedz się, co zawiera i jak go zainstalować za pomocą Innioasis Updater CE.">
+  <title>Rockbox dla Y2 (Rockbox-Y2): przegląd, wersje i poradnik instalacji</title>
+  <meta name="description" content="Rockbox dla Y2, Rockbox-Y2 i rockbox-y2 to nazwy tego samego społecznościowego portu firmware Rockbox dla Innioasis Y2. Dowiedz się, co zawiera i jak go zainstalować w Innioasis Updater CE.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://innioasis.app/rockbox-for-y2_pl.html">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Rockbox dla Y2 (Rockbox-Y2): przegląd, kompilacje i przewodnik instalacji">
-  <meta property="og:description" content="Rockbox dla Y2, Rockbox-Y2 i rockbox-y2 odnoszą się do portu oprogramowania sprzętowego społeczności Rockbox dla Innioasis Y2. Dowiedz się, co zawiera i jak go zainstalować za pomocą Innioasis Updater CE.">
+  <meta property="og:title" content="Rockbox dla Y2 (Rockbox-Y2): przegląd, wersje i poradnik instalacji">
+  <meta property="og:description" content="Rockbox dla Y2, Rockbox-Y2 i rockbox-y2 to nazwy tego samego społecznościowego portu firmware Rockbox dla Innioasis Y2. Dowiedz się, co zawiera i jak go zainstalować w Innioasis Updater CE.">
   <meta property="og:url" content="https://innioasis.app/rockbox-for-y2_pl.html">
   <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
-  <meta property="og:site_name" content="Innioasis Aktualizator">
+  <meta property="og:site_name" content="Innioasis Updater">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Rockbox dla Y2 (Rockbox-Y2): przegląd, kompilacje i przewodnik instalacji">
-  <meta name="twitter:description" content="Rockbox dla Y2, Rockbox-Y2 i rockbox-y2 odnoszą się do portu oprogramowania sprzętowego społeczności Rockbox dla Innioasis Y2. Dowiedz się, co zawiera i jak go zainstalować za pomocą Innioasis Updater CE.">
+  <meta name="twitter:title" content="Rockbox dla Y2 (Rockbox-Y2): przegląd, wersje i poradnik instalacji">
+  <meta name="twitter:description" content="Rockbox dla Y2, Rockbox-Y2 i rockbox-y2 to nazwy tego samego społecznościowego portu firmware Rockbox dla Innioasis Y2. Dowiedz się, co zawiera i jak go zainstalować w Innioasis Updater CE.">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
   <link rel="icon" href="y1_illustration.png">
-  <link rel="stylesheet" href="site-theme.css?v=20261109theme">
-  <link rel="stylesheet" href="lumen.css?v=20261110picker">
+  <link rel="stylesheet" href="site-theme.css?v=20261124fixes1">
+  <link rel="stylesheet" href="lumen.css?v=20261124fixes1">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
-  <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261117fallback3" defer></script>
+  <link rel="stylesheet" href="site-toolbar.css?v=20261124fixes1">
+  <script src="site-init.js?v=20261124fixes1" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Rockbox for Y2 (Rockbox-Y2): overview, builds and install guide","description":"Rockbox for Y2, Rockbox-Y2 and rockbox-y2 refer to the community Rockbox firmware port for the Innioasis Y2.","image":"https://innioasis.app/assets/og-image.png","author":{"@type":"Organization","name":"Innioasis Community"},"mainEntityOfPage":"https://innioasis.app/rockbox-for-y2.html"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://innioasis.app/"},{"@type":"ListItem","position":2,"name":"Firmware Downloads","item":"https://innioasis.app/firmware.html"},{"@type":"ListItem","position":3,"name":"Rockbox for Y2","item":"https://innioasis.app/rockbox-for-y2.html"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Rockbox for Y2 the same as Rockbox-Y2?","acceptedAnswer":{"@type":"Answer","text":"Yes. Rockbox, Rockbox-Y2, Rockbox for Y2 and rockbox-y2 all refer to the community Rockbox port for the Innioasis Y2."}},{"@type":"Question","name":"Can I use the Y1 Rockbox package on a Y2?","acceptedAnswer":{"@type":"Answer","text":"No. The Y2 uses a separate Rockbox build (rom_y2.zip). Always select Y2 in Innioasis Updater CE."}},{"@type":"Question","name":"Where does Updater CE download Rockbox-Y2 from?","acceptedAnswer":{"@type":"Answer","text":"Innioasis Updater CE always downloads firmware packages directly from the community firmware developers (spycemagic/y2-rockbox), who are solely responsible for listing their releases in Updater CE."}}]}</script>
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/rockbox-for-y2.html">
   <link rel="alternate" hreflang="en" href="https://innioasis.app/rockbox-for-y2.html">
-  <link rel="alternate" hreflang="de" href="https://innioasis.app/rockbox-for-y2_de.html">
-  <link rel="alternate" hreflang="ja" href="https://innioasis.app/rockbox-for-y2_ja.html">
-  <link rel="alternate" hreflang="es" href="https://innioasis.app/rockbox-for-y2_es.html">
-  <link rel="alternate" hreflang="fr" href="https://innioasis.app/rockbox-for-y2_fr.html">
-  <link rel="alternate" hreflang="it" href="https://innioasis.app/rockbox-for-y2_it.html">
-  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/rockbox-for-y2_pt-BR.html">
-  <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/rockbox-for-y2_pt-PT.html">
-  <link rel="alternate" hreflang="ru" href="https://innioasis.app/rockbox-for-y2_ru.html">
-  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/rockbox-for-y2_zh-CN.html">
-  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/rockbox-for-y2_zh-TW.html">
-  <link rel="alternate" hreflang="ko" href="https://innioasis.app/rockbox-for-y2_ko.html">
+  <link rel="alternate" hreflang="aa" href="https://innioasis.app/rockbox-for-y2_aa.html">
+  <link rel="alternate" hreflang="ab" href="https://innioasis.app/rockbox-for-y2_ab.html">
+  <link rel="alternate" hreflang="ace" href="https://innioasis.app/rockbox-for-y2_ace.html">
+  <link rel="alternate" hreflang="ach" href="https://innioasis.app/rockbox-for-y2_ach.html">
+  <link rel="alternate" hreflang="af" href="https://innioasis.app/rockbox-for-y2_af.html">
+  <link rel="alternate" hreflang="ak" href="https://innioasis.app/rockbox-for-y2_ak.html">
+  <link rel="alternate" hreflang="alz" href="https://innioasis.app/rockbox-for-y2_alz.html">
+  <link rel="alternate" hreflang="am" href="https://innioasis.app/rockbox-for-y2_am.html">
   <link rel="alternate" hreflang="ar" href="https://innioasis.app/rockbox-for-y2_ar.html">
-  <link rel="alternate" hreflang="nl" href="https://innioasis.app/rockbox-for-y2_nl.html">
-  <link rel="alternate" hreflang="pl" href="https://innioasis.app/rockbox-for-y2_pl.html">
-  <link rel="alternate" hreflang="tr" href="https://innioasis.app/rockbox-for-y2_tr.html">
-  <link rel="alternate" hreflang="uk" href="https://innioasis.app/rockbox-for-y2_uk.html">
-  <link rel="alternate" hreflang="vi" href="https://innioasis.app/rockbox-for-y2_vi.html">
-  <link rel="alternate" hreflang="th" href="https://innioasis.app/rockbox-for-y2_th.html">
-  <link rel="alternate" hreflang="id" href="https://innioasis.app/rockbox-for-y2_id.html">
+  <link rel="alternate" hreflang="as" href="https://innioasis.app/rockbox-for-y2_as.html">
+  <link rel="alternate" hreflang="av" href="https://innioasis.app/rockbox-for-y2_av.html">
+  <link rel="alternate" hreflang="awa" href="https://innioasis.app/rockbox-for-y2_awa.html">
+  <link rel="alternate" hreflang="ay" href="https://innioasis.app/rockbox-for-y2_ay.html">
+  <link rel="alternate" hreflang="az" href="https://innioasis.app/rockbox-for-y2_az.html">
+  <link rel="alternate" hreflang="ba" href="https://innioasis.app/rockbox-for-y2_ba.html">
+  <link rel="alternate" hreflang="bal" href="https://innioasis.app/rockbox-for-y2_bal.html">
+  <link rel="alternate" hreflang="ban" href="https://innioasis.app/rockbox-for-y2_ban.html">
+  <link rel="alternate" hreflang="bbc" href="https://innioasis.app/rockbox-for-y2_bbc.html">
+  <link rel="alternate" hreflang="bci" href="https://innioasis.app/rockbox-for-y2_bci.html">
+  <link rel="alternate" hreflang="be" href="https://innioasis.app/rockbox-for-y2_be.html">
+  <link rel="alternate" hreflang="bem" href="https://innioasis.app/rockbox-for-y2_bem.html">
+  <link rel="alternate" hreflang="ber" href="https://innioasis.app/rockbox-for-y2_ber.html">
+  <link rel="alternate" hreflang="ber-Latn" href="https://innioasis.app/rockbox-for-y2_ber-Latn.html">
+  <link rel="alternate" hreflang="bew" href="https://innioasis.app/rockbox-for-y2_bew.html">
+  <link rel="alternate" hreflang="bg" href="https://innioasis.app/rockbox-for-y2_bg.html">
+  <link rel="alternate" hreflang="bho" href="https://innioasis.app/rockbox-for-y2_bho.html">
+  <link rel="alternate" hreflang="bik" href="https://innioasis.app/rockbox-for-y2_bik.html">
+  <link rel="alternate" hreflang="bm" href="https://innioasis.app/rockbox-for-y2_bm.html">
+  <link rel="alternate" hreflang="bm-Nkoo" href="https://innioasis.app/rockbox-for-y2_bm-Nkoo.html">
+  <link rel="alternate" hreflang="bn" href="https://innioasis.app/rockbox-for-y2_bn.html">
+  <link rel="alternate" hreflang="bo" href="https://innioasis.app/rockbox-for-y2_bo.html">
+  <link rel="alternate" hreflang="br" href="https://innioasis.app/rockbox-for-y2_br.html">
+  <link rel="alternate" hreflang="bs" href="https://innioasis.app/rockbox-for-y2_bs.html">
+  <link rel="alternate" hreflang="bts" href="https://innioasis.app/rockbox-for-y2_bts.html">
+  <link rel="alternate" hreflang="btx" href="https://innioasis.app/rockbox-for-y2_btx.html">
+  <link rel="alternate" hreflang="bua" href="https://innioasis.app/rockbox-for-y2_bua.html">
+  <link rel="alternate" hreflang="ca" href="https://innioasis.app/rockbox-for-y2_ca.html">
+  <link rel="alternate" hreflang="ce" href="https://innioasis.app/rockbox-for-y2_ce.html">
+  <link rel="alternate" hreflang="ceb" href="https://innioasis.app/rockbox-for-y2_ceb.html">
+  <link rel="alternate" hreflang="cgg" href="https://innioasis.app/rockbox-for-y2_cgg.html">
+  <link rel="alternate" hreflang="ch" href="https://innioasis.app/rockbox-for-y2_ch.html">
+  <link rel="alternate" hreflang="chk" href="https://innioasis.app/rockbox-for-y2_chk.html">
+  <link rel="alternate" hreflang="chm" href="https://innioasis.app/rockbox-for-y2_chm.html">
+  <link rel="alternate" hreflang="ckb" href="https://innioasis.app/rockbox-for-y2_ckb.html">
+  <link rel="alternate" hreflang="cnh" href="https://innioasis.app/rockbox-for-y2_cnh.html">
+  <link rel="alternate" hreflang="co" href="https://innioasis.app/rockbox-for-y2_co.html">
+  <link rel="alternate" hreflang="crh" href="https://innioasis.app/rockbox-for-y2_crh.html">
+  <link rel="alternate" hreflang="crh-Latn" href="https://innioasis.app/rockbox-for-y2_crh-Latn.html">
+  <link rel="alternate" hreflang="crs" href="https://innioasis.app/rockbox-for-y2_crs.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/rockbox-for-y2_cs.html">
+  <link rel="alternate" hreflang="cv" href="https://innioasis.app/rockbox-for-y2_cv.html">
+  <link rel="alternate" hreflang="cy" href="https://innioasis.app/rockbox-for-y2_cy.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/rockbox-for-y2_da.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/rockbox-for-y2_de.html">
+  <link rel="alternate" hreflang="din" href="https://innioasis.app/rockbox-for-y2_din.html">
+  <link rel="alternate" hreflang="doi" href="https://innioasis.app/rockbox-for-y2_doi.html">
+  <link rel="alternate" hreflang="dov" href="https://innioasis.app/rockbox-for-y2_dov.html">
+  <link rel="alternate" hreflang="dv" href="https://innioasis.app/rockbox-for-y2_dv.html">
+  <link rel="alternate" hreflang="dyu" href="https://innioasis.app/rockbox-for-y2_dyu.html">
+  <link rel="alternate" hreflang="dz" href="https://innioasis.app/rockbox-for-y2_dz.html">
+  <link rel="alternate" hreflang="ee" href="https://innioasis.app/rockbox-for-y2_ee.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/rockbox-for-y2_el.html">
+  <link rel="alternate" hreflang="en-GB" href="https://innioasis.app/rockbox-for-y2_en-GB.html">
+  <link rel="alternate" hreflang="en-US" href="https://innioasis.app/rockbox-for-y2_en-US.html">
+  <link rel="alternate" hreflang="eo" href="https://innioasis.app/rockbox-for-y2_eo.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/rockbox-for-y2_es.html">
+  <link rel="alternate" hreflang="et" href="https://innioasis.app/rockbox-for-y2_et.html">
+  <link rel="alternate" hreflang="eu" href="https://innioasis.app/rockbox-for-y2_eu.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/rockbox-for-y2_fa.html">
+  <link rel="alternate" hreflang="fa-AF" href="https://innioasis.app/rockbox-for-y2_fa-AF.html">
+  <link rel="alternate" hreflang="ff" href="https://innioasis.app/rockbox-for-y2_ff.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/rockbox-for-y2_fi.html">
+  <link rel="alternate" hreflang="fil" href="https://innioasis.app/rockbox-for-y2_fil.html">
+  <link rel="alternate" hreflang="fj" href="https://innioasis.app/rockbox-for-y2_fj.html">
+  <link rel="alternate" hreflang="fo" href="https://innioasis.app/rockbox-for-y2_fo.html">
+  <link rel="alternate" hreflang="fon" href="https://innioasis.app/rockbox-for-y2_fon.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/rockbox-for-y2_fr.html">
+  <link rel="alternate" hreflang="fr-CA" href="https://innioasis.app/rockbox-for-y2_fr-CA.html">
+  <link rel="alternate" hreflang="fur" href="https://innioasis.app/rockbox-for-y2_fur.html">
+  <link rel="alternate" hreflang="fy" href="https://innioasis.app/rockbox-for-y2_fy.html">
+  <link rel="alternate" hreflang="ga" href="https://innioasis.app/rockbox-for-y2_ga.html">
+  <link rel="alternate" hreflang="gaa" href="https://innioasis.app/rockbox-for-y2_gaa.html">
+  <link rel="alternate" hreflang="gd" href="https://innioasis.app/rockbox-for-y2_gd.html">
+  <link rel="alternate" hreflang="gl" href="https://innioasis.app/rockbox-for-y2_gl.html">
+  <link rel="alternate" hreflang="gn" href="https://innioasis.app/rockbox-for-y2_gn.html">
+  <link rel="alternate" hreflang="gom" href="https://innioasis.app/rockbox-for-y2_gom.html">
+  <link rel="alternate" hreflang="gu" href="https://innioasis.app/rockbox-for-y2_gu.html">
+  <link rel="alternate" hreflang="gv" href="https://innioasis.app/rockbox-for-y2_gv.html">
+  <link rel="alternate" hreflang="ha" href="https://innioasis.app/rockbox-for-y2_ha.html">
+  <link rel="alternate" hreflang="haw" href="https://innioasis.app/rockbox-for-y2_haw.html">
   <link rel="alternate" hreflang="he" href="https://innioasis.app/rockbox-for-y2_he.html">
   <link rel="alternate" hreflang="hi" href="https://innioasis.app/rockbox-for-y2_hi.html">
-  <link rel="alternate" hreflang="cs" href="https://innioasis.app/rockbox-for-y2_cs.html">
-  <link rel="alternate" hreflang="el" href="https://innioasis.app/rockbox-for-y2_el.html">
-  <link rel="alternate" hreflang="sv" href="https://innioasis.app/rockbox-for-y2_sv.html">
-  <link rel="alternate" hreflang="fa" href="https://innioasis.app/rockbox-for-y2_fa.html">
-  <link rel="alternate" hreflang="da" href="https://innioasis.app/rockbox-for-y2_da.html">
-  <link rel="alternate" hreflang="fi" href="https://innioasis.app/rockbox-for-y2_fi.html">
+  <link rel="alternate" hreflang="hil" href="https://innioasis.app/rockbox-for-y2_hil.html">
+  <link rel="alternate" hreflang="hmn" href="https://innioasis.app/rockbox-for-y2_hmn.html">
+  <link rel="alternate" hreflang="hr" href="https://innioasis.app/rockbox-for-y2_hr.html">
+  <link rel="alternate" hreflang="hrx" href="https://innioasis.app/rockbox-for-y2_hrx.html">
+  <link rel="alternate" hreflang="ht" href="https://innioasis.app/rockbox-for-y2_ht.html">
   <link rel="alternate" hreflang="hu" href="https://innioasis.app/rockbox-for-y2_hu.html">
+  <link rel="alternate" hreflang="hy" href="https://innioasis.app/rockbox-for-y2_hy.html">
+  <link rel="alternate" hreflang="iba" href="https://innioasis.app/rockbox-for-y2_iba.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/rockbox-for-y2_id.html">
+  <link rel="alternate" hreflang="ig" href="https://innioasis.app/rockbox-for-y2_ig.html">
+  <link rel="alternate" hreflang="ilo" href="https://innioasis.app/rockbox-for-y2_ilo.html">
+  <link rel="alternate" hreflang="is" href="https://innioasis.app/rockbox-for-y2_is.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/rockbox-for-y2_it.html">
+  <link rel="alternate" hreflang="iu" href="https://innioasis.app/rockbox-for-y2_iu.html">
+  <link rel="alternate" hreflang="iu-Latn" href="https://innioasis.app/rockbox-for-y2_iu-Latn.html">
+  <link rel="alternate" hreflang="iw" href="https://innioasis.app/rockbox-for-y2_iw.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/rockbox-for-y2_ja.html">
+  <link rel="alternate" hreflang="jam" href="https://innioasis.app/rockbox-for-y2_jam.html">
+  <link rel="alternate" hreflang="jv" href="https://innioasis.app/rockbox-for-y2_jv.html">
+  <link rel="alternate" hreflang="jw" href="https://innioasis.app/rockbox-for-y2_jw.html">
+  <link rel="alternate" hreflang="ka" href="https://innioasis.app/rockbox-for-y2_ka.html">
+  <link rel="alternate" hreflang="kac" href="https://innioasis.app/rockbox-for-y2_kac.html">
+  <link rel="alternate" hreflang="kek" href="https://innioasis.app/rockbox-for-y2_kek.html">
+  <link rel="alternate" hreflang="kg" href="https://innioasis.app/rockbox-for-y2_kg.html">
+  <link rel="alternate" hreflang="kha" href="https://innioasis.app/rockbox-for-y2_kha.html">
+  <link rel="alternate" hreflang="kk" href="https://innioasis.app/rockbox-for-y2_kk.html">
+  <link rel="alternate" hreflang="kl" href="https://innioasis.app/rockbox-for-y2_kl.html">
+  <link rel="alternate" hreflang="km" href="https://innioasis.app/rockbox-for-y2_km.html">
+  <link rel="alternate" hreflang="kn" href="https://innioasis.app/rockbox-for-y2_kn.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/rockbox-for-y2_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/rockbox-for-y2_kr.html">
+  <link rel="alternate" hreflang="kri" href="https://innioasis.app/rockbox-for-y2_kri.html">
+  <link rel="alternate" hreflang="ktu" href="https://innioasis.app/rockbox-for-y2_ktu.html">
+  <link rel="alternate" hreflang="ku" href="https://innioasis.app/rockbox-for-y2_ku.html">
+  <link rel="alternate" hreflang="kv" href="https://innioasis.app/rockbox-for-y2_kv.html">
+  <link rel="alternate" hreflang="ky" href="https://innioasis.app/rockbox-for-y2_ky.html">
+  <link rel="alternate" hreflang="la" href="https://innioasis.app/rockbox-for-y2_la.html">
+  <link rel="alternate" hreflang="lb" href="https://innioasis.app/rockbox-for-y2_lb.html">
+  <link rel="alternate" hreflang="lg" href="https://innioasis.app/rockbox-for-y2_lg.html">
+  <link rel="alternate" hreflang="li" href="https://innioasis.app/rockbox-for-y2_li.html">
+  <link rel="alternate" hreflang="lij" href="https://innioasis.app/rockbox-for-y2_lij.html">
+  <link rel="alternate" hreflang="lmo" href="https://innioasis.app/rockbox-for-y2_lmo.html">
+  <link rel="alternate" hreflang="ln" href="https://innioasis.app/rockbox-for-y2_ln.html">
+  <link rel="alternate" hreflang="lo" href="https://innioasis.app/rockbox-for-y2_lo.html">
+  <link rel="alternate" hreflang="lt" href="https://innioasis.app/rockbox-for-y2_lt.html">
+  <link rel="alternate" hreflang="ltg" href="https://innioasis.app/rockbox-for-y2_ltg.html">
+  <link rel="alternate" hreflang="lua" href="https://innioasis.app/rockbox-for-y2_lua.html">
+  <link rel="alternate" hreflang="luo" href="https://innioasis.app/rockbox-for-y2_luo.html">
+  <link rel="alternate" hreflang="lus" href="https://innioasis.app/rockbox-for-y2_lus.html">
+  <link rel="alternate" hreflang="lv" href="https://innioasis.app/rockbox-for-y2_lv.html">
+  <link rel="alternate" hreflang="mad" href="https://innioasis.app/rockbox-for-y2_mad.html">
+  <link rel="alternate" hreflang="mai" href="https://innioasis.app/rockbox-for-y2_mai.html">
+  <link rel="alternate" hreflang="mak" href="https://innioasis.app/rockbox-for-y2_mak.html">
+  <link rel="alternate" hreflang="mam" href="https://innioasis.app/rockbox-for-y2_mam.html">
+  <link rel="alternate" hreflang="mfe" href="https://innioasis.app/rockbox-for-y2_mfe.html">
+  <link rel="alternate" hreflang="mg" href="https://innioasis.app/rockbox-for-y2_mg.html">
+  <link rel="alternate" hreflang="mh" href="https://innioasis.app/rockbox-for-y2_mh.html">
+  <link rel="alternate" hreflang="mi" href="https://innioasis.app/rockbox-for-y2_mi.html">
+  <link rel="alternate" hreflang="min" href="https://innioasis.app/rockbox-for-y2_min.html">
+  <link rel="alternate" hreflang="mk" href="https://innioasis.app/rockbox-for-y2_mk.html">
+  <link rel="alternate" hreflang="ml" href="https://innioasis.app/rockbox-for-y2_ml.html">
+  <link rel="alternate" hreflang="mn" href="https://innioasis.app/rockbox-for-y2_mn.html">
+  <link rel="alternate" hreflang="mni-Mtei" href="https://innioasis.app/rockbox-for-y2_mni-Mtei.html">
+  <link rel="alternate" hreflang="mr" href="https://innioasis.app/rockbox-for-y2_mr.html">
+  <link rel="alternate" hreflang="ms" href="https://innioasis.app/rockbox-for-y2_ms.html">
+  <link rel="alternate" hreflang="ms-Arab" href="https://innioasis.app/rockbox-for-y2_ms-Arab.html">
+  <link rel="alternate" hreflang="mt" href="https://innioasis.app/rockbox-for-y2_mt.html">
+  <link rel="alternate" hreflang="mwr" href="https://innioasis.app/rockbox-for-y2_mwr.html">
+  <link rel="alternate" hreflang="my" href="https://innioasis.app/rockbox-for-y2_my.html">
+  <link rel="alternate" hreflang="ndc-ZW" href="https://innioasis.app/rockbox-for-y2_ndc-ZW.html">
+  <link rel="alternate" hreflang="ne" href="https://innioasis.app/rockbox-for-y2_ne.html">
+  <link rel="alternate" hreflang="new" href="https://innioasis.app/rockbox-for-y2_new.html">
+  <link rel="alternate" hreflang="nhe" href="https://innioasis.app/rockbox-for-y2_nhe.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/rockbox-for-y2_nl.html">
   <link rel="alternate" hreflang="no" href="https://innioasis.app/rockbox-for-y2_no.html">
+  <link rel="alternate" hreflang="nr" href="https://innioasis.app/rockbox-for-y2_nr.html">
+  <link rel="alternate" hreflang="nso" href="https://innioasis.app/rockbox-for-y2_nso.html">
+  <link rel="alternate" hreflang="nus" href="https://innioasis.app/rockbox-for-y2_nus.html">
+  <link rel="alternate" hreflang="ny" href="https://innioasis.app/rockbox-for-y2_ny.html">
+  <link rel="alternate" hreflang="oc" href="https://innioasis.app/rockbox-for-y2_oc.html">
+  <link rel="alternate" hreflang="om" href="https://innioasis.app/rockbox-for-y2_om.html">
+  <link rel="alternate" hreflang="or" href="https://innioasis.app/rockbox-for-y2_or.html">
+  <link rel="alternate" hreflang="os" href="https://innioasis.app/rockbox-for-y2_os.html">
+  <link rel="alternate" hreflang="pa" href="https://innioasis.app/rockbox-for-y2_pa.html">
+  <link rel="alternate" hreflang="pa-Arab" href="https://innioasis.app/rockbox-for-y2_pa-Arab.html">
+  <link rel="alternate" hreflang="pag" href="https://innioasis.app/rockbox-for-y2_pag.html">
+  <link rel="alternate" hreflang="pam" href="https://innioasis.app/rockbox-for-y2_pam.html">
+  <link rel="alternate" hreflang="pap" href="https://innioasis.app/rockbox-for-y2_pap.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/rockbox-for-y2_pl.html">
+  <link rel="alternate" hreflang="ps" href="https://innioasis.app/rockbox-for-y2_ps.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/rockbox-for-y2_pt.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/rockbox-for-y2_pt-PT.html">
+  <link rel="alternate" hreflang="qu" href="https://innioasis.app/rockbox-for-y2_qu.html">
+  <link rel="alternate" hreflang="rn" href="https://innioasis.app/rockbox-for-y2_rn.html">
   <link rel="alternate" hreflang="ro" href="https://innioasis.app/rockbox-for-y2_ro.html">
+  <link rel="alternate" hreflang="rom" href="https://innioasis.app/rockbox-for-y2_rom.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/rockbox-for-y2_ru.html">
+  <link rel="alternate" hreflang="rw" href="https://innioasis.app/rockbox-for-y2_rw.html">
+  <link rel="alternate" hreflang="sa" href="https://innioasis.app/rockbox-for-y2_sa.html">
+  <link rel="alternate" hreflang="sah" href="https://innioasis.app/rockbox-for-y2_sah.html">
+  <link rel="alternate" hreflang="sat" href="https://innioasis.app/rockbox-for-y2_sat.html">
+  <link rel="alternate" hreflang="sat-Latn" href="https://innioasis.app/rockbox-for-y2_sat-Latn.html">
+  <link rel="alternate" hreflang="scn" href="https://innioasis.app/rockbox-for-y2_scn.html">
+  <link rel="alternate" hreflang="sd" href="https://innioasis.app/rockbox-for-y2_sd.html">
+  <link rel="alternate" hreflang="se" href="https://innioasis.app/rockbox-for-y2_se.html">
+  <link rel="alternate" hreflang="sg" href="https://innioasis.app/rockbox-for-y2_sg.html">
+  <link rel="alternate" hreflang="shn" href="https://innioasis.app/rockbox-for-y2_shn.html">
+  <link rel="alternate" hreflang="si" href="https://innioasis.app/rockbox-for-y2_si.html">
+  <link rel="alternate" hreflang="sk" href="https://innioasis.app/rockbox-for-y2_sk.html">
+  <link rel="alternate" hreflang="sl" href="https://innioasis.app/rockbox-for-y2_sl.html">
+  <link rel="alternate" hreflang="sm" href="https://innioasis.app/rockbox-for-y2_sm.html">
+  <link rel="alternate" hreflang="sn" href="https://innioasis.app/rockbox-for-y2_sn.html">
+  <link rel="alternate" hreflang="so" href="https://innioasis.app/rockbox-for-y2_so.html">
+  <link rel="alternate" hreflang="sq" href="https://innioasis.app/rockbox-for-y2_sq.html">
+  <link rel="alternate" hreflang="sr" href="https://innioasis.app/rockbox-for-y2_sr.html">
+  <link rel="alternate" hreflang="ss" href="https://innioasis.app/rockbox-for-y2_ss.html">
+  <link rel="alternate" hreflang="st" href="https://innioasis.app/rockbox-for-y2_st.html">
+  <link rel="alternate" hreflang="su" href="https://innioasis.app/rockbox-for-y2_su.html">
+  <link rel="alternate" hreflang="sus" href="https://innioasis.app/rockbox-for-y2_sus.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/rockbox-for-y2_sv.html">
+  <link rel="alternate" hreflang="sw" href="https://innioasis.app/rockbox-for-y2_sw.html">
+  <link rel="alternate" hreflang="szl" href="https://innioasis.app/rockbox-for-y2_szl.html">
+  <link rel="alternate" hreflang="ta" href="https://innioasis.app/rockbox-for-y2_ta.html">
+  <link rel="alternate" hreflang="tcy" href="https://innioasis.app/rockbox-for-y2_tcy.html">
+  <link rel="alternate" hreflang="te" href="https://innioasis.app/rockbox-for-y2_te.html">
+  <link rel="alternate" hreflang="tet" href="https://innioasis.app/rockbox-for-y2_tet.html">
+  <link rel="alternate" hreflang="tg" href="https://innioasis.app/rockbox-for-y2_tg.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/rockbox-for-y2_th.html">
+  <link rel="alternate" hreflang="ti" href="https://innioasis.app/rockbox-for-y2_ti.html">
+  <link rel="alternate" hreflang="tiv" href="https://innioasis.app/rockbox-for-y2_tiv.html">
+  <link rel="alternate" hreflang="tk" href="https://innioasis.app/rockbox-for-y2_tk.html">
+  <link rel="alternate" hreflang="tl" href="https://innioasis.app/rockbox-for-y2_tl.html">
+  <link rel="alternate" hreflang="tn" href="https://innioasis.app/rockbox-for-y2_tn.html">
+  <link rel="alternate" hreflang="to" href="https://innioasis.app/rockbox-for-y2_to.html">
+  <link rel="alternate" hreflang="tpi" href="https://innioasis.app/rockbox-for-y2_tpi.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/rockbox-for-y2_tr.html">
+  <link rel="alternate" hreflang="trp" href="https://innioasis.app/rockbox-for-y2_trp.html">
+  <link rel="alternate" hreflang="ts" href="https://innioasis.app/rockbox-for-y2_ts.html">
+  <link rel="alternate" hreflang="tt" href="https://innioasis.app/rockbox-for-y2_tt.html">
+  <link rel="alternate" hreflang="tum" href="https://innioasis.app/rockbox-for-y2_tum.html">
+  <link rel="alternate" hreflang="ty" href="https://innioasis.app/rockbox-for-y2_ty.html">
+  <link rel="alternate" hreflang="tyv" href="https://innioasis.app/rockbox-for-y2_tyv.html">
+  <link rel="alternate" hreflang="udm" href="https://innioasis.app/rockbox-for-y2_udm.html">
+  <link rel="alternate" hreflang="ug" href="https://innioasis.app/rockbox-for-y2_ug.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/rockbox-for-y2_uk.html">
+  <link rel="alternate" hreflang="ur" href="https://innioasis.app/rockbox-for-y2_ur.html">
+  <link rel="alternate" hreflang="uz" href="https://innioasis.app/rockbox-for-y2_uz.html">
+  <link rel="alternate" hreflang="ve" href="https://innioasis.app/rockbox-for-y2_ve.html">
+  <link rel="alternate" hreflang="vec" href="https://innioasis.app/rockbox-for-y2_vec.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/rockbox-for-y2_vi.html">
+  <link rel="alternate" hreflang="war" href="https://innioasis.app/rockbox-for-y2_war.html">
+  <link rel="alternate" hreflang="wo" href="https://innioasis.app/rockbox-for-y2_wo.html">
+  <link rel="alternate" hreflang="xh" href="https://innioasis.app/rockbox-for-y2_xh.html">
+  <link rel="alternate" hreflang="yi" href="https://innioasis.app/rockbox-for-y2_yi.html">
+  <link rel="alternate" hreflang="yo" href="https://innioasis.app/rockbox-for-y2_yo.html">
+  <link rel="alternate" hreflang="yua" href="https://innioasis.app/rockbox-for-y2_yua.html">
+  <link rel="alternate" hreflang="yue" href="https://innioasis.app/rockbox-for-y2_yue.html">
+  <link rel="alternate" hreflang="zap" href="https://innioasis.app/rockbox-for-y2_zap.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/rockbox-for-y2_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/rockbox-for-y2_zh-TW.html">
+  <link rel="alternate" hreflang="zu" href="https://innioasis.app/rockbox-for-y2_zu.html">
+  <link rel="alternate" hreflang="ar-SA" href="https://innioasis.app/rockbox-for-y2_ar-SA.html">
+  <link rel="alternate" hreflang="bn-IN" href="https://innioasis.app/rockbox-for-y2_bn-IN.html">
+  <link rel="alternate" hreflang="de-AT" href="https://innioasis.app/rockbox-for-y2_de-AT.html">
+  <link rel="alternate" hreflang="de-CH" href="https://innioasis.app/rockbox-for-y2_de-CH.html">
+  <link rel="alternate" hreflang="en-AU" href="https://innioasis.app/rockbox-for-y2_en-AU.html">
+  <link rel="alternate" hreflang="en-CA" href="https://innioasis.app/rockbox-for-y2_en-CA.html">
+  <link rel="alternate" hreflang="en-IN" href="https://innioasis.app/rockbox-for-y2_en-IN.html">
+  <link rel="alternate" hreflang="en-NZ" href="https://innioasis.app/rockbox-for-y2_en-NZ.html">
+  <link rel="alternate" hreflang="es-419" href="https://innioasis.app/rockbox-for-y2_es-419.html">
+  <link rel="alternate" hreflang="es-AR" href="https://innioasis.app/rockbox-for-y2_es-AR.html">
+  <link rel="alternate" hreflang="es-ES" href="https://innioasis.app/rockbox-for-y2_es-ES.html">
+  <link rel="alternate" hreflang="es-MX" href="https://innioasis.app/rockbox-for-y2_es-MX.html">
+  <link rel="alternate" hreflang="fr-BE" href="https://innioasis.app/rockbox-for-y2_fr-BE.html">
+  <link rel="alternate" hreflang="fr-CH" href="https://innioasis.app/rockbox-for-y2_fr-CH.html">
+  <link rel="alternate" hreflang="it-CH" href="https://innioasis.app/rockbox-for-y2_it-CH.html">
+  <link rel="alternate" hreflang="nl-BE" href="https://innioasis.app/rockbox-for-y2_nl-BE.html">
+  <link rel="alternate" hreflang="pa-PK" href="https://innioasis.app/rockbox-for-y2_pa-PK.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/rockbox-for-y2_pt-BR.html">
+  <link rel="alternate" hreflang="sr-Latn" href="https://innioasis.app/rockbox-for-y2_sr-Latn.html">
+  <link rel="alternate" hreflang="sw-KE" href="https://innioasis.app/rockbox-for-y2_sw-KE.html">
+  <link rel="alternate" hreflang="zh-HK" href="https://innioasis.app/rockbox-for-y2_zh-HK.html">
   <!-- i18n-hreflang-end -->
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Przejdź do treści</a>
 <div id="nav-root"></div>
 <main id="main" class="lumen-guide">
-  <p class="lumen-doc-back"><a href="firmware_pl.html?model=Y2&amp;software=rockbox-y2">← Pobieranie oprogramowania sprzętowego</a></p>
+  <p class="lumen-doc-back"><a href="firmware_pl.html?model=Y2&amp;software=rockbox-y2">← Pliki firmware do pobrania</a></p>
   <header>
     <p class="lumen-kicker">Rockbox-Y2 · Innioasis Y2</p>
     <h1>Rockbox dla Y2 (Rockbox-Y2)</h1>
-    <p class="lead">Rockbox-Y2 (nazywany także „Rockbox dla Y2”) to dedykowany port oprogramowania społecznościowego Rockbox dla Innioasis Y2. Używa własnego pakietu ROM (<code>rom_y2.zip</code>) i jest instalowany bezpośrednio poprzez Innioasis Updater CE.</p>
+    <p class="lead">Rockbox-Y2 (nazywany też „Rockbox dla Y2”) to dedykowany, społecznościowy port firmware Rockbox dla Innioasis Y2. Używa własnego pakietu ROM (<code>rom_y2.zip</code>) i instaluje się je bezpośrednio przez Innioasis Updater CE.</p>
     <div class="lumen-actions">
       <a class="lumen-button lumen-button--primary" href="rockbox-y2/install.html">Zainstaluj Rockbox-Y2</a>
       <a class="lumen-button" href="rockbox-y2/download.html">Pobierz ROM</a>
-      <a class="lumen-button" href="guides/rockbox-y2.html">Napisany poradnik</a>
-      <a class="lumen-button" href="rockbox-y2/">Rockbox-Y2 piasta</a>
+      <a class="lumen-button" href="guides/rockbox-y2.html">Poradnik pisemny</a>
+      <a class="lumen-button" href="rockbox-y2/">Rockbox-Y2 – strona główna</a>
     </div>
   </header>
 
   <section class="lumen-guide-section">
-    <h2>Zbudowany specjalnie dla Innioasis Y2</h2>
-    <p>W Innioasis Updater CE to oprogramowanie jest wymienione jako <strong>Rockbox</strong> Kiedy <strong>Y2</strong> jest wybrany. Jej publikacje publikowane są przez wydawnictwo <a href="firmware_pl.html?model=Y2&amp;software=rockbox-y2">spycemagic/y2-rockbox</a> projekt z nazwą pakietu <code>rom_y2.zip</code>.</p>
-    <p>Nigdy nie instaluj pakietu oprogramowania sprzętowego Y1 na Y2. Wybieranie <strong>Y2</strong> w Updater CE automatycznie filtruje listę wydań, wybierając tylko kompilacje kompatybilne z Y2.</p>
+    <h2>Stworzone specjalnie dla Innioasis Y2</h2>
+    <p>W Innioasis Updater CE to firmware jest wyświetlane jako <strong>Rockbox</strong> gdy <strong>Y2</strong> jest wybrany. Jego wydania publikuje <a href="firmware_pl.html?model=Y2&amp;software=rockbox-y2">spycemagic/y2-rockbox</a> projekt o nazwie pakietu <code>rom_y2.zip</code>.</p>
+    <p>Nigdy nie instaluj pakietu firmware Y1 na Y2. Wybranie <strong>Y2</strong> w Updater CE automatycznie filtruje listę wydań i pokazuje tylko wersje zgodne z Y2.</p>
   </section>
 
   <section class="lumen-guide-section">
-    <h2>Co oferuje Rockbox-Y2.</h2>
+    <h2>Co oferuje Rockbox-Y2</h2>
     <ul class="lumen-benefits-list">
-      <li><strong>Biblioteka muzyczna oparta na tagach</strong> — przeglądaj albumy, wykonawców i gatunki na podstawie znaczników plików audio lub bezpośrednio przeglądaj foldery.</li>
-      <li><strong>Sterowanie odtwarzaniem</strong> — odtwarzanie bez przerw, przenikanie, ReplayGain i ustawienia korektora.</li>
-      <li><strong>Niestandardowe motywy</strong> — zainstaluj motywy kompatybilne z twoją kompilacją Rockbox-Y2 (<a href="rockbox-y2-themes.html">Y2 przewodnik tematyczny</a>).</li>
-      <li><strong>100% offline</strong> — odtwarza pliki lokalne z Twojej karty MicroSD bez kont i subskrypcji.</li>
-      <li><strong>Łatwe przywracanie ustawień fabrycznych</strong> — w dowolnym momencie wróć do Y2 Oryginalnego oprogramowania w Updater CE.</li>
+      <li><strong>Biblioteka muzyczna oparta na tagach</strong> — przeglądaj albumy, wykonawców i gatunki na podstawie tagów w plikach audio albo bezpośrednio foldery.</li>
+      <li><strong>Sterowanie odtwarzaniem</strong> — odtwarzanie bez przerw, crossfade, ReplayGain i ustawienia equalizera.</li>
+      <li><strong>Własne motywy</strong> — instaluj motywy zgodne z Twoją wersją Rockbox-Y2 (<a href="rockbox-y2-themes_pl.html">Poradnik o motywach Y2</a>).</li>
+      <li><strong>100% offline</strong> — odtwarza lokalne pliki z karty microSD, bez kont i subskrypcji.</li>
+      <li><strong>Łatwe przywracanie ustawień fabrycznych</strong> — w Updater CE w każdej chwili wrócisz do oryginalnego oprogramowania Y2.</li>
     </ul>
   </section>
 
   <section class="lumen-guide-section">
-    <h2>Wybór wersji Rockbox-Y2.</h2>
+    <h2>Wybór wydania Rockbox-Y2</h2>
     <ul class="lumen-benefits-list">
-      <li>Zawsze wybieraj <strong>Y2</strong> w <strong>Model urządzenia</strong> pierwszy.</li>
-      <li>Wybierz najnowszą wersję, chyba że testujesz konkretną wersję.</li>
-      <li>Przeczytaj <a href="release-notes/rockbox-y2/index_pl.html">Rockbox-Y2 Informacje o wersji</a> aby zobaczyć, co zmieniło się w każdej kompilacji.</li>
+      <li>Zawsze wybieraj <strong>Y2</strong> w <strong>Model urządzenia</strong> najpierw.</li>
+      <li>Wybierz najnowsze wydanie, chyba że testujesz konkretną wersję.</li>
+      <li>Przeczytaj <a href="release-notes/rockbox-y2/index_pl.html">Informacje o wydaniach Rockbox-Y2</a> aby zobaczyć, co zmieniło się w każdej wersji.</li>
     </ul>
   </section>
 
   <section class="lumen-guide-section">
-    <h2>Bezpośrednie pliki do pobrania od twórców społeczności</h2>
-    <p>Innioasis Updater CE zawsze pobiera pakiety oprogramowania bezpośrednio od twórców oprogramowania sprzętowego społeczności (<a href="firmware_pl.html?model=Y2&amp;software=rockbox-y2">spycemagic/y2-rockbox</a>), a ci programiści ponoszą wyłączną odpowiedzialność za umieszczanie swoich wersji oprogramowania w serwisie Updater CE.</p>
-    <p>Możesz zezwolić na pobranie i flashowanie narzędzia Updater CE <code>rom_y2.zip</code> automatycznie lub pobierz pakiet z naszego <a href="rockbox-y2/download.html">Rockbox-Y2 strona pobierania</a> i <a href="rockbox-rom-download_pl.html">Rockbox ROM strona pobierania</a>.</p>
+    <h2>Pliki do pobrania bezpośrednio od deweloperów ze społeczności</h2>
+    <p>Innioasis Updater CE zawsze pobiera paczki firmware bezpośrednio od deweloperów firmware ze społeczności (<a href="firmware_pl.html?model=Y2&amp;software=rockbox-y2">spycemagic/y2-rockbox</a>), a za umieszczanie swoich wydań w Updater CE odpowiadają wyłącznie ci deweloperzy.</p>
+    <p>Możesz pozwolić, aby Updater CE pobrał i wgrał <code>rom_y2.zip</code> automatycznie, albo pobrać pakiet z naszej strony <a href="rockbox-y2/download.html">Strona pobierania Rockbox-Y2</a> i <a href="rockbox-rom-download_pl.html">Strona pobierania ROM-u Rockbox</a>.</p>
     <div class="lumen-actions">
-      <a class="lumen-button" href="rockbox-y2/download.html">Rockbox-Y2 pobrań</a>
+      <a class="lumen-button" href="rockbox-y2/download.html">Pliki Rockbox-Y2 do pobrania</a>
       <a class="lumen-button" href="rockbox-y2/portable-zip.html">Zainstaluj z lokalnego pliku ZIP</a>
     </div>
   </section>
@@ -142,47 +386,47 @@
     <ol class="lumen-steps">
       <li>Otwórz Innioasis Updater CE i ustaw <strong>Model urządzenia</strong> do <strong>Y2</strong>.</li>
       <li>Wybierz <strong>Rockbox</strong> w <strong>Oprogramowanie</strong>.</li>
-      <li>Wybierz wydanie Y2 z listy.</li>
-      <li>Kliknij <strong>Zainstaluj / Przywróć</strong> dlatego Updater CE pobiera pakiet bezpośrednio od programisty.</li>
-      <li>Całkowicie wyłącz urządzenie Y2 i podłącz je za pomocą kabla do transmisji danych USB, gdy program Updater CE o to poprosi.</li>
-      <li>Poczekaj na komunikat o zakończeniu, a następnie odłącz i włącz urządzenie Y2.</li>
+      <li>Wybierz wydanie dla Y2 z listy.</li>
+      <li>Kliknij <strong>Install / Restore</strong> dzięki temu Updater CE pobiera pakiet bezpośrednio od autora.</li>
+      <li>Całkowicie wyłącz Y2 i podłącz go kablem USB do transmisji danych, gdy poprosi o to Updater CE.</li>
+      <li>Poczekaj na komunikat o zakończeniu, potem odłącz kabel i włącz Y2.</li>
     </ol>
-    <p>Aby zapoznać się z pełną instrukcją krok po kroku, przeczytaj <a href="guides/rockbox-y2.html">Rockbox-Y2 samouczek</a>.</p>
+    <p>Pełny opis krok po kroku znajdziesz w <a href="guides/rockbox-y2.html">Poradnik Rockbox-Y2</a>.</p>
   </section>
 
   <section class="lumen-guide-section">
-    <h2>Przywracanie oryginalnego oprogramowania Y2.</h2>
-    <p>Aby wrócić do oprogramowania fabrycznego, wybierz <strong>Y2</strong> i <strong>Oprogramowanie oryginalne</strong> w Updater CE wybierz wersję stabilną i kliknij <strong>Zainstaluj / Przywróć</strong>. Zobacz <a href="rockbox-y2/restore-stock.html">przewodnik przywracania</a> i <a href="original-software-y2_pl.html">Y2 Strona oryginalnego oprogramowania</a>.</p>
+    <h2>Przywracanie oryginalnego oprogramowania Y2</h2>
+    <p>Aby wrócić do fabrycznego firmware, wybierz <strong>Y2</strong> i <strong>Oryginalne oprogramowanie</strong> w Updater CE wybierz wydanie stabilne i kliknij <strong>Install / Restore</strong>. Zobacz <a href="rockbox-y2/restore-stock.html">poradnik przywracania</a> i <a href="original-software-y2_pl.html">Strona oryginalnego oprogramowania Y2</a>.</p>
   </section>
 
   <section class="lumen-guide-section">
-    <h2>Często zadawane pytania</h2>
+    <h2>Najczęściej zadawane pytania</h2>
     <details>
-      <summary>Skąd można pobrać Updater CE Rockbox-Y2?</summary>
-      <p>Updater CE zawsze pobiera pakiety oprogramowania sprzętowego bezpośrednio z własnych wydań twórców oprogramowania sprzętowego społeczności (<code>spycemagic/y2-rockbox</code>). Twórcy ponoszą wyłączną odpowiedzialność za umieszczenie swoich wersji oprogramowania w Updater CE.</p>
+      <summary>Skąd Updater CE pobiera Rockbox-Y2?</summary>
+      <p>Updater CE zawsze pobiera pakiety firmware bezpośrednio z wydań publikowanych przez twórców społecznościowego firmware (<code>spycemagic/y2-rockbox</code>). Za umieszczanie swoich wydań w Updater CE odpowiadają wyłącznie deweloperzy.</p>
     </details>
     <details>
-      <summary>Dlaczego pakiet ma nazwę rom_y2.zip?</summary>
-      <p>Deweloper nadaje nazwę archiwum oprogramowania układowego Y2. <code>rom_y2.zip</code> więc nie można go pomylić z Y1. <code>rom.zip</code>.</p>
+      <summary>Dlaczego pakiet nazywa się rom_y2.zip?</summary>
+      <p>Deweloper nazywa archiwum firmware dla Y2 <code>rom_y2.zip</code> żeby nie dało się go pomylić z wersją dla Y1: <code>rom.zip</code>.</p>
     </details>
     <details>
-      <summary>Czy motywy Y1 działają na Y2?</summary>
-      <p>Nie zawsze. Sprawdź informacje o wersji dla swojej kompilacji Y2 i zobacz <a href="rockbox-y2-themes.html">Rockbox-Y2 przewodnik tematyczny</a>.</p>
+      <summary>Czy motywy z Y1 działają na Y2?</summary>
+      <p>Nie zawsze. Sprawdź informacje o wydaniu swojej wersji dla Y2 i zobacz <a href="rockbox-y2-themes_pl.html">Poradnik po motywach Rockbox-Y2</a>.</p>
     </details>
   </section>
 
   <section class="lumen-guide-section">
-    <h2>Powiązane przewodniki</h2>
+    <h2>Powiązane poradniki</h2>
     <div class="lumen-grid">
-      <article class="lumen-card"><h3><a href="rockbox-y2/">Rockbox-Y2 piasta</a></h3><p>Wszystkie poradniki Y2: instalacja, pobieranie, motywy, przywracanie, podwójny rozruch i rozwiązywanie problemów.</p></article>
-      <article class="lumen-card"><h3><a href="rockbox-y1-vs-y2.html">Rockbox-Y1 kontra Rockbox-Y2</a></h3><p>Czym różnią się kompilacje Y1 i Y2 Rockbox.</p></article>
-      <article class="lumen-card"><h3><a href="rockbox-y2-themes.html">Rockbox-Motywy Y2</a></h3><p>Instalowanie i resetowanie motywów na Rockbox-Y2.</p></article>
-      <article class="lumen-card"><h3><a href="rockbox-for-y1_pl.html">Rockbox dla Y1</a></h3><p>Omówienie i instrukcja instalacji dla portu Innioasis Y1.</p></article>
+      <article class="lumen-card"><h3><a href="rockbox-y2/">Rockbox-Y2 – strona główna</a></h3><p>Wszystkie poradniki do Y2: instalacja, pliki do pobrania, motywy, przywracanie, dual boot i rozwiązywanie problemów.</p></article>
+      <article class="lumen-card"><h3><a href="rockbox-y1-vs-y2_pl.html">Rockbox-Y1 a Rockbox-Y2</a></h3><p>Czym różnią się wersje Rockbox dla Y1 i Y2.</p></article>
+      <article class="lumen-card"><h3><a href="rockbox-y2-themes_pl.html">Motywy Rockbox-Y2</a></h3><p>Instalowanie i resetowanie motywów w Rockbox-Y2.</p></article>
+      <article class="lumen-card"><h3><a href="rockbox-for-y1_pl.html">Rockbox dla Y1</a></h3><p>Przegląd i poradnik instalacji portu dla Innioasis Y1.</p></article>
     </div>
   </section>
 </main>
 <div id="footer-root"></div><div id="support-toolbar-slot"></div>
-<script src="nav.js?v=20261114links1" defer></script>
+<script src="nav.js?v=20261124fixes1" defer></script>
 <script src="site-i18n.js?v=20260830" defer></script>
-<script src="site-locale.js?v=20261111i18nfix" defer></script></body>
+<script src="site-locale.js?v=20261124fixes1" defer></script></body>
 </html>

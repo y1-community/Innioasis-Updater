@@ -26,50 +26,294 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Konfiguracja Wi-Fi, Bluetooth i radia FM dla Reborn (Y2Linux) - Innioasis Aktualizacja</title>
-  <meta name="description" content="Krótka instrukcja poinstalacyjna dla Reborn (Y2Linux / Y2Reborn) na Innioasis Y2: skopiuj plik system.img, a następnie skonfiguruj Wi-Fi, Bluetooth i radio FM.">
-  <meta name="keywords" content="Y2Reborn Konfiguracja Wi-Fi, Y2Linux Przewodnik Bluetooth, Innioasis Y2 oprogramowanie sprzętowe radia, pobranie pliku system.img, Y2Reborn instalacja po instalacji, Innioasis Updater CE, niestandardowe oprogramowanie sprzętowe">
+  <title>Konfiguracja Wi-Fi, Bluetooth i radia FM w Reborn (Y2Linux) - Innioasis Updater</title>
+  <meta name="description" content="Krótki poradnik po instalacji Reborn (Y2Linux / Y2Reborn) na Innioasis Y2: skopiuj system.img, a następnie skonfiguruj Wi-Fi, Bluetooth i radio FM.">
+  <meta name="keywords" content="Konfiguracja Wi-Fi w Y2Reborn, poradnik Bluetooth dla Y2Linux, firmware radia Innioasis Y2, pobieranie system.img, Y2Reborn po instalacji, Innioasis Updater CE, custom firmware">
   <link rel="canonical" href="https://innioasis.app/y2reborn_wifibt_pl.html">
   <link rel="icon" href="y1_illustration.png">
-  <link rel="stylesheet" href="site-theme.css?v=20261109theme">
-  <link rel="stylesheet" href="lumen.css?v=20261110picker">
+  <link rel="stylesheet" href="site-theme.css?v=20261124fixes1">
+  <link rel="stylesheet" href="lumen.css?v=20261124fixes1">
   <link rel="stylesheet" href="site-pages.css?v=20261019d">
-  <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261117fallback3" defer></script>
-<meta property="og:site_name" content="Innioasis Aktualizator">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261124fixes1">
+  <script src="site-init.js?v=20261124fixes1" defer></script>
+<meta property="og:site_name" content="Innioasis Updater">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/y2reborn_wifibt.html">
   <link rel="alternate" hreflang="en" href="https://innioasis.app/y2reborn_wifibt.html">
-  <link rel="alternate" hreflang="de" href="https://innioasis.app/y2reborn_wifibt_de.html">
-  <link rel="alternate" hreflang="ja" href="https://innioasis.app/y2reborn_wifibt_ja.html">
-  <link rel="alternate" hreflang="es" href="https://innioasis.app/y2reborn_wifibt_es.html">
-  <link rel="alternate" hreflang="fr" href="https://innioasis.app/y2reborn_wifibt_fr.html">
-  <link rel="alternate" hreflang="it" href="https://innioasis.app/y2reborn_wifibt_it.html">
-  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/y2reborn_wifibt_pt-BR.html">
-  <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/y2reborn_wifibt_pt-PT.html">
-  <link rel="alternate" hreflang="ru" href="https://innioasis.app/y2reborn_wifibt_ru.html">
-  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/y2reborn_wifibt_zh-CN.html">
-  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/y2reborn_wifibt_zh-TW.html">
-  <link rel="alternate" hreflang="ko" href="https://innioasis.app/y2reborn_wifibt_ko.html">
+  <link rel="alternate" hreflang="aa" href="https://innioasis.app/y2reborn_wifibt_aa.html">
+  <link rel="alternate" hreflang="ab" href="https://innioasis.app/y2reborn_wifibt_ab.html">
+  <link rel="alternate" hreflang="ace" href="https://innioasis.app/y2reborn_wifibt_ace.html">
+  <link rel="alternate" hreflang="ach" href="https://innioasis.app/y2reborn_wifibt_ach.html">
+  <link rel="alternate" hreflang="af" href="https://innioasis.app/y2reborn_wifibt_af.html">
+  <link rel="alternate" hreflang="ak" href="https://innioasis.app/y2reborn_wifibt_ak.html">
+  <link rel="alternate" hreflang="alz" href="https://innioasis.app/y2reborn_wifibt_alz.html">
+  <link rel="alternate" hreflang="am" href="https://innioasis.app/y2reborn_wifibt_am.html">
   <link rel="alternate" hreflang="ar" href="https://innioasis.app/y2reborn_wifibt_ar.html">
-  <link rel="alternate" hreflang="nl" href="https://innioasis.app/y2reborn_wifibt_nl.html">
-  <link rel="alternate" hreflang="pl" href="https://innioasis.app/y2reborn_wifibt_pl.html">
-  <link rel="alternate" hreflang="tr" href="https://innioasis.app/y2reborn_wifibt_tr.html">
-  <link rel="alternate" hreflang="uk" href="https://innioasis.app/y2reborn_wifibt_uk.html">
-  <link rel="alternate" hreflang="vi" href="https://innioasis.app/y2reborn_wifibt_vi.html">
-  <link rel="alternate" hreflang="th" href="https://innioasis.app/y2reborn_wifibt_th.html">
-  <link rel="alternate" hreflang="id" href="https://innioasis.app/y2reborn_wifibt_id.html">
+  <link rel="alternate" hreflang="as" href="https://innioasis.app/y2reborn_wifibt_as.html">
+  <link rel="alternate" hreflang="av" href="https://innioasis.app/y2reborn_wifibt_av.html">
+  <link rel="alternate" hreflang="awa" href="https://innioasis.app/y2reborn_wifibt_awa.html">
+  <link rel="alternate" hreflang="ay" href="https://innioasis.app/y2reborn_wifibt_ay.html">
+  <link rel="alternate" hreflang="az" href="https://innioasis.app/y2reborn_wifibt_az.html">
+  <link rel="alternate" hreflang="ba" href="https://innioasis.app/y2reborn_wifibt_ba.html">
+  <link rel="alternate" hreflang="bal" href="https://innioasis.app/y2reborn_wifibt_bal.html">
+  <link rel="alternate" hreflang="ban" href="https://innioasis.app/y2reborn_wifibt_ban.html">
+  <link rel="alternate" hreflang="bbc" href="https://innioasis.app/y2reborn_wifibt_bbc.html">
+  <link rel="alternate" hreflang="bci" href="https://innioasis.app/y2reborn_wifibt_bci.html">
+  <link rel="alternate" hreflang="be" href="https://innioasis.app/y2reborn_wifibt_be.html">
+  <link rel="alternate" hreflang="bem" href="https://innioasis.app/y2reborn_wifibt_bem.html">
+  <link rel="alternate" hreflang="ber" href="https://innioasis.app/y2reborn_wifibt_ber.html">
+  <link rel="alternate" hreflang="ber-Latn" href="https://innioasis.app/y2reborn_wifibt_ber-Latn.html">
+  <link rel="alternate" hreflang="bew" href="https://innioasis.app/y2reborn_wifibt_bew.html">
+  <link rel="alternate" hreflang="bg" href="https://innioasis.app/y2reborn_wifibt_bg.html">
+  <link rel="alternate" hreflang="bho" href="https://innioasis.app/y2reborn_wifibt_bho.html">
+  <link rel="alternate" hreflang="bik" href="https://innioasis.app/y2reborn_wifibt_bik.html">
+  <link rel="alternate" hreflang="bm" href="https://innioasis.app/y2reborn_wifibt_bm.html">
+  <link rel="alternate" hreflang="bm-Nkoo" href="https://innioasis.app/y2reborn_wifibt_bm-Nkoo.html">
+  <link rel="alternate" hreflang="bn" href="https://innioasis.app/y2reborn_wifibt_bn.html">
+  <link rel="alternate" hreflang="bo" href="https://innioasis.app/y2reborn_wifibt_bo.html">
+  <link rel="alternate" hreflang="br" href="https://innioasis.app/y2reborn_wifibt_br.html">
+  <link rel="alternate" hreflang="bs" href="https://innioasis.app/y2reborn_wifibt_bs.html">
+  <link rel="alternate" hreflang="bts" href="https://innioasis.app/y2reborn_wifibt_bts.html">
+  <link rel="alternate" hreflang="btx" href="https://innioasis.app/y2reborn_wifibt_btx.html">
+  <link rel="alternate" hreflang="bua" href="https://innioasis.app/y2reborn_wifibt_bua.html">
+  <link rel="alternate" hreflang="ca" href="https://innioasis.app/y2reborn_wifibt_ca.html">
+  <link rel="alternate" hreflang="ce" href="https://innioasis.app/y2reborn_wifibt_ce.html">
+  <link rel="alternate" hreflang="ceb" href="https://innioasis.app/y2reborn_wifibt_ceb.html">
+  <link rel="alternate" hreflang="cgg" href="https://innioasis.app/y2reborn_wifibt_cgg.html">
+  <link rel="alternate" hreflang="ch" href="https://innioasis.app/y2reborn_wifibt_ch.html">
+  <link rel="alternate" hreflang="chk" href="https://innioasis.app/y2reborn_wifibt_chk.html">
+  <link rel="alternate" hreflang="chm" href="https://innioasis.app/y2reborn_wifibt_chm.html">
+  <link rel="alternate" hreflang="ckb" href="https://innioasis.app/y2reborn_wifibt_ckb.html">
+  <link rel="alternate" hreflang="cnh" href="https://innioasis.app/y2reborn_wifibt_cnh.html">
+  <link rel="alternate" hreflang="co" href="https://innioasis.app/y2reborn_wifibt_co.html">
+  <link rel="alternate" hreflang="crh" href="https://innioasis.app/y2reborn_wifibt_crh.html">
+  <link rel="alternate" hreflang="crh-Latn" href="https://innioasis.app/y2reborn_wifibt_crh-Latn.html">
+  <link rel="alternate" hreflang="crs" href="https://innioasis.app/y2reborn_wifibt_crs.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/y2reborn_wifibt_cs.html">
+  <link rel="alternate" hreflang="cv" href="https://innioasis.app/y2reborn_wifibt_cv.html">
+  <link rel="alternate" hreflang="cy" href="https://innioasis.app/y2reborn_wifibt_cy.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/y2reborn_wifibt_da.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/y2reborn_wifibt_de.html">
+  <link rel="alternate" hreflang="din" href="https://innioasis.app/y2reborn_wifibt_din.html">
+  <link rel="alternate" hreflang="doi" href="https://innioasis.app/y2reborn_wifibt_doi.html">
+  <link rel="alternate" hreflang="dov" href="https://innioasis.app/y2reborn_wifibt_dov.html">
+  <link rel="alternate" hreflang="dv" href="https://innioasis.app/y2reborn_wifibt_dv.html">
+  <link rel="alternate" hreflang="dyu" href="https://innioasis.app/y2reborn_wifibt_dyu.html">
+  <link rel="alternate" hreflang="dz" href="https://innioasis.app/y2reborn_wifibt_dz.html">
+  <link rel="alternate" hreflang="ee" href="https://innioasis.app/y2reborn_wifibt_ee.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/y2reborn_wifibt_el.html">
+  <link rel="alternate" hreflang="en-GB" href="https://innioasis.app/y2reborn_wifibt_en-GB.html">
+  <link rel="alternate" hreflang="en-US" href="https://innioasis.app/y2reborn_wifibt_en-US.html">
+  <link rel="alternate" hreflang="eo" href="https://innioasis.app/y2reborn_wifibt_eo.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/y2reborn_wifibt_es.html">
+  <link rel="alternate" hreflang="et" href="https://innioasis.app/y2reborn_wifibt_et.html">
+  <link rel="alternate" hreflang="eu" href="https://innioasis.app/y2reborn_wifibt_eu.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/y2reborn_wifibt_fa.html">
+  <link rel="alternate" hreflang="fa-AF" href="https://innioasis.app/y2reborn_wifibt_fa-AF.html">
+  <link rel="alternate" hreflang="ff" href="https://innioasis.app/y2reborn_wifibt_ff.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/y2reborn_wifibt_fi.html">
+  <link rel="alternate" hreflang="fil" href="https://innioasis.app/y2reborn_wifibt_fil.html">
+  <link rel="alternate" hreflang="fj" href="https://innioasis.app/y2reborn_wifibt_fj.html">
+  <link rel="alternate" hreflang="fo" href="https://innioasis.app/y2reborn_wifibt_fo.html">
+  <link rel="alternate" hreflang="fon" href="https://innioasis.app/y2reborn_wifibt_fon.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/y2reborn_wifibt_fr.html">
+  <link rel="alternate" hreflang="fr-CA" href="https://innioasis.app/y2reborn_wifibt_fr-CA.html">
+  <link rel="alternate" hreflang="fur" href="https://innioasis.app/y2reborn_wifibt_fur.html">
+  <link rel="alternate" hreflang="fy" href="https://innioasis.app/y2reborn_wifibt_fy.html">
+  <link rel="alternate" hreflang="ga" href="https://innioasis.app/y2reborn_wifibt_ga.html">
+  <link rel="alternate" hreflang="gaa" href="https://innioasis.app/y2reborn_wifibt_gaa.html">
+  <link rel="alternate" hreflang="gd" href="https://innioasis.app/y2reborn_wifibt_gd.html">
+  <link rel="alternate" hreflang="gl" href="https://innioasis.app/y2reborn_wifibt_gl.html">
+  <link rel="alternate" hreflang="gn" href="https://innioasis.app/y2reborn_wifibt_gn.html">
+  <link rel="alternate" hreflang="gom" href="https://innioasis.app/y2reborn_wifibt_gom.html">
+  <link rel="alternate" hreflang="gu" href="https://innioasis.app/y2reborn_wifibt_gu.html">
+  <link rel="alternate" hreflang="gv" href="https://innioasis.app/y2reborn_wifibt_gv.html">
+  <link rel="alternate" hreflang="ha" href="https://innioasis.app/y2reborn_wifibt_ha.html">
+  <link rel="alternate" hreflang="haw" href="https://innioasis.app/y2reborn_wifibt_haw.html">
   <link rel="alternate" hreflang="he" href="https://innioasis.app/y2reborn_wifibt_he.html">
   <link rel="alternate" hreflang="hi" href="https://innioasis.app/y2reborn_wifibt_hi.html">
-  <link rel="alternate" hreflang="cs" href="https://innioasis.app/y2reborn_wifibt_cs.html">
-  <link rel="alternate" hreflang="el" href="https://innioasis.app/y2reborn_wifibt_el.html">
-  <link rel="alternate" hreflang="sv" href="https://innioasis.app/y2reborn_wifibt_sv.html">
-  <link rel="alternate" hreflang="fa" href="https://innioasis.app/y2reborn_wifibt_fa.html">
-  <link rel="alternate" hreflang="da" href="https://innioasis.app/y2reborn_wifibt_da.html">
-  <link rel="alternate" hreflang="fi" href="https://innioasis.app/y2reborn_wifibt_fi.html">
+  <link rel="alternate" hreflang="hil" href="https://innioasis.app/y2reborn_wifibt_hil.html">
+  <link rel="alternate" hreflang="hmn" href="https://innioasis.app/y2reborn_wifibt_hmn.html">
+  <link rel="alternate" hreflang="hr" href="https://innioasis.app/y2reborn_wifibt_hr.html">
+  <link rel="alternate" hreflang="hrx" href="https://innioasis.app/y2reborn_wifibt_hrx.html">
+  <link rel="alternate" hreflang="ht" href="https://innioasis.app/y2reborn_wifibt_ht.html">
   <link rel="alternate" hreflang="hu" href="https://innioasis.app/y2reborn_wifibt_hu.html">
+  <link rel="alternate" hreflang="hy" href="https://innioasis.app/y2reborn_wifibt_hy.html">
+  <link rel="alternate" hreflang="iba" href="https://innioasis.app/y2reborn_wifibt_iba.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/y2reborn_wifibt_id.html">
+  <link rel="alternate" hreflang="ig" href="https://innioasis.app/y2reborn_wifibt_ig.html">
+  <link rel="alternate" hreflang="ilo" href="https://innioasis.app/y2reborn_wifibt_ilo.html">
+  <link rel="alternate" hreflang="is" href="https://innioasis.app/y2reborn_wifibt_is.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/y2reborn_wifibt_it.html">
+  <link rel="alternate" hreflang="iu" href="https://innioasis.app/y2reborn_wifibt_iu.html">
+  <link rel="alternate" hreflang="iu-Latn" href="https://innioasis.app/y2reborn_wifibt_iu-Latn.html">
+  <link rel="alternate" hreflang="iw" href="https://innioasis.app/y2reborn_wifibt_iw.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/y2reborn_wifibt_ja.html">
+  <link rel="alternate" hreflang="jam" href="https://innioasis.app/y2reborn_wifibt_jam.html">
+  <link rel="alternate" hreflang="jv" href="https://innioasis.app/y2reborn_wifibt_jv.html">
+  <link rel="alternate" hreflang="jw" href="https://innioasis.app/y2reborn_wifibt_jw.html">
+  <link rel="alternate" hreflang="ka" href="https://innioasis.app/y2reborn_wifibt_ka.html">
+  <link rel="alternate" hreflang="kac" href="https://innioasis.app/y2reborn_wifibt_kac.html">
+  <link rel="alternate" hreflang="kek" href="https://innioasis.app/y2reborn_wifibt_kek.html">
+  <link rel="alternate" hreflang="kg" href="https://innioasis.app/y2reborn_wifibt_kg.html">
+  <link rel="alternate" hreflang="kha" href="https://innioasis.app/y2reborn_wifibt_kha.html">
+  <link rel="alternate" hreflang="kk" href="https://innioasis.app/y2reborn_wifibt_kk.html">
+  <link rel="alternate" hreflang="kl" href="https://innioasis.app/y2reborn_wifibt_kl.html">
+  <link rel="alternate" hreflang="km" href="https://innioasis.app/y2reborn_wifibt_km.html">
+  <link rel="alternate" hreflang="kn" href="https://innioasis.app/y2reborn_wifibt_kn.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/y2reborn_wifibt_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/y2reborn_wifibt_kr.html">
+  <link rel="alternate" hreflang="kri" href="https://innioasis.app/y2reborn_wifibt_kri.html">
+  <link rel="alternate" hreflang="ktu" href="https://innioasis.app/y2reborn_wifibt_ktu.html">
+  <link rel="alternate" hreflang="ku" href="https://innioasis.app/y2reborn_wifibt_ku.html">
+  <link rel="alternate" hreflang="kv" href="https://innioasis.app/y2reborn_wifibt_kv.html">
+  <link rel="alternate" hreflang="ky" href="https://innioasis.app/y2reborn_wifibt_ky.html">
+  <link rel="alternate" hreflang="la" href="https://innioasis.app/y2reborn_wifibt_la.html">
+  <link rel="alternate" hreflang="lb" href="https://innioasis.app/y2reborn_wifibt_lb.html">
+  <link rel="alternate" hreflang="lg" href="https://innioasis.app/y2reborn_wifibt_lg.html">
+  <link rel="alternate" hreflang="li" href="https://innioasis.app/y2reborn_wifibt_li.html">
+  <link rel="alternate" hreflang="lij" href="https://innioasis.app/y2reborn_wifibt_lij.html">
+  <link rel="alternate" hreflang="lmo" href="https://innioasis.app/y2reborn_wifibt_lmo.html">
+  <link rel="alternate" hreflang="ln" href="https://innioasis.app/y2reborn_wifibt_ln.html">
+  <link rel="alternate" hreflang="lo" href="https://innioasis.app/y2reborn_wifibt_lo.html">
+  <link rel="alternate" hreflang="lt" href="https://innioasis.app/y2reborn_wifibt_lt.html">
+  <link rel="alternate" hreflang="ltg" href="https://innioasis.app/y2reborn_wifibt_ltg.html">
+  <link rel="alternate" hreflang="lua" href="https://innioasis.app/y2reborn_wifibt_lua.html">
+  <link rel="alternate" hreflang="luo" href="https://innioasis.app/y2reborn_wifibt_luo.html">
+  <link rel="alternate" hreflang="lus" href="https://innioasis.app/y2reborn_wifibt_lus.html">
+  <link rel="alternate" hreflang="lv" href="https://innioasis.app/y2reborn_wifibt_lv.html">
+  <link rel="alternate" hreflang="mad" href="https://innioasis.app/y2reborn_wifibt_mad.html">
+  <link rel="alternate" hreflang="mai" href="https://innioasis.app/y2reborn_wifibt_mai.html">
+  <link rel="alternate" hreflang="mak" href="https://innioasis.app/y2reborn_wifibt_mak.html">
+  <link rel="alternate" hreflang="mam" href="https://innioasis.app/y2reborn_wifibt_mam.html">
+  <link rel="alternate" hreflang="mfe" href="https://innioasis.app/y2reborn_wifibt_mfe.html">
+  <link rel="alternate" hreflang="mg" href="https://innioasis.app/y2reborn_wifibt_mg.html">
+  <link rel="alternate" hreflang="mh" href="https://innioasis.app/y2reborn_wifibt_mh.html">
+  <link rel="alternate" hreflang="mi" href="https://innioasis.app/y2reborn_wifibt_mi.html">
+  <link rel="alternate" hreflang="min" href="https://innioasis.app/y2reborn_wifibt_min.html">
+  <link rel="alternate" hreflang="mk" href="https://innioasis.app/y2reborn_wifibt_mk.html">
+  <link rel="alternate" hreflang="ml" href="https://innioasis.app/y2reborn_wifibt_ml.html">
+  <link rel="alternate" hreflang="mn" href="https://innioasis.app/y2reborn_wifibt_mn.html">
+  <link rel="alternate" hreflang="mni-Mtei" href="https://innioasis.app/y2reborn_wifibt_mni-Mtei.html">
+  <link rel="alternate" hreflang="mr" href="https://innioasis.app/y2reborn_wifibt_mr.html">
+  <link rel="alternate" hreflang="ms" href="https://innioasis.app/y2reborn_wifibt_ms.html">
+  <link rel="alternate" hreflang="ms-Arab" href="https://innioasis.app/y2reborn_wifibt_ms-Arab.html">
+  <link rel="alternate" hreflang="mt" href="https://innioasis.app/y2reborn_wifibt_mt.html">
+  <link rel="alternate" hreflang="mwr" href="https://innioasis.app/y2reborn_wifibt_mwr.html">
+  <link rel="alternate" hreflang="my" href="https://innioasis.app/y2reborn_wifibt_my.html">
+  <link rel="alternate" hreflang="ndc-ZW" href="https://innioasis.app/y2reborn_wifibt_ndc-ZW.html">
+  <link rel="alternate" hreflang="ne" href="https://innioasis.app/y2reborn_wifibt_ne.html">
+  <link rel="alternate" hreflang="new" href="https://innioasis.app/y2reborn_wifibt_new.html">
+  <link rel="alternate" hreflang="nhe" href="https://innioasis.app/y2reborn_wifibt_nhe.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/y2reborn_wifibt_nl.html">
   <link rel="alternate" hreflang="no" href="https://innioasis.app/y2reborn_wifibt_no.html">
+  <link rel="alternate" hreflang="nr" href="https://innioasis.app/y2reborn_wifibt_nr.html">
+  <link rel="alternate" hreflang="nso" href="https://innioasis.app/y2reborn_wifibt_nso.html">
+  <link rel="alternate" hreflang="nus" href="https://innioasis.app/y2reborn_wifibt_nus.html">
+  <link rel="alternate" hreflang="ny" href="https://innioasis.app/y2reborn_wifibt_ny.html">
+  <link rel="alternate" hreflang="oc" href="https://innioasis.app/y2reborn_wifibt_oc.html">
+  <link rel="alternate" hreflang="om" href="https://innioasis.app/y2reborn_wifibt_om.html">
+  <link rel="alternate" hreflang="or" href="https://innioasis.app/y2reborn_wifibt_or.html">
+  <link rel="alternate" hreflang="os" href="https://innioasis.app/y2reborn_wifibt_os.html">
+  <link rel="alternate" hreflang="pa" href="https://innioasis.app/y2reborn_wifibt_pa.html">
+  <link rel="alternate" hreflang="pa-Arab" href="https://innioasis.app/y2reborn_wifibt_pa-Arab.html">
+  <link rel="alternate" hreflang="pag" href="https://innioasis.app/y2reborn_wifibt_pag.html">
+  <link rel="alternate" hreflang="pam" href="https://innioasis.app/y2reborn_wifibt_pam.html">
+  <link rel="alternate" hreflang="pap" href="https://innioasis.app/y2reborn_wifibt_pap.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/y2reborn_wifibt_pl.html">
+  <link rel="alternate" hreflang="ps" href="https://innioasis.app/y2reborn_wifibt_ps.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/y2reborn_wifibt_pt.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/y2reborn_wifibt_pt-PT.html">
+  <link rel="alternate" hreflang="qu" href="https://innioasis.app/y2reborn_wifibt_qu.html">
+  <link rel="alternate" hreflang="rn" href="https://innioasis.app/y2reborn_wifibt_rn.html">
   <link rel="alternate" hreflang="ro" href="https://innioasis.app/y2reborn_wifibt_ro.html">
+  <link rel="alternate" hreflang="rom" href="https://innioasis.app/y2reborn_wifibt_rom.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/y2reborn_wifibt_ru.html">
+  <link rel="alternate" hreflang="rw" href="https://innioasis.app/y2reborn_wifibt_rw.html">
+  <link rel="alternate" hreflang="sa" href="https://innioasis.app/y2reborn_wifibt_sa.html">
+  <link rel="alternate" hreflang="sah" href="https://innioasis.app/y2reborn_wifibt_sah.html">
+  <link rel="alternate" hreflang="sat" href="https://innioasis.app/y2reborn_wifibt_sat.html">
+  <link rel="alternate" hreflang="sat-Latn" href="https://innioasis.app/y2reborn_wifibt_sat-Latn.html">
+  <link rel="alternate" hreflang="scn" href="https://innioasis.app/y2reborn_wifibt_scn.html">
+  <link rel="alternate" hreflang="sd" href="https://innioasis.app/y2reborn_wifibt_sd.html">
+  <link rel="alternate" hreflang="se" href="https://innioasis.app/y2reborn_wifibt_se.html">
+  <link rel="alternate" hreflang="sg" href="https://innioasis.app/y2reborn_wifibt_sg.html">
+  <link rel="alternate" hreflang="shn" href="https://innioasis.app/y2reborn_wifibt_shn.html">
+  <link rel="alternate" hreflang="si" href="https://innioasis.app/y2reborn_wifibt_si.html">
+  <link rel="alternate" hreflang="sk" href="https://innioasis.app/y2reborn_wifibt_sk.html">
+  <link rel="alternate" hreflang="sl" href="https://innioasis.app/y2reborn_wifibt_sl.html">
+  <link rel="alternate" hreflang="sm" href="https://innioasis.app/y2reborn_wifibt_sm.html">
+  <link rel="alternate" hreflang="sn" href="https://innioasis.app/y2reborn_wifibt_sn.html">
+  <link rel="alternate" hreflang="so" href="https://innioasis.app/y2reborn_wifibt_so.html">
+  <link rel="alternate" hreflang="sq" href="https://innioasis.app/y2reborn_wifibt_sq.html">
+  <link rel="alternate" hreflang="sr" href="https://innioasis.app/y2reborn_wifibt_sr.html">
+  <link rel="alternate" hreflang="ss" href="https://innioasis.app/y2reborn_wifibt_ss.html">
+  <link rel="alternate" hreflang="st" href="https://innioasis.app/y2reborn_wifibt_st.html">
+  <link rel="alternate" hreflang="su" href="https://innioasis.app/y2reborn_wifibt_su.html">
+  <link rel="alternate" hreflang="sus" href="https://innioasis.app/y2reborn_wifibt_sus.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/y2reborn_wifibt_sv.html">
+  <link rel="alternate" hreflang="sw" href="https://innioasis.app/y2reborn_wifibt_sw.html">
+  <link rel="alternate" hreflang="szl" href="https://innioasis.app/y2reborn_wifibt_szl.html">
+  <link rel="alternate" hreflang="ta" href="https://innioasis.app/y2reborn_wifibt_ta.html">
+  <link rel="alternate" hreflang="tcy" href="https://innioasis.app/y2reborn_wifibt_tcy.html">
+  <link rel="alternate" hreflang="te" href="https://innioasis.app/y2reborn_wifibt_te.html">
+  <link rel="alternate" hreflang="tet" href="https://innioasis.app/y2reborn_wifibt_tet.html">
+  <link rel="alternate" hreflang="tg" href="https://innioasis.app/y2reborn_wifibt_tg.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/y2reborn_wifibt_th.html">
+  <link rel="alternate" hreflang="ti" href="https://innioasis.app/y2reborn_wifibt_ti.html">
+  <link rel="alternate" hreflang="tiv" href="https://innioasis.app/y2reborn_wifibt_tiv.html">
+  <link rel="alternate" hreflang="tk" href="https://innioasis.app/y2reborn_wifibt_tk.html">
+  <link rel="alternate" hreflang="tl" href="https://innioasis.app/y2reborn_wifibt_tl.html">
+  <link rel="alternate" hreflang="tn" href="https://innioasis.app/y2reborn_wifibt_tn.html">
+  <link rel="alternate" hreflang="to" href="https://innioasis.app/y2reborn_wifibt_to.html">
+  <link rel="alternate" hreflang="tpi" href="https://innioasis.app/y2reborn_wifibt_tpi.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/y2reborn_wifibt_tr.html">
+  <link rel="alternate" hreflang="trp" href="https://innioasis.app/y2reborn_wifibt_trp.html">
+  <link rel="alternate" hreflang="ts" href="https://innioasis.app/y2reborn_wifibt_ts.html">
+  <link rel="alternate" hreflang="tt" href="https://innioasis.app/y2reborn_wifibt_tt.html">
+  <link rel="alternate" hreflang="tum" href="https://innioasis.app/y2reborn_wifibt_tum.html">
+  <link rel="alternate" hreflang="ty" href="https://innioasis.app/y2reborn_wifibt_ty.html">
+  <link rel="alternate" hreflang="tyv" href="https://innioasis.app/y2reborn_wifibt_tyv.html">
+  <link rel="alternate" hreflang="udm" href="https://innioasis.app/y2reborn_wifibt_udm.html">
+  <link rel="alternate" hreflang="ug" href="https://innioasis.app/y2reborn_wifibt_ug.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/y2reborn_wifibt_uk.html">
+  <link rel="alternate" hreflang="ur" href="https://innioasis.app/y2reborn_wifibt_ur.html">
+  <link rel="alternate" hreflang="uz" href="https://innioasis.app/y2reborn_wifibt_uz.html">
+  <link rel="alternate" hreflang="ve" href="https://innioasis.app/y2reborn_wifibt_ve.html">
+  <link rel="alternate" hreflang="vec" href="https://innioasis.app/y2reborn_wifibt_vec.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/y2reborn_wifibt_vi.html">
+  <link rel="alternate" hreflang="war" href="https://innioasis.app/y2reborn_wifibt_war.html">
+  <link rel="alternate" hreflang="wo" href="https://innioasis.app/y2reborn_wifibt_wo.html">
+  <link rel="alternate" hreflang="xh" href="https://innioasis.app/y2reborn_wifibt_xh.html">
+  <link rel="alternate" hreflang="yi" href="https://innioasis.app/y2reborn_wifibt_yi.html">
+  <link rel="alternate" hreflang="yo" href="https://innioasis.app/y2reborn_wifibt_yo.html">
+  <link rel="alternate" hreflang="yua" href="https://innioasis.app/y2reborn_wifibt_yua.html">
+  <link rel="alternate" hreflang="yue" href="https://innioasis.app/y2reborn_wifibt_yue.html">
+  <link rel="alternate" hreflang="zap" href="https://innioasis.app/y2reborn_wifibt_zap.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/y2reborn_wifibt_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/y2reborn_wifibt_zh-TW.html">
+  <link rel="alternate" hreflang="zu" href="https://innioasis.app/y2reborn_wifibt_zu.html">
+  <link rel="alternate" hreflang="ar-SA" href="https://innioasis.app/y2reborn_wifibt_ar-SA.html">
+  <link rel="alternate" hreflang="bn-IN" href="https://innioasis.app/y2reborn_wifibt_bn-IN.html">
+  <link rel="alternate" hreflang="de-AT" href="https://innioasis.app/y2reborn_wifibt_de-AT.html">
+  <link rel="alternate" hreflang="de-CH" href="https://innioasis.app/y2reborn_wifibt_de-CH.html">
+  <link rel="alternate" hreflang="en-AU" href="https://innioasis.app/y2reborn_wifibt_en-AU.html">
+  <link rel="alternate" hreflang="en-CA" href="https://innioasis.app/y2reborn_wifibt_en-CA.html">
+  <link rel="alternate" hreflang="en-IN" href="https://innioasis.app/y2reborn_wifibt_en-IN.html">
+  <link rel="alternate" hreflang="en-NZ" href="https://innioasis.app/y2reborn_wifibt_en-NZ.html">
+  <link rel="alternate" hreflang="es-419" href="https://innioasis.app/y2reborn_wifibt_es-419.html">
+  <link rel="alternate" hreflang="es-AR" href="https://innioasis.app/y2reborn_wifibt_es-AR.html">
+  <link rel="alternate" hreflang="es-ES" href="https://innioasis.app/y2reborn_wifibt_es-ES.html">
+  <link rel="alternate" hreflang="es-MX" href="https://innioasis.app/y2reborn_wifibt_es-MX.html">
+  <link rel="alternate" hreflang="fr-BE" href="https://innioasis.app/y2reborn_wifibt_fr-BE.html">
+  <link rel="alternate" hreflang="fr-CH" href="https://innioasis.app/y2reborn_wifibt_fr-CH.html">
+  <link rel="alternate" hreflang="it-CH" href="https://innioasis.app/y2reborn_wifibt_it-CH.html">
+  <link rel="alternate" hreflang="nl-BE" href="https://innioasis.app/y2reborn_wifibt_nl-BE.html">
+  <link rel="alternate" hreflang="pa-PK" href="https://innioasis.app/y2reborn_wifibt_pa-PK.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/y2reborn_wifibt_pt-BR.html">
+  <link rel="alternate" hreflang="sr-Latn" href="https://innioasis.app/y2reborn_wifibt_sr-Latn.html">
+  <link rel="alternate" hreflang="sw-KE" href="https://innioasis.app/y2reborn_wifibt_sw-KE.html">
+  <link rel="alternate" hreflang="zh-HK" href="https://innioasis.app/y2reborn_wifibt_zh-HK.html">
   <!-- i18n-hreflang-end -->
 </head>
 <body class="site-themes-app">
@@ -77,12 +321,12 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">Innioasis Y2 · Reborn Po instalacji</p>
+      <p class="lumen-kicker">Innioasis Y2 · Reborn po instalacji</p>
       <h1>Skonfiguruj Wi-Fi, Bluetooth i radio FM.</h1>
-      <p class="lead">Skopiuj jeden plik do odtwarzacza. Reborn zajmuje się resztą.</p>
+      <p class="lead">Skopiuj jeden plik na odtwarzacz. Resztą zajmie się Reborn.</p>
       <div class="lumen-actions">
         <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img" download>Pobierz system.img (860 MB)</a>
-        <a class="lumen-button" href="guides/reborn-y2linux-y2.html">Przewodnik instalacji</a>
+        <a class="lumen-button" href="guides/reborn-y2linux-y2.html">Poradnik instalacji</a>
         <a class="lumen-button" href="reborn-y2linux-benefits_pl.html">Dlaczego Y2Reborn?</a>
       </div>
     </header>
@@ -90,16 +334,16 @@
     <section class="lumen-guide-section" aria-labelledby="why-radio-fw">
       <h2 id="why-radio-fw">Dlaczego ten plik?</h2>
       <div class="lumen-callout">
-        <p>Wi-Fi, Bluetooth i radio FM wymagają pięciu MediaTek modułów oprogramowania sprzętowego, których Reborn nie może dostarczyć. Znajdują się one w oficjalnym Y2 <code>system.img</code>. Reborn wyodrębnia je raz, sprawdza i usuwa plik.</p>
+        <p>Wi-Fi, Bluetooth i radio FM wymagają pięciu modułów firmware MediaTek, których Reborn nie może dołączyć. Znajdują się w oficjalnym pliku Y2 <code>system.img</code>. Reborn rozpakowuje je raz, sprawdza i usuwa plik.</p>
       </div>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="step-by-step">
-      <h2 id="step-by-step">Organizować coś</h2>
+      <h2 id="step-by-step">Konfiguracja</h2>
       <ol class="lumen-steps">
         <li>
           <strong>Pobierz system.img</strong>
-          <p>Pobierz wersję 3.2.0 FM <code>system.img</code> do swojego komputera.</p>
+          <p>Pobierz plik FM v3.2.0 <code>system.img</code> na komputer.</p>
           <div style="margin: 12px 0;">
             <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img" download>
               <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" style="margin-right: 6px;" aria-hidden="true"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
@@ -110,66 +354,66 @@
 
         <li>
           <strong>Uruchom Reborn raz</strong>
-          <p>Włącz odtwarzacz. Czekać na <em>Konfigurowanie magazynu</em> aby zakończyć, a następnie uruchom ponownie raz.</p>
+          <p>Włącz odtwarzacz. Poczekaj na <em>Konfiguracja pamięci</em> aby zakończyć, a potem raz go zrestartuj.</p>
         </li>
 
         <li>
-          <strong>Połącz się z komputerem</strong>
-          <p>Użyj kabla do transmisji danych USB. Gracz pojawia się jako <strong>Pamięć wewnętrzna</strong>.</p>
+          <strong>Podłącz do komputera</strong>
+          <p>Użyj kabla USB do transmisji danych. Odtwarzacz pojawi się jako <strong>Pamięć wewnętrzna</strong>.</p>
           <div class="lumen-callout" style="border-left-color: #38bdf8; margin: 10px 0;">
-            <strong>Na Macu?</strong>
-            <p style="margin-top: 4px;">Zainstaluj <a href="https://openmtp.ganeshrvel.com/" target="_blank" rel="noopener noreferrer"><strong>OtwórzMTP</strong></a> przeglądać odtwarzacz. Windows i Linux montują go automatycznie.</p>
+            <strong>Masz Maca?</strong>
+            <p style="margin-top: 4px;">Zainstaluj <a href="https://openmtp.ganeshrvel.com/" target="_blank" rel="noopener noreferrer"><strong>OpenMTP</strong></a> aby przeglądać zawartość odtwarzacza. Windows i Linux montują go automatycznie.</p>
           </div>
         </li>
 
         <li>
-          <strong>Skopiuj plik system.img do oprogramowania sprzętowego</strong>
-          <p>Utwórz folder o nazwie <code>Firmware</code> w katalogu głównym pamięci wewnętrznej. Kopia <code>system.img</code> w to.</p>
+          <strong>Skopiuj system.img do firmware</strong>
+          <p>Utwórz folder o nazwie <code>Firmware</code> w katalogu głównym pamięci wewnętrznej. Skopiuj <code>system.img</code> do niego.</p>
         </li>
 
         <li>
           <strong>Poczekaj na zakończenie konfiguracji</strong>
-          <p>Reborn automatycznie instaluje oprogramowanie radia i usuwa je <code>system.img</code>. Zajmuje to około 10–20 sekund. Czekać na <em>Wi-Fi i Bluetooth są gotowe</em>.</p>
+          <p>Reborn instaluje firmware radia automatycznie i usuwa <code>system.img</code>. Zajmuje to około 10–20 sekund. Poczekaj na <em>Wi-Fi i Bluetooth są gotowe</em>.</p>
         </li>
 
         <li>
-          <strong>Podłącz Wi-Fi, Bluetooth i radio FM</strong>
+          <strong>Połącz Wi-Fi, Bluetooth i radio FM</strong>
           <ul style="margin: 8px 0 0 20px; line-height: 1.6;">
-            <li><strong>Wi-Fi:</strong> Ustawienia → System → Sieć → Wi-Fi. Wybierz sieć 2,4 GHz.</li>
-            <li><strong>Bluetooth:</strong> Przełącz słuchawki w tryb parowania. Ustawienia → Bluetooth → wybierz je.</li>
-            <li><strong>Radio FM:</strong> Podłącz słuchawki przewodowe jako antenę, a następnie otwórz Radio FM.</li>
+            <li><strong>Wi-Fi:</strong> Settings → System → Network → Wi-Fi. Wybierz sieć 2,4 GHz.</li>
+            <li><strong>Bluetooth:</strong> Włącz w słuchawkach tryb parowania. Ustawienia → Bluetooth → wybierz je.</li>
+            <li><strong>Radio FM:</strong> Podłącz słuchawki przewodowe jako antenę, a potem otwórz Radio FM.</li>
           </ul>
         </li>
 
         <li>
-          <strong>Aktualizuj przez Wi-Fi</strong>
-          <p>Przyszłe aktualizacje Reborn instaluje się z Ustawienia → System → Aktualizacja oprogramowania. Oprogramowanie sprzętowe radia pozostaje niezmienione.</p>
+          <strong>Aktualizacja przez Wi-Fi</strong>
+          <p>Kolejne aktualizacje Reborn zainstalujesz z Settings → System → Software Update. Firmware radia pozostaje bez zmian.</p>
         </li>
       </ol>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="helpfulness-section" style="border-top: 1px solid var(--lumen-line, rgba(255, 255, 255, 0.12)); padding-top: 24px;">
-      <h2 id="helpfulness-section">Czy ten przewodnik był pomocny?</h2>
+      <h2 id="helpfulness-section">Czy ten poradnik był pomocny?</h2>
       <div id="guide-feedback-wrap" style="background: var(--lumen-panel-soft, rgba(255, 255, 255, 0.04)); border: 1px solid var(--lumen-line, rgba(255, 255, 255, 0.1)); border-radius: 12px; padding: 18px 20px;">
-        <p id="guide-feedback-prompt" style="margin: 0 0 12px; font-weight: 600; font-size: 0.96rem;">Czy ten przewodnik konfiguracji po instalacji był dla Ciebie pomocny?</p>
+        <p id="guide-feedback-prompt" style="margin: 0 0 12px; font-weight: 600; font-size: 0.96rem;">Czy ten poradnik konfiguracji po instalacji był pomocny?</p>
         <div id="guide-feedback-actions" style="display: flex; gap: 10px; flex-wrap: wrap;">
           <button type="button" id="guide-feedback-yes" class="lumen-button lumen-button--primary" style="cursor: pointer;">
             <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" style="margin-right: 6px;" aria-hidden="true"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/></svg>
             Tak, pomogło!
           </button>
           <a href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer" class="lumen-button" style="cursor: pointer;">
-            Potrzebujesz pomocy w sprawie Discord
+            Potrzebujesz pomocy? Zajrzyj na Discorda
           </a>
         </div>
         <div id="guide-feedback-thankyou" hidden style="margin-top: 12px; color: #10b981; font-weight: 600;">
-          Dziękujemy za Twoją opinię! Ciesz się bezprzewodowym słuchaniem na Y2Reborn.
+          Dziękujemy za opinię! Miłego słuchania bezprzewodowo na Y2Reborn.
         </div>
       </div>
     </section>
   </main>
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
-  <script src="nav.js?v=20261114links1" defer></script>
+  <script src="nav.js?v=20261124fixes1" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       var yesBtn = document.getElementById("guide-feedback-yes");
@@ -209,5 +453,5 @@
       }
     });
   </script>
-<script src="site-locale.js?v=20261111i18nfix" defer></script></body>
+<script src="site-locale.js?v=20261124fixes1" defer></script></body>
 </html>

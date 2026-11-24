@@ -96,12 +96,12 @@ def page_title(title: str, description: str, canonical: str, keywords: list[str]
 <meta name="twitter:image" content="{SITE}/assets/og-image.png">
 <meta property="og:site_name" content="Innioasis Software Updates">
 <link rel="icon" href="../y1_illustration.png">
-<link rel="stylesheet" href="../site-theme.css?v=20261109theme">
-<link rel="stylesheet" href="../lumen.css?v=20261114video">
+<link rel="stylesheet" href="../site-theme.css?v=20261124fixes1">
+<link rel="stylesheet" href="../lumen.css?v=20261124fixes1">
 <link rel="stylesheet" href="../site-pages.css?v=20260818">
-<link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+<link rel="stylesheet" href="../site-toolbar.css?v=20261124fixes1">
 <link rel="stylesheet" href="../install.css?v=20261106">
-<script src="../site-init.js?v=20261110warn" defer></script>
+<script src="../site-init.js?v=20261124fixes1" defer></script>
 {blocks}
 </head>
 <body class="{classes}"><a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -110,8 +110,8 @@ def page_title(title: str, description: str, canonical: str, keywords: list[str]
 {body}
 </main>
 <div id="footer-root"></div><div id="support-toolbar-slot"></div>
-<script src="../nav.js?v=20261105copyleft" defer></script>
-<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../nav.js?v=20261124fixes1" defer></script>
+<script src="../site-locale.js?v=20261124fixes1" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 <script src="../site-platform.js?v=20261106" defer></script>
 </body></html>

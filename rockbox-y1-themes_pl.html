@@ -26,160 +26,400 @@
   <meta name="author" content="Ryan Specter &amp; Innioasis Community">
   <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rockbox-Y1 themes: transferring themes with Updater CE, 240p vs 360p &amp; applying a theme</title>
-  <meta name="description" content="How to transfer themes to the Innioasis Y1 with Updater CE (automatic push when available or guided step-by-step transfer after an MTKClient flash on macOS and Linux), plus 240p vs 360p compatibility and applying a theme.">
+  <title>Motywy Rockbox-Y1: przesyłanie motywów przez Updater CE, 240p a 360p i stosowanie motywu</title>
+  <meta name="description" content="Jak przesłać motywy na Innioasis Y1 za pomocą Updater CE (automatyczne wysłanie, gdy jest dostępne, lub prowadzony krok po kroku transfer po wgraniu przez MTKClient na macOS i Linuksie), a także zgodność 240p i 360p oraz stosowanie motywu.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://innioasis.app/rockbox-y1-themes_pl.html">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Rockbox-Y1 themes: transferring themes with Updater CE, 240p vs 360p &amp; applying a theme">
-  <meta property="og:description" content="How Updater CE transfers themes to your Y1 automatically when it can and guides you step by step when it can't (such as after an MTKClient flash on macOS or Linux), plus 240p vs 360p compatibility.">
+  <meta property="og:title" content="Motywy Rockbox-Y1: przesyłanie motywów przez Updater CE, 240p a 360p i stosowanie motywu">
+  <meta property="og:description" content="Jak Updater CE automatycznie przesyła motywy na Twoje Y1, gdy to możliwe, a gdy nie (np. po wgraniu przez MTKClient na macOS lub Linuksie) prowadzi Cię krok po kroku — plus zgodność 240p i 360p.">
   <meta property="og:url" content="https://innioasis.app/rockbox-y1-themes_pl.html">
   <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
-  <meta property="og:site_name" content="Innioasis Aktualizator">
+  <meta property="og:site_name" content="Innioasis Updater">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Rockbox-Y1 themes: transferring themes with Updater CE, 240p vs 360p &amp; applying a theme">
-  <meta name="twitter:description" content="How Updater CE transfers themes to your Y1 automatically when it can and guides you step by step when it can't (such as after an MTKClient flash on macOS or Linux), plus 240p vs 360p compatibility.">
+  <meta name="twitter:title" content="Motywy Rockbox-Y1: przesyłanie motywów przez Updater CE, 240p a 360p i stosowanie motywu">
+  <meta name="twitter:description" content="Jak Updater CE automatycznie przesyła motywy na Twoje Y1, gdy to możliwe, a gdy nie (np. po wgraniu przez MTKClient na macOS lub Linuksie) prowadzi Cię krok po kroku — plus zgodność 240p i 360p.">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
   <link rel="icon" href="y1_illustration.png">
-  <link rel="stylesheet" href="site-theme.css?v=20261109theme">
-  <link rel="stylesheet" href="lumen.css?v=20261110picker">
+  <link rel="stylesheet" href="site-theme.css?v=20261124fixes1">
+  <link rel="stylesheet" href="lumen.css?v=20261124fixes1">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
-  <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261117fallback3" defer></script>
+  <link rel="stylesheet" href="site-toolbar.css?v=20261124fixes1">
+  <script src="site-init.js?v=20261124fixes1" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Rockbox-Y1 themes: transferring themes with Updater CE, 240p vs 360p & applying a theme","description":"How to use Updater CE to transfer Rockbox-Y1 themes automatically or via guided post-install setup (including after MTKClient installs on macOS and Linux), plus 240p vs 360p theme compatibility.","image":"https://innioasis.app/assets/og-image.png","author":{"@type":"Organization","name":"Innioasis Community"},"mainEntityOfPage":"https://innioasis.app/rockbox-y1-themes.html"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://innioasis.app/"},{"@type":"ListItem","position":2,"name":"Firmware Downloads","item":"https://innioasis.app/firmware.html"},{"@type":"ListItem","position":3,"name":"Rockbox-Y1 themes","item":"https://innioasis.app/rockbox-y1-themes.html"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I transfer themes to the Innioasis Y1 with Updater CE?","acceptedAnswer":{"@type":"Answer","text":"Updater CE transfers themes and fonts to your Y1 automatically whenever it can reach the player over ADB or as a mounted USB drive. When an unattended transfer is not possible during the flash itself (for example, when using an MTKClient install method on macOS or Linux while the player is powered off), Updater CE immediately launches a guided step-by-step assistant that waits for the Y1 to boot into Rockbox or walks you through connecting USB storage and selecting the .rockbox folder."}},{"@type":"Question","name":"Why does a Rockbox-Y1 theme look wrong after installing?","acceptedAnswer":{"@type":"Answer","text":"Theme and build must share a resolution path. A theme written for 240p builds will not render correctly on a 360p build, and the reverse is also true. Match the theme label to the build label."}},{"@type":"Question","name":"Where do Rockbox-Y1 themes go on the card?","acceptedAnswer":{"@type":"Answer","text":"Inside the .rockbox folder on the MicroSD card, in its themes folder. Copy the theme's folder there, then pick it in the player's theme settings."}},{"@type":"Question","name":"How do I undo a broken theme?","acceptedAnswer":{"@type":"Answer","text":"Select a different theme from the player's theme settings. If the interface is unusable, rename or delete the .rockbox folder on the card and the build recreates it with defaults on the next boot."}}]}</script>
+  <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/rockbox-y1-themes.html">
   <link rel="alternate" hreflang="en" href="https://innioasis.app/rockbox-y1-themes.html">
-  <link rel="alternate" hreflang="de" href="https://innioasis.app/rockbox-y1-themes_de.html">
-  <link rel="alternate" hreflang="ja" href="https://innioasis.app/rockbox-y1-themes_ja.html">
-  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/rockbox-y1-themes_ja.html">
-  <link rel="alternate" hreflang="jp" href="https://innioasis.app/rockbox-y1-themes_jp.html">
-  <link rel="alternate" hreflang="es" href="https://innioasis.app/rockbox-y1-themes_es.html">
-  <link rel="alternate" hreflang="es-419" href="https://innioasis.app/rockbox-y1-themes_es-419.html">
-  <link rel="alternate" hreflang="fr" href="https://innioasis.app/rockbox-y1-themes_fr.html">
-  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/rockbox-y1-themes_zh-CN.html">
-  <link rel="alternate" hreflang="zh" href="https://innioasis.app/rockbox-y1-themes_zh.html">
-  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/rockbox-y1-themes_zh-TW.html">
-  <link rel="alternate" hreflang="ru" href="https://innioasis.app/rockbox-y1-themes_ru.html">
-  <link rel="alternate" hreflang="pt" href="https://innioasis.app/rockbox-y1-themes_pt.html">
-  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/rockbox-y1-themes_pt-BR.html">
-  <link rel="alternate" hreflang="it" href="https://innioasis.app/rockbox-y1-themes_it.html">
-  <link rel="alternate" hreflang="ko" href="https://innioasis.app/rockbox-y1-themes_ko.html">
+  <link rel="alternate" hreflang="aa" href="https://innioasis.app/rockbox-y1-themes_aa.html">
+  <link rel="alternate" hreflang="ab" href="https://innioasis.app/rockbox-y1-themes_ab.html">
+  <link rel="alternate" hreflang="ace" href="https://innioasis.app/rockbox-y1-themes_ace.html">
+  <link rel="alternate" hreflang="ach" href="https://innioasis.app/rockbox-y1-themes_ach.html">
+  <link rel="alternate" hreflang="af" href="https://innioasis.app/rockbox-y1-themes_af.html">
+  <link rel="alternate" hreflang="ak" href="https://innioasis.app/rockbox-y1-themes_ak.html">
+  <link rel="alternate" hreflang="alz" href="https://innioasis.app/rockbox-y1-themes_alz.html">
+  <link rel="alternate" hreflang="am" href="https://innioasis.app/rockbox-y1-themes_am.html">
   <link rel="alternate" hreflang="ar" href="https://innioasis.app/rockbox-y1-themes_ar.html">
-  <link rel="alternate" hreflang="hi" href="https://innioasis.app/rockbox-y1-themes_hi.html">
-  <link rel="alternate" hreflang="nl" href="https://innioasis.app/rockbox-y1-themes_nl.html">
-  <link rel="alternate" hreflang="pl" href="https://innioasis.app/rockbox-y1-themes_pl.html">
-  <link rel="alternate" hreflang="tr" href="https://innioasis.app/rockbox-y1-themes_tr.html">
-  <link rel="alternate" hreflang="uk" href="https://innioasis.app/rockbox-y1-themes_uk.html">
-  <link rel="alternate" hreflang="vi" href="https://innioasis.app/rockbox-y1-themes_vi.html">
-  <link rel="alternate" hreflang="th" href="https://innioasis.app/rockbox-y1-themes_th.html">
-  <link rel="alternate" hreflang="id" href="https://innioasis.app/rockbox-y1-themes_id.html">
-  <link rel="alternate" hreflang="sv" href="https://innioasis.app/rockbox-y1-themes_sv.html">
-  <link rel="alternate" hreflang="no" href="https://innioasis.app/rockbox-y1-themes_no.html">
-  <link rel="alternate" hreflang="da" href="https://innioasis.app/rockbox-y1-themes_da.html">
-  <link rel="alternate" hreflang="fi" href="https://innioasis.app/rockbox-y1-themes_fi.html">
-  <link rel="alternate" hreflang="cs" href="https://innioasis.app/rockbox-y1-themes_cs.html">
-  <link rel="alternate" hreflang="el" href="https://innioasis.app/rockbox-y1-themes_el.html">
-  <link rel="alternate" hreflang="hu" href="https://innioasis.app/rockbox-y1-themes_hu.html">
-  <link rel="alternate" hreflang="ro" href="https://innioasis.app/rockbox-y1-themes_ro.html">
-  <link rel="alternate" hreflang="he" href="https://innioasis.app/rockbox-y1-themes_he.html">
+  <link rel="alternate" hreflang="as" href="https://innioasis.app/rockbox-y1-themes_as.html">
+  <link rel="alternate" hreflang="av" href="https://innioasis.app/rockbox-y1-themes_av.html">
+  <link rel="alternate" hreflang="awa" href="https://innioasis.app/rockbox-y1-themes_awa.html">
+  <link rel="alternate" hreflang="ay" href="https://innioasis.app/rockbox-y1-themes_ay.html">
+  <link rel="alternate" hreflang="az" href="https://innioasis.app/rockbox-y1-themes_az.html">
+  <link rel="alternate" hreflang="ba" href="https://innioasis.app/rockbox-y1-themes_ba.html">
+  <link rel="alternate" hreflang="bal" href="https://innioasis.app/rockbox-y1-themes_bal.html">
+  <link rel="alternate" hreflang="ban" href="https://innioasis.app/rockbox-y1-themes_ban.html">
+  <link rel="alternate" hreflang="bbc" href="https://innioasis.app/rockbox-y1-themes_bbc.html">
+  <link rel="alternate" hreflang="bci" href="https://innioasis.app/rockbox-y1-themes_bci.html">
+  <link rel="alternate" hreflang="be" href="https://innioasis.app/rockbox-y1-themes_be.html">
+  <link rel="alternate" hreflang="bem" href="https://innioasis.app/rockbox-y1-themes_bem.html">
+  <link rel="alternate" hreflang="ber" href="https://innioasis.app/rockbox-y1-themes_ber.html">
+  <link rel="alternate" hreflang="ber-Latn" href="https://innioasis.app/rockbox-y1-themes_ber-Latn.html">
+  <link rel="alternate" hreflang="bew" href="https://innioasis.app/rockbox-y1-themes_bew.html">
+  <link rel="alternate" hreflang="bg" href="https://innioasis.app/rockbox-y1-themes_bg.html">
+  <link rel="alternate" hreflang="bho" href="https://innioasis.app/rockbox-y1-themes_bho.html">
+  <link rel="alternate" hreflang="bik" href="https://innioasis.app/rockbox-y1-themes_bik.html">
+  <link rel="alternate" hreflang="bm" href="https://innioasis.app/rockbox-y1-themes_bm.html">
+  <link rel="alternate" hreflang="bm-Nkoo" href="https://innioasis.app/rockbox-y1-themes_bm-Nkoo.html">
   <link rel="alternate" hreflang="bn" href="https://innioasis.app/rockbox-y1-themes_bn.html">
+  <link rel="alternate" hreflang="bo" href="https://innioasis.app/rockbox-y1-themes_bo.html">
+  <link rel="alternate" hreflang="br" href="https://innioasis.app/rockbox-y1-themes_br.html">
+  <link rel="alternate" hreflang="bs" href="https://innioasis.app/rockbox-y1-themes_bs.html">
+  <link rel="alternate" hreflang="bts" href="https://innioasis.app/rockbox-y1-themes_bts.html">
+  <link rel="alternate" hreflang="btx" href="https://innioasis.app/rockbox-y1-themes_btx.html">
+  <link rel="alternate" hreflang="bua" href="https://innioasis.app/rockbox-y1-themes_bua.html">
+  <link rel="alternate" hreflang="ca" href="https://innioasis.app/rockbox-y1-themes_ca.html">
+  <link rel="alternate" hreflang="ce" href="https://innioasis.app/rockbox-y1-themes_ce.html">
+  <link rel="alternate" hreflang="ceb" href="https://innioasis.app/rockbox-y1-themes_ceb.html">
+  <link rel="alternate" hreflang="cgg" href="https://innioasis.app/rockbox-y1-themes_cgg.html">
+  <link rel="alternate" hreflang="ch" href="https://innioasis.app/rockbox-y1-themes_ch.html">
+  <link rel="alternate" hreflang="chk" href="https://innioasis.app/rockbox-y1-themes_chk.html">
+  <link rel="alternate" hreflang="chm" href="https://innioasis.app/rockbox-y1-themes_chm.html">
+  <link rel="alternate" hreflang="ckb" href="https://innioasis.app/rockbox-y1-themes_ckb.html">
+  <link rel="alternate" hreflang="cnh" href="https://innioasis.app/rockbox-y1-themes_cnh.html">
+  <link rel="alternate" hreflang="co" href="https://innioasis.app/rockbox-y1-themes_co.html">
+  <link rel="alternate" hreflang="crh" href="https://innioasis.app/rockbox-y1-themes_crh.html">
+  <link rel="alternate" hreflang="crh-Latn" href="https://innioasis.app/rockbox-y1-themes_crh-Latn.html">
+  <link rel="alternate" hreflang="crs" href="https://innioasis.app/rockbox-y1-themes_crs.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/rockbox-y1-themes_cs.html">
+  <link rel="alternate" hreflang="cv" href="https://innioasis.app/rockbox-y1-themes_cv.html">
+  <link rel="alternate" hreflang="cy" href="https://innioasis.app/rockbox-y1-themes_cy.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/rockbox-y1-themes_da.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/rockbox-y1-themes_de.html">
+  <link rel="alternate" hreflang="din" href="https://innioasis.app/rockbox-y1-themes_din.html">
+  <link rel="alternate" hreflang="doi" href="https://innioasis.app/rockbox-y1-themes_doi.html">
+  <link rel="alternate" hreflang="dov" href="https://innioasis.app/rockbox-y1-themes_dov.html">
+  <link rel="alternate" hreflang="dv" href="https://innioasis.app/rockbox-y1-themes_dv.html">
+  <link rel="alternate" hreflang="dyu" href="https://innioasis.app/rockbox-y1-themes_dyu.html">
+  <link rel="alternate" hreflang="dz" href="https://innioasis.app/rockbox-y1-themes_dz.html">
+  <link rel="alternate" hreflang="ee" href="https://innioasis.app/rockbox-y1-themes_ee.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/rockbox-y1-themes_el.html">
+  <link rel="alternate" hreflang="en-GB" href="https://innioasis.app/rockbox-y1-themes_en-GB.html">
+  <link rel="alternate" hreflang="en-US" href="https://innioasis.app/rockbox-y1-themes_en-US.html">
+  <link rel="alternate" hreflang="eo" href="https://innioasis.app/rockbox-y1-themes_eo.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/rockbox-y1-themes_es.html">
+  <link rel="alternate" hreflang="et" href="https://innioasis.app/rockbox-y1-themes_et.html">
+  <link rel="alternate" hreflang="eu" href="https://innioasis.app/rockbox-y1-themes_eu.html">
   <link rel="alternate" hreflang="fa" href="https://innioasis.app/rockbox-y1-themes_fa.html">
+  <link rel="alternate" hreflang="fa-AF" href="https://innioasis.app/rockbox-y1-themes_fa-AF.html">
+  <link rel="alternate" hreflang="ff" href="https://innioasis.app/rockbox-y1-themes_ff.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/rockbox-y1-themes_fi.html">
+  <link rel="alternate" hreflang="fil" href="https://innioasis.app/rockbox-y1-themes_fil.html">
+  <link rel="alternate" hreflang="fj" href="https://innioasis.app/rockbox-y1-themes_fj.html">
+  <link rel="alternate" hreflang="fo" href="https://innioasis.app/rockbox-y1-themes_fo.html">
+  <link rel="alternate" hreflang="fon" href="https://innioasis.app/rockbox-y1-themes_fon.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/rockbox-y1-themes_fr.html">
+  <link rel="alternate" hreflang="fr-CA" href="https://innioasis.app/rockbox-y1-themes_fr-CA.html">
+  <link rel="alternate" hreflang="fur" href="https://innioasis.app/rockbox-y1-themes_fur.html">
+  <link rel="alternate" hreflang="fy" href="https://innioasis.app/rockbox-y1-themes_fy.html">
+  <link rel="alternate" hreflang="ga" href="https://innioasis.app/rockbox-y1-themes_ga.html">
+  <link rel="alternate" hreflang="gaa" href="https://innioasis.app/rockbox-y1-themes_gaa.html">
+  <link rel="alternate" hreflang="gd" href="https://innioasis.app/rockbox-y1-themes_gd.html">
+  <link rel="alternate" hreflang="gl" href="https://innioasis.app/rockbox-y1-themes_gl.html">
+  <link rel="alternate" hreflang="gn" href="https://innioasis.app/rockbox-y1-themes_gn.html">
+  <link rel="alternate" hreflang="gom" href="https://innioasis.app/rockbox-y1-themes_gom.html">
+  <link rel="alternate" hreflang="gu" href="https://innioasis.app/rockbox-y1-themes_gu.html">
+  <link rel="alternate" hreflang="gv" href="https://innioasis.app/rockbox-y1-themes_gv.html">
+  <link rel="alternate" hreflang="ha" href="https://innioasis.app/rockbox-y1-themes_ha.html">
+  <link rel="alternate" hreflang="haw" href="https://innioasis.app/rockbox-y1-themes_haw.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/rockbox-y1-themes_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/rockbox-y1-themes_hi.html">
+  <link rel="alternate" hreflang="hil" href="https://innioasis.app/rockbox-y1-themes_hil.html">
+  <link rel="alternate" hreflang="hmn" href="https://innioasis.app/rockbox-y1-themes_hmn.html">
+  <link rel="alternate" hreflang="hr" href="https://innioasis.app/rockbox-y1-themes_hr.html">
+  <link rel="alternate" hreflang="hrx" href="https://innioasis.app/rockbox-y1-themes_hrx.html">
+  <link rel="alternate" hreflang="ht" href="https://innioasis.app/rockbox-y1-themes_ht.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/rockbox-y1-themes_hu.html">
+  <link rel="alternate" hreflang="hy" href="https://innioasis.app/rockbox-y1-themes_hy.html">
+  <link rel="alternate" hreflang="iba" href="https://innioasis.app/rockbox-y1-themes_iba.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/rockbox-y1-themes_id.html">
+  <link rel="alternate" hreflang="ig" href="https://innioasis.app/rockbox-y1-themes_ig.html">
+  <link rel="alternate" hreflang="ilo" href="https://innioasis.app/rockbox-y1-themes_ilo.html">
+  <link rel="alternate" hreflang="is" href="https://innioasis.app/rockbox-y1-themes_is.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/rockbox-y1-themes_it.html">
+  <link rel="alternate" hreflang="iu" href="https://innioasis.app/rockbox-y1-themes_iu.html">
+  <link rel="alternate" hreflang="iu-Latn" href="https://innioasis.app/rockbox-y1-themes_iu-Latn.html">
+  <link rel="alternate" hreflang="iw" href="https://innioasis.app/rockbox-y1-themes_iw.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/rockbox-y1-themes_ja.html">
+  <link rel="alternate" hreflang="jam" href="https://innioasis.app/rockbox-y1-themes_jam.html">
+  <link rel="alternate" hreflang="jv" href="https://innioasis.app/rockbox-y1-themes_jv.html">
+  <link rel="alternate" hreflang="jw" href="https://innioasis.app/rockbox-y1-themes_jw.html">
+  <link rel="alternate" hreflang="ka" href="https://innioasis.app/rockbox-y1-themes_ka.html">
+  <link rel="alternate" hreflang="kac" href="https://innioasis.app/rockbox-y1-themes_kac.html">
+  <link rel="alternate" hreflang="kek" href="https://innioasis.app/rockbox-y1-themes_kek.html">
+  <link rel="alternate" hreflang="kg" href="https://innioasis.app/rockbox-y1-themes_kg.html">
+  <link rel="alternate" hreflang="kha" href="https://innioasis.app/rockbox-y1-themes_kha.html">
+  <link rel="alternate" hreflang="kk" href="https://innioasis.app/rockbox-y1-themes_kk.html">
+  <link rel="alternate" hreflang="kl" href="https://innioasis.app/rockbox-y1-themes_kl.html">
+  <link rel="alternate" hreflang="km" href="https://innioasis.app/rockbox-y1-themes_km.html">
+  <link rel="alternate" hreflang="kn" href="https://innioasis.app/rockbox-y1-themes_kn.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/rockbox-y1-themes_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/rockbox-y1-themes_kr.html">
+  <link rel="alternate" hreflang="kri" href="https://innioasis.app/rockbox-y1-themes_kri.html">
+  <link rel="alternate" hreflang="ktu" href="https://innioasis.app/rockbox-y1-themes_ktu.html">
+  <link rel="alternate" hreflang="ku" href="https://innioasis.app/rockbox-y1-themes_ku.html">
+  <link rel="alternate" hreflang="kv" href="https://innioasis.app/rockbox-y1-themes_kv.html">
+  <link rel="alternate" hreflang="ky" href="https://innioasis.app/rockbox-y1-themes_ky.html">
+  <link rel="alternate" hreflang="la" href="https://innioasis.app/rockbox-y1-themes_la.html">
+  <link rel="alternate" hreflang="lb" href="https://innioasis.app/rockbox-y1-themes_lb.html">
+  <link rel="alternate" hreflang="lg" href="https://innioasis.app/rockbox-y1-themes_lg.html">
+  <link rel="alternate" hreflang="li" href="https://innioasis.app/rockbox-y1-themes_li.html">
+  <link rel="alternate" hreflang="lij" href="https://innioasis.app/rockbox-y1-themes_lij.html">
+  <link rel="alternate" hreflang="lmo" href="https://innioasis.app/rockbox-y1-themes_lmo.html">
+  <link rel="alternate" hreflang="ln" href="https://innioasis.app/rockbox-y1-themes_ln.html">
+  <link rel="alternate" hreflang="lo" href="https://innioasis.app/rockbox-y1-themes_lo.html">
+  <link rel="alternate" hreflang="lt" href="https://innioasis.app/rockbox-y1-themes_lt.html">
+  <link rel="alternate" hreflang="ltg" href="https://innioasis.app/rockbox-y1-themes_ltg.html">
+  <link rel="alternate" hreflang="lua" href="https://innioasis.app/rockbox-y1-themes_lua.html">
+  <link rel="alternate" hreflang="luo" href="https://innioasis.app/rockbox-y1-themes_luo.html">
+  <link rel="alternate" hreflang="lus" href="https://innioasis.app/rockbox-y1-themes_lus.html">
+  <link rel="alternate" hreflang="lv" href="https://innioasis.app/rockbox-y1-themes_lv.html">
+  <link rel="alternate" hreflang="mad" href="https://innioasis.app/rockbox-y1-themes_mad.html">
+  <link rel="alternate" hreflang="mai" href="https://innioasis.app/rockbox-y1-themes_mai.html">
+  <link rel="alternate" hreflang="mak" href="https://innioasis.app/rockbox-y1-themes_mak.html">
+  <link rel="alternate" hreflang="mam" href="https://innioasis.app/rockbox-y1-themes_mam.html">
+  <link rel="alternate" hreflang="mfe" href="https://innioasis.app/rockbox-y1-themes_mfe.html">
+  <link rel="alternate" hreflang="mg" href="https://innioasis.app/rockbox-y1-themes_mg.html">
+  <link rel="alternate" hreflang="mh" href="https://innioasis.app/rockbox-y1-themes_mh.html">
+  <link rel="alternate" hreflang="mi" href="https://innioasis.app/rockbox-y1-themes_mi.html">
+  <link rel="alternate" hreflang="min" href="https://innioasis.app/rockbox-y1-themes_min.html">
+  <link rel="alternate" hreflang="mk" href="https://innioasis.app/rockbox-y1-themes_mk.html">
+  <link rel="alternate" hreflang="ml" href="https://innioasis.app/rockbox-y1-themes_ml.html">
+  <link rel="alternate" hreflang="mn" href="https://innioasis.app/rockbox-y1-themes_mn.html">
+  <link rel="alternate" hreflang="mni-Mtei" href="https://innioasis.app/rockbox-y1-themes_mni-Mtei.html">
+  <link rel="alternate" hreflang="mr" href="https://innioasis.app/rockbox-y1-themes_mr.html">
   <link rel="alternate" hreflang="ms" href="https://innioasis.app/rockbox-y1-themes_ms.html">
+  <link rel="alternate" hreflang="ms-Arab" href="https://innioasis.app/rockbox-y1-themes_ms-Arab.html">
+  <link rel="alternate" hreflang="mt" href="https://innioasis.app/rockbox-y1-themes_mt.html">
+  <link rel="alternate" hreflang="mwr" href="https://innioasis.app/rockbox-y1-themes_mwr.html">
+  <link rel="alternate" hreflang="my" href="https://innioasis.app/rockbox-y1-themes_my.html">
+  <link rel="alternate" hreflang="ndc-ZW" href="https://innioasis.app/rockbox-y1-themes_ndc-ZW.html">
+  <link rel="alternate" hreflang="ne" href="https://innioasis.app/rockbox-y1-themes_ne.html">
+  <link rel="alternate" hreflang="new" href="https://innioasis.app/rockbox-y1-themes_new.html">
+  <link rel="alternate" hreflang="nhe" href="https://innioasis.app/rockbox-y1-themes_nhe.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/rockbox-y1-themes_nl.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/rockbox-y1-themes_no.html">
+  <link rel="alternate" hreflang="nr" href="https://innioasis.app/rockbox-y1-themes_nr.html">
+  <link rel="alternate" hreflang="nso" href="https://innioasis.app/rockbox-y1-themes_nso.html">
+  <link rel="alternate" hreflang="nus" href="https://innioasis.app/rockbox-y1-themes_nus.html">
+  <link rel="alternate" hreflang="ny" href="https://innioasis.app/rockbox-y1-themes_ny.html">
+  <link rel="alternate" hreflang="oc" href="https://innioasis.app/rockbox-y1-themes_oc.html">
+  <link rel="alternate" hreflang="om" href="https://innioasis.app/rockbox-y1-themes_om.html">
+  <link rel="alternate" hreflang="or" href="https://innioasis.app/rockbox-y1-themes_or.html">
+  <link rel="alternate" hreflang="os" href="https://innioasis.app/rockbox-y1-themes_os.html">
+  <link rel="alternate" hreflang="pa" href="https://innioasis.app/rockbox-y1-themes_pa.html">
+  <link rel="alternate" hreflang="pa-Arab" href="https://innioasis.app/rockbox-y1-themes_pa-Arab.html">
+  <link rel="alternate" hreflang="pag" href="https://innioasis.app/rockbox-y1-themes_pag.html">
+  <link rel="alternate" hreflang="pam" href="https://innioasis.app/rockbox-y1-themes_pam.html">
+  <link rel="alternate" hreflang="pap" href="https://innioasis.app/rockbox-y1-themes_pap.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/rockbox-y1-themes_pl.html">
+  <link rel="alternate" hreflang="ps" href="https://innioasis.app/rockbox-y1-themes_ps.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/rockbox-y1-themes_pt.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/rockbox-y1-themes_pt-PT.html">
+  <link rel="alternate" hreflang="qu" href="https://innioasis.app/rockbox-y1-themes_qu.html">
+  <link rel="alternate" hreflang="rn" href="https://innioasis.app/rockbox-y1-themes_rn.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/rockbox-y1-themes_ro.html">
+  <link rel="alternate" hreflang="rom" href="https://innioasis.app/rockbox-y1-themes_rom.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/rockbox-y1-themes_ru.html">
+  <link rel="alternate" hreflang="rw" href="https://innioasis.app/rockbox-y1-themes_rw.html">
+  <link rel="alternate" hreflang="sa" href="https://innioasis.app/rockbox-y1-themes_sa.html">
+  <link rel="alternate" hreflang="sah" href="https://innioasis.app/rockbox-y1-themes_sah.html">
+  <link rel="alternate" hreflang="sat" href="https://innioasis.app/rockbox-y1-themes_sat.html">
+  <link rel="alternate" hreflang="sat-Latn" href="https://innioasis.app/rockbox-y1-themes_sat-Latn.html">
+  <link rel="alternate" hreflang="scn" href="https://innioasis.app/rockbox-y1-themes_scn.html">
+  <link rel="alternate" hreflang="sd" href="https://innioasis.app/rockbox-y1-themes_sd.html">
+  <link rel="alternate" hreflang="se" href="https://innioasis.app/rockbox-y1-themes_se.html">
+  <link rel="alternate" hreflang="sg" href="https://innioasis.app/rockbox-y1-themes_sg.html">
+  <link rel="alternate" hreflang="shn" href="https://innioasis.app/rockbox-y1-themes_shn.html">
+  <link rel="alternate" hreflang="si" href="https://innioasis.app/rockbox-y1-themes_si.html">
+  <link rel="alternate" hreflang="sk" href="https://innioasis.app/rockbox-y1-themes_sk.html">
+  <link rel="alternate" hreflang="sl" href="https://innioasis.app/rockbox-y1-themes_sl.html">
+  <link rel="alternate" hreflang="sm" href="https://innioasis.app/rockbox-y1-themes_sm.html">
+  <link rel="alternate" hreflang="sn" href="https://innioasis.app/rockbox-y1-themes_sn.html">
+  <link rel="alternate" hreflang="so" href="https://innioasis.app/rockbox-y1-themes_so.html">
+  <link rel="alternate" hreflang="sq" href="https://innioasis.app/rockbox-y1-themes_sq.html">
+  <link rel="alternate" hreflang="sr" href="https://innioasis.app/rockbox-y1-themes_sr.html">
+  <link rel="alternate" hreflang="ss" href="https://innioasis.app/rockbox-y1-themes_ss.html">
+  <link rel="alternate" hreflang="st" href="https://innioasis.app/rockbox-y1-themes_st.html">
+  <link rel="alternate" hreflang="su" href="https://innioasis.app/rockbox-y1-themes_su.html">
+  <link rel="alternate" hreflang="sus" href="https://innioasis.app/rockbox-y1-themes_sus.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/rockbox-y1-themes_sv.html">
+  <link rel="alternate" hreflang="sw" href="https://innioasis.app/rockbox-y1-themes_sw.html">
+  <link rel="alternate" hreflang="szl" href="https://innioasis.app/rockbox-y1-themes_szl.html">
+  <link rel="alternate" hreflang="ta" href="https://innioasis.app/rockbox-y1-themes_ta.html">
+  <link rel="alternate" hreflang="tcy" href="https://innioasis.app/rockbox-y1-themes_tcy.html">
+  <link rel="alternate" hreflang="te" href="https://innioasis.app/rockbox-y1-themes_te.html">
+  <link rel="alternate" hreflang="tet" href="https://innioasis.app/rockbox-y1-themes_tet.html">
+  <link rel="alternate" hreflang="tg" href="https://innioasis.app/rockbox-y1-themes_tg.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/rockbox-y1-themes_th.html">
+  <link rel="alternate" hreflang="ti" href="https://innioasis.app/rockbox-y1-themes_ti.html">
+  <link rel="alternate" hreflang="tiv" href="https://innioasis.app/rockbox-y1-themes_tiv.html">
+  <link rel="alternate" hreflang="tk" href="https://innioasis.app/rockbox-y1-themes_tk.html">
+  <link rel="alternate" hreflang="tl" href="https://innioasis.app/rockbox-y1-themes_tl.html">
+  <link rel="alternate" hreflang="tn" href="https://innioasis.app/rockbox-y1-themes_tn.html">
+  <link rel="alternate" hreflang="to" href="https://innioasis.app/rockbox-y1-themes_to.html">
+  <link rel="alternate" hreflang="tpi" href="https://innioasis.app/rockbox-y1-themes_tpi.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/rockbox-y1-themes_tr.html">
+  <link rel="alternate" hreflang="trp" href="https://innioasis.app/rockbox-y1-themes_trp.html">
+  <link rel="alternate" hreflang="ts" href="https://innioasis.app/rockbox-y1-themes_ts.html">
+  <link rel="alternate" hreflang="tt" href="https://innioasis.app/rockbox-y1-themes_tt.html">
+  <link rel="alternate" hreflang="tum" href="https://innioasis.app/rockbox-y1-themes_tum.html">
+  <link rel="alternate" hreflang="ty" href="https://innioasis.app/rockbox-y1-themes_ty.html">
+  <link rel="alternate" hreflang="tyv" href="https://innioasis.app/rockbox-y1-themes_tyv.html">
+  <link rel="alternate" hreflang="udm" href="https://innioasis.app/rockbox-y1-themes_udm.html">
+  <link rel="alternate" hreflang="ug" href="https://innioasis.app/rockbox-y1-themes_ug.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/rockbox-y1-themes_uk.html">
+  <link rel="alternate" hreflang="ur" href="https://innioasis.app/rockbox-y1-themes_ur.html">
+  <link rel="alternate" hreflang="uz" href="https://innioasis.app/rockbox-y1-themes_uz.html">
+  <link rel="alternate" hreflang="ve" href="https://innioasis.app/rockbox-y1-themes_ve.html">
+  <link rel="alternate" hreflang="vec" href="https://innioasis.app/rockbox-y1-themes_vec.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/rockbox-y1-themes_vi.html">
+  <link rel="alternate" hreflang="war" href="https://innioasis.app/rockbox-y1-themes_war.html">
+  <link rel="alternate" hreflang="wo" href="https://innioasis.app/rockbox-y1-themes_wo.html">
+  <link rel="alternate" hreflang="xh" href="https://innioasis.app/rockbox-y1-themes_xh.html">
+  <link rel="alternate" hreflang="yi" href="https://innioasis.app/rockbox-y1-themes_yi.html">
+  <link rel="alternate" hreflang="yo" href="https://innioasis.app/rockbox-y1-themes_yo.html">
+  <link rel="alternate" hreflang="yua" href="https://innioasis.app/rockbox-y1-themes_yua.html">
+  <link rel="alternate" hreflang="yue" href="https://innioasis.app/rockbox-y1-themes_yue.html">
+  <link rel="alternate" hreflang="zap" href="https://innioasis.app/rockbox-y1-themes_zap.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/rockbox-y1-themes_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/rockbox-y1-themes_zh-TW.html">
+  <link rel="alternate" hreflang="zu" href="https://innioasis.app/rockbox-y1-themes_zu.html">
+  <link rel="alternate" hreflang="ar-SA" href="https://innioasis.app/rockbox-y1-themes_ar-SA.html">
+  <link rel="alternate" hreflang="bn-IN" href="https://innioasis.app/rockbox-y1-themes_bn-IN.html">
+  <link rel="alternate" hreflang="de-AT" href="https://innioasis.app/rockbox-y1-themes_de-AT.html">
+  <link rel="alternate" hreflang="de-CH" href="https://innioasis.app/rockbox-y1-themes_de-CH.html">
+  <link rel="alternate" hreflang="en-AU" href="https://innioasis.app/rockbox-y1-themes_en-AU.html">
+  <link rel="alternate" hreflang="en-CA" href="https://innioasis.app/rockbox-y1-themes_en-CA.html">
+  <link rel="alternate" hreflang="en-IN" href="https://innioasis.app/rockbox-y1-themes_en-IN.html">
+  <link rel="alternate" hreflang="en-NZ" href="https://innioasis.app/rockbox-y1-themes_en-NZ.html">
+  <link rel="alternate" hreflang="es-419" href="https://innioasis.app/rockbox-y1-themes_es-419.html">
+  <link rel="alternate" hreflang="es-AR" href="https://innioasis.app/rockbox-y1-themes_es-AR.html">
+  <link rel="alternate" hreflang="es-ES" href="https://innioasis.app/rockbox-y1-themes_es-ES.html">
+  <link rel="alternate" hreflang="es-MX" href="https://innioasis.app/rockbox-y1-themes_es-MX.html">
+  <link rel="alternate" hreflang="fr-BE" href="https://innioasis.app/rockbox-y1-themes_fr-BE.html">
+  <link rel="alternate" hreflang="fr-CH" href="https://innioasis.app/rockbox-y1-themes_fr-CH.html">
+  <link rel="alternate" hreflang="it-CH" href="https://innioasis.app/rockbox-y1-themes_it-CH.html">
+  <link rel="alternate" hreflang="nl-BE" href="https://innioasis.app/rockbox-y1-themes_nl-BE.html">
+  <link rel="alternate" hreflang="pa-PK" href="https://innioasis.app/rockbox-y1-themes_pa-PK.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/rockbox-y1-themes_pt-BR.html">
+  <link rel="alternate" hreflang="sr-Latn" href="https://innioasis.app/rockbox-y1-themes_sr-Latn.html">
+  <link rel="alternate" hreflang="sw-KE" href="https://innioasis.app/rockbox-y1-themes_sw-KE.html">
+  <link rel="alternate" hreflang="zh-HK" href="https://innioasis.app/rockbox-y1-themes_zh-HK.html">
+  <!-- i18n-hreflang-end -->
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Przejdź do treści</a>
 <div id="nav-root"></div>
 <main id="main" class="lumen-guide">
-  <p class="lumen-doc-back"><a href="rockbox-y1/">← Rockbox-Y1 hub</a></p>
+  <p class="lumen-doc-back"><a href="rockbox-y1/">← Centrum Rockbox-Y1</a></p>
   <header>
-    <p class="lumen-kicker">Rockbox-Y1 · themes &amp; Updater CE</p>
-    <h1>Rockbox-Y1 themes: transfer with Updater CE, pick the build, then the look</h1>
-    <p class="lead">Updater CE handles Rockbox-Y1 themes and fonts for you — transferring them to the Y1 automatically whenever it can, and guiding you through the transfer step by step when it cannot happen unattended (for example, right after an MTKClient firmware install on macOS or Linux).</p>
+    <p class="lumen-kicker">Rockbox-Y1 · motywy i Updater CE</p>
+    <h1>Motywy Rockbox-Y1: prześlij je przez Updater CE, wybierz wersję, a potem wygląd</h1>
+    <p class="lead">Updater CE zajmuje się motywami i czcionkami Rockbox-Y1 za ciebie: przenosi je na Y1 automatycznie, gdy tylko może, a gdy nie da się tego zrobić bez Twojego udziału (na przykład zaraz po instalacji firmware przez MTKClient w macOS lub Linuksie), krok po kroku prowadzi cię przez przenoszenie.</p>
     <div class="lumen-actions">
-      <a class="lumen-button lumen-button--primary" href="guides/rockbox-y1.html">Get Rockbox &amp; Updater CE</a>
-      <a class="lumen-button" href="https://themes.innioasis.app/" target="_blank" rel="noopener noreferrer">Browse community themes</a>
-      <a class="lumen-button" href="rockbox-y1/resolution.html">240p vs 360p</a>
+      <a class="lumen-button lumen-button--primary" href="guides/rockbox-y1.html">Pobierz Rockbox i Updater CE</a>
+      <a class="lumen-button" href="https://themes.innioasis.app/?lang=pl" target="_blank" rel="noopener noreferrer">Przeglądaj motywy społeczności</a>
+      <a class="lumen-button" href="rockbox-y1/resolution.html">240p a 360p</a>
     </div>
   </header>
 
   <section class="lumen-guide-section" id="updater-ce-themes">
-    <h2>Transferring themes to the Y1 with Updater CE</h2>
-    <p>Rockbox stores its firmware in the Y1's internal flash, while themes, fonts, and user settings live inside the hidden <code>.rockbox</code> folder on the player's storage (MicroSD card). Because flashing a ROM and copying files to storage use two different connections, <strong>Aktualizator CE</strong> adapts automatically to your operating system and install method:</p>
+    <h2>Przenoszenie motywów na Y1 za pomocą Updater CE</h2>
+    <p>Rockbox przechowuje firmware w pamięci flash Y1, a motywy, czcionki i ustawienia użytkownika znajdują się w ukrytym folderze <code>.rockbox</code> folder w pamięci odtwarzacza (karta microSD). Ponieważ wgrywanie ROM-u i kopiowanie plików do pamięci korzystają z dwóch różnych połączeń, <strong>Updater CE</strong> dopasowuje się automatycznie do Twojego systemu i metody instalacji:</p>
     <ul class="lumen-benefits-list">
-      <li><strong>Automatic transfer when Updater CE can reach the player:</strong> When you install a 360p Rockbox-Y1 build (or enable automatic theme syncing in Settings), Updater CE downloads and merges the curated 360p theme and font pack in the background. As soon as the Y1 is reachable over <strong>ADB</strong> (Android Debug Bridge) or mounted as a <strong>USB drive</strong> with a <code>.rockbox</code> folder, Updater CE pushes the themes and fonts straight to the player for you with no manual zip extraction required.</li>
-      <li><strong>Guided step-by-step transfer when it cannot happen unattended (e.g. MTKClient on macOS &amp; Linux):</strong> When you flash Rockbox using an <strong>MTKClient</strong> install method on macOS or Linux, the flash happens while the Y1 is powered off in low-level Preloader/BROM mode — before Rockbox has booted for the first time to create <code>.rockbox</code> and before the player's storage is mounted on your computer. Whenever Updater CE cannot complete the transfer unattended during the flash, it automatically opens the <strong>post-install themes &amp; fonts assistant</strong> and walks you through finishing it:
+      <li><strong>Automatyczny transfer, gdy Updater CE widzi odtwarzacz:</strong> Po zainstalowaniu builda Rockbox-Y1 360p (albo po włączeniu automatycznej synchronizacji motywów w Ustawieniach) Updater CE w tle pobiera i scala wyselekcjonowany pakiet motywów i czcionek 360p. Gdy tylko Y1 będzie osiągalne przez <strong>ADB</strong> (Android Debug Bridge) albo zamontowany jako <strong>Pendrive USB</strong> z <code>.rockbox</code> folderu Updater CE wysyła motywy i czcionki prosto na odtwarzacz, bez ręcznego rozpakowywania archiwum ZIP.</li>
+      <li><strong>Prowadzony krok po kroku transfer, gdy nie może przebiec automatycznie (np. MTKClient na macOS i Linuksie):</strong> Gdy wgrywasz Rockbox metodą <strong>MTKClient</strong> instalacji na macOS lub Linuksie wgrywanie odbywa się przy wyłączonym Y1, w niskopoziomowym trybie Preloader/BROM — zanim Rockbox uruchomi się po raz pierwszy i utworzy <code>.rockbox</code> i zanim pamięć odtwarzacza zostanie zamontowana na komputerze. Gdy Updater CE nie może samodzielnie dokończyć transferu w trakcie wgrywania, automatycznie otwiera <strong>asystent motywów i czcionek po instalacji</strong> i przeprowadza Cię przez jego dokończenie:
         <ol class="lumen-steps">
-          <li><strong>Boot Rockbox first:</strong> Updater CE prompts you to disconnect the USB cable if needed and power on the Y1 so Rockbox boots once and initializes the <code>.rockbox</code> folder on the card.</li>
-          <li><strong>Reconnect via USB:</strong> Plug the Y1 back into your Mac or Linux PC. If ADB is available, Updater CE detects the booted player and pushes the theme and font packs automatically.</li>
-          <li><strong>Or use USB Storage Mode with the guided folder picker:</strong> If ADB is not active or you prefer direct storage transfer, Updater CE guides you to enter USB Storage Mode on the Y1, click <strong>Select .rockbox Folder</strong>, reveal hidden folders (<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd> in the macOS file dialog or <kbd>Ctrl</kbd>+<kbd>H</kbd> on Linux), and select <code>.rockbox</code> on the Y1 drive — then Updater CE merges all themes and fonts into place for you.</li>
+          <li><strong>Najpierw uruchom Rockbox:</strong> Updater CE poprosi cię w razie potrzeby o odłączenie kabla USB i włączenie Y1, aby Rockbox uruchomił się raz i zainicjalizował <code>.rockbox</code> folder na karcie.</li>
+          <li><strong>Podłącz ponownie przez USB:</strong> Podłącz Y1 ponownie do Maca lub komputera z Linuksem. Jeśli ADB jest dostępne, Updater CE wykryje uruchomiony odtwarzacz i sam wgra paczki motywów i czcionek.</li>
+          <li><strong>Albo użyj trybu pamięci masowej USB z prowadzonym wyborem folderu:</strong> Jeśli ADB nie jest aktywny lub wolisz bezpośredni transfer na pamięć, Updater CE poprowadzi Cię przez przejście w Y1 do trybu pamięci masowej USB, kliknij <strong>Wybierz folder .rockbox</strong>, pokaż ukryte foldery (<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd> w oknie wyboru pliku macOS albo <kbd>Ctrl</kbd>+<kbd>H</kbd> na Linuksie) i wybierz <code>.rockbox</code> na dysku Y1 — Updater CE sam umieści wszystkie motywy i czcionki w odpowiednich miejscach.</li>
         </ol>
       </li>
-      <li><strong>Add or refresh themes anytime on demand:</strong> You can run the same automated or guided transfer at any time without reflashing firmware — open Updater CE and choose <strong>Settings → Install Rockbox 360p Themes</strong> (<kbd>Cmd</kbd>+<kbd>T</kbd> on macOS, <kbd>Ctrl</kbd>+<kbd>T</kbd> on Windows and Linux), or drag individual theme <code>.zip</code> packs onto Updater CE's <strong>Smart Drop</strong> window.</li>
+      <li><strong>Dodawaj lub odświeżaj motywy w dowolnej chwili:</strong> Ten sam automatyczny lub prowadzony transfer możesz uruchomić w dowolnej chwili bez ponownego wgrywania firmware — otwórz Updater CE i wybierz <strong>Settings → Install Rockbox 360p Themes</strong> (<kbd>Cmd</kbd>+<kbd>T</kbd> na macOS, <kbd>Ctrl</kbd>+<kbd>T</kbd> na Windows i Linuksie) albo przeciągnij pojedyncze motywy <code>.zip</code> pakiety na ekranie Updater CE: <strong>Smart Drop</strong> okno.</li>
     </ul>
   </section>
 
   <section class="lumen-guide-section">
-    <h2>240p, 360p, and why the label is on the build</h2>
-    <p>Y1 community builds are published with a resolution label, and the theme collections carry the same label. 240p builds have the broadest compatibility with older theme packs; 360p builds are made for the newer Y1 theme path. Installing one and applying the other is not dangerous — it just looks wrong, with clipped text, missing elements, or an interface you cannot read.</p>
-    <p>If you have no theme preference yet, take the newer stable build and its default theme, then choose themes that match its label. The <a href="rockbox-y1/resolution.html">resolution page</a> goes deeper; the rule of thumb is simple: build label and theme label must agree.</p>
+    <h2>240p, 360p i dlaczego etykieta jest w nazwie builda</h2>
+    <p>Buildy społeczności dla Y1 są publikowane z oznaczeniem rozdzielczości, a kolekcje motywów mają to samo oznaczenie. Buildy 240p mają najszerszą zgodność ze starszymi paczkami motywów, a buildy 360p powstały z myślą o nowszej ścieżce motywów Y1. Zainstalowanie jednego i zastosowanie drugiego nie jest niebezpieczne - po prostu wygląda źle: ucięty tekst, brakujące elementy albo nieczytelny interfejs.</p>
+    <p>Jeśli nie masz jeszcze preferencji co do motywu, wybierz nowszy stabilny build z jego domyślnym motywem, a potem wybieraj motywy pasujące do jego oznaczenia. <a href="rockbox-y1/resolution.html">strona o rozdzielczości</a> wchodzi głębiej; zasada jest prosta: oznaczenie wersji i oznaczenie motywu muszą się zgadzać.</p>
   </section>
 
   <section class="lumen-guide-section">
-    <h2>Where themes live</h2>
-    <p>Themes are files on the MicroSD card, inside the <code>.rockbox</code> folder — the same folder that holds settings and caches. The firmware itself is on internal flash, so adding, changing or removing a theme never requires reflashing.</p>
+    <h2>Gdzie są motywy</h2>
+    <p>Motywy to pliki na karcie MicroSD, w folderze <code>.rockbox</code> folderu — tego samego, w którym są ustawienia i pamięć podręczna. Sam firmware znajduje się w pamięci wewnętrznej, więc dodanie, zmiana lub usunięcie motywu nigdy nie wymaga ponownego wgrywania.</p>
     <ul class="lumen-benefits-list">
-      <li>Copy the theme's own folder into <code>.rockbox/themes</code> on the card.</li>
-      <li>Then choose it in the player's theme settings and reboot to see it applied.</li>
-      <li>Keep a copy of a theme you like before updating the build — it is a file, not an installation.</li>
+      <li>Skopiuj folder motywu do <code>.rockbox/themes</code> na karcie.</li>
+      <li>Następnie wybierz go w ustawieniach motywu odtwarzacza i uruchom ponownie, żeby zobaczyć efekt.</li>
+      <li>Zachowaj kopię motywu, który Ci się podoba, przed aktualizacją wersji — to plik, a nie instalacja.</li>
     </ul>
-    <p>Turn on hidden files first if you cannot see the folder: macOS <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>, Windows View → Hidden items, Linux <kbd>Ctrl</kbd>+<kbd>H</kbd>.</p>
+    <p>Jeśli nie widzisz folderu, najpierw włącz wyświetlanie ukrytych plików: macOS <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>, w Windows: Widok → Elementy ukryte, w Linuksie <kbd>Ctrl</kbd>+<kbd>H</kbd>.</p>
   </section>
 
   <section class="lumen-guide-section">
-    <h2>Applying a theme, in order</h2>
+    <h2>Stosowanie motywu krok po kroku</h2>
     <ol class="lumen-steps">
-      <li>Install and boot Rockbox-Y1 first; a theme needs a running build.</li>
-      <li>Copy the theme folder to <code>.rockbox/themes</code> on the card.</li>
-      <li>Open the theme settings and select the theme.</li>
-      <li>Reboot so the whole interface — not just the menu — picks it up.</li>
-      <li>If it looks broken, select another theme; the files are still there if you want to retry later.</li>
+      <li>Najpierw zainstaluj i uruchom Rockbox-Y1; motyw potrzebuje działającej wersji.</li>
+      <li>Skopiuj folder motywu do <code>.rockbox/themes</code> na karcie.</li>
+      <li>Otwórz ustawienia motywu i wybierz motyw.</li>
+      <li>Uruchom ponownie, aby zmiana objęła cały interfejs, a nie tylko menu.</li>
+      <li>Jeśli motyw wygląda na uszkodzony, wybierz inny; pliki nadal są na miejscu, więc możesz spróbować ponownie później.</li>
     </ol>
   </section>
 
   <section class="lumen-guide-section">
-    <h2>Undoing a theme that broke the interface</h2>
-    <p>If the player boots into something unusable, you do not need to reinstall the firmware. Rename or delete the <code>.rockbox</code> folder on the card and start the player: the build recreates the folder with default settings and a default theme. Your music is untouched, and you can copy the themes you want back afterwards.</p>
+    <h2>Jak cofnąć motyw, który zepsuł interfejs</h2>
+    <p>Jeśli odtwarzacz uruchamia się w coś nieużywalnego, nie musisz ponownie instalować firmware. Zmień nazwę lub usuń <code>.rockbox</code> folder na karcie i uruchom odtwarzacz: wersja utworzy folder od nowa z ustawieniami domyślnymi i domyślnym motywem. Twoja muzyka pozostaje nietknięta, a wybrane motywy możesz potem skopiować z powrotem.</p>
     <div class="lumen-actions">
-      <a class="lumen-button" href="rockbox-y1/sd-card.html">The .rockbox folder</a>
-      <a class="lumen-button" href="rockbox-y1/first-start.html">First start</a>
-      <a class="lumen-button" href="rockbox-y1/update.html">Updating the build</a>
+      <a class="lumen-button" href="rockbox-y1/sd-card.html">Folder .rockbox</a>
+      <a class="lumen-button" href="rockbox-y1/first-start.html">Pierwsze uruchomienie</a>
+      <a class="lumen-button" href="rockbox-y1/update.html">Aktualizacja builda</a>
     </div>
   </section>
 
   <section class="lumen-guide-section">
-    <h2>Pytania, które zadają ludzie</h2>
+    <h2>Najczęstsze pytania</h2>
     <details>
-      <summary>Why does Updater CE walk me through transferring themes after an MTKClient install on macOS or Linux?</summary>
-      <p>MTKClient flashes the Rockbox ROM to internal storage while your Y1 is powered off in low-level Preloader/BROM mode, before Rockbox has booted to initialize the <code>.rockbox</code> folder and before the MicroSD card is mounted on your computer. Whenever Updater CE can reach the booted player directly (via ADB or a mounted USB drive), it transfers the themes automatically; when it cannot do that unattended during the flash, it opens the guided themes &amp; fonts step right after flashing to help you power on the Y1 and complete the transfer via ADB or USB Storage Mode.</p>
+      <summary>Dlaczego Updater CE prowadzi mnie przez przenoszenie motywów po instalacji przez MTKClient w macOS lub Linuksie?</summary>
+      <p>MTKClient wgrywa ROM Rockbox do pamięci wewnętrznej, gdy Y1 jest wyłączony i działa w niskopoziomowym trybie Preloader/BROM, zanim Rockbox uruchomi się i zainicjuje <code>.rockbox</code> folderu i zanim karta microSD zostanie zamontowana na komputerze. Gdy Updater CE ma bezpośredni dostęp do uruchomionego odtwarzacza (przez ADB lub zamontowany dysk USB), przenosi motywy automatycznie; gdy nie może tego zrobić samodzielnie w trakcie wgrywania, zaraz po wgraniu otwiera prowadzony krok motywów i czcionek, który pomaga włączyć Y1 i dokończyć transfer przez ADB lub tryb pamięci masowej USB.</p>
     </details>
     <details>
-      <summary>Will a Y2 theme work on the Y1?</summary>
-      <p>No. The ports are separate, and theme support on the Y2 follows its beta builds. See <a href="rockbox-y2-themes_pl.html">Rockbox-Y2 motywy</a>.</p>
+      <summary>Czy motyw z Y2 zadziała na Y1?</summary>
+      <p>Nie. Porty są osobne, a obsługa motywów na Y2 pojawia się w jego wersjach beta. Zobacz <a href="rockbox-y2-themes_pl.html">Motywy Rockbox-Y2</a>.</p>
     </details>
     <details>
-      <summary>Do themes survive an update?</summary>
-      <p>Usually yes, because they live on the card and the flash writes the ROM. If a new build changes the theme path, reapply a theme that matches its label.</p>
+      <summary>Czy motywy przetrwają aktualizację?</summary>
+      <p>Zwykle tak, bo są na karcie, a wgrywanie zapisuje ROM. Jeśli nowy build zmienia ścieżkę motywów, zastosuj ponownie motyw zgodny z jego oznaczeniem.</p>
     </details>
     <details>
-      <summary>Why is the theme only half applied?</summary>
-      <p>A reboot normally resolves it. If not, the theme's files are incomplete — re-copy its folder rather than editing individual files.</p>
+      <summary>Dlaczego motyw jest zastosowany tylko częściowo?</summary>
+      <p>Zwykle pomaga restart. Jeśli nie, pliki motywu są niekompletne – skopiuj jego folder ponownie, zamiast edytować pojedyncze pliki.</p>
     </details>
   </section>
 </main>
 <div id="footer-root"></div><div id="support-toolbar-slot"></div>
-<script src="nav.js?v=20261114links1" defer></script>
+<script src="nav.js?v=20261124fixes1" defer></script>
 <script src="site-i18n.js?v=20260830" defer></script>
-<script src="site-locale.js?v=20261111i18nfix" defer></script></body>
+<script src="site-locale.js?v=20261124fixes1" defer></script></body>
 </html>
