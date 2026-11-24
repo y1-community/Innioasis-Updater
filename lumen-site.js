@@ -2003,7 +2003,7 @@
             });
             var currentVal = model.value;
             model.innerHTML = availableModels.map(function (m) {
-                return '<option value="' + escapeHtml(m) + '">' + escapeHtml(m) + '</option>';
+                return '<option value="' + escapeHtml(m) + '" translate="no" data-i18n-skip>' + escapeHtml(m) + '</option>';
             }).join("");
             if (availableModels.indexOf(currentVal) !== -1) {
                 model.value = currentVal;
@@ -2293,10 +2293,10 @@
                 var entry = MODEL_ZIPS.find(function (candidate) { return candidate.name === aName; });
                 var label = entry ? entry.label : (assetType ? item.model + " · Type " + assetType : item.model + " package");
                 var title = entry ? entry.title : ("For " + item.model + " players" + (assetType ? " · Type " + assetType : ""));
-                links.push('<li><a class="lumen-download-link lumen-zip-text-link" href="' + escapeHtml(asset.browser_download_url) + '" download="' + escapeHtml(asset.name) + '" data-zip-url="' + escapeHtml(asset.browser_download_url) + '" data-zip-name="' + escapeHtml(asset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "") + '" data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '" data-item-repo="' + escapeHtml(item.repo || "") + '" data-item-name="' + escapeHtml(item.name || "") + '" data-item-model="' + escapeHtml(item.model || "") + '" title="' + escapeHtml(title) + '">' + escapeHtml(asset.name) + ' <span class="lumen-meta">' + escapeHtml(label) + '</span></a></li>');
+                links.push('<li><a class="lumen-download-link lumen-zip-text-link" href="' + escapeHtml(asset.browser_download_url) + '" download="' + escapeHtml(asset.name) + '" data-zip-url="' + escapeHtml(asset.browser_download_url) + '" data-zip-name="' + escapeHtml(asset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "") + '" data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '" data-item-repo="' + escapeHtml(item.repo || "") + '" data-item-name="' + escapeHtml(item.name || "") + '" data-item-model="' + escapeHtml(item.model || "") + '" title="' + escapeHtml(title) + '"><span translate="no" data-i18n-skip>' + escapeHtml(asset.name) + '</span> <span class="lumen-meta">' + escapeHtml(label) + '</span></a></li>');
             });
             var assetLinks = links.length ? links.join("") : '<li>No ZIP asset was found in this release.</li>';
-            return '<details class="lumen-release-details"><summary>Release details and zip</summary><p><strong>' + escapeHtml(release.name || release.tag_name || "Public release") + '</strong>' + (release.published_at ? ' · ' + escapeHtml(release.published_at.slice(0, 10)) : '') + '</p><ul>' + assetLinks + '</ul></details>';
+            return '<details class="lumen-release-details"><summary>Release details and ZIP</summary><p><strong translate="no" data-i18n-skip>' + escapeHtml(release.name || release.tag_name || "Public release") + '</strong>' + (release.published_at ? ' · <span translate="no" data-i18n-skip>' + escapeHtml(release.published_at.slice(0, 10)) + '</span>' : '') + '</p><ul>' + assetLinks + '</ul></details>';
         }
 
         /* The release-table icon opens the project's README: the static page
@@ -2446,11 +2446,16 @@
             var guideQuery = [];
             if (item && item.model) guideQuery.push("model=" + encodeURIComponent(item.model));
             if (item && item.slug) guideQuery.push("software=" + encodeURIComponent(item.slug));
+            var softwareName = item && item.name ? String(item.name) : "";
+            var modelName = item && item.model ? String(item.model) : "";
+            var tagText = String(tag || "");
             return {
                 guide: "guide.html" + (guideQuery.length ? "?" + guideQuery.join("&") : ""),
-                title: (item && item.name ? item.name + (item.model ? " for " + item.model : "") + " " : "") +
-                    (tag || "release") + " download figures",
-                tag: String(tag || ""),
+                software: softwareName,
+                model: modelName,
+                title: (softwareName ? softwareName + (tagText ? " " + tagText : "") + (modelName ? " (" + modelName + ")" : "") + " \u2014 " : "") +
+                    "Download figures",
+                tag: tagText,
                 mirrors: (known && known.mirrors) || manifestPortableZips(item) || "",
                 total: releaseDownloadTotal(release),
                 firmware: firmware,
@@ -2514,7 +2519,7 @@
             var guideUrl = 'guide.html?model=' + encodeURIComponent(item.model) + '&software=' + encodeURIComponent(item.slug);
             var listedInManifest = manifestRepoListed(item);
             var updater = listedInManifest
-                ? '<a class="lumen-updater-button lumen-updater-button--table" href="' + guideUrl + '" aria-label="Get ' + escapeHtml(item.name) + ' for ' + escapeHtml(item.model) + ' on Innioasis Updater"><img src="assets/icon.ico" width="28" height="28" alt=""><span><strong>Get it on Updater</strong><small>with guided install</small></span></a>'
+                ? '<a class="lumen-updater-button lumen-updater-button--table" href="' + guideUrl + '" aria-label="Install ' + escapeHtml(item.name) + ' for ' + escapeHtml(item.model) + ' with Innioasis Updater"><img src="assets/icon.ico" width="28" height="28" alt=""><span><strong>Get it on Updater</strong><small>with guided install</small></span></a>'
                 : '';
 
             var zipBtn = '';
@@ -2553,7 +2558,7 @@
                only. Say what opens that ZIP, so a reader does not have to guess
                whether the file is useful without Updater CE. */
             var standaloneNote = listedInManifest ? ''
-                : '<span class="lumen-meta lumen-standalone-note" style="flex-basis:100%;display:block;">Works with Updater CE, or the software install zip built for your computer.</span>';
+                : '<span class="lumen-meta lumen-standalone-note" style="flex-basis:100%;display:block;">Works with Updater CE, or the software install ZIP built for your computer.</span>';
 
             var downloadsMeta = release
                 ? downloadStatsHtml(release, item, release.tag_name || release.name || "")
@@ -2837,8 +2842,20 @@
                 if (availability === "nozip") return betterYTypeBContext(item);
                 return true;
             });
+            function shouldSkipSoftwareOptionTranslation(label) {
+                var text = String(label || "").trim();
+                if (!text) return true;
+                if (/^Original Software$/i.test(text)) return false;
+                if (/^Android\b/i.test(text)) return false;
+                if (/^Linux for\b/i.test(text)) return false;
+                if (/\(Type B via\b/i.test(text)) return false;
+                return true;
+            }
             var options = Array.from(new Map(items.map(function (item) { return [item.slug, softwareOptionName(item)]; })).entries()).sort(function (a, b) { return a[1].localeCompare(b[1]); });
-            software.innerHTML = options.map(function (entry) { return '<option value="' + escapeHtml(entry[0]) + '">' + escapeHtml(entry[1]) + '</option>'; }).join("");
+            software.innerHTML = options.map(function (entry) {
+                var skip = shouldSkipSoftwareOptionTranslation(entry[1]) ? ' translate="no" data-i18n-skip' : '';
+                return '<option value="' + escapeHtml(entry[0]) + '"' + skip + '>' + escapeHtml(entry[1]) + '</option>';
+            }).join("");
             var requested = softwareParam && options.some(function (entry) { return entry[0] === softwareParam; }) ? softwareParam : previous;
             var fallback = originalSlug();
             if (options.some(function (entry) { return entry[0] === requested; })) {
@@ -2880,12 +2897,16 @@
                 var emptyRepos = repos.filter(function (repo) { return releaseState[repo] === "empty"; }).length;
                 var cachedActive = repos.filter(function (repo) { return releaseState[repo] === "cached"; }).length;
                 if (status) {
+                    var statusNameTranslatable = /^Original Software$/i.test(softwareName) || /^Android\b/i.test(softwareName) || /^Linux for\b/i.test(softwareName);
+                    var statusNameHtml = statusNameTranslatable
+                        ? '<span>' + escapeHtml(softwareName) + '</span>'
+                        : '<span translate="no" data-i18n-skip>' + escapeHtml(softwareName) + '</span>';
                     if (liveLoaded) {
-                        status.textContent = "All public " + softwareName + " releases loaded.";
+                        status.innerHTML = '<span>All public releases loaded:</span> ' + statusNameHtml;
                     } else if (emptyRepos) {
-                        status.textContent = "No public releases were found for " + softwareName + ".";
+                        status.innerHTML = '<span>No public releases were found:</span> ' + statusNameHtml;
                     } else if (cachedActive) {
-                        status.textContent = "Showing " + softwareName + " releases from the catalogue archive.";
+                        status.innerHTML = '<span>Showing releases from the catalogue archive:</span> ' + statusNameHtml;
                     } else {
                         status.textContent = "Release information is not available right now. The project links remain available.";
                     }
@@ -3089,12 +3110,13 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
             /* One button per model; each opens the model-matched release
                list in the full firmware directory. */
             var releaseButtons = group.items.map(function (item) {
-                return '<a class="lumen-button lumen-button--model" href="firmware.html?model=' + encodeURIComponent(item.model) + '&software=' + encodeURIComponent(item.slug) + '" aria-label="' + escapeHtml(item.model) + ' releases">' + escapeHtml(item.model) + '</a>';
+                return '<a class="lumen-button lumen-button--model" href="firmware.html?model=' + encodeURIComponent(item.model) + '&software=' + encodeURIComponent(item.slug) + '" aria-label="' + escapeHtml(item.model) + ' releases" translate="no" data-i18n-skip>' + escapeHtml(item.model) + '</a>';
             }).join(" ");
             var benefitLink = first.benefits ? '<a class="lumen-benefit-link" href="' + escapeHtml(first.benefits) + '">Why ' + escapeHtml(group.name) + '?</a>' : '';
             var guideHref = first.seoPage || first.guide || ('guide.html?model=' + encodeURIComponent(first.model) + '&software=' + encodeURIComponent(first.slug));
+            var skipGroupName = !/^Original Software$/i.test(group.name) && !/^Android\b/i.test(group.name) && !/^Linux for\b/i.test(group.name);
             return "<tr>" +
-                '<td><a class="lumen-project-link" href="' + escapeHtml(guideHref) + '"><strong>' + escapeHtml(group.name) + "</strong></a>" + '<span class="lumen-version" data-version-group="' + escapeHtml(group.name) + '" hidden><span class="lumen-visually-hidden">Latest release: </span><span data-version-for="' + escapeHtml(group.name) + '"></span></span>' + (benefitLink ? '<br>' + benefitLink : '') + "</td>" +
+                '<td><a class="lumen-project-link" href="' + escapeHtml(guideHref) + '"><strong' + (skipGroupName ? ' translate="no" data-i18n-skip' : '') + '>' + escapeHtml(group.name) + "</strong></a>" + '<span class="lumen-version" data-version-group="' + escapeHtml(group.name) + '" hidden><span class="lumen-visually-hidden">Latest release: </span><span data-version-for="' + escapeHtml(group.name) + '" translate="no" data-i18n-skip></span></span>' + (benefitLink ? '<br>' + benefitLink : '') + "</td>" +
                 "<td>" + releaseButtons + "</td>" +
                 "</tr>";
         }).join("");
@@ -3346,7 +3368,8 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
             slot.innerHTML = items.map(function (item) {
                 var dedicated = item.guide || item.seoPage || "";
                 var href = dedicated || ("firmware-guide.html?model=" + encodeURIComponent(item.model) + "&software=" + encodeURIComponent(item.slug));
-                return '<a class="lumen-button" href="' + escapeHtml(href) + '" data-install-guide="' + escapeHtml(item.slug) + '">' + escapeHtml(item.name) + '</a>';
+                var skipName = !/^Original Software$/i.test(item.name) && !/^Android\b/i.test(item.name) && !/^Linux for\b/i.test(item.name);
+                return '<a class="lumen-button" href="' + escapeHtml(href) + '" data-install-guide="' + escapeHtml(item.slug) + '"' + (skipName ? ' translate="no" data-i18n-skip' : '') + '>' + escapeHtml(item.name) + '</a>';
             }).join("");
         });
     }

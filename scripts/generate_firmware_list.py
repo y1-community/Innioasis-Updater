@@ -340,9 +340,17 @@ def download_breakdown(release: dict, item: dict, portable: list[dict],
             mirrors.append(mirror)
     name = str(item.get("name") or "Firmware")
     model = str(item.get("model") or "").upper()
+    tag_text = str(tag or "")
+    title = "%s%s%s \u2014 Download figures" % (
+        name,
+        (" " + tag_text) if tag_text else "",
+        (" (" + model + ")") if model else "",
+    )
     return {
-        "title": "%s%s %s download figures" % (name, (" for " + model) if model else "", tag),
-        "tag": str(tag or ""),
+        "software": name,
+        "model": model,
+        "title": title,
+        "tag": tag_text,
         "mirrors": ",".join(mirrors),
         "total": max(counted, stored),
         "firmware": firmware,
@@ -357,7 +365,8 @@ def stats_markup(breakdown: dict) -> str:
     return (
         '<div class="lumen-meta lumen-download-count lumen-download-stats">'
         '<button type="button" class="lumen-download-stats__figure" data-download-stats="%s" '
-        'aria-haspopup="dialog">Downloads: %s</button>'
+        'aria-haspopup="dialog"><span class="lumen-download-stats__label">Downloads:</span> '
+        '<span class="lumen-download-stats__value" translate="no" data-i18n-skip>%s</span></button>'
         '<button type="button" class="lumen-download-stats__info" '
         'aria-haspopup="dialog" aria-label="Download figures and breakdown" '
         'title="Download figures and breakdown">i</button>'
@@ -701,7 +710,7 @@ def render_page(feed: dict, software: list[dict]) -> tuple[str, list[dict]]:
         'title="Firmware releases">' % SITE,
         '<link rel="alternate" type="application/json" href="%s/feeds/firmware-releases.json" '
         'title="Firmware release data">' % SITE,
-        '<script src="site-download-stats.js?v=20261117stats7" defer></script>',
+        '<script src="site-download-stats.js?v=20261124stats9" defer></script>',
         '<script type="application/ld+json">%s</script>'
         % json.dumps(graph, ensure_ascii=False, separators=(",", ":")),
     ]

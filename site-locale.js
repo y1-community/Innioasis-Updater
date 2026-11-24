@@ -31,11 +31,11 @@
     "use strict";
 
     var DEFAULT_LOCALE = "en";
-    var RUNTIME_VERSION = "20261111i18nfix";
+    var RUNTIME_VERSION = "20261124fixes1";
     /* Catalogs are re-fetched under a new URL when their content changes.
        Without this a returning visitor keeps the copy they cached, so a
        language whose catalog was just completed still reads as English. */
-    var CATALOG_VERSION = "20261110lay2";;
+    var CATALOG_VERSION = "20261124fixes1";
     var STORAGE_LOCALE = "innioasis-locale";
     var STORAGE_REGION = "innioasis-region";
     var STORAGE_COUNTRY = "innioasis-country";
@@ -677,7 +677,8 @@
         "article.lumen-doc-body",
         ".lumen-notice-view"
     ].join(", ");
-    var DYNAMIC_CACHE_KEY = "innioasis-dynamic-translations";
+    var DYNAMIC_CACHE_KEY = "innioasis-dynamic-translations-v2";
+    try { global.localStorage.removeItem("innioasis-dynamic-translations"); } catch (_) {}
     var DYNAMIC_MAX_REQUESTS = 800;
     /* Missing strings share a request. A few batches run together so the
        visible page finishes without opening a connection per string. */
@@ -761,14 +762,15 @@
         "Innioasis Updater CE", "Innioasis Updater", "Updater Community Edition", "Updater CE",
         "Ryan Specter", "Ryan Specter and Team Slide", "Copyleft - Innioasis and Ryan Specter",
         "Timmkoo", "Mechen H11", "Mechen H1", "Mechen",
-        "Rockbox-Y1", "Rockbox-Y2", "Rockbox",
+        "Rockbox-Y1", "Rockbox-Y2", "Rockbox", "Rock8ox",
         "Better-Y", "Y2Linux", "Y2Player", "Y2Reborn", "Reborn",
-        "Inniclassic", "JJ Launcher", "Koensayr", "Rondo", "Solar", "Lithium",
+        "ClassyPlayer", "Classy", "Nugget",
+        "Inniclassic", "inniclassic", "JJ Launcher", "Koensayr", "Rondo", "Solar", "Lithium",
         "Type A", "Type B", "Type-A", "Type-B",
         "Y1", "Y2", "G1", "G3", "G5", "PR1", "R1", "D1", "Q3", "Q5", "A5", "SR1", "Q3E", "Q8",
         "rom.zip", "rom_y2.zip", "rom_type_b.zip", "rom_g1.zip", "rom_g3.zip", "rom_g5.zip",
         "rom_pr1.zip", "rom_q3.zip", "rom_q5.zip", "rom_r1.zip", "rom_sr1.zip", "system.zip",
-        "scatter.txt", "MicroSD", "microSD", "SD Card", "SD card", "APK", "ROM", "USB",
+        "scatter.txt", "MicroSD", "microSD", "SD Card", "SD card", "APK", "ROM", "ZIP", "RAR", "USB",
         "Buy Me a Coffee", "Honeygain", "Cloudflare", "Google Analytics", "Google Tag Manager",
         "GitHub", "Discord", "Ko-fi", "PayPal", "Patreon", "Revolut", "Boosty", "YouTube", "Reddit", "TikTok",
         "Linux", "Windows", "macOS", "Android", "iOS", "FAQ",
