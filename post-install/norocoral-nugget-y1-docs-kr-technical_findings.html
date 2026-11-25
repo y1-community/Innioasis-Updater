@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261124fixes1">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261124init2" defer></script>
+  <script src="../site-init.js?v=20261124init3" defer></script>
 <link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-technical_findings.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-kr-technical_findings.html">
 </head>
 <body class="site-themes-app">
@@ -108,9 +108,9 @@
 <ul><li><strong>프레임 정렬 보장:</strong> <code>written &amp; 3 != 0</code>인 경우 제로 패딩(<code>4 - unaligned</code> 바이트)을 <code>/dev/eac</code>에 직접 기록하여 링 버퍼의 정렬을 강제 복원. 사용자 버퍼 포인터는 <code>written + pad_len</code>만큼 전진시켜 이후 모든 프레임이 4바이트 정렬을 유지하도록 조치.</li><li><strong>PMIC 게이팅 및 FIR 리셋:</strong> <code>sink_set_freq()</code> 호출 시 레이트 레지스터를 변경하기 전에 <code>0x4014</code>와 <code>0x4000</code>을 비활성화하고, PMIC 디지털 게인(<code>0x4006</code>, <code>0x4008</code>)을 리셋한 후 마스터 제어를 깔끔하게 재가동함.</li><li><strong>DL1 링 버퍼 재할당:</strong> 샘플 레이트 변경 시 <code>AUDDRV_FREE_DL1_BUF</code>, <code>AUDDRV_ALLOCATE_DL1_BUF</code>, <code>SET_MEMIF_FP</code>를 호출하여 커널 읽기/쓰기 포인터를 0으로 초기화.</li><li><strong>CDC 트리거 XOR 토글:</strong> <code>pcm-eac.c</code> 및 <code>unmute_eac.c</code>의 <code>top_ctl_trigger()</code>에서 <code>(val ^ 0x300) &amp; 0x300</code> 연산 방식을 적용.</li><li><strong>동시성 잠금 보호:</strong> <code>sink_set_freq()</code>를 <code>sink_lock()</code> / <code>sink_unlock()</code>으로 잠그고 <code>pcm_mtx</code> 보호 하에 <code>pcm_data</code>를 안전하게 비우도록 처리.</li></ul></article><p class="lumen-doc-footer-note">These are Nugget (Rock8ox 240p + 360p)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=nugget-rock8ox-240p-360p-y1">norocoral's <em>Nugget (Rock8ox 240p + 360p)</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=norocoral%2Fnugget-y1&amp;software=nugget-rock8ox-240p-360p-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../portable-zip-links.js?v=20261124arm64v1" defer></script>
 <script src="../nav.js?v=20261124fixes1" defer></script>
-<script src="../site-locale.js?v=20261124fixes2" defer></script>
+<script src="../site-locale.js?v=20261124arm64v1" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

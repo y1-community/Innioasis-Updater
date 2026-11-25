@@ -1545,7 +1545,7 @@
         if (global.InnioasisDownloads || document.getElementById("site-downloads-script")) return;
         var node = document.createElement("script");
         node.id = "site-downloads-script";
-        node.src = siteBase() + "site-downloads.js?v=20261124progress1";
+        node.src = siteBase() + "site-downloads.js?v=20261124progress2";
         node.defer = true;
         document.head.appendChild(node);
     }
@@ -1668,11 +1668,55 @@
         } catch (_) {}
         var node = document.createElement("script");
         node.id = "site-download-choices-script";
-        node.src = base + "site-download-choices.js?v=20261124zip2";
+        node.src = base + "site-download-choices.js?v=20261124zip3";
         node.defer = true;
         document.head.appendChild(node);
     }
     loadSiteDownloadChoices();
+
+    /* Detect Windows on ARM64 synchronously from URL preview flag or UA
+       (macOS Apple Silicon and ARM64 Linux are explicitly excluded) so
+       page scripts can cooperate before site-windows-arm64.js finishes
+       its async UA-CH check. */
+    function detectInitialWinArm64() {
+        if (global.INNIOASIS_WIN_ARM64 && global.INNIOASIS_WIN_ARM64.isWindowsArm64) return;
+        if (global.INNIOASIS_LEGACY && global.INNIOASIS_LEGACY.isLegacy) return;
+        var found = false;
+        var source = "";
+        try {
+            var p = new URLSearchParams((global.location && global.location.search) || "");
+            var f = (p.get("win_arm64") || "").toLowerCase();
+            if (f === "1" || f === "true" || (p.get("platform") || "").toLowerCase() === "windows-arm64") {
+                found = true;
+                source = "query";
+            }
+        } catch (_) {}
+        if (!found) {
+            var nav = global.navigator || {};
+            var ua = String(nav.userAgent || "");
+            var plat = String((nav.userAgentData && nav.userAgentData.platform) || nav.platform || "");
+            var isWinDesktop = /windows/i.test(ua) && !/windows phone|iemobile|mobile|android|iphone|ipad|ipod|macintosh|mac os x|linux|cros|chrome os/i.test(ua) && !/mac|linux|android|cros|ios/i.test(plat);
+            if (isWinDesktop && /\b(?:arm64|aarch64|woa64)\b|windows\s+on\s+arm/i.test(ua + " " + plat)) {
+                found = true;
+                source = "ua";
+            }
+        }
+        global.INNIOASIS_WIN_ARM64 = { isWindowsArm64: found, source: source };
+        if (found && document.documentElement) {
+            document.documentElement.setAttribute("data-windows-arm64", "true");
+        }
+    }
+    detectInitialWinArm64();
+
+    function loadSiteWindowsArm64() {
+        if (global.InnioasisWinArm64 || document.getElementById("site-windows-arm64-script")) return;
+        var node = document.createElement("script");
+        node.id = "site-windows-arm64-script";
+        node.src = siteBase() + "site-windows-arm64.js?v=20261124arm64v1";
+        node.defer = true;
+        document.head.appendChild(node);
+    }
+    loadSiteWindowsArm64();
 
     function isDonationsDisabledNow() {
         if (document.documentElement && document.documentElement.classList.contains("y1-donations-off")) return true;

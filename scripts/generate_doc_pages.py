@@ -1426,7 +1426,7 @@ HEAD = """<!doctype html>
   <link rel="stylesheet" href="{up}site-toolbar.css?v=20261124fixes1">
   <link rel="stylesheet" href="{up}docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="{up}site-init.js?v=20261124init2" defer></script>
+  <script src="{up}site-init.js?v=20261124init3" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -1436,9 +1436,9 @@ HEAD = """<!doctype html>
 FOOT = """<div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="{up}firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="{up}docs-viewer.js?v=20261104cite" defer></script>
-<script src="{up}portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="{up}portable-zip-links.js?v=20261124arm64v1" defer></script>
 <script src="{up}nav.js?v=20261124fixes1" defer></script>
-<script src="{up}site-locale.js?v=20261124fixes2" defer></script>
+<script src="{up}site-locale.js?v=20261124arm64v1" defer></script>
 <script src="{up}site-i18n.js?v=20260830" defer></script>
 </body></html>
 """

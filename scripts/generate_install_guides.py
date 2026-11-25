@@ -101,7 +101,7 @@ def page_title(title: str, description: str, canonical: str, keywords: list[str]
 <link rel="stylesheet" href="../site-pages.css?v=20260818">
 <link rel="stylesheet" href="../site-toolbar.css?v=20261124fixes1">
 <link rel="stylesheet" href="../install.css?v=20261106">
-<script src="../site-init.js?v=20261124init2" defer></script>
+<script src="../site-init.js?v=20261124init3" defer></script>
 {blocks}
 </head>
 <body class="{classes}"><a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -111,9 +111,9 @@ def page_title(title: str, description: str, canonical: str, keywords: list[str]
 </main>
 <div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../nav.js?v=20261124fixes1" defer></script>
-<script src="../site-locale.js?v=20261124fixes2" defer></script>
+<script src="../site-locale.js?v=20261124arm64v1" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
-<script src="../site-platform.js?v=20261106" defer></script>
+<script src="../site-platform.js?v=20261124arm64v1" defer></script>
 </body></html>
 """
 

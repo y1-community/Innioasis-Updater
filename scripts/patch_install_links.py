@@ -70,7 +70,7 @@ def patch(rel: str, item: dict) -> str:
     if "site-platform.js" not in text:
         text = text.replace(
             "</body>",
-            '<script src="%ssite-platform.js?v=20261106" defer></script></body>' % prefix,
+            '<script src="%ssite-platform.js?v=20261124arm64v1" defer></script></body>' % prefix,
             1,
         )
         changed = True

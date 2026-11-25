@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../site-toolbar.css?v=20261124fixes1">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261124init2" defer></script>
+  <script src="../site-init.js?v=20261124init3" defer></script>
 <link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-audio_subsystem.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/norocoral-nugget-y1-docs-audio_subsystem.html">
 </head>
 <body class="site-themes-app">
@@ -96,9 +96,9 @@
 <ul><li><strong>Zero-Padding Frame Alignment:</strong> In <code>pcm_worker</code>, when <code>written &amp; 3 != 0</code>, zero padding (<code>4 - unaligned</code> bytes) is written directly to <code>/dev/eac</code> to restore the kernel ring buffer to a 4-byte boundary. User-space pointers advance by the full frame size (<code>written + pad_len</code>), maintaining 4-byte stereo alignment and eliminating channel swapping or phase delay.</li><li><strong>PMIC Gating:</strong> In <code>sink_set_freq()</code>, PMIC downlink (<code>0x4014</code>) and master (<code>0x4000</code>) are gated to 0 before altering sample rate dividers, and re-enabled after registers and digital gain (<code>0x4006</code>, <code>0x4008</code> = 0 dB) are settled.</li><li><strong>Ring Buffer Pointer Reset:</strong> On sample rate changes, <code>AUDDRV_FREE_DL1_BUF</code>, <code>AUDDRV_ALLOCATE_DL1_BUF</code>, and <code>SET_MEMIF_FP</code> reset kernel circular buffer pointers to 0.</li><li><strong>Toggling CDC Clock Trigger:</strong> In <code>pcm-eac.c</code> and <code>unmute_eac.c</code>, <code>top_ctl_trigger()</code> toggles clock sync bits using <code>(val ^ 0x300) &amp; 0x300</code>.</li><li><strong>Concurrency Locking:</strong> <code>sink_set_freq()</code> is wrapped in <code>sink_lock()</code> and <code>sink_unlock()</code>, clearing <code>pcm_data</code> under <code>pcm_mtx</code> so Rockbox feeds newly aligned frames only after hardware stabilization.</li></ul></article><p class="lumen-doc-footer-note">These are Nugget (Rock8ox 240p + 360p)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y1&amp;software=nugget-rock8ox-240p-360p-y1">norocoral's <em>Nugget (Rock8ox 240p + 360p)</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=norocoral%2Fnugget-y1&amp;software=nugget-rock8ox-240p-360p-y1" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261110direct2" defer></script>
+<script src="../portable-zip-links.js?v=20261124arm64v1" defer></script>
 <script src="../nav.js?v=20261124fixes1" defer></script>
-<script src="../site-locale.js?v=20261124fixes2" defer></script>
+<script src="../site-locale.js?v=20261124arm64v1" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

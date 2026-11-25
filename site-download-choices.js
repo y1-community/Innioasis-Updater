@@ -103,7 +103,24 @@
         return button;
     }
 
+    function isWindowsArm64() {
+        try {
+            if (doc.documentElement && doc.documentElement.getAttribute("data-windows-arm64") === "true") return true;
+            return Boolean(global.INNIOASIS_WIN_ARM64 && global.INNIOASIS_WIN_ARM64.isWindowsArm64);
+        } catch (_) {
+            return false;
+        }
+    }
+
     function apply(group) {
+        if (isWindowsArm64() && group && group.hasAttribute && group.hasAttribute("data-platform-detect")) {
+            itemsOf(group).forEach(function (item) { item.hidden = false; });
+            var existingToggle = group.nextElementSibling;
+            if (existingToggle && existingToggle.classList && existingToggle.classList.contains("lumen-other-downloads")) {
+                existingToggle.parentNode.removeChild(existingToggle);
+            }
+            return;
+        }
         var key = visitorKey();
         if (!key || !MATCH[key]) return;
         /* site-legacy.js replaces the installer card on an older or 32-bit
@@ -168,6 +185,7 @@
         global.setTimeout(schedule, 400);
         global.setTimeout(schedule, 1500);
         global.addEventListener("y1-locale-change", schedule);
+        global.addEventListener("innioasis-win-arm64-change", schedule);
     }
 
     global.InnioasisDownloadChoices = {

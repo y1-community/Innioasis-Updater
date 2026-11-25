@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261124progress1";
+    var VERSION = "20261124progress2";
     /* Archives, installers and app images all stream in-page. A driver or app
        download is often the one a reader most wants a speed and time-left for,
        so it deserves the same progress card as a firmware ZIP. Phone packages
@@ -1269,7 +1269,7 @@
 
     global.InnioasisDownloads = {
         version: VERSION,
-        start: function (url, anchor, name) { return queue(url, anchor, name); },
+        start: function (url, anchor, name) { return queue(url, anchor, name, releaseResolver(url)); },
         /* Resolve a portable package after the picker has been opened on the
            click. The resolver returns {url, name} or {cancel:true}. */
         startResolved: function (resolver, fallbackUrl, anchor, name) {

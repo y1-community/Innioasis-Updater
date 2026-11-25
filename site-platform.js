@@ -38,7 +38,7 @@
         },
         linux: {
             heading: "Install Updater CE on Linux",
-            lead: "The AppImage is for Intel/AMD x86_64 Linux. USB access needs a udev rule.",
+            lead: "Builds are available for Intel/AMD (x86_64) and ARM64 Linux. USB access needs a udev rule.",
             steps: [
                 "Download <code>UpdaterCE.AppImage</code> and run <code>chmod +x UpdaterCE.AppImage</code>.",
                 "If it does not start, install <code>libfuse2</code> (or <code>libfuse2t64</code> on Ubuntu 24.04). Do not run it as root.",
@@ -62,8 +62,18 @@
         }
     }
 
+    function windowsArm64Visitor() {
+        try {
+            if (document.documentElement.getAttribute("data-windows-arm64") === "true") return true;
+            var marker = global.INNIOASIS_WIN_ARM64;
+            return Boolean(marker && marker.isWindowsArm64);
+        } catch (_) {
+            return false;
+        }
+    }
+
     function detectPlatform() {
-        if (legacyVisitor()) return null;
+        if (legacyVisitor() || windowsArm64Visitor()) return null;
         var ua = navigator.userAgent || "";
         if (/android|iphone|ipad|ipod|iemobile|windows phone|mobile|tablet|kindle|silk|cros|chrome os|chromeos|fuchsia/i.test(ua)) return null;
         if (navigator.maxTouchPoints > 1 && global.matchMedia && !global.matchMedia("(pointer: fine)").matches) return null;
@@ -193,6 +203,13 @@
            requestAnimationFrame, which browsers pause in background tabs. */
         global.setTimeout(refresh, 300);
         global.setTimeout(refresh, 1200);
+        global.addEventListener("innioasis-win-arm64-change", function (event) {
+            if (event && event.detail && event.detail.isWindowsArm64) {
+                each('[data-os-guide-copy="windows"]', function (node) {
+                    if (node.parentNode) node.parentNode.removeChild(node);
+                });
+            }
+        });
     }
 
     function init() {

@@ -770,6 +770,15 @@
         if (bound) return;
         bound = true;
         document.addEventListener("click", onClick, false);
+        document.addEventListener("innioasis-confirmed-zip-download", function (event) {
+            var el = event && event.detail && event.detail.element;
+            if (!el || !zipLinkOf(el)) return;
+            event.preventDefault();
+            downloadLink(el).catch(function () {
+                var info = zipNameFor(el);
+                directDownload(info.href || info.sourceUrl, info.saveName, "");
+            });
+        });
         /* The catalog and the tables paint their links after this script runs. */
         if (window.MutationObserver && document.body) {
             new MutationObserver(scheduleMark)

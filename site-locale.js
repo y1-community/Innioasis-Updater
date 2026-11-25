@@ -31,11 +31,11 @@
     "use strict";
 
     var DEFAULT_LOCALE = "en";
-    var RUNTIME_VERSION = "20261124fixes2";
+    var RUNTIME_VERSION = "20261124arm64v1";
     /* Catalogs are re-fetched under a new URL when their content changes.
        Without this a returning visitor keeps the copy they cached, so a
        language whose catalog was just completed still reads as English. */
-    var CATALOG_VERSION = "20261124fixes1";
+    var CATALOG_VERSION = "20261124arm64v1";
     var STORAGE_LOCALE = "innioasis-locale";
     var STORAGE_REGION = "innioasis-region";
     var STORAGE_COUNTRY = "innioasis-country";
@@ -776,7 +776,7 @@
         "scatter.txt", "MicroSD", "microSD", "SD Card", "SD card", "APK", "ROM", "ZIP", "RAR", "USB",
         "Buy Me a Coffee", "Honeygain", "Cloudflare", "Google Analytics", "Google Tag Manager",
         "GitHub", "Discord", "Ko-fi", "PayPal", "Patreon", "Revolut", "Boosty", "YouTube", "Reddit", "TikTok",
-        "Linux", "Windows", "macOS", "Android", "iOS", "FAQ",
+        "Windows on ARM64", "Windows ARM64", "Snapdragon", "RTX Spark", "USB Development Kit", "UsbDk", "Zadig", "ARM64", "x86_64", "Intel", "AMD", "Linux", "Windows", "macOS", "Android", "iOS", "FAQ",
         "Bitcoin (BTC)", "Bitcoin", "BTC", "Ethereum (ETH)", "Ethereum", "ETH", "Shiba Inu (SHIB)", "Shiba Inu", "SHIB"
     ];
     var dynamicBrandPattern = new RegExp(

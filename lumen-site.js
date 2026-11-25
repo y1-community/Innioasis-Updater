@@ -1141,6 +1141,7 @@
                 showDesktopOnlyNotice(options, cards);
                 return;
             }
+            if (window.INNIOASIS_WIN_ARM64 && window.INNIOASIS_WIN_ARM64.isWindowsArm64) return;
             var detected = detectPlatform();
             if (!detected || cards.length < 2) return;
             var chosen = cards.filter(function (card) { return card.getAttribute("data-platform") === detected; })[0];
@@ -1181,7 +1182,11 @@
 
     function initLinuxCard() {
         if (!document.querySelector("[data-linux-appimage]")) return;
-        showLinuxAppImage(linuxArch());
+        var winArm64 = Boolean(window.INNIOASIS_WIN_ARM64 && window.INNIOASIS_WIN_ARM64.isWindowsArm64);
+        showLinuxAppImage(winArm64 ? "arm64" : linuxArch());
+        window.addEventListener("innioasis-win-arm64-change", function (event) {
+            if (event && event.detail && event.detail.isWindowsArm64) showLinuxAppImage("arm64");
+        });
         /* Chromium can only answer the architecture question asynchronously,
            and only on some platforms, so the answer refines the guess above
            rather than replacing it. */
@@ -3221,6 +3226,12 @@
 
         table.addEventListener("click", handleZipDownloadClick);
         document.addEventListener("click", handleZipDownloadClick);
+        document.addEventListener("innioasis-confirmed-zip-download", function (event) {
+            var el = event && event.detail && event.detail.element;
+            if (!el) return;
+            event.preventDefault();
+            handleZipDownloadClick({ target: el, button: 0, isTrusted: true, defaultPrevented: false, preventDefault: function () {} });
+        });
         table.addEventListener("pointerover", warmPortableZip);
         table.addEventListener("focusin", warmPortableZip);
 
