@@ -1712,7 +1712,7 @@
         if (global.InnioasisWinArm64 || document.getElementById("site-windows-arm64-script")) return;
         var node = document.createElement("script");
         node.id = "site-windows-arm64-script";
-        node.src = siteBase() + "site-windows-arm64.js?v=20261124arm64v1";
+        node.src = siteBase() + "site-windows-arm64.js?v=20261124arm64v2";
         node.defer = true;
         document.head.appendChild(node);
     }

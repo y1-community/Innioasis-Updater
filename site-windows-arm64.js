@@ -25,7 +25,7 @@
     var doc = global.document;
     if (!doc) return;
 
-    var VERSION = "20261124arm64v1";
+    var VERSION = "20261124arm64v2";
     var MODAL_ID = "win-arm64-confirm-modal";
     var BANNER_ATTR = "data-win-arm64-banner";
     var STYLE_ID = "site-win-arm64-styles";
@@ -191,7 +191,7 @@
             ".win-arm64-banner__actions{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.85rem;}",
             ".win-arm64-inline-note{margin:.65rem 0 .85rem;padding:.75rem .9rem;border-radius:var(--lumen-radius-sm,10px);background:var(--lumen-panel-soft,#17202d);border:1px solid color-mix(in oklab,var(--lumen-amber,#e8c56a) 45%,var(--lumen-line,#233042));font-size:.88rem;line-height:1.5;color:var(--lumen-muted,#b4bfca);}",
             ".win-arm64-inline-note strong{color:var(--lumen-text,#e8edf2);}",
-            ".win-arm64-modal{position:fixed;inset:0;z-index:1100;display:grid;place-items:center;padding:1rem;background:color-mix(in oklab,var(--lumen-ink,#04070e) 68%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);}",
+            ".win-arm64-modal{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:1rem;background:color-mix(in oklab,var(--lumen-ink,#04070e) 68%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);}",
             ".win-arm64-modal[hidden]{display:none;}",
             ".win-arm64-modal__card{max-width:36rem;width:100%;max-height:calc(100dvh - 2rem);overflow-y:auto;background:var(--lumen-panel,#0f1621);border:1px solid var(--lumen-line-strong,#2b394d);border-radius:var(--lumen-radius-md,14px);padding:1.35rem 1.4rem;color:var(--lumen-text,#e8edf2);box-shadow:0 22px 60px color-mix(in oklab,var(--lumen-ink,#04070e) 50%,transparent);}",
             ".win-arm64-modal__head{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;margin-bottom:.5rem;}",
