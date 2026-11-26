@@ -1,5 +1,30 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<notices updated="2026-11-10">
+<notices updated="2026-11-26">
 
+  <notice id="2026-11-26-thanksgiving" persistent="false" severity="info" from="2026-11-26" until="2026-11-27">
+    <title>Happy Thanksgiving from the Innioasis Community!</title>
+    <content>Wishing everyone celebrating a warm and restful Thanksgiving. Thank you for being part of the Innioasis community!</content>
+    <full_content>Wishing everyone celebrating a warm, restful, and happy Thanksgiving!
+
+Thank you to everyone who uses Updater CE, builds themes, contributes to firmware projects, and keeps the Innioasis community thriving. Enjoy the holiday and happy listening!</full_content>
+  </notice>
+
+  <notice id="2026-11-28-developer-birthday" persistent="false" severity="info" from="2026-11-28" until="2026-11-28">
+    <title>It's the developer's birthday today!</title>
+    <content>Say Happy Birthday with a coffee?</content>
+    <full_content>[Say Happy Birthday with a coffee?](https://ko-fi.com/teamslide)
+
+Thank you for using Innioasis Updater CE and supporting independent community projects!</full_content>
+    <url>https://ko-fi.com/teamslide</url>
+    <link>https://ko-fi.com/teamslide</link>
+  </notice>
+
+  <notice id="2026-12-18-happy-holidays" persistent="false" severity="info" from="2026-12-18" until="2027-01-01">
+    <title>Merry Christmas &amp; Happy Holidays!</title>
+    <content>Season's greetings from the Innioasis community! Wishing you a joyful Christmas, happy holidays, and a wonderful New Year.</content>
+    <full_content>Merry Christmas and Happy Holidays from the Innioasis community!
+
+Whether you're relaxing with your favourite playlists or setting up a new Innioasis player for the first time, thank you for being part of this community throughout the year. Wishing you a warm holiday season and a fantastic 2027!</full_content>
+  </notice>
 
 </notices>

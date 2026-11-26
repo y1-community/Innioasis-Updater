@@ -43,7 +43,8 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add notices sitemap.xml sitemap-index.xml sitemap-i18n.xml sitemap-i18n-*.xml
+          git add -A notices
+          git add sitemap.xml sitemap-index.xml sitemap-i18n*.xml
           if git diff --cached --quiet; then
             echo "No notice changes."
             exit 0

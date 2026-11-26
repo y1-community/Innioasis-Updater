@@ -140,6 +140,18 @@
         var el = node.querySelector(tag);
         return el && el.textContent ? el.textContent.trim() : "";
       }
+      function todayIso() {
+        var now = new Date();
+        var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+        return now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate());
+      }
+      function isNoticeActive(notice, today) {
+        if (typeof window.y1NoticeIsActive === "function") return window.y1NoticeIsActive(notice, today);
+        var day = today || todayIso();
+        if (notice.from && String(notice.from).slice(0, 10) > day) return false;
+        if (notice.until && String(notice.until).slice(0, 10) < day) return false;
+        return true;
+      }
       function parseFeed(xmlText) {
         var doc = new DOMParser().parseFromString(xmlText, "application/xml");
         if (doc.querySelector("parsererror")) return [];
@@ -148,10 +160,12 @@
           var id = n.getAttribute("id") || "";
           if (!id) return;
           var from = n.getAttribute("from") || n.getAttribute("date") || "";
+          var until = n.getAttribute("until") || "";
           out.push({
             id: id,
             type: n.getAttribute("type") || n.getAttribute("severity") || "info",
             from: from.slice(0, 10),
+            until: until.slice(0, 10),
             models: n.getAttribute("models") || "",
             deviceType: n.getAttribute("device_type") || "",
             firmwareRepo: n.getAttribute("firmware_repo") || "",
@@ -331,14 +345,24 @@
           .then(function (xmlText) {
             var notices = parseFeed(xmlText);
             if (!notices.length) throw new Error("empty feed");
+            var activeNotices = notices.filter(function (n) { return isNoticeActive(n); });
             var wanted = wantedId();
             if (wanted) {
-              var found = notices.filter(function (n) { return n.id === wanted; })[0];
+              var found = activeNotices.filter(function (n) { return n.id === wanted; })[0]
+                || notices.filter(function (n) { return n.id === wanted; })[0];
               if (found) { renderNotice(found); return; }
-              renderList(notices, "That notice is no longer published. Here is everything that is current.");
+              if (!activeNotices.length) {
+                listEl.innerHTML = "<p>That notice is no longer published, and there are no active notices at this time.</p>";
+                return;
+              }
+              renderList(activeNotices, "That notice is no longer published. Here is everything that is current.");
               return;
             }
-            var ordered = orderForContext(notices);
+            if (!activeNotices.length) {
+              listEl.innerHTML = "<p>No active notices at this time.</p>";
+              return;
+            }
+            var ordered = orderForContext(activeNotices);
             var message = "";
             if (ordered.context) {
               var label = ordered.context.firmwareRepo || ordered.context.model || "this firmware";

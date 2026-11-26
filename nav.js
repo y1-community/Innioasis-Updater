@@ -995,6 +995,7 @@
   window.y1NoticeMarkdown = renderNoticeMarkdown;
   window.y1NoticeIsBareUrl = noticeIsBareSiteUrl;
   window.y1NoticeDetailHref = noticeDetailHref;
+  window.y1NoticeIsActive = noticeIsActive;
 
   function parseNoticesXml(xmlText) {
     if (!xmlText || !xmlText.trim()) return [];
@@ -1423,19 +1424,21 @@
   var noticeTrayAll = [];
 
   function noticeTrayVisible(notice) {
+    if (!noticeIsActive(notice)) return false;
     return !noticeHasTargeting(notice) || noticeMatches(notice, noticeContext);
   }
 
   function applyNoticeTrayFilter() {
     if (!noticesBody || !noticeTrayAll || !noticeTrayAll.length) return;
-    var onNoticesPage = /\/notices(\.html)?\/?$/.test(window.location.pathname);
+    var onNoticesPage = /\/notices(?:_[a-zA-Z0-9-]+)?(\.html)?\/?$/.test(window.location.pathname);
     var seenIds = (localStorage.getItem("y1_seen_notices") || "").split(",").filter(Boolean);
     var visible = 0;
     var unread = 0;
     Array.prototype.forEach.call(noticesBody.querySelectorAll("[data-notice-id]"), function (node) {
       var id = node.getAttribute("data-notice-id");
       var notice = noticeTrayAll.filter(function (n) { return n.id === id; })[0];
-      var show = onNoticesPage || !notice || noticeTrayVisible(notice);
+      var active = !notice || noticeIsActive(notice);
+      var show = active && (onNoticesPage || !notice || noticeTrayVisible(notice));
       node.hidden = !show;
       if (!show) return;
       visible++;
@@ -1493,11 +1496,14 @@
             return;
           }
           noticesLoaded = true;
+          var activeItems = items.filter(function (item) {
+            return noticeIsActive(item);
+          });
           var seenIds = (localStorage.getItem("y1_seen_notices") || "").split(",").filter(Boolean);
           var allIds = [];
           var unreadCount = 0;
 
-          var html = items.map(function (item) {
+          var html = activeItems.map(function (item) {
             if (item.id) {
               allIds.push(item.id);
               if (seenIds.indexOf(item.id) === -1) unreadCount++;
@@ -1534,7 +1540,8 @@
             );
           }).join("");
 
-          if (window.location.pathname.endsWith("/notices.html") || window.location.pathname.endsWith("/notices")) {
+          var onNoticesPage = /\/notices(?:_[a-zA-Z0-9-]+)?(\.html)?\/?$/.test(window.location.pathname);
+          if (onNoticesPage) {
             try {
               if (allIds.length) localStorage.setItem("y1_seen_notices", allIds.join(","));
               unreadCount = 0;
@@ -1542,15 +1549,25 @@
           }
 
           noticeFeed = items;
-          noticeTrayAll = items;
+          noticeTrayAll = activeItems;
           mountNoticeCard();
           mountOnceNotices();
           try {
-            document.dispatchEvent(new CustomEvent("innioasis:notices", { detail: items }));
+            document.dispatchEvent(new CustomEvent("innioasis:notices", { detail: activeItems }));
           } catch (_) {}
+          if (!activeItems.length) {
+            noticesBody.innerHTML = '<p class="lumen-notices-empty">No notices at this time.</p>';
+            if (noticesTray) noticesTray.setAttribute("data-notice-ids", "");
+            if (noticesBadge) {
+              noticesBadge.textContent = "";
+              noticesBadge.hidden = true;
+              noticesBadge.style.display = "none";
+            }
+            return;
+          }
           noticesBody.innerHTML = html +
             '<p class="lumen-notices-empty" data-notice-empty hidden>Nothing to report for what you have selected right now.</p>';
-          noticesTray.setAttribute("data-notice-ids", allIds.join(","));
+          if (noticesTray) noticesTray.setAttribute("data-notice-ids", allIds.join(","));
           applyNoticeTrayFilter();
         })
         .catch(function () {
