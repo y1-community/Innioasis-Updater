@@ -2639,7 +2639,7 @@
         "name": "rom_y1_type_a-windows-legacy.zip",
         "browser_download_url": "https://github.com/y1-community/classy-mirror/releases/download/20261120-beta/rom_y1_type_a-windows-legacy.zip",
         "size": 518881285,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-23T00:47:52Z",
         "updated_at": "2026-11-23T00:48:10Z",
@@ -2867,7 +2867,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 24,
+    "downloads": 25,
     "download_breakdown": {
       "tag": "20261120-beta",
       "mirrors": "",
@@ -2895,7 +2895,7 @@
         {
           "name": "rom_y1_type_a-windows-legacy.zip",
           "url": "https://github.com/y1-community/classy-mirror/releases/download/20261120-beta/rom_y1_type_a-windows-legacy.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "rom_y1_type_a-windows.zip",

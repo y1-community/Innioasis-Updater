@@ -17,7 +17,7 @@
         "name": "rom_g1.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip",
         "size": 1645800503,
-        "download_count": 197,
+        "download_count": 202,
         "content_type": "application/octet-stream",
         "created_at": "2026-11-05T05:05:06Z",
         "updated_at": "2026-11-05T05:07:52Z",
@@ -35,8 +35,8 @@
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom/releases/assets/712152060"
       }
     ],
-    "mirror_downloads": 92,
-    "downloads": 289,
+    "mirror_downloads": 93,
+    "downloads": 295,
     "download_breakdown": {
       "tag": "MX3-G1-EN-WM-V5.01-20260805",
       "mirrors": "y1-community/g1-stock-rom-mirror",
@@ -44,7 +44,7 @@
         {
           "name": "rom_g1.zip",
           "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip",
-          "downloads": 216,
+          "downloads": 221,
           "mirror_downloads": 19
         }
       ],
@@ -54,7 +54,7 @@
           "name": "rom_g1-windows.zip",
           "url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-windows.zip",
           "size": 1835575198,
-          "downloads": 32
+          "downloads": 33
         },
         {
           "platform": "windows-legacy",

@@ -4,7 +4,33 @@
   <title>Release notes from norocoral/nugget-y1</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/norocoral/nugget-y1/releases.atom"/>
-  <updated>2026-11-23T18:44:40Z</updated>
+  <updated>2026-11-27T20:52:15Z</updated>
+  <entry>
+    <id>tag:innioasis.app,2026:norocoral/nugget-y1/2.1.5</id>
+    <updated>2026-11-27T20:52:15Z</updated>
+    <published>2026-11-27T20:52:15Z</published>
+    <title>2.1.5</title>
+    <link rel="alternate" type="text/html" href="https://github.com/norocoral/nugget-y1/releases/tag/2.1.5"/>
+    <innioasis:tag_name>2.1.5</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>7</innioasis:downloads>
+    <innioasis:icon_url>https://norocoral.github.io/y1/inupdater/icn.png</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.5/boot_nugget.img" title="boot_nugget.img" length="6121472" type="image/img" innioasis:download_count="1" innioasis:asset_id="802014060"/>
+    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.5/liby1-sdk.zip" title="liby1-sdk.zip" length="577346" type="application/x-zip-compressed" innioasis:download_count="1" innioasis:asset_id="802014105"/>
+    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.5/logo.bin" title="logo.bin" length="98733" type="application/octet-stream" innioasis:download_count="0" innioasis:asset_id="802014129"/>
+    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.5/rockbox_sdcard.zip" title="rockbox_sdcard.zip" length="39043769" type="application/x-zip-compressed" innioasis:download_count="2" innioasis:asset_id="802013844"/>
+    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.5/rom.zip" title="rom.zip" length="6168913" type="application/x-zip-compressed" innioasis:download_count="4" innioasis:asset_id="802013998"/>
+    <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.5/sha256sums.txt" title="sha256sums.txt" length="321" type="text/plain" innioasis:download_count="1" innioasis:asset_id="802014043"/>
+    <content type="text">**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/2.1.4.1...2.1.5
+
+1. Improve AAC support
+2. Improve Bluetooth stability
+3. Fix regression of debuginfo
+4. fine tune sleep/wake in rockbox
+5. Improve general battery life
+6. Support power off charging without powering on
+7. Automatic shutoff and deep sleep at 5%.</content>
+  </entry>
   <entry>
     <id>tag:innioasis.app,2026:norocoral/nugget-y1/2.1.4.1</id>
     <updated>2026-11-23T18:44:40Z</updated>
