@@ -954,7 +954,7 @@ def github_link_title(href: str) -> str:
         return repo
     if segments[2:3] == ["compare"] and len(segments) >= 4:
         return segments[3].split("...")[-1] or repo
-    if segments[2] in ("blob", "raw", "tree") and len(segments) >= 5:
+    if len(segments) >= 5 and segments[2] in ("blob", "raw", "tree"):
         return segments[-1]
     return repo
 
