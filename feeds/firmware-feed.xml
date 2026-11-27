@@ -4,7 +4,7 @@
   <title>Innioasis and Timmkoo firmware releases</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware-list.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/firmware-feed.xml"/>
-  <updated>2026-11-27T20:14:32Z</updated>
+  <updated>2026-11-27T20:27:33Z</updated>
   <inni:schema_version>2</inni:schema_version>
   <inni:manifest_url>https://innioasis.app/slidia_manifest.xml</inni:manifest_url>
   <inni:firmware_list_url>https://innioasis.app/firmware-list.html</inni:firmware_list_url>
@@ -7115,7 +7115,7 @@
     <inni:repo>y1-community/y1-stock-rom</inni:repo>
     <inni:tag_name>3.2.8-fm</inni:tag_name>
     <inni:name>System Software 3.2.8 for Innioasis Y2</inni:name>
-    <inni:downloads>38</inni:downloads>
+    <inni:downloads>39</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.8-fm/rom_y2.zip" title="rom_y2.zip" length="343937239" type="application/zip"/>
@@ -7749,7 +7749,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;</content>
     <inni:repo>y1-community/g1-stock-rom</inni:repo>
     <inni:tag_name>MX3-9_G1_MULTI-V3.03-20260826</inni:tag_name>
     <inni:name>MX3-9_G1_MULTI-V3.03-20260826</inni:name>
-    <inni:downloads>108</inni:downloads>
+    <inni:downloads>109</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1.zip" title="rom_g1.zip" length="1573225707" type="application/octet-stream"/>
@@ -7827,7 +7827,7 @@ Full archive: &lt;https://innioasis.app/firmware.html?model=G1&gt;</content>
     <inni:repo>y1-community/g1-stock-rom</inni:repo>
     <inni:tag_name>MX3-9_EN-V1.04-20260805</inni:tag_name>
     <inni:name>MX3-9_EN-V1.04-20260805</inni:name>
-    <inni:downloads>88</inni:downloads>
+    <inni:downloads>89</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</inni:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.04-20260805/rom_g1.zip" title="rom_g1.zip" length="1645347061" type="application/octet-stream"/>
@@ -18277,7 +18277,7 @@ The firmware is built with [`firmware/build.sh`](https://github.com/jarvissax/ro
     <inni:repo>rockbox-y1/rockbox</inni:repo>
     <inni:tag_name>stable-v0.6.1</inni:tag_name>
     <inni:name> Rockbox-Y1 v0.6.1</inni:name>
-    <inni:downloads>1683</inni:downloads>
+    <inni:downloads>1684</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rockbox.apk" title="rockbox.apk" length="16533880" type="application/vnd.android.package-archive"/>
@@ -19035,7 +19035,7 @@ Includes these languages:
     <inni:repo>spycemagic/y2-rockbox</inni:repo>
     <inni:tag_name>v0.2.5-beta</inni:tag_name>
     <inni:name>V2.5</inni:name>
-    <inni:downloads>1913</inni:downloads>
+    <inni:downloads>1915</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/INSTALL-GUIDE.md" title="INSTALL-GUIDE.md" length="4237" type="application/octet-stream"/>
@@ -23696,7 +23696,7 @@ See [CHANGELOG.md](https://github.com/FabianZettl/jj-launcher-classic/blob/maste
     <inni:repo>ClassyPlayer/Classy</inni:repo>
     <inni:tag_name>20261126-beta.2</inni:tag_name>
     <inni:name>Classy 20261126 (beta 2)</inni:name>
-    <inni:downloads>71</inni:downloads>
+    <inni:downloads>72</inni:downloads>
     <inni:prerelease>true</inni:prerelease>
     <inni:icon_url>https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/ClassyPlayer/Classy/releases/download/20261126-beta.2/Classy-20261126-beta.2-y1.apk" title="Classy-20261126-beta.2-y1.apk" length="25689713" type="application/vnd.android.package-archive"/>
@@ -26513,7 +26513,7 @@ adb shell rm -rf /data/data/com.innioasis.y1/code_cache/secondary-dexes/
     <inni:repo>ryan-specter/koensayr-auto</inni:repo>
     <inni:tag_name>2.4.0-koensayr-3.0.2</inni:tag_name>
     <inni:name>2.4.0-koensayr-3.0.2</inni:name>
-    <inni:downloads>259</inni:downloads>
+    <inni:downloads>260</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://avatars.githubusercontent.com/u/10089013</inni:icon_url>
     <link rel="enclosure" href="https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.2/build-manifest.json" title="build-manifest.json" length="538" type="application/json"/>
@@ -27473,7 +27473,7 @@ Adds Spanish language support.
     <inni:repo>norocoral/nugget-y1</inni:repo>
     <inni:tag_name>2.1.4.1</inni:tag_name>
     <inni:name>2.1.4.1</inni:name>
-    <inni:downloads>129</inni:downloads>
+    <inni:downloads>130</inni:downloads>
     <inni:prerelease>false</inni:prerelease>
     <inni:icon_url>https://norocoral.github.io/y1/inupdater/icn.png</inni:icon_url>
     <link rel="enclosure" href="https://github.com/norocoral/nugget-y1/releases/download/2.1.4.1/boot_nugget.img" title="boot_nugget.img" length="5976064" type="image/img"/>

@@ -312,7 +312,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
       "icon_dark_url": "",
       "body": "## What's in this update?\n\nThe current Y2 firmware, and the one to install. It fixes the two cosmetic bugs reported most often since launch, and keeps every feature from 3.2.0 onward.\n\n- **The player is called Y2 again.** The launcher name had accidentally been left as `\u6536\u97f3\u673a` \u2014 Chinese for \"radio\" \u2014 since the first Y2 build. It now reports **Y2** wherever the system asks for the app name, so launchers, settings screens and connected tools show the right thing.\n- **The Unseen theme no longer draws a stray File Manager icon.** With native icon fallback enabled, Unseen was silently pulling the system File Manager icon into the home screen. The theme now explicitly blanks that slot, so its hidden layout stays hidden.\n- **General performance, bug and stability fixes** across the player.\n- **All five bundled themes are consistent.** HoloBubble, Unseen, Melody Munchkin, HoloFacet and Classic each ship a complete settings set and are identical whether loaded from the firmware or copied out to `/Themes/` on USB storage.\n\n## For theme creators\n\n- The theme format is the same as 3.2.0, so no theme needs rewriting.\n- If a theme relies on native icon fallback for the File Manager slot but wants it empty, declare the slot explicitly as transparent. That is exactly the fix Unseen received in this release, and the pattern to copy.\n- Themes from 3.1.7 and later load unchanged; Y1 themes still will not install, because the two formats differ.\n\n## Good to know\n\n- The **ROM version is 3.2.8** while the launcher reports **3.2.9**; both are correct for this release.\n- This is the newest Y2 stock firmware. Y1 owners should look at Y1 3.1.2 instead \u2014 the two firmwares are not interchangeable.\n\n## Details\n\n| | |\n| --- | --- |\n| Platform | Innioasis Y2 |\n| ROM version | 3.2.8 |\n| Launcher version | 3.2.9 |\n| Published | 27 November 2026 |\n| Android base | 4.4.4 |\n\n## Install\n\nInstall it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y2&software=original-y1\n",
-      "downloads": 38,
+      "downloads": 39,
       "mirror_downloads": 7,
       "download_breakdown": {
         "tag": "3.2.8-fm",
@@ -321,7 +321,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.8-fm/rom_y2.zip",
-            "downloads": 32,
+            "downloads": 33,
             "mirror_downloads": 1
           }
         ],
@@ -376,7 +376,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.8-fm/rom_y2.zip",
           "size": 343937239,
-          "download_count": 31,
+          "download_count": 32,
           "content_type": "application/zip"
         }
       ]
@@ -463,7 +463,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
           "size": 30612,
-          "download_count": 3980,
+          "download_count": 3981,
           "content_type": "image/jpeg"
         }
       ]
@@ -637,7 +637,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "system.img",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img",
           "size": 859826928,
-          "download_count": 951,
+          "download_count": 952,
           "content_type": "application/x-apple-diskimage"
         },
         {
@@ -805,7 +805,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
           "size": 30612,
-          "download_count": 10804,
+          "download_count": 10806,
           "content_type": "image/jpeg"
         }
       ]
@@ -892,7 +892,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
           "size": 30612,
-          "download_count": 9361,
+          "download_count": 9362,
           "content_type": "image/jpeg"
         }
       ]
@@ -1439,7 +1439,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
       "icon_dark_url": "",
       "body": "Original Innioasis G1 software **MX3-9_G1_MULTI-V3.03-20260826**.\n\n- Model: **G1** (Innioasis)\n- Package: `rom_g1.zip`\n- Build tag: `MX3-9_G1_MULTI-V3.03-20260826`\n- Build date: 2026-08-26\n\n## Install\n\n1. Download `rom_g1.zip` (every numbered volume if the release has more than one, then `cat rom_g1.zip.* > rom_g1.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g1.zip` | 1500.3 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G1>",
-      "downloads": 108,
+      "downloads": 109,
       "mirror_downloads": 43,
       "download_breakdown": {
         "tag": "MX3-9_G1_MULTI-V3.03-20260826",
@@ -1448,7 +1448,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g1.zip",
             "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1.zip",
-            "downloads": 65
+            "downloads": 66
           }
         ],
         "portable": [
@@ -1502,7 +1502,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g1.zip",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1.zip",
           "size": 1573225707,
-          "download_count": 65,
+          "download_count": 66,
           "content_type": "application/octet-stream"
         },
         {
@@ -1612,7 +1612,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg",
       "icon_dark_url": "",
       "body": "Original Innioasis G1 software **MX3-9_EN-V1.04-20260805**.\n\n- Model: **G1** (Innioasis)\n- Package: `rom_g1.zip`\n- Build tag: `MX3-9_EN-V1.04-20260805`\n- Build date: 2026-08-05\n\n## Install\n\n1. Download `rom_g1.zip` (every numbered volume if the release has more than one, then `cat rom_g1.zip.* > rom_g1.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g1.zip` | 1569.1 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G1>",
-      "downloads": 88,
+      "downloads": 89,
       "mirror_downloads": 44,
       "download_breakdown": {
         "tag": "MX3-9_EN-V1.04-20260805",
@@ -1621,7 +1621,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_g1.zip",
             "url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.04-20260805/rom_g1.zip",
-            "downloads": 56,
+            "downloads": 57,
             "mirror_downloads": 12
           }
         ],
@@ -1676,7 +1676,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g1.zip",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.04-20260805/rom_g1.zip",
           "size": 1645347061,
-          "download_count": 44,
+          "download_count": 45,
           "content_type": "application/octet-stream"
         },
         {
@@ -3119,7 +3119,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-294/bootimg.img.gz",
           "size": 7573049,
-          "download_count": 92,
+          "download_count": 93,
           "content_type": "application/gzip"
         },
         {
@@ -3127,7 +3127,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-294/manifest.json",
           "size": 4248,
-          "download_count": 222,
+          "download_count": 229,
           "content_type": "application/json"
         },
         {
@@ -3135,7 +3135,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-294/manifest.sig",
           "size": 64,
-          "download_count": 221,
+          "download_count": 227,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3143,7 +3143,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-294/recovery.img.gz",
           "size": 7573073,
-          "download_count": 86,
+          "download_count": 87,
           "content_type": "application/gzip"
         },
         {
@@ -3151,7 +3151,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-294/rootfs.ext4.gz",
           "size": 53601924,
-          "download_count": 86,
+          "download_count": 87,
           "content_type": "application/gzip"
         },
         {
@@ -18806,7 +18806,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v4.2.0/updater.png",
           "size": 12952,
-          "download_count": 29,
+          "download_count": 30,
           "content_type": "image/png"
         }
       ]
@@ -20596,7 +20596,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "",
-      "downloads": 1683,
+      "downloads": 1684,
       "mirror_downloads": 162,
       "download_breakdown": {
         "tag": "stable-v0.6.1",
@@ -20605,7 +20605,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
-            "downloads": 1382,
+            "downloads": 1383,
             "mirror_downloads": 3
           },
           {
@@ -20722,7 +20722,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6.1/rom.zip",
           "size": 581693789,
-          "download_count": 1379,
+          "download_count": 1380,
           "content_type": "application/zip"
         },
         {
@@ -25121,7 +25121,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
       "icon_dark_url": "",
       "body": "# Rockbox Y2 V2.5\n\nV2.5 updates the Y2 dual-boot firmware to the official Innioasis **Stock 3.2FM**\nbaseline while retaining Rockbox and Stock boot routes.\n\n## What changed from V2\n\n- Stock mode is updated to version `3.2` from the 3.2FM firmware release.\n- Clean installs default to MacClassic-Dark with a black Rockbox title screen.\n- Boot presentation and route handoff were requalified to prevent persistent\n  upper-screen artifacts.\n- The Community Updater asset is now a complete 3.2FM-based full-ROM package,\n  compatible with the public updater's clean-install route.\n\n## Qualified V2.5 behavior\n\nThe five V2.5 firmware images have passed the full hands-on matrix on macOS and\nWindows:\n\n- Clean, responsive Rockbox root in about 28 seconds on normal cold boots.\n- Clean dark Rockbox title with no persistent upper artifacts.\n- Automatic screen timeout, centre wake, and power-button sleep/wake.\n- USB-storage mount, safe eject, clean return, and foreground retention.\n- Boot Settings switching between Rockbox and Stock.\n- Responsive Stock root reporting version `3.2` from Stock 3.2FM.\n- No microSD card required for installation or normal boot testing.\n\nThe exact public full-ROM archive passed clean Stock 3.2FM installation and the\ncomplete functional matrix on both macOS and Windows.\n\n## Exact public candidate\n\n| Asset | Bytes | SHA-256 |\n|---|---:|---|\n| `rom_y2.zip` | 361,644,736 | `bbdd139a9a52f90570ef04dec4aeb143a361a1d28a90f7be6d37d44c554bee9a` |\n\nThis archive contains the complete official Stock 3.2FM support set. UBOOT,\nBOOTIMG, RECOVERY, LOGO, and ANDROID are the exact V2.5 images already qualified\non both platforms. MBR, EBR1, EBR2, preloader, SEC_RO, cache, userdata, and the\nscatter remain byte-identical to the official 3.2FM baseline.\n\n## Important installation behavior\n\nV2.5 performs a clean full installation and erases internal user data. Back up\nfirst. On macOS, public Updater CE hands the install to the Innioasis Y2 Install\nTool. On Windows, Updater CE uses its full Y2 installation route. Follow every\nconnection prompt and wait for an explicit completion message.\n",
-      "downloads": 1913,
+      "downloads": 1915,
       "mirror_downloads": 79,
       "download_breakdown": {
         "tag": "v0.2.5-beta",
@@ -25130,7 +25130,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
-            "downloads": 1868,
+            "downloads": 1870,
             "mirror_downloads": 34
           }
         ],
@@ -25225,7 +25225,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox-y2-v2.5-release-square.png",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rockbox-y2-v2.5-release-square.png",
           "size": 1585171,
-          "download_count": 869,
+          "download_count": 870,
           "content_type": "image/png"
         },
         {
@@ -25233,7 +25233,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
           "size": 361644736,
-          "download_count": 1834,
+          "download_count": 1836,
           "content_type": "application/zip"
         },
         {
@@ -25249,7 +25249,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2-Rockbox-V2.5-Source.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/Y2-Rockbox-V2.5-Source.zip",
           "size": 72256082,
-          "download_count": 53,
+          "download_count": 54,
           "content_type": "application/zip"
         }
       ]
@@ -40957,7 +40957,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
       "body": "This is a beta release. To get it on the player, choose Settings > General > System Update > Update Channel > Beta.\n\n- Audiobooks show as whole books and series on a Cover Flow (Settings > Library > Audiobook Series Cover Flow). Continue opens the last audiobook, and an `.m4b` file counts as a book. Hold the centre button while an audiobook plays for Speed, Chapters and Sleep Timer.\n- AIFF and AIFF-C files (.aif, .aiff, .aifc) play like WAV and FLAC, with their tags, cover and length. ID3v2.2 tags are read, and numeric genres such as \"(17)\" show as names.\n- Playlists: hold the centre button on a playlist and choose Rename Playlist. macOS `._` files no longer show as playlists or songs.\n- One push of the centre button no longer counts as two presses. Before, waking the player and pushing centre could open Settings and then Playback.\n- Translations: plural forms are correct in each language, language names show in their own language, and the built-in language files update with the app. Spanish uses \"t\u00fa\". 209 texts are corrected.\n- Y1: the text of list rows and titles sat low in each row. It is now centred, as on the Y2. Please report it if the text still sits low.\n- Tetris shows the correct blocks and name entry, and Zuma shows its sparkles as stars, not black squares.\n- On a new install, no menu item is hidden, and the library scan starts at the first start. A player that updates keeps its menus: to show a hidden item, use Settings > Menus.\n- When the library cache comes from an older version, the player scans the library again. Playlists, ratings and settings stay.\n- Migrations now only change system files and move user files. Old code for settings from earlier versions is removed.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `Classy-20261126-beta.2.apk` | Innioasis Y2 (Android 4.4) | Standalone launcher APK (sideload or install) |\n| `Classy-20261126-beta.2-y1.apk` | Innioasis Y1 (Android 4.2) | Standalone launcher APK (sideload or install) |\n| `update.json` | Innioasis Y2 | OTA update metadata for the in-app updater |\n| `update-y1.json` | Innioasis Y1 | OTA update metadata for the in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/ClassyPlayer/Classy/compare/20261125-beta...20261126-beta.2\n\n",
-      "downloads": 71,
+      "downloads": 72,
       "mirror_downloads": 27,
       "download_breakdown": {
         "tag": "20261126-beta.2",
@@ -40978,7 +40978,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom_y2.zip",
             "url": "https://github.com/ClassyPlayer/Classy/releases/download/20261126-beta.2/rom_y2.zip",
-            "downloads": 19,
+            "downloads": 20,
             "mirror_downloads": 2
           }
         ],
@@ -41149,7 +41149,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261126-beta.2/rom_y2.zip",
           "size": 483319302,
-          "download_count": 17,
+          "download_count": 18,
           "content_type": "application/zip"
         },
         {
@@ -46333,7 +46333,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://avatars.githubusercontent.com/u/10089013",
       "icon_dark_url": "",
       "body": "# 2.4.0-koensayr-3.0.2\n\nKoensayr is a mod for the Y1's OS that makes the following improvements to the original OS:\n\nBrowsing the albums of an artist from Main Menu > Artists > Albums\n\nAdds Bluetooth remote control support and track info displayed on your bluetooth receiver, perfect for using your Y1 in a car with the infotainment system.\n\n\n---\n\n## Build metadata\n\nPatched **rom.zip** built from stock **3.0.2** by [koensayr-auto](https://github.com/ryan-specter/koensayr-auto) v2.4.0.\n\n## Upstream\n\n- Repository: [`y1-community/y1-stock-rom`](https://github.com/y1-community/y1-stock-rom)\n- Release tag: `3.0.2`\n- Asset: `rom.zip`\n- Upstream SHA256: `7ee9aa5bf1c134f71e1f41d92cb90975f2225f9ad9db9617b392ddf653f764b1`\n\n## Koensayr build\n\n- Version: `2.4.0`\n- Git revision: `16f65333696597b084d34931d4c94f7c5352e9e5` (includes `com.innioasis.y1` APK patches under `src/patches/`)\n\n## Build output\n\n- Patched `rom.zip` SHA256: `a791e3de39a27978f15142be02d051fbac57c3e6a8d79088a73db0dbdb39f1b5` (see `build-manifest.json` on this release)\n- Upstream `rom.zip` was re-hashed at build time; output must differ (CI enforces this).\n\n## Patches (`--all`)\n\n- Music-player UX (Artist\u2192Album navigation)\n- Bluetooth pairing (`audio.conf` / `auto_pairing.conf` / `blacklist.conf` / `build.prop`)\n- System config (ADB debugging, bloatware removal)\n- Root (`/system/xbin/su`, mode 06755)\n- AVRCP 1.3 metadata + control + Y1Bridge\n\nDiagnostic scripts (`tools/dual-capture.sh`, gdb attach, `btlog-dump`) are **not** included in the ROM \u2014 see the repo [Diagnostics](https://github.com/ryan-specter/koensayr-auto#diagnostics).\n\n## After flash\n\nIf AVRCP / MultiDex classes fail to load after upgrading from a prior koensayr build:\n\n```bash\nadb shell rm -rf /data/data/com.innioasis.y1/code_cache/secondary-dexes/\n```\n\n",
-      "downloads": 259,
+      "downloads": 260,
       "mirror_downloads": 37,
       "download_breakdown": {
         "tag": "2.4.0-koensayr-3.0.2",
@@ -46342,7 +46342,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.2/rom.zip",
-            "downloads": 232,
+            "downloads": 233,
             "mirror_downloads": 10
           }
         ],
@@ -46405,7 +46405,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.2/rom.zip",
           "size": 329013283,
-          "download_count": 222,
+          "download_count": 223,
           "content_type": "application/zip"
         }
       ]
@@ -46874,7 +46874,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       "icon_url": "https://norocoral.github.io/y1/inupdater/icn.png",
       "icon_dark_url": "",
       "body": "**Full Changelog**: https://github.com/norocoral/nugget-y1/compare/2.1.4...2.1.4.1\r\n\r\n1. Update battery icon\r\n2. Add rockbox display off patches\r\n3. Allow switching between software while in another software in configui",
-      "downloads": 129,
+      "downloads": 130,
       "mirror_downloads": 10,
       "download_breakdown": {
         "tag": "2.1.4.1",
@@ -46895,7 +46895,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           {
             "name": "rom.zip",
             "url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.4.1/rom.zip",
-            "downloads": 87,
+            "downloads": 88,
             "mirror_downloads": 1
           }
         ],
@@ -46982,7 +46982,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/norocoral/nugget-y1/releases/download/2.1.4.1/rom.zip",
           "size": 6021703,
-          "download_count": 86,
+          "download_count": 87,
           "content_type": "application/x-zip-compressed"
         },
         {
@@ -47940,7 +47940,7 @@ window.INNIOASIS_RELEASE_ICONS = {
 
 window.INNIOASIS_REPO_STATS = {
   "classyplayer/classy": {
-    "downloads": 3233,
+    "downloads": 3234,
     "forks": 6,
     "release_count": 35,
     "stars": 20,
@@ -47961,7 +47961,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-24T05:36:51Z"
   },
   "jarvissax/rondo": {
-    "downloads": 4686,
+    "downloads": 4687,
     "forks": 1,
     "release_count": 35,
     "stars": 5,
@@ -47982,28 +47982,28 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-15T07:13:47Z"
   },
   "norocoral/nugget-y1": {
-    "downloads": 699,
+    "downloads": 700,
     "forks": 1,
     "release_count": 11,
     "stars": 6,
     "updated_at": "2026-11-25T22:40:14Z"
   },
   "rockbox-y1/rockbox": {
-    "downloads": 56368,
+    "downloads": 56369,
     "forks": 23,
     "release_count": 31,
     "stars": 87,
     "updated_at": "2026-11-24T09:26:47Z"
   },
   "ryan-specter/koensayr-auto": {
-    "downloads": 1211,
+    "downloads": 1212,
     "forks": 0,
     "release_count": 2,
     "stars": 1,
     "updated_at": "2026-10-15T03:03:06Z"
   },
   "schulzcode/y2linux": {
-    "downloads": 44855,
+    "downloads": 44871,
     "forks": 10,
     "release_count": 116,
     "stars": 35,
@@ -48017,7 +48017,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-24T10:24:52Z"
   },
   "spycemagic/y2-rockbox": {
-    "downloads": 5525,
+    "downloads": 5529,
     "forks": 1,
     "release_count": 3,
     "stars": 15,
@@ -48045,7 +48045,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T14:38:28Z"
   },
   "y1-community/g1-stock-rom": {
-    "downloads": 520,
+    "downloads": 522,
     "forks": 0,
     "release_count": 6,
     "stars": 0,
@@ -48094,7 +48094,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T15:54:16Z"
   },
   "y1-community/innioasis-updater": {
-    "downloads": 70829,
+    "downloads": 70830,
     "forks": 15,
     "release_count": 75,
     "stars": 56,
@@ -48227,7 +48227,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-12T13:41:34Z"
   },
   "y1-community/y1-stock-rom": {
-    "downloads": 77814,
+    "downloads": 77820,
     "forks": 0,
     "release_count": 11,
     "stars": 6,
