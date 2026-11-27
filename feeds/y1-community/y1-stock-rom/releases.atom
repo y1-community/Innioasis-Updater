@@ -4,7 +4,53 @@
   <title>Release notes from y1-community/y1-stock-rom</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/y1-community/y1-stock-rom/releases.atom"/>
-  <updated>2026-11-13T23:34:58Z</updated>
+  <updated>2026-11-27T11:39:40Z</updated>
+  <entry>
+    <id>tag:innioasis.app,2026:y1-community/y1-stock-rom/3.2.8-fm</id>
+    <updated>2026-11-27T11:39:40Z</updated>
+    <published>2026-11-27T11:39:40Z</published>
+    <title>System Software 3.2.8 for Innioasis Y2</title>
+    <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom/releases/tag/3.2.8-fm"/>
+    <innioasis:tag_name>3.2.8-fm</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <innioasis:downloads>38</innioasis:downloads>
+    <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</innioasis:icon_url>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.8-fm/rom_y2.zip" title="rom_y2.zip" length="343937239" type="application/zip" innioasis:download_count="31" innioasis:asset_id="800253406"/>
+    <content type="text">## What&#x27;s in this update?
+
+The current Y2 firmware, and the one to install. It fixes the two cosmetic bugs reported most often since launch, and keeps every feature from 3.2.0 onward.
+
+- **The player is called Y2 again.** The launcher name had accidentally been left as `收音机` — Chinese for &quot;radio&quot; — since the first Y2 build. It now reports **Y2** wherever the system asks for the app name, so launchers, settings screens and connected tools show the right thing.
+- **The Unseen theme no longer draws a stray File Manager icon.** With native icon fallback enabled, Unseen was silently pulling the system File Manager icon into the home screen. The theme now explicitly blanks that slot, so its hidden layout stays hidden.
+- **General performance, bug and stability fixes** across the player.
+- **All five bundled themes are consistent.** HoloBubble, Unseen, Melody Munchkin, HoloFacet and Classic each ship a complete settings set and are identical whether loaded from the firmware or copied out to `/Themes/` on USB storage.
+
+## For theme creators
+
+- The theme format is the same as 3.2.0, so no theme needs rewriting.
+- If a theme relies on native icon fallback for the File Manager slot but wants it empty, declare the slot explicitly as transparent. That is exactly the fix Unseen received in this release, and the pattern to copy.
+- Themes from 3.1.7 and later load unchanged; Y1 themes still will not install, because the two formats differ.
+
+## Good to know
+
+- The **ROM version is 3.2.8** while the launcher reports **3.2.9**; both are correct for this release.
+- This is the newest Y2 stock firmware. Y1 owners should look at Y1 3.1.2 instead — the two firmwares are not interchangeable.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y2 |
+| ROM version | 3.2.8 |
+| Launcher version | 3.2.9 |
+| Published | 27 November 2026 |
+| Android base | 4.4.4 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y2&amp;software=original-y1
+</content>
+  </entry>
   <entry>
     <id>tag:innioasis.app,2026:y1-community/y1-stock-rom/3.2.4-fm</id>
     <updated>2026-11-13T23:34:58Z</updated>
@@ -13,15 +59,47 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom/releases/tag/3.2.4-fm"/>
     <innioasis:tag_name>3.2.4-fm</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>813</innioasis:downloads>
+    <innioasis:downloads>1108</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip" title="rom_y2.zip" length="343742697" type="application/zip" innioasis:download_count="760" innioasis:asset_id="748854114"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="2930" innioasis:asset_id="746061830"/>
-    <content type="text">&quot;General performance and stability improvements.&quot;
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/rom_y2.zip" title="rom_y2.zip" length="343742697" type="application/zip" innioasis:download_count="1026" innioasis:asset_id="748854114"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.4-fm/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="3980" innioasis:asset_id="746061830"/>
+    <content type="text">## What&#x27;s in this update?
 
-This is the software currently being shipped on Y2 retail units.
+This is the software currently being shipped on Y2 retail units, and the build most people will be upgrading from. It is 3.2.0 with retail polish rather than a new feature release.
 
-(Innioasis have once again failed to release this as an update to existing users, nor do they actually post what changes their firmwares include - this firmware release was imaged from a retail Y2 unit purchased November 12 by the Community Firmware Archive and Updater CE maintainer - tested against both of Updater&#x27;s installation methods: SP Flash Tool and MTKclient and the underlying tools themselves on a pre 3.2.4 and a 3.2.4 unit with success. Image was taken before any use of the player)</content>
+- **General performance and stability improvements.**
+- **About screen tidied.** The version line is shortened from `System Version:` to simply `Version:`, which is easier to read and easier to quote when asking for support.
+- **Everything from 3.2.0 remains:** FM radio, categorized Settings, speaker toggle, headphone gain, click wheel sensitivity and volume, album art style, video scan modes, continue-playing prompts, and the full 3.1.7 music, video and file manager features.
+
+## Where this image comes from
+
+Innioasis have once again failed to release this as an update to existing users, nor do they actually post what changes their firmwares include. This firmware release was imaged from a retail Y2 unit purchased on November 12 by the **Community Firmware Archive and Updater CE maintainer**, and tested against both of Updater&#x27;s installation methods — SP Flash Tool and MTKclient — and the underlying tools themselves, on a pre-3.2.4 unit and a 3.2.4 unit, with success. The image was taken before any use of the player.
+
+## For theme creators
+
+The theme format is unchanged from 3.2.0. Themes built for 3.2.0 work exactly the same here, and the bundled themes are identical.
+
+## Good to know
+
+- The **ROM version is 3.2.4** while the launcher inside it reports **3.2.3**, so both numbers are correct — check About to see which you have.
+- Devices on this build show `收音机` as the launcher name in some places; that is fixed in 3.2.8.
+- Upgrading to 3.2.8 is safe and keeps your themes and settings.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y2 |
+| ROM version | 3.2.4 |
+| Launcher version | 3.2.3 |
+| Build date | 19 August 2026 |
+| Published | 13 November 2026 |
+| Android base | 4.4.4 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y2&amp;software=original-y1
+</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:y1-community/y1-stock-rom/3.2.1</id>
@@ -31,11 +109,37 @@ This is the software currently being shipped on Y2 retail units.
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom/releases/tag/3.2.1"/>
     <innioasis:tag_name>3.2.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>2531</innioasis:downloads>
+    <innioasis:downloads>2570</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/rom_y2.zip" title="rom_y2.zip" length="355560849" type="application/zip" innioasis:download_count="2278" innioasis:asset_id="561232474"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="2942" innioasis:asset_id="627525120"/>
-    <content type="text">General performance and stability improvements</content>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/rom_y2.zip" title="rom_y2.zip" length="355560849" type="application/zip" innioasis:download_count="2309" innioasis:asset_id="561232474"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="3229" innioasis:asset_id="627525120"/>
+    <content type="text">## What&#x27;s in this update?
+
+A maintenance release published alongside 3.2.0. Nothing new to learn — the same Y2 you already know, with the rough edges smoothed.
+
+- General performance and stability improvements throughout the player, with no changes to menus, features or settings.
+- All of 3.2.0 is included: FM radio, categorized Settings, speaker toggle, headphone gain, click wheel sensitivity and volume, album art style, video scan modes and continue-playing prompts.
+- No theme changes: the bundled themes, the settings slot count and the theme format are identical to 3.2.0.
+
+## Before you update
+
+- If you are already on 3.2.0, this update changes nothing you can see or configure.
+- Later releases (3.2.4 and 3.2.8) carry the same features plus further fixes, so there is no reason to stay on 3.2.1.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y2 |
+| Version | 3.2.1 |
+| Build date | 14 August 2026 |
+| Published | 13 September 2026 |
+| Android base | 4.4.4 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y2&amp;software=original-y1
+</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:y1-community/y1-stock-rom/3.2.0-fm</id>
@@ -45,12 +149,48 @@ This is the software currently being shipped on Y2 retail units.
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom/releases/tag/3.2.0-fm"/>
     <innioasis:tag_name>3.2.0-fm</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>1011</innioasis:downloads>
+    <innioasis:downloads>1049</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/rom_y2.zip" title="rom_y2.zip" length="355558382" type="application/zip" innioasis:download_count="799" innioasis:asset_id="561172655"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img" title="system.img" length="859826928" type="application/x-apple-diskimage" innioasis:download_count="832" innioasis:asset_id="703033870"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="2446" innioasis:asset_id="627525519"/>
-    <content type="text">This release adds FM Radio functionality to supported Y2 players, please note that some earlier Y2 revisions may not have the underlying functionality needed for FM Radio, there is an alternative release of 3.2.0 available for those in these circumstances.</content>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/rom_y2.zip" title="rom_y2.zip" length="355558382" type="application/zip" innioasis:download_count="828" innioasis:asset_id="561172655"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img" title="system.img" length="859826928" type="application/x-apple-diskimage" innioasis:download_count="951" innioasis:asset_id="703033870"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="2698" innioasis:asset_id="627525519"/>
+    <content type="text">## What&#x27;s in this update?
+
+The biggest Y2 update yet. FM radio comes to the Y2, Settings is rebuilt into clear categories, and the sound and click wheel finally become adjustable.
+
+- **FM Radio on the Y2.** This release adds FM Radio functionality to supported Y2 players, with the channel list and favourites familiar from the Y1.
+- **Settings, organised.** The long flat list is replaced by six categories — **Keys &amp; Wheel**, **Audio**, **Display**, **Personalization**, **Files &amp; Storage** and **System** — with Bluetooth, About and Factory reset kept at the top level. Bluetooth also moves from the home screen into Settings.
+- **Speaker on/off.** Audio → Speaker enables or disables the built-in speaker, handy when you only listen on headphones.
+- **Headphone gain.** Audio → Headphone Gain offers four output levels — Low, Standard, High and Maximum — so quiet IEMs and harder-to-drive headphones can both be matched.
+- **Click wheel control.** Keys &amp; Wheel adds Click Wheel Sensitivity (Low, Standard, High) and Adjust Volume with Click Wheel (on or off). Screen-off Media Mode now also accepts the centre button.
+- **Album art style.** Music → Settings → Album Art Style switches the now-playing cover between **Perspective** (tilted with a glossy reflection) and **Flat** (square with a reflection).
+- **Video scanning you control.** Auto Scan Common Folders, Scan Specified Folders Only, or Scan Entire TF Card, instead of deleting scan paths by hand.
+- **Pick up where you left off.** Music and video both ask whether to continue from where you stopped.
+
+## Which Y2 build do I need?
+
+**Some earlier Y2 revisions may not have the underlying hardware needed for FM Radio.** If yours does not, use the alternative 3.2.0 release published without FM instead of this one.
+
+## For theme creators
+
+- Themes can set `showNativeIcon`, which decides whether the system icon is drawn when a theme does not supply one. All five bundled themes enable it; omit the key and it stays off.
+- Settings theming grows from 50 to 67 slots: six category icons, four headphone gain icons, two speaker icons, three wheel sensitivity icons and two wheel volume icons.
+- **Bluetooth has no separate Settings slot.** The Settings → Bluetooth icon is drawn from the home screen Bluetooth entry, so a theme that blanks the home icon blanks the settings icon too.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y2 (FM-equipped units) |
+| Version | 3.2.0 |
+| Build date | 13 August 2026 |
+| Published | 13 September 2026 |
+| Android base | 4.4.4 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y2&amp;software=original-y1
+</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:y1-community/y1-stock-rom/3.1.7</id>
@@ -60,13 +200,49 @@ This is the software currently being shipped on Y2 retail units.
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom/releases/tag/3.1.7"/>
     <innioasis:tag_name>3.1.7</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>1738</innioasis:downloads>
+    <innioasis:downloads>1757</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/rom_y2.zip" title="rom_y2.zip" length="354780496" type="application/zip" innioasis:download_count="1526" innioasis:asset_id="454784243"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="2163" innioasis:asset_id="627526019"/>
-    <content type="text"># This is the original launch-day 3.1.7 firmware for Innioasis Y2
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/rom_y2.zip" title="rom_y2.zip" length="354780496" type="application/zip" innioasis:download_count="1545" innioasis:asset_id="454784243"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="2417" innioasis:asset_id="627526019"/>
+    <content type="text">## What&#x27;s in this update?
 
-This can be used to restore your Y2 back to its factory conditions and get things back up and running if something has gone wrong.</content>
+**This is the original launch-day 3.1.7 firmware for Innioasis Y2.**
+
+This can be used to restore your Y2 back to its factory conditions and get things back up and running if something has gone wrong. It is also the biggest single jump over the Y1: a lighter default look, a real file manager, deeper theme support, and proper music and video settings.
+
+- **A lighter default theme.** HoloPebble now uses a pastel light appearance with dark status bar text, so the home screen is readable in daylight. The original dark Y1 look ships as a fifth bundled theme, **Classic**.
+- **A file manager on the device.** Browse internal storage and the TF card, copy, cut, delete, rename and inspect properties, sort the list, show hidden files and extensions, and format internal storage or the TF card without a computer.
+- **Music improvements.** A dedicated music settings screen controls song name display and library sorting, with separate artist and album views. Playlists can be imported from M3U files, matched against the music on the card, and exported back out.
+- **Video improvements.** Speed playback from 0.5x to 2.0x, hardware or software decoding when a file refuses to play, configurable short and long press actions for previous/next (including seek jumps and continuous seek), loop mode, auto-stop, subtitle loading and custom scan paths.
+- **Screen-off button behaviour.** Full Lock (only power works) or Media Mode (play/pause, previous and next still work).
+- **Fewer storage surprises.** The player offers to rescan after storage changes, warns when a TF card is damaged, and caps bulk selections at 10,000 items so large libraries stay responsive.
+
+## Not in this release
+
+- No FM radio on the home screen, and Settings is a single flat list. Both arrive in 3.2.0.
+- Speaker on/off, headphone gain, wheel sensitivity and album art style are also not in this release.
+
+## For theme creators
+
+- Themes can define a **File Manager** icon, bringing the home screen to 13 slots.
+- Selected states can use true **nine-patch (`.9.png`) images**, which is how Melody Munchkin and Classic draw their selection bars.
+- Themes can set **font scaling** (default 1.1, with Melody Munchkin using 1.0).
+- Theme names are length-checked, and pure black or fully transparent wallpapers are rejected with a clear message instead of producing an unreadable screen.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y2 |
+| Version | 3.1.7 |
+| Build date | 1 June 2026 |
+| Published | 22 June 2026 |
+| Android base | 4.4.4 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y2&amp;software=original-y1
+</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:y1-community/y1-stock-rom/3.1.2</id>
@@ -76,11 +252,45 @@ This can be used to restore your Y2 back to its factory conditions and get thing
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom/releases/tag/3.1.2"/>
     <innioasis:tag_name>3.1.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>9918</innioasis:downloads>
+    <innioasis:downloads>10282</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip" title="rom.zip" length="250125316" type="application/zip" innioasis:download_count="9332" innioasis:asset_id="478638297"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="9669" innioasis:asset_id="627528645"/>
-    <content type="text">Features improved support for AirPods Pro 2, AirPods 3 and later</content>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip" title="rom.zip" length="250125316" type="application/zip" innioasis:download_count="9671" innioasis:asset_id="478638297"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="10804" innioasis:asset_id="627528645"/>
+    <content type="text">## What&#x27;s in this update?
+
+The final Y1 stock release, and the one to be on. It features improved support for AirPods Pro 2, AirPods 3 and later, and fixes the Bluetooth problems that made modern earbuds unreliable on the Y1.
+
+- **AirPods and modern headsets connect properly.** Pairing and A2DP connection handling has been reworked for AirPods Pro 2, AirPods 3 and other newer headsets, including the case where two devices compete for the connection and the player gives up. Audio is less likely to fall back to the internal speaker mid-track, and reconnecting after leaving range is more reliable.
+- **Everything from earlier Y1 releases is included:** video playback, the e-book reader, the launcher selector, first-boot language setup, and the bundled HoloPebble, HoloBubble, Unseen, Melody Munchkin and HoloFacet themes.
+- **The most stable Y1 build available.** Later builds exist for Y2 only; 3.1.2 is where the Y1 line ends.
+
+## For theme creators
+
+3.1.2 is the last word on the Y1 theme format, and it is deliberately narrower than the Y2 format:
+
+- Themes use a folder in `/Themes/` with a `config.json`, exactly as in 2.1.9 through 3.0.7.
+- Nine-patch (`.9.png`) selection backgrounds are **not** supported; use plain images for selected states.
+- There is no per-theme font scaling, no native-icon fallback toggle and no File Manager slot, because the Y1 has no File Manager.
+- Every Y1 theme in the InnioasisY1Themes gallery targets this format, so a theme that looks right on 3.0.7 looks right here.
+
+## Before you update
+
+- **Type A Y1 hardware only.** Installing this on a Type B scroll-wheel unit disables the wheel.
+- If you are on 2.8.2 or newer, themes carry over with no changes; only the Bluetooth behaviour changes.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y1 (Type A) |
+| Version | 3.1.2 |
+| Published | 16 July 2026 |
+| Android base | 4.2.2 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y1&amp;software=original-y1
+</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:y1-community/y1-stock-rom/3.0.7</id>
@@ -90,15 +300,41 @@ This can be used to restore your Y2 back to its factory conditions and get thing
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom/releases/tag/3.0.7"/>
     <innioasis:tag_name>3.0.7</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>8532</innioasis:downloads>
+    <innioasis:downloads>8559</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/rom.zip" title="rom.zip" length="249544334" type="application/x-zip-compressed" innioasis:download_count="8096" innioasis:asset_id="404575917"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="8477" innioasis:asset_id="627526526"/>
-    <content type="text">**Changes in 3.0.7** 
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/rom.zip" title="rom.zip" length="249544334" type="application/x-zip-compressed" innioasis:download_count="8116" innioasis:asset_id="404575917"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="9361" innioasis:asset_id="627526526"/>
+    <content type="text">## What&#x27;s in this update?
 
-This release has a new E-Book reading feature and a new theme named HoloFacet.
+A comfort update rather than a redesign: a fourth built-in theme and a more finished e-book reader.
 
-Theme creators that haven&#x27;t previously implemented their eBook icons are advised to do so to retain theme compatibility.</content>
+- **New theme: HoloFacet.** A fourth built-in theme joins HoloPebble, HoloBubble, Unseen and Melody Munchkin, so the player&#x27;s whole look can be changed without installing anything from the gallery.
+- **E-book reading promoted.** The e-book reader is now presented as a headline feature rather than a hidden extra, and still opens EPUB, PDF, TXT and Word documents with bookmarks and reading progress.
+- **Bookmark polish.** New Unread and (Empty) states mean an empty or untouched bookmark list reads correctly instead of looking broken.
+
+## For theme creators
+
+The theme format is unchanged from 2.8.2, so existing themes keep working. **Theme creators who have not previously implemented their e-book icons are advised to do so to retain theme compatibility.**
+
+## Before you update
+
+- Type A Y1 hardware only. Installing Type A firmware on a Type B unit disables the scroll wheel.
+- 3.1.2 is the later Y1 release and adds the modern Bluetooth fixes; 3.0.7 is otherwise the same feature set.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y1 (Type A) |
+| Version | 3.0.7 |
+| Build date | 13 March 2026 |
+| Published | 23 April 2026 |
+| Android base | 4.2.2 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y1&amp;software=original-y1
+</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:y1-community/y1-stock-rom/3.0.2</id>
@@ -108,20 +344,42 @@ Theme creators that haven&#x27;t previously implemented their eBook icons are ad
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom/releases/tag/3.0.2"/>
     <innioasis:tag_name>3.0.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>11171</innioasis:downloads>
+    <innioasis:downloads>11184</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/3.0.2/updater.jpg</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.0.2/rom.zip" title="rom.zip" length="259502414" type="application/x-zip-compressed" innioasis:download_count="11119" innioasis:asset_id="327883399"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.0.2/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="541" innioasis:asset_id="627526996"/>
-    <content type="text">**Notice: Please do not downgrade to 3.0.2 from newer firmware versions like 3.0.7 as this will break your device, a solution is incoming. Please [contact Innioasis](https://www.innioasis.com/pages/contact) if you have been affected by this,** 
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.0.2/rom.zip" title="rom.zip" length="259502414" type="application/x-zip-compressed" innioasis:download_count="11125" innioasis:asset_id="327883399"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.0.2/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="574" innioasis:asset_id="627526996"/>
+    <content type="text">## What&#x27;s in this update?
 
-New in System Software 3.0.2:
+A short, focused update: the Y1 now asks you to pick a language the first time it starts, and the rest is under-the-hood polish.
 
-Language selection at first start-up for new users, in line with new retail units, users will be asked to select their language after installing the firmware, or when they take a new Y1 from the box.
+- **Language selection at first start-up,** in line with new retail units. Users are asked to choose their language after installing the firmware, or when they unbox a new Y1. Pick once and the prompt stops appearing.
+- **Performance and stability improvements** across the player, with no visible change to the menus.
 
-Performance and stability improvements
+## Important: do not downgrade to 3.0.2
 
-Known issues:
-ADB is currently not enabled on builds newer than 2.1.9. This means that screenshots will can not be taken on this release and that theme and file transfers using Smart Drop in updater will require you to have USB Storage Mode enabled.</content>
+**Please do not downgrade to 3.0.2 from newer firmware versions like 3.0.7, as this will break your device.** A solution is incoming; if you have been affected, please [contact Innioasis](https://www.innioasis.com/pages/contact).
+
+## Known issues
+
+- **ADB is not enabled on builds newer than 2.1.9.** Screenshots cannot be taken on this release, and theme or file transfers using Smart Drop in Updater require USB Storage Mode to be enabled.
+
+## For theme creators
+
+The theme format is unchanged from 2.8.2, so existing themes keep working. There is no reason to rewrite a theme for this build.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y1 (Type A) |
+| Version | 3.0.2 |
+| Published | 12 December 2025 |
+| Android base | 4.2.2 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y1&amp;software=original-y1
+</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:y1-community/y1-stock-rom/2.8.2</id>
@@ -131,59 +389,68 @@ ADB is currently not enabled on builds newer than 2.1.9. This means that screens
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom/releases/tag/2.8.2"/>
     <innioasis:tag_name>2.8.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>5028</innioasis:downloads>
+    <innioasis:downloads>5038</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/2.8.2/updater.jpg</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/2.8.2/rom.zip" title="rom.zip" length="234564048" type="application/zip" innioasis:download_count="4975" innioasis:asset_id="313062124"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/2.8.2/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="529" innioasis:asset_id="627527758"/>
-    <content type="text">Video Fix: Resolved an issue that prevented videos from being paused reliably.
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/2.8.2/rom.zip" title="rom.zip" length="234564048" type="application/zip" innioasis:download_count="4979" innioasis:asset_id="313062124"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/2.8.2/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="563" innioasis:asset_id="627527758"/>
+    <content type="text">## What&#x27;s in this update?
 
-Video Stability: Improved handling of video playback to prevent the application from crashing (fixing IllegalStateException on startup).
+Books, a launcher switcher and a cleaner home screen, plus a long list of video, library and theme fixes.
 
-Video Management: Enhanced logic for checking video folders to ensure that non-folder files are skipped.
+**E-books and launcher switching**
 
-Multilingual Support:
+- **An e-book reader arrives.** EPUB, PDF, TXT and Word documents can now be opened on the Y1, with a bookshelf library, saved reading progress, bookmarks, and font-size and reading-theme controls.
+- **Launcher selector.** A new Launcher entry in Settings switches between the stock interface and an alternative launcher you have installed, such as Rockbox — and back again without reflashing.
+- **Home screen cleans up.** The Shuffle shortcut leaves the home menu, leaving eight focused icons. Themes that still define it keep working, because the saved Shuffle setting is read and simply ignored.
 
-User Interface (UI):
+**Video fixes**
 
-Implemented a scrolling marquee effect for file names that are too long to fit on the screen.
+- Videos now pause reliably.
+- Playback no longer crashes with `IllegalStateException` at startup.
+- Folder scanning skips non-folder files, so stray entries stop appearing.
+- Error code -38 is no longer treated as a playback failure, so more files simply play.
+- Thumbnail generation runs fewer concurrent jobs and saves thumbnails as files, which is faster and more stable.
+- Music playback is now stopped completely when a video starts.
 
-Fixed several bugs related to the Theme interface.
+**Library, sorting and language**
 
-File Management:
+- Long file names scroll instead of being cut off, so similarly named tracks can be told apart.
+- File name sorting is case-insensitive: &quot;A&quot; and &quot;a&quot; sort together.
+- The music database resynchronises when video folders are deleted, and the database version moves from 3 to 4.
+- Multi-select state and search results are cleared after adding items to a playlist.
+- Default playback list names follow the device language after a factory reset.
+- German and French translations corrected.
 
-Improved folder deletion logic to ensure all checks for video files are completed.
+**Theming**
 
-Changed file name sorting to be case-insensitive (treating &quot;A&quot; and &quot;a&quot; the same).
+- Several theme interface bugs fixed, including theme deletion and restoring the default wallpaper.
+- Default themes are now copied in the background, so the copy no longer stops if the screen turns off.
+- Key Lock persists correctly after a restart.
 
-Music &amp; Video Sync:
+## For theme creators
 
-Fixed a bug where the music database was not synchronized when video folders were deleted.
+2.8.2 adds three home screen slots — E-Book, Calculator and Calendar — and a Launcher toggle in Settings. Themes written for 2.1.9 keep working unchanged.
 
-Crucial Fix: Ensured that music playback is completely stopped when a video starts playing.
+## Before you update
 
-Database: Database version updated from 3 to 4.
+- **Calculator and Calendar are included but hidden.** Both apps exist in this build with their home slots, but retail units ship with them disabled.
+- Type A Y1 hardware only. Installing Type A firmware on a Type B unit disables the scroll wheel.
 
-Key Lock: Modified the Key Lock implementation to ensure it persists correctly after a restart.
+## Details
 
-Video Thumbnails: Reduced the number of concurrent processes for generating video thumbnails to prevent conflicts and improve stability.
+| | |
+| --- | --- |
+| Platform | Innioasis Y1 (Type A) |
+| Version | 2.8.2 |
+| Build date | 31 July 2025 |
+| Published | 28 October 2025 |
+| Android base | 4.2.2 |
 
-Video Thumbnails: Optimized thumbnail generation logic, now saving thumbnails as files for better performance.
+## Install
 
-Video Error Handling: Adjusted video error detection (error code -38 is no longer treated as a playback failure).
+You can install this update from Innioasis Updater, using SP Flash Tool, or with MTK Client and the correct drivers for your system. Driver, utility and update instructions are also available from Innioasis: https://www.innioasis.com/pages/download
 
-Search/Multi-select: Fixed an issue where the multi-select status and search results were not cleared after adding items to a playlist.
-
-Localization: Corrected German and French translations.
-
-Playback List: Fixed issues where default playback list names were not set according to the device&#x27;s primary language after a factory reset.
-
-Theming/Customization: Fixed bugs related to theme deletion and ensuring the default wallpaper is restored correctly.
-
-Theme Installation: Default themes are now copied in the background to prevent copying from stopping if the screen turns off.
-
-# You can install this update from Innioasis Updater, using SP Flash Tool, or MTK Client with the correct drivers for your system.
-
-# Simply head to www.innioasis.com/pages/download for driver, utility and update instructions for your device.
+Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y1&amp;software=original-y1
 </content>
   </entry>
   <entry>
@@ -194,11 +461,37 @@ Theme Installation: Default themes are now copied in the background to prevent c
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom/releases/tag/type-b-1.7.6"/>
     <innioasis:tag_name>type-b-1.7.6</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>1192</innioasis:downloads>
+    <innioasis:downloads>1216</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/type-b-1.7.6/updater.jpg</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/type-b-1.7.6/rom_type_b.zip" title="rom_type_b.zip" length="176318503" type="application/zip" innioasis:download_count="1129" innioasis:asset_id="301721497"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/type-b-1.7.6/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="310" innioasis:asset_id="627528169"/>
-    <content type="text">If you installed a firmware update 2.0.0 or newer on your Y1 device and the scroll wheel stopped working, please install this version on your device instead.</content>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/type-b-1.7.6/rom_type_b.zip" title="rom_type_b.zip" length="176318503" type="application/zip" innioasis:download_count="1147" innioasis:asset_id="301721497"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/type-b-1.7.6/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="335" innioasis:asset_id="627528169"/>
+    <content type="text">## What&#x27;s in this update?
+
+This is the original **1.7.6** build for **Type B** Y1 players — the software those units shipped with, kept here so a Type B player can always be brought back to a working state.
+
+- **Restores the scroll wheel.** If you installed firmware 2.0.0 or newer on your Y1 and the scroll wheel stopped working, install this version instead.
+- **The original eight-item home menu:** Now Playing, Music, Audiobook, Photos, FM Radio, Bluetooth, Settings and a Shuffle shortcut that jumps straight into shuffled playback.
+- **One flat Settings list:** shutdown, timed shutdown, shuffle and repeat, equalizer, sort by and sort order, key lock, key tone, key vibration, wallpaper, backlight, brightness, battery display, date &amp; time, language, factory reset and About — no categories.
+- **No theme support.** This build predates the theme engine entirely, so themes from the gallery cannot be installed on it.
+
+## Before you update
+
+- **Type B hardware only.** Type B players have the older scroll wheel, and the Type A firmware line (2.0.0 and newer) disables it. Do not mix them.
+- Flashing erases the player. Back up music and recordings first.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y1 (Type B) |
+| Version | 1.7.6 |
+| Build date | 7 April 2023 |
+| Android base | 4.2.2 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y1&amp;software=original-y1
+</content>
   </entry>
   <entry>
     <id>tag:innioasis.app,2026:y1-community/y1-stock-rom/ADB-2.1.9</id>
@@ -208,11 +501,42 @@ Theme Installation: Default themes are now copied in the background to prevent c
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom/releases/tag/ADB-2.1.9"/>
     <innioasis:tag_name>ADB-2.1.9</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>1579</innioasis:downloads>
+    <innioasis:downloads>1586</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/updater.jpg</innioasis:icon_url>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/com.innioasis.y1_2.1.9.apk" title="com.innioasis.y1_2.1.9.apk" length="50514056" type="application/vnd.android.package-archive" innioasis:download_count="52" innioasis:asset_id="291002806"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/rom.zip" title="rom.zip" length="241163025" type="application/zip" innioasis:download_count="1526" innioasis:asset_id="300431681"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="509" innioasis:asset_id="627524721"/>
-    <content type="text">Adds Spanish language support.</content>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/com.innioasis.y1_2.1.9.apk" title="com.innioasis.y1_2.1.9.apk" length="50514056" type="application/vnd.android.package-archive" innioasis:download_count="56" innioasis:asset_id="291002806"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/rom.zip" title="rom.zip" length="241163025" type="application/zip" innioasis:download_count="1527" innioasis:asset_id="300431681"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="542" innioasis:asset_id="627524721"/>
+    <content type="text">## What&#x27;s in this update?
+
+The update that turned the Y1 into a customisable player: themes, video playback and a far more capable library all arrive together.
+
+- **Themes for the first time.** A theme engine, a Theme entry in Settings and a `/Themes/` folder on storage. A theme is a folder with a `config.json` that describes the home screen, icons, dialogs and menus — which is what every theme in the InnioasisY1Themes gallery is built on.
+- **Four looks out of the box.** The dark **HoloPebble** becomes the default, with **HoloBubble**, **Unseen** and **Melody Munchkin** bundled, so you can change the entire interface without downloading anything.
+- **A real video player.** Videos joins the home menu with All Video, Folders, Playlist and Search sections, plus Remove Video so files can be cleaned up on the device.
+- **Library and settings additions:** a file-extensions toggle, clear cache, **Spanish language support**, sorting and deletion options for songs, albums and artists, favourite channels in FM radio, and lyric labels while playing.
+- **A theme-aware interface.** Menus, dialogs, lists and the player screen follow the theme, so the whole look changes instead of only the wallpaper.
+
+## For theme creators
+
+2.1.9 defines the first theme format: home screen layout (nine icon slots including the Shuffle shortcut), item and dialog styling, menu and file-browser styling, player styling and status bar styling. Per-theme font scaling, nine-patch selection backgrounds and the File Manager slot found in later Y2 themes do not exist yet.
+
+## Before you update
+
+- **Type A hardware only.** Do not install this on Type B scroll-wheel units.
+- Themes must live in `/Themes/` with a valid `config.json`; malformed themes are ignored rather than crashing the player.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y1 (Type A) |
+| Version | 2.1.9 |
+| Android base | 4.2.2 |
+| Published | 18 July 2025 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y1&amp;software=original-y1
+</content>
   </entry>
 </feed>

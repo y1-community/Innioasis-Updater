@@ -54,7 +54,7 @@
     <div class="lumen-release-tag-row"><span>Y1 · Y2</span></div>
     <div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../guides/solar-y1.html">Open the Solar guide</a><a class="lumen-button" href="../firmware.html?model=Y1&amp;software=solar-y1">Install with Updater CE</a><a class="lumen-button" href="../solar-benefits.html">Why Solar?</a></div>
   </header>
-  <section class="lumen-firmware-stats" aria-label="Project statistics"><div class="lumen-stat"><span class="lumen-stat-label">Downloads from Firmware Archive</span><strong class="lumen-stat-value" data-stat="downloads">4,781</strong></div></section>
+  <section class="lumen-firmware-stats" aria-label="Project statistics"><div class="lumen-stat"><span class="lumen-stat-label">Downloads from Firmware Archive</span><strong class="lumen-stat-value" data-stat="downloads">5,245</strong></div></section>
   <p class="lumen-meta" id="fi-stats-note"></p>
   <article class="lumen-doc-body lumen-firmware-readme" id="fi-body"><p align="center">
   <img src="https://raw.githubusercontent.com/thesolarproject/solar/HEAD/app/src/main/assets/logo/square_full_logo_colour.png" alt="Solar logo" width="160">
@@ -89,6 +89,17 @@
 <h1 id="how-to-leave-feedback-and-report-issues">How to leave feedback and report issues.</h1>
 <p>Please leave your feedback and issue reports in the <a href="https://github.com/thesolarproject/solar/issues" target="_blank" rel="noopener noreferrer">Issues Tracker</a></p>
 <h2 id="developers">Developers</h2>
+<h3 id="todo">TODO</h3>
+<p><del>Fix youtube</del></p>
+<p>Add OPENVPN support possibly</p>
+<p>Ebook Reader with EPUB + PDF support in the ebook folder on microsd card with Annas archive/Z-lib downloading support.</p>
+<p>Plex/Jellyfin</p>
+<p><del>Fix only All songs working</del></p>
+<p><del>Add AgentDeveloperMenu for y2/y1s so agents can connect to the y2 and test fixes before pushing a new rom</del></p>
+<h3 id="agent-developer-menu-y1--y2">Agent Developer Menu (Y1 / Y2)</h3>
+<p><strong>Settings ▸ About ▸ Debug and Experiments ▸ Agent Developer Menu</strong></p>
+<p>Purpose: contributors can get a change tested on real hardware without cutting a ROM — an agent can drive the loop over ADB, and the same screen still works by hand when no agent is attached.</p>
+<ul><li><strong>With an agent</strong> — turn on <strong>Wireless ADB</strong> (needs root; starts <code>adbd</code> on TCP 5555) and read the <code>adb connect &lt;ip&gt;:5555</code> line off the status rows, which also report device family, build, root and <code>adbd</code> state so the agent can confirm it is on the right unit.</li><li><strong>Manually</strong> — copy the build to the device as <code>/sdcard/Solar/test.apk</code> (or <code>/sdcard/Download/app-release.apk</code>) and tap <strong>Install test APK</strong> (<code>pm install -r</code>), or run <code>adb install -r app-release.apk</code> from a PC over USB. <strong>Restart Solar</strong> relaunches the launcher so the new build is picked up.</li></ul>
 <p>Local <strong>Solar Designer</strong> (1:1 GUI simulator / agent bridge) lives at <code>solar-designer/</code> and is gitignored — clone the tree or create it locally, then <code>cd solar-designer &amp;&amp; npm install &amp;&amp; npm start</code>. See <code>solar-designer/README.md</code> when present.</p>
 <h1 id="solar-os">solar-os</h1>
 <h1 id="solar-os">solar-os</h1></article>

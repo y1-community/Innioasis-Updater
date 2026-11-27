@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Power plan 2026-11: measure, back off, batch, save - Innioasis Updater</title>
+  <meta name="description" content="Power plan 2026-11: measure, back off, batch, save Owner request 2026-11-24 after the 9.3.39 drain night "can you just do all the steps in total?". No current meter is av">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-planning-power-plan-2026-11.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Power plan 2026-11: measure, back off, batch, save - Innioasis Updater">
+  <meta property="og:description" content="Power plan 2026-11: measure, back off, batch, save Owner request 2026-11-24 after the 9.3.39 drain night "can you just do all the steps in total?". No current meter is av">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-planning-power-plan-2026-11.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Power plan 2026-11: measure, back off, batch, save - Innioasis Updater">
+  <meta name="twitter:description" content="Power plan 2026-11: measure, back off, batch, save Owner request 2026-11-24 after the 9.3.39 drain night "can you just do all the steps in total?". No current meter is av">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261124fixes2">
+  <link rel="stylesheet" href="../lumen.css?v=20261124fixes2">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261124fixes1">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261124init4" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-planning-power-plan-2026-11.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-planning-power-plan-2026-11.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Power plan 2026-11: measure, back off, batch, save</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="power-plan-2026-11-measure-back-off-batch-save">Power plan 2026-11: measure, back off, batch, save</h1>
+<p>Owner request 2026-11-24 after the 9.3.39 drain night (&quot;can you just do all the steps in total?&quot;). No current meter is available yet; everything that needs one is built so that a meter only adds numbers. Entry audit: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2Fplanning%2Froadmap-gap-audit.md%23power-plan-2026-11-entry-audit--2026-11-24&amp;anchor=power-plan-2026-11-entry-audit--2026-11-24">roadmap-gap-audit.md</a>.</p>
+<h2 id="evidence-that-started-it">Evidence that started it</h2>
+<ul><li>Owner&#x27;s player, 9.3.39, boot <code>70c6fea1</code>, unplugged 2026-11-22 23:44 → 11-23 22:49 UTC: 47/47 clean<p><code>SPM_CPU_SHUTDOWN_INFRA_PDN</code> sleeps, 47 maintenance wakes (~2.3 s awake each), 100 % → 79 %. Voltage-estimated ≈10 mA. <strong>Owner: older drain numbers may be wrong and are not compared.</strong></p></li><li>Awake (USB, dark, not playing): <code>slow_reject_clock</code> 376 089, of which BTIF + APDMA (Bluetooth enabled) 376 058;<p><code>dormant_entries</code> 5 in 25 h; <code>deep_audio_entries</code> 0. Ledger F37.</p></li><li>Kernel has timer slack (<code>/proc/&lt;pid&gt;/timerslack_ns</code>); no cgroups (so no freezer) and no uclamp.</li></ul>
+<h2 id="phases-and-state">Phases and state</h2>
+<table><thead><tr><th>#</th><th>Phase</th><th>State</th></tr></thead><tbody><tr><td>1</td><td>Current meter per state</td><td>WAITING: no meter. Phase 2 reads a <code>power-profile.json</code> the day one exists</td></tr><tr><td>2</td><td>Energy accounting</td><td>DONE in source (<code>998f319c</code>, summary line <code>0364b2a8</code>): <code>energy.json</code> seconds per state (asleep, charger, screen_on, dark_playing, dark_idle), radio and lease seconds, gauge mAh per state, profile mAh when a profile exists; in error reports</td></tr><tr><td>3</td><td>Sleep backoff</td><td>DONE in source (<code>e72afe65</code>): 30 min ×4, 1 h ×2, 2 h ×2, then 4 h; 30 min when the battery is not Normal, ≤ 20 % or unknown; a wake ends after the safety sample (≤ 2 s)</td></tr><tr><td>4</td><td>Batch deferred work</td><td>AUDITED, no change: the service daemon already runs every periodic job (space policy, time, update check, error reports, health) in one maintenance pass (30 s lit, 300 s dark), none wakes the player from sleep; Reborn&#x27;s only short poll is the Last.fm sign-in</td></tr><tr><td>5</td><td>Battery Saver</td><td>DONE in source (Reborn <code>1c34592</code>): Display › Battery Saver, Off / At 15 % (default) / On: ≤ 30 % brightness, ≤ 15 s screen timeout, no animation</td></tr><tr><td>6a</td><td>Timer slack</td><td>DONE in source (<code>5e67db62</code>): 50 ms for the power, service, connectivity and SSH daemons and their children</td></tr><tr><td>6b</td><td>Freezer</td><td>DROPPED on evidence: the candidates (umtprd, dropbear, wpa_supplicant, wpa_cli, crond, syslogd) wake &lt; 2 times/s together while idle (umtprd and the SSH listener 0/s); not worth <code>CONFIG_CGROUPS</code> against the kernel Image cap</td></tr><tr><td>7</td><td>Bluetooth BTIF/APDMA clock gating (stock STP PSM)</td><td>IN PROGRESS: donor <code>psm_core.c</code> / BTIF HAL analysis</td></tr><tr><td>8</td><td>Cleanups</td><td>Decoder blocks: already 4096 frames since 9.3.37. DAC: powers down 120 s after a stream as designed (the long active time seen was the owner&#x27;s wake). Reborn dark idle wakes ≈10/s over seven threads (1–2/s each): left, watchdog heartbeats. Native EQ chain instead of FFmpeg filters: NOT done, it would change the sound of every EQ/AutoEq profile and needs listening tests</td></tr></tbody></table>
+<p>Each phase: <code>GATE OK</code> before commit, a test build on the owner&#x27;s player before anything is published.</p>
+<h2 id="device-checks-owed-all-phases">Device checks owed (all phases)</h2>
+<ul><li>3: one long unplugged sleep: wakes at 30/30/30/30/60/60/120/120/240 min (<code>suspend-last.json</code>, power journal<p><code>suspend_maintenance_wake</code>), <code>spm</code> state <code>maintenance_seconds</code>, low-battery shutdown still in time (short test override or a run from a low charge).</p></li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261124arm64v1" defer></script>
+<script src="../nav.js?v=20261124fixes1" defer></script>
+<script src="../site-locale.js?v=20261124arm64v1" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

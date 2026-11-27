@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.41: cleaner quiet listening, Storage by kind, a smoother Home and eleven fixes - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.41: cleaner quiet listening, Storage by kind, a smoother Home and eleven fixes Release 1.0.0-beta.9.3.41 , Y2Reborn 1.0.0-beta.9.3.41 , kernel 6.18.5">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.41.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.41: cleaner quiet listening, Storage by kind, a smoother Home and eleven fixes - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.41: cleaner quiet listening, Storage by kind, a smoother Home and eleven fixes Release 1.0.0-beta.9.3.41 , Y2Reborn 1.0.0-beta.9.3.41 , kernel 6.18.5">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.41.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.41: cleaner quiet listening, Storage by kind, a smoother Home and eleven fixes - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.41: cleaner quiet listening, Storage by kind, a smoother Home and eleven fixes Release 1.0.0-beta.9.3.41 , Y2Reborn 1.0.0-beta.9.3.41 , kernel 6.18.5">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261124fixes2">
+  <link rel="stylesheet" href="../lumen.css?v=20261124fixes2">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261124fixes1">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261124init4" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.41.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.41.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.41: cleaner quiet listening, Storage by kind, a smoother Home and eleven fixes</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9341-cleaner-quiet-listening-storage-by-kind-a-smoother-home-and-eleven-fixes">Y2Linux 1.0 Beta 9.3.41: cleaner quiet listening, Storage by kind, a smoother Home and eleven fixes</h1>
+<p>Release <code>1.0.0-beta.9.3.41</code>, Y2Reborn <code>1.0.0-beta.9.3.41</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.41</code>, update sequence 19300, root <code>2026.08-platform-v1.311</code>. Published as GitHub release <code>baseline-288</code> (build 288; test builds 284–287 came before it on the developer&#x27;s player). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.40.md">Beta 9.3.40</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p>Wired headphones sound cleaner at low volume: the volume is now set in the DAC chip instead of being taken out of the music first, and audio that has to become 16 bits gets dither. Settings → Library → Storage shows what fills each volume. Home moves more calmly and scrolls when it has many places. Eleven bugs found by a contributor&#x27;s review are fixed, among them the radio&#x27;s elapsed time, the SD card pausing songs that are not on it, and Wi-Fi names with accents. Songs tagged with several artists are scrobbled to Last.fm under the first one. All five changes are by jonasevcik except the Last.fm fix.</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>Cleaner sound at low volume on wired headphones</strong><p>(<a href="https://github.com/SchulzCode/Y2Reborn/pull/207" target="_blank" rel="noopener noreferrer">PR #207</a>, jonasevcik): the player used to lower the volume by scaling the already 16-bit music and rounding it again, which costs about one bit for every 6 dB (about 11 bits left at volume 50). Now the DAC chip&#x27;s own volume (0.5 dB steps) does it and the music reaches the chip as decoded. Measured by the contributor on a 1 kHz tone at volume 50: distortion and noise −48 dB before, −78 dB after. The balance moves to the chip too. Because the chip&#x27;s steps are 0.5 dB and the player&#x27;s 0.6 dB, the volume is rounded down (never louder) and one wheel step is 1.0 or 1.5 dB. The speaker, Bluetooth and the wheel click sound keep working as before. Should the chip ever refuse a volume, the player drops the few milliseconds already queued before going back to its own volume, so nothing plays at full level.</p></li><li><strong>Dither where 16 bits lose information</strong> (same PR): 24-bit files, MP3/AAC, resampled audio and audio changed by<p>EQ, ReplayGain or speed get triangular dither on the way to 16 bits instead of plain rounding. A 16-bit file at 44.1 kHz with nothing changing it still reaches the DAC bit for bit.</p></li><li><strong>Storage by kind</strong> (<a href="https://github.com/SchulzCode/Y2Reborn/pull/206" target="_blank" rel="noopener noreferrer">PR #206</a>, jonasevcik): Settings → Library →<p>Storage splits each bar into Music, Audiobooks, Videos and Other, with size, count and play time per kind and a &quot;used of&quot; line. The numbers come from the library, so nothing is scanned again; a removed card shows &quot;No SD card&quot;.</p></li><li><strong>A smoother Home</strong> (<a href="https://github.com/SchulzCode/Y2Reborn/pull/182" target="_blank" rel="noopener noreferrer">PR #182</a>, jonasevcik): choosing a place<p>moves no other row; the chosen name grows into place while the marker slides to it. With more than six places (up to eleven with every Music list pinned) the menu scrolls and the next place peeks half-faded at the bottom. <strong>Back on Home returns to the first place.</strong></p></li></ul>
+<h2 id="fixed">Fixed</h2>
+<ul><li><strong>Last.fm and several artists</strong> (<a href="https://github.com/SchulzCode/Y2Linux/issues/149" target="_blank" rel="noopener noreferrer">Y2Linux #149</a>): a song tagged<p>&quot;Artist A;Artist B&quot; was scrobbled as one artist called &quot;Artist A;Artist B&quot;. Last.fm keeps one artist per play, so it now gets the first one (the album artist the same way). &quot;feat.&quot; tags and names with commas go as they are.</p></li><li>Eleven fixes from a review of the code (<a href="https://github.com/SchulzCode/Y2Reborn/pull/205" target="_blank" rel="noopener noreferrer">PR #205</a>, jonasevcik):<ul><li><strong>The elapsed time runs</strong> for radio stations and files of unknown length instead of staying at 0:00.</li><li><strong>A song still starting</strong> when the SD card changed, Stop was pressed or an SD repair began is given up cleanly;<p>before, the screen could say Playing with no sound, or every action answered &quot;Audio output is still starting&quot;.</p></li><li><strong>Taking out the SD card</strong> pauses only a song from the card; Internal Storage songs and stations play on.</li><li><strong>The sleep timer</strong> fades and restores the volume the output really uses (Bluetooth headphones that hold their<p>own volume got the wrong level back).</p></li><li><strong>Films</strong>: pictures without a time are shown instead of dropped; subtitles past line 4096 are kept (up to<p>16384); sound and picture count from the same start in films whose clock does not start at 0.</p></li><li><strong>Wi-Fi</strong>: networks with accented or non-English names are shown and joined by their real name (they appeared<p>as <code>Caf\xc3\xa9</code>); hidden networks are no longer listed. Name and password limits count bytes, as the network does, and a name keeps its spaces.</p></li><li><strong>Lists Wrap Around: Everywhere</strong> (Settings → Customize): Up from the first song under a heading wraps.</li><li><strong>Cover Flow</strong> no longer crashes when its list gets shorter (a card taken out, a rescan).</li></ul></li></ul>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>Tests</strong>: the platform&#x27;s full check, Reborn&#x27;s tests and the 582 tests of the release images passed. New tests:<p>bit-exact sound at reduced volume with a stand-in DAC, the chip&#x27;s volume following the wheel and balance, the fallback when it refuses (queued sound dropped first), dither only where a conversion loses information, the Storage sums and layout, the Home layout and Back, each of the eleven fixes where a test could be written, and the Last.fm artist.</p></li><li><strong>On the developer&#x27;s player</strong>, each change as its own test build (284–287), then this release:<ul><li>DAC volume (headphones simulated): the chip&#x27;s volume followed the wheel exactly (volume 39 → −37 dB, 50 → −30,<p>90 → −6, 100 → 0, 1 → −81), a change made while paused took effect on resume, Stop gave the chip its earlier volume back, the speaker kept its own −3 dB; no underruns; a 96 kHz 24-bit file played (about 21 % of one core with a 10-band EQ).</p></li><li>Storage: the sums matched the library (5 313 songs) and the free space; the card taken out and put back.</li><li>Home: eight places scrolled at about 60 pictures a second; nothing is drawn while Home is idle.</li><li>PR #205: an MP3 starts at 0.02 s and seeks land; Stop right after Play; an Internal Storage song kept playing<p>while the card went; two films after a seek with no pictures dropped and sound and picture within 0.05 s; the radio&#x27;s elapsed time ran.</p></li></ul></li><li><strong>Not tested on a player</strong>: listening with real headphones (the volume is in the chip, so please report clicks or<p>steps you hear), a network with a non-English name, the Last.fm change (it would scrobble to a real account), the sleep timer with Bluetooth headphones, Wrap Around from a heading.</p></li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<ul><li>Song positions now count from the very start of the file: a song resumed from a position saved before the update<p>may start a few hundredths of a second later.</p></li><li>A song from the SD card ends with an error, not paused, when the card is taken out while it plays; the card can<p>take up to about a minute to be seen again after it is put back.</p></li><li>Videos and sound can drift apart over Bluetooth on some players<p>(<a href="https://github.com/SchulzCode/Y2Linux/issues/145" target="_blank" rel="noopener noreferrer">Y2Linux #145</a>). Videos larger than 1920 × 1080 are too much for the player.</p></li><li>Everything listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.34.md%23known-issues&amp;anchor=known-issues">Beta 9.3.34</a> still applies.</li></ul>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>PR #207: <code>AudioSink::set_hardware_gain</code>/<code>applies_volume</code>, <code>rb_sink_set_master</code> (Master per channel, rounded toward<p>quieter), <code>playback/dac_volume.rs</code> wraps wired sinks that report <code>hp_level_live</code>; <code>VolumeRamp</code> holds unity while the output applies the volume. Follow-up <code>b9cbe36</code>: a refused Master write discards the ring before the level&#x27;s own Master comes back. Dither: <code>init_output_swr</code> with <code>SWR_DITHER_TRIANGULAR_HIGHPASS</code> when <code>output_dithers</code>.</p></li><li>PR #206: <code>storage_use.rs</code> (sums per source, cached by library identity), <code>views_storage.rs</code>.</li><li>PR #182: <code>HOME_ROWS</code> 6, 44 px rows, <code>Moving::List</code>, grow-in by <code>Ui::ease</code>; <code>Ui::back</code> on Home calls <code>home</code>.</li><li>PR #205: commits <code>5f900f0</code>…<code>4344a3d</code>; <code>media.c</code> positions relative to <code>AVFormatContext.start_time</code>; fixture<p><code>film-h264-offset.mkv</code>.</p></li><li>#149: <code>scrobble::lead_artist</code> (first non-empty <code>;</code> part) for artist and album artist.</li><li>Images built from Linux <code>13d88839</code>, Reborn <code>db9fbb6</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261124arm64v1" defer></script>
+<script src="../nav.js?v=20261124fixes1" defer></script>
+<script src="../site-locale.js?v=20261124arm64v1" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

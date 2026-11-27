@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.40: longer battery life, End of Queue, chapter buttons and many small fixes - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.40: longer battery life, End of Queue, chapter buttons and many small fixes Release 1.0.0-beta.9.3.40 , Y2Reborn 1.0.0-beta.9.3.40 , kernel 6.18.56-y">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.40.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.40: longer battery life, End of Queue, chapter buttons and many small fixes - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.40: longer battery life, End of Queue, chapter buttons and many small fixes Release 1.0.0-beta.9.3.40 , Y2Reborn 1.0.0-beta.9.3.40 , kernel 6.18.56-y">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.40.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.40: longer battery life, End of Queue, chapter buttons and many small fixes - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.40: longer battery life, End of Queue, chapter buttons and many small fixes Release 1.0.0-beta.9.3.40 , Y2Reborn 1.0.0-beta.9.3.40 , kernel 6.18.56-y">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261124fixes2">
+  <link rel="stylesheet" href="../lumen.css?v=20261124fixes2">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261124fixes1">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261124init4" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.40.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.40.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.40: longer battery life, End of Queue, chapter buttons and many small fixes</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9340-longer-battery-life-end-of-queue-chapter-buttons-and-many-small-fixes">Y2Linux 1.0 Beta 9.3.40: longer battery life, End of Queue, chapter buttons and many small fixes</h1>
+<p>Release <code>1.0.0-beta.9.3.40</code>, Y2Reborn <code>1.0.0-beta.9.3.40</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.40</code>, update sequence 18800, root <code>2026.08-platform-v1.306</code>. Published as GitHub release <code>baseline-283</code> (build 283; test builds 276–282 came before it on the developer&#x27;s player). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.39.md">Beta 9.3.39</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p>The player uses less power: lying untouched it wakes up less and less often, the moving wave on Now Playing draws at a calmer rate, and a new Battery Saver dims the screen when the battery is low. New are a sleep timer that stops at the end of your queue, buttons for the next and previous audiobook chapter, a finer audiobook speed, and the screen staying on while you read lyrics. Several fixes: a skin on the SD card is applied after a restart, the two new skins show the names of pinned lists on Home, the Home Menu explains why Audiobooks or Videos are missing, update checks say why they failed, and Cover Flow no longer glides back when you open it.</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>Less power while the player lies untouched</strong>: asleep, the player wakes every 30 minutes to check the battery.<p>It now waits longer and longer the longer it sleeps (30 minutes for the first 2 hours, then 1, 2 and finally 4 hours); every new sleep starts at 30 minutes again, and at 20 % or less it keeps checking every 30 minutes. On the developer&#x27;s player 42.8 hours unplugged and asleep used about 1.6 mA, from 99 % to 93 %. An earlier night on 9.3.39 measured about 9 mA; the wake-ups alone do not explain that difference, so the number is a good night, not a promise.</p></li><li><strong>The moving wave draws at a calmer rate</strong> (<a href="https://github.com/SchulzCode/Y2Reborn/issues/197" target="_blank" rel="noopener noreferrer">Y2Reborn #197</a>,<p>measured by jonasevcik): while music plays with the screen on, the wave on Now Playing and Home was redrawn about 64 times a second. Now 16, which roughly halves what the processor does then. Glides, slides and Cover Flow keep the full rate.</p></li><li><strong>Battery Saver</strong>: Settings → Display → Battery Saver: Off, At 15 % (the default) or On. While it is on, the screen<p>is at most 30 % bright and turns off after at most 15 seconds, and animations rest. Your own settings come back when it turns off, also as soon as a charger is connected.</p></li><li><strong>Sleep Timer: End of Queue</strong> (<a href="https://github.com/SchulzCode/Y2Reborn/issues/175" target="_blank" rel="noopener noreferrer">#175</a>): Now Playing → hold<p>Select → Sleep Timer → <strong>End of Queue</strong> (End of Book in an audiobook). It pauses when the last song in Up Next ends, also with Repeat on, so the first song doesn&#x27;t start again while you sleep.</p></li><li><strong>Next Chapter and Previous Chapter buttons</strong> (<a href="https://github.com/SchulzCode/Y2Reborn/issues/177" target="_blank" rel="noopener noreferrer">#177</a>):<p>Settings → Customize → Buttons. In an audiobook they move one chapter however long it is; with music they skip a song. They can also be used with the screen off.</p></li><li><strong>Audiobook speed in fine steps</strong> (<a href="https://github.com/SchulzCode/Y2Reborn/pull/198" target="_blank" rel="noopener noreferrer">PR #198</a>, thanks to<p>AbeEstrada): in an audiobook, hold Select → Speed opens a slider from 0.5× to 2× in steps of 0.05×; Select keeps it, Back leaves it as it was.</p></li><li><strong>The screen stays on while you read lyrics</strong> (<a href="https://github.com/SchulzCode/Y2Linux/issues/142" target="_blank" rel="noopener noreferrer">Y2Linux #142</a>):<p>with Lyrics open and the music playing, the screen doesn&#x27;t time out, as for a video. Paused, it does.</p></li><li><strong>Sharper icons</strong> (<a href="https://github.com/SchulzCode/Y2Reborn/pull/181" target="_blank" rel="noopener noreferrer">PR #181</a>, jonasevcik): the large music note<p>for songs without a cover, the empty album cover and the Favorites heart are drawn sharp instead of stretched.</p></li></ul>
+<h2 id="fixed">Fixed</h2>
+<ul><li><strong>A skin on the SD card is applied after a restart</strong><p>(<a href="https://github.com/SchulzCode/Y2Linux/issues/143" target="_blank" rel="noopener noreferrer">Y2Linux #143</a>): a large SD card can take a few seconds before it is ready, and the player looked for the skin before that, showed Reborn&#x27;s own look and kept your choice for later. Now the skin appears as soon as the card is ready.</p></li><li><strong>Pixel Quest and Gilded Grove show &quot;Artists&quot;, &quot;Albums&quot; and &quot;Songs&quot; on Home</strong><p>(<a href="https://github.com/SchulzCode/Y2Reborn/issues/196" target="_blank" rel="noopener noreferrer">#196</a>) instead of &quot;…&quot;.</p></li><li><strong>Home Menu says why a place is missing</strong> (<a href="https://github.com/SchulzCode/Y2Reborn/issues/195" target="_blank" rel="noopener noreferrer">#195</a>): Settings →<p>Customize → Home Menu shows &quot;No books yet&quot; and &quot;No videos yet&quot; beside switches that are on while there is nothing for Home to show.</p></li><li><strong>Update checks say why they failed</strong> (<a href="https://github.com/SchulzCode/Y2Reborn/pull/179" target="_blank" rel="noopener noreferrer">PR #179</a> and<p><a href="https://github.com/SchulzCode/Y2Linux/pull/140" target="_blank" rel="noopener noreferrer">Y2Linux PR #140</a>, jonasevcik): right after Wi-Fi connects the player waits up to 45 seconds for the internet time instead of failing, and a failed check names the reason instead of always &quot;Couldn&#x27;t reach the update server&quot;.</p></li><li><strong>Cover Flow opens on the first album</strong> (<a href="https://github.com/SchulzCode/Y2Reborn/pull/193" target="_blank" rel="noopener noreferrer">PR #193</a>,<p>jonasevcik) instead of gliding back from where you left it.</p></li><li><strong>An artist&#x27;s albums load ahead</strong> (<a href="https://github.com/SchulzCode/Y2Reborn/pull/180" target="_blank" rel="noopener noreferrer">PR #180</a>, jonasevcik): the<p>covers beside the three on screen load before the wheel reaches them.</p></li><li><strong>Building from source works again</strong> (<a href="https://github.com/SchulzCode/Y2Reborn/issues/199" target="_blank" rel="noopener noreferrer">#199</a>): the build used<p>packages Alpine had replaced on its servers; it now uses Alpine 3.24.4 and the current packages.</p></li></ul>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>Tests</strong>: the platform&#x27;s full check, Reborn&#x27;s tests and the 582 tests of the release images passed. New tests:<p>the sleep timer pauses only when the last entry of the queue ends (not for a chapter inside it), the chapter buttons step chapters in a book and songs elsewhere, the speed slider stays open while the wheel turns, the wave draws at the calm rate, lyrics keep the screen on only while playing, the Home Menu notes, the backoff steps.</p></li><li><strong>On the developer&#x27;s player</strong> (builds 276–283): the 42.8-hour night above, with the backoff wakes at 30, 30, 30,<p>30, 60, 60, 120, 120, then 240 minutes; the wave at 16 pictures a second and about half the processor time while playing with the screen on; lyrics open and playing kept the screen on past a 60-second timeout, paused it turned off; a skin on the SD card applied 0.2 seconds after the card was ready when the card came late (on 9.3.39 never); 1080p videos used the video chip.</p></li><li><strong>Not tested on a player</strong>: Battery Saver turning on at 15 %, End of Queue and the chapter buttons on the device<p>(tests only), the speed slider by hand.</p></li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<ul><li>Battery Saver turns on by itself at 15 % (Settings → Display → Battery Saver → Off if you don&#x27;t want it).</li><li>Videos and sound can drift apart over Bluetooth on some players<p>(<a href="https://github.com/SchulzCode/Y2Linux/issues/145" target="_blank" rel="noopener noreferrer">Y2Linux #145</a>); this version reports more about it in error reports. Videos larger than 1920 × 1080 are too much for the player.</p></li><li>Everything listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.34.md%23known-issues&amp;anchor=known-issues">Beta 9.3.34</a> still applies.</li></ul>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>Power plan 2026-11 (<a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2Fplanning%2FPOWER-PLAN-2026-11.md">plan</a>): maintenance backoff (<code>spm.maintenance_seconds</code><p>300–14400, <code>suspend/helper/backoff.rs</code>), 50 ms timer slack for background daemons, <code>energy.json</code> per state (written on boottime since <code>f075809e</code>), Battery Saver (Reborn <code>reborn_core::saver</code>), STP power saving built in but off (<code>stp_psm.enable=N</code>).</p></li><li>Wave: <code>Ui::gliding</code> no longer counts <code>Motion::live</code>; <code>animating</code> does (34 ms frame gap).</li><li>#143: <code>Runtime::retry_saved_skin</code> on a media source change. #142: <code>lyrics::keeps_screen_on</code>. #195:<p><code>pages::home_menu</code> notes; toggle rows draw their secondary text. #196: <code>build_skins.py</code> detail column by row width. #175: <code>SleepChoice::EndOfQueue</code>, <code>sleep_timer::ended_the_queue</code>. #177: <code>Command::NextChapter</code>/<code>PreviousChapter</code>. PR #198 merged with <code>ui_state::normalize</code> keeping the row-less <code>Modal::BookSpeed</code> open.</p></li><li>#145 diagnostics: FFmpeg <code>y2vdec: … refused at &lt;step&gt;: &lt;error&gt;</code>, kernel <code>vdec</code> refusal lines, <code>/proc/buddyinfo</code> in<p>reports, <code>reader_stopped</code> with <code>late_max_ms</code>, <code>late_avg_ms</code>, <code>sound_ms</code>, <code>wall_ms</code>.</p></li><li>Build lock: <code>tools/build/inputs.lock.json</code> minirootfs 3.24.4 + 19 packages, <code>connectivity-host.lock.json</code> 3.</li><li>Images built from Linux <code>5c12d83d</code>, Reborn <code>7f3fb0a</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261124arm64v1" defer></script>
+<script src="../nav.js?v=20261124fixes1" defer></script>
+<script src="../site-locale.js?v=20261124arm64v1" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+

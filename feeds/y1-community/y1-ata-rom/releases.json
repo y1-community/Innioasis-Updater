@@ -17,7 +17,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip",
         "size": 533410269,
-        "download_count": 505,
+        "download_count": 555,
         "content_type": "application/zip",
         "created_at": "2026-07-15T13:30:29Z",
         "updated_at": "2026-07-15T13:31:31Z",
@@ -28,15 +28,15 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip",
         "size": 475393744,
-        "download_count": 293,
+        "download_count": 358,
         "content_type": "application/zip",
         "created_at": "2026-07-15T13:32:55Z",
         "updated_at": "2026-07-15T13:33:44Z",
         "url": "https://api.github.com/repos/y1-community/y1-ata-rom/releases/assets/477970033"
       }
     ],
-    "mirror_downloads": 108,
-    "downloads": 906,
+    "mirror_downloads": 109,
+    "downloads": 1022,
     "download_breakdown": {
       "tag": "0.1",
       "mirrors": "y1-community/y1-ata-rom-mirror",
@@ -44,13 +44,13 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip",
-          "downloads": 515,
+          "downloads": 565,
           "mirror_downloads": 10
         },
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip",
-          "downloads": 303,
+          "downloads": 368,
           "mirror_downloads": 10
         }
       ],
@@ -60,7 +60,7 @@
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/y1-ata-rom-mirror/releases/download/0.1/rom-windows.zip",
           "size": 643905911,
-          "downloads": 26
+          "downloads": 27
         },
         {
           "platform": "windows-legacy",

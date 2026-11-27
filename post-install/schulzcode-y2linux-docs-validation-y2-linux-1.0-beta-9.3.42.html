@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.42: audiobook series, Hörspiele and the SD card as a USB stick - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.42: audiobook series, Hörspiele and the SD card as a USB stick Release 1.0.0-beta.9.3.42 , Y2Reborn 1.0.0-beta.9.3.42 , kernel 6.18.56-y2linux-1.0.0-">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.42.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.42: audiobook series, Hörspiele and the SD card as a USB stick - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.42: audiobook series, Hörspiele and the SD card as a USB stick Release 1.0.0-beta.9.3.42 , Y2Reborn 1.0.0-beta.9.3.42 , kernel 6.18.56-y2linux-1.0.0-">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.42.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.42: audiobook series, Hörspiele and the SD card as a USB stick - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.42: audiobook series, Hörspiele and the SD card as a USB stick Release 1.0.0-beta.9.3.42 , Y2Reborn 1.0.0-beta.9.3.42 , kernel 6.18.56-y2linux-1.0.0-">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261124fixes2">
+  <link rel="stylesheet" href="../lumen.css?v=20261124fixes2">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261124fixes1">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261124init4" defer></script>
+<link rel="alternate" hreflang="en" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.42.html"><link rel="alternate" hreflang="x-default" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.42.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.42: audiobook series, Hörspiele and the SD card as a USB stick</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9342-audiobook-series-hrspiele-and-the-sd-card-as-a-usb-stick">Y2Linux 1.0 Beta 9.3.42: audiobook series, Hörspiele and the SD card as a USB stick</h1>
+<p>Release <code>1.0.0-beta.9.3.42</code>, Y2Reborn <code>1.0.0-beta.9.3.42</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.42</code>, update sequence 19900, root <code>2026.08-platform-v1.317</code>. Published as GitHub release <code>baseline-294</code> (build 294; test builds 289–293 came before it on the developer&#x27;s player). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.41.md">Beta 9.3.41</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p>Audiobooks groups a series into one row that opens its books in order, by the series tags or by a series folder, and folders of Hörspiele count as audiobooks. A new, experimental switch lets a computer open the SD card as an ordinary USB drive instead of through Music Transfer. It is for the SD card only: Internal Storage is still reached through Music Transfer (MTP) as before.</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>Audiobook series</strong> (<a href="https://github.com/SchulzCode/Y2Linux/issues/144" target="_blank" rel="noopener noreferrer">Y2Linux #144</a>,<p><a href="https://github.com/SchulzCode/Y2Reborn/issues/185" target="_blank" rel="noopener noreferrer">Y2Reborn #185</a>): long series and audio dramas (50 to 200 episodes) were one flat list. Now books form a series when two or more share - a <strong>series tag</strong>: <code>SERIES</code> with <code>SERIES-PART</code> (Audiobookshelf, Mp3tag, Audible downloads), ID3 <code>MVNM</code>/<code>MVIN</code>, or else the grouping tag (<code>©grp</code>, <code>TIT1</code>); differences in capitals and spaces don&#x27;t matter; or - a <strong>folder</strong> inside the Audiobooks folder, one folder or one <code>.m4b</code> per book: <code>Hörspiele/Die drei ???/001 Der Super-Papagei/…</code>, <code>Audiobooks/Discworld/01 The Colour of Magic.m4b</code>, <code>Audiobooks/Series/Book/Book.m4b</code>. A folder with a single book stays as it was (an author folder, say).</p></li></ul>
+<p>  The series is one row with &quot;N books · author&quot; and the first book&#x27;s cover; open it for its books, ordered by   <code>SERIES-PART</code> as a number (1, 2, 2.5, 10), otherwise by name with 2 before 10. It stands where its most recently   heard book would, so the series you are in stays at the top. Cover Flow shows a series as a cover that opens a   Cover Flow of its books. Search still finds every book on its own. Settings → Customize → Browsing →   <strong>Audiobook Series</strong> (on) switches it off. After the update the player reads the tags of the audiobook files once   more; songs are not read again.</p>
+<ul><li><strong>Hörspiele</strong>: a folder named <code>Hörspiele</code>, <code>Hörspiel</code>, <code>Hoerspiele</code> or <code>Hoerspiel</code>, and the genres <code>Hörspiel</code> and<p><code>Audio Drama</code>, make audiobooks, as <code>Audiobooks</code> and <code>Hörbücher</code> did.</p></li><li><strong>The SD card as a USB stick (experimental)</strong>: Settings → Library → Storage → <strong>SD Card as a USB Stick</strong>, off by<p>default. With it on, a computer gets the SD card as an ordinary USB drive (&quot;Y2Linux SD Card&quot;), next to Music Transfer, so tools that need a drive (rsync, beets, foobar2000&#x27;s sync) work. **Internal Storage stays in Music Transfer (MTP)**; making it a drive would mean reformatting it, which this release does not do. Only FAT32 and exFAT cards become a drive. While the computer has the card, songs from it stop and Storage says *On the computer · Eject it there*. Eject the drive on the computer: the player checks the card, as on every insertion, and the new songs appear. The switch applies the next time the cable is connected. Details: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2FSTORAGE.md%23the-sd-card-as-a-usb-drive&amp;anchor=the-sd-card-as-a-usb-drive">Storage</a>.</p></li></ul>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>Tests</strong>: the platform&#x27;s full check, Reborn&#x27;s tests and the 582 tests of the release images passed. New<p>tests: series from tags and folders (one book is no series, <code>.m4b</code> files side by side and one per folder, numbers as numbers, tags differing in capitals), <code>SERIES</code>/<code>SERIES-PART</code> from an MP3 and the grouping tag from an M4B, a library from before the update re-reading only its audiobooks, the series rows, page, title, Cover Flow and switch, the USB stick switch drawn as a switch, the card on the computer on Storage.</p></li><li><strong>On the developer&#x27;s player</strong> (test builds 289–293, then this release), with a Linux computer:<ul><li>A Hörspiele series of three episodes and a tag series spread over two folders appeared as two rows and opened<p>in order; Cover Flow showed both levels; a test folder with four books (two <code>.m4b</code> side by side, one <code>.m4b</code> in its own folder, one MP3 book) became one series of four; only the audiobook files were read again.</p></li><li>The SD card (exFAT, 128 GB) appeared as a drive about 5 s after connecting and read at 40 MB/s; ejected, the<p>player had it back in 4 s; connecting while a song from the card played paused it and closed the card&#x27;s files.</p></li><li>Booting with the switch on gave the drive and, for developers, the USB network together (19.8 MB/s).</li></ul></li><li><strong>Not tested</strong>: Windows and macOS with the USB stick, unplugging during a copy, a series with hundreds of parts.</li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<ul><li>The USB stick has been tried with Linux only. If Windows or macOS shows it wrongly, or Music Transfer stops<p>working with it on, switch it off and send an error report.</p></li><li>A song from the SD card ends with an error, not paused, when the card is taken out while it plays.</li><li>Videos and sound can drift apart over Bluetooth on some players<p>(<a href="https://github.com/SchulzCode/Y2Linux/issues/145" target="_blank" rel="noopener noreferrer">Y2Linux #145</a>). Videos larger than 1920 × 1080 are too much for the player.</p></li><li>Everything listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.34.md%23known-issues&amp;anchor=known-issues">Beta 9.3.34</a> still applies.</li></ul>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>Series: <code>reborn_core::books</code> <code>Book.series</code> (<code>Series { key, name, part }</code>), <code>series_folder</code>, <code>keep_shared_series</code>,<p><code>series_books</code>; <code>media.c</code> <code>RbMetadata.series</code>/<code>series_part</code> (4912 bytes, pinned both sides); library columns <code>series</code>, <code>series_part</code>, <code>METADATA_REVISION</code> 7 with <code>books_only_reread</code>; UI filter <code>series:&lt;key&gt;\u{1f}&lt;name&gt;</code>. Fixtures <code>book-series.mp3</code>, <code>book-series.m4b</code> (<code>fixtures.py --series</code>). Commits Reborn <code>4ced8f2</code>, <code>e6e15e5</code>.</p></li><li>USB stick: platform <code>storage/media/lend.rs</code>, <code>service/usb/disk.rs</code>, gadget <code>ffs.mtp</code> + <code>mass_storage.0</code> +<p><code>ecm.usb0</code> (bcdDevice 0x0101), kernel <code>CONFIG_USB_CONFIGFS_MASS_STORAGE</code>. MUSB FIFO table: endpoint 5 for the drive, and every IN FIFO bulk-capable (endpoint 2 single, 4 double 512 bytes; 7744 of 8192 bytes): f_ecm&#x27;s full-speed bulk descriptor has no packet size, so a boot whose first bind had the drive put ECM&#x27;s bulk IN on endpoint 4&#x27;s 16-byte FIFO and the host&#x27;s <code>cdc_ether</code> failed with -32 until the next boot (test build 291). Commits Linux <code>3b726ae7</code>, <code>5b7dfecb</code>, <code>8e691c91</code>, <code>e3c9fd32</code>; Reborn <code>e20f225</code>, <code>200d697</code>, <code>84b19fa</code>.</p></li><li>Images built from Linux <code>cab44d1e</code>, Reborn <code>84b19fa</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode's <em>Reborn</em></a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Firmware Archive page">[1]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261124arm64v1" defer></script>
+<script src="../nav.js?v=20261124fixes1" defer></script>
+<script src="../site-locale.js?v=20261124arm64v1" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+
