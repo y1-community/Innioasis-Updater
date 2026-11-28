@@ -13,15 +13,15 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/tag/3.2.8-fm"/>
     <innioasis:tag_name>3.2.8-fm</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>8</innioasis:downloads>
+    <innioasis:downloads>9</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.8-fm/rom_y2-linux-arm64.zip" title="rom_y2-linux-arm64.zip" length="469937466" type="application/zip" innioasis:download_count="1" innioasis:asset_id="801178068"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.8-fm/rom_y2-linux-legacy.zip" title="rom_y2-linux-legacy.zip" length="416604443" type="application/zip" innioasis:download_count="1" innioasis:asset_id="801178065"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.8-fm/rom_y2-linux.zip" title="rom_y2-linux.zip" length="645034396" type="application/zip" innioasis:download_count="1" innioasis:asset_id="801178061"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.8-fm/rom_y2-macos.zip" title="rom_y2-macos.zip" length="452606972" type="application/zip" innioasis:download_count="1" innioasis:asset_id="801180274"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.8-fm/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="418190158" type="application/zip" innioasis:download_count="1" innioasis:asset_id="801178066"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.8-fm/rom_y2-windows.zip" title="rom_y2-windows.zip" length="533097158" type="application/zip" innioasis:download_count="2" innioasis:asset_id="801178062"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.8-fm/rom_y2-windows.zip" title="rom_y2-windows.zip" length="533097158" type="application/zip" innioasis:download_count="3" innioasis:asset_id="801178062"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.8-fm/rom_y2.zip" title="rom_y2.zip" length="343322575" type="application/zip" innioasis:download_count="1" innioasis:asset_id="801180476"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.8-fm/stats.txt" title="stats.txt" length="3871" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="801675820"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.8-fm/stats.txt" title="stats.txt" length="3871" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802824084"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.2.8-fm#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -47,9 +47,39 @@
 
 ---
 
-Various performance, bug and stability fixes.
+## What&#x27;s in this update?
 
-Credit to @Stuart98, developer of MYO Studio for providing this firmware to the Community Firmware archive. Doing what Innioasis don&#x27;t.
+The current Y2 firmware, and the one to install. It fixes the two cosmetic bugs reported most often since launch, and keeps every feature from 3.2.0 onward.
+
+- **The player is called Y2 again.** The launcher name had accidentally been left as `收音机` — Chinese for &quot;radio&quot; — since the first Y2 build. It now reports **Y2** wherever the system asks for the app name, so launchers, settings screens and connected tools show the right thing.
+- **The Unseen theme no longer draws a stray File Manager icon.** With native icon fallback enabled, Unseen was silently pulling the system File Manager icon into the home screen. The theme now explicitly blanks that slot, so its hidden layout stays hidden.
+- **General performance, bug and stability fixes** across the player.
+- **All five bundled themes are consistent.** HoloBubble, Unseen, Melody Munchkin, HoloFacet and Classic each ship a complete settings set and are identical whether loaded from the firmware or copied out to `/Themes/` on USB storage.
+
+## For theme creators
+
+- The theme format is the same as 3.2.0, so no theme needs rewriting.
+- If a theme relies on native icon fallback for the File Manager slot but wants it empty, declare the slot explicitly as transparent. That is exactly the fix Unseen received in this release, and the pattern to copy.
+- Themes from 3.1.7 and later load unchanged; Y1 themes still will not install, because the two formats differ.
+
+## Good to know
+
+- The **ROM version is 3.2.8** while the launcher reports **3.2.9**; both are correct for this release.
+- This is the newest Y2 stock firmware. Y1 owners should look at Y1 3.1.2 instead — the two firmwares are not interchangeable.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y2 |
+| ROM version | 3.2.8 |
+| Launcher version | 3.2.9 |
+| Published | 27 November 2026 |
+| Android base | 4.4.4 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y2&amp;software=original-y1
 
 &lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;8a253d1a66f7356d50df0f9d063140f3ac44ab0f3142f660d6a0c9a64bb07035&quot;,&quot;size&quot;:533097158,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;6499d3ef29b5a86ce90c3e16be37ebabcafefc382dc8e0ae9e033bd9204ab6f2&quot;,&quot;size&quot;:418190158,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;02273d5f90bdb0ece44d7c49318b358b78a8733deb6e3e0aebef7929f8c5ec5c&quot;,&quot;size&quot;:645034396,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux-arm64.zip&quot;,&quot;platform&quot;:&quot;linux-arm64&quot;,&quot;sha256&quot;:&quot;1fe148d3f830a5a7723c8330f95cb212b06d12867d65394be229df9b4b6b7a06&quot;,&quot;size&quot;:469937466,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;4c16f925a36b52403e284ffe17a3bd917f3b401110ad371c8610c0d8b0a42c10&quot;,&quot;size&quot;:416604443,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;16665b09abbee1d343699a0ce5002406f5e8c88531bc050e98640966441225dc&quot;,&quot;size&quot;:452606972,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;}],&quot;built_at&quot;:&quot;2026-11-27T16:19:54Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-arm64.svg&quot;,&quot;size&quot;:1510},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[],&quot;fingerprint&quot;:&quot;1e2236ec9455552a33612a8b7d3687087f2ba4cb73a1424a300035394b40f54b&quot;,&quot;original_asset_sizes&quot;:{&quot;rom_y2.zip&quot;:343322575},&quot;original_assets&quot;:[&quot;rom_y2.zip&quot;],&quot;platforms&quot;:{&quot;linux&quot;:&quot;dc4f1a8a28c5b963de62bd68299a2f15292c88eae92f8249d83d67bc6cd2f279&quot;,&quot;linux-arm64&quot;:&quot;5ae205604bbf84d5ad9ddf597b6e241a4286f8fd9b3a921c72b8ce1dad002b32&quot;,&quot;linux-legacy&quot;:&quot;f44cd233ba0189d29cfa2901838d4a92fd693e9ae46fb0f351c052daa8c64846&quot;,&quot;macos&quot;:&quot;d51c0e7e3e079aafede30ce60194d9f0a666e48a17d155c536f5c4d804c71916&quot;,&quot;windows&quot;:&quot;e5c21192a31fdac6aa1d98044b3130c41e4e4a37d1ca16dee77543c18a7836c4&quot;,&quot;windows-legacy&quot;:&quot;f07082ede6c81479b1bb3ab60cebf78481df9a7aec34f507ecb9e54163ec45ea&quot;},&quot;skipped&quot;:[],&quot;source_fingerprint&quot;:&quot;69a7bbfb4e76a12022746e80b9040bc0ef68d6ee8b90b01ff6595e4b6d75f985&quot;,&quot;stats&quot;:{&quot;baseline&quot;:{},&quot;generated_at&quot;:&quot;2026-11-27T16:19:54Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable.zip&quot;,&quot;size&quot;:304397377,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:128413832,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:109258325,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Windows-Portable.zip&quot;,&quot;size&quot;:189956744,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:17} --&gt;
 </content>
@@ -71,7 +101,7 @@ Credit to @Stuart98, developer of MYO Studio for providing this firmware to the 
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="418170427" type="application/zip" innioasis:download_count="6" innioasis:asset_id="780698356"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2-windows.zip" title="rom_y2-windows.zip" length="533077427" type="application/zip" innioasis:download_count="16" innioasis:asset_id="780698354"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/rom_y2.zip" title="rom_y2.zip" length="343306718" type="application/zip" innioasis:download_count="3" innioasis:asset_id="748901986"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/stats.txt" title="stats.txt" length="4013" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="801675760"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/stats.txt" title="stats.txt" length="4013" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802823998"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.4-fm/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="0" innioasis:asset_id="746136286"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.2.4-fm#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -98,11 +128,42 @@ Credit to @Stuart98, developer of MYO Studio for providing this firmware to the 
 
 ---
 
-&quot;General performance and stability improvements.&quot;
+## What&#x27;s in this update?
 
-This is the software currently being shipped on Y2 retail units.
+This is the software currently being shipped on Y2 retail units, and the build most people will be upgrading from. It is 3.2.0 with retail polish rather than a new feature release.
 
-(Innioasis have once again failed to release this as an update to existing users, nor do they actually post what changes their firmwares include - this firmware release was imaged from a retail Y2 unit purchased November 12 by the Community Firmware Archive and Updater CE maintainer - tested against both of Updater&#x27;s installation methods: SP Flash Tool and MTKclient and the underlying tools themselves on a pre 3.2.4 and a 3.2.4 unit with success. Image was taken before any use of the player)
+- **General performance and stability improvements.**
+- **About screen tidied.** The version line is shortened from `System Version:` to simply `Version:`, which is easier to read and easier to quote when asking for support.
+- **Everything from 3.2.0 remains:** FM radio, categorized Settings, speaker toggle, headphone gain, click wheel sensitivity and volume, album art style, video scan modes, continue-playing prompts, and the full 3.1.7 music, video and file manager features.
+
+## Where this image comes from
+
+Innioasis have once again failed to release this as an update to existing users, nor do they actually post what changes their firmwares include. This firmware release was imaged from a retail Y2 unit purchased on November 12 by the **Community Firmware Archive and Updater CE maintainer**, and tested against both of Updater&#x27;s installation methods — SP Flash Tool and MTKclient — and the underlying tools themselves, on a pre-3.2.4 unit and a 3.2.4 unit, with success. The image was taken before any use of the player.
+
+## For theme creators
+
+The theme format is unchanged from 3.2.0. Themes built for 3.2.0 work exactly the same here, and the bundled themes are identical.
+
+## Good to know
+
+- The **ROM version is 3.2.4** while the launcher inside it reports **3.2.3**, so both numbers are correct — check About to see which you have.
+- Devices on this build show `收音机` as the launcher name in some places; that is fixed in 3.2.8.
+- Upgrading to 3.2.8 is safe and keeps your themes and settings.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y2 |
+| ROM version | 3.2.4 |
+| Launcher version | 3.2.3 |
+| Build date | 19 August 2026 |
+| Published | 13 November 2026 |
+| Android base | 4.4.4 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y2&amp;software=original-y1
 
 &lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;68d398e1731d6b2d4ed0500f68aae093d37a18bb968cd2184b2a709ba727ed0b&quot;,&quot;size&quot;:533077427,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;2d8ef624b7097bcc9166fd3d25a6606cc27b1d16225e268b1d68c06a1aa5b637&quot;,&quot;size&quot;:418170427,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;6d70afd6d67d4ec34a92a659e460bae9d3181bfdfcaac43f6439f8c61301c0a7&quot;,&quot;size&quot;:645014665,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux-arm64.zip&quot;,&quot;platform&quot;:&quot;linux-arm64&quot;,&quot;sha256&quot;:&quot;9aa1c0b0a71ab108ad4e1cb44187c5bbb52ad3cd6a0e62be15fc1ffc9e849964&quot;,&quot;size&quot;:469917735,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;29261c637de4ea71281f3dfbc790e7c542af128ece58852f131fbdb932580479&quot;,&quot;size&quot;:416584712,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;c8056beef7044054093642d6d7504c9db542310fffcad71036ea3400d26e09c2&quot;,&quot;size&quot;:452587240,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;}],&quot;built_at&quot;:&quot;2026-11-24T18:02:06Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-arm64.svg&quot;,&quot;size&quot;:1510},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[],&quot;fingerprint&quot;:&quot;f6d462d14d25eca0dcf9bd7b3fa37356fed44d0d2aeb613f24df9a2c3ffe8e6c&quot;,&quot;original_asset_sizes&quot;:{&quot;rom_y2.zip&quot;:343306718,&quot;updater.jpg&quot;:30612},&quot;original_assets&quot;:[&quot;rom_y2.zip&quot;,&quot;updater.jpg&quot;],&quot;platforms&quot;:{&quot;linux&quot;:&quot;9cf4791c4fa41d800f84986a4043239bdb76cde871b251bc5e5893b7ab0f49c0&quot;,&quot;linux-arm64&quot;:&quot;c4fb136e24a08600f2256c34eb66852c1ca731a2e7d0dd08ac9ce939754250ca&quot;,&quot;linux-legacy&quot;:&quot;99d01ad8a3b6b81bc258c31651323c82aee2c768fcf41e1015664f14d297da6e&quot;,&quot;macos&quot;:&quot;589f78ef12f8f765ab4a55bc600fa37a94e561f7d84272581e023e43eec662e2&quot;,&quot;windows&quot;:&quot;e8169a87ff087c06a1791ebc9fa75de6526998838b17ac841a18fd5431b19438&quot;,&quot;windows-legacy&quot;:&quot;7577d520b6226e57903fd5d0f4a12ff66f827ff1a28ec98fc971b1a1798a8f8a&quot;},&quot;skipped&quot;:[],&quot;source_fingerprint&quot;:&quot;f8ee5b962c5d35b9f724268e96a226ae0a5aed9da9c5fbc2707bc727fd56d5b7&quot;,&quot;stats&quot;:{&quot;baseline&quot;:{&quot;rom_y2-linux-arm64.zip&quot;:2,&quot;rom_y2-linux-legacy.zip&quot;:4,&quot;rom_y2-linux.zip&quot;:7,&quot;rom_y2-macos.zip&quot;:6,&quot;rom_y2-windows-legacy.zip&quot;:3,&quot;rom_y2-windows.zip&quot;:19,&quot;rom_y2.zip&quot;:3,&quot;updater.jpg&quot;:0},&quot;generated_at&quot;:&quot;2026-11-24T18:02:06Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable.zip&quot;,&quot;size&quot;:304397377,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:128413832,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:109258325,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Windows-Portable.zip&quot;,&quot;size&quot;:189956744,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:17} --&gt;
 </content>
@@ -124,7 +185,7 @@ This is the software currently being shipped on Y2 retail units.
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="417871478" type="application/zip" innioasis:download_count="5" innioasis:asset_id="780685769"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2-windows.zip" title="rom_y2-windows.zip" length="532778480" type="application/zip" innioasis:download_count="12" innioasis:asset_id="780685770"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/rom_y2.zip" title="rom_y2.zip" length="354935543" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733117227"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/stats.txt" title="stats.txt" length="4078" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="801675677"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/stats.txt" title="stats.txt" length="4078" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802823905"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.1/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="1" innioasis:asset_id="705968796"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.2.1#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -151,7 +212,32 @@ This is the software currently being shipped on Y2 retail units.
 
 ---
 
-General performance and stability improvements
+## What&#x27;s in this update?
+
+A maintenance release published alongside 3.2.0. Nothing new to learn — the same Y2 you already know, with the rough edges smoothed.
+
+- General performance and stability improvements throughout the player, with no changes to menus, features or settings.
+- All of 3.2.0 is included: FM radio, categorized Settings, speaker toggle, headphone gain, click wheel sensitivity and volume, album art style, video scan modes and continue-playing prompts.
+- No theme changes: the bundled themes, the settings slot count and the theme format are identical to 3.2.0.
+
+## Before you update
+
+- If you are already on 3.2.0, this update changes nothing you can see or configure.
+- Later releases (3.2.4 and 3.2.8) carry the same features plus further fixes, so there is no reason to stay on 3.2.1.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y2 |
+| Version | 3.2.1 |
+| Build date | 14 August 2026 |
+| Published | 13 September 2026 |
+| Android base | 4.4.4 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y2&amp;software=original-y1
 
 &lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;c35ed916d5ed0383421cd45f230eb32d39dbe0b8ec9d9e136d11d158bd977196&quot;,&quot;size&quot;:532778480,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;abf34fb79d87cc4201647ec6dff899a34455d75ed3258f101c49ce1910c5d17c&quot;,&quot;size&quot;:417871478,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;38755ce4c204786695f90761cecc383bb0df6c2abb8292fcf557be921c61cd28&quot;,&quot;size&quot;:644715718,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux-arm64.zip&quot;,&quot;platform&quot;:&quot;linux-arm64&quot;,&quot;sha256&quot;:&quot;478956be78780265fc38eadb8026db4d404ea289afe6d89235e7a78bdfb89472&quot;,&quot;size&quot;:469618788,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;3169df16fc852c9c915589ae7e08dd536afe3d03a1cf6fe0a3a3480731e4a5bd&quot;,&quot;size&quot;:416285763,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;3b35cf0f3fdf2188d5f672ee0ad444e26212184cd475bb8fb49501041ca678a1&quot;,&quot;size&quot;:452288308,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;}],&quot;built_at&quot;:&quot;2026-11-24T17:59:41Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-arm64.svg&quot;,&quot;size&quot;:1510},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[],&quot;fingerprint&quot;:&quot;10a7f50b86fbe19843f9604b894a196deffa976eaa46a62335859ec209a28d8b&quot;,&quot;original_asset_sizes&quot;:{&quot;rom_y2.zip&quot;:354935543,&quot;updater.jpg&quot;:30612},&quot;original_assets&quot;:[&quot;rom_y2.zip&quot;,&quot;updater.jpg&quot;],&quot;platforms&quot;:{&quot;linux&quot;:&quot;1d337e6008c8e1b250ee69565d62d26b06386537e7c31afa94cd8e517c922f8e&quot;,&quot;linux-arm64&quot;:&quot;9e8ebcf0300e0383c4aa1eb5997030fd4b8f116efbb58a738be680852ba03a2d&quot;,&quot;linux-legacy&quot;:&quot;4922f6b8cbd686bbad2fef20baf52807d1fed1e925a70caa5c1d49a82a640bae&quot;,&quot;macos&quot;:&quot;960c959b50ad3b69be6f3dee36b11634963f0e856643cf00b3971feff13de3aa&quot;,&quot;windows&quot;:&quot;84004a07cbf8df84dbef435648c531b4d29120d7d38af807ae9629bdd9ae7082&quot;,&quot;windows-legacy&quot;:&quot;5131fee0368567202bf5d4a789eeff5f1d750ac7a26b8cd69d942f236cbb9a31&quot;},&quot;skipped&quot;:[],&quot;source_fingerprint&quot;:&quot;24170a818937d6f3554564eeb45a22d03d9aa2a5d5684cd45d049d4191063d84&quot;,&quot;stats&quot;:{&quot;baseline&quot;:{&quot;rom_y2-linux-arm64.zip&quot;:3,&quot;rom_y2-linux-legacy.zip&quot;:3,&quot;rom_y2-linux.zip&quot;:39,&quot;rom_y2-macos.zip&quot;:52,&quot;rom_y2-windows-legacy.zip&quot;:3,&quot;rom_y2-windows.zip&quot;:124,&quot;rom_y2.zip&quot;:13,&quot;updater.jpg&quot;:17},&quot;generated_at&quot;:&quot;2026-11-24T17:59:41Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable.zip&quot;,&quot;size&quot;:304397377,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:128413832,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:109258325,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Windows-Portable.zip&quot;,&quot;size&quot;:189956744,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:17} --&gt;
 </content>
@@ -173,7 +259,7 @@ General performance and stability improvements
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows-legacy.zip" title="rom_y2-windows-legacy.zip" length="417871541" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780671570"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2-windows.zip" title="rom_y2-windows.zip" length="532778543" type="application/zip" innioasis:download_count="7" innioasis:asset_id="780671569"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/rom_y2.zip" title="rom_y2.zip" length="354935460" type="application/zip" innioasis:download_count="3" innioasis:asset_id="733100021"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/stats.txt" title="stats.txt" length="4201" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="801675572"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/stats.txt" title="stats.txt" length="4201" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802823784"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/system.img" title="system.img" length="859826928" type="application/vnd.efi.img" innioasis:download_count="2" innioasis:asset_id="706246494"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.2.0-fm/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="0" innioasis:asset_id="706248301"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
@@ -201,7 +287,42 @@ General performance and stability improvements
 
 ---
 
-This release adds FM Radio functionality to supported Y2 players, please note that some earlier Y2 revisions may not have the underlying functionality needed for FM Radio, there is an alternative release of 3.2.0 available for those in these circumstances.
+## What&#x27;s in this update?
+
+The biggest Y2 update yet. FM radio comes to the Y2, Settings is rebuilt into clear categories, and the sound and click wheel finally become adjustable.
+
+- **FM Radio on the Y2.** This release adds FM Radio functionality to supported Y2 players, with the channel list and favourites familiar from the Y1.
+- **Settings, organised.** The long flat list is replaced by six categories — **Keys &amp; Wheel**, **Audio**, **Display**, **Personalization**, **Files &amp; Storage** and **System** — with Bluetooth, About and Factory reset kept at the top level. Bluetooth also moves from the home screen into Settings.
+- **Speaker on/off.** Audio → Speaker enables or disables the built-in speaker, handy when you only listen on headphones.
+- **Headphone gain.** Audio → Headphone Gain offers four output levels — Low, Standard, High and Maximum — so quiet IEMs and harder-to-drive headphones can both be matched.
+- **Click wheel control.** Keys &amp; Wheel adds Click Wheel Sensitivity (Low, Standard, High) and Adjust Volume with Click Wheel (on or off). Screen-off Media Mode now also accepts the centre button.
+- **Album art style.** Music → Settings → Album Art Style switches the now-playing cover between **Perspective** (tilted with a glossy reflection) and **Flat** (square with a reflection).
+- **Video scanning you control.** Auto Scan Common Folders, Scan Specified Folders Only, or Scan Entire TF Card, instead of deleting scan paths by hand.
+- **Pick up where you left off.** Music and video both ask whether to continue from where you stopped.
+
+## Which Y2 build do I need?
+
+**Some earlier Y2 revisions may not have the underlying hardware needed for FM Radio.** If yours does not, use the alternative 3.2.0 release published without FM instead of this one.
+
+## For theme creators
+
+- Themes can set `showNativeIcon`, which decides whether the system icon is drawn when a theme does not supply one. All five bundled themes enable it; omit the key and it stays off.
+- Settings theming grows from 50 to 67 slots: six category icons, four headphone gain icons, two speaker icons, three wheel sensitivity icons and two wheel volume icons.
+- **Bluetooth has no separate Settings slot.** The Settings → Bluetooth icon is drawn from the home screen Bluetooth entry, so a theme that blanks the home icon blanks the settings icon too.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y2 (FM-equipped units) |
+| Version | 3.2.0 |
+| Build date | 13 August 2026 |
+| Published | 13 September 2026 |
+| Android base | 4.4.4 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y2&amp;software=original-y1
 
 &lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;16bc67325d73d35dff9a0fafde0bbe06461976211412b054a1548eee0f01245e&quot;,&quot;size&quot;:532778543,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;461742476595daf0859ccdeee7820ff1215b519817919097e18cf45e91d72a7a&quot;,&quot;size&quot;:417871541,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;dbd2b64bbfc90a493d919e929fbc826b8385aed111cf44e6d8789ede103baf73&quot;,&quot;size&quot;:644715781,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux-arm64.zip&quot;,&quot;platform&quot;:&quot;linux-arm64&quot;,&quot;sha256&quot;:&quot;df5a13a904d30d9bb92e6ee5a9a3600129610f9670457e34c699eef9dae826f7&quot;,&quot;size&quot;:469618851,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;4594af29a79d2bd4e0068547a4ea26720eaf78b7a9fa0a59f06cbc8b311f7b20&quot;,&quot;size&quot;:416285826,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;},{&quot;model&quot;:&quot;Y2&quot;,&quot;name&quot;:&quot;rom_y2-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;a0ba6692357379e57b153b62a41afa205e51f97c576eac1353006688fb1e3078&quot;,&quot;size&quot;:452288357,&quot;source_asset&quot;:&quot;rom_y2.zip&quot;,&quot;type&quot;:&quot;Stock&quot;}],&quot;built_at&quot;:&quot;2026-11-24T17:57:09Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-arm64.svg&quot;,&quot;size&quot;:1510},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[],&quot;fingerprint&quot;:&quot;4e84f6a154c16a1f6acc2acbdefbb5298388e5e8905f093c68ffdaac064ad74e&quot;,&quot;original_asset_sizes&quot;:{&quot;rom_y2.zip&quot;:354935460,&quot;system.img&quot;:859826928,&quot;updater.jpg&quot;:30612},&quot;original_assets&quot;:[&quot;rom_y2.zip&quot;,&quot;system.img&quot;,&quot;updater.jpg&quot;],&quot;platforms&quot;:{&quot;linux&quot;:&quot;d63a27c896ca1dc58bbb96b502cb2feee72e1e94a2b9ad9ee61bfe2e92429cb1&quot;,&quot;linux-arm64&quot;:&quot;c11858a7823e16c9efba5f46cb82b3cd9fef5c9f42768f79ea16b116847e9989&quot;,&quot;linux-legacy&quot;:&quot;94b09a56b0a81c439d0efca5515140989dd77ed63971c21033ce9929c0096c49&quot;,&quot;macos&quot;:&quot;66ac7c366b335d6be700c7f130d25544bca135ca94d90dad8cab3181e63155b2&quot;,&quot;windows&quot;:&quot;02e4d9a95adbebea0560dc6d52291c1e424f2e0f74bdd555c4b6a13f1b29c52d&quot;,&quot;windows-legacy&quot;:&quot;578819c5e5d117704a94f5058aa0721e8cf2822ea4da9e6ed1c2ba9d6fd9e559&quot;},&quot;skipped&quot;:[],&quot;source_fingerprint&quot;:&quot;67b4035fd3a11a2739edd5061f06076b221a0f4f9fe288845d3db95b71b4b72b&quot;,&quot;stats&quot;:{&quot;baseline&quot;:{&quot;rom_y2-linux-arm64.zip&quot;:5,&quot;rom_y2-linux-legacy.zip&quot;:3,&quot;rom_y2-linux.zip&quot;:33,&quot;rom_y2-macos.zip&quot;:35,&quot;rom_y2-windows-legacy.zip&quot;:4,&quot;rom_y2-windows.zip&quot;:100,&quot;rom_y2.zip&quot;:16,&quot;system.img&quot;:18,&quot;updater.jpg&quot;:0},&quot;generated_at&quot;:&quot;2026-11-24T17:57:09Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable.zip&quot;,&quot;size&quot;:304397377,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:128413832,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:109258325,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Windows-Portable.zip&quot;,&quot;size&quot;:189956744,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:17} --&gt;
 </content>
@@ -258,16 +379,16 @@ This can be used to restore your Y2 back to its factory conditions and get thing
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/tag/3.1.2"/>
     <innioasis:tag_name>3.1.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>41</innioasis:downloads>
+    <innioasis:downloads>45</innioasis:downloads>
     <innioasis:icon_url>https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/updater.jpg</innioasis:icon_url>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="314578709" type="application/zip" innioasis:download_count="1" innioasis:asset_id="788239505"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="251737396" type="application/zip" innioasis:download_count="4" innioasis:asset_id="780654473"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-linux.zip" title="rom-linux.zip" length="489675639" type="application/zip" innioasis:download_count="3" innioasis:asset_id="788239506"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-macos.zip" title="rom-macos.zip" length="289543590" type="application/zip" innioasis:download_count="7" innioasis:asset_id="780654852"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="253323111" type="application/zip" innioasis:download_count="4" innioasis:asset_id="780654474"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip" title="rom-windows.zip" length="368230121" type="application/zip" innioasis:download_count="17" innioasis:asset_id="780654472"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="253323111" type="application/zip" innioasis:download_count="7" innioasis:asset_id="780654474"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom-windows.zip" title="rom-windows.zip" length="368230121" type="application/zip" innioasis:download_count="18" innioasis:asset_id="780654472"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/rom.zip" title="rom.zip" length="249665668" type="application/zip" innioasis:download_count="5" innioasis:asset_id="733067856"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/stats.txt" title="stats.txt" length="3998" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="801673211"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/stats.txt" title="stats.txt" length="4000" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802821483"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.1.2/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="0" innioasis:asset_id="705987295"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.1.2#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -294,7 +415,40 @@ This can be used to restore your Y2 back to its factory conditions and get thing
 
 ---
 
-Features improved support for AirPods Pro 2, AirPods 3 and later
+## What&#x27;s in this update?
+
+The final Y1 stock release, and the one to be on. It features improved support for AirPods Pro 2, AirPods 3 and later, and fixes the Bluetooth problems that made modern earbuds unreliable on the Y1.
+
+- **AirPods and modern headsets connect properly.** Pairing and A2DP connection handling has been reworked for AirPods Pro 2, AirPods 3 and other newer headsets, including the case where two devices compete for the connection and the player gives up. Audio is less likely to fall back to the internal speaker mid-track, and reconnecting after leaving range is more reliable.
+- **Everything from earlier Y1 releases is included:** video playback, the e-book reader, the launcher selector, first-boot language setup, and the bundled HoloPebble, HoloBubble, Unseen, Melody Munchkin and HoloFacet themes.
+- **The most stable Y1 build available.** Later builds exist for Y2 only; 3.1.2 is where the Y1 line ends.
+
+## For theme creators
+
+3.1.2 is the last word on the Y1 theme format, and it is deliberately narrower than the Y2 format:
+
+- Themes use a folder in `/Themes/` with a `config.json`, exactly as in 2.1.9 through 3.0.7.
+- Nine-patch (`.9.png`) selection backgrounds are **not** supported; use plain images for selected states.
+- There is no per-theme font scaling, no native-icon fallback toggle and no File Manager slot, because the Y1 has no File Manager.
+- Every Y1 theme in the InnioasisY1Themes gallery targets this format, so a theme that looks right on 3.0.7 looks right here.
+
+## Before you update
+
+- **Type A Y1 hardware only.** Installing this on a Type B scroll-wheel unit disables the wheel.
+- If you are on 2.8.2 or newer, themes carry over with no changes; only the Bluetooth behaviour changes.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y1 (Type A) |
+| Version | 3.1.2 |
+| Published | 16 July 2026 |
+| Android base | 4.2.2 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y1&amp;software=original-y1
 
 &lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;e57614b55b5e8fb521c4f1e894e0ffdf0d0a14962dec049d596304a23cf75a7c&quot;,&quot;size&quot;:368230121,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;ca57a31f93844993a4808f1c85417fa29585580219ed48c8e7ab54eaaa1b684d&quot;,&quot;size&quot;:253323111,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;d0d65306b0cfc92a14ec727870f0d2eb8da259bd143b9a375e35bdb6adfc3fc4&quot;,&quot;size&quot;:489675639,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux-arm64.zip&quot;,&quot;platform&quot;:&quot;linux-arm64&quot;,&quot;sha256&quot;:&quot;8a63ce58953869ae6c10a12c2be4afff59fb735cee71e2c05f3a370e43782a36&quot;,&quot;size&quot;:314578709,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;ee5d7b4d3a42a68c8ae79c259e50fc08d41584bbb457cdec325fef6ebbb873a9&quot;,&quot;size&quot;:251737396,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;267bd5532bf21af0bdd1ca588293581e42c9ae33d1fcdb2bf445fda3c5894ac3&quot;,&quot;size&quot;:289543590,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;}],&quot;built_at&quot;:&quot;2026-11-24T17:53:57Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-arm64.svg&quot;,&quot;size&quot;:1510},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[],&quot;fingerprint&quot;:&quot;b9e2e43faff9c5652723d1075be62cefdd7fb32635e83a79a76dc5069f3893db&quot;,&quot;original_asset_sizes&quot;:{&quot;rom.zip&quot;:249665668,&quot;updater.jpg&quot;:30612},&quot;original_assets&quot;:[&quot;rom.zip&quot;,&quot;updater.jpg&quot;],&quot;platforms&quot;:{&quot;linux&quot;:&quot;df046b64b0d5496f1089f3b2758b6ab34d5b832397a43dfc34b059fe8a5d8877&quot;,&quot;linux-arm64&quot;:&quot;e3fd2aac6bc01900dc62224c0323b4bfbd2708ef813fe258dcfd93e981b85052&quot;,&quot;linux-legacy&quot;:&quot;4899a9e2408cf58fc8ac1f3d5cb629d82960919b0113874df4ffe372d559dd61&quot;,&quot;macos&quot;:&quot;7d8c93f8b319aeb3319966861074aec77efd2efafd06b95d4926f0ee93d45fef&quot;,&quot;windows&quot;:&quot;d3b16ec71ea5c148a565a02005b0af0f7553df09d15db7a4ac716d71fa2c41f6&quot;,&quot;windows-legacy&quot;:&quot;7bf040deb130d467ffd2676aa4bcc114f5c7f054b37d874ded198c89aa753826&quot;},&quot;skipped&quot;:[],&quot;source_fingerprint&quot;:&quot;9453da12dc393d19747606d41d5b9b92463676ebb71ed93dd40b42926dabe3f4&quot;,&quot;stats&quot;:{&quot;baseline&quot;:{&quot;rom-linux-arm64.zip&quot;:7,&quot;rom-linux-legacy.zip&quot;:3,&quot;rom-linux.zip&quot;:70,&quot;rom-macos.zip&quot;:138,&quot;rom-windows-legacy.zip&quot;:5,&quot;rom-windows.zip&quot;:331,&quot;rom.zip&quot;:16,&quot;updater.jpg&quot;:0},&quot;generated_at&quot;:&quot;2026-11-24T17:53:57Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable.zip&quot;,&quot;size&quot;:304397377,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:128413832,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:109258325,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Windows-Portable.zip&quot;,&quot;size&quot;:189956744,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:17} --&gt;
 </content>
@@ -316,7 +470,7 @@ Features improved support for AirPods Pro 2, AirPods 3 and later
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="253193061" type="application/zip" innioasis:download_count="5" innioasis:asset_id="780642925"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom-windows.zip" title="rom-windows.zip" length="368100065" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780642920"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/rom.zip" title="rom.zip" length="249535612" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733055812"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/stats.txt" title="stats.txt" length="3993" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="801673159"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/stats.txt" title="stats.txt" length="3993" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802821387"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.7/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="0" innioasis:asset_id="706229285"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.0.7#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -343,11 +497,36 @@ Features improved support for AirPods Pro 2, AirPods 3 and later
 
 ---
 
-**Changes in 3.0.7** 
+## What&#x27;s in this update?
 
-This release has a new E-Book reading feature and a new theme named HoloFacet.
+A comfort update rather than a redesign: a fourth built-in theme and a more finished e-book reader.
 
-Theme creators that haven&#x27;t previously implemented their eBook icons are advised to do so to retain theme compatibility.
+- **New theme: HoloFacet.** A fourth built-in theme joins HoloPebble, HoloBubble, Unseen and Melody Munchkin, so the player&#x27;s whole look can be changed without installing anything from the gallery.
+- **E-book reading promoted.** The e-book reader is now presented as a headline feature rather than a hidden extra, and still opens EPUB, PDF, TXT and Word documents with bookmarks and reading progress.
+- **Bookmark polish.** New Unread and (Empty) states mean an empty or untouched bookmark list reads correctly instead of looking broken.
+
+## For theme creators
+
+The theme format is unchanged from 2.8.2, so existing themes keep working. **Theme creators who have not previously implemented their e-book icons are advised to do so to retain theme compatibility.**
+
+## Before you update
+
+- Type A Y1 hardware only. Installing Type A firmware on a Type B unit disables the scroll wheel.
+- 3.1.2 is the later Y1 release and adds the modern Bluetooth fixes; 3.0.7 is otherwise the same feature set.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y1 (Type A) |
+| Version | 3.0.7 |
+| Build date | 13 March 2026 |
+| Published | 23 April 2026 |
+| Android base | 4.2.2 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y1&amp;software=original-y1
 
 &lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;acfed66d86174322dfd9c3197585662124f7fd26e754e3fea588e66b48e145a5&quot;,&quot;size&quot;:368100065,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;b14a2da69d7682f06abdf73d9ed3e9dd5dd8c6d3abf7908e483aca1b4d9ac8db&quot;,&quot;size&quot;:253193061,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;b94cef9ff2e7e02d90ce91e8fff1293ffa33d6d4539816c39d9722efa83ff202&quot;,&quot;size&quot;:489545583,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux-arm64.zip&quot;,&quot;platform&quot;:&quot;linux-arm64&quot;,&quot;sha256&quot;:&quot;73be435da04691c24a9d4f6ff4efb0c2333f145ced713a923e4d8296c2d2d9e1&quot;,&quot;size&quot;:314448653,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;c0eaca1869d681a88deeddaff92f95348d4e313d2dfdfcd3d72bce6ebefff7a0&quot;,&quot;size&quot;:251607344,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;a5904865d728d51e626822bedd714ad1623cad11abd6bd9ac326a3443a583351&quot;,&quot;size&quot;:289413534,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;}],&quot;built_at&quot;:&quot;2026-11-24T17:51:47Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-arm64.svg&quot;,&quot;size&quot;:1510},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[],&quot;fingerprint&quot;:&quot;d0d77fdd3423bf25fc6c931c3177dfe2f19e08d39a4d1209679f6406f2df7fed&quot;,&quot;original_asset_sizes&quot;:{&quot;rom.zip&quot;:249535612,&quot;updater.jpg&quot;:30612},&quot;original_assets&quot;:[&quot;rom.zip&quot;,&quot;updater.jpg&quot;],&quot;platforms&quot;:{&quot;linux&quot;:&quot;b7fb04b044b69cae0af9c0b466d12066d504d79ae30d2ae131a18b59fcbb2c96&quot;,&quot;linux-arm64&quot;:&quot;ca8df01dfde3c13bea1b9e9c7f210d79727d1f75db12b9287be703bea182d1cd&quot;,&quot;linux-legacy&quot;:&quot;082e56af09a477e6f103f977bb46f972e5593631948cd20ae5c5bc5c5e23f162&quot;,&quot;macos&quot;:&quot;f8643d788a980497badb5b88b8b7420dc06a27d522c4b1e4fdca51731ad5c12d&quot;,&quot;windows&quot;:&quot;5860e8a4f4cf97140163f68f940f3a3ff0e811c01cac1720f5a4483dba15421a&quot;,&quot;windows-legacy&quot;:&quot;f7be31cc53e7250fffa64e4f63608baa519b9738a2caa3e71817569d0cd04d8b&quot;},&quot;skipped&quot;:[],&quot;source_fingerprint&quot;:&quot;4deda29853382ff100d17a0b3f08f4e93ff7524693e0aea300ae3e9b6e5d69ee&quot;,&quot;stats&quot;:{&quot;baseline&quot;:{&quot;rom-linux-arm64.zip&quot;:6,&quot;rom-linux-legacy.zip&quot;:2,&quot;rom-linux.zip&quot;:57,&quot;rom-macos.zip&quot;:83,&quot;rom-windows-legacy.zip&quot;:3,&quot;rom-windows.zip&quot;:263,&quot;rom.zip&quot;:14,&quot;updater.jpg&quot;:0},&quot;generated_at&quot;:&quot;2026-11-24T17:51:47Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable.zip&quot;,&quot;size&quot;:304397377,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:128413832,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:109258325,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Windows-Portable.zip&quot;,&quot;size&quot;:189956744,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:17} --&gt;
 </content>
@@ -369,7 +548,7 @@ Theme creators that haven&#x27;t previously implemented their eBook icons are ad
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="263153108" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780632428"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom-windows.zip" title="rom-windows.zip" length="378060116" type="application/zip" innioasis:download_count="4" innioasis:asset_id="780632448"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/rom.zip" title="rom.zip" length="259495668" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733045698"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/stats.txt" title="stats.txt" length="3992" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="801673123"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/stats.txt" title="stats.txt" length="3992" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802821301"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/3.0.2/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="0" innioasis:asset_id="706224595"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=3.0.2#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -396,16 +575,37 @@ Theme creators that haven&#x27;t previously implemented their eBook icons are ad
 
 ---
 
-**Notice: Please do not downgrade to 3.0.2 from newer firmware versions like 3.0.7 as this will break your device, a solution is incoming. Please [contact Innioasis](https://www.innioasis.com/pages/contact) if you have been affected by this,** 
+## What&#x27;s in this update?
 
-New in System Software 3.0.2:
+A short, focused update: the Y1 now asks you to pick a language the first time it starts, and the rest is under-the-hood polish.
 
-Language selection at first start-up for new users, in line with new retail units, users will be asked to select their language after installing the firmware, or when they take a new Y1 from the box.
+- **Language selection at first start-up,** in line with new retail units. Users are asked to choose their language after installing the firmware, or when they unbox a new Y1. Pick once and the prompt stops appearing.
+- **Performance and stability improvements** across the player, with no visible change to the menus.
 
-Performance and stability improvements
+## Important: do not downgrade to 3.0.2
 
-Known issues:
-ADB is currently not enabled on builds newer than 2.1.9. This means that screenshots will can not be taken on this release and that theme and file transfers using Smart Drop in updater will require you to have USB Storage Mode enabled.
+**Please do not downgrade to 3.0.2 from newer firmware versions like 3.0.7, as this will break your device.** A solution is incoming; if you have been affected, please [contact Innioasis](https://www.innioasis.com/pages/contact).
+
+## Known issues
+
+- **ADB is not enabled on builds newer than 2.1.9.** Screenshots cannot be taken on this release, and theme or file transfers using Smart Drop in Updater require USB Storage Mode to be enabled.
+
+## For theme creators
+
+The theme format is unchanged from 2.8.2, so existing themes keep working. There is no reason to rewrite a theme for this build.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y1 (Type A) |
+| Version | 3.0.2 |
+| Published | 12 December 2025 |
+| Android base | 4.2.2 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y1&amp;software=original-y1
 
 &lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;4e87a397fad7dd3d15d75e3a1ed05da515491d10bd9a14246e7f9858944546bb&quot;,&quot;size&quot;:378060116,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;8eaf26f26c166dcc73f37a8c35a914117ae5f545b7a59db09bacc0d44248f77a&quot;,&quot;size&quot;:263153108,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;7c80200b9f487951d45cbf9572717e001e6975f70934bbd18f257912fbefdd09&quot;,&quot;size&quot;:499505634,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux-arm64.zip&quot;,&quot;platform&quot;:&quot;linux-arm64&quot;,&quot;sha256&quot;:&quot;c00600c26bc3caf45f821728f114d3c82f64a6189ec42f39c55bedb70803a85a&quot;,&quot;size&quot;:324408704,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;5e3c8b695e47d101ca89732928e3ce526f660461f6dc6d0e124376f7381f4fac&quot;,&quot;size&quot;:261567391,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;8b406562f6804976e5597bc4868c238c210b7005bb4fb39de82d24a2bd95a045&quot;,&quot;size&quot;:299373601,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;}],&quot;built_at&quot;:&quot;2026-11-24T17:49:35Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-arm64.svg&quot;,&quot;size&quot;:1510},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[],&quot;fingerprint&quot;:&quot;157d9aa8a85908c8124341d0759aa85a26f44d20fd0972b87e62b8888dd10ec9&quot;,&quot;original_asset_sizes&quot;:{&quot;rom.zip&quot;:259495668,&quot;updater.jpg&quot;:30612},&quot;original_assets&quot;:[&quot;rom.zip&quot;,&quot;updater.jpg&quot;],&quot;platforms&quot;:{&quot;linux&quot;:&quot;a98070680adca3735e22c3184b00a72fef20cb2a7f98fdf9d7de36a16a9a28e6&quot;,&quot;linux-arm64&quot;:&quot;eb61db34dae71c6d4c1e368eb5b6136838f38b82de4e0bacb9fecdd3b89ec783&quot;,&quot;linux-legacy&quot;:&quot;907fe925aa2691da1cf20789c622165db1a4402c8571cf69dbece2ec1382368e&quot;,&quot;macos&quot;:&quot;60c7d2b6c8bffaa2cc789837c325202c099833eeb24b316cd96145b040df1f43&quot;,&quot;windows&quot;:&quot;3db9b2d885fb369e70d7ec26d6513ae2d671d11c9d9ed6a77109a3683eb5c222&quot;,&quot;windows-legacy&quot;:&quot;1e326685005485317d66c700ec87429c7c3765a731459f0d11cada1463dd7acc&quot;},&quot;skipped&quot;:[],&quot;source_fingerprint&quot;:&quot;903dd2fa8bdb11f280e54f11a8c37cfa02af8870416b05689168a87c77d3a4f6&quot;,&quot;stats&quot;:{&quot;baseline&quot;:{&quot;rom-linux-arm64.zip&quot;:3,&quot;rom-linux-legacy.zip&quot;:3,&quot;rom-linux.zip&quot;:7,&quot;rom-macos.zip&quot;:8,&quot;rom-windows-legacy.zip&quot;:3,&quot;rom-windows.zip&quot;:10,&quot;rom.zip&quot;:13,&quot;updater.jpg&quot;:0},&quot;generated_at&quot;:&quot;2026-11-24T17:49:35Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable.zip&quot;,&quot;size&quot;:304397377,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:128413832,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:109258325,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Windows-Portable.zip&quot;,&quot;size&quot;:189956744,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:17} --&gt;
 </content>
@@ -427,7 +627,7 @@ ADB is currently not enabled on builds newer than 2.1.9. This means that screens
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="263116595" type="application/zip" innioasis:download_count="4" innioasis:asset_id="780623204"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom-windows.zip" title="rom-windows.zip" length="378023603" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780623201"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/rom.zip" title="rom.zip" length="234287667" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733034161"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/stats.txt" title="stats.txt" length="3984" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="801673069"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/stats.txt" title="stats.txt" length="3984" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802821203"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/2.8.2/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="0" innioasis:asset_id="706217904"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=2.8.2#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -454,55 +654,64 @@ ADB is currently not enabled on builds newer than 2.1.9. This means that screens
 
 ---
 
-Video Fix: Resolved an issue that prevented videos from being paused reliably.
+## What&#x27;s in this update?
 
-Video Stability: Improved handling of video playback to prevent the application from crashing (fixing IllegalStateException on startup).
+Books, a launcher switcher and a cleaner home screen, plus a long list of video, library and theme fixes.
 
-Video Management: Enhanced logic for checking video folders to ensure that non-folder files are skipped.
+**E-books and launcher switching**
 
-Multilingual Support:
+- **An e-book reader arrives.** EPUB, PDF, TXT and Word documents can now be opened on the Y1, with a bookshelf library, saved reading progress, bookmarks, and font-size and reading-theme controls.
+- **Launcher selector.** A new Launcher entry in Settings switches between the stock interface and an alternative launcher you have installed, such as Rockbox — and back again without reflashing.
+- **Home screen cleans up.** The Shuffle shortcut leaves the home menu, leaving eight focused icons. Themes that still define it keep working, because the saved Shuffle setting is read and simply ignored.
 
-User Interface (UI):
+**Video fixes**
 
-Implemented a scrolling marquee effect for file names that are too long to fit on the screen.
+- Videos now pause reliably.
+- Playback no longer crashes with `IllegalStateException` at startup.
+- Folder scanning skips non-folder files, so stray entries stop appearing.
+- Error code -38 is no longer treated as a playback failure, so more files simply play.
+- Thumbnail generation runs fewer concurrent jobs and saves thumbnails as files, which is faster and more stable.
+- Music playback is now stopped completely when a video starts.
 
-Fixed several bugs related to the Theme interface.
+**Library, sorting and language**
 
-File Management:
+- Long file names scroll instead of being cut off, so similarly named tracks can be told apart.
+- File name sorting is case-insensitive: &quot;A&quot; and &quot;a&quot; sort together.
+- The music database resynchronises when video folders are deleted, and the database version moves from 3 to 4.
+- Multi-select state and search results are cleared after adding items to a playlist.
+- Default playback list names follow the device language after a factory reset.
+- German and French translations corrected.
 
-Improved folder deletion logic to ensure all checks for video files are completed.
+**Theming**
 
-Changed file name sorting to be case-insensitive (treating &quot;A&quot; and &quot;a&quot; the same).
+- Several theme interface bugs fixed, including theme deletion and restoring the default wallpaper.
+- Default themes are now copied in the background, so the copy no longer stops if the screen turns off.
+- Key Lock persists correctly after a restart.
 
-Music &amp; Video Sync:
+## For theme creators
 
-Fixed a bug where the music database was not synchronized when video folders were deleted.
+2.8.2 adds three home screen slots — E-Book, Calculator and Calendar — and a Launcher toggle in Settings. Themes written for 2.1.9 keep working unchanged.
 
-Crucial Fix: Ensured that music playback is completely stopped when a video starts playing.
+## Before you update
 
-Database: Database version updated from 3 to 4.
+- **Calculator and Calendar are included but hidden.** Both apps exist in this build with their home slots, but retail units ship with them disabled.
+- Type A Y1 hardware only. Installing Type A firmware on a Type B unit disables the scroll wheel.
 
-Key Lock: Modified the Key Lock implementation to ensure it persists correctly after a restart.
+## Details
 
-Video Thumbnails: Reduced the number of concurrent processes for generating video thumbnails to prevent conflicts and improve stability.
+| | |
+| --- | --- |
+| Platform | Innioasis Y1 (Type A) |
+| Version | 2.8.2 |
+| Build date | 31 July 2025 |
+| Published | 28 October 2025 |
+| Android base | 4.2.2 |
 
-Video Thumbnails: Optimized thumbnail generation logic, now saving thumbnails as files for better performance.
+## Install
 
-Video Error Handling: Adjusted video error detection (error code -38 is no longer treated as a playback failure).
+You can install this update from Innioasis Updater, using SP Flash Tool, or with MTK Client and the correct drivers for your system. Driver, utility and update instructions are also available from Innioasis: https://www.innioasis.com/pages/download
 
-Search/Multi-select: Fixed an issue where the multi-select status and search results were not cleared after adding items to a playlist.
-
-Localization: Corrected German and French translations.
-
-Playback List: Fixed issues where default playback list names were not set according to the device&#x27;s primary language after a factory reset.
-
-Theming/Customization: Fixed bugs related to theme deletion and ensuring the default wallpaper is restored correctly.
-
-Theme Installation: Default themes are now copied in the background to prevent copying from stopping if the screen turns off.
-
-# You can install this update from Innioasis Updater, using SP Flash Tool, or MTK Client with the correct drivers for your system.
-
-# Simply head to www.innioasis.com/pages/download for driver, utility and update instructions for your device.
+Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y1&amp;software=original-y1
 
 &lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;29ea377319d7a453efa81cf0137602998c6578c0f1e18671b9b66fe9beebe744&quot;,&quot;size&quot;:378023603,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;226965b9a15b2612654aa460aa2226c6583d550e493b4044424417ee0c24efb1&quot;,&quot;size&quot;:263116595,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;e7182b8b7a761ee3cac9fd3fbce3e841c10be05139f0d8970c41ef5f315fe35b&quot;,&quot;size&quot;:499469121,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux-arm64.zip&quot;,&quot;platform&quot;:&quot;linux-arm64&quot;,&quot;sha256&quot;:&quot;7f573404103699d77c8b8ca1219e6756d9a977f5dae8712859634f2ca75b90f5&quot;,&quot;size&quot;:324372191,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;a00676cdc5345140b53738ca1a2f15733ec31d97e7c77e50b7729564b999305b&quot;,&quot;size&quot;:261530880,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;bef48b5a5e91a7cc43a2045589ed0bcad9ebfd1e2ce301d5697da6da3bfa069c&quot;,&quot;size&quot;:299337083,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;}],&quot;built_at&quot;:&quot;2026-11-24T17:47:20Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-arm64.svg&quot;,&quot;size&quot;:1510},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[],&quot;fingerprint&quot;:&quot;85eb95ae0a5b543d17217a443045cfa07dd36a6addb2d8d660b10725362c83a4&quot;,&quot;original_asset_sizes&quot;:{&quot;rom.zip&quot;:234287667,&quot;updater.jpg&quot;:30612},&quot;original_assets&quot;:[&quot;rom.zip&quot;,&quot;updater.jpg&quot;],&quot;platforms&quot;:{&quot;linux&quot;:&quot;9211a98efa4b1b609d6ec7dc1170d5106c948b49b83067c444075b0b91821d7e&quot;,&quot;linux-arm64&quot;:&quot;c600d34b417d2f2b9b195297f206ed1060c4ff7321a5efec91ef47358601db3e&quot;,&quot;linux-legacy&quot;:&quot;90d26451d3ecbb252bdcf80defd94e547a471d2a06a992eac4cf0d8c81e76306&quot;,&quot;macos&quot;:&quot;4b449f55a8d7fdc858ef3b9fcb0d65492655c58b168e4dd946e6f59dfd17fa5b&quot;,&quot;windows&quot;:&quot;666c1a09b31eb3135026e4e8f95ae1806c5e584ef670a36e491ce840da29500a&quot;,&quot;windows-legacy&quot;:&quot;df24fc2ad54cb88acfe1e579676f65be5235b6fe6765911b2c95597de8f21275&quot;},&quot;skipped&quot;:[],&quot;source_fingerprint&quot;:&quot;021ba178aa268e90b16a90e5705c46670eb13d16f6b0ba1414ccb11f30be9fa4&quot;,&quot;stats&quot;:{&quot;baseline&quot;:{&quot;rom-linux-arm64.zip&quot;:3,&quot;rom-linux-legacy.zip&quot;:4,&quot;rom-linux.zip&quot;:7,&quot;rom-macos.zip&quot;:7,&quot;rom-windows-legacy.zip&quot;:2,&quot;rom-windows.zip&quot;:13,&quot;rom.zip&quot;:13,&quot;updater.jpg&quot;:0},&quot;generated_at&quot;:&quot;2026-11-24T17:47:20Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable.zip&quot;,&quot;size&quot;:304397377,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:128413832,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:109258325,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Windows-Portable.zip&quot;,&quot;size&quot;:189956744,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:17} --&gt;
 </content>
@@ -524,7 +733,7 @@ Theme Installation: Default themes are now copied in the background to prevent c
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-windows-legacy.zip" title="rom_type_b-windows-legacy.zip" length="241312812" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780612099"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b-windows.zip" title="rom_type_b-windows.zip" length="356219802" type="application/zip" innioasis:download_count="4" innioasis:asset_id="780612102"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/rom_type_b.zip" title="rom_type_b.zip" length="176316953" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733023028"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/stats.txt" title="stats.txt" length="4049" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="801673017"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/stats.txt" title="stats.txt" length="4049" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802821116"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/type-b-1.7.6/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="0" innioasis:asset_id="706212939"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=type-b-1.7.6#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -551,7 +760,32 @@ Theme Installation: Default themes are now copied in the background to prevent c
 
 ---
 
-If you installed a firmware update 2.0.0 or newer on your Y1 device and the scroll wheel stopped working, please install this version on your device instead.
+## What&#x27;s in this update?
+
+This is the original **1.7.6** build for **Type B** Y1 players — the software those units shipped with, kept here so a Type B player can always be brought back to a working state.
+
+- **Restores the scroll wheel.** If you installed firmware 2.0.0 or newer on your Y1 and the scroll wheel stopped working, install this version instead.
+- **The original eight-item home menu:** Now Playing, Music, Audiobook, Photos, FM Radio, Bluetooth, Settings and a Shuffle shortcut that jumps straight into shuffled playback.
+- **One flat Settings list:** shutdown, timed shutdown, shuffle and repeat, equalizer, sort by and sort order, key lock, key tone, key vibration, wallpaper, backlight, brightness, battery display, date &amp; time, language, factory reset and About — no categories.
+- **No theme support.** This build predates the theme engine entirely, so themes from the gallery cannot be installed on it.
+
+## Before you update
+
+- **Type B hardware only.** Type B players have the older scroll wheel, and the Type A firmware line (2.0.0 and newer) disables it. Do not mix them.
+- Flashing erases the player. Back up music and recordings first.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y1 (Type B) |
+| Version | 1.7.6 |
+| Build date | 7 April 2023 |
+| Android base | 4.2.2 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y1&amp;software=original-y1
 
 &lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom_type_b-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;9c9b40cdc1b3af58cedb8ac245f6d84083cd3327af8a393cc569e421f8fba56e&quot;,&quot;size&quot;:356219802,&quot;source_asset&quot;:&quot;rom_type_b.zip&quot;,&quot;type&quot;:&quot;Type B&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom_type_b-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;67e5384cb1449c25582b6928a4f9b040d6a11181b245aaa854fe325280eeb27a&quot;,&quot;size&quot;:241312812,&quot;source_asset&quot;:&quot;rom_type_b.zip&quot;,&quot;type&quot;:&quot;Type B&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom_type_b-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;fa0657731896f5b4c4db049b3dbe87ff2796409c9de6c93e49d32a805a0884d0&quot;,&quot;size&quot;:468157040,&quot;source_asset&quot;:&quot;rom_type_b.zip&quot;,&quot;type&quot;:&quot;Type B&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom_type_b-linux-arm64.zip&quot;,&quot;platform&quot;:&quot;linux-arm64&quot;,&quot;sha256&quot;:&quot;9d339fd31edb4ec000a989a4b5c90f16570db0bbb37c160d06fdca51546e6c92&quot;,&quot;size&quot;:293060110,&quot;source_asset&quot;:&quot;rom_type_b.zip&quot;,&quot;type&quot;:&quot;Type B&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom_type_b-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;55cdd53a6fbcc86881af3a3635956ee2451a74c0e066d1812e5c83b1f5f76c19&quot;,&quot;size&quot;:239727097,&quot;source_asset&quot;:&quot;rom_type_b.zip&quot;,&quot;type&quot;:&quot;Type B&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom_type_b-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;230e52ee747f17a24006eb2c00a767875be7065d60b28fba8a004c011a7900b7&quot;,&quot;size&quot;:275729635,&quot;source_asset&quot;:&quot;rom_type_b.zip&quot;,&quot;type&quot;:&quot;Type B&quot;}],&quot;built_at&quot;:&quot;2026-11-24T17:45:19Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-arm64.svg&quot;,&quot;size&quot;:1510},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[],&quot;fingerprint&quot;:&quot;3aca134a2866ff822871827528f25da9fba0880f342e2b94371c984eec84e46f&quot;,&quot;original_asset_sizes&quot;:{&quot;rom_type_b.zip&quot;:176316953,&quot;updater.jpg&quot;:30612},&quot;original_assets&quot;:[&quot;rom_type_b.zip&quot;,&quot;updater.jpg&quot;],&quot;platforms&quot;:{&quot;linux&quot;:&quot;3f0750d107f16b4b31ac133073381230ef580d5cb389ba1573f457caf38e2f0b&quot;,&quot;linux-arm64&quot;:&quot;4bcbb1d5e47ceeae315c7d7905960355c88cfed4fc622f61f1936740ef006cfd&quot;,&quot;linux-legacy&quot;:&quot;f41fc25b4e84941f7c78628222a9d967d1adc52b2b1cadb6462d5557604a5b0f&quot;,&quot;macos&quot;:&quot;9608aa9ddc154a4cbc51221660e83c814fac78f786d7d31dbb639989fcd32e26&quot;,&quot;windows&quot;:&quot;cee2d6bee1ac4438914dd0535cc24eee8c9ac1b948069a9d8b448ab4c22cea05&quot;,&quot;windows-legacy&quot;:&quot;dae459cead3d4eeb0c78a62cd5775f1ff08781c3a3e648c3ff4f181b11ee0a4b&quot;},&quot;skipped&quot;:[],&quot;source_fingerprint&quot;:&quot;ee9515d883bcee72761849160812ffca6081b5e9d84013b9513f2f57487b8240&quot;,&quot;stats&quot;:{&quot;baseline&quot;:{&quot;rom_type_b-linux-arm64.zip&quot;:3,&quot;rom_type_b-linux-legacy.zip&quot;:2,&quot;rom_type_b-linux.zip&quot;:5,&quot;rom_type_b-macos.zip&quot;:6,&quot;rom_type_b-windows-legacy.zip&quot;:3,&quot;rom_type_b-windows.zip&quot;:19,&quot;rom_type_b.zip&quot;:13,&quot;updater.jpg&quot;:0},&quot;generated_at&quot;:&quot;2026-11-24T17:45:19Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable.zip&quot;,&quot;size&quot;:304397377,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:128413832,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:109258325,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Windows-Portable.zip&quot;,&quot;size&quot;:189956744,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:17} --&gt;
 </content>
@@ -574,7 +808,7 @@ If you installed a firmware update 2.0.0 or newer on your Y1 device and the scro
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="244450249" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780601041"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom-windows.zip" title="rom-windows.zip" length="359357257" type="application/zip" innioasis:download_count="2" innioasis:asset_id="780601044"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/rom.zip" title="rom.zip" length="240814743" type="application/zip" innioasis:download_count="1" innioasis:asset_id="733012535"/>
-    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/stats.txt" title="stats.txt" length="4172" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="801672926"/>
+    <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/stats.txt" title="stats.txt" length="4172" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802821018"/>
     <link rel="enclosure" href="https://github.com/y1-community/y1-stock-rom-mirror/releases/download/ADB-2.1.9/updater.jpg" title="updater.jpg" length="30612" type="image/jpeg" innioasis:download_count="0" innioasis:asset_id="706208356"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=y1-community%2Fy1-stock-rom&amp;amp;tag=ADB-2.1.9#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/y1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
@@ -601,7 +835,37 @@ If you installed a firmware update 2.0.0 or newer on your Y1 device and the scro
 
 ---
 
-Adds Spanish language support.
+## What&#x27;s in this update?
+
+The update that turned the Y1 into a customisable player: themes, video playback and a far more capable library all arrive together.
+
+- **Themes for the first time.** A theme engine, a Theme entry in Settings and a `/Themes/` folder on storage. A theme is a folder with a `config.json` that describes the home screen, icons, dialogs and menus — which is what every theme in the InnioasisY1Themes gallery is built on.
+- **Four looks out of the box.** The dark **HoloPebble** becomes the default, with **HoloBubble**, **Unseen** and **Melody Munchkin** bundled, so you can change the entire interface without downloading anything.
+- **A real video player.** Videos joins the home menu with All Video, Folders, Playlist and Search sections, plus Remove Video so files can be cleaned up on the device.
+- **Library and settings additions:** a file-extensions toggle, clear cache, **Spanish language support**, sorting and deletion options for songs, albums and artists, favourite channels in FM radio, and lyric labels while playing.
+- **A theme-aware interface.** Menus, dialogs, lists and the player screen follow the theme, so the whole look changes instead of only the wallpaper.
+
+## For theme creators
+
+2.1.9 defines the first theme format: home screen layout (nine icon slots including the Shuffle shortcut), item and dialog styling, menu and file-browser styling, player styling and status bar styling. Per-theme font scaling, nine-patch selection backgrounds and the File Manager slot found in later Y2 themes do not exist yet.
+
+## Before you update
+
+- **Type A hardware only.** Do not install this on Type B scroll-wheel units.
+- Themes must live in `/Themes/` with a valid `config.json`; malformed themes are ignored rather than crashing the player.
+
+## Details
+
+| | |
+| --- | --- |
+| Platform | Innioasis Y1 (Type A) |
+| Version | 2.1.9 |
+| Android base | 4.2.2 |
+| Published | 18 July 2025 |
+
+## Install
+
+Install it with Updater CE (https://innioasis.app/guide.html), or flash the release ZIP with SP Flash Tool or MTK Client using the drivers for your system. Downloads, notes and guides: https://innioasis.app/firmware.html?model=Y1&amp;software=original-y1
 
 &lt;!-- portable-mirror:{&quot;assets&quot;:[{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-windows.zip&quot;,&quot;platform&quot;:&quot;windows&quot;,&quot;sha256&quot;:&quot;1eb911404a2b2f486e7db572a4ab2d5c1972561e30309be97dab3ee56a978656&quot;,&quot;size&quot;:359357257,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-windows-legacy.zip&quot;,&quot;platform&quot;:&quot;windows-legacy&quot;,&quot;sha256&quot;:&quot;dff9fdfb1839efd80041149f5eb59944be1b48b336b034bec0284a1d4de14004&quot;,&quot;size&quot;:244450249,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux.zip&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;sha256&quot;:&quot;0fd4c482e2cf4ea748e034330f048ff58ab9372732b97a2eb72572d55e705c80&quot;,&quot;size&quot;:480802775,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux-arm64.zip&quot;,&quot;platform&quot;:&quot;linux-arm64&quot;,&quot;sha256&quot;:&quot;6ac9e52b1bda2d0af359a8d7b692eab34ca16129dff514150a06a169dbbdcc5a&quot;,&quot;size&quot;:305705845,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-linux-legacy.zip&quot;,&quot;platform&quot;:&quot;linux-legacy&quot;,&quot;sha256&quot;:&quot;2bb41bf7079fe878cf3c2c52a833b70a458999ae2b66bb2b9957fca9b3723efe&quot;,&quot;size&quot;:242864532,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;},{&quot;model&quot;:&quot;Y1&quot;,&quot;name&quot;:&quot;rom-macos.zip&quot;,&quot;platform&quot;:&quot;macos&quot;,&quot;sha256&quot;:&quot;2601ad05da319f7805cf0823623803fcd3f7b486f544bcd6558e67e527047b70&quot;,&quot;size&quot;:280670734,&quot;source_asset&quot;:&quot;rom.zip&quot;,&quot;type&quot;:&quot;Type A&quot;}],&quot;built_at&quot;:&quot;2026-11-24T17:43:17Z&quot;,&quot;button_assets&quot;:[{&quot;name&quot;:&quot;release-button-updater.svg&quot;,&quot;size&quot;:1540},{&quot;name&quot;:&quot;release-button-windows.svg&quot;,&quot;size&quot;:1522},{&quot;name&quot;:&quot;release-button-windows-legacy.svg&quot;,&quot;size&quot;:1536},{&quot;name&quot;:&quot;release-button-linux.svg&quot;,&quot;size&quot;:1518},{&quot;name&quot;:&quot;release-button-linux-arm64.svg&quot;,&quot;size&quot;:1510},{&quot;name&quot;:&quot;release-button-linux-legacy.svg&quot;,&quot;size&quot;:1538},{&quot;name&quot;:&quot;release-button-macos.svg&quot;,&quot;size&quot;:1516}],&quot;failures&quot;:[],&quot;fingerprint&quot;:&quot;27e90f249bc5987c76be74b22e22f81f468d0f5807c223d081da01555477ab1d&quot;,&quot;original_asset_sizes&quot;:{&quot;com.innioasis.y1_2.1.9.apk&quot;:50514056,&quot;rom.zip&quot;:240814743,&quot;updater.jpg&quot;:30612},&quot;original_assets&quot;:[&quot;com.innioasis.y1_2.1.9.apk&quot;,&quot;rom.zip&quot;,&quot;updater.jpg&quot;],&quot;platforms&quot;:{&quot;linux&quot;:&quot;81b06dd409ac416f30ffa368be384ea1d16b4ffb3b07d31c30215b74c9703e7e&quot;,&quot;linux-arm64&quot;:&quot;b579583c70aefa95e78b78139d0a42a941915cd6be28b07a41fb8e81aa3f83a0&quot;,&quot;linux-legacy&quot;:&quot;5686cd52bea1401075f033844d5166d5a8cc7de76db239f8d77de93af5eaa3f1&quot;,&quot;macos&quot;:&quot;05d9ca504d5d12dd41923e14604d4ec6cc2f22c278901d4f487498dd0324b2ba&quot;,&quot;windows&quot;:&quot;9086b9c92e08e6010debb7845e18f1f737ff281364121485f1dd427526510915&quot;,&quot;windows-legacy&quot;:&quot;04fbfb2ae4c8dc1ccde3c554a643b8c577f55879c46ee7a6d3126e05d450a3b0&quot;},&quot;skipped&quot;:[],&quot;source_fingerprint&quot;:&quot;51f939150204014fbcac210165dc66a8d897f5a0a5bf091e5e42858d7050b5ca&quot;,&quot;stats&quot;:{&quot;baseline&quot;:{&quot;com.innioasis.y1_2.1.9.apk&quot;:17,&quot;rom-linux-arm64.zip&quot;:5,&quot;rom-linux-legacy.zip&quot;:3,&quot;rom-linux.zip&quot;:7,&quot;rom-macos.zip&quot;:7,&quot;rom-windows-legacy.zip&quot;:3,&quot;rom-windows.zip&quot;:13,&quot;rom.zip&quot;:13,&quot;updater.jpg&quot;:0},&quot;generated_at&quot;:&quot;2026-11-24T17:43:17Z&quot;,&quot;retired&quot;:{}},&quot;updater&quot;:{&quot;linux&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable.zip&quot;,&quot;size&quot;:304397377,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-arm64&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Linux-Portable-arm64.zip&quot;,&quot;size&quot;:128413832,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;linux-legacy&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;flash_tool_linux.zip&quot;,&quot;size&quot;:73234593,&quot;tag&quot;:&quot;flash_tool&quot;},&quot;macos&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;Innioasis.Updater.for.Mac.dmg&quot;,&quot;size&quot;:109258325,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows&quot;:{&quot;driver&quot;:null,&quot;name&quot;:&quot;UpdaterCE-Windows-Portable.zip&quot;,&quot;size&quot;:189956744,&quot;tag&quot;:&quot;2.5.6.5&quot;},&quot;windows-legacy&quot;:{&quot;driver&quot;:{&quot;digest&quot;:&quot;sha256:3cf1997d5a33411e2385e1e492689adc88b87255845a99e9c12965361602df98&quot;,&quot;id&quot;:735816514,&quot;name&quot;:&quot;1.Install.Driver.First.and.Reboot.PC.exe&quot;,&quot;repo&quot;:&quot;y1-community/innioasis-updater&quot;,&quot;size&quot;:9534578,&quot;tag&quot;:&quot;flash_tool&quot;,&quot;updated_at&quot;:&quot;2026-11-11T14:32:21Z&quot;,&quot;url&quot;:&quot;https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/1.Install.Driver.First.and.Reboot.PC.exe&quot;},&quot;name&quot;:&quot;flash_tool_windows.zip&quot;,&quot;size&quot;:65386356,&quot;tag&quot;:&quot;flash_tool&quot;}},&quot;v&quot;:17} --&gt;
 </content>

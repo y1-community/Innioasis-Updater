@@ -61,7 +61,7 @@
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-macos.zip",
         "size": 631628994,
-        "download_count": 4,
+        "download_count": 5,
         "content_type": "application/zip",
         "created_at": "2026-11-23T04:31:03Z",
         "updated_at": "2026-11-23T04:31:21Z",
@@ -83,7 +83,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-windows.zip",
         "size": 712119168,
-        "download_count": 5,
+        "download_count": 8,
         "content_type": "application/zip",
         "created_at": "2026-11-23T04:30:48Z",
         "updated_at": "2026-11-23T04:31:08Z",
@@ -178,15 +178,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/741791203"
       },
       {
-        "id": 802220404,
+        "id": 803132131,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/stats.txt",
         "size": 6323,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:50Z",
-        "updated_at": "2026-11-27T22:03:50Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802220404"
+        "created_at": "2026-11-28T03:58:23Z",
+        "updated_at": "2026-11-28T03:58:23Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803132131"
       },
       {
         "id": 741791279,
@@ -201,7 +201,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 13,
+    "downloads": 17,
     "download_breakdown": {
       "tag": "stable-v0.6.1",
       "mirrors": "",
@@ -224,7 +224,7 @@
         {
           "name": "rom-macos.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-macos.zip",
-          "downloads": 4
+          "downloads": 5
         },
         {
           "name": "rom-windows-legacy.zip",
@@ -234,7 +234,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6.1/rom-windows.zip",
-          "downloads": 5
+          "downloads": 8
         },
         {
           "name": "rom.zip",
@@ -464,15 +464,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733418372"
       },
       {
-        "id": 802220260,
+        "id": 803132054,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-a8c63c04f0030dca6bc193a437767e1838067b67/stats.txt",
         "size": 6344,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:47Z",
-        "updated_at": "2026-11-27T22:03:48Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802220260"
+        "created_at": "2026-11-28T03:58:22Z",
+        "updated_at": "2026-11-28T03:58:22Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803132054"
       },
       {
         "id": 733420030,
@@ -750,22 +750,22 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733384039"
       },
       {
-        "id": 802220145,
+        "id": 803132019,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/stats.txt",
-        "size": 6259,
+        "size": 6260,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:45Z",
-        "updated_at": "2026-11-27T22:03:45Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802220145"
+        "created_at": "2026-11-28T03:58:20Z",
+        "updated_at": "2026-11-28T03:58:20Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803132019"
       },
       {
         "id": 733384845,
         "name": "update.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/update.zip",
         "size": 99329841,
-        "download_count": 1,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-10T23:37:58Z",
         "updated_at": "2026-11-10T23:38:01Z",
@@ -773,7 +773,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 11,
+    "downloads": 13,
     "download_breakdown": {
       "tag": "stable-v0.6",
       "mirrors": "",
@@ -851,7 +851,7 @@
         {
           "name": "update.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.6/update.zip",
-          "downloads": 1
+          "downloads": 3
         }
       ],
       "portable": []
@@ -948,15 +948,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733036746"
       },
       {
-        "id": 802217342,
+        "id": 803130705,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-b-base/stats.txt",
         "size": 3856,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:02:49Z",
-        "updated_at": "2026-11-27T22:02:49Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802217342"
+        "created_at": "2026-11-28T03:57:43Z",
+        "updated_at": "2026-11-28T03:57:44Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803130705"
       }
     ],
     "mirror_downloads": 0,
@@ -1095,15 +1095,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733055840"
       },
       {
-        "id": 802217445,
+        "id": 803130748,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/type-a-base/stats.txt",
         "size": 3854,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:02:51Z",
-        "updated_at": "2026-11-27T22:02:51Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802217445"
+        "created_at": "2026-11-28T03:57:45Z",
+        "updated_at": "2026-11-28T03:57:45Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803130748"
       }
     ],
     "mirror_downloads": 0,
@@ -1235,7 +1235,7 @@
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-windows.zip",
         "size": 723556941,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-23T01:19:49Z",
         "updated_at": "2026-11-23T01:20:10Z",
@@ -1330,22 +1330,22 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733339348"
       },
       {
-        "id": 802218673,
+        "id": 803131288,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/stats.txt",
         "size": 6333,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:13Z",
-        "updated_at": "2026-11-27T22:03:14Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802218673"
+        "created_at": "2026-11-28T03:58:00Z",
+        "updated_at": "2026-11-28T03:58:00Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131288"
       },
       {
         "id": 733340513,
         "name": "update.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/update.zip",
         "size": 98123669,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-10T23:21:03Z",
         "updated_at": "2026-11-10T23:21:06Z",
@@ -1353,7 +1353,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 4,
+    "downloads": 6,
     "download_breakdown": {
       "tag": "stable-v0.5",
       "mirrors": "",
@@ -1386,7 +1386,7 @@
         {
           "name": "rom-windows.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/rom-windows.zip",
-          "downloads": 0
+          "downloads": 1
         },
         {
           "name": "rom.zip",
@@ -1431,7 +1431,7 @@
         {
           "name": "update.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.5/update.zip",
-          "downloads": 1
+          "downloads": 2
         }
       ],
       "portable": []
@@ -1781,22 +1781,22 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733365002"
       },
       {
-        "id": 802218223,
+        "id": 803131136,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/stats.txt",
         "size": 11132,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:06Z",
-        "updated_at": "2026-11-27T22:03:06Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802218223"
+        "created_at": "2026-11-28T03:57:55Z",
+        "updated_at": "2026-11-28T03:57:55Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131136"
       },
       {
         "id": 733365864,
         "name": "update_240p.zip",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/update_240p.zip",
         "size": 91372952,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-10T23:30:30Z",
         "updated_at": "2026-11-10T23:30:33Z",
@@ -1826,7 +1826,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 11,
+    "downloads": 12,
     "download_breakdown": {
       "tag": "stable-v0.4",
       "mirrors": "",
@@ -1974,7 +1974,7 @@
         {
           "name": "update_240p.zip",
           "url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.4/update_240p.zip",
-          "downloads": 1
+          "downloads": 2
         },
         {
           "name": "update_360p.zip",
@@ -2356,15 +2356,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733140194"
       },
       {
-        "id": 802217570,
+        "id": 803130812,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/stable-v0.3/stats.txt",
         "size": 10102,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:02:54Z",
-        "updated_at": "2026-11-27T22:02:54Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802217570"
+        "created_at": "2026-11-28T03:57:47Z",
+        "updated_at": "2026-11-28T03:57:47Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803130812"
       }
     ],
     "mirror_downloads": 0,
@@ -2696,15 +2696,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733369498"
       },
       {
-        "id": 802219297,
+        "id": 803131649,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/stats.txt",
         "size": 6352,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:27Z",
-        "updated_at": "2026-11-27T22:03:27Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802219297"
+        "created_at": "2026-11-28T03:58:09Z",
+        "updated_at": "2026-11-28T03:58:09Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131649"
       },
       {
         "id": 733370188,
@@ -2982,15 +2982,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733374176"
       },
       {
-        "id": 802219201,
+        "id": 803131592,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/stats.txt",
         "size": 6349,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:24Z",
-        "updated_at": "2026-11-27T22:03:25Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802219201"
+        "created_at": "2026-11-28T03:58:07Z",
+        "updated_at": "2026-11-28T03:58:07Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131592"
       },
       {
         "id": 733375398,
@@ -3268,15 +3268,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733360237"
       },
       {
-        "id": 802219424,
+        "id": 803131688,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/stats.txt",
         "size": 6353,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:30Z",
-        "updated_at": "2026-11-27T22:03:30Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802219424"
+        "created_at": "2026-11-28T03:58:10Z",
+        "updated_at": "2026-11-28T03:58:11Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131688"
       },
       {
         "id": 733360870,
@@ -3554,15 +3554,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733417178"
       },
       {
-        "id": 802219604,
+        "id": 803131799,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/stats.txt",
         "size": 6351,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:34Z",
-        "updated_at": "2026-11-27T22:03:35Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802219604"
+        "created_at": "2026-11-28T03:58:14Z",
+        "updated_at": "2026-11-28T03:58:14Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131799"
       },
       {
         "id": 733420574,
@@ -3840,15 +3840,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733338851"
       },
       {
-        "id": 802218352,
+        "id": 803131190,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/stats.txt",
         "size": 5937,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:08Z",
-        "updated_at": "2026-11-27T22:03:09Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802218352"
+        "created_at": "2026-11-28T03:57:57Z",
+        "updated_at": "2026-11-28T03:57:57Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131190"
       }
     ],
     "mirror_downloads": 0,
@@ -4110,15 +4110,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733334992"
       },
       {
-        "id": 802218819,
+        "id": 803131362,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/stats.txt",
         "size": 6348,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:16Z",
-        "updated_at": "2026-11-27T22:03:16Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802218819"
+        "created_at": "2026-11-28T03:58:02Z",
+        "updated_at": "2026-11-28T03:58:02Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131362"
       },
       {
         "id": 733336182,
@@ -4396,15 +4396,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733395971"
       },
       {
-        "id": 802220046,
+        "id": 803131979,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/stats.txt",
         "size": 6350,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:42Z",
-        "updated_at": "2026-11-27T22:03:43Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802220046"
+        "created_at": "2026-11-28T03:58:18Z",
+        "updated_at": "2026-11-28T03:58:19Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131979"
       },
       {
         "id": 733396937,
@@ -4682,15 +4682,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733396337"
       },
       {
-        "id": 802219740,
+        "id": 803131863,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/stats.txt",
         "size": 6351,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:37Z",
-        "updated_at": "2026-11-27T22:03:37Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802219740"
+        "created_at": "2026-11-28T03:58:15Z",
+        "updated_at": "2026-11-28T03:58:15Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131863"
       },
       {
         "id": 733398620,
@@ -5133,15 +5133,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733364541"
       },
       {
-        "id": 802218086,
+        "id": 803131071,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/stats.txt",
         "size": 10739,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:03Z",
-        "updated_at": "2026-11-27T22:03:04Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802218086"
+        "created_at": "2026-11-28T03:57:53Z",
+        "updated_at": "2026-11-28T03:57:54Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131071"
       },
       {
         "id": 733366676,
@@ -5670,15 +5670,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733213332"
       },
       {
-        "id": 802217812,
+        "id": 803130881,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/stats.txt",
         "size": 10735,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:02:59Z",
-        "updated_at": "2026-11-27T22:02:59Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802217812"
+        "created_at": "2026-11-28T03:57:49Z",
+        "updated_at": "2026-11-28T03:57:50Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803130881"
       },
       {
         "id": 733214550,
@@ -6042,15 +6042,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733392344"
       },
       {
-        "id": 802218970,
+        "id": 803131442,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/stats.txt",
         "size": 6347,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:19Z",
-        "updated_at": "2026-11-27T22:03:19Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802218970"
+        "created_at": "2026-11-28T03:58:04Z",
+        "updated_at": "2026-11-28T03:58:04Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131442"
       },
       {
         "id": 733393085,
@@ -6328,15 +6328,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733369840"
       },
       {
-        "id": 802219093,
+        "id": 803131510,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/stats.txt",
         "size": 6349,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:22Z",
-        "updated_at": "2026-11-27T22:03:22Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802219093"
+        "created_at": "2026-11-28T03:58:05Z",
+        "updated_at": "2026-11-28T03:58:06Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131510"
       },
       {
         "id": 733372247,
@@ -6614,15 +6614,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733401862"
       },
       {
-        "id": 802219875,
+        "id": 803131918,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/stats.txt",
         "size": 6347,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:40Z",
-        "updated_at": "2026-11-27T22:03:40Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802219875"
+        "created_at": "2026-11-28T03:58:17Z",
+        "updated_at": "2026-11-28T03:58:17Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131918"
       },
       {
         "id": 733402932,
@@ -6900,15 +6900,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733393584"
       },
       {
-        "id": 802219532,
+        "id": 803131756,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/stats.txt",
         "size": 6351,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:32Z",
-        "updated_at": "2026-11-27T22:03:32Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802219532"
+        "created_at": "2026-11-28T03:58:12Z",
+        "updated_at": "2026-11-28T03:58:12Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131756"
       },
       {
         "id": 733395010,
@@ -7376,15 +7376,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733341708"
       },
       {
-        "id": 802218506,
+        "id": 803131224,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/stats.txt",
         "size": 6356,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:11Z",
-        "updated_at": "2026-11-27T22:03:11Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802218506"
+        "created_at": "2026-11-28T03:57:59Z",
+        "updated_at": "2026-11-28T03:57:59Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803131224"
       },
       {
         "id": 733342641,
@@ -7827,15 +7827,15 @@
         "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/733275195"
       },
       {
-        "id": 802217951,
+        "id": 803130966,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/rockbox-mirror/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/stats.txt",
         "size": 10734,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-27T22:03:01Z",
-        "updated_at": "2026-11-27T22:03:01Z",
-        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/802217951"
+        "created_at": "2026-11-28T03:57:51Z",
+        "updated_at": "2026-11-28T03:57:52Z",
+        "url": "https://api.github.com/repos/y1-community/rockbox-mirror/releases/assets/803130966"
       },
       {
         "id": 733276643,

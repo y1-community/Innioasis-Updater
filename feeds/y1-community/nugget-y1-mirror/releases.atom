@@ -13,20 +13,20 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/nugget-y1-mirror/releases/tag/2.1.5"/>
     <innioasis:tag_name>2.1.5</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>0</innioasis:downloads>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/boot_nugget.img" title="boot_nugget.img" length="6121472" type="application/vnd.efi.img" innioasis:download_count="0" innioasis:asset_id="802216799"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/liby1-sdk.zip" title="liby1-sdk.zip" length="575568" type="application/zip" innioasis:download_count="0" innioasis:asset_id="802216827"/>
+    <innioasis:downloads>9</innioasis:downloads>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/boot_nugget.img" title="boot_nugget.img" length="6121472" type="application/vnd.efi.img" innioasis:download_count="1" innioasis:asset_id="802216799"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/liby1-sdk.zip" title="liby1-sdk.zip" length="575568" type="application/zip" innioasis:download_count="1" innioasis:asset_id="802216827"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/logo.bin" title="logo.bin" length="98733" type="application/octet-stream" innioasis:download_count="0" innioasis:asset_id="802216850"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rockbox_sdcard.zip" title="rockbox_sdcard.zip" length="38917709" type="application/zip" innioasis:download_count="0" innioasis:asset_id="802216853"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="132809000" type="application/zip" innioasis:download_count="0" innioasis:asset_id="802216666"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="79476065" type="application/zip" innioasis:download_count="0" innioasis:asset_id="802216660"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom-linux.zip" title="rom-linux.zip" length="307905930" type="application/zip" innioasis:download_count="0" innioasis:asset_id="802216663"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom-macos.zip" title="rom-macos.zip" length="115478731" type="application/zip" innioasis:download_count="0" innioasis:asset_id="802216795"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="81061734" type="application/zip" innioasis:download_count="0" innioasis:asset_id="802216659"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom-windows.zip" title="rom-windows.zip" length="195968646" type="application/zip" innioasis:download_count="0" innioasis:asset_id="802216664"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom.zip" title="rom.zip" length="6170015" type="application/zip" innioasis:download_count="0" innioasis:asset_id="802217456"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/sha256sums.txt" title="sha256sums.txt" length="321" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802217458"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/stats.txt" title="stats.txt" length="3127" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802217454"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rockbox_sdcard.zip" title="rockbox_sdcard.zip" length="38917709" type="application/zip" innioasis:download_count="1" innioasis:asset_id="802216853"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="132809000" type="application/zip" innioasis:download_count="1" innioasis:asset_id="802216666"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="79476065" type="application/zip" innioasis:download_count="1" innioasis:asset_id="802216660"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom-linux.zip" title="rom-linux.zip" length="307905930" type="application/zip" innioasis:download_count="1" innioasis:asset_id="802216663"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom-macos.zip" title="rom-macos.zip" length="115478731" type="application/zip" innioasis:download_count="1" innioasis:asset_id="802216795"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="81061734" type="application/zip" innioasis:download_count="1" innioasis:asset_id="802216659"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom-windows.zip" title="rom-windows.zip" length="195968646" type="application/zip" innioasis:download_count="1" innioasis:asset_id="802216664"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/rom.zip" title="rom.zip" length="6170015" type="application/zip" innioasis:download_count="1" innioasis:asset_id="802217456"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/sha256sums.txt" title="sha256sums.txt" length="321" type="text/plain; charset=utf-8" innioasis:download_count="1" innioasis:asset_id="802217458"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.5/stats.txt" title="stats.txt" length="5109" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="803130272"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=norocoral%2Fnugget-y1&amp;amp;tag=2.1.5#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -73,20 +73,20 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/nugget-y1-mirror/releases/tag/2.1.4.1"/>
     <innioasis:tag_name>2.1.4.1</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>8</innioasis:downloads>
+    <innioasis:downloads>10</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/boot_nugget.img" title="boot_nugget.img" length="5976064" type="application/vnd.efi.img" innioasis:download_count="1" innioasis:asset_id="785269351"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/liby1-sdk.zip" title="liby1-sdk.zip" length="331427" type="application/zip" innioasis:download_count="1" innioasis:asset_id="785269401"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/logo.bin" title="logo.bin" length="98733" type="application/octet-stream" innioasis:download_count="0" innioasis:asset_id="785269469"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rockbox_sdcard.zip" title="rockbox_sdcard.zip" length="37961888" type="application/zip" innioasis:download_count="1" innioasis:asset_id="785269486"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="132662522" type="application/zip" innioasis:download_count="0" innioasis:asset_id="788955984"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="132662522" type="application/zip" innioasis:download_count="1" innioasis:asset_id="788955984"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="79329591" type="application/zip" innioasis:download_count="1" innioasis:asset_id="785269064"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-linux.zip" title="rom-linux.zip" length="307759452" type="application/zip" innioasis:download_count="0" innioasis:asset_id="788955974"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-linux.zip" title="rom-linux.zip" length="307759452" type="application/zip" innioasis:download_count="1" innioasis:asset_id="788955974"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-macos.zip" title="rom-macos.zip" length="115332254" type="application/zip" innioasis:download_count="1" innioasis:asset_id="785269336"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="80915262" type="application/zip" innioasis:download_count="1" innioasis:asset_id="785269060"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom-windows.zip" title="rom-windows.zip" length="195822168" type="application/zip" innioasis:download_count="2" innioasis:asset_id="785269062"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/rom.zip" title="rom.zip" length="6023537" type="application/zip" innioasis:download_count="1" innioasis:asset_id="785269794"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/sha256sums.txt" title="sha256sums.txt" length="321" type="text/plain; charset=utf-8" innioasis:download_count="1" innioasis:asset_id="785269799"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/stats.txt" title="stats.txt" length="5117" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802212564"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4.1/stats.txt" title="stats.txt" length="5117" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="803130165"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=norocoral%2Fnugget-y1&amp;amp;tag=2.1.4.1#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -129,20 +129,20 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/nugget-y1-mirror/releases/tag/2.1.4"/>
     <innioasis:tag_name>2.1.4</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>10</innioasis:downloads>
+    <innioasis:downloads>12</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/boot_nugget.img" title="boot_nugget.img" length="5976064" type="application/vnd.efi.img" innioasis:download_count="1" innioasis:asset_id="780602582"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/liby1-sdk.zip" title="liby1-sdk.zip" length="331427" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780602627"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/logo.bin" title="logo.bin" length="98733" type="application/octet-stream" innioasis:download_count="1" innioasis:asset_id="780602632"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rockbox_sdcard.zip" title="rockbox_sdcard.zip" length="37955588" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780602653"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="132663897" type="application/zip" innioasis:download_count="0" innioasis:asset_id="788948407"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="132663897" type="application/zip" innioasis:download_count="1" innioasis:asset_id="788948407"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="79330962" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780602344"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-linux.zip" title="rom-linux.zip" length="307760827" type="application/zip" innioasis:download_count="0" innioasis:asset_id="788948411"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-linux.zip" title="rom-linux.zip" length="307760827" type="application/zip" innioasis:download_count="1" innioasis:asset_id="788948411"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-macos.zip" title="rom-macos.zip" length="115333628" type="application/zip" innioasis:download_count="2" innioasis:asset_id="780602572"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="80916631" type="application/zip" innioasis:download_count="2" innioasis:asset_id="780602341"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom-windows.zip" title="rom-windows.zip" length="195823543" type="application/zip" innioasis:download_count="2" innioasis:asset_id="780602342"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/rom.zip" title="rom.zip" length="6024912" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780603243"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/sha256sums.txt" title="sha256sums.txt" length="321" type="text/plain; charset=utf-8" innioasis:download_count="1" innioasis:asset_id="780603244"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/stats.txt" title="stats.txt" length="5111" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802212501"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.4/stats.txt" title="stats.txt" length="5112" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="803130012"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=norocoral%2Fnugget-y1&amp;amp;tag=2.1.4#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -187,19 +187,19 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/nugget-y1-mirror/releases/tag/2.1.3"/>
     <innioasis:tag_name>2.1.3</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>7</innioasis:downloads>
+    <innioasis:downloads>9</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/boot_nugget.img" title="boot_nugget.img" length="5976064" type="application/vnd.efi.img" innioasis:download_count="1" innioasis:asset_id="777167699"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/liby1-sdk.zip" title="liby1-sdk.zip" length="105758" type="application/zip" innioasis:download_count="1" innioasis:asset_id="777167744"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rockbox_sdcard.zip" title="rockbox_sdcard.zip" length="7803056" type="application/zip" innioasis:download_count="1" innioasis:asset_id="777167751"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="132576862" type="application/zip" innioasis:download_count="0" innioasis:asset_id="788942297"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="132576862" type="application/zip" innioasis:download_count="1" innioasis:asset_id="788942297"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="79243927" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780598549"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-linux.zip" title="rom-linux.zip" length="307673792" type="application/zip" innioasis:download_count="0" innioasis:asset_id="788942290"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-linux.zip" title="rom-linux.zip" length="307673792" type="application/zip" innioasis:download_count="1" innioasis:asset_id="788942290"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-macos.zip" title="rom-macos.zip" length="115246603" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780598697"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="80829596" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780598548"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom-windows.zip" title="rom-windows.zip" length="195736508" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780598550"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/rom.zip" title="rom.zip" length="5937905" type="application/zip" innioasis:download_count="1" innioasis:asset_id="777167764"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/sha256sums.txt" title="sha256sums.txt" length="321" type="text/plain; charset=utf-8" innioasis:download_count="1" innioasis:asset_id="777168133"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/stats.txt" title="stats.txt" length="4995" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802212432"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.3/stats.txt" title="stats.txt" length="4995" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="803129934"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=norocoral%2Fnugget-y1&amp;amp;tag=2.1.3#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
@@ -243,19 +243,19 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/nugget-y1-mirror/releases/tag/2.1.2"/>
     <innioasis:tag_name>2.1.2</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <innioasis:downloads>9</innioasis:downloads>
+    <innioasis:downloads>11</innioasis:downloads>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/boot_nugget.img" title="boot_nugget.img" length="5976064" type="application/vnd.efi.img" innioasis:download_count="2" innioasis:asset_id="775430566"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/liby1-sdk.zip" title="liby1-sdk.zip" length="99408" type="application/zip" innioasis:download_count="1" innioasis:asset_id="775430604"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rockbox_sdcard.zip" title="rockbox_sdcard.zip" length="7709312" type="application/zip" innioasis:download_count="1" innioasis:asset_id="775430630"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="132576737" type="application/zip" innioasis:download_count="0" innioasis:asset_id="788936784"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-linux-arm64.zip" title="rom-linux-arm64.zip" length="132576737" type="application/zip" innioasis:download_count="1" innioasis:asset_id="788936784"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-linux-legacy.zip" title="rom-linux-legacy.zip" length="79243800" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780595000"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-linux.zip" title="rom-linux.zip" length="307673667" type="application/zip" innioasis:download_count="0" innioasis:asset_id="788936791"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-linux.zip" title="rom-linux.zip" length="307673667" type="application/zip" innioasis:download_count="1" innioasis:asset_id="788936791"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-macos.zip" title="rom-macos.zip" length="115246479" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780595119"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-windows-legacy.zip" title="rom-windows-legacy.zip" length="80829471" type="application/zip" innioasis:download_count="1" innioasis:asset_id="780594998"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom-windows.zip" title="rom-windows.zip" length="195736383" type="application/zip" innioasis:download_count="3" innioasis:asset_id="780595003"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/rom.zip" title="rom.zip" length="5937782" type="application/zip" innioasis:download_count="1" innioasis:asset_id="775430651"/>
     <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/sha256sums.txt" title="sha256sums.txt" length="321" type="text/plain; charset=utf-8" innioasis:download_count="1" innioasis:asset_id="775431074"/>
-    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/stats.txt" title="stats.txt" length="4993" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="802212385"/>
+    <link rel="enclosure" href="https://github.com/y1-community/nugget-y1-mirror/releases/download/2.1.2/stats.txt" title="stats.txt" length="4993" type="text/plain; charset=utf-8" innioasis:download_count="0" innioasis:asset_id="803129780"/>
     <content type="text">&lt;p align=&quot;center&quot;&gt;
   &lt;a href=&quot;https://innioasis.app/guide.html?repo=norocoral%2Fnugget-y1&amp;amp;tag=2.1.2#download-updater&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/y1-community/nugget-y1-mirror/main/.mirror-assets/release-button-updater.svg&quot; width=&quot;400&quot; alt=&quot;Get it on Updater CE - with guided install&quot;&gt;&lt;/a&gt;
 &lt;/p&gt;
