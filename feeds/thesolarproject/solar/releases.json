@@ -28,7 +28,7 @@
         "name": "rom.zip",
         "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20261126-1943/rom.zip",
         "size": 976897898,
-        "download_count": 12,
+        "download_count": 19,
         "content_type": "application/zip",
         "created_at": "2026-11-26T19:53:15Z",
         "updated_at": "2026-11-26T19:53:55Z",
@@ -50,7 +50,7 @@
         "name": "rom_type_b.zip",
         "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20261126-1943/rom_type_b.zip",
         "size": 508059937,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-26T19:53:14Z",
         "updated_at": "2026-11-26T19:53:33Z",
@@ -61,7 +61,7 @@
         "name": "rom_y2.zip",
         "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20261126-1943/rom_y2.zip",
         "size": 637285501,
-        "download_count": 9,
+        "download_count": 10,
         "content_type": "application/zip",
         "created_at": "2026-11-26T19:53:14Z",
         "updated_at": "2026-11-26T19:53:39Z",
@@ -69,7 +69,7 @@
       }
     ],
     "mirror_downloads": 2,
-    "downloads": 27,
+    "downloads": 36,
     "download_breakdown": {
       "tag": "20261126-1943",
       "mirrors": "y1-community/solar-mirror",
@@ -77,7 +77,7 @@
         {
           "name": "rom.zip",
           "url": "https://github.com/thesolarproject/solar/releases/download/20261126-1943/rom.zip",
-          "downloads": 12
+          "downloads": 19
         },
         {
           "name": "rom_a5.zip",
@@ -87,12 +87,12 @@
         {
           "name": "rom_type_b.zip",
           "url": "https://github.com/thesolarproject/solar/releases/download/20261126-1943/rom_type_b.zip",
-          "downloads": 2
+          "downloads": 3
         },
         {
           "name": "rom_y2.zip",
           "url": "https://github.com/thesolarproject/solar/releases/download/20261126-1943/rom_y2.zip",
-          "downloads": 9
+          "downloads": 10
         }
       ],
       "portable": [

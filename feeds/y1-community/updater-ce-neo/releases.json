@@ -17,7 +17,7 @@
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/installer.exe",
         "size": 98323238,
-        "download_count": 143,
+        "download_count": 149,
         "content_type": "application/x-msdownload",
         "created_at": "2026-11-22T20:54:58Z",
         "updated_at": "2026-11-22T20:55:37Z",
@@ -39,7 +39,7 @@
         "name": "UpdaterCE-Windows-Portable.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/UpdaterCE-Windows-Portable.zip",
         "size": 189956744,
-        "download_count": 112,
+        "download_count": 116,
         "content_type": "application/x-zip-compressed",
         "created_at": "2026-11-22T20:56:53Z",
         "updated_at": "2026-11-22T20:59:52Z",
@@ -138,7 +138,7 @@
         "name": "UpdaterCE-Linux-Portable.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/UpdaterCE-Linux-Portable.zip",
         "size": 304397377,
-        "download_count": 77,
+        "download_count": 81,
         "content_type": "application/zip",
         "created_at": "2026-11-24T16:48:02Z",
         "updated_at": "2026-11-24T16:49:56Z",
@@ -182,7 +182,7 @@
         "name": "UpdaterCE-Linux-Portable-arm64.zip",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/UpdaterCE-Linux-Portable-arm64.zip",
         "size": 128413832,
-        "download_count": 77,
+        "download_count": 81,
         "content_type": "application/zip",
         "created_at": "2026-11-24T16:48:57Z",
         "updated_at": "2026-11-24T16:49:48Z",
@@ -223,7 +223,7 @@
       }
     ],
     "mirror_downloads": 0,
-    "downloads": 266,
+    "downloads": 278,
     "download_breakdown": {
       "tag": "2.5.6.5",
       "mirrors": "",
@@ -231,17 +231,17 @@
         {
           "name": "UpdaterCE-Windows-Portable.zip",
           "url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/UpdaterCE-Windows-Portable.zip",
-          "downloads": 112
+          "downloads": 116
         },
         {
           "name": "UpdaterCE-Linux-Portable.zip",
           "url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/UpdaterCE-Linux-Portable.zip",
-          "downloads": 77
+          "downloads": 81
         },
         {
           "name": "UpdaterCE-Linux-Portable-arm64.zip",
           "url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.6.5/UpdaterCE-Linux-Portable-arm64.zip",
-          "downloads": 77
+          "downloads": 81
         }
       ],
       "portable": []
